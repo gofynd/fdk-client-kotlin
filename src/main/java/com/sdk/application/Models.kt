@@ -22,7 +22,7 @@ data class GetTokenForVideoRoomResponse(
 @Parcelize
 data class GetParticipantsInsideVideoRoomResponse(
     
-    val participants: ArrayList<Any>?=null
+    val participants: @RawValue ArrayList<Any>?=null
     
 ): Parcelable
 
@@ -82,7 +82,7 @@ data class Content(
     
     val description: String?=null,
     
-    val attachments: ArrayList<Any>?=null
+    val attachments: @RawValue ArrayList<Any>?=null
     
 ): Parcelable
 
@@ -94,7 +94,7 @@ data class APIError(
     
     val code: Double?=null,
     
-    val error: Any?=null,
+    val error: @RawValue Any?=null,
     
     val message: String?=null
     
@@ -210,11 +210,11 @@ data class CustomForm(
     
     val submitButton: SubmitButton?=null,
     
-    val inputs: ArrayList<Any>?=null,
+    val inputs: @RawValue ArrayList<Any>?=null,
     
     val createdOn: CreatedOn?=null,
     
-    val createdBy: Any?=null,
+    val createdBy: @RawValue Any?=null,
     
     val pollForAssignment: PollForAssignment?=null,
     
@@ -234,13 +234,13 @@ data class TicketHistory(
     
     val type: String?=null,
     
-    val value: Any?=null,
+    val value: @RawValue Any?=null,
     
     val ticketId: String?=null,
     
     val createdOn: CreatedOn?=null,
     
-    val createdBy: Any?=null,
+    val createdBy: @RawValue Any?=null,
     
     val id: String?=null,
     
@@ -274,13 +274,13 @@ data class Ticket(
     
     val priority: Priority?=null,
     
-    val createdBy: Any?=null,
+    val createdBy: @RawValue Any?=null,
     
-    val assignedTo: Any?=null,
+    val assignedTo: @RawValue Any?=null,
     
-    val tags: ArrayList<Any>?=null,
+    val tags: @RawValue ArrayList<Any>?=null,
     
-    val customJson: Any?=null,
+    val customJson: @RawValue Any?=null,
     
     val id: String?=null,
     
