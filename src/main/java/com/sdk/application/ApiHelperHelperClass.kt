@@ -3,6 +3,7 @@ package com.sdk.application
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.Path
+import javax.inject.Inject
 
 class ApiHelperHelperClass @Inject constructor(private val apiList: ApiList) : ApiHelperFace  {
 
