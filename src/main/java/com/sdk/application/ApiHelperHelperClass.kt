@@ -5,9 +5,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.Path
 
-class ApiHelperHelperClass : ApiHelperFace  {
-
-val apiList = ApiListProvider.getApiList()
+class ApiHelperHelperClass @Inject constructor(private val apiList: ApiList) : ApiHelperFace  {
 
     
     override fun getTicket(@Path("id") id: String)
