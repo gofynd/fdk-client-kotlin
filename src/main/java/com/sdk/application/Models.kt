@@ -7,6 +7,28 @@ import kotlinx.android.parcel.RawValue
 
 
 /*
+    Model: TicketHistoryPayload
+*/
+@Parcelize
+data class TicketHistoryPayload(
+    
+    val value: HashMap<String,Any>?=null,
+    
+    val type: String?=null
+    
+): Parcelable
+
+/*
+    Model: CustomFormSubmissionPayload
+*/
+@Parcelize
+data class CustomFormSubmissionPayload(
+    
+    val response: ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable
+
+/*
     Model: GetTokenForVideoRoomResponse
 */
 @Parcelize
@@ -22,7 +44,7 @@ data class GetTokenForVideoRoomResponse(
 @Parcelize
 data class GetParticipantsInsideVideoRoomResponse(
     
-    val participants: @RawValue ArrayList<Any>?=null
+    val participants: ArrayList<Any>?=null
     
 ): Parcelable
 
@@ -82,7 +104,7 @@ data class Content(
     
     val description: String?=null,
     
-    val attachments: @RawValue ArrayList<Any>?=null
+    val attachments: ArrayList<Asset>?=null
     
 ): Parcelable
 
@@ -94,7 +116,7 @@ data class APIError(
     
     val code: Double?=null,
     
-    val error: @RawValue Any?=null,
+    val error: HashMap<String,Any>?=null,
     
     val message: String?=null
     
@@ -210,11 +232,11 @@ data class CustomForm(
     
     val submitButton: SubmitButton?=null,
     
-    val inputs: @RawValue ArrayList<Any>?=null,
+    val inputs: ArrayList<HashMap<String,Any>>?=null,
     
     val createdOn: CreatedOn?=null,
     
-    val createdBy: @RawValue Any?=null,
+    val createdBy: HashMap<String,Any>?=null,
     
     val pollForAssignment: PollForAssignment?=null,
     
@@ -234,13 +256,13 @@ data class TicketHistory(
     
     val type: String?=null,
     
-    val value: @RawValue Any?=null,
+    val value: HashMap<String,Any>?=null,
     
     val ticketId: String?=null,
     
     val createdOn: CreatedOn?=null,
     
-    val createdBy: @RawValue Any?=null,
+    val createdBy: HashMap<String,Any>?=null,
     
     val id: String?=null,
     
@@ -274,13 +296,13 @@ data class Ticket(
     
     val priority: Priority?=null,
     
-    val createdBy: @RawValue Any?=null,
+    val createdBy: HashMap<String,Any>?=null,
     
-    val assignedTo: @RawValue Any?=null,
+    val assignedTo: HashMap<String,Any>?=null,
     
-    val tags: @RawValue ArrayList<Any>?=null,
+    val tags: ArrayList<String>?=null,
     
-    val customJson: @RawValue Any?=null,
+    val customJson: HashMap<String,Any>?=null,
     
     val id: String?=null,
     
