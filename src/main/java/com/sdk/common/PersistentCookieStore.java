@@ -1,9 +1,5 @@
 package com.sdk.common;
 
-/**
- * Created by Ankur on 8/5/2015.
- */
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -41,7 +37,7 @@ import okhttp3.JavaNetCookieJar;
 public class PersistentCookieStore implements CookieStore {
 
     private static final String LOG_TAG = "PersistentCookieStore";
-    private static final String COOKIE_PREFS = "CookiePrefsFile";
+    private static final String COOKIE_PREFS = "DummyCookiePrefsFile";
     private static final String COOKIE_NAME_PREFIX = "cookie_";
     private static final String OLD_DOMAIN = "orbis.gofynd.com";
 

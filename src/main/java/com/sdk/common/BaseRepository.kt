@@ -1,6 +1,9 @@
 package com.sdk.common
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import com.google.gson.Gson
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
@@ -14,11 +17,11 @@ abstract class BaseRepository {
 
         val stateData = StateData<Event<T>>()
 
-        return if (DeviceUtil.isNetworkAvailable(applicationContext)) {
+        return if (Helper.isNetworkAvailable(applicationContext)) {
             //connected
             try {
                 val call = this.await()
-                if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request.method == "HEAD")) {
+                if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request().method() == "HEAD")) {
                     stateData.success(Event(call.body(), call.headers()))
                     stateData
                 } else {

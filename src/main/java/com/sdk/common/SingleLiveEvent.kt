@@ -1,4 +1,4 @@
-package com.client.network
+package com.sdk.common
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner

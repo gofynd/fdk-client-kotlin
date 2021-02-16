@@ -1,9 +1,5 @@
 package com.sdk.common;
 
-/**
- * Created by Ankur on 8/5/2015.
- */
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

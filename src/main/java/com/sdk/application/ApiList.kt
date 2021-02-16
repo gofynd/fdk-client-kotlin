@@ -11,30 +11,30 @@ interface ApiList{
     
     @GET ("/service/application/lead/v1.0/ticket/{id}")
     fun getTicket(@Path("id") id: String)
-    : Deferred<Response<Ticket?>>
+    : Deferred<Response<Ticket>>
     
     @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
     fun createHistoryForTicket(@Path("ticket_id") ticket_id: String)
-    : Deferred<Response<TicketHistory?>>
+    : Deferred<Response<TicketHistory>>
     
     @POST ("/service/application/lead/v1.0/ticket/")
     fun createTicket()
-    : Deferred<Response<Ticket?>>
+    : Deferred<Response<Ticket>>
     
     @GET ("/service/application/lead/v1.0/form/{slug}")
     fun getCustomForm(@Path("slug") slug: String)
-    : Deferred<Response<CustomForm?>>
+    : Deferred<Response<CustomForm>>
     
     @POST ("/service/application/lead/v1.0/form/{slug}/submit")
     fun submitCustomForm(@Path("slug") slug: String)
-    : Deferred<Response<SubmitCustomFormResponse?>>
+    : Deferred<Response<SubmitCustomFormResponse>>
     
     @GET ("/service/application/lead/v1.0/video/room/{unique_name}/participants")
     fun getParticipantsInsideVideoRoom(@Path("unique_name") unique_name: String)
-    : Deferred<Response<GetParticipantsInsideVideoRoomResponse?>>
+    : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
     @GET ("/service/application/lead/v1.0/video/room/{unique_name}/token")
     fun getTokenForVideoRoom(@Path("unique_name") unique_name: String)
-    : Deferred<Response<GetTokenForVideoRoomResponse?>>
+    : Deferred<Response<GetTokenForVideoRoomResponse>>
     
 }

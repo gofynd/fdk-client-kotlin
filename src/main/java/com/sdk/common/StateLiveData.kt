@@ -1,7 +1,6 @@
 package com.sdk.common
 
 import androidx.annotation.NonNull
-import com.client.network.SingleLiveEvent
 
 class StateLiveData<T> : SingleLiveEvent<StateData<T>>() {
     /**

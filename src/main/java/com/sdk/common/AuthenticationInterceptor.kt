@@ -11,7 +11,7 @@ class AuthenticationInterceptor(private val authToken: String) : Interceptor {
         val builder = original.newBuilder()
                 .header("Authorization", authToken)
         val request = builder.build()
-        if (original.url.toString().contains("/search-application")) {
+        if (original.url().toString().contains("/search-application")) {
             return chain.proceed(request)
         } else {
             return chain.proceed(original)
