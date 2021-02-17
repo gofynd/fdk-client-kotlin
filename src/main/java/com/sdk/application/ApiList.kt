@@ -2,9 +2,7 @@ package com.sdk.application
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiList{
 
@@ -133,7 +131,6 @@ interface ApiList{
     fun getFollowIds()
     : Deferred<Response<FollowIdsResponse>>
     
-}
 
     
     @GET ("/service/application/cart/v1.0/detail")
@@ -228,7 +225,6 @@ interface ApiList{
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<HashMap<String,Any>>>
     
-}
 
     
     @GET ("/service/application/lead/v1.0/ticket/{id}")
@@ -259,7 +255,6 @@ interface ApiList{
     fun getTokenForVideoRoom(@Path("unique_name") unique_name: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>
     
-}
 
     
     @GET ("/service/application/theme/v1.0/applied-theme")
@@ -270,7 +265,6 @@ interface ApiList{
     fun getThemeForPreview(@Path("themeId") themeId: String)
     : Deferred<Response<ThemesSchema>>
     
-}
 
     
     @POST ("/service/application/user/authentication/v1.0/login/facebook-token")
@@ -401,7 +395,6 @@ interface ApiList{
     fun sendVerificationLinkToEmail()
     : Deferred<Response<HashMap<String,Any>>>
     
-}
 
     
     @GET ("/service/application/content/v1.0/announcements")
@@ -448,7 +441,6 @@ interface ApiList{
     fun getFPITags()
     : Deferred<Response<TagsSchema>>
     
-}
 
     
     @GET ("/service/application/communication/v1.0/consent")
@@ -463,7 +455,6 @@ interface ApiList{
     fun upsertPushtoken()
     : Deferred<Response<PushtokenRes>>
     
-}
 
     
     @POST ("/service/application/share/v1.0/qr/")
@@ -494,7 +485,6 @@ interface ApiList{
     fun getOriginalShortLinkByHash(@Path("hash") hash: String)
     : Deferred<Response<ShortLinkRes>>
     
-}
 
     
     @POST ("/service/application/assets/v1.0/uploads/{namespace}/start/")
@@ -505,7 +495,6 @@ interface ApiList{
     fun completeUpload(@Path("namespace") namespace: String)
     : Deferred<Response<completeResponse>>
     
-}
 
     
     @GET ("/service/application/configuration/v1.0/application")
@@ -556,7 +545,6 @@ interface ApiList{
     fun ()
     : Deferred<Response<HashMap<String,Any>>>
     
-}
 
     
     @GET ("/service/application/payment/v1.0/config/aggregators/key")
@@ -623,7 +611,6 @@ interface ApiList{
     fun updateDefaultBeneficiary()
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
     
-}
 
     
     @GET ("/services/application/v1.0/orders")
@@ -650,7 +637,6 @@ interface ApiList{
     fun trackShipment(@Path("shipment_id") shipment_id: String)
     : Deferred<Response<ShipmentTrack>>
     
-}
 
     
     @POST ("/service/application/rewards/v1.0/catalogue/offer/order/")
@@ -677,7 +663,6 @@ interface ApiList{
     fun redeemReferralCode()
     : Deferred<Response<points.RedeemReferralCodeRes>>
     
-}
 
     
     @POST ("/service/application/feedback/v1.0/abuse")
@@ -784,7 +769,6 @@ interface ApiList{
     fun updateVote()
     : Deferred<Response<XUpdateResponse>>
     
-}
 
     
     @GET ("/service/application/pos/cart/v1.0/detail")
@@ -883,4 +867,5 @@ interface ApiList{
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<HashMap<String,Any>>>
     
+
 }

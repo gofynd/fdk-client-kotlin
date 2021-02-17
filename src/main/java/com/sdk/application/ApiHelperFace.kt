@@ -131,7 +131,6 @@ interface ApiHelperFace {
     :Deferred<Response<FollowIdsResponse>>
 
     
-}
 
     
     fun getCart()
@@ -226,7 +225,6 @@ interface ApiHelperFace {
     :Deferred<Response<HashMap<String,Any>>>
 
     
-}
 
     
     fun getTicket(@Path("id") id: String)
@@ -257,7 +255,6 @@ interface ApiHelperFace {
     :Deferred<Response<GetTokenForVideoRoomResponse>>
 
     
-}
 
     
     fun getAppliedTheme()
@@ -268,7 +265,6 @@ interface ApiHelperFace {
     :Deferred<Response<ThemesSchema>>
 
     
-}
 
     
     fun loginWithFacebook()
@@ -399,7 +395,6 @@ interface ApiHelperFace {
     :Deferred<Response<HashMap<String,Any>>>
 
     
-}
 
     
     fun getAnnouncements()
@@ -446,7 +441,6 @@ interface ApiHelperFace {
     :Deferred<Response<TagsSchema>>
 
     
-}
 
     
     fun getCommunicationConsent()
@@ -461,7 +455,6 @@ interface ApiHelperFace {
     :Deferred<Response<PushtokenRes>>
 
     
-}
 
     
     fun getApplicationQRCode()
@@ -492,7 +485,6 @@ interface ApiHelperFace {
     :Deferred<Response<ShortLinkRes>>
 
     
-}
 
     
     fun startUpload(@Path("namespace") namespace: String)
@@ -503,7 +495,6 @@ interface ApiHelperFace {
     :Deferred<Response<completeResponse>>
 
     
-}
 
     
     fun getApplication()
@@ -554,7 +545,6 @@ interface ApiHelperFace {
     :Deferred<Response<HashMap<String,Any>>>
 
     
-}
 
     
     fun getAggregatorsConfig()
@@ -621,7 +611,6 @@ interface ApiHelperFace {
     :Deferred<Response<SetDefaultBeneficiaryResponse>>
 
     
-}
 
     
     fun getOrders()
@@ -648,7 +637,6 @@ interface ApiHelperFace {
     :Deferred<Response<ShipmentTrack>>
 
     
-}
 
     
     fun getPointsOnProduct()
@@ -675,7 +663,6 @@ interface ApiHelperFace {
     :Deferred<Response<points.RedeemReferralCodeRes>>
 
     
-}
 
     
     fun createAbuseReport()
@@ -782,7 +769,6 @@ interface ApiHelperFace {
     :Deferred<Response<XUpdateResponse>>
 
     
-}
 
     
     fun getCart()
@@ -881,4 +867,5 @@ interface ApiHelperFace {
     :Deferred<Response<HashMap<String,Any>>>
 
     
+
 }
