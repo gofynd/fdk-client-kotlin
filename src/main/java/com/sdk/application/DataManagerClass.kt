@@ -236,6 +236,18 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
+    override fun addCollection(
+        
+        body: CreateCollection
+    )
+    : Deferred<Response<CollectionDetailResponse>> {
+        return catalogApiHelperClass.addCollection(
+        
+        
+        body = body
+        )
+    }
+    
     override fun getCollections(
          page_id: String?, page_size: Int?
         
@@ -248,13 +260,13 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
-    override fun addCollection(
+    override fun addCollectionItemsBySlug( slug: String,
         
-        body: CreateCollection
+        body: CollectionItemsRequest
     )
-    : Deferred<Response<CollectionDetailResponse>> {
-        return catalogApiHelperClass.addCollection(
-        
+    : Deferred<Response<CollectionItemsResponse>> {
+        return catalogApiHelperClass.addCollectionItemsBySlug(
+        slug = slug,
         
         body = body
         )
@@ -269,18 +281,6 @@ class CatalogDataManagerClass : CatalogDataManager {
         slug = slug,
         f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
         
-        )
-    }
-    
-    override fun addCollectionItemsBySlug( slug: String,
-        
-        body: CollectionItemsRequest
-    )
-    : Deferred<Response<CollectionItemsResponse>> {
-        return catalogApiHelperClass.addCollectionItemsBySlug(
-        slug = slug,
-        
-        body = body
         )
     }
     

@@ -6,26 +6,14 @@ import kotlinx.android.parcel.RawValue
 
 
 /*
-    Model: Media
-*/
-@Parcelize
-data class Media(
-    
-    val type: String?=null,
-    
-    val url: String?=null
-    
-): Parcelable
-
-/*
     Model: ProductListingActionPage
 */
 @Parcelize
 data class ProductListingActionPage(
     
-    val type: String?=null,
+    val query: @RawValue HashMap<String,Any>?=null,
     
-    val query: @RawValue HashMap<String,Any>?=null
+    val type: String?=null
     
 ): Parcelable
 
@@ -42,18 +30,30 @@ data class ProductListingAction(
 ): Parcelable
 
 /*
+    Model: Media
+*/
+@Parcelize
+data class Media(
+    
+    val url: String?=null,
+    
+    val type: String?=null
+    
+): Parcelable
+
+/*
     Model: ProductBrand
 */
 @Parcelize
 data class ProductBrand(
     
-    val logo: Media?=null,
-    
-    val uid: Int?=null,
-    
     val action: ProductListingAction?=null,
     
-    val name: String?=null
+    val name: String?=null,
+    
+    val logo: Media?=null,
+    
+    val uid: Int?=null
     
 ): Parcelable
 
@@ -77,9 +77,9 @@ data class ProductDetailAttribute(
 @Parcelize
 data class ProductDetailGroupedAttribute(
     
-    val details: ArrayList<ProductDetailAttribute>?=null,
+    val title: String?=null,
     
-    val title: String?=null
+    val details: ArrayList<ProductDetailAttribute>?=null
     
 ): Parcelable
 
@@ -89,7 +89,7 @@ data class ProductDetailGroupedAttribute(
 @Parcelize
 data class ProductDetail(
     
-    val hasVariant: Boolean?=null,
+    val name: String?=null,
     
     val attributes: @RawValue HashMap<String,Any>?=null,
     
@@ -97,39 +97,39 @@ data class ProductDetail(
     
     val itemType: String?=null,
     
-    val color: String?=null,
-    
-    val categories: ArrayList<ProductBrand>?=null,
-    
-    val similars: ArrayList<String>?=null,
-    
-    val name: String?=null,
-    
-    val teaserTag: @RawValue HashMap<String,Any>?=null,
-    
-    val medias: ArrayList<Media>?=null,
-    
-    val uid: Int?=null,
-    
     val slug: String?=null,
-    
-    val ratingCount: Int?=null,
-    
-    val highlights: ArrayList<String>?=null,
-    
-    val promoMeta: @RawValue HashMap<String,Any>?=null,
-    
-    val brand: ProductBrand?=null,
     
     val tryouts: ArrayList<String>?=null,
     
+    val rating: Double?=null,
+    
+    val brand: ProductBrand?=null,
+    
+    val uid: Int?=null,
+    
+    val ratingCount: Int?=null,
+    
+    val promoMeta: @RawValue HashMap<String,Any>?=null,
+    
+    val hasVariant: Boolean?=null,
+    
+    val highlights: ArrayList<String>?=null,
+    
+    val color: String?=null,
+    
+    val similars: ArrayList<String>?=null,
+    
     val groupedAttributes: ArrayList<ProductDetailGroupedAttribute>?=null,
     
-    val type: String?=null,
+    val categories: ArrayList<ProductBrand>?=null,
     
     val productOnlineDate: String?=null,
     
-    val rating: Double?=null
+    val type: String?=null,
+    
+    val medias: ArrayList<Media>?=null,
+    
+    val teaserTag: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable
 
@@ -140,34 +140,6 @@ data class ProductDetail(
 data class ErrorResponse(
     
     val error: String?=null
-    
-): Parcelable
-
-/*
-    Model: Price
-*/
-@Parcelize
-data class Price(
-    
-    val currencyCode: String?=null,
-    
-    val currencySymbol: String?=null,
-    
-    val max: Double?=null,
-    
-    val min: Double?=null
-    
-): Parcelable
-
-/*
-    Model: ProductListingPrice
-*/
-@Parcelize
-data class ProductListingPrice(
-    
-    val marked: Price?=null,
-    
-    val effective: Price?=null
     
 ): Parcelable
 
@@ -187,13 +159,41 @@ data class ProductSizeStores(
 @Parcelize
 data class ProductSize(
     
-    val isAvailable: Boolean?=null,
-    
     val display: String?=null,
     
-    val value: String?=null,
+    val isAvailable: Boolean?=null,
     
-    val quantity: Int?=null
+    val quantity: Int?=null,
+    
+    val value: String?=null
+    
+): Parcelable
+
+/*
+    Model: Price
+*/
+@Parcelize
+data class Price(
+    
+    val max: Double?=null,
+    
+    val min: Double?=null,
+    
+    val currencyCode: String?=null,
+    
+    val currencySymbol: String?=null
+    
+): Parcelable
+
+/*
+    Model: ProductListingPrice
+*/
+@Parcelize
+data class ProductListingPrice(
+    
+    val marked: Price?=null,
+    
+    val effective: Price?=null
     
 ): Parcelable
 
@@ -203,19 +203,19 @@ data class ProductSize(
 @Parcelize
 data class ProductSizes(
     
-    val sellable: Boolean?=null,
-    
     val discount: String?=null,
-    
-    val price: ProductListingPrice?=null,
     
     val promoMeta: @RawValue HashMap<String,Any>?=null,
     
+    val sizeChart: @RawValue HashMap<String,Any>?=null,
+    
     val stores: ProductSizeStores?=null,
+    
+    val sellable: Boolean?=null,
     
     val sizes: ArrayList<ProductSize>?=null,
     
-    val sizeChart: @RawValue HashMap<String,Any>?=null
+    val price: ProductListingPrice?=null
     
 ): Parcelable
 
@@ -225,11 +225,25 @@ data class ProductSizes(
 @Parcelize
 data class Seller(
     
-    val uid: Int?=null,
+    val name: String?=null,
     
     val count: Int?=null,
     
-    val name: String?=null
+    val uid: Int?=null
+    
+): Parcelable
+
+/*
+    Model: Store
+*/
+@Parcelize
+data class Store(
+    
+    val name: String?=null,
+    
+    val count: Int?=null,
+    
+    val uid: Int?=null
     
 ): Parcelable
 
@@ -241,23 +255,9 @@ data class ProductStockPrice(
     
     val marked: Double?=null,
     
-    val currency: String?=null,
+    val effective: Double?=null,
     
-    val effective: Double?=null
-    
-): Parcelable
-
-/*
-    Model: Store
-*/
-@Parcelize
-data class Store(
-    
-    val uid: Int?=null,
-    
-    val count: Int?=null,
-    
-    val name: String?=null
+    val currency: String?=null
     
 ): Parcelable
 
@@ -267,9 +267,9 @@ data class Store(
 @Parcelize
 data class ArticleAssignment(
     
-    val strategy: String?=null,
+    val level: String?=null,
     
-    val level: String?=null
+    val strategy: String?=null
     
 ): Parcelable
 
@@ -279,37 +279,37 @@ data class ArticleAssignment(
 @Parcelize
 data class ProductSizePriceResponse(
     
-    val strategyWiseListing: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    val discount: String?=null,
     
     val seller: Seller?=null,
     
-    val sellerCount: Int?=null,
-    
-    val pincode: Int?=null,
-    
-    val articleId: String?=null,
-    
-    val price: ProductStockPrice?=null,
-    
-    val itemType: String?=null,
-    
-    val quantity: Int?=null,
-    
-    val discount: String?=null,
-    
-    val set: @RawValue HashMap<String,Any>?=null,
+    val store: Store?=null,
     
     val promoMeta: @RawValue HashMap<String,Any>?=null,
     
-    val store: Store?=null,
+    val quantity: Int?=null,
     
-    val pricePerPrice: ProductStockPrice?=null,
+    val sellerCount: Int?=null,
     
     val longLat: ArrayList<Double>?=null,
     
+    val set: @RawValue HashMap<String,Any>?=null,
+    
+    val itemType: String?=null,
+    
+    val pricePerPrice: ProductStockPrice?=null,
+    
+    val specialBadge: String?=null,
+    
+    val strategyWiseListing: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    val price: ProductStockPrice?=null,
+    
+    val articleId: String?=null,
+    
     val articleAssignment: ArticleAssignment?=null,
     
-    val specialBadge: String?=null
+    val pincode: Int?=null
     
 ): Parcelable
 
@@ -319,13 +319,13 @@ data class ProductSizePriceResponse(
 @Parcelize
 data class ProductPage(
     
-    val nextId: String?=null,
-    
-    val hasPrevious: Boolean?=null,
-    
     val current: Int?=null,
     
     val totalItem: Int?=null,
+    
+    val hasPrevious: Boolean?=null,
+    
+    val nextId: String?=null,
     
     val hasNext: Boolean?=null
     
@@ -337,11 +337,11 @@ data class ProductPage(
 @Parcelize
 data class ProductSizeSellerFilter(
     
+    val name: String?=null,
+    
     val value: String?=null,
     
-    val isSelected: Boolean?=null,
-    
-    val name: String?=null
+    val isSelected: Boolean?=null
     
 ): Parcelable
 
@@ -353,9 +353,9 @@ data class ProductSizeSellersResponse(
     
     val page: ProductPage?=null,
     
-    val sortOn: ArrayList<ProductSizeSellerFilter>?=null,
+    val items: ArrayList<ProductSizePriceResponse>?=null,
     
-    val items: ArrayList<ProductSizePriceResponse>?=null
+    val sortOn: ArrayList<ProductSizeSellerFilter>?=null
     
 ): Parcelable
 
@@ -379,9 +379,9 @@ data class AttributeDetail(
 @Parcelize
 data class ProductsComparisonResponse(
     
-    val items: ArrayList<ProductDetail>?=null,
+    val attributesMetadata: ArrayList<AttributeDetail>?=null,
     
-    val attributesMetadata: ArrayList<AttributeDetail>?=null
+    val items: ArrayList<ProductDetail>?=null
     
 ): Parcelable
 
@@ -391,13 +391,13 @@ data class ProductsComparisonResponse(
 @Parcelize
 data class ProductCompareResponse(
     
-    val attributesMetadata: ArrayList<AttributeDetail>?=null,
-    
-    val subtitle: String?=null,
+    val title: String?=null,
     
     val items: ArrayList<ProductDetail>?=null,
     
-    val title: String?=null
+    val attributesMetadata: ArrayList<AttributeDetail>?=null,
+    
+    val subtitle: String?=null
     
 ): Parcelable
 
@@ -417,11 +417,11 @@ data class ProductFrequentlyComparedSimilarResponse(
 @Parcelize
 data class ProductSimilarItem(
     
-    val subtitle: String?=null,
+    val title: String?=null,
     
     val items: ArrayList<ProductDetail>?=null,
     
-    val title: String?=null
+    val subtitle: String?=null
     
 ): Parcelable
 
@@ -441,23 +441,23 @@ data class SimilarProductByTypeResponse(
 @Parcelize
 data class ProductVariantItemResponse(
     
-    val value: String?=null,
-    
-    val slug: String?=null,
-    
     val action: ProductListingAction?=null,
-    
-    val color: String?=null,
     
     val name: String?=null,
     
-    val isAvailable: Boolean?=null,
-    
     val medias: ArrayList<Media>?=null,
+    
+    val colorName: String?=null,
+    
+    val color: String?=null,
     
     val uid: Int?=null,
     
-    val colorName: String?=null
+    val slug: String?=null,
+    
+    val isAvailable: Boolean?=null,
+    
+    val value: String?=null
     
 ): Parcelable
 
@@ -467,11 +467,11 @@ data class ProductVariantItemResponse(
 @Parcelize
 data class ProductVariantResponse(
     
+    val displayType: String?=null,
+    
     val header: String?=null,
     
-    val items: ArrayList<ProductVariantItemResponse>?=null,
-    
-    val displayType: String?=null
+    val items: ArrayList<ProductVariantItemResponse>?=null
     
 ): Parcelable
 
@@ -491,9 +491,9 @@ data class ProductVariantsResponse(
 @Parcelize
 data class CompanyDetail(
     
-    val name: String?=null,
+    val id: Int?=null,
     
-    val id: Int?=null
+    val name: String?=null
     
 ): Parcelable
 
@@ -503,13 +503,13 @@ data class CompanyDetail(
 @Parcelize
 data class StoreDetail(
     
-    val city: String?=null,
-    
-    val code: String?=null,
+    val id: Int?=null,
     
     val name: String?=null,
     
-    val id: Int?=null
+    val city: String?=null,
+    
+    val code: String?=null
     
 ): Parcelable
 
@@ -519,23 +519,23 @@ data class StoreDetail(
 @Parcelize
 data class ProductStockStatusItem(
     
-    val identifier: @RawValue HashMap<String,Any>?=null,
+    val seller: Seller?=null,
     
     val company: CompanyDetail?=null,
     
-    val seller: Seller?=null,
-    
-    val price: ProductStockPrice?=null,
-    
     val quantity: Int?=null,
+    
+    val identifier: @RawValue HashMap<String,Any>?=null,
     
     val size: String?=null,
     
+    val uid: String?=null,
+    
+    val price: ProductStockPrice?=null,
+    
     val store: StoreDetail?=null,
     
-    val itemId: Int?=null,
-    
-    val uid: String?=null
+    val itemId: Int?=null
     
 ): Parcelable
 
@@ -562,16 +562,16 @@ data class ProductStockPolling(
 ): Parcelable
 
 /*
-    Model: ProductSortOn
+    Model: ProductFiltersValue
 */
 @Parcelize
-data class ProductSortOn(
+data class ProductFiltersValue(
     
-    val value: String?=null,
+    val display: String?=null,
     
-    val isSelected: Boolean?=null,
+    val count: Int?=null,
     
-    val name: String?=null
+    val isSelected: Boolean?=null
     
 ): Parcelable
 
@@ -588,28 +588,28 @@ data class ProductFiltersKey(
 ): Parcelable
 
 /*
-    Model: ProductFiltersValue
-*/
-@Parcelize
-data class ProductFiltersValue(
-    
-    val display: String?=null,
-    
-    val isSelected: Boolean?=null,
-    
-    val count: Int?=null
-    
-): Parcelable
-
-/*
     Model: ProductFilters
 */
 @Parcelize
 data class ProductFilters(
     
-    val key: ProductFiltersKey?=null,
+    val values: ArrayList<ProductFiltersValue>?=null,
     
-    val values: ArrayList<ProductFiltersValue>?=null
+    val key: ProductFiltersKey?=null
+    
+): Parcelable
+
+/*
+    Model: ProductSortOn
+*/
+@Parcelize
+data class ProductSortOn(
+    
+    val name: String?=null,
+    
+    val value: String?=null,
+    
+    val isSelected: Boolean?=null
     
 ): Parcelable
 
@@ -621,11 +621,11 @@ data class ProductListingResponse(
     
     val page: ProductPage?=null,
     
-    val sortOn: ArrayList<ProductSortOn>?=null,
-    
     val filter: ArrayList<ProductFilters>?=null,
     
-    val items: ArrayList<ProductDetail>?=null
+    val items: ArrayList<ProductDetail>?=null,
+    
+    val sortOn: ArrayList<ProductSortOn>?=null
     
 ): Parcelable
 
@@ -635,9 +635,9 @@ data class ProductListingResponse(
 @Parcelize
 data class ImageUrls(
     
-    val portrait: Media?=null,
+    val landscape: Media?=null,
     
-    val landscape: Media?=null
+    val portrait: Media?=null
     
 ): Parcelable
 
@@ -647,21 +647,21 @@ data class ImageUrls(
 @Parcelize
 data class BrandItem(
     
-    val departments: ArrayList<String>?=null,
-    
-    val slug: String?=null,
-    
-    val action: ProductListingAction?=null,
+    val banners: ImageUrls?=null,
     
     val discount: String?=null,
     
-    val banners: ImageUrls?=null,
-    
     val name: String?=null,
+    
+    val action: ProductListingAction?=null,
     
     val logo: Media?=null,
     
-    val uid: Int?=null
+    val departments: ArrayList<String>?=null,
+    
+    val uid: Int?=null,
+    
+    val slug: String?=null
     
 ): Parcelable
 
@@ -683,23 +683,11 @@ data class BrandListingResponse(
 @Parcelize
 data class BrandDetailResponse(
     
-    val logo: Media?=null,
-    
     val banners: ImageUrls?=null,
     
-    val uid: Int?=null,
+    val name: String?=null,
     
-    val name: String?=null
-    
-): Parcelable
-
-/*
-    Model: DepartmentIdentifier
-*/
-@Parcelize
-data class DepartmentIdentifier(
-    
-    val slug: String?=null,
+    val logo: Media?=null,
     
     val uid: Int?=null
     
@@ -711,17 +699,17 @@ data class DepartmentIdentifier(
 @Parcelize
 data class CategoryItems(
     
-    val slug: String?=null,
+    val banners: ImageUrls?=null,
     
     val action: ProductListingAction?=null,
     
-    val childs: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    val banners: ImageUrls?=null,
-    
     val name: String?=null,
     
-    val uid: Int?=null
+    val childs: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    val uid: Int?=null,
+    
+    val slug: String?=null
     
 ): Parcelable
 
@@ -731,9 +719,21 @@ data class CategoryItems(
 @Parcelize
 data class DepartmentCategoryTree(
     
-    val department: String?=null,
+    val items: ArrayList<CategoryItems>?=null,
     
-    val items: ArrayList<CategoryItems>?=null
+    val department: String?=null
+    
+): Parcelable
+
+/*
+    Model: DepartmentIdentifier
+*/
+@Parcelize
+data class DepartmentIdentifier(
+    
+    val uid: Int?=null,
+    
+    val slug: String?=null
     
 ): Parcelable
 
@@ -743,9 +743,9 @@ data class DepartmentCategoryTree(
 @Parcelize
 data class CategoryListingResponse(
     
-    val departments: ArrayList<DepartmentIdentifier>?=null,
+    val data: ArrayList<DepartmentCategoryTree>?=null,
     
-    val data: ArrayList<DepartmentCategoryTree>?=null
+    val departments: ArrayList<DepartmentIdentifier>?=null
     
 ): Parcelable
 
@@ -755,13 +755,13 @@ data class CategoryListingResponse(
 @Parcelize
 data class CategoryMetaResponse(
     
-    val logo: Media?=null,
-    
     val banners: ImageUrls?=null,
     
-    val uid: Int?=null,
+    val name: String?=null,
     
-    val name: String?=null
+    val logo: Media?=null,
+    
+    val uid: Int?=null
     
 ): Parcelable
 
@@ -785,9 +785,9 @@ data class HomeListingResponse(
     
     val page: Page?=null,
     
-    val message: String?=null,
+    val items: ArrayList<ProductDetail>?=null,
     
-    val items: ArrayList<ProductDetail>?=null
+    val message: String?=null
     
 ): Parcelable
 
@@ -797,15 +797,15 @@ data class HomeListingResponse(
 @Parcelize
 data class Department(
     
-    val slug: String?=null,
-    
-    val priorityOrder: Int?=null,
-    
     val name: String?=null,
     
     val logo: Media?=null,
     
-    val uid: Int?=null
+    val slug: String?=null,
+    
+    val uid: Int?=null,
+    
+    val priorityOrder: Int?=null
     
 ): Parcelable
 
@@ -825,13 +825,13 @@ data class DepartmentResponse(
 @Parcelize
 data class AutocompleteItem(
     
-    val display: String?=null,
+    val action: @RawValue HashMap<String,Any>?=null,
     
-    val type: String?=null,
+    val display: String?=null,
     
     val logo: Media?=null,
     
-    val action: @RawValue HashMap<String,Any>?=null
+    val type: String?=null
     
 ): Parcelable
 
@@ -846,14 +846,180 @@ data class AutoCompleteResponse(
 ): Parcelable
 
 /*
+    Model: Schedule
+*/
+@Parcelize
+data class Schedule(
+    
+    val start: String?=null,
+    
+    val duration: Int?=null,
+    
+    val cron: String?=null,
+    
+    val end: String?=null
+    
+): Parcelable
+
+/*
+    Model: UserInfo
+*/
+@Parcelize
+data class UserInfo(
+    
+    val username: String?=null,
+    
+    val email: String?=null,
+    
+    val userId: String?=null,
+    
+    val uid: String?=null
+    
+): Parcelable
+
+/*
     Model: SeoDetail
 */
 @Parcelize
 data class SeoDetail(
     
+    val title: String?=null,
+    
+    val description: String?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionImage
+*/
+@Parcelize
+data class CollectionImage(
+    
+    val url: String?=null,
+    
+    val aspectRatio: String?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionBanner
+*/
+@Parcelize
+data class CollectionBanner(
+    
+    val landscape: CollectionImage?=null,
+    
+    val portrait: CollectionImage?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionBadge
+*/
+@Parcelize
+data class CollectionBadge(
+    
+    val color: String?=null,
+    
+    val text: String?=null
+    
+): Parcelable
+
+/*
+    Model: CreateCollection
+*/
+@Parcelize
+data class CreateCollection(
+    
+    val name: String?=null,
+    
+    val visibleFacetsKeys: ArrayList<String>?=null,
+    
+    val slug: String?=null,
+    
+    val sortOn: String?=null,
+    
+    val isActive: Boolean?=null,
+    
+    val schedule: Schedule?=null,
+    
+    val createdBy: UserInfo?=null,
+    
+    val published: Boolean?=null,
+    
+    val meta: @RawValue HashMap<String,Any>?=null,
+    
+    val query: @RawValue HashMap<String,Any>?=null,
+    
     val description: String?=null,
     
-    val title: String?=null
+    val seo: SeoDetail?=null,
+    
+    val allowSort: Boolean?=null,
+    
+    val banners: CollectionBanner?=null,
+    
+    val tags: ArrayList<String>?=null,
+    
+    val localeLanguage: @RawValue HashMap<String,Any>?=null,
+    
+    val type: String?=null,
+    
+    val logo: CollectionImage?=null,
+    
+    val allowFacets: Boolean?=null,
+    
+    val appId: String?=null,
+    
+    val modifiedBy: UserInfo?=null,
+    
+    val badge: CollectionBadge?=null,
+    
+    val customJson: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionDetailResponse
+*/
+@Parcelize
+data class CollectionDetailResponse(
+    
+    val banners: ImageUrls?=null,
+    
+    val name: String?=null,
+    
+    val cron: @RawValue HashMap<String,Any>?=null,
+    
+    val logo: Media?=null,
+    
+    val meta: @RawValue HashMap<String,Any>?=null,
+    
+    val badge: @RawValue HashMap<String,Any>?=null,
+    
+    val query: @RawValue HashMap<String,Any>?=null,
+    
+    val description: String?=null,
+    
+    val visibleFacetsKeys: ArrayList<String>?=null,
+    
+    val allowFacets: Boolean?=null,
+    
+    val appId: String?=null,
+    
+    val allowSort: Boolean?=null,
+    
+    val seo: SeoDetail?=null,
+    
+    val slug: String?=null,
+    
+    val tag: ArrayList<String>?=null,
+    
+    val isActive: Boolean?=null,
+    
+    val schedule: @RawValue HashMap<String,Any>?=null,
+    
+    val type: String?=null
     
 ): Parcelable
 
@@ -863,59 +1029,45 @@ data class SeoDetail(
 @Parcelize
 data class GetCollectionDetailNest(
     
-    val seo: SeoDetail?=null,
-    
-    val isActive: Boolean?=null,
-    
-    val banners: ImageUrls?=null,
-    
-    val allowSort: Boolean?=null,
+    val action: ProductListingAction?=null,
     
     val name: String?=null,
     
-    val query: @RawValue HashMap<String,Any>?=null,
-    
-    val cron: @RawValue HashMap<String,Any>?=null,
-    
-    val meta: @RawValue HashMap<String,Any>?=null,
-    
-    val allowFacets: Boolean?=null,
-    
-    val uid: String?=null,
+    val visibleFacetsKeys: ArrayList<String>?=null,
     
     val slug: String?=null,
     
     val tag: ArrayList<String>?=null,
     
-    val action: ProductListingAction?=null,
+    val isActive: Boolean?=null,
     
-    val visibleFacetsKeys: ArrayList<String>?=null,
+    val schedule: @RawValue HashMap<String,Any>?=null,
     
-    val appId: String?=null,
+    val meta: @RawValue HashMap<String,Any>?=null,
     
-    val badge: @RawValue HashMap<String,Any>?=null,
-    
-    val logo: Media?=null,
+    val query: @RawValue HashMap<String,Any>?=null,
     
     val description: String?=null,
     
+    val seo: SeoDetail?=null,
+    
+    val uid: String?=null,
+    
+    val allowSort: Boolean?=null,
+    
+    val banners: ImageUrls?=null,
+    
     val type: String?=null,
     
-    val schedule: @RawValue HashMap<String,Any>?=null
+    val cron: @RawValue HashMap<String,Any>?=null,
     
-): Parcelable
-
-/*
-    Model: CollectionListingFilterType
-*/
-@Parcelize
-data class CollectionListingFilterType(
+    val logo: Media?=null,
     
-    val display: String?=null,
+    val allowFacets: Boolean?=null,
     
-    val isSelected: Boolean?=null,
+    val appId: String?=null,
     
-    val name: String?=null
+    val badge: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable
 
@@ -927,9 +1079,23 @@ data class CollectionListingFilterTag(
     
     val display: String?=null,
     
-    val isSelected: Boolean?=null,
+    val name: String?=null,
     
-    val name: String?=null
+    val isSelected: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionListingFilterType
+*/
+@Parcelize
+data class CollectionListingFilterType(
+    
+    val display: String?=null,
+    
+    val name: String?=null,
+    
+    val isSelected: Boolean?=null
     
 ): Parcelable
 
@@ -939,9 +1105,9 @@ data class CollectionListingFilterTag(
 @Parcelize
 data class CollectionListingFilter(
     
-    val type: ArrayList<CollectionListingFilterType>?=null,
+    val tags: ArrayList<CollectionListingFilterTag>?=null,
     
-    val tags: ArrayList<CollectionListingFilterTag>?=null
+    val type: ArrayList<CollectionListingFilterType>?=null
     
 ): Parcelable
 
@@ -960,168 +1126,42 @@ data class GetCollectionListingResponse(
 ): Parcelable
 
 /*
-    Model: CollectionImage
+    Model: CollectionItem
 */
 @Parcelize
-data class CollectionImage(
+data class CollectionItem(
     
-    val aspectRatio: String?=null,
+    val action: String?=null,
     
-    val url: String?=null
+    val itemId: Int?=null
     
 ): Parcelable
 
 /*
-    Model: CollectionBanner
+    Model: CollectionItemsRequest
 */
 @Parcelize
-data class CollectionBanner(
+data class CollectionItemsRequest(
     
-    val portrait: CollectionImage?=null,
+    val items: ArrayList<CollectionItem>?=null,
     
-    val landscape: CollectionImage?=null
-    
-): Parcelable
-
-/*
-    Model: UserInfo
-*/
-@Parcelize
-data class UserInfo(
-    
-    val username: String?=null,
-    
-    val userId: String?=null,
-    
-    val uid: String?=null,
-    
-    val email: String?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionBadge
-*/
-@Parcelize
-data class CollectionBadge(
-    
-    val text: String?=null,
-    
-    val color: String?=null
-    
-): Parcelable
-
-/*
-    Model: Schedule
-*/
-@Parcelize
-data class Schedule(
-    
-    val end: String?=null,
-    
-    val start: String?=null,
-    
-    val cron: String?=null,
-    
-    val duration: Int?=null
-    
-): Parcelable
-
-/*
-    Model: CreateCollection
-*/
-@Parcelize
-data class CreateCollection(
-    
-    val seo: SeoDetail?=null,
-    
-    val isActive: Boolean?=null,
-    
-    val banners: CollectionBanner?=null,
-    
-    val tags: ArrayList<String>?=null,
-    
-    val customJson: @RawValue HashMap<String,Any>?=null,
-    
-    val allowSort: Boolean?=null,
-    
-    val name: String?=null,
+    val pageSize: Int?=null,
     
     val query: @RawValue HashMap<String,Any>?=null,
     
-    val published: Boolean?=null,
+    val pageNo: Int?=null,
     
-    val modifiedBy: UserInfo?=null,
-    
-    val meta: @RawValue HashMap<String,Any>?=null,
-    
-    val allowFacets: Boolean?=null,
-    
-    val localeLanguage: @RawValue HashMap<String,Any>?=null,
-    
-    val slug: String?=null,
-    
-    val visibleFacetsKeys: ArrayList<String>?=null,
-    
-    val appId: String?=null,
-    
-    val badge: CollectionBadge?=null,
-    
-    val logo: CollectionImage?=null,
-    
-    val sortOn: String?=null,
-    
-    val description: String?=null,
-    
-    val type: String?=null,
-    
-    val schedule: Schedule?=null,
-    
-    val createdBy: UserInfo?=null
+    val type: String?=null
     
 ): Parcelable
 
 /*
-    Model: CollectionDetailResponse
+    Model: CollectionItemsResponse
 */
 @Parcelize
-data class CollectionDetailResponse(
+data class CollectionItemsResponse(
     
-    val description: String?=null,
-    
-    val logo: Media?=null,
-    
-    val slug: String?=null,
-    
-    val tag: ArrayList<String>?=null,
-    
-    val type: String?=null,
-    
-    val isActive: Boolean?=null,
-    
-    val seo: SeoDetail?=null,
-    
-    val meta: @RawValue HashMap<String,Any>?=null,
-    
-    val banners: ImageUrls?=null,
-    
-    val allowFacets: Boolean?=null,
-    
-    val visibleFacetsKeys: ArrayList<String>?=null,
-    
-    val appId: String?=null,
-    
-    val allowSort: Boolean?=null,
-    
-    val name: String?=null,
-    
-    val query: @RawValue HashMap<String,Any>?=null,
-    
-    val badge: @RawValue HashMap<String,Any>?=null,
-    
-    val schedule: @RawValue HashMap<String,Any>?=null,
-    
-    val cron: @RawValue HashMap<String,Any>?=null
+    val detail: String?=null
     
 ): Parcelable
 
@@ -1133,51 +1173,11 @@ data class GetCollectionListingItemsResponse(
     
     val page: ProductPage?=null,
     
-    val sortOn: ArrayList<ProductSortOn>?=null,
-    
     val items: ArrayList<ProductDetail>?=null,
     
+    val sortOn: ArrayList<ProductSortOn>?=null,
+    
     val filters: ArrayList<ProductFilters>?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionItem
-*/
-@Parcelize
-data class CollectionItem(
-    
-    val itemId: Int?=null,
-    
-    val action: String?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionItemsRequest
-*/
-@Parcelize
-data class CollectionItemsRequest(
-    
-    val type: String?=null,
-    
-    val items: ArrayList<CollectionItem>?=null,
-    
-    val pageNo: Int?=null,
-    
-    val query: @RawValue HashMap<String,Any>?=null,
-    
-    val pageSize: Int?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionItemsResponse
-*/
-@Parcelize
-data class CollectionItemsResponse(
-    
-    val detail: String?=null
     
 ): Parcelable
 
@@ -1219,9 +1219,9 @@ data class GetFollowListingResponse(
 @Parcelize
 data class FollowPostResponse(
     
-    val message: String?=null,
+    val id: String?=null,
     
-    val id: String?=null
+    val message: String?=null
     
 ): Parcelable
 
@@ -1241,9 +1241,9 @@ data class FollowerCountResponse(
 @Parcelize
 data class FollowIdsData(
     
-    val collections: ArrayList<Int>?=null,
-    
     val products: ArrayList<Int>?=null,
+    
+    val collections: ArrayList<Int>?=null,
     
     val brands: ArrayList<Int>?=null
     
@@ -1279,23 +1279,23 @@ data class Store1(
     
     val state: String?=null,
     
-    val address: String?=null,
-    
-    val country: String?=null,
-    
-    val pincode: Int?=null,
+    val name: String?=null,
     
     val latLong: LatLong?=null,
     
-    val city: String?=null,
+    val country: String?=null,
+    
+    val uid: Int?=null,
+    
+    val address: String?=null,
     
     val storeCode: String?=null,
     
-    val name: String?=null,
+    val city: String?=null,
     
     val storeEmail: String?=null,
     
-    val uid: Int?=null
+    val pincode: Int?=null
     
 ): Parcelable
 

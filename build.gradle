@@ -69,7 +69,7 @@ android {
             zipAlignEnabled false
             resValue "string", "app_name_header", System.getenv("APP_NAME_USER_AGENT") as String ?: "Fynd-Platform"
             resValue "string", "auth_user_name", System.getenv("AUTH_USER_NAME") as String ?: "slingshotapptoken"
-            resValue "string", "app_user_password", System.getenv("AUTH_USER_PASSWORD") as String ?: "slingsh0t@ppt0ken#fynd"
+            resValue "string", "auth_user_password", System.getenv("AUTH_USER_PASSWORD") as String ?: "slingsh0t@ppt0ken#fynd"
             //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 

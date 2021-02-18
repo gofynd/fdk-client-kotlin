@@ -32,10 +32,10 @@
     * [Catalog#getHomeProducts](#cataloggethomeproducts)
     * [Catalog#getDepartments](#cataloggetdepartments)
     * [Catalog#getSearchResults](#cataloggetsearchresults)
-    * [Catalog#getCollections](#cataloggetcollections)
     * [Catalog#addCollection](#catalogaddcollection)
-    * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
+    * [Catalog#getCollections](#cataloggetcollections)
     * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
+    * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
     * [Catalog#deleteCollectionDetailBySlug](#catalogdeletecollectiondetailbyslug)
     * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
     * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
@@ -1009,6 +1009,52 @@ Error Response:
 ---
 
 
+#### Catalog#addCollection
+Add a Collection
+
+```javascript
+// Promise
+const promise = catalog.addCollection();
+
+// Async/Await
+const data = await catalog.addCollection();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Create a collection. See `CreateCollection` for the list of attributes needed to create a collection and **collections/query-options** for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionDetailResponse`
+
+Success Response:
+
+
+
+List of all the collections including the one you added. See example below or refer `CollectionDetailResponse` for details
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CollectionDetailResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+
+
+---
+
+
 #### Catalog#getCollections
 List all the collections
 
@@ -1057,34 +1103,35 @@ Error Response:
 ---
 
 
-#### Catalog#addCollection
-Add a Collection
+#### Catalog#addCollectionItemsBySlug
+Add items to a collection
 
 ```javascript
 // Promise
-const promise = catalog.addCollection();
+const promise = catalog.addCollectionItemsBySlug(slug, );
 
 // Async/Await
-const data = await catalog.addCollection();
+const data = await catalog.addCollectionItemsBySlug(slug, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to add items into. | 
 
-Create a collection. See `CreateCollection` for the list of attributes needed to create a collection and **collections/query-options** for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionDetailResponse`
+Adds items to a collection specified by its `slug`. See `CollectionItemsRequest` for the list of attributes needed to add items to an collection.
 
 Success Response:
 
 
 
-List of all the collections including the one you added. See example below or refer `CollectionDetailResponse` for details
+Status object. Tells whether the operation was successful.
 
 
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/CollectionDetailResponse"
+  "$ref": "#/components/schemas/CollectionItemsResponse"
 }`
 
 
@@ -1137,53 +1184,6 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/GetCollectionListingItemsResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
-
-
----
-
-
-#### Catalog#addCollectionItemsBySlug
-Add items to a collection
-
-```javascript
-// Promise
-const promise = catalog.addCollectionItemsBySlug(slug, );
-
-// Async/Await
-const data = await catalog.addCollectionItemsBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to add items into. | 
-
-Adds items to a collection specified by its `slug`. See `CollectionItemsRequest` for the list of attributes needed to add items to an collection.
-
-Success Response:
-
-
-
-Status object. Tells whether the operation was successful.
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionItemsResponse"
 }`
 
 
