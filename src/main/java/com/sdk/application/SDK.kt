@@ -43,8 +43,8 @@ object SDK {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(app)
         val authCredentials = Credentials.basic(
-            "slingshotapptoken",
-            "slingsh0t@ppt0ken#fynd"
+            app.getString(R.string.auth_user_name),
+            app.getString(R.string.auth_user_password)
         )
         val authInterceptor = AuthenticationInterceptor(authCredentials)
         val headerInterceptor = HeaderInterceptor(app)
