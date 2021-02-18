@@ -79,19 +79,19 @@ interface CatalogApiHelperFace {
     fun updateCollectionDetailBySlug(@Path("slug") slug: String)
     :Deferred<Response<CollectionsUpdateDetailResponse>>
     
-    fun getCollectionDetailBySlug(@Path("slug") slug: String)
-    :Deferred<Response<CollectionDetailResponse>>
-    
     fun deleteCollectionDetailBySlug(@Path("slug") slug: String)
     :Deferred<Response<CollectionDetailViewDeleteResponse>>
+    
+    fun getCollectionDetailBySlug(@Path("slug") slug: String)
+    :Deferred<Response<CollectionDetailResponse>>
     
     fun getFollowedListing(@Path("collection_type") collection_type: String)
     :Deferred<Response<GetFollowListingResponse>>
     
-    fun followById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
+    fun unfollowById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
     :Deferred<Response<FollowPostResponse>>
     
-    fun unfollowById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
+    fun followById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
     :Deferred<Response<FollowPostResponse>>
     
     fun getFollowerCountById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: String)

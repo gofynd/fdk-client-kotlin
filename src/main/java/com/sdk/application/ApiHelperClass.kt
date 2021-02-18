@@ -130,14 +130,14 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         return catalogRetrofitApiList.updateCollectionDetailBySlug(slug = slug)
     }
     
-    override fun getCollectionDetailBySlug(@Path("slug") slug: String)
-    : Deferred<Response<CollectionDetailResponse>> {
-        return catalogRetrofitApiList.getCollectionDetailBySlug(slug = slug)
-    }
-    
     override fun deleteCollectionDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<CollectionDetailViewDeleteResponse>> {
         return catalogRetrofitApiList.deleteCollectionDetailBySlug(slug = slug)
+    }
+    
+    override fun getCollectionDetailBySlug(@Path("slug") slug: String)
+    : Deferred<Response<CollectionDetailResponse>> {
+        return catalogRetrofitApiList.getCollectionDetailBySlug(slug = slug)
     }
     
     override fun getFollowedListing(@Path("collection_type") collection_type: String)
@@ -145,14 +145,14 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         return catalogRetrofitApiList.getFollowedListing(collection_type = collection_type)
     }
     
-    override fun followById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
-    : Deferred<Response<FollowPostResponse>> {
-        return catalogRetrofitApiList.followById(collection_type = collection_type, collection_id = collection_id)
-    }
-    
     override fun unfollowById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
     : Deferred<Response<FollowPostResponse>> {
         return catalogRetrofitApiList.unfollowById(collection_type = collection_type, collection_id = collection_id)
+    }
+    
+    override fun followById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
+    : Deferred<Response<FollowPostResponse>> {
+        return catalogRetrofitApiList.followById(collection_type = collection_type, collection_id = collection_id)
     }
     
     override fun getFollowerCountById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: String)
