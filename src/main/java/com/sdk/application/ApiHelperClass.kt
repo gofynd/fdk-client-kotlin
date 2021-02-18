@@ -257,6 +257,19 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
+    override fun getCollections(
+        
+         page_id: String?, page_size: Int?
+        
+    )
+    : Deferred<Response<GetCollectionListingResponse>> {
+        return catalogRetrofitApiList.getCollections(
+            
+            page_id = page_id,page_size = page_size
+            
+        )
+    }
+    
     override fun addCollection(
         
         
@@ -270,15 +283,15 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
-    override fun getCollections(
-        
-         page_id: String?, page_size: Int?
+    override fun getCollectionItemsBySlug(
+         slug: String,
+         f: String?, filters: Boolean?, sort_on: String?, page_id: String?, page_size: Int?
         
     )
-    : Deferred<Response<GetCollectionListingResponse>> {
-        return catalogRetrofitApiList.getCollections(
-            
-            page_id = page_id,page_size = page_size
+    : Deferred<Response<GetCollectionListingItemsResponse>> {
+        return catalogRetrofitApiList.getCollectionItemsBySlug(
+            slug = slug,
+            f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
             
         )
     }
@@ -296,15 +309,15 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
-    override fun getCollectionItemsBySlug(
-         slug: String,
-         f: String?, filters: Boolean?, sort_on: String?, page_id: String?, page_size: Int?
+    override fun updateCollectionDetailBySlug(
+         slug: String
+        
         
     )
-    : Deferred<Response<GetCollectionListingItemsResponse>> {
-        return catalogRetrofitApiList.getCollectionItemsBySlug(
-            slug = slug,
-            f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
+    : Deferred<Response<CollectionsUpdateDetailResponse>> {
+        return catalogRetrofitApiList.updateCollectionDetailBySlug(
+            slug = slug
+            
             
         )
     }
@@ -329,19 +342,6 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
     )
     : Deferred<Response<CollectionDetailResponse>> {
         return catalogRetrofitApiList.getCollectionDetailBySlug(
-            slug = slug
-            
-            
-        )
-    }
-    
-    override fun updateCollectionDetailBySlug(
-         slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionsUpdateDetailResponse>> {
-        return catalogRetrofitApiList.updateCollectionDetailBySlug(
             slug = slug
             
             

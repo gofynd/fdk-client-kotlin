@@ -121,17 +121,23 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<AutoCompleteResponse>>
     
+    fun getCollections(
+         page_id: String?=null, page_size: Int?=null
+        
+    )
+    :Deferred<Response<GetCollectionListingResponse>>
+    
     fun addCollection(
         
         body: CreateCollection
     )
     :Deferred<Response<CollectionDetailResponse>>
     
-    fun getCollections(
-         page_id: String?=null, page_size: Int?=null
+    fun getCollectionItemsBySlug( slug: String,
+         f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null
         
     )
-    :Deferred<Response<GetCollectionListingResponse>>
+    :Deferred<Response<GetCollectionListingItemsResponse>>
     
     fun addCollectionItemsBySlug( slug: String,
         
@@ -139,11 +145,11 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<CollectionItemsResponse>>
     
-    fun getCollectionItemsBySlug( slug: String,
-         f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null
+    fun updateCollectionDetailBySlug( slug: String
+        
         
     )
-    :Deferred<Response<GetCollectionListingItemsResponse>>
+    :Deferred<Response<CollectionsUpdateDetailResponse>>
     
     fun deleteCollectionDetailBySlug( slug: String
         
@@ -156,12 +162,6 @@ interface CatalogApiHelperFace {
         
     )
     :Deferred<Response<CollectionDetailResponse>>
-    
-    fun updateCollectionDetailBySlug( slug: String
-        
-        
-    )
-    :Deferred<Response<CollectionsUpdateDetailResponse>>
     
     fun getFollowedListing( collection_type: String
         

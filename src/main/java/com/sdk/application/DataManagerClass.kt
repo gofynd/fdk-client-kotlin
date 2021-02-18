@@ -236,6 +236,18 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
+    override fun getCollections(
+         page_id: String?, page_size: Int?
+        
+    )
+    : Deferred<Response<GetCollectionListingResponse>> {
+        return catalogApiHelperClass.getCollections(
+        
+        page_id = page_id,page_size = page_size
+        
+        )
+    }
+    
     override fun addCollection(
         
         body: CreateCollection
@@ -248,14 +260,14 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
-    override fun getCollections(
-         page_id: String?, page_size: Int?
+    override fun getCollectionItemsBySlug( slug: String,
+         f: String?, filters: Boolean?, sort_on: String?, page_id: String?, page_size: Int?
         
     )
-    : Deferred<Response<GetCollectionListingResponse>> {
-        return catalogApiHelperClass.getCollections(
-        
-        page_id = page_id,page_size = page_size
+    : Deferred<Response<GetCollectionListingItemsResponse>> {
+        return catalogApiHelperClass.getCollectionItemsBySlug(
+        slug = slug,
+        f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
         
         )
     }
@@ -272,14 +284,14 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
-    override fun getCollectionItemsBySlug( slug: String,
-         f: String?, filters: Boolean?, sort_on: String?, page_id: String?, page_size: Int?
+    override fun updateCollectionDetailBySlug( slug: String
+        
         
     )
-    : Deferred<Response<GetCollectionListingItemsResponse>> {
-        return catalogApiHelperClass.getCollectionItemsBySlug(
-        slug = slug,
-        f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
+    : Deferred<Response<CollectionsUpdateDetailResponse>> {
+        return catalogApiHelperClass.updateCollectionDetailBySlug(
+        slug = slug
+        
         
         )
     }
@@ -302,18 +314,6 @@ class CatalogDataManagerClass : CatalogDataManager {
     )
     : Deferred<Response<CollectionDetailResponse>> {
         return catalogApiHelperClass.getCollectionDetailBySlug(
-        slug = slug
-        
-        
-        )
-    }
-    
-    override fun updateCollectionDetailBySlug( slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionsUpdateDetailResponse>> {
-        return catalogApiHelperClass.updateCollectionDetailBySlug(
         slug = slug
         
         

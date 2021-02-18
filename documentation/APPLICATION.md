@@ -32,13 +32,13 @@
     * [Catalog#getHomeProducts](#cataloggethomeproducts)
     * [Catalog#getDepartments](#cataloggetdepartments)
     * [Catalog#getSearchResults](#cataloggetsearchresults)
-    * [Catalog#addCollection](#catalogaddcollection)
     * [Catalog#getCollections](#cataloggetcollections)
-    * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
+    * [Catalog#addCollection](#catalogaddcollection)
     * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
+    * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
+    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#deleteCollectionDetailBySlug](#catalogdeletecollectiondetailbyslug)
     * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
-    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#getFollowedListing](#cataloggetfollowedlisting)
     * [Catalog#unfollowById](#catalogunfollowbyid)
     * [Catalog#followById](#catalogfollowbyid)
@@ -1009,6 +1009,54 @@ Error Response:
 ---
 
 
+#### Catalog#getCollections
+List all the collections
+
+```javascript
+// Promise
+const promise = catalog.getCollections(page_id, page_size, );
+
+// Async/Await
+const data = await catalog.getCollections(page_id, page_size, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| page_id | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+
+A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections`
+
+Success Response:
+
+
+
+List of collections. See example below or refer `GetCollectionListingResponse` for details
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/GetCollectionListingResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+
+
+---
+
+
 #### Catalog#addCollection
 Add a Collection
 
@@ -1055,36 +1103,40 @@ Error Response:
 ---
 
 
-#### Catalog#getCollections
-List all the collections
+#### Catalog#getCollectionItemsBySlug
+Get the items in a collection
 
 ```javascript
 // Promise
-const promise = catalog.getCollections(page_id, page_size, );
+const promise = catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size, );
 
 // Async/Await
-const data = await catalog.getCollections(page_id, page_size, );
+const data = await catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection for which you want to fetch the items | 
+| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in ``f`` parameter in this format. ``?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts`` | 
+| filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
+| sort_on | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
 | page_id | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
 | page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 
-A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections`
+Get items in a collection specified by its `slug`.
 
 Success Response:
 
 
 
-List of collections. See example below or refer `GetCollectionListingResponse` for details
+The attached items of an collection. See example below or refer `GetCollectionListingItemsResponse` for details
 
 
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/GetCollectionListingResponse"
+  "$ref": "#/components/schemas/GetCollectionListingItemsResponse"
 }`
 
 
@@ -1150,40 +1202,35 @@ Error Response:
 ---
 
 
-#### Catalog#getCollectionItemsBySlug
-Get the items in a collection
+#### Catalog#updateCollectionDetailBySlug
+Update a collection
 
 ```javascript
 // Promise
-const promise = catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size, );
+const promise = catalog.updateCollectionDetailBySlug(slug, );
 
 // Async/Await
-const data = await catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size, );
+const data = await catalog.updateCollectionDetailBySlug(slug, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection for which you want to fetch the items | 
-| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in ``f`` parameter in this format. ``?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts`` | 
-| filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
-| sort_on | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| page_id | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
 
-Get items in a collection specified by its `slug`.
+Update a collection by it's slug. On successful request, returns the updated collection
 
 Success Response:
 
 
 
-The attached items of an collection. See example below or refer `GetCollectionListingItemsResponse` for details
+The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
 
 
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/GetCollectionListingItemsResponse"
+  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
 }`
 
 
@@ -1278,53 +1325,6 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/CollectionDetailResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
-
-
----
-
-
-#### Catalog#updateCollectionDetailBySlug
-Update a collection
-
-```javascript
-// Promise
-const promise = catalog.updateCollectionDetailBySlug(slug, );
-
-// Async/Await
-const data = await catalog.updateCollectionDetailBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
-
-Update a collection by it's slug. On successful request, returns the updated collection
-
-Success Response:
-
-
-
-The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
 }`
 
 
