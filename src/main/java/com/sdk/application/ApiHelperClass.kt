@@ -10,228 +10,420 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
     
    private val catalogRetrofitApiList = SDK.catalogRetrofitApiList
     
-    override fun getProductDetailBySlug(@Path("slug") slug: String
+    override fun getProductDetailBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<ProductDetail>> {
-        return catalogRetrofitApiList.getProductDetailBySlug(slug = slug)
+        return catalogRetrofitApiList.getProductDetailBySlug(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun getProductSizesBySlug(@Path("slug") slug: String
-        @Query("store_id") store_id: String?=null
+    override fun getProductSizesBySlug(
+         slug: String,
+         store_id: String?
+        
     )
     : Deferred<Response<ProductSizes>> {
-        return catalogRetrofitApiList.getProductSizesBySlug(slug = slug)
+        return catalogRetrofitApiList.getProductSizesBySlug(
+            slug = slug,
+            store_id = store_id
+            
+        )
     }
     
-    override fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String
-        @Query("pincode") pincode: Int?=null, @Query("store_id") store_id: String?=null
+    override fun getProductPriceBySlug(
+         slug: String, size: String,
+         pincode: Int?, store_id: String?
+        
     )
     : Deferred<Response<ProductSizePriceResponse>> {
-        return catalogRetrofitApiList.getProductPriceBySlug(slug = slug, size = size)
+        return catalogRetrofitApiList.getProductPriceBySlug(
+            slug = slug,size = size,
+            pincode = pincode,store_id = store_id
+            
+        )
     }
     
-    override fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String
-        @Query("pincode") pincode: Int?=null, @Query("page_no") page_no: Int?=null, @Query("page_size") page_size: Int?=null
+    override fun getProductSellersBySlug(
+         slug: String, size: String,
+         pincode: Int?, page_no: Int?, page_size: Int?
+        
     )
     : Deferred<Response<ProductSizeSellersResponse>> {
-        return catalogRetrofitApiList.getProductSellersBySlug(slug = slug, size = size)
+        return catalogRetrofitApiList.getProductSellersBySlug(
+            slug = slug,size = size,
+            pincode = pincode,page_no = page_no,page_size = page_size
+            
+        )
     }
     
-    override fun getProductComparisonBySlugs(@Query("slug") slug: String
+    override fun getProductComparisonBySlugs(
+         slug: String
+        
         
     )
     : Deferred<Response<ProductsComparisonResponse>> {
-        return catalogRetrofitApiList.getProductComparisonBySlugs(slug = slug)
+        return catalogRetrofitApiList.getProductComparisonBySlugs(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun getSimilarComparisonProductBySlug(@Path("slug") slug: String
+    override fun getSimilarComparisonProductBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<ProductCompareResponse>> {
-        return catalogRetrofitApiList.getSimilarComparisonProductBySlug(slug = slug)
+        return catalogRetrofitApiList.getSimilarComparisonProductBySlug(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun getComparedFrequentlyProductBySlug(@Path("slug") slug: String
+    override fun getComparedFrequentlyProductBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<ProductFrequentlyComparedSimilarResponse>> {
-        return catalogRetrofitApiList.getComparedFrequentlyProductBySlug(slug = slug)
+        return catalogRetrofitApiList.getComparedFrequentlyProductBySlug(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun getProductSimilarByIdentifier(@Path("slug") slug: String, @Path("similar_type") similar_type: String
+    override fun getProductSimilarByIdentifier(
+         slug: String, similar_type: String
+        
         
     )
     : Deferred<Response<SimilarProductByTypeResponse>> {
-        return catalogRetrofitApiList.getProductSimilarByIdentifier(slug = slug, similar_type = similar_type)
+        return catalogRetrofitApiList.getProductSimilarByIdentifier(
+            slug = slug,similar_type = similar_type
+            
+            
+        )
     }
     
-    override fun getProductVariantsBySlug(@Path("slug") slug: String
+    override fun getProductVariantsBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<ProductVariantsResponse>> {
-        return catalogRetrofitApiList.getProductVariantsBySlug(slug = slug)
+        return catalogRetrofitApiList.getProductVariantsBySlug(
+            slug = slug
+            
+            
+        )
     }
     
     override fun getProductStockByIds(
-        @Query("item_id") item_id: String?=null, @Query("alu") alu: String?=null, @Query("sku_code") sku_code: String?=null, @Query("ean") ean: String?=null, @Query("upc") upc: String?=null
+        
+         item_id: String?, alu: String?, sku_code: String?, ean: String?, upc: String?
+        
     )
     : Deferred<Response<ProductStockStatusResponse>> {
-        return catalogRetrofitApiList.getProductStockByIds()
+        return catalogRetrofitApiList.getProductStockByIds(
+            
+            item_id = item_id,alu = alu,sku_code = sku_code,ean = ean,upc = upc
+            
+        )
     }
     
-    override fun getProductStockForTimeByIds(@Query("timestamp") timestamp: String
-        @Query("page_size") page_size: Int?=null, @Query("page_id") page_id: String?=null
+    override fun getProductStockForTimeByIds(
+         timestamp: String,
+         page_size: Int?, page_id: String?
+        
     )
     : Deferred<Response<ProductStockPolling>> {
-        return catalogRetrofitApiList.getProductStockForTimeByIds(timestamp = timestamp)
+        return catalogRetrofitApiList.getProductStockForTimeByIds(
+            timestamp = timestamp,
+            page_size = page_size,page_id = page_id
+            
+        )
     }
     
     override fun getProducts(
-        @Query("q") q: String?=null, @Query("f") f: String?=null, @Query("filters") filters: Boolean?=null, @Query("sort_on") sort_on: String?=null, @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null, @Query("page_no") page_no: Int?=null, @Query("page_type") page_type: String?=null
+        
+         q: String?, f: String?, filters: Boolean?, sort_on: String?, page_id: String?, page_size: Int?, page_no: Int?, page_type: String?
+        
     )
     : Deferred<Response<ProductListingResponse>> {
-        return catalogRetrofitApiList.getProducts()
+        return catalogRetrofitApiList.getProducts(
+            
+            q = q,f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size,page_no = page_no,page_type = page_type
+            
+        )
     }
     
     override fun getBrands(
-        @Query("department") department: String?=null, @Query("page_no") page_no: Int?=null, @Query("page_size") page_size: Int?=null
+        
+         department: String?, page_no: Int?, page_size: Int?
+        
     )
     : Deferred<Response<BrandListingResponse>> {
-        return catalogRetrofitApiList.getBrands()
+        return catalogRetrofitApiList.getBrands(
+            
+            department = department,page_no = page_no,page_size = page_size
+            
+        )
     }
     
-    override fun getBrandDetailBySlug(@Path("slug") slug: String
+    override fun getBrandDetailBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<BrandDetailResponse>> {
-        return catalogRetrofitApiList.getBrandDetailBySlug(slug = slug)
+        return catalogRetrofitApiList.getBrandDetailBySlug(
+            slug = slug
+            
+            
+        )
     }
     
     override fun getCategories(
-        @Query("department") department: String?=null
+        
+         department: String?
+        
     )
     : Deferred<Response<CategoryListingResponse>> {
-        return catalogRetrofitApiList.getCategories()
+        return catalogRetrofitApiList.getCategories(
+            
+            department = department
+            
+        )
     }
     
-    override fun getCategoryDetailBySlug(@Path("slug") slug: String
+    override fun getCategoryDetailBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<CategoryMetaResponse>> {
-        return catalogRetrofitApiList.getCategoryDetailBySlug(slug = slug)
+        return catalogRetrofitApiList.getCategoryDetailBySlug(
+            slug = slug
+            
+            
+        )
     }
     
     override fun getHomeProducts(
-        @Query("sort_on") sort_on: String?=null, @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null
+        
+         sort_on: String?, page_id: String?, page_size: Int?
+        
     )
     : Deferred<Response<HomeListingResponse>> {
-        return catalogRetrofitApiList.getHomeProducts()
+        return catalogRetrofitApiList.getHomeProducts(
+            
+            sort_on = sort_on,page_id = page_id,page_size = page_size
+            
+        )
     }
     
     override fun getDepartments(
         
+        
+        
     )
     : Deferred<Response<DepartmentResponse>> {
-        return catalogRetrofitApiList.getDepartments()
+        return catalogRetrofitApiList.getDepartments(
+            
+            
+            
+        )
     }
     
-    override fun getSearchResults(@Query("q") q: String
+    override fun getSearchResults(
+         q: String
+        
         
     )
     : Deferred<Response<AutoCompleteResponse>> {
-        return catalogRetrofitApiList.getSearchResults(q = q)
+        return catalogRetrofitApiList.getSearchResults(
+            q = q
+            
+            
+        )
     }
     
     override fun getCollections(
-        @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null
+        
+         page_id: String?, page_size: Int?
+        
     )
     : Deferred<Response<GetCollectionListingResponse>> {
-        return catalogRetrofitApiList.getCollections()
+        return catalogRetrofitApiList.getCollections(
+            
+            page_id = page_id,page_size = page_size
+            
+        )
     }
     
     override fun addCollection(
         
+        
+        body: CreateCollection
     )
     : Deferred<Response<CollectionDetailResponse>> {
-        return catalogRetrofitApiList.addCollection()
+        return catalogRetrofitApiList.addCollection(
+            
+            
+            body = body
+        )
     }
     
-    override fun getCollectionItemsBySlug(@Path("slug") slug: String
-        @Query("f") f: String?=null, @Query("filters") filters: Boolean?=null, @Query("sort_on") sort_on: String?=null, @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null
+    override fun getCollectionItemsBySlug(
+         slug: String,
+         f: String?, filters: Boolean?, sort_on: String?, page_id: String?, page_size: Int?
+        
     )
     : Deferred<Response<GetCollectionListingItemsResponse>> {
-        return catalogRetrofitApiList.getCollectionItemsBySlug(slug = slug)
+        return catalogRetrofitApiList.getCollectionItemsBySlug(
+            slug = slug,
+            f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
+            
+        )
     }
     
-    override fun addCollectionItemsBySlug(@Path("slug") slug: String
+    override fun addCollectionItemsBySlug(
+         slug: String,
         
+        body: CollectionItemsRequest
     )
     : Deferred<Response<CollectionItemsResponse>> {
-        return catalogRetrofitApiList.addCollectionItemsBySlug(slug = slug)
+        return catalogRetrofitApiList.addCollectionItemsBySlug(
+            slug = slug,
+            
+            body = body
+        )
     }
     
-    override fun updateCollectionDetailBySlug(@Path("slug") slug: String
+    override fun deleteCollectionDetailBySlug(
+         slug: String
         
-    )
-    : Deferred<Response<CollectionsUpdateDetailResponse>> {
-        return catalogRetrofitApiList.updateCollectionDetailBySlug(slug = slug)
-    }
-    
-    override fun deleteCollectionDetailBySlug(@Path("slug") slug: String
         
     )
     : Deferred<Response<CollectionDetailViewDeleteResponse>> {
-        return catalogRetrofitApiList.deleteCollectionDetailBySlug(slug = slug)
+        return catalogRetrofitApiList.deleteCollectionDetailBySlug(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun getCollectionDetailBySlug(@Path("slug") slug: String
+    override fun getCollectionDetailBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<CollectionDetailResponse>> {
-        return catalogRetrofitApiList.getCollectionDetailBySlug(slug = slug)
+        return catalogRetrofitApiList.getCollectionDetailBySlug(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun getFollowedListing(@Path("collection_type") collection_type: String
+    override fun updateCollectionDetailBySlug(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionsUpdateDetailResponse>> {
+        return catalogRetrofitApiList.updateCollectionDetailBySlug(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun getFollowedListing(
+         collection_type: String
+        
         
     )
     : Deferred<Response<GetFollowListingResponse>> {
-        return catalogRetrofitApiList.getFollowedListing(collection_type = collection_type)
+        return catalogRetrofitApiList.getFollowedListing(
+            collection_type = collection_type
+            
+            
+        )
     }
     
-    override fun unfollowById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int
+    override fun unfollowById(
+         collection_type: String, collection_id: Int
+        
         
     )
     : Deferred<Response<FollowPostResponse>> {
-        return catalogRetrofitApiList.unfollowById(collection_type = collection_type, collection_id = collection_id)
+        return catalogRetrofitApiList.unfollowById(
+            collection_type = collection_type,collection_id = collection_id
+            
+            
+        )
     }
     
-    override fun followById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int
+    override fun followById(
+         collection_type: String, collection_id: Int
+        
         
     )
     : Deferred<Response<FollowPostResponse>> {
-        return catalogRetrofitApiList.followById(collection_type = collection_type, collection_id = collection_id)
+        return catalogRetrofitApiList.followById(
+            collection_type = collection_type,collection_id = collection_id
+            
+            
+        )
     }
     
-    override fun getFollowerCountById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: String
+    override fun getFollowerCountById(
+         collection_type: String, collection_id: String
+        
         
     )
     : Deferred<Response<FollowerCountResponse>> {
-        return catalogRetrofitApiList.getFollowerCountById(collection_type = collection_type, collection_id = collection_id)
+        return catalogRetrofitApiList.getFollowerCountById(
+            collection_type = collection_type,collection_id = collection_id
+            
+            
+        )
     }
     
     override fun getFollowIds(
-        @Query("collection_type") collection_type: String?=null
+        
+         collection_type: String?
+        
     )
     : Deferred<Response<FollowIdsResponse>> {
-        return catalogRetrofitApiList.getFollowIds()
+        return catalogRetrofitApiList.getFollowIds(
+            
+            collection_type = collection_type
+            
+        )
     }
     
     override fun getStores(
-        @Query("page_no") page_no: Int?=null, @Query("page_size") page_size: Int?=null, @Query("q") q: String?=null, @Query("range") range: Int?=null, @Query("latitude") latitude: Double?=null, @Query("longitude") longitude: Double?=null
+        
+         page_no: Int?, page_size: Int?, q: String?, range: Int?, latitude: Double?, longitude: Double?
+        
     )
     : Deferred<Response<StoreListingResponse>> {
-        return catalogRetrofitApiList.getStores()
+        return catalogRetrofitApiList.getStores(
+            
+            page_no = page_no,page_size = page_size,q = q,range = range,latitude = latitude,longitude = longitude
+            
+        )
     }
     
 }
@@ -240,53 +432,95 @@ class LeadApiHelperClass : LeadApiHelperFace  {
     
    private val leadRetrofitApiList = SDK.leadRetrofitApiList
     
-    override fun getTicket(@Path("id") id: String
+    override fun getTicket(
+         id: String
+        
         
     )
     : Deferred<Response<Ticket>> {
-        return leadRetrofitApiList.getTicket(id = id)
+        return leadRetrofitApiList.getTicket(
+            id = id
+            
+            
+        )
     }
     
-    override fun createHistoryForTicket(@Path("ticket_id") ticket_id: String
+    override fun createHistoryForTicket(
+         ticket_id: String,
         
+        body: TicketHistoryPayload
     )
     : Deferred<Response<TicketHistory>> {
-        return leadRetrofitApiList.createHistoryForTicket(ticket_id = ticket_id)
+        return leadRetrofitApiList.createHistoryForTicket(
+            ticket_id = ticket_id,
+            
+            body = body
+        )
     }
     
     override fun createTicket(
         
+        
+        body: AddTicketPayload
     )
     : Deferred<Response<Ticket>> {
-        return leadRetrofitApiList.createTicket()
+        return leadRetrofitApiList.createTicket(
+            
+            
+            body = body
+        )
     }
     
-    override fun getCustomForm(@Path("slug") slug: String
+    override fun getCustomForm(
+         slug: String
+        
         
     )
     : Deferred<Response<CustomForm>> {
-        return leadRetrofitApiList.getCustomForm(slug = slug)
+        return leadRetrofitApiList.getCustomForm(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun submitCustomForm(@Path("slug") slug: String
+    override fun submitCustomForm(
+         slug: String,
         
+        body: CustomFormSubmissionPayload
     )
     : Deferred<Response<SubmitCustomFormResponse>> {
-        return leadRetrofitApiList.submitCustomForm(slug = slug)
+        return leadRetrofitApiList.submitCustomForm(
+            slug = slug,
+            
+            body = body
+        )
     }
     
-    override fun getParticipantsInsideVideoRoom(@Path("unique_name") unique_name: String
+    override fun getParticipantsInsideVideoRoom(
+         unique_name: String
+        
         
     )
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>> {
-        return leadRetrofitApiList.getParticipantsInsideVideoRoom(unique_name = unique_name)
+        return leadRetrofitApiList.getParticipantsInsideVideoRoom(
+            unique_name = unique_name
+            
+            
+        )
     }
     
-    override fun getTokenForVideoRoom(@Path("unique_name") unique_name: String
+    override fun getTokenForVideoRoom(
+         unique_name: String
+        
         
     )
     : Deferred<Response<GetTokenForVideoRoomResponse>> {
-        return leadRetrofitApiList.getTokenForVideoRoom(unique_name = unique_name)
+        return leadRetrofitApiList.getTokenForVideoRoom(
+            unique_name = unique_name
+            
+            
+        )
     }
     
 }
@@ -297,51 +531,93 @@ class ShareApiHelperClass : ShareApiHelperFace  {
     
     override fun getApplicationQRCode(
         
-    )
-    : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getApplicationQRCode()
-    }
-    
-    override fun getProductQRCodeBySlug(@Path("slug") slug: String
+        
         
     )
     : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getProductQRCodeBySlug(slug = slug)
+        return shareRetrofitApiList.getApplicationQRCode(
+            
+            
+            
+        )
     }
     
-    override fun getCollectionQRCodeBySlug(@Path("slug") slug: String
+    override fun getProductQRCodeBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getCollectionQRCodeBySlug(slug = slug)
+        return shareRetrofitApiList.getProductQRCodeBySlug(
+            slug = slug
+            
+            
+        )
     }
     
-    override fun getUrlQRCode(@Query("url") url: String
+    override fun getCollectionQRCodeBySlug(
+         slug: String
+        
         
     )
     : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getUrlQRCode(url = url)
+        return shareRetrofitApiList.getCollectionQRCodeBySlug(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun getUrlQRCode(
+         url: String
+        
+        
+    )
+    : Deferred<Response<QRCodeResp>> {
+        return shareRetrofitApiList.getUrlQRCode(
+            url = url
+            
+            
+        )
     }
     
     override fun createShortLink(
         
+        
+        body: ShortLinkReq
     )
     : Deferred<Response<ShortLinkRes>> {
-        return shareRetrofitApiList.createShortLink()
+        return shareRetrofitApiList.createShortLink(
+            
+            
+            body = body
+        )
     }
     
-    override fun getShortLinkByHash(@Path("hash") hash: String
+    override fun getShortLinkByHash(
+         hash: String
+        
         
     )
     : Deferred<Response<ShortLinkRes>> {
-        return shareRetrofitApiList.getShortLinkByHash(hash = hash)
+        return shareRetrofitApiList.getShortLinkByHash(
+            hash = hash
+            
+            
+        )
     }
     
-    override fun getOriginalShortLinkByHash(@Path("hash") hash: String
+    override fun getOriginalShortLinkByHash(
+         hash: String
+        
         
     )
     : Deferred<Response<ShortLinkRes>> {
-        return shareRetrofitApiList.getOriginalShortLinkByHash(hash = hash)
+        return shareRetrofitApiList.getOriginalShortLinkByHash(
+            hash = hash
+            
+            
+        )
     }
     
 }

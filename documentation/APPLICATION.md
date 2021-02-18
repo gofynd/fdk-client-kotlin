@@ -36,9 +36,9 @@
     * [Catalog#addCollection](#catalogaddcollection)
     * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
     * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
-    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#deleteCollectionDetailBySlug](#catalogdeletecollectiondetailbyslug)
     * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
+    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#getFollowedListing](#cataloggetfollowedlisting)
     * [Catalog#unfollowById](#catalogunfollowbyid)
     * [Catalog#followById](#catalogfollowbyid)
@@ -1202,53 +1202,6 @@ Error Response:
 ---
 
 
-#### Catalog#updateCollectionDetailBySlug
-Update a collection
-
-```javascript
-// Promise
-const promise = catalog.updateCollectionDetailBySlug(slug, );
-
-// Async/Await
-const data = await catalog.updateCollectionDetailBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
-
-Update a collection by it's slug. On successful request, returns the updated collection
-
-Success Response:
-
-
-
-The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
-
-
----
-
-
 #### Catalog#deleteCollectionDetailBySlug
 Delete a Collection
 
@@ -1325,6 +1278,53 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/CollectionDetailResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+
+
+---
+
+
+#### Catalog#updateCollectionDetailBySlug
+Update a collection
+
+```javascript
+// Promise
+const promise = catalog.updateCollectionDetailBySlug(slug, );
+
+// Async/Await
+const data = await catalog.updateCollectionDetailBySlug(slug, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
+
+Update a collection by it's slug. On successful request, returns the updated collection
+
+Success Response:
+
+
+
+The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
 }`
 
 
