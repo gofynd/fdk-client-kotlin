@@ -32,16 +32,16 @@
     * [Catalog#getHomeProducts](#cataloggethomeproducts)
     * [Catalog#getDepartments](#cataloggetdepartments)
     * [Catalog#getSearchResults](#cataloggetsearchresults)
-    * [Catalog#getCollections](#cataloggetcollections)
     * [Catalog#addCollection](#catalogaddcollection)
-    * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
+    * [Catalog#getCollections](#cataloggetcollections)
     * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
-    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
+    * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
     * [Catalog#deleteCollectionDetailBySlug](#catalogdeletecollectiondetailbyslug)
+    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
     * [Catalog#getFollowedListing](#cataloggetfollowedlisting)
-    * [Catalog#unfollowById](#catalogunfollowbyid)
     * [Catalog#followById](#catalogfollowbyid)
+    * [Catalog#unfollowById](#catalogunfollowbyid)
     * [Catalog#getFollowerCountById](#cataloggetfollowercountbyid)
     * [Catalog#getFollowIds](#cataloggetfollowids)
     * [Catalog#getStores](#cataloggetstores)
@@ -1275,6 +1275,66 @@ Error Response:
 ---
 
 
+#### Catalog#addCollection
+Add a Collection
+
+```javascript
+// Promise
+const promise = catalog.addCollection();
+
+// Async/Await
+const data = await catalog.addCollection();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Create a collection. See `CreateCollection` for the list of attributes needed to create a collection and **collections/query-options** for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionDetailResponse`
+
+Success Response:
+
+
+
+List of all the collections including the one you added. See example below or refer `CollectionDetailResponse` for details
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CollectionDetailResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ErrorResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
 #### Catalog#getCollections
 List all the collections
 
@@ -1337,34 +1397,35 @@ Error Response:
 ---
 
 
-#### Catalog#addCollection
-Add a Collection
+#### Catalog#addCollectionItemsBySlug
+Add items to a collection
 
 ```javascript
 // Promise
-const promise = catalog.addCollection();
+const promise = catalog.addCollectionItemsBySlug(slug, );
 
 // Async/Await
-const data = await catalog.addCollection();
+const data = await catalog.addCollectionItemsBySlug(slug, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to add items into. | 
 
-Create a collection. See `CreateCollection` for the list of attributes needed to create a collection and **collections/query-options** for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionDetailResponse`
+Adds items to a collection specified by its `slug`. See `CollectionItemsRequest` for the list of attributes needed to add items to an collection.
 
 Success Response:
 
 
 
-List of all the collections including the one you added. See example below or refer `CollectionDetailResponse` for details
+Status object. Tells whether the operation was successful.
 
 
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/CollectionDetailResponse"
+  "$ref": "#/components/schemas/CollectionItemsResponse"
 }`
 
 
@@ -1463,35 +1524,35 @@ Error Response:
 ---
 
 
-#### Catalog#addCollectionItemsBySlug
-Add items to a collection
+#### Catalog#deleteCollectionDetailBySlug
+Delete a Collection
 
 ```javascript
 // Promise
-const promise = catalog.addCollectionItemsBySlug(slug, );
+const promise = catalog.deleteCollectionDetailBySlug(slug, );
 
 // Async/Await
-const data = await catalog.addCollectionItemsBySlug(slug, );
+const data = await catalog.deleteCollectionDetailBySlug(slug, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to add items into. | 
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to delete. | 
 
-Adds items to a collection specified by its `slug`. See `CollectionItemsRequest` for the list of attributes needed to add items to an collection.
+Delete a collection by it's slug. Returns an object that tells whether the collection was deleted successfully
 
 Success Response:
 
 
 
-Status object. Tells whether the operation was successful.
+Status object. Tells whether the operation was successful. See example below or refer `CollectionDetailViewDeleteResponse`
 
 
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/CollectionItemsResponse"
+  "$ref": "#/components/schemas/CollectionDetailViewDeleteResponse"
 }`
 
 
@@ -1553,67 +1614,6 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
-}`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### Catalog#deleteCollectionDetailBySlug
-Delete a Collection
-
-```javascript
-// Promise
-const promise = catalog.deleteCollectionDetailBySlug(slug, );
-
-// Async/Await
-const data = await catalog.deleteCollectionDetailBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to delete. | 
-
-Delete a collection by it's slug. Returns an object that tells whether the collection was deleted successfully
-
-Success Response:
-
-
-
-Status object. Tells whether the operation was successful. See example below or refer `CollectionDetailViewDeleteResponse`
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionDetailViewDeleteResponse"
 }`
 
 
@@ -1768,24 +1768,24 @@ Error Response:
 ---
 
 
-#### Catalog#unfollowById
-UnFollow a Product
+#### Catalog#followById
+Follow a particular Product
 
 ```javascript
 // Promise
-const promise = catalog.unfollowById(collection_type, collection_id, );
+const promise = catalog.followById(collection_type, collection_id, );
 
 // Async/Await
-const data = await catalog.unfollowById(collection_type, collection_id, );
+const data = await catalog.followById(collection_type, collection_id, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collection_type | string | Type of collection followed. i. e. products, brands, collections | 
-| collection_id | integer | the `id` of the collection type you want to unfollow | 
+| collection_id | integer | the `id` of the collection type you want to follow | 
 
-You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
+Follow a particular Product specified by its uid. Pass the uid of the product in request URL
 
 Success Response:
 
@@ -1830,24 +1830,24 @@ Error Response:
 ---
 
 
-#### Catalog#followById
-Follow a particular Product
+#### Catalog#unfollowById
+UnFollow a Product
 
 ```javascript
 // Promise
-const promise = catalog.followById(collection_type, collection_id, );
+const promise = catalog.unfollowById(collection_type, collection_id, );
 
 // Async/Await
-const data = await catalog.followById(collection_type, collection_id, );
+const data = await catalog.unfollowById(collection_type, collection_id, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collection_type | string | Type of collection followed. i. e. products, brands, collections | 
-| collection_id | integer | the `id` of the collection type you want to follow | 
+| collection_id | integer | the `id` of the collection type you want to unfollow | 
 
-Follow a particular Product specified by its uid. Pass the uid of the product in request URL
+You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
 
 Success Response:
 

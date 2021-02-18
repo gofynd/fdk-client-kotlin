@@ -139,13 +139,6 @@ interface CatalogApiList {
     )
     : Deferred<Response<AutoCompleteResponse>>
     
-    @GET ("/service/application/catalog/v1.0/collections/")
-    fun getCollections(
-        @Query("page_id") page_id: String?,@Query("page_size") page_size: Int?
-        
-    )
-    : Deferred<Response<GetCollectionListingResponse>>
-    
     @POST ("/service/application/catalog/v1.0/collections/")
     fun addCollection(
         
@@ -153,12 +146,12 @@ interface CatalogApiList {
     )
     : Deferred<Response<CollectionDetailResponse>>
     
-    @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
-    fun getCollectionItemsBySlug(@Path("slug") slug: String,
-        @Query("f") f: String?,@Query("filters") filters: Boolean?,@Query("sort_on") sort_on: String?,@Query("page_id") page_id: String?,@Query("page_size") page_size: Int?
+    @GET ("/service/application/catalog/v1.0/collections/")
+    fun getCollections(
+        @Query("page_id") page_id: String?,@Query("page_size") page_size: Int?
         
     )
-    : Deferred<Response<GetCollectionListingItemsResponse>>
+    : Deferred<Response<GetCollectionListingResponse>>
     
     @POST ("/service/application/catalog/v1.0/collections/{slug}/items/")
     fun addCollectionItemsBySlug(@Path("slug") slug: String,
@@ -167,12 +160,12 @@ interface CatalogApiList {
     )
     : Deferred<Response<CollectionItemsResponse>>
     
-    @PUT ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun updateCollectionDetailBySlug(@Path("slug") slug: String
-        
+    @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
+    fun getCollectionItemsBySlug(@Path("slug") slug: String,
+        @Query("f") f: String?,@Query("filters") filters: Boolean?,@Query("sort_on") sort_on: String?,@Query("page_id") page_id: String?,@Query("page_size") page_size: Int?
         
     )
-    : Deferred<Response<CollectionsUpdateDetailResponse>>
+    : Deferred<Response<GetCollectionListingItemsResponse>>
     
     @DELETE ("/service/application/catalog/v1.0/collections/{slug}/")
     fun deleteCollectionDetailBySlug(@Path("slug") slug: String
@@ -180,6 +173,13 @@ interface CatalogApiList {
         
     )
     : Deferred<Response<CollectionDetailViewDeleteResponse>>
+    
+    @PUT ("/service/application/catalog/v1.0/collections/{slug}/")
+    fun updateCollectionDetailBySlug(@Path("slug") slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionsUpdateDetailResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/{slug}/")
     fun getCollectionDetailBySlug(@Path("slug") slug: String
@@ -195,15 +195,15 @@ interface CatalogApiList {
     )
     : Deferred<Response<GetFollowListingResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
         
         
     )
     : Deferred<Response<FollowPostResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
         
         
     )

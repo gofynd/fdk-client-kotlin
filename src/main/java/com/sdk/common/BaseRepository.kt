@@ -63,7 +63,7 @@ abstract class BaseRepository {
     private fun getErrorBody(errorBody: ResponseBody?): String? {
         if (errorBody == null) return null
         val response = JSONObject(errorBody.string())
-        return errorBody.toString()//Gson().fromJson(response.toString(), ErrorBody::class.java)?.message
+        return errorBody.toString()//Gson().fromJson(response.toString(), FDKError::class.java)?.message
     }
 
     abstract fun getApplicationContext(): Application

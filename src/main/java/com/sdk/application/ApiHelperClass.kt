@@ -257,6 +257,19 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
+    override fun addCollection(
+        
+        
+        body: CreateCollection
+    )
+    : Deferred<Response<CollectionDetailResponse>> {
+        return catalogRetrofitApiList.addCollection(
+            
+            
+            body = body
+        )
+    }
+    
     override fun getCollections(
         
          page_id: String?, page_size: Int?
@@ -270,14 +283,14 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
-    override fun addCollection(
+    override fun addCollectionItemsBySlug(
+         slug: String,
         
-        
-        body: CreateCollection
+        body: CollectionItemsRequest
     )
-    : Deferred<Response<CollectionDetailResponse>> {
-        return catalogRetrofitApiList.addCollection(
-            
+    : Deferred<Response<CollectionItemsResponse>> {
+        return catalogRetrofitApiList.addCollectionItemsBySlug(
+            slug = slug,
             
             body = body
         )
@@ -296,16 +309,16 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
-    override fun addCollectionItemsBySlug(
-         slug: String,
+    override fun deleteCollectionDetailBySlug(
+         slug: String
         
-        body: CollectionItemsRequest
+        
     )
-    : Deferred<Response<CollectionItemsResponse>> {
-        return catalogRetrofitApiList.addCollectionItemsBySlug(
-            slug = slug,
+    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
+        return catalogRetrofitApiList.deleteCollectionDetailBySlug(
+            slug = slug
             
-            body = body
+            
         )
     }
     
@@ -316,19 +329,6 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
     )
     : Deferred<Response<CollectionsUpdateDetailResponse>> {
         return catalogRetrofitApiList.updateCollectionDetailBySlug(
-            slug = slug
-            
-            
-        )
-    }
-    
-    override fun deleteCollectionDetailBySlug(
-         slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
-        return catalogRetrofitApiList.deleteCollectionDetailBySlug(
             slug = slug
             
             
@@ -361,19 +361,6 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
-    override fun unfollowById(
-         collection_type: String, collection_id: Int
-        
-        
-    )
-    : Deferred<Response<FollowPostResponse>> {
-        return catalogRetrofitApiList.unfollowById(
-            collection_type = collection_type,collection_id = collection_id
-            
-            
-        )
-    }
-    
     override fun followById(
          collection_type: String, collection_id: Int
         
@@ -381,6 +368,19 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
     )
     : Deferred<Response<FollowPostResponse>> {
         return catalogRetrofitApiList.followById(
+            collection_type = collection_type,collection_id = collection_id
+            
+            
+        )
+    }
+    
+    override fun unfollowById(
+         collection_type: String, collection_id: Int
+        
+        
+    )
+    : Deferred<Response<FollowPostResponse>> {
+        return catalogRetrofitApiList.unfollowById(
             collection_type = collection_type,collection_id = collection_id
             
             

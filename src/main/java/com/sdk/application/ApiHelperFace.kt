@@ -121,23 +121,17 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<AutoCompleteResponse>>
     
-    fun getCollections(
-         page_id: String?=null, page_size: Int?=null
-        
-    )
-    :Deferred<Response<GetCollectionListingResponse>>
-    
     fun addCollection(
         
         body: CreateCollection
     )
     :Deferred<Response<CollectionDetailResponse>>
     
-    fun getCollectionItemsBySlug( slug: String,
-         f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null
+    fun getCollections(
+         page_id: String?=null, page_size: Int?=null
         
     )
-    :Deferred<Response<GetCollectionListingItemsResponse>>
+    :Deferred<Response<GetCollectionListingResponse>>
     
     fun addCollectionItemsBySlug( slug: String,
         
@@ -145,17 +139,23 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<CollectionItemsResponse>>
     
-    fun updateCollectionDetailBySlug( slug: String
-        
+    fun getCollectionItemsBySlug( slug: String,
+         f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null
         
     )
-    :Deferred<Response<CollectionsUpdateDetailResponse>>
+    :Deferred<Response<GetCollectionListingItemsResponse>>
     
     fun deleteCollectionDetailBySlug( slug: String
         
         
     )
     :Deferred<Response<CollectionDetailViewDeleteResponse>>
+    
+    fun updateCollectionDetailBySlug( slug: String
+        
+        
+    )
+    :Deferred<Response<CollectionsUpdateDetailResponse>>
     
     fun getCollectionDetailBySlug( slug: String
         
@@ -169,13 +169,13 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<GetFollowListingResponse>>
     
-    fun unfollowById( collection_type: String, collection_id: Int
+    fun followById( collection_type: String, collection_id: Int
         
         
     )
     :Deferred<Response<FollowPostResponse>>
     
-    fun followById( collection_type: String, collection_id: Int
+    fun unfollowById( collection_type: String, collection_id: Int
         
         
     )
