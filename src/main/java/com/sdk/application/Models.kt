@@ -7,47 +7,16 @@ import com.google.gson.annotations.SerializedName
 
 
 /*
-    Model: ProductDetailAttribute
-*/
-@Parcelize
-data class ProductDetailAttribute(
-    
-    @SerializedName("value")
-    val value: String?=null,
-    
-    @SerializedName("key")
-    val key: String?=null,
-    
-    @SerializedName("type")
-    val type: String?=null
-    
-): Parcelable
-
-/*
-    Model: ProductDetailGroupedAttribute
-*/
-@Parcelize
-data class ProductDetailGroupedAttribute(
-    
-    @SerializedName("details")
-    val details: ArrayList<ProductDetailAttribute>?=null,
-    
-    @SerializedName("title")
-    val title: String?=null
-    
-): Parcelable
-
-/*
     Model: Media
 */
 @Parcelize
 data class Media(
     
     @SerializedName("url")
-    val url: String?=null,
+    var url: String?=null,
     
     @SerializedName("type")
-    val type: String?=null
+    var type: String?=null
     
 ): Parcelable
 
@@ -58,10 +27,10 @@ data class Media(
 data class ProductListingActionPage(
     
     @SerializedName("query")
-    val query: @RawValue HashMap<String,Any>?=null,
+    var query: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("type")
-    val type: String?=null
+    var type: String?=null
     
 ): Parcelable
 
@@ -71,11 +40,11 @@ data class ProductListingActionPage(
 @Parcelize
 data class ProductListingAction(
     
-    @SerializedName("type")
-    val type: String?=null,
-    
     @SerializedName("page")
-    val page: ProductListingActionPage?=null
+    var page: ProductListingActionPage?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable
 
@@ -85,17 +54,48 @@ data class ProductListingAction(
 @Parcelize
 data class ProductBrand(
     
-    @SerializedName("action")
-    val action: ProductListingAction?=null,
-    
     @SerializedName("logo")
-    val logo: Media?=null,
+    var logo: Media?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null,
     
     @SerializedName("name")
-    val name: String?=null,
+    var name: String?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null
+    
+): Parcelable
+
+/*
+    Model: ProductDetailAttribute
+*/
+@Parcelize
+data class ProductDetailAttribute(
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable
+
+/*
+    Model: ProductDetailGroupedAttribute
+*/
+@Parcelize
+data class ProductDetailGroupedAttribute(
+    
+    @SerializedName("details")
+    var details: ArrayList<ProductDetailAttribute>?=null,
+    
+    @SerializedName("title")
+    var title: String?=null
     
 ): Parcelable
 
@@ -105,68 +105,68 @@ data class ProductBrand(
 @Parcelize
 data class ProductDetail(
     
-    @SerializedName("grouped_attributes")
-    val groupedAttributes: ArrayList<ProductDetailGroupedAttribute>?=null,
-    
-    @SerializedName("type")
-    val type: String?=null,
-    
     @SerializedName("rating_count")
-    val ratingCount: Int?=null,
-    
-    @SerializedName("has_variant")
-    val hasVariant: Boolean?=null,
+    var ratingCount: Int?=null,
     
     @SerializedName("similars")
-    val similars: ArrayList<String>?=null,
-    
-    @SerializedName("medias")
-    val medias: ArrayList<Media>?=null,
-    
-    @SerializedName("attributes")
-    val attributes: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("image_nature")
-    val imageNature: String?=null,
-    
-    @SerializedName("tryouts")
-    val tryouts: ArrayList<String>?=null,
-    
-    @SerializedName("promo_meta")
-    val promoMeta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("product_online_date")
-    val productOnlineDate: String?=null,
-    
-    @SerializedName("item_type")
-    val itemType: String?=null,
-    
-    @SerializedName("categories")
-    val categories: ArrayList<ProductBrand>?=null,
-    
-    @SerializedName("rating")
-    val rating: Double?=null,
-    
-    @SerializedName("uid")
-    val uid: Int?=null,
-    
-    @SerializedName("teaser_tag")
-    val teaserTag: @RawValue HashMap<String,Any>?=null,
+    var similars: ArrayList<String>?=null,
     
     @SerializedName("highlights")
-    val highlights: ArrayList<String>?=null,
+    var highlights: ArrayList<String>?=null,
     
-    @SerializedName("name")
-    val name: String?=null,
+    @SerializedName("has_variant")
+    var hasVariant: Boolean?=null,
     
-    @SerializedName("color")
-    val color: String?=null,
+    @SerializedName("categories")
+    var categories: ArrayList<ProductBrand>?=null,
     
     @SerializedName("brand")
-    val brand: ProductBrand?=null,
+    var brand: ProductBrand?=null,
+    
+    @SerializedName("medias")
+    var medias: ArrayList<Media>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("slug")
-    val slug: String?=null
+    var slug: String?=null,
+    
+    @SerializedName("grouped_attributes")
+    var groupedAttributes: ArrayList<ProductDetailGroupedAttribute>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("promo_meta")
+    var promoMeta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("image_nature")
+    var imageNature: String?=null,
+    
+    @SerializedName("color")
+    var color: String?=null,
+    
+    @SerializedName("tryouts")
+    var tryouts: ArrayList<String>?=null,
+    
+    @SerializedName("rating")
+    var rating: Double?=null,
+    
+    @SerializedName("teaser_tag")
+    var teaserTag: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("product_online_date")
+    var productOnlineDate: String?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null
     
 ): Parcelable
 
@@ -177,18 +177,7 @@ data class ProductDetail(
 data class ErrorResponse(
     
     @SerializedName("error")
-    val error: String?=null
-    
-): Parcelable
-
-/*
-    Model: ProductSizeStores
-*/
-@Parcelize
-data class ProductSizeStores(
-    
-    @SerializedName("count")
-    val count: Int?=null
+    var error: String?=null
     
 ): Parcelable
 
@@ -199,16 +188,27 @@ data class ProductSizeStores(
 data class ProductSize(
     
     @SerializedName("value")
-    val value: String?=null,
+    var value: String?=null,
     
     @SerializedName("is_available")
-    val isAvailable: Boolean?=null,
-    
-    @SerializedName("quantity")
-    val quantity: Int?=null,
+    var isAvailable: Boolean?=null,
     
     @SerializedName("display")
-    val display: String?=null
+    var display: String?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null
+    
+): Parcelable
+
+/*
+    Model: ProductSizeStores
+*/
+@Parcelize
+data class ProductSizeStores(
+    
+    @SerializedName("count")
+    var count: Int?=null
     
 ): Parcelable
 
@@ -219,16 +219,16 @@ data class ProductSize(
 data class Price(
     
     @SerializedName("min")
-    val min: Double?=null,
+    var min: Double?=null,
     
     @SerializedName("currency_symbol")
-    val currencySymbol: String?=null,
+    var currencySymbol: String?=null,
     
     @SerializedName("currency_code")
-    val currencyCode: String?=null,
+    var currencyCode: String?=null,
     
     @SerializedName("max")
-    val max: Double?=null
+    var max: Double?=null
     
 ): Parcelable
 
@@ -238,11 +238,11 @@ data class Price(
 @Parcelize
 data class ProductListingPrice(
     
-    @SerializedName("marked")
-    val marked: Price?=null,
-    
     @SerializedName("effective")
-    val effective: Price?=null
+    var effective: Price?=null,
+    
+    @SerializedName("marked")
+    var marked: Price?=null
     
 ): Parcelable
 
@@ -252,43 +252,26 @@ data class ProductListingPrice(
 @Parcelize
 data class ProductSizes(
     
-    @SerializedName("sellable")
-    val sellable: Boolean?=null,
-    
-    @SerializedName("stores")
-    val stores: ProductSizeStores?=null,
-    
     @SerializedName("sizes")
-    val sizes: ArrayList<ProductSize>?=null,
-    
-    @SerializedName("price")
-    val price: ProductListingPrice?=null,
+    var sizes: ArrayList<ProductSize>?=null,
     
     @SerializedName("promo_meta")
-    val promoMeta: @RawValue HashMap<String,Any>?=null,
+    var promoMeta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("size_chart")
-    val sizeChart: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("sellable")
+    var sellable: Boolean?=null,
+    
+    @SerializedName("stores")
+    var stores: ProductSizeStores?=null,
     
     @SerializedName("discount")
-    val discount: String?=null
+    var discount: String?=null,
     
-): Parcelable
-
-/*
-    Model: ProductStockPrice
-*/
-@Parcelize
-data class ProductStockPrice(
+    @SerializedName("price")
+    var price: ProductListingPrice?=null,
     
-    @SerializedName("marked")
-    val marked: Double?=null,
-    
-    @SerializedName("effective")
-    val effective: Double?=null,
-    
-    @SerializedName("currency")
-    val currency: String?=null
+    @SerializedName("size_chart")
+    var sizeChart: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable
 
@@ -298,31 +281,31 @@ data class ProductStockPrice(
 @Parcelize
 data class Seller(
     
-    @SerializedName("count")
-    val count: Int?=null,
-    
     @SerializedName("name")
-    val name: String?=null,
+    var name: String?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("count")
+    var count: Int?=null
     
 ): Parcelable
 
 /*
-    Model: Store
+    Model: ProductStockPrice
 */
 @Parcelize
-data class Store(
+data class ProductStockPrice(
     
-    @SerializedName("count")
-    val count: Int?=null,
+    @SerializedName("effective")
+    var effective: Double?=null,
     
-    @SerializedName("name")
-    val name: String?=null,
+    @SerializedName("marked")
+    var marked: Double?=null,
     
-    @SerializedName("uid")
-    val uid: Int?=null
+    @SerializedName("currency")
+    var currency: String?=null
     
 ): Parcelable
 
@@ -333,10 +316,27 @@ data class Store(
 data class ArticleAssignment(
     
     @SerializedName("strategy")
-    val strategy: String?=null,
+    var strategy: String?=null,
     
     @SerializedName("level")
-    val level: String?=null
+    var level: String?=null
+    
+): Parcelable
+
+/*
+    Model: Store
+*/
+@Parcelize
+data class Store(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("count")
+    var count: Int?=null
     
 ): Parcelable
 
@@ -346,53 +346,53 @@ data class ArticleAssignment(
 @Parcelize
 data class ProductSizePriceResponse(
     
-    @SerializedName("price_per_price")
-    val pricePerPrice: ProductStockPrice?=null,
-    
-    @SerializedName("special_badge")
-    val specialBadge: String?=null,
-    
-    @SerializedName("set")
-    val set: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("strategy_wise_listing")
-    val strategyWiseListing: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("seller_count")
-    val sellerCount: Int?=null,
-    
     @SerializedName("seller")
-    val seller: Seller?=null,
-    
-    @SerializedName("pincode")
-    val pincode: Int?=null,
-    
-    @SerializedName("article_id")
-    val articleId: String?=null,
-    
-    @SerializedName("quantity")
-    val quantity: Int?=null,
-    
-    @SerializedName("item_type")
-    val itemType: String?=null,
-    
-    @SerializedName("store")
-    val store: Store?=null,
-    
-    @SerializedName("price")
-    val price: ProductStockPrice?=null,
-    
-    @SerializedName("article_assignment")
-    val articleAssignment: ArticleAssignment?=null,
-    
-    @SerializedName("promo_meta")
-    val promoMeta: @RawValue HashMap<String,Any>?=null,
+    var seller: Seller?=null,
     
     @SerializedName("long_lat")
-    val longLat: ArrayList<Double>?=null,
+    var longLat: ArrayList<Double>?=null,
+    
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    
+    @SerializedName("promo_meta")
+    var promoMeta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("discount")
-    val discount: String?=null
+    var discount: String?=null,
+    
+    @SerializedName("article_id")
+    var articleId: String?=null,
+    
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("price")
+    var price: ProductStockPrice?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("article_assignment")
+    var articleAssignment: ArticleAssignment?=null,
+    
+    @SerializedName("price_per_price")
+    var pricePerPrice: ProductStockPrice?=null,
+    
+    @SerializedName("store")
+    var store: Store?=null,
+    
+    @SerializedName("special_badge")
+    var specialBadge: String?=null,
+    
+    @SerializedName("set")
+    var set: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("seller_count")
+    var sellerCount: Int?=null,
+    
+    @SerializedName("strategy_wise_listing")
+    var strategyWiseListing: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable
 
@@ -402,14 +402,14 @@ data class ProductSizePriceResponse(
 @Parcelize
 data class ProductSizeSellerFilter(
     
-    @SerializedName("is_selected")
-    val isSelected: Boolean?=null,
-    
     @SerializedName("value")
-    val value: String?=null,
+    var value: String?=null,
     
     @SerializedName("name")
-    val name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("is_selected")
+    var isSelected: Boolean?=null
     
 ): Parcelable
 
@@ -420,19 +420,19 @@ data class ProductSizeSellerFilter(
 data class ProductPage(
     
     @SerializedName("total_item")
-    val totalItem: Int?=null,
+    var totalItem: Int?=null,
     
     @SerializedName("current")
-    val current: Int?=null,
-    
-    @SerializedName("has_previous")
-    val hasPrevious: Boolean?=null,
-    
-    @SerializedName("has_next")
-    val hasNext: Boolean?=null,
+    var current: Int?=null,
     
     @SerializedName("next_id")
-    val nextId: String?=null
+    var nextId: String?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null
     
 ): Parcelable
 
@@ -443,13 +443,13 @@ data class ProductPage(
 data class ProductSizeSellersResponse(
     
     @SerializedName("items")
-    val items: ArrayList<ProductSizePriceResponse>?=null,
+    var items: ArrayList<ProductSizePriceResponse>?=null,
     
     @SerializedName("sort_on")
-    val sortOn: ArrayList<ProductSizeSellerFilter>?=null,
+    var sortOn: ArrayList<ProductSizeSellerFilter>?=null,
     
     @SerializedName("page")
-    val page: ProductPage?=null
+    var page: ProductPage?=null
     
 ): Parcelable
 
@@ -459,14 +459,14 @@ data class ProductSizeSellersResponse(
 @Parcelize
 data class AttributeDetail(
     
-    @SerializedName("display")
-    val display: String?=null,
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("description")
-    val description: String?=null,
+    var description: String?=null,
     
-    @SerializedName("key")
-    val key: String?=null
+    @SerializedName("display")
+    var display: String?=null
     
 ): Parcelable
 
@@ -477,10 +477,10 @@ data class AttributeDetail(
 data class ProductsComparisonResponse(
     
     @SerializedName("items")
-    val items: ArrayList<ProductDetail>?=null,
+    var items: ArrayList<ProductDetail>?=null,
     
     @SerializedName("attributes_metadata")
-    val attributesMetadata: ArrayList<AttributeDetail>?=null
+    var attributesMetadata: ArrayList<AttributeDetail>?=null
     
 ): Parcelable
 
@@ -490,17 +490,17 @@ data class ProductsComparisonResponse(
 @Parcelize
 data class ProductCompareResponse(
     
-    @SerializedName("items")
-    val items: ArrayList<ProductDetail>?=null,
-    
-    @SerializedName("attributes_metadata")
-    val attributesMetadata: ArrayList<AttributeDetail>?=null,
-    
     @SerializedName("subtitle")
-    val subtitle: String?=null,
+    var subtitle: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<ProductDetail>?=null,
     
     @SerializedName("title")
-    val title: String?=null
+    var title: String?=null,
+    
+    @SerializedName("attributes_metadata")
+    var attributesMetadata: ArrayList<AttributeDetail>?=null
     
 ): Parcelable
 
@@ -511,7 +511,7 @@ data class ProductCompareResponse(
 data class ProductFrequentlyComparedSimilarResponse(
     
     @SerializedName("similars")
-    val similars: ArrayList<ProductCompareResponse>?=null
+    var similars: ArrayList<ProductCompareResponse>?=null
     
 ): Parcelable
 
@@ -521,14 +521,14 @@ data class ProductFrequentlyComparedSimilarResponse(
 @Parcelize
 data class ProductSimilarItem(
     
-    @SerializedName("items")
-    val items: ArrayList<ProductDetail>?=null,
-    
     @SerializedName("subtitle")
-    val subtitle: String?=null,
+    var subtitle: String?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<ProductDetail>?=null,
     
     @SerializedName("title")
-    val title: String?=null
+    var title: String?=null
     
 ): Parcelable
 
@@ -539,7 +539,7 @@ data class ProductSimilarItem(
 data class SimilarProductByTypeResponse(
     
     @SerializedName("similars")
-    val similars: ArrayList<ProductSimilarItem>?=null
+    var similars: ArrayList<ProductSimilarItem>?=null
     
 ): Parcelable
 
@@ -549,32 +549,32 @@ data class SimilarProductByTypeResponse(
 @Parcelize
 data class ProductVariantItemResponse(
     
-    @SerializedName("value")
-    val value: String?=null,
-    
-    @SerializedName("medias")
-    val medias: ArrayList<Media>?=null,
-    
-    @SerializedName("is_available")
-    val isAvailable: Boolean?=null,
-    
-    @SerializedName("action")
-    val action: ProductListingAction?=null,
-    
-    @SerializedName("color")
-    val color: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("name")
-    val name: String?=null,
+    var name: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
     
     @SerializedName("color_name")
-    val colorName: String?=null,
+    var colorName: String?=null,
     
-    @SerializedName("slug")
-    val slug: String?=null,
+    @SerializedName("color")
+    var color: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null,
+    
+    @SerializedName("medias")
+    var medias: ArrayList<Media>?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("is_available")
+    var isAvailable: Boolean?=null
     
 ): Parcelable
 
@@ -584,14 +584,14 @@ data class ProductVariantItemResponse(
 @Parcelize
 data class ProductVariantResponse(
     
-    @SerializedName("display_type")
-    val displayType: String?=null,
-    
     @SerializedName("items")
-    val items: ArrayList<ProductVariantItemResponse>?=null,
+    var items: ArrayList<ProductVariantItemResponse>?=null,
+    
+    @SerializedName("display_type")
+    var displayType: String?=null,
     
     @SerializedName("header")
-    val header: String?=null
+    var header: String?=null
     
 ): Parcelable
 
@@ -602,7 +602,7 @@ data class ProductVariantResponse(
 data class ProductVariantsResponse(
     
     @SerializedName("variants")
-    val variants: ArrayList<ProductVariantResponse>?=null
+    var variants: ArrayList<ProductVariantResponse>?=null
     
 ): Parcelable
 
@@ -612,17 +612,17 @@ data class ProductVariantsResponse(
 @Parcelize
 data class StoreDetail(
     
-    @SerializedName("id")
-    val id: Int?=null,
-    
     @SerializedName("code")
-    val code: String?=null,
+    var code: String?=null,
     
     @SerializedName("name")
-    val name: String?=null,
+    var name: String?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
     
     @SerializedName("city")
-    val city: String?=null
+    var city: String?=null
     
 ): Parcelable
 
@@ -632,11 +632,11 @@ data class StoreDetail(
 @Parcelize
 data class CompanyDetail(
     
-    @SerializedName("id")
-    val id: Int?=null,
-    
     @SerializedName("name")
-    val name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null
     
 ): Parcelable
 
@@ -647,31 +647,31 @@ data class CompanyDetail(
 data class ProductStockStatusItem(
     
     @SerializedName("seller")
-    val seller: Seller?=null,
-    
-    @SerializedName("quantity")
-    val quantity: Int?=null,
-    
-    @SerializedName("store")
-    val store: StoreDetail?=null,
-    
-    @SerializedName("item_id")
-    val itemId: Int?=null,
-    
-    @SerializedName("price")
-    val price: ProductStockPrice?=null,
-    
-    @SerializedName("identifier")
-    val identifier: @RawValue HashMap<String,Any>?=null,
+    var seller: Seller?=null,
     
     @SerializedName("size")
-    val size: String?=null,
+    var size: String?=null,
+    
+    @SerializedName("identifier")
+    var identifier: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("price")
+    var price: ProductStockPrice?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("store")
+    var store: StoreDetail?=null,
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
     
     @SerializedName("company")
-    val company: CompanyDetail?=null,
+    var company: CompanyDetail?=null,
     
     @SerializedName("uid")
-    val uid: String?=null
+    var uid: String?=null
     
 ): Parcelable
 
@@ -682,7 +682,7 @@ data class ProductStockStatusItem(
 data class ProductStockStatusResponse(
     
     @SerializedName("items")
-    val items: ArrayList<ProductStockStatusItem>?=null
+    var items: ArrayList<ProductStockStatusItem>?=null
     
 ): Parcelable
 
@@ -693,55 +693,10 @@ data class ProductStockStatusResponse(
 data class ProductStockPolling(
     
     @SerializedName("items")
-    val items: ArrayList<ProductStockStatusItem>?=null,
+    var items: ArrayList<ProductStockStatusItem>?=null,
     
     @SerializedName("page")
-    val page: ProductPage?=null
-    
-): Parcelable
-
-/*
-    Model: ProductFiltersValue
-*/
-@Parcelize
-data class ProductFiltersValue(
-    
-    @SerializedName("display")
-    val display: String?=null,
-    
-    @SerializedName("is_selected")
-    val isSelected: Boolean?=null,
-    
-    @SerializedName("count")
-    val count: Int?=null
-    
-): Parcelable
-
-/*
-    Model: ProductFiltersKey
-*/
-@Parcelize
-data class ProductFiltersKey(
-    
-    @SerializedName("display")
-    val display: String?=null,
-    
-    @SerializedName("name")
-    val name: String?=null
-    
-): Parcelable
-
-/*
-    Model: ProductFilters
-*/
-@Parcelize
-data class ProductFilters(
-    
-    @SerializedName("values")
-    val values: ArrayList<ProductFiltersValue>?=null,
-    
-    @SerializedName("key")
-    val key: ProductFiltersKey?=null
+    var page: ProductPage?=null
     
 ): Parcelable
 
@@ -752,13 +707,58 @@ data class ProductFilters(
 data class ProductSortOn(
     
     @SerializedName("value")
-    val value: String?=null,
-    
-    @SerializedName("is_selected")
-    val isSelected: Boolean?=null,
+    var value: String?=null,
     
     @SerializedName("name")
-    val name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("is_selected")
+    var isSelected: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: ProductFiltersKey
+*/
+@Parcelize
+data class ProductFiltersKey(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null
+    
+): Parcelable
+
+/*
+    Model: ProductFiltersValue
+*/
+@Parcelize
+data class ProductFiltersValue(
+    
+    @SerializedName("count")
+    var count: Int?=null,
+    
+    @SerializedName("is_selected")
+    var isSelected: Boolean?=null,
+    
+    @SerializedName("display")
+    var display: String?=null
+    
+): Parcelable
+
+/*
+    Model: ProductFilters
+*/
+@Parcelize
+data class ProductFilters(
+    
+    @SerializedName("key")
+    var key: ProductFiltersKey?=null,
+    
+    @SerializedName("values")
+    var values: ArrayList<ProductFiltersValue>?=null
     
 ): Parcelable
 
@@ -769,16 +769,16 @@ data class ProductSortOn(
 data class ProductListingResponse(
     
     @SerializedName("items")
-    val items: ArrayList<ProductDetail>?=null,
-    
-    @SerializedName("filter")
-    val filter: ArrayList<ProductFilters>?=null,
+    var items: ArrayList<ProductDetail>?=null,
     
     @SerializedName("sort_on")
-    val sortOn: ArrayList<ProductSortOn>?=null,
+    var sortOn: ArrayList<ProductSortOn>?=null,
+    
+    @SerializedName("filter")
+    var filter: ArrayList<ProductFilters>?=null,
     
     @SerializedName("page")
-    val page: ProductPage?=null
+    var page: ProductPage?=null
     
 ): Parcelable
 
@@ -789,10 +789,10 @@ data class ProductListingResponse(
 data class ImageUrls(
     
     @SerializedName("landscape")
-    val landscape: Media?=null,
+    var landscape: Media?=null,
     
     @SerializedName("portrait")
-    val portrait: Media?=null
+    var portrait: Media?=null
     
 ): Parcelable
 
@@ -802,29 +802,29 @@ data class ImageUrls(
 @Parcelize
 data class BrandItem(
     
-    @SerializedName("action")
-    val action: ProductListingAction?=null,
-    
-    @SerializedName("logo")
-    val logo: Media?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("name")
-    val name: String?=null,
-    
-    @SerializedName("banners")
-    val banners: ImageUrls?=null,
+    var name: String?=null,
     
     @SerializedName("departments")
-    val departments: ArrayList<String>?=null,
+    var departments: ArrayList<String>?=null,
     
-    @SerializedName("slug")
-    val slug: String?=null,
+    @SerializedName("logo")
+    var logo: Media?=null,
     
     @SerializedName("discount")
-    val discount: String?=null,
+    var discount: String?=null,
+    
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null
     
 ): Parcelable
 
@@ -835,10 +835,10 @@ data class BrandItem(
 data class BrandListingResponse(
     
     @SerializedName("items")
-    val items: ArrayList<BrandItem>?=null,
+    var items: ArrayList<BrandItem>?=null,
     
     @SerializedName("page")
-    val page: ProductPage?=null
+    var page: ProductPage?=null
     
 ): Parcelable
 
@@ -849,16 +849,16 @@ data class BrandListingResponse(
 data class BrandDetailResponse(
     
     @SerializedName("logo")
-    val logo: Media?=null,
-    
-    @SerializedName("banners")
-    val banners: ImageUrls?=null,
+    var logo: Media?=null,
     
     @SerializedName("name")
-    val name: String?=null,
+    var name: String?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("banners")
+    var banners: ImageUrls?=null
     
 ): Parcelable
 
@@ -868,23 +868,23 @@ data class BrandDetailResponse(
 @Parcelize
 data class CategoryItems(
     
-    @SerializedName("action")
-    val action: ProductListingAction?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("name")
-    val name: String?=null,
-    
-    @SerializedName("childs")
-    val childs: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var name: String?=null,
     
     @SerializedName("banners")
-    val banners: ImageUrls?=null,
+    var banners: ImageUrls?=null,
     
-    @SerializedName("slug")
-    val slug: String?=null,
+    @SerializedName("childs")
+    var childs: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null
     
 ): Parcelable
 
@@ -895,10 +895,10 @@ data class CategoryItems(
 data class DepartmentCategoryTree(
     
     @SerializedName("items")
-    val items: ArrayList<CategoryItems>?=null,
+    var items: ArrayList<CategoryItems>?=null,
     
     @SerializedName("department")
-    val department: String?=null
+    var department: String?=null
     
 ): Parcelable
 
@@ -909,10 +909,10 @@ data class DepartmentCategoryTree(
 data class DepartmentIdentifier(
     
     @SerializedName("slug")
-    val slug: String?=null,
+    var slug: String?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null
     
 ): Parcelable
 
@@ -923,10 +923,10 @@ data class DepartmentIdentifier(
 data class CategoryListingResponse(
     
     @SerializedName("data")
-    val data: ArrayList<DepartmentCategoryTree>?=null,
+    var data: ArrayList<DepartmentCategoryTree>?=null,
     
     @SerializedName("departments")
-    val departments: ArrayList<DepartmentIdentifier>?=null
+    var departments: ArrayList<DepartmentIdentifier>?=null
     
 ): Parcelable
 
@@ -937,16 +937,16 @@ data class CategoryListingResponse(
 data class CategoryMetaResponse(
     
     @SerializedName("logo")
-    val logo: Media?=null,
-    
-    @SerializedName("banners")
-    val banners: ImageUrls?=null,
+    var logo: Media?=null,
     
     @SerializedName("name")
-    val name: String?=null,
+    var name: String?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("banners")
+    var banners: ImageUrls?=null
     
 ): Parcelable
 
@@ -957,10 +957,10 @@ data class CategoryMetaResponse(
 data class Page(
     
     @SerializedName("page_size")
-    val pageSize: Int?=null,
+    var pageSize: Int?=null,
     
     @SerializedName("page")
-    val page: Int?=null
+    var page: Int?=null
     
 ): Parcelable
 
@@ -971,13 +971,13 @@ data class Page(
 data class HomeListingResponse(
     
     @SerializedName("items")
-    val items: ArrayList<ProductDetail>?=null,
-    
-    @SerializedName("message")
-    val message: String?=null,
+    var items: ArrayList<ProductDetail>?=null,
     
     @SerializedName("page")
-    val page: Page?=null
+    var page: Page?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable
 
@@ -987,20 +987,20 @@ data class HomeListingResponse(
 @Parcelize
 data class Department(
     
-    @SerializedName("priority_order")
-    val priorityOrder: Int?=null,
-    
-    @SerializedName("logo")
-    val logo: Media?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
     
     @SerializedName("name")
-    val name: String?=null,
+    var name: String?=null,
     
-    @SerializedName("slug")
-    val slug: String?=null,
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("priority_order")
+    var priorityOrder: Int?=null,
     
     @SerializedName("uid")
-    val uid: Int?=null
+    var uid: Int?=null
     
 ): Parcelable
 
@@ -1011,7 +1011,7 @@ data class Department(
 data class DepartmentResponse(
     
     @SerializedName("items")
-    val items: ArrayList<Department>?=null
+    var items: ArrayList<Department>?=null
     
 ): Parcelable
 
@@ -1021,17 +1021,17 @@ data class DepartmentResponse(
 @Parcelize
 data class AutocompleteItem(
     
-    @SerializedName("display")
-    val display: String?=null,
+    @SerializedName("logo")
+    var logo: Media?=null,
     
     @SerializedName("action")
-    val action: @RawValue HashMap<String,Any>?=null,
+    var action: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("logo")
-    val logo: Media?=null,
+    @SerializedName("display")
+    var display: String?=null,
     
     @SerializedName("type")
-    val type: String?=null
+    var type: String?=null
     
 ): Parcelable
 
@@ -1042,89 +1042,7 @@ data class AutocompleteItem(
 data class AutoCompleteResponse(
     
     @SerializedName("items")
-    val items: ArrayList<AutocompleteItem>?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionBadge
-*/
-@Parcelize
-data class CollectionBadge(
-    
-    @SerializedName("text")
-    val text: String?=null,
-    
-    @SerializedName("color")
-    val color: String?=null
-    
-): Parcelable
-
-/*
-    Model: UserInfo
-*/
-@Parcelize
-data class UserInfo(
-    
-    @SerializedName("email")
-    val email: String?=null,
-    
-    @SerializedName("user_id")
-    val userId: String?=null,
-    
-    @SerializedName("username")
-    val username: String?=null,
-    
-    @SerializedName("uid")
-    val uid: String?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionImage
-*/
-@Parcelize
-data class CollectionImage(
-    
-    @SerializedName("aspect_ratio")
-    val aspectRatio: String?=null,
-    
-    @SerializedName("url")
-    val url: String?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionBanner
-*/
-@Parcelize
-data class CollectionBanner(
-    
-    @SerializedName("landscape")
-    val landscape: CollectionImage?=null,
-    
-    @SerializedName("portrait")
-    val portrait: CollectionImage?=null
-    
-): Parcelable
-
-/*
-    Model: Schedule
-*/
-@Parcelize
-data class Schedule(
-    
-    @SerializedName("duration")
-    val duration: Int?=null,
-    
-    @SerializedName("cron")
-    val cron: String?=null,
-    
-    @SerializedName("start")
-    val start: String?=null,
-    
-    @SerializedName("end")
-    val end: String?=null
+    var items: ArrayList<AutocompleteItem>?=null
     
 ): Parcelable
 
@@ -1135,10 +1053,92 @@ data class Schedule(
 data class SeoDetail(
     
     @SerializedName("description")
-    val description: String?=null,
+    var description: String?=null,
     
     @SerializedName("title")
-    val title: String?=null
+    var title: String?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionImage
+*/
+@Parcelize
+data class CollectionImage(
+    
+    @SerializedName("aspect_ratio")
+    var aspectRatio: String?=null,
+    
+    @SerializedName("url")
+    var url: String?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionBanner
+*/
+@Parcelize
+data class CollectionBanner(
+    
+    @SerializedName("landscape")
+    var landscape: CollectionImage?=null,
+    
+    @SerializedName("portrait")
+    var portrait: CollectionImage?=null
+    
+): Parcelable
+
+/*
+    Model: UserInfo
+*/
+@Parcelize
+data class UserInfo(
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("username")
+    var username: String?=null
+    
+): Parcelable
+
+/*
+    Model: Schedule
+*/
+@Parcelize
+data class Schedule(
+    
+    @SerializedName("end")
+    var end: String?=null,
+    
+    @SerializedName("start")
+    var start: String?=null,
+    
+    @SerializedName("duration")
+    var duration: Int?=null,
+    
+    @SerializedName("cron")
+    var cron: String?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionBadge
+*/
+@Parcelize
+data class CollectionBadge(
+    
+    @SerializedName("color")
+    var color: String?=null,
+    
+    @SerializedName("text")
+    var text: String?=null
     
 ): Parcelable
 
@@ -1148,74 +1148,74 @@ data class SeoDetail(
 @Parcelize
 data class CreateCollection(
     
-    @SerializedName("type")
-    val type: String?=null,
-    
-    @SerializedName("badge")
-    val badge: CollectionBadge?=null,
-    
     @SerializedName("is_active")
-    val isActive: Boolean?=null,
-    
-    @SerializedName("_locale_language")
-    val localeLanguage: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("visible_facets_keys")
-    val visibleFacetsKeys: ArrayList<String>?=null,
-    
-    @SerializedName("created_by")
-    val createdBy: UserInfo?=null,
-    
-    @SerializedName("query")
-    val query: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("allow_sort")
-    val allowSort: Boolean?=null,
-    
-    @SerializedName("allow_facets")
-    val allowFacets: Boolean?=null,
+    var isActive: Boolean?=null,
     
     @SerializedName("published")
-    val published: Boolean?=null,
-    
-    @SerializedName("banners")
-    val banners: CollectionBanner?=null,
-    
-    @SerializedName("_custom_json")
-    val customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("modified_by")
-    val modifiedBy: UserInfo?=null,
-    
-    @SerializedName("sort_on")
-    val sortOn: String?=null,
-    
-    @SerializedName("logo")
-    val logo: CollectionImage?=null,
-    
-    @SerializedName("app_id")
-    val appId: String?=null,
-    
-    @SerializedName("tags")
-    val tags: ArrayList<String>?=null,
-    
-    @SerializedName("name")
-    val name: String?=null,
-    
-    @SerializedName("meta")
-    val meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("_schedule")
-    val schedule: Schedule?=null,
-    
-    @SerializedName("description")
-    val description: String?=null,
+    var published: Boolean?=null,
     
     @SerializedName("seo")
-    val seo: SeoDetail?=null,
+    var seo: SeoDetail?=null,
+    
+    @SerializedName("banners")
+    var banners: CollectionBanner?=null,
+    
+    @SerializedName("created_by")
+    var createdBy: UserInfo?=null,
+    
+    @SerializedName("allow_sort")
+    var allowSort: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("query")
+    var query: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("slug")
-    val slug: String?=null
+    var slug: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("allow_facets")
+    var allowFacets: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_schedule")
+    var schedule: Schedule?=null,
+    
+    @SerializedName("sort_on")
+    var sortOn: String?=null,
+    
+    @SerializedName("badge")
+    var badge: CollectionBadge?=null,
+    
+    @SerializedName("_locale_language")
+    var localeLanguage: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("logo")
+    var logo: CollectionImage?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("modified_by")
+    var modifiedBy: UserInfo?=null,
+    
+    @SerializedName("visible_facets_keys")
+    var visibleFacetsKeys: ArrayList<String>?=null
     
 ): Parcelable
 
@@ -1225,59 +1225,59 @@ data class CreateCollection(
 @Parcelize
 data class CollectionDetailResponse(
     
-    @SerializedName("app_id")
-    val appId: String?=null,
-    
     @SerializedName("query")
-    val query: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("tag")
-    val tag: ArrayList<String>?=null,
-    
-    @SerializedName("type")
-    val type: String?=null,
-    
-    @SerializedName("allow_sort")
-    val allowSort: Boolean?=null,
-    
-    @SerializedName("badge")
-    val badge: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("logo")
-    val logo: Media?=null,
-    
-    @SerializedName("allow_facets")
-    val allowFacets: Boolean?=null,
-    
-    @SerializedName("name")
-    val name: String?=null,
-    
-    @SerializedName("is_active")
-    val isActive: Boolean?=null,
-    
-    @SerializedName("meta")
-    val meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("_schedule")
-    val schedule: @RawValue HashMap<String,Any>?=null,
+    var query: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("description")
-    val description: String?=null,
-    
-    @SerializedName("banners")
-    val banners: ImageUrls?=null,
-    
-    @SerializedName("seo")
-    val seo: SeoDetail?=null,
-    
-    @SerializedName("cron")
-    val cron: @RawValue HashMap<String,Any>?=null,
+    var description: String?=null,
     
     @SerializedName("slug")
-    val slug: String?=null,
+    var slug: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("tag")
+    var tag: ArrayList<String>?=null,
+    
+    @SerializedName("seo")
+    var seo: SeoDetail?=null,
+    
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_schedule")
+    var schedule: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("allow_facets")
+    var allowFacets: Boolean?=null,
+    
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
+    @SerializedName("badge")
+    var badge: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("allow_sort")
+    var allowSort: Boolean?=null,
+    
+    @SerializedName("cron")
+    var cron: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("visible_facets_keys")
-    val visibleFacetsKeys: ArrayList<String>?=null
+    var visibleFacetsKeys: ArrayList<String>?=null
     
 ): Parcelable
 
@@ -1287,65 +1287,65 @@ data class CollectionDetailResponse(
 @Parcelize
 data class GetCollectionDetailNest(
     
-    @SerializedName("tag")
-    val tag: ArrayList<String>?=null,
-    
-    @SerializedName("type")
-    val type: String?=null,
-    
-    @SerializedName("badge")
-    val badge: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("is_active")
-    val isActive: Boolean?=null,
-    
-    @SerializedName("cron")
-    val cron: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("visible_facets_keys")
-    val visibleFacetsKeys: ArrayList<String>?=null,
-    
-    @SerializedName("query")
-    val query: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("allow_sort")
-    val allowSort: Boolean?=null,
-    
-    @SerializedName("allow_facets")
-    val allowFacets: Boolean?=null,
-    
-    @SerializedName("banners")
-    val banners: ImageUrls?=null,
-    
-    @SerializedName("action")
-    val action: ProductListingAction?=null,
-    
-    @SerializedName("logo")
-    val logo: Media?=null,
-    
-    @SerializedName("uid")
-    val uid: String?=null,
-    
-    @SerializedName("app_id")
-    val appId: String?=null,
-    
-    @SerializedName("name")
-    val name: String?=null,
-    
-    @SerializedName("meta")
-    val meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("_schedule")
-    val schedule: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("description")
-    val description: String?=null,
+    var isActive: Boolean?=null,
     
     @SerializedName("seo")
-    val seo: SeoDetail?=null,
+    var seo: SeoDetail?=null,
+    
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
+    @SerializedName("allow_sort")
+    var allowSort: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("query")
+    var query: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
     
     @SerializedName("slug")
-    val slug: String?=null
+    var slug: String?=null,
+    
+    @SerializedName("tag")
+    var tag: ArrayList<String>?=null,
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("allow_facets")
+    var allowFacets: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_schedule")
+    var schedule: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("badge")
+    var badge: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null,
+    
+    @SerializedName("cron")
+    var cron: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("visible_facets_keys")
+    var visibleFacetsKeys: ArrayList<String>?=null
     
 ): Parcelable
 
@@ -1355,14 +1355,14 @@ data class GetCollectionDetailNest(
 @Parcelize
 data class CollectionListingFilterTag(
     
+    @SerializedName("name")
+    var name: String?=null,
+    
     @SerializedName("is_selected")
-    val isSelected: Boolean?=null,
+    var isSelected: Boolean?=null,
     
     @SerializedName("display")
-    val display: String?=null,
-    
-    @SerializedName("name")
-    val name: String?=null
+    var display: String?=null
     
 ): Parcelable
 
@@ -1372,14 +1372,14 @@ data class CollectionListingFilterTag(
 @Parcelize
 data class CollectionListingFilterType(
     
+    @SerializedName("name")
+    var name: String?=null,
+    
     @SerializedName("is_selected")
-    val isSelected: Boolean?=null,
+    var isSelected: Boolean?=null,
     
     @SerializedName("display")
-    val display: String?=null,
-    
-    @SerializedName("name")
-    val name: String?=null
+    var display: String?=null
     
 ): Parcelable
 
@@ -1390,10 +1390,10 @@ data class CollectionListingFilterType(
 data class CollectionListingFilter(
     
     @SerializedName("tags")
-    val tags: ArrayList<CollectionListingFilterTag>?=null,
+    var tags: ArrayList<CollectionListingFilterTag>?=null,
     
     @SerializedName("type")
-    val type: ArrayList<CollectionListingFilterType>?=null
+    var type: ArrayList<CollectionListingFilterType>?=null
     
 ): Parcelable
 
@@ -1404,13 +1404,13 @@ data class CollectionListingFilter(
 data class GetCollectionListingResponse(
     
     @SerializedName("items")
-    val items: ArrayList<GetCollectionDetailNest>?=null,
+    var items: ArrayList<GetCollectionDetailNest>?=null,
     
     @SerializedName("page")
-    val page: ProductPage?=null,
+    var page: ProductPage?=null,
     
     @SerializedName("filters")
-    val filters: CollectionListingFilter?=null
+    var filters: CollectionListingFilter?=null
     
 ): Parcelable
 
@@ -1421,10 +1421,10 @@ data class GetCollectionListingResponse(
 data class CollectionItem(
     
     @SerializedName("action")
-    val action: String?=null,
+    var action: String?=null,
     
     @SerializedName("item_id")
-    val itemId: Int?=null
+    var itemId: Int?=null
     
 ): Parcelable
 
@@ -1435,19 +1435,19 @@ data class CollectionItem(
 data class CollectionItemsRequest(
     
     @SerializedName("query")
-    val query: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("page_size")
-    val pageSize: Int?=null,
-    
-    @SerializedName("type")
-    val type: String?=null,
+    var query: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("page_no")
-    val pageNo: Int?=null,
+    var pageNo: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("items")
-    val items: ArrayList<CollectionItem>?=null
+    var items: ArrayList<CollectionItem>?=null
     
 ): Parcelable
 
@@ -1458,7 +1458,7 @@ data class CollectionItemsRequest(
 data class CollectionItemsResponse(
     
     @SerializedName("detail")
-    val detail: String?=null
+    var detail: String?=null
     
 ): Parcelable
 
@@ -1469,27 +1469,16 @@ data class CollectionItemsResponse(
 data class GetCollectionListingItemsResponse(
     
     @SerializedName("items")
-    val items: ArrayList<ProductDetail>?=null,
-    
-    @SerializedName("page")
-    val page: ProductPage?=null,
+    var items: ArrayList<ProductDetail>?=null,
     
     @SerializedName("sort_on")
-    val sortOn: ArrayList<ProductSortOn>?=null,
+    var sortOn: ArrayList<ProductSortOn>?=null,
+    
+    @SerializedName("page")
+    var page: ProductPage?=null,
     
     @SerializedName("filters")
-    val filters: ArrayList<ProductFilters>?=null
-    
-): Parcelable
-
-/*
-    Model: CollectionDetailViewDeleteResponse
-*/
-@Parcelize
-data class CollectionDetailViewDeleteResponse(
-    
-    @SerializedName("detail")
-    val detail: String?=null
+    var filters: ArrayList<ProductFilters>?=null
     
 ): Parcelable
 
@@ -1500,7 +1489,18 @@ data class CollectionDetailViewDeleteResponse(
 data class CollectionsUpdateDetailResponse(
     
     @SerializedName("data")
-    val data: ArrayList<CollectionDetailResponse>?=null
+    var data: ArrayList<CollectionDetailResponse>?=null
+    
+): Parcelable
+
+/*
+    Model: CollectionDetailViewDeleteResponse
+*/
+@Parcelize
+data class CollectionDetailViewDeleteResponse(
+    
+    @SerializedName("detail")
+    var detail: String?=null
     
 ): Parcelable
 
@@ -1511,10 +1511,10 @@ data class CollectionsUpdateDetailResponse(
 data class GetFollowListingResponse(
     
     @SerializedName("items")
-    val items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("page")
-    val page: ProductPage?=null
+    var page: ProductPage?=null
     
 ): Parcelable
 
@@ -1525,10 +1525,10 @@ data class GetFollowListingResponse(
 data class FollowPostResponse(
     
     @SerializedName("id")
-    val id: String?=null,
+    var id: String?=null,
     
     @SerializedName("message")
-    val message: String?=null
+    var message: String?=null
     
 ): Parcelable
 
@@ -1539,7 +1539,7 @@ data class FollowPostResponse(
 data class FollowerCountResponse(
     
     @SerializedName("count")
-    val count: Int?=null
+    var count: Int?=null
     
 ): Parcelable
 
@@ -1549,14 +1549,14 @@ data class FollowerCountResponse(
 @Parcelize
 data class FollowIdsData(
     
-    @SerializedName("collections")
-    val collections: ArrayList<Int>?=null,
+    @SerializedName("products")
+    var products: ArrayList<Int>?=null,
     
     @SerializedName("brands")
-    val brands: ArrayList<Int>?=null,
+    var brands: ArrayList<Int>?=null,
     
-    @SerializedName("products")
-    val products: ArrayList<Int>?=null
+    @SerializedName("collections")
+    var collections: ArrayList<Int>?=null
     
 ): Parcelable
 
@@ -1567,7 +1567,7 @@ data class FollowIdsData(
 data class FollowIdsResponse(
     
     @SerializedName("data")
-    val data: FollowIdsData?=null
+    var data: FollowIdsData?=null
     
 ): Parcelable
 
@@ -1577,11 +1577,11 @@ data class FollowIdsResponse(
 @Parcelize
 data class LatLong(
     
-    @SerializedName("type")
-    val type: String?=null,
-    
     @SerializedName("coordinates")
-    val coordinates: ArrayList<Double>?=null
+    var coordinates: ArrayList<Double>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable
 
@@ -1591,35 +1591,35 @@ data class LatLong(
 @Parcelize
 data class Store1(
     
-    @SerializedName("store_code")
-    val storeCode: String?=null,
-    
     @SerializedName("pincode")
-    val pincode: Int?=null,
-    
-    @SerializedName("address")
-    val address: String?=null,
-    
-    @SerializedName("state")
-    val state: String?=null,
+    var pincode: Int?=null,
     
     @SerializedName("name")
-    val name: String?=null,
-    
-    @SerializedName("lat_long")
-    val latLong: LatLong?=null,
-    
-    @SerializedName("uid")
-    val uid: Int?=null,
-    
-    @SerializedName("store_email")
-    val storeEmail: String?=null,
+    var name: String?=null,
     
     @SerializedName("country")
-    val country: String?=null,
+    var country: String?=null,
     
     @SerializedName("city")
-    val city: String?=null
+    var city: String?=null,
+    
+    @SerializedName("lat_long")
+    var latLong: LatLong?=null,
+    
+    @SerializedName("store_code")
+    var storeCode: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
+    
+    @SerializedName("store_email")
+    var storeEmail: String?=null,
+    
+    @SerializedName("state")
+    var state: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null
     
 ): Parcelable
 
@@ -1630,10 +1630,10 @@ data class Store1(
 data class StoreListingResponse(
     
     @SerializedName("items")
-    val items: ArrayList<Store1>?=null,
+    var items: ArrayList<Store1>?=null,
     
     @SerializedName("page")
-    val page: ProductPage?=null
+    var page: ProductPage?=null
     
 ): Parcelable
 
@@ -1646,10 +1646,10 @@ data class StoreListingResponse(
 data class TicketHistoryPayload(
     
     @SerializedName("value")
-    val value: @RawValue HashMap<String,Any>?=null,
+    var value: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("type")
-    val type: String?=null
+    var type: String?=null
     
 ): Parcelable
 
@@ -1660,7 +1660,7 @@ data class TicketHistoryPayload(
 data class CustomFormSubmissionPayload(
     
     @SerializedName("response")
-    val response: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var response: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable
 
@@ -1671,7 +1671,7 @@ data class CustomFormSubmissionPayload(
 data class GetTokenForVideoRoomResponse(
     
     @SerializedName("access_token")
-    val accessToken: String?=null
+    var accessToken: String?=null
     
 ): Parcelable
 
@@ -1682,7 +1682,7 @@ data class GetTokenForVideoRoomResponse(
 data class GetParticipantsInsideVideoRoomResponse(
     
     @SerializedName("participants")
-    val participants: @RawValue ArrayList<Any>?=null
+    var participants: @RawValue ArrayList<Any>?=null
     
 ): Parcelable
 
@@ -1693,7 +1693,7 @@ data class GetParticipantsInsideVideoRoomResponse(
 data class SubmitCustomFormResponse(
     
     @SerializedName("ticket")
-    val ticket: Ticket?=null
+    var ticket: Ticket?=null
     
 ): Parcelable
 
@@ -1704,10 +1704,10 @@ data class SubmitCustomFormResponse(
 data class Context(
     
     @SerializedName("application_id")
-    val applicationId: String?=null,
+    var applicationId: String?=null,
     
     @SerializedName("company_id")
-    val companyId: String?=null
+    var companyId: String?=null
     
 ): Parcelable
 
@@ -1718,7 +1718,7 @@ data class Context(
 data class CreatedOn(
     
     @SerializedName("user_agent")
-    val userAgent: String?=null
+    var userAgent: String?=null
     
 ): Parcelable
 
@@ -1729,13 +1729,13 @@ data class CreatedOn(
 data class Asset(
     
     @SerializedName("display")
-    val display: String?=null,
+    var display: String?=null,
     
     @SerializedName("value")
-    val value: String?=null,
+    var value: String?=null,
     
     @SerializedName("type")
-    val type: String?=null
+    var type: String?=null
     
 ): Parcelable
 
@@ -1746,13 +1746,13 @@ data class Asset(
 data class Content(
     
     @SerializedName("title")
-    val title: String?=null,
+    var title: String?=null,
     
     @SerializedName("description")
-    val description: String?=null,
+    var description: String?=null,
     
     @SerializedName("attachments")
-    val attachments: ArrayList<Asset>?=null
+    var attachments: ArrayList<Asset>?=null
     
 ): Parcelable
 
@@ -1763,13 +1763,13 @@ data class Content(
 data class APIError(
     
     @SerializedName("code")
-    val code: Double?=null,
+    var code: Double?=null,
     
     @SerializedName("error")
-    val error: @RawValue HashMap<String,Any>?=null,
+    var error: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("message")
-    val message: String?=null
+    var message: String?=null
     
 ): Parcelable
 
@@ -1780,16 +1780,16 @@ data class APIError(
 data class AddTicketPayload(
     
     @SerializedName("status")
-    val status: String?=null,
+    var status: String?=null,
     
     @SerializedName("priority")
-    val priority: String?=null,
+    var priority: String?=null,
     
     @SerializedName("category")
-    val category: String?=null,
+    var category: String?=null,
     
     @SerializedName("content")
-    val content: Content?=null
+    var content: Content?=null
     
 ): Parcelable
 
@@ -1800,13 +1800,13 @@ data class AddTicketPayload(
 data class Priority(
     
     @SerializedName("key")
-    val key: String?=null,
+    var key: String?=null,
     
     @SerializedName("display")
-    val display: String?=null,
+    var display: String?=null,
     
     @SerializedName("color")
-    val color: String?=null
+    var color: String?=null
     
 ): Parcelable
 
@@ -1817,13 +1817,13 @@ data class Priority(
 data class Status(
     
     @SerializedName("key")
-    val key: String?=null,
+    var key: String?=null,
     
     @SerializedName("display")
-    val display: String?=null,
+    var display: String?=null,
     
     @SerializedName("color")
-    val color: String?=null
+    var color: String?=null
     
 ): Parcelable
 
@@ -1834,10 +1834,10 @@ data class Status(
 data class Category(
     
     @SerializedName("key")
-    val key: String?=null,
+    var key: String?=null,
     
     @SerializedName("display")
-    val display: String?=null
+    var display: String?=null
     
 ): Parcelable
 
@@ -1848,13 +1848,13 @@ data class Category(
 data class SubmitButton(
     
     @SerializedName("title")
-    val title: String?=null,
+    var title: String?=null,
     
     @SerializedName("title_color")
-    val titleColor: String?=null,
+    var titleColor: String?=null,
     
     @SerializedName("background_color")
-    val backgroundColor: String?=null
+    var backgroundColor: String?=null
     
 ): Parcelable
 
@@ -1865,16 +1865,16 @@ data class SubmitButton(
 data class PollForAssignment(
     
     @SerializedName("duration")
-    val duration: Double?=null,
+    var duration: Double?=null,
     
     @SerializedName("message")
-    val message: String?=null,
+    var message: String?=null,
     
     @SerializedName("success_message")
-    val successMessage: String?=null,
+    var successMessage: String?=null,
     
     @SerializedName("failure_message")
-    val failureMessage: String?=null
+    var failureMessage: String?=null
     
 ): Parcelable
 
@@ -1885,52 +1885,52 @@ data class PollForAssignment(
 data class CustomForm(
     
     @SerializedName("application_id")
-    val applicationId: String?=null,
+    var applicationId: String?=null,
     
     @SerializedName("slug")
-    val slug: String?=null,
+    var slug: String?=null,
     
     @SerializedName("header_image")
-    val headerImage: String?=null,
+    var headerImage: String?=null,
     
     @SerializedName("title")
-    val title: String?=null,
+    var title: String?=null,
     
     @SerializedName("description")
-    val description: String?=null,
+    var description: String?=null,
     
     @SerializedName("login_required")
-    val loginRequired: Boolean?=null,
+    var loginRequired: Boolean?=null,
     
     @SerializedName("should_notify")
-    val shouldNotify: Boolean?=null,
+    var shouldNotify: Boolean?=null,
     
     @SerializedName("success_message")
-    val successMessage: String?=null,
+    var successMessage: String?=null,
     
     @SerializedName("submit_button")
-    val submitButton: SubmitButton?=null,
+    var submitButton: SubmitButton?=null,
     
     @SerializedName("inputs")
-    val inputs: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    var inputs: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
     @SerializedName("created_on")
-    val createdOn: CreatedOn?=null,
+    var createdOn: CreatedOn?=null,
     
     @SerializedName("created_by")
-    val createdBy: @RawValue HashMap<String,Any>?=null,
+    var createdBy: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("poll_for_assignment")
-    val pollForAssignment: PollForAssignment?=null,
+    var pollForAssignment: PollForAssignment?=null,
     
     @SerializedName("_id")
-    val id: String?=null,
+    var id: String?=null,
     
     @SerializedName("updatedAt")
-    val updatedAt: String?=null,
+    var updatedAt: String?=null,
     
     @SerializedName("createdAt")
-    val createdAt: String?=null
+    var createdAt: String?=null
     
 ): Parcelable
 
@@ -1941,28 +1941,28 @@ data class CustomForm(
 data class TicketHistory(
     
     @SerializedName("type")
-    val type: String?=null,
+    var type: String?=null,
     
     @SerializedName("value")
-    val value: @RawValue HashMap<String,Any>?=null,
+    var value: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("ticket_id")
-    val ticketId: String?=null,
+    var ticketId: String?=null,
     
     @SerializedName("created_on")
-    val createdOn: CreatedOn?=null,
+    var createdOn: CreatedOn?=null,
     
     @SerializedName("created_by")
-    val createdBy: @RawValue HashMap<String,Any>?=null,
+    var createdBy: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("_id")
-    val id: String?=null,
+    var id: String?=null,
     
     @SerializedName("updatedAt")
-    val updatedAt: String?=null,
+    var updatedAt: String?=null,
     
     @SerializedName("createdAt")
-    val createdAt: String?=null
+    var createdAt: String?=null
     
 ): Parcelable
 
@@ -1973,52 +1973,52 @@ data class TicketHistory(
 data class Ticket(
     
     @SerializedName("context")
-    val context: Context?=null,
+    var context: Context?=null,
     
     @SerializedName("created_on")
-    val createdOn: CreatedOn?=null,
+    var createdOn: CreatedOn?=null,
     
     @SerializedName("response_id")
-    val responseId: String?=null,
+    var responseId: String?=null,
     
     @SerializedName("content")
-    val content: Content?=null,
+    var content: Content?=null,
     
     @SerializedName("ticket_id")
-    val ticketId: String?=null,
+    var ticketId: String?=null,
     
     @SerializedName("category")
-    val category: Category?=null,
+    var category: Category?=null,
     
     @SerializedName("source")
-    val source: String?=null,
+    var source: String?=null,
     
     @SerializedName("status")
-    val status: Status?=null,
+    var status: Status?=null,
     
     @SerializedName("priority")
-    val priority: Priority?=null,
+    var priority: Priority?=null,
     
     @SerializedName("created_by")
-    val createdBy: @RawValue HashMap<String,Any>?=null,
+    var createdBy: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("assigned_to")
-    val assignedTo: @RawValue HashMap<String,Any>?=null,
+    var assignedTo: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("tags")
-    val tags: ArrayList<String>?=null,
+    var tags: ArrayList<String>?=null,
     
     @SerializedName("_custom_json")
-    val customJson: @RawValue HashMap<String,Any>?=null,
+    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("_id")
-    val id: String?=null,
+    var id: String?=null,
     
     @SerializedName("updatedAt")
-    val updatedAt: String?=null,
+    var updatedAt: String?=null,
     
     @SerializedName("createdAt")
-    val createdAt: String?=null
+    var createdAt: String?=null
     
 ): Parcelable
 
@@ -2031,10 +2031,10 @@ data class Ticket(
 data class QRCodeResp(
     
     @SerializedName("link")
-    val link: String?=null,
+    var link: String?=null,
     
     @SerializedName("svg")
-    val svg: String?=null
+    var svg: String?=null
     
 ): Parcelable
 
@@ -2045,10 +2045,10 @@ data class QRCodeResp(
 data class RedirectDevice(
     
     @SerializedName("link")
-    val link: String?=null,
+    var link: String?=null,
     
     @SerializedName("type")
-    val type: String?=null
+    var type: String?=null
     
 ): Parcelable
 
@@ -2059,16 +2059,16 @@ data class RedirectDevice(
 data class Redirects(
     
     @SerializedName("ios")
-    val ios: RedirectDevice?=null,
+    var ios: RedirectDevice?=null,
     
     @SerializedName("android")
-    val android: RedirectDevice?=null,
+    var android: RedirectDevice?=null,
     
     @SerializedName("web")
-    val web: @RawValue HashMap<String,Any>?=null,
+    var web: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("force_web")
-    val forceWeb: Boolean?=null
+    var forceWeb: Boolean?=null
     
 ): Parcelable
 
@@ -2079,28 +2079,28 @@ data class Redirects(
 data class ShortLinkReq(
     
     @SerializedName("title")
-    val title: String?=null,
+    var title: String?=null,
     
     @SerializedName("url")
-    val url: String?=null,
+    var url: String?=null,
     
     @SerializedName("hash")
-    val hash: String?=null,
+    var hash: String?=null,
     
     @SerializedName("active")
-    val active: String?=null,
+    var active: String?=null,
     
     @SerializedName("type")
-    val type: String?=null,
+    var type: String?=null,
     
     @SerializedName("expire_at")
-    val expireAt: String?=null,
+    var expireAt: String?=null,
     
     @SerializedName("enable_tracking")
-    val enableTracking: Boolean?=null,
+    var enableTracking: Boolean?=null,
     
     @SerializedName("redirects")
-    val redirects: Redirects?=null
+    var redirects: Redirects?=null
     
 ): Parcelable
 
@@ -2111,49 +2111,49 @@ data class ShortLinkReq(
 data class ShortLinkRes(
     
     @SerializedName("title")
-    val title: String?=null,
+    var title: String?=null,
     
     @SerializedName("url")
-    val url: @RawValue HashMap<String,Any>?=null,
+    var url: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("created_by")
-    val createdBy: String?=null,
+    var createdBy: String?=null,
     
     @SerializedName("personalized")
-    val personalized: String?=null,
+    var personalized: String?=null,
     
     @SerializedName("app_redirect")
-    val appRedirect: String?=null,
+    var appRedirect: String?=null,
     
     @SerializedName("fallback")
-    val fallback: String?=null,
+    var fallback: String?=null,
     
     @SerializedName("active")
-    val active: Boolean?=null,
+    var active: Boolean?=null,
     
     @SerializedName("_id")
-    val id: String?=null,
+    var id: String?=null,
     
     @SerializedName("enable_tracking")
-    val enableTracking: Boolean?=null,
+    var enableTracking: Boolean?=null,
     
     @SerializedName("expire_at")
-    val expireAt: Boolean?=null,
+    var expireAt: Boolean?=null,
     
     @SerializedName("application")
-    val application: String?=null,
+    var application: String?=null,
     
     @SerializedName("user_id")
-    val userId: Boolean?=null,
+    var userId: Boolean?=null,
     
     @SerializedName("created_at")
-    val createdAt: Boolean?=null,
+    var createdAt: Boolean?=null,
     
     @SerializedName("updated_at")
-    val updatedAt: Boolean?=null,
+    var updatedAt: Boolean?=null,
     
     @SerializedName("redirects")
-    val redirects: Redirects?=null
+    var redirects: Redirects?=null
     
 ): Parcelable
 

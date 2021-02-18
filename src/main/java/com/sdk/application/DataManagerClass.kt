@@ -284,24 +284,24 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
-    override fun deleteCollectionDetailBySlug( slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
-        return catalogApiHelperClass.deleteCollectionDetailBySlug(
-        slug = slug
-        
-        
-        )
-    }
-    
     override fun updateCollectionDetailBySlug( slug: String
         
         
     )
     : Deferred<Response<CollectionsUpdateDetailResponse>> {
         return catalogApiHelperClass.updateCollectionDetailBySlug(
+        slug = slug
+        
+        
+        )
+    }
+    
+    override fun deleteCollectionDetailBySlug( slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
+        return catalogApiHelperClass.deleteCollectionDetailBySlug(
         slug = slug
         
         
@@ -332,24 +332,24 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
-    override fun followById( collection_type: String, collection_id: Int
-        
-        
-    )
-    : Deferred<Response<FollowPostResponse>> {
-        return catalogApiHelperClass.followById(
-        collection_type = collection_type,collection_id = collection_id
-        
-        
-        )
-    }
-    
     override fun unfollowById( collection_type: String, collection_id: Int
         
         
     )
     : Deferred<Response<FollowPostResponse>> {
         return catalogApiHelperClass.unfollowById(
+        collection_type = collection_type,collection_id = collection_id
+        
+        
+        )
+    }
+    
+    override fun followById( collection_type: String, collection_id: Int
+        
+        
+    )
+    : Deferred<Response<FollowPostResponse>> {
+        return catalogApiHelperClass.followById(
         collection_type = collection_type,collection_id = collection_id
         
         

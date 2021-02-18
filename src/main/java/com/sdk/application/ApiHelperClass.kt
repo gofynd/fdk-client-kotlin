@@ -309,19 +309,6 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
-    override fun deleteCollectionDetailBySlug(
-         slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
-        return catalogRetrofitApiList.deleteCollectionDetailBySlug(
-            slug = slug
-            
-            
-        )
-    }
-    
     override fun updateCollectionDetailBySlug(
          slug: String
         
@@ -329,6 +316,19 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
     )
     : Deferred<Response<CollectionsUpdateDetailResponse>> {
         return catalogRetrofitApiList.updateCollectionDetailBySlug(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun deleteCollectionDetailBySlug(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
+        return catalogRetrofitApiList.deleteCollectionDetailBySlug(
             slug = slug
             
             
@@ -361,19 +361,6 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         )
     }
     
-    override fun followById(
-         collection_type: String, collection_id: Int
-        
-        
-    )
-    : Deferred<Response<FollowPostResponse>> {
-        return catalogRetrofitApiList.followById(
-            collection_type = collection_type,collection_id = collection_id
-            
-            
-        )
-    }
-    
     override fun unfollowById(
          collection_type: String, collection_id: Int
         
@@ -381,6 +368,19 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
     )
     : Deferred<Response<FollowPostResponse>> {
         return catalogRetrofitApiList.unfollowById(
+            collection_type = collection_type,collection_id = collection_id
+            
+            
+        )
+    }
+    
+    override fun followById(
+         collection_type: String, collection_id: Int
+        
+        
+    )
+    : Deferred<Response<FollowPostResponse>> {
+        return catalogRetrofitApiList.followById(
             collection_type = collection_type,collection_id = collection_id
             
             
