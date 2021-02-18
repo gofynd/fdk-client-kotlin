@@ -7,150 +7,242 @@ import retrofit2.http.*
 
 interface CatalogApiHelperFace {
     
-    fun getProductDetailBySlug(@Path("slug") slug: String)
+    fun getProductDetailBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<ProductDetail>>
     
-    fun getProductSizesBySlug(@Path("slug") slug: String)
+    fun getProductSizesBySlug(@Path("slug") slug: String
+        @Query("store_id") store_id: String?=null
+    )
     :Deferred<Response<ProductSizes>>
     
-    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String)
+    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String
+        @Query("pincode") pincode: Int?=null, @Query("store_id") store_id: String?=null
+    )
     :Deferred<Response<ProductSizePriceResponse>>
     
-    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String)
+    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String
+        @Query("pincode") pincode: Int?=null, @Query("page_no") page_no: Int?=null, @Query("page_size") page_size: Int?=null
+    )
     :Deferred<Response<ProductSizeSellersResponse>>
     
-    fun getProductComparisonBySlugs(@Query("slug") slug: String)
+    fun getProductComparisonBySlugs(@Query("slug") slug: String
+        
+    )
     :Deferred<Response<ProductsComparisonResponse>>
     
-    fun getSimilarComparisonProductBySlug(@Path("slug") slug: String)
+    fun getSimilarComparisonProductBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<ProductCompareResponse>>
     
-    fun getComparedFrequentlyProductBySlug(@Path("slug") slug: String)
+    fun getComparedFrequentlyProductBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<ProductFrequentlyComparedSimilarResponse>>
     
-    fun getProductSimilarByIdentifier(@Path("slug") slug: String, @Path("similar_type") similar_type: String)
+    fun getProductSimilarByIdentifier(@Path("slug") slug: String, @Path("similar_type") similar_type: String
+        
+    )
     :Deferred<Response<SimilarProductByTypeResponse>>
     
-    fun getProductVariantsBySlug(@Path("slug") slug: String)
+    fun getProductVariantsBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<ProductVariantsResponse>>
     
-    fun getProductStockByIds()
+    fun getProductStockByIds(
+        @Query("item_id") item_id: String?=null, @Query("alu") alu: String?=null, @Query("sku_code") sku_code: String?=null, @Query("ean") ean: String?=null, @Query("upc") upc: String?=null
+    )
     :Deferred<Response<ProductStockStatusResponse>>
     
-    fun getProductStockForTimeByIds(@Query("timestamp") timestamp: String)
+    fun getProductStockForTimeByIds(@Query("timestamp") timestamp: String
+        @Query("page_size") page_size: Int?=null, @Query("page_id") page_id: String?=null
+    )
     :Deferred<Response<ProductStockPolling>>
     
-    fun getProducts()
+    fun getProducts(
+        @Query("q") q: String?=null, @Query("f") f: String?=null, @Query("filters") filters: Boolean?=null, @Query("sort_on") sort_on: String?=null, @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null, @Query("page_no") page_no: Int?=null, @Query("page_type") page_type: String?=null
+    )
     :Deferred<Response<ProductListingResponse>>
     
-    fun getBrands()
+    fun getBrands(
+        @Query("department") department: String?=null, @Query("page_no") page_no: Int?=null, @Query("page_size") page_size: Int?=null
+    )
     :Deferred<Response<BrandListingResponse>>
     
-    fun getBrandDetailBySlug(@Path("slug") slug: String)
+    fun getBrandDetailBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<BrandDetailResponse>>
     
-    fun getCategories()
+    fun getCategories(
+        @Query("department") department: String?=null
+    )
     :Deferred<Response<CategoryListingResponse>>
     
-    fun getCategoryDetailBySlug(@Path("slug") slug: String)
+    fun getCategoryDetailBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<CategoryMetaResponse>>
     
-    fun getHomeProducts()
+    fun getHomeProducts(
+        @Query("sort_on") sort_on: String?=null, @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null
+    )
     :Deferred<Response<HomeListingResponse>>
     
-    fun getDepartments()
+    fun getDepartments(
+        
+    )
     :Deferred<Response<DepartmentResponse>>
     
-    fun getSearchResults(@Query("q") q: String)
+    fun getSearchResults(@Query("q") q: String
+        
+    )
     :Deferred<Response<AutoCompleteResponse>>
     
-    fun getCollections()
+    fun getCollections(
+        @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null
+    )
     :Deferred<Response<GetCollectionListingResponse>>
     
-    fun addCollection()
+    fun addCollection(
+        
+    )
     :Deferred<Response<CollectionDetailResponse>>
     
-    fun getCollectionItemsBySlug(@Path("slug") slug: String)
+    fun getCollectionItemsBySlug(@Path("slug") slug: String
+        @Query("f") f: String?=null, @Query("filters") filters: Boolean?=null, @Query("sort_on") sort_on: String?=null, @Query("page_id") page_id: String?=null, @Query("page_size") page_size: Int?=null
+    )
     :Deferred<Response<GetCollectionListingItemsResponse>>
     
-    fun addCollectionItemsBySlug(@Path("slug") slug: String)
+    fun addCollectionItemsBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<CollectionItemsResponse>>
     
-    fun updateCollectionDetailBySlug(@Path("slug") slug: String)
+    fun updateCollectionDetailBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<CollectionsUpdateDetailResponse>>
     
-    fun deleteCollectionDetailBySlug(@Path("slug") slug: String)
+    fun deleteCollectionDetailBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<CollectionDetailViewDeleteResponse>>
     
-    fun getCollectionDetailBySlug(@Path("slug") slug: String)
+    fun getCollectionDetailBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<CollectionDetailResponse>>
     
-    fun getFollowedListing(@Path("collection_type") collection_type: String)
+    fun getFollowedListing(@Path("collection_type") collection_type: String
+        
+    )
     :Deferred<Response<GetFollowListingResponse>>
     
-    fun unfollowById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
+    fun unfollowById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int
+        
+    )
     :Deferred<Response<FollowPostResponse>>
     
-    fun followById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int)
+    fun followById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int
+        
+    )
     :Deferred<Response<FollowPostResponse>>
     
-    fun getFollowerCountById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: String)
+    fun getFollowerCountById(@Path("collection_type") collection_type: String, @Path("collection_id") collection_id: String
+        
+    )
     :Deferred<Response<FollowerCountResponse>>
     
-    fun getFollowIds()
+    fun getFollowIds(
+        @Query("collection_type") collection_type: String?=null
+    )
     :Deferred<Response<FollowIdsResponse>>
     
-    fun getStores()
+    fun getStores(
+        @Query("page_no") page_no: Int?=null, @Query("page_size") page_size: Int?=null, @Query("q") q: String?=null, @Query("range") range: Int?=null, @Query("latitude") latitude: Double?=null, @Query("longitude") longitude: Double?=null
+    )
     :Deferred<Response<StoreListingResponse>>
     
 }
 
 interface LeadApiHelperFace {
     
-    fun getTicket(@Path("id") id: String)
+    fun getTicket(@Path("id") id: String
+        
+    )
     :Deferred<Response<Ticket>>
     
-    fun createHistoryForTicket(@Path("ticket_id") ticket_id: String)
+    fun createHistoryForTicket(@Path("ticket_id") ticket_id: String
+        
+    )
     :Deferred<Response<TicketHistory>>
     
-    fun createTicket()
+    fun createTicket(
+        
+    )
     :Deferred<Response<Ticket>>
     
-    fun getCustomForm(@Path("slug") slug: String)
+    fun getCustomForm(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<CustomForm>>
     
-    fun submitCustomForm(@Path("slug") slug: String)
+    fun submitCustomForm(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<SubmitCustomFormResponse>>
     
-    fun getParticipantsInsideVideoRoom(@Path("unique_name") unique_name: String)
+    fun getParticipantsInsideVideoRoom(@Path("unique_name") unique_name: String
+        
+    )
     :Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
-    fun getTokenForVideoRoom(@Path("unique_name") unique_name: String)
+    fun getTokenForVideoRoom(@Path("unique_name") unique_name: String
+        
+    )
     :Deferred<Response<GetTokenForVideoRoomResponse>>
     
 }
 
 interface ShareApiHelperFace {
     
-    fun getApplicationQRCode()
+    fun getApplicationQRCode(
+        
+    )
     :Deferred<Response<QRCodeResp>>
     
-    fun getProductQRCodeBySlug(@Path("slug") slug: String)
+    fun getProductQRCodeBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<QRCodeResp>>
     
-    fun getCollectionQRCodeBySlug(@Path("slug") slug: String)
+    fun getCollectionQRCodeBySlug(@Path("slug") slug: String
+        
+    )
     :Deferred<Response<QRCodeResp>>
     
-    fun getUrlQRCode(@Query("url") url: String)
+    fun getUrlQRCode(@Query("url") url: String
+        
+    )
     :Deferred<Response<QRCodeResp>>
     
-    fun createShortLink()
+    fun createShortLink(
+        
+    )
     :Deferred<Response<ShortLinkRes>>
     
-    fun getShortLinkByHash(@Path("hash") hash: String)
+    fun getShortLinkByHash(@Path("hash") hash: String
+        
+    )
     :Deferred<Response<ShortLinkRes>>
     
-    fun getOriginalShortLinkByHash(@Path("hash") hash: String)
+    fun getOriginalShortLinkByHash(@Path("hash") hash: String
+        
+    )
     :Deferred<Response<ShortLinkRes>>
     
 }
