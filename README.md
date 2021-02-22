@@ -42,15 +42,16 @@ Get started with the Kotlin Development SDK for Fynd Platform
         applicationConfig?.let { config ->
             val applicationClient = ApplicationClient(config = config)
             scope.launch {
-                applicationClient.lead.getCustomForm(slug: "form-slug")
-                    .safeAwait(object : ResponseCallBack<Event<CustomForm>> {
-                        override fun onSuccess(response: Event<CustomForm>) {
-                            print(response.peekContent()?.title)
+                applicationClient.lead.getCustomForm("asdf444")
+                    .safeAwait(
+                        onSuccess = { form ->
+                            val title = form.peekContent()?.title
+                            print("$title")
+                        },
+                        onFailure = { error ->
+                            print("${error.message}")
                         }
-                        override fun onFailure(error: FdkError?) {
-                            print(error.message)
-                        }
-                    })
+                    )
             }
         }
 
