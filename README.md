@@ -28,52 +28,33 @@ Get started with the Kotlin Development SDK for Fynd Platform
 
 1. Initialize SDK in Application Class or in Application Module (if using Dagger)
 ```
-    SDK.init(
-    applicationID: "YOUR_APPLICATION_ID",
-    applicationToken: "YOUR_APPLICATION_TOKEN",
-    application = "YOUR_APPLICATION_CLASS",
-    domain = "BASE_URL"
-    )
+     var applicationConfig: ApplicationConfig? = null
+        try {
+            applicationConfig = ApplicationConfig(
+                applicationId = "YOUR_APPLICATION_ID",
+                applicationToken = "YOUR_APPLICATION_TOKEN",
+                userAgent = "YOUR_USER_AGENT"
+            )
+        } catch (e: Exception) {
+            print(e.message)
+        }
 
-```
-
-
-2. Implementation
-```
-    var ticketDataManager = LeadDataManagerClass() as LeadDataManager
-    val parentJob = Job()
-    val coroutineContext = parentJob + Dispatchers.IO
-    val scope =  CoroutineScope(coroutineContext)
-    scope.launch {
-        val response = ticketDataManager?.getCustomForm(slug= "form-slug"")?.safeAwait()
-        customFormLiveData.postValue(response)
-    }
-
-```
-
-```
-    Now customFormLiveData can be observed in View
-
-    viewModel.customFormLiveData?.observe(viewLifecycleOwner, Observer {
-    when (it.status) {
-        
-        StateData.DataStatus.SUCCESS -> {
-            it.data?.getContentIfNotHanlded()?.let {
-                 print(form.title)
+        applicationConfig?.let { config ->
+            val applicationClient = ApplicationClient(config = config)
+            scope.launch {
+                applicationClient.lead.getCustomForm(slug: "form-slug")
+                    .safeAwait(object : ResponseCallBack<Event<CustomForm>> {
+                        override fun onSuccess(response: Event<CustomForm>) {
+                            print(response.peekContent()?.title)
+                        }
+                        override fun onFailure(error: FdkError?) {
+                            print(error.message)
+                        }
+                    })
             }
         }
 
-        StateData.DataStatus.LOADING -> {
-            print("Loading")
-        }
-        
-        StateData.DataStatus.ERROR -> {
-            print(error.message)
-        }
-    }
-})
 ```
-
 
 ### Documentation
 
