@@ -7,30 +7,30 @@ import com.google.gson.annotations.SerializedName
 
 
 @Parcelize
-data class FDKError(
-    
+data class FdkError(
+
     @SerializedName("message")
-    val message: String?=null,
-    
+    var message: String? = null,
+
     @SerializedName("status")
-    val status: Int?=null,
+    var status: Int? = null,
 
     @SerializedName("code")
-    val code: String?=null,
+    var code: String? = null,
 
     @SerializedName("exception")
-    val exception: String?=null,
+    var exception: String? = null,
 
     @SerializedName("info")
-    val info: String?=null,
+    var info: String? = null,
 
     @SerializedName("request_id")
-    val requestId: String?=null,
+    var requestId: String? = null,
 
     @SerializedName("stack_trace")
-    val stackTrace: String?=null,
+    var stackTrace: String? = null,
 
     @SerializedName("meta")
-    val meta:  @RawValue HashMap<String,Any>?=null
-    
-): Parcelable
+    var meta: @RawValue HashMap<String, Any>? = null
+
+) : Parcelable

@@ -151,17 +151,17 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<CollectionsUpdateDetailResponse>>
     
-    fun deleteCollectionDetailBySlug( slug: String
-        
-        
-    )
-    :Deferred<Response<CollectionDetailViewDeleteResponse>>
-    
     fun getCollectionDetailBySlug( slug: String
         
         
     )
     :Deferred<Response<CollectionDetailResponse>>
+    
+    fun deleteCollectionDetailBySlug( slug: String
+        
+        
+    )
+    :Deferred<Response<CollectionDetailViewDeleteResponse>>
     
     fun getFollowedListing( collection_type: String
         
@@ -169,13 +169,13 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<GetFollowListingResponse>>
     
-    fun unfollowById( collection_type: String, collection_id: Int
+    fun followById( collection_type: String, collection_id: Int
         
         
     )
     :Deferred<Response<FollowPostResponse>>
     
-    fun followById( collection_type: String, collection_id: Int
+    fun unfollowById( collection_type: String, collection_id: Int
         
         
     )

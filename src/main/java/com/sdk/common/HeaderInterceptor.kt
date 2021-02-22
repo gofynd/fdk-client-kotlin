@@ -1,11 +1,11 @@
 package com.sdk.common
 
-import android.app.Application
+import com.sdk.application.ApplicationConfig
 import okhttp3.Headers
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class HeaderInterceptor(val app: Application) : Interceptor {
+class HeaderInterceptor(val app: ApplicationConfig) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
         val original = chain.request()
         val headers = Headers.Builder()

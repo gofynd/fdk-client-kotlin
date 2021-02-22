@@ -4,9 +4,11 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
 
-class CatalogDataManagerClass : CatalogDataManager {
+class CatalogDataManagerClass(val config: ApplicationConfig) : CatalogDataManager {
     
-    private val catalogApiHelperClass = CatalogApiHelperClass()
+    val catalogApiHelperClass by lazy {
+        CatalogApiHelperClass(config)
+    }
     
     override fun getProductDetailBySlug( slug: String
         
@@ -296,24 +298,24 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
-    override fun deleteCollectionDetailBySlug( slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
-        return catalogApiHelperClass.deleteCollectionDetailBySlug(
-        slug = slug
-        
-        
-        )
-    }
-    
     override fun getCollectionDetailBySlug( slug: String
         
         
     )
     : Deferred<Response<CollectionDetailResponse>> {
         return catalogApiHelperClass.getCollectionDetailBySlug(
+        slug = slug
+        
+        
+        )
+    }
+    
+    override fun deleteCollectionDetailBySlug( slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
+        return catalogApiHelperClass.deleteCollectionDetailBySlug(
         slug = slug
         
         
@@ -332,24 +334,24 @@ class CatalogDataManagerClass : CatalogDataManager {
         )
     }
     
-    override fun unfollowById( collection_type: String, collection_id: Int
-        
-        
-    )
-    : Deferred<Response<FollowPostResponse>> {
-        return catalogApiHelperClass.unfollowById(
-        collection_type = collection_type,collection_id = collection_id
-        
-        
-        )
-    }
-    
     override fun followById( collection_type: String, collection_id: Int
         
         
     )
     : Deferred<Response<FollowPostResponse>> {
         return catalogApiHelperClass.followById(
+        collection_type = collection_type,collection_id = collection_id
+        
+        
+        )
+    }
+    
+    override fun unfollowById( collection_type: String, collection_id: Int
+        
+        
+    )
+    : Deferred<Response<FollowPostResponse>> {
+        return catalogApiHelperClass.unfollowById(
         collection_type = collection_type,collection_id = collection_id
         
         
@@ -394,9 +396,11 @@ class CatalogDataManagerClass : CatalogDataManager {
     
 }
 
-class LeadDataManagerClass : LeadDataManager {
+class LeadDataManagerClass(val config: ApplicationConfig) : LeadDataManager {
     
-    private val leadApiHelperClass = LeadApiHelperClass()
+    val leadApiHelperClass by lazy {
+        LeadApiHelperClass(config)
+    }
     
     override fun getTicket( id: String
         
@@ -484,9 +488,11 @@ class LeadDataManagerClass : LeadDataManager {
     
 }
 
-class ShareDataManagerClass : ShareDataManager {
+class ShareDataManagerClass(val config: ApplicationConfig) : ShareDataManager {
     
-    private val shareApiHelperClass = ShareApiHelperClass()
+    val shareApiHelperClass by lazy {
+        ShareApiHelperClass(config)
+    }
     
     override fun getApplicationQRCode(
         

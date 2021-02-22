@@ -1,9 +1,10 @@
 package com.sdk.common;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.sdk.application.ApplicationContext;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -48,9 +49,9 @@ public class PersistentCookieStore implements CookieStore {
 
 
 
-    public static CookieJar getInstance(Context mContext) {
+    public static CookieJar getInstance() {
         if(null == cookieJar) {
-            cookieManager = new CookieManager(new PersistentCookieStore(mContext),
+            cookieManager = new CookieManager(new PersistentCookieStore(),
                     CookiePolicy.ACCEPT_ALL);
             cookieJar = new JavaNetCookieJar(cookieManager);
         }
@@ -62,8 +63,8 @@ public class PersistentCookieStore implements CookieStore {
         return cookieManager;
     }
 
-    public PersistentCookieStore(Context context) {
-        cookiePrefs = context.getSharedPreferences(COOKIE_PREFS, 0);
+    public PersistentCookieStore() {
+        cookiePrefs = ApplicationContext.INSTANCE.getContext().getSharedPreferences(COOKIE_PREFS, 0);
         cookies = new HashMap<>();
 
         // Load any previously stored cookies into the store

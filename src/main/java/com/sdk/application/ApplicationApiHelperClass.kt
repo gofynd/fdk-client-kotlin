@@ -1,14 +1,22 @@
 package com.sdk.application
 
+import com.sdk.common.HeaderInterceptor
+import com.sdk.common.HttpClient
+import com.sdk.common.NetworkUtils
+import com.sdk.common.RequestSignerInterceptor
 import kotlinx.coroutines.Deferred
+import okhttp3.Credentials
+import okhttp3.Interceptor
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
-import retrofit2.http.*
-import javax.inject.Inject
 
 
-class CatalogApiHelperClass : CatalogApiHelperFace  {
+class CatalogApiHelperClass(val config: ApplicationConfig) : CatalogApiHelperFace  {
     
-   private val catalogRetrofitApiList = SDK.catalogRetrofitApiList
+   private val catalogApiList: CatalogApiList by lazy {
+        generatecatalogApiList()
+    }
+
     
     override fun getProductDetailBySlug(
          slug: String
@@ -16,7 +24,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductDetail>> {
-        return catalogRetrofitApiList.getProductDetailBySlug(
+        return catalogApiList.getProductDetailBySlug(
             slug = slug
             
             
@@ -29,7 +37,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductSizes>> {
-        return catalogRetrofitApiList.getProductSizesBySlug(
+        return catalogApiList.getProductSizesBySlug(
             slug = slug,
             store_id = store_id
             
@@ -42,7 +50,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductSizePriceResponse>> {
-        return catalogRetrofitApiList.getProductPriceBySlug(
+        return catalogApiList.getProductPriceBySlug(
             slug = slug,size = size,
             pincode = pincode,store_id = store_id
             
@@ -55,7 +63,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductSizeSellersResponse>> {
-        return catalogRetrofitApiList.getProductSellersBySlug(
+        return catalogApiList.getProductSellersBySlug(
             slug = slug,size = size,
             pincode = pincode,page_no = page_no,page_size = page_size
             
@@ -68,7 +76,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductsComparisonResponse>> {
-        return catalogRetrofitApiList.getProductComparisonBySlugs(
+        return catalogApiList.getProductComparisonBySlugs(
             slug = slug
             
             
@@ -81,7 +89,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductCompareResponse>> {
-        return catalogRetrofitApiList.getSimilarComparisonProductBySlug(
+        return catalogApiList.getSimilarComparisonProductBySlug(
             slug = slug
             
             
@@ -94,7 +102,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductFrequentlyComparedSimilarResponse>> {
-        return catalogRetrofitApiList.getComparedFrequentlyProductBySlug(
+        return catalogApiList.getComparedFrequentlyProductBySlug(
             slug = slug
             
             
@@ -107,7 +115,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<SimilarProductByTypeResponse>> {
-        return catalogRetrofitApiList.getProductSimilarByIdentifier(
+        return catalogApiList.getProductSimilarByIdentifier(
             slug = slug,similar_type = similar_type
             
             
@@ -120,7 +128,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductVariantsResponse>> {
-        return catalogRetrofitApiList.getProductVariantsBySlug(
+        return catalogApiList.getProductVariantsBySlug(
             slug = slug
             
             
@@ -133,7 +141,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductStockStatusResponse>> {
-        return catalogRetrofitApiList.getProductStockByIds(
+        return catalogApiList.getProductStockByIds(
             
             item_id = item_id,alu = alu,sku_code = sku_code,ean = ean,upc = upc
             
@@ -146,7 +154,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductStockPolling>> {
-        return catalogRetrofitApiList.getProductStockForTimeByIds(
+        return catalogApiList.getProductStockForTimeByIds(
             timestamp = timestamp,
             page_size = page_size,page_id = page_id
             
@@ -159,7 +167,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<ProductListingResponse>> {
-        return catalogRetrofitApiList.getProducts(
+        return catalogApiList.getProducts(
             
             q = q,f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size,page_no = page_no,page_type = page_type
             
@@ -172,7 +180,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<BrandListingResponse>> {
-        return catalogRetrofitApiList.getBrands(
+        return catalogApiList.getBrands(
             
             department = department,page_no = page_no,page_size = page_size
             
@@ -185,7 +193,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<BrandDetailResponse>> {
-        return catalogRetrofitApiList.getBrandDetailBySlug(
+        return catalogApiList.getBrandDetailBySlug(
             slug = slug
             
             
@@ -198,7 +206,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<CategoryListingResponse>> {
-        return catalogRetrofitApiList.getCategories(
+        return catalogApiList.getCategories(
             
             department = department
             
@@ -211,7 +219,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<CategoryMetaResponse>> {
-        return catalogRetrofitApiList.getCategoryDetailBySlug(
+        return catalogApiList.getCategoryDetailBySlug(
             slug = slug
             
             
@@ -224,7 +232,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<HomeListingResponse>> {
-        return catalogRetrofitApiList.getHomeProducts(
+        return catalogApiList.getHomeProducts(
             
             sort_on = sort_on,page_id = page_id,page_size = page_size
             
@@ -237,7 +245,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<DepartmentResponse>> {
-        return catalogRetrofitApiList.getDepartments(
+        return catalogApiList.getDepartments(
             
             
             
@@ -250,7 +258,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<AutoCompleteResponse>> {
-        return catalogRetrofitApiList.getSearchResults(
+        return catalogApiList.getSearchResults(
             q = q
             
             
@@ -263,7 +271,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         body: CreateCollection
     )
     : Deferred<Response<CollectionDetailResponse>> {
-        return catalogRetrofitApiList.addCollection(
+        return catalogApiList.addCollection(
             
             
             body = body
@@ -276,7 +284,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<GetCollectionListingResponse>> {
-        return catalogRetrofitApiList.getCollections(
+        return catalogApiList.getCollections(
             
             page_id = page_id,page_size = page_size
             
@@ -289,7 +297,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         body: CollectionItemsRequest
     )
     : Deferred<Response<CollectionItemsResponse>> {
-        return catalogRetrofitApiList.addCollectionItemsBySlug(
+        return catalogApiList.addCollectionItemsBySlug(
             slug = slug,
             
             body = body
@@ -302,7 +310,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<GetCollectionListingItemsResponse>> {
-        return catalogRetrofitApiList.getCollectionItemsBySlug(
+        return catalogApiList.getCollectionItemsBySlug(
             slug = slug,
             f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
             
@@ -315,20 +323,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<CollectionsUpdateDetailResponse>> {
-        return catalogRetrofitApiList.updateCollectionDetailBySlug(
-            slug = slug
-            
-            
-        )
-    }
-    
-    override fun deleteCollectionDetailBySlug(
-         slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
-        return catalogRetrofitApiList.deleteCollectionDetailBySlug(
+        return catalogApiList.updateCollectionDetailBySlug(
             slug = slug
             
             
@@ -341,7 +336,20 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<CollectionDetailResponse>> {
-        return catalogRetrofitApiList.getCollectionDetailBySlug(
+        return catalogApiList.getCollectionDetailBySlug(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun deleteCollectionDetailBySlug(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
+        return catalogApiList.deleteCollectionDetailBySlug(
             slug = slug
             
             
@@ -354,21 +362,8 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<GetFollowListingResponse>> {
-        return catalogRetrofitApiList.getFollowedListing(
+        return catalogApiList.getFollowedListing(
             collection_type = collection_type
-            
-            
-        )
-    }
-    
-    override fun unfollowById(
-         collection_type: String, collection_id: Int
-        
-        
-    )
-    : Deferred<Response<FollowPostResponse>> {
-        return catalogRetrofitApiList.unfollowById(
-            collection_type = collection_type,collection_id = collection_id
             
             
         )
@@ -380,7 +375,20 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<FollowPostResponse>> {
-        return catalogRetrofitApiList.followById(
+        return catalogApiList.followById(
+            collection_type = collection_type,collection_id = collection_id
+            
+            
+        )
+    }
+    
+    override fun unfollowById(
+         collection_type: String, collection_id: Int
+        
+        
+    )
+    : Deferred<Response<FollowPostResponse>> {
+        return catalogApiList.unfollowById(
             collection_type = collection_type,collection_id = collection_id
             
             
@@ -393,7 +401,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<FollowerCountResponse>> {
-        return catalogRetrofitApiList.getFollowerCountById(
+        return catalogApiList.getFollowerCountById(
             collection_type = collection_type,collection_id = collection_id
             
             
@@ -406,7 +414,7 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<FollowIdsResponse>> {
-        return catalogRetrofitApiList.getFollowIds(
+        return catalogApiList.getFollowIds(
             
             collection_type = collection_type
             
@@ -419,18 +427,44 @@ class CatalogApiHelperClass : CatalogApiHelperFace  {
         
     )
     : Deferred<Response<StoreListingResponse>> {
-        return catalogRetrofitApiList.getStores(
+        return catalogApiList.getStores(
             
             page_no = page_no,page_size = page_size,q = q,range = range,latitude = latitude,longitude = longitude
             
         )
     }
     
+
+    private fun generatecatalogApiList(): CatalogApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Catalog"
+        )
+        return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as CatalogApiList
+    }
 }
 
-class LeadApiHelperClass : LeadApiHelperFace  {
+class LeadApiHelperClass(val config: ApplicationConfig) : LeadApiHelperFace  {
     
-   private val leadRetrofitApiList = SDK.leadRetrofitApiList
+   private val leadApiList: LeadApiList by lazy {
+        generateleadApiList()
+    }
+
     
     override fun getTicket(
          id: String
@@ -438,7 +472,7 @@ class LeadApiHelperClass : LeadApiHelperFace  {
         
     )
     : Deferred<Response<Ticket>> {
-        return leadRetrofitApiList.getTicket(
+        return leadApiList.getTicket(
             id = id
             
             
@@ -451,7 +485,7 @@ class LeadApiHelperClass : LeadApiHelperFace  {
         body: TicketHistoryPayload
     )
     : Deferred<Response<TicketHistory>> {
-        return leadRetrofitApiList.createHistoryForTicket(
+        return leadApiList.createHistoryForTicket(
             ticket_id = ticket_id,
             
             body = body
@@ -464,7 +498,7 @@ class LeadApiHelperClass : LeadApiHelperFace  {
         body: AddTicketPayload
     )
     : Deferred<Response<Ticket>> {
-        return leadRetrofitApiList.createTicket(
+        return leadApiList.createTicket(
             
             
             body = body
@@ -477,7 +511,7 @@ class LeadApiHelperClass : LeadApiHelperFace  {
         
     )
     : Deferred<Response<CustomForm>> {
-        return leadRetrofitApiList.getCustomForm(
+        return leadApiList.getCustomForm(
             slug = slug
             
             
@@ -490,7 +524,7 @@ class LeadApiHelperClass : LeadApiHelperFace  {
         body: CustomFormSubmissionPayload
     )
     : Deferred<Response<SubmitCustomFormResponse>> {
-        return leadRetrofitApiList.submitCustomForm(
+        return leadApiList.submitCustomForm(
             slug = slug,
             
             body = body
@@ -503,7 +537,7 @@ class LeadApiHelperClass : LeadApiHelperFace  {
         
     )
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>> {
-        return leadRetrofitApiList.getParticipantsInsideVideoRoom(
+        return leadApiList.getParticipantsInsideVideoRoom(
             unique_name = unique_name
             
             
@@ -516,18 +550,44 @@ class LeadApiHelperClass : LeadApiHelperFace  {
         
     )
     : Deferred<Response<GetTokenForVideoRoomResponse>> {
-        return leadRetrofitApiList.getTokenForVideoRoom(
+        return leadApiList.getTokenForVideoRoom(
             unique_name = unique_name
             
             
         )
     }
     
+
+    private fun generateleadApiList(): LeadApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Lead"
+        )
+        return retrofitHttpClient?.initializeRestClient(LeadApiList::class.java) as LeadApiList
+    }
 }
 
-class ShareApiHelperClass : ShareApiHelperFace  {
+class ShareApiHelperClass(val config: ApplicationConfig) : ShareApiHelperFace  {
     
-   private val shareRetrofitApiList = SDK.shareRetrofitApiList
+   private val shareApiList: ShareApiList by lazy {
+        generateshareApiList()
+    }
+
     
     override fun getApplicationQRCode(
         
@@ -535,7 +595,7 @@ class ShareApiHelperClass : ShareApiHelperFace  {
         
     )
     : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getApplicationQRCode(
+        return shareApiList.getApplicationQRCode(
             
             
             
@@ -548,7 +608,7 @@ class ShareApiHelperClass : ShareApiHelperFace  {
         
     )
     : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getProductQRCodeBySlug(
+        return shareApiList.getProductQRCodeBySlug(
             slug = slug
             
             
@@ -561,7 +621,7 @@ class ShareApiHelperClass : ShareApiHelperFace  {
         
     )
     : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getCollectionQRCodeBySlug(
+        return shareApiList.getCollectionQRCodeBySlug(
             slug = slug
             
             
@@ -574,7 +634,7 @@ class ShareApiHelperClass : ShareApiHelperFace  {
         
     )
     : Deferred<Response<QRCodeResp>> {
-        return shareRetrofitApiList.getUrlQRCode(
+        return shareApiList.getUrlQRCode(
             url = url
             
             
@@ -587,7 +647,7 @@ class ShareApiHelperClass : ShareApiHelperFace  {
         body: ShortLinkReq
     )
     : Deferred<Response<ShortLinkRes>> {
-        return shareRetrofitApiList.createShortLink(
+        return shareApiList.createShortLink(
             
             
             body = body
@@ -600,7 +660,7 @@ class ShareApiHelperClass : ShareApiHelperFace  {
         
     )
     : Deferred<Response<ShortLinkRes>> {
-        return shareRetrofitApiList.getShortLinkByHash(
+        return shareApiList.getShortLinkByHash(
             hash = hash
             
             
@@ -613,11 +673,34 @@ class ShareApiHelperClass : ShareApiHelperFace  {
         
     )
     : Deferred<Response<ShortLinkRes>> {
-        return shareRetrofitApiList.getOriginalShortLinkByHash(
+        return shareApiList.getOriginalShortLinkByHash(
             hash = hash
             
             
         )
     }
     
+
+    private fun generateshareApiList(): ShareApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Share"
+        )
+        return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as ShareApiList
+    }
 }
