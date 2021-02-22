@@ -26,7 +26,6 @@ Get started with the Kotlin Development SDK for Fynd Platform
 ### Sample Usage:
 
 
-1. Initialize SDK in Application Class or in Application Module (if using Dagger)
 ```
      var applicationConfig: ApplicationConfig? = null
         try {
