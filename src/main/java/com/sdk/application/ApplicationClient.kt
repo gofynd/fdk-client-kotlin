@@ -6,10 +6,6 @@ class ApplicationClient(config:ApplicationConfig) {
         CatalogDataManagerClass(config)
     }
     
-    val cart by lazy {
-        CartDataManagerClass(config)
-    }
-    
     val lead by lazy {
         LeadDataManagerClass(config)
     }

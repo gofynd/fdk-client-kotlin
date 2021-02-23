@@ -139,6 +139,13 @@ interface CatalogApiList {
     )
     : Deferred<Response<AutoCompleteResponse>>
     
+    @POST ("/service/application/catalog/v1.0/collections/")
+    fun addCollection(
+        
+        @Body body: CreateCollection
+    )
+    : Deferred<Response<CollectionDetailResponse>>
+    
     @GET ("/service/application/catalog/v1.0/collections/")
     fun getCollections(
         @Query("page_id") page_id: String?,@Query("page_size") page_size: Int?
@@ -146,12 +153,12 @@ interface CatalogApiList {
     )
     : Deferred<Response<GetCollectionListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/collections/")
-    fun addCollection(
+    @POST ("/service/application/catalog/v1.0/collections/{slug}/items/")
+    fun addCollectionItemsBySlug(@Path("slug") slug: String,
         
-        @Body body: CreateCollection
+        @Body body: CollectionItemsRequest
     )
-    : Deferred<Response<CollectionDetailResponse>>
+    : Deferred<Response<CollectionItemsResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
     fun getCollectionItemsBySlug(@Path("slug") slug: String,
@@ -160,12 +167,12 @@ interface CatalogApiList {
     )
     : Deferred<Response<GetCollectionListingItemsResponse>>
     
-    @POST ("/service/application/catalog/v1.0/collections/{slug}/items/")
-    fun addCollectionItemsBySlug(@Path("slug") slug: String,
+    @DELETE ("/service/application/catalog/v1.0/collections/{slug}/")
+    fun deleteCollectionDetailBySlug(@Path("slug") slug: String
         
-        @Body body: CollectionItemsRequest
+        
     )
-    : Deferred<Response<CollectionItemsResponse>>
+    : Deferred<Response<CollectionDetailViewDeleteResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/{slug}/")
     fun getCollectionDetailBySlug(@Path("slug") slug: String
@@ -181,13 +188,6 @@ interface CatalogApiList {
     )
     : Deferred<Response<CollectionsUpdateDetailResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun deleteCollectionDetailBySlug(@Path("slug") slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionDetailViewDeleteResponse>>
-    
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
     fun getFollowedListing(@Path("collection_type") collection_type: String
         
@@ -195,15 +195,15 @@ interface CatalogApiList {
     )
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
         
         
     )
     : Deferred<Response<FollowPostResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collection_type: String,@Path("collection_id") collection_id: Int
         
         
     )
@@ -229,171 +229,6 @@ interface CatalogApiList {
         
     )
     : Deferred<Response<StoreListingResponse>>
-    
-}
-
-interface CartApiList {
-    
-    @GET ("/service/application/cart/v1.0/detail")
-    fun getCart(
-        @Query("uid") uid: Int?,@Query("assign_card_id") assign_card_id: Int?
-        
-    )
-    : Deferred<Response<GetCartResponse>>
-    
-    @HEAD ("/service/application/cart/v1.0/detail")
-    fun getCartLastModified(
-        @Query("uid") uid: Int?
-        
-    )
-    : Deferred<Response<Any>>
-    
-    @POST ("/service/application/cart/v1.0/detail")
-    fun addItems(
-        
-        @Body body: AddCartRequest
-    )
-    : Deferred<Response<CartResponse>>
-    
-    @PUT ("/service/application/cart/v1.0/detail")
-    fun updateCart(
-        
-        @Body body: UpdateCartRequest
-    )
-    : Deferred<Response<CartResponse>>
-    
-    @GET ("/service/application/cart/v1.0/basic")
-    fun getItemCount(
-        @Query("uid") uid: Int?
-        
-    )
-    : Deferred<Response<CartItemCountResponse>>
-    
-    @GET ("/service/application/cart/v1.0/coupon")
-    fun getCoupons(
-        @Query("uid") uid: Int?
-        
-    )
-    : Deferred<Response<GetCouponResponse>>
-    
-    @POST ("/service/application/cart/v1.0/coupon")
-    fun applyCoupon(
-        @Query("i") i: Boolean?,@Query("b") b: Boolean?,@Query("p") p: Boolean?,
-        @Body body: ApplyCouponRequest
-    )
-    : Deferred<Response<SaveCouponResponse>>
-    
-    @DELETE ("/service/application/cart/v1.0/coupon")
-    fun removeCoupon(
-        @Query("uid") uid: Int?
-        
-    )
-    : Deferred<Response<CartResponse>>
-    
-    @GET ("/service/application/cart/v1.0/bulk-price")
-    fun getBulkDiscountOffers(
-        @Query("item_id") item_id: Int?,@Query("article_id") article_id: String?,@Query("uid") uid: Int?,@Query("slug") slug: String?
-        
-    )
-    : Deferred<Response<BulkPriceResponse>>
-    
-    @GET ("/service/application/cart/v1.0/address")
-    fun getAddresses(
-        @Query("uid") uid: Int?,@Query("mobile_no") mobile_no: Int?,@Query("checkout_mode") checkout_mode: String?,@Query("tags") tags: Int?,@Query("is_default") is_default: Boolean?
-        
-    )
-    : Deferred<Response<GetAddressResponse>>
-    
-    @POST ("/service/application/cart/v1.0/address")
-    fun addAddress(
-        
-        @Body body: SaveAddressRequest
-    )
-    : Deferred<Response<SaveAddressResponse>>
-    
-    @GET ("/service/application/cart/v1.0/address/{id}")
-    fun getAddressById(@Path("id") id: Int,
-        @Query("uid") uid: Int?,@Query("mobile_no") mobile_no: Int?,@Query("checkout_mode") checkout_mode: String?,@Query("tags") tags: Int?,@Query("is_default") is_default: Boolean?
-        
-    )
-    : Deferred<Response<GetAddressResponse>>
-    
-    @PUT ("/service/application/cart/v1.0/address/{id}")
-    fun updateAddress(@Path("id") id: Int,
-        
-        @Body body: UpdateAddressRequest
-    )
-    : Deferred<Response<UpdateAddressResponse>>
-    
-    @DELETE ("/service/application/cart/v1.0/address/{id}")
-    fun removeAddress(@Path("id") id: Int
-        
-        
-    )
-    : Deferred<Response<DeleteAddressResponse>>
-    
-    @POST ("/service/application/cart/v1.0/select-address")
-    fun selectAddress(
-        
-        @Body body: SelectCartAddressRequest
-    )
-    : Deferred<Response<CartResponse>>
-    
-    @GET ("/service/application/cart/v1.0/payment")
-    fun getPaymentModes(
-        @Query("uid") uid: String?,@Query("address_id") address_id: String?,@Query("payment_mode") payment_mode: String?,@Query("payment_identifier") payment_identifier: String?,@Query("aggregator_name") aggregator_name: String?,@Query("merchant_code") merchant_code: String?
-        
-    )
-    : Deferred<Response<PaymentOptions>>
-    
-    @PUT ("/service/application/cart/v1.0/payment")
-    fun selectPaymentMode(
-        @Query("uid") uid: String?,
-        @Body body: UpdateCartPaymentRequest
-    )
-    : Deferred<Response<PaymentOptions>>
-    
-    @GET ("/service/application/cart/v1.0/shipment")
-    fun getShipments(
-        @Query("p") p: Boolean?,@Query("uid") uid: Int?,@Query("address_id") address_id: Int?
-        
-    )
-    : Deferred<Response<CartShipmentsResponse>>
-    
-    @POST ("/service/application/cart/v1.0/checkout")
-    fun checkoutCart(
-        
-        @Body body: CartCheckoutRequest
-    )
-    : Deferred<Response<CartCheckoutResponse>>
-    
-    @PUT ("/service/application/cart/v1.0/meta")
-    fun updateCartMeta(
-        @Query("uid") uid: Int?,
-        @Body body: CartMetaRequest
-    )
-    : Deferred<Response<CartMetaResponse>>
-    
-    @POST ("/service/application/cart/v1.0/share-cart")
-    fun getCartShareLink(
-        
-        @Body body: GetShareCartLinkRequest
-    )
-    : Deferred<Response<GetShareCartLinkResponse>>
-    
-    @GET ("/service/application/cart/v1.0/share-cart/{token}")
-    fun getCartSharedItems(@Path("token") token: String
-        
-        
-    )
-    : Deferred<Response<SharedCartResponse>>
-    
-    @POST ("/service/application/cart/v1.0/share-cart/{token}/{action}")
-    fun updateCartWithSharedItems(@Path("token") token: String,@Path("action") action: String
-        
-        
-    )
-    : Deferred<Response<SharedCartResponse>>
     
 }
 
