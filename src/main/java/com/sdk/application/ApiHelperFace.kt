@@ -121,23 +121,17 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<AutoCompleteResponse>>
     
-    fun addCollection(
-        
-        body: CreateCollection
-    )
-    :Deferred<Response<CollectionDetailResponse>>
-    
     fun getCollections(
          page_id: String?=null, page_size: Int?=null
         
     )
     :Deferred<Response<GetCollectionListingResponse>>
     
-    fun addCollectionItemsBySlug( slug: String,
+    fun addCollection(
         
-        body: CollectionItemsRequest
+        body: CreateCollection
     )
-    :Deferred<Response<CollectionItemsResponse>>
+    :Deferred<Response<CollectionDetailResponse>>
     
     fun getCollectionItemsBySlug( slug: String,
          f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null
@@ -145,17 +139,23 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<GetCollectionListingItemsResponse>>
     
-    fun updateCollectionDetailBySlug( slug: String
+    fun addCollectionItemsBySlug( slug: String,
         
-        
+        body: CollectionItemsRequest
     )
-    :Deferred<Response<CollectionsUpdateDetailResponse>>
+    :Deferred<Response<CollectionItemsResponse>>
     
     fun getCollectionDetailBySlug( slug: String
         
         
     )
     :Deferred<Response<CollectionDetailResponse>>
+    
+    fun updateCollectionDetailBySlug( slug: String
+        
+        
+    )
+    :Deferred<Response<CollectionsUpdateDetailResponse>>
     
     fun deleteCollectionDetailBySlug( slug: String
         
@@ -198,6 +198,148 @@ interface CatalogApiHelperFace {
         
     )
     :Deferred<Response<StoreListingResponse>>
+    
+}
+
+interface CartApiHelperFace {
+    
+    fun getCart(
+         uid: Int?=null, assign_card_id: Int?=null
+        
+    )
+    :Deferred<Response<GetCartResponse>>
+    
+    fun getCartLastModified(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<Any>>
+    
+    fun addItems(
+        
+        body: AddCartRequest
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun updateCart(
+        
+        body: UpdateCartRequest
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getItemCount(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<CartItemCountResponse>>
+    
+    fun getCoupons(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<GetCouponResponse>>
+    
+    fun applyCoupon(
+         i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,
+        body: ApplyCouponRequest
+    )
+    :Deferred<Response<SaveCouponResponse>>
+    
+    fun removeCoupon(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getBulkDiscountOffers(
+         item_id: Int?=null, article_id: String?=null, uid: Int?=null, slug: String?=null
+        
+    )
+    :Deferred<Response<BulkPriceResponse>>
+    
+    fun getAddresses(
+         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+        
+    )
+    :Deferred<Response<GetAddressResponse>>
+    
+    fun addAddress(
+        
+        body: SaveAddressRequest
+    )
+    :Deferred<Response<SaveAddressResponse>>
+    
+    fun getAddressById( id: Int,
+         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+        
+    )
+    :Deferred<Response<GetAddressResponse>>
+    
+    fun updateAddress( id: Int,
+        
+        body: UpdateAddressRequest
+    )
+    :Deferred<Response<UpdateAddressResponse>>
+    
+    fun removeAddress( id: Int
+        
+        
+    )
+    :Deferred<Response<DeleteAddressResponse>>
+    
+    fun selectAddress(
+        
+        body: SelectCartAddressRequest
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getPaymentModes(
+         uid: String?=null, address_id: String?=null, payment_mode: String?=null, payment_identifier: String?=null, aggregator_name: String?=null, merchant_code: String?=null
+        
+    )
+    :Deferred<Response<PaymentOptions>>
+    
+    fun selectPaymentMode(
+         uid: String?=null,
+        body: UpdateCartPaymentRequest
+    )
+    :Deferred<Response<PaymentOptions>>
+    
+    fun getShipments(
+         p: Boolean?=null, uid: Int?=null, address_id: Int?=null
+        
+    )
+    :Deferred<Response<CartShipmentsResponse>>
+    
+    fun checkoutCart(
+        
+        body: CartCheckoutRequest
+    )
+    :Deferred<Response<CartCheckoutResponse>>
+    
+    fun updateCartMeta(
+         uid: Int?=null,
+        body: CartMetaRequest
+    )
+    :Deferred<Response<CartMetaResponse>>
+    
+    fun getCartShareLink(
+        
+        body: GetShareCartLinkRequest
+    )
+    :Deferred<Response<GetShareCartLinkResponse>>
+    
+    fun getCartSharedItems( token: String
+        
+        
+    )
+    :Deferred<Response<SharedCartResponse>>
+    
+    fun updateCartWithSharedItems( token: String, action: String
+        
+        
+    )
+    :Deferred<Response<SharedCartResponse>>
     
 }
 
@@ -247,49 +389,251 @@ interface LeadApiHelperFace {
     
 }
 
-interface ShareApiHelperFace {
+interface PaymentApiHelperFace {
     
-    fun getApplicationQRCode(
+    fun getAggregatorsConfig(
         
         
     )
-    :Deferred<Response<QRCodeResp>>
+    :Deferred<Response<AggregatorsConfigDetailResponse>>
     
-    fun getProductQRCodeBySlug( slug: String
+    fun attachCardToCustomer(
+        
+        body: AttachCardRequest
+    )
+    :Deferred<Response<AttachCardsResponse>>
+    
+    fun getActiveCardAggregator(
+         refresh: Boolean?=null
+        
+    )
+    :Deferred<Response<ActiveCardPaymentGatewayResponse>>
+    
+    fun getActiveUserCards(
+         force_refresh: Boolean?=null
+        
+    )
+    :Deferred<Response<ListCardsResponse>>
+    
+    fun deleteUserCard(
+        
+        body: DeletehCardRequest
+    )
+    :Deferred<Response<DeleteCardsResponse>>
+    
+    fun verifyCustomerForPayment(
+        
+        body: ValidateCustomerRequest
+    )
+    :Deferred<Response<ValidateCustomerResponse>>
+    
+    fun verifyAndChargePayment(
+        
+        body: ChargeCustomerRequest
+    )
+    :Deferred<Response<ChargeCustomerResponse>>
+    
+    fun initialisePayment(
+        
+        body: PaymentInitializationRequest
+    )
+    :Deferred<Response<PaymentInitializationResponse>>
+    
+    fun checkAndUpdatePaymentStatus(
+        
+        body: PaymentStatusUpdateRequest
+    )
+    :Deferred<Response<PaymentStatusUpdateResponse>>
+    
+    fun getUserBeneficiariesDetail( order_id: String
         
         
     )
-    :Deferred<Response<QRCodeResp>>
+    :Deferred<Response<OrderBeneficiaryResponse>>
     
-    fun getCollectionQRCodeBySlug( slug: String
+    fun verifyIfscCode(
+         ifsc_code: String?=null
+        
+    )
+    :Deferred<Response<IfscCodeResponse>>
+    
+    fun getOrderBeneficiariesDetail( order_id: String
         
         
     )
-    :Deferred<Response<QRCodeResp>>
+    :Deferred<Response<OrderBeneficiaryResponse>>
     
-    fun getUrlQRCode( url: String
+    fun verifyOtpAndAddBeneficiaryForBank(
+        
+        body: AddBeneficiaryViaOtpVerificationRequest
+    )
+    :Deferred<Response<AddBeneficiaryViaOtpVerificationResponse>>
+    
+    fun addBeneficiaryDetails(
+        
+        body: AddBeneficiaryDetailsRequest
+    )
+    :Deferred<Response<Any>>
+    
+    fun verifyOtpAndAddBeneficiaryForWallet(
+        
+        body: WalletOtpRequest
+    )
+    :Deferred<Response<WalletOtpResponse>>
+    
+    fun updateDefaultBeneficiary(
+        
+        body: SetDefaultBeneficiaryRequest
+    )
+    :Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+}
+
+interface PosCartApiHelperFace {
+    
+    fun getCart(
+         uid: Int?=null, assign_card_id: Int?=null
+        
+    )
+    :Deferred<Response<GetCartResponse>>
+    
+    fun getCartLastModified(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<Any>>
+    
+    fun addItems(
+        
+        body: AddCartRequest
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun updateCart(
+        
+        body: UpdateCartRequest
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getItemCount(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<CartItemCountResponse>>
+    
+    fun getCoupons(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<GetCouponResponse>>
+    
+    fun applyCoupon(
+         i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,
+        body: ApplyCouponRequest
+    )
+    :Deferred<Response<SaveCouponResponse>>
+    
+    fun removeCoupon(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getBulkDiscountOffers(
+         item_id: Int?=null, article_id: String?=null, uid: Int?=null, slug: String?=null
+        
+    )
+    :Deferred<Response<BulkPriceResponse>>
+    
+    fun getAddresses(
+         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+        
+    )
+    :Deferred<Response<GetAddressResponse>>
+    
+    fun addAddress(
+        
+        body: SaveAddressRequest
+    )
+    :Deferred<Response<SaveAddressResponse>>
+    
+    fun getAddressById( id: Int,
+         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+        
+    )
+    :Deferred<Response<GetAddressResponse>>
+    
+    fun updateAddress( id: Int,
+        
+        body: UpdateAddressRequest
+    )
+    :Deferred<Response<UpdateAddressResponse>>
+    
+    fun removeAddress( id: Int
         
         
     )
-    :Deferred<Response<QRCodeResp>>
+    :Deferred<Response<DeleteAddressResponse>>
     
-    fun createShortLink(
+    fun selectAddress(
         
-        body: ShortLinkReq
+        body: SelectCartAddressRequest
     )
-    :Deferred<Response<ShortLinkRes>>
+    :Deferred<Response<CartResponse>>
     
-    fun getShortLinkByHash( hash: String
-        
-        
-    )
-    :Deferred<Response<ShortLinkRes>>
-    
-    fun getOriginalShortLinkByHash( hash: String
-        
+    fun getPaymentModes(
+         uid: String?=null, address_id: String?=null, payment_mode: String?=null, payment_identifier: String?=null, aggregator_name: String?=null, merchant_code: String?=null
         
     )
-    :Deferred<Response<ShortLinkRes>>
+    :Deferred<Response<PaymentOptions>>
+    
+    fun selectPaymentMode(
+         uid: String?=null,
+        body: UpdateCartPaymentRequest
+    )
+    :Deferred<Response<PaymentOptions>>
+    
+    fun getShipments(
+         pick_at_store_uid: Int?=null, ordering_store_id: Int?=null, p: Boolean?=null, uid: Int?=null, address_id: Int?=null
+        
+    )
+    :Deferred<Response<CartShipmentsResponse>>
+    
+    fun updateShipments(
+         i: Boolean?=null, p: Boolean?=null, uid: Int?=null, address_id: Int?=null, order_type: String?=null,
+        body: UpdateCartShipmentRequest
+    )
+    :Deferred<Response<CartShipmentsResponse>>
+    
+    fun checkoutCart(
+         uid: Boolean?=null,
+        body: CartCheckoutRequest
+    )
+    :Deferred<Response<CartCheckoutResponse>>
+    
+    fun updateCartMeta(
+         uid: Int?=null,
+        body: CartMetaRequest
+    )
+    :Deferred<Response<CartMetaResponse>>
+    
+    fun getCartShareLink(
+        
+        body: GetShareCartLinkRequest
+    )
+    :Deferred<Response<GetShareCartLinkResponse>>
+    
+    fun getCartSharedItems( token: String
+        
+        
+    )
+    :Deferred<Response<SharedCartResponse>>
+    
+    fun updateCartWithSharedItems( token: String, action: String
+        
+        
+    )
+    :Deferred<Response<SharedCartResponse>>
     
 }
 

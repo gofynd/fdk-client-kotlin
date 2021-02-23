@@ -6,7 +6,11 @@ import retrofit2.http.*
 
 interface CatalogDataManager : CatalogApiHelperFace
 
+interface CartDataManager : CartApiHelperFace
+
 interface LeadDataManager : LeadApiHelperFace
 
-interface ShareDataManager : ShareApiHelperFace
+interface PaymentDataManager : PaymentApiHelperFace
+
+interface PosCartDataManager : PosCartApiHelperFace
 
