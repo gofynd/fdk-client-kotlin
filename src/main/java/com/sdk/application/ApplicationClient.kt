@@ -14,6 +14,10 @@ class ApplicationClient(config:ApplicationConfig) {
         PaymentDataManagerClass(config)
     }
     
+    val order by lazy {
+        OrderDataManagerClass(config)
+    }
+    
     val posCart by lazy {
         PosCartDataManagerClass(config)
     }

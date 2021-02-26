@@ -35,9 +35,9 @@
   * [Communication#updateAudienceById](#communicationupdateaudiencebyid)
   * [Communication#getNSampleRecordsFromCsv](#communicationgetnsamplerecordsfromcsv)
   * [Communication#getEmailProviders](#communicationgetemailproviders)
+  * [Communication#createEmailProvider](#communicationcreateemailprovider)
   * [Communication#getEmailProviderById](#communicationgetemailproviderbyid)
   * [Communication#updateEmailProviderById](#communicationupdateemailproviderbyid)
-  * [Communication#createEmailProvider](#communicationcreateemailprovider)
   * [Communication#getEmailTemplates](#communicationgetemailtemplates)
   * [Communication#createEmailTemplate](#communicationcreateemailtemplate)
   * [Communication#getSystemEmailTemplates](#communicationgetsystememailtemplates)
@@ -601,6 +601,27 @@ Get email providers
 ---
 
 
+#### Communication#createEmailProvider
+Create email provider
+
+```javascript
+// Promise
+const promise = communication.createEmailProvider();
+
+// Async/Await
+const data = await communication.createEmailProvider();
+
+```
+
+
+
+
+Create email provider
+
+
+---
+
+
 #### Communication#getEmailProviderById
 Get email provider by id
 
@@ -646,27 +667,6 @@ const data = await communication.updateEmailProviderById(, );
 
 
 Update email provider by id
-
-
----
-
-
-#### Communication#createEmailProvider
-Create email provider
-
-```javascript
-// Promise
-const promise = communication.createEmailProvider();
-
-// Async/Await
-const data = await communication.createEmailProvider();
-
-```
-
-
-
-
-Create email provider
 
 
 ---

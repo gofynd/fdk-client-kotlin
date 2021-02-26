@@ -4,6 +4,7 @@
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Lead](#Lead) - Handles communication between Staff and Users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
+* [Order](#Order) - Handles Platform websites OMS 
 * [PosCart](#PosCart) - Cart APIs 
 
 ----
@@ -37,9 +38,9 @@
     * [Catalog#getCollections](#cataloggetcollections)
     * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
     * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
+    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#deleteCollectionDetailBySlug](#catalogdeletecollectiondetailbyslug)
     * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
-    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#getFollowedListing](#cataloggetfollowedlisting)
     * [Catalog#unfollowById](#catalogunfollowbyid)
     * [Catalog#followById](#catalogfollowbyid)
@@ -72,6 +73,8 @@
     * [Payment#verifyAndChargePayment](#paymentverifyandchargepayment)
     * [Payment#initialisePayment](#paymentinitialisepayment)
     * [Payment#checkAndUpdatePaymentStatus](#paymentcheckandupdatepaymentstatus)
+    * [Payment#getPaymentModeRoutes](#paymentgetpaymentmoderoutes)
+    * [Payment#getPosPaymentModeRoutes](#paymentgetpospaymentmoderoutes)
     * [Payment#getUserBeneficiariesDetail](#paymentgetuserbeneficiariesdetail)
     * [Payment#verifyIfscCode](#paymentverifyifsccode)
     * [Payment#getOrderBeneficiariesDetail](#paymentgetorderbeneficiariesdetail)
@@ -79,6 +82,17 @@
     * [Payment#addBeneficiaryDetails](#paymentaddbeneficiarydetails)
     * [Payment#verifyOtpAndAddBeneficiaryForWallet](#paymentverifyotpandaddbeneficiaryforwallet)
     * [Payment#updateDefaultBeneficiary](#paymentupdatedefaultbeneficiary)
+    
+   
+
+* [Order](#Order)
+  * Methods
+    * [Order#getOrders](#ordergetorders)
+    * [Order#getOrderById](#ordergetorderbyid)
+    * [Order#getShipmentById](#ordergetshipmentbyid)
+    * [Order#getShipmentReasons](#ordergetshipmentreasons)
+    * [Order#updateShipmentStatus](#orderupdateshipmentstatus)
+    * [Order#trackShipment](#ordertrackshipment)
     
    
 
@@ -1524,13 +1538,74 @@ Success Response:
 
 
 
-The attached items of an collection. See example below or refer `GetCollectionListingItemsResponse` for details
+The attached items of an collection. See example below or refer `ProductListingResponse` for details
 
 
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/GetCollectionListingItemsResponse"
+  "$ref": "#/components/schemas/ProductListingResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ErrorResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Catalog#updateCollectionDetailBySlug
+Update a collection
+
+```javascript
+// Promise
+const promise = catalog.updateCollectionDetailBySlug(slug, );
+
+// Async/Await
+const data = await catalog.updateCollectionDetailBySlug(slug, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
+
+Update a collection by it's slug. On successful request, returns the updated collection
+
+Success Response:
+
+
+
+The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
 }`
 
 
@@ -1653,67 +1728,6 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/CollectionDetailResponse"
-}`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### Catalog#updateCollectionDetailBySlug
-Update a collection
-
-```javascript
-// Promise
-const promise = catalog.updateCollectionDetailBySlug(slug, );
-
-// Async/Await
-const data = await catalog.updateCollectionDetailBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
-
-Update a collection by it's slug. On successful request, returns the updated collection
-
-Success Response:
-
-
-
-The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
 }`
 
 
@@ -3207,15 +3221,17 @@ Get payment gateway keys
 
 ```javascript
 // Promise
-const promise = payment.getAggregatorsConfig();
+const promise = payment.getAggregatorsConfig(x-api-token, refresh, );
 
 // Async/Await
-const data = await payment.getAggregatorsConfig();
+const data = await payment.getAggregatorsConfig(x-api-token, refresh, );
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| x-api-token | string | api token | 
+| refresh | boolean | refresh cache | 
 
 Get payment gateway (key, secrets, merchant, sdk/api detail) to complete payment at front-end.
 
@@ -3884,6 +3900,173 @@ Error Response:
 ---
 
 
+#### Payment#getPaymentModeRoutes
+Get All Valid Payment Options
+
+```javascript
+// Promise
+const promise = payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address, );
+
+// Async/Await
+const data = await payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| amount | integer | Payment amount | 
+| cart_id | string | Cart id | 
+| pincode | integer | Pincode | 
+| checkout_mode | string | Checkout mode | 
+| refresh | boolean |  | 
+| assign_card_id | string | selected card id | 
+| delivery_address | string | URIencoded json delivery address of cart for annonymous user | 
+
+Use this API to get Get All Valid Payment Options for making payment
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentOptionsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#getPosPaymentModeRoutes
+Get All Valid Payment Options for POS
+
+```javascript
+// Promise
+const promise = payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address, );
+
+// Async/Await
+const data = await payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| amount | integer | Payment amount | 
+| cart_id | string | Cart id | 
+| pincode | integer | Pincode | 
+| checkout_mode | string | Checkout mode | 
+| refresh | boolean |  | 
+| assign_card_id | string | selected card id | 
+| order_type | string | Order type | 
+| delivery_address | string | URIencoded json delivery address of cart for annonymous user | 
+
+Use this API to get Get All Valid Payment Options for making payment
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentOptionsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
 #### Payment#getUserBeneficiariesDetail
 List User Beneficiary
 
@@ -4217,7 +4400,9 @@ Success
 
 Content Type: `application/json`
 
-Schema: ``
+Schema: `{
+  "$ref": "#/components/schemas/RefundAccountResponse"
+}`
 
 
 
@@ -4401,6 +4586,488 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+
+---
+
+
+## Order
+
+```javascript
+const { Configuration, Order } = require('fdk-client-nodejs/application')
+const conf = new Configuration({
+    ApplicationID: "507f191e810c19729de860ea",
+    ApplicationToken: "hu67dfhddf"
+});
+const order = new Order(conf);
+
+```
+
+
+#### Order#getOrders
+Get Orders for application based on application Id
+
+```javascript
+// Promise
+const promise = order.getOrders(page_no, page_size, from_date, to_date, );
+
+// Async/Await
+const data = await order.getOrders(page_no, page_size, from_date, to_date, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| page_no | string | Current page number | 
+| page_size | string | Page limit | 
+| from_date | string | From Date | 
+| to_date | string | To Date | 
+
+Get Orders
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/OrderList"
+}`
+
+
+
+
+
+
+
+
+API Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Order#getOrderById
+Get Order by order id for application based on application Id
+
+```javascript
+// Promise
+const promise = order.getOrderById(order_id, );
+
+// Async/Await
+const data = await order.getOrderById(order_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| order_id | string | Order Id | 
+
+Get Order By Fynd Order Id
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/OrderById"
+}`
+
+
+
+
+
+
+
+
+API Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Order#getShipmentById
+Get Shipment by shipment id and order id for application based on application Id
+
+```javascript
+// Promise
+const promise = order.getShipmentById(shipment_id, );
+
+// Async/Await
+const data = await order.getShipmentById(shipment_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipment_id | string | Shipment Id | 
+
+Get Shipment
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ShipmentById"
+}`
+
+
+
+
+
+
+
+
+API Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Order#getShipmentReasons
+Get Shipment reasons by shipment id and order id for application based on application Id
+
+```javascript
+// Promise
+const promise = order.getShipmentReasons(shipment_id, );
+
+// Async/Await
+const data = await order.getShipmentReasons(shipment_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipment_id | string | Shipment Id | 
+
+Get Shipment Reasons
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ShipmentReasons"
+}`
+
+
+
+
+
+
+
+
+API Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Order#updateShipmentStatus
+Update Shipment status by shipment id and order id for application based on application Id
+
+```javascript
+// Promise
+const promise = order.updateShipmentStatus(shipment_id, );
+
+// Async/Await
+const data = await order.updateShipmentStatus(shipment_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipment_id | string | Shipment Id | 
+
+Update Shipment Status
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ShipmentStatusUpdate"
+}`
+
+
+
+
+
+
+
+
+API Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Order#trackShipment
+Track Shipment by shipment id and order id for application based on application Id
+
+```javascript
+// Promise
+const promise = order.trackShipment(shipment_id, );
+
+// Async/Await
+const data = await order.trackShipment(shipment_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipment_id | string | Shipment Id | 
+
+Shipment Track
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ShipmentTrack"
+}`
+
+
+
+
+
+
+
+
+API Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ApefaceApiError"
 }`
 
 
@@ -5626,7 +6293,13 @@ OK
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/CartItemCountResponse"
+  "type": "object",
+  "properties": {
+    "user_cart_items_count": {
+      "type": "integer",
+      "description": "Item count present in cart"
+    }
+  }
 }`
 
 
@@ -5926,10 +6599,10 @@ Fetch Address
 
 ```javascript
 // Promise
-const promise = poscart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+const promise = poscart.getAddresses(uid, mobile_no, checkout_mode, tags, default, );
 
 // Async/Await
-const data = await poscart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+const data = await poscart.getAddresses(uid, mobile_no, checkout_mode, tags, default, );
 
 ```
 
@@ -5939,7 +6612,7 @@ const data = await poscart.getAddresses(uid, mobile_no, checkout_mode, tags, is_
 | mobile_no | integer |  | 
 | checkout_mode | string |  | 
 | tags | integer |  | 
-| is_default | boolean |  | 
+| default | integer |  | 
 
 Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
@@ -6019,10 +6692,10 @@ Fetch Single Address
 
 ```javascript
 // Promise
-const promise = poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+const promise = poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, default, );
 
 // Async/Await
-const data = await poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+const data = await poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, default, );
 
 ```
 
@@ -6033,7 +6706,7 @@ const data = await poscart.getAddressById(id, uid, mobile_no, checkout_mode, tag
 | mobile_no | integer |  | 
 | checkout_mode | string |  | 
 | tags | integer |  | 
-| is_default | boolean |  | 
+| default | integer |  | 
 
 Get a addresses with the given id. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
@@ -8212,7 +8885,12 @@ Cart meta updated successfully
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/CartMetaResponse"
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    }
+  }
 }`
 
 
@@ -8228,7 +8906,10 @@ Missing required Field
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/CartMetaMissingResponse"
+  "type": "array",
+  "items": {
+    "type": "string"
+  }
 }`
 
 
@@ -8272,7 +8953,15 @@ Token Generated successfully
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/GetShareCartLinkResponse"
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string"
+    },
+    "share_url": {
+      "type": "string"
+    }
+  }
 }`
 
 
@@ -8331,7 +9020,15 @@ Cart for valid token
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
+  "type": "object",
+  "properties": {
+    "cart": {
+      "$ref": "#/components/schemas/SharedCartResponse"
+    },
+    "error": {
+      "type": "string"
+    }
+  }
 }`
 
 
@@ -8347,7 +9044,15 @@ No cart found for sent token
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
+  "type": "object",
+  "properties": {
+    "cart": {
+      "type": "object"
+    },
+    "error": {
+      "type": "string"
+    }
+  }
 }`
 
 
@@ -8393,7 +9098,12 @@ Success of Merge or Replace of cart with `shared_cart_details`                  
 Content Type: `application/json`
 
 Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
+  "type": "object",
+  "properties": {
+    "cart": {
+      "$ref": "#/components/schemas/SharedCartResponse"
+    }
+  }
 }`
 
 

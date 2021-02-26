@@ -4,6 +4,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
 
+
 interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/")
@@ -165,7 +166,14 @@ interface CatalogApiList {
         @Query("f") f: String?,@Query("filters") filters: Boolean?,@Query("sort_on") sort_on: String?,@Query("page_id") page_id: String?,@Query("page_size") page_size: Int?
         
     )
-    : Deferred<Response<GetCollectionListingItemsResponse>>
+    : Deferred<Response<ProductListingResponse>>
+    
+    @PUT ("/service/application/catalog/v1.0/collections/{slug}/")
+    fun updateCollectionDetailBySlug(@Path("slug") slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionsUpdateDetailResponse>>
     
     @DELETE ("/service/application/catalog/v1.0/collections/{slug}/")
     fun deleteCollectionDetailBySlug(@Path("slug") slug: String
@@ -180,13 +188,6 @@ interface CatalogApiList {
         
     )
     : Deferred<Response<CollectionDetailResponse>>
-    
-    @PUT ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun updateCollectionDetailBySlug(@Path("slug") slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionsUpdateDetailResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
     fun getFollowedListing(@Path("collection_type") collection_type: String
@@ -223,7 +224,7 @@ interface CatalogApiList {
     )
     : Deferred<Response<FollowIdsResponse>>
     
-    @GET ("/service/application/catalog/v1.0/analytics/store-list/")
+    @GET ("/service/application/catalog/v1.0/locations/")
     fun getStores(
         @Query("page_no") page_no: Int?,@Query("page_size") page_size: Int?,@Query("q") q: String?,@Query("range") range: Int?,@Query("latitude") latitude: Double?,@Query("longitude") longitude: Double?
         
@@ -288,8 +289,8 @@ interface LeadApiList {
 interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/config/aggregators/key")
-    fun getAggregatorsConfig(
-        
+    fun getAggregatorsConfig(@Header("x-api-token") x-api-token: String,
+        @Query("refresh") refresh: Boolean?
         
     )
     : Deferred<Response<AggregatorsConfigDetailResponse>>
@@ -350,6 +351,20 @@ interface PaymentApiList {
     )
     : Deferred<Response<PaymentStatusUpdateResponse>>
     
+    @GET ("/service/application/payment/v1.0/payment/options")
+    fun getPaymentModeRoutes(@Query("amount") amount: Int,@Query("cart_id") cart_id: String,@Query("pincode") pincode: Int,@Query("checkout_mode") checkout_mode: String,
+        @Query("refresh") refresh: Boolean?,@Query("assign_card_id") assign_card_id: String?,@Query("delivery_address") delivery_address: String?
+        
+    )
+    : Deferred<Response<PaymentOptionsResponse>>
+    
+    @GET ("/service/application/payment/v1.0/payment/options/pos")
+    fun getPosPaymentModeRoutes(@Query("amount") amount: Int,@Query("cart_id") cart_id: String,@Query("pincode") pincode: Int,@Query("checkout_mode") checkout_mode: String,@Query("order_type") order_type: String,
+        @Query("refresh") refresh: Boolean?,@Query("assign_card_id") assign_card_id: String?,@Query("delivery_address") delivery_address: String?
+        
+    )
+    : Deferred<Response<PaymentOptionsResponse>>
+    
     @GET ("/service/application/payment/v1.0/refund/beneficiary/user")
     fun getUserBeneficiariesDetail(@Query("order_id") order_id: String
         
@@ -383,7 +398,7 @@ interface PaymentApiList {
         
         @Body body: AddBeneficiaryDetailsRequest
     )
-    : Deferred<Response<Any>>
+    : Deferred<Response<RefundAccountResponse>>
     
     @POST ("/service/application/payment/v1.0/refund/verification/wallet")
     fun verifyOtpAndAddBeneficiaryForWallet(
@@ -398,6 +413,52 @@ interface PaymentApiList {
         @Body body: SetDefaultBeneficiaryRequest
     )
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+}
+
+interface OrderApiList {
+    
+    @GET ("/services/application/v1.0/orders")
+    fun getOrders(
+        @Query("page_no") page_no: String?,@Query("page_size") page_size: String?,@Query("from_date") from_date: String?,@Query("to_date") to_date: String?
+        
+    )
+    : Deferred<Response<OrderList>>
+    
+    @GET ("/services/application/v1.0/orders/{order_id}")
+    fun getOrderById(@Path("order_id") order_id: String
+        
+        
+    )
+    : Deferred<Response<OrderById>>
+    
+    @GET ("/services/application/v1.0/orders/shipments/{shipment_id}")
+    fun getShipmentById(@Path("shipment_id") shipment_id: String
+        
+        
+    )
+    : Deferred<Response<ShipmentById>>
+    
+    @GET ("/services/application/v1.0/orders/shipments/{shipment_id}/reasons")
+    fun getShipmentReasons(@Path("shipment_id") shipment_id: String
+        
+        
+    )
+    : Deferred<Response<ShipmentReasons>>
+    
+    @PUT ("/services/application/v1.0/orders/shipments/{shipment_id}/status")
+    fun updateShipmentStatus(@Path("shipment_id") shipment_id: String,
+        
+        @Body body: ShipmentStatusUpdateBody
+    )
+    : Deferred<Response<ShipmentStatusUpdate>>
+    
+    @GET ("/services/application/v1.0/orders/shipments/{shipment_id}/track")
+    fun trackShipment(@Path("shipment_id") shipment_id: String
+        
+        
+    )
+    : Deferred<Response<ShipmentTrack>>
     
 }
 
@@ -436,7 +497,7 @@ interface PosCartApiList {
         @Query("uid") uid: Int?
         
     )
-    : Deferred<Response<CartItemCountResponse>>
+    : Deferred<Response<HashMap<String,Any>>>
     
     @GET ("/service/application/pos/cart/v1.0/coupon")
     fun getCoupons(
@@ -448,7 +509,7 @@ interface PosCartApiList {
     @POST ("/service/application/pos/cart/v1.0/coupon")
     fun applyCoupon(
         @Query("i") i: Boolean?,@Query("b") b: Boolean?,@Query("p") p: Boolean?,
-        @Body body: ApplyCouponRequest
+        @Body body: HashMap<String,Any>
     )
     : Deferred<Response<SaveCouponResponse>>
     
@@ -468,7 +529,7 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/address")
     fun getAddresses(
-        @Query("uid") uid: Int?,@Query("mobile_no") mobile_no: Int?,@Query("checkout_mode") checkout_mode: String?,@Query("tags") tags: Int?,@Query("is_default") is_default: Boolean?
+        @Query("uid") uid: Int?,@Query("mobile_no") mobile_no: Int?,@Query("checkout_mode") checkout_mode: String?,@Query("tags") tags: Int?,@Query("default") default: Int?
         
     )
     : Deferred<Response<GetAddressResponse>>
@@ -482,7 +543,7 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/address/{id}")
     fun getAddressById(@Path("id") id: Int,
-        @Query("uid") uid: Int?,@Query("mobile_no") mobile_no: Int?,@Query("checkout_mode") checkout_mode: String?,@Query("tags") tags: Int?,@Query("is_default") is_default: Boolean?
+        @Query("uid") uid: Int?,@Query("mobile_no") mobile_no: Int?,@Query("checkout_mode") checkout_mode: String?,@Query("tags") tags: Int?,@Query("default") default: Int?
         
     )
     : Deferred<Response<GetAddressResponse>>
@@ -546,30 +607,30 @@ interface PosCartApiList {
     @PUT ("/service/application/pos/cart/v1.0/meta")
     fun updateCartMeta(
         @Query("uid") uid: Int?,
-        @Body body: CartMetaRequest
+        @Body body: HashMap<String,Any>
     )
-    : Deferred<Response<CartMetaResponse>>
+    : Deferred<Response<HashMap<String,Any>>>
     
     @POST ("/service/application/pos/cart/v1.0/share-cart")
     fun getCartShareLink(
         
-        @Body body: GetShareCartLinkRequest
+        @Body body: HashMap<String,Any>
     )
-    : Deferred<Response<GetShareCartLinkResponse>>
+    : Deferred<Response<HashMap<String,Any>>>
     
     @GET ("/service/application/pos/cart/v1.0/share-cart/{token}")
     fun getCartSharedItems(@Path("token") token: String
         
         
     )
-    : Deferred<Response<SharedCartResponse>>
+    : Deferred<Response<HashMap<String,Any>>>
     
     @POST ("/service/application/pos/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String,@Path("action") action: String
         
         
     )
-    : Deferred<Response<SharedCartResponse>>
+    : Deferred<Response<HashMap<String,Any>>>
     
 }
 

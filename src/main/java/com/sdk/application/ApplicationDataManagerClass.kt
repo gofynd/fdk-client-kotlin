@@ -278,10 +278,22 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : CatalogDataManage
          f: String?, filters: Boolean?, sort_on: String?, page_id: String?, page_size: Int?
         
     )
-    : Deferred<Response<GetCollectionListingItemsResponse>> {
+    : Deferred<Response<ProductListingResponse>> {
         return catalogApiHelperClass.getCollectionItemsBySlug(
         slug = slug,
         f = f,filters = filters,sort_on = sort_on,page_id = page_id,page_size = page_size
+        
+        )
+    }
+    
+    override fun updateCollectionDetailBySlug( slug: String
+        
+        
+    )
+    : Deferred<Response<CollectionsUpdateDetailResponse>> {
+        return catalogApiHelperClass.updateCollectionDetailBySlug(
+        slug = slug
+        
         
         )
     }
@@ -304,18 +316,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : CatalogDataManage
     )
     : Deferred<Response<CollectionDetailResponse>> {
         return catalogApiHelperClass.getCollectionDetailBySlug(
-        slug = slug
-        
-        
-        )
-    }
-    
-    override fun updateCollectionDetailBySlug( slug: String
-        
-        
-    )
-    : Deferred<Response<CollectionsUpdateDetailResponse>> {
-        return catalogApiHelperClass.updateCollectionDetailBySlug(
         slug = slug
         
         
@@ -494,14 +494,14 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : PaymentDataManage
         PaymentApiHelperClass(config)
     }
     
-    override fun getAggregatorsConfig(
-        
+    override fun getAggregatorsConfig( x-api-token: String,
+         refresh: Boolean?
         
     )
     : Deferred<Response<AggregatorsConfigDetailResponse>> {
         return paymentApiHelperClass.getAggregatorsConfig(
-        
-        
+        x-api-token = x-api-token,
+        refresh = refresh
         
         )
     }
@@ -602,6 +602,30 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : PaymentDataManage
         )
     }
     
+    override fun getPaymentModeRoutes( amount: Int, cart_id: String, pincode: Int, checkout_mode: String,
+         refresh: Boolean?, assign_card_id: String?, delivery_address: String?
+        
+    )
+    : Deferred<Response<PaymentOptionsResponse>> {
+        return paymentApiHelperClass.getPaymentModeRoutes(
+        amount = amount,cart_id = cart_id,pincode = pincode,checkout_mode = checkout_mode,
+        refresh = refresh,assign_card_id = assign_card_id,delivery_address = delivery_address
+        
+        )
+    }
+    
+    override fun getPosPaymentModeRoutes( amount: Int, cart_id: String, pincode: Int, checkout_mode: String, order_type: String,
+         refresh: Boolean?, assign_card_id: String?, delivery_address: String?
+        
+    )
+    : Deferred<Response<PaymentOptionsResponse>> {
+        return paymentApiHelperClass.getPosPaymentModeRoutes(
+        amount = amount,cart_id = cart_id,pincode = pincode,checkout_mode = checkout_mode,order_type = order_type,
+        refresh = refresh,assign_card_id = assign_card_id,delivery_address = delivery_address
+        
+        )
+    }
+    
     override fun getUserBeneficiariesDetail( order_id: String
         
         
@@ -654,7 +678,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : PaymentDataManage
         
         body: AddBeneficiaryDetailsRequest
     )
-    : Deferred<Response<Any>> {
+    : Deferred<Response<RefundAccountResponse>> {
         return paymentApiHelperClass.addBeneficiaryDetails(
         
         
@@ -683,6 +707,86 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : PaymentDataManage
         
         
         body = body
+        )
+    }
+    
+}
+
+class OrderDataManagerClass(val config: ApplicationConfig) : OrderDataManager {
+    
+    val orderApiHelperClass by lazy {
+        OrderApiHelperClass(config)
+    }
+    
+    override fun getOrders(
+         page_no: String?, page_size: String?, from_date: String?, to_date: String?
+        
+    )
+    : Deferred<Response<OrderList>> {
+        return orderApiHelperClass.getOrders(
+        
+        page_no = page_no,page_size = page_size,from_date = from_date,to_date = to_date
+        
+        )
+    }
+    
+    override fun getOrderById( order_id: String
+        
+        
+    )
+    : Deferred<Response<OrderById>> {
+        return orderApiHelperClass.getOrderById(
+        order_id = order_id
+        
+        
+        )
+    }
+    
+    override fun getShipmentById( shipment_id: String
+        
+        
+    )
+    : Deferred<Response<ShipmentById>> {
+        return orderApiHelperClass.getShipmentById(
+        shipment_id = shipment_id
+        
+        
+        )
+    }
+    
+    override fun getShipmentReasons( shipment_id: String
+        
+        
+    )
+    : Deferred<Response<ShipmentReasons>> {
+        return orderApiHelperClass.getShipmentReasons(
+        shipment_id = shipment_id
+        
+        
+        )
+    }
+    
+    override fun updateShipmentStatus( shipment_id: String,
+        
+        body: ShipmentStatusUpdateBody
+    )
+    : Deferred<Response<ShipmentStatusUpdate>> {
+        return orderApiHelperClass.updateShipmentStatus(
+        shipment_id = shipment_id,
+        
+        body = body
+        )
+    }
+    
+    override fun trackShipment( shipment_id: String
+        
+        
+    )
+    : Deferred<Response<ShipmentTrack>> {
+        return orderApiHelperClass.trackShipment(
+        shipment_id = shipment_id
+        
+        
         )
     }
     
@@ -746,7 +850,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
          uid: Int?
         
     )
-    : Deferred<Response<CartItemCountResponse>> {
+    : Deferred<Response<HashMap<String,Any>>> {
         return posCartApiHelperClass.getItemCount(
         
         uid = uid
@@ -768,7 +872,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
     
     override fun applyCoupon(
          i: Boolean?, b: Boolean?, p: Boolean?,
-        body: ApplyCouponRequest
+        body: HashMap<String,Any>
     )
     : Deferred<Response<SaveCouponResponse>> {
         return posCartApiHelperClass.applyCoupon(
@@ -803,13 +907,13 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
     }
     
     override fun getAddresses(
-         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, is_default: Boolean?
+         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, default: Int?
         
     )
     : Deferred<Response<GetAddressResponse>> {
         return posCartApiHelperClass.getAddresses(
         
-        uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,is_default = is_default
+        uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,default = default
         
         )
     }
@@ -827,13 +931,13 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
     }
     
     override fun getAddressById( id: Int,
-         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, is_default: Boolean?
+         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, default: Int?
         
     )
     : Deferred<Response<GetAddressResponse>> {
         return posCartApiHelperClass.getAddressById(
         id = id,
-        uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,is_default = is_default
+        uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,default = default
         
         )
     }
@@ -936,9 +1040,9 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
     
     override fun updateCartMeta(
          uid: Int?,
-        body: CartMetaRequest
+        body: HashMap<String,Any>
     )
-    : Deferred<Response<CartMetaResponse>> {
+    : Deferred<Response<HashMap<String,Any>>> {
         return posCartApiHelperClass.updateCartMeta(
         
         uid = uid,
@@ -948,9 +1052,9 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
     
     override fun getCartShareLink(
         
-        body: GetShareCartLinkRequest
+        body: HashMap<String,Any>
     )
-    : Deferred<Response<GetShareCartLinkResponse>> {
+    : Deferred<Response<HashMap<String,Any>>> {
         return posCartApiHelperClass.getCartShareLink(
         
         
@@ -962,7 +1066,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
         
         
     )
-    : Deferred<Response<SharedCartResponse>> {
+    : Deferred<Response<HashMap<String,Any>>> {
         return posCartApiHelperClass.getCartSharedItems(
         token = token
         
@@ -974,7 +1078,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartDataManage
         
         
     )
-    : Deferred<Response<SharedCartResponse>> {
+    : Deferred<Response<HashMap<String,Any>>> {
         return posCartApiHelperClass.updateCartWithSharedItems(
         token = token,action = action
         

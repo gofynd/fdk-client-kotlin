@@ -10,5 +10,7 @@ interface LeadDataManager : LeadApiHelperFace
 
 interface PaymentDataManager : PaymentApiHelperFace
 
+interface OrderDataManager : OrderApiHelperFace
+
 interface PosCartDataManager : PosCartApiHelperFace
 

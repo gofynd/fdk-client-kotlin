@@ -143,7 +143,13 @@ interface CatalogApiHelperFace {
          f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null
         
     )
-    :Deferred<Response<GetCollectionListingItemsResponse>>
+    :Deferred<Response<ProductListingResponse>>
+    
+    fun updateCollectionDetailBySlug( slug: String
+        
+        
+    )
+    :Deferred<Response<CollectionsUpdateDetailResponse>>
     
     fun deleteCollectionDetailBySlug( slug: String
         
@@ -156,12 +162,6 @@ interface CatalogApiHelperFace {
         
     )
     :Deferred<Response<CollectionDetailResponse>>
-    
-    fun updateCollectionDetailBySlug( slug: String
-        
-        
-    )
-    :Deferred<Response<CollectionsUpdateDetailResponse>>
     
     fun getFollowedListing( collection_type: String
         
@@ -249,8 +249,8 @@ interface LeadApiHelperFace {
 
 interface PaymentApiHelperFace {
     
-    fun getAggregatorsConfig(
-        
+    fun getAggregatorsConfig( x-api-token: String,
+         refresh: Boolean?=null
         
     )
     :Deferred<Response<AggregatorsConfigDetailResponse>>
@@ -303,6 +303,18 @@ interface PaymentApiHelperFace {
     )
     :Deferred<Response<PaymentStatusUpdateResponse>>
     
+    fun getPaymentModeRoutes( amount: Int, cart_id: String, pincode: Int, checkout_mode: String,
+         refresh: Boolean?=null, assign_card_id: String?=null, delivery_address: String?=null
+        
+    )
+    :Deferred<Response<PaymentOptionsResponse>>
+    
+    fun getPosPaymentModeRoutes( amount: Int, cart_id: String, pincode: Int, checkout_mode: String, order_type: String,
+         refresh: Boolean?=null, assign_card_id: String?=null, delivery_address: String?=null
+        
+    )
+    :Deferred<Response<PaymentOptionsResponse>>
+    
     fun getUserBeneficiariesDetail( order_id: String
         
         
@@ -331,7 +343,7 @@ interface PaymentApiHelperFace {
         
         body: AddBeneficiaryDetailsRequest
     )
-    :Deferred<Response<Any>>
+    :Deferred<Response<RefundAccountResponse>>
     
     fun verifyOtpAndAddBeneficiaryForWallet(
         
@@ -344,6 +356,46 @@ interface PaymentApiHelperFace {
         body: SetDefaultBeneficiaryRequest
     )
     :Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+}
+
+interface OrderApiHelperFace {
+    
+    fun getOrders(
+         page_no: String?=null, page_size: String?=null, from_date: String?=null, to_date: String?=null
+        
+    )
+    :Deferred<Response<OrderList>>
+    
+    fun getOrderById( order_id: String
+        
+        
+    )
+    :Deferred<Response<OrderById>>
+    
+    fun getShipmentById( shipment_id: String
+        
+        
+    )
+    :Deferred<Response<ShipmentById>>
+    
+    fun getShipmentReasons( shipment_id: String
+        
+        
+    )
+    :Deferred<Response<ShipmentReasons>>
+    
+    fun updateShipmentStatus( shipment_id: String,
+        
+        body: ShipmentStatusUpdateBody
+    )
+    :Deferred<Response<ShipmentStatusUpdate>>
+    
+    fun trackShipment( shipment_id: String
+        
+        
+    )
+    :Deferred<Response<ShipmentTrack>>
     
 }
 
@@ -377,7 +429,7 @@ interface PosCartApiHelperFace {
          uid: Int?=null
         
     )
-    :Deferred<Response<CartItemCountResponse>>
+    :Deferred<Response<HashMap<String,Any>>>
     
     fun getCoupons(
          uid: Int?=null
@@ -387,7 +439,7 @@ interface PosCartApiHelperFace {
     
     fun applyCoupon(
          i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,
-        body: ApplyCouponRequest
+        body: HashMap<String,Any>
     )
     :Deferred<Response<SaveCouponResponse>>
     
@@ -404,7 +456,7 @@ interface PosCartApiHelperFace {
     :Deferred<Response<BulkPriceResponse>>
     
     fun getAddresses(
-         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, default: Int?=null
         
     )
     :Deferred<Response<GetAddressResponse>>
@@ -416,7 +468,7 @@ interface PosCartApiHelperFace {
     :Deferred<Response<SaveAddressResponse>>
     
     fun getAddressById( id: Int,
-         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, default: Int?=null
         
     )
     :Deferred<Response<GetAddressResponse>>
@@ -471,27 +523,27 @@ interface PosCartApiHelperFace {
     
     fun updateCartMeta(
          uid: Int?=null,
-        body: CartMetaRequest
+        body: HashMap<String,Any>
     )
-    :Deferred<Response<CartMetaResponse>>
+    :Deferred<Response<HashMap<String,Any>>>
     
     fun getCartShareLink(
         
-        body: GetShareCartLinkRequest
+        body: HashMap<String,Any>
     )
-    :Deferred<Response<GetShareCartLinkResponse>>
+    :Deferred<Response<HashMap<String,Any>>>
     
     fun getCartSharedItems( token: String
         
         
     )
-    :Deferred<Response<SharedCartResponse>>
+    :Deferred<Response<HashMap<String,Any>>>
     
     fun updateCartWithSharedItems( token: String, action: String
         
         
     )
-    :Deferred<Response<SharedCartResponse>>
+    :Deferred<Response<HashMap<String,Any>>>
     
 }
 
