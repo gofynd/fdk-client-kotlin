@@ -8,9 +8,21 @@ interface CatalogDataManager : CatalogApiHelperFace
 
 interface LeadDataManager : LeadApiHelperFace
 
-interface PaymentDataManager : PaymentApiHelperFace
+interface ThemeDataManager : ThemeApiHelperFace
+
+interface UserDataManager : UserApiHelperFace
+
+interface ContentDataManager : ContentApiHelperFace
+
+interface CommunicationDataManager : CommunicationApiHelperFace
+
+interface ShareDataManager : ShareApiHelperFace
+
+interface FileStorageDataManager : FileStorageApiHelperFace
 
 interface OrderDataManager : OrderApiHelperFace
+
+interface FeedbackDataManager : FeedbackApiHelperFace
 
 interface PosCartDataManager : PosCartApiHelperFace
 

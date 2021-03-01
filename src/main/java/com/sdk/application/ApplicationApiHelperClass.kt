@@ -369,19 +369,6 @@ class CatalogApiHelperClass(val config: ApplicationConfig) : CatalogApiHelperFac
         )
     }
     
-    override fun unfollowById(
-         collection_type: String, collection_id: Int
-        
-        
-    )
-    : Deferred<Response<FollowPostResponse>> {
-        return catalogApiList.unfollowById(
-            collection_type = collection_type,collection_id = collection_id
-            
-            
-        )
-    }
-    
     override fun followById(
          collection_type: String, collection_id: Int
         
@@ -389,6 +376,19 @@ class CatalogApiHelperClass(val config: ApplicationConfig) : CatalogApiHelperFac
     )
     : Deferred<Response<FollowPostResponse>> {
         return catalogApiList.followById(
+            collection_type = collection_type,collection_id = collection_id
+            
+            
+        )
+    }
+    
+    override fun unfollowById(
+         collection_type: String, collection_id: Int
+        
+        
+    )
+    : Deferred<Response<FollowPostResponse>> {
+        return catalogApiList.unfollowById(
             collection_type = collection_type,collection_id = collection_id
             
             
@@ -582,249 +582,41 @@ class LeadApiHelperClass(val config: ApplicationConfig) : LeadApiHelperFace  {
     }
 }
 
-class PaymentApiHelperClass(val config: ApplicationConfig) : PaymentApiHelperFace  {
+class ThemeApiHelperClass(val config: ApplicationConfig) : ThemeApiHelperFace  {
     
-   private val paymentApiList: PaymentApiList by lazy {
-        generatepaymentApiList()
+   private val themeApiList: ThemeApiList by lazy {
+        generatethemeApiList()
     }
 
     
-    override fun getAggregatorsConfig(
-         x-api-token: String,
-         refresh: Boolean?
+    override fun getAppliedTheme(
         
-    )
-    : Deferred<Response<AggregatorsConfigDetailResponse>> {
-        return paymentApiList.getAggregatorsConfig(
-            x-api-token = x-api-token,
-            refresh = refresh
-            
-        )
-    }
-    
-    override fun attachCardToCustomer(
-        
-        
-        body: AttachCardRequest
-    )
-    : Deferred<Response<AttachCardsResponse>> {
-        return paymentApiList.attachCardToCustomer(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun getActiveCardAggregator(
-        
-         refresh: Boolean?
-        
-    )
-    : Deferred<Response<ActiveCardPaymentGatewayResponse>> {
-        return paymentApiList.getActiveCardAggregator(
-            
-            refresh = refresh
-            
-        )
-    }
-    
-    override fun getActiveUserCards(
-        
-         force_refresh: Boolean?
-        
-    )
-    : Deferred<Response<ListCardsResponse>> {
-        return paymentApiList.getActiveUserCards(
-            
-            force_refresh = force_refresh
-            
-        )
-    }
-    
-    override fun deleteUserCard(
-        
-        
-        body: DeletehCardRequest
-    )
-    : Deferred<Response<DeleteCardsResponse>> {
-        return paymentApiList.deleteUserCard(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun verifyCustomerForPayment(
-        
-        
-        body: ValidateCustomerRequest
-    )
-    : Deferred<Response<ValidateCustomerResponse>> {
-        return paymentApiList.verifyCustomerForPayment(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun verifyAndChargePayment(
-        
-        
-        body: ChargeCustomerRequest
-    )
-    : Deferred<Response<ChargeCustomerResponse>> {
-        return paymentApiList.verifyAndChargePayment(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun initialisePayment(
-        
-        
-        body: PaymentInitializationRequest
-    )
-    : Deferred<Response<PaymentInitializationResponse>> {
-        return paymentApiList.initialisePayment(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun checkAndUpdatePaymentStatus(
-        
-        
-        body: PaymentStatusUpdateRequest
-    )
-    : Deferred<Response<PaymentStatusUpdateResponse>> {
-        return paymentApiList.checkAndUpdatePaymentStatus(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun getPaymentModeRoutes(
-         amount: Int, cart_id: String, pincode: Int, checkout_mode: String,
-         refresh: Boolean?, assign_card_id: String?, delivery_address: String?
-        
-    )
-    : Deferred<Response<PaymentOptionsResponse>> {
-        return paymentApiList.getPaymentModeRoutes(
-            amount = amount,cart_id = cart_id,pincode = pincode,checkout_mode = checkout_mode,
-            refresh = refresh,assign_card_id = assign_card_id,delivery_address = delivery_address
-            
-        )
-    }
-    
-    override fun getPosPaymentModeRoutes(
-         amount: Int, cart_id: String, pincode: Int, checkout_mode: String, order_type: String,
-         refresh: Boolean?, assign_card_id: String?, delivery_address: String?
-        
-    )
-    : Deferred<Response<PaymentOptionsResponse>> {
-        return paymentApiList.getPosPaymentModeRoutes(
-            amount = amount,cart_id = cart_id,pincode = pincode,checkout_mode = checkout_mode,order_type = order_type,
-            refresh = refresh,assign_card_id = assign_card_id,delivery_address = delivery_address
-            
-        )
-    }
-    
-    override fun getUserBeneficiariesDetail(
-         order_id: String
         
         
     )
-    : Deferred<Response<OrderBeneficiaryResponse>> {
-        return paymentApiList.getUserBeneficiariesDetail(
-            order_id = order_id
+    : Deferred<Response<ThemesSchema>> {
+        return themeApiList.getAppliedTheme(
+            
             
             
         )
     }
     
-    override fun verifyIfscCode(
-        
-         ifsc_code: String?
-        
-    )
-    : Deferred<Response<IfscCodeResponse>> {
-        return paymentApiList.verifyIfscCode(
-            
-            ifsc_code = ifsc_code
-            
-        )
-    }
-    
-    override fun getOrderBeneficiariesDetail(
-         order_id: String
+    override fun getThemeForPreview(
+         theme_id: String
         
         
     )
-    : Deferred<Response<OrderBeneficiaryResponse>> {
-        return paymentApiList.getOrderBeneficiariesDetail(
-            order_id = order_id
+    : Deferred<Response<ThemesSchema>> {
+        return themeApiList.getThemeForPreview(
+            theme_id = theme_id
             
             
-        )
-    }
-    
-    override fun verifyOtpAndAddBeneficiaryForBank(
-        
-        
-        body: AddBeneficiaryViaOtpVerificationRequest
-    )
-    : Deferred<Response<AddBeneficiaryViaOtpVerificationResponse>> {
-        return paymentApiList.verifyOtpAndAddBeneficiaryForBank(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun addBeneficiaryDetails(
-        
-        
-        body: AddBeneficiaryDetailsRequest
-    )
-    : Deferred<Response<RefundAccountResponse>> {
-        return paymentApiList.addBeneficiaryDetails(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun verifyOtpAndAddBeneficiaryForWallet(
-        
-        
-        body: WalletOtpRequest
-    )
-    : Deferred<Response<WalletOtpResponse>> {
-        return paymentApiList.verifyOtpAndAddBeneficiaryForWallet(
-            
-            
-            body = body
-        )
-    }
-    
-    override fun updateDefaultBeneficiary(
-        
-        
-        body: SetDefaultBeneficiaryRequest
-    )
-    : Deferred<Response<SetDefaultBeneficiaryResponse>> {
-        return paymentApiList.updateDefaultBeneficiary(
-            
-            
-            body = body
         )
     }
     
 
-    private fun generatepaymentApiList(): PaymentApiList {
+    private fun generatethemeApiList(): ThemeApiList {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
         val authCredentials = Credentials.basic(
@@ -842,9 +634,884 @@ class PaymentApiHelperClass(val config: ApplicationConfig) : PaymentApiHelperFac
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             config.domain,
-            headerList, interceptorMap, "Payment"
+            headerList, interceptorMap, "Theme"
         )
-        return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as PaymentApiList
+        return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as ThemeApiList
+    }
+}
+
+class UserApiHelperClass(val config: ApplicationConfig) : UserApiHelperFace  {
+    
+   private val userApiList: UserApiList by lazy {
+        generateuserApiList()
+    }
+
+    
+    override fun loginWithFacebook(
+        
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithFacebook(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithGoogle(
+        
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithGoogle(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithGoogleAndroid(
+        
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithGoogleAndroid(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithGoogleIOS(
+        
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithGoogleIOS(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithOTP(
+        
+         platform: String?,
+        body: SendOtpRequestSchema
+    )
+    : Deferred<Response<SendOtpResponse>> {
+        return userApiList.loginWithOTP(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun loginWithEmailAndPassword(
+        
+        
+        body: PasswordLoginRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.loginWithEmailAndPassword(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun sendResetPasswordEmail(
+        
+         platform: String?,
+        body: SendResetPasswordEmailRequestSchema
+    )
+    : Deferred<Response<ResetPasswordSuccess>> {
+        return userApiList.sendResetPasswordEmail(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun forgotPassword(
+        
+        
+        body: ForgotPasswordRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.forgotPassword(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun sendResetToken(
+        
+        
+        body: CodeRequestBodySchema
+    )
+    : Deferred<Response<ResetPasswordSuccess>> {
+        return userApiList.sendResetToken(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithToken(
+        
+        
+        body: TokenRequestBodySchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.loginWithToken(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun registerWithForm(
+        
+         platform: String?,
+        body: FormRegisterRequestSchema
+    )
+    : Deferred<Response<RegisterFormSuccess>> {
+        return userApiList.registerWithForm(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun verifyEmail(
+        
+        
+        body: CodeRequestBodySchema
+    )
+    : Deferred<Response<VerifyEmailSuccess>> {
+        return userApiList.verifyEmail(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun verifyMobile(
+        
+        
+        body: CodeRequestBodySchema
+    )
+    : Deferred<Response<VerifyEmailSuccess>> {
+        return userApiList.verifyMobile(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun hasPassword(
+        
+        
+        
+    )
+    : Deferred<Response<HasPasswordSuccess>> {
+        return userApiList.hasPassword(
+            
+            
+            
+        )
+    }
+    
+    override fun updatePassword(
+        
+        
+        body: UpdatePasswordRequestSchema
+    )
+    : Deferred<Response<VerifyEmailSuccess>> {
+        return userApiList.updatePassword(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun logout(
+        
+        
+        
+    )
+    : Deferred<Response<LogoutSuccess>> {
+        return userApiList.logout(
+            
+            
+            
+        )
+    }
+    
+    override fun sendOTPOnMobile(
+        
+         platform: String?,
+        body: SendMobileOtpRequestSchema
+    )
+    : Deferred<Response<OtpSuccess>> {
+        return userApiList.sendOTPOnMobile(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun verifyMobileOTP(
+        
+         platform: String?,
+        body: VerifyOtpRequestSchema
+    )
+    : Deferred<Response<VerifyOtpSuccess>> {
+        return userApiList.verifyMobileOTP(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun sendOTPOnEmail(
+        
+         platform: String?,
+        body: SendEmailOtpRequestSchema
+    )
+    : Deferred<Response<EmailOtpSuccess>> {
+        return userApiList.sendOTPOnEmail(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun verifyEmailOTP(
+        
+         platform: String?,
+        body: VerifyOtpRequestSchema
+    )
+    : Deferred<Response<VerifyOtpSuccess>> {
+        return userApiList.verifyEmailOTP(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun getLoggedInUser(
+        
+        
+        
+    )
+    : Deferred<Response<UserSchema>> {
+        return userApiList.getLoggedInUser(
+            
+            
+            
+        )
+    }
+    
+    override fun getListOfActiveSessions(
+        
+        
+        
+    )
+    : Deferred<Response<SessionListSuccess>> {
+        return userApiList.getListOfActiveSessions(
+            
+            
+            
+        )
+    }
+    
+    override fun getPlatformConfig(
+        
+         name: String?
+        
+    )
+    : Deferred<Response<PlatformSchema>> {
+        return userApiList.getPlatformConfig(
+            
+            name = name
+            
+        )
+    }
+    
+    override fun updateProfile(
+        
+         platform: String?,
+        body: EditProfileRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.updateProfile(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun addMobileNumber(
+        
+         platform: String?,
+        body: EditMobileRequestSchema
+    )
+    : Deferred<Response<VerifyMobileOTPSuccess>> {
+        return userApiList.addMobileNumber(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun deleteMobileNumber(
+         active: Boolean, primary: Boolean, verified: Boolean, country_code: String, phone: String,
+         platform: String?
+        
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.deleteMobileNumber(
+            active = active,primary = primary,verified = verified,country_code = country_code,phone = phone,
+            platform = platform
+            
+        )
+    }
+    
+    override fun setMobileNumberAsPrimary(
+        
+        
+        body: SendVerificationLinkMobileRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.setMobileNumberAsPrimary(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun sendVerificationLinkToMobile(
+        
+         platform: String?,
+        body: SendVerificationLinkMobileRequestSchema
+    )
+    : Deferred<Response<SendMobileVerifyLinkSuccess>> {
+        return userApiList.sendVerificationLinkToMobile(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun addEmail(
+        
+         platform: String?,
+        body: EditEmailRequestSchema
+    )
+    : Deferred<Response<VerifyEmailOTPSuccess>> {
+        return userApiList.addEmail(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun deleteEmail(
+         active: Boolean, primary: Boolean, verified: Boolean, email: String,
+         platform: String?
+        
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.deleteEmail(
+            active = active,primary = primary,verified = verified,email = email,
+            platform = platform
+            
+        )
+    }
+    
+    override fun setEmailAsPrimary(
+        
+        
+        body: EditEmailRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.setEmailAsPrimary(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun sendVerificationLinkToEmail(
+        
+         platform: String?,
+        body: EditEmailRequestSchema
+    )
+    : Deferred<Response<SendEmailVerifyLinkSuccess>> {
+        return userApiList.sendVerificationLinkToEmail(
+            
+            platform = platform,
+            body = body
+        )
+    }
+    
+
+    private fun generateuserApiList(): UserApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "User"
+        )
+        return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as UserApiList
+    }
+}
+
+class ContentApiHelperClass(val config: ApplicationConfig) : ContentApiHelperFace  {
+    
+   private val contentApiList: ContentApiList by lazy {
+        generatecontentApiList()
+    }
+
+    
+    override fun getAnnouncements(
+        
+        
+        
+    )
+    : Deferred<Response<AnnouncementsResponseSchema>> {
+        return contentApiList.getAnnouncements(
+            
+            
+            
+        )
+    }
+    
+    override fun getBlog(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<CustomBlog>> {
+        return contentApiList.getBlog(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun getFaqs(
+        
+        
+        
+    )
+    : Deferred<Response<FaqResponseSchema>> {
+        return contentApiList.getFaqs(
+            
+            
+            
+        )
+    }
+    
+    override fun getLandingPage(
+         x-device-platform: String
+        
+        
+    )
+    : Deferred<Response<LandingPage>> {
+        return contentApiList.getLandingPage(
+            x-device-platform = x-device-platform
+            
+            
+        )
+    }
+    
+    override fun getLegalInformation(
+        
+        
+        
+    )
+    : Deferred<Response<ApplicationLegal>> {
+        return contentApiList.getLegalInformation(
+            
+            
+            
+        )
+    }
+    
+    override fun getNavigations(
+         x-device-platform: String
+        
+        
+    )
+    : Deferred<Response<Navigation>> {
+        return contentApiList.getNavigations(
+            x-device-platform = x-device-platform
+            
+            
+        )
+    }
+    
+    override fun getPage(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<CustomPage>> {
+        return contentApiList.getPage(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun getSeoConfiguration(
+        
+        
+        
+    )
+    : Deferred<Response<Seo>> {
+        return contentApiList.getSeoConfiguration(
+            
+            
+            
+        )
+    }
+    
+    override fun getSlideshow(
+         slug: String, x-device-platform: String
+        
+        
+    )
+    : Deferred<Response<Slideshow>> {
+        return contentApiList.getSlideshow(
+            slug = slug,x-device-platform = x-device-platform
+            
+            
+        )
+    }
+    
+    override fun getSupportInformation(
+        
+        
+        
+    )
+    : Deferred<Response<Support>> {
+        return contentApiList.getSupportInformation(
+            
+            
+            
+        )
+    }
+    
+    override fun getTags(
+        
+        
+        
+    )
+    : Deferred<Response<TagsSchema>> {
+        return contentApiList.getTags(
+            
+            
+            
+        )
+    }
+    
+
+    private fun generatecontentApiList(): ContentApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Content"
+        )
+        return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as ContentApiList
+    }
+}
+
+class CommunicationApiHelperClass(val config: ApplicationConfig) : CommunicationApiHelperFace  {
+    
+   private val communicationApiList: CommunicationApiList by lazy {
+        generatecommunicationApiList()
+    }
+
+    
+    override fun getCommunicationConsent(
+        
+        
+        
+    )
+    : Deferred<Response<CommunicationConsent>> {
+        return communicationApiList.getCommunicationConsent(
+            
+            
+            
+        )
+    }
+    
+    override fun upsertCommunicationConsent(
+        
+        
+        body: CommunicationConsentReq
+    )
+    : Deferred<Response<CommunicationConsentRes>> {
+        return communicationApiList.upsertCommunicationConsent(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun upsertPushtoken(
+        
+        
+        body: PushtokenReq
+    )
+    : Deferred<Response<PushtokenRes>> {
+        return communicationApiList.upsertPushtoken(
+            
+            
+            body = body
+        )
+    }
+    
+
+    private fun generatecommunicationApiList(): CommunicationApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Communication"
+        )
+        return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as CommunicationApiList
+    }
+}
+
+class ShareApiHelperClass(val config: ApplicationConfig) : ShareApiHelperFace  {
+    
+   private val shareApiList: ShareApiList by lazy {
+        generateshareApiList()
+    }
+
+    
+    override fun getApplicationQRCode(
+        
+        
+        
+    )
+    : Deferred<Response<QRCodeResp>> {
+        return shareApiList.getApplicationQRCode(
+            
+            
+            
+        )
+    }
+    
+    override fun getProductQRCodeBySlug(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<QRCodeResp>> {
+        return shareApiList.getProductQRCodeBySlug(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun getCollectionQRCodeBySlug(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<QRCodeResp>> {
+        return shareApiList.getCollectionQRCodeBySlug(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun getUrlQRCode(
+         url: String
+        
+        
+    )
+    : Deferred<Response<QRCodeResp>> {
+        return shareApiList.getUrlQRCode(
+            url = url
+            
+            
+        )
+    }
+    
+    override fun createShortLink(
+        
+        
+        body: ShortLinkReq
+    )
+    : Deferred<Response<ShortLinkRes>> {
+        return shareApiList.createShortLink(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun getShortLinkByHash(
+         hash: String
+        
+        
+    )
+    : Deferred<Response<ShortLinkRes>> {
+        return shareApiList.getShortLinkByHash(
+            hash = hash
+            
+            
+        )
+    }
+    
+    override fun getOriginalShortLinkByHash(
+         hash: String
+        
+        
+    )
+    : Deferred<Response<ShortLinkRes>> {
+        return shareApiList.getOriginalShortLinkByHash(
+            hash = hash
+            
+            
+        )
+    }
+    
+
+    private fun generateshareApiList(): ShareApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Share"
+        )
+        return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as ShareApiList
+    }
+}
+
+class FileStorageApiHelperClass(val config: ApplicationConfig) : FileStorageApiHelperFace  {
+    
+   private val fileStorageApiList: FileStorageApiList by lazy {
+        generatefileStorageApiList()
+    }
+
+    
+    override fun completeUpload(
+         namespace: String, company_id: Int,
+        
+        body: StartResponse
+    )
+    : Deferred<Response<CompleteResponse>> {
+        return fileStorageApiList.completeUpload(
+            namespace = namespace,company_id = company_id,
+            
+            body = body
+        )
+    }
+    
+    override fun startUpload(
+         namespace: String, company_id: Int,
+        
+        body: StartRequest
+    )
+    : Deferred<Response<StartResponse>> {
+        return fileStorageApiList.startUpload(
+            namespace = namespace,company_id = company_id,
+            
+            body = body
+        )
+    }
+    
+
+    private fun generatefileStorageApiList(): FileStorageApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "FileStorage"
+        )
+        return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as FileStorageApiList
     }
 }
 
@@ -958,6 +1625,376 @@ class OrderApiHelperClass(val config: ApplicationConfig) : OrderApiHelperFace  {
     }
 }
 
+class FeedbackApiHelperClass(val config: ApplicationConfig) : FeedbackApiHelperFace  {
+    
+   private val feedbackApiList: FeedbackApiList by lazy {
+        generatefeedbackApiList()
+    }
+
+    
+    override fun createAbuseReport(
+        
+        
+        body: ReportAbuseRequest
+    )
+    : Deferred<Response<XInsertResponse>> {
+        return feedbackApiList.createAbuseReport(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun updateAbuseReport(
+        
+        
+        body: UpdateAbuseStatusRequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.updateAbuseReport(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun getAbuseReports(
+         entity_id: String, entity_type: String,
+         id: String?, page_id: String?, page_size: String?
+        
+    )
+    : Deferred<Response<XNumberGetResponse>> {
+        return feedbackApiList.getAbuseReports(
+            entity_id = entity_id,entity_type = entity_type,
+            id = id,page_id = page_id,page_size = page_size
+            
+        )
+    }
+    
+    override fun getAttributes(
+        
+        
+        
+    )
+    : Deferred<Response<XNumberGetResponse>> {
+        return feedbackApiList.getAttributes(
+            
+            
+            
+        )
+    }
+    
+    override fun createAttribute(
+        
+        
+        body: SaveAttributeRequest
+    )
+    : Deferred<Response<XInsertResponse>> {
+        return feedbackApiList.createAttribute(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun getAttribute(
+         slug: String
+        
+        
+    )
+    : Deferred<Response<Attribute>> {
+        return feedbackApiList.getAttribute(
+            slug = slug
+            
+            
+        )
+    }
+    
+    override fun updateAttribute(
+         slug: String,
+        
+        body: UpdateAttributeRequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.updateAttribute(
+            slug = slug,
+            
+            body = body
+        )
+    }
+    
+    override fun createComment(
+        
+        
+        body: CommentRequest
+    )
+    : Deferred<Response<XInsertResponse>> {
+        return feedbackApiList.createComment(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun updateComment(
+        
+        
+        body: UpdateCommentRequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.updateComment(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun getComments(
+         entity_type: String,
+         id: String?, entity_id: String?, user_id: String?, page_id: String?, page_size: String?
+        
+    )
+    : Deferred<Response<XCursorGetResponse>> {
+        return feedbackApiList.getComments(
+            entity_type = entity_type,
+            id = id,entity_id = entity_id,user_id = user_id,page_id = page_id,page_size = page_size
+            
+        )
+    }
+    
+    override fun checkEligibility(
+         entity_type: String, entity_id: String
+        
+        
+    )
+    : Deferred<Response<CheckEligibilityResponse>> {
+        return feedbackApiList.checkEligibility(
+            entity_type = entity_type,entity_id = entity_id
+            
+            
+        )
+    }
+    
+    override fun deleteMedia(
+        
+        
+        
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.deleteMedia(
+            
+            
+            
+        )
+    }
+    
+    override fun createMedia(
+        
+        
+        body: AddMediaListRequest
+    )
+    : Deferred<Response<XInsertResponse>> {
+        return feedbackApiList.createMedia(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun updateMedia(
+        
+        
+        body: UpdateMediaListRequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.updateMedia(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun getMedias(
+         entity_type: String, entity_id: String,
+         id: String?, page_id: String?, page_size: String?
+        
+    )
+    : Deferred<Response<XCursorGetResponse>> {
+        return feedbackApiList.getMedias(
+            entity_type = entity_type,entity_id = entity_id,
+            id = id,page_id = page_id,page_size = page_size
+            
+        )
+    }
+    
+    override fun getReviewSummaries(
+         entity_type: String, entity_id: String,
+         id: String?, page_id: String?, page_size: String?
+        
+    )
+    : Deferred<Response<XCursorGetResponse>> {
+        return feedbackApiList.getReviewSummaries(
+            entity_type = entity_type,entity_id = entity_id,
+            id = id,page_id = page_id,page_size = page_size
+            
+        )
+    }
+    
+    override fun createReview(
+        
+        
+        body: UpdateReviewRequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.createReview(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun updateReview(
+        
+        
+        body: UpdateReviewRequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.updateReview(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun getReviews(
+         entity_type: String, entity_id: String,
+         id: String?, user_id: String?, media: String?, rating: ArrayList<Double>?, attribute_rating: ArrayList<String>?, facets: Boolean?, sort: String?, page_id: String?, page_size: String?
+        
+    )
+    : Deferred<Response<XCursorGetResponse>> {
+        return feedbackApiList.getReviews(
+            entity_type = entity_type,entity_id = entity_id,
+            id = id,user_id = user_id,media = media,rating = rating,attribute_rating = attribute_rating,facets = facets,sort = sort,page_id = page_id,page_size = page_size
+            
+        )
+    }
+    
+    override fun getTemplates(
+        
+         template_id: String?, entity_id: String?, entity_type: String?
+        
+    )
+    : Deferred<Response<XCursorGetResponse>> {
+        return feedbackApiList.getTemplates(
+            
+            template_id = template_id,entity_id = entity_id,entity_type = entity_type
+            
+        )
+    }
+    
+    override fun createQuestion(
+        
+        
+        body: CreateQNARequest
+    )
+    : Deferred<Response<XInsertResponse>> {
+        return feedbackApiList.createQuestion(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun updateQuestion(
+        
+        
+        body: UpdateQNARequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.updateQuestion(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun getQuestionAndAnswers(
+         entity_type: String, entity_id: String,
+         id: String?, show_answer: Boolean?, page_id: String?, page_size: String?
+        
+    )
+    : Deferred<Response<XCursorGetResponse>> {
+        return feedbackApiList.getQuestionAndAnswers(
+            entity_type = entity_type,entity_id = entity_id,
+            id = id,show_answer = show_answer,page_id = page_id,page_size = page_size
+            
+        )
+    }
+    
+    override fun getVotes(
+        
+         id: String?, ref_type: String?
+        
+    )
+    : Deferred<Response<XNumberGetResponse>> {
+        return feedbackApiList.getVotes(
+            
+            id = id,ref_type = ref_type
+            
+        )
+    }
+    
+    override fun createVote(
+        
+        
+        body: VoteRequest
+    )
+    : Deferred<Response<XInsertResponse>> {
+        return feedbackApiList.createVote(
+            
+            
+            body = body
+        )
+    }
+    
+    override fun updateVote(
+        
+        
+        body: UpdateVoteRequest
+    )
+    : Deferred<Response<XUpdateResponse>> {
+        return feedbackApiList.updateVote(
+            
+            
+            body = body
+        )
+    }
+    
+
+    private fun generatefeedbackApiList(): FeedbackApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Feedback"
+        )
+        return retrofitHttpClient?.initializeRestClient(FeedbackApiList::class.java) as FeedbackApiList
+    }
+}
+
 class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFace  {
     
    private val posCartApiList: PosCartApiList by lazy {
@@ -970,7 +2007,7 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
          uid: Int?, assign_card_id: Int?
         
     )
-    : Deferred<Response<GetCartResponse>> {
+    : Deferred<Response<CartResponse>> {
         return posCartApiList.getCart(
             
             uid = uid,assign_card_id = assign_card_id
@@ -996,7 +2033,7 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
         
         body: AddCartRequest
     )
-    : Deferred<Response<CartResponse>> {
+    : Deferred<Response<AddCartResponse>> {
         return posCartApiList.addItems(
             
             
@@ -1009,7 +2046,7 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
         
         body: UpdateCartRequest
     )
-    : Deferred<Response<CartResponse>> {
+    : Deferred<Response<UpdateCartResponse>> {
         return posCartApiList.updateCart(
             
             
@@ -1022,7 +2059,7 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
          uid: Int?
         
     )
-    : Deferred<Response<HashMap<String,Any>>> {
+    : Deferred<Response<CartItemCountResponse>> {
         return posCartApiList.getItemCount(
             
             uid = uid
@@ -1046,7 +2083,7 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
     override fun applyCoupon(
         
          i: Boolean?, b: Boolean?, p: Boolean?,
-        body: HashMap<String,Any>
+        body: ApplyCouponRequest
     )
     : Deferred<Response<SaveCouponResponse>> {
         return posCartApiList.applyCoupon(
@@ -1084,13 +2121,13 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
     
     override fun getAddresses(
         
-         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, default: Int?
+         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, is_default: Boolean?
         
     )
     : Deferred<Response<GetAddressResponse>> {
         return posCartApiList.getAddresses(
             
-            uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,default = default
+            uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,is_default = is_default
             
         )
     }
@@ -1110,13 +2147,13 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
     
     override fun getAddressById(
          id: Int,
-         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, default: Int?
+         uid: Int?, mobile_no: Int?, checkout_mode: String?, tags: Int?, is_default: Boolean?
         
     )
     : Deferred<Response<GetAddressResponse>> {
         return posCartApiList.getAddressById(
             id = id,
-            uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,default = default
+            uid = uid,mobile_no = mobile_no,checkout_mode = checkout_mode,tags = tags,is_default = is_default
             
         )
     }
@@ -1228,9 +2265,9 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
     override fun updateCartMeta(
         
          uid: Int?,
-        body: HashMap<String,Any>
+        body: CartMetaRequest
     )
-    : Deferred<Response<HashMap<String,Any>>> {
+    : Deferred<Response<CartMetaResponse>> {
         return posCartApiList.updateCartMeta(
             
             uid = uid,
@@ -1238,12 +2275,38 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
         )
     }
     
+    override fun getAvailableDeliveryModes(
+         area_code: Int,
+         uid: Int?
+        
+    )
+    : Deferred<Response<CartDeliveryModesResponse>> {
+        return posCartApiList.getAvailableDeliveryModes(
+            area_code = area_code,
+            uid = uid
+            
+        )
+    }
+    
+    override fun getStoreAddressByUid(
+         area_code: Int
+        
+        
+    )
+    : Deferred<Response<StoreDetailsResponse>> {
+        return posCartApiList.getStoreAddressByUid(
+            area_code = area_code
+            
+            
+        )
+    }
+    
     override fun getCartShareLink(
         
         
-        body: HashMap<String,Any>
+        body: GetShareCartLinkRequest
     )
-    : Deferred<Response<HashMap<String,Any>>> {
+    : Deferred<Response<GetShareCartLinkResponse>> {
         return posCartApiList.getCartShareLink(
             
             
@@ -1256,7 +2319,7 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
         
         
     )
-    : Deferred<Response<HashMap<String,Any>>> {
+    : Deferred<Response<SharedCartResponse>> {
         return posCartApiList.getCartSharedItems(
             token = token
             
@@ -1269,7 +2332,7 @@ class PosCartApiHelperClass(val config: ApplicationConfig) : PosCartApiHelperFac
         
         
     )
-    : Deferred<Response<HashMap<String,Any>>> {
+    : Deferred<Response<SharedCartResponse>> {
         return posCartApiList.updateCartWithSharedItems(
             token = token,action = action
             
