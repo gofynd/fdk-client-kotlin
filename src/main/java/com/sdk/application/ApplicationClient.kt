@@ -6,6 +6,10 @@ class ApplicationClient(config:ApplicationConfig) {
         CatalogDataManagerClass(config)
     }
     
+    val cart by lazy {
+        CartDataManagerClass(config)
+    }
+    
     val lead by lazy {
         LeadDataManagerClass(config)
     }
@@ -34,8 +38,16 @@ class ApplicationClient(config:ApplicationConfig) {
         FileStorageDataManagerClass(config)
     }
     
+    val payment by lazy {
+        PaymentDataManagerClass(config)
+    }
+    
     val order by lazy {
         OrderDataManagerClass(config)
+    }
+    
+    val rewards by lazy {
+        RewardsDataManagerClass(config)
     }
     
     val feedback by lazy {

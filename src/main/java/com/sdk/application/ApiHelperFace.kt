@@ -7,86 +7,86 @@ import retrofit2.http.*
 
 interface CatalogApiHelperFace {
     
-    fun getProductDetailBySlug( slug: String
-        
+    fun getProductDetailBySlug(
+         slug: String
         
     )
     :Deferred<Response<ProductDetail>>
     
-    fun getProductSizesBySlug( slug: String,
-         store_id: String?=null
+    fun getProductSizesBySlug(
+         slug: String,  store_id: String?=null
         
     )
     :Deferred<Response<ProductSizes>>
     
-    fun getProductPriceBySlug( slug: String, size: String,
-         pincode: Int?=null, store_id: String?=null
+    fun getProductPriceBySlug(
+         slug: String,  size: String,  pincode: Int?=null,  store_id: String?=null
         
     )
     :Deferred<Response<ProductSizePriceResponse>>
     
-    fun getProductSellersBySlug( slug: String, size: String,
-         pincode: Int?=null, page_no: Int?=null, page_size: Int?=null
+    fun getProductSellersBySlug(
+         slug: String,  size: String,  pincode: Int?=null,  page_no: Int?=null,  page_size: Int?=null
         
     )
     :Deferred<Response<ProductSizeSellersResponse>>
     
-    fun getProductComparisonBySlugs( slug: String
-        
+    fun getProductComparisonBySlugs(
+         slug: String
         
     )
     :Deferred<Response<ProductsComparisonResponse>>
     
-    fun getSimilarComparisonProductBySlug( slug: String
-        
+    fun getSimilarComparisonProductBySlug(
+         slug: String
         
     )
     :Deferred<Response<ProductCompareResponse>>
     
-    fun getComparedFrequentlyProductBySlug( slug: String
-        
+    fun getComparedFrequentlyProductBySlug(
+         slug: String
         
     )
     :Deferred<Response<ProductFrequentlyComparedSimilarResponse>>
     
-    fun getProductSimilarByIdentifier( slug: String, similar_type: String
-        
+    fun getProductSimilarByIdentifier(
+         slug: String,  similar_type: String
         
     )
     :Deferred<Response<SimilarProductByTypeResponse>>
     
-    fun getProductVariantsBySlug( slug: String
-        
+    fun getProductVariantsBySlug(
+         slug: String
         
     )
     :Deferred<Response<ProductVariantsResponse>>
     
     fun getProductStockByIds(
-         item_id: String?=null, alu: String?=null, sku_code: String?=null, ean: String?=null, upc: String?=null
+         item_id: String?=null,  alu: String?=null,  sku_code: String?=null,  ean: String?=null,  upc: String?=null
         
     )
     :Deferred<Response<ProductStockStatusResponse>>
     
-    fun getProductStockForTimeByIds( timestamp: String,
-         page_size: Int?=null, page_id: String?=null
+    fun getProductStockForTimeByIds(
+         timestamp: String,  page_size: Int?=null,  page_id: String?=null
         
     )
     :Deferred<Response<ProductStockPolling>>
     
     fun getProducts(
-         q: String?=null, f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null, page_no: Int?=null, page_type: String?=null
+         q: String?=null,  f: String?=null,  filters: Boolean?=null,  sort_on: String?=null,  page_id: String?=null,  page_size: Int?=null,  page_no: Int?=null,  page_type: String?=null
         
     )
     :Deferred<Response<ProductListingResponse>>
     
     fun getBrands(
-         department: String?=null, page_no: Int?=null, page_size: Int?=null
+         department: String?=null,  page_no: Int?=null,  page_size: Int?=null
         
     )
     :Deferred<Response<BrandListingResponse>>
     
-    fun getBrandDetailBySlug( slug: String
-        
+    fun getBrandDetailBySlug(
+         slug: String
         
     )
     :Deferred<Response<BrandDetailResponse>>
@@ -97,14 +97,14 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<CategoryListingResponse>>
     
-    fun getCategoryDetailBySlug( slug: String
-        
+    fun getCategoryDetailBySlug(
+         slug: String
         
     )
     :Deferred<Response<CategoryMetaResponse>>
     
     fun getHomeProducts(
-         sort_on: String?=null, page_id: String?=null, page_size: Int?=null
+         sort_on: String?=null,  page_id: String?=null,  page_size: Int?=null
         
     )
     :Deferred<Response<HomeListingResponse>>
@@ -115,8 +115,8 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<DepartmentResponse>>
     
-    fun getSearchResults( q: String
-        
+    fun getSearchResults(
+         q: String
         
     )
     :Deferred<Response<AutoCompleteResponse>>
@@ -128,61 +128,61 @@ interface CatalogApiHelperFace {
     :Deferred<Response<CollectionDetailResponse>>
     
     fun getCollections(
-         page_id: String?=null, page_size: Int?=null
+         page_id: String?=null,  page_size: Int?=null
         
     )
     :Deferred<Response<GetCollectionListingResponse>>
     
-    fun addCollectionItemsBySlug( slug: String,
-        
+    fun addCollectionItemsBySlug(
+         slug: String,
         body: CollectionItemsRequest
     )
     :Deferred<Response<CollectionItemsResponse>>
     
-    fun getCollectionItemsBySlug( slug: String,
-         f: String?=null, filters: Boolean?=null, sort_on: String?=null, page_id: String?=null, page_size: Int?=null
+    fun getCollectionItemsBySlug(
+         slug: String,  f: String?=null,  filters: Boolean?=null,  sort_on: String?=null,  page_id: String?=null,  page_size: Int?=null
         
     )
     :Deferred<Response<ProductListingResponse>>
     
-    fun updateCollectionDetailBySlug( slug: String
-        
-        
-    )
-    :Deferred<Response<CollectionsUpdateDetailResponse>>
-    
-    fun deleteCollectionDetailBySlug( slug: String
-        
+    fun deleteCollectionDetailBySlug(
+         slug: String
         
     )
     :Deferred<Response<CollectionDetailViewDeleteResponse>>
     
-    fun getCollectionDetailBySlug( slug: String
-        
+    fun getCollectionDetailBySlug(
+         slug: String
         
     )
     :Deferred<Response<CollectionDetailResponse>>
     
-    fun getFollowedListing( collection_type: String
+    fun updateCollectionDetailBySlug(
+         slug: String
         
+    )
+    :Deferred<Response<CollectionsUpdateDetailResponse>>
+    
+    fun getFollowedListing(
+         collection_type: String
         
     )
     :Deferred<Response<GetFollowListingResponse>>
     
-    fun followById( collection_type: String, collection_id: Int
-        
-        
-    )
-    :Deferred<Response<FollowPostResponse>>
-    
-    fun unfollowById( collection_type: String, collection_id: Int
-        
+    fun followById(
+         collection_type: String,  collection_id: Int
         
     )
     :Deferred<Response<FollowPostResponse>>
     
-    fun getFollowerCountById( collection_type: String, collection_id: String
+    fun unfollowById(
+         collection_type: String,  collection_id: Int
         
+    )
+    :Deferred<Response<FollowPostResponse>>
+    
+    fun getFollowerCountById(
+         collection_type: String,  collection_id: String
         
     )
     :Deferred<Response<FollowerCountResponse>>
@@ -194,23 +194,165 @@ interface CatalogApiHelperFace {
     :Deferred<Response<FollowIdsResponse>>
     
     fun getStores(
-         page_no: Int?=null, page_size: Int?=null, q: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null
+         page_no: Int?=null,  page_size: Int?=null,  q: String?=null,  range: Int?=null,  latitude: Double?=null,  longitude: Double?=null
         
     )
     :Deferred<Response<StoreListingResponse>>
     
 }
 
+interface CartApiHelperFace {
+    
+    fun getCart(
+         uid: Int?=null,  assign_card_id: Int?=null
+        
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getCartLastModified(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<Any>>
+    
+    fun addItems(
+        
+        body: AddCartRequest
+    )
+    :Deferred<Response<AddCartResponse>>
+    
+    fun updateCart(
+        
+        body: UpdateCartRequest
+    )
+    :Deferred<Response<UpdateCartResponse>>
+    
+    fun getItemCount(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<CartItemCountResponse>>
+    
+    fun getCoupons(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<GetCouponResponse>>
+    
+    fun applyCoupon(
+         i: Boolean?=null,  b: Boolean?=null,  p: Boolean?=null,
+        body: ApplyCouponRequest
+    )
+    :Deferred<Response<SaveCouponResponse>>
+    
+    fun removeCoupon(
+         uid: Int?=null
+        
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getBulkDiscountOffers(
+         item_id: Int?=null,  article_id: String?=null,  uid: Int?=null,  slug: String?=null
+        
+    )
+    :Deferred<Response<BulkPriceResponse>>
+    
+    fun getAddresses(
+         uid: Int?=null,  mobile_no: Int?=null,  checkout_mode: String?=null,  tags: Int?=null,  is_default: Boolean?=null
+        
+    )
+    :Deferred<Response<GetAddressResponse>>
+    
+    fun addAddress(
+        
+        body: SaveAddressRequest
+    )
+    :Deferred<Response<SaveAddressResponse>>
+    
+    fun getAddressById(
+         id: Int,  uid: Int?=null,  mobile_no: Int?=null,  checkout_mode: String?=null,  tags: Int?=null,  is_default: Boolean?=null
+        
+    )
+    :Deferred<Response<GetAddressResponse>>
+    
+    fun updateAddress(
+         id: Int,
+        body: UpdateAddressRequest
+    )
+    :Deferred<Response<UpdateAddressResponse>>
+    
+    fun removeAddress(
+         id: Int
+        
+    )
+    :Deferred<Response<DeleteAddressResponse>>
+    
+    fun selectAddress(
+        
+        body: SelectCartAddressRequest
+    )
+    :Deferred<Response<CartResponse>>
+    
+    fun getPaymentModes(
+         uid: String?=null,  address_id: String?=null,  payment_mode: String?=null,  payment_identifier: String?=null,  aggregator_name: String?=null,  merchant_code: String?=null
+        
+    )
+    :Deferred<Response<PaymentOptions>>
+    
+    fun selectPaymentMode(
+         uid: String?=null,
+        body: UpdateCartPaymentRequest
+    )
+    :Deferred<Response<PaymentOptions>>
+    
+    fun getShipments(
+         p: Boolean?=null,  uid: Int?=null,  address_id: Int?=null
+        
+    )
+    :Deferred<Response<CartShipmentsResponse>>
+    
+    fun checkoutCart(
+        
+        body: CartCheckoutRequest
+    )
+    :Deferred<Response<CartCheckoutResponse>>
+    
+    fun updateCartMeta(
+         uid: Int?=null,
+        body: CartMetaRequest
+    )
+    :Deferred<Response<CartMetaResponse>>
+    
+    fun getCartShareLink(
+        
+        body: GetShareCartLinkRequest
+    )
+    :Deferred<Response<GetShareCartLinkResponse>>
+    
+    fun getCartSharedItems(
+         token: String
+        
+    )
+    :Deferred<Response<SharedCartResponse>>
+    
+    fun updateCartWithSharedItems(
+         token: String,  action: String
+        
+    )
+    :Deferred<Response<SharedCartResponse>>
+    
+}
+
 interface LeadApiHelperFace {
     
-    fun getTicket( id: String
-        
+    fun getTicket(
+         id: String
         
     )
     :Deferred<Response<Ticket>>
     
-    fun createHistoryForTicket( ticket_id: String,
-        
+    fun createHistoryForTicket(
+         ticket_id: String,
         body: TicketHistoryPayload
     )
     :Deferred<Response<TicketHistory>>
@@ -221,26 +363,26 @@ interface LeadApiHelperFace {
     )
     :Deferred<Response<Ticket>>
     
-    fun getCustomForm( slug: String
-        
+    fun getCustomForm(
+         slug: String
         
     )
     :Deferred<Response<CustomForm>>
     
-    fun submitCustomForm( slug: String,
-        
+    fun submitCustomForm(
+         slug: String,
         body: CustomFormSubmissionPayload
     )
     :Deferred<Response<SubmitCustomFormResponse>>
     
-    fun getParticipantsInsideVideoRoom( unique_name: String
-        
+    fun getParticipantsInsideVideoRoom(
+         unique_name: String
         
     )
     :Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
-    fun getTokenForVideoRoom( unique_name: String
-        
+    fun getTokenForVideoRoom(
+         unique_name: String
         
     )
     :Deferred<Response<GetTokenForVideoRoomResponse>>
@@ -255,8 +397,8 @@ interface ThemeApiHelperFace {
     )
     :Deferred<Response<ThemesSchema>>
     
-    fun getThemeForPreview( theme_id: String
-        
+    fun getThemeForPreview(
+         theme_id: String
         
     )
     :Deferred<Response<ThemesSchema>>
@@ -415,8 +557,8 @@ interface UserApiHelperFace {
     )
     :Deferred<Response<VerifyMobileOTPSuccess>>
     
-    fun deleteMobileNumber( active: Boolean, primary: Boolean, verified: Boolean, country_code: String, phone: String,
-         platform: String?=null
+    fun deleteMobileNumber(
+         platform: String?=null,  active: Boolean,  primary: Boolean,  verified: Boolean,  country_code: String,  phone: String
         
     )
     :Deferred<Response<LoginSuccess>>
@@ -439,8 +581,8 @@ interface UserApiHelperFace {
     )
     :Deferred<Response<VerifyEmailOTPSuccess>>
     
-    fun deleteEmail( active: Boolean, primary: Boolean, verified: Boolean, email: String,
-         platform: String?=null
+    fun deleteEmail(
+         platform: String?=null,  active: Boolean,  primary: Boolean,  verified: Boolean,  email: String
         
     )
     :Deferred<Response<LoginSuccess>>
@@ -467,8 +609,8 @@ interface ContentApiHelperFace {
     )
     :Deferred<Response<AnnouncementsResponseSchema>>
     
-    fun getBlog( slug: String
-        
+    fun getBlog(
+         slug: String
         
     )
     :Deferred<Response<CustomBlog>>
@@ -479,8 +621,8 @@ interface ContentApiHelperFace {
     )
     :Deferred<Response<FaqResponseSchema>>
     
-    fun getLandingPage( x-device-platform: String
-        
+    fun getLandingPage(
+         x-device-platform: String
         
     )
     :Deferred<Response<LandingPage>>
@@ -491,14 +633,14 @@ interface ContentApiHelperFace {
     )
     :Deferred<Response<ApplicationLegal>>
     
-    fun getNavigations( x-device-platform: String
-        
+    fun getNavigations(
+         x-device-platform: String
         
     )
     :Deferred<Response<Navigation>>
     
-    fun getPage( slug: String
-        
+    fun getPage(
+         slug: String
         
     )
     :Deferred<Response<CustomPage>>
@@ -509,8 +651,8 @@ interface ContentApiHelperFace {
     )
     :Deferred<Response<Seo>>
     
-    fun getSlideshow( slug: String, x-device-platform: String
-        
+    fun getSlideshow(
+         slug: String,  x-device-platform: String
         
     )
     :Deferred<Response<Slideshow>>
@@ -559,20 +701,20 @@ interface ShareApiHelperFace {
     )
     :Deferred<Response<QRCodeResp>>
     
-    fun getProductQRCodeBySlug( slug: String
-        
-        
-    )
-    :Deferred<Response<QRCodeResp>>
-    
-    fun getCollectionQRCodeBySlug( slug: String
-        
+    fun getProductQRCodeBySlug(
+         slug: String
         
     )
     :Deferred<Response<QRCodeResp>>
     
-    fun getUrlQRCode( url: String
+    fun getCollectionQRCodeBySlug(
+         slug: String
         
+    )
+    :Deferred<Response<QRCodeResp>>
+    
+    fun getUrlQRCode(
+         url: String
         
     )
     :Deferred<Response<QRCodeResp>>
@@ -583,14 +725,14 @@ interface ShareApiHelperFace {
     )
     :Deferred<Response<ShortLinkRes>>
     
-    fun getShortLinkByHash( hash: String
-        
+    fun getShortLinkByHash(
+         hash: String
         
     )
     :Deferred<Response<ShortLinkRes>>
     
-    fun getOriginalShortLinkByHash( hash: String
-        
+    fun getOriginalShortLinkByHash(
+         hash: String
         
     )
     :Deferred<Response<ShortLinkRes>>
@@ -599,57 +741,209 @@ interface ShareApiHelperFace {
 
 interface FileStorageApiHelperFace {
     
-    fun completeUpload( namespace: String, company_id: Int,
-        
+    fun completeUpload(
+         namespace: String,  company_id: Int,
         body: StartResponse
     )
     :Deferred<Response<CompleteResponse>>
     
-    fun startUpload( namespace: String, company_id: Int,
-        
+    fun startUpload(
+         namespace: String,  company_id: Int,
         body: StartRequest
     )
     :Deferred<Response<StartResponse>>
     
 }
 
+interface PaymentApiHelperFace {
+    
+    fun getAggregatorsConfig(
+         x-api-token: String,  refresh: Boolean?=null
+        
+    )
+    :Deferred<Response<AggregatorsConfigDetailResponse>>
+    
+    fun attachCardToCustomer(
+        
+        body: AttachCardRequest
+    )
+    :Deferred<Response<AttachCardsResponse>>
+    
+    fun getActiveCardAggregator(
+         refresh: Boolean?=null
+        
+    )
+    :Deferred<Response<ActiveCardPaymentGatewayResponse>>
+    
+    fun getActiveUserCards(
+         force_refresh: Boolean?=null
+        
+    )
+    :Deferred<Response<ListCardsResponse>>
+    
+    fun deleteUserCard(
+        
+        body: DeletehCardRequest
+    )
+    :Deferred<Response<DeleteCardsResponse>>
+    
+    fun verifyCustomerForPayment(
+        
+        body: ValidateCustomerRequest
+    )
+    :Deferred<Response<ValidateCustomerResponse>>
+    
+    fun verifyAndChargePayment(
+        
+        body: ChargeCustomerRequest
+    )
+    :Deferred<Response<ChargeCustomerResponse>>
+    
+    fun initialisePayment(
+        
+        body: PaymentInitializationRequest
+    )
+    :Deferred<Response<PaymentInitializationResponse>>
+    
+    fun checkAndUpdatePaymentStatus(
+        
+        body: PaymentStatusUpdateRequest
+    )
+    :Deferred<Response<PaymentStatusUpdateResponse>>
+    
+    fun getPaymentModeRoutes(
+         amount: Int,  cart_id: String,  pincode: Int,  checkout_mode: String,  refresh: Boolean?=null,  assign_card_id: String?=null,  delivery_address: String?=null
+        
+    )
+    :Deferred<Response<PaymentOptionsResponse>>
+    
+    fun getPosPaymentModeRoutes(
+         amount: Int,  cart_id: String,  pincode: Int,  checkout_mode: String,  refresh: Boolean?=null,  assign_card_id: String?=null,  order_type: String,  delivery_address: String?=null
+        
+    )
+    :Deferred<Response<PaymentOptionsResponse>>
+    
+    fun getUserBeneficiariesDetail(
+         order_id: String
+        
+    )
+    :Deferred<Response<OrderBeneficiaryResponse>>
+    
+    fun verifyIfscCode(
+         ifsc_code: String?=null
+        
+    )
+    :Deferred<Response<IfscCodeResponse>>
+    
+    fun getOrderBeneficiariesDetail(
+         order_id: String
+        
+    )
+    :Deferred<Response<OrderBeneficiaryResponse>>
+    
+    fun verifyOtpAndAddBeneficiaryForBank(
+        
+        body: AddBeneficiaryViaOtpVerificationRequest
+    )
+    :Deferred<Response<AddBeneficiaryViaOtpVerificationResponse>>
+    
+    fun addBeneficiaryDetails(
+        
+        body: AddBeneficiaryDetailsRequest
+    )
+    :Deferred<Response<RefundAccountResponse>>
+    
+    fun verifyOtpAndAddBeneficiaryForWallet(
+        
+        body: WalletOtpRequest
+    )
+    :Deferred<Response<WalletOtpResponse>>
+    
+    fun updateDefaultBeneficiary(
+        
+        body: SetDefaultBeneficiaryRequest
+    )
+    :Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+}
+
 interface OrderApiHelperFace {
     
     fun getOrders(
-         page_no: String?=null, page_size: String?=null, from_date: String?=null, to_date: String?=null
+         page_no: String?=null,  page_size: String?=null,  from_date: String?=null,  to_date: String?=null
         
     )
     :Deferred<Response<OrderList>>
     
-    fun getOrderById( order_id: String
-        
+    fun getOrderById(
+         order_id: String
         
     )
     :Deferred<Response<OrderById>>
     
-    fun getShipmentById( shipment_id: String
-        
+    fun getShipmentById(
+         shipment_id: String
         
     )
     :Deferred<Response<ShipmentById>>
     
-    fun getShipmentReasons( shipment_id: String
-        
+    fun getShipmentReasons(
+         shipment_id: String
         
     )
     :Deferred<Response<ShipmentReasons>>
     
-    fun updateShipmentStatus( shipment_id: String,
-        
+    fun updateShipmentStatus(
+         shipment_id: String,
         body: ShipmentStatusUpdateBody
     )
     :Deferred<Response<ShipmentStatusUpdate>>
     
-    fun trackShipment( shipment_id: String
-        
+    fun trackShipment(
+         shipment_id: String
         
     )
     :Deferred<Response<ShipmentTrack>>
+    
+}
+
+interface RewardsApiHelperFace {
+    
+    fun getPointsOnProduct(
+        
+        body: CatalogueOrderRequest
+    )
+    :Deferred<Response<CatalogueOrderResponse>>
+    
+    fun getOrderDiscount(
+        
+        body: OrderDiscountRequest
+    )
+    :Deferred<Response<OrderDiscountResponse>>
+    
+    fun getUserPoints(
+        
+        
+    )
+    :Deferred<Response<PointsResponse>>
+    
+    fun getUserPointsHistory(
+         pageID: String?=null,  pageSize: Int?=null
+        
+    )
+    :Deferred<Response<PointsHistoryResponse>>
+    
+    fun getUserReferralDetails(
+        
+        
+    )
+    :Deferred<Response<ReferralDetailsResponse>>
+    
+    fun redeemReferralCode(
+        
+        body: RedeemReferralCodeRequest
+    )
+    :Deferred<Response<RedeemReferralCodeResponse>>
     
 }
 
@@ -667,8 +961,8 @@ interface FeedbackApiHelperFace {
     )
     :Deferred<Response<XUpdateResponse>>
     
-    fun getAbuseReports( entity_id: String, entity_type: String,
-         id: String?=null, page_id: String?=null, page_size: String?=null
+    fun getAbuseReports(
+         entity_id: String,  entity_type: String,  id: String?=null,  page_id: String?=null,  page_size: String?=null
         
     )
     :Deferred<Response<XNumberGetResponse>>
@@ -685,14 +979,14 @@ interface FeedbackApiHelperFace {
     )
     :Deferred<Response<XInsertResponse>>
     
-    fun getAttribute( slug: String
-        
+    fun getAttribute(
+         slug: String
         
     )
     :Deferred<Response<Attribute>>
     
-    fun updateAttribute( slug: String,
-        
+    fun updateAttribute(
+         slug: String,
         body: UpdateAttributeRequest
     )
     :Deferred<Response<XUpdateResponse>>
@@ -709,14 +1003,14 @@ interface FeedbackApiHelperFace {
     )
     :Deferred<Response<XUpdateResponse>>
     
-    fun getComments( entity_type: String,
-         id: String?=null, entity_id: String?=null, user_id: String?=null, page_id: String?=null, page_size: String?=null
+    fun getComments(
+         entity_type: String,  id: String?=null,  entity_id: String?=null,  user_id: String?=null,  page_id: String?=null,  page_size: String?=null
         
     )
     :Deferred<Response<XCursorGetResponse>>
     
-    fun checkEligibility( entity_type: String, entity_id: String
-        
+    fun checkEligibility(
+         entity_type: String,  entity_id: String
         
     )
     :Deferred<Response<CheckEligibilityResponse>>
@@ -739,14 +1033,14 @@ interface FeedbackApiHelperFace {
     )
     :Deferred<Response<XUpdateResponse>>
     
-    fun getMedias( entity_type: String, entity_id: String,
-         id: String?=null, page_id: String?=null, page_size: String?=null
+    fun getMedias(
+         entity_type: String,  entity_id: String,  id: String?=null,  page_id: String?=null,  page_size: String?=null
         
     )
     :Deferred<Response<XCursorGetResponse>>
     
-    fun getReviewSummaries( entity_type: String, entity_id: String,
-         id: String?=null, page_id: String?=null, page_size: String?=null
+    fun getReviewSummaries(
+         entity_type: String,  entity_id: String,  id: String?=null,  page_id: String?=null,  page_size: String?=null
         
     )
     :Deferred<Response<XCursorGetResponse>>
@@ -763,14 +1057,14 @@ interface FeedbackApiHelperFace {
     )
     :Deferred<Response<XUpdateResponse>>
     
-    fun getReviews( entity_type: String, entity_id: String,
-         id: String?=null, user_id: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attribute_rating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, page_id: String?=null, page_size: String?=null
+    fun getReviews(
+         entity_type: String,  entity_id: String,  id: String?=null,  user_id: String?=null,  media: String?=null,  rating: ArrayList<Double>?=null,  attribute_rating: ArrayList<String>?=null,  facets: Boolean?=null,  sort: String?=null,  page_id: String?=null,  page_size: String?=null
         
     )
     :Deferred<Response<XCursorGetResponse>>
     
     fun getTemplates(
-         template_id: String?=null, entity_id: String?=null, entity_type: String?=null
+         template_id: String?=null,  entity_id: String?=null,  entity_type: String?=null
         
     )
     :Deferred<Response<XCursorGetResponse>>
@@ -787,14 +1081,14 @@ interface FeedbackApiHelperFace {
     )
     :Deferred<Response<XUpdateResponse>>
     
-    fun getQuestionAndAnswers( entity_type: String, entity_id: String,
-         id: String?=null, show_answer: Boolean?=null, page_id: String?=null, page_size: String?=null
+    fun getQuestionAndAnswers(
+         entity_type: String,  entity_id: String,  id: String?=null,  show_answer: Boolean?=null,  page_id: String?=null,  page_size: String?=null
         
     )
     :Deferred<Response<XCursorGetResponse>>
     
     fun getVotes(
-         id: String?=null, ref_type: String?=null
+         id: String?=null,  ref_type: String?=null
         
     )
     :Deferred<Response<XNumberGetResponse>>
@@ -816,7 +1110,7 @@ interface FeedbackApiHelperFace {
 interface PosCartApiHelperFace {
     
     fun getCart(
-         uid: Int?=null, assign_card_id: Int?=null
+         uid: Int?=null,  assign_card_id: Int?=null
         
     )
     :Deferred<Response<CartResponse>>
@@ -852,7 +1146,7 @@ interface PosCartApiHelperFace {
     :Deferred<Response<GetCouponResponse>>
     
     fun applyCoupon(
-         i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,
+         i: Boolean?=null,  b: Boolean?=null,  p: Boolean?=null,
         body: ApplyCouponRequest
     )
     :Deferred<Response<SaveCouponResponse>>
@@ -864,13 +1158,13 @@ interface PosCartApiHelperFace {
     :Deferred<Response<CartResponse>>
     
     fun getBulkDiscountOffers(
-         item_id: Int?=null, article_id: String?=null, uid: Int?=null, slug: String?=null
+         item_id: Int?=null,  article_id: String?=null,  uid: Int?=null,  slug: String?=null
         
     )
     :Deferred<Response<BulkPriceResponse>>
     
     fun getAddresses(
-         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+         uid: Int?=null,  mobile_no: Int?=null,  checkout_mode: String?=null,  tags: Int?=null,  is_default: Boolean?=null
         
     )
     :Deferred<Response<GetAddressResponse>>
@@ -881,20 +1175,20 @@ interface PosCartApiHelperFace {
     )
     :Deferred<Response<SaveAddressResponse>>
     
-    fun getAddressById( id: Int,
-         uid: Int?=null, mobile_no: Int?=null, checkout_mode: String?=null, tags: Int?=null, is_default: Boolean?=null
+    fun getAddressById(
+         id: Int,  uid: Int?=null,  mobile_no: Int?=null,  checkout_mode: String?=null,  tags: Int?=null,  is_default: Boolean?=null
         
     )
     :Deferred<Response<GetAddressResponse>>
     
-    fun updateAddress( id: Int,
-        
+    fun updateAddress(
+         id: Int,
         body: UpdateAddressRequest
     )
     :Deferred<Response<UpdateAddressResponse>>
     
-    fun removeAddress( id: Int
-        
+    fun removeAddress(
+         id: Int
         
     )
     :Deferred<Response<DeleteAddressResponse>>
@@ -906,7 +1200,7 @@ interface PosCartApiHelperFace {
     :Deferred<Response<CartResponse>>
     
     fun getPaymentModes(
-         uid: String?=null, address_id: String?=null, payment_mode: String?=null, payment_identifier: String?=null, aggregator_name: String?=null, merchant_code: String?=null
+         uid: String?=null,  address_id: String?=null,  payment_mode: String?=null,  payment_identifier: String?=null,  aggregator_name: String?=null,  merchant_code: String?=null
         
     )
     :Deferred<Response<PaymentOptions>>
@@ -918,13 +1212,13 @@ interface PosCartApiHelperFace {
     :Deferred<Response<PaymentOptions>>
     
     fun getShipments(
-         pick_at_store_uid: Int?=null, ordering_store_id: Int?=null, p: Boolean?=null, uid: Int?=null, address_id: Int?=null
+         pick_at_store_uid: Int?=null,  ordering_store_id: Int?=null,  p: Boolean?=null,  uid: Int?=null,  address_id: Int?=null
         
     )
     :Deferred<Response<CartShipmentsResponse>>
     
     fun updateShipments(
-         i: Boolean?=null, p: Boolean?=null, uid: Int?=null, address_id: Int?=null, order_type: String?=null,
+         i: Boolean?=null,  p: Boolean?=null,  uid: Int?=null,  address_id: Int?=null,  order_type: String?=null,
         body: UpdateCartShipmentRequest
     )
     :Deferred<Response<CartShipmentsResponse>>
@@ -941,14 +1235,14 @@ interface PosCartApiHelperFace {
     )
     :Deferred<Response<CartMetaResponse>>
     
-    fun getAvailableDeliveryModes( area_code: Int,
-         uid: Int?=null
+    fun getAvailableDeliveryModes(
+         area_code: Int,  uid: Int?=null
         
     )
     :Deferred<Response<CartDeliveryModesResponse>>
     
-    fun getStoreAddressByUid( area_code: Int
-        
+    fun getStoreAddressByUid(
+         area_code: Int
         
     )
     :Deferred<Response<StoreDetailsResponse>>
@@ -959,14 +1253,14 @@ interface PosCartApiHelperFace {
     )
     :Deferred<Response<GetShareCartLinkResponse>>
     
-    fun getCartSharedItems( token: String
-        
+    fun getCartSharedItems(
+         token: String
         
     )
     :Deferred<Response<SharedCartResponse>>
     
-    fun updateCartWithSharedItems( token: String, action: String
-        
+    fun updateCartWithSharedItems(
+         token: String,  action: String
         
     )
     :Deferred<Response<SharedCartResponse>>

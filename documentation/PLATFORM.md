@@ -1,9 +1,7 @@
 # FDK Application Front API Documentaion
 
 
-* [Billing](#Billing) - Handle platform subscription 
-* [Communication](#Communication) - Manages email, sms, push notifications sent to users 
-* [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
+* [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
 
 ----
 ----
@@ -11,64 +9,26 @@
 ### Classes and Methods
 
 
-* [Billing](#Billing)
-  * [Billing#getPublicPlanDetailedList](#billinggetpublicplandetailedlist)
-  * [Billing#getPublicPlanDetailedById](#billinggetpublicplandetailedbyid)
-  * [Billing#getPublicPlanList](#billinggetpublicplanlist)
-  * [Billing#getCustomerDetail](#billinggetcustomerdetail)
-  * [Billing#upsertCustomerDetail](#billingupsertcustomerdetail)
-  * [Billing#getSubscription](#billinggetsubscription)
-  * [Billing#getFeatureLimitConfig](#billinggetfeaturelimitconfig)
-  * [Billing#activateSubscriptionPlan](#billingactivatesubscriptionplan)
-  * [Billing#cancelSubscriptionPlan](#billingcancelsubscriptionplan)
- 
-* [Communication](#Communication)
-  * [Communication#getCampaigns](#communicationgetcampaigns)
-  * [Communication#createCampaign](#communicationcreatecampaign)
-  * [Communication#getCampaignById](#communicationgetcampaignbyid)
-  * [Communication#updateCampaignById](#communicationupdatecampaignbyid)
-  * [Communication#getStatsOfCampaignById](#communicationgetstatsofcampaignbyid)
-  * [Communication#getAudiences](#communicationgetaudiences)
-  * [Communication#createAudience](#communicationcreateaudience)
-  * [Communication#getBigqueryHeaders](#communicationgetbigqueryheaders)
-  * [Communication#getAudienceById](#communicationgetaudiencebyid)
-  * [Communication#updateAudienceById](#communicationupdateaudiencebyid)
-  * [Communication#getNSampleRecordsFromCsv](#communicationgetnsamplerecordsfromcsv)
-  * [Communication#getEmailProviders](#communicationgetemailproviders)
-  * [Communication#createEmailProvider](#communicationcreateemailprovider)
-  * [Communication#getEmailProviderById](#communicationgetemailproviderbyid)
-  * [Communication#updateEmailProviderById](#communicationupdateemailproviderbyid)
-  * [Communication#getEmailTemplates](#communicationgetemailtemplates)
-  * [Communication#createEmailTemplate](#communicationcreateemailtemplate)
-  * [Communication#getSystemEmailTemplates](#communicationgetsystememailtemplates)
-  * [Communication#getEmailTemplateById](#communicationgetemailtemplatebyid)
-  * [Communication#updateEmailTemplateById](#communicationupdateemailtemplatebyid)
-  * [Communication#deleteEmailTemplateById](#communicationdeleteemailtemplatebyid)
-  * [Communication#getCommunicationLogs](#communicationgetcommunicationlogs)
-  * [Communication#getSmsProviders](#communicationgetsmsproviders)
-  * [Communication#createSmsProvider](#communicationcreatesmsprovider)
-  * [Communication#getSmsProviderById](#communicationgetsmsproviderbyid)
-  * [Communication#updateSmsProviderById](#communicationupdatesmsproviderbyid)
-  * [Communication#getSmsTemplates](#communicationgetsmstemplates)
-  * [Communication#createSmsTemplate](#communicationcreatesmstemplate)
-  * [Communication#getSmsTemplateById](#communicationgetsmstemplatebyid)
-  * [Communication#updateSmsTemplateById](#communicationupdatesmstemplatebyid)
-  * [Communication#deleteSmsTemplateById](#communicationdeletesmstemplatebyid)
-  * [Communication#getSystemSystemTemplates](#communicationgetsystemsystemtemplates)
- 
-* [Payment](#Payment)
-  * [Payment#getBrandPaymentGatewayConfig](#paymentgetbrandpaymentgatewayconfig)
-  * [Payment#saveBrandPaymentGatewayConfig](#paymentsavebrandpaymentgatewayconfig)
-  * [Payment#](#payment)
-  * [Payment#getAllPayouts](#paymentgetallpayouts)
-  * [Payment#savePayout](#paymentsavepayout)
-  * [Payment#updatePayout](#paymentupdatepayout)
-  * [Payment#activateAndDectivatePayout](#paymentactivateanddectivatepayout)
-  * [Payment#deletePayout](#paymentdeletepayout)
-  * [Payment#getSubscriptionPaymentMethod](#paymentgetsubscriptionpaymentmethod)
-  * [Payment#deleteSubscriptionPaymentMethod](#paymentdeletesubscriptionpaymentmethod)
-  * [Payment#getSubscriptionConfig](#paymentgetsubscriptionconfig)
-  * [Payment#saveSubscriptionSetupIntent](#paymentsavesubscriptionsetupintent)
+* [Lead](#Lead)
+  * [Lead#getTickets](#leadgettickets)
+  * [Lead#createTicket](#leadcreateticket)
+  * [Lead#getTickets](#leadgettickets)
+  * [Lead#getTicket](#leadgetticket)
+  * [Lead#editTicket](#leadeditticket)
+  * [Lead#getTicket](#leadgetticket)
+  * [Lead#editTicket](#leadeditticket)
+  * [Lead#createHistory](#leadcreatehistory)
+  * [Lead#getTicketHistory](#leadgettickethistory)
+  * [Lead#createHistory](#leadcreatehistory)
+  * [Lead#getTicketHistory](#leadgettickethistory)
+  * [Lead#getCustomForm](#leadgetcustomform)
+  * [Lead#editCustomForm](#leadeditcustomform)
+  * [Lead#getCustomForms](#leadgetcustomforms)
+  * [Lead#createCustomForm](#leadcreatecustomform)
+  * [Lead#getTokenForVideoRoom](#leadgettokenforvideoroom)
+  * [Lead#getVideoParticipants](#leadgetvideoparticipants)
+  * [Lead#openVideoRoom](#leadopenvideoroom)
+  * [Lead#closeVideoRoom](#leadclosevideoroom)
  
 
 ---
@@ -76,27 +36,27 @@
 
 
 
-## Billing
+## Lead
 
 ```javascript
-const { Configuration, Billing } = require('fdk-client-nodejs/platform')
+const { Configuration, Lead } = require('fdk-client-nodejs/platform')
 const conf = new Configuration({
     OAuth2Token: "5ljdffg191e810c19729de860ea"
 });
-const billing = new Billing(conf);
+const lead = new Lead(conf);
 
 ```
 
 
-#### Billing#getPublicPlanDetailedList
-Get all public visible plans with detailed componet data
+#### Lead#getTickets
+Gets the list of company level tickets and/or ticket filters depending on query params
 
 ```javascript
 // Promise
-const promise = billing.getPublicPlanDetailedList(, );
+const promise = lead.getTickets(company_id, items, filters, );
 
 // Async/Await
-const data = await billing.getPublicPlanDetailedList(, );
+const data = await lead.getTickets(company_id, items, filters, );
 
 ```
 
@@ -104,24 +64,26 @@ const data = await billing.getPublicPlanDetailedList(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID for which the data will be returned | 
+| items | boolean | Decides that the reponse will contain the list of tickets | 
+| filters | boolean | Decides that the reponse will contain the ticket filters | 
 
 
-Get all public visible plans with detailed componet data
+Gets the list of company level tickets and/or ticket filters
 
 
 ---
 
 
-#### Billing#getPublicPlanDetailedById
-Get plan details by id
+#### Lead#createTicket
+Creates a company level ticket
 
 ```javascript
 // Promise
-const promise = billing.getPublicPlanDetailedById(plan_id, );
+const promise = lead.createTicket(company_id, );
 
 // Async/Await
-const data = await billing.getPublicPlanDetailedById(plan_id, );
+const data = await lead.createTicket(company_id, );
 
 ```
 
@@ -129,24 +91,24 @@ const data = await billing.getPublicPlanDetailedById(plan_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| plan_id | string | Plan Id | 
+| company_id | string | Company ID for which the data will be returned | 
 
 
-Get Plan detaild with component data by plan_id.
+Creates a company level ticket
 
 
 ---
 
 
-#### Billing#getPublicPlanList
-Get all public visible plans
+#### Lead#getTickets
+Gets the list of Application level Tickets and/or ticket filters depending on query params
 
 ```javascript
 // Promise
-const promise = billing.getPublicPlanList(, );
+const promise = lead.getTickets(company_id, application_id, items, filters, );
 
 // Async/Await
-const data = await billing.getPublicPlanList(, );
+const data = await lead.getTickets(company_id, application_id, items, filters, );
 
 ```
 
@@ -154,24 +116,27 @@ const data = await billing.getPublicPlanList(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for which the data will be returned | 
+| items | boolean | Decides that the reponse will contain the list of tickets | 
+| filters | boolean | Decides that the reponse will contain the ticket filters | 
 
 
-Get all public visible plans
+Gets the list of Application level Tickets and/or ticket filters
 
 
 ---
 
 
-#### Billing#getCustomerDetail
-Get subscription customer detail
+#### Lead#getTicket
+Retreives ticket details of a company level ticket with ticket ID
 
 ```javascript
 // Promise
-const promise = billing.getCustomerDetail(, , );
+const promise = lead.getTicket(company_id, ticket_id, );
 
 // Async/Await
-const data = await billing.getCustomerDetail(, , );
+const data = await lead.getTicket(company_id, ticket_id, );
 
 ```
 
@@ -179,46 +144,25 @@ const data = await billing.getCustomerDetail(, , );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
-|  |  |  | 
+| company_id | string | Company ID for which the data will be returned | 
+| ticket_id | string | Tiket ID of the ticket to be fetched | 
 
 
-Get subscription customer detail.
-
-
----
-
-
-#### Billing#upsertCustomerDetail
-Upsert subscription customer detail
-
-```javascript
-// Promise
-const promise = billing.upsertCustomerDetail();
-
-// Async/Await
-const data = await billing.upsertCustomerDetail();
-
-```
-
-
-
-
-Upsert subscription customer detail.
+Retreives ticket details of a company level ticket
 
 
 ---
 
 
-#### Billing#getSubscription
-Get current subscription detail
+#### Lead#editTicket
+Edits ticket details of a company level ticket
 
 ```javascript
 // Promise
-const promise = billing.getSubscription(, , , );
+const promise = lead.editTicket(company_id, ticket_id, );
 
 // Async/Await
-const data = await billing.getSubscription(, , , );
+const data = await lead.editTicket(company_id, ticket_id, );
 
 ```
 
@@ -226,27 +170,25 @@ const data = await billing.getSubscription(, , , );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
-|  |  |  | 
-|  |  |  | 
+| company_id | string | Company ID for ticket | 
+| ticket_id | string | Ticket ID of ticket to be edited | 
 
 
-If subscription is active then it will return is_enabled true and return subscription object. If subscription is not active then is_enabled false and message.
-
+Edits ticket details of a company level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
 
 
 ---
 
 
-#### Billing#getFeatureLimitConfig
-Get subscription customer detail
+#### Lead#getTicket
+Retreives ticket details of a application level ticket
 
 ```javascript
 // Promise
-const promise = billing.getFeatureLimitConfig(, , , );
+const promise = lead.getTicket(company_id, application_id, ticket_id, );
 
 // Async/Await
-const data = await billing.getFeatureLimitConfig(, , , );
+const data = await lead.getTicket(company_id, application_id, ticket_id, );
 
 ```
 
@@ -254,127 +196,26 @@ const data = await billing.getFeatureLimitConfig(, , , );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
-|  |  |  | 
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for which the data will be returned | 
+| ticket_id | string | Tiket ID of the ticket to be fetched | 
 
 
-Get subscription customer detail.
+Retreives ticket details of a application level ticket with ticket ID
 
 
 ---
 
 
-#### Billing#activateSubscriptionPlan
-Activate subscription
+#### Lead#editTicket
+Edits ticket details of a application level ticket
 
 ```javascript
 // Promise
-const promise = billing.activateSubscriptionPlan();
+const promise = lead.editTicket(company_id, application_id, ticket_id, );
 
 // Async/Await
-const data = await billing.activateSubscriptionPlan();
-
-```
-
-
-
-
-It will activate subscription plan for customer
-
-
----
-
-
-#### Billing#cancelSubscriptionPlan
-Cancel subscription
-
-```javascript
-// Promise
-const promise = billing.cancelSubscriptionPlan();
-
-// Async/Await
-const data = await billing.cancelSubscriptionPlan();
-
-```
-
-
-
-
-It will cancel current active subscription.
-
-
----
-
-
-
----
----
-
-
-## Communication
-
-```javascript
-const { Configuration, Communication } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const communication = new Communication(conf);
-
-```
-
-
-#### Communication#getCampaigns
-Get campaigns
-
-```javascript
-// Promise
-const promise = communication.getCampaigns();
-
-// Async/Await
-const data = await communication.getCampaigns();
-
-```
-
-
-
-
-Get campaigns
-
-
----
-
-
-#### Communication#createCampaign
-Create campaign
-
-```javascript
-// Promise
-const promise = communication.createCampaign();
-
-// Async/Await
-const data = await communication.createCampaign();
-
-```
-
-
-
-
-Create campaign
-
-
----
-
-
-#### Communication#getCampaignById
-Get campaign by id
-
-```javascript
-// Promise
-const promise = communication.getCampaignById(, );
-
-// Async/Await
-const data = await communication.getCampaignById(, );
+const data = await lead.editTicket(company_id, application_id, ticket_id, );
 
 ```
 
@@ -382,24 +223,26 @@ const data = await communication.getCampaignById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for ticket | 
+| ticket_id | string | Ticket ID of ticket to be edited | 
 
 
-Get campaign by id
+Edits ticket details of a application level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
 
 
 ---
 
 
-#### Communication#updateCampaignById
-Update campaign by id
+#### Lead#createHistory
+Create history for specific company level ticket
 
 ```javascript
 // Promise
-const promise = communication.updateCampaignById(, );
+const promise = lead.createHistory(company_id, ticket_id, );
 
 // Async/Await
-const data = await communication.updateCampaignById(, );
+const data = await lead.createHistory(company_id, ticket_id, );
 
 ```
 
@@ -407,24 +250,25 @@ const data = await communication.updateCampaignById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID for ticket | 
+| ticket_id | string | Ticket ID for which history is created | 
 
 
-Update campaign by id
+Create history for specific company level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
 
 ---
 
 
-#### Communication#getStatsOfCampaignById
-Get stats of campaign by id
+#### Lead#getTicketHistory
+Gets history list for specific company level ticket
 
 ```javascript
 // Promise
-const promise = communication.getStatsOfCampaignById(, );
+const promise = lead.getTicketHistory(company_id, ticket_id, );
 
 // Async/Await
-const data = await communication.getStatsOfCampaignById(, );
+const data = await lead.getTicketHistory(company_id, ticket_id, );
 
 ```
 
@@ -432,87 +276,25 @@ const data = await communication.getStatsOfCampaignById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID for ticket | 
+| ticket_id | string | Ticket ID for which history is to be fetched | 
 
 
-Get stats of campaign by id
-
-
----
-
-
-#### Communication#getAudiences
-Get audiences
-
-```javascript
-// Promise
-const promise = communication.getAudiences();
-
-// Async/Await
-const data = await communication.getAudiences();
-
-```
-
-
-
-
-Get audiences
+Gets history list for specific company level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
 
 ---
 
 
-#### Communication#createAudience
-Create audience
+#### Lead#createHistory
+Create history for specific application level ticket
 
 ```javascript
 // Promise
-const promise = communication.createAudience();
+const promise = lead.createHistory(company_id, application_id, ticket_id, );
 
 // Async/Await
-const data = await communication.createAudience();
-
-```
-
-
-
-
-Create audience
-
-
----
-
-
-#### Communication#getBigqueryHeaders
-Get bigquery headers
-
-```javascript
-// Promise
-const promise = communication.getBigqueryHeaders();
-
-// Async/Await
-const data = await communication.getBigqueryHeaders();
-
-```
-
-
-
-
-Get bigquery headers
-
-
----
-
-
-#### Communication#getAudienceById
-Get audience by id
-
-```javascript
-// Promise
-const promise = communication.getAudienceById(, );
-
-// Async/Await
-const data = await communication.getAudienceById(, );
+const data = await lead.createHistory(company_id, application_id, ticket_id, );
 
 ```
 
@@ -520,24 +302,26 @@ const data = await communication.getAudienceById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for ticket | 
+| ticket_id | string | Ticket ID for which history is created | 
 
 
-Get audience by id
+Create history for specific application level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
 
 ---
 
 
-#### Communication#updateAudienceById
-Update audience by id
+#### Lead#getTicketHistory
+Gets history list for specific application level ticket
 
 ```javascript
 // Promise
-const promise = communication.updateAudienceById(, );
+const promise = lead.getTicketHistory(company_id, application_id, ticket_id, );
 
 // Async/Await
-const data = await communication.updateAudienceById(, );
+const data = await lead.getTicketHistory(company_id, application_id, ticket_id, );
 
 ```
 
@@ -545,45 +329,26 @@ const data = await communication.updateAudienceById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of application | 
+| application_id | string | Application ID for ticket | 
+| ticket_id | string | Ticket ID for which history is to be fetched | 
 
 
-Update audience by id
-
-
----
-
-
-#### Communication#getNSampleRecordsFromCsv
-Get n sample records from csv
-
-```javascript
-// Promise
-const promise = communication.getNSampleRecordsFromCsv();
-
-// Async/Await
-const data = await communication.getNSampleRecordsFromCsv();
-
-```
-
-
-
-
-Get n sample records from csv
+Gets history list for specific application level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
 
 ---
 
 
-#### Communication#getEmailProviders
-Get email providers
+#### Lead#getCustomForm
+Get specific custom form using it's slug
 
 ```javascript
 // Promise
-const promise = communication.getEmailProviders(, , );
+const promise = lead.getCustomForm(company_id, application_id, slug, );
 
 // Async/Await
-const data = await communication.getEmailProviders(, , );
+const data = await lead.getCustomForm(company_id, application_id, slug, );
 
 ```
 
@@ -591,46 +356,26 @@ const data = await communication.getEmailProviders(, , );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for the form | 
+| slug | string | Slug of form whose response is getting submitted | 
 
 
-Get email providers
-
-
----
-
-
-#### Communication#createEmailProvider
-Create email provider
-
-```javascript
-// Promise
-const promise = communication.createEmailProvider();
-
-// Async/Await
-const data = await communication.createEmailProvider();
-
-```
-
-
-
-
-Create email provider
+Get specific custom form using it's slug, this is used to view the form.
 
 
 ---
 
 
-#### Communication#getEmailProviderById
-Get email provider by id
+#### Lead#editCustomForm
+Edit the given custom form
 
 ```javascript
 // Promise
-const promise = communication.getEmailProviderById(, );
+const promise = lead.editCustomForm(company_id, application_id, slug, );
 
 // Async/Await
-const data = await communication.getEmailProviderById(, );
+const data = await lead.editCustomForm(company_id, application_id, slug, );
 
 ```
 
@@ -638,24 +383,26 @@ const data = await communication.getEmailProviderById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for the form | 
+| slug | string | Slug of form whose response is getting submitted | 
 
 
-Get email provider by id
+Edit the given custom form field such as adding or deleting input, assignee, title, decription, notification and polling information.
 
 
 ---
 
 
-#### Communication#updateEmailProviderById
-Update email provider by id
+#### Lead#getCustomForms
+Get list of custom form
 
 ```javascript
 // Promise
-const promise = communication.updateEmailProviderById(, );
+const promise = lead.getCustomForms(company_id, application_id, );
 
 // Async/Await
-const data = await communication.updateEmailProviderById(, );
+const data = await lead.getCustomForms(company_id, application_id, );
 
 ```
 
@@ -663,87 +410,25 @@ const data = await communication.updateEmailProviderById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for the form | 
 
 
-Update email provider by id
-
-
----
-
-
-#### Communication#getEmailTemplates
-Get email templates
-
-```javascript
-// Promise
-const promise = communication.getEmailTemplates();
-
-// Async/Await
-const data = await communication.getEmailTemplates();
-
-```
-
-
-
-
-Get email templates
+Get list of custom form for given application
 
 
 ---
 
 
-#### Communication#createEmailTemplate
-Create email template
+#### Lead#createCustomForm
+Creates a new custom form
 
 ```javascript
 // Promise
-const promise = communication.createEmailTemplate();
+const promise = lead.createCustomForm(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createEmailTemplate();
-
-```
-
-
-
-
-Create email template
-
-
----
-
-
-#### Communication#getSystemEmailTemplates
-Get system email templates
-
-```javascript
-// Promise
-const promise = communication.getSystemEmailTemplates();
-
-// Async/Await
-const data = await communication.getSystemEmailTemplates();
-
-```
-
-
-
-
-Get system email templates
-
-
----
-
-
-#### Communication#getEmailTemplateById
-Get email template by id
-
-```javascript
-// Promise
-const promise = communication.getEmailTemplateById(, );
-
-// Async/Await
-const data = await communication.getEmailTemplateById(, );
+const data = await lead.createCustomForm(company_id, application_id, );
 
 ```
 
@@ -751,24 +436,25 @@ const data = await communication.getEmailTemplateById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for the form | 
 
 
-Get email template by id
+Creates a new custom form for given application
 
 
 ---
 
 
-#### Communication#updateEmailTemplateById
-Update email template by id
+#### Lead#getTokenForVideoRoom
+Get Token to join a specific Video Room using it's unqiue name
 
 ```javascript
 // Promise
-const promise = communication.updateEmailTemplateById(, );
+const promise = lead.getTokenForVideoRoom(company_id, application_id, unique_name, );
 
 // Async/Await
-const data = await communication.updateEmailTemplateById(, );
+const data = await lead.getTokenForVideoRoom(company_id, application_id, unique_name, );
 
 ```
 
@@ -776,24 +462,26 @@ const data = await communication.updateEmailTemplateById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for video room | 
+| unique_name | string | Unique name of video room | 
 
 
-Update email template by id
+Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
 
 
 ---
 
 
-#### Communication#deleteEmailTemplateById
-Delete email template by id
+#### Lead#getVideoParticipants
+Get participants of a specific Video Room using it's unique name
 
 ```javascript
 // Promise
-const promise = communication.deleteEmailTemplateById(, );
+const promise = lead.getVideoParticipants(company_id, application_id, unique_name, );
 
 // Async/Await
-const data = await communication.deleteEmailTemplateById(, );
+const data = await lead.getVideoParticipants(company_id, application_id, unique_name, );
 
 ```
 
@@ -801,24 +489,26 @@ const data = await communication.deleteEmailTemplateById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for video room | 
+| unique_name | string | Unique name of Video Room | 
 
 
-Delete email template by id
+Get participants of a specific Video Room using it's unique name, this can be used to check if people are already there in the room and also to show their names.
 
 
 ---
 
 
-#### Communication#getCommunicationLogs
-Get communication logs
+#### Lead#openVideoRoom
+Open a video room.
 
 ```javascript
 // Promise
-const promise = communication.getCommunicationLogs(, , );
+const promise = lead.openVideoRoom(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getCommunicationLogs(, , );
+const data = await lead.openVideoRoom(company_id, application_id, );
 
 ```
 
@@ -826,67 +516,25 @@ const data = await communication.getCommunicationLogs(, , );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for video room | 
 
 
-Get communication logs
-
-
----
-
-
-#### Communication#getSmsProviders
-Get sms providers
-
-```javascript
-// Promise
-const promise = communication.getSmsProviders();
-
-// Async/Await
-const data = await communication.getSmsProviders();
-
-```
-
-
-
-
-Get sms providers
+Open a video room.
 
 
 ---
 
 
-#### Communication#createSmsProvider
-Create sms provider
+#### Lead#closeVideoRoom
+Close the video room and force all participants to leave.
 
 ```javascript
 // Promise
-const promise = communication.createSmsProvider();
+const promise = lead.closeVideoRoom(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createSmsProvider();
-
-```
-
-
-
-
-Create sms provider
-
-
----
-
-
-#### Communication#getSmsProviderById
-Get sms provider by id
-
-```javascript
-// Promise
-const promise = communication.getSmsProviderById(, );
-
-// Async/Await
-const data = await communication.getSmsProviderById(, );
+const data = await lead.closeVideoRoom(company_id, application_id, );
 
 ```
 
@@ -894,501 +542,11 @@ const data = await communication.getSmsProviderById(, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-|  |  |  | 
+| company_id | string | Company ID of the application | 
+| application_id | string | Application ID for video room | 
 
 
-Get sms provider by id
-
-
----
-
-
-#### Communication#updateSmsProviderById
-Update sms provider by id
-
-```javascript
-// Promise
-const promise = communication.updateSmsProviderById(, );
-
-// Async/Await
-const data = await communication.updateSmsProviderById(, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-|  |  |  | 
-
-
-Update sms provider by id
-
-
----
-
-
-#### Communication#getSmsTemplates
-Get sms templates
-
-```javascript
-// Promise
-const promise = communication.getSmsTemplates();
-
-// Async/Await
-const data = await communication.getSmsTemplates();
-
-```
-
-
-
-
-Get sms templates
-
-
----
-
-
-#### Communication#createSmsTemplate
-Create sms template
-
-```javascript
-// Promise
-const promise = communication.createSmsTemplate();
-
-// Async/Await
-const data = await communication.createSmsTemplate();
-
-```
-
-
-
-
-Create sms template
-
-
----
-
-
-#### Communication#getSmsTemplateById
-Get sms template by id
-
-```javascript
-// Promise
-const promise = communication.getSmsTemplateById(, );
-
-// Async/Await
-const data = await communication.getSmsTemplateById(, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-|  |  |  | 
-
-
-Get sms template by id
-
-
----
-
-
-#### Communication#updateSmsTemplateById
-Update sms template by id
-
-```javascript
-// Promise
-const promise = communication.updateSmsTemplateById(, );
-
-// Async/Await
-const data = await communication.updateSmsTemplateById(, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-|  |  |  | 
-
-
-Update sms template by id
-
-
----
-
-
-#### Communication#deleteSmsTemplateById
-Delete sms template by id
-
-```javascript
-// Promise
-const promise = communication.deleteSmsTemplateById(, );
-
-// Async/Await
-const data = await communication.deleteSmsTemplateById(, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-|  |  |  | 
-
-
-Delete sms template by id
-
-
----
-
-
-#### Communication#getSystemSystemTemplates
-Get system sms templates
-
-```javascript
-// Promise
-const promise = communication.getSystemSystemTemplates();
-
-// Async/Await
-const data = await communication.getSystemSystemTemplates();
-
-```
-
-
-
-
-Get system sms templates
-
-
----
-
-
-
----
----
-
-
-## Payment
-
-```javascript
-const { Configuration, Payment } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const payment = new Payment(conf);
-
-```
-
-
-#### Payment#getBrandPaymentGatewayConfig
-Get All Brand Payment Gateway Config Secret
-
-```javascript
-// Promise
-const promise = payment.getBrandPaymentGatewayConfig(company_id, application_id, );
-
-// Async/Await
-const data = await payment.getBrandPaymentGatewayConfig(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application id | 
-
-
-Get All Brand Payment Gateway Config Secret
-
-
----
-
-
-#### Payment#saveBrandPaymentGatewayConfig
-Save Config Secret For Brand Payment Gateway
-
-```javascript
-// Promise
-const promise = payment.saveBrandPaymentGatewayConfig(company_id, application_id, );
-
-// Async/Await
-const data = await payment.saveBrandPaymentGatewayConfig(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application id | 
-
-
-Save Config Secret For Brand Payment Gateway
-
-
----
-
-
-#### Payment#
-Get All Valid Payment Options
-
-```javascript
-// Promise
-const promise = payment.(company_id, application_id, refresh, request_type, );
-
-// Async/Await
-const data = await payment.(company_id, application_id, refresh, request_type, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application id | 
-| refresh | boolean |  | 
-| request_type | string |  | 
-
-
-Use this API to get Get All Valid Payment Options for making payment
-
-
----
-
-
-#### Payment#getAllPayouts
-Get All Payouts
-
-```javascript
-// Promise
-const promise = payment.getAllPayouts(company_id, unique_external_id, );
-
-// Async/Await
-const data = await payment.getAllPayouts(company_id, unique_external_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_external_id | string | Fetch payouts using unique external id | 
-
-
-Get All Payouts
-
-
----
-
-
-#### Payment#savePayout
-Save Payout
-
-```javascript
-// Promise
-const promise = payment.savePayout(company_id, );
-
-// Async/Await
-const data = await payment.savePayout(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-
-
-Save Payout
-
-
----
-
-
-#### Payment#updatePayout
-Update Payout
-
-```javascript
-// Promise
-const promise = payment.updatePayout(company_id, unique_transfer_no, );
-
-// Async/Await
-const data = await payment.updatePayout(company_id, unique_transfer_no, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_transfer_no | string | Unique transfer id | 
-
-
-Update Payout
-
-
----
-
-
-#### Payment#activateAndDectivatePayout
-Partial Update Payout
-
-```javascript
-// Promise
-const promise = payment.activateAndDectivatePayout(company_id, unique_transfer_no, );
-
-// Async/Await
-const data = await payment.activateAndDectivatePayout(company_id, unique_transfer_no, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_transfer_no | string | Unique transfer id | 
-
-
-Partial Update Payout
-
-
----
-
-
-#### Payment#deletePayout
-Delete Payout
-
-```javascript
-// Promise
-const promise = payment.deletePayout(company_id, unique_transfer_no, );
-
-// Async/Await
-const data = await payment.deletePayout(company_id, unique_transfer_no, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_transfer_no | string | Unique transfer id | 
-
-
-Delete Payout
-
-
----
-
-
-#### Payment#getSubscriptionPaymentMethod
-List Subscription Payment Method
-
-```javascript
-// Promise
-const promise = payment.getSubscriptionPaymentMethod(company_id, );
-
-// Async/Await
-const data = await payment.getSubscriptionPaymentMethod(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-
-
-Get all  Subscription  Payment Method
-
-
----
-
-
-#### Payment#deleteSubscriptionPaymentMethod
-Delete Subscription Payment Method
-
-```javascript
-// Promise
-const promise = payment.deleteSubscriptionPaymentMethod(company_id, unique_external_id, payment_method_id, );
-
-// Async/Await
-const data = await payment.deleteSubscriptionPaymentMethod(company_id, unique_external_id, payment_method_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_external_id | string |  | 
-| payment_method_id | string |  | 
-
-
-Uses this api to Delete Subscription Payment Method
-
-
----
-
-
-#### Payment#getSubscriptionConfig
-List Subscription Config
-
-```javascript
-// Promise
-const promise = payment.getSubscriptionConfig(company_id, );
-
-// Async/Await
-const data = await payment.getSubscriptionConfig(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-
-
-Get all  Subscription Config details
-
-
----
-
-
-#### Payment#saveSubscriptionSetupIntent
-Save Subscription Setup Intent
-
-```javascript
-// Promise
-const promise = payment.saveSubscriptionSetupIntent(company_id, );
-
-// Async/Await
-const data = await payment.saveSubscriptionSetupIntent(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-
-
-Uses this api to Save Subscription Setup Intent
+Close the video room and force all participants to leave.
 
 
 ---

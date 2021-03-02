@@ -2,6 +2,7 @@
 
 
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
+* [Cart](#Cart) - Cart APIs 
 * [Lead](#Lead) - Handles communication between Staff and Users 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
@@ -9,7 +10,9 @@
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Share](#Share) - Short link and QR Code 
 * [FileStorage](#FileStorage) - File Storage 
+* [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
+* [Rewards](#Rewards) - Earn and redeem Reward Points 
 * [Feedback](#Feedback) - User Reviews and Rating System 
 * [PosCart](#PosCart) - Cart APIs 
 
@@ -44,15 +47,43 @@
     * [Catalog#getCollections](#cataloggetcollections)
     * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
     * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
-    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#deleteCollectionDetailBySlug](#catalogdeletecollectiondetailbyslug)
     * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
+    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#getFollowedListing](#cataloggetfollowedlisting)
     * [Catalog#followById](#catalogfollowbyid)
     * [Catalog#unfollowById](#catalogunfollowbyid)
     * [Catalog#getFollowerCountById](#cataloggetfollowercountbyid)
     * [Catalog#getFollowIds](#cataloggetfollowids)
     * [Catalog#getStores](#cataloggetstores)
+    
+   
+
+* [Cart](#Cart)
+  * Methods
+    * [Cart#getCart](#cartgetcart)
+    * [Cart#getCartLastModified](#cartgetcartlastmodified)
+    * [Cart#addItems](#cartadditems)
+    * [Cart#updateCart](#cartupdatecart)
+    * [Cart#getItemCount](#cartgetitemcount)
+    * [Cart#getCoupons](#cartgetcoupons)
+    * [Cart#applyCoupon](#cartapplycoupon)
+    * [Cart#removeCoupon](#cartremovecoupon)
+    * [Cart#getBulkDiscountOffers](#cartgetbulkdiscountoffers)
+    * [Cart#getAddresses](#cartgetaddresses)
+    * [Cart#addAddress](#cartaddaddress)
+    * [Cart#getAddressById](#cartgetaddressbyid)
+    * [Cart#updateAddress](#cartupdateaddress)
+    * [Cart#removeAddress](#cartremoveaddress)
+    * [Cart#selectAddress](#cartselectaddress)
+    * [Cart#getPaymentModes](#cartgetpaymentmodes)
+    * [Cart#selectPaymentMode](#cartselectpaymentmode)
+    * [Cart#getShipments](#cartgetshipments)
+    * [Cart#checkoutCart](#cartcheckoutcart)
+    * [Cart#updateCartMeta](#cartupdatecartmeta)
+    * [Cart#getCartShareLink](#cartgetcartsharelink)
+    * [Cart#getCartSharedItems](#cartgetcartshareditems)
+    * [Cart#updateCartWithSharedItems](#cartupdatecartwithshareditems)
     
    
 
@@ -155,6 +186,29 @@
     
    
 
+* [Payment](#Payment)
+  * Methods
+    * [Payment#getAggregatorsConfig](#paymentgetaggregatorsconfig)
+    * [Payment#attachCardToCustomer](#paymentattachcardtocustomer)
+    * [Payment#getActiveCardAggregator](#paymentgetactivecardaggregator)
+    * [Payment#getActiveUserCards](#paymentgetactiveusercards)
+    * [Payment#deleteUserCard](#paymentdeleteusercard)
+    * [Payment#verifyCustomerForPayment](#paymentverifycustomerforpayment)
+    * [Payment#verifyAndChargePayment](#paymentverifyandchargepayment)
+    * [Payment#initialisePayment](#paymentinitialisepayment)
+    * [Payment#checkAndUpdatePaymentStatus](#paymentcheckandupdatepaymentstatus)
+    * [Payment#getPaymentModeRoutes](#paymentgetpaymentmoderoutes)
+    * [Payment#getPosPaymentModeRoutes](#paymentgetpospaymentmoderoutes)
+    * [Payment#getUserBeneficiariesDetail](#paymentgetuserbeneficiariesdetail)
+    * [Payment#verifyIfscCode](#paymentverifyifsccode)
+    * [Payment#getOrderBeneficiariesDetail](#paymentgetorderbeneficiariesdetail)
+    * [Payment#verifyOtpAndAddBeneficiaryForBank](#paymentverifyotpandaddbeneficiaryforbank)
+    * [Payment#addBeneficiaryDetails](#paymentaddbeneficiarydetails)
+    * [Payment#verifyOtpAndAddBeneficiaryForWallet](#paymentverifyotpandaddbeneficiaryforwallet)
+    * [Payment#updateDefaultBeneficiary](#paymentupdatedefaultbeneficiary)
+    
+   
+
 * [Order](#Order)
   * Methods
     * [Order#getOrders](#ordergetorders)
@@ -163,6 +217,17 @@
     * [Order#getShipmentReasons](#ordergetshipmentreasons)
     * [Order#updateShipmentStatus](#orderupdateshipmentstatus)
     * [Order#trackShipment](#ordertrackshipment)
+    
+   
+
+* [Rewards](#Rewards)
+  * Methods
+    * [Rewards#getPointsOnProduct](#rewardsgetpointsonproduct)
+    * [Rewards#getOrderDiscount](#rewardsgetorderdiscount)
+    * [Rewards#getUserPoints](#rewardsgetuserpoints)
+    * [Rewards#getUserPointsHistory](#rewardsgetuserpointshistory)
+    * [Rewards#getUserReferralDetails](#rewardsgetuserreferraldetails)
+    * [Rewards#redeemReferralCode](#rewardsredeemreferralcode)
     
    
 
@@ -1680,67 +1745,6 @@ Error Response:
 ---
 
 
-#### Catalog#updateCollectionDetailBySlug
-Update a collection
-
-```javascript
-// Promise
-const promise = catalog.updateCollectionDetailBySlug(slug, );
-
-// Async/Await
-const data = await catalog.updateCollectionDetailBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
-
-Update a collection by it's slug. On successful request, returns the updated collection
-
-Success Response:
-
-
-
-The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
-}`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
 #### Catalog#deleteCollectionDetailBySlug
 Delete a Collection
 
@@ -1831,6 +1835,67 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/CollectionDetailResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ErrorResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Catalog#updateCollectionDetailBySlug
+Update a collection
+
+```javascript
+// Promise
+const promise = catalog.updateCollectionDetailBySlug(slug, );
+
+// Async/Await
+const data = await catalog.updateCollectionDetailBySlug(slug, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
+
+Update a collection by it's slug. On successful request, returns the updated collection
+
+Success Response:
+
+
+
+The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
 }`
 
 
@@ -2222,6 +2287,3571 @@ Content Type: `application/json`
 Schema: `{
   "$ref": "#/components/schemas/ErrorResponse"
 }`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+
+---
+
+
+## Cart
+
+```javascript
+const { Configuration, Cart } = require('fdk-client-nodejs/application')
+const conf = new Configuration({
+    ApplicationID: "507f191e810c19729de860ea",
+    ApplicationToken: "hu67dfhddf"
+});
+const cart = new Cart(conf);
+
+```
+
+
+#### Cart#getCart
+Fetch all Items Added to  Cart
+
+```javascript
+// Promise
+const promise = cart.getCart(uid, assign_card_id, );
+
+// Async/Await
+const data = await cart.getCart(uid, assign_card_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | integer |  | 
+| assign_card_id | integer |  | 
+
+Get all the details of a items added to cart  by uid. If successful, returns a Cart resource in the response body specified in CartResponse
+
+Success Response:
+
+
+
+The Cart object. See example below or refer CartResponse for details
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getCartLastModified
+Fetch Last-Modified timestamp
+
+```javascript
+// Promise
+const promise = cart.getCartLastModified(uid, );
+
+// Async/Await
+const data = await cart.getCartLastModified(uid, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | integer |  | 
+
+Fetch Last-Modified timestamp in header metadata
+
+Success Response:
+
+
+
+Fetch Last-Modified Timestamp Response
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#addItems
+Add Items to Cart
+
+```javascript
+// Promise
+const promise = cart.addItems();
+
+// Async/Await
+const data = await cart.addItems();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+<p>Add Items to cart. See `AddCartRequest` in schema of request body for the list of attributes needed to add items to a cart. On successful request, returns cart response containing details of items, coupons available etc.these attributes will be fetched from the folowing api's</p>
+
+Success Response:
+
+
+
+Response of the cart object including all item details included in .the cart,coupons etc.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/AddCartResponse"
+}`
+
+
+Examples: 
+
+
+Product has been added to your cart
+```javascript
+{
+  "value": {
+    "message": "Product has been added to your cart",
+    "success": true,
+    "cart": {
+      "breakup_values": {
+        "display": [
+          {
+            "display": "MRP Total",
+            "key": "mrp_total",
+            "value": 17486,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Discount",
+            "key": "discount",
+            "value": -3540,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Subtotal",
+            "key": "subtotal",
+            "value": 13946,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Total",
+            "key": "total",
+            "value": 13946,
+            "currency_code": "INR"
+          }
+        ],
+        "raw": {
+          "cod_charge": 0,
+          "convenience_fee": 0,
+          "coupon": 0,
+          "delivery_charge": 0,
+          "discount": -3540,
+          "fynd_cash": 0,
+          "gst_charges": 1529.96,
+          "mrp_total": 17486,
+          "subtotal": 13946,
+          "total": 13946,
+          "vog": 12416.04,
+          "you_saved": 0
+        },
+        "loyalty_points": {
+          "total": 0,
+          "applicable": 0,
+          "is_applied": false,
+          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+        },
+        "coupon": {
+          "type": "cash",
+          "code": "",
+          "uid": null,
+          "value": 0,
+          "is_applied": false,
+          "message": "Sorry! Invalid Coupon"
+        }
+      },
+      "items": [
+        {
+          "key": "751083_10",
+          "article": {
+            "type": "article",
+            "uid": "612_9_SE61201_19100302_10",
+            "size": "10",
+            "seller": {
+              "uid": 612,
+              "name": "SSR ENTERPRISE"
+            },
+            "store": {
+              "uid": 4431,
+              "name": "Motilal Nagar 1, Goregaon"
+            },
+            "quantity": 4,
+            "price": {
+              "base": {
+                "marked": 3999,
+                "effective": 2399,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 3999,
+                "effective": 2399,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "price": {
+            "base": {
+              "add_on": 4798,
+              "marked": 7998,
+              "effective": 4798,
+              "selling": 4798,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 4798,
+              "marked": 7998,
+              "effective": 4798,
+              "selling": 4798,
+              "currency_code": "INR"
+            }
+          },
+          "availability": {
+            "sizes": [
+              "10"
+            ],
+            "other_store_quantity": 2,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "product": {
+            "type": "product",
+            "uid": 751083,
+            "name": "Carson 2",
+            "slug": "puma-carson-2-751083-6ad98d",
+            "brand": {
+              "uid": 9,
+              "name": "Puma"
+            },
+            "categories": [
+              {
+                "uid": 165,
+                "name": "Outdoor Sports Shoes"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/9_19100302/1_1542807042296.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/9_19100302/1_1542807042296.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/puma-carson-2-751083-6ad98d/",
+              "query": {
+                "product_slug": [
+                  "puma-carson-2-751083-6ad98d"
+                ]
+              }
+            }
+          },
+          "coupon_message": "",
+          "quantity": 2,
+          "message": "",
+          "bulk_offer": {},
+          "discount": "41% OFF"
+        },
+        {
+          "key": "246228_S",
+          "article": {
+            "type": "article",
+            "uid": "46_235_TM62_M11029ONDSXNS_S",
+            "size": "S",
+            "seller": {
+              "uid": 46,
+              "name": "RELIANCE BRANDS LIMITED"
+            },
+            "store": {
+              "uid": 4550,
+              "name": "VR Mall"
+            },
+            "quantity": 1,
+            "price": {
+              "base": {
+                "marked": 4490,
+                "effective": 4490,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 4490,
+                "effective": 4490,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "price": {
+            "base": {
+              "add_on": 4490,
+              "marked": 4490,
+              "effective": 4490,
+              "selling": 4490,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 4490,
+              "marked": 4490,
+              "effective": 4490,
+              "selling": 4490,
+              "currency_code": "INR"
+            }
+          },
+          "availability": {
+            "sizes": [
+              "L",
+              "M",
+              "S",
+              "XL",
+              "XXL"
+            ],
+            "other_store_quantity": 0,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "product": {
+            "type": "product",
+            "uid": 246228,
+            "name": "Blue Solid T-Shirt",
+            "slug": "superdry-blue-solid-t-shirt-2",
+            "brand": {
+              "uid": 235,
+              "name": "Superdry"
+            },
+            "categories": [
+              {
+                "uid": 192,
+                "name": "T-Shirts"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/235_M11029ONDSXNS/1.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/235_M11029ONDSXNS/1.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/superdry-blue-solid-t-shirt-2/",
+              "query": {
+                "product_slug": [
+                  "superdry-blue-solid-t-shirt-2"
+                ]
+              }
+            }
+          },
+          "coupon_message": "",
+          "quantity": 1,
+          "message": "",
+          "bulk_offer": {},
+          "discount": ""
+        },
+        {
+          "key": "443175_S",
+          "article": {
+            "type": "article",
+            "uid": "162_207_1271_LJ03LBLUDN88_S",
+            "size": "S",
+            "seller": {
+              "uid": 162,
+              "name": "GO FASHION INDIA PRIVATE LIMITED"
+            },
+            "store": {
+              "uid": 5784,
+              "name": "Vega City mall"
+            },
+            "quantity": 3,
+            "price": {
+              "base": {
+                "marked": 1599,
+                "effective": 1599,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 1599,
+                "effective": 1599,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "price": {
+            "base": {
+              "add_on": 1599,
+              "marked": 1599,
+              "effective": 1599,
+              "selling": 1599,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 1599,
+              "marked": 1599,
+              "effective": 1599,
+              "selling": 1599,
+              "currency_code": "INR"
+            }
+          },
+          "availability": {
+            "sizes": [
+              "XL",
+              "M",
+              "L",
+              "S"
+            ],
+            "other_store_quantity": 8,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "product": {
+            "type": "product",
+            "uid": 443175,
+            "name": "Light Blue Denim Jeggings",
+            "slug": "go-colors-light-blue-denim-jeggings-443175-3c688c",
+            "brand": {
+              "uid": 207,
+              "name": "Go Colors"
+            },
+            "categories": [
+              {
+                "uid": 267,
+                "name": "Jeggings"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/207_LJ03LBLUDN88/1_1512382513548.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/207_LJ03LBLUDN88/1_1512382513548.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/go-colors-light-blue-denim-jeggings-443175-3c688c/",
+              "query": {
+                "product_slug": [
+                  "go-colors-light-blue-denim-jeggings-443175-3c688c"
+                ]
+              }
+            }
+          },
+          "coupon_message": "",
+          "quantity": 1,
+          "message": "",
+          "bulk_offer": {},
+          "discount": ""
+        },
+        {
+          "key": "778937_OS",
+          "article": {
+            "type": "article",
+            "uid": "686_963_IC68601_PWUPC01977_OS",
+            "size": "OS",
+            "seller": {
+              "uid": 686,
+              "name": "INDUS CORPORATION"
+            },
+            "store": {
+              "uid": 5059,
+              "name": "Vidyaranyapura Main Road"
+            },
+            "quantity": 3,
+            "price": {
+              "base": {
+                "marked": 3399,
+                "effective": 3059,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 3399,
+                "effective": 3059,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "price": {
+            "base": {
+              "add_on": 3059,
+              "marked": 3399,
+              "effective": 3059,
+              "selling": 3059,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 3059,
+              "marked": 3399,
+              "effective": 3059,
+              "selling": 3059,
+              "currency_code": "INR"
+            }
+          },
+          "availability": {
+            "sizes": [
+              "OS"
+            ],
+            "other_store_quantity": 2,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "product": {
+            "type": "product",
+            "uid": 778937,
+            "name": "Colourful Carnival Bouncer",
+            "slug": "fisher-price-colourful-carnival-bouncer-778937-fafa1f",
+            "brand": {
+              "uid": 963,
+              "name": "Fisher-Price"
+            },
+            "categories": [
+              {
+                "uid": 576,
+                "name": "Cradles"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/963_PWUPC01977/1_1545308400588.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/963_PWUPC01977/1_1545308400588.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/fisher-price-colourful-carnival-bouncer-778937-fafa1f/",
+              "query": {
+                "product_slug": [
+                  "fisher-price-colourful-carnival-bouncer-778937-fafa1f"
+                ]
+              }
+            }
+          },
+          "coupon_message": "",
+          "quantity": 1,
+          "message": "",
+          "bulk_offer": {},
+          "discount": "11% OFF"
+        }
+      ],
+      "delivery_charge_info": "",
+      "coupon_text": "View all offers",
+      "cart_id": 7927,
+      "uid": "7927",
+      "gstin": null,
+      "checkout_mode": "self",
+      "last_modified": "Tue, 03 Sep 2019 06:00:43 GMT",
+      "restrict_checkout": false,
+      "is_valid": true
+    },
+    "result": {}
+  }
+}
+```
+
+Sorry, item is out of stock
+```javascript
+{
+  "value": {
+    "message": "Sorry, item is out of stock",
+    "success": false,
+    "cart": {
+      "breakup_values": {
+        "raw": {
+          "cod_charge": 0,
+          "convenience_fee": 0,
+          "coupon": 0,
+          "delivery_charge": 0,
+          "discount": -202000,
+          "fynd_cash": 0,
+          "gst_charges": 4804.71,
+          "mrp_total": 302899,
+          "subtotal": 100899,
+          "total": 100899,
+          "vog": 96094.29,
+          "you_saved": 0
+        },
+        "coupon": {
+          "type": "cash",
+          "code": "",
+          "uid": null,
+          "value": 0,
+          "is_applied": false,
+          "message": "Sorry! Invalid Coupon"
+        },
+        "display": [
+          {
+            "display": "MRP Total",
+            "key": "mrp_total",
+            "value": 302899,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Discount",
+            "key": "discount",
+            "value": -202000,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Subtotal",
+            "key": "subtotal",
+            "value": 100899,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Total",
+            "key": "total",
+            "value": 100899,
+            "currency_code": "INR"
+          }
+        ],
+        "loyalty_points": {
+          "total": 0,
+          "applicable": 0,
+          "is_applied": false,
+          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+        }
+      },
+      "items": [
+        {
+          "bulk_offer": {},
+          "discount": "67% OFF",
+          "article": {
+            "type": "article",
+            "uid": "604_902_SSTC60401_636BLUE_1",
+            "size": "1",
+            "seller": {
+              "uid": 604,
+              "name": "SHRI SHANTINATH TRADING COMPANY"
+            },
+            "store": {
+              "uid": 4579,
+              "name": "Gandhi Nagar"
+            },
+            "quantity": 108,
+            "price": {
+              "base": {
+                "marked": 2999,
+                "effective": 999,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 2999,
+                "effective": 999,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "coupon_message": "",
+          "key": "707569_1",
+          "availability": {
+            "sizes": [
+              "1",
+              "8",
+              "7",
+              "2",
+              "9",
+              "5",
+              "3",
+              "6"
+            ],
+            "other_store_quantity": 7,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "product": {
+            "type": "product",
+            "uid": 707569,
+            "name": "Blue and Gold Printed Ethnic Set",
+            "slug": "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a",
+            "brand": {
+              "uid": 902,
+              "name": ""
+            },
+            "categories": [
+              {
+                "uid": 525,
+                "name": ""
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/v1/products/aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a/",
+              "query": {
+                "product_slug": [
+                  "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a"
+                ]
+              }
+            }
+          },
+          "price": {
+            "base": {
+              "add_on": 100899,
+              "marked": 302899,
+              "effective": 100899,
+              "selling": 100899,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 100899,
+              "marked": 302899,
+              "effective": 100899,
+              "selling": 100899,
+              "currency_code": "INR"
+            }
+          },
+          "message": "",
+          "quantity": 101
+        }
+      ],
+      "delivery_charge_info": "",
+      "coupon_text": "View all offers",
+      "cart_id": 54,
+      "uid": "54",
+      "gstin": null,
+      "checkout_mode": "self",
+      "restrict_checkout": false,
+      "is_valid": false,
+      "last_modified": "Tue, 03 Sep 2019 09:55:40 GMT"
+    },
+    "result": {}
+  }
+}
+```
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#updateCart
+Update Items already added to Cart
+
+```javascript
+// Promise
+const promise = cart.updateCart();
+
+// Async/Await
+const data = await cart.updateCart();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Request object containing attributes like item_quantity and item_size which can be updated .these attributes will be fetched from the folowing api's</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
+
+Success Response:
+
+
+
+Response of the cart object including all item with their updated details included in .the cart,coupons etc..
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/UpdateCartResponse"
+}`
+
+
+Examples: 
+
+
+Nothing updated
+```javascript
+{
+  "value": {
+    "cart": {
+      "breakup_values": {
+        "raw": {
+          "cod_charge": 0,
+          "convenience_fee": 0,
+          "coupon": 0,
+          "delivery_charge": 0,
+          "discount": -202000,
+          "fynd_cash": 0,
+          "gst_charges": 4804.71,
+          "mrp_total": 302899,
+          "subtotal": 100899,
+          "total": 100899,
+          "vog": 96094.29,
+          "you_saved": 0
+        },
+        "coupon": {
+          "type": "cash",
+          "code": "",
+          "uid": null,
+          "value": 0,
+          "is_applied": false,
+          "message": "Sorry! Invalid Coupon"
+        },
+        "display": [
+          {
+            "display": "MRP Total",
+            "key": "mrp_total",
+            "value": 302899,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Discount",
+            "key": "discount",
+            "value": -202000,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Subtotal",
+            "key": "subtotal",
+            "value": 100899,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Total",
+            "key": "total",
+            "value": 100899,
+            "currency_code": "INR"
+          }
+        ],
+        "loyalty_points": {
+          "total": 0,
+          "applicable": 0,
+          "is_applied": false,
+          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+        }
+      },
+      "items": [
+        {
+          "bulk_offer": {},
+          "discount": "67% OFF",
+          "article": {
+            "type": "article",
+            "uid": "604_902_SSTC60401_636BLUE_1",
+            "size": "1",
+            "seller": {
+              "uid": 604,
+              "name": "SHRI SHANTINATH TRADING COMPANY"
+            },
+            "store": {
+              "uid": 4579,
+              "name": "Gandhi Nagar"
+            },
+            "quantity": 108,
+            "price": {
+              "base": {
+                "marked": 2999,
+                "effective": 999,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 2999,
+                "effective": 999,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "coupon_message": "",
+          "key": "707569_1",
+          "availability": {
+            "sizes": [
+              "1",
+              "8",
+              "7",
+              "2",
+              "9",
+              "5",
+              "3",
+              "6"
+            ],
+            "other_store_quantity": 7,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "product": {
+            "type": "product",
+            "uid": 707569,
+            "name": "Blue and Gold Printed Ethnic Set",
+            "slug": "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a",
+            "brand": {
+              "uid": 902,
+              "name": ""
+            },
+            "categories": [
+              {
+                "uid": 525,
+                "name": ""
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/v1/products/aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a/",
+              "query": {
+                "product_slug": [
+                  "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a"
+                ]
+              }
+            }
+          },
+          "price": {
+            "base": {
+              "add_on": 100899,
+              "marked": 302899,
+              "effective": 100899,
+              "selling": 100899,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 100899,
+              "marked": 302899,
+              "effective": 100899,
+              "selling": 100899,
+              "currency_code": "INR"
+            }
+          },
+          "message": "",
+          "quantity": 101
+        }
+      ],
+      "delivery_charge_info": "",
+      "coupon_text": "View all offers",
+      "cart_id": 54,
+      "uid": "54",
+      "gstin": null,
+      "checkout_mode": "self",
+      "restrict_checkout": false,
+      "is_valid": true,
+      "last_modified": "Tue, 03 Sep 2019 10:19:20 GMT"
+    },
+    "result": {
+      "707569_90": {
+        "success": true,
+        "message": "Nothing updated"
+      }
+    },
+    "message": "Nothing updated",
+    "success": true
+  }
+}
+```
+
+Item updated in the cart
+```javascript
+{
+  "value": {
+    "cart": {
+      "breakup_values": {
+        "coupon": {
+          "type": "cash",
+          "code": "",
+          "uid": null,
+          "value": 0,
+          "is_applied": false,
+          "message": "Sorry! Invalid Coupon"
+        },
+        "loyalty_points": {
+          "total": 0,
+          "applicable": 0,
+          "is_applied": false,
+          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+        },
+        "raw": {
+          "cod_charge": 0,
+          "convenience_fee": 0,
+          "coupon": 0,
+          "delivery_charge": 0,
+          "discount": 0,
+          "fynd_cash": 0,
+          "gst_charges": 838.83,
+          "mrp_total": 5499,
+          "subtotal": 5499,
+          "total": 5499,
+          "vog": 4660.17,
+          "you_saved": 0
+        },
+        "display": [
+          {
+            "display": "MRP Total",
+            "key": "mrp_total",
+            "value": 5499,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Subtotal",
+            "key": "subtotal",
+            "value": 5499,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Total",
+            "key": "total",
+            "value": 5499,
+            "currency_code": "INR"
+          }
+        ]
+      },
+      "items": [
+        {
+          "key": "437414_7",
+          "message": "",
+          "bulk_offer": {},
+          "price": {
+            "base": {
+              "add_on": 5499,
+              "marked": 5499,
+              "effective": 5499,
+              "selling": 5499,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 5499,
+              "marked": 5499,
+              "effective": 5499,
+              "selling": 5499,
+              "currency_code": "INR"
+            }
+          },
+          "quantity": 1,
+          "discount": "",
+          "product": {
+            "type": "product",
+            "uid": 437414,
+            "name": "Suede Classic",
+            "slug": "puma-suede-classic-437414-6e6bbf",
+            "brand": {
+              "uid": 9,
+              "name": "Puma"
+            },
+            "categories": [
+              {
+                "uid": 165,
+                "name": "Outdoor Sports Shoes"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/9_35656851/1_1511171811830.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/9_35656851/1_1511171811830.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/puma-suede-classic-437414-6e6bbf/",
+              "query": {
+                "product_slug": [
+                  "puma-suede-classic-437414-6e6bbf"
+                ]
+              }
+            }
+          },
+          "article": {
+            "type": "article",
+            "uid": "507_9_96099_35656851_7",
+            "size": "7",
+            "seller": {
+              "uid": 507,
+              "name": "PUMA SPORTS INDIA PVT LTD"
+            },
+            "store": {
+              "uid": 3632,
+              "name": "Colaba Causway"
+            },
+            "quantity": 5,
+            "price": {
+              "base": {
+                "marked": 5499,
+                "effective": 5499,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 5499,
+                "effective": 5499,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "coupon_message": "",
+          "availability": {
+            "sizes": [
+              "10",
+              "11",
+              "6",
+              "9",
+              "7",
+              "8"
+            ],
+            "other_store_quantity": 22,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          }
+        }
+      ],
+      "delivery_charge_info": "",
+      "coupon_text": "View all offers",
+      "cart_id": 12426,
+      "uid": "12426",
+      "gstin": null,
+      "checkout_mode": "self",
+      "last_modified": "Thu, 22 Aug 2019 04:51:42 GMT",
+      "restrict_checkout": false,
+      "is_valid": true
+    },
+    "result": {
+      "437414_7": {
+        "success": true,
+        "message": "Item updated in the bag"
+      }
+    },
+    "message": "Item updated in the bag",
+    "success": true
+  }
+}
+```
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getItemCount
+Cart item count
+
+```javascript
+// Promise
+const promise = cart.getItemCount(uid, );
+
+// Async/Await
+const data = await cart.getItemCount(uid, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | integer | Cart id | 
+
+Get total count of item present in cart
+
+Success Response:
+
+
+
+OK
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartItemCountResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getCoupons
+Fetch Coupon
+
+```javascript
+// Promise
+const promise = cart.getCoupons(uid, );
+
+// Async/Await
+const data = await cart.getCoupons(uid, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | integer |  | 
+
+Get all the details of a coupons applicable to cart  by uid. If successful, returns a Coupon resource in the response body specified in GetCouponResponse
+
+Success Response:
+
+
+
+Returns The Couppon object which has list of all available_coupon applicale for the cart. See example below or refer GetCouponResponse for details
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/GetCouponResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#applyCoupon
+Apply Coupon
+
+```javascript
+// Promise
+const promise = cart.applyCoupon(i, b, p, );
+
+// Async/Await
+const data = await cart.applyCoupon(i, b, p, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| i | boolean |  | 
+| b | boolean |  | 
+| p | boolean |  | 
+
+<p>Apply Coupons on Items added to cart. On successful request, returns cart response containing details of items ,coupons applied etc.these attributes will be consumed by  api</p> <ul> <li> <font color="monochrome">coupon_code</font></li>
+</ul>
+
+Success Response:
+
+
+
+Response of the Coupon object including all item details included in .the cart,coupons applied etc.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/SaveCouponResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#removeCoupon
+Remove Coupon Applied
+
+```javascript
+// Promise
+const promise = cart.removeCoupon(uid, );
+
+// Async/Await
+const data = await cart.removeCoupon(uid, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | integer | Cart id | 
+
+Remove Coupon applied on the cart by passing uid in request body.
+
+Success Response:
+
+
+
+Response of the Coupon object including all item details included in .the cart,coupons removed etc.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getBulkDiscountOffers
+Get discount offers based on quantity
+
+```javascript
+// Promise
+const promise = cart.getBulkDiscountOffers(item_id, article_id, uid, slug, );
+
+// Async/Await
+const data = await cart.getBulkDiscountOffers(item_id, article_id, uid, slug, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| item_id | integer | Item id | 
+| article_id | string | Article mongo id | 
+| uid | integer | Item id | 
+| slug | string | Item unique url from product page | 
+
+List applicable offers along with current, next and best offer for given product. Either one of **uid**, **item_id**, **slug** should be present*
+
+Success Response:
+
+
+
+Offers found or not found with valid input
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/BulkPriceResponse"
+}`
+
+
+Examples: 
+
+
+Offers found
+```javascript
+{
+  "value": {
+    "data": [
+      {
+        "seller": {
+          "uid": 248,
+          "name": "MANYAVAR CREATIONS PRIVATE LIMITED"
+        },
+        "offers": [
+          {
+            "quantity": 1,
+            "auto_applied": true,
+            "margin": 10,
+            "type": "bundle",
+            "price": {
+              "marked": 3999,
+              "effective": 3999,
+              "bulk_effective": 3599.1,
+              "currency_code": "INR"
+            },
+            "total": 3599.1
+          },
+          {
+            "quantity": 3,
+            "auto_applied": true,
+            "margin": 20,
+            "type": "bundle",
+            "price": {
+              "marked": 3999,
+              "effective": 3999,
+              "bulk_effective": 3199.2,
+              "currency_code": "INR"
+            },
+            "total": 9597.6
+          },
+          {
+            "quantity": 9,
+            "auto_applied": true,
+            "margin": 30,
+            "type": "bundle",
+            "price": {
+              "marked": 3999,
+              "effective": 3999,
+              "bulk_effective": 3443.4444444444,
+              "currency_code": "INR"
+            },
+            "total": 30991,
+            "best": true
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Offers not found
+```javascript
+{
+  "value": {
+    "data": []
+  }
+}
+```
+
+
+
+
+
+
+
+
+Unhandled api error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    }
+  }
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getAddresses
+Fetch Address
+
+```javascript
+// Promise
+const promise = cart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+
+// Async/Await
+const data = await cart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | integer |  | 
+| mobile_no | integer |  | 
+| checkout_mode | string |  | 
+| tags | integer |  | 
+| is_default | boolean |  | 
+
+Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
+
+Success Response:
+
+
+
+Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/GetAddressResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#addAddress
+Add Address to the account
+
+```javascript
+// Promise
+const promise = cart.addAddress();
+
+// Async/Await
+const data = await cart.addAddress();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+<p>Add Address to account. See `SaveAddressRequest` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
+
+Success Response:
+
+
+
+Return Address Id on successfull completion of the request.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/SaveAddressResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getAddressById
+Fetch Single Address
+
+```javascript
+// Promise
+const promise = cart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+
+// Async/Await
+const data = await cart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | integer |  | 
+| uid | integer |  | 
+| mobile_no | integer |  | 
+| checkout_mode | string |  | 
+| tags | integer |  | 
+| is_default | boolean |  | 
+
+Get a addresses with the given id. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
+
+Success Response:
+
+
+
+Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/GetAddressResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#updateAddress
+Update Address alreay added to account
+
+```javascript
+// Promise
+const promise = cart.updateAddress(id, );
+
+// Async/Await
+const data = await cart.updateAddress(id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | integer | Address id | 
+
+Request object containing attributes mentioned in  <font color="blue">UpdateAddressRequest </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
+
+Success Response:
+
+
+
+Response of the Address object containing address_id and sucess message.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/UpdateAddressResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#removeAddress
+Remove Address Associated to the account
+
+```javascript
+// Promise
+const promise = cart.removeAddress(id, );
+
+// Async/Await
+const data = await cart.removeAddress(id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | integer | Address id | 
+
+Delete a Address by it's address_id. Returns an object that tells whether the address was deleted successfully
+
+Success Response:
+
+
+
+Status object. Tells whether the operation was successful. See example below or refer DeleteAddressResponse
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/DeleteAddressResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#selectAddress
+Select Address from All Addresses
+
+```javascript
+// Promise
+const promise = cart.selectAddress();
+
+// Async/Await
+const data = await cart.selectAddress();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+<p>Select Address from all addresses associated with the account in order to ship the cart items to .that address,otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, returns Cart object response.below are the address attributes which needs to be sent. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
+
+Success Response:
+
+
+
+Response of the Address object containing Cart Object and success message.  .
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartResponse"
+}`
+
+
+
+
+
+
+
+
+Address or Pincode Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}`
+
+
+Examples: 
+
+
+Address Not Found
+```javascript
+{
+  "value": {
+    "status": "ERROR",
+    "message": "ADDRESS_NOT_FOUND"
+  }
+}
+```
+
+Pincode Not Serviciable
+```javascript
+{
+  "value": {
+    "status": "ERROR",
+    "message": "PINCODE_NOT_SERVICIABLE"
+  }
+}
+```
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getPaymentModes
+Get Cart Payment for valid coupon
+
+```javascript
+// Promise
+const promise = cart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code, );
+
+// Async/Await
+const data = await cart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | string |  | 
+| address_id | string |  | 
+| payment_mode | string |  | 
+| payment_identifier | string |  | 
+| aggregator_name | string |  | 
+| merchant_code | string |  | 
+
+Validate coupon for selected payment mode
+
+Success Response:
+
+
+
+Cart Affiliates.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentOptions"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#selectPaymentMode
+Update Cart Payment
+
+```javascript
+// Promise
+const promise = cart.selectPaymentMode(uid, );
+
+// Async/Await
+const data = await cart.selectPaymentMode(uid, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | string |  | 
+
+Update Cart Payment for Your Account
+
+Success Response:
+
+
+
+Cart Affiliates.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentOptions"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getShipments
+Get delivery date and options before checkout
+
+```javascript
+// Promise
+const promise = cart.getShipments(p, uid, address_id, );
+
+// Async/Await
+const data = await cart.getShipments(p, uid, address_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| p | boolean | Get payment options or not | 
+| uid | integer | Cart id | 
+| address_id | integer | Address id | 
+
+Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
+
+Success Response:
+
+
+
+OK
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartShipmentsResponse"
+}`
+
+
+Examples: 
+
+
+Shipment Generated
+```javascript
+{
+  "value": {
+    "items": [],
+    "cart_id": 7501,
+    "uid": "7501",
+    "success": true,
+    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
+    "payment_options": {
+      "payment_option": [
+        {
+          "name": "COD",
+          "display_name": "Cash on Delivery",
+          "display_priority": 1,
+          "payment_mode_id": 11,
+          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
+          "logo_url": {
+            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
+            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
+          },
+          "list": []
+        },
+        {
+          "name": "CARD",
+          "display_priority": 2,
+          "payment_mode_id": 2,
+          "display_name": "Card",
+          "list": []
+        },
+        {
+          "name": "NB",
+          "display_priority": 3,
+          "payment_mode_id": 3,
+          "display_name": "Net Banking",
+          "list": [
+            {
+              "aggregator_name": "Razorpay",
+              "bank_name": "ICICI Bank",
+              "bank_code": "ICIC",
+              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
+              },
+              "merchant_code": "NB_ICICI",
+              "display_priority": 1
+            }
+          ]
+        },
+        {
+          "name": "WL",
+          "display_priority": 4,
+          "payment_mode_id": 4,
+          "display_name": "Wallet",
+          "list": [
+            {
+              "wallet_name": "Paytm",
+              "wallet_code": "paytm",
+              "wallet_id": 4,
+              "merchant_code": "PAYTM",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
+              },
+              "aggregator_name": "Juspay",
+              "display_priority": 1
+            }
+          ]
+        },
+        {
+          "name": "UPI",
+          "display_priority": 9,
+          "payment_mode_id": 6,
+          "display_name": "UPI",
+          "list": [
+            {
+              "aggregator_name": "UPI_Razorpay",
+              "name": "UPI",
+              "display_name": "BHIM UPI",
+              "code": "UPI",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
+              },
+              "merchant_code": "UPI",
+              "timeout": 240,
+              "retry_count": 0,
+              "fynd_vpa": "shopsense.rzp@hdfcbank",
+              "intent_flow": true,
+              "intent_app_error_list": [
+                "com.csam.icici.bank.imobile",
+                "in.org.npci.upiapp",
+                "com.whatsapp"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PL",
+          "display_priority": 11,
+          "payment_mode_id": 1,
+          "display_name": "Pay Later",
+          "list": [
+            {
+              "aggregator_name": "Simpl",
+              "name": "Simpl",
+              "code": "simpl",
+              "merchant_code": "SIMPL",
+              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
+              }
+            }
+          ]
+        }
+      ],
+      "payment_flows": {
+        "Simpl": {
+          "data": {
+            "gateway": {
+              "route": "simpl",
+              "entity": "sdk",
+              "is_customer_validation_required": true,
+              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
+              "sdk": {
+                "config": {
+                  "redirect": false,
+                  "callback_url": null,
+                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
+                },
+                "data": {
+                  "user_phone": "8452996729",
+                  "user_email": "paymentsdummy@gofynd.com"
+                }
+              },
+              "return_url": null
+            }
+          },
+          "api_link": "",
+          "payment_flow": "sdk"
+        },
+        "Juspay": {
+          "data": {},
+          "api_link": "https://sandbox.juspay.in/txns",
+          "payment_flow": "api"
+        },
+        "Razorpay": {
+          "data": {},
+          "api_link": "",
+          "payment_flow": "sdk"
+        },
+        "UPI_Razorpay": {
+          "data": {},
+          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
+          "payment_flow": "api"
+        },
+        "Fynd": {
+          "data": {},
+          "api_link": "",
+          "payment_flow": "api"
+        }
+      },
+      "default": {}
+    },
+    "user_type": "Store User",
+    "cod_charges": 0,
+    "order_id": null,
+    "cod_available": true,
+    "cod_message": "No additional COD charges applicable",
+    "delivery_charges": 0,
+    "delivery_charge_order_value": 0,
+    "delivery_slots": [
+      {
+        "date": "Sat, 24 Aug",
+        "delivery_slot": [
+          {
+            "delivery_slot_timing": "By 9:00 PM",
+            "default": true,
+            "delivery_slot_id": 1
+          }
+        ]
+      }
+    ],
+    "store_code": "",
+    "store_emps": [],
+    "breakup_values": {
+      "loyalty_points": {
+        "total": 0,
+        "applicable": 0,
+        "is_applied": false,
+        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+      },
+      "coupon": {
+        "type": "cash",
+        "code": "",
+        "uid": null,
+        "value": 0,
+        "is_applied": false,
+        "message": "Sorry! Invalid Coupon"
+      },
+      "raw": {
+        "cod_charge": 0,
+        "convenience_fee": 0,
+        "coupon": 0,
+        "delivery_charge": 0,
+        "discount": 0,
+        "fynd_cash": 0,
+        "gst_charges": 214.18,
+        "mrp_total": 1999,
+        "subtotal": 1999,
+        "total": 1999,
+        "vog": 1784.82,
+        "you_saved": 0
+      },
+      "display": [
+        {
+          "display": "MRP Total",
+          "key": "mrp_total",
+          "value": 1999,
+          "currency_code": "INR"
+        },
+        {
+          "display": "Subtotal",
+          "key": "subtotal",
+          "value": 1999,
+          "currency_code": "INR"
+        },
+        {
+          "display": "Total",
+          "key": "total",
+          "value": 1999,
+          "currency_code": "INR"
+        }
+      ]
+    },
+    "shipments": [
+      {
+        "fulfillment_id": 3009,
+        "shipment_type": "single_shipment",
+        "fulfillment_type": "store",
+        "dp_id": "29",
+        "dp_options": {
+          "4": {
+            "f_priority": 4,
+            "r_priority": 5,
+            "is_cod": true,
+            "is_prepaid": true,
+            "is_reverse": true
+          },
+          "7": {
+            "f_priority": 3,
+            "r_priority": 4,
+            "is_cod": true,
+            "is_prepaid": true,
+            "is_reverse": true
+          },
+          "29": {
+            "f_priority": 1,
+            "r_priority": 2,
+            "is_cod": true,
+            "is_prepaid": true,
+            "is_reverse": true
+          }
+        },
+        "promise": {
+          "timestamp": {
+            "min": 1566678108,
+            "max": 1567023708
+          },
+          "formatted": {
+            "min": "Aug 24",
+            "max": "Aug 28"
+          }
+        },
+        "box_type": "Small Courier bag",
+        "shipments": 1,
+        "items": [
+          {
+            "quantity": 1,
+            "product": {
+              "type": "product",
+              "uid": 820312,
+              "name": "Navy Blue Melange Shorts",
+              "slug": "883-police-navy-blue-melange-shorts-820312-4943a8",
+              "brand": {
+                "uid": 610,
+                "name": "883 Police"
+              },
+              "categories": [
+                {
+                  "uid": 193,
+                  "name": "Shorts"
+                }
+              ],
+              "images": [
+                {
+                  "aspect_ratio": "16:25",
+                  "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg",
+                  "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg"
+                }
+              ],
+              "action": {
+                "type": "product",
+                "url": "https://api.addsale.com/platform/content/v1/products/883-police-navy-blue-melange-shorts-820312-4943a8/",
+                "query": {
+                  "product_slug": [
+                    "883-police-navy-blue-melange-shorts-820312-4943a8"
+                  ]
+                }
+              }
+            },
+            "discount": "",
+            "bulk_offer": {},
+            "key": "820312_L",
+            "price": {
+              "base": {
+                "add_on": 1999,
+                "marked": 1999,
+                "effective": 1999,
+                "selling": 1999,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "add_on": 1999,
+                "marked": 1999,
+                "effective": 1999,
+                "selling": 1999,
+                "currency_code": "INR"
+              }
+            },
+            "article": {
+              "type": "article",
+              "uid": "381_610_IGPL01_SPIRAL19ANAVY_L",
+              "size": "L",
+              "seller": {
+                "uid": 381,
+                "name": "INTERSOURCE GARMENTS PVT LTD"
+              },
+              "store": {
+                "uid": 3009,
+                "name": "Kormangala"
+              },
+              "quantity": 2,
+              "price": {
+                "base": {
+                  "marked": 1999,
+                  "effective": 1999,
+                  "currency_code": "INR"
+                },
+                "converted": {
+                  "marked": 1999,
+                  "effective": 1999,
+                  "currency_code": "INR"
+                }
+              }
+            },
+            "availability": {
+              "sizes": [
+                "L",
+                "XL",
+                "XXL"
+              ],
+              "other_store_quantity": 1,
+              "out_of_stock": false,
+              "deliverable": true,
+              "is_valid": true
+            },
+            "coupon_message": "",
+            "message": ""
+          }
+        ]
+      }
+    ],
+    "delivery_charge_info": "",
+    "coupon_text": "View all offers",
+    "gstin": null,
+    "checkout_mode": "self",
+    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
+    "restrict_checkout": false,
+    "is_valid": true
+  }
+}
+```
+
+Shipment Generation Failed
+```javascript
+{
+  "value": {
+    "items": [],
+    "cart_id": 7501,
+    "uid": "7501",
+    "success": true,
+    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
+    "payment_options": {
+      "payment_option": [
+        {
+          "name": "COD",
+          "display_name": "Cash on Delivery",
+          "display_priority": 1,
+          "payment_mode_id": 11,
+          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
+          "logo_url": {
+            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
+            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
+          },
+          "list": []
+        },
+        {
+          "name": "CARD",
+          "display_priority": 2,
+          "payment_mode_id": 2,
+          "display_name": "Card",
+          "list": []
+        },
+        {
+          "name": "NB",
+          "display_priority": 3,
+          "payment_mode_id": 3,
+          "display_name": "Net Banking",
+          "list": [
+            {
+              "aggregator_name": "Razorpay",
+              "bank_name": "ICICI Bank",
+              "bank_code": "ICIC",
+              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
+              },
+              "merchant_code": "NB_ICICI",
+              "display_priority": 1
+            }
+          ]
+        },
+        {
+          "name": "WL",
+          "display_priority": 4,
+          "payment_mode_id": 4,
+          "display_name": "Wallet",
+          "list": [
+            {
+              "wallet_name": "Paytm",
+              "wallet_code": "paytm",
+              "wallet_id": 4,
+              "merchant_code": "PAYTM",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
+              },
+              "aggregator_name": "Juspay",
+              "display_priority": 1
+            }
+          ]
+        },
+        {
+          "name": "UPI",
+          "display_priority": 9,
+          "payment_mode_id": 6,
+          "display_name": "UPI",
+          "list": [
+            {
+              "aggregator_name": "UPI_Razorpay",
+              "name": "UPI",
+              "display_name": "BHIM UPI",
+              "code": "UPI",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
+              },
+              "merchant_code": "UPI",
+              "timeout": 240,
+              "retry_count": 0,
+              "fynd_vpa": "shopsense.rzp@hdfcbank",
+              "intent_flow": true,
+              "intent_app_error_list": [
+                "com.csam.icici.bank.imobile",
+                "in.org.npci.upiapp",
+                "com.whatsapp"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PL",
+          "display_priority": 11,
+          "payment_mode_id": 1,
+          "display_name": "Pay Later",
+          "list": [
+            {
+              "aggregator_name": "Simpl",
+              "name": "Simpl",
+              "code": "simpl",
+              "merchant_code": "SIMPL",
+              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
+              "logo_url": {
+                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
+                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
+              }
+            }
+          ]
+        }
+      ],
+      "payment_flows": {
+        "Simpl": {
+          "data": {
+            "gateway": {
+              "route": "simpl",
+              "entity": "sdk",
+              "is_customer_validation_required": true,
+              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
+              "sdk": {
+                "config": {
+                  "redirect": false,
+                  "callback_url": null,
+                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
+                },
+                "data": {
+                  "user_phone": "8452996729",
+                  "user_email": "paymentsdummy@gofynd.com"
+                }
+              },
+              "return_url": null
+            }
+          },
+          "api_link": "",
+          "payment_flow": "sdk"
+        },
+        "Juspay": {
+          "data": {},
+          "api_link": "https://sandbox.juspay.in/txns",
+          "payment_flow": "api"
+        },
+        "Razorpay": {
+          "data": {},
+          "api_link": "",
+          "payment_flow": "sdk"
+        },
+        "UPI_Razorpay": {
+          "data": {},
+          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
+          "payment_flow": "api"
+        },
+        "Fynd": {
+          "data": {},
+          "api_link": "",
+          "payment_flow": "api"
+        }
+      },
+      "default": {}
+    },
+    "user_type": "Store User",
+    "cod_charges": 0,
+    "order_id": null,
+    "cod_available": true,
+    "cod_message": "No additional COD charges applicable",
+    "delivery_charges": 0,
+    "delivery_charge_order_value": 0,
+    "delivery_slots": [
+      {
+        "date": "Sat, 24 Aug",
+        "delivery_slot": [
+          {
+            "delivery_slot_timing": "By 9:00 PM",
+            "default": true,
+            "delivery_slot_id": 1
+          }
+        ]
+      }
+    ],
+    "store_code": "",
+    "store_emps": [],
+    "breakup_values": {
+      "loyalty_points": {
+        "total": 0,
+        "applicable": 0,
+        "is_applied": false,
+        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+      },
+      "coupon": {
+        "type": "cash",
+        "code": "",
+        "uid": null,
+        "value": 0,
+        "is_applied": false,
+        "message": "Sorry! Invalid Coupon"
+      },
+      "raw": {
+        "cod_charge": 0,
+        "convenience_fee": 0,
+        "coupon": 0,
+        "delivery_charge": 0,
+        "discount": 0,
+        "fynd_cash": 0,
+        "gst_charges": 214.18,
+        "mrp_total": 1999,
+        "subtotal": 1999,
+        "total": 1999,
+        "vog": 1784.82,
+        "you_saved": 0
+      },
+      "display": [
+        {
+          "display": "MRP Total",
+          "key": "mrp_total",
+          "value": 1999,
+          "currency_code": "INR"
+        },
+        {
+          "display": "Subtotal",
+          "key": "subtotal",
+          "value": 1999,
+          "currency_code": "INR"
+        },
+        {
+          "display": "Total",
+          "key": "total",
+          "value": 1999,
+          "currency_code": "INR"
+        }
+      ]
+    },
+    "shipments": [],
+    "message": "Shipments could not be generated. Please Try again after some time.",
+    "delivery_charge_info": "",
+    "coupon_text": "View all offers",
+    "gstin": null,
+    "checkout_mode": "self",
+    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
+    "restrict_checkout": false,
+    "is_valid": false
+  }
+}
+```
+
+
+
+
+
+
+
+
+Unhandled api error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    }
+  }
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#checkoutCart
+Checkout Cart
+
+```javascript
+// Promise
+const promise = cart.checkoutCart();
+
+// Async/Await
+const data = await cart.checkoutCart();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Checkout all items in cart to payment and order generation.                         For COD only order will be generated while for other checkout mode                         user will be redirected to payment gateway
+
+Success Response:
+
+
+
+OK
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartCheckoutResponse"
+}`
+
+
+Examples: 
+
+
+Address id not found
+```javascript
+{
+  "value": {
+    "success": false,
+    "message": "No address found with address id {address_id}"
+  }
+}
+```
+
+Missing address_id
+```javascript
+{
+  "value": {
+    "address_id": [
+      "Missing data for required field."
+    ]
+  }
+}
+```
+
+Successful checkout cod payment
+```javascript
+{
+  "value": {
+    "success": true,
+    "cart": {
+      "success": true,
+      "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
+      "payment_options": {
+        "payment_option": [
+          {
+            "name": "COD",
+            "display_name": "Cash on Delivery",
+            "display_priority": 1,
+            "payment_mode_id": 11,
+            "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
+            "logo_url": {
+              "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
+              "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
+            },
+            "list": []
+          },
+          {
+            "name": "CARD",
+            "display_priority": 2,
+            "payment_mode_id": 2,
+            "display_name": "Card",
+            "list": []
+          },
+          {
+            "name": "NB",
+            "display_priority": 3,
+            "payment_mode_id": 3,
+            "display_name": "Net Banking",
+            "list": [
+              {
+                "aggregator_name": "Razorpay",
+                "bank_name": "ICICI Bank",
+                "bank_code": "ICIC",
+                "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
+                "logo_url": {
+                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
+                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
+                },
+                "merchant_code": "NB_ICICI",
+                "display_priority": 1
+              }
+            ]
+          },
+          {
+            "name": "WL",
+            "display_priority": 4,
+            "payment_mode_id": 4,
+            "display_name": "Wallet",
+            "list": [
+              {
+                "wallet_name": "Paytm",
+                "wallet_code": "paytm",
+                "wallet_id": 4,
+                "merchant_code": "PAYTM",
+                "logo_url": {
+                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
+                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
+                },
+                "aggregator_name": "Juspay",
+                "display_priority": 1
+              }
+            ]
+          },
+          {
+            "name": "UPI",
+            "display_priority": 9,
+            "payment_mode_id": 6,
+            "display_name": "UPI",
+            "list": [
+              {
+                "aggregator_name": "UPI_Razorpay",
+                "name": "UPI",
+                "display_name": "BHIM UPI",
+                "code": "UPI",
+                "logo_url": {
+                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
+                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
+                },
+                "merchant_code": "UPI",
+                "timeout": 240,
+                "retry_count": 0,
+                "fynd_vpa": "shopsense.rzp@hdfcbank",
+                "intent_flow": true,
+                "intent_app_error_list": [
+                  "com.csam.icici.bank.imobile",
+                  "in.org.npci.upiapp",
+                  "com.whatsapp"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "PL",
+            "display_priority": 11,
+            "payment_mode_id": 1,
+            "display_name": "Pay Later",
+            "list": [
+              {
+                "aggregator_name": "Simpl",
+                "name": "Simpl",
+                "code": "simpl",
+                "merchant_code": "SIMPL",
+                "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
+                "logo_url": {
+                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
+                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
+                }
+              }
+            ]
+          }
+        ],
+        "payment_flows": {
+          "Simpl": {
+            "data": {
+              "gateway": {
+                "route": "simpl",
+                "entity": "sdk",
+                "is_customer_validation_required": true,
+                "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
+                "sdk": {
+                  "config": {
+                    "redirect": false,
+                    "callback_url": null,
+                    "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
+                  },
+                  "data": {
+                    "user_phone": "8452996729",
+                    "user_email": "paymentsdummy@gofynd.com"
+                  }
+                },
+                "return_url": null
+              }
+            },
+            "api_link": "",
+            "payment_flow": "sdk"
+          },
+          "Juspay": {
+            "data": {},
+            "api_link": "https://sandbox.juspay.in/txns",
+            "payment_flow": "api"
+          },
+          "Razorpay": {
+            "data": {},
+            "api_link": "",
+            "payment_flow": "sdk"
+          },
+          "UPI_Razorpay": {
+            "data": {},
+            "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
+            "payment_flow": "api"
+          },
+          "Fynd": {
+            "data": {},
+            "api_link": "",
+            "payment_flow": "api"
+          }
+        },
+        "default": {}
+      },
+      "user_type": "Store User",
+      "cod_charges": 0,
+      "order_id": "FY5D5E215CF287584CE6",
+      "cod_available": true,
+      "cod_message": "No additional COD charges applicable",
+      "delivery_charges": 0,
+      "delivery_charge_order_value": 0,
+      "delivery_slots": [
+        {
+          "date": "Sat, 24 Aug",
+          "delivery_slot": [
+            {
+              "delivery_slot_timing": "By 9:00 PM",
+              "default": true,
+              "delivery_slot_id": 1
+            }
+          ]
+        }
+      ],
+      "store_code": "",
+      "store_emps": [],
+      "breakup_values": {
+        "coupon": {
+          "type": "cash",
+          "code": "",
+          "uid": null,
+          "value": 0,
+          "is_applied": false,
+          "message": "Sorry! Invalid Coupon"
+        },
+        "loyalty_points": {
+          "total": 0,
+          "applicable": 0,
+          "is_applied": false,
+          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+        },
+        "raw": {
+          "cod_charge": 0,
+          "convenience_fee": 0,
+          "coupon": 0,
+          "delivery_charge": 0,
+          "discount": 0,
+          "fynd_cash": 0,
+          "gst_charges": 214.18,
+          "mrp_total": 1999,
+          "subtotal": 1999,
+          "total": 1999,
+          "vog": 1784.82,
+          "you_saved": 0
+        },
+        "display": [
+          {
+            "display": "MRP Total",
+            "key": "mrp_total",
+            "value": 1999,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Subtotal",
+            "key": "subtotal",
+            "value": 1999,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Total",
+            "key": "total",
+            "value": 1999,
+            "currency_code": "INR"
+          }
+        ]
+      },
+      "items": [
+        {
+          "key": "820312_L",
+          "message": "",
+          "bulk_offer": {},
+          "price": {
+            "base": {
+              "add_on": 1999,
+              "marked": 1999,
+              "effective": 1999,
+              "selling": 1999,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 1999,
+              "marked": 1999,
+              "effective": 1999,
+              "selling": 1999,
+              "currency_code": "INR"
+            }
+          },
+          "quantity": 1,
+          "discount": "",
+          "product": {
+            "type": "product",
+            "uid": 820312,
+            "name": "Navy Blue Melange Shorts",
+            "slug": "883-police-navy-blue-melange-shorts-820312-4943a8",
+            "brand": {
+              "uid": 610,
+              "name": "883 Police"
+            },
+            "categories": [
+              {
+                "uid": 193,
+                "name": "Shorts"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/883-police-navy-blue-melange-shorts-820312-4943a8/",
+              "query": {
+                "product_slug": [
+                  "883-police-navy-blue-melange-shorts-820312-4943a8"
+                ]
+              }
+            }
+          },
+          "article": {
+            "type": "article",
+            "uid": "381_610_IGPL01_SPIRAL19ANAVY_L",
+            "size": "L",
+            "seller": {
+              "uid": 381,
+              "name": "INTERSOURCE GARMENTS PVT LTD"
+            },
+            "store": {
+              "uid": 3009,
+              "name": "Kormangala"
+            },
+            "quantity": 2,
+            "price": {
+              "base": {
+                "marked": 1999,
+                "effective": 1999,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 1999,
+                "effective": 1999,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "coupon_message": "",
+          "availability": {
+            "sizes": [
+              "L",
+              "XL",
+              "XXL"
+            ],
+            "other_store_quantity": 1,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          }
+        }
+      ],
+      "delivery_charge_info": "",
+      "coupon_text": "View all offers",
+      "cart_id": 7483,
+      "uid": "7483",
+      "gstin": null,
+      "checkout_mode": "self",
+      "last_modified": "Thu, 22 Aug 2019 04:58:44 GMT",
+      "restrict_checkout": false,
+      "is_valid": true
+    },
+    "callback_url": "https://api.addsale.com/gringotts/api/v1/external/payment-callback/",
+    "app_intercept_url": "http://uniket-testing.addsale.link/cart/order-status",
+    "message": "",
+    "data": {
+      "order_id": "FY5D5E215CF287584CE6"
+    },
+    "order_id": "FY5D5E215CF287584CE6"
+  }
+}
+```
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#updateCartMeta
+Update Cart Meta
+
+```javascript
+// Promise
+const promise = cart.updateCartMeta(uid, );
+
+// Async/Await
+const data = await cart.updateCartMeta(uid, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | integer | Cart id received in get cart. | 
+
+Update cart meta like checkout_mode, gstin.
+
+Success Response:
+
+
+
+Cart meta updated successfully
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartMetaResponse"
+}`
+
+
+
+
+
+
+
+
+Missing required Field
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CartMetaMissingResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getCartShareLink
+Generate Cart sharing link token
+
+```javascript
+// Promise
+const promise = cart.getCartShareLink();
+
+// Async/Await
+const data = await cart.getCartShareLink();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Generates shared cart snapshot and returns shortlink token
+
+Success Response:
+
+
+
+Token Generated successfully
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/GetShareCartLinkResponse"
+}`
+
+
+Examples: 
+
+
+Token Generated
+```javascript
+{
+  "value": {
+    "token": "ZweG1XyX",
+    "share_url": "https://uniket-testing.addsale.link/shared-cart/ZweG1XyX"
+  }
+}
+```
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#getCartSharedItems
+Get shared cart snapshot and cart response
+
+```javascript
+// Promise
+const promise = cart.getCartSharedItems(token, );
+
+// Async/Await
+const data = await cart.getCartSharedItems(token, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| token | string | Shared short link token. | 
+
+Returns shared cart response for sent token with `shared_cart_details`                    containing shared cart details in response.
+
+Success Response:
+
+
+
+Cart for valid token
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/SharedCartResponse"
+}`
+
+
+
+
+
+
+
+
+No cart found for sent token
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/SharedCartResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Cart#updateCartWithSharedItems
+Merge or Replace existing cart
+
+```javascript
+// Promise
+const promise = cart.updateCartWithSharedItems(token, action, );
+
+// Async/Await
+const data = await cart.updateCartWithSharedItems(token, action, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| token | string | Shared short link token. | 
+| action | string | Operation to perform on existing cart, whether to merge or replace. | 
+
+Merge or Replace cart based on `action` parameter with shared cart of `token`
+
+Success Response:
+
+
+
+Success of Merge or Replace of cart with `shared_cart_details`                    containing shared cart details in response
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/SharedCartResponse"
+}`
+
+
+Examples: 
+
+
+Cart Merged/Replaced
+```javascript
+{
+  "value": {
+    "cart": {
+      "shared_cart_details": {
+        "token": "BQ9jySQ9",
+        "user": {
+          "user_id": "23109086",
+          "is_anonymous": false
+        },
+        "meta": {
+          "selected_staff": "",
+          "ordering_store": null
+        },
+        "selected_staff": "",
+        "ordering_store": null,
+        "source": {},
+        "created_on": "2019-12-18T14:00:07.165000"
+      },
+      "items": [
+        {
+          "key": "791651_6",
+          "discount": "",
+          "bulk_offer": {},
+          "coupon_message": "",
+          "article": {
+            "type": "article",
+            "uid": "304_1054_9036_R1005753_6",
+            "size": "6",
+            "seller": {
+              "uid": 304,
+              "name": "LEAYAN GLOBAL PVT. LTD."
+            },
+            "store": {
+              "uid": 5322,
+              "name": "Vaisali Nagar"
+            },
+            "quantity": 1,
+            "price": {
+              "base": {
+                "marked": 2095,
+                "effective": 2095,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 2095,
+                "effective": 2095,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "product": {
+            "type": "product",
+            "uid": 791651,
+            "name": "Black Running Shoes",
+            "slug": "furo-black-running-shoes-791651-f8bcc3",
+            "brand": {
+              "uid": 1054,
+              "name": "Furo"
+            },
+            "categories": [
+              {
+                "uid": 160,
+                "name": "Running Shoes"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/furo-black-running-shoes-791651-f8bcc3/",
+              "query": {
+                "product_slug": [
+                  "furo-black-running-shoes-791651-f8bcc3"
+                ]
+              }
+            }
+          },
+          "message": "",
+          "quantity": 1,
+          "availability": {
+            "sizes": [
+              "7",
+              "8",
+              "9",
+              "10",
+              "6"
+            ],
+            "other_store_quantity": 12,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "price": {
+            "base": {
+              "add_on": 2095,
+              "marked": 2095,
+              "effective": 2095,
+              "selling": 2095,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 2095,
+              "marked": 2095,
+              "effective": 2095,
+              "selling": 2095,
+              "currency_code": "INR"
+            }
+          }
+        },
+        {
+          "key": "791651_7",
+          "discount": "",
+          "bulk_offer": {},
+          "coupon_message": "",
+          "article": {
+            "type": "article",
+            "uid": "304_1054_9036_R1005753_7",
+            "size": "7",
+            "seller": {
+              "uid": 304,
+              "name": "LEAYAN GLOBAL PVT. LTD."
+            },
+            "store": {
+              "uid": 5322,
+              "name": "Vaisali Nagar"
+            },
+            "quantity": 2,
+            "price": {
+              "base": {
+                "marked": 2095,
+                "effective": 2095,
+                "currency_code": "INR"
+              },
+              "converted": {
+                "marked": 2095,
+                "effective": 2095,
+                "currency_code": "INR"
+              }
+            }
+          },
+          "product": {
+            "type": "product",
+            "uid": 791651,
+            "name": "Black Running Shoes",
+            "slug": "furo-black-running-shoes-791651-f8bcc3",
+            "brand": {
+              "uid": 1054,
+              "name": "Furo"
+            },
+            "categories": [
+              {
+                "uid": 160,
+                "name": "Running Shoes"
+              }
+            ],
+            "images": [
+              {
+                "aspect_ratio": "16:25",
+                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg",
+                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg"
+              }
+            ],
+            "action": {
+              "type": "product",
+              "url": "https://api.addsale.com/platform/content/v1/products/furo-black-running-shoes-791651-f8bcc3/",
+              "query": {
+                "product_slug": [
+                  "furo-black-running-shoes-791651-f8bcc3"
+                ]
+              }
+            }
+          },
+          "message": "",
+          "quantity": 2,
+          "availability": {
+            "sizes": [
+              "7",
+              "8",
+              "9",
+              "10",
+              "6"
+            ],
+            "other_store_quantity": 7,
+            "out_of_stock": false,
+            "deliverable": true,
+            "is_valid": true
+          },
+          "price": {
+            "base": {
+              "add_on": 4190,
+              "marked": 4190,
+              "effective": 4190,
+              "selling": 4190,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "add_on": 4190,
+              "marked": 4190,
+              "effective": 4190,
+              "selling": 4190,
+              "currency_code": "INR"
+            }
+          }
+        }
+      ],
+      "cart_id": 13055,
+      "uid": "13055",
+      "breakup_values": {
+        "raw": {
+          "cod_charge": 0,
+          "convenience_fee": 0,
+          "coupon": 0,
+          "delivery_charge": 0,
+          "discount": 0,
+          "fynd_cash": 0,
+          "gst_charges": 958.73,
+          "mrp_total": 6285,
+          "subtotal": 6285,
+          "total": 6285,
+          "vog": 5326.27,
+          "you_saved": 0
+        },
+        "loyalty_points": {
+          "total": 0,
+          "applicable": 0,
+          "is_applied": false,
+          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
+        },
+        "coupon": {
+          "type": "cash",
+          "code": "",
+          "uid": null,
+          "value": 0,
+          "is_applied": false,
+          "message": "Sorry! Invalid coupon"
+        },
+        "display": [
+          {
+            "display": "MRP Total",
+            "key": "mrp_total",
+            "value": 6285,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Subtotal",
+            "key": "subtotal",
+            "value": 6285,
+            "currency_code": "INR"
+          },
+          {
+            "display": "Total",
+            "key": "total",
+            "value": 6285,
+            "currency_code": "INR"
+          }
+        ]
+      },
+      "delivery_charge_info": "",
+      "coupon_text": "View all offers",
+      "gstin": null,
+      "comment": "",
+      "checkout_mode": "self",
+      "payment_selection_lock": {
+        "enabled": false,
+        "default_options": "COD",
+        "payment_identifier": null
+      },
+      "restrict_checkout": false,
+      "is_valid": true,
+      "last_modified": "Mon, 16 Dec 2019 07:02:18 GMT"
+    }
+  }
+}
+```
 
 
 
@@ -7016,6 +10646,1409 @@ Error Response:
 ---
 
 
+## Payment
+
+```javascript
+const { Configuration, Payment } = require('fdk-client-nodejs/application')
+const conf = new Configuration({
+    ApplicationID: "507f191e810c19729de860ea",
+    ApplicationToken: "hu67dfhddf"
+});
+const payment = new Payment(conf);
+
+```
+
+
+#### Payment#getAggregatorsConfig
+Get payment gateway keys
+
+```javascript
+// Promise
+const promise = payment.getAggregatorsConfig(x-api-token, refresh, );
+
+// Async/Await
+const data = await payment.getAggregatorsConfig(x-api-token, refresh, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| x-api-token | string | api token | 
+| refresh | boolean | refresh cache | 
+
+Get payment gateway (key, secrets, merchant, sdk/api detail) to complete payment at front-end.
+
+Success Response:
+
+
+
+Keys of all payment gateway
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/AggregatorsConfigDetailResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#attachCardToCustomer
+Attach a saved card to customer.
+
+```javascript
+// Promise
+const promise = payment.attachCardToCustomer();
+
+// Async/Await
+const data = await payment.attachCardToCustomer();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Attach a saved card to customer at payment gateway i.e stripe and refresh card cache.
+
+Success Response:
+
+
+
+List of cards objects
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/AttachCardsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: ``
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: ``
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#getActiveCardAggregator
+Fetch active payment gateway for card
+
+```javascript
+// Promise
+const promise = payment.getActiveCardAggregator(refresh, );
+
+// Async/Await
+const data = await payment.getActiveCardAggregator(refresh, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| refresh | boolean |  | 
+
+Fetch active payment gateway along with customer id for cards payments.
+
+Success Response:
+
+
+
+Object of payment gateway and customer id
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ActiveCardPaymentGatewayResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#getActiveUserCards
+Fetch the list of saved cards of user.
+
+```javascript
+// Promise
+const promise = payment.getActiveUserCards(force_refresh, );
+
+// Async/Await
+const data = await payment.getActiveUserCards(force_refresh, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| force_refresh | boolean |  | 
+
+Fetch the list of saved cards of user from active payment gateway.
+
+Success Response:
+
+
+
+List of cards objects
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ListCardsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#deleteUserCard
+Delete an user card.
+
+```javascript
+// Promise
+const promise = payment.deleteUserCard();
+
+// Async/Await
+const data = await payment.deleteUserCard();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Delete an added user card on payment gateway and remove from cache.
+
+Success Response:
+
+
+
+List of cards objects
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/DeleteCardsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#verifyCustomerForPayment
+Validate customer for payment.
+
+```javascript
+// Promise
+const promise = payment.verifyCustomerForPayment();
+
+// Async/Await
+const data = await payment.verifyCustomerForPayment();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Validate customer for payment i.e Simpl paylater, Rupifi loan.
+
+Success Response:
+
+
+
+List of cards objects
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ValidateCustomerResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#verifyAndChargePayment
+Verify and charge payment
+
+```javascript
+// Promise
+const promise = payment.verifyAndChargePayment();
+
+// Async/Await
+const data = await payment.verifyAndChargePayment();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Verify and charge payment server to server for Simpl & Mswipe.
+
+Success Response:
+
+
+
+List of cards objects
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ChargeCustomerResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#initialisePayment
+Payment Initialisation server to server for UPI and BharatQR.
+
+```javascript
+// Promise
+const promise = payment.initialisePayment();
+
+// Async/Await
+const data = await payment.initialisePayment();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Payment Initialisation for UPI & BharatQR code, UPI requests to app and QR code to be displayed on screen.
+
+Success Response:
+
+
+
+List of cards objects
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentInitializationResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#checkAndUpdatePaymentStatus
+Continous polling to check status of payment on server.
+
+```javascript
+// Promise
+const promise = payment.checkAndUpdatePaymentStatus();
+
+// Async/Await
+const data = await payment.checkAndUpdatePaymentStatus();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Continous polling on interval to check status of payment untill timeout.
+
+Success Response:
+
+
+
+List of cards objects
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentStatusUpdateResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#getPaymentModeRoutes
+Get All Valid Payment Options
+
+```javascript
+// Promise
+const promise = payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address, );
+
+// Async/Await
+const data = await payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| amount | integer | Payment amount | 
+| cart_id | string | Cart id | 
+| pincode | integer | Pincode | 
+| checkout_mode | string | Checkout mode | 
+| refresh | boolean |  | 
+| assign_card_id | string | selected card id | 
+| delivery_address | string | URIencoded json delivery address of cart for annonymous user | 
+
+Use this API to get Get All Valid Payment Options for making payment
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentOptionsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#getPosPaymentModeRoutes
+Get All Valid Payment Options for POS
+
+```javascript
+// Promise
+const promise = payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address, );
+
+// Async/Await
+const data = await payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| amount | integer | Payment amount | 
+| cart_id | string | Cart id | 
+| pincode | integer | Pincode | 
+| checkout_mode | string | Checkout mode | 
+| refresh | boolean |  | 
+| assign_card_id | string | selected card id | 
+| order_type | string | Order type | 
+| delivery_address | string | URIencoded json delivery address of cart for annonymous user | 
+
+Use this API to get Get All Valid Payment Options for making payment
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PaymentOptionsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#getUserBeneficiariesDetail
+List User Beneficiary
+
+```javascript
+// Promise
+const promise = payment.getUserBeneficiariesDetail(order_id, );
+
+// Async/Await
+const data = await payment.getUserBeneficiariesDetail(order_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| order_id | string |  | 
+
+Get all active  beneficiary details added by the user for refund
+
+Success Response:
+
+
+
+List User Beneficiary
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/OrderBeneficiaryResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/NotFoundResourceError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#verifyIfscCode
+Ifsc Code Verification
+
+```javascript
+// Promise
+const promise = payment.verifyIfscCode(ifsc_code, );
+
+// Async/Await
+const data = await payment.verifyIfscCode(ifsc_code, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| ifsc_code | string |  | 
+
+Get True/False for correct IFSC Code for adding bank details for refund
+
+Success Response:
+
+
+
+Bank details on correct Ifsc Code
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/IfscCodeResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/NotFoundResourceError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ErrorCodeDescription"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#getOrderBeneficiariesDetail
+List Order Beneficiary
+
+```javascript
+// Promise
+const promise = payment.getOrderBeneficiariesDetail(order_id, );
+
+// Async/Await
+const data = await payment.getOrderBeneficiariesDetail(order_id, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| order_id | string |  | 
+
+Get all active  beneficiary details added by the user for refund
+
+Success Response:
+
+
+
+List Order Beneficiary
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/OrderBeneficiaryResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/NotFoundResourceError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#verifyOtpAndAddBeneficiaryForBank
+Save Beneficiary details on otp validation.
+
+```javascript
+// Promise
+const promise = payment.verifyOtpAndAddBeneficiaryForBank();
+
+// Async/Await
+const data = await payment.verifyOtpAndAddBeneficiaryForBank();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Save Beneficiary details on otp validation.
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/AddBeneficiaryViaOtpVerificationResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/WrongOtpError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#addBeneficiaryDetails
+Save bank details for cancelled/returned order
+
+```javascript
+// Promise
+const promise = payment.addBeneficiaryDetails();
+
+// Async/Await
+const data = await payment.addBeneficiaryDetails();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to save bank details for returned/cancelled order to refund amount in his account.
+
+Success Response:
+
+
+
+Success
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/RefundAccountResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/NotFoundResourceError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#verifyOtpAndAddBeneficiaryForWallet
+Send Otp on Adding wallet beneficiary
+
+```javascript
+// Promise
+const promise = payment.verifyOtpAndAddBeneficiaryForWallet();
+
+// Async/Await
+const data = await payment.verifyOtpAndAddBeneficiaryForWallet();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Send Otp on Adding wallet beneficiary for user mobile verification
+
+Success Response:
+
+
+
+WalletOtp
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/WalletOtpResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/NotFoundResourceError"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Payment#updateDefaultBeneficiary
+Mark Default Beneficiary For Refund
+
+```javascript
+// Promise
+const promise = payment.updateDefaultBeneficiary();
+
+// Async/Await
+const data = await payment.updateDefaultBeneficiary();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Mark Default Beneficiary ot of all Beneficiary Details for Refund
+
+Success Response:
+
+
+
+Set Default Beneficiary Response.
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/SetDefaultBeneficiaryResponse"
+}`
+
+
+
+
+
+
+
+
+Bad Request Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/SetDefaultBeneficiaryResponse"
+}`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+
+---
+
+
 ## Order
 
 ```javascript
@@ -7478,6 +12511,386 @@ Content Type: `application/json`
 
 Schema: `{
   "$ref": "#/components/schemas/ApefaceApiError"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+
+---
+
+
+## Rewards
+
+```javascript
+const { Configuration, Rewards } = require('fdk-client-nodejs/application')
+const conf = new Configuration({
+    ApplicationID: "507f191e810c19729de860ea",
+    ApplicationToken: "hu67dfhddf"
+});
+const rewards = new Rewards(conf);
+
+```
+
+
+#### Rewards#getPointsOnProduct
+Get reward points that could be earned on any catalogue product.
+
+```javascript
+// Promise
+const promise = rewards.getPointsOnProduct();
+
+// Async/Await
+const data = await rewards.getPointsOnProduct();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Evaluate the amount of reward points that could be earned on any catalogue product.
+
+Success Response:
+
+
+
+ok
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/CatalogueOrderResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/Error"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Rewards#getOrderDiscount
+Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
+
+```javascript
+// Promise
+const promise = rewards.getOrderDiscount();
+
+// Async/Await
+const data = await rewards.getOrderDiscount();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
+
+Success Response:
+
+
+
+ok
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/OrderDiscountResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/Error"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Rewards#getUserPoints
+Total available points of a user for current application
+
+```javascript
+// Promise
+const promise = rewards.getUserPoints();
+
+// Async/Await
+const data = await rewards.getUserPoints();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Total available points of a user for current application
+
+Success Response:
+
+
+
+ok
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PointsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/Error"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Rewards#getUserPointsHistory
+Get list of points transactions.
+
+```javascript
+// Promise
+const promise = rewards.getUserPointsHistory(pageID, pageSize, );
+
+// Async/Await
+const data = await rewards.getUserPointsHistory(pageID, pageSize, );
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| pageID | string | PageID is the ID of the requested page. For first request it should be kept empty. | 
+| pageSize | integer | PageSize is the number of requested items in response. | 
+
+Get list of points transactions.
+The list of points history is paginated.
+
+Success Response:
+
+
+
+ok
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/PointsHistoryResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/Error"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Rewards#getUserReferralDetails
+User's referral details.
+
+```javascript
+// Promise
+const promise = rewards.getUserReferralDetails();
+
+// Async/Await
+const data = await rewards.getUserReferralDetails();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+User's referral details.
+
+Success Response:
+
+
+
+ok
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/ReferralDetailsResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/Error"
+}`
+
+
+
+
+
+
+
+
+Error Response:
+
+
+
+---
+
+
+#### Rewards#redeemReferralCode
+Redeems referral code and credits points to users points account.
+
+```javascript
+// Promise
+const promise = rewards.redeemReferralCode();
+
+// Async/Await
+const data = await rewards.redeemReferralCode();
+
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Redeems referral code and credits points to users points account.
+
+Success Response:
+
+
+
+ok
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/RedeemReferralCodeResponse"
+}`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Content Type: `application/json`
+
+Schema: `{
+  "$ref": "#/components/schemas/Error"
 }`
 
 
