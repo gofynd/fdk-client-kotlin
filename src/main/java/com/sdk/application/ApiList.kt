@@ -16,21 +16,21 @@ interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/")
     fun getProductSizesBySlug(
-        @Path("slug") slug: String, @Query("store_id") storeId: String?
+        @Path("slug") slug: String, @Query("store_id") store_id: String?
         
     )
     : Deferred<Response<ProductSizes>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/price/")
     fun getProductPriceBySlug(
-        @Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("store_id") storeId: String?
+        @Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("store_id") store_id: String?
         
     )
     : Deferred<Response<ProductSizePriceResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/sellers/")
     fun getProductSellersBySlug(
-        @Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?
+        @Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("page_no") page_no: Int?, @Query("page_size") page_size: Int?
         
     )
     : Deferred<Response<ProductSizeSellersResponse>>
@@ -58,7 +58,7 @@ interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/similar/{similar_type}/")
     fun getProductSimilarByIdentifier(
-        @Path("slug") slug: String, @Path("similar_type") similarType: String
+        @Path("slug") slug: String, @Path("similar_type") similar_type: String
         
     )
     : Deferred<Response<SimilarProductByTypeResponse>>
@@ -72,28 +72,28 @@ interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/products/stock-status/")
     fun getProductStockByIds(
-        @Query("item_id") itemId: String?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?
+        @Query("item_id") item_id: String?, @Query("alu") alu: String?, @Query("sku_code") sku_code: String?, @Query("ean") ean: String?, @Query("upc") upc: String?
         
     )
     : Deferred<Response<ProductStockStatusResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/stock-status/poll/")
     fun getProductStockForTimeByIds(
-        @Query("timestamp") timestamp: String, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?
+        @Query("timestamp") timestamp: String, @Query("page_size") page_size: Int?, @Query("page_id") page_id: String?
         
     )
     : Deferred<Response<ProductStockPolling>>
     
     @GET ("/service/application/catalog/v1.0/products/")
     fun getProducts(
-        @Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?
+        @Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sort_on: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: Int?, @Query("page_no") page_no: Int?, @Query("page_type") page_type: String?
         
     )
     : Deferred<Response<ProductListingResponse>>
     
     @GET ("/service/application/catalog/v1.0/brands/")
     fun getBrands(
-        @Query("department") department: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?
+        @Query("department") department: String?, @Query("page_no") page_no: Int?, @Query("page_size") page_size: Int?
         
     )
     : Deferred<Response<BrandListingResponse>>
@@ -121,7 +121,7 @@ interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/home/listing/")
     fun getHomeProducts(
-        @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
+        @Query("sort_on") sort_on: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: Int?
         
     )
     : Deferred<Response<HomeListingResponse>>
@@ -149,7 +149,7 @@ interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/collections/")
     fun getCollections(
-        @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
+        @Query("page_id") page_id: String?, @Query("page_size") page_size: Int?
         
     )
     : Deferred<Response<GetCollectionListingResponse>>
@@ -163,7 +163,7 @@ interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
     fun getCollectionItemsBySlug(
-        @Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
+        @Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sort_on: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: Int?
         
     )
     : Deferred<Response<ProductListingResponse>>
@@ -191,42 +191,42 @@ interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
     fun getFollowedListing(
-        @Path("collection_type") collectionType: String
+        @Path("collection_type") collection_type: String
         
     )
     : Deferred<Response<GetFollowListingResponse>>
     
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun followById(
-        @Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int
+        @Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int
         
     )
     : Deferred<Response<FollowPostResponse>>
     
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(
-        @Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int
+        @Path("collection_type") collection_type: String, @Path("collection_id") collection_id: Int
         
     )
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
     fun getFollowerCountById(
-        @Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String
+        @Path("collection_type") collection_type: String, @Path("collection_id") collection_id: String
         
     )
     : Deferred<Response<FollowerCountResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/ids/")
     fun getFollowIds(
-        @Query("collection_type") collectionType: String?
+        @Query("collection_type") collection_type: String?
         
     )
     : Deferred<Response<FollowIdsResponse>>
     
     @GET ("/service/application/catalog/v1.0/locations/")
     fun getStores(
-        @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?
+        @Query("page_no") page_no: Int?, @Query("page_size") page_size: Int?, @Query("q") q: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?
         
     )
     : Deferred<Response<StoreListingResponse>>
@@ -237,7 +237,7 @@ interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/detail")
     fun getCart(
-        @Query("uid") uid: Int?, @Query("assign_card_id") assignCardId: Int?
+        @Query("uid") uid: Int?, @Query("assign_card_id") assign_card_id: Int?
         
     )
     : Deferred<Response<CartResponse>>
@@ -293,14 +293,14 @@ interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/bulk-price")
     fun getBulkDiscountOffers(
-        @Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?
+        @Query("item_id") item_id: Int?, @Query("article_id") article_id: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?
         
     )
     : Deferred<Response<BulkPriceResponse>>
     
     @GET ("/service/application/cart/v1.0/address")
     fun getAddresses(
-        @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
+        @Query("uid") uid: Int?, @Query("mobile_no") mobile_no: Int?, @Query("checkout_mode") checkout_mode: String?, @Query("tags") tags: Int?, @Query("is_default") is_default: Boolean?
         
     )
     : Deferred<Response<GetAddressResponse>>
@@ -314,7 +314,7 @@ interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/address/{id}")
     fun getAddressById(
-        @Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
+        @Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobile_no: Int?, @Query("checkout_mode") checkout_mode: String?, @Query("tags") tags: Int?, @Query("is_default") is_default: Boolean?
         
     )
     : Deferred<Response<GetAddressResponse>>
@@ -342,7 +342,7 @@ interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/payment")
     fun getPaymentModes(
-        @Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?
+        @Query("uid") uid: String?, @Query("address_id") address_id: String?, @Query("payment_mode") payment_mode: String?, @Query("payment_identifier") payment_identifier: String?, @Query("aggregator_name") aggregator_name: String?, @Query("merchant_code") merchant_code: String?
         
     )
     : Deferred<Response<PaymentOptions>>
@@ -356,7 +356,7 @@ interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/shipment")
     fun getShipments(
-        @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?
+        @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") address_id: Int?
         
     )
     : Deferred<Response<CartShipmentsResponse>>
@@ -409,7 +409,7 @@ interface LeadApiList {
     
     @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
     fun createHistoryForTicket(
-        @Path("ticket_id") ticketId: String,
+        @Path("ticket_id") ticket_id: String,
         @Body body: TicketHistoryPayload
     )
     : Deferred<Response<TicketHistory>>
@@ -437,14 +437,14 @@ interface LeadApiList {
     
     @GET ("/service/application/lead/v1.0/video/room/{unique_name}/participants")
     fun getParticipantsInsideVideoRoom(
-        @Path("unique_name") uniqueName: String
+        @Path("unique_name") unique_name: String
         
     )
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
     @GET ("/service/application/lead/v1.0/video/room/{unique_name}/token")
     fun getTokenForVideoRoom(
-        @Path("unique_name") uniqueName: String
+        @Path("unique_name") unique_name: String
         
     )
     : Deferred<Response<GetTokenForVideoRoomResponse>>
@@ -462,7 +462,7 @@ interface ThemeApiList {
     
     @GET ("/service/application/theme/v1.0/{theme_id}/preview")
     fun getThemeForPreview(
-        @Path("theme_id") themeId: String
+        @Path("theme_id") theme_id: String
         
     )
     : Deferred<Response<ThemesSchema>>
@@ -648,7 +648,7 @@ interface UserApiList {
     
     @DELETE ("/service/application/user/profile/v1.0/mobile")
     fun deleteMobileNumber(
-        @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") countryCode: String, @Query("phone") phone: String
+        @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") country_code: String, @Query("phone") phone: String
         
     )
     : Deferred<Response<LoginSuccess>>
@@ -722,7 +722,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/landing-page")
     fun getLandingPage(
-        @Header("x-device-platform") xDevicePlatform: String
+        @Header("x-device-platform") x-device-platform: String
         
     )
     : Deferred<Response<LandingPage>>
@@ -736,7 +736,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/navigations/")
     fun getNavigations(
-        @Header("x-device-platform") xDevicePlatform: String
+        @Header("x-device-platform") x-device-platform: String
         
     )
     : Deferred<Response<Navigation>>
@@ -757,7 +757,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/slideshow/{slug}")
     fun getSlideshow(
-        @Path("slug") slug: String, @Header("x-device-platform") xDevicePlatform: String
+        @Path("slug") slug: String, @Header("x-device-platform") x-device-platform: String
         
     )
     : Deferred<Response<Slideshow>>
@@ -860,14 +860,14 @@ interface FileStorageApiList {
     
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/complete/")
     fun completeUpload(
-        @Path("namespace") namespace: String, @Path("company_id") companyId: Int,
+        @Path("namespace") namespace: String, @Path("company_id") company_id: Int,
         @Body body: StartResponse
     )
     : Deferred<Response<CompleteResponse>>
     
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
     fun startUpload(
-        @Path("namespace") namespace: String, @Path("company_id") companyId: Int,
+        @Path("namespace") namespace: String, @Path("company_id") company_id: Int,
         @Body body: StartRequest
     )
     : Deferred<Response<StartResponse>>
@@ -878,7 +878,7 @@ interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/config/aggregators/key")
     fun getAggregatorsConfig(
-        @Header("x-api-token") xApiToken: String, @Query("refresh") refresh: Boolean?
+        @Header("x-api-token") x-api-token: String, @Query("refresh") refresh: Boolean?
         
     )
     : Deferred<Response<AggregatorsConfigDetailResponse>>
@@ -899,7 +899,7 @@ interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/cards")
     fun getActiveUserCards(
-        @Query("force_refresh") forceRefresh: Boolean?
+        @Query("force_refresh") force_refresh: Boolean?
         
     )
     : Deferred<Response<ListCardsResponse>>
@@ -941,35 +941,35 @@ interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/payment/options")
     fun getPaymentModeRoutes(
-        @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("delivery_address") deliveryAddress: String?
+        @Query("amount") amount: Int, @Query("cart_id") cart_id: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkout_mode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assign_card_id: String?, @Query("delivery_address") delivery_address: String?
         
     )
     : Deferred<Response<PaymentOptionsResponse>>
     
     @GET ("/service/application/payment/v1.0/payment/options/pos")
     fun getPosPaymentModeRoutes(
-        @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("delivery_address") deliveryAddress: String?
+        @Query("amount") amount: Int, @Query("cart_id") cart_id: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkout_mode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assign_card_id: String?, @Query("order_type") order_type: String, @Query("delivery_address") delivery_address: String?
         
     )
     : Deferred<Response<PaymentOptionsResponse>>
     
     @GET ("/service/application/payment/v1.0/refund/beneficiary/user")
     fun getUserBeneficiariesDetail(
-        @Query("order_id") orderId: String
+        @Query("order_id") order_id: String
         
     )
     : Deferred<Response<OrderBeneficiaryResponse>>
     
     @GET ("/service/application/payment/v1.0/ifsc-code/verify")
     fun verifyIfscCode(
-        @Query("ifsc_code") ifscCode: String?
+        @Query("ifsc_code") ifsc_code: String?
         
     )
     : Deferred<Response<IfscCodeResponse>>
     
     @GET ("/service/application/payment/v1.0/refund/beneficiaries/order")
     fun getOrderBeneficiariesDetail(
-        @Query("order_id") orderId: String
+        @Query("order_id") order_id: String
         
     )
     : Deferred<Response<OrderBeneficiaryResponse>>
@@ -1008,42 +1008,42 @@ interface OrderApiList {
     
     @GET ("/services/application/v1.0/orders")
     fun getOrders(
-        @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?
+        @Query("page_no") page_no: String?, @Query("page_size") page_size: String?, @Query("from_date") from_date: String?, @Query("to_date") to_date: String?
         
     )
     : Deferred<Response<OrderList>>
     
     @GET ("/services/application/v1.0/orders/{order_id}")
     fun getOrderById(
-        @Path("order_id") orderId: String
+        @Path("order_id") order_id: String
         
     )
     : Deferred<Response<OrderById>>
     
     @GET ("/services/application/v1.0/orders/shipments/{shipment_id}")
     fun getShipmentById(
-        @Path("shipment_id") shipmentId: String
+        @Path("shipment_id") shipment_id: String
         
     )
     : Deferred<Response<ShipmentById>>
     
     @GET ("/services/application/v1.0/orders/shipments/{shipment_id}/reasons")
     fun getShipmentReasons(
-        @Path("shipment_id") shipmentId: String
+        @Path("shipment_id") shipment_id: String
         
     )
     : Deferred<Response<ShipmentReasons>>
     
     @PUT ("/services/application/v1.0/orders/shipments/{shipment_id}/status")
     fun updateShipmentStatus(
-        @Path("shipment_id") shipmentId: String,
+        @Path("shipment_id") shipment_id: String,
         @Body body: ShipmentStatusUpdateBody
     )
     : Deferred<Response<ShipmentStatusUpdate>>
     
     @GET ("/services/application/v1.0/orders/shipments/{shipment_id}/track")
     fun trackShipment(
-        @Path("shipment_id") shipmentId: String
+        @Path("shipment_id") shipment_id: String
         
     )
     : Deferred<Response<ShipmentTrack>>
@@ -1075,7 +1075,7 @@ interface RewardsApiList {
     
     @GET ("/service/application/rewards/v1.0/user/points/history/")
     fun getUserPointsHistory(
-        @Query("pageID") pageId: String?, @Query("pageSize") pageSize: Int?
+        @Query("pageID") pageID: String?, @Query("pageSize") pageSize: Int?
         
     )
     : Deferred<Response<PointsHistoryResponse>>
@@ -1114,7 +1114,7 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}")
     fun getAbuseReports(
-        @Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: String?
+        @Path("entity_id") entity_id: String, @Path("entity_type") entity_type: String, @Query("id") id: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: String?
         
     )
     : Deferred<Response<XNumberGetResponse>>
@@ -1163,14 +1163,14 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/comment/entity/{entity_type}")
     fun getComments(
-        @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: String?
+        @Path("entity_type") entity_type: String, @Query("id") id: String?, @Query("entity_id") entity_id: String?, @Query("user_id") user_id: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: String?
         
     )
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/config/entity/{entity_type}/entity-id/{entity_id}")
     fun checkEligibility(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String
+        @Path("entity_type") entity_type: String, @Path("entity_id") entity_id: String
         
     )
     : Deferred<Response<CheckEligibilityResponse>>
@@ -1198,14 +1198,14 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/media/entity/{entity_type}/entity-id/{entity_id}")
     fun getMedias(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: String?
+        @Path("entity_type") entity_type: String, @Path("entity_id") entity_id: String, @Query("id") id: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: String?
         
     )
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
     fun getReviewSummaries(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: String?
+        @Path("entity_type") entity_type: String, @Path("entity_id") entity_id: String, @Query("id") id: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: String?
         
     )
     : Deferred<Response<XCursorGetResponse>>
@@ -1226,14 +1226,14 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/review/entity/{entity_type}/entity-id/{entity_id}")
     fun getReviews(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: String?
+        @Path("entity_type") entity_type: String, @Path("entity_id") entity_id: String, @Query("id") id: String?, @Query("user_id") user_id: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attribute_rating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("page_id") page_id: String?, @Query("page_size") page_size: String?
         
     )
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/template/")
     fun getTemplates(
-        @Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?
+        @Query("template_id") template_id: String?, @Query("entity_id") entity_id: String?, @Query("entity_type") entity_type: String?
         
     )
     : Deferred<Response<XCursorGetResponse>>
@@ -1254,14 +1254,14 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/template/qna/entity/{entity_type}/entity-id/{entity_id}")
     fun getQuestionAndAnswers(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: String?
+        @Path("entity_type") entity_type: String, @Path("entity_id") entity_id: String, @Query("id") id: String?, @Query("show_answer") show_answer: Boolean?, @Query("page_id") page_id: String?, @Query("page_size") page_size: String?
         
     )
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/vote/")
     fun getVotes(
-        @Query("id") id: String?, @Query("ref_type") refType: String?
+        @Query("id") id: String?, @Query("ref_type") ref_type: String?
         
     )
     : Deferred<Response<XNumberGetResponse>>
@@ -1286,7 +1286,7 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/detail")
     fun getCart(
-        @Query("uid") uid: Int?, @Query("assign_card_id") assignCardId: Int?
+        @Query("uid") uid: Int?, @Query("assign_card_id") assign_card_id: Int?
         
     )
     : Deferred<Response<CartResponse>>
@@ -1342,14 +1342,14 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/bulk-price")
     fun getBulkDiscountOffers(
-        @Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?
+        @Query("item_id") item_id: Int?, @Query("article_id") article_id: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?
         
     )
     : Deferred<Response<BulkPriceResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address")
     fun getAddresses(
-        @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
+        @Query("uid") uid: Int?, @Query("mobile_no") mobile_no: Int?, @Query("checkout_mode") checkout_mode: String?, @Query("tags") tags: Int?, @Query("is_default") is_default: Boolean?
         
     )
     : Deferred<Response<GetAddressResponse>>
@@ -1363,7 +1363,7 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/address/{id}")
     fun getAddressById(
-        @Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
+        @Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobile_no: Int?, @Query("checkout_mode") checkout_mode: String?, @Query("tags") tags: Int?, @Query("is_default") is_default: Boolean?
         
     )
     : Deferred<Response<GetAddressResponse>>
@@ -1391,7 +1391,7 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/payment")
     fun getPaymentModes(
-        @Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?
+        @Query("uid") uid: String?, @Query("address_id") address_id: String?, @Query("payment_mode") payment_mode: String?, @Query("payment_identifier") payment_identifier: String?, @Query("aggregator_name") aggregator_name: String?, @Query("merchant_code") merchant_code: String?
         
     )
     : Deferred<Response<PaymentOptions>>
@@ -1405,14 +1405,14 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/shipment")
     fun getShipments(
-        @Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?
+        @Query("pick_at_store_uid") pick_at_store_uid: Int?, @Query("ordering_store_id") ordering_store_id: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") address_id: Int?
         
     )
     : Deferred<Response<CartShipmentsResponse>>
     
     @PUT ("/service/application/pos/cart/v1.0/shipment")
     fun updateShipments(
-        @Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("order_type") orderType: String?,
+        @Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") address_id: Int?, @Query("order_type") order_type: String?,
         @Body body: UpdateCartShipmentRequest
     )
     : Deferred<Response<CartShipmentsResponse>>
@@ -1433,14 +1433,14 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/available-delivery-mode")
     fun getAvailableDeliveryModes(
-        @Query("area_code") areaCode: Int, @Query("uid") uid: Int?
+        @Query("area_code") area_code: Int, @Query("uid") uid: Int?
         
     )
     : Deferred<Response<CartDeliveryModesResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/store-address")
     fun getStoreAddressByUid(
-        @Query("area_code") areaCode: Int
+        @Query("area_code") area_code: Int
         
     )
     : Deferred<Response<StoreDetailsResponse>>
