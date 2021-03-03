@@ -978,42 +978,42 @@ interface PaymentApiList {
 
 interface OrderApiList {
     
-    @GET ("/services/application/v1.0/orders")
+    @GET ("/service/application/v1.0/orders")
     fun getOrders(
         @Query("page_no") page_no: String?, @Query("page_size") page_size: String?, @Query("from_date") from_date: String?, @Query("to_date") to_date: String?
         
     )
     : Deferred<Response<OrderList>>
     
-    @GET ("/services/application/v1.0/orders/{order_id}")
+    @GET ("/service/application/v1.0/orders/{order_id}")
     fun getOrderById(
         @Path("order_id") order_id: String
         
     )
     : Deferred<Response<OrderById>>
     
-    @GET ("/services/application/v1.0/orders/shipments/{shipment_id}")
+    @GET ("/service/application/v1.0/orders/shipments/{shipment_id}")
     fun getShipmentById(
         @Path("shipment_id") shipment_id: String
         
     )
     : Deferred<Response<ShipmentById>>
     
-    @GET ("/services/application/v1.0/orders/shipments/{shipment_id}/reasons")
+    @GET ("/service/application/v1.0/orders/shipments/{shipment_id}/reasons")
     fun getShipmentReasons(
         @Path("shipment_id") shipment_id: String
         
     )
     : Deferred<Response<ShipmentReasons>>
     
-    @PUT ("/services/application/v1.0/orders/shipments/{shipment_id}/status")
+    @PUT ("/service/application/v1.0/orders/shipments/{shipment_id}/status")
     fun updateShipmentStatus(
         @Path("shipment_id") shipment_id: String,
         @Body body: ShipmentStatusUpdateBody
     )
     : Deferred<Response<ShipmentStatusUpdate>>
     
-    @GET ("/services/application/v1.0/orders/shipments/{shipment_id}/track")
+    @GET ("/service/application/v1.0/orders/shipments/{shipment_id}/track")
     fun trackShipment(
         @Path("shipment_id") shipment_id: String
         
