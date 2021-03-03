@@ -12,6 +12,8 @@ interface LeadDataManager : LeadApiHelperFace
 
 interface ThemeDataManager : ThemeApiHelperFace
 
+interface UserDataManager : UserApiHelperFace
+
 interface ContentDataManager : ContentApiHelperFace
 
 interface CommunicationDataManager : CommunicationApiHelperFace
