@@ -1,64 +1,54 @@
-# FDK Kotlin
+# FDK kotlin
 
 
-Kotlin 
+FDK client for Kotlin language
 
-# Getting Started
+
+## Getting Started
 Get started with the Kotlin Development SDK for Fynd Platform
 
 
 # Usage
 
-1. Add the dependency in your app build.gradle 
-    `implementation 'com.github.gofynd:fdk-client-kotlin:v0.0.1'` 
-    in your app build.gradle 
-
+1. Add the dependency in your app build.gradle `implementation 'com.github.gofynd:fdk-client-kotlin:v0.0.1'` in your app build.gradle 
 2. Add it in your root build.gradle at the end of repositories:
-     `allprojects {
+   allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
-	}`
+	} 
 3. Start integrating
 
-
 ### Sample Usage:
-
-
-```
-     var applicationConfig: ApplicationConfig? = null
-        try {
-            applicationConfig = ApplicationConfig(
-                applicationId = "YOUR_APPLICATION_ID",
-                applicationToken = "YOUR_APPLICATION_TOKEN",
-                userAgent = "YOUR_USER_AGENT"
-            )
+```kotlin
+  var config: ApplicationConfig? = null
+    try {
+          config = ApplicationConfig(
+          applicationId = "YOUR_APPLICATION_ID",
+          applicationToken = "YOUR_APPLICATION_TOKEN"
+          )
         } catch (e: Exception) {
             print(e.message)
         }
-
-        applicationConfig?.let { config ->
-            val applicationClient = ApplicationClient(config = config)
-            GlobalScope.launch {
-                applicationClient.lead.getCustomForm(slug="form-slug")
-                    .safeAwait(
-                        onSuccess = { form ->
-                        val title = form.peekContent()?.title
-                        print("$title")
+    applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+        GlobalScope.launch {
+            applicationClient.catalog.getProductDetailBySlug(slug: "product-slug")
+                .safeAwait(
+                    { product ->
+                        print(product.peekContent()?.name)
                     },
-                        onFailure = { error ->
-                        print("${error.message}")
+                    { error ->
+                        print(error.message)
                     }
-
                 )
-            }
         }
-
+  }
 ```
+
 
 ### Documentation
 
 * [Application Front](documentation/APPLICATION.md)
-* [Platform](documentation/PLATFORM.md)
-* [Code Examples](documentation/EXAMPLES.md)
+* [Platform Front](documentation/PLATFORM.md)

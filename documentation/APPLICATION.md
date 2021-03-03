@@ -24,269 +24,255 @@
 
 * [Catalog](#Catalog)
   * Methods
-    * [Catalog#getProductDetailBySlug](#cataloggetproductdetailbyslug)
-    * [Catalog#getProductSizesBySlug](#cataloggetproductsizesbyslug)
-    * [Catalog#getProductPriceBySlug](#cataloggetproductpricebyslug)
-    * [Catalog#getProductSellersBySlug](#cataloggetproductsellersbyslug)
-    * [Catalog#getProductComparisonBySlugs](#cataloggetproductcomparisonbyslugs)
-    * [Catalog#getSimilarComparisonProductBySlug](#cataloggetsimilarcomparisonproductbyslug)
-    * [Catalog#getComparedFrequentlyProductBySlug](#cataloggetcomparedfrequentlyproductbyslug)
-    * [Catalog#getProductSimilarByIdentifier](#cataloggetproductsimilarbyidentifier)
-    * [Catalog#getProductVariantsBySlug](#cataloggetproductvariantsbyslug)
-    * [Catalog#getProductStockByIds](#cataloggetproductstockbyids)
-    * [Catalog#getProductStockForTimeByIds](#cataloggetproductstockfortimebyids)
-    * [Catalog#getProducts](#cataloggetproducts)
-    * [Catalog#getBrands](#cataloggetbrands)
-    * [Catalog#getBrandDetailBySlug](#cataloggetbranddetailbyslug)
-    * [Catalog#getCategories](#cataloggetcategories)
-    * [Catalog#getCategoryDetailBySlug](#cataloggetcategorydetailbyslug)
-    * [Catalog#getHomeProducts](#cataloggethomeproducts)
-    * [Catalog#getDepartments](#cataloggetdepartments)
-    * [Catalog#getSearchResults](#cataloggetsearchresults)
-    * [Catalog#getCollections](#cataloggetcollections)
-    * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
-    * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
-    * [Catalog#getFollowedListing](#cataloggetfollowedlisting)
-    * [Catalog#followById](#catalogfollowbyid)
-    * [Catalog#unfollowById](#catalogunfollowbyid)
-    * [Catalog#getFollowerCountById](#cataloggetfollowercountbyid)
-    * [Catalog#getFollowIds](#cataloggetfollowids)
-    * [Catalog#getStores](#cataloggetstores)
+    * [getProductDetailBySlug](#getproductdetailbyslug)
+    * [getProductSizesBySlug](#getproductsizesbyslug)
+    * [getProductPriceBySlug](#getproductpricebyslug)
+    * [getProductSellersBySlug](#getproductsellersbyslug)
+    * [getProductComparisonBySlugs](#getproductcomparisonbyslugs)
+    * [getSimilarComparisonProductBySlug](#getsimilarcomparisonproductbyslug)
+    * [getComparedFrequentlyProductBySlug](#getcomparedfrequentlyproductbyslug)
+    * [getProductSimilarByIdentifier](#getproductsimilarbyidentifier)
+    * [getProductVariantsBySlug](#getproductvariantsbyslug)
+    * [getProductStockByIds](#getproductstockbyids)
+    * [getProductStockForTimeByIds](#getproductstockfortimebyids)
+    * [getProducts](#getproducts)
+    * [getBrands](#getbrands)
+    * [getBrandDetailBySlug](#getbranddetailbyslug)
+    * [getCategories](#getcategories)
+    * [getCategoryDetailBySlug](#getcategorydetailbyslug)
+    * [getHomeProducts](#gethomeproducts)
+    * [getDepartments](#getdepartments)
+    * [getSearchResults](#getsearchresults)
+    * [getCollections](#getcollections)
+    * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
+    * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
+    * [getFollowedListing](#getfollowedlisting)
+    * [followById](#followbyid)
+    * [unfollowById](#unfollowbyid)
+    * [getFollowerCountById](#getfollowercountbyid)
+    * [getFollowIds](#getfollowids)
+    * [getStores](#getstores)
     
-   
 
 * [Cart](#Cart)
   * Methods
-    * [Cart#getCart](#cartgetcart)
-    * [Cart#getCartLastModified](#cartgetcartlastmodified)
-    * [Cart#addItems](#cartadditems)
-    * [Cart#updateCart](#cartupdatecart)
-    * [Cart#getItemCount](#cartgetitemcount)
-    * [Cart#getCoupons](#cartgetcoupons)
-    * [Cart#applyCoupon](#cartapplycoupon)
-    * [Cart#removeCoupon](#cartremovecoupon)
-    * [Cart#getBulkDiscountOffers](#cartgetbulkdiscountoffers)
-    * [Cart#getAddresses](#cartgetaddresses)
-    * [Cart#addAddress](#cartaddaddress)
-    * [Cart#getAddressById](#cartgetaddressbyid)
-    * [Cart#updateAddress](#cartupdateaddress)
-    * [Cart#removeAddress](#cartremoveaddress)
-    * [Cart#selectAddress](#cartselectaddress)
-    * [Cart#getPaymentModes](#cartgetpaymentmodes)
-    * [Cart#selectPaymentMode](#cartselectpaymentmode)
-    * [Cart#getShipments](#cartgetshipments)
-    * [Cart#checkoutCart](#cartcheckoutcart)
-    * [Cart#updateCartMeta](#cartupdatecartmeta)
-    * [Cart#getCartShareLink](#cartgetcartsharelink)
-    * [Cart#getCartSharedItems](#cartgetcartshareditems)
-    * [Cart#updateCartWithSharedItems](#cartupdatecartwithshareditems)
+    * [getCart](#getcart)
+    * [getCartLastModified](#getcartlastmodified)
+    * [addItems](#additems)
+    * [updateCart](#updatecart)
+    * [getItemCount](#getitemcount)
+    * [getCoupons](#getcoupons)
+    * [applyCoupon](#applycoupon)
+    * [removeCoupon](#removecoupon)
+    * [getBulkDiscountOffers](#getbulkdiscountoffers)
+    * [getAddresses](#getaddresses)
+    * [addAddress](#addaddress)
+    * [getAddressById](#getaddressbyid)
+    * [updateAddress](#updateaddress)
+    * [removeAddress](#removeaddress)
+    * [selectAddress](#selectaddress)
+    * [getPaymentModes](#getpaymentmodes)
+    * [selectPaymentMode](#selectpaymentmode)
+    * [getShipments](#getshipments)
+    * [checkoutCart](#checkoutcart)
+    * [updateCartMeta](#updatecartmeta)
+    * [getCartShareLink](#getcartsharelink)
+    * [getCartSharedItems](#getcartshareditems)
+    * [updateCartWithSharedItems](#updatecartwithshareditems)
     
-   
 
 * [Lead](#Lead)
   * Methods
-    * [Lead#getTicket](#leadgetticket)
-    * [Lead#createHistoryForTicket](#leadcreatehistoryforticket)
-    * [Lead#createTicket](#leadcreateticket)
-    * [Lead#getCustomForm](#leadgetcustomform)
-    * [Lead#submitCustomForm](#leadsubmitcustomform)
-    * [Lead#getParticipantsInsideVideoRoom](#leadgetparticipantsinsidevideoroom)
-    * [Lead#getTokenForVideoRoom](#leadgettokenforvideoroom)
+    * [getTicket](#getticket)
+    * [createHistoryForTicket](#createhistoryforticket)
+    * [createTicket](#createticket)
+    * [getCustomForm](#getcustomform)
+    * [submitCustomForm](#submitcustomform)
+    * [getParticipantsInsideVideoRoom](#getparticipantsinsidevideoroom)
+    * [getTokenForVideoRoom](#gettokenforvideoroom)
     
-   
 
 * [Theme](#Theme)
   * Methods
-    * [Theme#getAppliedTheme](#themegetappliedtheme)
-    * [Theme#getThemeForPreview](#themegetthemeforpreview)
+    * [getAppliedTheme](#getappliedtheme)
+    * [getThemeForPreview](#getthemeforpreview)
     
-   
 
 * [User](#User)
   * Methods
-    * [User#loginWithFacebook](#userloginwithfacebook)
-    * [User#loginWithGoogle](#userloginwithgoogle)
-    * [User#loginWithGoogleAndroid](#userloginwithgoogleandroid)
-    * [User#loginWithGoogleIOS](#userloginwithgoogleios)
-    * [User#loginWithOTP](#userloginwithotp)
-    * [User#loginWithEmailAndPassword](#userloginwithemailandpassword)
-    * [User#sendResetPasswordEmail](#usersendresetpasswordemail)
-    * [User#forgotPassword](#userforgotpassword)
-    * [User#sendResetToken](#usersendresettoken)
-    * [User#loginWithToken](#userloginwithtoken)
-    * [User#registerWithForm](#userregisterwithform)
-    * [User#verifyEmail](#userverifyemail)
-    * [User#verifyMobile](#userverifymobile)
-    * [User#hasPassword](#userhaspassword)
-    * [User#updatePassword](#userupdatepassword)
-    * [User#logout](#userlogout)
-    * [User#sendOTPOnMobile](#usersendotponmobile)
-    * [User#verifyMobileOTP](#userverifymobileotp)
-    * [User#sendOTPOnEmail](#usersendotponemail)
-    * [User#verifyEmailOTP](#userverifyemailotp)
-    * [User#getLoggedInUser](#usergetloggedinuser)
-    * [User#getListOfActiveSessions](#usergetlistofactivesessions)
-    * [User#getPlatformConfig](#usergetplatformconfig)
-    * [User#updateProfile](#userupdateprofile)
-    * [User#addMobileNumber](#useraddmobilenumber)
-    * [User#deleteMobileNumber](#userdeletemobilenumber)
-    * [User#setMobileNumberAsPrimary](#usersetmobilenumberasprimary)
-    * [User#sendVerificationLinkToMobile](#usersendverificationlinktomobile)
-    * [User#addEmail](#useraddemail)
-    * [User#deleteEmail](#userdeleteemail)
-    * [User#setEmailAsPrimary](#usersetemailasprimary)
-    * [User#sendVerificationLinkToEmail](#usersendverificationlinktoemail)
+    * [loginWithFacebook](#loginwithfacebook)
+    * [loginWithGoogle](#loginwithgoogle)
+    * [loginWithGoogleAndroid](#loginwithgoogleandroid)
+    * [loginWithGoogleIOS](#loginwithgoogleios)
+    * [loginWithOTP](#loginwithotp)
+    * [loginWithEmailAndPassword](#loginwithemailandpassword)
+    * [sendResetPasswordEmail](#sendresetpasswordemail)
+    * [forgotPassword](#forgotpassword)
+    * [sendResetToken](#sendresettoken)
+    * [loginWithToken](#loginwithtoken)
+    * [registerWithForm](#registerwithform)
+    * [verifyEmail](#verifyemail)
+    * [verifyMobile](#verifymobile)
+    * [hasPassword](#haspassword)
+    * [updatePassword](#updatepassword)
+    * [logout](#logout)
+    * [sendOTPOnMobile](#sendotponmobile)
+    * [verifyMobileOTP](#verifymobileotp)
+    * [sendOTPOnEmail](#sendotponemail)
+    * [verifyEmailOTP](#verifyemailotp)
+    * [getLoggedInUser](#getloggedinuser)
+    * [getListOfActiveSessions](#getlistofactivesessions)
+    * [getPlatformConfig](#getplatformconfig)
+    * [updateProfile](#updateprofile)
+    * [addMobileNumber](#addmobilenumber)
+    * [deleteMobileNumber](#deletemobilenumber)
+    * [setMobileNumberAsPrimary](#setmobilenumberasprimary)
+    * [sendVerificationLinkToMobile](#sendverificationlinktomobile)
+    * [addEmail](#addemail)
+    * [deleteEmail](#deleteemail)
+    * [setEmailAsPrimary](#setemailasprimary)
+    * [sendVerificationLinkToEmail](#sendverificationlinktoemail)
     
-   
 
 * [Content](#Content)
   * Methods
-    * [Content#getAnnouncements](#contentgetannouncements)
-    * [Content#getBlog](#contentgetblog)
-    * [Content#getFaqs](#contentgetfaqs)
-    * [Content#getLandingPage](#contentgetlandingpage)
-    * [Content#getLegalInformation](#contentgetlegalinformation)
-    * [Content#getNavigations](#contentgetnavigations)
-    * [Content#getPage](#contentgetpage)
-    * [Content#getSeoConfiguration](#contentgetseoconfiguration)
-    * [Content#getSlideshow](#contentgetslideshow)
-    * [Content#getSupportInformation](#contentgetsupportinformation)
-    * [Content#getTags](#contentgettags)
+    * [getAnnouncements](#getannouncements)
+    * [getBlog](#getblog)
+    * [getFaqs](#getfaqs)
+    * [getLandingPage](#getlandingpage)
+    * [getLegalInformation](#getlegalinformation)
+    * [getNavigations](#getnavigations)
+    * [getPage](#getpage)
+    * [getSeoConfiguration](#getseoconfiguration)
+    * [getSlideshow](#getslideshow)
+    * [getSupportInformation](#getsupportinformation)
+    * [getTags](#gettags)
     
-   
 
 * [Communication](#Communication)
   * Methods
-    * [Communication#getCommunicationConsent](#communicationgetcommunicationconsent)
-    * [Communication#upsertCommunicationConsent](#communicationupsertcommunicationconsent)
-    * [Communication#upsertPushtoken](#communicationupsertpushtoken)
+    * [getCommunicationConsent](#getcommunicationconsent)
+    * [upsertCommunicationConsent](#upsertcommunicationconsent)
+    * [upsertPushtoken](#upsertpushtoken)
     
-   
 
 * [Share](#Share)
   * Methods
-    * [Share#getApplicationQRCode](#sharegetapplicationqrcode)
-    * [Share#getProductQRCodeBySlug](#sharegetproductqrcodebyslug)
-    * [Share#getCollectionQRCodeBySlug](#sharegetcollectionqrcodebyslug)
-    * [Share#getUrlQRCode](#sharegeturlqrcode)
-    * [Share#createShortLink](#sharecreateshortlink)
-    * [Share#getShortLinkByHash](#sharegetshortlinkbyhash)
-    * [Share#getOriginalShortLinkByHash](#sharegetoriginalshortlinkbyhash)
+    * [getApplicationQRCode](#getapplicationqrcode)
+    * [getProductQRCodeBySlug](#getproductqrcodebyslug)
+    * [getCollectionQRCodeBySlug](#getcollectionqrcodebyslug)
+    * [getUrlQRCode](#geturlqrcode)
+    * [createShortLink](#createshortlink)
+    * [getShortLinkByHash](#getshortlinkbyhash)
+    * [getOriginalShortLinkByHash](#getoriginalshortlinkbyhash)
     
-   
 
 * [FileStorage](#FileStorage)
   * Methods
-    * [FileStorage#completeUpload](#filestoragecompleteupload)
-    * [FileStorage#startUpload](#filestoragestartupload)
+    * [completeUpload](#completeupload)
+    * [startUpload](#startupload)
     
-   
 
 * [Payment](#Payment)
   * Methods
-    * [Payment#getAggregatorsConfig](#paymentgetaggregatorsconfig)
-    * [Payment#attachCardToCustomer](#paymentattachcardtocustomer)
-    * [Payment#getActiveCardAggregator](#paymentgetactivecardaggregator)
-    * [Payment#getActiveUserCards](#paymentgetactiveusercards)
-    * [Payment#deleteUserCard](#paymentdeleteusercard)
-    * [Payment#verifyCustomerForPayment](#paymentverifycustomerforpayment)
-    * [Payment#verifyAndChargePayment](#paymentverifyandchargepayment)
-    * [Payment#initialisePayment](#paymentinitialisepayment)
-    * [Payment#checkAndUpdatePaymentStatus](#paymentcheckandupdatepaymentstatus)
-    * [Payment#getPaymentModeRoutes](#paymentgetpaymentmoderoutes)
-    * [Payment#getPosPaymentModeRoutes](#paymentgetpospaymentmoderoutes)
-    * [Payment#getUserBeneficiariesDetail](#paymentgetuserbeneficiariesdetail)
-    * [Payment#verifyIfscCode](#paymentverifyifsccode)
-    * [Payment#getOrderBeneficiariesDetail](#paymentgetorderbeneficiariesdetail)
-    * [Payment#verifyOtpAndAddBeneficiaryForBank](#paymentverifyotpandaddbeneficiaryforbank)
-    * [Payment#addBeneficiaryDetails](#paymentaddbeneficiarydetails)
-    * [Payment#verifyOtpAndAddBeneficiaryForWallet](#paymentverifyotpandaddbeneficiaryforwallet)
-    * [Payment#updateDefaultBeneficiary](#paymentupdatedefaultbeneficiary)
+    * [getAggregatorsConfig](#getaggregatorsconfig)
+    * [attachCardToCustomer](#attachcardtocustomer)
+    * [getActiveCardAggregator](#getactivecardaggregator)
+    * [getActiveUserCards](#getactiveusercards)
+    * [deleteUserCard](#deleteusercard)
+    * [verifyCustomerForPayment](#verifycustomerforpayment)
+    * [verifyAndChargePayment](#verifyandchargepayment)
+    * [initialisePayment](#initialisepayment)
+    * [checkAndUpdatePaymentStatus](#checkandupdatepaymentstatus)
+    * [getPaymentModeRoutes](#getpaymentmoderoutes)
+    * [getPosPaymentModeRoutes](#getpospaymentmoderoutes)
+    * [getUserBeneficiariesDetail](#getuserbeneficiariesdetail)
+    * [verifyIfscCode](#verifyifsccode)
+    * [getOrderBeneficiariesDetail](#getorderbeneficiariesdetail)
+    * [verifyOtpAndAddBeneficiaryForBank](#verifyotpandaddbeneficiaryforbank)
+    * [addBeneficiaryDetails](#addbeneficiarydetails)
+    * [verifyOtpAndAddBeneficiaryForWallet](#verifyotpandaddbeneficiaryforwallet)
+    * [updateDefaultBeneficiary](#updatedefaultbeneficiary)
     
-   
 
 * [Order](#Order)
   * Methods
-    * [Order#getOrders](#ordergetorders)
-    * [Order#getOrderById](#ordergetorderbyid)
-    * [Order#getShipmentById](#ordergetshipmentbyid)
-    * [Order#getShipmentReasons](#ordergetshipmentreasons)
-    * [Order#updateShipmentStatus](#orderupdateshipmentstatus)
-    * [Order#trackShipment](#ordertrackshipment)
+    * [getOrders](#getorders)
+    * [getOrderById](#getorderbyid)
+    * [getShipmentById](#getshipmentbyid)
+    * [getShipmentReasons](#getshipmentreasons)
+    * [updateShipmentStatus](#updateshipmentstatus)
+    * [trackShipment](#trackshipment)
     
-   
 
 * [Rewards](#Rewards)
   * Methods
-    * [Rewards#getPointsOnProduct](#rewardsgetpointsonproduct)
-    * [Rewards#getOrderDiscount](#rewardsgetorderdiscount)
-    * [Rewards#getUserPoints](#rewardsgetuserpoints)
-    * [Rewards#getUserPointsHistory](#rewardsgetuserpointshistory)
-    * [Rewards#getUserReferralDetails](#rewardsgetuserreferraldetails)
-    * [Rewards#redeemReferralCode](#rewardsredeemreferralcode)
+    * [getPointsOnProduct](#getpointsonproduct)
+    * [getOrderDiscount](#getorderdiscount)
+    * [getUserPoints](#getuserpoints)
+    * [getUserPointsHistory](#getuserpointshistory)
+    * [getUserReferralDetails](#getuserreferraldetails)
+    * [redeemReferralCode](#redeemreferralcode)
     
-   
 
 * [Feedback](#Feedback)
   * Methods
-    * [Feedback#createAbuseReport](#feedbackcreateabusereport)
-    * [Feedback#updateAbuseReport](#feedbackupdateabusereport)
-    * [Feedback#getAbuseReports](#feedbackgetabusereports)
-    * [Feedback#getAttributes](#feedbackgetattributes)
-    * [Feedback#createAttribute](#feedbackcreateattribute)
-    * [Feedback#getAttribute](#feedbackgetattribute)
-    * [Feedback#updateAttribute](#feedbackupdateattribute)
-    * [Feedback#createComment](#feedbackcreatecomment)
-    * [Feedback#updateComment](#feedbackupdatecomment)
-    * [Feedback#getComments](#feedbackgetcomments)
-    * [Feedback#checkEligibility](#feedbackcheckeligibility)
-    * [Feedback#deleteMedia](#feedbackdeletemedia)
-    * [Feedback#createMedia](#feedbackcreatemedia)
-    * [Feedback#updateMedia](#feedbackupdatemedia)
-    * [Feedback#getMedias](#feedbackgetmedias)
-    * [Feedback#getReviewSummaries](#feedbackgetreviewsummaries)
-    * [Feedback#createReview](#feedbackcreatereview)
-    * [Feedback#updateReview](#feedbackupdatereview)
-    * [Feedback#getReviews](#feedbackgetreviews)
-    * [Feedback#getTemplates](#feedbackgettemplates)
-    * [Feedback#createQuestion](#feedbackcreatequestion)
-    * [Feedback#updateQuestion](#feedbackupdatequestion)
-    * [Feedback#getQuestionAndAnswers](#feedbackgetquestionandanswers)
-    * [Feedback#getVotes](#feedbackgetvotes)
-    * [Feedback#createVote](#feedbackcreatevote)
-    * [Feedback#updateVote](#feedbackupdatevote)
+    * [createAbuseReport](#createabusereport)
+    * [updateAbuseReport](#updateabusereport)
+    * [getAbuseReports](#getabusereports)
+    * [getAttributes](#getattributes)
+    * [createAttribute](#createattribute)
+    * [getAttribute](#getattribute)
+    * [updateAttribute](#updateattribute)
+    * [createComment](#createcomment)
+    * [updateComment](#updatecomment)
+    * [getComments](#getcomments)
+    * [checkEligibility](#checkeligibility)
+    * [deleteMedia](#deletemedia)
+    * [createMedia](#createmedia)
+    * [updateMedia](#updatemedia)
+    * [getMedias](#getmedias)
+    * [getReviewSummaries](#getreviewsummaries)
+    * [createReview](#createreview)
+    * [updateReview](#updatereview)
+    * [getReviews](#getreviews)
+    * [getTemplates](#gettemplates)
+    * [createQuestion](#createquestion)
+    * [updateQuestion](#updatequestion)
+    * [getQuestionAndAnswers](#getquestionandanswers)
+    * [getVotes](#getvotes)
+    * [createVote](#createvote)
+    * [updateVote](#updatevote)
     
-   
 
 * [PosCart](#PosCart)
   * Methods
-    * [PosCart#getCart](#poscartgetcart)
-    * [PosCart#getCartLastModified](#poscartgetcartlastmodified)
-    * [PosCart#addItems](#poscartadditems)
-    * [PosCart#updateCart](#poscartupdatecart)
-    * [PosCart#getItemCount](#poscartgetitemcount)
-    * [PosCart#getCoupons](#poscartgetcoupons)
-    * [PosCart#applyCoupon](#poscartapplycoupon)
-    * [PosCart#removeCoupon](#poscartremovecoupon)
-    * [PosCart#getBulkDiscountOffers](#poscartgetbulkdiscountoffers)
-    * [PosCart#getAddresses](#poscartgetaddresses)
-    * [PosCart#addAddress](#poscartaddaddress)
-    * [PosCart#getAddressById](#poscartgetaddressbyid)
-    * [PosCart#updateAddress](#poscartupdateaddress)
-    * [PosCart#removeAddress](#poscartremoveaddress)
-    * [PosCart#selectAddress](#poscartselectaddress)
-    * [PosCart#getPaymentModes](#poscartgetpaymentmodes)
-    * [PosCart#selectPaymentMode](#poscartselectpaymentmode)
-    * [PosCart#getShipments](#poscartgetshipments)
-    * [PosCart#checkoutCart](#poscartcheckoutcart)
-    * [PosCart#updateCartMeta](#poscartupdatecartmeta)
-    * [PosCart#getAvailableDeliveryModes](#poscartgetavailabledeliverymodes)
-    * [PosCart#getStoreAddressByUid](#poscartgetstoreaddressbyuid)
-    * [PosCart#getCartShareLink](#poscartgetcartsharelink)
-    * [PosCart#getCartSharedItems](#poscartgetcartshareditems)
-    * [PosCart#updateCartWithSharedItems](#poscartupdatecartwithshareditems)
+    * [getCart](#getcart)
+    * [getCartLastModified](#getcartlastmodified)
+    * [addItems](#additems)
+    * [updateCart](#updatecart)
+    * [getItemCount](#getitemcount)
+    * [getCoupons](#getcoupons)
+    * [applyCoupon](#applycoupon)
+    * [removeCoupon](#removecoupon)
+    * [getBulkDiscountOffers](#getbulkdiscountoffers)
+    * [getAddresses](#getaddresses)
+    * [addAddress](#addaddress)
+    * [getAddressById](#getaddressbyid)
+    * [updateAddress](#updateaddress)
+    * [removeAddress](#removeaddress)
+    * [selectAddress](#selectaddress)
+    * [getPaymentModes](#getpaymentmodes)
+    * [selectPaymentMode](#selectpaymentmode)
+    * [getShipments](#getshipments)
+    * [checkoutCart](#checkoutcart)
+    * [updateCartMeta](#updatecartmeta)
+    * [getAvailableDeliveryModes](#getavailabledeliverymodes)
+    * [getStoreAddressByUid](#getstoreaddressbyuid)
+    * [getCartShareLink](#getcartsharelink)
+    * [getCartSharedItems](#getcartshareditems)
+    * [updateCartWithSharedItems](#updatecartwithshareditems)
     
-   
 
 
 ---
@@ -296,37 +282,18 @@
 
 ## Catalog
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val catalog = applicationClient.catalog
-    }
-
-```
-
-
-#### Catalog#getProductDetailBySlug
+#### getProductDetailBySlug
 Get a product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductDetailBySlug(slug ).safeAwait();
-}
-
+catalog.getProductDetailBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -335,18 +302,14 @@ Globalscope.launch{
 
 Products are the core resource of an application. Products can be associated by categories, collections, brands and more. This API retrieves the product specified by the given **slug**. If successful, returns a Product resource in the response body specified in `ProductDetail`
 
-Success Response:
+*Success Response:*
 
 
 
 The Product object. See example below or refer `ProductDetail` for details.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductDetail"
-}`
+Schema: `ProductDetail`
 
 
 
@@ -358,57 +321,47 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductSizesBySlug
+#### getProductSizesBySlug
 Get the sizes of a product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductSizesBySlug(slug, store_id ).safeAwait();
-}
-
+catalog.getProductSizesBySlug(slug: slug, storeId: storeId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | slug | string | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** | 
-| store_id | string | The store id of the product whose sizes need to be retrieved | 
+| storeId | string | The store id of the product whose sizes need to be retrieved | 
 
 A product can exist in multiple sizes. Use this API to fetch all the available sizes of a product. If successful, returns a ProductSize object in the response body as specified in `ProductSizes`
 
-Success Response:
+*Success Response:*
 
 
 
 The ProductSize object. See example below or refer `ProductSizes` for details.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductSizes"
-}`
+Schema: `ProductSizes`
 
 
 
@@ -420,36 +373,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductPriceBySlug
+#### getProductPriceBySlug
 Get price a product size
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductPriceBySlug(slug, size, pincode, store_id ).safeAwait();
-}
-
+catalog.getProductPriceBySlug(slug: slug, size: size, pincode: pincode, storeId: storeId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -457,22 +404,18 @@ Globalscope.launch{
 | slug | string | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** | 
 | size | string | The size of the product for which the price needs to be retrieved. You can get the available sizes of a product from **v1.0/products/{slug}/sizes/** | 
 | pincode | integer | The pincode of the product for which the price needs to be retrieved. | 
-| store_id | string | The store of the product whose size level price need to be retrieved | 
+| storeId | string | The store of the product whose size level price need to be retrieved | 
 
 Any available product can exist in multiple sizes. Sometimes prices may vary among different sizes of the same product. Use this API to retrieve the price of the product of a particular size with the location details it is available in.
 
-Success Response:
+*Success Response:*
 
 
 
 The ProductSizePrice object. See example below or refer `ProductSizePriceResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductSizePriceResponse"
-}`
+Schema: `ProductSizePriceResponse`
 
 
 
@@ -484,36 +427,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductSellersBySlug
+#### getProductSellersBySlug
 List sellers of a product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductSellersBySlug(slug, size, pincode, page_no, page_size ).safeAwait();
-}
-
+catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, pageNo: pageNo, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -521,23 +458,19 @@ Globalscope.launch{
 | slug | string | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** | 
 | size | string | The size of the product for which the price needs to be retrieved. You can get the available sizes of a product from **v1.0.0/products/sizes** | 
 | pincode | integer | The pincode of the product for which the price needs to be retrieved. | 
-| page_no | integer | The page number to navigate through the given set of results. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+| pageNo | integer | The page number to navigate through the given set of results. | 
+| pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 A product of a particular size can be sold by multiple sellers. Use this API to fetch the sellers who are selling this product and have the stock of a particular size
 
-Success Response:
+*Success Response:*
 
 
 
 The ProductSizeSeller object. See example below or refer `ProductSizeSellersResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductSizeSellersResponse"
-}`
+Schema: `ProductSizeSellersResponse`
 
 
 
@@ -549,36 +482,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductComparisonBySlugs
+#### getProductComparisonBySlugs
 Compare products
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductComparisonBySlugs(slug ).safeAwait();
-}
-
+catalog.getProductComparisonBySlugs(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -587,18 +514,14 @@ Globalscope.launch{
 
 Compare between the features of the given set of products Use this API to compare how one product ranks against other products. Note that at least one slug is mandatory in request query.
 
-Success Response:
+*Success Response:*
 
 
 
 The comparison between the products. See example below or refer `ProductsComparisonResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductsComparisonResponse"
-}`
+Schema: `ProductsComparisonResponse`
 
 
 
@@ -610,36 +533,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getSimilarComparisonProductBySlug
+#### getSimilarComparisonProductBySlug
 Get comparison between similar products
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getSimilarComparisonProductBySlug(slug ).safeAwait();
-}
-
+catalog.getSimilarComparisonProductBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -648,18 +565,14 @@ Globalscope.launch{
 
 Compare between the features of the given set of products Use this API to compare how one product ranks against other products
 
-Success Response:
+*Success Response:*
 
 
 
 The comparison between products similar to given product. See example below or refer `ProductCompareResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductCompareResponse"
-}`
+Schema: `ProductCompareResponse`
 
 
 
@@ -671,36 +584,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getComparedFrequentlyProductBySlug
+#### getComparedFrequentlyProductBySlug
 Get comparison between frequently compared products with the given product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getComparedFrequentlyProductBySlug(slug ).safeAwait();
-}
-
+catalog.getComparedFrequentlyProductBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -709,18 +616,14 @@ Globalscope.launch{
 
 Compare between the features of the give product with frequently compared products Use this API to compare how one product ranks against other products
 
-Success Response:
+*Success Response:*
 
 
 
 The comparison between products similar to given product. See example below or refer `ProductFrequentlyComparedSimilarResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductFrequentlyComparedSimilarResponse"
-}`
+Schema: `ProductFrequentlyComparedSimilarResponse`
 
 
 
@@ -732,57 +635,47 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductSimilarByIdentifier
+#### getProductSimilarByIdentifier
 Get similar products
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductSimilarByIdentifier(slug, similar_type ).safeAwait();
-}
-
+catalog.getProductSimilarByIdentifier(slug: slug, similarType: similarType).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | slug | string | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** | 
-| similar_type | string | The tag_identifier is used to fetch the particular type of similar product such as basic, visual, price, seller, category and spec. | 
+| similarType | string | The tag_identifier is used to fetch the particular type of similar product such as basic, visual, price, seller, category and spec. | 
 
 Get products similar to the one specified by the `identifier`. If successful, it returns a group of similar products based on type as described in `SimilarProductByTypeResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 Similar Products based on type passed in the request path. Refer `SimilarProductByTypeResponse` for response structure
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SimilarProductByTypeResponse"
-}`
+Schema: `SimilarProductByTypeResponse`
 
 
 
@@ -794,36 +687,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductVariantsBySlug
+#### getProductVariantsBySlug
 Get variant of a particular product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductVariantsBySlug(slug ).safeAwait();
-}
-
+catalog.getProductVariantsBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -832,18 +719,14 @@ Globalscope.launch{
 
 A product can have a different type of variants varies from color to shade etc. Use this API to fetch all the available variants of a product. If successful, returns a Products for different variants type in the response body as specified in `ProductVariantResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 See example below or refer `ProductVariantsResponse` for details. For `display_type:image`, `color` key will be present otherwise `value` key will be preset.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductVariantsResponse"
-}`
+Schema: `ProductVariantsResponse`
 
 
 
@@ -855,60 +738,50 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductStockByIds
+#### getProductStockByIds
 Get the stock of a product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductStockByIds(item_id, alu, sku_code, ean, upc ).safeAwait();
-}
-
+catalog.getProductStockByIds(itemId: itemId, alu: alu, skuCode: skuCode, ean: ean, upc: upc).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| item_id | string | Product id to get product stock (Max. 50 allowed) | 
+| itemId | string | Product id to get product stock (Max. 50 allowed) | 
 | alu | string | Product identifier alu to get product stock (Max. 50 allowed) | 
-| sku_code | string | Product identifier sku_code to get product stock (Max. 50 allowed) | 
+| skuCode | string | Product identifier sku_code to get product stock (Max. 50 allowed) | 
 | ean | string | Product identifier ean to get product stock (Max. 50 allowed) | 
 | upc | string | Product identifier upc to get product stock (Max. 50 allowed) | 
 
 Retrieve the available stock of the products. You can use this API to retrieve stock of multiple products at a time. Only 50 product IDs can be given in a single API request
 
-Success Response:
+*Success Response:*
 
 
 
 The ProductStockStatus object. See example below or refer `ProductStockStatusResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductStockStatusResponse"
-}`
+Schema: `ProductStockStatusResponse`
 
 
 
@@ -920,58 +793,48 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProductStockForTimeByIds
+#### getProductStockForTimeByIds
 Get the stock of a product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProductStockForTimeByIds(timestamp, page_size, page_id ).safeAwait();
-}
-
+catalog.getProductStockForTimeByIds(timestamp: timestamp, pageSize: pageSize, pageId: pageId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | timestamp | string | timestamp in UTC format (2020-07-23T10:27:50Z) | 
-| page_size | integer | Limit of number of items for stock status default 12 | 
-| page_id | string | will give next page results | 
+| pageSize | integer | Limit of number of items for stock status default 12 | 
+| pageId | string | will give next page results | 
 
 Retrieve the available stock of the products. You can use this api to get stock status of products whose inventory is updated in given time
 
-Success Response:
+*Success Response:*
 
 
 
 The ProductStockStatus object. See example below or refer `ProductStockPolling` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductStockPolling"
-}`
+Schema: `ProductStockPolling`
 
 
 
@@ -983,36 +846,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getProducts
+#### getProducts
 List the products
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getProducts(q, f, filters, sort_on, page_id, page_size, page_no, page_type ).safeAwait();
-}
-
+catalog.getProducts(q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize, pageNo: pageNo, pageType: pageType).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1020,26 +877,22 @@ Globalscope.launch{
 | q | string | The search query. This can be a partial or complete name of a either a product, brand or category | 
 | f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts** | 
 | filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
-| sort_on | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
-| page_no | integer | If page_type is number then pass it to fetch page items. Default is 1. | 
-| page_type | string | For pagination type should be cursor or number. Default is cursor. | 
+| sortOn | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
+| pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
+| pageNo | integer | If page_type is number then pass it to fetch page items. Default is 1. | 
+| pageType | string | For pagination type should be cursor or number. Default is cursor. | 
 
 List all the products associated with a brand, collection or category in a requested sort order. The API additionally supports arbitrary search queries that may refer the name of any product, brand, category or collection. If successful, returns a paginated list of products specified in `ProductListingResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 List of Products. See example below or refer `ProductListingResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductListingResponse"
-}`
+Schema: `ProductListingResponse`
 
 
 
@@ -1051,58 +904,48 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getBrands
+#### getBrands
 List all the brands
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getBrands(department, page_no, page_size ).safeAwait();
-}
-
+catalog.getBrands(department: department, pageNo: pageNo, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | department | string | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+| pageNo | integer | The page number to navigate through the given set of results | 
+| pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 A brand is the name under which a product is being sold. Use this API to list all the brands. You can pass optionally filter the brands by the department. If successful, returns a paginated list of brands specified in `BrandListingResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 List of Brands. See example below or refer `BrandListingResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/BrandListingResponse"
-}`
+Schema: `BrandListingResponse`
 
 
 
@@ -1114,36 +957,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getBrandDetailBySlug
+#### getBrandDetailBySlug
 Get metadata of a brand
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getBrandDetailBySlug(slug ).safeAwait();
-}
-
+catalog.getBrandDetailBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1152,18 +989,14 @@ Globalscope.launch{
 
 Fetch metadata of a brand. If successful, returns a metadata object specified in `BrandDetailResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 The Metadata object. See example below or refer `BrandDetailResponse` for details.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/BrandDetailResponse"
-}`
+Schema: `BrandDetailResponse`
 
 
 
@@ -1175,36 +1008,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getCategories
+#### getCategories
 List all the categories
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getCategories(department ).safeAwait();
-}
-
+catalog.getCategories(department: department).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1213,18 +1040,14 @@ Globalscope.launch{
 
 List all the categories. You can optionally pass filter the brands by the department. If successful, returns a paginated list of brands specified in `CategoryListingResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 List of Categories. See example below or refer `CategoryListingResponse` for details.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CategoryListingResponse"
-}`
+Schema: `CategoryListingResponse`
 
 
 
@@ -1236,36 +1059,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getCategoryDetailBySlug
+#### getCategoryDetailBySlug
 Get metadata of a category
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getCategoryDetailBySlug(slug ).safeAwait();
-}
-
+catalog.getCategoryDetailBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1274,18 +1091,14 @@ Globalscope.launch{
 
 Fetch metadata of a category. If successful, returns a metadata object specified in `CategoryMetaResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 The Metadata object. See example below or refer `CategoryMetaResponse` for details.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CategoryMetaResponse"
-}`
+Schema: `CategoryMetaResponse`
 
 
 
@@ -1297,58 +1110,48 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getHomeProducts
+#### getHomeProducts
 List the products
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getHomeProducts(sort_on, page_id, page_size ).safeAwait();
-}
-
+catalog.getHomeProducts(sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| sort_on | string | Each response will contain **sort_on** param, which should be sent back to make pagination work. | 
-| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+| sortOn | string | Each response will contain **sort_on** param, which should be sent back to make pagination work. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
+| pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 List all the products associated with a brand, collection or category in a random order. If successful, returns a paginated list of products specified in `HomeListingResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 List of Products. See example below or refer `HomeListingResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HomeListingResponse"
-}`
+Schema: `HomeListingResponse`
 
 
 
@@ -1360,36 +1163,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getDepartments
+#### getDepartments
 List all the departments
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getDepartments().safeAwait();
-}
-
+catalog.getDepartments().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1397,18 +1194,14 @@ Globalscope.launch{
 
 Departments are a way to categorise similar products. A product can lie in multiple departments. For example, a skirt can below to the 'Women's Fashion' Department while a handbag can lie in 'Women's Accessories' Department. Use this API to list all the departments. If successful, returns the list of departments specified in `DepartmentResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 List of Departments. See example below or refer `DepartmentResponse` for details.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/DepartmentResponse"
-}`
+Schema: `DepartmentResponse`
 
 
 
@@ -1420,36 +1213,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getSearchResults
+#### getSearchResults
 Get relevant suggestions for a search query
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getSearchResults(q ).safeAwait();
-}
-
+catalog.getSearchResults(q: q).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1458,18 +1245,14 @@ Globalscope.launch{
 
 Retrieves a list of suggestions for a given search query. Each suggestion is a valid search term that's generated on the basis of what is given in query. This is particularly useful to enhance the user experience in search. The given search query can be a partial name of any product, brand and category. For example, if the given search query `q` is _ski_ the relevant search suggestions returned might be a list containing _skirt_, _ski shoes_, __skin cream_ etc.
 
-Success Response:
+*Success Response:*
 
 
 
 Lists of autocomplete suggestions for the search query `q`. See example response below or refer `AutoCompleteResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AutoCompleteResponse"
-}`
+Schema: `AutoCompleteResponse`
 
 
 
@@ -1481,57 +1264,47 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getCollections
+#### getCollections
 List all the collections
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getCollections(page_id, page_size ).safeAwait();
-}
-
+catalog.getCollections(pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
+| pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections`
 
-Success Response:
+*Success Response:*
 
 
 
 List of collections. See example below or refer `GetCollectionListingResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetCollectionListingResponse"
-}`
+Schema: `GetCollectionListingResponse`
 
 
 
@@ -1543,36 +1316,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getCollectionItemsBySlug
+#### getCollectionItemsBySlug
 Get the items in a collection
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size ).safeAwait();
-}
-
+catalog.getCollectionItemsBySlug(slug: slug, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1580,24 +1347,20 @@ Globalscope.launch{
 | slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection for which you want to fetch the items | 
 | f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts** | 
 | filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
-| sort_on | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+| sortOn | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
+| pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 Get items in a collection specified by its `slug`.
 
-Success Response:
+*Success Response:*
 
 
 
 The attached items of an collection. See example below or refer `ProductListingResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ProductListingResponse"
-}`
+Schema: `ProductListingResponse`
 
 
 
@@ -1609,36 +1372,30 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getCollectionDetailBySlug
+#### getCollectionDetailBySlug
 Get a particular collection
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getCollectionDetailBySlug(slug ).safeAwait();
-}
-
+catalog.getCollectionDetailBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -1647,18 +1404,14 @@ Globalscope.launch{
 
 Get the details of a collection by its `slug`. If successful, returns a Collection resource in the response body specified in `CollectionDetailResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 The Collection object. See example below or refer `CollectionDetailResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionDetailResponse"
-}`
+Schema: `CollectionDetailResponse`
 
 
 
@@ -1670,56 +1423,46 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getFollowedListing
+#### getFollowedListing
 Get a list of followed Products, Brands, Collections
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getFollowedListing(collection_type ).safeAwait();
-}
-
+catalog.getFollowedListing(collectionType: collectionType).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| collection_type | string | Type of collection followed. i. e. products, brands, collections | 
+| collectionType | string | Type of collection followed. i. e. products, brands, collections | 
 
 A User can follow a Product they like. This API retrieves the products the user have followed. If successful, returns a Followed resource in the response body specified in `GetFollowResponseSchema`
 
-Success Response:
+*Success Response:*
 
 
 
 The Followed resource object. See example below or refer `GetFollowListingResponse` for details.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetFollowListingResponse"
-}`
+Schema: `GetFollowListingResponse`
 
 
 
@@ -1731,57 +1474,47 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#followById
+#### followById
 Follow a particular Product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.followById(collection_type, collection_id ).safeAwait();
-}
-
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| collection_type | string | Type of collection followed. i. e. products, brands, collections | 
-| collection_id | integer | the `id` of the collection type you want to follow | 
+| collectionType | string | Type of collection followed. i. e. products, brands, collections | 
+| collectionId | integer | the `id` of the collection type you want to follow | 
 
 Follow a particular Product specified by its uid. Pass the uid of the product in request URL
 
-Success Response:
+*Success Response:*
 
 
 
 The response object. See example below or refer `FollowPostResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/FollowPostResponse"
-}`
+Schema: `FollowPostResponse`
 
 
 
@@ -1793,57 +1526,47 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#unfollowById
+#### unfollowById
 UnFollow a Product
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.unfollowById(collection_type, collection_id ).safeAwait();
-}
-
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| collection_type | string | Type of collection followed. i. e. products, brands, collections | 
-| collection_id | integer | the `id` of the collection type you want to unfollow | 
+| collectionType | string | Type of collection followed. i. e. products, brands, collections | 
+| collectionId | integer | the `id` of the collection type you want to unfollow | 
 
 You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
 
-Success Response:
+*Success Response:*
 
 
 
 The response object. See example below or refer `FollowPostResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/FollowPostResponse"
-}`
+Schema: `FollowPostResponse`
 
 
 
@@ -1855,57 +1578,47 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getFollowerCountById
+#### getFollowerCountById
 Get Follow Count
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getFollowerCountById(collection_type, collection_id ).safeAwait();
-}
-
+catalog.getFollowerCountById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| collection_type | string | the `type` of the collection products/brands/collections. | 
-| collection_id | string | the `id` of the product/brand/collection. | 
+| collectionType | string | the `type` of the collection products/brands/collections. | 
+| collectionId | string | the `id` of the product/brand/collection. | 
 
 Get count of followers for given collection type and collection id.
 
-Success Response:
+*Success Response:*
 
 
 
 The response object. See example below or refer `FollowerCountResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/FollowerCountResponse"
-}`
+Schema: `FollowerCountResponse`
 
 
 
@@ -1917,56 +1630,46 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getFollowIds
+#### getFollowIds
 Get the Ids of followed product, brand and collection.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getFollowIds(collection_type ).safeAwait();
-}
-
+catalog.getFollowIds(collectionType: collectionType).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| collection_type | string | Type of collection followed. i. e. products, brands, collections | 
+| collectionType | string | Type of collection followed. i. e. products, brands, collections | 
 
 You can get the ids of all the followed Product, Brand and Collections. Pass collection_type as query parameter to fetch specific Ids
 
-Success Response:
+*Success Response:*
 
 
 
 The response object. See example below or refer `FollowIdsResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/FollowIdsResponse"
-}`
+Schema: `FollowIdsResponse`
 
 
 
@@ -1978,42 +1681,36 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Catalog#getStores
+#### getStores
 List store meta information.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = catalog.getStores(page_no, page_size, q, range, latitude, longitude ).safeAwait();
-}
-
+catalog.getStores(pageNo: pageNo, pageSize: pageSize, q: q, range: range, latitude: latitude, longitude: longitude).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| page_no | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. | 
+| pageNo | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
+| pageSize | integer | Number of items to retrieve in each page. | 
 | q | string | This can be used to search a particulr store by its name or store_code. | 
 | range | integer | This can be used to retrieve store within a particular range. For eg range=10000 (in meters) | 
 | latitude | number | This should be the latitude of the location from which one needs to retreive the nearest stores. | 
@@ -2021,18 +1718,14 @@ Globalscope.launch{
 
 Use this API to get list of stores for specific application. If successful, returns list of stores specified in `StoreListingResponse`
 
-Success Response:
+*Success Response:*
 
 
 
 List of Stores. See example below or refer `StoreListingResponse` for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/StoreListingResponse"
-}`
+Schema: `StoreListingResponse`
 
 
 
@@ -2044,20 +1737,13 @@ Schema: `{
 Bad request. See the error object in the response body for specific reason
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -2070,83 +1756,58 @@ Error Response:
 
 ## Cart
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val cart = applicationClient.cart
-    }
-
-```
-
-
-#### Cart#getCart
+#### getCart
 Fetch all Items Added to  Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getCart(uid, assign_card_id ).safeAwait();
-}
-
+cart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
-| assign_card_id | integer |  | 
+| assignCardId | integer |  | 
 
 Get all the details of a items added to cart  by uid. If successful, returns a Cart resource in the response body specified in CartResponse
 
-Success Response:
+*Success Response:*
 
 
 
 The Cart object. See example below or refer CartResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartResponse"
-}`
+Schema: `CartResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#getCartLastModified
+#### getCartLastModified
 Fetch Last-Modified timestamp
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getCartLastModified(uid ).safeAwait();
-}
-
+cart.getCartLastModified(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -2155,7 +1816,7 @@ Globalscope.launch{
 
 Fetch Last-Modified timestamp in header metadata
 
-Success Response:
+*Success Response:*
 
 
 
@@ -2165,23 +1826,21 @@ Fetch Last-Modified Timestamp Response
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Cart#addItems
+#### addItems
 Add Items to Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.addItems().safeAwait();
-}
-
+cart.addItems(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -2189,25 +1848,21 @@ Globalscope.launch{
 
 <p>Add Items to cart. See `AddCartRequest` in schema of request body for the list of attributes needed to add items to a cart. On successful request, returns cart response containing details of items, coupons available etc.these attributes will be fetched from the folowing api's</p>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the cart object including all item details included in .the cart,coupons etc.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AddCartResponse"
-}`
+Schema: `AddCartResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Product has been added to your cart
-```javascript
+```json
 {
   "value": {
     "message": "Product has been added to your cart",
@@ -2658,7 +2313,7 @@ Product has been added to your cart
 ```
 
 Sorry, item is out of stock
-```javascript
+```json
 {
   "value": {
     "message": "Sorry, item is out of stock",
@@ -2842,23 +2497,21 @@ Sorry, item is out of stock
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Cart#updateCart
+#### updateCart
 Update Items already added to Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.updateCart().safeAwait();
-}
-
+cart.updateCart(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -2866,25 +2519,21 @@ Globalscope.launch{
 
 Request object containing attributes like item_quantity and item_size which can be updated .these attributes will be fetched from the folowing api's</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the cart object including all item with their updated details included in .the cart,coupons etc..
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/UpdateCartResponse"
-}`
+Schema: `UpdateCartResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Nothing updated
-```javascript
+```json
 {
   "value": {
     "cart": {
@@ -3067,7 +2716,7 @@ Nothing updated
 ```
 
 Item updated in the cart
-```javascript
+```json
 {
   "value": {
     "cart": {
@@ -3248,23 +2897,21 @@ Item updated in the cart
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Cart#getItemCount
+#### getItemCount
 Cart item count
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getItemCount(uid ).safeAwait();
-}
-
+cart.getItemCount(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3273,43 +2920,37 @@ Globalscope.launch{
 
 Get total count of item present in cart
 
-Success Response:
+*Success Response:*
 
 
 
 OK
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartItemCountResponse"
-}`
+Schema: `CartItemCountResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#getCoupons
+#### getCoupons
 Fetch Coupon
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getCoupons(uid ).safeAwait();
-}
-
+cart.getCoupons(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3318,43 +2959,37 @@ Globalscope.launch{
 
 Get all the details of a coupons applicable to cart  by uid. If successful, returns a Coupon resource in the response body specified in GetCouponResponse
 
-Success Response:
+*Success Response:*
 
 
 
 Returns The Couppon object which has list of all available_coupon applicale for the cart. See example below or refer GetCouponResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetCouponResponse"
-}`
+Schema: `GetCouponResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#applyCoupon
+#### applyCoupon
 Apply Coupon
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.applyCoupon(i, b, p ).safeAwait();
-}
-
+cart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3366,43 +3001,37 @@ Globalscope.launch{
 <p>Apply Coupons on Items added to cart. On successful request, returns cart response containing details of items ,coupons applied etc.these attributes will be consumed by  api</p> <ul> <li> <font color="monochrome">coupon_code</font></li>
 </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Coupon object including all item details included in .the cart,coupons applied etc.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SaveCouponResponse"
-}`
+Schema: `SaveCouponResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#removeCoupon
+#### removeCoupon
 Remove Coupon Applied
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.removeCoupon(uid ).safeAwait();
-}
-
+cart.removeCoupon(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3411,73 +3040,63 @@ Globalscope.launch{
 
 Remove Coupon applied on the cart by passing uid in request body.
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Coupon object including all item details included in .the cart,coupons removed etc.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartResponse"
-}`
+Schema: `CartResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#getBulkDiscountOffers
+#### getBulkDiscountOffers
 Get discount offers based on quantity
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getBulkDiscountOffers(item_id, article_id, uid, slug ).safeAwait();
-}
-
+cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| item_id | integer | Item id | 
-| article_id | string | Article mongo id | 
+| itemId | integer | Item id | 
+| articleId | string | Article mongo id | 
 | uid | integer | Item id | 
 | slug | string | Item unique url from product page | 
 
 List applicable offers along with current, next and best offer for given product. Either one of **uid**, **item_id**, **slug** should be present*
 
-Success Response:
+*Success Response:*
 
 
 
 Offers found or not found with valid input
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/BulkPriceResponse"
-}`
+Schema: `BulkPriceResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Offers found
-```javascript
+```json
 {
   "value": {
     "data": [
@@ -3535,7 +3154,7 @@ Offers found
 ```
 
 Offers not found
-```javascript
+```json
 {
   "value": {
     "data": []
@@ -3553,90 +3172,73 @@ Offers not found
 Unhandled api error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "message": {
-      "type": "string"
-    }
-  }
-}`
+Schema: `[String: Any]`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#getAddresses
+#### getAddresses
 Fetch Address
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
-}
-
+cart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
-| mobile_no | integer |  | 
-| checkout_mode | string |  | 
+| mobileNo | integer |  | 
+| checkoutMode | string |  | 
 | tags | integer |  | 
-| is_default | boolean |  | 
+| isDefault | boolean |  | 
 
 Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetAddressResponse"
-}`
+Schema: `GetAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#addAddress
+#### addAddress
 Add Address to the account
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.addAddress().safeAwait();
-}
-
+cart.addAddress(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3644,93 +3246,81 @@ Globalscope.launch{
 
 <p>Add Address to account. See `SaveAddressRequest` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
 
-Success Response:
+*Success Response:*
 
 
 
 Return Address Id on successfull completion of the request.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SaveAddressResponse"
-}`
+Schema: `SaveAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#getAddressById
+#### getAddressById
 Fetch Single Address
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
-}
-
+cart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | id | integer |  | 
 | uid | integer |  | 
-| mobile_no | integer |  | 
-| checkout_mode | string |  | 
+| mobileNo | integer |  | 
+| checkoutMode | string |  | 
 | tags | integer |  | 
-| is_default | boolean |  | 
+| isDefault | boolean |  | 
 
 Get a addresses with the given id. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetAddressResponse"
-}`
+Schema: `GetAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#updateAddress
+#### updateAddress
 Update Address alreay added to account
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.updateAddress(id ).safeAwait();
-}
-
+cart.updateAddress(id: id, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3739,43 +3329,37 @@ Globalscope.launch{
 
 Request object containing attributes mentioned in  <font color="blue">UpdateAddressRequest </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Address object containing address_id and sucess message.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/UpdateAddressResponse"
-}`
+Schema: `UpdateAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#removeAddress
+#### removeAddress
 Remove Address Associated to the account
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.removeAddress(id ).safeAwait();
-}
-
+cart.removeAddress(id: id).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3784,43 +3368,37 @@ Globalscope.launch{
 
 Delete a Address by it's address_id. Returns an object that tells whether the address was deleted successfully
 
-Success Response:
+*Success Response:*
 
 
 
 Status object. Tells whether the operation was successful. See example below or refer DeleteAddressResponse
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/DeleteAddressResponse"
-}`
+Schema: `DeleteAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#selectAddress
+#### selectAddress
 Select Address from All Addresses
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.selectAddress().safeAwait();
-}
-
+cart.selectAddress(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3828,18 +3406,14 @@ Globalscope.launch{
 
 <p>Select Address from all addresses associated with the account in order to ship the cart items to .that address,otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, returns Cart object response.below are the address attributes which needs to be sent. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Address object containing Cart Object and success message.  .
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartResponse"
-}`
+Schema: `CartResponse`
 
 
 
@@ -3851,26 +3425,14 @@ Schema: `{
 Address or Pincode Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "status": {
-      "type": "string"
-    },
-    "message": {
-      "type": "string"
-    }
-  }
-}`
+Schema: `[String: Any]`
 
 
-Examples: 
+*Examples:*
 
 
 Address Not Found
-```javascript
+```json
 {
   "value": {
     "status": "ERROR",
@@ -3880,7 +3442,7 @@ Address Not Found
 ```
 
 Pincode Not Serviciable
-```javascript
+```json
 {
   "value": {
     "status": "ERROR",
@@ -3896,73 +3458,65 @@ Pincode Not Serviciable
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Cart#getPaymentModes
+#### getPaymentModes
 Get Cart Payment for valid coupon
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code ).safeAwait();
-}
-
+cart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | string |  | 
-| address_id | string |  | 
-| payment_mode | string |  | 
-| payment_identifier | string |  | 
-| aggregator_name | string |  | 
-| merchant_code | string |  | 
+| addressId | string |  | 
+| paymentMode | string |  | 
+| paymentIdentifier | string |  | 
+| aggregatorName | string |  | 
+| merchantCode | string |  | 
 
 Validate coupon for selected payment mode
 
-Success Response:
+*Success Response:*
 
 
 
 Cart Affiliates.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentOptions"
-}`
+Schema: `PaymentOptions`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#selectPaymentMode
+#### selectPaymentMode
 Update Cart Payment
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.selectPaymentMode(uid ).safeAwait();
-}
-
+cart.selectPaymentMode(uid: uid, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -3971,72 +3525,62 @@ Globalscope.launch{
 
 Update Cart Payment for Your Account
 
-Success Response:
+*Success Response:*
 
 
 
 Cart Affiliates.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentOptions"
-}`
+Schema: `PaymentOptions`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#getShipments
+#### getShipments
 Get delivery date and options before checkout
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getShipments(p, uid, address_id ).safeAwait();
-}
-
+cart.getShipments(p: p, uid: uid, addressId: addressId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | p | boolean | Get payment options or not | 
 | uid | integer | Cart id | 
-| address_id | integer | Address id | 
+| addressId | integer | Address id | 
 
 Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
 
-Success Response:
+*Success Response:*
 
 
 
 OK
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartShipmentsResponse"
-}`
+Schema: `CartShipmentsResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Shipment Generated
-```javascript
+```json
 {
   "value": {
     "items": [],
@@ -4422,7 +3966,7 @@ Shipment Generated
 ```
 
 Shipment Generation Failed
-```javascript
+```json
 {
   "value": {
     "items": [],
@@ -4681,41 +4225,30 @@ Shipment Generation Failed
 Unhandled api error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "message": {
-      "type": "string"
-    }
-  }
-}`
+Schema: `[String: Any]`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#checkoutCart
+#### checkoutCart
 Checkout Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.checkoutCart().safeAwait();
-}
-
+cart.checkoutCart(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -4723,25 +4256,21 @@ Globalscope.launch{
 
 Checkout all items in cart to payment and order generation.                         For COD only order will be generated while for other checkout mode                         user will be redirected to payment gateway
 
-Success Response:
+*Success Response:*
 
 
 
 OK
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartCheckoutResponse"
-}`
+Schema: `CartCheckoutResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Address id not found
-```javascript
+```json
 {
   "value": {
     "success": false,
@@ -4751,7 +4280,7 @@ Address id not found
 ```
 
 Missing address_id
-```javascript
+```json
 {
   "value": {
     "address_id": [
@@ -4762,7 +4291,7 @@ Missing address_id
 ```
 
 Successful checkout cod payment
-```javascript
+```json
 {
   "value": {
     "success": true,
@@ -5120,23 +4649,21 @@ Successful checkout cod payment
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Cart#updateCartMeta
+#### updateCartMeta
 Update Cart Meta
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.updateCartMeta(uid ).safeAwait();
-}
-
+cart.updateCartMeta(uid: uid, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -5145,18 +4672,14 @@ Globalscope.launch{
 
 Update cart meta like checkout_mode, gstin.
 
-Success Response:
+*Success Response:*
 
 
 
 Cart meta updated successfully
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartMetaResponse"
-}`
+Schema: `CartMetaResponse`
 
 
 
@@ -5168,36 +4691,30 @@ Schema: `{
 Missing required Field
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartMetaMissingResponse"
-}`
+Schema: `CartMetaMissingResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#getCartShareLink
+#### getCartShareLink
 Generate Cart sharing link token
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getCartShareLink().safeAwait();
-}
-
+cart.getCartShareLink(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -5205,25 +4722,21 @@ Globalscope.launch{
 
 Generates shared cart snapshot and returns shortlink token
 
-Success Response:
+*Success Response:*
 
 
 
 Token Generated successfully
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetShareCartLinkResponse"
-}`
+Schema: `GetShareCartLinkResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Token Generated
-```javascript
+```json
 {
   "value": {
     "token": "ZweG1XyX",
@@ -5239,23 +4752,21 @@ Token Generated
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Cart#getCartSharedItems
+#### getCartSharedItems
 Get shared cart snapshot and cart response
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.getCartSharedItems(token ).safeAwait();
-}
-
+cart.getCartSharedItems(token: token).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -5264,18 +4775,14 @@ Globalscope.launch{
 
 Returns shared cart response for sent token with `shared_cart_details`                    containing shared cart details in response.
 
-Success Response:
+*Success Response:*
 
 
 
 Cart for valid token
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
-}`
+Schema: `SharedCartResponse`
 
 
 
@@ -5287,36 +4794,30 @@ Schema: `{
 No cart found for sent token
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
-}`
+Schema: `SharedCartResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Cart#updateCartWithSharedItems
+#### updateCartWithSharedItems
 Merge or Replace existing cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = cart.updateCartWithSharedItems(token, action ).safeAwait();
-}
-
+cart.updateCartWithSharedItems(token: token, action: action).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -5326,25 +4827,21 @@ Globalscope.launch{
 
 Merge or Replace cart based on `action` parameter with shared cart of `token`
 
-Success Response:
+*Success Response:*
 
 
 
 Success of Merge or Replace of cart with `shared_cart_details`                    containing shared cart details in response
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
-}`
+Schema: `SharedCartResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Cart Merged/Replaced
-```javascript
+```json
 {
   "value": {
     "cart": {
@@ -5632,9 +5129,6 @@ Cart Merged/Replaced
 
 
 
-Error Response:
-
-
 
 ---
 
@@ -5645,37 +5139,18 @@ Error Response:
 
 ## Lead
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val lead = applicationClient.lead
-    }
-
-```
-
-
-#### Lead#getTicket
+#### getTicket
 Get Ticket with the specific id
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = lead.getTicket(id ).safeAwait();
-}
-
+lead.getTicket(id: id).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -5684,25 +5159,21 @@ Globalscope.launch{
 
 Get Ticket with the specific id, this is used to view the ticket details
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Ticket"
-}`
+Schema: `Ticket`
 
 
-Examples: 
+*Examples:*
 
 
 Default
-```javascript
+```json
 {
   "value": {
     "context": {
@@ -5906,50 +5377,44 @@ Default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Lead#createHistoryForTicket
+#### createHistoryForTicket
 Create history for specific Ticket
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = lead.createHistoryForTicket(ticket_id ).safeAwait();
-}
-
+lead.createHistoryForTicket(ticketId: ticketId, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| ticket_id | string | Ticket ID for which history is created | 
+| ticketId | string | Ticket ID for which history is created | 
 
 Create history for specific Ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/TicketHistory"
-}`
+Schema: `TicketHistory`
 
 
-Examples: 
+*Examples:*
 
 
 Default
-```javascript
+```json
 {
   "value": {
     "_id": "601a9d52c26687d086c499ef",
@@ -5996,23 +5461,21 @@ Default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Lead#createTicket
+#### createTicket
 Create Ticket
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = lead.createTicket().safeAwait();
-}
-
+lead.createTicket(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -6020,25 +5483,21 @@ Globalscope.launch{
 
 This is used to Create Ticket.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Ticket"
-}`
+Schema: `Ticket`
 
 
-Examples: 
+*Examples:*
 
 
 Default
-```javascript
+```json
 {
   "value": {
     "context": {
@@ -6242,23 +5701,21 @@ Default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Lead#getCustomForm
+#### getCustomForm
 Get specific Custom Form using it's slug
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = lead.getCustomForm(slug ).safeAwait();
-}
-
+lead.getCustomForm(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -6267,25 +5724,21 @@ Globalscope.launch{
 
 Get specific Custom Form using it's slug, this is used to view the form.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CustomForm"
-}`
+Schema: `CustomForm`
 
 
-Examples: 
+*Examples:*
 
 
 Default
-```javascript
+```json
 {
   "value": {
     "login_required": false,
@@ -6342,23 +5795,21 @@ Default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Lead#submitCustomForm
+#### submitCustomForm
 Submit Response for a specific Custom Form using it's slug
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = lead.submitCustomForm(slug ).safeAwait();
-}
-
+lead.submitCustomForm(slug: slug, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -6367,25 +5818,21 @@ Globalscope.launch{
 
 Submit Response for a specific Custom Form using it's slug, this response is then used to create a ticket on behalf of the user.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SubmitCustomFormResponse"
-}`
+Schema: `SubmitCustomFormResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Default
-```javascript
+```json
 {
   "value": {
     "ticket": {
@@ -6591,50 +6038,44 @@ Default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Lead#getParticipantsInsideVideoRoom
+#### getParticipantsInsideVideoRoom
 Get participants of a specific Video Room using it's unique name
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = lead.getParticipantsInsideVideoRoom(unique_name ).safeAwait();
-}
-
+lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| unique_name | string | Unique name of Video Room | 
+| uniqueName | string | Unique name of Video Room | 
 
 Get participants of a specific Video Room using it's unique name, this can be used to check if people are already there in the room and also to show their names.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetParticipantsInsideVideoRoomResponse"
-}`
+Schema: `GetParticipantsInsideVideoRoomResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Default
-```javascript
+```json
 {
   "value": {
     "participants": []
@@ -6649,50 +6090,44 @@ Default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Lead#getTokenForVideoRoom
+#### getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = lead.getTokenForVideoRoom(unique_name ).safeAwait();
-}
-
+lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| unique_name | string | Unique name of Video Room | 
+| uniqueName | string | Unique name of Video Room | 
 
 Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetTokenForVideoRoomResponse"
-}`
+Schema: `GetTokenForVideoRoomResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Default
-```javascript
+```json
 {
   "value": {
     "access_token": "your_token_to_the_room"
@@ -6707,9 +6142,6 @@ Default
 
 
 
-Error Response:
-
-
 
 ---
 
@@ -6720,37 +6152,18 @@ Error Response:
 
 ## Theme
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val theme = applicationClient.theme
-    }
-
-```
-
-
-#### Theme#getAppliedTheme
+#### getAppliedTheme
 Get applied theme for an application
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = theme.getAppliedTheme().safeAwait();
-}
-
+theme.getAppliedTheme().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -6758,25 +6171,21 @@ Globalscope.launch{
 
 
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object of theme
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ThemesSchema"
-}`
+Schema: `ThemesSchema`
 
 
-Examples: 
+*Examples:*
 
 
 Applied Theme
-```javascript
+```json
 {
   "$ref": "#/components/examples/Themes"
 }
@@ -6799,52 +6208,46 @@ Applied Theme
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Theme#getThemeForPreview
+#### getThemeForPreview
 Get theme for preview
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = theme.getThemeForPreview(theme_id ).safeAwait();
-}
-
+theme.getThemeForPreview(themeId: themeId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| theme_id | string | ID of the theme to be retrieved | 
+| themeId | string | ID of the theme to be retrieved | 
 
 
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object of theme
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ThemesSchema"
-}`
+Schema: `ThemesSchema`
 
 
-Examples: 
+*Examples:*
 
 
 Preview Theme
-```javascript
+```json
 {
   "$ref": "#/components/examples/Themes"
 }
@@ -6867,9 +6270,6 @@ Preview Theme
 
 
 
-
-
-Error Response:
 
 
 
@@ -6882,37 +6282,18 @@ Error Response:
 
 ## User
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val user = applicationClient.user
-    }
-
-```
-
-
-#### User#loginWithFacebook
+#### loginWithFacebook
 Login/Register with Facebook
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.loginWithFacebook().safeAwait();
-}
-
+user.loginWithFacebook(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -6920,25 +6301,21 @@ Globalscope.launch{
 
 Used to login or register with Facebook
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
+Schema: `AuthSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/AuthSuccess"
 }
@@ -6963,23 +6340,21 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#loginWithGoogle
+#### loginWithGoogle
 Login/Register with Google
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.loginWithGoogle().safeAwait();
-}
-
+user.loginWithGoogle(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -6987,25 +6362,21 @@ Globalscope.launch{
 
 Used to login or register with Google
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
+Schema: `AuthSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/AuthSuccess"
 }
@@ -7030,23 +6401,21 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#loginWithGoogleAndroid
+#### loginWithGoogleAndroid
 Login/Register with Google for android
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.loginWithGoogleAndroid().safeAwait();
-}
-
+user.loginWithGoogleAndroid(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7054,25 +6423,21 @@ Globalscope.launch{
 
 Used to login or register with Google for android
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
+Schema: `AuthSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/AuthSuccess"
 }
@@ -7097,23 +6462,21 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#loginWithGoogleIOS
+#### loginWithGoogleIOS
 Login/Register with Google for ios
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.loginWithGoogleIOS().safeAwait();
-}
-
+user.loginWithGoogleIOS(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7121,25 +6484,21 @@ Globalscope.launch{
 
 Used to login or register with google for ios
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
+Schema: `AuthSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/AuthSuccess"
 }
@@ -7164,23 +6523,21 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#loginWithOTP
+#### loginWithOTP
 Login/Register with OTP
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.loginWithOTP(platform ).safeAwait();
-}
-
+user.loginWithOTP(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7189,25 +6546,21 @@ Globalscope.launch{
 
 Used to login or register with OTP
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SendOtpResponse"
-}`
+Schema: `SendOtpResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/SendOtpResponse"
 }
@@ -7232,23 +6585,21 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#loginWithEmailAndPassword
+#### loginWithEmailAndPassword
 Login/Register with password
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.loginWithEmailAndPassword().safeAwait();
-}
-
+user.loginWithEmailAndPassword(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7256,25 +6607,21 @@ Globalscope.launch{
 
 Used to login or register with email & password
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -7299,23 +6646,21 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#sendResetPasswordEmail
+#### sendResetPasswordEmail
 Reset Password
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.sendResetPasswordEmail(platform ).safeAwait();
-}
-
+user.sendResetPasswordEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7324,18 +6669,14 @@ Globalscope.launch{
 
 Used to reset account password
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ResetPasswordSuccess"
-}`
+Schema: `ResetPasswordSuccess`
 
 
 
@@ -7354,25 +6695,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#forgotPassword
+#### forgotPassword
 
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.forgotPassword().safeAwait();
-}
-
+user.forgotPassword(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7380,25 +6719,21 @@ Globalscope.launch{
 
 
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -7423,23 +6758,21 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#sendResetToken
+#### sendResetToken
 
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.sendResetToken().safeAwait();
-}
-
+user.sendResetToken(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7447,18 +6780,14 @@ Globalscope.launch{
 
 Send code incase of reset password
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ResetPasswordSuccess"
-}`
+Schema: `ResetPasswordSuccess`
 
 
 
@@ -7477,25 +6806,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#loginWithToken
+#### loginWithToken
 Login/Register with token
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.loginWithToken().safeAwait();
-}
-
+user.loginWithToken(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7503,25 +6830,21 @@ Globalscope.launch{
 
 Login/Register with token
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -7537,16 +6860,7 @@ Success
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "message": {
-      "type": "string"
-    }
-  }
-}`
+Schema: `[String: Any]`
 
 
 
@@ -7565,25 +6879,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#registerWithForm
+#### registerWithForm
 Registration Form
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.registerWithForm(platform ).safeAwait();
-}
-
+user.registerWithForm(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7592,18 +6904,14 @@ Globalscope.launch{
 
 Register using form
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/RegisterFormSuccess"
-}`
+Schema: `RegisterFormSuccess`
 
 
 
@@ -7622,25 +6930,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#verifyEmail
+#### verifyEmail
 Verify email
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.verifyEmail().safeAwait();
-}
-
+user.verifyEmail(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7648,18 +6954,14 @@ Globalscope.launch{
 
 Used to verify email
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailSuccess"
-}`
+Schema: `VerifyEmailSuccess`
 
 
 
@@ -7678,25 +6980,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#verifyMobile
+#### verifyMobile
 Verify mobile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.verifyMobile().safeAwait();
-}
-
+user.verifyMobile(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7704,18 +7004,14 @@ Globalscope.launch{
 
 Verify mobile
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailSuccess"
-}`
+Schema: `VerifyEmailSuccess`
 
 
 
@@ -7734,25 +7030,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#hasPassword
+#### hasPassword
 Check if user has password
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.hasPassword().safeAwait();
-}
-
+user.hasPassword().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7760,18 +7054,14 @@ Globalscope.launch{
 
 Checks if user is using password or not
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HasPasswordSuccess"
-}`
+Schema: `HasPasswordSuccess`
 
 
 
@@ -7790,25 +7080,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#updatePassword
+#### updatePassword
 Update user password
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.updatePassword().safeAwait();
-}
-
+user.updatePassword(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7816,18 +7104,14 @@ Globalscope.launch{
 
 Used to update user password
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailSuccess"
-}`
+Schema: `VerifyEmailSuccess`
 
 
 
@@ -7846,25 +7130,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#logout
+#### logout
 Logout user
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.logout().safeAwait();
-}
-
+user.logout().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7872,18 +7154,14 @@ Globalscope.launch{
 
 Used to log out user
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LogoutSuccess"
-}`
+Schema: `LogoutSuccess`
 
 
 
@@ -7902,25 +7180,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#sendOTPOnMobile
+#### sendOTPOnMobile
 Send OTP on mobile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.sendOTPOnMobile(platform ).safeAwait();
-}
-
+user.sendOTPOnMobile(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7929,18 +7205,14 @@ Globalscope.launch{
 
 Used to send otp to mobile
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/OtpSuccess"
-}`
+Schema: `OtpSuccess`
 
 
 
@@ -7959,25 +7231,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#verifyMobileOTP
+#### verifyMobileOTP
 Verify OTP on mobile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.verifyMobileOTP(platform ).safeAwait();
-}
-
+user.verifyMobileOTP(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -7986,25 +7256,21 @@ Globalscope.launch{
 
 Used to verify otp sent to mobile
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyOtpSuccess"
-}`
+Schema: `VerifyOtpSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/VerifyMobileOTP"
 }
@@ -8029,23 +7295,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#sendOTPOnEmail
+#### sendOTPOnEmail
 Send OTP on email
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.sendOTPOnEmail(platform ).safeAwait();
-}
-
+user.sendOTPOnEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8054,18 +7318,14 @@ Globalscope.launch{
 
 Used to send otp to email
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/EmailOtpSuccess"
-}`
+Schema: `EmailOtpSuccess`
 
 
 
@@ -8084,25 +7344,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#verifyEmailOTP
+#### verifyEmailOTP
 Verify OTP on email
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.verifyEmailOTP(platform ).safeAwait();
-}
-
+user.verifyEmailOTP(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8111,25 +7369,21 @@ Globalscope.launch{
 
 Used to verify otp sent to email
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyOtpSuccess"
-}`
+Schema: `VerifyOtpSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/VerifyMobileOTP"
 }
@@ -8154,23 +7408,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#getLoggedInUser
+#### getLoggedInUser
 Get logged in user
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.getLoggedInUser().safeAwait();
-}
-
+user.getLoggedInUser().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8178,25 +7430,21 @@ Globalscope.launch{
 
 Used to get logged in user details
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/UserSchema"
-}`
+Schema: `UserSchema`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExample"
 }
@@ -8221,23 +7469,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#getListOfActiveSessions
+#### getListOfActiveSessions
 Get list of sessions
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.getListOfActiveSessions().safeAwait();
-}
-
+user.getListOfActiveSessions().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8245,18 +7491,14 @@ Globalscope.launch{
 
 Lists all active sessions
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SessionListSuccess"
-}`
+Schema: `SessionListSuccess`
 
 
 
@@ -8275,25 +7517,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#getPlatformConfig
+#### getPlatformConfig
 Get platform config
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.getPlatformConfig(name ).safeAwait();
-}
-
+user.getPlatformConfig(name: name).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8302,18 +7542,14 @@ Globalscope.launch{
 
 Used to get platform config
 
-Success Response:
+*Success Response:*
 
 
 
 Platform Config
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PlatformSchema"
-}`
+Schema: `PlatformSchema`
 
 
 
@@ -8332,25 +7568,23 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### User#updateProfile
+#### updateProfile
 Edit Profile Details
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.updateProfile(platform ).safeAwait();
-}
-
+user.updateProfile(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8359,25 +7593,21 @@ Globalscope.launch{
 
 Used to update profile
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -8402,23 +7632,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#addMobileNumber
+#### addMobileNumber
 Add mobile number to profile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.addMobileNumber(platform ).safeAwait();
-}
-
+user.addMobileNumber(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8427,25 +7655,21 @@ Globalscope.launch{
 
 Used to add new mobile number to profile
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyMobileOTPSuccess"
-}`
+Schema: `VerifyMobileOTPSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/VerifyMobileOTP"
 }
@@ -8470,23 +7694,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#deleteMobileNumber
+#### deleteMobileNumber
 Delete mobile number from profile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.deleteMobileNumber(platform, active, primary, verified, country_code, phone ).safeAwait();
-}
-
+user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8495,30 +7717,26 @@ Globalscope.launch{
 | active | boolean | Active mobile number | 
 | primary | boolean | Primary number | 
 | verified | boolean | Verified Number | 
-| country_code | string | Country code of phone number | 
+| countryCode | string | Country code of phone number | 
 | phone | string | Phone number | 
 
 Used to delete mobile number from profile
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -8543,23 +7761,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#setMobileNumberAsPrimary
+#### setMobileNumberAsPrimary
 Set mobile as primary
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.setMobileNumberAsPrimary().safeAwait();
-}
-
+user.setMobileNumberAsPrimary(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8567,25 +7783,21 @@ Globalscope.launch{
 
 Used to set a mobile number as primary
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -8610,23 +7822,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#sendVerificationLinkToMobile
+#### sendVerificationLinkToMobile
 Send verification link to mobile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.sendVerificationLinkToMobile(platform ).safeAwait();
-}
-
+user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8635,25 +7845,21 @@ Globalscope.launch{
 
 Used to send verification link to a mobile number
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SendMobileVerifyLinkSuccess"
-}`
+Schema: `SendMobileVerifyLinkSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/VerifyMobileOTP"
 }
@@ -8678,23 +7884,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#addEmail
+#### addEmail
 Add email to profile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.addEmail(platform ).safeAwait();
-}
-
+user.addEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8703,25 +7907,21 @@ Globalscope.launch{
 
 Used to add new email to profile
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailOTPSuccess"
-}`
+Schema: `VerifyEmailOTPSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/VerifyEmailOTP"
 }
@@ -8746,23 +7946,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#deleteEmail
+#### deleteEmail
 Delete email from profile
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.deleteEmail(platform, active, primary, verified, email ).safeAwait();
-}
-
+user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8775,25 +7973,21 @@ Globalscope.launch{
 
 Used to delete email from profile
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -8818,23 +8012,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#setEmailAsPrimary
+#### setEmailAsPrimary
 Set email as primary
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.setEmailAsPrimary().safeAwait();
-}
-
+user.setEmailAsPrimary(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8842,25 +8034,21 @@ Globalscope.launch{
 
 Used to set an email as primart
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with user details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
+Schema: `LoginSuccess`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/UserExampleObject"
 }
@@ -8885,23 +8073,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### User#sendVerificationLinkToEmail
+#### sendVerificationLinkToEmail
 Send verification link to email
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = user.sendVerificationLinkToEmail(platform ).safeAwait();
-}
-
+user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8910,18 +8096,14 @@ Globalscope.launch{
 
 Used to sent verification to an email
 
-Success Response:
+*Success Response:*
 
 
 
 
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SendEmailVerifyLinkSuccess"
-}`
+Schema: `SendEmailVerifyLinkSuccess`
 
 
 
@@ -8940,9 +8122,6 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
@@ -8955,37 +8134,18 @@ Error Response:
 
 ## Content
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val content = applicationClient.content
-    }
-
-```
-
-
-#### Content#getAnnouncements
+#### getAnnouncements
 Get live announcements
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getAnnouncements().safeAwait();
-}
-
+content.getAnnouncements().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -8993,32 +8153,28 @@ Globalscope.launch{
 
 Get live announcements for each or all pages with page slug of page and end date schedule.
 
-Success Response:
+*Success Response:*
 
 
 
 Announcement api response. announcements object contains page slug name as propery with list of announcements enabled for that page. `$all` is special page slug to indicate show announcemnt on all pages.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AnnouncementsResponseSchema"
-}`
+Schema: `AnnouncementsResponseSchema`
 
 
-Examples: 
+*Examples:*
 
 
 Announcements enabled
-```javascript
+```json
 {
   "$ref": "#/components/examples/AnnouncementEnabledExample"
 }
 ```
 
 No Announcement enabled
-```javascript
+```json
 {
   "value": {
     "announcements": [],
@@ -9047,23 +8203,21 @@ No Announcement enabled
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getBlog
+#### getBlog
 Get Blog by slug
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getBlog(slug ).safeAwait();
-}
-
+content.getBlog(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9072,25 +8226,21 @@ Globalscope.launch{
 
 Use this API to fetch a blog using `slug`
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with blog details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CustomBlog"
-}`
+Schema: `CustomBlog`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/CustomBlog"
 }
@@ -9115,23 +8265,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getFaqs
+#### getFaqs
 Get frequently asked questions
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getFaqs().safeAwait();
-}
-
+content.getFaqs().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9139,25 +8287,21 @@ Globalscope.launch{
 
 Get frequently asked questions list. These will be helpful for users to using website.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/FaqResponseSchema"
-}`
+Schema: `FaqResponseSchema`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/AppFaqs"
 }
@@ -9182,50 +8326,44 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getLandingPage
+#### getLandingPage
 Get landing page
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getLandingPage(x-device-platform ).safeAwait();
-}
-
+content.getLandingPage(xDevicePlatform: xDevicePlatform).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| x-device-platform | string | Platform | 
+| xDevicePlatform | string | Platform | 
 
 Use this API to fetch a landing page
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with landing details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LandingPage"
-}`
+Schema: `LandingPage`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/LandingPage"
 }
@@ -9250,23 +8388,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getLegalInformation
+#### getLegalInformation
 Get legal information
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getLegalInformation().safeAwait();
-}
-
+content.getLegalInformation().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9274,25 +8410,21 @@ Globalscope.launch{
 
 Get legal information of application, which includes policy, Terms and Conditions, and FAQ information of application.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApplicationLegal"
-}`
+Schema: `ApplicationLegal`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/Legal"
 }
@@ -9317,50 +8449,44 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getNavigations
+#### getNavigations
 Get navigation
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getNavigations(x-device-platform ).safeAwait();
-}
-
+content.getNavigations(xDevicePlatform: xDevicePlatform).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| x-device-platform | string | Platform | 
+| xDevicePlatform | string | Platform | 
 
 Use this API to fetch a navigation
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with navigation details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Navigation"
-}`
+Schema: `Navigation`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/Navigation"
 }
@@ -9385,23 +8511,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getPage
+#### getPage
 Get Page by slug
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getPage(slug ).safeAwait();
-}
-
+content.getPage(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9410,25 +8534,21 @@ Globalscope.launch{
 
 Use this API to fetch a custom page using `slug`
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with page details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CustomPage"
-}`
+Schema: `CustomPage`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/CustomPage"
 }
@@ -9453,23 +8573,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getSeoConfiguration
+#### getSeoConfiguration
 Get seo of application
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getSeoConfiguration().safeAwait();
-}
-
+content.getSeoConfiguration().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9477,25 +8595,21 @@ Globalscope.launch{
 
 Get seo of application
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Seo"
-}`
+Schema: `Seo`
 
 
-Examples: 
+*Examples:*
 
 
 Success
-```javascript
+```json
 {
   "$ref": "#/components/examples/Seo"
 }
@@ -9520,51 +8634,45 @@ Success
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getSlideshow
+#### getSlideshow
 Get slideshow by slug
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getSlideshow(slug, x-device-platform ).safeAwait();
-}
-
+content.getSlideshow(slug: slug, xDevicePlatform: xDevicePlatform).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | slug | string | The `slug` of a slideshow. Use this parameter to retrieve a particular slideshow | 
-| x-device-platform | string | Platform | 
+| xDevicePlatform | string | Platform | 
 
 Use this API to fetch a slideshow using `slug`
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object with slideshow details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Slideshow"
-}`
+Schema: `Slideshow`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/Slideshow"
 }
@@ -9589,23 +8697,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getSupportInformation
+#### getSupportInformation
 Get support information
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getSupportInformation().safeAwait();
-}
-
+content.getSupportInformation().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9613,25 +8719,21 @@ Globalscope.launch{
 
 Get contact details for customer support. Including emails and phone numbers
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Support"
-}`
+Schema: `Support`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/Support"
 }
@@ -9656,23 +8758,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Content#getTags
+#### getTags
 Get Tags for application
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = content.getTags().safeAwait();
-}
-
+content.getTags().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9680,18 +8780,14 @@ Globalscope.launch{
 
 
 
-Success Response:
+*Success Response:*
 
 
 
 A JSON object of tags
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/TagsSchema"
-}`
+Schema: `TagsSchema`
 
 
 
@@ -9710,9 +8806,6 @@ Schema: `{
 
 
 
-
-
-Error Response:
 
 
 
@@ -9725,37 +8818,18 @@ Error Response:
 
 ## Communication
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val communication = applicationClient.communication
-    }
-
-```
-
-
-#### Communication#getCommunicationConsent
+#### getCommunicationConsent
 Get communication consent
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = communication.getCommunicationConsent().safeAwait();
-}
-
+communication.getCommunicationConsent().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9763,25 +8837,21 @@ Globalscope.launch{
 
 Get communication consent
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CommunicationConsent"
-}`
+Schema: `CommunicationConsent`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/CommunicationConsent"
 }
@@ -9794,23 +8864,21 @@ default
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### Communication#upsertCommunicationConsent
+#### upsertCommunicationConsent
 Upsert communication consent
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = communication.upsertCommunicationConsent().safeAwait();
-}
-
+communication.upsertCommunicationConsent(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9818,25 +8886,21 @@ Globalscope.launch{
 
 Upsert communication consent
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CommunicationConsentRes"
-}`
+Schema: `CommunicationConsentRes`
 
 
-Examples: 
+*Examples:*
 
 
 default
-```javascript
+```json
 {
   "$ref": "#/components/examples/CommunicationConsentRes"
 }
@@ -9852,36 +8916,30 @@ default
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/responses/BadRequest"
-}`
+Schema: `BadRequest`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Communication#upsertPushtoken
+#### upsertPushtoken
 Upsert push token of a user
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = communication.upsertPushtoken().safeAwait();
-}
-
+communication.upsertPushtoken(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -9889,39 +8947,35 @@ Globalscope.launch{
 
 Upsert push token of a user
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PushtokenRes"
-}`
+Schema: `PushtokenRes`
 
 
-Examples: 
+*Examples:*
 
 
 create
-```javascript
+```json
 {
   "$ref": "#/components/examples/PushtokenResponseCreate"
 }
 ```
 
 update
-```javascript
+```json
 {
   "$ref": "#/components/examples/PushtokenResponseUpdate"
 }
 ```
 
 reset
-```javascript
+```json
 {
   "$ref": "#/components/examples/PushtokenResponseReset"
 }
@@ -9937,20 +8991,13 @@ reset
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/responses/BadRequest"
-}`
+Schema: `BadRequest`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -9963,37 +9010,18 @@ Error Response:
 
 ## Share
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val share = applicationClient.share
-    }
-
-```
-
-
-#### Share#getApplicationQRCode
+#### getApplicationQRCode
 Create application QR Code
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = share.getApplicationQRCode().safeAwait();
-}
-
+share.getApplicationQRCode().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10001,43 +9029,37 @@ Globalscope.launch{
 
 Create application QR Code
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/QRCodeResp"
-}`
+Schema: `QRCodeResp`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Share#getProductQRCodeBySlug
+#### getProductQRCodeBySlug
 Create product QR Code
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = share.getProductQRCodeBySlug(slug ).safeAwait();
-}
-
+share.getProductQRCodeBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10046,43 +9068,37 @@ Globalscope.launch{
 
 Create product QR Code
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/QRCodeResp"
-}`
+Schema: `QRCodeResp`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Share#getCollectionQRCodeBySlug
+#### getCollectionQRCodeBySlug
 Create collection QR Code
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = share.getCollectionQRCodeBySlug(slug ).safeAwait();
-}
-
+share.getCollectionQRCodeBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10091,43 +9107,37 @@ Globalscope.launch{
 
 Create collection QR Code
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/QRCodeResp"
-}`
+Schema: `QRCodeResp`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Share#getUrlQRCode
+#### getUrlQRCode
 Create url QR Code
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = share.getUrlQRCode(url ).safeAwait();
-}
-
+share.getUrlQRCode(url: url).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10136,43 +9146,37 @@ Globalscope.launch{
 
 Create url QR Code
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/QRCodeResp"
-}`
+Schema: `QRCodeResp`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Share#createShortLink
+#### createShortLink
 Create short link
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = share.createShortLink().safeAwait();
-}
-
+share.createShortLink(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10180,43 +9184,37 @@ Globalscope.launch{
 
 Create short link
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ShortLinkRes"
-}`
+Schema: `ShortLinkRes`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Share#getShortLinkByHash
+#### getShortLinkByHash
 Get short link by hash
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = share.getShortLinkByHash(hash ).safeAwait();
-}
-
+share.getShortLinkByHash(hash: hash).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10225,43 +9223,37 @@ Globalscope.launch{
 
 Get short link by hash
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ShortLinkRes"
-}`
+Schema: `ShortLinkRes`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Share#getOriginalShortLinkByHash
+#### getOriginalShortLinkByHash
 Get original link by hash
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = share.getOriginalShortLinkByHash(hash ).safeAwait();
-}
-
+share.getOriginalShortLinkByHash(hash: hash).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10270,27 +9262,20 @@ Globalscope.launch{
 
 Get original link by hash
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ShortLinkRes"
-}`
+Schema: `ShortLinkRes`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -10303,43 +9288,24 @@ Error Response:
 
 ## FileStorage
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val filestorage = applicationClient.filestorage
-    }
-
-```
-
-
-#### FileStorage#completeUpload
+#### completeUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = filestorage.completeUpload(namespace, company_id ).safeAwait();
-}
-
+filestorage.completeUpload(namespace: namespace, companyId: companyId, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | namespace | string | bucket name | 
-| company_id | integer | company_id | 
+| companyId | integer | company_id | 
 
 Uploads an arbitrarily sized buffer or blob.
 
@@ -10361,18 +9327,14 @@ After successfully upload, call `/v1.0/uploads/{namespace}/complete` api to comp
 This operation will return the url for the uploaded file.
 
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CompleteResponse"
-}`
+Schema: `CompleteResponse`
 
 
 
@@ -10384,42 +9346,36 @@ Schema: `{
 Failed
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/FailedResponse"
-}`
+Schema: `FailedResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### FileStorage#startUpload
+#### startUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = filestorage.startUpload(namespace, company_id ).safeAwait();
-}
-
+filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | namespace | string | bucket name | 
-| company_id | integer | company_id | 
+| companyId | integer | company_id | 
 
 Uploads an arbitrarily sized buffer or blob.
 
@@ -10441,18 +9397,14 @@ After successfully upload, call `/v1.0/uploads/{namespace}/complete` api to comp
 This operation will return the url for the uploaded file.
 
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/StartResponse"
-}`
+Schema: `StartResponse`
 
 
 
@@ -10464,20 +9416,13 @@ Schema: `{
 Failed
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/FailedResponse"
-}`
+Schema: `FailedResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -10490,58 +9435,35 @@ Error Response:
 
 ## Payment
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val payment = applicationClient.payment
-    }
-
-```
-
-
-#### Payment#getAggregatorsConfig
+#### getAggregatorsConfig
 Get payment gateway keys
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.getAggregatorsConfig(x-api-token, refresh ).safeAwait();
-}
-
+payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| x-api-token | string | api token | 
+| xApiToken | string | api token | 
 | refresh | boolean | refresh cache | 
 
 Get payment gateway (key, secrets, merchant, sdk/api detail) to complete payment at front-end.
 
-Success Response:
+*Success Response:*
 
 
 
 Keys of all payment gateway
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AggregatorsConfigDetailResponse"
-}`
+Schema: `AggregatorsConfigDetailResponse`
 
 
 
@@ -10553,11 +9475,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -10569,36 +9487,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#attachCardToCustomer
+#### attachCardToCustomer
 Attach a saved card to customer.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.attachCardToCustomer().safeAwait();
-}
-
+payment.attachCardToCustomer(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10606,18 +9518,14 @@ Globalscope.launch{
 
 Attach a saved card to customer at payment gateway i.e stripe and refresh card cache.
 
-Success Response:
+*Success Response:*
 
 
 
 List of cards objects
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AttachCardsResponse"
-}`
+Schema: `AttachCardsResponse`
 
 
 
@@ -10629,9 +9537,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: ``
+Schema: `[String: Any]`
 
 
 
@@ -10643,34 +9549,30 @@ Schema: ``
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: ``
+Schema: `[String: Any]`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#getActiveCardAggregator
+#### getActiveCardAggregator
 Fetch active payment gateway for card
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.getActiveCardAggregator(refresh ).safeAwait();
-}
-
+payment.getActiveCardAggregator(refresh: refresh).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10679,18 +9581,14 @@ Globalscope.launch{
 
 Fetch active payment gateway along with customer id for cards payments.
 
-Success Response:
+*Success Response:*
 
 
 
 Object of payment gateway and customer id
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ActiveCardPaymentGatewayResponse"
-}`
+Schema: `ActiveCardPaymentGatewayResponse`
 
 
 
@@ -10702,11 +9600,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -10718,56 +9612,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#getActiveUserCards
+#### getActiveUserCards
 Fetch the list of saved cards of user.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.getActiveUserCards(force_refresh ).safeAwait();
-}
-
+payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| force_refresh | boolean |  | 
+| forceRefresh | boolean |  | 
 
 Fetch the list of saved cards of user from active payment gateway.
 
-Success Response:
+*Success Response:*
 
 
 
 List of cards objects
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ListCardsResponse"
-}`
+Schema: `ListCardsResponse`
 
 
 
@@ -10779,11 +9663,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -10795,36 +9675,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#deleteUserCard
+#### deleteUserCard
 Delete an user card.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.deleteUserCard().safeAwait();
-}
-
+payment.deleteUserCard(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10832,18 +9706,14 @@ Globalscope.launch{
 
 Delete an added user card on payment gateway and remove from cache.
 
-Success Response:
+*Success Response:*
 
 
 
 List of cards objects
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/DeleteCardsResponse"
-}`
+Schema: `DeleteCardsResponse`
 
 
 
@@ -10855,11 +9725,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -10871,36 +9737,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#verifyCustomerForPayment
+#### verifyCustomerForPayment
 Validate customer for payment.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.verifyCustomerForPayment().safeAwait();
-}
-
+payment.verifyCustomerForPayment(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10908,18 +9768,14 @@ Globalscope.launch{
 
 Validate customer for payment i.e Simpl paylater, Rupifi loan.
 
-Success Response:
+*Success Response:*
 
 
 
 List of cards objects
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ValidateCustomerResponse"
-}`
+Schema: `ValidateCustomerResponse`
 
 
 
@@ -10931,11 +9787,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -10947,36 +9799,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#verifyAndChargePayment
+#### verifyAndChargePayment
 Verify and charge payment
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.verifyAndChargePayment().safeAwait();
-}
-
+payment.verifyAndChargePayment(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -10984,18 +9830,14 @@ Globalscope.launch{
 
 Verify and charge payment server to server for Simpl & Mswipe.
 
-Success Response:
+*Success Response:*
 
 
 
 List of cards objects
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ChargeCustomerResponse"
-}`
+Schema: `ChargeCustomerResponse`
 
 
 
@@ -11007,11 +9849,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11023,36 +9861,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#initialisePayment
+#### initialisePayment
 Payment Initialisation server to server for UPI and BharatQR.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.initialisePayment().safeAwait();
-}
-
+payment.initialisePayment(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -11060,18 +9892,14 @@ Globalscope.launch{
 
 Payment Initialisation for UPI & BharatQR code, UPI requests to app and QR code to be displayed on screen.
 
-Success Response:
+*Success Response:*
 
 
 
 List of cards objects
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentInitializationResponse"
-}`
+Schema: `PaymentInitializationResponse`
 
 
 
@@ -11083,11 +9911,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11099,36 +9923,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#checkAndUpdatePaymentStatus
+#### checkAndUpdatePaymentStatus
 Continous polling to check status of payment on server.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.checkAndUpdatePaymentStatus().safeAwait();
-}
-
+payment.checkAndUpdatePaymentStatus(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -11136,18 +9954,14 @@ Globalscope.launch{
 
 Continous polling on interval to check status of payment untill timeout.
 
-Success Response:
+*Success Response:*
 
 
 
 List of cards objects
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentStatusUpdateResponse"
-}`
+Schema: `PaymentStatusUpdateResponse`
 
 
 
@@ -11159,11 +9973,7 @@ Schema: `{
 Bad request error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11175,62 +9985,52 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#getPaymentModeRoutes
+#### getPaymentModeRoutes
 Get All Valid Payment Options
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address ).safeAwait();
-}
-
+payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, deliveryAddress: deliveryAddress).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | amount | integer | Payment amount | 
-| cart_id | string | Cart id | 
+| cartId | string | Cart id | 
 | pincode | integer | Pincode | 
-| checkout_mode | string | Checkout mode | 
+| checkoutMode | string | Checkout mode | 
 | refresh | boolean |  | 
-| assign_card_id | string | selected card id | 
-| delivery_address | string | URIencoded json delivery address of cart for annonymous user | 
+| assignCardId | string | selected card id | 
+| deliveryAddress | string | URIencoded json delivery address of cart for annonymous user | 
 
 Use this API to get Get All Valid Payment Options for making payment
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentOptionsResponse"
-}`
+Schema: `PaymentOptionsResponse`
 
 
 
@@ -11242,11 +10042,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11258,63 +10054,53 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#getPosPaymentModeRoutes
+#### getPosPaymentModeRoutes
 Get All Valid Payment Options for POS
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address ).safeAwait();
-}
-
+payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, orderType: orderType, deliveryAddress: deliveryAddress).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | amount | integer | Payment amount | 
-| cart_id | string | Cart id | 
+| cartId | string | Cart id | 
 | pincode | integer | Pincode | 
-| checkout_mode | string | Checkout mode | 
+| checkoutMode | string | Checkout mode | 
 | refresh | boolean |  | 
-| assign_card_id | string | selected card id | 
-| order_type | string | Order type | 
-| delivery_address | string | URIencoded json delivery address of cart for annonymous user | 
+| assignCardId | string | selected card id | 
+| orderType | string | Order type | 
+| deliveryAddress | string | URIencoded json delivery address of cart for annonymous user | 
 
 Use this API to get Get All Valid Payment Options for making payment
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentOptionsResponse"
-}`
+Schema: `PaymentOptionsResponse`
 
 
 
@@ -11326,11 +10112,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11342,56 +10124,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#getUserBeneficiariesDetail
+#### getUserBeneficiariesDetail
 List User Beneficiary
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.getUserBeneficiariesDetail(order_id ).safeAwait();
-}
-
+payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| order_id | string |  | 
+| orderId | string |  | 
 
 Get all active  beneficiary details added by the user for refund
 
-Success Response:
+*Success Response:*
 
 
 
 List User Beneficiary
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/OrderBeneficiaryResponse"
-}`
+Schema: `OrderBeneficiaryResponse`
 
 
 
@@ -11403,11 +10175,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/NotFoundResourceError"
-}`
+Schema: `NotFoundResourceError`
 
 
 
@@ -11419,56 +10187,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#verifyIfscCode
+#### verifyIfscCode
 Ifsc Code Verification
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.verifyIfscCode(ifsc_code ).safeAwait();
-}
-
+payment.verifyIfscCode(ifscCode: ifscCode).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| ifsc_code | string |  | 
+| ifscCode | string |  | 
 
 Get True/False for correct IFSC Code for adding bank details for refund
 
-Success Response:
+*Success Response:*
 
 
 
 Bank details on correct Ifsc Code
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/IfscCodeResponse"
-}`
+Schema: `IfscCodeResponse`
 
 
 
@@ -11480,11 +10238,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/NotFoundResourceError"
-}`
+Schema: `NotFoundResourceError`
 
 
 
@@ -11496,56 +10250,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorCodeDescription"
-}`
+Schema: `ErrorCodeDescription`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#getOrderBeneficiariesDetail
+#### getOrderBeneficiariesDetail
 List Order Beneficiary
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.getOrderBeneficiariesDetail(order_id ).safeAwait();
-}
-
+payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| order_id | string |  | 
+| orderId | string |  | 
 
 Get all active  beneficiary details added by the user for refund
 
-Success Response:
+*Success Response:*
 
 
 
 List Order Beneficiary
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/OrderBeneficiaryResponse"
-}`
+Schema: `OrderBeneficiaryResponse`
 
 
 
@@ -11557,11 +10301,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/NotFoundResourceError"
-}`
+Schema: `NotFoundResourceError`
 
 
 
@@ -11573,36 +10313,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#verifyOtpAndAddBeneficiaryForBank
+#### verifyOtpAndAddBeneficiaryForBank
 Save Beneficiary details on otp validation.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.verifyOtpAndAddBeneficiaryForBank().safeAwait();
-}
-
+payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -11610,18 +10344,14 @@ Globalscope.launch{
 
 Save Beneficiary details on otp validation.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AddBeneficiaryViaOtpVerificationResponse"
-}`
+Schema: `AddBeneficiaryViaOtpVerificationResponse`
 
 
 
@@ -11633,11 +10363,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/WrongOtpError"
-}`
+Schema: `WrongOtpError`
 
 
 
@@ -11649,36 +10375,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#addBeneficiaryDetails
+#### addBeneficiaryDetails
 Save bank details for cancelled/returned order
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.addBeneficiaryDetails().safeAwait();
-}
-
+payment.addBeneficiaryDetails(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -11686,18 +10406,14 @@ Globalscope.launch{
 
 Use this API to save bank details for returned/cancelled order to refund amount in his account.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/RefundAccountResponse"
-}`
+Schema: `RefundAccountResponse`
 
 
 
@@ -11709,11 +10425,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/NotFoundResourceError"
-}`
+Schema: `NotFoundResourceError`
 
 
 
@@ -11725,36 +10437,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#verifyOtpAndAddBeneficiaryForWallet
+#### verifyOtpAndAddBeneficiaryForWallet
 Send Otp on Adding wallet beneficiary
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.verifyOtpAndAddBeneficiaryForWallet().safeAwait();
-}
-
+payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -11762,18 +10468,14 @@ Globalscope.launch{
 
 Send Otp on Adding wallet beneficiary for user mobile verification
 
-Success Response:
+*Success Response:*
 
 
 
 WalletOtp
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/WalletOtpResponse"
-}`
+Schema: `WalletOtpResponse`
 
 
 
@@ -11785,11 +10487,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/NotFoundResourceError"
-}`
+Schema: `NotFoundResourceError`
 
 
 
@@ -11801,36 +10499,30 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Payment#updateDefaultBeneficiary
+#### updateDefaultBeneficiary
 Mark Default Beneficiary For Refund
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = payment.updateDefaultBeneficiary().safeAwait();
-}
-
+payment.updateDefaultBeneficiary(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -11838,18 +10530,14 @@ Globalscope.launch{
 
 Mark Default Beneficiary ot of all Beneficiary Details for Refund
 
-Success Response:
+*Success Response:*
 
 
 
 Set Default Beneficiary Response.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SetDefaultBeneficiaryResponse"
-}`
+Schema: `SetDefaultBeneficiaryResponse`
 
 
 
@@ -11861,11 +10549,7 @@ Schema: `{
 Bad Request Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SetDefaultBeneficiaryResponse"
-}`
+Schema: `SetDefaultBeneficiaryResponse`
 
 
 
@@ -11877,20 +10561,13 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HttpErrorCodeAndResponse"
-}`
+Schema: `HttpErrorCodeAndResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -11903,60 +10580,37 @@ Error Response:
 
 ## Order
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val order = applicationClient.order
-    }
-
-```
-
-
-#### Order#getOrders
+#### getOrders
 Get Orders for application based on application Id
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = order.getOrders(page_no, page_size, from_date, to_date ).safeAwait();
-}
-
+order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| page_no | string | Current page number | 
-| page_size | string | Page limit | 
-| from_date | string | From Date | 
-| to_date | string | To Date | 
+| pageNo | string | Current page number | 
+| pageSize | string | Page limit | 
+| fromDate | string | From Date | 
+| toDate | string | To Date | 
 
 Get Orders
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/OrderList"
-}`
+Schema: `OrderList`
 
 
 
@@ -11968,11 +10622,7 @@ Schema: `{
 API Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
@@ -11984,56 +10634,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Order#getOrderById
+#### getOrderById
 Get Order by order id for application based on application Id
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = order.getOrderById(order_id ).safeAwait();
-}
-
+order.getOrderById(orderId: orderId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| order_id | string | Order Id | 
+| orderId | string | Order Id | 
 
 Get Order By Fynd Order Id
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/OrderById"
-}`
+Schema: `OrderById`
 
 
 
@@ -12045,11 +10685,7 @@ Schema: `{
 API Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
@@ -12061,56 +10697,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Order#getShipmentById
+#### getShipmentById
 Get Shipment by shipment id and order id for application based on application Id
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = order.getShipmentById(shipment_id ).safeAwait();
-}
-
+order.getShipmentById(shipmentId: shipmentId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| shipment_id | string | Shipment Id | 
+| shipmentId | string | Shipment Id | 
 
 Get Shipment
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ShipmentById"
-}`
+Schema: `ShipmentById`
 
 
 
@@ -12122,11 +10748,7 @@ Schema: `{
 API Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
@@ -12138,56 +10760,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Order#getShipmentReasons
+#### getShipmentReasons
 Get Shipment reasons by shipment id and order id for application based on application Id
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = order.getShipmentReasons(shipment_id ).safeAwait();
-}
-
+order.getShipmentReasons(shipmentId: shipmentId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| shipment_id | string | Shipment Id | 
+| shipmentId | string | Shipment Id | 
 
 Get Shipment Reasons
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ShipmentReasons"
-}`
+Schema: `ShipmentReasons`
 
 
 
@@ -12199,11 +10811,7 @@ Schema: `{
 API Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
@@ -12215,56 +10823,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Order#updateShipmentStatus
+#### updateShipmentStatus
 Update Shipment status by shipment id and order id for application based on application Id
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = order.updateShipmentStatus(shipment_id ).safeAwait();
-}
-
+order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| shipment_id | string | Shipment Id | 
+| shipmentId | string | Shipment Id | 
 
 Update Shipment Status
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ShipmentStatusUpdate"
-}`
+Schema: `ShipmentStatusUpdate`
 
 
 
@@ -12276,11 +10874,7 @@ Schema: `{
 API Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
@@ -12292,56 +10886,46 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Order#trackShipment
+#### trackShipment
 Track Shipment by shipment id and order id for application based on application Id
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = order.trackShipment(shipment_id ).safeAwait();
-}
-
+order.trackShipment(shipmentId: shipmentId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| shipment_id | string | Shipment Id | 
+| shipmentId | string | Shipment Id | 
 
 Shipment Track
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ShipmentTrack"
-}`
+Schema: `ShipmentTrack`
 
 
 
@@ -12353,11 +10937,7 @@ Schema: `{
 API Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
@@ -12369,20 +10949,13 @@ Schema: `{
 Internal Server Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ApefaceApiError"
-}`
+Schema: `ApefaceApiError`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -12395,37 +10968,18 @@ Error Response:
 
 ## Rewards
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val rewards = applicationClient.rewards
-    }
-
-```
-
-
-#### Rewards#getPointsOnProduct
+#### getPointsOnProduct
 Get reward points that could be earned on any catalogue product.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = rewards.getPointsOnProduct().safeAwait();
-}
-
+rewards.getPointsOnProduct(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -12433,18 +10987,14 @@ Globalscope.launch{
 
 Evaluate the amount of reward points that could be earned on any catalogue product.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CatalogueOrderResponse"
-}`
+Schema: `CatalogueOrderResponse`
 
 
 
@@ -12456,36 +11006,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Error"
-}`
+Schema: `Error`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Rewards#getOrderDiscount
+#### getOrderDiscount
 Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = rewards.getOrderDiscount().safeAwait();
-}
-
+rewards.getOrderDiscount(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -12493,18 +11037,14 @@ Globalscope.launch{
 
 Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/OrderDiscountResponse"
-}`
+Schema: `OrderDiscountResponse`
 
 
 
@@ -12516,36 +11056,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Error"
-}`
+Schema: `Error`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Rewards#getUserPoints
+#### getUserPoints
 Total available points of a user for current application
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = rewards.getUserPoints().safeAwait();
-}
-
+rewards.getUserPoints().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -12553,18 +11087,14 @@ Globalscope.launch{
 
 Total available points of a user for current application
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PointsResponse"
-}`
+Schema: `PointsResponse`
 
 
 
@@ -12576,58 +11106,48 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Error"
-}`
+Schema: `Error`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Rewards#getUserPointsHistory
+#### getUserPointsHistory
 Get list of points transactions.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = rewards.getUserPointsHistory(pageID, pageSize ).safeAwait();
-}
-
+rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| pageID | string | PageID is the ID of the requested page. For first request it should be kept empty. | 
+| pageId | string | PageID is the ID of the requested page. For first request it should be kept empty. | 
 | pageSize | integer | PageSize is the number of requested items in response. | 
 
 Get list of points transactions.
 The list of points history is paginated.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PointsHistoryResponse"
-}`
+Schema: `PointsHistoryResponse`
 
 
 
@@ -12639,36 +11159,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Error"
-}`
+Schema: `Error`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Rewards#getUserReferralDetails
+#### getUserReferralDetails
 User's referral details.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = rewards.getUserReferralDetails().safeAwait();
-}
-
+rewards.getUserReferralDetails().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -12676,18 +11190,14 @@ Globalscope.launch{
 
 User's referral details.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ReferralDetailsResponse"
-}`
+Schema: `ReferralDetailsResponse`
 
 
 
@@ -12699,36 +11209,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Error"
-}`
+Schema: `Error`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Rewards#redeemReferralCode
+#### redeemReferralCode
 Redeems referral code and credits points to users points account.
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = rewards.redeemReferralCode().safeAwait();
-}
-
+rewards.redeemReferralCode(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -12736,18 +11240,14 @@ Globalscope.launch{
 
 Redeems referral code and credits points to users points account.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/RedeemReferralCodeResponse"
-}`
+Schema: `RedeemReferralCodeResponse`
 
 
 
@@ -12759,20 +11259,13 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Error"
-}`
+Schema: `Error`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -12785,37 +11278,18 @@ Error Response:
 
 ## Feedback
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val feedback = applicationClient.feedback
-    }
-
-```
-
-
-#### Feedback#createAbuseReport
+#### createAbuseReport
 post a new abuse request
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.createAbuseReport().safeAwait();
-}
-
+feedback.createAbuseReport(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -12823,18 +11297,14 @@ Globalscope.launch{
 
 Report a new abuse for specific entity with description text.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XInsertResponse"
-}`
+Schema: `XInsertResponse`
 
 
 
@@ -12846,36 +11316,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#updateAbuseReport
+#### updateAbuseReport
 Update abuse details
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.updateAbuseReport().safeAwait();
-}
-
+feedback.updateAbuseReport(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -12883,18 +11347,14 @@ Globalscope.launch{
 
 Update the abuse details like status and description text.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -12906,60 +11366,50 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getAbuseReports
+#### getAbuseReports
 Get list of abuse data
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getAbuseReports(entity_id, entity_type, id, page_id, page_size ).safeAwait();
-}
-
+feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entity_id | string | entity id | 
-| entity_type | string | entity type | 
+| entityId | string | entity id | 
+| entityType | string | entity type | 
 | id | string | abuse id | 
-| page_id | string | pagination page id | 
-| page_size | string | pagination page size | 
+| pageId | string | pagination page id | 
+| pageSize | string | pagination page size | 
 
 Get the list of abuse data from entity type and entity ID.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XNumberGetResponse"
-}`
+Schema: `XNumberGetResponse`
 
 
 
@@ -12971,36 +11421,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getAttributes
+#### getAttributes
 Get list of attribute data
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getAttributes().safeAwait();
-}
-
+feedback.getAttributes().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13008,18 +11452,14 @@ Globalscope.launch{
 
 Provides a list of all attribute data.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XNumberGetResponse"
-}`
+Schema: `XNumberGetResponse`
 
 
 
@@ -13031,36 +11471,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#createAttribute
+#### createAttribute
 Add a new attribute request
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.createAttribute().safeAwait();
-}
-
+feedback.createAttribute(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13068,18 +11502,14 @@ Globalscope.launch{
 
 Add a new attribute with its name, slug and description.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XInsertResponse"
-}`
+Schema: `XInsertResponse`
 
 
 
@@ -13091,36 +11521,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getAttribute
+#### getAttribute
 Get single attribute data
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getAttribute(slug ).safeAwait();
-}
-
+feedback.getAttribute(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13129,18 +11553,14 @@ Globalscope.launch{
 
 Get a single attribute data from a given slug.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/Attribute"
-}`
+Schema: `Attribute`
 
 
 
@@ -13152,36 +11572,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#updateAttribute
+#### updateAttribute
 Update attribute details
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.updateAttribute(slug ).safeAwait();
-}
-
+feedback.updateAttribute(slug: slug, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13190,18 +11604,14 @@ Globalscope.launch{
 
 Update the attribute's name and description.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -13213,36 +11623,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#createComment
+#### createComment
 post a new comment
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.createComment().safeAwait();
-}
-
+feedback.createComment(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13250,18 +11654,14 @@ Globalscope.launch{
 
 This is used to add a new comment for specific entity.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XInsertResponse"
-}`
+Schema: `XInsertResponse`
 
 
 
@@ -13273,36 +11673,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#updateComment
+#### updateComment
 Update comment status
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.updateComment().safeAwait();
-}
-
+feedback.updateComment(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13310,18 +11704,14 @@ Globalscope.launch{
 
 Update the comment status (active/approve) or text.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -13333,61 +11723,51 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getComments
+#### getComments
 Get list of comments
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getComments(entity_type, id, entity_id, user_id, page_id, page_size ).safeAwait();
-}
-
+feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entity_type | string | entity type | 
+| entityType | string | entity type | 
 | id | string | comment id | 
-| entity_id | string | entity id | 
-| user_id | string | user id - flag/filter to get comments for user | 
-| page_id | string | pagination page id | 
-| page_size | string | pagination page size | 
+| entityId | string | entity id | 
+| userId | string | user id - flag/filter to get comments for user | 
+| pageId | string | pagination page id | 
+| pageSize | string | pagination page size | 
 
 Get the list of comments from specific entity type.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XCursorGetResponse"
-}`
+Schema: `XCursorGetResponse`
 
 
 
@@ -13399,57 +11779,47 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#checkEligibility
+#### checkEligibility
 Checks eligibility and cloud media config
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.checkEligibility(entity_type, entity_id ).safeAwait();
-}
-
+feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entity_type | string | entity type | 
-| entity_id | string | entity id | 
+| entityType | string | entity type | 
+| entityId | string | entity id | 
 
 Checks eligibility to rate and review and cloud media configuration
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CheckEligibilityResponse"
-}`
+Schema: `CheckEligibilityResponse`
 
 
 
@@ -13461,36 +11831,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#deleteMedia
+#### deleteMedia
 Delete Media
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.deleteMedia().safeAwait();
-}
-
+feedback.deleteMedia().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13498,18 +11862,14 @@ Globalscope.launch{
 
 Delete Media for the given entity IDs.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -13521,36 +11881,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#createMedia
+#### createMedia
 Add Media
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.createMedia().safeAwait();
-}
-
+feedback.createMedia(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13558,18 +11912,14 @@ Globalscope.launch{
 
 Add Media list for specific entity.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XInsertResponse"
-}`
+Schema: `XInsertResponse`
 
 
 
@@ -13581,36 +11931,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#updateMedia
+#### updateMedia
 Update Media
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.updateMedia().safeAwait();
-}
-
+feedback.updateMedia(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13618,18 +11962,14 @@ Globalscope.launch{
 
 Update Media (archive/approve) for the given entity.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -13641,60 +11981,50 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getMedias
+#### getMedias
 Get Media
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getMedias(entity_type, entity_id, id, page_id, page_size ).safeAwait();
-}
-
+feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entity_type | string | entity type | 
-| entity_id | string | entity id | 
+| entityType | string | entity type | 
+| entityId | string | entity id | 
 | id | string | vote id | 
-| page_id | string | pagination page id | 
-| page_size | string | pagination page size | 
+| pageId | string | pagination page id | 
+| pageSize | string | pagination page size | 
 
 Get Media from the given entity type and entity ID.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XCursorGetResponse"
-}`
+Schema: `XCursorGetResponse`
 
 
 
@@ -13706,61 +12036,51 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getReviewSummaries
+#### getReviewSummaries
 Get a review summary
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getReviewSummaries(entity_type, entity_id, id, page_id, page_size ).safeAwait();
-}
-
+feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entity_type | string | entity type | 
-| entity_id | string | entity id | 
+| entityType | string | entity type | 
+| entityId | string | entity id | 
 | id | string | review summary identifier | 
-| page_id | string | pagination page id | 
-| page_size | string | pagination page size | 
+| pageId | string | pagination page id | 
+| pageSize | string | pagination page size | 
 
 Review summary gives ratings and attribute metrics of a review per entity
 It gives following response data: review count, rating average. review metrics / attribute rating metrics which contains name, type, average and count.
 
-Success Response:
+*Success Response:*
 
 
 
 success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XCursorGetResponse"
-}`
+Schema: `XCursorGetResponse`
 
 
 
@@ -13772,36 +12092,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#createReview
+#### createReview
 Add customer reviews
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.createReview().safeAwait();
-}
-
+feedback.createReview(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13810,18 +12124,14 @@ Globalscope.launch{
 Add customer reviews for specific entity with following data:
 attributes rating, entity rating, title, description, media resources and template id.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -13833,36 +12143,30 @@ Schema: `{
 Bad Request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#updateReview
+#### updateReview
 Update customer reviews
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.updateReview().safeAwait();
-}
-
+feedback.updateReview(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -13871,18 +12175,14 @@ Globalscope.launch{
 Update customer reviews for specific entity with following data:
 attributes rating, entity rating, title, description, media resources and template id.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -13894,66 +12194,56 @@ Schema: `{
 Bad Request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getReviews
+#### getReviews
 Get list of customer reviews
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getReviews(entity_type, entity_id, id, user_id, media, rating, attribute_rating, facets, sort, page_id, page_size ).safeAwait();
-}
-
+feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entity_type | string | entity type | 
-| entity_id | string | entity id | 
+| entityType | string | entity type | 
+| entityId | string | entity id | 
 | id | string | review id | 
-| user_id | string | user id | 
+| userId | string | user id | 
 | media | string | media type e.g. image | video | video_file | video_link | 
 | rating | array | rating filter, 1-5 | 
-| attribute_rating | array | attribute rating filter | 
+| attributeRating | array | attribute rating filter | 
 | facets | boolean | facets (true|false) | 
 | sort | string | sort by : default | top | recent | 
-| page_id | string | pagination page id | 
-| page_size | string | pagination page size | 
+| pageId | string | pagination page id | 
+| pageSize | string | pagination page size | 
 
 This is used to get the list of customer reviews based on entity and provided filters.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XCursorGetResponse"
-}`
+Schema: `XCursorGetResponse`
 
 
 
@@ -13965,58 +12255,48 @@ Schema: `{
 Bad Request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getTemplates
+#### getTemplates
 Get the templates for product or l3 type
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getTemplates(template_id, entity_id, entity_type ).safeAwait();
-}
-
+feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| template_id | string | template id | 
-| entity_id | string | entity id | 
-| entity_type | string | entity type e.g. product | l3 | 
+| templateId | string | template id | 
+| entityId | string | entity id | 
+| entityType | string | entity type e.g. product | l3 | 
 
 This is used to get the templates details.
 
-Success Response:
+*Success Response:*
 
 
 
 Success
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XCursorGetResponse"
-}`
+Schema: `XCursorGetResponse`
 
 
 
@@ -14028,36 +12308,30 @@ Schema: `{
 Bad Request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#createQuestion
+#### createQuestion
 Create a new question
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.createQuestion().safeAwait();
-}
-
+feedback.createQuestion(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -14066,18 +12340,14 @@ Globalscope.launch{
 This is used to create a new question with following data:
 tags, text, type, choices for MCQ type questions, maximum length of answer.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XInsertResponse"
-}`
+Schema: `XInsertResponse`
 
 
 
@@ -14089,36 +12359,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#updateQuestion
+#### updateQuestion
 Update question
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.updateQuestion().safeAwait();
-}
-
+feedback.updateQuestion(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -14126,18 +12390,14 @@ Globalscope.launch{
 
 This is used to update question's status, tags and choices.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -14149,61 +12409,51 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getQuestionAndAnswers
+#### getQuestionAndAnswers
 Get a list of QnA
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getQuestionAndAnswers(entity_type, entity_id, id, show_answer, page_id, page_size ).safeAwait();
-}
-
+feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entity_type | string | entity type | 
-| entity_id | string | entity id | 
+| entityType | string | entity type | 
+| entityId | string | entity id | 
 | id | string | qna id | 
-| show_answer | boolean | show answer flag | 
-| page_id | string | pagination page id | 
-| page_size | string | pagination page size | 
+| showAnswer | boolean | show answer flag | 
+| pageId | string | pagination page id | 
+| pageSize | string | pagination page size | 
 
 This is used to get a list of questions and its answers.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XCursorGetResponse"
-}`
+Schema: `XCursorGetResponse`
 
 
 
@@ -14215,57 +12465,47 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#getVotes
+#### getVotes
 Get list of votes
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.getVotes(id, ref_type ).safeAwait();
-}
-
+feedback.getVotes(id: id, refType: refType).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | id | string | vote id | 
-| ref_type | string | entity type e.g. review | comment | 
+| refType | string | entity type e.g. review | comment | 
 
 This is used to get the list of votes of a current logged in user. Votes can be filtered using `ref_type` i.e. review | comment.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XNumberGetResponse"
-}`
+Schema: `XNumberGetResponse`
 
 
 
@@ -14277,36 +12517,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#createVote
+#### createVote
 Create a new vote
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.createVote().safeAwait();
-}
-
+feedback.createVote(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -14314,18 +12548,14 @@ Globalscope.launch{
 
 This is used to create a new vote and the actions can be upvote or downvote.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XInsertResponse"
-}`
+Schema: `XInsertResponse`
 
 
 
@@ -14337,36 +12567,30 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### Feedback#updateVote
+#### updateVote
 Update vote
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = feedback.updateVote().safeAwait();
-}
-
+feedback.updateVote(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -14374,18 +12598,14 @@ Globalscope.launch{
 
 This is used to update the vote and the actions can be upvote or downvote.
 
-Success Response:
+*Success Response:*
 
 
 
 ok
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/XUpdateResponse"
-}`
+Schema: `XUpdateResponse`
 
 
 
@@ -14397,20 +12617,13 @@ Schema: `{
 Bad request
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
+Schema: `ErrorResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
@@ -14423,83 +12636,58 @@ Error Response:
 
 ## PosCart
 
-```kotlin
 
-var applicationConfig: ApplicationConfig? = null
-  try {
-        applicationConfig = ApplicationConfig(
-        applicationId = "507f191e810c19729de860ea",
-        applicationToken = "hu67dfhddf",
-        userAgent = "android"
-      )
-      } catch (e: Exception) {
-            print(e.message)
-      }
-
-applicationConfig?.let { config ->
-    val applicationClient = ApplicationClient(config = config)
-    val poscart = applicationClient.poscart
-    }
-
-```
-
-
-#### PosCart#getCart
+#### getCart
 Fetch all Items Added to  Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getCart(uid, assign_card_id ).safeAwait();
-}
-
+poscart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
-| assign_card_id | integer |  | 
+| assignCardId | integer |  | 
 
 Get all the details of a items added to cart  by uid. If successful, returns a Cart resource in the response body specified in CartResponse
 
-Success Response:
+*Success Response:*
 
 
 
 The Cart object. See example below or refer CartResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartResponse"
-}`
+Schema: `CartResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getCartLastModified
+#### getCartLastModified
 Fetch Last-Modified timestamp
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getCartLastModified(uid ).safeAwait();
-}
-
+poscart.getCartLastModified(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -14508,7 +12696,7 @@ Globalscope.launch{
 
 Fetch Last-Modified timestamp in header metadata
 
-Success Response:
+*Success Response:*
 
 
 
@@ -14518,23 +12706,21 @@ Fetch Last-Modified Timestamp Response
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### PosCart#addItems
+#### addItems
 Add Items to Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.addItems().safeAwait();
-}
-
+poscart.addItems(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -14542,25 +12728,21 @@ Globalscope.launch{
 
 <p>Add Items to cart. See `AddCartRequest` in schema of request body for the list of attributes needed to add items to a cart. On successful request, returns cart response containing details of items, coupons available etc.these attributes will be fetched from the folowing api's</p>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the cart object including all item details included in .the cart,coupons etc.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AddCartResponse"
-}`
+Schema: `AddCartResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Product has been added to your cart
-```javascript
+```json
 {
   "value": {
     "message": "Product has been added to your cart",
@@ -15011,7 +13193,7 @@ Product has been added to your cart
 ```
 
 Sorry, item is out of stock
-```javascript
+```json
 {
   "value": {
     "message": "Sorry, item is out of stock",
@@ -15195,23 +13377,21 @@ Sorry, item is out of stock
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### PosCart#updateCart
+#### updateCart
 Update Items already added to Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.updateCart().safeAwait();
-}
-
+poscart.updateCart(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -15219,25 +13399,21 @@ Globalscope.launch{
 
 Request object containing attributes like item_quantity and item_size which can be updated .these attributes will be fetched from the folowing api's</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the cart object including all item with their updated details included in .the cart,coupons etc..
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/UpdateCartResponse"
-}`
+Schema: `UpdateCartResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Nothing updated
-```javascript
+```json
 {
   "value": {
     "cart": {
@@ -15420,7 +13596,7 @@ Nothing updated
 ```
 
 Item updated in the cart
-```javascript
+```json
 {
   "value": {
     "cart": {
@@ -15601,23 +13777,21 @@ Item updated in the cart
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### PosCart#getItemCount
+#### getItemCount
 Cart item count
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getItemCount(uid ).safeAwait();
-}
-
+poscart.getItemCount(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -15626,43 +13800,37 @@ Globalscope.launch{
 
 Get total count of item present in cart
 
-Success Response:
+*Success Response:*
 
 
 
 OK
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartItemCountResponse"
-}`
+Schema: `CartItemCountResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getCoupons
+#### getCoupons
 Fetch Coupon
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getCoupons(uid ).safeAwait();
-}
-
+poscart.getCoupons(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -15671,43 +13839,37 @@ Globalscope.launch{
 
 Get all the details of a coupons applicable to cart  by uid. If successful, returns a Coupon resource in the response body specified in GetCouponResponse
 
-Success Response:
+*Success Response:*
 
 
 
 Returns The Couppon object which has list of all available_coupon applicale for the cart. See example below or refer GetCouponResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetCouponResponse"
-}`
+Schema: `GetCouponResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#applyCoupon
+#### applyCoupon
 Apply Coupon
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.applyCoupon(i, b, p ).safeAwait();
-}
-
+poscart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -15719,43 +13881,37 @@ Globalscope.launch{
 <p>Apply Coupons on Items added to cart. On successful request, returns cart response containing details of items ,coupons applied etc.these attributes will be consumed by  api</p> <ul> <li> <font color="monochrome">coupon_code</font></li>
 </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Coupon object including all item details included in .the cart,coupons applied etc.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SaveCouponResponse"
-}`
+Schema: `SaveCouponResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#removeCoupon
+#### removeCoupon
 Remove Coupon Applied
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.removeCoupon(uid ).safeAwait();
-}
-
+poscart.removeCoupon(uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -15764,73 +13920,63 @@ Globalscope.launch{
 
 Remove Coupon applied on the cart by passing uid in request body.
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Coupon object including all item details included in .the cart,coupons removed etc.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartResponse"
-}`
+Schema: `CartResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getBulkDiscountOffers
+#### getBulkDiscountOffers
 Get discount offers based on quantity
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getBulkDiscountOffers(item_id, article_id, uid, slug ).safeAwait();
-}
-
+poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| item_id | integer | Item id | 
-| article_id | string | Article mongo id | 
+| itemId | integer | Item id | 
+| articleId | string | Article mongo id | 
 | uid | integer | Item id | 
 | slug | string | Item unique url from product page | 
 
 List applicable offers along with current, next and best offer for given product. Either one of **uid**, **item_id**, **slug** should be present*
 
-Success Response:
+*Success Response:*
 
 
 
 Offers found or not found with valid input
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/BulkPriceResponse"
-}`
+Schema: `BulkPriceResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Offers found
-```javascript
+```json
 {
   "value": {
     "data": [
@@ -15888,7 +14034,7 @@ Offers found
 ```
 
 Offers not found
-```javascript
+```json
 {
   "value": {
     "data": []
@@ -15906,90 +14052,73 @@ Offers not found
 Unhandled api error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "message": {
-      "type": "string"
-    }
-  }
-}`
+Schema: `[String: Any]`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getAddresses
+#### getAddresses
 Fetch Address
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
-}
-
+poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
-| mobile_no | integer |  | 
-| checkout_mode | string |  | 
+| mobileNo | integer |  | 
+| checkoutMode | string |  | 
 | tags | integer |  | 
-| is_default | boolean |  | 
+| isDefault | boolean |  | 
 
 Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetAddressResponse"
-}`
+Schema: `GetAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#addAddress
+#### addAddress
 Add Address to the account
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.addAddress().safeAwait();
-}
-
+poscart.addAddress(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -15997,93 +14126,81 @@ Globalscope.launch{
 
 <p>Add Address to account. See `SaveAddressRequest` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
 
-Success Response:
+*Success Response:*
 
 
 
 Return Address Id on successfull completion of the request.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SaveAddressResponse"
-}`
+Schema: `SaveAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getAddressById
+#### getAddressById
 Fetch Single Address
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
-}
-
+poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | id | integer |  | 
 | uid | integer |  | 
-| mobile_no | integer |  | 
-| checkout_mode | string |  | 
+| mobileNo | integer |  | 
+| checkoutMode | string |  | 
 | tags | integer |  | 
-| is_default | boolean |  | 
+| isDefault | boolean |  | 
 
 Get a addresses with the given id. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetAddressResponse"
-}`
+Schema: `GetAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#updateAddress
+#### updateAddress
 Update Address alreay added to account
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.updateAddress(id ).safeAwait();
-}
-
+poscart.updateAddress(id: id, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -16092,43 +14209,37 @@ Globalscope.launch{
 
 Request object containing attributes mentioned in  <font color="blue">UpdateAddressRequest </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Address object containing address_id and sucess message.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/UpdateAddressResponse"
-}`
+Schema: `UpdateAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#removeAddress
+#### removeAddress
 Remove Address Associated to the account
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.removeAddress(id ).safeAwait();
-}
-
+poscart.removeAddress(id: id).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -16137,43 +14248,37 @@ Globalscope.launch{
 
 Delete a Address by it's address_id. Returns an object that tells whether the address was deleted successfully
 
-Success Response:
+*Success Response:*
 
 
 
 Status object. Tells whether the operation was successful. See example below or refer DeleteAddressResponse
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/DeleteAddressResponse"
-}`
+Schema: `DeleteAddressResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#selectAddress
+#### selectAddress
 Select Address from All Addresses
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.selectAddress().safeAwait();
-}
-
+poscart.selectAddress(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -16181,18 +14286,14 @@ Globalscope.launch{
 
 <p>Select Address from all addresses associated with the account in order to ship the cart items to .that address,otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, returns Cart object response.below are the address attributes which needs to be sent. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
 
-Success Response:
+*Success Response:*
 
 
 
 Response of the Address object containing Cart Object and success message.  .
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartResponse"
-}`
+Schema: `CartResponse`
 
 
 
@@ -16204,26 +14305,14 @@ Schema: `{
 Address or Pincode Error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "status": {
-      "type": "string"
-    },
-    "message": {
-      "type": "string"
-    }
-  }
-}`
+Schema: `[String: Any]`
 
 
-Examples: 
+*Examples:*
 
 
 Address Not Found
-```javascript
+```json
 {
   "value": {
     "status": "ERROR",
@@ -16233,7 +14322,7 @@ Address Not Found
 ```
 
 Pincode Not Serviciable
-```javascript
+```json
 {
   "value": {
     "status": "ERROR",
@@ -16249,73 +14338,65 @@ Pincode Not Serviciable
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### PosCart#getPaymentModes
+#### getPaymentModes
 Get Cart Payment for valid coupon
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code ).safeAwait();
-}
-
+poscart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | string |  | 
-| address_id | string |  | 
-| payment_mode | string |  | 
-| payment_identifier | string |  | 
-| aggregator_name | string |  | 
-| merchant_code | string |  | 
+| addressId | string |  | 
+| paymentMode | string |  | 
+| paymentIdentifier | string |  | 
+| aggregatorName | string |  | 
+| merchantCode | string |  | 
 
 Validate coupon for selected payment mode
 
-Success Response:
+*Success Response:*
 
 
 
 Cart Affiliates.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentOptions"
-}`
+Schema: `PaymentOptions`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#selectPaymentMode
+#### selectPaymentMode
 Update Cart Payment
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.selectPaymentMode(uid ).safeAwait();
-}
-
+poscart.selectPaymentMode(uid: uid, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -16324,74 +14405,64 @@ Globalscope.launch{
 
 Update Cart Payment for Your Account
 
-Success Response:
+*Success Response:*
 
 
 
 Cart Affiliates.
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PaymentOptions"
-}`
+Schema: `PaymentOptions`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getShipments
+#### getShipments
 Get delivery date and options before checkout
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getShipments(pick_at_store_uid, ordering_store_id, p, uid, address_id ).safeAwait();
-}
-
+poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| pick_at_store_uid | integer |  | 
-| ordering_store_id | integer |  | 
+| pickAtStoreUid | integer |  | 
+| orderingStoreId | integer |  | 
 | p | boolean | Get payment options or not | 
 | uid | integer | Cart id | 
-| address_id | integer | Address id | 
+| addressId | integer | Address id | 
 
 Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
 
-Success Response:
+*Success Response:*
 
 
 
 OK
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartShipmentsResponse"
-}`
+Schema: `CartShipmentsResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Shipment Generated
-```javascript
+```json
 {
   "value": {
     "items": [],
@@ -16777,7 +14848,7 @@ Shipment Generated
 ```
 
 Shipment Generation Failed
-```javascript
+```json
 {
   "value": {
     "items": [],
@@ -17036,41 +15107,30 @@ Shipment Generation Failed
 Unhandled api error
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "message": {
-      "type": "string"
-    }
-  }
-}`
+Schema: `[String: Any]`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#checkoutCart
+#### checkoutCart
 Checkout Cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.checkoutCart(uid ).safeAwait();
-}
-
+poscart.checkoutCart(uid: uid, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -17079,25 +15139,21 @@ Globalscope.launch{
 
 Checkout all items in cart to payment and order generation.                        For COD only order will be generated while for other checkout mode                        user will be redirected to payment gateway
 
-Success Response:
+*Success Response:*
 
 
 
 OK
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartCheckoutResponse"
-}`
+Schema: `CartCheckoutResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Address id not found
-```javascript
+```json
 {
   "value": {
     "success": false,
@@ -17107,7 +15163,7 @@ Address id not found
 ```
 
 Missing address_id
-```javascript
+```json
 {
   "value": {
     "address_id": [
@@ -17118,7 +15174,7 @@ Missing address_id
 ```
 
 Successful checkout cod payment
-```javascript
+```json
 {
   "value": {
     "success": true,
@@ -17476,23 +15532,21 @@ Successful checkout cod payment
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### PosCart#updateCartMeta
+#### updateCartMeta
 Update Cart Meta
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.updateCartMeta(uid ).safeAwait();
-}
-
+poscart.updateCartMeta(uid: uid, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -17501,18 +15555,14 @@ Globalscope.launch{
 
 Update cart meta like checkout_mode, gstin.
 
-Success Response:
+*Success Response:*
 
 
 
 Cart meta updated successfully
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartMetaResponse"
-}`
+Schema: `CartMetaResponse`
 
 
 
@@ -17524,127 +15574,109 @@ Schema: `{
 Missing required Field
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartMetaMissingResponse"
-}`
+Schema: `CartMetaMissingResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getAvailableDeliveryModes
+#### getAvailableDeliveryModes
 Get available delivery modes for cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getAvailableDeliveryModes(area_code, uid ).safeAwait();
-}
-
+poscart.getAvailableDeliveryModes(areaCode: areaCode, uid: uid).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| area_code | integer |  | 
+| areaCode | integer |  | 
 | uid | integer |  | 
 
 Get available delivery modes for cart and pick up store uid list. From given pick stores list user can pick up delivery. Use this uid to show store address
 
-Success Response:
+*Success Response:*
 
 
 
 Returns Available delivery modes for cart and pick up available store uid for current cart items
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartDeliveryModesResponse"
-}`
+Schema: `CartDeliveryModesResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getStoreAddressByUid
+#### getStoreAddressByUid
 Get list of stores for give uids
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getStoreAddressByUid(area_code ).safeAwait();
-}
-
+poscart.getStoreAddressByUid(areaCode: areaCode).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| area_code | integer |  | 
+| areaCode | integer |  | 
 
 Get list of stores by providing pick up available store uids.
 
-Success Response:
+*Success Response:*
 
 
 
 Returns available store information with its address
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/StoreDetailsResponse"
-}`
+Schema: `StoreDetailsResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#getCartShareLink
+#### getCartShareLink
 Generate Cart sharing link token
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getCartShareLink().safeAwait();
-}
-
+poscart.getCartShareLink(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -17652,25 +15684,21 @@ Globalscope.launch{
 
 Generates shared cart snapshot and returns shortlink token
 
-Success Response:
+*Success Response:*
 
 
 
 Token Generated successfully
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/GetShareCartLinkResponse"
-}`
+Schema: `GetShareCartLinkResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Token Generated
-```javascript
+```json
 {
   "value": {
     "token": "ZweG1XyX",
@@ -17686,23 +15714,21 @@ Token Generated
 
 
 
-Error Response:
-
-
 
 ---
 
 
-#### PosCart#getCartSharedItems
+#### getCartSharedItems
 Get shared cart snapshot and cart response
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.getCartSharedItems(token ).safeAwait();
-}
-
+poscart.getCartSharedItems(token: token).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -17711,18 +15737,14 @@ Globalscope.launch{
 
 Returns shared cart response for sent token with `shared_cart_details`                    containing shared cart details in response.
 
-Success Response:
+*Success Response:*
 
 
 
 Cart for valid token
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
-}`
+Schema: `SharedCartResponse`
 
 
 
@@ -17734,36 +15756,30 @@ Schema: `{
 No cart found for sent token
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
-}`
+Schema: `SharedCartResponse`
 
 
 
 
 
 
-
-
-Error Response:
 
 
 
 ---
 
 
-#### PosCart#updateCartWithSharedItems
+#### updateCartWithSharedItems
 Merge or Replace existing cart
 
 ```kotlin
-
-// Await
-Globalscope.launch{
-  const data = poscart.updateCartWithSharedItems(token, action ).safeAwait();
-}
-
+poscart.updateCartWithSharedItems(token: token, action: action).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    })
 ```
 
 | Argument  |  Type  | Description |
@@ -17773,25 +15789,21 @@ Globalscope.launch{
 
 Merge or Replace cart based on `action` parameter with shared cart of `token`
 
-Success Response:
+*Success Response:*
 
 
 
 Success of Merge or Replace of cart with `shared_cart_details`                    containing shared cart details in response
 
 
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SharedCartResponse"
-}`
+Schema: `SharedCartResponse`
 
 
-Examples: 
+*Examples:*
 
 
 Cart Merged/Replaced
-```javascript
+```json
 {
   "value": {
     "cart": {
@@ -18077,9 +16089,6 @@ Cart Merged/Replaced
 
 
 
-
-
-Error Response:
 
 
 
