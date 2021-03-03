@@ -2435,6 +2435,686 @@ data class sectionSchema(
 
 
 /*
+    Model: EditEmailRequestSchema
+*/
+@Parcelize
+data class EditEmailRequestSchema(
+    
+    @SerializedName("email")
+    var email: String?=null
+    
+): Parcelable
+
+/*
+    Model: SendVerificationLinkMobileRequestSchema
+*/
+@Parcelize
+data class SendVerificationLinkMobileRequestSchema(
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: EditMobileRequestSchema
+*/
+@Parcelize
+data class EditMobileRequestSchema(
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null
+    
+): Parcelable
+
+/*
+    Model: EditProfileRequestSchema
+*/
+@Parcelize
+data class EditProfileRequestSchema(
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("dob")
+    var dob: String?=null,
+    
+    @SerializedName("profile_pic_url")
+    var profilePicUrl: String?=null,
+    
+    @SerializedName("androidHash")
+    var androidHash: String?=null,
+    
+    @SerializedName("sender")
+    var sender: String?=null,
+    
+    @SerializedName("register_token")
+    var registerToken: String?=null
+    
+): Parcelable
+
+/*
+    Model: SendEmailOtpRequestSchema
+*/
+@Parcelize
+data class SendEmailOtpRequestSchema(
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("register_token")
+    var registerToken: String?=null
+    
+): Parcelable
+
+/*
+    Model: VerifyOtpRequestSchema
+*/
+@Parcelize
+data class VerifyOtpRequestSchema(
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("register_token")
+    var registerToken: String?=null,
+    
+    @SerializedName("otp")
+    var otp: String?=null
+    
+): Parcelable
+
+/*
+    Model: SendMobileOtpRequestSchema
+*/
+@Parcelize
+data class SendMobileOtpRequestSchema(
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("androidHash")
+    var androidHash: String?=null,
+    
+    @SerializedName("force")
+    var force: String?=null
+    
+): Parcelable
+
+/*
+    Model: UpdatePasswordRequestSchema
+*/
+@Parcelize
+data class UpdatePasswordRequestSchema(
+    
+    @SerializedName("old_password")
+    var oldPassword: String?=null,
+    
+    @SerializedName("new_password")
+    var newPassword: String?=null
+    
+): Parcelable
+
+/*
+    Model: FormRegisterRequestSchema
+*/
+@Parcelize
+data class FormRegisterRequestSchema(
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("password")
+    var password: String?=null,
+    
+    @SerializedName("phone")
+    var phone: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("register_token")
+    var registerToken: String?=null
+    
+): Parcelable
+
+/*
+    Model: TokenRequestBodySchema
+*/
+@Parcelize
+data class TokenRequestBodySchema(
+    
+    @SerializedName("token")
+    var token: String?=null
+    
+): Parcelable
+
+/*
+    Model: ForgotPasswordRequestSchema
+*/
+@Parcelize
+data class ForgotPasswordRequestSchema(
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("password")
+    var password: String?=null
+    
+): Parcelable
+
+/*
+    Model: CodeRequestBodySchema
+*/
+@Parcelize
+data class CodeRequestBodySchema(
+    
+    @SerializedName("code")
+    var code: String?=null
+    
+): Parcelable
+
+/*
+    Model: SendResetPasswordEmailRequestSchema
+*/
+@Parcelize
+data class SendResetPasswordEmailRequestSchema(
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("g-recaptcha-response")
+    var gRecaptchaResponse: String?=null
+    
+): Parcelable
+
+/*
+    Model: PasswordLoginRequestSchema
+*/
+@Parcelize
+data class PasswordLoginRequestSchema(
+    
+    @SerializedName("g-recaptcha-response")
+    var gRecaptchaResponse: String?=null,
+    
+    @SerializedName("password")
+    var password: String?=null,
+    
+    @SerializedName("username")
+    var username: String?=null
+    
+): Parcelable
+
+/*
+    Model: SendOtpRequestSchema
+*/
+@Parcelize
+data class SendOtpRequestSchema(
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("g-recaptcha-response")
+    var gRecaptchaResponse: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null
+    
+): Parcelable
+
+/*
+    Model: OAuthRequestSchema
+*/
+@Parcelize
+data class OAuthRequestSchema(
+    
+    @SerializedName("is_signed_in")
+    var isSignedIn: Boolean?=null,
+    
+    @SerializedName("oauth2")
+    var oauth2: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("profile")
+    var profile: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable
+
+/*
+    Model: AuthSuccess
+*/
+@Parcelize
+data class AuthSuccess(
+    
+    @SerializedName("register_token")
+    var registerToken: String?=null,
+    
+    @SerializedName("user_exists")
+    var userExists: Boolean?=null,
+    
+    @SerializedName("user")
+    var user: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable
+
+/*
+    Model: SendOtpResponse
+*/
+@Parcelize
+data class SendOtpResponse(
+    
+    @SerializedName("resend_timer")
+    var resendTimer: Int?=null,
+    
+    @SerializedName("resend_token")
+    var resendToken: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
+    
+): Parcelable
+
+/*
+    Model: LoginSuccess
+*/
+@Parcelize
+data class LoginSuccess(
+    
+    @SerializedName("user")
+    var user: UserSchema?=null
+    
+): Parcelable
+
+/*
+    Model: VerifyOtpSuccess
+*/
+@Parcelize
+data class VerifyOtpSuccess(
+    
+    @SerializedName("user")
+    var user: UserSchema?=null,
+    
+    @SerializedName("userExists")
+    var userExists: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: ResetPasswordSuccess
+*/
+@Parcelize
+data class ResetPasswordSuccess(
+    
+    @SerializedName("status")
+    var status: String?=null
+    
+): Parcelable
+
+/*
+    Model: RegisterFormSuccess
+*/
+@Parcelize
+data class RegisterFormSuccess(
+    
+    @SerializedName("resend_timer")
+    var resendTimer: Int?=null,
+    
+    @SerializedName("resend_token")
+    var resendToken: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
+    
+): Parcelable
+
+/*
+    Model: VerifyEmailSuccess
+*/
+@Parcelize
+data class VerifyEmailSuccess(
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable
+
+/*
+    Model: HasPasswordSuccess
+*/
+@Parcelize
+data class HasPasswordSuccess(
+    
+    @SerializedName("result")
+    var result: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: LogoutSuccess
+*/
+@Parcelize
+data class LogoutSuccess(
+    
+    @SerializedName("logout")
+    var logout: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: OtpSuccess
+*/
+@Parcelize
+data class OtpSuccess(
+    
+    @SerializedName("resend_timer")
+    var resendTimer: Int?=null,
+    
+    @SerializedName("resend_token")
+    var resendToken: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
+    
+): Parcelable
+
+/*
+    Model: EmailOtpSuccess
+*/
+@Parcelize
+data class EmailOtpSuccess(
+    
+    @SerializedName("resend_token")
+    var resendToken: String?=null
+    
+): Parcelable
+
+/*
+    Model: SessionListSuccess
+*/
+@Parcelize
+data class SessionListSuccess(
+    
+    @SerializedName("sessions")
+    var sessions: ArrayList<String>?=null
+    
+): Parcelable
+
+/*
+    Model: VerifyMobileOTPSuccess
+*/
+@Parcelize
+data class VerifyMobileOTPSuccess(
+    
+    @SerializedName("user")
+    var user: UserSchema?=null,
+    
+    @SerializedName("verify_mobile_link")
+    var verifyMobileLink: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: VerifyEmailOTPSuccess
+*/
+@Parcelize
+data class VerifyEmailOTPSuccess(
+    
+    @SerializedName("user")
+    var user: UserSchema?=null,
+    
+    @SerializedName("verify_email_link")
+    var verifyEmailLink: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: SendMobileVerifyLinkSuccess
+*/
+@Parcelize
+data class SendMobileVerifyLinkSuccess(
+    
+    @SerializedName("verify_mobile_link")
+    var verifyMobileLink: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: SendEmailVerifyLinkSuccess
+*/
+@Parcelize
+data class SendEmailVerifyLinkSuccess(
+    
+    @SerializedName("verify_email_link")
+    var verifyEmailLink: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: UserSearchResponseSchema
+*/
+@Parcelize
+data class UserSearchResponseSchema(
+    
+): Parcelable
+
+/*
+    Model: CustomerListResponseSchema
+*/
+@Parcelize
+data class CustomerListResponseSchema(
+    
+    @SerializedName("items")
+    var items: ArrayList<UserSchema>?=null,
+    
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+    
+): Parcelable
+
+/*
+    Model: PlatformSchema
+*/
+@Parcelize
+data class PlatformSchema(
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("look_and_feel")
+    var lookAndFeel: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("forgot_password")
+    var forgotPassword: Boolean?=null,
+    
+    @SerializedName("login")
+    var login: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("skip_captcha")
+    var skipCaptcha: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("social")
+    var social: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("required_fields")
+    var requiredFields: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("register_required_fields")
+    var registerRequiredFields: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("skip_login")
+    var skipLogin: Boolean?=null,
+    
+    @SerializedName("flash_card")
+    var flashCard: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("subtext")
+    var subtext: String?=null,
+    
+    @SerializedName("social_tokens")
+    var socialTokens: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("register")
+    var register: Boolean?=null
+    
+): Parcelable
+
+/*
+    Model: UserSchema
+*/
+@Parcelize
+data class UserSchema(
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("phone_numbers")
+    var phoneNumbers: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("emails")
+    var emails: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("profile_pic_url")
+    var profilePicUrl: String?=null,
+    
+    @SerializedName("username")
+    var username: String?=null,
+    
+    @SerializedName("account_type")
+    var accountType: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("debug")
+    var debug: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("has_old_password_hash")
+    var hasOldPasswordHash: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable
+
+
+
+/*
     Model: ApplicationLegal
 */
 @Parcelize
@@ -4236,6 +4916,20 @@ data class ShipmentTrack(
 
 
 /*
+    Model: Action
+*/
+@Parcelize
+data class Action(
+    
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable
+
+/*
     Model: Article
 */
 @Parcelize
@@ -4249,6 +4943,23 @@ data class Article(
     
     @SerializedName("price")
     var price: Double?=null
+    
+): Parcelable
+
+/*
+    Model: Asset
+*/
+@Parcelize
+data class Asset(
+    
+    @SerializedName("aspect_ratio")
+    var aspectRatio: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("secure_url")
+    var secureUrl: String?=null
     
 ): Parcelable
 
@@ -4856,6 +5567,20 @@ data class DeviceMeta(
 ): Parcelable
 
 /*
+    Model: ErrorResponse
+*/
+@Parcelize
+data class ErrorResponse(
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable
+
+/*
     Model: MediaCloud
 */
 @Parcelize
@@ -5286,6 +6011,50 @@ data class CartDeliveryModesResponse(
     
     @SerializedName("pickup_stores")
     var pickupStores: ArrayList<Int>?=null
+    
+): Parcelable
+
+/*
+    Model: StoreDetail
+*/
+@Parcelize
+data class StoreDetail(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("address_type")
+    var addressType: String?=null,
+    
+    @SerializedName("city")
+    var city: String?=null,
+    
+    @SerializedName("store_code")
+    var storeCode: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("state")
+    var state: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("area_code_slug")
+    var areaCodeSlug: String?=null,
+    
+    @SerializedName("area")
+    var area: String?=null
     
 ): Parcelable
 
