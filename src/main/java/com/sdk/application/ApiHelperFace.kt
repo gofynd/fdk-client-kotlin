@@ -121,23 +121,11 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<AutoCompleteResponse>>
     
-    fun addCollection(
-        
-        body: CreateCollection
-    )
-    :Deferred<Response<CollectionDetailResponse>>
-    
     fun getCollections(
          page_id: String?=null,  page_size: Int?=null
         
     )
     :Deferred<Response<GetCollectionListingResponse>>
-    
-    fun addCollectionItemsBySlug(
-         slug: String,
-        body: CollectionItemsRequest
-    )
-    :Deferred<Response<CollectionItemsResponse>>
     
     fun getCollectionItemsBySlug(
          slug: String,  f: String?=null,  filters: Boolean?=null,  sort_on: String?=null,  page_id: String?=null,  page_size: Int?=null
@@ -145,23 +133,11 @@ interface CatalogApiHelperFace {
     )
     :Deferred<Response<ProductListingResponse>>
     
-    fun deleteCollectionDetailBySlug(
-         slug: String
-        
-    )
-    :Deferred<Response<CollectionDetailViewDeleteResponse>>
-    
     fun getCollectionDetailBySlug(
          slug: String
         
     )
     :Deferred<Response<CollectionDetailResponse>>
-    
-    fun updateCollectionDetailBySlug(
-         slug: String
-        
-    )
-    :Deferred<Response<CollectionsUpdateDetailResponse>>
     
     fun getFollowedListing(
          collection_type: String
@@ -402,202 +378,6 @@ interface ThemeApiHelperFace {
         
     )
     :Deferred<Response<ThemesSchema>>
-    
-}
-
-interface UserApiHelperFace {
-    
-    fun loginWithFacebook(
-        
-        body: OAuthRequestSchema
-    )
-    :Deferred<Response<AuthSuccess>>
-    
-    fun loginWithGoogle(
-        
-        body: OAuthRequestSchema
-    )
-    :Deferred<Response<AuthSuccess>>
-    
-    fun loginWithGoogleAndroid(
-        
-        body: OAuthRequestSchema
-    )
-    :Deferred<Response<AuthSuccess>>
-    
-    fun loginWithGoogleIOS(
-        
-        body: OAuthRequestSchema
-    )
-    :Deferred<Response<AuthSuccess>>
-    
-    fun loginWithOTP(
-         platform: String?=null,
-        body: SendOtpRequestSchema
-    )
-    :Deferred<Response<SendOtpResponse>>
-    
-    fun loginWithEmailAndPassword(
-        
-        body: PasswordLoginRequestSchema
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun sendResetPasswordEmail(
-         platform: String?=null,
-        body: SendResetPasswordEmailRequestSchema
-    )
-    :Deferred<Response<ResetPasswordSuccess>>
-    
-    fun forgotPassword(
-        
-        body: ForgotPasswordRequestSchema
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun sendResetToken(
-        
-        body: CodeRequestBodySchema
-    )
-    :Deferred<Response<ResetPasswordSuccess>>
-    
-    fun loginWithToken(
-        
-        body: TokenRequestBodySchema
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun registerWithForm(
-         platform: String?=null,
-        body: FormRegisterRequestSchema
-    )
-    :Deferred<Response<RegisterFormSuccess>>
-    
-    fun verifyEmail(
-        
-        body: CodeRequestBodySchema
-    )
-    :Deferred<Response<VerifyEmailSuccess>>
-    
-    fun verifyMobile(
-        
-        body: CodeRequestBodySchema
-    )
-    :Deferred<Response<VerifyEmailSuccess>>
-    
-    fun hasPassword(
-        
-        
-    )
-    :Deferred<Response<HasPasswordSuccess>>
-    
-    fun updatePassword(
-        
-        body: UpdatePasswordRequestSchema
-    )
-    :Deferred<Response<VerifyEmailSuccess>>
-    
-    fun logout(
-        
-        
-    )
-    :Deferred<Response<LogoutSuccess>>
-    
-    fun sendOTPOnMobile(
-         platform: String?=null,
-        body: SendMobileOtpRequestSchema
-    )
-    :Deferred<Response<OtpSuccess>>
-    
-    fun verifyMobileOTP(
-         platform: String?=null,
-        body: VerifyOtpRequestSchema
-    )
-    :Deferred<Response<VerifyOtpSuccess>>
-    
-    fun sendOTPOnEmail(
-         platform: String?=null,
-        body: SendEmailOtpRequestSchema
-    )
-    :Deferred<Response<EmailOtpSuccess>>
-    
-    fun verifyEmailOTP(
-         platform: String?=null,
-        body: VerifyOtpRequestSchema
-    )
-    :Deferred<Response<VerifyOtpSuccess>>
-    
-    fun getLoggedInUser(
-        
-        
-    )
-    :Deferred<Response<UserSchema>>
-    
-    fun getListOfActiveSessions(
-        
-        
-    )
-    :Deferred<Response<SessionListSuccess>>
-    
-    fun getPlatformConfig(
-         name: String?=null
-        
-    )
-    :Deferred<Response<PlatformSchema>>
-    
-    fun updateProfile(
-         platform: String?=null,
-        body: EditProfileRequestSchema
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun addMobileNumber(
-         platform: String?=null,
-        body: EditMobileRequestSchema
-    )
-    :Deferred<Response<VerifyMobileOTPSuccess>>
-    
-    fun deleteMobileNumber(
-         platform: String?=null,  active: Boolean,  primary: Boolean,  verified: Boolean,  country_code: String,  phone: String
-        
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun setMobileNumberAsPrimary(
-        
-        body: SendVerificationLinkMobileRequestSchema
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun sendVerificationLinkToMobile(
-         platform: String?=null,
-        body: SendVerificationLinkMobileRequestSchema
-    )
-    :Deferred<Response<SendMobileVerifyLinkSuccess>>
-    
-    fun addEmail(
-         platform: String?=null,
-        body: EditEmailRequestSchema
-    )
-    :Deferred<Response<VerifyEmailOTPSuccess>>
-    
-    fun deleteEmail(
-         platform: String?=null,  active: Boolean,  primary: Boolean,  verified: Boolean,  email: String
-        
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun setEmailAsPrimary(
-        
-        body: EditEmailRequestSchema
-    )
-    :Deferred<Response<LoginSuccess>>
-    
-    fun sendVerificationLinkToEmail(
-         platform: String?=null,
-        body: EditEmailRequestSchema
-    )
-    :Deferred<Response<SendEmailVerifyLinkSuccess>>
     
 }
 
@@ -1214,12 +994,6 @@ interface PosCartApiHelperFace {
     fun getShipments(
          pick_at_store_uid: Int?=null,  ordering_store_id: Int?=null,  p: Boolean?=null,  uid: Int?=null,  address_id: Int?=null
         
-    )
-    :Deferred<Response<CartShipmentsResponse>>
-    
-    fun updateShipments(
-         i: Boolean?=null,  p: Boolean?=null,  uid: Int?=null,  address_id: Int?=null,  order_type: String?=null,
-        body: UpdateCartShipmentRequest
     )
     :Deferred<Response<CartShipmentsResponse>>
     

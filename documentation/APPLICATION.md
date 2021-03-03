@@ -5,7 +5,6 @@
 * [Cart](#Cart) - Cart APIs 
 * [Lead](#Lead) - Handles communication between Staff and Users 
 * [Theme](#Theme) - Responsible for themes 
-* [User](#User) - Authentication Service 
 * [Content](#Content) - Content 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Share](#Share) - Short link and QR Code 
@@ -43,13 +42,9 @@
     * [Catalog#getHomeProducts](#cataloggethomeproducts)
     * [Catalog#getDepartments](#cataloggetdepartments)
     * [Catalog#getSearchResults](#cataloggetsearchresults)
-    * [Catalog#addCollection](#catalogaddcollection)
     * [Catalog#getCollections](#cataloggetcollections)
-    * [Catalog#addCollectionItemsBySlug](#catalogaddcollectionitemsbyslug)
     * [Catalog#getCollectionItemsBySlug](#cataloggetcollectionitemsbyslug)
-    * [Catalog#deleteCollectionDetailBySlug](#catalogdeletecollectiondetailbyslug)
     * [Catalog#getCollectionDetailBySlug](#cataloggetcollectiondetailbyslug)
-    * [Catalog#updateCollectionDetailBySlug](#catalogupdatecollectiondetailbyslug)
     * [Catalog#getFollowedListing](#cataloggetfollowedlisting)
     * [Catalog#followById](#catalogfollowbyid)
     * [Catalog#unfollowById](#catalogunfollowbyid)
@@ -103,43 +98,6 @@
   * Methods
     * [Theme#getAppliedTheme](#themegetappliedtheme)
     * [Theme#getThemeForPreview](#themegetthemeforpreview)
-    
-   
-
-* [User](#User)
-  * Methods
-    * [User#loginWithFacebook](#userloginwithfacebook)
-    * [User#loginWithGoogle](#userloginwithgoogle)
-    * [User#loginWithGoogleAndroid](#userloginwithgoogleandroid)
-    * [User#loginWithGoogleIOS](#userloginwithgoogleios)
-    * [User#loginWithOTP](#userloginwithotp)
-    * [User#loginWithEmailAndPassword](#userloginwithemailandpassword)
-    * [User#sendResetPasswordEmail](#usersendresetpasswordemail)
-    * [User#forgotPassword](#userforgotpassword)
-    * [User#sendResetToken](#usersendresettoken)
-    * [User#loginWithToken](#userloginwithtoken)
-    * [User#registerWithForm](#userregisterwithform)
-    * [User#verifyEmail](#userverifyemail)
-    * [User#verifyMobile](#userverifymobile)
-    * [User#hasPassword](#userhaspassword)
-    * [User#updatePassword](#userupdatepassword)
-    * [User#logout](#userlogout)
-    * [User#sendOTPOnMobile](#usersendotponmobile)
-    * [User#verifyMobileOTP](#userverifymobileotp)
-    * [User#sendOTPOnEmail](#usersendotponemail)
-    * [User#verifyEmailOTP](#userverifyemailotp)
-    * [User#getLoggedInUser](#usergetloggedinuser)
-    * [User#getListOfActiveSessions](#usergetlistofactivesessions)
-    * [User#getPlatformConfig](#usergetplatformconfig)
-    * [User#updateProfile](#userupdateprofile)
-    * [User#addMobileNumber](#useraddmobilenumber)
-    * [User#deleteMobileNumber](#userdeletemobilenumber)
-    * [User#setMobileNumberAsPrimary](#usersetmobilenumberasprimary)
-    * [User#sendVerificationLinkToMobile](#usersendverificationlinktomobile)
-    * [User#addEmail](#useraddemail)
-    * [User#deleteEmail](#userdeleteemail)
-    * [User#setEmailAsPrimary](#usersetemailasprimary)
-    * [User#sendVerificationLinkToEmail](#usersendverificationlinktoemail)
     
    
 
@@ -282,7 +240,6 @@
     * [PosCart#getPaymentModes](#poscartgetpaymentmodes)
     * [PosCart#selectPaymentMode](#poscartselectpaymentmode)
     * [PosCart#getShipments](#poscartgetshipments)
-    * [PosCart#updateShipments](#poscartupdateshipments)
     * [PosCart#checkoutCart](#poscartcheckoutcart)
     * [PosCart#updateCartMeta](#poscartupdatecartmeta)
     * [PosCart#getAvailableDeliveryModes](#poscartgetavailabledeliverymodes)
@@ -301,13 +258,23 @@
 
 ## Catalog
 
-```javascript
-const { Configuration, Catalog } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const catalog = new Catalog(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val catalog = applicationClient.catalog
+    }
 
 ```
 
@@ -315,12 +282,12 @@ const catalog = new Catalog(conf);
 #### Catalog#getProductDetailBySlug
 Get a product
 
-```javascript
-// Promise
-const promise = catalog.getProductDetailBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductDetailBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductDetailBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -328,7 +295,7 @@ const data = await catalog.getProductDetailBySlug(slug, );
 | --------- | ----  | --- |
 | slug | string | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** | 
 
-Products are the core resource of an application. Products can be associated by categories, collections, brands and more. This API retrieves the product specified by the given ``slug``. If successful, returns a Product resource in the response body specified in `ProductDetail`
+Products are the core resource of an application. Products can be associated by categories, collections, brands and more. This API retrieves the product specified by the given **slug**. If successful, returns a Product resource in the response body specified in `ProductDetail`
 
 Success Response:
 
@@ -376,12 +343,12 @@ Error Response:
 #### Catalog#getProductSizesBySlug
 Get the sizes of a product
 
-```javascript
-// Promise
-const promise = catalog.getProductSizesBySlug(slug, store_id, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductSizesBySlug(slug, store_id, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductSizesBySlug(slug, store_id ).safeAwait();
+}
 
 ```
 
@@ -438,12 +405,12 @@ Error Response:
 #### Catalog#getProductPriceBySlug
 Get price a product size
 
-```javascript
-// Promise
-const promise = catalog.getProductPriceBySlug(slug, size, pincode, store_id, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductPriceBySlug(slug, size, pincode, store_id, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductPriceBySlug(slug, size, pincode, store_id ).safeAwait();
+}
 
 ```
 
@@ -502,12 +469,12 @@ Error Response:
 #### Catalog#getProductSellersBySlug
 List sellers of a product
 
-```javascript
-// Promise
-const promise = catalog.getProductSellersBySlug(slug, size, pincode, page_no, page_size, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductSellersBySlug(slug, size, pincode, page_no, page_size, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductSellersBySlug(slug, size, pincode, page_no, page_size ).safeAwait();
+}
 
 ```
 
@@ -567,12 +534,12 @@ Error Response:
 #### Catalog#getProductComparisonBySlugs
 Compare products
 
-```javascript
-// Promise
-const promise = catalog.getProductComparisonBySlugs(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductComparisonBySlugs(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductComparisonBySlugs(slug ).safeAwait();
+}
 
 ```
 
@@ -628,12 +595,12 @@ Error Response:
 #### Catalog#getSimilarComparisonProductBySlug
 Get comparison between similar products
 
-```javascript
-// Promise
-const promise = catalog.getSimilarComparisonProductBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getSimilarComparisonProductBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getSimilarComparisonProductBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -689,12 +656,12 @@ Error Response:
 #### Catalog#getComparedFrequentlyProductBySlug
 Get comparison between frequently compared products with the given product
 
-```javascript
-// Promise
-const promise = catalog.getComparedFrequentlyProductBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getComparedFrequentlyProductBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getComparedFrequentlyProductBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -750,12 +717,12 @@ Error Response:
 #### Catalog#getProductSimilarByIdentifier
 Get similar products
 
-```javascript
-// Promise
-const promise = catalog.getProductSimilarByIdentifier(slug, similar_type, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductSimilarByIdentifier(slug, similar_type, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductSimilarByIdentifier(slug, similar_type ).safeAwait();
+}
 
 ```
 
@@ -812,12 +779,12 @@ Error Response:
 #### Catalog#getProductVariantsBySlug
 Get variant of a particular product
 
-```javascript
-// Promise
-const promise = catalog.getProductVariantsBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductVariantsBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductVariantsBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -873,12 +840,12 @@ Error Response:
 #### Catalog#getProductStockByIds
 Get the stock of a product
 
-```javascript
-// Promise
-const promise = catalog.getProductStockByIds(item_id, alu, sku_code, ean, upc, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductStockByIds(item_id, alu, sku_code, ean, upc, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductStockByIds(item_id, alu, sku_code, ean, upc ).safeAwait();
+}
 
 ```
 
@@ -938,12 +905,12 @@ Error Response:
 #### Catalog#getProductStockForTimeByIds
 Get the stock of a product
 
-```javascript
-// Promise
-const promise = catalog.getProductStockForTimeByIds(timestamp, page_size, page_id, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProductStockForTimeByIds(timestamp, page_size, page_id, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProductStockForTimeByIds(timestamp, page_size, page_id ).safeAwait();
+}
 
 ```
 
@@ -1001,22 +968,22 @@ Error Response:
 #### Catalog#getProducts
 List the products
 
-```javascript
-// Promise
-const promise = catalog.getProducts(q, f, filters, sort_on, page_id, page_size, page_no, page_type, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getProducts(q, f, filters, sort_on, page_id, page_size, page_no, page_type, );
+// Await
+Globalscope.launch{
+  const data = catalog.getProducts(q, f, filters, sort_on, page_id, page_size, page_no, page_type ).safeAwait();
+}
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | q | string | The search query. This can be a partial or complete name of a either a product, brand or category | 
-| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in ``f`` parameter in this format. ``?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts`` | 
+| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts** | 
 | filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
 | sort_on | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| page_id | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 | page_no | integer | If page_type is number then pass it to fetch page items. Default is 1. | 
 | page_type | string | For pagination type should be cursor or number. Default is cursor. | 
@@ -1069,12 +1036,12 @@ Error Response:
 #### Catalog#getBrands
 List all the brands
 
-```javascript
-// Promise
-const promise = catalog.getBrands(department, page_no, page_size, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getBrands(department, page_no, page_size, );
+// Await
+Globalscope.launch{
+  const data = catalog.getBrands(department, page_no, page_size ).safeAwait();
+}
 
 ```
 
@@ -1132,12 +1099,12 @@ Error Response:
 #### Catalog#getBrandDetailBySlug
 Get metadata of a brand
 
-```javascript
-// Promise
-const promise = catalog.getBrandDetailBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getBrandDetailBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getBrandDetailBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -1193,12 +1160,12 @@ Error Response:
 #### Catalog#getCategories
 List all the categories
 
-```javascript
-// Promise
-const promise = catalog.getCategories(department, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getCategories(department, );
+// Await
+Globalscope.launch{
+  const data = catalog.getCategories(department ).safeAwait();
+}
 
 ```
 
@@ -1254,12 +1221,12 @@ Error Response:
 #### Catalog#getCategoryDetailBySlug
 Get metadata of a category
 
-```javascript
-// Promise
-const promise = catalog.getCategoryDetailBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getCategoryDetailBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getCategoryDetailBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -1315,19 +1282,19 @@ Error Response:
 #### Catalog#getHomeProducts
 List the products
 
-```javascript
-// Promise
-const promise = catalog.getHomeProducts(sort_on, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getHomeProducts(sort_on, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = catalog.getHomeProducts(sort_on, page_id, page_size ).safeAwait();
+}
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| sort_on | string | Each response will contain ``sort_on`` param, which should be sent back to make pagination work. | 
-| page_id | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| sort_on | string | Each response will contain **sort_on** param, which should be sent back to make pagination work. | 
+| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 
 List all the products associated with a brand, collection or category in a random order. If successful, returns a paginated list of products specified in `HomeListingResponse`
@@ -1378,12 +1345,12 @@ Error Response:
 #### Catalog#getDepartments
 List all the departments
 
-```javascript
-// Promise
-const promise = catalog.getDepartments();
+```kotlin
 
-// Async/Await
-const data = await catalog.getDepartments();
+// Await
+Globalscope.launch{
+  const data = catalog.getDepartments().safeAwait();
+}
 
 ```
 
@@ -1438,12 +1405,12 @@ Error Response:
 #### Catalog#getSearchResults
 Get relevant suggestions for a search query
 
-```javascript
-// Promise
-const promise = catalog.getSearchResults(q, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getSearchResults(q, );
+// Await
+Globalscope.launch{
+  const data = catalog.getSearchResults(q ).safeAwait();
+}
 
 ```
 
@@ -1496,81 +1463,21 @@ Error Response:
 ---
 
 
-#### Catalog#addCollection
-Add a Collection
-
-```javascript
-// Promise
-const promise = catalog.addCollection();
-
-// Async/Await
-const data = await catalog.addCollection();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Create a collection. See `CreateCollection` for the list of attributes needed to create a collection and **collections/query-options** for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionDetailResponse`
-
-Success Response:
-
-
-
-List of all the collections including the one you added. See example below or refer `CollectionDetailResponse` for details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionDetailResponse"
-}`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
 #### Catalog#getCollections
 List all the collections
 
-```javascript
-// Promise
-const promise = catalog.getCollections(page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getCollections(page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = catalog.getCollections(page_id, page_size ).safeAwait();
+}
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| page_id | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 
 A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections`
@@ -1618,86 +1525,25 @@ Error Response:
 ---
 
 
-#### Catalog#addCollectionItemsBySlug
-Add items to a collection
-
-```javascript
-// Promise
-const promise = catalog.addCollectionItemsBySlug(slug, );
-
-// Async/Await
-const data = await catalog.addCollectionItemsBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to add items into. | 
-
-Adds items to a collection specified by its `slug`. See `CollectionItemsRequest` for the list of attributes needed to add items to an collection.
-
-Success Response:
-
-
-
-Status object. Tells whether the operation was successful.
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionItemsResponse"
-}`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
 #### Catalog#getCollectionItemsBySlug
 Get the items in a collection
 
-```javascript
-// Promise
-const promise = catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = catalog.getCollectionItemsBySlug(slug, f, filters, sort_on, page_id, page_size ).safeAwait();
+}
 
 ```
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection for which you want to fetch the items | 
-| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in ``f`` parameter in this format. ``?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts`` | 
+| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts** | 
 | filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
 | sort_on | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| page_id | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 
 Get items in a collection specified by its `slug`.
@@ -1745,76 +1591,15 @@ Error Response:
 ---
 
 
-#### Catalog#deleteCollectionDetailBySlug
-Delete a Collection
-
-```javascript
-// Promise
-const promise = catalog.deleteCollectionDetailBySlug(slug, );
-
-// Async/Await
-const data = await catalog.deleteCollectionDetailBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to delete. | 
-
-Delete a collection by it's slug. Returns an object that tells whether the collection was deleted successfully
-
-Success Response:
-
-
-
-Status object. Tells whether the operation was successful. See example below or refer `CollectionDetailViewDeleteResponse`
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionDetailViewDeleteResponse"
-}`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
 #### Catalog#getCollectionDetailBySlug
 Get a particular collection
 
-```javascript
-// Promise
-const promise = catalog.getCollectionDetailBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getCollectionDetailBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = catalog.getCollectionDetailBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -1867,76 +1652,15 @@ Error Response:
 ---
 
 
-#### Catalog#updateCollectionDetailBySlug
-Update a collection
-
-```javascript
-// Promise
-const promise = catalog.updateCollectionDetailBySlug(slug, );
-
-// Async/Await
-const data = await catalog.updateCollectionDetailBySlug(slug, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
-
-Update a collection by it's slug. On successful request, returns the updated collection
-
-Success Response:
-
-
-
-The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CollectionsUpdateDetailResponse"
-}`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ErrorResponse"
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
 #### Catalog#getFollowedListing
 Get a list of followed Products, Brands, Collections
 
-```javascript
-// Promise
-const promise = catalog.getFollowedListing(collection_type, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getFollowedListing(collection_type, );
+// Await
+Globalscope.launch{
+  const data = catalog.getFollowedListing(collection_type ).safeAwait();
+}
 
 ```
 
@@ -1992,12 +1716,12 @@ Error Response:
 #### Catalog#followById
 Follow a particular Product
 
-```javascript
-// Promise
-const promise = catalog.followById(collection_type, collection_id, );
+```kotlin
 
-// Async/Await
-const data = await catalog.followById(collection_type, collection_id, );
+// Await
+Globalscope.launch{
+  const data = catalog.followById(collection_type, collection_id ).safeAwait();
+}
 
 ```
 
@@ -2054,12 +1778,12 @@ Error Response:
 #### Catalog#unfollowById
 UnFollow a Product
 
-```javascript
-// Promise
-const promise = catalog.unfollowById(collection_type, collection_id, );
+```kotlin
 
-// Async/Await
-const data = await catalog.unfollowById(collection_type, collection_id, );
+// Await
+Globalscope.launch{
+  const data = catalog.unfollowById(collection_type, collection_id ).safeAwait();
+}
 
 ```
 
@@ -2116,12 +1840,12 @@ Error Response:
 #### Catalog#getFollowerCountById
 Get Follow Count
 
-```javascript
-// Promise
-const promise = catalog.getFollowerCountById(collection_type, collection_id, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getFollowerCountById(collection_type, collection_id, );
+// Await
+Globalscope.launch{
+  const data = catalog.getFollowerCountById(collection_type, collection_id ).safeAwait();
+}
 
 ```
 
@@ -2178,12 +1902,12 @@ Error Response:
 #### Catalog#getFollowIds
 Get the Ids of followed product, brand and collection.
 
-```javascript
-// Promise
-const promise = catalog.getFollowIds(collection_type, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getFollowIds(collection_type, );
+// Await
+Globalscope.launch{
+  const data = catalog.getFollowIds(collection_type ).safeAwait();
+}
 
 ```
 
@@ -2239,12 +1963,12 @@ Error Response:
 #### Catalog#getStores
 List store meta information.
 
-```javascript
-// Promise
-const promise = catalog.getStores(page_no, page_size, q, range, latitude, longitude, );
+```kotlin
 
-// Async/Await
-const data = await catalog.getStores(page_no, page_size, q, range, latitude, longitude, );
+// Await
+Globalscope.launch{
+  const data = catalog.getStores(page_no, page_size, q, range, latitude, longitude ).safeAwait();
+}
 
 ```
 
@@ -2308,13 +2032,23 @@ Error Response:
 
 ## Cart
 
-```javascript
-const { Configuration, Cart } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const cart = new Cart(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val cart = applicationClient.cart
+    }
 
 ```
 
@@ -2322,12 +2056,12 @@ const cart = new Cart(conf);
 #### Cart#getCart
 Fetch all Items Added to  Cart
 
-```javascript
-// Promise
-const promise = cart.getCart(uid, assign_card_id, );
+```kotlin
 
-// Async/Await
-const data = await cart.getCart(uid, assign_card_id, );
+// Await
+Globalscope.launch{
+  const data = cart.getCart(uid, assign_card_id ).safeAwait();
+}
 
 ```
 
@@ -2368,12 +2102,12 @@ Error Response:
 #### Cart#getCartLastModified
 Fetch Last-Modified timestamp
 
-```javascript
-// Promise
-const promise = cart.getCartLastModified(uid, );
+```kotlin
 
-// Async/Await
-const data = await cart.getCartLastModified(uid, );
+// Await
+Globalscope.launch{
+  const data = cart.getCartLastModified(uid ).safeAwait();
+}
 
 ```
 
@@ -2403,12 +2137,12 @@ Error Response:
 #### Cart#addItems
 Add Items to Cart
 
-```javascript
-// Promise
-const promise = cart.addItems();
+```kotlin
 
-// Async/Await
-const data = await cart.addItems();
+// Await
+Globalscope.launch{
+  const data = cart.addItems().safeAwait();
+}
 
 ```
 
@@ -3080,12 +2814,12 @@ Error Response:
 #### Cart#updateCart
 Update Items already added to Cart
 
-```javascript
-// Promise
-const promise = cart.updateCart();
+```kotlin
 
-// Async/Await
-const data = await cart.updateCart();
+// Await
+Globalscope.launch{
+  const data = cart.updateCart().safeAwait();
+}
 
 ```
 
@@ -3486,12 +3220,12 @@ Error Response:
 #### Cart#getItemCount
 Cart item count
 
-```javascript
-// Promise
-const promise = cart.getItemCount(uid, );
+```kotlin
 
-// Async/Await
-const data = await cart.getItemCount(uid, );
+// Await
+Globalscope.launch{
+  const data = cart.getItemCount(uid ).safeAwait();
+}
 
 ```
 
@@ -3531,12 +3265,12 @@ Error Response:
 #### Cart#getCoupons
 Fetch Coupon
 
-```javascript
-// Promise
-const promise = cart.getCoupons(uid, );
+```kotlin
 
-// Async/Await
-const data = await cart.getCoupons(uid, );
+// Await
+Globalscope.launch{
+  const data = cart.getCoupons(uid ).safeAwait();
+}
 
 ```
 
@@ -3576,12 +3310,12 @@ Error Response:
 #### Cart#applyCoupon
 Apply Coupon
 
-```javascript
-// Promise
-const promise = cart.applyCoupon(i, b, p, );
+```kotlin
 
-// Async/Await
-const data = await cart.applyCoupon(i, b, p, );
+// Await
+Globalscope.launch{
+  const data = cart.applyCoupon(i, b, p ).safeAwait();
+}
 
 ```
 
@@ -3624,12 +3358,12 @@ Error Response:
 #### Cart#removeCoupon
 Remove Coupon Applied
 
-```javascript
-// Promise
-const promise = cart.removeCoupon(uid, );
+```kotlin
 
-// Async/Await
-const data = await cart.removeCoupon(uid, );
+// Await
+Globalscope.launch{
+  const data = cart.removeCoupon(uid ).safeAwait();
+}
 
 ```
 
@@ -3669,12 +3403,12 @@ Error Response:
 #### Cart#getBulkDiscountOffers
 Get discount offers based on quantity
 
-```javascript
-// Promise
-const promise = cart.getBulkDiscountOffers(item_id, article_id, uid, slug, );
+```kotlin
 
-// Async/Await
-const data = await cart.getBulkDiscountOffers(item_id, article_id, uid, slug, );
+// Await
+Globalscope.launch{
+  const data = cart.getBulkDiscountOffers(item_id, article_id, uid, slug ).safeAwait();
+}
 
 ```
 
@@ -3809,12 +3543,12 @@ Error Response:
 #### Cart#getAddresses
 Fetch Address
 
-```javascript
-// Promise
-const promise = cart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+```kotlin
 
-// Async/Await
-const data = await cart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+// Await
+Globalscope.launch{
+  const data = cart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
+}
 
 ```
 
@@ -3858,12 +3592,12 @@ Error Response:
 #### Cart#addAddress
 Add Address to the account
 
-```javascript
-// Promise
-const promise = cart.addAddress();
+```kotlin
 
-// Async/Await
-const data = await cart.addAddress();
+// Await
+Globalscope.launch{
+  const data = cart.addAddress().safeAwait();
+}
 
 ```
 
@@ -3902,12 +3636,12 @@ Error Response:
 #### Cart#getAddressById
 Fetch Single Address
 
-```javascript
-// Promise
-const promise = cart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+```kotlin
 
-// Async/Await
-const data = await cart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+// Await
+Globalscope.launch{
+  const data = cart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
+}
 
 ```
 
@@ -3952,12 +3686,12 @@ Error Response:
 #### Cart#updateAddress
 Update Address alreay added to account
 
-```javascript
-// Promise
-const promise = cart.updateAddress(id, );
+```kotlin
 
-// Async/Await
-const data = await cart.updateAddress(id, );
+// Await
+Globalscope.launch{
+  const data = cart.updateAddress(id ).safeAwait();
+}
 
 ```
 
@@ -3997,12 +3731,12 @@ Error Response:
 #### Cart#removeAddress
 Remove Address Associated to the account
 
-```javascript
-// Promise
-const promise = cart.removeAddress(id, );
+```kotlin
 
-// Async/Await
-const data = await cart.removeAddress(id, );
+// Await
+Globalscope.launch{
+  const data = cart.removeAddress(id ).safeAwait();
+}
 
 ```
 
@@ -4042,12 +3776,12 @@ Error Response:
 #### Cart#selectAddress
 Select Address from All Addresses
 
-```javascript
-// Promise
-const promise = cart.selectAddress();
+```kotlin
 
-// Async/Await
-const data = await cart.selectAddress();
+// Await
+Globalscope.launch{
+  const data = cart.selectAddress().safeAwait();
+}
 
 ```
 
@@ -4134,12 +3868,12 @@ Error Response:
 #### Cart#getPaymentModes
 Get Cart Payment for valid coupon
 
-```javascript
-// Promise
-const promise = cart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code, );
+```kotlin
 
-// Async/Await
-const data = await cart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code, );
+// Await
+Globalscope.launch{
+  const data = cart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code ).safeAwait();
+}
 
 ```
 
@@ -4184,12 +3918,12 @@ Error Response:
 #### Cart#selectPaymentMode
 Update Cart Payment
 
-```javascript
-// Promise
-const promise = cart.selectPaymentMode(uid, );
+```kotlin
 
-// Async/Await
-const data = await cart.selectPaymentMode(uid, );
+// Await
+Globalscope.launch{
+  const data = cart.selectPaymentMode(uid ).safeAwait();
+}
 
 ```
 
@@ -4229,12 +3963,12 @@ Error Response:
 #### Cart#getShipments
 Get delivery date and options before checkout
 
-```javascript
-// Promise
-const promise = cart.getShipments(p, uid, address_id, );
+```kotlin
 
-// Async/Await
-const data = await cart.getShipments(p, uid, address_id, );
+// Await
+Globalscope.launch{
+  const data = cart.getShipments(p, uid, address_id ).safeAwait();
+}
 
 ```
 
@@ -4937,12 +4671,12 @@ Error Response:
 #### Cart#checkoutCart
 Checkout Cart
 
-```javascript
-// Promise
-const promise = cart.checkoutCart();
+```kotlin
 
-// Async/Await
-const data = await cart.checkoutCart();
+// Await
+Globalscope.launch{
+  const data = cart.checkoutCart().safeAwait();
+}
 
 ```
 
@@ -5358,12 +5092,12 @@ Error Response:
 #### Cart#updateCartMeta
 Update Cart Meta
 
-```javascript
-// Promise
-const promise = cart.updateCartMeta(uid, );
+```kotlin
 
-// Async/Await
-const data = await cart.updateCartMeta(uid, );
+// Await
+Globalscope.launch{
+  const data = cart.updateCartMeta(uid ).safeAwait();
+}
 
 ```
 
@@ -5419,12 +5153,12 @@ Error Response:
 #### Cart#getCartShareLink
 Generate Cart sharing link token
 
-```javascript
-// Promise
-const promise = cart.getCartShareLink();
+```kotlin
 
-// Async/Await
-const data = await cart.getCartShareLink();
+// Await
+Globalscope.launch{
+  const data = cart.getCartShareLink().safeAwait();
+}
 
 ```
 
@@ -5477,12 +5211,12 @@ Error Response:
 #### Cart#getCartSharedItems
 Get shared cart snapshot and cart response
 
-```javascript
-// Promise
-const promise = cart.getCartSharedItems(token, );
+```kotlin
 
-// Async/Await
-const data = await cart.getCartSharedItems(token, );
+// Await
+Globalscope.launch{
+  const data = cart.getCartSharedItems(token ).safeAwait();
+}
 
 ```
 
@@ -5538,12 +5272,12 @@ Error Response:
 #### Cart#updateCartWithSharedItems
 Merge or Replace existing cart
 
-```javascript
-// Promise
-const promise = cart.updateCartWithSharedItems(token, action, );
+```kotlin
 
-// Async/Await
-const data = await cart.updateCartWithSharedItems(token, action, );
+// Await
+Globalscope.launch{
+  const data = cart.updateCartWithSharedItems(token, action ).safeAwait();
+}
 
 ```
 
@@ -5873,13 +5607,23 @@ Error Response:
 
 ## Lead
 
-```javascript
-const { Configuration, Lead } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const lead = new Lead(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val lead = applicationClient.lead
+    }
 
 ```
 
@@ -5887,12 +5631,12 @@ const lead = new Lead(conf);
 #### Lead#getTicket
 Get Ticket with the specific id
 
-```javascript
-// Promise
-const promise = lead.getTicket(id, );
+```kotlin
 
-// Async/Await
-const data = await lead.getTicket(id, );
+// Await
+Globalscope.launch{
+  const data = lead.getTicket(id ).safeAwait();
+}
 
 ```
 
@@ -6134,12 +5878,12 @@ Error Response:
 #### Lead#createHistoryForTicket
 Create history for specific Ticket
 
-```javascript
-// Promise
-const promise = lead.createHistoryForTicket(ticket_id, );
+```kotlin
 
-// Async/Await
-const data = await lead.createHistoryForTicket(ticket_id, );
+// Await
+Globalscope.launch{
+  const data = lead.createHistoryForTicket(ticket_id ).safeAwait();
+}
 
 ```
 
@@ -6224,12 +5968,12 @@ Error Response:
 #### Lead#createTicket
 Create Ticket
 
-```javascript
-// Promise
-const promise = lead.createTicket();
+```kotlin
 
-// Async/Await
-const data = await lead.createTicket();
+// Await
+Globalscope.launch{
+  const data = lead.createTicket().safeAwait();
+}
 
 ```
 
@@ -6470,12 +6214,12 @@ Error Response:
 #### Lead#getCustomForm
 Get specific Custom Form using it's slug
 
-```javascript
-// Promise
-const promise = lead.getCustomForm(slug, );
+```kotlin
 
-// Async/Await
-const data = await lead.getCustomForm(slug, );
+// Await
+Globalscope.launch{
+  const data = lead.getCustomForm(slug ).safeAwait();
+}
 
 ```
 
@@ -6570,12 +6314,12 @@ Error Response:
 #### Lead#submitCustomForm
 Submit Response for a specific Custom Form using it's slug
 
-```javascript
-// Promise
-const promise = lead.submitCustomForm(slug, );
+```kotlin
 
-// Async/Await
-const data = await lead.submitCustomForm(slug, );
+// Await
+Globalscope.launch{
+  const data = lead.submitCustomForm(slug ).safeAwait();
+}
 
 ```
 
@@ -6819,12 +6563,12 @@ Error Response:
 #### Lead#getParticipantsInsideVideoRoom
 Get participants of a specific Video Room using it's unique name
 
-```javascript
-// Promise
-const promise = lead.getParticipantsInsideVideoRoom(unique_name, );
+```kotlin
 
-// Async/Await
-const data = await lead.getParticipantsInsideVideoRoom(unique_name, );
+// Await
+Globalscope.launch{
+  const data = lead.getParticipantsInsideVideoRoom(unique_name ).safeAwait();
+}
 
 ```
 
@@ -6877,12 +6621,12 @@ Error Response:
 #### Lead#getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
-```javascript
-// Promise
-const promise = lead.getTokenForVideoRoom(unique_name, );
+```kotlin
 
-// Async/Await
-const data = await lead.getTokenForVideoRoom(unique_name, );
+// Await
+Globalscope.launch{
+  const data = lead.getTokenForVideoRoom(unique_name ).safeAwait();
+}
 
 ```
 
@@ -6938,13 +6682,23 @@ Error Response:
 
 ## Theme
 
-```javascript
-const { Configuration, Theme } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const theme = new Theme(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val theme = applicationClient.theme
+    }
 
 ```
 
@@ -6952,12 +6706,12 @@ const theme = new Theme(conf);
 #### Theme#getAppliedTheme
 Get applied theme for an application
 
-```javascript
-// Promise
-const promise = theme.getAppliedTheme();
+```kotlin
 
-// Async/Await
-const data = await theme.getAppliedTheme();
+// Await
+Globalscope.launch{
+  const data = theme.getAppliedTheme().safeAwait();
+}
 
 ```
 
@@ -7019,12 +6773,12 @@ Error Response:
 #### Theme#getThemeForPreview
 Get theme for preview
 
-```javascript
-// Promise
-const promise = theme.getThemeForPreview(theme_id, );
+```kotlin
 
-// Async/Await
-const data = await theme.getThemeForPreview(theme_id, );
+// Await
+Globalscope.launch{
+  const data = theme.getThemeForPreview(theme_id ).safeAwait();
+}
 
 ```
 
@@ -7088,2078 +6842,25 @@ Error Response:
 ---
 
 
-## User
-
-```javascript
-const { Configuration, User } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const user = new User(conf);
-
-```
-
-
-#### User#loginWithFacebook
-Login/Register with Facebook
-
-```javascript
-// Promise
-const promise = user.loginWithFacebook();
-
-// Async/Await
-const data = await user.loginWithFacebook();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to login or register with Facebook
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/AuthSuccess"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#loginWithGoogle
-Login/Register with Google
-
-```javascript
-// Promise
-const promise = user.loginWithGoogle();
-
-// Async/Await
-const data = await user.loginWithGoogle();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to login or register with Google
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/AuthSuccess"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#loginWithGoogleAndroid
-Login/Register with Google for android
-
-```javascript
-// Promise
-const promise = user.loginWithGoogleAndroid();
-
-// Async/Await
-const data = await user.loginWithGoogleAndroid();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to login or register with Google for android
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/AuthSuccess"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#loginWithGoogleIOS
-Login/Register with Google for ios
-
-```javascript
-// Promise
-const promise = user.loginWithGoogleIOS();
-
-// Async/Await
-const data = await user.loginWithGoogleIOS();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to login or register with google for ios
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/AuthSuccess"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/AuthSuccess"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#loginWithOTP
-Login/Register with OTP
-
-```javascript
-// Promise
-const promise = user.loginWithOTP(platform, );
-
-// Async/Await
-const data = await user.loginWithOTP(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to login or register with OTP
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SendOtpResponse"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/SendOtpResponse"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#loginWithEmailAndPassword
-Login/Register with password
-
-```javascript
-// Promise
-const promise = user.loginWithEmailAndPassword();
-
-// Async/Await
-const data = await user.loginWithEmailAndPassword();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to login or register with email & password
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#sendResetPasswordEmail
-Reset Password
-
-```javascript
-// Promise
-const promise = user.sendResetPasswordEmail(platform, );
-
-// Async/Await
-const data = await user.sendResetPasswordEmail(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to reset account password
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ResetPasswordSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#forgotPassword
-
-
-```javascript
-// Promise
-const promise = user.forgotPassword();
-
-// Async/Await
-const data = await user.forgotPassword();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#sendResetToken
-
-
-```javascript
-// Promise
-const promise = user.sendResetToken();
-
-// Async/Await
-const data = await user.sendResetToken();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Send code incase of reset password
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/ResetPasswordSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#loginWithToken
-Login/Register with token
-
-```javascript
-// Promise
-const promise = user.loginWithToken();
-
-// Async/Await
-const data = await user.loginWithToken();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Login/Register with token
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-Success
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "message": {
-      "type": "string"
-    }
-  }
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#registerWithForm
-Registration Form
-
-```javascript
-// Promise
-const promise = user.registerWithForm(platform, );
-
-// Async/Await
-const data = await user.registerWithForm(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Register using form
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/RegisterFormSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#verifyEmail
-Verify email
-
-```javascript
-// Promise
-const promise = user.verifyEmail();
-
-// Async/Await
-const data = await user.verifyEmail();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to verify email
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#verifyMobile
-Verify mobile
-
-```javascript
-// Promise
-const promise = user.verifyMobile();
-
-// Async/Await
-const data = await user.verifyMobile();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Verify mobile
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#hasPassword
-Check if user has password
-
-```javascript
-// Promise
-const promise = user.hasPassword();
-
-// Async/Await
-const data = await user.hasPassword();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Checks if user is using password or not
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/HasPasswordSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#updatePassword
-Update user password
-
-```javascript
-// Promise
-const promise = user.updatePassword();
-
-// Async/Await
-const data = await user.updatePassword();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to update user password
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#logout
-Logout user
-
-```javascript
-// Promise
-const promise = user.logout();
-
-// Async/Await
-const data = await user.logout();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to log out user
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LogoutSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#sendOTPOnMobile
-Send OTP on mobile
-
-```javascript
-// Promise
-const promise = user.sendOTPOnMobile(platform, );
-
-// Async/Await
-const data = await user.sendOTPOnMobile(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to send otp to mobile
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/OtpSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#verifyMobileOTP
-Verify OTP on mobile
-
-```javascript
-// Promise
-const promise = user.verifyMobileOTP(platform, );
-
-// Async/Await
-const data = await user.verifyMobileOTP(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to verify otp sent to mobile
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyOtpSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/VerifyMobileOTP"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#sendOTPOnEmail
-Send OTP on email
-
-```javascript
-// Promise
-const promise = user.sendOTPOnEmail(platform, );
-
-// Async/Await
-const data = await user.sendOTPOnEmail(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to send otp to email
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/EmailOtpSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#verifyEmailOTP
-Verify OTP on email
-
-```javascript
-// Promise
-const promise = user.verifyEmailOTP(platform, );
-
-// Async/Await
-const data = await user.verifyEmailOTP(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to verify otp sent to email
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyOtpSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/VerifyMobileOTP"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#getLoggedInUser
-Get logged in user
-
-```javascript
-// Promise
-const promise = user.getLoggedInUser();
-
-// Async/Await
-const data = await user.getLoggedInUser();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to get logged in user details
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/UserSchema"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/UserExample"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#getListOfActiveSessions
-Get list of sessions
-
-```javascript
-// Promise
-const promise = user.getListOfActiveSessions();
-
-// Async/Await
-const data = await user.getListOfActiveSessions();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Lists all active sessions
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SessionListSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#getPlatformConfig
-Get platform config
-
-```javascript
-// Promise
-const promise = user.getPlatformConfig(name, );
-
-// Async/Await
-const data = await user.getPlatformConfig(name, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| name | string | Name | 
-
-Used to get platform config
-
-Success Response:
-
-
-
-Platform Config
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/PlatformSchema"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#updateProfile
-Edit Profile Details
-
-```javascript
-// Promise
-const promise = user.updateProfile(platform, );
-
-// Async/Await
-const data = await user.updateProfile(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to update profile
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#addMobileNumber
-Add mobile number to profile
-
-```javascript
-// Promise
-const promise = user.addMobileNumber(platform, );
-
-// Async/Await
-const data = await user.addMobileNumber(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to add new mobile number to profile
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyMobileOTPSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/VerifyMobileOTP"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#deleteMobileNumber
-Delete mobile number from profile
-
-```javascript
-// Promise
-const promise = user.deleteMobileNumber(platform, active, primary, verified, country_code, phone, );
-
-// Async/Await
-const data = await user.deleteMobileNumber(platform, active, primary, verified, country_code, phone, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-| active | boolean | Active mobile number | 
-| primary | boolean | Primary number | 
-| verified | boolean | Verified Number | 
-| country_code | string | Country code of phone number | 
-| phone | string | Phone number | 
-
-Used to delete mobile number from profile
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#setMobileNumberAsPrimary
-Set mobile as primary
-
-```javascript
-// Promise
-const promise = user.setMobileNumberAsPrimary();
-
-// Async/Await
-const data = await user.setMobileNumberAsPrimary();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to set a mobile number as primary
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#sendVerificationLinkToMobile
-Send verification link to mobile
-
-```javascript
-// Promise
-const promise = user.sendVerificationLinkToMobile(platform, );
-
-// Async/Await
-const data = await user.sendVerificationLinkToMobile(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to send verification link to a mobile number
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SendMobileVerifyLinkSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/VerifyMobileOTP"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#addEmail
-Add email to profile
-
-```javascript
-// Promise
-const promise = user.addEmail(platform, );
-
-// Async/Await
-const data = await user.addEmail(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to add new email to profile
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/VerifyEmailOTPSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/VerifyEmailOTP"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#deleteEmail
-Delete email from profile
-
-```javascript
-// Promise
-const promise = user.deleteEmail(platform, active, primary, verified, email, );
-
-// Async/Await
-const data = await user.deleteEmail(platform, active, primary, verified, email, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-| active | boolean | Whether email id is active | 
-| primary | boolean | Whether email id is primary email | 
-| verified | boolean | Whether email id is verified | 
-| email | string | Email ID to be deleted | 
-
-Used to delete email from profile
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#setEmailAsPrimary
-Set email as primary
-
-```javascript
-// Promise
-const promise = user.setEmailAsPrimary();
-
-// Async/Await
-const data = await user.setEmailAsPrimary();
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Used to set an email as primart
-
-Success Response:
-
-
-
-A JSON object with user details
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/LoginSuccess"
-}`
-
-
-Examples: 
-
-
-default
-```javascript
-{
-  "$ref": "#/components/examples/UserExampleObject"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-#### User#sendVerificationLinkToEmail
-Send verification link to email
-
-```javascript
-// Promise
-const promise = user.sendVerificationLinkToEmail(platform, );
-
-// Async/Await
-const data = await user.sendVerificationLinkToEmail(platform, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| platform | string | Platform | 
-
-Used to sent verification to an email
-
-Success Response:
-
-
-
-
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/SendEmailVerifyLinkSuccess"
-}`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
-
----
-
-
 ## Content
 
-```javascript
-const { Configuration, Content } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const content = new Content(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val content = applicationClient.content
+    }
 
 ```
 
@@ -9167,12 +6868,12 @@ const content = new Content(conf);
 #### Content#getAnnouncements
 Get live announcements
 
-```javascript
-// Promise
-const promise = content.getAnnouncements();
+```kotlin
 
-// Async/Await
-const data = await content.getAnnouncements();
+// Await
+Globalscope.launch{
+  const data = content.getAnnouncements().safeAwait();
+}
 
 ```
 
@@ -9245,12 +6946,12 @@ Error Response:
 #### Content#getBlog
 Get Blog by slug
 
-```javascript
-// Promise
-const promise = content.getBlog(slug, );
+```kotlin
 
-// Async/Await
-const data = await content.getBlog(slug, );
+// Await
+Globalscope.launch{
+  const data = content.getBlog(slug ).safeAwait();
+}
 
 ```
 
@@ -9313,12 +7014,12 @@ Error Response:
 #### Content#getFaqs
 Get frequently asked questions
 
-```javascript
-// Promise
-const promise = content.getFaqs();
+```kotlin
 
-// Async/Await
-const data = await content.getFaqs();
+// Await
+Globalscope.launch{
+  const data = content.getFaqs().safeAwait();
+}
 
 ```
 
@@ -9380,12 +7081,12 @@ Error Response:
 #### Content#getLandingPage
 Get landing page
 
-```javascript
-// Promise
-const promise = content.getLandingPage(x-device-platform, );
+```kotlin
 
-// Async/Await
-const data = await content.getLandingPage(x-device-platform, );
+// Await
+Globalscope.launch{
+  const data = content.getLandingPage(x-device-platform ).safeAwait();
+}
 
 ```
 
@@ -9448,12 +7149,12 @@ Error Response:
 #### Content#getLegalInformation
 Get legal information
 
-```javascript
-// Promise
-const promise = content.getLegalInformation();
+```kotlin
 
-// Async/Await
-const data = await content.getLegalInformation();
+// Await
+Globalscope.launch{
+  const data = content.getLegalInformation().safeAwait();
+}
 
 ```
 
@@ -9515,12 +7216,12 @@ Error Response:
 #### Content#getNavigations
 Get navigation
 
-```javascript
-// Promise
-const promise = content.getNavigations(x-device-platform, );
+```kotlin
 
-// Async/Await
-const data = await content.getNavigations(x-device-platform, );
+// Await
+Globalscope.launch{
+  const data = content.getNavigations(x-device-platform ).safeAwait();
+}
 
 ```
 
@@ -9583,12 +7284,12 @@ Error Response:
 #### Content#getPage
 Get Page by slug
 
-```javascript
-// Promise
-const promise = content.getPage(slug, );
+```kotlin
 
-// Async/Await
-const data = await content.getPage(slug, );
+// Await
+Globalscope.launch{
+  const data = content.getPage(slug ).safeAwait();
+}
 
 ```
 
@@ -9651,12 +7352,12 @@ Error Response:
 #### Content#getSeoConfiguration
 Get seo of application
 
-```javascript
-// Promise
-const promise = content.getSeoConfiguration();
+```kotlin
 
-// Async/Await
-const data = await content.getSeoConfiguration();
+// Await
+Globalscope.launch{
+  const data = content.getSeoConfiguration().safeAwait();
+}
 
 ```
 
@@ -9718,12 +7419,12 @@ Error Response:
 #### Content#getSlideshow
 Get slideshow by slug
 
-```javascript
-// Promise
-const promise = content.getSlideshow(slug, x-device-platform, );
+```kotlin
 
-// Async/Await
-const data = await content.getSlideshow(slug, x-device-platform, );
+// Await
+Globalscope.launch{
+  const data = content.getSlideshow(slug, x-device-platform ).safeAwait();
+}
 
 ```
 
@@ -9787,12 +7488,12 @@ Error Response:
 #### Content#getSupportInformation
 Get support information
 
-```javascript
-// Promise
-const promise = content.getSupportInformation();
+```kotlin
 
-// Async/Await
-const data = await content.getSupportInformation();
+// Await
+Globalscope.launch{
+  const data = content.getSupportInformation().safeAwait();
+}
 
 ```
 
@@ -9854,12 +7555,12 @@ Error Response:
 #### Content#getTags
 Get Tags for application
 
-```javascript
-// Promise
-const promise = content.getTags();
+```kotlin
 
-// Async/Await
-const data = await content.getTags();
+// Await
+Globalscope.launch{
+  const data = content.getTags().safeAwait();
+}
 
 ```
 
@@ -9913,13 +7614,23 @@ Error Response:
 
 ## Communication
 
-```javascript
-const { Configuration, Communication } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const communication = new Communication(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val communication = applicationClient.communication
+    }
 
 ```
 
@@ -9927,12 +7638,12 @@ const communication = new Communication(conf);
 #### Communication#getCommunicationConsent
 Get communication consent
 
-```javascript
-// Promise
-const promise = communication.getCommunicationConsent();
+```kotlin
 
-// Async/Await
-const data = await communication.getCommunicationConsent();
+// Await
+Globalscope.launch{
+  const data = communication.getCommunicationConsent().safeAwait();
+}
 
 ```
 
@@ -9982,12 +7693,12 @@ Error Response:
 #### Communication#upsertCommunicationConsent
 Upsert communication consent
 
-```javascript
-// Promise
-const promise = communication.upsertCommunicationConsent();
+```kotlin
 
-// Async/Await
-const data = await communication.upsertCommunicationConsent();
+// Await
+Globalscope.launch{
+  const data = communication.upsertCommunicationConsent().safeAwait();
+}
 
 ```
 
@@ -10053,12 +7764,12 @@ Error Response:
 #### Communication#upsertPushtoken
 Upsert push token of a user
 
-```javascript
-// Promise
-const promise = communication.upsertPushtoken();
+```kotlin
 
-// Async/Await
-const data = await communication.upsertPushtoken();
+// Await
+Globalscope.launch{
+  const data = communication.upsertPushtoken().safeAwait();
+}
 
 ```
 
@@ -10141,13 +7852,23 @@ Error Response:
 
 ## Share
 
-```javascript
-const { Configuration, Share } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const share = new Share(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val share = applicationClient.share
+    }
 
 ```
 
@@ -10155,12 +7876,12 @@ const share = new Share(conf);
 #### Share#getApplicationQRCode
 Create application QR Code
 
-```javascript
-// Promise
-const promise = share.getApplicationQRCode();
+```kotlin
 
-// Async/Await
-const data = await share.getApplicationQRCode();
+// Await
+Globalscope.launch{
+  const data = share.getApplicationQRCode().safeAwait();
+}
 
 ```
 
@@ -10199,12 +7920,12 @@ Error Response:
 #### Share#getProductQRCodeBySlug
 Create product QR Code
 
-```javascript
-// Promise
-const promise = share.getProductQRCodeBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await share.getProductQRCodeBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = share.getProductQRCodeBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -10244,12 +7965,12 @@ Error Response:
 #### Share#getCollectionQRCodeBySlug
 Create collection QR Code
 
-```javascript
-// Promise
-const promise = share.getCollectionQRCodeBySlug(slug, );
+```kotlin
 
-// Async/Await
-const data = await share.getCollectionQRCodeBySlug(slug, );
+// Await
+Globalscope.launch{
+  const data = share.getCollectionQRCodeBySlug(slug ).safeAwait();
+}
 
 ```
 
@@ -10289,12 +8010,12 @@ Error Response:
 #### Share#getUrlQRCode
 Create url QR Code
 
-```javascript
-// Promise
-const promise = share.getUrlQRCode(url, );
+```kotlin
 
-// Async/Await
-const data = await share.getUrlQRCode(url, );
+// Await
+Globalscope.launch{
+  const data = share.getUrlQRCode(url ).safeAwait();
+}
 
 ```
 
@@ -10334,12 +8055,12 @@ Error Response:
 #### Share#createShortLink
 Create short link
 
-```javascript
-// Promise
-const promise = share.createShortLink();
+```kotlin
 
-// Async/Await
-const data = await share.createShortLink();
+// Await
+Globalscope.launch{
+  const data = share.createShortLink().safeAwait();
+}
 
 ```
 
@@ -10378,12 +8099,12 @@ Error Response:
 #### Share#getShortLinkByHash
 Get short link by hash
 
-```javascript
-// Promise
-const promise = share.getShortLinkByHash(hash, );
+```kotlin
 
-// Async/Await
-const data = await share.getShortLinkByHash(hash, );
+// Await
+Globalscope.launch{
+  const data = share.getShortLinkByHash(hash ).safeAwait();
+}
 
 ```
 
@@ -10423,12 +8144,12 @@ Error Response:
 #### Share#getOriginalShortLinkByHash
 Get original link by hash
 
-```javascript
-// Promise
-const promise = share.getOriginalShortLinkByHash(hash, );
+```kotlin
 
-// Async/Await
-const data = await share.getOriginalShortLinkByHash(hash, );
+// Await
+Globalscope.launch{
+  const data = share.getOriginalShortLinkByHash(hash ).safeAwait();
+}
 
 ```
 
@@ -10471,13 +8192,23 @@ Error Response:
 
 ## FileStorage
 
-```javascript
-const { Configuration, FileStorage } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const filestorage = new FileStorage(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val filestorage = applicationClient.filestorage
+    }
 
 ```
 
@@ -10485,12 +8216,12 @@ const filestorage = new FileStorage(conf);
 #### FileStorage#completeUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
-```javascript
-// Promise
-const promise = filestorage.completeUpload(namespace, company_id, );
+```kotlin
 
-// Async/Await
-const data = await filestorage.completeUpload(namespace, company_id, );
+// Await
+Globalscope.launch{
+  const data = filestorage.completeUpload(namespace, company_id ).safeAwait();
+}
 
 ```
 
@@ -10565,12 +8296,12 @@ Error Response:
 #### FileStorage#startUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
-```javascript
-// Promise
-const promise = filestorage.startUpload(namespace, company_id, );
+```kotlin
 
-// Async/Await
-const data = await filestorage.startUpload(namespace, company_id, );
+// Await
+Globalscope.launch{
+  const data = filestorage.startUpload(namespace, company_id ).safeAwait();
+}
 
 ```
 
@@ -10648,13 +8379,23 @@ Error Response:
 
 ## Payment
 
-```javascript
-const { Configuration, Payment } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const payment = new Payment(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val payment = applicationClient.payment
+    }
 
 ```
 
@@ -10662,12 +8403,12 @@ const payment = new Payment(conf);
 #### Payment#getAggregatorsConfig
 Get payment gateway keys
 
-```javascript
-// Promise
-const promise = payment.getAggregatorsConfig(x-api-token, refresh, );
+```kotlin
 
-// Async/Await
-const data = await payment.getAggregatorsConfig(x-api-token, refresh, );
+// Await
+Globalscope.launch{
+  const data = payment.getAggregatorsConfig(x-api-token, refresh ).safeAwait();
+}
 
 ```
 
@@ -10740,12 +8481,12 @@ Error Response:
 #### Payment#attachCardToCustomer
 Attach a saved card to customer.
 
-```javascript
-// Promise
-const promise = payment.attachCardToCustomer();
+```kotlin
 
-// Async/Await
-const data = await payment.attachCardToCustomer();
+// Await
+Globalscope.launch{
+  const data = payment.attachCardToCustomer().safeAwait();
+}
 
 ```
 
@@ -10812,12 +8553,12 @@ Error Response:
 #### Payment#getActiveCardAggregator
 Fetch active payment gateway for card
 
-```javascript
-// Promise
-const promise = payment.getActiveCardAggregator(refresh, );
+```kotlin
 
-// Async/Await
-const data = await payment.getActiveCardAggregator(refresh, );
+// Await
+Globalscope.launch{
+  const data = payment.getActiveCardAggregator(refresh ).safeAwait();
+}
 
 ```
 
@@ -10889,12 +8630,12 @@ Error Response:
 #### Payment#getActiveUserCards
 Fetch the list of saved cards of user.
 
-```javascript
-// Promise
-const promise = payment.getActiveUserCards(force_refresh, );
+```kotlin
 
-// Async/Await
-const data = await payment.getActiveUserCards(force_refresh, );
+// Await
+Globalscope.launch{
+  const data = payment.getActiveUserCards(force_refresh ).safeAwait();
+}
 
 ```
 
@@ -10966,12 +8707,12 @@ Error Response:
 #### Payment#deleteUserCard
 Delete an user card.
 
-```javascript
-// Promise
-const promise = payment.deleteUserCard();
+```kotlin
 
-// Async/Await
-const data = await payment.deleteUserCard();
+// Await
+Globalscope.launch{
+  const data = payment.deleteUserCard().safeAwait();
+}
 
 ```
 
@@ -11042,12 +8783,12 @@ Error Response:
 #### Payment#verifyCustomerForPayment
 Validate customer for payment.
 
-```javascript
-// Promise
-const promise = payment.verifyCustomerForPayment();
+```kotlin
 
-// Async/Await
-const data = await payment.verifyCustomerForPayment();
+// Await
+Globalscope.launch{
+  const data = payment.verifyCustomerForPayment().safeAwait();
+}
 
 ```
 
@@ -11118,12 +8859,12 @@ Error Response:
 #### Payment#verifyAndChargePayment
 Verify and charge payment
 
-```javascript
-// Promise
-const promise = payment.verifyAndChargePayment();
+```kotlin
 
-// Async/Await
-const data = await payment.verifyAndChargePayment();
+// Await
+Globalscope.launch{
+  const data = payment.verifyAndChargePayment().safeAwait();
+}
 
 ```
 
@@ -11194,12 +8935,12 @@ Error Response:
 #### Payment#initialisePayment
 Payment Initialisation server to server for UPI and BharatQR.
 
-```javascript
-// Promise
-const promise = payment.initialisePayment();
+```kotlin
 
-// Async/Await
-const data = await payment.initialisePayment();
+// Await
+Globalscope.launch{
+  const data = payment.initialisePayment().safeAwait();
+}
 
 ```
 
@@ -11270,12 +9011,12 @@ Error Response:
 #### Payment#checkAndUpdatePaymentStatus
 Continous polling to check status of payment on server.
 
-```javascript
-// Promise
-const promise = payment.checkAndUpdatePaymentStatus();
+```kotlin
 
-// Async/Await
-const data = await payment.checkAndUpdatePaymentStatus();
+// Await
+Globalscope.launch{
+  const data = payment.checkAndUpdatePaymentStatus().safeAwait();
+}
 
 ```
 
@@ -11346,12 +9087,12 @@ Error Response:
 #### Payment#getPaymentModeRoutes
 Get All Valid Payment Options
 
-```javascript
-// Promise
-const promise = payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address, );
+```kotlin
 
-// Async/Await
-const data = await payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address, );
+// Await
+Globalscope.launch{
+  const data = payment.getPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, delivery_address ).safeAwait();
+}
 
 ```
 
@@ -11429,12 +9170,12 @@ Error Response:
 #### Payment#getPosPaymentModeRoutes
 Get All Valid Payment Options for POS
 
-```javascript
-// Promise
-const promise = payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address, );
+```kotlin
 
-// Async/Await
-const data = await payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address, );
+// Await
+Globalscope.launch{
+  const data = payment.getPosPaymentModeRoutes(amount, cart_id, pincode, checkout_mode, refresh, assign_card_id, order_type, delivery_address ).safeAwait();
+}
 
 ```
 
@@ -11513,12 +9254,12 @@ Error Response:
 #### Payment#getUserBeneficiariesDetail
 List User Beneficiary
 
-```javascript
-// Promise
-const promise = payment.getUserBeneficiariesDetail(order_id, );
+```kotlin
 
-// Async/Await
-const data = await payment.getUserBeneficiariesDetail(order_id, );
+// Await
+Globalscope.launch{
+  const data = payment.getUserBeneficiariesDetail(order_id ).safeAwait();
+}
 
 ```
 
@@ -11590,12 +9331,12 @@ Error Response:
 #### Payment#verifyIfscCode
 Ifsc Code Verification
 
-```javascript
-// Promise
-const promise = payment.verifyIfscCode(ifsc_code, );
+```kotlin
 
-// Async/Await
-const data = await payment.verifyIfscCode(ifsc_code, );
+// Await
+Globalscope.launch{
+  const data = payment.verifyIfscCode(ifsc_code ).safeAwait();
+}
 
 ```
 
@@ -11667,12 +9408,12 @@ Error Response:
 #### Payment#getOrderBeneficiariesDetail
 List Order Beneficiary
 
-```javascript
-// Promise
-const promise = payment.getOrderBeneficiariesDetail(order_id, );
+```kotlin
 
-// Async/Await
-const data = await payment.getOrderBeneficiariesDetail(order_id, );
+// Await
+Globalscope.launch{
+  const data = payment.getOrderBeneficiariesDetail(order_id ).safeAwait();
+}
 
 ```
 
@@ -11744,12 +9485,12 @@ Error Response:
 #### Payment#verifyOtpAndAddBeneficiaryForBank
 Save Beneficiary details on otp validation.
 
-```javascript
-// Promise
-const promise = payment.verifyOtpAndAddBeneficiaryForBank();
+```kotlin
 
-// Async/Await
-const data = await payment.verifyOtpAndAddBeneficiaryForBank();
+// Await
+Globalscope.launch{
+  const data = payment.verifyOtpAndAddBeneficiaryForBank().safeAwait();
+}
 
 ```
 
@@ -11820,12 +9561,12 @@ Error Response:
 #### Payment#addBeneficiaryDetails
 Save bank details for cancelled/returned order
 
-```javascript
-// Promise
-const promise = payment.addBeneficiaryDetails();
+```kotlin
 
-// Async/Await
-const data = await payment.addBeneficiaryDetails();
+// Await
+Globalscope.launch{
+  const data = payment.addBeneficiaryDetails().safeAwait();
+}
 
 ```
 
@@ -11896,12 +9637,12 @@ Error Response:
 #### Payment#verifyOtpAndAddBeneficiaryForWallet
 Send Otp on Adding wallet beneficiary
 
-```javascript
-// Promise
-const promise = payment.verifyOtpAndAddBeneficiaryForWallet();
+```kotlin
 
-// Async/Await
-const data = await payment.verifyOtpAndAddBeneficiaryForWallet();
+// Await
+Globalscope.launch{
+  const data = payment.verifyOtpAndAddBeneficiaryForWallet().safeAwait();
+}
 
 ```
 
@@ -11972,12 +9713,12 @@ Error Response:
 #### Payment#updateDefaultBeneficiary
 Mark Default Beneficiary For Refund
 
-```javascript
-// Promise
-const promise = payment.updateDefaultBeneficiary();
+```kotlin
 
-// Async/Await
-const data = await payment.updateDefaultBeneficiary();
+// Await
+Globalscope.launch{
+  const data = payment.updateDefaultBeneficiary().safeAwait();
+}
 
 ```
 
@@ -12051,13 +9792,23 @@ Error Response:
 
 ## Order
 
-```javascript
-const { Configuration, Order } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const order = new Order(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val order = applicationClient.order
+    }
 
 ```
 
@@ -12065,12 +9816,12 @@ const order = new Order(conf);
 #### Order#getOrders
 Get Orders for application based on application Id
 
-```javascript
-// Promise
-const promise = order.getOrders(page_no, page_size, from_date, to_date, );
+```kotlin
 
-// Async/Await
-const data = await order.getOrders(page_no, page_size, from_date, to_date, );
+// Await
+Globalscope.launch{
+  const data = order.getOrders(page_no, page_size, from_date, to_date ).safeAwait();
+}
 
 ```
 
@@ -12145,12 +9896,12 @@ Error Response:
 #### Order#getOrderById
 Get Order by order id for application based on application Id
 
-```javascript
-// Promise
-const promise = order.getOrderById(order_id, );
+```kotlin
 
-// Async/Await
-const data = await order.getOrderById(order_id, );
+// Await
+Globalscope.launch{
+  const data = order.getOrderById(order_id ).safeAwait();
+}
 
 ```
 
@@ -12222,12 +9973,12 @@ Error Response:
 #### Order#getShipmentById
 Get Shipment by shipment id and order id for application based on application Id
 
-```javascript
-// Promise
-const promise = order.getShipmentById(shipment_id, );
+```kotlin
 
-// Async/Await
-const data = await order.getShipmentById(shipment_id, );
+// Await
+Globalscope.launch{
+  const data = order.getShipmentById(shipment_id ).safeAwait();
+}
 
 ```
 
@@ -12299,12 +10050,12 @@ Error Response:
 #### Order#getShipmentReasons
 Get Shipment reasons by shipment id and order id for application based on application Id
 
-```javascript
-// Promise
-const promise = order.getShipmentReasons(shipment_id, );
+```kotlin
 
-// Async/Await
-const data = await order.getShipmentReasons(shipment_id, );
+// Await
+Globalscope.launch{
+  const data = order.getShipmentReasons(shipment_id ).safeAwait();
+}
 
 ```
 
@@ -12376,12 +10127,12 @@ Error Response:
 #### Order#updateShipmentStatus
 Update Shipment status by shipment id and order id for application based on application Id
 
-```javascript
-// Promise
-const promise = order.updateShipmentStatus(shipment_id, );
+```kotlin
 
-// Async/Await
-const data = await order.updateShipmentStatus(shipment_id, );
+// Await
+Globalscope.launch{
+  const data = order.updateShipmentStatus(shipment_id ).safeAwait();
+}
 
 ```
 
@@ -12453,12 +10204,12 @@ Error Response:
 #### Order#trackShipment
 Track Shipment by shipment id and order id for application based on application Id
 
-```javascript
-// Promise
-const promise = order.trackShipment(shipment_id, );
+```kotlin
 
-// Async/Await
-const data = await order.trackShipment(shipment_id, );
+// Await
+Globalscope.launch{
+  const data = order.trackShipment(shipment_id ).safeAwait();
+}
 
 ```
 
@@ -12533,13 +10284,23 @@ Error Response:
 
 ## Rewards
 
-```javascript
-const { Configuration, Rewards } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const rewards = new Rewards(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val rewards = applicationClient.rewards
+    }
 
 ```
 
@@ -12547,12 +10308,12 @@ const rewards = new Rewards(conf);
 #### Rewards#getPointsOnProduct
 Get reward points that could be earned on any catalogue product.
 
-```javascript
-// Promise
-const promise = rewards.getPointsOnProduct();
+```kotlin
 
-// Async/Await
-const data = await rewards.getPointsOnProduct();
+// Await
+Globalscope.launch{
+  const data = rewards.getPointsOnProduct().safeAwait();
+}
 
 ```
 
@@ -12607,12 +10368,12 @@ Error Response:
 #### Rewards#getOrderDiscount
 Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
 
-```javascript
-// Promise
-const promise = rewards.getOrderDiscount();
+```kotlin
 
-// Async/Await
-const data = await rewards.getOrderDiscount();
+// Await
+Globalscope.launch{
+  const data = rewards.getOrderDiscount().safeAwait();
+}
 
 ```
 
@@ -12667,12 +10428,12 @@ Error Response:
 #### Rewards#getUserPoints
 Total available points of a user for current application
 
-```javascript
-// Promise
-const promise = rewards.getUserPoints();
+```kotlin
 
-// Async/Await
-const data = await rewards.getUserPoints();
+// Await
+Globalscope.launch{
+  const data = rewards.getUserPoints().safeAwait();
+}
 
 ```
 
@@ -12727,12 +10488,12 @@ Error Response:
 #### Rewards#getUserPointsHistory
 Get list of points transactions.
 
-```javascript
-// Promise
-const promise = rewards.getUserPointsHistory(pageID, pageSize, );
+```kotlin
 
-// Async/Await
-const data = await rewards.getUserPointsHistory(pageID, pageSize, );
+// Await
+Globalscope.launch{
+  const data = rewards.getUserPointsHistory(pageID, pageSize ).safeAwait();
+}
 
 ```
 
@@ -12790,12 +10551,12 @@ Error Response:
 #### Rewards#getUserReferralDetails
 User's referral details.
 
-```javascript
-// Promise
-const promise = rewards.getUserReferralDetails();
+```kotlin
 
-// Async/Await
-const data = await rewards.getUserReferralDetails();
+// Await
+Globalscope.launch{
+  const data = rewards.getUserReferralDetails().safeAwait();
+}
 
 ```
 
@@ -12850,12 +10611,12 @@ Error Response:
 #### Rewards#redeemReferralCode
 Redeems referral code and credits points to users points account.
 
-```javascript
-// Promise
-const promise = rewards.redeemReferralCode();
+```kotlin
 
-// Async/Await
-const data = await rewards.redeemReferralCode();
+// Await
+Globalscope.launch{
+  const data = rewards.redeemReferralCode().safeAwait();
+}
 
 ```
 
@@ -12913,13 +10674,23 @@ Error Response:
 
 ## Feedback
 
-```javascript
-const { Configuration, Feedback } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const feedback = new Feedback(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val feedback = applicationClient.feedback
+    }
 
 ```
 
@@ -12927,12 +10698,12 @@ const feedback = new Feedback(conf);
 #### Feedback#createAbuseReport
 post a new abuse request
 
-```javascript
-// Promise
-const promise = feedback.createAbuseReport();
+```kotlin
 
-// Async/Await
-const data = await feedback.createAbuseReport();
+// Await
+Globalscope.launch{
+  const data = feedback.createAbuseReport().safeAwait();
+}
 
 ```
 
@@ -12987,12 +10758,12 @@ Error Response:
 #### Feedback#updateAbuseReport
 Update abuse details
 
-```javascript
-// Promise
-const promise = feedback.updateAbuseReport();
+```kotlin
 
-// Async/Await
-const data = await feedback.updateAbuseReport();
+// Await
+Globalscope.launch{
+  const data = feedback.updateAbuseReport().safeAwait();
+}
 
 ```
 
@@ -13047,12 +10818,12 @@ Error Response:
 #### Feedback#getAbuseReports
 Get list of abuse data
 
-```javascript
-// Promise
-const promise = feedback.getAbuseReports(entity_id, entity_type, id, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getAbuseReports(entity_id, entity_type, id, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = feedback.getAbuseReports(entity_id, entity_type, id, page_id, page_size ).safeAwait();
+}
 
 ```
 
@@ -13112,12 +10883,12 @@ Error Response:
 #### Feedback#getAttributes
 Get list of attribute data
 
-```javascript
-// Promise
-const promise = feedback.getAttributes();
+```kotlin
 
-// Async/Await
-const data = await feedback.getAttributes();
+// Await
+Globalscope.launch{
+  const data = feedback.getAttributes().safeAwait();
+}
 
 ```
 
@@ -13172,12 +10943,12 @@ Error Response:
 #### Feedback#createAttribute
 Add a new attribute request
 
-```javascript
-// Promise
-const promise = feedback.createAttribute();
+```kotlin
 
-// Async/Await
-const data = await feedback.createAttribute();
+// Await
+Globalscope.launch{
+  const data = feedback.createAttribute().safeAwait();
+}
 
 ```
 
@@ -13232,12 +11003,12 @@ Error Response:
 #### Feedback#getAttribute
 Get single attribute data
 
-```javascript
-// Promise
-const promise = feedback.getAttribute(slug, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getAttribute(slug, );
+// Await
+Globalscope.launch{
+  const data = feedback.getAttribute(slug ).safeAwait();
+}
 
 ```
 
@@ -13293,12 +11064,12 @@ Error Response:
 #### Feedback#updateAttribute
 Update attribute details
 
-```javascript
-// Promise
-const promise = feedback.updateAttribute(slug, );
+```kotlin
 
-// Async/Await
-const data = await feedback.updateAttribute(slug, );
+// Await
+Globalscope.launch{
+  const data = feedback.updateAttribute(slug ).safeAwait();
+}
 
 ```
 
@@ -13354,12 +11125,12 @@ Error Response:
 #### Feedback#createComment
 post a new comment
 
-```javascript
-// Promise
-const promise = feedback.createComment();
+```kotlin
 
-// Async/Await
-const data = await feedback.createComment();
+// Await
+Globalscope.launch{
+  const data = feedback.createComment().safeAwait();
+}
 
 ```
 
@@ -13414,12 +11185,12 @@ Error Response:
 #### Feedback#updateComment
 Update comment status
 
-```javascript
-// Promise
-const promise = feedback.updateComment();
+```kotlin
 
-// Async/Await
-const data = await feedback.updateComment();
+// Await
+Globalscope.launch{
+  const data = feedback.updateComment().safeAwait();
+}
 
 ```
 
@@ -13474,12 +11245,12 @@ Error Response:
 #### Feedback#getComments
 Get list of comments
 
-```javascript
-// Promise
-const promise = feedback.getComments(entity_type, id, entity_id, user_id, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getComments(entity_type, id, entity_id, user_id, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = feedback.getComments(entity_type, id, entity_id, user_id, page_id, page_size ).safeAwait();
+}
 
 ```
 
@@ -13540,12 +11311,12 @@ Error Response:
 #### Feedback#checkEligibility
 Checks eligibility and cloud media config
 
-```javascript
-// Promise
-const promise = feedback.checkEligibility(entity_type, entity_id, );
+```kotlin
 
-// Async/Await
-const data = await feedback.checkEligibility(entity_type, entity_id, );
+// Await
+Globalscope.launch{
+  const data = feedback.checkEligibility(entity_type, entity_id ).safeAwait();
+}
 
 ```
 
@@ -13602,12 +11373,12 @@ Error Response:
 #### Feedback#deleteMedia
 Delete Media
 
-```javascript
-// Promise
-const promise = feedback.deleteMedia();
+```kotlin
 
-// Async/Await
-const data = await feedback.deleteMedia();
+// Await
+Globalscope.launch{
+  const data = feedback.deleteMedia().safeAwait();
+}
 
 ```
 
@@ -13662,12 +11433,12 @@ Error Response:
 #### Feedback#createMedia
 Add Media
 
-```javascript
-// Promise
-const promise = feedback.createMedia();
+```kotlin
 
-// Async/Await
-const data = await feedback.createMedia();
+// Await
+Globalscope.launch{
+  const data = feedback.createMedia().safeAwait();
+}
 
 ```
 
@@ -13722,12 +11493,12 @@ Error Response:
 #### Feedback#updateMedia
 Update Media
 
-```javascript
-// Promise
-const promise = feedback.updateMedia();
+```kotlin
 
-// Async/Await
-const data = await feedback.updateMedia();
+// Await
+Globalscope.launch{
+  const data = feedback.updateMedia().safeAwait();
+}
 
 ```
 
@@ -13782,12 +11553,12 @@ Error Response:
 #### Feedback#getMedias
 Get Media
 
-```javascript
-// Promise
-const promise = feedback.getMedias(entity_type, entity_id, id, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getMedias(entity_type, entity_id, id, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = feedback.getMedias(entity_type, entity_id, id, page_id, page_size ).safeAwait();
+}
 
 ```
 
@@ -13847,12 +11618,12 @@ Error Response:
 #### Feedback#getReviewSummaries
 Get a review summary
 
-```javascript
-// Promise
-const promise = feedback.getReviewSummaries(entity_type, entity_id, id, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getReviewSummaries(entity_type, entity_id, id, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = feedback.getReviewSummaries(entity_type, entity_id, id, page_id, page_size ).safeAwait();
+}
 
 ```
 
@@ -13913,12 +11684,12 @@ Error Response:
 #### Feedback#createReview
 Add customer reviews
 
-```javascript
-// Promise
-const promise = feedback.createReview();
+```kotlin
 
-// Async/Await
-const data = await feedback.createReview();
+// Await
+Globalscope.launch{
+  const data = feedback.createReview().safeAwait();
+}
 
 ```
 
@@ -13974,12 +11745,12 @@ Error Response:
 #### Feedback#updateReview
 Update customer reviews
 
-```javascript
-// Promise
-const promise = feedback.updateReview();
+```kotlin
 
-// Async/Await
-const data = await feedback.updateReview();
+// Await
+Globalscope.launch{
+  const data = feedback.updateReview().safeAwait();
+}
 
 ```
 
@@ -14035,12 +11806,12 @@ Error Response:
 #### Feedback#getReviews
 Get list of customer reviews
 
-```javascript
-// Promise
-const promise = feedback.getReviews(entity_type, entity_id, id, user_id, media, rating, attribute_rating, facets, sort, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getReviews(entity_type, entity_id, id, user_id, media, rating, attribute_rating, facets, sort, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = feedback.getReviews(entity_type, entity_id, id, user_id, media, rating, attribute_rating, facets, sort, page_id, page_size ).safeAwait();
+}
 
 ```
 
@@ -14106,12 +11877,12 @@ Error Response:
 #### Feedback#getTemplates
 Get the templates for product or l3 type
 
-```javascript
-// Promise
-const promise = feedback.getTemplates(template_id, entity_id, entity_type, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getTemplates(template_id, entity_id, entity_type, );
+// Await
+Globalscope.launch{
+  const data = feedback.getTemplates(template_id, entity_id, entity_type ).safeAwait();
+}
 
 ```
 
@@ -14169,12 +11940,12 @@ Error Response:
 #### Feedback#createQuestion
 Create a new question
 
-```javascript
-// Promise
-const promise = feedback.createQuestion();
+```kotlin
 
-// Async/Await
-const data = await feedback.createQuestion();
+// Await
+Globalscope.launch{
+  const data = feedback.createQuestion().safeAwait();
+}
 
 ```
 
@@ -14230,12 +12001,12 @@ Error Response:
 #### Feedback#updateQuestion
 Update question
 
-```javascript
-// Promise
-const promise = feedback.updateQuestion();
+```kotlin
 
-// Async/Await
-const data = await feedback.updateQuestion();
+// Await
+Globalscope.launch{
+  const data = feedback.updateQuestion().safeAwait();
+}
 
 ```
 
@@ -14290,12 +12061,12 @@ Error Response:
 #### Feedback#getQuestionAndAnswers
 Get a list of QnA
 
-```javascript
-// Promise
-const promise = feedback.getQuestionAndAnswers(entity_type, entity_id, id, show_answer, page_id, page_size, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getQuestionAndAnswers(entity_type, entity_id, id, show_answer, page_id, page_size, );
+// Await
+Globalscope.launch{
+  const data = feedback.getQuestionAndAnswers(entity_type, entity_id, id, show_answer, page_id, page_size ).safeAwait();
+}
 
 ```
 
@@ -14356,12 +12127,12 @@ Error Response:
 #### Feedback#getVotes
 Get list of votes
 
-```javascript
-// Promise
-const promise = feedback.getVotes(id, ref_type, );
+```kotlin
 
-// Async/Await
-const data = await feedback.getVotes(id, ref_type, );
+// Await
+Globalscope.launch{
+  const data = feedback.getVotes(id, ref_type ).safeAwait();
+}
 
 ```
 
@@ -14418,12 +12189,12 @@ Error Response:
 #### Feedback#createVote
 Create a new vote
 
-```javascript
-// Promise
-const promise = feedback.createVote();
+```kotlin
 
-// Async/Await
-const data = await feedback.createVote();
+// Await
+Globalscope.launch{
+  const data = feedback.createVote().safeAwait();
+}
 
 ```
 
@@ -14478,12 +12249,12 @@ Error Response:
 #### Feedback#updateVote
 Update vote
 
-```javascript
-// Promise
-const promise = feedback.updateVote();
+```kotlin
 
-// Async/Await
-const data = await feedback.updateVote();
+// Await
+Globalscope.launch{
+  const data = feedback.updateVote().safeAwait();
+}
 
 ```
 
@@ -14541,13 +12312,23 @@ Error Response:
 
 ## PosCart
 
-```javascript
-const { Configuration, PosCart } = require('fdk-client-nodejs/application')
-const conf = new Configuration({
-    ApplicationID: "507f191e810c19729de860ea",
-    ApplicationToken: "hu67dfhddf"
-});
-const poscart = new PosCart(conf);
+```kotlin
+
+var applicationConfig: ApplicationConfig? = null
+  try {
+        applicationConfig = ApplicationConfig(
+        applicationId = "507f191e810c19729de860ea",
+        applicationToken = "hu67dfhddf",
+        userAgent = "android"
+      )
+      } catch (e: Exception) {
+            print(e.message)
+      }
+
+applicationConfig?.let { config ->
+    val applicationClient = ApplicationClient(config = config)
+    val poscart = applicationClient.poscart
+    }
 
 ```
 
@@ -14555,12 +12336,12 @@ const poscart = new PosCart(conf);
 #### PosCart#getCart
 Fetch all Items Added to  Cart
 
-```javascript
-// Promise
-const promise = poscart.getCart(uid, assign_card_id, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getCart(uid, assign_card_id, );
+// Await
+Globalscope.launch{
+  const data = poscart.getCart(uid, assign_card_id ).safeAwait();
+}
 
 ```
 
@@ -14601,12 +12382,12 @@ Error Response:
 #### PosCart#getCartLastModified
 Fetch Last-Modified timestamp
 
-```javascript
-// Promise
-const promise = poscart.getCartLastModified(uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getCartLastModified(uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.getCartLastModified(uid ).safeAwait();
+}
 
 ```
 
@@ -14636,12 +12417,12 @@ Error Response:
 #### PosCart#addItems
 Add Items to Cart
 
-```javascript
-// Promise
-const promise = poscart.addItems();
+```kotlin
 
-// Async/Await
-const data = await poscart.addItems();
+// Await
+Globalscope.launch{
+  const data = poscart.addItems().safeAwait();
+}
 
 ```
 
@@ -15313,12 +13094,12 @@ Error Response:
 #### PosCart#updateCart
 Update Items already added to Cart
 
-```javascript
-// Promise
-const promise = poscart.updateCart();
+```kotlin
 
-// Async/Await
-const data = await poscart.updateCart();
+// Await
+Globalscope.launch{
+  const data = poscart.updateCart().safeAwait();
+}
 
 ```
 
@@ -15719,12 +13500,12 @@ Error Response:
 #### PosCart#getItemCount
 Cart item count
 
-```javascript
-// Promise
-const promise = poscart.getItemCount(uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getItemCount(uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.getItemCount(uid ).safeAwait();
+}
 
 ```
 
@@ -15764,12 +13545,12 @@ Error Response:
 #### PosCart#getCoupons
 Fetch Coupon
 
-```javascript
-// Promise
-const promise = poscart.getCoupons(uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getCoupons(uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.getCoupons(uid ).safeAwait();
+}
 
 ```
 
@@ -15809,12 +13590,12 @@ Error Response:
 #### PosCart#applyCoupon
 Apply Coupon
 
-```javascript
-// Promise
-const promise = poscart.applyCoupon(i, b, p, );
+```kotlin
 
-// Async/Await
-const data = await poscart.applyCoupon(i, b, p, );
+// Await
+Globalscope.launch{
+  const data = poscart.applyCoupon(i, b, p ).safeAwait();
+}
 
 ```
 
@@ -15857,12 +13638,12 @@ Error Response:
 #### PosCart#removeCoupon
 Remove Coupon Applied
 
-```javascript
-// Promise
-const promise = poscart.removeCoupon(uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.removeCoupon(uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.removeCoupon(uid ).safeAwait();
+}
 
 ```
 
@@ -15902,12 +13683,12 @@ Error Response:
 #### PosCart#getBulkDiscountOffers
 Get discount offers based on quantity
 
-```javascript
-// Promise
-const promise = poscart.getBulkDiscountOffers(item_id, article_id, uid, slug, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getBulkDiscountOffers(item_id, article_id, uid, slug, );
+// Await
+Globalscope.launch{
+  const data = poscart.getBulkDiscountOffers(item_id, article_id, uid, slug ).safeAwait();
+}
 
 ```
 
@@ -16042,12 +13823,12 @@ Error Response:
 #### PosCart#getAddresses
 Fetch Address
 
-```javascript
-// Promise
-const promise = poscart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default, );
+// Await
+Globalscope.launch{
+  const data = poscart.getAddresses(uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
+}
 
 ```
 
@@ -16091,12 +13872,12 @@ Error Response:
 #### PosCart#addAddress
 Add Address to the account
 
-```javascript
-// Promise
-const promise = poscart.addAddress();
+```kotlin
 
-// Async/Await
-const data = await poscart.addAddress();
+// Await
+Globalscope.launch{
+  const data = poscart.addAddress().safeAwait();
+}
 
 ```
 
@@ -16135,12 +13916,12 @@ Error Response:
 #### PosCart#getAddressById
 Fetch Single Address
 
-```javascript
-// Promise
-const promise = poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default, );
+// Await
+Globalscope.launch{
+  const data = poscart.getAddressById(id, uid, mobile_no, checkout_mode, tags, is_default ).safeAwait();
+}
 
 ```
 
@@ -16185,12 +13966,12 @@ Error Response:
 #### PosCart#updateAddress
 Update Address alreay added to account
 
-```javascript
-// Promise
-const promise = poscart.updateAddress(id, );
+```kotlin
 
-// Async/Await
-const data = await poscart.updateAddress(id, );
+// Await
+Globalscope.launch{
+  const data = poscart.updateAddress(id ).safeAwait();
+}
 
 ```
 
@@ -16230,12 +14011,12 @@ Error Response:
 #### PosCart#removeAddress
 Remove Address Associated to the account
 
-```javascript
-// Promise
-const promise = poscart.removeAddress(id, );
+```kotlin
 
-// Async/Await
-const data = await poscart.removeAddress(id, );
+// Await
+Globalscope.launch{
+  const data = poscart.removeAddress(id ).safeAwait();
+}
 
 ```
 
@@ -16275,12 +14056,12 @@ Error Response:
 #### PosCart#selectAddress
 Select Address from All Addresses
 
-```javascript
-// Promise
-const promise = poscart.selectAddress();
+```kotlin
 
-// Async/Await
-const data = await poscart.selectAddress();
+// Await
+Globalscope.launch{
+  const data = poscart.selectAddress().safeAwait();
+}
 
 ```
 
@@ -16367,12 +14148,12 @@ Error Response:
 #### PosCart#getPaymentModes
 Get Cart Payment for valid coupon
 
-```javascript
-// Promise
-const promise = poscart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code, );
+// Await
+Globalscope.launch{
+  const data = poscart.getPaymentModes(uid, address_id, payment_mode, payment_identifier, aggregator_name, merchant_code ).safeAwait();
+}
 
 ```
 
@@ -16417,12 +14198,12 @@ Error Response:
 #### PosCart#selectPaymentMode
 Update Cart Payment
 
-```javascript
-// Promise
-const promise = poscart.selectPaymentMode(uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.selectPaymentMode(uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.selectPaymentMode(uid ).safeAwait();
+}
 
 ```
 
@@ -16462,12 +14243,12 @@ Error Response:
 #### PosCart#getShipments
 Get delivery date and options before checkout
 
-```javascript
-// Promise
-const promise = poscart.getShipments(pick_at_store_uid, ordering_store_id, p, uid, address_id, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getShipments(pick_at_store_uid, ordering_store_id, p, uid, address_id, );
+// Await
+Globalscope.launch{
+  const data = poscart.getShipments(pick_at_store_uid, ordering_store_id, p, uid, address_id ).safeAwait();
+}
 
 ```
 
@@ -17169,726 +14950,15 @@ Error Response:
 ---
 
 
-#### PosCart#updateShipments
-Update shipment delivery type and quantity before checkout
-
-```javascript
-// Promise
-const promise = poscart.updateShipments(i, p, uid, address_id, order_type, );
-
-// Async/Await
-const data = await poscart.updateShipments(i, p, uid, address_id, order_type, );
-
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| i | boolean | Get items or not | 
-| p | boolean | Get payment options or not | 
-| uid | integer | Cart id | 
-| address_id | integer | Address id | 
-| order_type | string | Order is hand over or home delivery | 
-
-Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created. Update the shipment                      type and quantity as per customer preference for store pick up or home delivery
-
-Success Response:
-
-
-
-OK
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "$ref": "#/components/schemas/CartShipmentsResponse"
-}`
-
-
-Examples: 
-
-
-Shipment Generated
-```javascript
-{
-  "value": {
-    "items": [],
-    "cart_id": 7501,
-    "uid": "7501",
-    "success": true,
-    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
-    "payment_options": {
-      "payment_option": [
-        {
-          "name": "COD",
-          "display_name": "Cash on Delivery",
-          "display_priority": 1,
-          "payment_mode_id": 11,
-          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-          "logo_url": {
-            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
-          },
-          "list": []
-        },
-        {
-          "name": "CARD",
-          "display_priority": 2,
-          "payment_mode_id": 2,
-          "display_name": "Card",
-          "list": []
-        },
-        {
-          "name": "NB",
-          "display_priority": 3,
-          "payment_mode_id": 3,
-          "display_name": "Net Banking",
-          "list": [
-            {
-              "aggregator_name": "Razorpay",
-              "bank_name": "ICICI Bank",
-              "bank_code": "ICIC",
-              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
-              },
-              "merchant_code": "NB_ICICI",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "WL",
-          "display_priority": 4,
-          "payment_mode_id": 4,
-          "display_name": "Wallet",
-          "list": [
-            {
-              "wallet_name": "Paytm",
-              "wallet_code": "paytm",
-              "wallet_id": 4,
-              "merchant_code": "PAYTM",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
-              },
-              "aggregator_name": "Juspay",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "UPI",
-          "display_priority": 9,
-          "payment_mode_id": 6,
-          "display_name": "UPI",
-          "list": [
-            {
-              "aggregator_name": "UPI_Razorpay",
-              "name": "UPI",
-              "display_name": "BHIM UPI",
-              "code": "UPI",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
-              },
-              "merchant_code": "UPI",
-              "timeout": 240,
-              "retry_count": 0,
-              "fynd_vpa": "shopsense.rzp@hdfcbank",
-              "intent_flow": true,
-              "intent_app_error_list": [
-                "com.csam.icici.bank.imobile",
-                "in.org.npci.upiapp",
-                "com.whatsapp"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "PL",
-          "display_priority": 11,
-          "payment_mode_id": 1,
-          "display_name": "Pay Later",
-          "list": [
-            {
-              "aggregator_name": "Simpl",
-              "name": "Simpl",
-              "code": "simpl",
-              "merchant_code": "SIMPL",
-              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
-              }
-            }
-          ]
-        }
-      ],
-      "payment_flows": {
-        "Simpl": {
-          "data": {
-            "gateway": {
-              "route": "simpl",
-              "entity": "sdk",
-              "is_customer_validation_required": true,
-              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
-              "sdk": {
-                "config": {
-                  "redirect": false,
-                  "callback_url": null,
-                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
-                },
-                "data": {
-                  "user_phone": "8452996729",
-                  "user_email": "paymentsdummy@gofynd.com"
-                }
-              },
-              "return_url": null
-            }
-          },
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "Juspay": {
-          "data": {},
-          "api_link": "https://sandbox.juspay.in/txns",
-          "payment_flow": "api"
-        },
-        "Razorpay": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "UPI_Razorpay": {
-          "data": {},
-          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
-          "payment_flow": "api"
-        },
-        "Fynd": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "api"
-        }
-      },
-      "default": {}
-    },
-    "user_type": "Store User",
-    "cod_charges": 0,
-    "order_id": null,
-    "cod_available": true,
-    "cod_message": "No additional COD charges applicable",
-    "delivery_charges": 0,
-    "delivery_charge_order_value": 0,
-    "delivery_slots": [
-      {
-        "date": "Sat, 24 Aug",
-        "delivery_slot": [
-          {
-            "delivery_slot_timing": "By 9:00 PM",
-            "default": true,
-            "delivery_slot_id": 1
-          }
-        ]
-      }
-    ],
-    "store_code": "",
-    "store_emps": [],
-    "breakup_values": {
-      "loyalty_points": {
-        "total": 0,
-        "applicable": 0,
-        "is_applied": false,
-        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-      },
-      "coupon": {
-        "type": "cash",
-        "code": "",
-        "uid": null,
-        "value": 0,
-        "is_applied": false,
-        "message": "Sorry! Invalid Coupon"
-      },
-      "raw": {
-        "cod_charge": 0,
-        "convenience_fee": 0,
-        "coupon": 0,
-        "delivery_charge": 0,
-        "discount": 0,
-        "fynd_cash": 0,
-        "gst_charges": 214.18,
-        "mrp_total": 1999,
-        "subtotal": 1999,
-        "total": 1999,
-        "vog": 1784.82,
-        "you_saved": 0
-      },
-      "display": [
-        {
-          "display": "MRP Total",
-          "key": "mrp_total",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Subtotal",
-          "key": "subtotal",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Total",
-          "key": "total",
-          "value": 1999,
-          "currency_code": "INR"
-        }
-      ]
-    },
-    "shipments": [
-      {
-        "fulfillment_id": 3009,
-        "shipment_type": "single_shipment",
-        "fulfillment_type": "store",
-        "dp_id": "29",
-        "order_type": "PickAtStore",
-        "dp_options": {
-          "4": {
-            "f_priority": 4,
-            "r_priority": 5,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          },
-          "7": {
-            "f_priority": 3,
-            "r_priority": 4,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          },
-          "29": {
-            "f_priority": 1,
-            "r_priority": 2,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          }
-        },
-        "promise": {
-          "timestamp": {
-            "min": 1566678108,
-            "max": 1567023708
-          },
-          "formatted": {
-            "min": "Aug 24",
-            "max": "Aug 28"
-          }
-        },
-        "box_type": "Small Courier bag",
-        "shipments": 1,
-        "items": [
-          {
-            "quantity": 1,
-            "product": {
-              "type": "product",
-              "uid": 820312,
-              "name": "Navy Blue Melange Shorts",
-              "slug": "883-police-navy-blue-melange-shorts-820312-4943a8",
-              "brand": {
-                "uid": 610,
-                "name": "883 Police"
-              },
-              "categories": [
-                {
-                  "uid": 193,
-                  "name": "Shorts"
-                }
-              ],
-              "images": [
-                {
-                  "aspect_ratio": "16:25",
-                  "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg",
-                  "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg"
-                }
-              ],
-              "action": {
-                "type": "product",
-                "url": "https://api.addsale.com/platform/content/v1/products/883-police-navy-blue-melange-shorts-820312-4943a8/",
-                "query": {
-                  "product_slug": [
-                    "883-police-navy-blue-melange-shorts-820312-4943a8"
-                  ]
-                }
-              }
-            },
-            "discount": "",
-            "bulk_offer": {},
-            "key": "820312_L",
-            "price": {
-              "base": {
-                "add_on": 1999,
-                "marked": 1999,
-                "effective": 1999,
-                "selling": 1999,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "add_on": 1999,
-                "marked": 1999,
-                "effective": 1999,
-                "selling": 1999,
-                "currency_code": "INR"
-              }
-            },
-            "article": {
-              "type": "article",
-              "uid": "381_610_IGPL01_SPIRAL19ANAVY_L",
-              "size": "L",
-              "seller": {
-                "uid": 381,
-                "name": "INTERSOURCE GARMENTS PVT LTD"
-              },
-              "store": {
-                "uid": 3009,
-                "name": "Kormangala"
-              },
-              "quantity": 2,
-              "price": {
-                "base": {
-                  "marked": 1999,
-                  "effective": 1999,
-                  "currency_code": "INR"
-                },
-                "converted": {
-                  "marked": 1999,
-                  "effective": 1999,
-                  "currency_code": "INR"
-                }
-              }
-            },
-            "availability": {
-              "sizes": [
-                "L",
-                "XL",
-                "XXL"
-              ],
-              "other_store_quantity": 1,
-              "out_of_stock": false,
-              "deliverable": true,
-              "is_valid": true
-            },
-            "coupon_message": "",
-            "message": ""
-          }
-        ]
-      }
-    ],
-    "delivery_charge_info": "",
-    "coupon_text": "View all offers",
-    "gstin": null,
-    "checkout_mode": "self",
-    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
-    "restrict_checkout": false,
-    "is_valid": true
-  }
-}
-```
-
-Shipment Generation Failed
-```javascript
-{
-  "value": {
-    "items": [],
-    "cart_id": 7501,
-    "uid": "7501",
-    "success": true,
-    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
-    "payment_options": {
-      "payment_option": [
-        {
-          "name": "COD",
-          "display_name": "Cash on Delivery",
-          "display_priority": 1,
-          "payment_mode_id": 11,
-          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-          "logo_url": {
-            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
-          },
-          "list": []
-        },
-        {
-          "name": "CARD",
-          "display_priority": 2,
-          "payment_mode_id": 2,
-          "display_name": "Card",
-          "list": []
-        },
-        {
-          "name": "NB",
-          "display_priority": 3,
-          "payment_mode_id": 3,
-          "display_name": "Net Banking",
-          "list": [
-            {
-              "aggregator_name": "Razorpay",
-              "bank_name": "ICICI Bank",
-              "bank_code": "ICIC",
-              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
-              },
-              "merchant_code": "NB_ICICI",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "WL",
-          "display_priority": 4,
-          "payment_mode_id": 4,
-          "display_name": "Wallet",
-          "list": [
-            {
-              "wallet_name": "Paytm",
-              "wallet_code": "paytm",
-              "wallet_id": 4,
-              "merchant_code": "PAYTM",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
-              },
-              "aggregator_name": "Juspay",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "UPI",
-          "display_priority": 9,
-          "payment_mode_id": 6,
-          "display_name": "UPI",
-          "list": [
-            {
-              "aggregator_name": "UPI_Razorpay",
-              "name": "UPI",
-              "display_name": "BHIM UPI",
-              "code": "UPI",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
-              },
-              "merchant_code": "UPI",
-              "timeout": 240,
-              "retry_count": 0,
-              "fynd_vpa": "shopsense.rzp@hdfcbank",
-              "intent_flow": true,
-              "intent_app_error_list": [
-                "com.csam.icici.bank.imobile",
-                "in.org.npci.upiapp",
-                "com.whatsapp"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "PL",
-          "display_priority": 11,
-          "payment_mode_id": 1,
-          "display_name": "Pay Later",
-          "list": [
-            {
-              "aggregator_name": "Simpl",
-              "name": "Simpl",
-              "code": "simpl",
-              "merchant_code": "SIMPL",
-              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
-              }
-            }
-          ]
-        }
-      ],
-      "payment_flows": {
-        "Simpl": {
-          "data": {
-            "gateway": {
-              "route": "simpl",
-              "entity": "sdk",
-              "is_customer_validation_required": true,
-              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
-              "sdk": {
-                "config": {
-                  "redirect": false,
-                  "callback_url": null,
-                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
-                },
-                "data": {
-                  "user_phone": "8452996729",
-                  "user_email": "paymentsdummy@gofynd.com"
-                }
-              },
-              "return_url": null
-            }
-          },
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "Juspay": {
-          "data": {},
-          "api_link": "https://sandbox.juspay.in/txns",
-          "payment_flow": "api"
-        },
-        "Razorpay": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "UPI_Razorpay": {
-          "data": {},
-          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
-          "payment_flow": "api"
-        },
-        "Fynd": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "api"
-        }
-      },
-      "default": {}
-    },
-    "user_type": "Store User",
-    "cod_charges": 0,
-    "order_id": null,
-    "cod_available": true,
-    "cod_message": "No additional COD charges applicable",
-    "delivery_charges": 0,
-    "delivery_charge_order_value": 0,
-    "delivery_slots": [
-      {
-        "date": "Sat, 24 Aug",
-        "delivery_slot": [
-          {
-            "delivery_slot_timing": "By 9:00 PM",
-            "default": true,
-            "delivery_slot_id": 1
-          }
-        ]
-      }
-    ],
-    "store_code": "",
-    "store_emps": [],
-    "breakup_values": {
-      "loyalty_points": {
-        "total": 0,
-        "applicable": 0,
-        "is_applied": false,
-        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-      },
-      "coupon": {
-        "type": "cash",
-        "code": "",
-        "uid": null,
-        "value": 0,
-        "is_applied": false,
-        "message": "Sorry! Invalid Coupon"
-      },
-      "raw": {
-        "cod_charge": 0,
-        "convenience_fee": 0,
-        "coupon": 0,
-        "delivery_charge": 0,
-        "discount": 0,
-        "fynd_cash": 0,
-        "gst_charges": 214.18,
-        "mrp_total": 1999,
-        "subtotal": 1999,
-        "total": 1999,
-        "vog": 1784.82,
-        "you_saved": 0
-      },
-      "display": [
-        {
-          "display": "MRP Total",
-          "key": "mrp_total",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Subtotal",
-          "key": "subtotal",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Total",
-          "key": "total",
-          "value": 1999,
-          "currency_code": "INR"
-        }
-      ]
-    },
-    "shipments": [],
-    "message": "Shipments could not be generated. Please Try again after some time.",
-    "delivery_charge_info": "",
-    "coupon_text": "View all offers",
-    "gstin": null,
-    "checkout_mode": "self",
-    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
-    "restrict_checkout": false,
-    "is_valid": false
-  }
-}
-```
-
-
-
-
-
-
-
-
-Unhandled api error
-
-
-Content Type: `application/json`
-
-Schema: `{
-  "type": "object",
-  "properties": {
-    "message": {
-      "type": "string"
-    }
-  }
-}`
-
-
-
-
-
-
-
-
-Error Response:
-
-
-
----
-
-
 #### PosCart#checkoutCart
 Checkout Cart
 
-```javascript
-// Promise
-const promise = poscart.checkoutCart(uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.checkoutCart(uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.checkoutCart(uid ).safeAwait();
+}
 
 ```
 
@@ -18305,12 +15375,12 @@ Error Response:
 #### PosCart#updateCartMeta
 Update Cart Meta
 
-```javascript
-// Promise
-const promise = poscart.updateCartMeta(uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.updateCartMeta(uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.updateCartMeta(uid ).safeAwait();
+}
 
 ```
 
@@ -18366,12 +15436,12 @@ Error Response:
 #### PosCart#getAvailableDeliveryModes
 Get available delivery modes for cart
 
-```javascript
-// Promise
-const promise = poscart.getAvailableDeliveryModes(area_code, uid, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getAvailableDeliveryModes(area_code, uid, );
+// Await
+Globalscope.launch{
+  const data = poscart.getAvailableDeliveryModes(area_code, uid ).safeAwait();
+}
 
 ```
 
@@ -18412,12 +15482,12 @@ Error Response:
 #### PosCart#getStoreAddressByUid
 Get list of stores for give uids
 
-```javascript
-// Promise
-const promise = poscart.getStoreAddressByUid(area_code, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getStoreAddressByUid(area_code, );
+// Await
+Globalscope.launch{
+  const data = poscart.getStoreAddressByUid(area_code ).safeAwait();
+}
 
 ```
 
@@ -18457,12 +15527,12 @@ Error Response:
 #### PosCart#getCartShareLink
 Generate Cart sharing link token
 
-```javascript
-// Promise
-const promise = poscart.getCartShareLink();
+```kotlin
 
-// Async/Await
-const data = await poscart.getCartShareLink();
+// Await
+Globalscope.launch{
+  const data = poscart.getCartShareLink().safeAwait();
+}
 
 ```
 
@@ -18515,12 +15585,12 @@ Error Response:
 #### PosCart#getCartSharedItems
 Get shared cart snapshot and cart response
 
-```javascript
-// Promise
-const promise = poscart.getCartSharedItems(token, );
+```kotlin
 
-// Async/Await
-const data = await poscart.getCartSharedItems(token, );
+// Await
+Globalscope.launch{
+  const data = poscart.getCartSharedItems(token ).safeAwait();
+}
 
 ```
 
@@ -18576,12 +15646,12 @@ Error Response:
 #### PosCart#updateCartWithSharedItems
 Merge or Replace existing cart
 
-```javascript
-// Promise
-const promise = poscart.updateCartWithSharedItems(token, action, );
+```kotlin
 
-// Async/Await
-const data = await poscart.updateCartWithSharedItems(token, action, );
+// Await
+Globalscope.launch{
+  const data = poscart.updateCartWithSharedItems(token, action ).safeAwait();
+}
 
 ```
 
