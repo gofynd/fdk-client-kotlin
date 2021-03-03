@@ -799,6 +799,390 @@ class ThemeApiHelperClass(val config: ApplicationConfig) : ThemeApiHelperFace  {
     }
 }
 
+class UserApiHelperClass(val config: ApplicationConfig) : UserApiHelperFace  {
+    
+   private val userApiList: UserApiList by lazy {
+        generateuserApiList()
+    }
+
+    
+    override fun loginWithFacebook(
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithFacebook(
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithGoogle(
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithGoogle(
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithGoogleAndroid(
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithGoogleAndroid(
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithGoogleIOS(
+        
+        body: OAuthRequestSchema
+    )
+    : Deferred<Response<AuthSuccess>> {
+        return userApiList.loginWithGoogleIOS(
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithOTP(
+         platform: String?,
+        body: SendOtpRequestSchema
+    )
+    : Deferred<Response<SendOtpResponse>> {
+        return userApiList.loginWithOTP(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun loginWithEmailAndPassword(
+        
+        body: PasswordLoginRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.loginWithEmailAndPassword(
+            
+            body = body
+        )
+    }
+    
+    override fun sendResetPasswordEmail(
+         platform: String?,
+        body: SendResetPasswordEmailRequestSchema
+    )
+    : Deferred<Response<ResetPasswordSuccess>> {
+        return userApiList.sendResetPasswordEmail(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun forgotPassword(
+        
+        body: ForgotPasswordRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.forgotPassword(
+            
+            body = body
+        )
+    }
+    
+    override fun sendResetToken(
+        
+        body: CodeRequestBodySchema
+    )
+    : Deferred<Response<ResetPasswordSuccess>> {
+        return userApiList.sendResetToken(
+            
+            body = body
+        )
+    }
+    
+    override fun loginWithToken(
+        
+        body: TokenRequestBodySchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.loginWithToken(
+            
+            body = body
+        )
+    }
+    
+    override fun registerWithForm(
+         platform: String?,
+        body: FormRegisterRequestSchema
+    )
+    : Deferred<Response<RegisterFormSuccess>> {
+        return userApiList.registerWithForm(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun verifyEmail(
+        
+        body: CodeRequestBodySchema
+    )
+    : Deferred<Response<VerifyEmailSuccess>> {
+        return userApiList.verifyEmail(
+            
+            body = body
+        )
+    }
+    
+    override fun verifyMobile(
+        
+        body: CodeRequestBodySchema
+    )
+    : Deferred<Response<VerifyEmailSuccess>> {
+        return userApiList.verifyMobile(
+            
+            body = body
+        )
+    }
+    
+    override fun hasPassword(
+        
+        
+    )
+    : Deferred<Response<HasPasswordSuccess>> {
+        return userApiList.hasPassword(
+            
+            
+        )
+    }
+    
+    override fun updatePassword(
+        
+        body: UpdatePasswordRequestSchema
+    )
+    : Deferred<Response<VerifyEmailSuccess>> {
+        return userApiList.updatePassword(
+            
+            body = body
+        )
+    }
+    
+    override fun logout(
+        
+        
+    )
+    : Deferred<Response<LogoutSuccess>> {
+        return userApiList.logout(
+            
+            
+        )
+    }
+    
+    override fun sendOTPOnMobile(
+         platform: String?,
+        body: SendMobileOtpRequestSchema
+    )
+    : Deferred<Response<OtpSuccess>> {
+        return userApiList.sendOTPOnMobile(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun verifyMobileOTP(
+         platform: String?,
+        body: VerifyOtpRequestSchema
+    )
+    : Deferred<Response<VerifyOtpSuccess>> {
+        return userApiList.verifyMobileOTP(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun sendOTPOnEmail(
+         platform: String?,
+        body: SendEmailOtpRequestSchema
+    )
+    : Deferred<Response<EmailOtpSuccess>> {
+        return userApiList.sendOTPOnEmail(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun verifyEmailOTP(
+         platform: String?,
+        body: VerifyOtpRequestSchema
+    )
+    : Deferred<Response<VerifyOtpSuccess>> {
+        return userApiList.verifyEmailOTP(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun getLoggedInUser(
+        
+        
+    )
+    : Deferred<Response<UserSchema>> {
+        return userApiList.getLoggedInUser(
+            
+            
+        )
+    }
+    
+    override fun getListOfActiveSessions(
+        
+        
+    )
+    : Deferred<Response<SessionListSuccess>> {
+        return userApiList.getListOfActiveSessions(
+            
+            
+        )
+    }
+    
+    override fun getPlatformConfig(
+         name: String?
+        
+    )
+    : Deferred<Response<PlatformSchema>> {
+        return userApiList.getPlatformConfig(
+            name = name
+            
+        )
+    }
+    
+    override fun updateProfile(
+         platform: String?,
+        body: EditProfileRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.updateProfile(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun addMobileNumber(
+         platform: String?,
+        body: EditMobileRequestSchema
+    )
+    : Deferred<Response<VerifyMobileOTPSuccess>> {
+        return userApiList.addMobileNumber(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun deleteMobileNumber(
+         platform: String?,  active: Boolean,  primary: Boolean,  verified: Boolean,  country_code: String,  phone: String
+        
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.deleteMobileNumber(
+            platform = platform, active = active, primary = primary, verified = verified, country_code = country_code, phone = phone
+            
+        )
+    }
+    
+    override fun setMobileNumberAsPrimary(
+        
+        body: SendVerificationLinkMobileRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.setMobileNumberAsPrimary(
+            
+            body = body
+        )
+    }
+    
+    override fun sendVerificationLinkToMobile(
+         platform: String?,
+        body: SendVerificationLinkMobileRequestSchema
+    )
+    : Deferred<Response<SendMobileVerifyLinkSuccess>> {
+        return userApiList.sendVerificationLinkToMobile(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun addEmail(
+         platform: String?,
+        body: EditEmailRequestSchema
+    )
+    : Deferred<Response<VerifyEmailOTPSuccess>> {
+        return userApiList.addEmail(
+            platform = platform,
+            body = body
+        )
+    }
+    
+    override fun deleteEmail(
+         platform: String?,  active: Boolean,  primary: Boolean,  verified: Boolean,  email: String
+        
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.deleteEmail(
+            platform = platform, active = active, primary = primary, verified = verified, email = email
+            
+        )
+    }
+    
+    override fun setEmailAsPrimary(
+        
+        body: EditEmailRequestSchema
+    )
+    : Deferred<Response<LoginSuccess>> {
+        return userApiList.setEmailAsPrimary(
+            
+            body = body
+        )
+    }
+    
+    override fun sendVerificationLinkToEmail(
+         platform: String?,
+        body: EditEmailRequestSchema
+    )
+    : Deferred<Response<SendEmailVerifyLinkSuccess>> {
+        return userApiList.sendVerificationLinkToEmail(
+            platform = platform,
+            body = body
+        )
+    }
+    
+
+    private fun generateuserApiList(): UserApiList {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
+        val authCredentials = Credentials.basic(
+            config.auth_user_name ?: "",
+            config.auth_user_password
+        )
+        //val authInterceptor = AuthenticationInterceptor(authCredentials)
+        val headerInterceptor = HeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        //interceptorList.add(authInterceptor)
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "User"
+        )
+        return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as UserApiList
+    }
+}
+
 class ContentApiHelperClass(val config: ApplicationConfig) : ContentApiHelperFace  {
     
    private val contentApiList: ContentApiList by lazy {

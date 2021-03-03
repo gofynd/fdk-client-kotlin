@@ -18,6 +18,10 @@ class ApplicationClient(config:ApplicationConfig) {
         ThemeDataManagerClass(config)
     }
     
+    val user by lazy {
+        UserDataManagerClass(config)
+    }
+    
     val content by lazy {
         ContentDataManagerClass(config)
     }
