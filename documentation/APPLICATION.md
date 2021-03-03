@@ -293,7 +293,8 @@ catalog.getProductDetailBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -344,7 +345,8 @@ catalog.getProductSizesBySlug(slug: slug, storeId: storeId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -396,7 +398,8 @@ catalog.getProductPriceBySlug(slug: slug, size: size, pincode: pincode, storeId:
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -450,7 +453,8 @@ catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, pageNo
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -505,7 +509,8 @@ catalog.getProductComparisonBySlugs(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -556,7 +561,8 @@ catalog.getSimilarComparisonProductBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -607,7 +613,8 @@ catalog.getComparedFrequentlyProductBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -658,7 +665,8 @@ catalog.getProductSimilarByIdentifier(slug: slug, similarType: similarType).safe
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -710,7 +718,8 @@ catalog.getProductVariantsBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -761,7 +770,8 @@ catalog.getProductStockByIds(itemId: itemId, alu: alu, skuCode: skuCode, ean: ea
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -816,7 +826,8 @@ catalog.getProductStockForTimeByIds(timestamp: timestamp, pageSize: pageSize, pa
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -869,7 +880,8 @@ catalog.getProducts(q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -927,7 +939,8 @@ catalog.getBrands(department: department, pageNo: pageNo, pageSize: pageSize).sa
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -980,7 +993,8 @@ catalog.getBrandDetailBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1031,7 +1045,8 @@ catalog.getCategories(department: department).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1082,7 +1097,8 @@ catalog.getCategoryDetailBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1133,7 +1149,8 @@ catalog.getHomeProducts(sortOn: sortOn, pageId: pageId, pageSize: pageSize).safe
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1186,7 +1203,8 @@ catalog.getDepartments().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1236,7 +1254,8 @@ catalog.getSearchResults(q: q).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1287,7 +1306,8 @@ catalog.getCollections(pageId: pageId, pageSize: pageSize).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1339,7 +1359,8 @@ catalog.getCollectionItemsBySlug(slug: slug, f: f, filters: filters, sortOn: sor
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1395,7 +1416,8 @@ catalog.getCollectionDetailBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1446,7 +1468,8 @@ catalog.getFollowedListing(collectionType: collectionType).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1497,7 +1520,8 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1549,7 +1573,8 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1601,7 +1626,8 @@ catalog.getFollowerCountById(collectionType: collectionType, collectionId: colle
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1653,7 +1679,8 @@ catalog.getFollowIds(collectionType: collectionType).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1704,7 +1731,8 @@ catalog.getStores(pageNo: pageNo, pageSize: pageSize, q: q, range: range, latitu
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1767,7 +1795,8 @@ cart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1807,7 +1836,8 @@ cart.getCartLastModified(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -1840,7 +1870,8 @@ cart.addItems(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -2511,7 +2542,8 @@ cart.updateCart(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -2911,7 +2943,8 @@ cart.getItemCount(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -2950,7 +2983,8 @@ cart.getCoupons(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -2989,7 +3023,8 @@ cart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3031,7 +3066,8 @@ cart.removeCoupon(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3070,7 +3106,8 @@ cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug:
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3195,7 +3232,8 @@ cart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3238,7 +3276,8 @@ cart.addAddress(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3276,7 +3315,8 @@ cart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkout
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3320,7 +3360,8 @@ cart.updateAddress(id: id, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3359,7 +3400,8 @@ cart.removeAddress(id: id).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3398,7 +3440,8 @@ cart.selectAddress(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3472,7 +3515,8 @@ cart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, p
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3516,7 +3560,8 @@ cart.selectPaymentMode(uid: uid, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -3555,7 +3600,8 @@ cart.getShipments(p: p, uid: uid, addressId: addressId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -4248,7 +4294,8 @@ cart.checkoutCart(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -4663,7 +4710,8 @@ cart.updateCartMeta(uid: uid, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -4714,7 +4762,8 @@ cart.getCartShareLink(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -4766,7 +4815,8 @@ cart.getCartSharedItems(token: token).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -4817,7 +4867,8 @@ cart.updateCartWithSharedItems(token: token, action: action).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -5150,7 +5201,8 @@ lead.getTicket(id: id).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -5391,7 +5443,8 @@ lead.createHistoryForTicket(ticketId: ticketId, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -5475,7 +5528,8 @@ lead.createTicket(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -5715,7 +5769,8 @@ lead.getCustomForm(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -5809,7 +5864,8 @@ lead.submitCustomForm(slug: slug, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6052,7 +6108,8 @@ lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6104,7 +6161,8 @@ lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6163,7 +6221,8 @@ theme.getAppliedTheme().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6224,7 +6283,8 @@ theme.getThemeForPreview(themeId: themeId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6293,7 +6353,8 @@ user.loginWithFacebook(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6354,7 +6415,8 @@ user.loginWithGoogle(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6415,7 +6477,8 @@ user.loginWithGoogleAndroid(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6476,7 +6539,8 @@ user.loginWithGoogleIOS(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6537,7 +6601,8 @@ user.loginWithOTP(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6599,7 +6664,8 @@ user.loginWithEmailAndPassword(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6660,7 +6726,8 @@ user.sendResetPasswordEmail(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6711,7 +6778,8 @@ user.forgotPassword(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6772,7 +6840,8 @@ user.sendResetToken(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6822,7 +6891,8 @@ user.loginWithToken(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6895,7 +6965,8 @@ user.registerWithForm(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6946,7 +7017,8 @@ user.verifyEmail(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -6996,7 +7068,8 @@ user.verifyMobile(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7046,7 +7119,8 @@ user.hasPassword().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7096,7 +7170,8 @@ user.updatePassword(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7146,7 +7221,8 @@ user.logout().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7196,7 +7272,8 @@ user.sendOTPOnMobile(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7247,7 +7324,8 @@ user.verifyMobileOTP(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7309,7 +7387,8 @@ user.sendOTPOnEmail(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7360,7 +7439,8 @@ user.verifyEmailOTP(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7422,7 +7502,8 @@ user.getLoggedInUser().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7483,7 +7564,8 @@ user.getListOfActiveSessions().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7533,7 +7615,8 @@ user.getPlatformConfig(name: name).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7584,7 +7667,8 @@ user.updateProfile(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7646,7 +7730,8 @@ user.addMobileNumber(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7708,7 +7793,8 @@ user.deleteMobileNumber(platform: platform, active: active, primary: primary, ve
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7775,7 +7861,8 @@ user.setMobileNumberAsPrimary(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7836,7 +7923,8 @@ user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7898,7 +7986,8 @@ user.addEmail(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -7960,7 +8049,8 @@ user.deleteEmail(platform: platform, active: active, primary: primary, verified:
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8026,7 +8116,8 @@ user.setEmailAsPrimary(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8087,7 +8178,8 @@ user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8145,7 +8237,8 @@ content.getAnnouncements().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8217,7 +8310,8 @@ content.getBlog(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8279,7 +8373,8 @@ content.getFaqs().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8340,7 +8435,8 @@ content.getLandingPage(xDevicePlatform: xDevicePlatform).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8402,7 +8498,8 @@ content.getLegalInformation().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8463,7 +8560,8 @@ content.getNavigations(xDevicePlatform: xDevicePlatform).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8525,7 +8623,8 @@ content.getPage(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8587,7 +8686,8 @@ content.getSeoConfiguration().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8648,7 +8748,8 @@ content.getSlideshow(slug: slug, xDevicePlatform: xDevicePlatform).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8711,7 +8812,8 @@ content.getSupportInformation().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8772,7 +8874,8 @@ content.getTags().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8829,7 +8932,8 @@ communication.getCommunicationConsent().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8878,7 +8982,8 @@ communication.upsertCommunicationConsent(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -8939,7 +9044,8 @@ communication.upsertPushtoken(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9021,7 +9127,8 @@ share.getApplicationQRCode().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9059,7 +9166,8 @@ share.getProductQRCodeBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9098,7 +9206,8 @@ share.getCollectionQRCodeBySlug(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9137,7 +9246,8 @@ share.getUrlQRCode(url: url).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9176,7 +9286,8 @@ share.createShortLink(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9214,7 +9325,8 @@ share.getShortLinkByHash(hash: hash).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9253,7 +9365,8 @@ share.getOriginalShortLinkByHash(hash: hash).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9299,7 +9412,8 @@ filestorage.completeUpload(namespace: namespace, companyId: companyId, body: bod
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9369,7 +9483,8 @@ filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9446,7 +9561,8 @@ payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9510,7 +9626,8 @@ payment.attachCardToCustomer(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9572,7 +9689,8 @@ payment.getActiveCardAggregator(refresh: refresh).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9635,7 +9753,8 @@ payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9698,7 +9817,8 @@ payment.deleteUserCard(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9760,7 +9880,8 @@ payment.verifyCustomerForPayment(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9822,7 +9943,8 @@ payment.verifyAndChargePayment(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9884,7 +10006,8 @@ payment.initialisePayment(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -9946,7 +10069,8 @@ payment.checkAndUpdatePaymentStatus(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10008,7 +10132,8 @@ payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, c
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10077,7 +10202,8 @@ payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10147,7 +10273,8 @@ payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10210,7 +10337,8 @@ payment.verifyIfscCode(ifscCode: ifscCode).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10273,7 +10401,8 @@ payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10336,7 +10465,8 @@ payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10398,7 +10528,8 @@ payment.addBeneficiaryDetails(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10460,7 +10591,8 @@ payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10522,7 +10654,8 @@ payment.updateDefaultBeneficiary(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10591,7 +10724,8 @@ order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: 
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10657,7 +10791,8 @@ order.getOrderById(orderId: orderId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10720,7 +10855,8 @@ order.getShipmentById(shipmentId: shipmentId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10783,7 +10919,8 @@ order.getShipmentReasons(shipmentId: shipmentId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10846,7 +10983,8 @@ order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10909,7 +11047,8 @@ order.trackShipment(shipmentId: shipmentId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -10979,7 +11118,8 @@ rewards.getPointsOnProduct(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11029,7 +11169,8 @@ rewards.getOrderDiscount(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11079,7 +11220,8 @@ rewards.getUserPoints().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11129,7 +11271,8 @@ rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11182,7 +11325,8 @@ rewards.getUserReferralDetails().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11232,7 +11376,8 @@ rewards.redeemReferralCode(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11289,7 +11434,8 @@ feedback.createAbuseReport(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11339,7 +11485,8 @@ feedback.updateAbuseReport(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11389,7 +11536,8 @@ feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pag
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11444,7 +11592,8 @@ feedback.getAttributes().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11494,7 +11643,8 @@ feedback.createAttribute(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11544,7 +11694,8 @@ feedback.getAttribute(slug: slug).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11595,7 +11746,8 @@ feedback.updateAttribute(slug: slug, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11646,7 +11798,8 @@ feedback.createComment(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11696,7 +11849,8 @@ feedback.updateComment(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11746,7 +11900,8 @@ feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId:
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11802,7 +11957,8 @@ feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11854,7 +12010,8 @@ feedback.deleteMedia().safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11904,7 +12061,8 @@ feedback.createMedia(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -11954,7 +12112,8 @@ feedback.updateMedia(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12004,7 +12163,8 @@ feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: p
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12059,7 +12219,8 @@ feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, 
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12115,7 +12276,8 @@ feedback.createReview(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12166,7 +12328,8 @@ feedback.updateReview(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12217,7 +12380,8 @@ feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: 
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12278,7 +12442,8 @@ feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: en
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12331,7 +12496,8 @@ feedback.createQuestion(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12382,7 +12548,8 @@ feedback.updateQuestion(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12432,7 +12599,8 @@ feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: i
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12488,7 +12656,8 @@ feedback.getVotes(id: id, refType: refType).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12540,7 +12709,8 @@ feedback.createVote(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12590,7 +12760,8 @@ feedback.updateVote(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12647,7 +12818,8 @@ poscart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12687,7 +12859,8 @@ poscart.getCartLastModified(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -12720,7 +12893,8 @@ poscart.addItems(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -13391,7 +13565,8 @@ poscart.updateCart(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -13791,7 +13966,8 @@ poscart.getItemCount(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -13830,7 +14006,8 @@ poscart.getCoupons(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -13869,7 +14046,8 @@ poscart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -13911,7 +14089,8 @@ poscart.removeCoupon(uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -13950,7 +14129,8 @@ poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, sl
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14075,7 +14255,8 @@ poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, t
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14118,7 +14299,8 @@ poscart.addAddress(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14156,7 +14338,8 @@ poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: check
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14200,7 +14383,8 @@ poscart.updateAddress(id: id, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14239,7 +14423,8 @@ poscart.removeAddress(id: id).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14278,7 +14463,8 @@ poscart.selectAddress(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14352,7 +14538,8 @@ poscart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14396,7 +14583,8 @@ poscart.selectPaymentMode(uid: uid, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -14435,7 +14623,8 @@ poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingSt
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -15130,7 +15319,8 @@ poscart.checkoutCart(uid: uid, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -15546,7 +15736,8 @@ poscart.updateCartMeta(uid: uid, body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -15597,7 +15788,8 @@ poscart.getAvailableDeliveryModes(areaCode: areaCode, uid: uid).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -15637,7 +15829,8 @@ poscart.getStoreAddressByUid(areaCode: areaCode).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -15676,7 +15869,8 @@ poscart.getCartShareLink(body: body).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -15728,7 +15922,8 @@ poscart.getCartSharedItems(token: token).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
@@ -15779,7 +15974,8 @@ poscart.updateCartWithSharedItems(token: token, action: action).safeAwait(
     },
     { error ->
         
-    })
+    }
+)
 ```
 
 | Argument  |  Type  | Description |
