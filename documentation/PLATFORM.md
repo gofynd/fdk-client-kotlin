@@ -98,15 +98,15 @@
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
   * [CompanyProfile#getCountries](#companyprofilegetcountries)
   * [CompanyProfile#verifyGstPan](#companyprofileverifygstpan)
-  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getCompanyBrands](#companyprofilegetcompanybrands)
   * [CompanyProfile#createCompanyBrand](#companyprofilecreatecompanybrand)
   * [CompanyProfile#locationList](#companyprofilelocationlist)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#editLocation](#companyprofileeditlocation)
   * [CompanyProfile#getSingleLocation](#companyprofilegetsinglelocation)
+  * [CompanyProfile#editLocation](#companyprofileeditlocation)
   * [CompanyProfile#getChoices](#companyprofilegetchoices)
  
 * [Inventory](#Inventory)
@@ -2187,31 +2187,6 @@ This API is used to verify legal name againt GST/PAN number.
 ---
 
 
-#### CompanyProfile#editBrand
-Edit a brand.
-
-```javascript
-// Promise
-const promise = companyprofile.editBrand(brand_id, );
-
-// Async/Await
-const data = await companyprofile.editBrand(brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API allows to edit meta of a brand.
-
-
----
-
-
 #### CompanyProfile#getBrand
 Get a single brand.
 
@@ -2232,6 +2207,31 @@ const data = await companyprofile.getBrand(brand_id, );
 
 
 This API helps to get data associated to a particular brand.
+
+
+---
+
+
+#### CompanyProfile#editBrand
+Edit a brand.
+
+```javascript
+// Promise
+const promise = companyprofile.editBrand(brand_id, );
+
+// Async/Await
+const data = await companyprofile.editBrand(brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API allows to edit meta of a brand.
 
 
 ---
@@ -2363,32 +2363,6 @@ This API allows to create a location associated to a company.
 ---
 
 
-#### CompanyProfile#editLocation
-Edit a location asscoiated to a company.
-
-```javascript
-// Promise
-const promise = companyprofile.editLocation(company_id, location_id, );
-
-// Async/Await
-const data = await companyprofile.editLocation(company_id, location_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
-
-
-This API allows to edit a location associated to a company.
-
-
----
-
-
 #### CompanyProfile#getSingleLocation
 Get a single location.
 
@@ -2410,6 +2384,32 @@ const data = await companyprofile.getSingleLocation(company_id, location_id, );
 
 
 This API helps to get data associated to a particular location.
+
+
+---
+
+
+#### CompanyProfile#editLocation
+Edit a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.editLocation(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.editLocation(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
+
+
+This API allows to edit a location associated to a company.
 
 
 ---
