@@ -5,6 +5,7 @@
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [Content](#Content) - Content 
+* [CompanyProfile](#CompanyProfile) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Inventory](#Inventory) -  
 
 ----
@@ -88,6 +89,25 @@
   * [Content#addTag](#contentaddtag)
   * [Content#removeTag](#contentremovetag)
   * [Content#editTag](#contentedittag)
+ 
+* [CompanyProfile](#CompanyProfile)
+  * [CompanyProfile#registerCompany](#companyprofileregistercompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
+  * [CompanyProfile#cbsOnboardEdit](#companyprofilecbsonboardedit)
+  * [CompanyProfile#companyList](#companyprofilecompanylist)
+  * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
+  * [CompanyProfile#getCountries](#companyprofilegetcountries)
+  * [CompanyProfile#verifyGstPan](#companyprofileverifygstpan)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
+  * [CompanyProfile#createBrand](#companyprofilecreatebrand)
+  * [CompanyProfile#getCompanyBrands](#companyprofilegetcompanybrands)
+  * [CompanyProfile#createCompanyBrand](#companyprofilecreatecompanybrand)
+  * [CompanyProfile#locationList](#companyprofilelocationlist)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#editLocation](#companyprofileeditlocation)
+  * [CompanyProfile#getSingleLocation](#companyprofilegetsinglelocation)
+  * [CompanyProfile#getChoices](#companyprofilegetchoices)
  
 * [Inventory](#Inventory)
   * [Inventory#getJobs](#inventorygetjobs)
@@ -1973,6 +1993,448 @@ const data = await content.editTag(company_id, application_id, tag_id, );
 
 
 Edits a particular tag
+
+
+---
+
+
+
+---
+---
+
+
+## CompanyProfile
+
+```javascript
+const { Configuration, CompanyProfile } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const companyprofile = new CompanyProfile(conf);
+
+```
+
+
+#### CompanyProfile#registerCompany
+Create a Seller account.
+
+```javascript
+// Promise
+const promise = companyprofile.registerCompany();
+
+// Async/Await
+const data = await companyprofile.registerCompany();
+
+```
+
+
+
+
+This API allows to create a seller account on Fynd Platform.
+
+
+---
+
+
+#### CompanyProfile#cbsOnboardGet
+Get company profile
+
+```javascript
+// Promise
+const promise = companyprofile.cbsOnboardGet(company_id, );
+
+// Async/Await
+const data = await companyprofile.cbsOnboardGet(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#cbsOnboardEdit
+Edit company profile
+
+```javascript
+// Promise
+const promise = companyprofile.cbsOnboardEdit(company_id, );
+
+// Async/Await
+const data = await companyprofile.cbsOnboardEdit(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to edit the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#companyList
+Get list of companies
+
+```javascript
+// Promise
+const promise = companyprofile.companyList(sort_by, q, stage, page_no, page_size, );
+
+// Async/Await
+const data = await companyprofile.companyList(sort_by, q, stage, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| sort_by | string | Helps to sort the company list on the basis of last accessed, ascending or descending order. | 
+| q | string | Query that is to be searched. | 
+| stage | string | to filter companies on basis of verified or unverified companies. | 
+| page_no | integer | The page number to navigate through the given set of results | 
+| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+
+
+This API allows to view all the companies created by the seller.
+
+
+---
+
+
+#### CompanyProfile#getCompanyMetrics
+Get company metrics
+
+```javascript
+// Promise
+const promise = companyprofile.getCompanyMetrics(company_id, );
+
+// Async/Await
+const data = await companyprofile.getCompanyMetrics(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
+
+
+---
+
+
+#### CompanyProfile#getCountries
+Get data associated to countries
+
+```javascript
+// Promise
+const promise = companyprofile.getCountries(type, stage, );
+
+// Async/Await
+const data = await companyprofile.getCountries(type, stage, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| type | string | The type of entity. This can be company or store. By default it is company. | 
+| stage | string | Ths stage from where the API is called. This can be profile & onboarding. By default it is profile. | 
+
+
+This API gets meta associated to countries for eg valid documents.
+
+
+---
+
+
+#### CompanyProfile#verifyGstPan
+Verify GST/PAN against legal name.
+
+```javascript
+// Promise
+const promise = companyprofile.verifyGstPan();
+
+// Async/Await
+const data = await companyprofile.verifyGstPan();
+
+```
+
+
+
+
+This API is used to verify legal name againt GST/PAN number.
+
+
+---
+
+
+#### CompanyProfile#editBrand
+Edit a brand.
+
+```javascript
+// Promise
+const promise = companyprofile.editBrand(brand_id, );
+
+// Async/Await
+const data = await companyprofile.editBrand(brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API allows to edit meta of a brand.
+
+
+---
+
+
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```javascript
+// Promise
+const promise = companyprofile.getBrand(brand_id, );
+
+// Async/Await
+const data = await companyprofile.getBrand(brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
+
+
+---
+
+
+#### CompanyProfile#createBrand
+Create a Brand.
+
+```javascript
+// Promise
+const promise = companyprofile.createBrand();
+
+// Async/Await
+const data = await companyprofile.createBrand();
+
+```
+
+
+
+
+This API allows to create a brand associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getCompanyBrands
+Get brands associated to a company
+
+```javascript
+// Promise
+const promise = companyprofile.getCompanyBrands(company_id, );
+
+// Async/Await
+const data = await companyprofile.getCompanyBrands(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company. | 
+
+
+This API helps to get view brands associated to a particular company.
+
+
+---
+
+
+#### CompanyProfile#createCompanyBrand
+Create a company brand mapping.
+
+```javascript
+// Promise
+const promise = companyprofile.createCompanyBrand(company_id, );
+
+// Async/Await
+const data = await companyprofile.createCompanyBrand(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
+
+
+---
+
+
+#### CompanyProfile#locationList
+Get list of locations
+
+```javascript
+// Promise
+const promise = companyprofile.locationList(company_id, store_type, q, stage, page_no, page_size, );
+
+// Async/Await
+const data = await companyprofile.locationList(company_id, store_type, q, stage, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company whose locations are to fetched | 
+| store_type | string | Helps to sort the location list on the basis of location type. | 
+| q | string | Query that is to be searched. | 
+| stage | string | to filter companies on basis of verified or unverified companies. | 
+| page_no | integer | The page number to navigate through the given set of results | 
+| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+
+
+This API allows to view all the locations asscoiated to a company.
+
+
+---
+
+
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.createLocation(company_id, );
+
+// Async/Await
+const data = await companyprofile.createLocation(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+
+
+This API allows to create a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#editLocation
+Edit a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.editLocation(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.editLocation(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
+
+
+This API allows to edit a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getSingleLocation
+Get a single location.
+
+```javascript
+// Promise
+const promise = companyprofile.getSingleLocation(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.getSingleLocation(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location lies. | 
+| location_id | string | Id of the location which you want to view. | 
+
+
+This API helps to get data associated to a particular location.
+
+
+---
+
+
+#### CompanyProfile#getChoices
+Get constant data asccoiated to company, brand, locations.
+
+```javascript
+// Promise
+const promise = companyprofile.getChoices(choice_type, );
+
+// Async/Await
+const data = await companyprofile.getChoices(choice_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| choice_type | string | Lists all the constants associated to the passed choice types. Acceptable choice types for the API are as follows, business_type, market_channels, company_type, address_type, brand_tier, store_type, account_type, weekday, admin_stage, stage, verification_stage, integration_type, identifier_type, item_dimension_measure_unit, item_weight_measure_unit, colors, channels, designations, manufacturer, variants, item_types, manufacturing_time_unit. | 
+
+
+This API gets constant data asccoiated to company, brand, locations.
 
 
 ---
