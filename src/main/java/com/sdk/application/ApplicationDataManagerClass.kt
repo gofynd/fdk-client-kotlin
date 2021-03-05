@@ -417,6 +417,21 @@ fun getProductsPaginator(
     
 
 
+    override fun addCollection(
+        
+        body: CreateCollection
+    )
+    : Deferred<Response<CollectionDetailResponse>> {
+        return catalogApiList.addCollection(
+         
+        body = body
+        )
+    }
+
+
+    
+
+
     override fun getCollectionItemsBySlug(
         slug: String, f: String?, filters: Boolean?, sortOn: String?, pageId: String?, pageSize: Int?
         
@@ -432,12 +447,57 @@ fun getProductsPaginator(
     
 
 
+    override fun addCollectionItemsBySlug(
+        slug: String,
+        body: CollectionItemsRequest
+    )
+    : Deferred<Response<CollectionItemsResponse>> {
+        return catalogApiList.addCollectionItemsBySlug(
+        slug = slug, 
+        body = body
+        )
+    }
+
+
+    
+
+
+    override fun updateCollectionDetailBySlug(
+        slug: String
+        
+    )
+    : Deferred<Response<CollectionsUpdateDetailResponse>> {
+        return catalogApiList.updateCollectionDetailBySlug(
+        slug = slug 
+        
+        )
+    }
+
+
+    
+
+
     override fun getCollectionDetailBySlug(
         slug: String
         
     )
     : Deferred<Response<CollectionDetailResponse>> {
         return catalogApiList.getCollectionDetailBySlug(
+        slug = slug 
+        
+        )
+    }
+
+
+    
+
+
+    override fun deleteCollectionDetailBySlug(
+        slug: String
+        
+    )
+    : Deferred<Response<CollectionDetailViewDeleteResponse>> {
+        return catalogApiList.deleteCollectionDetailBySlug(
         slug = slug 
         
         )
@@ -1702,13 +1762,73 @@ class ContentDataManagerClass(val config: ApplicationConfig) : ContentApiList,Ba
     
 
 
+    override fun getFaqCategories(
+        
+        
+    )
+    : Deferred<Response<GetFaqCategoriesSchema>> {
+        return contentApiList.getFaqCategories(
+         
+        
+        )
+    }
+
+
+    
+
+
+    override fun getFaqByIdOrSlug(
+        idOrSlug: String
+        
+    )
+    : Deferred<Response<FaqSchema>> {
+        return contentApiList.getFaqByIdOrSlug(
+        idOrSlug = idOrSlug 
+        
+        )
+    }
+
+
+    
+
+
+    override fun getFaqCategoryBySlugOrId(
+        idOrSlug: String
+        
+    )
+    : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>> {
+        return contentApiList.getFaqCategoryBySlugOrId(
+        idOrSlug = idOrSlug 
+        
+        )
+    }
+
+
+    
+
+
+    override fun getFaqsByCategoryIdOrSlug(
+        idOrSlug: String
+        
+    )
+    : Deferred<Response<GetFaqSchema>> {
+        return contentApiList.getFaqsByCategoryIdOrSlug(
+        idOrSlug = idOrSlug 
+        
+        )
+    }
+
+
+    
+
+
     override fun getLandingPage(
-        xDevicePlatform: String
+        
         
     )
     : Deferred<Response<LandingPage>> {
         return contentApiList.getLandingPage(
-        xDevicePlatform = xDevicePlatform 
+         
         
         )
     }
@@ -1733,12 +1853,12 @@ class ContentDataManagerClass(val config: ApplicationConfig) : ContentApiList,Ba
 
 
     override fun getNavigations(
-        xDevicePlatform: String
+        
         
     )
     : Deferred<Response<Navigation>> {
         return contentApiList.getNavigations(
-        xDevicePlatform = xDevicePlatform 
+         
         
         )
     }
@@ -1778,12 +1898,12 @@ class ContentDataManagerClass(val config: ApplicationConfig) : ContentApiList,Ba
 
 
     override fun getSlideshow(
-        slug: String, xDevicePlatform: String
+        slug: String
         
     )
     : Deferred<Response<Slideshow>> {
         return contentApiList.getSlideshow(
-        slug = slug, xDevicePlatform = xDevicePlatform 
+        slug = slug 
         
         )
     }
@@ -3361,6 +3481,21 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : PosCartApiList,Ba
         return posCartApiList.getShipments(
         pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, uid = uid, addressId = addressId 
         
+        )
+    }
+
+
+    
+
+
+    override fun updateShipments(
+        i: Boolean?, p: Boolean?, uid: Int?, addressId: Int?, orderType: String?,
+        body: UpdateCartShipmentRequest
+    )
+    : Deferred<Response<CartShipmentsResponse>> {
+        return posCartApiList.updateShipments(
+        i = i, p = p, uid = uid, addressId = addressId, orderType = orderType, 
+        body = body
         )
     }
 

@@ -147,6 +147,13 @@ interface CatalogApiList {
     )
     : Deferred<Response<GetCollectionListingResponse>>
     
+    @POST ("/service/application/catalog/v1.0/collections/")
+    fun addCollection(
+        
+        @Body body: CreateCollection
+    )
+    : Deferred<Response<CollectionDetailResponse>>
+    
     @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
     fun getCollectionItemsBySlug(
         @Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
@@ -154,12 +161,33 @@ interface CatalogApiList {
     )
     : Deferred<Response<ProductListingResponse>>
     
+    @POST ("/service/application/catalog/v1.0/collections/{slug}/items/")
+    fun addCollectionItemsBySlug(
+        @Path("slug") slug: String,
+        @Body body: CollectionItemsRequest
+    )
+    : Deferred<Response<CollectionItemsResponse>>
+    
+    @PUT ("/service/application/catalog/v1.0/collections/{slug}/")
+    fun updateCollectionDetailBySlug(
+        @Path("slug") slug: String
+        
+    )
+    : Deferred<Response<CollectionsUpdateDetailResponse>>
+    
     @GET ("/service/application/catalog/v1.0/collections/{slug}/")
     fun getCollectionDetailBySlug(
         @Path("slug") slug: String
         
     )
     : Deferred<Response<CollectionDetailResponse>>
+    
+    @DELETE ("/service/application/catalog/v1.0/collections/{slug}/")
+    fun deleteCollectionDetailBySlug(
+        @Path("slug") slug: String
+        
+    )
+    : Deferred<Response<CollectionDetailViewDeleteResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
     fun getFollowedListing(
@@ -372,49 +400,49 @@ interface CartApiList {
 
 interface LeadApiList {
     
-    @GET ("service/application/lead/v1.0/ticket/{id}")
+    @GET ("/service/application/lead/v1.0/ticket/{id}")
     fun getTicket(
         @Path("id") id: String
         
     )
     : Deferred<Response<Ticket>>
     
-    @POST ("service/application/lead/v1.0/ticket/{ticket_id}/history")
+    @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
     fun createHistoryForTicket(
         @Path("ticket_id") ticketId: String,
         @Body body: TicketHistoryPayload
     )
     : Deferred<Response<TicketHistory>>
     
-    @POST ("service/application/lead/v1.0/ticket/")
+    @POST ("/service/application/lead/v1.0/ticket/")
     fun createTicket(
         
         @Body body: AddTicketPayload
     )
     : Deferred<Response<Ticket>>
     
-    @GET ("service/application/lead/v1.0/form/{slug}")
+    @GET ("/service/application/lead/v1.0/form/{slug}")
     fun getCustomForm(
         @Path("slug") slug: String
         
     )
     : Deferred<Response<CustomForm>>
     
-    @POST ("service/application/lead/v1.0/form/{slug}/submit")
+    @POST ("/service/application/lead/v1.0/form/{slug}/submit")
     fun submitCustomForm(
         @Path("slug") slug: String,
         @Body body: CustomFormSubmissionPayload
     )
     : Deferred<Response<SubmitCustomFormResponse>>
     
-    @GET ("service/application/lead/v1.0/video/room/{unique_name}/participants")
+    @GET ("/service/application/lead/v1.0/video/room/{unique_name}/participants")
     fun getParticipantsInsideVideoRoom(
         @Path("unique_name") uniqueName: String
         
     )
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
-    @GET ("service/application/lead/v1.0/video/room/{unique_name}/token")
+    @GET ("/service/application/lead/v1.0/video/room/{unique_name}/token")
     fun getTokenForVideoRoom(
         @Path("unique_name") uniqueName: String
         
@@ -685,16 +713,44 @@ interface ContentApiList {
     )
     : Deferred<Response<CustomBlog>>
     
-    @GET ("/service/application/content/v1.0/faqs")
+    @GET ("/service/application/content/v1.0/faq")
     fun getFaqs(
         
         
     )
     : Deferred<Response<FaqResponseSchema>>
     
+    @GET ("/service/application/content/v1.0/faq/categories")
+    fun getFaqCategories(
+        
+        
+    )
+    : Deferred<Response<GetFaqCategoriesSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq/{id_or_slug}")
+    fun getFaqByIdOrSlug(
+        @Path("id_or_slug") idOrSlug: String
+        
+    )
+    : Deferred<Response<FaqSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}")
+    fun getFaqCategoryBySlugOrId(
+        @Path("id_or_slug") idOrSlug: String
+        
+    )
+    : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}/faqs")
+    fun getFaqsByCategoryIdOrSlug(
+        @Path("id_or_slug") idOrSlug: String
+        
+    )
+    : Deferred<Response<GetFaqSchema>>
+    
     @GET ("/service/application/content/v1.0/landing-page")
     fun getLandingPage(
-        @Header("x-device-platform") xDevicePlatform: String
+        
         
     )
     : Deferred<Response<LandingPage>>
@@ -708,7 +764,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/navigations/")
     fun getNavigations(
-        @Header("x-device-platform") xDevicePlatform: String
+        
         
     )
     : Deferred<Response<Navigation>>
@@ -729,7 +785,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/slideshow/{slug}")
     fun getSlideshow(
-        @Path("slug") slug: String, @Header("x-device-platform") xDevicePlatform: String
+        @Path("slug") slug: String
         
     )
     : Deferred<Response<Slideshow>>
@@ -1379,6 +1435,13 @@ interface PosCartApiList {
     fun getShipments(
         @Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?
         
+    )
+    : Deferred<Response<CartShipmentsResponse>>
+    
+    @PUT ("/service/application/pos/cart/v1.0/shipment")
+    fun updateShipments(
+        @Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("order_type") orderType: String?,
+        @Body body: UpdateCartShipmentRequest
     )
     : Deferred<Response<CartShipmentsResponse>>
     
