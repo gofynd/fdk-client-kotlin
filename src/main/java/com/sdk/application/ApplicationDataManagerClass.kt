@@ -278,8 +278,8 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    fun getCart(uid: Int?=null, assignCardId: Int?=null): Deferred<Response<CartResponse>>? {
-        return cartApiList?.getCart(uid = uid, assignCardId = assignCardId )}
+    fun getCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartResponse>>? {
+        return cartApiList?.getCart(uid = uid, i = i, b = b, assignCardId = assignCardId )}
 
     
     
@@ -288,13 +288,13 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun addItems(body: AddCartRequest): Deferred<Response<AddCartResponse>>? {
-        return cartApiList?.addItems( body = body)}
+    fun addItems(i: Boolean?=null, b: Boolean?=null,body: AddCartRequest): Deferred<Response<AddCartResponse>>? {
+        return cartApiList?.addItems(i = i, b = b, body = body)}
 
     
     
-    fun updateCart(body: UpdateCartRequest): Deferred<Response<UpdateCartResponse>>? {
-        return cartApiList?.updateCart( body = body)}
+    fun updateCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: UpdateCartRequest): Deferred<Response<UpdateCartResponse>>? {
+        return cartApiList?.updateCart(uid = uid, i = i, b = b, body = body)}
 
     
     
@@ -308,7 +308,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,body: ApplyCouponRequest): Deferred<Response<SaveCouponResponse>>? {
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
         return cartApiList?.applyCoupon(i = i, b = b, p = p, body = body)}
 
     
@@ -323,17 +323,17 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getAddresses(uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressResponse>>? {
+    fun getAddresses(uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
         return cartApiList?.getAddresses(uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
     
-    fun addAddress(body: SaveAddressRequest): Deferred<Response<SaveAddressResponse>>? {
+    fun addAddress(body: UpdateAddressRequest): Deferred<Response<SaveAddressResponse>>? {
         return cartApiList?.addAddress( body = body)}
 
     
     
-    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressResponse>>? {
+    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<AddressResponse>>? {
         return cartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
@@ -348,8 +348,8 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun selectAddress(body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
-        return cartApiList?.selectAddress( body = body)}
+    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
+        return cartApiList?.selectAddress(uid = uid, i = i, b = b, body = body)}
 
     
     
@@ -363,8 +363,8 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getShipments(p: Boolean?=null, uid: Int?=null, addressId: Int?=null): Deferred<Response<CartShipmentsResponse>>? {
-        return cartApiList?.getShipments(p = p, uid = uid, addressId = addressId )}
+    fun getShipments(p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: Int?=null): Deferred<Response<CartShipmentsResponse>>? {
+        return cartApiList?.getShipments(p = p, uid = uid, addressId = addressId, areaCode = areaCode )}
 
     
     
@@ -1397,8 +1397,8 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         return retrofitHttpClient?.initializeRestClient(PosCartApiList::class.java) as? PosCartApiList
     }
     
-    fun getCart(uid: Int?=null, assignCardId: Int?=null): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.getCart(uid = uid, assignCardId = assignCardId )}
+    fun getCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.getCart(uid = uid, i = i, b = b, assignCardId = assignCardId )}
 
     
     
@@ -1407,13 +1407,13 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun addItems(body: AddCartRequest): Deferred<Response<AddCartResponse>>? {
-        return posCartApiList?.addItems( body = body)}
+    fun addItems(i: Boolean?=null, b: Boolean?=null,body: AddCartRequest): Deferred<Response<AddCartResponse>>? {
+        return posCartApiList?.addItems(i = i, b = b, body = body)}
 
     
     
-    fun updateCart(body: UpdateCartRequest): Deferred<Response<UpdateCartResponse>>? {
-        return posCartApiList?.updateCart( body = body)}
+    fun updateCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: UpdateCartRequest): Deferred<Response<UpdateCartResponse>>? {
+        return posCartApiList?.updateCart(uid = uid, i = i, b = b, body = body)}
 
     
     
@@ -1427,7 +1427,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,body: ApplyCouponRequest): Deferred<Response<SaveCouponResponse>>? {
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
         return posCartApiList?.applyCoupon(i = i, b = b, p = p, body = body)}
 
     
@@ -1442,17 +1442,17 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getAddresses(uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressResponse>>? {
+    fun getAddresses(uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
         return posCartApiList?.getAddresses(uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
     
-    fun addAddress(body: SaveAddressRequest): Deferred<Response<SaveAddressResponse>>? {
+    fun addAddress(body: UpdateAddressRequest): Deferred<Response<SaveAddressResponse>>? {
         return posCartApiList?.addAddress( body = body)}
 
     
     
-    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressResponse>>? {
+    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<AddressResponse>>? {
         return posCartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
@@ -1467,8 +1467,8 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun selectAddress(body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.selectAddress( body = body)}
+    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.selectAddress(uid = uid, i = i, b = b, body = body)}
 
     
     
@@ -1482,8 +1482,8 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null): Deferred<Response<CartShipmentsResponse>>? {
-        return posCartApiList?.getShipments(pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, uid = uid, addressId = addressId )}
+    fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: Int?=null): Deferred<Response<CartShipmentsResponse>>? {
+        return posCartApiList?.getShipments(pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, uid = uid, addressId = addressId, areaCode = areaCode )}
 
     
     

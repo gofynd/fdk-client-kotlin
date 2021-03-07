@@ -1794,7 +1794,7 @@ Schema: `ErrorResponse`
 Fetch all Items Added to  Cart
 
 ```kotlin
-cart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
+cart.getCart(uid: uid, i: i, b: b, assignCardId: assignCardId).safeAwait(
     { response ->
       // Use response
     },
@@ -1807,6 +1807,8 @@ cart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
+| i | boolean |  | 
+| b | boolean |  | 
 | assignCardId | integer |  | 
 
 Get all the details of a items added to cart  by uid. If successful, returns a Cart resource in the response body specified in CartResponse
@@ -1869,7 +1871,7 @@ Fetch Last-Modified Timestamp Response
 Add Items to Cart
 
 ```kotlin
-cart.addItems(body: body).safeAwait(
+cart.addItems(i: i, b: b, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -1881,6 +1883,8 @@ cart.addItems(body: body).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| i | boolean |  | 
+| b | boolean |  | 
 
 <p>Add Items to cart. See `AddCartRequest` in schema of request body for the list of attributes needed to add items to a cart. On successful request, returns cart response containing details of items, coupons available etc.these attributes will be fetched from the folowing api's</p>
 
@@ -2541,7 +2545,7 @@ Sorry, item is out of stock
 Update Items already added to Cart
 
 ```kotlin
-cart.updateCart(body: body).safeAwait(
+cart.updateCart(uid: uid, i: i, b: b, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -2553,6 +2557,9 @@ cart.updateCart(body: body).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| uid | integer |  | 
+| i | boolean |  | 
+| b | boolean |  | 
 
 Request object containing attributes like item_quantity and item_size which can be updated .these attributes will be fetched from the folowing api's</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
 
@@ -3048,7 +3055,7 @@ cart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
 Response of the Coupon object including all item details included in .the cart,coupons applied etc.
 
 
-Schema: `SaveCouponResponse`
+Schema: `CartResponse`
 
 
 
@@ -3249,16 +3256,16 @@ cart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags
 | tags | integer |  | 
 | isDefault | boolean |  | 
 
-Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
+Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressesResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
 *Success Response:*
 
 
 
-Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
+Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressesResponse for details
 
 
-Schema: `GetAddressResponse`
+Schema: `GetAddressesResponse`
 
 
 
@@ -3288,7 +3295,7 @@ cart.addAddress(body: body).safeAwait(
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-<p>Add Address to account. See `SaveAddressRequest` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
+<p>Add Address to account. See `Address` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
 
 *Success Response:*
 
@@ -3333,16 +3340,16 @@ cart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkout
 | tags | integer |  | 
 | isDefault | boolean |  | 
 
-Get a addresses with the given id. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
+Get a addresses with the given id. If successful, returns a Address resource in the response body specified in `Address`.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
 *Success Response:*
 
 
 
-Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
+Returns The Address object which has list of all address saved for the account. See example below or refer AddressResponse for details
 
 
-Schema: `GetAddressResponse`
+Schema: `AddressResponse`
 
 
 
@@ -3439,7 +3446,7 @@ Schema: `DeleteAddressResponse`
 Select Address from All Addresses
 
 ```kotlin
-cart.selectAddress(body: body).safeAwait(
+cart.selectAddress(uid: uid, i: i, b: b, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -3451,6 +3458,9 @@ cart.selectAddress(body: body).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| uid | integer |  | 
+| i | boolean |  | 
+| b | boolean |  | 
 
 <p>Select Address from all addresses associated with the account in order to ship the cart items to .that address,otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, returns Cart object response.below are the address attributes which needs to be sent. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
 
@@ -3539,7 +3549,7 @@ Validate coupon for selected payment mode
 
 
 
-Cart Affiliates.
+Cart response with payment options
 
 
 Schema: `PaymentOptions`
@@ -3579,7 +3589,7 @@ Update Cart Payment for Your Account
 
 
 
-Cart Affiliates.
+Cart response with payment options
 
 
 Schema: `PaymentOptions`
@@ -3599,7 +3609,7 @@ Schema: `PaymentOptions`
 Get delivery date and options before checkout
 
 ```kotlin
-cart.getShipments(p: p, uid: uid, addressId: addressId).safeAwait(
+cart.getShipments(p: p, uid: uid, addressId: addressId, areaCode: areaCode).safeAwait(
     { response ->
       // Use response
     },
@@ -3614,6 +3624,7 @@ cart.getShipments(p: p, uid: uid, addressId: addressId).safeAwait(
 | p | boolean | Get payment options or not | 
 | uid | integer | Cart id | 
 | addressId | integer | Address id | 
+| areaCode | integer | Destination pincode. | 
 
 Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
 
@@ -13021,7 +13032,7 @@ Schema: `ErrorResponse`
 Fetch all Items Added to  Cart
 
 ```kotlin
-poscart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
+poscart.getCart(uid: uid, i: i, b: b, assignCardId: assignCardId).safeAwait(
     { response ->
       // Use response
     },
@@ -13034,6 +13045,8 @@ poscart.getCart(uid: uid, assignCardId: assignCardId).safeAwait(
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
+| i | boolean |  | 
+| b | boolean |  | 
 | assignCardId | integer |  | 
 
 Get all the details of a items added to cart  by uid. If successful, returns a Cart resource in the response body specified in CartResponse
@@ -13096,7 +13109,7 @@ Fetch Last-Modified Timestamp Response
 Add Items to Cart
 
 ```kotlin
-poscart.addItems(body: body).safeAwait(
+poscart.addItems(i: i, b: b, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -13108,6 +13121,8 @@ poscart.addItems(body: body).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| i | boolean |  | 
+| b | boolean |  | 
 
 <p>Add Items to cart. See `AddCartRequest` in schema of request body for the list of attributes needed to add items to a cart. On successful request, returns cart response containing details of items, coupons available etc.these attributes will be fetched from the folowing api's</p>
 
@@ -13768,7 +13783,7 @@ Sorry, item is out of stock
 Update Items already added to Cart
 
 ```kotlin
-poscart.updateCart(body: body).safeAwait(
+poscart.updateCart(uid: uid, i: i, b: b, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -13780,6 +13795,9 @@ poscart.updateCart(body: body).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| uid | integer |  | 
+| i | boolean |  | 
+| b | boolean |  | 
 
 Request object containing attributes like item_quantity and item_size which can be updated .these attributes will be fetched from the folowing api's</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
 
@@ -14275,7 +14293,7 @@ poscart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
 Response of the Coupon object including all item details included in .the cart,coupons applied etc.
 
 
-Schema: `SaveCouponResponse`
+Schema: `CartResponse`
 
 
 
@@ -14476,16 +14494,16 @@ poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, t
 | tags | integer |  | 
 | isDefault | boolean |  | 
 
-Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
+Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressesResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
 *Success Response:*
 
 
 
-Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
+Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressesResponse for details
 
 
-Schema: `GetAddressResponse`
+Schema: `GetAddressesResponse`
 
 
 
@@ -14515,7 +14533,7 @@ poscart.addAddress(body: body).safeAwait(
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-<p>Add Address to account. See `SaveAddressRequest` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
+<p>Add Address to account. See `Address` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
 
 *Success Response:*
 
@@ -14560,16 +14578,16 @@ poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: check
 | tags | integer |  | 
 | isDefault | boolean |  | 
 
-Get a addresses with the given id. If successful, returns a Address resource in the response body specified in GetAddressResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
+Get a addresses with the given id. If successful, returns a Address resource in the response body specified in `Address`.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
 
 *Success Response:*
 
 
 
-Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressResponse for details
+Returns The Address object which has list of all address saved for the account. See example below or refer AddressResponse for details
 
 
-Schema: `GetAddressResponse`
+Schema: `AddressResponse`
 
 
 
@@ -14666,7 +14684,7 @@ Schema: `DeleteAddressResponse`
 Select Address from All Addresses
 
 ```kotlin
-poscart.selectAddress(body: body).safeAwait(
+poscart.selectAddress(uid: uid, i: i, b: b, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -14678,6 +14696,9 @@ poscart.selectAddress(body: body).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| uid | integer |  | 
+| i | boolean |  | 
+| b | boolean |  | 
 
 <p>Select Address from all addresses associated with the account in order to ship the cart items to .that address,otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, returns Cart object response.below are the address attributes which needs to be sent. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
 
@@ -14766,7 +14787,7 @@ Validate coupon for selected payment mode
 
 
 
-Cart Affiliates.
+Cart response with payment options
 
 
 Schema: `PaymentOptions`
@@ -14806,7 +14827,7 @@ Update Cart Payment for Your Account
 
 
 
-Cart Affiliates.
+Cart response with payment options
 
 
 Schema: `PaymentOptions`
@@ -14826,7 +14847,7 @@ Schema: `PaymentOptions`
 Get delivery date and options before checkout
 
 ```kotlin
-poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId).safeAwait(
+poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId, areaCode: areaCode).safeAwait(
     { response ->
       // Use response
     },
@@ -14843,6 +14864,7 @@ poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingSt
 | p | boolean | Get payment options or not | 
 | uid | integer | Cart id | 
 | addressId | integer | Address id | 
+| areaCode | integer | Destination pincode. | 
 
 Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
 
