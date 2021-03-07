@@ -44,12 +44,8 @@
     * [getDepartments](#getdepartments)
     * [getSearchResults](#getsearchresults)
     * [getCollections](#getcollections)
-    * [addCollection](#addcollection)
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
-    * [addCollectionItemsBySlug](#addcollectionitemsbyslug)
-    * [updateCollectionDetailBySlug](#updatecollectiondetailbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
-    * [deleteCollectionDetailBySlug](#deletecollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
     * [unfollowById](#unfollowbyid)
     * [followById](#followbyid)
@@ -310,7 +306,7 @@ catalog.getProductDetailBySlug(slug: slug).safeAwait(
 | --------- | ----  | --- |
 | slug | string | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** | 
 
-Products are the core resource of an application. Products can be associated by categories, collections, brands and more. This API retrieves the product specified by the given ``slug``. If successful, returns a Product resource in the response body specified in `ProductDetail`
+Products are the core resource of an application. Products can be associated by categories, collections, brands and more. This API retrieves the product specified by the given **slug**. If successful, returns a Product resource in the response body specified in `ProductDetail`
 
 *Success Response:*
 
@@ -896,10 +892,10 @@ catalog.getProducts(q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | q | string | The search query. This can be a partial or complete name of a either a product, brand or category | 
-| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in ``f`` parameter in this format. ``?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts`` | 
+| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts** | 
 | filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
 | sortOn | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| pageId | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 | pageNo | integer | If page_type is number then pass it to fetch page items. Default is 1. | 
 | pageType | string | For pagination type should be cursor or number. Default is cursor. | 
@@ -1164,8 +1160,8 @@ catalog.getHomeProducts(sortOn: sortOn, pageId: pageId, pageSize: pageSize).safe
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| sortOn | string | Each response will contain ``sort_on`` param, which should be sent back to make pagination work. | 
-| pageId | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| sortOn | string | Each response will contain **sort_on** param, which should be sent back to make pagination work. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 List all the products associated with a brand, collection or category in a random order. If successful, returns a paginated list of products specified in `HomeListingResponse`
@@ -1321,7 +1317,7 @@ catalog.getCollections(pageId: pageId, pageSize: pageSize).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| pageId | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections`
@@ -1334,57 +1330,6 @@ List of collections. See example below or refer `GetCollectionListingResponse` f
 
 
 Schema: `GetCollectionListingResponse`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### addCollection
-Add a Collection
-
-```kotlin
-catalog.addCollection(body: body).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Create a collection. See `CreateCollection` for the list of attributes needed to create a collection and **collections/query-options** for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionDetailResponse`
-
-*Success Response:*
-
-
-
-List of all the collections including the one you added. See example below or refer `CollectionDetailResponse` for details
-
-
-Schema: `CollectionDetailResponse`
 
 
 
@@ -1426,10 +1371,10 @@ catalog.getCollectionItemsBySlug(slug: slug, f: f, filters: filters, sortOn: sor
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection for which you want to fetch the items | 
-| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in ``f`` parameter in this format. ``?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts`` | 
+| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts** | 
 | filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
 | sortOn | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| pageId | string | Each response will contain ``page_id`` param, which should be sent back to make pagination work. | 
+| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
 | pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 Get items in a collection specified by its `slug`.
@@ -1442,110 +1387,6 @@ The attached items of an collection. See example below or refer `ProductListingR
 
 
 Schema: `ProductListingResponse`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### addCollectionItemsBySlug
-Add items to a collection
-
-```kotlin
-catalog.addCollectionItemsBySlug(slug: slug, body: body).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to add items into. | 
-
-Adds items to a collection specified by its `slug`. See `CollectionItemsRequest` for the list of attributes needed to add items to an collection.
-
-*Success Response:*
-
-
-
-Status object. Tells whether the operation was successful.
-
-
-Schema: `CollectionItemsResponse`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateCollectionDetailBySlug
-Update a collection
-
-```kotlin
-catalog.updateCollectionDetailBySlug(slug: slug).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to update. | 
-
-Update a collection by it's slug. On successful request, returns the updated collection
-
-*Success Response:*
-
-
-
-The Collection object. See example below or refer `CollectionsUpdateDetailResponse` for details.
-
-
-Schema: `CollectionsUpdateDetailResponse`
 
 
 
@@ -1598,58 +1439,6 @@ The Collection object. See example below or refer `CollectionDetailResponse` for
 
 
 Schema: `CollectionDetailResponse`
-
-
-
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### deleteCollectionDetailBySlug
-Delete a Collection
-
-```kotlin
-catalog.deleteCollectionDetailBySlug(slug: slug).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to delete. | 
-
-Delete a collection by it's slug. Returns an object that tells whether the collection was deleted successfully
-
-*Success Response:*
-
-
-
-Status object. Tells whether the operation was successful. See example below or refer `CollectionDetailViewDeleteResponse`
-
-
-Schema: `CollectionDetailViewDeleteResponse`
 
 
 
@@ -10575,7 +10364,7 @@ Use this API to get Get All Valid Payment Options for making payment
 Success
 
 
-Schema: `PaymentOptionsResponse`
+Schema: `PaymentModeRouteResponse`
 
 
 
@@ -10646,7 +10435,7 @@ Use this API to get Get All Valid Payment Options for making payment
 Success
 
 
-Schema: `PaymentOptionsResponse`
+Schema: `PaymentModeRouteResponse`
 
 
 

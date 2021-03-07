@@ -3,26 +3,36 @@ package com.sdk.common
 import android.util.Base64.NO_WRAP
 import android.util.Base64.encodeToString
 import com.sdk.application.ApplicationConfig
+import com.sdk.platform.PlatformConfig
 import java.util.*
 
 object NetworkUtils {
-    fun getCommonRestHeaders(applicationConfig: ApplicationConfig): Map<String, String> {
+    fun getCommonRestHeaders(applicationConfig: ApplicationConfig?): Map<String, String> {
         val headerList = HashMap<String, String>()
-        //headerList["display-width"] = Resources.getSystem().displayMetrics.widthPixels.toString()
-        headerList["User-Agent"] = applicationConfig.userAgent
+        headerList["User-Agent"] = applicationConfig?.userAgent?:""
         return headerList
     }
 
-    fun interceptHeaders(applicationConfig: ApplicationConfig): Map<String, String> {
+    fun interceptHeaders(applicationConfig: ApplicationConfig?): Map<String, String> {
         val headerList = HashMap<String, String>()
-        val token = applicationConfig.applicationToken ?: ""
-        val affiliateId = applicationConfig.applicationId ?: ""
+        val token = applicationConfig?.applicationToken ?: ""
+        val affiliateId = applicationConfig?.applicationId ?: ""
         headerList["x-application-token"] = token
         headerList["x-application-id"] = affiliateId
         headerList["Accept-Language"] = "en-IN"
         val bearerToken =
             encodeToString("$affiliateId:$token".toByteArray(), NO_WRAP)
         headerList["Authorization"] = "Bearer $bearerToken"
+        return headerList
+    }
+
+    fun getCommonRestHeaders(applicationConfig: PlatformConfig?): Map<String, String> {
+        val headerList = HashMap<String, String>()
+        return headerList
+    }
+
+    fun interceptHeaders(applicationConfig: PlatformConfig?): Map<String, String> {
+        val headerList = HashMap<String, String>()
         return headerList
     }
 }

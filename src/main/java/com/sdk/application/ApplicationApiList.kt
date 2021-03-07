@@ -4,231 +4,118 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
 
-
 interface CatalogApiList {
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/")
-    fun getProductDetailBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getProductDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductDetail>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/")
-    fun getProductSizesBySlug(
-        @Path("slug") slug: String, @Query("store_id") storeId: String?
-        
-    )
+    fun getProductSizesBySlug(@Path("slug") slug: String, @Query("store_id") storeId: String?)
     : Deferred<Response<ProductSizes>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/price/")
-    fun getProductPriceBySlug(
-        @Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("store_id") storeId: String?
-        
-    )
+    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("store_id") storeId: String?)
     : Deferred<Response<ProductSizePriceResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/sellers/")
-    fun getProductSellersBySlug(
-        @Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/compare/")
-    fun getProductComparisonBySlugs(
-        @Query("slug") slug: String
-        
-    )
+    fun getProductComparisonBySlugs(@Query("slug") slug: String)
     : Deferred<Response<ProductsComparisonResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compare/")
-    fun getSimilarComparisonProductBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getSimilarComparisonProductBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductCompareResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently/")
-    fun getComparedFrequentlyProductBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getComparedFrequentlyProductBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductFrequentlyComparedSimilarResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/similar/{similar_type}/")
-    fun getProductSimilarByIdentifier(
-        @Path("slug") slug: String, @Path("similar_type") similarType: String
-        
-    )
+    fun getProductSimilarByIdentifier(@Path("slug") slug: String, @Path("similar_type") similarType: String)
     : Deferred<Response<SimilarProductByTypeResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/variants/")
-    fun getProductVariantsBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getProductVariantsBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductVariantsResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/stock-status/")
-    fun getProductStockByIds(
-        @Query("item_id") itemId: String?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?
-        
-    )
+    fun getProductStockByIds(@Query("item_id") itemId: String?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?)
     : Deferred<Response<ProductStockStatusResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/stock-status/poll/")
-    fun getProductStockForTimeByIds(
-        @Query("timestamp") timestamp: String, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?
-        
-    )
+    fun getProductStockForTimeByIds(@Query("timestamp") timestamp: String, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?)
     : Deferred<Response<ProductStockPolling>>
     
     @GET ("/service/application/catalog/v1.0/products/")
-    fun getProducts(
-        @Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?
-        
-    )
+    fun getProducts(@Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?)
     : Deferred<Response<ProductListingResponse>>
     
     @GET ("/service/application/catalog/v1.0/brands/")
-    fun getBrands(
-        @Query("department") department: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getBrands(@Query("department") department: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<BrandListingResponse>>
     
     @GET ("/service/application/catalog/v1.0/brands/{slug}/")
-    fun getBrandDetailBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getBrandDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<BrandDetailResponse>>
     
     @GET ("/service/application/catalog/v1.0/categories/")
-    fun getCategories(
-        @Query("department") department: String?
-        
-    )
+    fun getCategories(@Query("department") department: String?)
     : Deferred<Response<CategoryListingResponse>>
     
     @GET ("/service/application/catalog/v1.0/categories/{slug}/")
-    fun getCategoryDetailBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getCategoryDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<CategoryMetaResponse>>
     
     @GET ("/service/application/catalog/v1.0/home/listing/")
-    fun getHomeProducts(
-        @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getHomeProducts(@Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<HomeListingResponse>>
     
     @GET ("/service/application/catalog/v1.0/departments/")
-    fun getDepartments(
-        
-        
-    )
+    fun getDepartments()
     : Deferred<Response<DepartmentResponse>>
     
     @GET ("/service/application/catalog/v1.0/auto-complete/")
-    fun getSearchResults(
-        @Query("q") q: String
-        
-    )
+    fun getSearchResults(@Query("q") q: String)
     : Deferred<Response<AutoCompleteResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/")
-    fun getCollections(
-        @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getCollections(@Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetCollectionListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/collections/")
-    fun addCollection(
-        
-        @Body body: CreateCollection
-    )
-    : Deferred<Response<CollectionDetailResponse>>
-    
     @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
-    fun getCollectionItemsBySlug(
-        @Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getCollectionItemsBySlug(@Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/collections/{slug}/items/")
-    fun addCollectionItemsBySlug(
-        @Path("slug") slug: String,
-        @Body body: CollectionItemsRequest
-    )
-    : Deferred<Response<CollectionItemsResponse>>
-    
-    @PUT ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun updateCollectionDetailBySlug(
-        @Path("slug") slug: String
-        
-    )
-    : Deferred<Response<CollectionsUpdateDetailResponse>>
-    
     @GET ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun getCollectionDetailBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getCollectionDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<CollectionDetailResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun deleteCollectionDetailBySlug(
-        @Path("slug") slug: String
-        
-    )
-    : Deferred<Response<CollectionDetailViewDeleteResponse>>
-    
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
-    fun getFollowedListing(
-        @Path("collection_type") collectionType: String
-        
-    )
+    fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(
-        @Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int
-        
-    )
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
     : Deferred<Response<FollowPostResponse>>
     
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(
-        @Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int
-        
-    )
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
-    fun getFollowerCountById(
-        @Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String
-        
-    )
+    fun getFollowerCountById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowerCountResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/ids/")
-    fun getFollowIds(
-        @Query("collection_type") collectionType: String?
-        
-    )
+    fun getFollowIds(@Query("collection_type") collectionType: String?)
     : Deferred<Response<FollowIdsResponse>>
     
     @GET ("/service/application/catalog/v1.0/locations/")
-    fun getStores(
-        @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?
-        
-    )
+    fun getStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
     : Deferred<Response<StoreListingResponse>>
     
 }
@@ -236,164 +123,95 @@ interface CatalogApiList {
 interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/detail")
-    fun getCart(
-        @Query("uid") uid: Int?, @Query("assign_card_id") assignCardId: Int?
-        
-    )
+    fun getCart(@Query("uid") uid: Int?, @Query("assign_card_id") assignCardId: Int?)
     : Deferred<Response<CartResponse>>
     
     @HEAD ("/service/application/cart/v1.0/detail")
-    fun getCartLastModified(
-        @Query("uid") uid: Int?
-        
-    )
+    fun getCartLastModified(@Query("uid") uid: Int?)
     : Deferred<Response<Any>>
     
     @POST ("/service/application/cart/v1.0/detail")
-    fun addItems(
-        
-        @Body body: AddCartRequest
-    )
+    fun addItems(@Body body: AddCartRequest)
     : Deferred<Response<AddCartResponse>>
     
     @PUT ("/service/application/cart/v1.0/detail")
-    fun updateCart(
-        
-        @Body body: UpdateCartRequest
-    )
+    fun updateCart(@Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartResponse>>
     
     @GET ("/service/application/cart/v1.0/basic")
-    fun getItemCount(
-        @Query("uid") uid: Int?
-        
-    )
+    fun getItemCount(@Query("uid") uid: Int?)
     : Deferred<Response<CartItemCountResponse>>
     
     @GET ("/service/application/cart/v1.0/coupon")
-    fun getCoupons(
-        @Query("uid") uid: Int?
-        
-    )
+    fun getCoupons(@Query("uid") uid: Int?)
     : Deferred<Response<GetCouponResponse>>
     
     @POST ("/service/application/cart/v1.0/coupon")
-    fun applyCoupon(
-        @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?,
-        @Body body: ApplyCouponRequest
-    )
+    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?,@Body body: ApplyCouponRequest)
     : Deferred<Response<SaveCouponResponse>>
     
     @DELETE ("/service/application/cart/v1.0/coupon")
-    fun removeCoupon(
-        @Query("uid") uid: Int?
-        
-    )
+    fun removeCoupon(@Query("uid") uid: Int?)
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/cart/v1.0/bulk-price")
-    fun getBulkDiscountOffers(
-        @Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?
-        
-    )
+    fun getBulkDiscountOffers(@Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?)
     : Deferred<Response<BulkPriceResponse>>
     
     @GET ("/service/application/cart/v1.0/address")
-    fun getAddresses(
-        @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
-        
-    )
+    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressResponse>>
     
     @POST ("/service/application/cart/v1.0/address")
-    fun addAddress(
-        
-        @Body body: SaveAddressRequest
-    )
+    fun addAddress(@Body body: SaveAddressRequest)
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/cart/v1.0/address/{id}")
-    fun getAddressById(
-        @Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
-        
-    )
+    fun getAddressById(@Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressResponse>>
     
     @PUT ("/service/application/cart/v1.0/address/{id}")
-    fun updateAddress(
-        @Path("id") id: Int,
-        @Body body: UpdateAddressRequest
-    )
+    fun updateAddress(@Path("id") id: Int,@Body body: UpdateAddressRequest)
     : Deferred<Response<UpdateAddressResponse>>
     
     @DELETE ("/service/application/cart/v1.0/address/{id}")
-    fun removeAddress(
-        @Path("id") id: Int
-        
-    )
+    fun removeAddress(@Path("id") id: Int)
     : Deferred<Response<DeleteAddressResponse>>
     
     @POST ("/service/application/cart/v1.0/select-address")
-    fun selectAddress(
-        
-        @Body body: SelectCartAddressRequest
-    )
+    fun selectAddress(@Body body: SelectCartAddressRequest)
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/cart/v1.0/payment")
-    fun getPaymentModes(
-        @Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?
-        
-    )
+    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
     : Deferred<Response<PaymentOptions>>
     
     @PUT ("/service/application/cart/v1.0/payment")
-    fun selectPaymentMode(
-        @Query("uid") uid: String?,
-        @Body body: UpdateCartPaymentRequest
-    )
+    fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
     : Deferred<Response<PaymentOptions>>
     
     @GET ("/service/application/cart/v1.0/shipment")
-    fun getShipments(
-        @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?
-        
-    )
+    fun getShipments(@Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?)
     : Deferred<Response<CartShipmentsResponse>>
     
     @POST ("/service/application/cart/v1.0/checkout")
-    fun checkoutCart(
-        
-        @Body body: CartCheckoutRequest
-    )
+    fun checkoutCart(@Body body: CartCheckoutRequest)
     : Deferred<Response<CartCheckoutResponse>>
     
     @PUT ("/service/application/cart/v1.0/meta")
-    fun updateCartMeta(
-        @Query("uid") uid: Int?,
-        @Body body: CartMetaRequest
-    )
+    fun updateCartMeta(@Query("uid") uid: Int?,@Body body: CartMetaRequest)
     : Deferred<Response<CartMetaResponse>>
     
     @POST ("/service/application/cart/v1.0/share-cart")
-    fun getCartShareLink(
-        
-        @Body body: GetShareCartLinkRequest
-    )
+    fun getCartShareLink(@Body body: GetShareCartLinkRequest)
     : Deferred<Response<GetShareCartLinkResponse>>
     
     @GET ("/service/application/cart/v1.0/share-cart/{token}")
-    fun getCartSharedItems(
-        @Path("token") token: String
-        
-    )
+    fun getCartSharedItems(@Path("token") token: String)
     : Deferred<Response<SharedCartResponse>>
     
     @POST ("/service/application/cart/v1.0/share-cart/{token}/{action}")
-    fun updateCartWithSharedItems(
-        @Path("token") token: String, @Path("action") action: String
-        
-    )
+    fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
     
 }
@@ -401,52 +219,31 @@ interface CartApiList {
 interface LeadApiList {
     
     @GET ("/service/application/lead/v1.0/ticket/{id}")
-    fun getTicket(
-        @Path("id") id: String
-        
-    )
+    fun getTicket(@Path("id") id: String)
     : Deferred<Response<Ticket>>
     
     @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
-    fun createHistoryForTicket(
-        @Path("ticket_id") ticketId: String,
-        @Body body: TicketHistoryPayload
-    )
+    fun createHistoryForTicket(@Path("ticket_id") ticketId: String,@Body body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>
     
     @POST ("/service/application/lead/v1.0/ticket/")
-    fun createTicket(
-        
-        @Body body: AddTicketPayload
-    )
+    fun createTicket(@Body body: AddTicketPayload)
     : Deferred<Response<Ticket>>
     
     @GET ("/service/application/lead/v1.0/form/{slug}")
-    fun getCustomForm(
-        @Path("slug") slug: String
-        
-    )
+    fun getCustomForm(@Path("slug") slug: String)
     : Deferred<Response<CustomForm>>
     
     @POST ("/service/application/lead/v1.0/form/{slug}/submit")
-    fun submitCustomForm(
-        @Path("slug") slug: String,
-        @Body body: CustomFormSubmissionPayload
-    )
+    fun submitCustomForm(@Path("slug") slug: String,@Body body: CustomFormSubmissionPayload)
     : Deferred<Response<SubmitCustomFormResponse>>
     
     @GET ("/service/application/lead/v1.0/video/room/{unique_name}/participants")
-    fun getParticipantsInsideVideoRoom(
-        @Path("unique_name") uniqueName: String
-        
-    )
+    fun getParticipantsInsideVideoRoom(@Path("unique_name") uniqueName: String)
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
     @GET ("/service/application/lead/v1.0/video/room/{unique_name}/token")
-    fun getTokenForVideoRoom(
-        @Path("unique_name") uniqueName: String
-        
-    )
+    fun getTokenForVideoRoom(@Path("unique_name") uniqueName: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>
     
 }
@@ -454,17 +251,11 @@ interface LeadApiList {
 interface ThemeApiList {
     
     @GET ("/service/application/theme/v1.0/applied-theme")
-    fun getAppliedTheme(
-        
-        
-    )
+    fun getAppliedTheme()
     : Deferred<Response<ThemesSchema>>
     
     @GET ("/service/application/theme/v1.0/{theme_id}/preview")
-    fun getThemeForPreview(
-        @Path("theme_id") themeId: String
-        
-    )
+    fun getThemeForPreview(@Path("theme_id") themeId: String)
     : Deferred<Response<ThemesSchema>>
     
 }
@@ -472,227 +263,131 @@ interface ThemeApiList {
 interface UserApiList {
     
     @POST ("/service/application/user/authentication/v1.0/login/facebook-token")
-    fun loginWithFacebook(
-        
-        @Body body: OAuthRequestSchema
-    )
+    fun loginWithFacebook(@Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/login/google-token")
-    fun loginWithGoogle(
-        
-        @Body body: OAuthRequestSchema
-    )
+    fun loginWithGoogle(@Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/login/google-android")
-    fun loginWithGoogleAndroid(
-        
-        @Body body: OAuthRequestSchema
-    )
+    fun loginWithGoogleAndroid(@Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/login/google-ios")
-    fun loginWithGoogleIOS(
-        
-        @Body body: OAuthRequestSchema
-    )
+    fun loginWithGoogleIOS(@Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/login/otp")
-    fun loginWithOTP(
-        @Query("platform") platform: String?,
-        @Body body: SendOtpRequestSchema
-    )
+    fun loginWithOTP(@Query("platform") platform: String?,@Body body: SendOtpRequestSchema)
     : Deferred<Response<SendOtpResponse>>
     
     @POST ("/service/application/user/authentication/v1.0/login/password")
-    fun loginWithEmailAndPassword(
-        
-        @Body body: PasswordLoginRequestSchema
-    )
+    fun loginWithEmailAndPassword(@Body body: PasswordLoginRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/login/password/reset")
-    fun sendResetPasswordEmail(
-        @Query("platform") platform: String?,
-        @Body body: SendResetPasswordEmailRequestSchema
-    )
+    fun sendResetPasswordEmail(@Query("platform") platform: String?,@Body body: SendResetPasswordEmailRequestSchema)
     : Deferred<Response<ResetPasswordSuccess>>
     
     @POST ("/service/application/userauthentication/v1.0/login/password/reset/forgot")
-    fun forgotPassword(
-        
-        @Body body: ForgotPasswordRequestSchema
-    )
+    fun forgotPassword(@Body body: ForgotPasswordRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/login/password/reset/token")
-    fun sendResetToken(
-        
-        @Body body: CodeRequestBodySchema
-    )
+    fun sendResetToken(@Body body: CodeRequestBodySchema)
     : Deferred<Response<ResetPasswordSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/login/token")
-    fun loginWithToken(
-        
-        @Body body: TokenRequestBodySchema
-    )
+    fun loginWithToken(@Body body: TokenRequestBodySchema)
     : Deferred<Response<LoginSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/register/form")
-    fun registerWithForm(
-        @Query("platform") platform: String?,
-        @Body body: FormRegisterRequestSchema
-    )
+    fun registerWithForm(@Query("platform") platform: String?,@Body body: FormRegisterRequestSchema)
     : Deferred<Response<RegisterFormSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/verify/email")
-    fun verifyEmail(
-        
-        @Body body: CodeRequestBodySchema
-    )
+    fun verifyEmail(@Body body: CodeRequestBodySchema)
     : Deferred<Response<VerifyEmailSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/verify/mobile")
-    fun verifyMobile(
-        
-        @Body body: CodeRequestBodySchema
-    )
+    fun verifyMobile(@Body body: CodeRequestBodySchema)
     : Deferred<Response<VerifyEmailSuccess>>
     
     @GET ("/service/application/user/authentication/v1.0/has-password")
-    fun hasPassword(
-        
-        
-    )
+    fun hasPassword()
     : Deferred<Response<HasPasswordSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/password")
-    fun updatePassword(
-        
-        @Body body: UpdatePasswordRequestSchema
-    )
+    fun updatePassword(@Body body: UpdatePasswordRequestSchema)
     : Deferred<Response<VerifyEmailSuccess>>
     
     @GET ("/service/application/user/authentication/v1.0/logout")
-    fun logout(
-        
-        
-    )
+    fun logout()
     : Deferred<Response<LogoutSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/otp/mobile/send")
-    fun sendOTPOnMobile(
-        @Query("platform") platform: String?,
-        @Body body: SendMobileOtpRequestSchema
-    )
+    fun sendOTPOnMobile(@Query("platform") platform: String?,@Body body: SendMobileOtpRequestSchema)
     : Deferred<Response<OtpSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/otp/mobile/verify")
-    fun verifyMobileOTP(
-        @Query("platform") platform: String?,
-        @Body body: VerifyOtpRequestSchema
-    )
+    fun verifyMobileOTP(@Query("platform") platform: String?,@Body body: VerifyOtpRequestSchema)
     : Deferred<Response<VerifyOtpSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/otp/email/send")
-    fun sendOTPOnEmail(
-        @Query("platform") platform: String?,
-        @Body body: SendEmailOtpRequestSchema
-    )
+    fun sendOTPOnEmail(@Query("platform") platform: String?,@Body body: SendEmailOtpRequestSchema)
     : Deferred<Response<EmailOtpSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/otp/email/verify")
-    fun verifyEmailOTP(
-        @Query("platform") platform: String?,
-        @Body body: VerifyOtpRequestSchema
-    )
+    fun verifyEmailOTP(@Query("platform") platform: String?,@Body body: VerifyOtpRequestSchema)
     : Deferred<Response<VerifyOtpSuccess>>
     
     @GET ("/service/application/user/authentication/v1.0/session")
-    fun getLoggedInUser(
-        
-        
-    )
+    fun getLoggedInUser()
     : Deferred<Response<UserSchema>>
     
     @GET ("/service/application/user/authentication/v1.0/sessions")
-    fun getListOfActiveSessions(
-        
-        
-    )
+    fun getListOfActiveSessions()
     : Deferred<Response<SessionListSuccess>>
     
     @GET ("/service/application/user/platform/v1.0/config")
-    fun getPlatformConfig(
-        @Query("name") name: String?
-        
-    )
+    fun getPlatformConfig(@Query("name") name: String?)
     : Deferred<Response<PlatformSchema>>
     
     @POST ("/service/application/user/profile/v1.0/detail")
-    fun updateProfile(
-        @Query("platform") platform: String?,
-        @Body body: EditProfileRequestSchema
-    )
+    fun updateProfile(@Query("platform") platform: String?,@Body body: EditProfileRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
     @PUT ("/service/application/user/profile/v1.0/mobile")
-    fun addMobileNumber(
-        @Query("platform") platform: String?,
-        @Body body: EditMobileRequestSchema
-    )
+    fun addMobileNumber(@Query("platform") platform: String?,@Body body: EditMobileRequestSchema)
     : Deferred<Response<VerifyMobileOTPSuccess>>
     
     @DELETE ("/service/application/user/profile/v1.0/mobile")
-    fun deleteMobileNumber(
-        @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") countryCode: String, @Query("phone") phone: String
-        
-    )
+    fun deleteMobileNumber(@Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") countryCode: String, @Query("phone") phone: String)
     : Deferred<Response<LoginSuccess>>
     
     @POST ("/service/application/user/profile/v1.0/mobile/primary")
-    fun setMobileNumberAsPrimary(
-        
-        @Body body: SendVerificationLinkMobileRequestSchema
-    )
+    fun setMobileNumberAsPrimary(@Body body: SendVerificationLinkMobileRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
     @POST ("/service/application/user/profile/v1.0/mobile/link/send")
-    fun sendVerificationLinkToMobile(
-        @Query("platform") platform: String?,
-        @Body body: SendVerificationLinkMobileRequestSchema
-    )
+    fun sendVerificationLinkToMobile(@Query("platform") platform: String?,@Body body: SendVerificationLinkMobileRequestSchema)
     : Deferred<Response<SendMobileVerifyLinkSuccess>>
     
     @PUT ("/service/application/user/profile/v1.0/email")
-    fun addEmail(
-        @Query("platform") platform: String?,
-        @Body body: EditEmailRequestSchema
-    )
+    fun addEmail(@Query("platform") platform: String?,@Body body: EditEmailRequestSchema)
     : Deferred<Response<VerifyEmailOTPSuccess>>
     
     @DELETE ("/service/application/user/profile/v1.0/email")
-    fun deleteEmail(
-        @Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("email") email: String
-        
-    )
+    fun deleteEmail(@Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("email") email: String)
     : Deferred<Response<LoginSuccess>>
     
     @POST ("/service/application/user/profile/v1.0/email/primary")
-    fun setEmailAsPrimary(
-        
-        @Body body: EditEmailRequestSchema
-    )
+    fun setEmailAsPrimary(@Body body: EditEmailRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
     @POST ("/service/application/user/profile/v1.0/email/link/send")
-    fun sendVerificationLinkToEmail(
-        @Query("platform") platform: String?,
-        @Body body: EditEmailRequestSchema
-    )
+    fun sendVerificationLinkToEmail(@Query("platform") platform: String?,@Body body: EditEmailRequestSchema)
     : Deferred<Response<SendEmailVerifyLinkSuccess>>
     
 }
@@ -700,108 +395,63 @@ interface UserApiList {
 interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/announcements")
-    fun getAnnouncements(
-        
-        
-    )
+    fun getAnnouncements()
     : Deferred<Response<AnnouncementsResponseSchema>>
     
     @GET ("/service/application/content/v1.0/blogs/{slug}")
-    fun getBlog(
-        @Path("slug") slug: String
-        
-    )
+    fun getBlog(@Path("slug") slug: String)
     : Deferred<Response<CustomBlog>>
     
     @GET ("/service/application/content/v1.0/faq")
-    fun getFaqs(
-        
-        
-    )
+    fun getFaqs()
     : Deferred<Response<FaqResponseSchema>>
     
     @GET ("/service/application/content/v1.0/faq/categories")
-    fun getFaqCategories(
-        
-        
-    )
+    fun getFaqCategories()
     : Deferred<Response<GetFaqCategoriesSchema>>
     
     @GET ("/service/application/content/v1.0/faq/{id_or_slug}")
-    fun getFaqByIdOrSlug(
-        @Path("id_or_slug") idOrSlug: String
-        
-    )
+    fun getFaqByIdOrSlug(@Path("id_or_slug") idOrSlug: String)
     : Deferred<Response<FaqSchema>>
     
     @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}")
-    fun getFaqCategoryBySlugOrId(
-        @Path("id_or_slug") idOrSlug: String
-        
-    )
+    fun getFaqCategoryBySlugOrId(@Path("id_or_slug") idOrSlug: String)
     : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>
     
     @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}/faqs")
-    fun getFaqsByCategoryIdOrSlug(
-        @Path("id_or_slug") idOrSlug: String
-        
-    )
+    fun getFaqsByCategoryIdOrSlug(@Path("id_or_slug") idOrSlug: String)
     : Deferred<Response<GetFaqSchema>>
     
     @GET ("/service/application/content/v1.0/landing-page")
-    fun getLandingPage(
-        
-        
-    )
+    fun getLandingPage()
     : Deferred<Response<LandingPage>>
     
     @GET ("/service/application/content/v1.0/legal")
-    fun getLegalInformation(
-        
-        
-    )
+    fun getLegalInformation()
     : Deferred<Response<ApplicationLegal>>
     
     @GET ("/service/application/content/v1.0/navigations/")
-    fun getNavigations(
-        
-        
-    )
+    fun getNavigations()
     : Deferred<Response<Navigation>>
     
     @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(
-        @Path("slug") slug: String
-        
-    )
+    fun getPage(@Path("slug") slug: String)
     : Deferred<Response<CustomPage>>
     
     @GET ("/service/application/content/v1.0/seo")
-    fun getSeoConfiguration(
-        
-        
-    )
+    fun getSeoConfiguration()
     : Deferred<Response<Seo>>
     
     @GET ("/service/application/content/v1.0/slideshow/{slug}")
-    fun getSlideshow(
-        @Path("slug") slug: String
-        
-    )
+    fun getSlideshow(@Path("slug") slug: String)
     : Deferred<Response<Slideshow>>
     
     @GET ("/service/application/content/v1.0/support")
-    fun getSupportInformation(
-        
-        
-    )
+    fun getSupportInformation()
     : Deferred<Response<Support>>
     
     @GET ("/service/application/content/v1.0/tags")
-    fun getTags(
-        
-        
-    )
+    fun getTags()
     : Deferred<Response<TagsSchema>>
     
 }
@@ -809,24 +459,15 @@ interface ContentApiList {
 interface CommunicationApiList {
     
     @GET ("/service/application/communication/v1.0/consent")
-    fun getCommunicationConsent(
-        
-        
-    )
+    fun getCommunicationConsent()
     : Deferred<Response<CommunicationConsent>>
     
     @POST ("/service/application/communication/v1.0/consent")
-    fun upsertCommunicationConsent(
-        
-        @Body body: CommunicationConsentReq
-    )
+    fun upsertCommunicationConsent(@Body body: CommunicationConsentReq)
     : Deferred<Response<CommunicationConsentRes>>
     
     @POST ("/service/platform/communication/v1.0/pn-token")
-    fun upsertPushtoken(
-        
-        @Body body: PushtokenReq
-    )
+    fun upsertPushtoken(@Body body: PushtokenReq)
     : Deferred<Response<PushtokenRes>>
     
 }
@@ -834,52 +475,31 @@ interface CommunicationApiList {
 interface ShareApiList {
     
     @POST ("/service/application/share/v1.0/qr/")
-    fun getApplicationQRCode(
-        
-        
-    )
+    fun getApplicationQRCode()
     : Deferred<Response<QRCodeResp>>
     
     @POST ("/service/application/share/v1.0/qr/products/{slug}/")
-    fun getProductQRCodeBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getProductQRCodeBySlug(@Path("slug") slug: String)
     : Deferred<Response<QRCodeResp>>
     
     @POST ("/service/application/share/v1.0/qr/collection/{slug}/")
-    fun getCollectionQRCodeBySlug(
-        @Path("slug") slug: String
-        
-    )
+    fun getCollectionQRCodeBySlug(@Path("slug") slug: String)
     : Deferred<Response<QRCodeResp>>
     
     @POST ("/service/application/share/v1.0/qr/url/")
-    fun getUrlQRCode(
-        @Query("url") url: String
-        
-    )
+    fun getUrlQRCode(@Query("url") url: String)
     : Deferred<Response<QRCodeResp>>
     
     @POST ("/service/application/share/v1.0/links/short-link/")
-    fun createShortLink(
-        
-        @Body body: ShortLinkReq
-    )
+    fun createShortLink(@Body body: ShortLinkReq)
     : Deferred<Response<ShortLinkRes>>
     
     @GET ("/service/application/share/v1.0/links/short-link/{hash}/")
-    fun getShortLinkByHash(
-        @Path("hash") hash: String
-        
-    )
+    fun getShortLinkByHash(@Path("hash") hash: String)
     : Deferred<Response<ShortLinkRes>>
     
     @GET ("/service/application/share/v1.0/links/short-link/{hash}/original/")
-    fun getOriginalShortLinkByHash(
-        @Path("hash") hash: String
-        
-    )
+    fun getOriginalShortLinkByHash(@Path("hash") hash: String)
     : Deferred<Response<ShortLinkRes>>
     
 }
@@ -887,17 +507,11 @@ interface ShareApiList {
 interface FileStorageApiList {
     
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/complete/")
-    fun completeUpload(
-        @Path("namespace") namespace: String, @Path("company_id") companyId: Int,
-        @Body body: StartResponse
-    )
+    fun completeUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: Int,@Body body: StartResponse)
     : Deferred<Response<CompleteResponse>>
     
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
-    fun startUpload(
-        @Path("namespace") namespace: String, @Path("company_id") companyId: Int,
-        @Body body: StartRequest
-    )
+    fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: Int,@Body body: StartRequest)
     : Deferred<Response<StartResponse>>
     
 }
@@ -905,129 +519,75 @@ interface FileStorageApiList {
 interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/config/aggregators/key")
-    fun getAggregatorsConfig(
-        @Header("x-api-token") xApiToken: String, @Query("refresh") refresh: Boolean?
-        
-    )
+    fun getAggregatorsConfig(@Header("x-api-token") xApiToken: String, @Query("refresh") refresh: Boolean?)
     : Deferred<Response<AggregatorsConfigDetailResponse>>
     
     @POST ("/service/application/payment/v1.0/card/attach")
-    fun attachCardToCustomer(
-        
-        @Body body: AttachCardRequest
-    )
+    fun attachCardToCustomer(@Body body: AttachCardRequest)
     : Deferred<Response<AttachCardsResponse>>
     
     @GET ("/service/application/payment/v1.0/card/aggregator")
-    fun getActiveCardAggregator(
-        @Query("refresh") refresh: Boolean?
-        
-    )
+    fun getActiveCardAggregator(@Query("refresh") refresh: Boolean?)
     : Deferred<Response<ActiveCardPaymentGatewayResponse>>
     
     @GET ("/service/application/payment/v1.0/cards")
-    fun getActiveUserCards(
-        @Query("force_refresh") forceRefresh: Boolean?
-        
-    )
+    fun getActiveUserCards(@Query("force_refresh") forceRefresh: Boolean?)
     : Deferred<Response<ListCardsResponse>>
     
     @POST ("/service/application/payment/v1.0/card/remove")
-    fun deleteUserCard(
-        
-        @Body body: DeletehCardRequest
-    )
+    fun deleteUserCard(@Body body: DeletehCardRequest)
     : Deferred<Response<DeleteCardsResponse>>
     
     @POST ("/service/application/payment/v1.0/payment/customer/validation")
-    fun verifyCustomerForPayment(
-        
-        @Body body: ValidateCustomerRequest
-    )
+    fun verifyCustomerForPayment(@Body body: ValidateCustomerRequest)
     : Deferred<Response<ValidateCustomerResponse>>
     
     @POST ("/service/application/payment/v1.0/payment/confirm/charge")
-    fun verifyAndChargePayment(
-        
-        @Body body: ChargeCustomerRequest
-    )
+    fun verifyAndChargePayment(@Body body: ChargeCustomerRequest)
     : Deferred<Response<ChargeCustomerResponse>>
     
     @POST ("/service/application/payment/v1.0/payment/request")
-    fun initialisePayment(
-        
-        @Body body: PaymentInitializationRequest
-    )
+    fun initialisePayment(@Body body: PaymentInitializationRequest)
     : Deferred<Response<PaymentInitializationResponse>>
     
     @POST ("/service/application/payment/v1.0/payment/confirm/polling")
-    fun checkAndUpdatePaymentStatus(
-        
-        @Body body: PaymentStatusUpdateRequest
-    )
+    fun checkAndUpdatePaymentStatus(@Body body: PaymentStatusUpdateRequest)
     : Deferred<Response<PaymentStatusUpdateResponse>>
     
     @GET ("/service/application/payment/v1.0/payment/options")
-    fun getPaymentModeRoutes(
-        @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("delivery_address") deliveryAddress: String?
-        
-    )
-    : Deferred<Response<PaymentOptionsResponse>>
+    fun getPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("delivery_address") deliveryAddress: String?)
+    : Deferred<Response<PaymentModeRouteResponse>>
     
     @GET ("/service/application/payment/v1.0/payment/options/pos")
-    fun getPosPaymentModeRoutes(
-        @Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("delivery_address") deliveryAddress: String?
-        
-    )
-    : Deferred<Response<PaymentOptionsResponse>>
+    fun getPosPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: Int, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("delivery_address") deliveryAddress: String?)
+    : Deferred<Response<PaymentModeRouteResponse>>
     
     @GET ("/service/application/payment/v1.0/refund/beneficiary/user")
-    fun getUserBeneficiariesDetail(
-        @Query("order_id") orderId: String
-        
-    )
+    fun getUserBeneficiariesDetail(@Query("order_id") orderId: String)
     : Deferred<Response<OrderBeneficiaryResponse>>
     
     @GET ("/service/application/payment/v1.0/ifsc-code/verify")
-    fun verifyIfscCode(
-        @Query("ifsc_code") ifscCode: String?
-        
-    )
+    fun verifyIfscCode(@Query("ifsc_code") ifscCode: String?)
     : Deferred<Response<IfscCodeResponse>>
     
     @GET ("/service/application/payment/v1.0/refund/beneficiaries/order")
-    fun getOrderBeneficiariesDetail(
-        @Query("order_id") orderId: String
-        
-    )
+    fun getOrderBeneficiariesDetail(@Query("order_id") orderId: String)
     : Deferred<Response<OrderBeneficiaryResponse>>
     
     @POST ("/service/application/payment/v1.0/refund/verification/bank")
-    fun verifyOtpAndAddBeneficiaryForBank(
-        
-        @Body body: AddBeneficiaryViaOtpVerificationRequest
-    )
+    fun verifyOtpAndAddBeneficiaryForBank(@Body body: AddBeneficiaryViaOtpVerificationRequest)
     : Deferred<Response<AddBeneficiaryViaOtpVerificationResponse>>
     
     @POST ("/service/application/payment/v1.0/refund/account")
-    fun addBeneficiaryDetails(
-        
-        @Body body: AddBeneficiaryDetailsRequest
-    )
+    fun addBeneficiaryDetails(@Body body: AddBeneficiaryDetailsRequest)
     : Deferred<Response<RefundAccountResponse>>
     
     @POST ("/service/application/payment/v1.0/refund/verification/wallet")
-    fun verifyOtpAndAddBeneficiaryForWallet(
-        
-        @Body body: WalletOtpRequest
-    )
+    fun verifyOtpAndAddBeneficiaryForWallet(@Body body: WalletOtpRequest)
     : Deferred<Response<WalletOtpResponse>>
     
     @POST ("/service/application/payment/v1.0/refund/beneficiary/default")
-    fun updateDefaultBeneficiary(
-        
-        @Body body: SetDefaultBeneficiaryRequest
-    )
+    fun updateDefaultBeneficiary(@Body body: SetDefaultBeneficiaryRequest)
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
     
 }
@@ -1035,45 +595,27 @@ interface PaymentApiList {
 interface OrderApiList {
     
     @GET ("/service/application/v1.0/orders")
-    fun getOrders(
-        @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?
-        
-    )
+    fun getOrders(@Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
     : Deferred<Response<OrderList>>
     
     @GET ("/service/application/v1.0/orders/{order_id}")
-    fun getOrderById(
-        @Path("order_id") orderId: String
-        
-    )
+    fun getOrderById(@Path("order_id") orderId: String)
     : Deferred<Response<OrderById>>
     
     @GET ("/service/application/v1.0/orders/shipments/{shipment_id}")
-    fun getShipmentById(
-        @Path("shipment_id") shipmentId: String
-        
-    )
+    fun getShipmentById(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentById>>
     
     @GET ("/service/application/v1.0/orders/shipments/{shipment_id}/reasons")
-    fun getShipmentReasons(
-        @Path("shipment_id") shipmentId: String
-        
-    )
+    fun getShipmentReasons(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentReasons>>
     
     @PUT ("/service/application/v1.0/orders/shipments/{shipment_id}/status")
-    fun updateShipmentStatus(
-        @Path("shipment_id") shipmentId: String,
-        @Body body: ShipmentStatusUpdateBody
-    )
+    fun updateShipmentStatus(@Path("shipment_id") shipmentId: String,@Body body: ShipmentStatusUpdateBody)
     : Deferred<Response<ShipmentStatusUpdate>>
     
     @GET ("/service/application/v1.0/orders/shipments/{shipment_id}/track")
-    fun trackShipment(
-        @Path("shipment_id") shipmentId: String
-        
-    )
+    fun trackShipment(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentTrack>>
     
 }
@@ -1081,45 +623,27 @@ interface OrderApiList {
 interface RewardsApiList {
     
     @POST ("/service/application/rewards/v1.0/catalogue/offer/order/")
-    fun getPointsOnProduct(
-        
-        @Body body: CatalogueOrderRequest
-    )
+    fun getPointsOnProduct(@Body body: CatalogueOrderRequest)
     : Deferred<Response<CatalogueOrderResponse>>
     
     @POST ("/service/application/rewards/v1.0/user/offers/order-discount/")
-    fun getOrderDiscount(
-        
-        @Body body: OrderDiscountRequest
-    )
+    fun getOrderDiscount(@Body body: OrderDiscountRequest)
     : Deferred<Response<OrderDiscountResponse>>
     
     @GET ("/service/application/rewards/v1.0/user/points")
-    fun getUserPoints(
-        
-        
-    )
+    fun getUserPoints()
     : Deferred<Response<PointsResponse>>
     
     @GET ("/service/application/rewards/v1.0/user/points/history/")
-    fun getUserPointsHistory(
-        @Query("pageID") pageId: String?, @Query("pageSize") pageSize: Int?
-        
-    )
+    fun getUserPointsHistory(@Query("pageID") pageId: String?, @Query("pageSize") pageSize: Int?)
     : Deferred<Response<PointsHistoryResponse>>
     
     @GET ("/service/application/rewards/v1.0/user/referral/")
-    fun getUserReferralDetails(
-        
-        
-    )
+    fun getUserReferralDetails()
     : Deferred<Response<ReferralDetailsResponse>>
     
     @POST ("/service/application/rewards/v1.0/user/referral/redeem/")
-    fun redeemReferralCode(
-        
-        @Body body: RedeemReferralCodeRequest
-    )
+    fun redeemReferralCode(@Body body: RedeemReferralCodeRequest)
     : Deferred<Response<RedeemReferralCodeResponse>>
     
 }
@@ -1127,185 +651,107 @@ interface RewardsApiList {
 interface FeedbackApiList {
     
     @POST ("/service/application/feedback/v1.0/abuse")
-    fun createAbuseReport(
-        
-        @Body body: ReportAbuseRequest
-    )
+    fun createAbuseReport(@Body body: ReportAbuseRequest)
     : Deferred<Response<XInsertResponse>>
     
     @PUT ("/service/application/feedback/v1.0/abuse")
-    fun updateAbuseReport(
-        
-        @Body body: UpdateAbuseStatusRequest
-    )
+    fun updateAbuseReport(@Body body: UpdateAbuseStatusRequest)
     : Deferred<Response<XUpdateResponse>>
     
     @GET ("/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}")
-    fun getAbuseReports(
-        @Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getAbuseReports(@Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<XNumberGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/attributes")
-    fun getAttributes(
-        
-        
-    )
+    fun getAttributes()
     : Deferred<Response<XNumberGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/attributes")
-    fun createAttribute(
-        
-        @Body body: SaveAttributeRequest
-    )
+    fun createAttribute(@Body body: SaveAttributeRequest)
     : Deferred<Response<XInsertResponse>>
     
     @GET ("/service/application/feedback/v1.0/attributes/{slug}")
-    fun getAttribute(
-        @Path("slug") slug: String
-        
-    )
+    fun getAttribute(@Path("slug") slug: String)
     : Deferred<Response<Attribute>>
     
     @PUT ("/service/application/feedback/v1.0/attributes/{slug}")
-    fun updateAttribute(
-        @Path("slug") slug: String,
-        @Body body: UpdateAttributeRequest
-    )
+    fun updateAttribute(@Path("slug") slug: String,@Body body: UpdateAttributeRequest)
     : Deferred<Response<XUpdateResponse>>
     
     @POST ("/service/application/feedback/v1.0/comment")
-    fun createComment(
-        
-        @Body body: CommentRequest
-    )
+    fun createComment(@Body body: CommentRequest)
     : Deferred<Response<XInsertResponse>>
     
     @PUT ("/service/application/feedback/v1.0/comment")
-    fun updateComment(
-        
-        @Body body: UpdateCommentRequest
-    )
+    fun updateComment(@Body body: UpdateCommentRequest)
     : Deferred<Response<XUpdateResponse>>
     
     @GET ("/service/application/feedback/v1.0/comment/entity/{entity_type}")
-    fun getComments(
-        @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getComments(@Path("entity_type") entityType: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/config/entity/{entity_type}/entity-id/{entity_id}")
-    fun checkEligibility(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String
-        
-    )
+    fun checkEligibility(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String)
     : Deferred<Response<CheckEligibilityResponse>>
     
     @DELETE ("/service/application/feedback/v1.0/media/")
-    fun deleteMedia(
-        
-        
-    )
+    fun deleteMedia()
     : Deferred<Response<XUpdateResponse>>
     
     @POST ("/service/application/feedback/v1.0/media/")
-    fun createMedia(
-        
-        @Body body: AddMediaListRequest
-    )
+    fun createMedia(@Body body: AddMediaListRequest)
     : Deferred<Response<XInsertResponse>>
     
     @PUT ("/service/application/feedback/v1.0/media/")
-    fun updateMedia(
-        
-        @Body body: UpdateMediaListRequest
-    )
+    fun updateMedia(@Body body: UpdateMediaListRequest)
     : Deferred<Response<XUpdateResponse>>
     
     @GET ("/service/application/feedback/v1.0/media/entity/{entity_type}/entity-id/{entity_id}")
-    fun getMedias(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getMedias(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
-    fun getReviewSummaries(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getReviewSummaries(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<XCursorGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/review/")
-    fun createReview(
-        
-        @Body body: UpdateReviewRequest
-    )
+    fun createReview(@Body body: UpdateReviewRequest)
     : Deferred<Response<XUpdateResponse>>
     
     @PUT ("/service/application/feedback/v1.0/review/")
-    fun updateReview(
-        
-        @Body body: UpdateReviewRequest
-    )
+    fun updateReview(@Body body: UpdateReviewRequest)
     : Deferred<Response<XUpdateResponse>>
     
     @GET ("/service/application/feedback/v1.0/review/entity/{entity_type}/entity-id/{entity_id}")
-    fun getReviews(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getReviews(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/template/")
-    fun getTemplates(
-        @Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?
-        
-    )
+    fun getTemplates(@Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?)
     : Deferred<Response<XCursorGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/template/qna/")
-    fun createQuestion(
-        
-        @Body body: CreateQNARequest
-    )
+    fun createQuestion(@Body body: CreateQNARequest)
     : Deferred<Response<XInsertResponse>>
     
     @PUT ("/service/application/feedback/v1.0/template/qna/")
-    fun updateQuestion(
-        
-        @Body body: UpdateQNARequest
-    )
+    fun updateQuestion(@Body body: UpdateQNARequest)
     : Deferred<Response<XUpdateResponse>>
     
     @GET ("/service/application/feedback/v1.0/template/qna/entity/{entity_type}/entity-id/{entity_id}")
-    fun getQuestionAndAnswers(
-        @Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?
-        
-    )
+    fun getQuestionAndAnswers(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/vote/")
-    fun getVotes(
-        @Query("id") id: String?, @Query("ref_type") refType: String?
-        
-    )
+    fun getVotes(@Query("id") id: String?, @Query("ref_type") refType: String?)
     : Deferred<Response<XNumberGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/vote/")
-    fun createVote(
-        
-        @Body body: VoteRequest
-    )
+    fun createVote(@Body body: VoteRequest)
     : Deferred<Response<XInsertResponse>>
     
     @PUT ("/service/application/feedback/v1.0/vote/")
-    fun updateVote(
-        
-        @Body body: UpdateVoteRequest
-    )
+    fun updateVote(@Body body: UpdateVoteRequest)
     : Deferred<Response<XUpdateResponse>>
     
 }
@@ -1313,185 +759,107 @@ interface FeedbackApiList {
 interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/detail")
-    fun getCart(
-        @Query("uid") uid: Int?, @Query("assign_card_id") assignCardId: Int?
-        
-    )
+    fun getCart(@Query("uid") uid: Int?, @Query("assign_card_id") assignCardId: Int?)
     : Deferred<Response<CartResponse>>
     
     @HEAD ("/service/application/pos/cart/v1.0/detail")
-    fun getCartLastModified(
-        @Query("uid") uid: Int?
-        
-    )
+    fun getCartLastModified(@Query("uid") uid: Int?)
     : Deferred<Response<Any>>
     
     @POST ("/service/application/pos/cart/v1.0/detail")
-    fun addItems(
-        
-        @Body body: AddCartRequest
-    )
+    fun addItems(@Body body: AddCartRequest)
     : Deferred<Response<AddCartResponse>>
     
     @PUT ("/service/application/pos/cart/v1.0/detail")
-    fun updateCart(
-        
-        @Body body: UpdateCartRequest
-    )
+    fun updateCart(@Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/basic")
-    fun getItemCount(
-        @Query("uid") uid: Int?
-        
-    )
+    fun getItemCount(@Query("uid") uid: Int?)
     : Deferred<Response<CartItemCountResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/coupon")
-    fun getCoupons(
-        @Query("uid") uid: Int?
-        
-    )
+    fun getCoupons(@Query("uid") uid: Int?)
     : Deferred<Response<GetCouponResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/coupon")
-    fun applyCoupon(
-        @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?,
-        @Body body: ApplyCouponRequest
-    )
+    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?,@Body body: ApplyCouponRequest)
     : Deferred<Response<SaveCouponResponse>>
     
     @DELETE ("/service/application/pos/cart/v1.0/coupon")
-    fun removeCoupon(
-        @Query("uid") uid: Int?
-        
-    )
+    fun removeCoupon(@Query("uid") uid: Int?)
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/bulk-price")
-    fun getBulkDiscountOffers(
-        @Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?
-        
-    )
+    fun getBulkDiscountOffers(@Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?)
     : Deferred<Response<BulkPriceResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address")
-    fun getAddresses(
-        @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
-        
-    )
+    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/address")
-    fun addAddress(
-        
-        @Body body: SaveAddressRequest
-    )
+    fun addAddress(@Body body: SaveAddressRequest)
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address/{id}")
-    fun getAddressById(
-        @Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?
-        
-    )
+    fun getAddressById(@Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressResponse>>
     
     @PUT ("/service/application/pos/cart/v1.0/address/{id}")
-    fun updateAddress(
-        @Path("id") id: Int,
-        @Body body: UpdateAddressRequest
-    )
+    fun updateAddress(@Path("id") id: Int,@Body body: UpdateAddressRequest)
     : Deferred<Response<UpdateAddressResponse>>
     
     @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
-    fun removeAddress(
-        @Path("id") id: Int
-        
-    )
+    fun removeAddress(@Path("id") id: Int)
     : Deferred<Response<DeleteAddressResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/select-address")
-    fun selectAddress(
-        
-        @Body body: SelectCartAddressRequest
-    )
+    fun selectAddress(@Body body: SelectCartAddressRequest)
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/payment")
-    fun getPaymentModes(
-        @Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?
-        
-    )
+    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
     : Deferred<Response<PaymentOptions>>
     
     @PUT ("/service/application/pos/cart/v1.0/payment")
-    fun selectPaymentMode(
-        @Query("uid") uid: String?,
-        @Body body: UpdateCartPaymentRequest
-    )
+    fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
     : Deferred<Response<PaymentOptions>>
     
     @GET ("/service/application/pos/cart/v1.0/shipment")
-    fun getShipments(
-        @Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?
-        
-    )
+    fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?)
     : Deferred<Response<CartShipmentsResponse>>
     
     @PUT ("/service/application/pos/cart/v1.0/shipment")
-    fun updateShipments(
-        @Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("order_type") orderType: String?,
-        @Body body: UpdateCartShipmentRequest
-    )
+    fun updateShipments(@Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("order_type") orderType: String?,@Body body: UpdateCartShipmentRequest)
     : Deferred<Response<CartShipmentsResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/checkout")
-    fun checkoutCart(
-        @Query("uid") uid: Boolean?,
-        @Body body: CartCheckoutRequest
-    )
+    fun checkoutCart(@Query("uid") uid: Boolean?,@Body body: CartCheckoutRequest)
     : Deferred<Response<CartCheckoutResponse>>
     
     @PUT ("/service/application/pos/cart/v1.0/meta")
-    fun updateCartMeta(
-        @Query("uid") uid: Int?,
-        @Body body: CartMetaRequest
-    )
+    fun updateCartMeta(@Query("uid") uid: Int?,@Body body: CartMetaRequest)
     : Deferred<Response<CartMetaResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/available-delivery-mode")
-    fun getAvailableDeliveryModes(
-        @Query("area_code") areaCode: Int, @Query("uid") uid: Int?
-        
-    )
+    fun getAvailableDeliveryModes(@Query("area_code") areaCode: Int, @Query("uid") uid: Int?)
     : Deferred<Response<CartDeliveryModesResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/store-address")
-    fun getStoreAddressByUid(
-        @Query("area_code") areaCode: Int
-        
-    )
+    fun getStoreAddressByUid(@Query("area_code") areaCode: Int)
     : Deferred<Response<StoreDetailsResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/share-cart")
-    fun getCartShareLink(
-        
-        @Body body: GetShareCartLinkRequest
-    )
+    fun getCartShareLink(@Body body: GetShareCartLinkRequest)
     : Deferred<Response<GetShareCartLinkResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/share-cart/{token}")
-    fun getCartSharedItems(
-        @Path("token") token: String
-        
-    )
+    fun getCartSharedItems(@Path("token") token: String)
     : Deferred<Response<SharedCartResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/share-cart/{token}/{action}")
-    fun updateCartWithSharedItems(
-        @Path("token") token: String, @Path("action") action: String
-        
-    )
+    fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
     
 }
