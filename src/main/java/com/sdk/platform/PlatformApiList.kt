@@ -292,19 +292,167 @@ interface ContentApiList {
     
 }
 
+interface CommunicationApiList {
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns")
+    fun getCampaigns()
+    : Deferred<Response<Campaigns>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns")
+    fun createCampaign(@Body body: CampaignReq)
+    : Deferred<Response<Campaign>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns/{id}")
+    fun getCampaignById(@Path("id") id: String)
+    : Deferred<Response<Campaign>>
+    
+    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns/{id}")
+    fun updateCampaignById(@Path("id") id: String,@Body body: CampaignReq)
+    : Deferred<Response<Campaign>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/get-stats/{id}")
+    fun getStatsOfCampaignById(@Path("id") id: String)
+    : Deferred<Response<GetStats>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources")
+    fun getAudiences()
+    : Deferred<Response<Audiences>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources")
+    fun createAudience(@Body body: AudienceReq)
+    : Deferred<Response<Audience>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/bigquery-headers")
+    fun getBigqueryHeaders(@Body body: BigqueryHeadersReq)
+    : Deferred<Response<BigqueryHeadersRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources/{id}")
+    fun getAudienceById(@Path("id") id: String)
+    : Deferred<Response<Audience>>
+    
+    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/datasources/{id}")
+    fun updateAudienceById(@Path("id") id: String,@Body body: AudienceReq)
+    : Deferred<Response<Audience>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sources/get-n-records")
+    fun getNSampleRecordsFromCsv(@Body body: GetNRecordsCsvReq)
+    : Deferred<Response<GetNRecordsCsvRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers")
+    fun getEmailProviders(@Path("Company id") companyId: String, @Path("Application id") applicationId: String)
+    : Deferred<Response<EmailProviders>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers")
+    fun createEmailProvider(@Body body: EmailProviderReq)
+    : Deferred<Response<EmailProvider>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers/{id}")
+    fun getEmailProviderById(@Path("id") id: String)
+    : Deferred<Response<EmailProvider>>
+    
+    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers/{id}")
+    fun updateEmailProviderById(@Path("id") id: String,@Body body: EmailProviderReq)
+    : Deferred<Response<EmailProvider>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates")
+    fun getEmailTemplates()
+    : Deferred<Response<EmailTemplates>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates")
+    fun createEmailTemplate(@Body body: EmailTemplateReq)
+    : Deferred<Response<EmailTemplateRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/system-templates")
+    fun getSystemEmailTemplates()
+    : Deferred<Response<SystemEmailTemplates>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates/{id}")
+    fun getEmailTemplateById(@Path("id") id: String)
+    : Deferred<Response<EmailTemplate>>
+    
+    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates/{id}")
+    fun updateEmailTemplateById(@Path("id") id: String,@Body body: EmailTemplateReq)
+    : Deferred<Response<EmailTemplateRes>>
+    
+    @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates/{id}")
+    fun deleteEmailTemplateById(@Path("id") id: String)
+    : Deferred<Response<EmailTemplateDeleteSuccessRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/event/event-subscriptions")
+    fun getEventSubscriptions(@Path("Company id") companyId: String, @Path("Application id") applicationId: String)
+    : Deferred<Response<EventSubscriptions>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/jobs")
+    fun getJobs(@Path("Company id") companyId: String, @Path("Application id") applicationId: String)
+    : Deferred<Response<Jobs>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/trigger-job")
+    fun triggerCampaignJob(@Body body: TriggerJobRequest)
+    : Deferred<Response<TriggerJobResponse>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/jobs/logs")
+    fun getJobLogs(@Path("Company id") companyId: String, @Path("Application id") applicationId: String)
+    : Deferred<Response<JobLogs>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/log")
+    fun getCommunicationLogs(@Path("Company id") companyId: String, @Path("Application id") applicationId: String)
+    : Deferred<Response<Logs>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/providers")
+    fun getSmsProviders()
+    : Deferred<Response<SmsProviders>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/providers")
+    fun createSmsProvider(@Body body: SmsProviderReq)
+    : Deferred<Response<SmsProvider>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/providers/{id}")
+    fun getSmsProviderById(@Path("id") id: String)
+    : Deferred<Response<SmsProvider>>
+    
+    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/providers/{id}")
+    fun updateSmsProviderById(@Path("id") id: String,@Body body: SmsProviderReq)
+    : Deferred<Response<SmsProvider>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates")
+    fun getSmsTemplates()
+    : Deferred<Response<SmsTemplates>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates")
+    fun createSmsTemplate(@Body body: SmsTemplateReq)
+    : Deferred<Response<SmsTemplateRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
+    fun getSmsTemplateById(@Path("id") id: String)
+    : Deferred<Response<SmsTemplate>>
+    
+    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
+    fun updateSmsTemplateById(@Path("id") id: String,@Body body: SmsTemplateReq)
+    : Deferred<Response<SmsTemplateRes>>
+    
+    @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
+    fun deleteSmsTemplateById(@Path("id") id: String)
+    : Deferred<Response<SmsTemplateDeleteSuccessRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/system-templates")
+    fun getSystemSystemTemplates()
+    : Deferred<Response<SystemSmsTemplates>>
+    
+}
+
 interface CompanyProfileApiList {
     
     @POST ("/service/platform/company-profile/v1.0/onboard/")
     fun registerCompany(@Body body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
-    fun cbsOnboardGet(@Path("company_id") companyId: String)
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>
-    
     @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
     fun cbsOnboardEdit(@Path("company_id") companyId: String,@Body body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
+    fun cbsOnboardGet(@Path("company_id") companyId: String)
+    : Deferred<Response<GetCompanyProfileSerializerResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/companies/")
     fun companyList(@Query("sort_by") sortBy: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
@@ -322,13 +470,13 @@ interface CompanyProfileApiList {
     fun verifyGstPan(@Body body: GstPanResponseSerializer)
     : Deferred<Response<SuccessResponse>>
     
-    @GET ("/service/platform/company-profile/v1.0/brand/{brand_id}")
-    fun getBrand(@Path("brand_id") brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>
-    
     @PUT ("/service/platform/company-profile/v1.0/brand/{brand_id}")
     fun editBrand(@Path("brand_id") brandId: String,@Body body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/brand/{brand_id}")
+    fun getBrand(@Path("brand_id") brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>
     
     @POST ("/service/platform/company-profile/v1.0/onboard/brand")
     fun createBrand(@Body body: CreateUpdateBrandRequestSerializer)
@@ -350,13 +498,13 @@ interface CompanyProfileApiList {
     fun locationList(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LocationListSerializer>>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
-    fun getSingleLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
-    : Deferred<Response<GetLocationSerializer>>
-    
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
     fun editLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String,@Body body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
+    fun getSingleLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
+    : Deferred<Response<GetLocationSerializer>>
     
     @GET ("/service/platform/company-profile/v1.0/choices")
     fun getChoices(@Query("choice_type") choiceType: String?)

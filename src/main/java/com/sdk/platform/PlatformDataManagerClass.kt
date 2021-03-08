@@ -691,6 +691,308 @@ class Application(val applicationId:String,val config: PlatformConfig){
 }
 }
 
+class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val communicationApiList by lazy {
+        generatecommunicationApiList()
+    }
+    
+    private fun generatecommunicationApiList(): CommunicationApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
+        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Communication"
+        )
+        return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+class Application(val applicationId:String,val config: PlatformConfig){
+
+    private val communicationApiList by lazy {
+        generatecommunicationApiList()
+    }
+
+    private fun generatecommunicationApiList(): CommunicationApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
+        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            config.domain,
+            headerList, interceptorMap, "Communication"
+        )
+        return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
+    }
+    
+    
+    fun getCampaigns()
+    : Deferred<Response<Campaigns>>? {
+        return communicationApiList?.getCampaigns( )
+    }
+    
+    
+    fun createCampaign(body: CampaignReq)
+    : Deferred<Response<Campaign>>? {
+        return communicationApiList?.createCampaign( body = body)
+    }
+    
+    
+    fun getCampaignById(id: String)
+    : Deferred<Response<Campaign>>? {
+        return communicationApiList?.getCampaignById(id = id )
+    }
+    
+    
+    fun updateCampaignById(id: String,body: CampaignReq)
+    : Deferred<Response<Campaign>>? {
+        return communicationApiList?.updateCampaignById(id = id, body = body)
+    }
+    
+    
+    fun getStatsOfCampaignById(id: String)
+    : Deferred<Response<GetStats>>? {
+        return communicationApiList?.getStatsOfCampaignById(id = id )
+    }
+    
+    
+    fun getAudiences()
+    : Deferred<Response<Audiences>>? {
+        return communicationApiList?.getAudiences( )
+    }
+    
+    
+    fun createAudience(body: AudienceReq)
+    : Deferred<Response<Audience>>? {
+        return communicationApiList?.createAudience( body = body)
+    }
+    
+    
+    fun getBigqueryHeaders(body: BigqueryHeadersReq)
+    : Deferred<Response<BigqueryHeadersRes>>? {
+        return communicationApiList?.getBigqueryHeaders( body = body)
+    }
+    
+    
+    fun getAudienceById(id: String)
+    : Deferred<Response<Audience>>? {
+        return communicationApiList?.getAudienceById(id = id )
+    }
+    
+    
+    fun updateAudienceById(id: String,body: AudienceReq)
+    : Deferred<Response<Audience>>? {
+        return communicationApiList?.updateAudienceById(id = id, body = body)
+    }
+    
+    
+    fun getNSampleRecordsFromCsv(body: GetNRecordsCsvReq)
+    : Deferred<Response<GetNRecordsCsvRes>>? {
+        return communicationApiList?.getNSampleRecordsFromCsv( body = body)
+    }
+    
+    
+    fun getEmailProviders(companyId: String, applicationId: String)
+    : Deferred<Response<EmailProviders>>? {
+        return communicationApiList?.getEmailProviders(companyId = companyId, applicationId = applicationId )
+    }
+    
+    
+    fun createEmailProvider(body: EmailProviderReq)
+    : Deferred<Response<EmailProvider>>? {
+        return communicationApiList?.createEmailProvider( body = body)
+    }
+    
+    
+    fun getEmailProviderById(id: String)
+    : Deferred<Response<EmailProvider>>? {
+        return communicationApiList?.getEmailProviderById(id = id )
+    }
+    
+    
+    fun updateEmailProviderById(id: String,body: EmailProviderReq)
+    : Deferred<Response<EmailProvider>>? {
+        return communicationApiList?.updateEmailProviderById(id = id, body = body)
+    }
+    
+    
+    fun getEmailTemplates()
+    : Deferred<Response<EmailTemplates>>? {
+        return communicationApiList?.getEmailTemplates( )
+    }
+    
+    
+    fun createEmailTemplate(body: EmailTemplateReq)
+    : Deferred<Response<EmailTemplateRes>>? {
+        return communicationApiList?.createEmailTemplate( body = body)
+    }
+    
+    
+    fun getSystemEmailTemplates()
+    : Deferred<Response<SystemEmailTemplates>>? {
+        return communicationApiList?.getSystemEmailTemplates( )
+    }
+    
+    
+    fun getEmailTemplateById(id: String)
+    : Deferred<Response<EmailTemplate>>? {
+        return communicationApiList?.getEmailTemplateById(id = id )
+    }
+    
+    
+    fun updateEmailTemplateById(id: String,body: EmailTemplateReq)
+    : Deferred<Response<EmailTemplateRes>>? {
+        return communicationApiList?.updateEmailTemplateById(id = id, body = body)
+    }
+    
+    
+    fun deleteEmailTemplateById(id: String)
+    : Deferred<Response<EmailTemplateDeleteSuccessRes>>? {
+        return communicationApiList?.deleteEmailTemplateById(id = id )
+    }
+    
+    
+    fun getEventSubscriptions(companyId: String, applicationId: String)
+    : Deferred<Response<EventSubscriptions>>? {
+        return communicationApiList?.getEventSubscriptions(companyId = companyId, applicationId = applicationId )
+    }
+    
+    
+    fun getJobs(companyId: String, applicationId: String)
+    : Deferred<Response<Jobs>>? {
+        return communicationApiList?.getJobs(companyId = companyId, applicationId = applicationId )
+    }
+    
+    
+    fun triggerCampaignJob(body: TriggerJobRequest)
+    : Deferred<Response<TriggerJobResponse>>? {
+        return communicationApiList?.triggerCampaignJob( body = body)
+    }
+    
+    
+    fun getJobLogs(companyId: String, applicationId: String)
+    : Deferred<Response<JobLogs>>? {
+        return communicationApiList?.getJobLogs(companyId = companyId, applicationId = applicationId )
+    }
+    
+    
+    fun getCommunicationLogs(companyId: String, applicationId: String)
+    : Deferred<Response<Logs>>? {
+        return communicationApiList?.getCommunicationLogs(companyId = companyId, applicationId = applicationId )
+    }
+    
+    
+    fun getSmsProviders()
+    : Deferred<Response<SmsProviders>>? {
+        return communicationApiList?.getSmsProviders( )
+    }
+    
+    
+    fun createSmsProvider(body: SmsProviderReq)
+    : Deferred<Response<SmsProvider>>? {
+        return communicationApiList?.createSmsProvider( body = body)
+    }
+    
+    
+    fun getSmsProviderById(id: String)
+    : Deferred<Response<SmsProvider>>? {
+        return communicationApiList?.getSmsProviderById(id = id )
+    }
+    
+    
+    fun updateSmsProviderById(id: String,body: SmsProviderReq)
+    : Deferred<Response<SmsProvider>>? {
+        return communicationApiList?.updateSmsProviderById(id = id, body = body)
+    }
+    
+    
+    fun getSmsTemplates()
+    : Deferred<Response<SmsTemplates>>? {
+        return communicationApiList?.getSmsTemplates( )
+    }
+    
+    
+    fun createSmsTemplate(body: SmsTemplateReq)
+    : Deferred<Response<SmsTemplateRes>>? {
+        return communicationApiList?.createSmsTemplate( body = body)
+    }
+    
+    
+    fun getSmsTemplateById(id: String)
+    : Deferred<Response<SmsTemplate>>? {
+        return communicationApiList?.getSmsTemplateById(id = id )
+    }
+    
+    
+    fun updateSmsTemplateById(id: String,body: SmsTemplateReq)
+    : Deferred<Response<SmsTemplateRes>>? {
+        return communicationApiList?.updateSmsTemplateById(id = id, body = body)
+    }
+    
+    
+    fun deleteSmsTemplateById(id: String)
+    : Deferred<Response<SmsTemplateDeleteSuccessRes>>? {
+        return communicationApiList?.deleteSmsTemplateById(id = id )
+    }
+    
+    
+    fun getSystemSystemTemplates()
+    : Deferred<Response<SystemSmsTemplates>>? {
+        return communicationApiList?.getSystemSystemTemplates( )
+    }
+    
+}
+}
+
 class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val companyProfileApiList by lazy {
@@ -722,17 +1024,17 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    fun cbsOnboardGet()
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
-        return companyProfileApiList?.cbsOnboardGet(
-        companyId = config.companyId )
-    }
-    
-    
     fun cbsOnboardEdit(body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>? {
         return companyProfileApiList?.cbsOnboardEdit(
         companyId = config.companyId, body = body)
+    }
+    
+    
+    fun cbsOnboardGet()
+    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
+        return companyProfileApiList?.cbsOnboardGet(
+        companyId = config.companyId )
     }
     
     
@@ -764,17 +1066,17 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    fun getBrand(brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>? {
-        return companyProfileApiList?.getBrand(
-        brandId = brandId )
-    }
-    
-    
     fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         return companyProfileApiList?.editBrand(
         brandId = brandId, body = body)
+    }
+    
+    
+    fun getBrand(brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>? {
+        return companyProfileApiList?.getBrand(
+        brandId = brandId )
     }
     
     
@@ -813,17 +1115,17 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    fun getSingleLocation(locationId: String)
-    : Deferred<Response<GetLocationSerializer>>? {
-        return companyProfileApiList?.getSingleLocation(
-        companyId = config.companyId, locationId = locationId )
-    }
-    
-    
     fun editLocation(locationId: String,body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         return companyProfileApiList?.editLocation(
         companyId = config.companyId, locationId = locationId, body = body)
+    }
+    
+    
+    fun getSingleLocation(locationId: String)
+    : Deferred<Response<GetLocationSerializer>>? {
+        return companyProfileApiList?.getSingleLocation(
+        companyId = config.companyId, locationId = locationId )
     }
     
     
