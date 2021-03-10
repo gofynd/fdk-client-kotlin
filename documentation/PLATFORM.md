@@ -68,6 +68,10 @@
   * [Content#updateAnnouncement](#contentupdateannouncement)
   * [Content#updateAnnouncementSchedule](#contentupdateannouncementschedule)
   * [Content#deleteAnnouncement](#contentdeleteannouncement)
+  * [Content#updateComponent](#contentupdatecomponent)
+  * [Content#getComponentByID](#contentgetcomponentbyid)
+  * [Content#deleteComponent](#contentdeletecomponent)
+  * [Content#getComponents](#contentgetcomponents)
   * [Content#getFaqCategories](#contentgetfaqcategories)
   * [Content#getFaqCategoryBySlugOrId](#contentgetfaqcategorybyslugorid)
   * [Content#createFaqCategory](#contentcreatefaqcategory)
@@ -77,6 +81,9 @@
   * [Content#addFaqToFaqCategory](#contentaddfaqtofaqcategory)
   * [Content#updateFaq](#contentupdatefaq)
   * [Content#deleteFaq](#contentdeletefaq)
+  * [Content#createKeyValue](#contentcreatekeyvalue)
+  * [Content#getKeyValueByID](#contentgetkeyvaluebyid)
+  * [Content#createLandingPage](#contentcreatelandingpage)
   * [Content#getLegalInformation](#contentgetlegalinformation)
   * [Content#updateLegalInformation](#contentupdatelegalinformation)
   * [Content#getSeoConfiguration](#contentgetseoconfiguration)
@@ -130,13 +137,9 @@
   * [Communication#getSystemSystemTemplates](#communicationgetsystemsystemtemplates)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#registerCompany](#companyprofileregistercompany)
   * [CompanyProfile#cbsOnboardEdit](#companyprofilecbsonboardedit)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
-  * [CompanyProfile#companyList](#companyprofilecompanylist)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getCountries](#companyprofilegetcountries)
-  * [CompanyProfile#verifyGstPan](#companyprofileverifygstpan)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
@@ -146,16 +149,13 @@
   * [CompanyProfile#locationList](#companyprofilelocationlist)
   * [CompanyProfile#editLocation](#companyprofileeditlocation)
   * [CompanyProfile#getSingleLocation](#companyprofilegetsinglelocation)
-  * [CompanyProfile#getChoices](#companyprofilegetchoices)
-  * [CompanyProfile#validateSeller](#companyprofilevalidateseller)
  
 * [Inventory](#Inventory)
-  * [Inventory#getJobs](#inventorygetjobs)
-  * [Inventory#update](#inventoryupdate)
-  * [Inventory#create](#inventorycreate)
-  * [Inventory#getJobConfigDefaults](#inventorygetjobconfigdefaults)
   * [Inventory#getJobsByCompany](#inventorygetjobsbycompany)
+  * [Inventory#updateJob](#inventoryupdatejob)
+  * [Inventory#createJob](#inventorycreatejob)
   * [Inventory#getJobByCompanyAndIntegration](#inventorygetjobbycompanyandintegration)
+  * [Inventory#getJobConfigDefaults](#inventorygetjobconfigdefaults)
   * [Inventory#getJobByCode](#inventorygetjobbycode)
   * [Inventory#getJobCodesByCompanyAndIntegration](#inventorygetjobcodesbycompanyandintegration)
  
@@ -1456,6 +1456,113 @@ Delete announcement by id
 ---
 
 
+#### Content#updateComponent
+Updates a component
+
+```javascript
+// Promise
+const promise = content.updateComponent(company_id, application_id, id, );
+
+// Async/Await
+const data = await content.updateComponent(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| id | string | ID of component to be fetched | 
+
+
+Updates a component for the given component ID
+
+
+---
+
+
+#### Content#getComponentByID
+Get components by component ID
+
+```javascript
+// Promise
+const promise = content.getComponentByID(company_id, application_id, id, );
+
+// Async/Await
+const data = await content.getComponentByID(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| id | string | ID of component to be fetched | 
+
+
+The endpoint fetches the component by component ID
+
+
+---
+
+
+#### Content#deleteComponent
+Delete a component from the page
+
+```javascript
+// Promise
+const promise = content.deleteComponent(company_id, application_id, id, );
+
+// Async/Await
+const data = await content.deleteComponent(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| id | string | ID of component to be deleted | 
+
+
+It deletes a component from the page
+
+
+---
+
+
+#### Content#getComponents
+Get components
+
+```javascript
+// Promise
+const promise = content.getComponents(company_id, application_id, );
+
+// Async/Await
+const data = await content.getComponents(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+The endpoint fetches the components
+
+
+---
+
+
 #### Content#getFaqCategories
 Get FAQ categories list
 
@@ -1694,6 +1801,85 @@ const data = await content.deleteFaq(company_id, application_id, category_id, fa
 
 
 Delete FAQ
+
+
+---
+
+
+#### Content#createKeyValue
+Create key values for templating
+
+```javascript
+// Promise
+const promise = content.createKeyValue(company_id, application_id, );
+
+// Async/Await
+const data = await content.createKeyValue(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+Use this to create key-values for templating.
+
+
+---
+
+
+#### Content#getKeyValueByID
+Get KeyValue by id
+
+```javascript
+// Promise
+const promise = content.getKeyValueByID(company_id, application_id, id, );
+
+// Async/Await
+const data = await content.getKeyValueByID(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| id | string | The `id` of a keyvalue. Use this parameter to retrieve a particular keyvalue | 
+
+
+Use this to fetch a keyvalue by `id`
+
+
+---
+
+
+#### Content#createLandingPage
+Create landing-page
+
+```javascript
+// Promise
+const promise = content.createLandingPage(company_id, application_id, );
+
+// Async/Await
+const data = await content.createLandingPage(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+Use this to create landing-page.
 
 
 ---
@@ -2913,27 +3099,6 @@ const companyprofile = new CompanyProfile(conf);
 ```
 
 
-#### CompanyProfile#registerCompany
-Create a Seller account.
-
-```javascript
-// Promise
-const promise = companyprofile.registerCompany();
-
-// Async/Await
-const data = await companyprofile.registerCompany();
-
-```
-
-
-
-
-This API allows to create a seller account on Fynd Platform.
-
-
----
-
-
 #### CompanyProfile#cbsOnboardEdit
 Edit company profile
 
@@ -2984,35 +3149,6 @@ This API allows to view the company profile of the seller account.
 ---
 
 
-#### CompanyProfile#companyList
-Get list of companies
-
-```javascript
-// Promise
-const promise = companyprofile.companyList(sort_by, q, stage, page_no, page_size, );
-
-// Async/Await
-const data = await companyprofile.companyList(sort_by, q, stage, page_no, page_size, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| sort_by | string | Helps to sort the company list on the basis of last accessed, ascending or descending order. | 
-| q | string | Query that is to be searched. | 
-| stage | string | to filter companies on basis of verified or unverified companies. | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
-
-
-This API allows to view all the companies created by the seller.
-
-
----
-
-
 #### CompanyProfile#getCompanyMetrics
 Get company metrics
 
@@ -3033,53 +3169,6 @@ const data = await companyprofile.getCompanyMetrics(company_id, );
 
 
 This API allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
-
-
----
-
-
-#### CompanyProfile#getCountries
-Get data associated to countries
-
-```javascript
-// Promise
-const promise = companyprofile.getCountries(type, stage, );
-
-// Async/Await
-const data = await companyprofile.getCountries(type, stage, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| type | string | The type of entity. This can be company or store. By default it is company. | 
-| stage | string | Ths stage from where the API is called. This can be profile & onboarding. By default it is profile. | 
-
-
-This API gets meta associated to countries for eg valid documents.
-
-
----
-
-
-#### CompanyProfile#verifyGstPan
-Verify GST/PAN against legal name.
-
-```javascript
-// Promise
-const promise = companyprofile.verifyGstPan();
-
-// Async/Await
-const data = await companyprofile.verifyGstPan();
-
-```
-
-
-
-
-This API is used to verify legal name againt GST/PAN number.
 
 
 ---
@@ -3313,56 +3402,6 @@ This API helps to get data associated to a particular location.
 ---
 
 
-#### CompanyProfile#getChoices
-Get constant data asccoiated to company, brand, locations.
-
-```javascript
-// Promise
-const promise = companyprofile.getChoices(choice_type, );
-
-// Async/Await
-const data = await companyprofile.getChoices(choice_type, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| choice_type | string | Lists all the constants associated to the passed choice types. Acceptable choice types for the API are as follows, business_type, market_channels, company_type, address_type, brand_tier, store_type, account_type, weekday, admin_stage, stage, verification_stage, integration_type, identifier_type, item_dimension_measure_unit, item_weight_measure_unit, colors, channels, designations, manufacturer, variants, item_types, manufacturing_time_unit. | 
-
-
-This API gets constant data asccoiated to company, brand, locations.
-
-
----
-
-
-#### CompanyProfile#validateSeller
-Validate a seller
-
-```javascript
-// Promise
-const promise = companyprofile.validateSeller(company_id, );
-
-// Async/Await
-const data = await companyprofile.validateSeller(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the seller to be validated. | 
-
-
-This API helps in validating a seller and returns the Seller name
-
-
----
-
-
 
 ---
 ---
@@ -3378,103 +3417,6 @@ const conf = new Configuration({
 const inventory = new Inventory(conf);
 
 ```
-
-
-#### Inventory#getJobs
-Get All Job Configs
-
-```javascript
-// Promise
-const promise = inventory.getJobs(page_no, page_size, );
-
-// Async/Await
-const data = await inventory.getJobs(page_no, page_size, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| page_no | integer | Page Number | 
-| page_size | integer | Page Size | 
-
-
-REST Endpoint that returns all job configs
-
-
----
-
-
-#### Inventory#update
-Updates An Existing Job Config
-
-```javascript
-// Promise
-const promise = inventory.update(x-user-data, );
-
-// Async/Await
-const data = await inventory.update(x-user-data, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| x-user-data | string |  | 
-
-
-REST Endpoint that updates a job config
-
-
----
-
-
-#### Inventory#create
-Creates A New Job Config
-
-```javascript
-// Promise
-const promise = inventory.create(x-user-data, );
-
-// Async/Await
-const data = await inventory.create(x-user-data, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| x-user-data | string |  | 
-
-
-REST Endpoint that creates a new job config
-
-
----
-
-
-#### Inventory#getJobConfigDefaults
-Get Job Configs Defaults
-
-```javascript
-// Promise
-const promise = inventory.getJobConfigDefaults();
-
-// Async/Await
-const data = await inventory.getJobConfigDefaults();
-
-```
-
-
-
-
-REST Endpoint that returns default fields job configs by company And integration
-
-
----
 
 
 #### Inventory#getJobsByCompany
@@ -3499,6 +3441,58 @@ const data = await inventory.getJobsByCompany(company_id, page_no, page_size, );
 
 
 REST Endpoint that returns all job configs for a company
+
+
+---
+
+
+#### Inventory#updateJob
+Updates An Existing Job Config
+
+```javascript
+// Promise
+const promise = inventory.updateJob(company_id, x-user-data, );
+
+// Async/Await
+const data = await inventory.updateJob(company_id, x-user-data, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| x-user-data | string |  | 
+
+
+REST Endpoint that updates a job config
+
+
+---
+
+
+#### Inventory#createJob
+Creates A New Job Config
+
+```javascript
+// Promise
+const promise = inventory.createJob(company_id, x-user-data, );
+
+// Async/Await
+const data = await inventory.createJob(company_id, x-user-data, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| x-user-data | string |  | 
+
+
+REST Endpoint that creates a new job config
 
 
 ---
@@ -3532,15 +3526,15 @@ REST Endpoint that returns all job configs by company And integration
 ---
 
 
-#### Inventory#getJobByCode
-Get Job Config By Code
+#### Inventory#getJobConfigDefaults
+Get Job Configs Defaults
 
 ```javascript
 // Promise
-const promise = inventory.getJobByCode(code, );
+const promise = inventory.getJobConfigDefaults(company_id, );
 
 // Async/Await
-const data = await inventory.getJobByCode(code, );
+const data = await inventory.getJobConfigDefaults(company_id, );
 
 ```
 
@@ -3548,6 +3542,32 @@ const data = await inventory.getJobByCode(code, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | integer | Company Id | 
+
+
+REST Endpoint that returns default fields job configs by company And integration
+
+
+---
+
+
+#### Inventory#getJobByCode
+Get Job Config By Code
+
+```javascript
+// Promise
+const promise = inventory.getJobByCode(company_id, code, );
+
+// Async/Await
+const data = await inventory.getJobByCode(company_id, code, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
 | code | string | Job Code | 
 
 

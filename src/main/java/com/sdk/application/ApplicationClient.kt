@@ -30,4 +30,6 @@ class ApplicationClient(config:ApplicationConfig) {
     
     val posCart by lazy { PosCartDataManagerClass(config)}
     
+    val logistic by lazy { LogisticDataManagerClass(config)}
+    
 }

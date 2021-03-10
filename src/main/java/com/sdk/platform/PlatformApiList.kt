@@ -26,7 +26,7 @@ interface LeadApiList {
     fun editTicket(@Path("company_id") companyId: String, @Path("ticket_id") ticketId: String,@Body body: EditTicketPayload)
     : Deferred<Response<Ticket>>
     
-    @GET ("/service/platform/lead/v1.0/company/{company_id}/ticket/application/{application_id}/{ticket_id}")
+    @GET ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/ticket/{ticket_id}")
     fun getTicket(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("ticket_id") ticketId: String)
     : Deferred<Response<Ticket>>
     
@@ -202,6 +202,22 @@ interface ContentApiList {
     fun deleteAnnouncement(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("announcement_id") announcementId: String)
     : Deferred<Response<CreateAnnouncementSchema>>
     
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/components/{id}")
+    fun updateComponent(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<Components>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/components/{id}")
+    fun getComponentByID(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<Components>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/components/{id}")
+    fun deleteComponent(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<Components>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/components")
+    fun getComponents(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<Components>>
+    
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/categories")
     fun getFaqCategories(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<GetFaqCategoriesSchema>>
@@ -237,6 +253,18 @@ interface ContentApiList {
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{category_id}/faq/{faq_id}")
     fun deleteFaq(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("category_id") categoryId: String, @Path("faq_id") faqId: String)
     : Deferred<Response<CreateFaqResponseSchema>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/key-values/")
+    fun createKeyValue(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: KeyValueRequestBody)
+    : Deferred<Response<KeyValue>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/key-values/{id}")
+    fun getKeyValueByID(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<KeyValue>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
+    fun createLandingPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: KeyValueRequestBody)
+    : Deferred<Response<LandingPage>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/legal")
     fun getLegalInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -442,10 +470,6 @@ interface CommunicationApiList {
 
 interface CompanyProfileApiList {
     
-    @POST ("/service/platform/company-profile/v1.0/onboard/")
-    fun registerCompany(@Body body: CompanyStoreSerializerRequest)
-    : Deferred<Response<SuccessResponse>>
-    
     @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
     fun cbsOnboardEdit(@Path("company_id") companyId: String,@Body body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>
@@ -454,31 +478,19 @@ interface CompanyProfileApiList {
     fun cbsOnboardGet(@Path("company_id") companyId: String)
     : Deferred<Response<GetCompanyProfileSerializerResponse>>
     
-    @GET ("/service/platform/company-profile/v1.0/companies/")
-    fun companyList(@Query("sort_by") sortBy: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<CompanyListSerializer>>
-    
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/metrics")
     fun getCompanyMetrics(@Path("company_id") companyId: String)
     : Deferred<Response<MetricsSerializer>>
     
-    @GET ("/service/platform/company-profile/v1.0/countries")
-    fun getCountries(@Query("type") type: String?, @Query("stage") stage: String?)
-    : Deferred<Response<CountriesResponse>>
-    
-    @POST ("/service/platform/company-profile/v1.0/documents/verification/config")
-    fun verifyGstPan(@Body body: GstPanResponseSerializer)
-    : Deferred<Response<SuccessResponse>>
-    
-    @PUT ("/service/platform/company-profile/v1.0/brand/{brand_id}")
+    @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
     fun editBrand(@Path("brand_id") brandId: String,@Body body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>
     
-    @GET ("/service/platform/company-profile/v1.0/brand/{brand_id}")
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
     fun getBrand(@Path("brand_id") brandId: String)
     : Deferred<Response<GetBrandResponseSerializer>>
     
-    @POST ("/service/platform/company-profile/v1.0/onboard/brand")
+    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/brand")
     fun createBrand(@Body body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>
     
@@ -506,47 +518,35 @@ interface CompanyProfileApiList {
     fun getSingleLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
     : Deferred<Response<GetLocationSerializer>>
     
-    @GET ("/service/platform/company-profile/v1.0/choices")
-    fun getChoices(@Query("choice_type") choiceType: String?)
-    : Deferred<Response<ChoicesResponse>>
-    
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/validate")
-    fun validateSeller(@Path("company_id") companyId: String)
-    : Deferred<Response<ValidateResponse>>
-    
 }
 
 interface InventoryApiList {
     
-    @GET ("/configurations/v1.0/jobs")
-    fun getJobs(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ResponseEnvelopeListJobConfigRawDTO>>
-    
-    @PUT ("/configurations/v1.0/jobs")
-    fun update(@Header("x-user-data") xUserData: String?,@Body body: JobConfigDTO)
-    : Deferred<Response<ResponseEnvelopeString>>
-    
-    @POST ("/configurations/v1.0/jobs")
-    fun create(@Header("x-user-data") xUserData: String?,@Body body: JobConfigDTO)
-    : Deferred<Response<ResponseEnvelopeString>>
-    
-    @GET ("/configurations/v1.0/jobs/defaults")
-    fun getJobConfigDefaults()
-    : Deferred<Response<ResponseEnvelopeJobConfigDTO>>
-    
-    @GET ("/configurations/v1.0/jobs/company/{company_id}")
+    @GET ("/v1.0/company/{company_id}/jobs")
     fun getJobsByCompany(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ResponseEnvelopeListJobConfigRawDTO>>
     
-    @GET ("/configurations/v1.0/jobs/company/{company_id}/integration/{integration_id}")
+    @PUT ("/v1.0/company/{company_id}/jobs")
+    fun updateJob(@Path("company_id") companyId: String, @Header("x-user-data") xUserData: String?,@Body body: JobConfigDTO)
+    : Deferred<Response<ResponseEnvelopeString>>
+    
+    @POST ("/v1.0/company/{company_id}/jobs")
+    fun createJob(@Path("company_id") companyId: String, @Header("x-user-data") xUserData: String?,@Body body: JobConfigDTO)
+    : Deferred<Response<ResponseEnvelopeString>>
+    
+    @GET ("/v1.0/company/{company_id}/jobs/integration/{integration_id}")
     fun getJobByCompanyAndIntegration(@Path("company_id") companyId: String, @Path("integration_id") integrationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>
     
-    @GET ("/configurations/v1.0/jobs/code/{code}")
-    fun getJobByCode(@Path("code") code: String)
+    @GET ("/v1.0/company/{company_id}/jobs/defaults")
+    fun getJobConfigDefaults(@Path("company_id") companyId: String)
     : Deferred<Response<ResponseEnvelopeJobConfigDTO>>
     
-    @GET ("/configurations/v1.0/jobs/code/company/{company_id}/integration/{integration_id}")
+    @GET ("/v1.0/company/{company_id}/jobs/code/{code}")
+    fun getJobByCode(@Path("company_id") companyId: String, @Path("code") code: String)
+    : Deferred<Response<ResponseEnvelopeJobConfigDTO>>
+    
+    @GET ("/v1.0/company/{company_id}/jobs/code/integration/{integration_id}")
     fun getJobCodesByCompanyAndIntegration(@Path("company_id") companyId: String, @Path("integration_id") integrationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ResponseEnvelopeListJobConfigListDTO>>
     

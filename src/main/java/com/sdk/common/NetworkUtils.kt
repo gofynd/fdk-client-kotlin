@@ -9,7 +9,7 @@ import java.util.*
 object NetworkUtils {
     fun getCommonRestHeaders(applicationConfig: ApplicationConfig?): Map<String, String> {
         val headerList = HashMap<String, String>()
-        headerList["User-Agent"] = applicationConfig?.userAgent?:""
+        headerList["User-Agent"] = applicationConfig?.userAgent ?: ""
         return headerList
     }
 
@@ -26,13 +26,4 @@ object NetworkUtils {
         return headerList
     }
 
-    fun getCommonRestHeaders(applicationConfig: PlatformConfig?): Map<String, String> {
-        val headerList = HashMap<String, String>()
-        return headerList
-    }
-
-    fun interceptHeaders(applicationConfig: PlatformConfig?): Map<String, String> {
-        val headerList = HashMap<String, String>()
-        return headerList
-    }
 }

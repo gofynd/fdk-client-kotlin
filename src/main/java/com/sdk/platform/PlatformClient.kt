@@ -20,21 +20,21 @@ class PlatformClient(val config:PlatformConfig) {
         return Application(applicationId = applicationId,config = config)
     }
 
-    class Application(val applicationId:String,val config: PlatformConfig) {     
+    inner class Application(val applicationId:String,val config: PlatformConfig) {     
     
-    val lead by lazy { LeadDataManagerClass.Application(applicationId,config)}
+    val lead by lazy { this@PlatformClient.lead.Application(applicationId,config)}
     
-    val theme by lazy { ThemeDataManagerClass.Application(applicationId,config)}
+    val theme by lazy { this@PlatformClient.theme.Application(applicationId,config)}
     
-    val user by lazy { UserDataManagerClass.Application(applicationId,config)}
+    val user by lazy { this@PlatformClient.user.Application(applicationId,config)}
     
-    val content by lazy { ContentDataManagerClass.Application(applicationId,config)}
+    val content by lazy { this@PlatformClient.content.Application(applicationId,config)}
     
-    val communication by lazy { CommunicationDataManagerClass.Application(applicationId,config)}
+    val communication by lazy { this@PlatformClient.communication.Application(applicationId,config)}
     
-    val companyProfile by lazy { CompanyProfileDataManagerClass.Application(applicationId,config)}
+    val companyProfile by lazy { this@PlatformClient.companyProfile.Application(applicationId,config)}
     
-    val inventory by lazy { InventoryDataManagerClass.Application(applicationId,config)}
+    val inventory by lazy { this@PlatformClient.inventory.Application(applicationId,config)}
     
     }
 

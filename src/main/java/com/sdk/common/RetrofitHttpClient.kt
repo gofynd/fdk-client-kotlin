@@ -12,8 +12,10 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
+import java.net.CookieHandler
 import java.net.CookieManager
 import java.net.CookiePolicy
+import java.net.CookieStore
 import java.security.KeyStore
 import java.security.cert.X509Certificate
 import java.util.*
@@ -23,10 +25,11 @@ import javax.net.ssl.*
 
 class RetrofitHttpClient constructor(
     private val baseUrl: String,
-    private val headerList: Map<String, String>?,
-    var interceptorMap: Map<String, List<Interceptor>>?,
+    private val headerList: Map<String, String>? = null,
+    var interceptorMap: Map<String, List<Interceptor>>? = null,
     private var cookieJar: CookieJar?,
-    var cookieManager: CookieManager?
+    var cookieManager: CookieManager?,
+    val persistentCookieStore: CookieStore? = null
 ) {
 
     var apiService: Any? = null
@@ -79,12 +82,20 @@ class RetrofitHttpClient constructor(
             //cache = new Cache(new File(this.appInstance.getCacheDir(), "http"), SIZE_OF_CACHE);
             val logging = HttpLoggingInterceptor()
             logging.level = getHttpLoggingInterceptor()
-            if (null == cookieManager || null == cookieJar) {
-                cookieManager = CookieManager(PersistentCookieStore(), CookiePolicy.ACCEPT_ALL)
+            if ((null == cookieManager || null == cookieJar) && persistentCookieStore != null) {
+                cookieManager = CookieManager(persistentCookieStore, CookiePolicy.ACCEPT_ALL)
                 cookieJar = JavaNetCookieJar(cookieManager)
             }
-            val builder = OkHttpClient.Builder()
-                .cookieJar(cookieJar)
+
+            val okHttpClient = OkHttpClient()
+
+            val builder = okHttpClient.newBuilder()
+
+            cookieJar?.let {
+                builder.cookieJar(it)
+            }
+
+            builder
                 .addNetworkInterceptor(logging) //.sslSocketFactory(sslSocketFactory)
                 .retryOnConnectionFailure(true)
                 .connectTimeout(60, TimeUnit.SECONDS)

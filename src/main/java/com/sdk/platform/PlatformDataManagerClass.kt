@@ -1,7 +1,10 @@
 package com.sdk.platform
-import com.sdk.common.*
+import android.util.Log
+import com.sdk.common.AccessTokenInterceptor
+import com.sdk.common.BaseRepository
+import com.sdk.common.HttpClient
+import com.sdk.common.RequestSignerInterceptor
 import kotlinx.coroutines.Deferred
-import okhttp3.Credentials
 import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -17,8 +20,7 @@ class LeadDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     private fun generateleadApiList(): LeadApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -26,55 +28,87 @@ class LeadDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Lead"
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformLead",
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(LeadApiList::class.java) as? LeadApiList
     }
     
     
-    fun getTickets(items: Boolean?=null, filters: Boolean?=null)
+    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null)
     : Deferred<Response<TicketList>>? {
-        return leadApiList?.getTickets(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getTickets(
         companyId = config.companyId, items = items, filters = filters )
+        } else {
+            null
+        } 
     }
     
     
-    fun createTicket(body: AddTicketPayload)
+    suspend fun createTicket(body: AddTicketPayload)
     : Deferred<Response<Ticket>>? {
-        return leadApiList?.createTicket(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.createTicket(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
     }
     
     
     
-    fun getTicket(ticketId: String)
+    suspend fun getTicket(ticketId: String)
     : Deferred<Response<Ticket>>? {
-        return leadApiList?.getTicket(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getTicket(
         companyId = config.companyId, ticketId = ticketId )
+        } else {
+            null
+        } 
     }
     
     
-    fun editTicket(ticketId: String,body: EditTicketPayload)
+    suspend fun editTicket(ticketId: String,body: EditTicketPayload)
     : Deferred<Response<Ticket>>? {
-        return leadApiList?.editTicket(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.editTicket(
         companyId = config.companyId, ticketId = ticketId, body = body)
+        } else {
+            null
+        } 
     }
     
     
     
     
-    fun createHistory(ticketId: String,body: TicketHistoryPayload)
+    suspend fun createHistory(ticketId: String,body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>? {
-        return leadApiList?.createHistory(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.createHistory(
         companyId = config.companyId, ticketId = ticketId, body = body)
+        } else {
+            null
+        } 
     }
     
     
-    fun getTicketHistory(ticketId: String)
+    suspend fun getTicketHistory(ticketId: String)
     : Deferred<Response<TicketHistoryList>>? {
-        return leadApiList?.getTicketHistory(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getTicketHistory(
         companyId = config.companyId, ticketId = ticketId )
+        } else {
+            null
+        } 
     }
     
     
@@ -88,111 +122,143 @@ class LeadDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-class Application(val applicationId:String,val config: PlatformConfig){
+inner class Application(val applicationId:String,val config: PlatformConfig){
 
-    private val leadApiList by lazy {
-        generateleadApiList()
-    }
-
-    private fun generateleadApiList(): LeadApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Lead"
-        )
-        return retrofitHttpClient?.initializeRestClient(LeadApiList::class.java) as? LeadApiList
-    }
     
     
     
     
-    fun getTickets(items: Boolean?=null, filters: Boolean?=null)
+    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null)
     : Deferred<Response<TicketList>>? {
-        return leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters )
+        } else {
+            null
+        }
     }
     
     
     
     
-    fun getTicket(ticketId: String)
+    suspend fun getTicket(ticketId: String)
     : Deferred<Response<Ticket>>? {
-        return leadApiList?.getTicket(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.getTicket(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId )
+        } else {
+            null
+        }
     }
     
     
-    fun editTicket(ticketId: String,body: EditTicketPayload)
+    suspend fun editTicket(ticketId: String,body: EditTicketPayload)
     : Deferred<Response<Ticket>>? {
-        return leadApiList?.editTicket(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.editTicket(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId, body = body)
+        } else {
+            null
+        }
     }
     
     
     
     
-    fun createHistory(ticketId: String,body: TicketHistoryPayload)
+    suspend fun createHistory(ticketId: String,body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>? {
-        return leadApiList?.createHistory(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.createHistory(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getTicketHistory(ticketId: String)
+    suspend fun getTicketHistory(ticketId: String)
     : Deferred<Response<TicketHistoryList>>? {
-        return leadApiList?.getTicketHistory(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.getTicketHistory(companyId = config.companyId , applicationId = applicationId , ticketId = ticketId )
+        } else {
+            null
+        }
     }
     
     
-    fun getCustomForm(slug: String)
+    suspend fun getCustomForm(slug: String)
     : Deferred<Response<CustomForm>>? {
-        return leadApiList?.getCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.getCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug )
+        } else {
+            null
+        }
     }
     
     
-    fun editCustomForm(slug: String,body: EditCustomFormPayload)
+    suspend fun editCustomForm(slug: String,body: EditCustomFormPayload)
     : Deferred<Response<CustomForm>>? {
-        return leadApiList?.editCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.editCustomForm(companyId = config.companyId , applicationId = applicationId , slug = slug, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getCustomForms()
+    suspend fun getCustomForms()
     : Deferred<Response<CustomFormList>>? {
-        return leadApiList?.getCustomForms(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.getCustomForms(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun createCustomForm(body: CreateCustomFormPayload)
+    suspend fun createCustomForm(body: CreateCustomFormPayload)
     : Deferred<Response<CustomForm>>? {
-        return leadApiList?.createCustomForm(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.createCustomForm(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getTokenForVideoRoom(uniqueName: String)
+    suspend fun getTokenForVideoRoom(uniqueName: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>? {
-        return leadApiList?.getTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.getTokenForVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+        } else {
+            null
+        }
     }
     
     
-    fun getVideoParticipants(uniqueName: String)
+    suspend fun getVideoParticipants(uniqueName: String)
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>? {
-        return leadApiList?.getVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.getVideoParticipants(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
+        } else {
+            null
+        }
     }
     
     
-    fun openVideoRoom(body: CreateVideoRoomPayload)
+    suspend fun openVideoRoom(body: CreateVideoRoomPayload)
     : Deferred<Response<CreateVideoRoomResponse>>? {
-        return leadApiList?.openVideoRoom(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.openVideoRoom(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun closeVideoRoom()
+    suspend fun closeVideoRoom()
     : Deferred<Response<CloseVideoRoomResponse>>? {
-        return leadApiList?.closeVideoRoom(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                leadApiList?.closeVideoRoom(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
 }
@@ -206,8 +272,7 @@ class ThemeDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     private fun generatethemeApiList(): ThemeApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -215,8 +280,10 @@ class ThemeDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Theme"
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformTheme",
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
     }
@@ -239,129 +306,177 @@ class ThemeDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-class Application(val applicationId:String,val config: PlatformConfig){
+inner class Application(val applicationId:String,val config: PlatformConfig){
 
-    private val themeApiList by lazy {
-        generatethemeApiList()
-    }
-
-    private fun generatethemeApiList(): ThemeApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Theme"
-        )
-        return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
-    }
     
     
-    fun getThemeLibrary(pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getThemeLibrary(pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<ThemesListingResponseSchema>>? {
-        return themeApiList?.getThemeLibrary(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getThemeLibrary(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
+        } else {
+            null
+        }
     }
     
     
-    fun addToThemeLibrary(body: AddThemeRequestSchema)
+    suspend fun addToThemeLibrary(body: AddThemeRequestSchema)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.addToThemeLibrary(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.addToThemeLibrary(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun applyTheme(body: AddThemeRequestSchema)
+    suspend fun applyTheme(body: AddThemeRequestSchema)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.applyTheme(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.applyTheme(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun isUpgradable(themeId: String)
+    suspend fun isUpgradable(themeId: String)
     : Deferred<Response<UpgradableThemeSchema>>? {
-        return themeApiList?.isUpgradable(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.isUpgradable(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun upgradeTheme(themeId: String)
+    suspend fun upgradeTheme(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.upgradeTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.upgradeTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun getPublicThemes(pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getPublicThemes(pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<ThemesListingResponseSchema>>? {
-        return themeApiList?.getPublicThemes(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getPublicThemes(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
+        } else {
+            null
+        }
     }
     
     
-    fun createTheme(body: ThemesSchema)
+    suspend fun createTheme(body: ThemesSchema)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.createTheme(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.createTheme(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getAppliedTheme()
+    suspend fun getAppliedTheme()
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.getAppliedTheme(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getAppliedTheme(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun getFonts()
+    suspend fun getFonts()
     : Deferred<Response<FontsSchema>>? {
-        return themeApiList?.getFonts(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getFonts(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun getThemeById(themeId: String)
+    suspend fun getThemeById(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.getThemeById(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getThemeById(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun updateTheme(themeId: String,body: ThemesSchema)
+    suspend fun updateTheme(themeId: String,body: ThemesSchema)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.updateTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.updateTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun deleteTheme(themeId: String)
+    suspend fun deleteTheme(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.deleteTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.deleteTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun getThemeForPreview(themeId: String)
+    suspend fun getThemeForPreview(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.getThemeForPreview(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getThemeForPreview(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun publishTheme(themeId: String)
+    suspend fun publishTheme(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.publishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.publishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun unpublishTheme(themeId: String)
+    suspend fun unpublishTheme(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.unpublishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.unpublishTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun archiveTheme(themeId: String)
+    suspend fun archiveTheme(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.archiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.archiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
     
-    fun unarchiveTheme(themeId: String)
+    suspend fun unarchiveTheme(themeId: String)
     : Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.unarchiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.unarchiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
     }
     
 }
@@ -375,8 +490,7 @@ class UserDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     private fun generateuserApiList(): UserApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -384,8 +498,10 @@ class UserDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "User"
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformUser",
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
@@ -395,51 +511,47 @@ class UserDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-class Application(val applicationId:String,val config: PlatformConfig){
+inner class Application(val applicationId:String,val config: PlatformConfig){
 
-    private val userApiList by lazy {
-        generateuserApiList()
-    }
-
-    private fun generateuserApiList(): UserApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "User"
-        )
-        return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
-    }
     
     
-    fun getCustomers(q: String?=null, pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getCustomers(q: String?=null, pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<CustomerListResponseSchema>>? {
-        return userApiList?.getCustomers(companyId = config.companyId , applicationId = applicationId , q = q, pageSize = pageSize, pageNo = pageNo )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getCustomers(companyId = config.companyId , applicationId = applicationId , q = q, pageSize = pageSize, pageNo = pageNo )
+        } else {
+            null
+        }
     }
     
     
-    fun searchUsers(query: String?=null)
+    suspend fun searchUsers(query: String?=null)
     : Deferred<Response<UserSearchResponseSchema>>? {
-        return userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , query = query )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , query = query )
+        } else {
+            null
+        }
     }
     
     
-    fun getPlatformConfig()
+    suspend fun getPlatformConfig()
     : Deferred<Response<PlatformSchema>>? {
-        return userApiList?.getPlatformConfig(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getPlatformConfig(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun updatePlatformConfig(body: PlatformSchema)
+    suspend fun updatePlatformConfig(body: PlatformSchema)
     : Deferred<Response<PlatformSchema>>? {
-        return userApiList?.updatePlatformConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.updatePlatformConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
 }
@@ -453,8 +565,7 @@ class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     private fun generatecontentApiList(): ContentApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -462,8 +573,10 @@ class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Content"
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformContent",
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
@@ -496,196 +609,365 @@ class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
     
-
-class Application(val applicationId:String,val config: PlatformConfig){
-
-    private val contentApiList by lazy {
-        generatecontentApiList()
-    }
-
-    private fun generatecontentApiList(): ContentApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Content"
-        )
-        return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
-    }
     
     
-    fun getAnnouncementsList()
+    
+    
+    
+    
+    
+
+inner class Application(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun getAnnouncementsList()
     : Deferred<Response<GetAnnouncementListSchema>>? {
-        return contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun createAnnouncement(body: AdminAnnouncementSchema)
+    suspend fun createAnnouncement(body: AdminAnnouncementSchema)
     : Deferred<Response<CreateAnnouncementSchema>>? {
-        return contentApiList?.createAnnouncement(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createAnnouncement(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getAnnouncementById(announcementId: String)
+    suspend fun getAnnouncementById(announcementId: String)
     : Deferred<Response<AdminAnnouncementSchema>>? {
-        return contentApiList?.getAnnouncementById(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getAnnouncementById(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId )
+        } else {
+            null
+        }
     }
     
     
-    fun updateAnnouncement(announcementId: String,body: AdminAnnouncementSchema)
+    suspend fun updateAnnouncement(announcementId: String,body: AdminAnnouncementSchema)
     : Deferred<Response<CreateAnnouncementSchema>>? {
-        return contentApiList?.updateAnnouncement(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateAnnouncement(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun updateAnnouncementSchedule(announcementId: String,body: ScheduleSchema)
+    suspend fun updateAnnouncementSchedule(announcementId: String,body: ScheduleSchema)
     : Deferred<Response<CreateAnnouncementSchema>>? {
-        return contentApiList?.updateAnnouncementSchedule(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateAnnouncementSchedule(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun deleteAnnouncement(announcementId: String)
+    suspend fun deleteAnnouncement(announcementId: String)
     : Deferred<Response<CreateAnnouncementSchema>>? {
-        return contentApiList?.deleteAnnouncement(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteAnnouncement(companyId = config.companyId , applicationId = applicationId , announcementId = announcementId )
+        } else {
+            null
+        }
     }
     
     
-    fun getFaqCategories()
+    suspend fun updateComponent(id: String)
+    : Deferred<Response<Components>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateComponent(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentByID(id: String)
+    : Deferred<Response<Components>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getComponentByID(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteComponent(id: String)
+    : Deferred<Response<Components>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteComponent(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponents()
+    : Deferred<Response<Components>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getComponents(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getFaqCategories()
     : Deferred<Response<GetFaqCategoriesSchema>>? {
-        return contentApiList?.getFaqCategories(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getFaqCategories(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun getFaqCategoryBySlugOrId(idOrSlug: String)
+    suspend fun getFaqCategoryBySlugOrId(idOrSlug: String)
     : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>? {
-        return contentApiList?.getFaqCategoryBySlugOrId(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getFaqCategoryBySlugOrId(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
+        } else {
+            null
+        }
     }
     
     
-    fun createFaqCategory(body: CreateFaqCategoryRequestSchema)
+    suspend fun createFaqCategory(body: CreateFaqCategoryRequestSchema)
     : Deferred<Response<CreateFaqCategorySchema>>? {
-        return contentApiList?.createFaqCategory(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createFaqCategory(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun updateFaqCategory(id: String,body: UpdateFaqCategoryRequestSchema)
+    suspend fun updateFaqCategory(id: String,body: UpdateFaqCategoryRequestSchema)
     : Deferred<Response<CreateFaqCategorySchema>>? {
-        return contentApiList?.updateFaqCategory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateFaqCategory(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun deleteFaqCategory(id: String)
+    suspend fun deleteFaqCategory(id: String)
     : Deferred<Response<CreateFaqCategorySchema>>? {
-        return contentApiList?.deleteFaqCategory(companyId = config.companyId , applicationId = applicationId , id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteFaqCategory(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun getFaqsByCategoryIdOrSlug(idOrSlug: String)
+    suspend fun getFaqsByCategoryIdOrSlug(idOrSlug: String)
     : Deferred<Response<GetFaqSchema>>? {
-        return contentApiList?.getFaqsByCategoryIdOrSlug(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getFaqsByCategoryIdOrSlug(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
+        } else {
+            null
+        }
     }
     
     
-    fun addFaqToFaqCategory(categoryId: String,body: CreateFaqSchema)
+    suspend fun addFaqToFaqCategory(categoryId: String,body: CreateFaqSchema)
     : Deferred<Response<CreateFaqResponseSchema>>? {
-        return contentApiList?.addFaqToFaqCategory(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.addFaqToFaqCategory(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun updateFaq(categoryId: String, faqId: String,body: CreateFaqSchema)
+    suspend fun updateFaq(categoryId: String, faqId: String,body: CreateFaqSchema)
     : Deferred<Response<CreateFaqResponseSchema>>? {
-        return contentApiList?.updateFaq(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, faqId = faqId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateFaq(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, faqId = faqId, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun deleteFaq(categoryId: String, faqId: String)
+    suspend fun deleteFaq(categoryId: String, faqId: String)
     : Deferred<Response<CreateFaqResponseSchema>>? {
-        return contentApiList?.deleteFaq(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, faqId = faqId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteFaq(companyId = config.companyId , applicationId = applicationId , categoryId = categoryId, faqId = faqId )
+        } else {
+            null
+        }
     }
     
     
-    fun getLegalInformation()
+    suspend fun createKeyValue(body: KeyValueRequestBody)
+    : Deferred<Response<KeyValue>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createKeyValue(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getKeyValueByID(id: String)
+    : Deferred<Response<KeyValue>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getKeyValueByID(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createLandingPage(body: KeyValueRequestBody)
+    : Deferred<Response<LandingPage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createLandingPage(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getLegalInformation()
     : Deferred<Response<ApplicationLegal>>? {
-        return contentApiList?.getLegalInformation(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getLegalInformation(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun updateLegalInformation(body: ApplicationLegal)
+    suspend fun updateLegalInformation(body: ApplicationLegal)
     : Deferred<Response<ApplicationLegal>>? {
-        return contentApiList?.updateLegalInformation(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateLegalInformation(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getSeoConfiguration()
+    suspend fun getSeoConfiguration()
     : Deferred<Response<Seo>>? {
-        return contentApiList?.getSeoConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getSeoConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun updateSeoConfiguration(body: Seo)
+    suspend fun updateSeoConfiguration(body: Seo)
     : Deferred<Response<Seo>>? {
-        return contentApiList?.updateSeoConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateSeoConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getSupportInformation()
+    suspend fun getSupportInformation()
     : Deferred<Response<Support>>? {
-        return contentApiList?.getSupportInformation(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getSupportInformation(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun updateSupportInformation(body: Support)
+    suspend fun updateSupportInformation(body: Support)
     : Deferred<Response<Support>>? {
-        return contentApiList?.updateSupportInformation(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateSupportInformation(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun createTag(body: CreateTagRequestSchema)
+    suspend fun createTag(body: CreateTagRequestSchema)
     : Deferred<Response<TagsSchema>>? {
-        return contentApiList?.createTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun updateTag(body: CreateTagRequestSchema)
+    suspend fun updateTag(body: CreateTagRequestSchema)
     : Deferred<Response<TagsSchema>>? {
-        return contentApiList?.updateTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun deleteAllTags()
+    suspend fun deleteAllTags()
     : Deferred<Response<TagsSchema>>? {
-        return contentApiList?.deleteAllTags(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteAllTags(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun getTags()
+    suspend fun getTags()
     : Deferred<Response<TagsSchema>>? {
-        return contentApiList?.getTags(companyId = config.companyId , applicationId = applicationId  )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getTags(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
     }
     
     
-    fun addTag(body: CreateTagRequestSchema)
+    suspend fun addTag(body: CreateTagRequestSchema)
     : Deferred<Response<TagsSchema>>? {
-        return contentApiList?.addTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.addTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun removeTag(body: RemoveHandpickedSchema)
+    suspend fun removeTag(body: RemoveHandpickedSchema)
     : Deferred<Response<TagsSchema>>? {
-        return contentApiList?.removeTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.removeTag(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun editTag(tagId: String,body: UpdateHandpickedSchema)
+    suspend fun editTag(tagId: String,body: UpdateHandpickedSchema)
     : Deferred<Response<TagsSchema>>? {
-        return contentApiList?.editTag(companyId = config.companyId , applicationId = applicationId , tagId = tagId, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.editTag(companyId = config.companyId , applicationId = applicationId , tagId = tagId, body = body)
+        } else {
+            null
+        }
     }
     
 }
@@ -699,8 +981,7 @@ class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository
     
     private fun generatecommunicationApiList(): CommunicationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -708,8 +989,10 @@ class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Communication"
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformCommunication",
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
     }
@@ -751,243 +1034,367 @@ class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository
     
     
 
-class Application(val applicationId:String,val config: PlatformConfig){
+inner class Application(val applicationId:String,val config: PlatformConfig){
 
-    private val communicationApiList by lazy {
-        generatecommunicationApiList()
-    }
-
-    private fun generatecommunicationApiList(): CommunicationApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Communication"
-        )
-        return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
-    }
     
     
-    fun getCampaigns()
+    suspend fun getCampaigns()
     : Deferred<Response<Campaigns>>? {
-        return communicationApiList?.getCampaigns( )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getCampaigns( )
+        } else {
+            null
+        }
     }
     
     
-    fun createCampaign(body: CampaignReq)
+    suspend fun createCampaign(body: CampaignReq)
     : Deferred<Response<Campaign>>? {
-        return communicationApiList?.createCampaign( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createCampaign( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getCampaignById(id: String)
+    suspend fun getCampaignById(id: String)
     : Deferred<Response<Campaign>>? {
-        return communicationApiList?.getCampaignById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getCampaignById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun updateCampaignById(id: String,body: CampaignReq)
+    suspend fun updateCampaignById(id: String,body: CampaignReq)
     : Deferred<Response<Campaign>>? {
-        return communicationApiList?.updateCampaignById(id = id, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateCampaignById(id = id, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getStatsOfCampaignById(id: String)
+    suspend fun getStatsOfCampaignById(id: String)
     : Deferred<Response<GetStats>>? {
-        return communicationApiList?.getStatsOfCampaignById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getStatsOfCampaignById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun getAudiences()
+    suspend fun getAudiences()
     : Deferred<Response<Audiences>>? {
-        return communicationApiList?.getAudiences( )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getAudiences( )
+        } else {
+            null
+        }
     }
     
     
-    fun createAudience(body: AudienceReq)
+    suspend fun createAudience(body: AudienceReq)
     : Deferred<Response<Audience>>? {
-        return communicationApiList?.createAudience( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createAudience( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getBigqueryHeaders(body: BigqueryHeadersReq)
+    suspend fun getBigqueryHeaders(body: BigqueryHeadersReq)
     : Deferred<Response<BigqueryHeadersRes>>? {
-        return communicationApiList?.getBigqueryHeaders( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getBigqueryHeaders( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getAudienceById(id: String)
+    suspend fun getAudienceById(id: String)
     : Deferred<Response<Audience>>? {
-        return communicationApiList?.getAudienceById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getAudienceById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun updateAudienceById(id: String,body: AudienceReq)
+    suspend fun updateAudienceById(id: String,body: AudienceReq)
     : Deferred<Response<Audience>>? {
-        return communicationApiList?.updateAudienceById(id = id, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateAudienceById(id = id, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getNSampleRecordsFromCsv(body: GetNRecordsCsvReq)
+    suspend fun getNSampleRecordsFromCsv(body: GetNRecordsCsvReq)
     : Deferred<Response<GetNRecordsCsvRes>>? {
-        return communicationApiList?.getNSampleRecordsFromCsv( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getNSampleRecordsFromCsv( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getEmailProviders(companyId: String, applicationId: String)
+    suspend fun getEmailProviders(companyId: String, applicationId: String)
     : Deferred<Response<EmailProviders>>? {
-        return communicationApiList?.getEmailProviders(companyId = companyId, applicationId = applicationId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailProviders(companyId = companyId, applicationId = applicationId )
+        } else {
+            null
+        }
     }
     
     
-    fun createEmailProvider(body: EmailProviderReq)
+    suspend fun createEmailProvider(body: EmailProviderReq)
     : Deferred<Response<EmailProvider>>? {
-        return communicationApiList?.createEmailProvider( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createEmailProvider( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getEmailProviderById(id: String)
+    suspend fun getEmailProviderById(id: String)
     : Deferred<Response<EmailProvider>>? {
-        return communicationApiList?.getEmailProviderById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailProviderById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun updateEmailProviderById(id: String,body: EmailProviderReq)
+    suspend fun updateEmailProviderById(id: String,body: EmailProviderReq)
     : Deferred<Response<EmailProvider>>? {
-        return communicationApiList?.updateEmailProviderById(id = id, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateEmailProviderById(id = id, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getEmailTemplates()
+    suspend fun getEmailTemplates()
     : Deferred<Response<EmailTemplates>>? {
-        return communicationApiList?.getEmailTemplates( )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailTemplates( )
+        } else {
+            null
+        }
     }
     
     
-    fun createEmailTemplate(body: EmailTemplateReq)
+    suspend fun createEmailTemplate(body: EmailTemplateReq)
     : Deferred<Response<EmailTemplateRes>>? {
-        return communicationApiList?.createEmailTemplate( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createEmailTemplate( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getSystemEmailTemplates()
+    suspend fun getSystemEmailTemplates()
     : Deferred<Response<SystemEmailTemplates>>? {
-        return communicationApiList?.getSystemEmailTemplates( )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSystemEmailTemplates( )
+        } else {
+            null
+        }
     }
     
     
-    fun getEmailTemplateById(id: String)
+    suspend fun getEmailTemplateById(id: String)
     : Deferred<Response<EmailTemplate>>? {
-        return communicationApiList?.getEmailTemplateById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailTemplateById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun updateEmailTemplateById(id: String,body: EmailTemplateReq)
+    suspend fun updateEmailTemplateById(id: String,body: EmailTemplateReq)
     : Deferred<Response<EmailTemplateRes>>? {
-        return communicationApiList?.updateEmailTemplateById(id = id, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateEmailTemplateById(id = id, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun deleteEmailTemplateById(id: String)
+    suspend fun deleteEmailTemplateById(id: String)
     : Deferred<Response<EmailTemplateDeleteSuccessRes>>? {
-        return communicationApiList?.deleteEmailTemplateById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.deleteEmailTemplateById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun getEventSubscriptions(companyId: String, applicationId: String)
+    suspend fun getEventSubscriptions(companyId: String, applicationId: String)
     : Deferred<Response<EventSubscriptions>>? {
-        return communicationApiList?.getEventSubscriptions(companyId = companyId, applicationId = applicationId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEventSubscriptions(companyId = companyId, applicationId = applicationId )
+        } else {
+            null
+        }
     }
     
     
-    fun getJobs(companyId: String, applicationId: String)
+    suspend fun getJobs(companyId: String, applicationId: String)
     : Deferred<Response<Jobs>>? {
-        return communicationApiList?.getJobs(companyId = companyId, applicationId = applicationId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getJobs(companyId = companyId, applicationId = applicationId )
+        } else {
+            null
+        }
     }
     
     
-    fun triggerCampaignJob(body: TriggerJobRequest)
+    suspend fun triggerCampaignJob(body: TriggerJobRequest)
     : Deferred<Response<TriggerJobResponse>>? {
-        return communicationApiList?.triggerCampaignJob( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.triggerCampaignJob( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getJobLogs(companyId: String, applicationId: String)
+    suspend fun getJobLogs(companyId: String, applicationId: String)
     : Deferred<Response<JobLogs>>? {
-        return communicationApiList?.getJobLogs(companyId = companyId, applicationId = applicationId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getJobLogs(companyId = companyId, applicationId = applicationId )
+        } else {
+            null
+        }
     }
     
     
-    fun getCommunicationLogs(companyId: String, applicationId: String)
+    suspend fun getCommunicationLogs(companyId: String, applicationId: String)
     : Deferred<Response<Logs>>? {
-        return communicationApiList?.getCommunicationLogs(companyId = companyId, applicationId = applicationId )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getCommunicationLogs(companyId = companyId, applicationId = applicationId )
+        } else {
+            null
+        }
     }
     
     
-    fun getSmsProviders()
+    suspend fun getSmsProviders()
     : Deferred<Response<SmsProviders>>? {
-        return communicationApiList?.getSmsProviders( )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsProviders( )
+        } else {
+            null
+        }
     }
     
     
-    fun createSmsProvider(body: SmsProviderReq)
+    suspend fun createSmsProvider(body: SmsProviderReq)
     : Deferred<Response<SmsProvider>>? {
-        return communicationApiList?.createSmsProvider( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createSmsProvider( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getSmsProviderById(id: String)
+    suspend fun getSmsProviderById(id: String)
     : Deferred<Response<SmsProvider>>? {
-        return communicationApiList?.getSmsProviderById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsProviderById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun updateSmsProviderById(id: String,body: SmsProviderReq)
+    suspend fun updateSmsProviderById(id: String,body: SmsProviderReq)
     : Deferred<Response<SmsProvider>>? {
-        return communicationApiList?.updateSmsProviderById(id = id, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateSmsProviderById(id = id, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getSmsTemplates()
+    suspend fun getSmsTemplates()
     : Deferred<Response<SmsTemplates>>? {
-        return communicationApiList?.getSmsTemplates( )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsTemplates( )
+        } else {
+            null
+        }
     }
     
     
-    fun createSmsTemplate(body: SmsTemplateReq)
+    suspend fun createSmsTemplate(body: SmsTemplateReq)
     : Deferred<Response<SmsTemplateRes>>? {
-        return communicationApiList?.createSmsTemplate( body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createSmsTemplate( body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun getSmsTemplateById(id: String)
+    suspend fun getSmsTemplateById(id: String)
     : Deferred<Response<SmsTemplate>>? {
-        return communicationApiList?.getSmsTemplateById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsTemplateById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun updateSmsTemplateById(id: String,body: SmsTemplateReq)
+    suspend fun updateSmsTemplateById(id: String,body: SmsTemplateReq)
     : Deferred<Response<SmsTemplateRes>>? {
-        return communicationApiList?.updateSmsTemplateById(id = id, body = body)
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateSmsTemplateById(id = id, body = body)
+        } else {
+            null
+        }
     }
     
     
-    fun deleteSmsTemplateById(id: String)
+    suspend fun deleteSmsTemplateById(id: String)
     : Deferred<Response<SmsTemplateDeleteSuccessRes>>? {
-        return communicationApiList?.deleteSmsTemplateById(id = id )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.deleteSmsTemplateById(id = id )
+        } else {
+            null
+        }
     }
     
     
-    fun getSystemSystemTemplates()
+    suspend fun getSystemSystemTemplates()
     : Deferred<Response<SystemSmsTemplates>>? {
-        return communicationApiList?.getSystemSystemTemplates( )
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSystemSystemTemplates( )
+        } else {
+            null
+        }
     }
     
 }
@@ -1001,8 +1408,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     
     private fun generatecompanyProfileApiList(): CompanyProfileApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -1010,167 +1416,161 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "CompanyProfile"
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformCompanyProfile",
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(CompanyProfileApiList::class.java) as? CompanyProfileApiList
     }
     
     
-    fun registerCompany(body: CompanyStoreSerializerRequest)
+    suspend fun cbsOnboardEdit(body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.registerCompany(
-         body = body)
-    }
-    
-    
-    fun cbsOnboardEdit(body: CompanyStoreSerializerRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.cbsOnboardEdit(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.cbsOnboardEdit(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
     }
     
     
-    fun cbsOnboardGet()
+    suspend fun cbsOnboardGet()
     : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
-        return companyProfileApiList?.cbsOnboardGet(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.cbsOnboardGet(
         companyId = config.companyId )
+        } else {
+            null
+        } 
     }
     
     
-    fun companyList(sortBy: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<CompanyListSerializer>>? {
-        return companyProfileApiList?.companyList(
-        sortBy = sortBy, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize )
-    }
-    
-    
-    fun getCompanyMetrics()
+    suspend fun getCompanyMetrics()
     : Deferred<Response<MetricsSerializer>>? {
-        return companyProfileApiList?.getCompanyMetrics(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getCompanyMetrics(
         companyId = config.companyId )
+        } else {
+            null
+        } 
     }
     
     
-    fun getCountries(type: String?=null, stage: String?=null)
-    : Deferred<Response<CountriesResponse>>? {
-        return companyProfileApiList?.getCountries(
-        type = type, stage = stage )
-    }
-    
-    
-    fun verifyGstPan(body: GstPanResponseSerializer)
+    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.verifyGstPan(
-         body = body)
-    }
-    
-    
-    fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.editBrand(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.editBrand(
         brandId = brandId, body = body)
+        } else {
+            null
+        } 
     }
     
     
-    fun getBrand(brandId: String)
+    suspend fun getBrand(brandId: String)
     : Deferred<Response<GetBrandResponseSerializer>>? {
-        return companyProfileApiList?.getBrand(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getBrand(
         brandId = brandId )
+        } else {
+            null
+        } 
     }
     
     
-    fun createBrand(body: CreateUpdateBrandRequestSerializer)
+    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.createBrand(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createBrand(
          body = body)
+        } else {
+            null
+        } 
     }
     
     
-    fun createCompanyBrand(body: CompanyBrandPostRequestSerializer)
+    suspend fun createCompanyBrand(body: CompanyBrandPostRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.createCompanyBrand(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createCompanyBrand(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
     }
     
     
-    fun getCompanyBrands()
+    suspend fun getCompanyBrands()
     : Deferred<Response<CompanyBrandListSerializer>>? {
-        return companyProfileApiList?.getCompanyBrands(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getCompanyBrands(
         companyId = config.companyId )
+        } else {
+            null
+        } 
     }
     
     
-    fun createLocation(body: LocationSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.createLocation(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createLocation(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
     }
     
     
-    fun locationList(storeType: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun locationList(storeType: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<LocationListSerializer>>? {
-        return companyProfileApiList?.locationList(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.locationList(
         companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
     }
     
     
-    fun editLocation(locationId: String,body: LocationSerializer)
+    suspend fun editLocation(locationId: String,body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
-        return companyProfileApiList?.editLocation(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.editLocation(
         companyId = config.companyId, locationId = locationId, body = body)
+        } else {
+            null
+        } 
     }
     
     
-    fun getSingleLocation(locationId: String)
+    suspend fun getSingleLocation(locationId: String)
     : Deferred<Response<GetLocationSerializer>>? {
-        return companyProfileApiList?.getSingleLocation(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getSingleLocation(
         companyId = config.companyId, locationId = locationId )
-    }
-    
-    
-    fun getChoices(choiceType: String?=null)
-    : Deferred<Response<ChoicesResponse>>? {
-        return companyProfileApiList?.getChoices(
-        choiceType = choiceType )
-    }
-    
-    
-    fun validateSeller()
-    : Deferred<Response<ValidateResponse>>? {
-        return companyProfileApiList?.validateSeller(
-        companyId = config.companyId )
+        } else {
+            null
+        } 
     }
     
 
-class Application(val applicationId:String,val config: PlatformConfig){
+inner class Application(val applicationId:String,val config: PlatformConfig){
 
-    private val companyProfileApiList by lazy {
-        generatecompanyProfileApiList()
-    }
-
-    private fun generatecompanyProfileApiList(): CompanyProfileApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "CompanyProfile"
-        )
-        return retrofitHttpClient?.initializeRestClient(CompanyProfileApiList::class.java) as? CompanyProfileApiList
-    }
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1195,8 +1595,7 @@ class InventoryDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     private fun generateinventoryApiList(): InventoryApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -1204,92 +1603,101 @@ class InventoryDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Inventory"
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformInventory",
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
     }
     
     
-    fun getJobs(pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getJobsByCompany(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<ResponseEnvelopeListJobConfigRawDTO>>? {
-        return inventoryApiList?.getJobs(
-        pageNo = pageNo, pageSize = pageSize )
-    }
-    
-    
-    fun update(xUserData: String?=null,body: JobConfigDTO)
-    : Deferred<Response<ResponseEnvelopeString>>? {
-        return inventoryApiList?.update(
-        xUserData = xUserData, body = body)
-    }
-    
-    
-    fun create(xUserData: String?=null,body: JobConfigDTO)
-    : Deferred<Response<ResponseEnvelopeString>>? {
-        return inventoryApiList?.create(
-        xUserData = xUserData, body = body)
-    }
-    
-    
-    fun getJobConfigDefaults()
-    : Deferred<Response<ResponseEnvelopeJobConfigDTO>>? {
-        return inventoryApiList?.getJobConfigDefaults(
-         )
-    }
-    
-    
-    fun getJobsByCompany(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ResponseEnvelopeListJobConfigRawDTO>>? {
-        return inventoryApiList?.getJobsByCompany(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.getJobsByCompany(
         companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
     }
     
     
-    fun getJobByCompanyAndIntegration(integrationId: String, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun updateJob(xUserData: String?=null,body: JobConfigDTO)
+    : Deferred<Response<ResponseEnvelopeString>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.updateJob(
+        companyId = config.companyId, xUserData = xUserData, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createJob(xUserData: String?=null,body: JobConfigDTO)
+    : Deferred<Response<ResponseEnvelopeString>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.createJob(
+        companyId = config.companyId, xUserData = xUserData, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getJobByCompanyAndIntegration(integrationId: String, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>? {
-        return inventoryApiList?.getJobByCompanyAndIntegration(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.getJobByCompanyAndIntegration(
         companyId = config.companyId, integrationId = integrationId, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
     }
     
     
-    fun getJobByCode(code: String)
+    suspend fun getJobConfigDefaults()
     : Deferred<Response<ResponseEnvelopeJobConfigDTO>>? {
-        return inventoryApiList?.getJobByCode(
-        code = code )
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.getJobConfigDefaults(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
     }
     
     
-    fun getJobCodesByCompanyAndIntegration(integrationId: String, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getJobByCode(code: String)
+    : Deferred<Response<ResponseEnvelopeJobConfigDTO>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.getJobByCode(
+        companyId = config.companyId, code = code )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getJobCodesByCompanyAndIntegration(integrationId: String, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<ResponseEnvelopeListJobConfigListDTO>>? {
-        return inventoryApiList?.getJobCodesByCompanyAndIntegration(
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.getJobCodesByCompanyAndIntegration(
         companyId = config.companyId, integrationId = integrationId, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
     }
     
 
-class Application(val applicationId:String,val config: PlatformConfig){
+inner class Application(val applicationId:String,val config: PlatformConfig){
 
-    private val inventoryApiList by lazy {
-        generateinventoryApiList()
-    }
-
-    private fun generateinventoryApiList(): InventoryApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(applicationConfig = config)
-        val headerInterceptor = HeaderInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            config.domain,
-            headerList, interceptorMap, "Inventory"
-        )
-        return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
-    }
-    
     
     
     

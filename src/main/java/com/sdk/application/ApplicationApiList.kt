@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -660,10 +660,10 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}")
     fun getAbuseReports(@Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<XNumberGetResponse>>
+    : Deferred<Response<XCursorGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/attributes")
-    fun getAttributes()
+    fun getAttributes(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<XNumberGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/attributes")
@@ -861,6 +861,18 @@ interface PosCartApiList {
     @POST ("/service/application/pos/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
+    
+}
+
+interface LogisticApiList {
+    
+    @POST ("/service/application/v1.0/logistics/")
+    fun getTatProduct(@Body body: GetTatProductReqBody)
+    : Deferred<Response<GetTatProductResponse>>
+    
+    @GET ("/service/application/v1.0/logistics/pincode/{pincode}")
+    fun getPincodeCity(@Path("pincode") pincode: Double)
+    : Deferred<Response<GetPincodeCityResponse>>
     
 }
 

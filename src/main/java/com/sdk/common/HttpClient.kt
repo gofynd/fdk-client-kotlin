@@ -6,6 +6,7 @@ import okhttp3.JavaNetCookieJar
 import okhttp3.logging.HttpLoggingInterceptor
 import java.net.CookieManager
 import java.net.CookiePolicy
+import java.net.CookieStore
 import java.util.*
 
 object HttpClient {
@@ -22,17 +23,20 @@ object HttpClient {
     }
 
     fun initialize(
-        baseUrl: String, headers: Map<String, String>,
-        interceptorList: Map<String, List<Interceptor>>, namespace: String
+        baseUrl: String,
+        headers: Map<String, String>? = null,
+        interceptorList: Map<String, List<Interceptor>>? = null,
+        namespace: String = "client",
+        persistentCookieStore: CookieStore? = null
     ): RetrofitHttpClient? {
-        if (null == cookieManager) {
-            cookieManager = CookieManager(PersistentCookieStore(), CookiePolicy.ACCEPT_ALL)
+        if (persistentCookieStore != null) {
+            cookieManager = CookieManager(persistentCookieStore, CookiePolicy.ACCEPT_ALL)
             cookieJar = JavaNetCookieJar(cookieManager)
         }
         if (null == clientMap[namespace]) {
             val retrofitHttpClient = RetrofitHttpClient(
                 baseUrl,
-                headers, interceptorList, cookieJar, cookieManager
+                headers, interceptorList, cookieJar, cookieManager, persistentCookieStore
             )
             clientMap[namespace] = retrofitHttpClient
         }

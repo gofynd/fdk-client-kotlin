@@ -1,10 +1,19 @@
 package com.sdk.platform
 
+import com.sdk.common.BaseRepository
+import java.net.CookieStore
+
 class PlatformConfig(
-    val companyId: String,
+    var companyId: String,
     var domain: String = "https://api.fynd.com",
-    var userAgent: String?=null
-) {
+    var userAgent: String? = null,
+    var apiKey: String? = null,
+    var apiSecret: String? = null,
+    val persistentCookieStore: CookieStore?=null
+) : BaseRepository() {
+
+
+    val oauthClient by lazy { PlatformOAuthClient(this) }
 
     init {
         if (this.companyId.isNullOrEmpty()) {

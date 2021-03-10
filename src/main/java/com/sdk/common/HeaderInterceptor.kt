@@ -7,18 +7,14 @@ import okhttp3.Interceptor
 import okhttp3.Response
 
 class HeaderInterceptor(
-    private val applicationConfig: ApplicationConfig? = null,
-    val platformConfig: PlatformConfig? = null
+    private val applicationConfig: ApplicationConfig? = null
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response = chain.run {
         val original = chain.request()
         val headers = Headers.Builder()
         val originalHeaders = original.headers()
         headers.addAll(originalHeaders)
-        val networkHeaders =
-            if (applicationConfig != null) NetworkUtils.interceptHeaders(applicationConfig) else NetworkUtils.interceptHeaders(
-                platformConfig
-            )
+        val networkHeaders = NetworkUtils.interceptHeaders(applicationConfig)
         for ((key, value) in networkHeaders)
             headers.add(key, value)
         proceed(
