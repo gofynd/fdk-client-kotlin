@@ -713,11 +713,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getBlog(slug: String): Deferred<Response<CustomBlog>>? {
-        return contentApiList?.getBlog(slug = slug )}
-
-    
-    
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
         return contentApiList?.getFaqs( )}
 
@@ -743,33 +738,13 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getLandingPage(): Deferred<Response<LandingPage>>? {
-        return contentApiList?.getLandingPage( )}
-
-    
-    
     fun getLegalInformation(): Deferred<Response<ApplicationLegal>>? {
         return contentApiList?.getLegalInformation( )}
 
     
     
-    fun getNavigations(): Deferred<Response<Navigation>>? {
-        return contentApiList?.getNavigations( )}
-
-    
-    
-    fun getPage(slug: String): Deferred<Response<CustomPage>>? {
-        return contentApiList?.getPage(slug = slug )}
-
-    
-    
     fun getSeoConfiguration(): Deferred<Response<Seo>>? {
         return contentApiList?.getSeoConfiguration( )}
-
-    
-    
-    fun getSlideshow(slug: String): Deferred<Response<Slideshow>>? {
-        return contentApiList?.getSlideshow(slug = slug )}
 
     
     

@@ -398,10 +398,6 @@ interface ContentApiList {
     fun getAnnouncements()
     : Deferred<Response<AnnouncementsResponseSchema>>
     
-    @GET ("/service/application/content/v1.0/blogs/{slug}")
-    fun getBlog(@Path("slug") slug: String)
-    : Deferred<Response<CustomBlog>>
-    
     @GET ("/service/application/content/v1.0/faq")
     fun getFaqs()
     : Deferred<Response<FaqResponseSchema>>
@@ -422,29 +418,13 @@ interface ContentApiList {
     fun getFaqsByCategoryIdOrSlug(@Path("id_or_slug") idOrSlug: String)
     : Deferred<Response<GetFaqSchema>>
     
-    @GET ("/service/application/content/v1.0/landing-page")
-    fun getLandingPage()
-    : Deferred<Response<LandingPage>>
-    
     @GET ("/service/application/content/v1.0/legal")
     fun getLegalInformation()
     : Deferred<Response<ApplicationLegal>>
     
-    @GET ("/service/application/content/v1.0/navigations/")
-    fun getNavigations()
-    : Deferred<Response<Navigation>>
-    
-    @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String)
-    : Deferred<Response<CustomPage>>
-    
     @GET ("/service/application/content/v1.0/seo")
     fun getSeoConfiguration()
     : Deferred<Response<Seo>>
-    
-    @GET ("/service/application/content/v1.0/slideshow/{slug}")
-    fun getSlideshow(@Path("slug") slug: String)
-    : Deferred<Response<Slideshow>>
     
     @GET ("/service/application/content/v1.0/support")
     fun getSupportInformation()

@@ -138,18 +138,13 @@
 * [Content](#Content)
   * Methods
     * [getAnnouncements](#getannouncements)
-    * [getBlog](#getblog)
     * [getFaqs](#getfaqs)
     * [getFaqCategories](#getfaqcategories)
     * [getFaqByIdOrSlug](#getfaqbyidorslug)
     * [getFaqCategoryBySlugOrId](#getfaqcategorybyslugorid)
     * [getFaqsByCategoryIdOrSlug](#getfaqsbycategoryidorslug)
-    * [getLandingPage](#getlandingpage)
     * [getLegalInformation](#getlegalinformation)
-    * [getNavigations](#getnavigations)
-    * [getPage](#getpage)
     * [getSeoConfiguration](#getseoconfiguration)
-    * [getSlideshow](#getslideshow)
     * [getSupportInformation](#getsupportinformation)
     * [getTags](#gettags)
     
@@ -6283,7 +6278,19 @@ Applied Theme
 
 
 
+Schema: `BlitzkriegApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
 
 
 
@@ -6346,7 +6353,19 @@ Preview Theme
 
 
 
+Schema: `BlitzkriegApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
 
 
 
@@ -6415,7 +6434,19 @@ Success
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6477,7 +6508,19 @@ Success
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6539,7 +6582,19 @@ Success
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6601,7 +6656,19 @@ Success
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6664,7 +6731,19 @@ Success
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6726,7 +6805,19 @@ Success
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6778,7 +6869,19 @@ Schema: `ResetPasswordSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6840,7 +6943,19 @@ Success
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6891,7 +7006,19 @@ Schema: `ResetPasswordSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -6965,7 +7092,19 @@ Schema: `[String: Any]`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7017,7 +7156,19 @@ Schema: `RegisterFormSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7068,7 +7219,19 @@ Schema: `VerifyEmailSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7119,7 +7282,19 @@ Schema: `VerifyEmailSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7170,7 +7345,19 @@ Schema: `HasPasswordSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7221,7 +7408,19 @@ Schema: `VerifyEmailSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7272,7 +7471,19 @@ Schema: `LogoutSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7324,7 +7535,19 @@ Schema: `OtpSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7387,7 +7610,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7439,7 +7674,19 @@ Schema: `EmailOtpSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7502,7 +7749,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7564,7 +7823,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7615,7 +7886,19 @@ Schema: `SessionListSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7667,7 +7950,19 @@ Schema: `PlatformSchema`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7730,7 +8025,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7793,7 +8100,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7861,7 +8180,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7923,7 +8254,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -7986,7 +8329,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -8049,7 +8404,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -8116,7 +8483,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -8178,7 +8557,19 @@ default
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -8230,7 +8621,19 @@ Schema: `SendEmailVerifyLinkSuccess`
 
 
 
+Schema: `AuthenticationApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
 
 
 
@@ -8310,58 +8713,7 @@ No Announcement enabled
 
 
 
-
-
-
-
-
-
-
-
-
-
----
-
-
-#### getBlog
-Get Blog by slug
-
-```kotlin
-content.getBlog(slug: slug).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | The `slug` of a blog. Use this parameter to retrieve a particular blog | 
-
-Use this API to fetch a blog using `slug`
-
-*Success Response:*
-
-
-
-A JSON object with blog details
-
-
-Schema: `CustomBlog`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/CustomBlog"
-}
-```
+Schema: `ConvexApiError`
 
 
 
@@ -8373,7 +8725,7 @@ default
 
 
 
-
+Schema: `ConvexApiError`
 
 
 
@@ -8435,7 +8787,19 @@ default
 
 
 
+Schema: `ConvexApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
 
 
 
@@ -8486,7 +8850,19 @@ Schema: `GetFaqCategoriesSchema`
 
 
 
+Schema: `ConvexApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
 
 
 
@@ -8538,7 +8914,19 @@ Schema: `FaqSchema`
 
 
 
+Schema: `ConvexApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
 
 
 
@@ -8590,7 +8978,19 @@ Schema: `GetFaqCategoryByIdOrSlugSchema`
 
 
 
+Schema: `ConvexApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
 
 
 
@@ -8642,57 +9042,7 @@ Schema: `GetFaqSchema`
 
 
 
-
-
-
-
-
-
-
-
-
-
----
-
-
-#### getLandingPage
-Get landing page
-
-```kotlin
-content.getLandingPage().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Use this API to fetch a landing page
-
-*Success Response:*
-
-
-
-A JSON object with landing details
-
-
-Schema: `LandingPage`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/LandingPage"
-}
-```
+Schema: `ConvexApiError`
 
 
 
@@ -8704,7 +9054,7 @@ default
 
 
 
-
+Schema: `ConvexApiError`
 
 
 
@@ -8766,6 +9116,7 @@ Success
 
 
 
+Schema: `ConvexApiError`
 
 
 
@@ -8776,122 +9127,8 @@ Success
 
 
 
----
 
-
-#### getNavigations
-Get navigation
-
-```kotlin
-content.getNavigations().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Use this API to fetch a navigation
-
-*Success Response:*
-
-
-
-A JSON object with navigation details
-
-
-Schema: `Navigation`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/Navigation"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-
-#### getPage
-Get Page by slug
-
-```kotlin
-content.getPage(slug: slug).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | The `slug` of a page. Use this parameter to retrieve a particular page | 
-
-Use this API to fetch a custom page using `slug`
-
-*Success Response:*
-
-
-
-A JSON object with page details
-
-
-Schema: `CustomPage`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/CustomPage"
-}
-```
-
-
-
-
-
-
-
-
-
-
-
-
+Schema: `ConvexApiError`
 
 
 
@@ -8953,58 +9190,7 @@ Success
 
 
 
-
-
-
-
-
-
-
-
-
-
----
-
-
-#### getSlideshow
-Get slideshow by slug
-
-```kotlin
-content.getSlideshow(slug: slug).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | The `slug` of a slideshow. Use this parameter to retrieve a particular slideshow | 
-
-Use this API to fetch a slideshow using `slug`
-
-*Success Response:*
-
-
-
-A JSON object with slideshow details
-
-
-Schema: `Slideshow`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/Slideshow"
-}
-```
+Schema: `ConvexApiError`
 
 
 
@@ -9016,7 +9202,7 @@ default
 
 
 
-
+Schema: `ConvexApiError`
 
 
 
@@ -9078,7 +9264,19 @@ default
 
 
 
+Schema: `ConvexApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
 
 
 
@@ -9129,7 +9327,19 @@ Schema: `TagsSchema`
 
 
 
+Schema: `ConvexApiError`
 
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
 
 
 
