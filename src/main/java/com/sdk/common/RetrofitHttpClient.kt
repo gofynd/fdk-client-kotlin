@@ -12,7 +12,6 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Type
-import java.net.CookieHandler
 import java.net.CookieManager
 import java.net.CookiePolicy
 import java.net.CookieStore
@@ -87,7 +86,7 @@ class RetrofitHttpClient constructor(
                 cookieJar = JavaNetCookieJar(cookieManager)
             }
 
-            val okHttpClient = OkHttpClient()
+            val okHttpClient = BaseOkhttpClient.okHttpClient
 
             val builder = okHttpClient.newBuilder()
 

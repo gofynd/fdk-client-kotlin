@@ -137,16 +137,16 @@
   * [Communication#getSystemSystemTemplates](#communicationgetsystemsystemtemplates)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardEdit](#companyprofilecbsonboardedit)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
+  * [CompanyProfile#cbsOnboardEdit](#companyprofilecbsonboardedit)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#createCompanyBrand](#companyprofilecreatecompanybrand)
   * [CompanyProfile#getCompanyBrands](#companyprofilegetcompanybrands)
-  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#createCompanyBrand](#companyprofilecreatecompanybrand)
   * [CompanyProfile#locationList](#companyprofilelocationlist)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#editLocation](#companyprofileeditlocation)
   * [CompanyProfile#getSingleLocation](#companyprofilegetsinglelocation)
  
@@ -3099,31 +3099,6 @@ const companyprofile = new CompanyProfile(conf);
 ```
 
 
-#### CompanyProfile#cbsOnboardEdit
-Edit company profile
-
-```javascript
-// Promise
-const promise = companyprofile.cbsOnboardEdit(company_id, );
-
-// Async/Await
-const data = await companyprofile.cbsOnboardEdit(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to edit the company profile of the seller account.
-
-
----
-
-
 #### CompanyProfile#cbsOnboardGet
 Get company profile
 
@@ -3144,6 +3119,31 @@ const data = await companyprofile.cbsOnboardGet(company_id, );
 
 
 This API allows to view the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#cbsOnboardEdit
+Edit company profile
+
+```javascript
+// Promise
+const promise = companyprofile.cbsOnboardEdit(company_id, );
+
+// Async/Await
+const data = await companyprofile.cbsOnboardEdit(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to edit the company profile of the seller account.
 
 
 ---
@@ -3245,31 +3245,6 @@ This API allows to create a brand associated to a company.
 ---
 
 
-#### CompanyProfile#createCompanyBrand
-Create a company brand mapping.
-
-```javascript
-// Promise
-const promise = companyprofile.createCompanyBrand(company_id, );
-
-// Async/Await
-const data = await companyprofile.createCompanyBrand(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
-
-
-This API allows to create a company brand mapping, for a already existing brand in the system.
-
-
----
-
-
 #### CompanyProfile#getCompanyBrands
 Get brands associated to a company
 
@@ -3295,15 +3270,15 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### CompanyProfile#createCompanyBrand
+Create a company brand mapping.
 
 ```javascript
 // Promise
-const promise = companyprofile.createLocation(company_id, );
+const promise = companyprofile.createCompanyBrand(company_id, );
 
 // Async/Await
-const data = await companyprofile.createLocation(company_id, );
+const data = await companyprofile.createCompanyBrand(company_id, );
 
 ```
 
@@ -3311,10 +3286,10 @@ const data = await companyprofile.createLocation(company_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
 
 
-This API allows to create a location associated to a company.
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -3345,6 +3320,31 @@ const data = await companyprofile.locationList(company_id, store_type, q, stage,
 
 
 This API allows to view all the locations asscoiated to a company.
+
+
+---
+
+
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.createLocation(company_id, );
+
+// Async/Await
+const data = await companyprofile.createLocation(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+
+
+This API allows to create a location associated to a company.
 
 
 ---
