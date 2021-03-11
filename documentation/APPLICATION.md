@@ -10,6 +10,7 @@
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Share](#Share) - Short link and QR Code 
 * [FileStorage](#FileStorage) - File Storage 
+* [Configuration](#Configuration) - Application configuration apis 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Rewards](#Rewards) - Earn and redeem Reward Points 
@@ -171,6 +172,23 @@
   * Methods
     * [completeUpload](#completeupload)
     * [startUpload](#startupload)
+    
+
+* [Configuration](#Configuration)
+  * Methods
+    * [getApplication](#getapplication)
+    * [getOwnerInfo](#getownerinfo)
+    * [getBasicDetails](#getbasicdetails)
+    * [getIntegrationTokens](#getintegrationtokens)
+    * [getAppVersion](#getappversion)
+    * [getOrderingStores](#getorderingstores)
+    * [getFeatures](#getfeatures)
+    * [getContactInfo](#getcontactinfo)
+    * [getCurrencies](#getcurrencies)
+    * [getCurrencyById](#getcurrencybyid)
+    * [getLanguages](#getlanguages)
+    * [removeOrderingStoreCookie](#removeorderingstorecookie)
+    * [getAppStaffs](#getappstaffs)
     
 
 * [Payment](#Payment)
@@ -9969,6 +9987,584 @@ Failed
 
 
 Schema: `FailedResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Configuration
+
+
+#### getApplication
+Get current application details
+
+```kotlin
+configuration.getApplication().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get current application details.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `Application`
+
+
+
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getOwnerInfo
+Get application, owner and seller information
+
+```kotlin
+configuration.getOwnerInfo().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get application information with owner and seller basic details
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ApplicationAboutResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getBasicDetails
+Get basic application details
+
+```kotlin
+configuration.getBasicDetails().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get basic application details like name
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ApplicationDetailResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getIntegrationTokens
+Get integration tokens
+
+```kotlin
+configuration.getIntegrationTokens().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get tokens for multiple integrations like Facebook, Googlemaps, Segment, Firebase, etc. Note: token values are encrypted with AES encryption using secret key. Kindly reach to developers for secret key.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `TokensResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAppVersion
+Check if a new app version is available
+
+```kotlin
+configuration.getAppVersion(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Before launching the app (android/iOS), check if a new version is available. Response gives 3 update modes viz. FORCE, AVAILABLE, UP_TO_DATE. `FORCE`- Application should be updated necessarily. `AVAILABLE`- A new version available. But its not necessary to update. `UP_TO_DATE`- Application is at the latest version. These 3 modes are computed at the backend based on the lastest version of app available and the oldest version of app supported by the system.
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `AppVersionResponse`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `InvalidAppVersionRequest`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getOrderingStores
+Get deployment meta stores
+
+```kotlin
+configuration.getOrderingStores().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get deployment meta stores.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `OrderingStores`
+
+
+
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getFeatures
+Get features of application
+
+```kotlin
+configuration.getFeatures().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get features of application
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `AppFeatureResponse`
+
+
+
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getContactInfo
+Get application information
+
+```kotlin
+configuration.getContactInfo().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ApplicationInformation`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getCurrencies
+Get application enabled currencies
+
+```kotlin
+configuration.getCurrencies().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get currency list for allowed currencies under current application
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `CurrenciesResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getCurrencyById
+Get currency by id
+
+```kotlin
+configuration.getCurrencyById(id: id).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | string | Currency object id | 
+
+Get currency object with symbol and name information by id.
+
+*Success Response:*
+
+
+
+Success response
+
+
+Schema: `Currency`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getLanguages
+Get list of languages
+
+```kotlin
+configuration.getLanguages().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get list of supported languages under application.
+
+*Success Response:*
+
+
+
+Success response
+
+
+Schema: `LanguageResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### removeOrderingStoreCookie
+Unset ordering store signed cookie on change of sales channel selection via domain in universal fynd store app.
+
+```kotlin
+configuration.removeOrderingStoreCookie().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Unset ordering store cookie.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAppStaffs
+Get Staff List.
+
+```kotlin
+configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| orderIncent | boolean | This is to check which staff members are applicable for order incentives. | 
+| orderingStore | integer | This is to filter staff members from only selected ordering store. | 
+| user | string | Get single staff member details using staff user mongo id | 
+
+Get a staff list based on the user's session token passed in the header.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `AppStaffResponse`
+
+
+
+
+
+
+
+
+Request failed with internal server error.
+
+
+Schema: `UnhandledError`
 
 
 
