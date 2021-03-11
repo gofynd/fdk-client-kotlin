@@ -496,62 +496,6 @@ interface FileStorageApiList {
     
 }
 
-interface ConfigurationApiList {
-    
-    @GET ("/service/application/configuration/v1.0/application")
-    fun getApplication()
-    : Deferred<Response<Application>>
-    
-    @GET ("/service/application/configuration/v1.0/about")
-    fun getOwnerInfo()
-    : Deferred<Response<ApplicationAboutResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/detail")
-    fun getBasicDetails()
-    : Deferred<Response<ApplicationDetailResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/token")
-    fun getIntegrationTokens()
-    : Deferred<Response<TokensResponse>>
-    
-    @POST ("/service/application/configuration/v1.0/version")
-    fun getAppVersion(@Body body: AppVersionRequest)
-    : Deferred<Response<AppVersionResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/ordering-store/stores")
-    fun getOrderingStores()
-    : Deferred<Response<OrderingStores>>
-    
-    @GET ("/service/application/configuration/v1.0/feature")
-    fun getFeatures()
-    : Deferred<Response<AppFeatureResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/information")
-    fun getContactInfo()
-    : Deferred<Response<ApplicationInformation>>
-    
-    @GET ("/service/application/configuration/v1.0/currencies")
-    fun getCurrencies()
-    : Deferred<Response<CurrenciesResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/currency/{id}")
-    fun getCurrencyById(@Path("id") id: String)
-    : Deferred<Response<Currency>>
-    
-    @GET ("/service/application/configuration/v1.0/languages")
-    fun getLanguages()
-    : Deferred<Response<LanguageResponse>>
-    
-    @POST ("/application/current/ordering-store/select")
-    fun removeOrderingStoreCookie()
-    : Deferred<Response<SuccessResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/staff")
-    fun getAppStaffs(@Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
-    : Deferred<Response<AppStaffResponse>>
-    
-}
-
 interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/config/aggregators/key")

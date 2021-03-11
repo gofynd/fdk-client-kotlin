@@ -12,6 +12,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val communication by lazy { CommunicationDataManagerClass(config)}
     
+    val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
+    
     val inventory by lazy { InventoryDataManagerClass(config)}
     
     fun application(applicationId:String): Application {
@@ -29,6 +31,8 @@ class PlatformClient(val config:PlatformConfig) {
     val content by lazy { this@PlatformClient.content.Application(applicationId,config)}
     
     val communication by lazy { this@PlatformClient.communication.Application(applicationId,config)}
+    
+    val companyProfile by lazy { this@PlatformClient.companyProfile.Application(applicationId,config)}
     
     val inventory by lazy { this@PlatformClient.inventory.Application(applicationId,config)}
     
