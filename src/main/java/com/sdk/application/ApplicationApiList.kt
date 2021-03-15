@@ -163,15 +163,15 @@ interface CartApiList {
     : Deferred<Response<GetAddressesResponse>>
     
     @POST ("/service/application/cart/v1.0/address")
-    fun addAddress(@Body body: UpdateAddressRequest)
+    fun addAddress(@Body body: Address)
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/cart/v1.0/address/{id}")
     fun getAddressById(@Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
-    : Deferred<Response<AddressResponse>>
+    : Deferred<Response<Address>>
     
     @PUT ("/service/application/cart/v1.0/address/{id}")
-    fun updateAddress(@Path("id") id: Int,@Body body: UpdateAddressRequest)
+    fun updateAddress(@Path("id") id: Int,@Body body: Address)
     : Deferred<Response<UpdateAddressResponse>>
     
     @DELETE ("/service/application/cart/v1.0/address/{id}")
@@ -191,7 +191,7 @@ interface CartApiList {
     : Deferred<Response<PaymentOptions>>
     
     @GET ("/service/application/cart/v1.0/shipment")
-    fun getShipments(@Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: Int?)
+    fun getShipments(@Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartShipmentsResponse>>
     
     @POST ("/service/application/cart/v1.0/checkout")
@@ -398,6 +398,10 @@ interface ContentApiList {
     fun getAnnouncements()
     : Deferred<Response<AnnouncementsResponseSchema>>
     
+    @GET ("/service/application/content/v1.0/blogs/{slug}")
+    fun getBlog(@Path("slug") slug: String)
+    : Deferred<Response<CustomBlog>>
+    
     @GET ("/service/application/content/v1.0/faq")
     fun getFaqs()
     : Deferred<Response<FaqResponseSchema>>
@@ -418,13 +422,29 @@ interface ContentApiList {
     fun getFaqsByCategoryIdOrSlug(@Path("id_or_slug") idOrSlug: String)
     : Deferred<Response<GetFaqSchema>>
     
+    @GET ("/service/application/content/v1.0/landing-page")
+    fun getLandingPage()
+    : Deferred<Response<LandingPage>>
+    
     @GET ("/service/application/content/v1.0/legal")
     fun getLegalInformation()
     : Deferred<Response<ApplicationLegal>>
     
+    @GET ("/service/application/content/v1.0/navigations/")
+    fun getNavigations()
+    : Deferred<Response<Navigation>>
+    
+    @GET ("/service/application/content/v1.0/pages/{slug}")
+    fun getPage(@Path("slug") slug: String)
+    : Deferred<Response<CustomPage>>
+    
     @GET ("/service/application/content/v1.0/seo")
     fun getSeoConfiguration()
     : Deferred<Response<Seo>>
+    
+    @GET ("/service/application/content/v1.0/slideshow/{slug}")
+    fun getSlideshow(@Path("slug") slug: String)
+    : Deferred<Response<Slideshow>>
     
     @GET ("/service/application/content/v1.0/support")
     fun getSupportInformation()
@@ -446,7 +466,7 @@ interface CommunicationApiList {
     fun upsertCommunicationConsent(@Body body: CommunicationConsentReq)
     : Deferred<Response<CommunicationConsentRes>>
     
-    @POST ("/service/platform/communication/v1.0/pn-token")
+    @POST ("/service/application/communication/v1.0/pn-token")
     fun upsertPushtoken(@Body body: PushtokenReq)
     : Deferred<Response<PushtokenRes>>
     
@@ -493,6 +513,62 @@ interface FileStorageApiList {
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
     fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: Int,@Body body: StartRequest)
     : Deferred<Response<StartResponse>>
+    
+}
+
+interface ConfigurationApiList {
+    
+    @GET ("/service/application/configuration/v1.0/application")
+    fun getApplication()
+    : Deferred<Response<Application>>
+    
+    @GET ("/service/application/configuration/v1.0/about")
+    fun getOwnerInfo()
+    : Deferred<Response<ApplicationAboutResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/detail")
+    fun getBasicDetails()
+    : Deferred<Response<ApplicationDetail>>
+    
+    @GET ("/service/application/configuration/v1.0/token")
+    fun getIntegrationTokens()
+    : Deferred<Response<TokensResponse>>
+    
+    @POST ("/service/application/configuration/v1.0/version")
+    fun getAppVersion(@Body body: AppVersionRequest)
+    : Deferred<Response<AppVersionResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/ordering-store/stores")
+    fun getOrderingStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    : Deferred<Response<OrderingStores>>
+    
+    @GET ("/service/application/configuration/v1.0/feature")
+    fun getFeatures()
+    : Deferred<Response<AppFeatureResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/information")
+    fun getContactInfo()
+    : Deferred<Response<ApplicationInformation>>
+    
+    @GET ("/service/application/configuration/v1.0/currencies")
+    fun getCurrencies()
+    : Deferred<Response<CurrenciesResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/currency/{id}")
+    fun getCurrencyById(@Path("id") id: String)
+    : Deferred<Response<Currency>>
+    
+    @GET ("/service/application/configuration/v1.0/languages")
+    fun getLanguages()
+    : Deferred<Response<LanguageResponse>>
+    
+    @POST ("/application/current/ordering-store/select")
+    fun removeOrderingStoreCookie()
+    : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/staff")
+    fun getAppStaffs(@Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
+    : Deferred<Response<AppStaffResponse>>
     
 }
 
@@ -779,15 +855,15 @@ interface PosCartApiList {
     : Deferred<Response<GetAddressesResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/address")
-    fun addAddress(@Body body: UpdateAddressRequest)
+    fun addAddress(@Body body: Address)
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address/{id}")
     fun getAddressById(@Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: Int?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
-    : Deferred<Response<AddressResponse>>
+    : Deferred<Response<Address>>
     
     @PUT ("/service/application/pos/cart/v1.0/address/{id}")
-    fun updateAddress(@Path("id") id: Int,@Body body: UpdateAddressRequest)
+    fun updateAddress(@Path("id") id: Int,@Body body: Address)
     : Deferred<Response<UpdateAddressResponse>>
     
     @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
@@ -807,7 +883,7 @@ interface PosCartApiList {
     : Deferred<Response<PaymentOptions>>
     
     @GET ("/service/application/pos/cart/v1.0/shipment")
-    fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: Int?)
+    fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)
     : Deferred<Response<CartShipmentsResponse>>
     
     @PUT ("/service/application/pos/cart/v1.0/shipment")
@@ -823,11 +899,11 @@ interface PosCartApiList {
     : Deferred<Response<CartMetaResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/available-delivery-mode")
-    fun getAvailableDeliveryModes(@Query("area_code") areaCode: Int, @Query("uid") uid: Int?)
+    fun getAvailableDeliveryModes(@Query("area_code") areaCode: String, @Query("uid") uid: Int?)
     : Deferred<Response<CartDeliveryModesResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/store-address")
-    fun getStoreAddressByUid(@Query("area_code") areaCode: Int)
+    fun getStoreAddressByUid(@Query("store_uid") storeUid: Int)
     : Deferred<Response<StoreDetailsResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/share-cart")

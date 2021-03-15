@@ -3,7 +3,7 @@ package com.sdk.application
 import java.net.CookieStore
 
 class ApplicationConfig(
-    val applicationId: String?,
+    var applicationId: String?,
     var applicationToken: String?,
     var domain: String = "https://api.fynd.com",
     var userAgent: String,

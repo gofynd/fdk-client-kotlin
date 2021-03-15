@@ -4,8 +4,8 @@
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
-* [Content](#Content) - Content 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
+* [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [CompanyProfile](#CompanyProfile) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Inventory](#Inventory) -  
 
@@ -61,43 +61,6 @@
   * [User#getPlatformConfig](#usergetplatformconfig)
   * [User#updatePlatformConfig](#userupdateplatformconfig)
  
-* [Content](#Content)
-  * [Content#getAnnouncementsList](#contentgetannouncementslist)
-  * [Content#createAnnouncement](#contentcreateannouncement)
-  * [Content#getAnnouncementById](#contentgetannouncementbyid)
-  * [Content#updateAnnouncement](#contentupdateannouncement)
-  * [Content#updateAnnouncementSchedule](#contentupdateannouncementschedule)
-  * [Content#deleteAnnouncement](#contentdeleteannouncement)
-  * [Content#updateComponent](#contentupdatecomponent)
-  * [Content#getComponentByID](#contentgetcomponentbyid)
-  * [Content#deleteComponent](#contentdeletecomponent)
-  * [Content#getComponents](#contentgetcomponents)
-  * [Content#getFaqCategories](#contentgetfaqcategories)
-  * [Content#getFaqCategoryBySlugOrId](#contentgetfaqcategorybyslugorid)
-  * [Content#createFaqCategory](#contentcreatefaqcategory)
-  * [Content#updateFaqCategory](#contentupdatefaqcategory)
-  * [Content#deleteFaqCategory](#contentdeletefaqcategory)
-  * [Content#getFaqsByCategoryIdOrSlug](#contentgetfaqsbycategoryidorslug)
-  * [Content#addFaqToFaqCategory](#contentaddfaqtofaqcategory)
-  * [Content#updateFaq](#contentupdatefaq)
-  * [Content#deleteFaq](#contentdeletefaq)
-  * [Content#createKeyValue](#contentcreatekeyvalue)
-  * [Content#getKeyValueByID](#contentgetkeyvaluebyid)
-  * [Content#createLandingPage](#contentcreatelandingpage)
-  * [Content#getLegalInformation](#contentgetlegalinformation)
-  * [Content#updateLegalInformation](#contentupdatelegalinformation)
-  * [Content#getSeoConfiguration](#contentgetseoconfiguration)
-  * [Content#updateSeoConfiguration](#contentupdateseoconfiguration)
-  * [Content#getSupportInformation](#contentgetsupportinformation)
-  * [Content#updateSupportInformation](#contentupdatesupportinformation)
-  * [Content#createTag](#contentcreatetag)
-  * [Content#updateTag](#contentupdatetag)
-  * [Content#deleteAllTags](#contentdeletealltags)
-  * [Content#getTags](#contentgettags)
-  * [Content#addTag](#contentaddtag)
-  * [Content#removeTag](#contentremovetag)
-  * [Content#editTag](#contentedittag)
- 
 * [Communication](#Communication)
   * [Communication#getCampaigns](#communicationgetcampaigns)
   * [Communication#createCampaign](#communicationcreatecampaign)
@@ -125,6 +88,7 @@
   * [Communication#triggerCampaignJob](#communicationtriggercampaignjob)
   * [Communication#getJobLogs](#communicationgetjoblogs)
   * [Communication#getCommunicationLogs](#communicationgetcommunicationlogs)
+  * [Communication#upsertPushtoken](#communicationupsertpushtoken)
   * [Communication#getSmsProviders](#communicationgetsmsproviders)
   * [Communication#createSmsProvider](#communicationcreatesmsprovider)
   * [Communication#getSmsProviderById](#communicationgetsmsproviderbyid)
@@ -136,19 +100,34 @@
   * [Communication#deleteSmsTemplateById](#communicationdeletesmstemplatebyid)
   * [Communication#getSystemSystemTemplates](#communicationgetsystemsystemtemplates)
  
+* [Payment](#Payment)
+  * [Payment#getBrandPaymentGatewayConfig](#paymentgetbrandpaymentgatewayconfig)
+  * [Payment#saveBrandPaymentGatewayConfig](#paymentsavebrandpaymentgatewayconfig)
+  * [Payment#updateBrandPaymentGatewayConfig](#paymentupdatebrandpaymentgatewayconfig)
+  * [Payment#getPaymentModeRoutes](#paymentgetpaymentmoderoutes)
+  * [Payment#getAllPayouts](#paymentgetallpayouts)
+  * [Payment#savePayout](#paymentsavepayout)
+  * [Payment#updatePayout](#paymentupdatepayout)
+  * [Payment#activateAndDectivatePayout](#paymentactivateanddectivatepayout)
+  * [Payment#deletePayout](#paymentdeletepayout)
+  * [Payment#getSubscriptionPaymentMethod](#paymentgetsubscriptionpaymentmethod)
+  * [Payment#deleteSubscriptionPaymentMethod](#paymentdeletesubscriptionpaymentmethod)
+  * [Payment#getSubscriptionConfig](#paymentgetsubscriptionconfig)
+  * [Payment#saveSubscriptionSetupIntent](#paymentsavesubscriptionsetupintent)
+ 
 * [CompanyProfile](#CompanyProfile)
   * [CompanyProfile#cbsOnboardEdit](#companyprofilecbsonboardedit)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#createCompanyBrand](#companyprofilecreatecompanybrand)
   * [CompanyProfile#getCompanyBrands](#companyprofilegetcompanybrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#locationList](#companyprofilelocationlist)
-  * [CompanyProfile#editLocation](#companyprofileeditlocation)
   * [CompanyProfile#getSingleLocation](#companyprofilegetsinglelocation)
+  * [CompanyProfile#editLocation](#companyprofileeditlocation)
  
 * [Inventory](#Inventory)
   * [Inventory#getJobsByCompany](#inventorygetjobsbycompany)
@@ -182,10 +161,10 @@ Gets the list of company level tickets and/or ticket filters depending on query 
 
 ```javascript
 // Promise
-const promise = lead.getTickets(company_id, items, filters, );
+const promise = lead.getTickets(company_id, items, filters, page_no, page_size, );
 
 // Async/Await
-const data = await lead.getTickets(company_id, items, filters, );
+const data = await lead.getTickets(company_id, items, filters, page_no, page_size, );
 
 ```
 
@@ -196,6 +175,8 @@ const data = await lead.getTickets(company_id, items, filters, );
 | company_id | string | Company ID for which the data will be returned | 
 | items | boolean | Decides that the reponse will contain the list of tickets | 
 | filters | boolean | Decides that the reponse will contain the ticket filters | 
+| page_no | integer | The page number to navigate through the given set of results. | 
+| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 
 
 Gets the list of company level tickets and/or ticket filters
@@ -1284,951 +1265,6 @@ Used to update platform config
 ---
 
 
-## Content
-
-```javascript
-const { Configuration, Content } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const content = new Content(conf);
-
-```
-
-
-#### Content#getAnnouncementsList
-Get annoucements list
-
-```javascript
-// Promise
-const promise = content.getAnnouncementsList(company_id, application_id, );
-
-// Async/Await
-const data = await content.getAnnouncementsList(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get list of announcements
-
-
----
-
-
-#### Content#createAnnouncement
-Create an annoucement
-
-```javascript
-// Promise
-const promise = content.createAnnouncement(company_id, application_id, );
-
-// Async/Await
-const data = await content.createAnnouncement(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Create an announcement
-
-
----
-
-
-#### Content#getAnnouncementById
-Get annoucement by id
-
-```javascript
-// Promise
-const promise = content.getAnnouncementById(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.getAnnouncementById(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Get announcement by id
-
-
----
-
-
-#### Content#updateAnnouncement
-Update an annoucement
-
-```javascript
-// Promise
-const promise = content.updateAnnouncement(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.updateAnnouncement(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Update an announcement
-
-
----
-
-
-#### Content#updateAnnouncementSchedule
-Update schedule or published status of an annoucement
-
-```javascript
-// Promise
-const promise = content.updateAnnouncementSchedule(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.updateAnnouncementSchedule(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Update schedule or published status of an announcement
-
-
----
-
-
-#### Content#deleteAnnouncement
-Delete annoucement by id
-
-```javascript
-// Promise
-const promise = content.deleteAnnouncement(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.deleteAnnouncement(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Delete announcement by id
-
-
----
-
-
-#### Content#updateComponent
-Updates a component
-
-```javascript
-// Promise
-const promise = content.updateComponent(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateComponent(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | ID of component to be fetched | 
-
-
-Updates a component for the given component ID
-
-
----
-
-
-#### Content#getComponentByID
-Get components by component ID
-
-```javascript
-// Promise
-const promise = content.getComponentByID(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.getComponentByID(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | ID of component to be fetched | 
-
-
-The endpoint fetches the component by component ID
-
-
----
-
-
-#### Content#deleteComponent
-Delete a component from the page
-
-```javascript
-// Promise
-const promise = content.deleteComponent(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteComponent(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | ID of component to be deleted | 
-
-
-It deletes a component from the page
-
-
----
-
-
-#### Content#getComponents
-Get components
-
-```javascript
-// Promise
-const promise = content.getComponents(company_id, application_id, );
-
-// Async/Await
-const data = await content.getComponents(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-The endpoint fetches the components
-
-
----
-
-
-#### Content#getFaqCategories
-Get FAQ categories list
-
-```javascript
-// Promise
-const promise = content.getFaqCategories(company_id, application_id, );
-
-// Async/Await
-const data = await content.getFaqCategories(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get list of FAQ categories
-
-
----
-
-
-#### Content#getFaqCategoryBySlugOrId
-Get FAQ category by slug or id
-
-```javascript
-// Promise
-const promise = content.getFaqCategoryBySlugOrId(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqCategoryBySlugOrId(company_id, application_id, id_or_slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Slug or Id of FAQ Category | 
-
-
-Get FAQ category by slug or id
-
-
----
-
-
-#### Content#createFaqCategory
-Creates a FAQ category
-
-```javascript
-// Promise
-const promise = content.createFaqCategory(company_id, application_id, );
-
-// Async/Await
-const data = await content.createFaqCategory(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Add Faq Category
-
-
----
-
-
-#### Content#updateFaqCategory
-Updates a FAQ category
-
-```javascript
-// Promise
-const promise = content.updateFaqCategory(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateFaqCategory(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Faq category ID | 
-
-
-Update Faq Category
-
-
----
-
-
-#### Content#deleteFaqCategory
-Deletes a FAQ category
-
-```javascript
-// Promise
-const promise = content.deleteFaqCategory(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteFaqCategory(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Faq category ID | 
-
-
-Delete Faq Category
-
-
----
-
-
-#### Content#getFaqsByCategoryIdOrSlug
-Get FAQs of a Faq Category id or slug
-
-```javascript
-// Promise
-const promise = content.getFaqsByCategoryIdOrSlug(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqsByCategoryIdOrSlug(company_id, application_id, id_or_slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Faq category ID or slug | 
-
-
-Get FAQs of a Faq Category `id` or `slug`
-
-
----
-
-
-#### Content#addFaqToFaqCategory
-Creates FAQs for category whose `id` is specified
-
-```javascript
-// Promise
-const promise = content.addFaqToFaqCategory(company_id, application_id, category_id, );
-
-// Async/Await
-const data = await content.addFaqToFaqCategory(company_id, application_id, category_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-
-
-Creates FAQs for category whose `id` is specified
-
-
----
-
-
-#### Content#updateFaq
-Updates FAQ
-
-```javascript
-// Promise
-const promise = content.updateFaq(company_id, application_id, category_id, faq_id, );
-
-// Async/Await
-const data = await content.updateFaq(company_id, application_id, category_id, faq_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-| faq_id | string | Faq ID | 
-
-
-Updates FAQ
-
-
----
-
-
-#### Content#deleteFaq
-Delete FAQ
-
-```javascript
-// Promise
-const promise = content.deleteFaq(company_id, application_id, category_id, faq_id, );
-
-// Async/Await
-const data = await content.deleteFaq(company_id, application_id, category_id, faq_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-| faq_id | string | Faq ID | 
-
-
-Delete FAQ
-
-
----
-
-
-#### Content#createKeyValue
-Create key values for templating
-
-```javascript
-// Promise
-const promise = content.createKeyValue(company_id, application_id, );
-
-// Async/Await
-const data = await content.createKeyValue(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to create key-values for templating.
-
-
----
-
-
-#### Content#getKeyValueByID
-Get KeyValue by id
-
-```javascript
-// Promise
-const promise = content.getKeyValueByID(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.getKeyValueByID(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | The `id` of a keyvalue. Use this parameter to retrieve a particular keyvalue | 
-
-
-Use this to fetch a keyvalue by `id`
-
-
----
-
-
-#### Content#createLandingPage
-Create landing-page
-
-```javascript
-// Promise
-const promise = content.createLandingPage(company_id, application_id, );
-
-// Async/Await
-const data = await content.createLandingPage(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to create landing-page.
-
-
----
-
-
-#### Content#getLegalInformation
-Get legal information
-
-```javascript
-// Promise
-const promise = content.getLegalInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.getLegalInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get legal information of application, which includes policy, Terms and Conditions, and FAQ information of application.
-
-
----
-
-
-#### Content#updateLegalInformation
-Save legal information
-
-```javascript
-// Promise
-const promise = content.updateLegalInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateLegalInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Save legal information of application, which includes Policy, Terms and Conditions, and FAQ information of application.
-
-
----
-
-
-#### Content#getSeoConfiguration
-Get seo of application
-
-```javascript
-// Promise
-const promise = content.getSeoConfiguration(company_id, application_id, );
-
-// Async/Await
-const data = await content.getSeoConfiguration(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get seo of application
-
-
----
-
-
-#### Content#updateSeoConfiguration
-Update seo of application
-
-```javascript
-// Promise
-const promise = content.updateSeoConfiguration(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateSeoConfiguration(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Update seo of application
-
-
----
-
-
-#### Content#getSupportInformation
-Get support information
-
-```javascript
-// Promise
-const promise = content.getSupportInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.getSupportInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get contact details for customer support. Including emails and phone numbers
-
-
----
-
-
-#### Content#updateSupportInformation
-Update support data of application
-
-```javascript
-// Promise
-const promise = content.updateSupportInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateSupportInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Update support data of application
-
-
----
-
-
-#### Content#createTag
-Creates Tag
-
-```javascript
-// Promise
-const promise = content.createTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.createTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Create tags
-
-
----
-
-
-#### Content#updateTag
-Updates a Tag
-
-```javascript
-// Promise
-const promise = content.updateTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Update tag
-
-
----
-
-
-#### Content#deleteAllTags
-Delete tags for application
-
-```javascript
-// Promise
-const promise = content.deleteAllTags(company_id, application_id, );
-
-// Async/Await
-const data = await content.deleteAllTags(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Delete tags for application
-
-
----
-
-
-#### Content#getTags
-Get tags for application
-
-```javascript
-// Promise
-const promise = content.getTags(company_id, application_id, );
-
-// Async/Await
-const data = await content.getTags(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get tags for application
-
-
----
-
-
-#### Content#addTag
-Adds a Tag
-
-```javascript
-// Promise
-const promise = content.addTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.addTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Add tag
-
-
----
-
-
-#### Content#removeTag
-Removes a Tag
-
-```javascript
-// Promise
-const promise = content.removeTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.removeTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Remove a particular tag
-
-
----
-
-
-#### Content#editTag
-Edits a Tag by Id
-
-```javascript
-// Promise
-const promise = content.editTag(company_id, application_id, tag_id, );
-
-// Async/Await
-const data = await content.editTag(company_id, application_id, tag_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| tag_id | string | Tag ID | 
-
-
-Edits a particular tag
-
-
----
-
-
-
----
----
-
-
 ## Communication
 
 ```javascript
@@ -2246,14 +1282,19 @@ Get campaigns
 
 ```javascript
 // Promise
-const promise = communication.getCampaigns();
+const promise = communication.getCampaigns(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getCampaigns();
+const data = await communication.getCampaigns(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get campaigns
@@ -2267,14 +1308,19 @@ Create campaign
 
 ```javascript
 // Promise
-const promise = communication.createCampaign();
+const promise = communication.createCampaign(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createCampaign();
+const data = await communication.createCampaign(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Create campaign
@@ -2288,10 +1334,10 @@ Get campaign by id
 
 ```javascript
 // Promise
-const promise = communication.getCampaignById(id, );
+const promise = communication.getCampaignById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.getCampaignById(id, );
+const data = await communication.getCampaignById(company_id, application_id, id, );
 
 ```
 
@@ -2299,6 +1345,8 @@ const data = await communication.getCampaignById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Campaign id | 
 
 
@@ -2313,10 +1361,10 @@ Update campaign by id
 
 ```javascript
 // Promise
-const promise = communication.updateCampaignById(id, );
+const promise = communication.updateCampaignById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.updateCampaignById(id, );
+const data = await communication.updateCampaignById(company_id, application_id, id, );
 
 ```
 
@@ -2324,6 +1372,8 @@ const data = await communication.updateCampaignById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Campaign id | 
 
 
@@ -2338,10 +1388,10 @@ Get stats of campaign by id
 
 ```javascript
 // Promise
-const promise = communication.getStatsOfCampaignById(id, );
+const promise = communication.getStatsOfCampaignById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.getStatsOfCampaignById(id, );
+const data = await communication.getStatsOfCampaignById(company_id, application_id, id, );
 
 ```
 
@@ -2349,6 +1399,8 @@ const data = await communication.getStatsOfCampaignById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Campaign id | 
 
 
@@ -2363,14 +1415,19 @@ Get audiences
 
 ```javascript
 // Promise
-const promise = communication.getAudiences();
+const promise = communication.getAudiences(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getAudiences();
+const data = await communication.getAudiences(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get audiences
@@ -2384,14 +1441,19 @@ Create audience
 
 ```javascript
 // Promise
-const promise = communication.createAudience();
+const promise = communication.createAudience(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createAudience();
+const data = await communication.createAudience(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Create audience
@@ -2405,14 +1467,19 @@ Get bigquery headers
 
 ```javascript
 // Promise
-const promise = communication.getBigqueryHeaders();
+const promise = communication.getBigqueryHeaders(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getBigqueryHeaders();
+const data = await communication.getBigqueryHeaders(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get bigquery headers
@@ -2426,10 +1493,10 @@ Get audience by id
 
 ```javascript
 // Promise
-const promise = communication.getAudienceById(id, );
+const promise = communication.getAudienceById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.getAudienceById(id, );
+const data = await communication.getAudienceById(company_id, application_id, id, );
 
 ```
 
@@ -2437,6 +1504,8 @@ const data = await communication.getAudienceById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Audience id | 
 
 
@@ -2451,10 +1520,10 @@ Update audience by id
 
 ```javascript
 // Promise
-const promise = communication.updateAudienceById(id, );
+const promise = communication.updateAudienceById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.updateAudienceById(id, );
+const data = await communication.updateAudienceById(company_id, application_id, id, );
 
 ```
 
@@ -2462,6 +1531,8 @@ const data = await communication.updateAudienceById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Audience id | 
 
 
@@ -2476,14 +1547,19 @@ Get n sample records from csv
 
 ```javascript
 // Promise
-const promise = communication.getNSampleRecordsFromCsv();
+const promise = communication.getNSampleRecordsFromCsv(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getNSampleRecordsFromCsv();
+const data = await communication.getNSampleRecordsFromCsv(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get n sample records from csv
@@ -2497,10 +1573,10 @@ Get email providers
 
 ```javascript
 // Promise
-const promise = communication.getEmailProviders(Company id, Application id, );
+const promise = communication.getEmailProviders(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getEmailProviders(Company id, Application id, );
+const data = await communication.getEmailProviders(company_id, application_id, );
 
 ```
 
@@ -2508,8 +1584,8 @@ const data = await communication.getEmailProviders(Company id, Application id, )
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| Company id | string | Company id | 
-| Application id | string | Application id | 
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get email providers
@@ -2523,14 +1599,19 @@ Create email provider
 
 ```javascript
 // Promise
-const promise = communication.createEmailProvider();
+const promise = communication.createEmailProvider(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createEmailProvider();
+const data = await communication.createEmailProvider(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Create email provider
@@ -2544,10 +1625,10 @@ Get email provider by id
 
 ```javascript
 // Promise
-const promise = communication.getEmailProviderById(id, );
+const promise = communication.getEmailProviderById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.getEmailProviderById(id, );
+const data = await communication.getEmailProviderById(company_id, application_id, id, );
 
 ```
 
@@ -2555,6 +1636,8 @@ const data = await communication.getEmailProviderById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Email provider id | 
 
 
@@ -2569,10 +1652,10 @@ Update email provider by id
 
 ```javascript
 // Promise
-const promise = communication.updateEmailProviderById(id, );
+const promise = communication.updateEmailProviderById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.updateEmailProviderById(id, );
+const data = await communication.updateEmailProviderById(company_id, application_id, id, );
 
 ```
 
@@ -2580,6 +1663,8 @@ const data = await communication.updateEmailProviderById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Email provider id | 
 
 
@@ -2594,14 +1679,19 @@ Get email templates
 
 ```javascript
 // Promise
-const promise = communication.getEmailTemplates();
+const promise = communication.getEmailTemplates(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getEmailTemplates();
+const data = await communication.getEmailTemplates(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get email templates
@@ -2615,14 +1705,19 @@ Create email template
 
 ```javascript
 // Promise
-const promise = communication.createEmailTemplate();
+const promise = communication.createEmailTemplate(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createEmailTemplate();
+const data = await communication.createEmailTemplate(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Create email template
@@ -2636,14 +1731,19 @@ Get system email templates
 
 ```javascript
 // Promise
-const promise = communication.getSystemEmailTemplates();
+const promise = communication.getSystemEmailTemplates(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getSystemEmailTemplates();
+const data = await communication.getSystemEmailTemplates(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get system email templates
@@ -2657,10 +1757,10 @@ Get email template by id
 
 ```javascript
 // Promise
-const promise = communication.getEmailTemplateById(id, );
+const promise = communication.getEmailTemplateById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.getEmailTemplateById(id, );
+const data = await communication.getEmailTemplateById(company_id, application_id, id, );
 
 ```
 
@@ -2668,6 +1768,8 @@ const data = await communication.getEmailTemplateById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Email template id | 
 
 
@@ -2682,10 +1784,10 @@ Update email template by id
 
 ```javascript
 // Promise
-const promise = communication.updateEmailTemplateById(id, );
+const promise = communication.updateEmailTemplateById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.updateEmailTemplateById(id, );
+const data = await communication.updateEmailTemplateById(company_id, application_id, id, );
 
 ```
 
@@ -2693,6 +1795,8 @@ const data = await communication.updateEmailTemplateById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Email template id | 
 
 
@@ -2707,10 +1811,10 @@ Delete email template by id
 
 ```javascript
 // Promise
-const promise = communication.deleteEmailTemplateById(id, );
+const promise = communication.deleteEmailTemplateById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.deleteEmailTemplateById(id, );
+const data = await communication.deleteEmailTemplateById(company_id, application_id, id, );
 
 ```
 
@@ -2718,6 +1822,8 @@ const data = await communication.deleteEmailTemplateById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Email template id | 
 
 
@@ -2732,10 +1838,10 @@ Get event subscriptions
 
 ```javascript
 // Promise
-const promise = communication.getEventSubscriptions(Company id, Application id, );
+const promise = communication.getEventSubscriptions(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getEventSubscriptions(Company id, Application id, );
+const data = await communication.getEventSubscriptions(company_id, application_id, );
 
 ```
 
@@ -2743,8 +1849,8 @@ const data = await communication.getEventSubscriptions(Company id, Application i
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| Company id | string | Company id | 
-| Application id | string | Application id | 
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get event subscriptions
@@ -2758,10 +1864,10 @@ Get jobs
 
 ```javascript
 // Promise
-const promise = communication.getJobs(Company id, Application id, );
+const promise = communication.getJobs(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getJobs(Company id, Application id, );
+const data = await communication.getJobs(company_id, application_id, );
 
 ```
 
@@ -2769,8 +1875,8 @@ const data = await communication.getJobs(Company id, Application id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| Company id | string | Company id | 
-| Application id | string | Application id | 
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get jobs
@@ -2784,14 +1890,19 @@ Trigger campaign job
 
 ```javascript
 // Promise
-const promise = communication.triggerCampaignJob();
+const promise = communication.triggerCampaignJob(company_id, application_id, );
 
 // Async/Await
-const data = await communication.triggerCampaignJob();
+const data = await communication.triggerCampaignJob(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Trigger campaign job
@@ -2805,10 +1916,10 @@ Get job logs
 
 ```javascript
 // Promise
-const promise = communication.getJobLogs(Company id, Application id, );
+const promise = communication.getJobLogs(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getJobLogs(Company id, Application id, );
+const data = await communication.getJobLogs(company_id, application_id, );
 
 ```
 
@@ -2816,8 +1927,8 @@ const data = await communication.getJobLogs(Company id, Application id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| Company id | string | Company id | 
-| Application id | string | Application id | 
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get job logs
@@ -2831,10 +1942,10 @@ Get communication logs
 
 ```javascript
 // Promise
-const promise = communication.getCommunicationLogs(Company id, Application id, );
+const promise = communication.getCommunicationLogs(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getCommunicationLogs(Company id, Application id, );
+const data = await communication.getCommunicationLogs(company_id, application_id, );
 
 ```
 
@@ -2842,11 +1953,37 @@ const data = await communication.getCommunicationLogs(Company id, Application id
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| Company id | string | Company id | 
-| Application id | string | Application id | 
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get communication logs
+
+
+---
+
+
+#### Communication#upsertPushtoken
+Upsert push token of a user
+
+```javascript
+// Promise
+const promise = communication.upsertPushtoken(company_id, application_id, );
+
+// Async/Await
+const data = await communication.upsertPushtoken(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Upsert push token of a user
 
 
 ---
@@ -2857,14 +1994,19 @@ Get sms providers
 
 ```javascript
 // Promise
-const promise = communication.getSmsProviders();
+const promise = communication.getSmsProviders(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getSmsProviders();
+const data = await communication.getSmsProviders(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get sms providers
@@ -2878,14 +2020,19 @@ Create sms provider
 
 ```javascript
 // Promise
-const promise = communication.createSmsProvider();
+const promise = communication.createSmsProvider(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createSmsProvider();
+const data = await communication.createSmsProvider(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Create sms provider
@@ -2899,10 +2046,10 @@ Get sms provider by id
 
 ```javascript
 // Promise
-const promise = communication.getSmsProviderById(id, );
+const promise = communication.getSmsProviderById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.getSmsProviderById(id, );
+const data = await communication.getSmsProviderById(company_id, application_id, id, );
 
 ```
 
@@ -2910,6 +2057,8 @@ const data = await communication.getSmsProviderById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Sms provider id | 
 
 
@@ -2924,10 +2073,10 @@ Update sms provider by id
 
 ```javascript
 // Promise
-const promise = communication.updateSmsProviderById(id, );
+const promise = communication.updateSmsProviderById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.updateSmsProviderById(id, );
+const data = await communication.updateSmsProviderById(company_id, application_id, id, );
 
 ```
 
@@ -2935,6 +2084,8 @@ const data = await communication.updateSmsProviderById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Sms provider id | 
 
 
@@ -2949,14 +2100,19 @@ Get sms templates
 
 ```javascript
 // Promise
-const promise = communication.getSmsTemplates();
+const promise = communication.getSmsTemplates(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getSmsTemplates();
+const data = await communication.getSmsTemplates(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Get sms templates
@@ -2970,14 +2126,19 @@ Create sms template
 
 ```javascript
 // Promise
-const promise = communication.createSmsTemplate();
+const promise = communication.createSmsTemplate(company_id, application_id, );
 
 // Async/Await
-const data = await communication.createSmsTemplate();
+const data = await communication.createSmsTemplate(company_id, application_id, );
 
 ```
 
 
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 
 
 Create sms template
@@ -2991,10 +2152,10 @@ Get sms template by id
 
 ```javascript
 // Promise
-const promise = communication.getSmsTemplateById(id, );
+const promise = communication.getSmsTemplateById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.getSmsTemplateById(id, );
+const data = await communication.getSmsTemplateById(company_id, application_id, id, );
 
 ```
 
@@ -3002,6 +2163,8 @@ const data = await communication.getSmsTemplateById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Sms template id | 
 
 
@@ -3016,10 +2179,10 @@ Update sms template by id
 
 ```javascript
 // Promise
-const promise = communication.updateSmsTemplateById(id, );
+const promise = communication.updateSmsTemplateById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.updateSmsTemplateById(id, );
+const data = await communication.updateSmsTemplateById(company_id, application_id, id, );
 
 ```
 
@@ -3027,6 +2190,8 @@ const data = await communication.updateSmsTemplateById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Sms template id | 
 
 
@@ -3041,10 +2206,10 @@ Delete sms template by id
 
 ```javascript
 // Promise
-const promise = communication.deleteSmsTemplateById(id, );
+const promise = communication.deleteSmsTemplateById(company_id, application_id, id, );
 
 // Async/Await
-const data = await communication.deleteSmsTemplateById(id, );
+const data = await communication.deleteSmsTemplateById(company_id, application_id, id, );
 
 ```
 
@@ -3052,6 +2217,8 @@ const data = await communication.deleteSmsTemplateById(id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
 | id | string | Sms template id | 
 
 
@@ -3066,17 +2233,376 @@ Get system sms templates
 
 ```javascript
 // Promise
-const promise = communication.getSystemSystemTemplates();
+const promise = communication.getSystemSystemTemplates(company_id, application_id, );
 
 // Async/Await
-const data = await communication.getSystemSystemTemplates();
+const data = await communication.getSystemSystemTemplates(company_id, application_id, );
 
 ```
 
 
 
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
 
 Get system sms templates
+
+
+---
+
+
+
+---
+---
+
+
+## Payment
+
+```javascript
+const { Configuration, Payment } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const payment = new Payment(conf);
+
+```
+
+
+#### Payment#getBrandPaymentGatewayConfig
+Get All Brand Payment Gateway Config Secret
+
+```javascript
+// Promise
+const promise = payment.getBrandPaymentGatewayConfig(company_id, application_id, );
+
+// Async/Await
+const data = await payment.getBrandPaymentGatewayConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application id | 
+
+
+Get All Brand Payment Gateway Config Secret
+
+
+---
+
+
+#### Payment#saveBrandPaymentGatewayConfig
+Save Config Secret For Brand Payment Gateway
+
+```javascript
+// Promise
+const promise = payment.saveBrandPaymentGatewayConfig(company_id, application_id, );
+
+// Async/Await
+const data = await payment.saveBrandPaymentGatewayConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application id | 
+
+
+Save Config Secret For Brand Payment Gateway
+
+
+---
+
+
+#### Payment#updateBrandPaymentGatewayConfig
+Save Config Secret For Brand Payment Gateway
+
+```javascript
+// Promise
+const promise = payment.updateBrandPaymentGatewayConfig(company_id, application_id, );
+
+// Async/Await
+const data = await payment.updateBrandPaymentGatewayConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application id | 
+
+
+Save Config Secret For Brand Payment Gateway
+
+
+---
+
+
+#### Payment#getPaymentModeRoutes
+Get All Valid Payment Options
+
+```javascript
+// Promise
+const promise = payment.getPaymentModeRoutes(company_id, application_id, refresh, request_type, );
+
+// Async/Await
+const data = await payment.getPaymentModeRoutes(company_id, application_id, refresh, request_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application id | 
+| refresh | boolean |  | 
+| request_type | string |  | 
+
+
+Use this API to get Get All Valid Payment Options for making payment
+
+
+---
+
+
+#### Payment#getAllPayouts
+Get All Payouts
+
+```javascript
+// Promise
+const promise = payment.getAllPayouts(company_id, unique_external_id, );
+
+// Async/Await
+const data = await payment.getAllPayouts(company_id, unique_external_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| unique_external_id | string | Fetch payouts using unique external id | 
+
+
+Get All Payouts
+
+
+---
+
+
+#### Payment#savePayout
+Save Payout
+
+```javascript
+// Promise
+const promise = payment.savePayout(company_id, );
+
+// Async/Await
+const data = await payment.savePayout(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+
+
+Save Payout
+
+
+---
+
+
+#### Payment#updatePayout
+Update Payout
+
+```javascript
+// Promise
+const promise = payment.updatePayout(company_id, unique_transfer_no, );
+
+// Async/Await
+const data = await payment.updatePayout(company_id, unique_transfer_no, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| unique_transfer_no | string | Unique transfer id | 
+
+
+Update Payout
+
+
+---
+
+
+#### Payment#activateAndDectivatePayout
+Partial Update Payout
+
+```javascript
+// Promise
+const promise = payment.activateAndDectivatePayout(company_id, unique_transfer_no, );
+
+// Async/Await
+const data = await payment.activateAndDectivatePayout(company_id, unique_transfer_no, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| unique_transfer_no | string | Unique transfer id | 
+
+
+Partial Update Payout
+
+
+---
+
+
+#### Payment#deletePayout
+Delete Payout
+
+```javascript
+// Promise
+const promise = payment.deletePayout(company_id, unique_transfer_no, );
+
+// Async/Await
+const data = await payment.deletePayout(company_id, unique_transfer_no, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| unique_transfer_no | string | Unique transfer id | 
+
+
+Delete Payout
+
+
+---
+
+
+#### Payment#getSubscriptionPaymentMethod
+List Subscription Payment Method
+
+```javascript
+// Promise
+const promise = payment.getSubscriptionPaymentMethod(company_id, );
+
+// Async/Await
+const data = await payment.getSubscriptionPaymentMethod(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+
+
+Get all  Subscription  Payment Method
+
+
+---
+
+
+#### Payment#deleteSubscriptionPaymentMethod
+Delete Subscription Payment Method
+
+```javascript
+// Promise
+const promise = payment.deleteSubscriptionPaymentMethod(company_id, unique_external_id, payment_method_id, );
+
+// Async/Await
+const data = await payment.deleteSubscriptionPaymentMethod(company_id, unique_external_id, payment_method_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| unique_external_id | string |  | 
+| payment_method_id | string |  | 
+
+
+Uses this api to Delete Subscription Payment Method
+
+
+---
+
+
+#### Payment#getSubscriptionConfig
+List Subscription Config
+
+```javascript
+// Promise
+const promise = payment.getSubscriptionConfig(company_id, );
+
+// Async/Await
+const data = await payment.getSubscriptionConfig(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+
+
+Get all  Subscription Config details
+
+
+---
+
+
+#### Payment#saveSubscriptionSetupIntent
+Save Subscription Setup Intent
+
+```javascript
+// Promise
+const promise = payment.saveSubscriptionSetupIntent(company_id, );
+
+// Async/Await
+const data = await payment.saveSubscriptionSetupIntent(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+
+
+Uses this api to Save Subscription Setup Intent
 
 
 ---
@@ -3174,31 +2700,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#editBrand
-Edit a brand.
-
-```javascript
-// Promise
-const promise = companyprofile.editBrand(brand_id, );
-
-// Async/Await
-const data = await companyprofile.editBrand(brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API allows to edit meta of a brand.
-
-
----
-
-
 #### CompanyProfile#getBrand
 Get a single brand.
 
@@ -3219,6 +2720,31 @@ const data = await companyprofile.getBrand(brand_id, );
 
 
 This API helps to get data associated to a particular brand.
+
+
+---
+
+
+#### CompanyProfile#editBrand
+Edit a brand.
+
+```javascript
+// Promise
+const promise = companyprofile.editBrand(brand_id, );
+
+// Async/Await
+const data = await companyprofile.editBrand(brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API allows to edit meta of a brand.
 
 
 ---
@@ -3350,32 +2876,6 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#editLocation
-Edit a location asscoiated to a company.
-
-```javascript
-// Promise
-const promise = companyprofile.editLocation(company_id, location_id, );
-
-// Async/Await
-const data = await companyprofile.editLocation(company_id, location_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
-
-
-This API allows to edit a location associated to a company.
-
-
----
-
-
 #### CompanyProfile#getSingleLocation
 Get a single location.
 
@@ -3397,6 +2897,32 @@ const data = await companyprofile.getSingleLocation(company_id, location_id, );
 
 
 This API helps to get data associated to a particular location.
+
+
+---
+
+
+#### CompanyProfile#editLocation
+Edit a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.editLocation(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.editLocation(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
+
+
+This API allows to edit a location associated to a company.
 
 
 ---

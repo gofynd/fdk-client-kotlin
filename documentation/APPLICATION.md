@@ -10,6 +10,7 @@
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Share](#Share) - Short link and QR Code 
 * [FileStorage](#FileStorage) - File Storage 
+* [Configuration](#Configuration) - Application configuration apis 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Rewards](#Rewards) - Earn and redeem Reward Points 
@@ -138,13 +139,18 @@
 * [Content](#Content)
   * Methods
     * [getAnnouncements](#getannouncements)
+    * [getBlog](#getblog)
     * [getFaqs](#getfaqs)
     * [getFaqCategories](#getfaqcategories)
     * [getFaqByIdOrSlug](#getfaqbyidorslug)
     * [getFaqCategoryBySlugOrId](#getfaqcategorybyslugorid)
     * [getFaqsByCategoryIdOrSlug](#getfaqsbycategoryidorslug)
+    * [getLandingPage](#getlandingpage)
     * [getLegalInformation](#getlegalinformation)
+    * [getNavigations](#getnavigations)
+    * [getPage](#getpage)
     * [getSeoConfiguration](#getseoconfiguration)
+    * [getSlideshow](#getslideshow)
     * [getSupportInformation](#getsupportinformation)
     * [getTags](#gettags)
     
@@ -171,6 +177,23 @@
   * Methods
     * [completeUpload](#completeupload)
     * [startUpload](#startupload)
+    
+
+* [Configuration](#Configuration)
+  * Methods
+    * [getApplication](#getapplication)
+    * [getOwnerInfo](#getownerinfo)
+    * [getBasicDetails](#getbasicdetails)
+    * [getIntegrationTokens](#getintegrationtokens)
+    * [getAppVersion](#getappversion)
+    * [getOrderingStores](#getorderingstores)
+    * [getFeatures](#getfeatures)
+    * [getContactInfo](#getcontactinfo)
+    * [getCurrencies](#getcurrencies)
+    * [getCurrencyById](#getcurrencybyid)
+    * [getLanguages](#getlanguages)
+    * [removeOrderingStoreCookie](#removeorderingstorecookie)
+    * [getAppStaffs](#getappstaffs)
     
 
 * [Payment](#Payment)
@@ -3348,10 +3371,10 @@ Get a addresses with the given id. If successful, returns a Address resource in 
 
 
 
-Returns The Address object which has list of all address saved for the account. See example below or refer AddressResponse for details
+Returns The Address object which has list of all address saved for the account. See example below or refer Address for details
 
 
-Schema: `AddressResponse`
+Schema: `Address`
 
 
 
@@ -3382,7 +3405,7 @@ cart.updateAddress(id: id, body: body).safeAwait(
 | --------- | ----  | --- |
 | id | integer | Address id | 
 
-Request object containing attributes mentioned in  <font color="blue">UpdateAddressRequest </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
+Request object containing attributes mentioned in  <font color="blue">Address </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
 
 *Success Response:*
 
@@ -3626,7 +3649,7 @@ cart.getShipments(p: p, uid: uid, addressId: addressId, areaCode: areaCode).safe
 | p | boolean | Get payment options or not | 
 | uid | integer | Cart id | 
 | addressId | integer | Address id | 
-| areaCode | integer | Destination pincode. | 
+| areaCode | string | Destination pincode. | 
 
 Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
 
@@ -8738,6 +8761,81 @@ Schema: `ConvexApiError`
 ---
 
 
+#### getBlog
+Get Blog by slug
+
+```kotlin
+content.getBlog(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The `slug` of a blog. Use this parameter to retrieve a particular blog | 
+
+Use this API to fetch a blog using `slug`
+
+*Success Response:*
+
+
+
+A JSON object with blog details
+
+
+Schema: `CustomBlog`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/CustomBlog"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
 #### getFaqs
 Get frequently asked questions
 
@@ -9067,6 +9165,80 @@ Schema: `ConvexApiError`
 ---
 
 
+#### getLandingPage
+Get landing page
+
+```kotlin
+content.getLandingPage().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to fetch a landing page
+
+*Success Response:*
+
+
+
+A JSON object with landing details
+
+
+Schema: `LandingPage`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/LandingPage"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
 #### getLegalInformation
 Get legal information
 
@@ -9141,6 +9313,155 @@ Schema: `ConvexApiError`
 ---
 
 
+#### getNavigations
+Get navigation
+
+```kotlin
+content.getNavigations().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to fetch a navigation
+
+*Success Response:*
+
+
+
+A JSON object with navigation details
+
+
+Schema: `Navigation`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/Navigation"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getPage
+Get Page by slug
+
+```kotlin
+content.getPage(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The `slug` of a page. Use this parameter to retrieve a particular page | 
+
+Use this API to fetch a custom page using `slug`
+
+*Success Response:*
+
+
+
+A JSON object with page details
+
+
+Schema: `CustomPage`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/CustomPage"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
 #### getSeoConfiguration
 Get seo of application
 
@@ -9177,6 +9498,81 @@ Success
 ```json
 {
   "$ref": "#/components/examples/Seo"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getSlideshow
+Get slideshow by slug
+
+```kotlin
+content.getSlideshow(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The `slug` of a slideshow. Use this parameter to retrieve a particular slideshow | 
+
+Use this API to fetch a slideshow using `slug`
+
+*Success Response:*
+
+
+
+A JSON object with slideshow details
+
+
+Schema: `Slideshow`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/Slideshow"
 }
 ```
 
@@ -9969,6 +10365,587 @@ Failed
 
 
 Schema: `FailedResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Configuration
+
+
+#### getApplication
+Get current application details
+
+```kotlin
+configuration.getApplication().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get current application details.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `Application`
+
+
+
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getOwnerInfo
+Get application, owner and seller information
+
+```kotlin
+configuration.getOwnerInfo().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get application information with owner and seller basic details
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ApplicationAboutResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getBasicDetails
+Get basic application details
+
+```kotlin
+configuration.getBasicDetails().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get basic application details like name
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ApplicationDetail`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getIntegrationTokens
+Get integration tokens
+
+```kotlin
+configuration.getIntegrationTokens().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get tokens for multiple integrations like Facebook, Googlemaps, Segment, Firebase, etc. Note: token values are encrypted with AES encryption using secret key. Kindly reach to developers for secret key.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `TokensResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAppVersion
+Check if a new app version is available
+
+```kotlin
+configuration.getAppVersion(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Before launching the app (android/iOS), check if a new version is available. Response gives 3 update modes viz. FORCE, AVAILABLE, UP_TO_DATE. `FORCE`- Application should be updated necessarily. `AVAILABLE`- A new version available. But its not necessary to update. `UP_TO_DATE`- Application is at the latest version. These 3 modes are computed at the backend based on the lastest version of app available and the oldest version of app supported by the system.
+
+*Success Response:*
+
+
+
+Android/IOS app version success response.
+
+
+Schema: `AppVersionResponse`
+
+
+
+
+
+
+
+
+Invalid app version api request data.
+
+
+Schema: `InvalidAppVersionRequest`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getOrderingStores
+Get deployment meta stores
+
+```kotlin
+configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| pageNo | integer | Current page no | 
+| pageSize | integer | Current request items count | 
+| q | string | Search ordering store by name or store code | 
+
+Get deployment meta stores.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `OrderingStores`
+
+
+
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getFeatures
+Get features of application
+
+```kotlin
+configuration.getFeatures().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get features of application
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `AppFeatureResponse`
+
+
+
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getContactInfo
+Get application information
+
+```kotlin
+configuration.getContactInfo().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ApplicationInformation`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getCurrencies
+Get application enabled currencies
+
+```kotlin
+configuration.getCurrencies().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get currency list for allowed currencies under current application
+
+*Success Response:*
+
+
+
+Currencies Success response
+
+
+Schema: `CurrenciesResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getCurrencyById
+Get currency by id
+
+```kotlin
+configuration.getCurrencyById(id: id).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | string | Currency object id | 
+
+Get currency object with symbol and name information by id.
+
+*Success Response:*
+
+
+
+Success response
+
+
+Schema: `Currency`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getLanguages
+Get list of languages
+
+```kotlin
+configuration.getLanguages().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get list of supported languages under application.
+
+*Success Response:*
+
+
+
+Success response
+
+
+Schema: `LanguageResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### removeOrderingStoreCookie
+Unset ordering store signed cookie on change of sales channel selection via domain in universal fynd store app.
+
+```kotlin
+configuration.removeOrderingStoreCookie().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Unset ordering store cookie.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAppStaffs
+Get Staff List.
+
+```kotlin
+configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| orderIncent | boolean | This is to check which staff members are applicable for order incentives. | 
+| orderingStore | integer | This is to filter staff members from only selected ordering store. | 
+| user | string | Get single staff member details using staff user mongo id | 
+
+Get a staff list based on the user's session token passed in the header.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `AppStaffResponse`
+
+
+
+
+
+
+
+
+Request failed with internal server error.
+
+
+Schema: `UnhandledError`
 
 
 
@@ -14803,10 +15780,10 @@ Get a addresses with the given id. If successful, returns a Address resource in 
 
 
 
-Returns The Address object which has list of all address saved for the account. See example below or refer AddressResponse for details
+Returns The Address object which has list of all address saved for the account. See example below or refer Address for details
 
 
-Schema: `AddressResponse`
+Schema: `Address`
 
 
 
@@ -14837,7 +15814,7 @@ poscart.updateAddress(id: id, body: body).safeAwait(
 | --------- | ----  | --- |
 | id | integer | Address id | 
 
-Request object containing attributes mentioned in  <font color="blue">UpdateAddressRequest </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
+Request object containing attributes mentioned in  <font color="blue">Address </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
 
 *Success Response:*
 
@@ -15066,7 +16043,7 @@ Schema: `PaymentOptions`
 Get delivery date and options before checkout
 
 ```kotlin
-poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId, areaCode: areaCode).safeAwait(
+poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait(
     { response ->
       // Use response
     },
@@ -15083,7 +16060,8 @@ poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingSt
 | p | boolean | Get payment options or not | 
 | uid | integer | Cart id | 
 | addressId | integer | Address id | 
-| areaCode | integer | Destination pincode. | 
+| areaCode | string | Destination pincode. | 
+| orderType | string | Order type of shipment | 
 
 Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
 
@@ -16941,7 +17919,7 @@ poscart.getAvailableDeliveryModes(areaCode: areaCode, uid: uid).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| areaCode | integer |  | 
+| areaCode | string |  | 
 | uid | integer |  | 
 
 Get available delivery modes for cart and pick up store uid list. From given pick stores list user can pick up delivery. Use this uid to show store address
@@ -16970,7 +17948,7 @@ Schema: `CartDeliveryModesResponse`
 Get list of stores for give uids
 
 ```kotlin
-poscart.getStoreAddressByUid(areaCode: areaCode).safeAwait(
+poscart.getStoreAddressByUid(storeUid: storeUid).safeAwait(
     { response ->
       // Use response
     },
@@ -16982,7 +17960,7 @@ poscart.getStoreAddressByUid(areaCode: areaCode).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| areaCode | integer |  | 
+| storeUid | integer |  | 
 
 Get list of stores by providing pick up available store uids.
 

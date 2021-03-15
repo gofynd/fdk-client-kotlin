@@ -1,6 +1,6 @@
 package com.sdk.application
 
-class ApplicationClient(config:ApplicationConfig) {
+class ApplicationClient(val config:ApplicationConfig) {
     
     val catalog by lazy { CatalogDataManagerClass(config)}
     
@@ -19,6 +19,8 @@ class ApplicationClient(config:ApplicationConfig) {
     val share by lazy { ShareDataManagerClass(config)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}
+    
+    val configuration by lazy { ConfigurationDataManagerClass(config)}
     
     val payment by lazy { PaymentDataManagerClass(config)}
     

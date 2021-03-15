@@ -17,8 +17,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     private fun generatecatalogApiList(): CatalogApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -27,7 +26,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationCatalog",
             persistentCookieStore = config.persistentCookieStore
@@ -254,8 +252,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     private fun generatecartApiList(): CartApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -264,7 +261,6 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationCart",
             persistentCookieStore = config.persistentCookieStore
@@ -322,17 +318,17 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun addAddress(body: UpdateAddressRequest): Deferred<Response<SaveAddressResponse>>? {
+    fun addAddress(body: Address): Deferred<Response<SaveAddressResponse>>? {
         return cartApiList?.addAddress( body = body)}
 
     
     
-    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<AddressResponse>>? {
+    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         return cartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
     
-    fun updateAddress(id: Int,body: UpdateAddressRequest): Deferred<Response<UpdateAddressResponse>>? {
+    fun updateAddress(id: Int,body: Address): Deferred<Response<UpdateAddressResponse>>? {
         return cartApiList?.updateAddress(id = id, body = body)}
 
     
@@ -357,7 +353,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getShipments(p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: Int?=null): Deferred<Response<CartShipmentsResponse>>? {
+    fun getShipments(p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: String?=null): Deferred<Response<CartShipmentsResponse>>? {
         return cartApiList?.getShipments(p = p, uid = uid, addressId = addressId, areaCode = areaCode )}
 
     
@@ -398,8 +394,7 @@ class LeadDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     private fun generateleadApiList(): LeadApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -408,7 +403,6 @@ class LeadDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationLead",
             persistentCookieStore = config.persistentCookieStore
@@ -462,8 +456,7 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     private fun generatethemeApiList(): ThemeApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -472,7 +465,6 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationTheme",
             persistentCookieStore = config.persistentCookieStore
@@ -501,8 +493,7 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     private fun generateuserApiList(): UserApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -511,7 +502,6 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationUser",
             persistentCookieStore = config.persistentCookieStore
@@ -690,8 +680,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     private fun generatecontentApiList(): ContentApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -700,7 +689,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationContent",
             persistentCookieStore = config.persistentCookieStore
@@ -710,6 +698,11 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     fun getAnnouncements(): Deferred<Response<AnnouncementsResponseSchema>>? {
         return contentApiList?.getAnnouncements( )}
+
+    
+    
+    fun getBlog(slug: String): Deferred<Response<CustomBlog>>? {
+        return contentApiList?.getBlog(slug = slug )}
 
     
     
@@ -738,13 +731,33 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun getLandingPage(): Deferred<Response<LandingPage>>? {
+        return contentApiList?.getLandingPage( )}
+
+    
+    
     fun getLegalInformation(): Deferred<Response<ApplicationLegal>>? {
         return contentApiList?.getLegalInformation( )}
 
     
     
+    fun getNavigations(): Deferred<Response<Navigation>>? {
+        return contentApiList?.getNavigations( )}
+
+    
+    
+    fun getPage(slug: String): Deferred<Response<CustomPage>>? {
+        return contentApiList?.getPage(slug = slug )}
+
+    
+    
     fun getSeoConfiguration(): Deferred<Response<Seo>>? {
         return contentApiList?.getSeoConfiguration( )}
+
+    
+    
+    fun getSlideshow(slug: String): Deferred<Response<Slideshow>>? {
+        return contentApiList?.getSlideshow(slug = slug )}
 
     
     
@@ -769,8 +782,7 @@ class CommunicationDataManagerClass(val config: ApplicationConfig) : BaseReposit
 
     private fun generatecommunicationApiList(): CommunicationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -779,7 +791,6 @@ class CommunicationDataManagerClass(val config: ApplicationConfig) : BaseReposit
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationCommunication",
             persistentCookieStore = config.persistentCookieStore
@@ -813,8 +824,7 @@ class ShareDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     private fun generateshareApiList(): ShareApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -823,7 +833,6 @@ class ShareDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationShare",
             persistentCookieStore = config.persistentCookieStore
@@ -877,8 +886,7 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
 
     private fun generatefileStorageApiList(): FileStorageApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -887,7 +895,6 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationFileStorage",
             persistentCookieStore = config.persistentCookieStore
@@ -908,16 +915,15 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
 }
 
 
-class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
-    private val paymentApiList by lazy {
-        generatepaymentApiList()
+    private val configurationApiList by lazy {
+        generateconfigurationApiList()
     }
 
-    private fun generatepaymentApiList(): PaymentApiList? {
+    private fun generateconfigurationApiList(): ConfigurationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -926,7 +932,143 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationConfiguration",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
+    }
+    
+    fun getApplication(): Deferred<Response<Application>>? {
+        return configurationApiList?.getApplication( )}
+
+    
+    
+    fun getOwnerInfo(): Deferred<Response<ApplicationAboutResponse>>? {
+        return configurationApiList?.getOwnerInfo( )}
+
+    
+    
+    fun getBasicDetails(): Deferred<Response<ApplicationDetail>>? {
+        return configurationApiList?.getBasicDetails( )}
+
+    
+    
+    fun getIntegrationTokens(): Deferred<Response<TokensResponse>>? {
+        return configurationApiList?.getIntegrationTokens( )}
+
+    
+    
+    fun getAppVersion(body: AppVersionRequest): Deferred<Response<AppVersionResponse>>? {
+        return configurationApiList?.getAppVersion( body = body)}
+
+    
+    
+    fun getOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Deferred<Response<OrderingStores>>? {
+        return configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q )}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getOrderingStores
+    **/
+    fun getOrderingStoresPaginator(pageSize: Int?=null, q: String?=null) : Paginator<OrderingStores>{
+
+    val paginator = Paginator<OrderingStores>()
+
+    paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
+            override suspend fun onNext(
+                onSuccess: (Event<OrderingStores>) -> Unit,
+                onFailure: (FdkError) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+            }
+
+    })
+    return paginator
+    }
+    
+    fun getFeatures(): Deferred<Response<AppFeatureResponse>>? {
+        return configurationApiList?.getFeatures( )}
+
+    
+    
+    fun getContactInfo(): Deferred<Response<ApplicationInformation>>? {
+        return configurationApiList?.getContactInfo( )}
+
+    
+    
+    fun getCurrencies(): Deferred<Response<CurrenciesResponse>>? {
+        return configurationApiList?.getCurrencies( )}
+
+    
+    
+    fun getCurrencyById(id: String): Deferred<Response<Currency>>? {
+        return configurationApiList?.getCurrencyById(id = id )}
+
+    
+    
+    fun getLanguages(): Deferred<Response<LanguageResponse>>? {
+        return configurationApiList?.getLanguages( )}
+
+    
+    
+    fun removeOrderingStoreCookie(): Deferred<Response<SuccessResponse>>? {
+        return configurationApiList?.removeOrderingStoreCookie( )}
+
+    
+    
+    fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffResponse>>? {
+        return configurationApiList?.getAppStaffs(orderIncent = orderIncent, orderingStore = orderingStore, user = user )}
+
+    
+    
+}
+
+
+class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val paymentApiList by lazy {
+        generatepaymentApiList()
+    }
+
+    private fun generatepaymentApiList(): PaymentApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationPayment",
             persistentCookieStore = config.persistentCookieStore
@@ -1035,8 +1177,7 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     private fun generateorderApiList(): OrderApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -1045,7 +1186,6 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationOrder",
             persistentCookieStore = config.persistentCookieStore
@@ -1094,8 +1234,7 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     private fun generaterewardsApiList(): RewardsApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -1104,7 +1243,6 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationRewards",
             persistentCookieStore = config.persistentCookieStore
@@ -1153,8 +1291,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     private fun generatefeedbackApiList(): FeedbackApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -1163,7 +1300,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationFeedback",
             persistentCookieStore = config.persistentCookieStore
@@ -1312,8 +1448,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     private fun generateposCartApiList(): PosCartApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -1322,7 +1457,6 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationPosCart",
             persistentCookieStore = config.persistentCookieStore
@@ -1380,17 +1514,17 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun addAddress(body: UpdateAddressRequest): Deferred<Response<SaveAddressResponse>>? {
+    fun addAddress(body: Address): Deferred<Response<SaveAddressResponse>>? {
         return posCartApiList?.addAddress( body = body)}
 
     
     
-    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<AddressResponse>>? {
+    fun getAddressById(id: Int, uid: Int?=null, mobileNo: Int?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         return posCartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
     
-    fun updateAddress(id: Int,body: UpdateAddressRequest): Deferred<Response<UpdateAddressResponse>>? {
+    fun updateAddress(id: Int,body: Address): Deferred<Response<UpdateAddressResponse>>? {
         return posCartApiList?.updateAddress(id = id, body = body)}
 
     
@@ -1415,8 +1549,8 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: Int?=null): Deferred<Response<CartShipmentsResponse>>? {
-        return posCartApiList?.getShipments(pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, uid = uid, addressId = addressId, areaCode = areaCode )}
+    fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: String?=null, orderType: String?=null): Deferred<Response<CartShipmentsResponse>>? {
+        return posCartApiList?.getShipments(pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, uid = uid, addressId = addressId, areaCode = areaCode, orderType = orderType )}
 
     
     
@@ -1435,13 +1569,13 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getAvailableDeliveryModes(areaCode: Int, uid: Int?=null): Deferred<Response<CartDeliveryModesResponse>>? {
+    fun getAvailableDeliveryModes(areaCode: String, uid: Int?=null): Deferred<Response<CartDeliveryModesResponse>>? {
         return posCartApiList?.getAvailableDeliveryModes(areaCode = areaCode, uid = uid )}
 
     
     
-    fun getStoreAddressByUid(areaCode: Int): Deferred<Response<StoreDetailsResponse>>? {
-        return posCartApiList?.getStoreAddressByUid(areaCode = areaCode )}
+    fun getStoreAddressByUid(storeUid: Int): Deferred<Response<StoreDetailsResponse>>? {
+        return posCartApiList?.getStoreAddressByUid(storeUid = storeUid )}
 
     
     
@@ -1471,8 +1605,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     private fun generatelogisticApiList(): LogisticApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerList: Map<String, String> = NetworkUtils.getCommonRestHeaders(config)
-        val headerInterceptor = HeaderInterceptor(config)
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -1481,7 +1614,6 @@ class LogisticDataManagerClass(val config: ApplicationConfig) : BaseRepository()
         HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
-            headers = headerList,
             interceptorList = interceptorMap,
             namespace = "ApplicationLogistic",
             persistentCookieStore = config.persistentCookieStore
