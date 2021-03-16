@@ -1595,6 +1595,178 @@ data class SaveSubscriptionSetupIntentResponse(
 
 
 /*
+    Model: GetActivityStatus
+*/
+@Parcelize
+data class GetActivityStatus(
+    
+    @SerializedName("activity_history")
+    var activityHistory: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: FailedOrders
+*/
+@Parcelize
+data class FailedOrders(
+    
+    @SerializedName("orders")
+    var orders: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: OrderListing
+*/
+@Parcelize
+data class OrderListing(
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("filters")
+    var filters: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("next_order_status")
+    var nextOrderStatus: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("applied_filters")
+    var appliedFilters: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: UpdateOrderReprocessResponse
+*/
+@Parcelize
+data class UpdateOrderReprocessResponse(
+    
+    @SerializedName("status")
+    var status: String?=null
+): Parcelable
+
+/*
+    Model: PlatformOrderTrack
+*/
+@Parcelize
+data class PlatformOrderTrack(
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    @SerializedName("request_id")
+    var requestId: String?=null,
+    @SerializedName("message")
+    var message: String?=null,
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    @SerializedName("resend_timer")
+    var resendTimer: Int?=null,
+    @SerializedName("resendToken")
+    var resendToken: String?=null
+): Parcelable
+
+/*
+    Model: GetPingResponse
+*/
+@Parcelize
+data class GetPingResponse(
+    
+    @SerializedName("ping")
+    var ping: String?=null
+): Parcelable
+
+/*
+    Model: UpdateShipmentStatusResponse
+*/
+@Parcelize
+data class UpdateShipmentStatusResponse(
+    
+    @SerializedName("shipments")
+    var shipments: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("error_shipments")
+    var errorShipments: @RawValue ArrayList<Any>?=null
+): Parcelable
+
+/*
+    Model: UpdateShipmentStatusBody
+*/
+@Parcelize
+data class UpdateShipmentStatusBody(
+    
+    @SerializedName("shipments")
+    var shipments: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("force_transition")
+    var forceTransition: Boolean?=null,
+    @SerializedName("task")
+    var task: Boolean?=null
+): Parcelable
+
+/*
+    Model: PlatformShipmentTrack
+*/
+@Parcelize
+data class PlatformShipmentTrack(
+    
+    @SerializedName("results")
+    var results: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: UpdateProcessShipmenstRequestBody
+*/
+@Parcelize
+data class UpdateProcessShipmenstRequestBody(
+    
+    @SerializedName("shipment_ids")
+    var shipmentIds: ArrayList<String>?=null,
+    @SerializedName("expected_status")
+    var expectedStatus: String?=null
+): Parcelable
+
+/*
+    Model: UpdateProcessShipmenstRequestResponse
+*/
+@Parcelize
+data class UpdateProcessShipmenstRequestResponse(
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    @SerializedName("message")
+    var message: String?=null
+): Parcelable
+
+/*
+    Model: GetVoiceCallbackResponse
+*/
+@Parcelize
+data class GetVoiceCallbackResponse(
+    
+    @SerializedName("message")
+    var message: String?=null
+): Parcelable
+
+/*
+    Model: GetClickToCallResponse
+*/
+@Parcelize
+data class GetClickToCallResponse(
+    
+    @SerializedName("message")
+    var message: String?=null
+): Parcelable
+
+/*
+    Model: ApefaceApiError
+*/
+@Parcelize
+data class ApefaceApiError(
+    
+    @SerializedName("message")
+    var message: String?=null
+): Parcelable
+
+
+
+/*
     Model: CompanyAddress
 */
 @Parcelize

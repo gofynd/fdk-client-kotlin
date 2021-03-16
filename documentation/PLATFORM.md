@@ -5,6 +5,7 @@
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
+* [Order](#Order) - Handles Platform websites OMS 
 * [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Inventory](#Inventory) -  
 * [Cart](#Cart) - Cart APIs 
@@ -75,6 +76,19 @@
   * [Payment#deleteSubscriptionPaymentMethod](#paymentdeletesubscriptionpaymentmethod)
   * [Payment#getSubscriptionConfig](#paymentgetsubscriptionconfig)
   * [Payment#saveSubscriptionSetupIntent](#paymentsavesubscriptionsetupintent)
+ 
+* [Order](#Order)
+  * [Order#shipmentStatusUpdate](#ordershipmentstatusupdate)
+  * [Order#activityStatus](#orderactivitystatus)
+  * [Order#storeProcessShipmentUpdate](#orderstoreprocessshipmentupdate)
+  * [Order#getOrdersByCompanyId](#ordergetordersbycompanyid)
+  * [Order#trackShipmentPlatform](#ordertrackshipmentplatform)
+  * [Order#trackOrder](#ordertrackorder)
+  * [Order#failedOrders](#orderfailedorders)
+  * [Order#reprocessOrder](#orderreprocessorder)
+  * [Order#getPing](#ordergetping)
+  * [Order#voiceCallback](#ordervoicecallback)
+  * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
 * [CompanyProfile](#CompanyProfile)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
@@ -1577,6 +1591,320 @@ const data = await payment.saveSubscriptionSetupIntent(company_id, );
 
 
 Uses this api to Save Subscription Setup Intent
+
+
+---
+
+
+
+---
+---
+
+
+## Order
+
+```javascript
+const { Configuration, Order } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const order = new Order(conf);
+
+```
+
+
+#### Order#shipmentStatusUpdate
+Update status of Shipment
+
+```javascript
+// Promise
+const promise = order.shipmentStatusUpdate(company_id, );
+
+// Async/Await
+const data = await order.shipmentStatusUpdate(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Update Shipment Status
+
+
+---
+
+
+#### Order#activityStatus
+Get Activity Status
+
+```javascript
+// Promise
+const promise = order.activityStatus(company_id, bag_id, );
+
+// Async/Await
+const data = await order.activityStatus(company_id, bag_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| bag_id | string | Bag Id | 
+
+
+Get Activity Status
+
+
+---
+
+
+#### Order#storeProcessShipmentUpdate
+Update Store Process-Shipment
+
+```javascript
+// Promise
+const promise = order.storeProcessShipmentUpdate(company_id, );
+
+// Async/Await
+const data = await order.storeProcessShipmentUpdate(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Update Store Process-Shipment
+
+
+---
+
+
+#### Order#getOrdersByCompanyId
+Get Orders for company based on Company Id
+
+```javascript
+// Promise
+const promise = order.getOrdersByCompanyId(company_id, page_no, page_size, from_date, to_date, q, stage, sales_channels, order_id, stores, status, shorten_urls, filter_type, );
+
+// Async/Await
+const data = await order.getOrdersByCompanyId(company_id, page_no, page_size, from_date, to_date, q, stage, sales_channels, order_id, stores, status, shorten_urls, filter_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| page_no | string | Current page number | 
+| page_size | string | Page limit | 
+| from_date | string | From Date | 
+| to_date | string | To Date | 
+| q | string | Keyword for Search | 
+| stage | string | Specefic Order Stage | 
+| sales_channels | string | Selected Sales Channel | 
+| order_id | string | Order Id | 
+| stores | string | Selected Stores | 
+| status | string | Status of order | 
+| shorten_urls | boolean | Shorten URL option | 
+| filter_type | string | Filters | 
+
+
+Get Orders
+
+
+---
+
+
+#### Order#trackShipmentPlatform
+Track Shipment by shipment id, for application based on application Id
+
+```javascript
+// Promise
+const promise = order.trackShipmentPlatform(company_id, application_id, shipment_id, );
+
+// Async/Await
+const data = await order.trackShipmentPlatform(company_id, application_id, shipment_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| shipment_id | string | Shipment Id | 
+
+
+Shipment Track
+
+
+---
+
+
+#### Order#trackOrder
+Track Order by order id, for application based on application Id
+
+```javascript
+// Promise
+const promise = order.trackOrder(company_id, application_id, order_id, );
+
+// Async/Await
+const data = await order.trackOrder(company_id, application_id, order_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| order_id | string | Order Id | 
+
+
+Order Track
+
+
+---
+
+
+#### Order#failedOrders
+Get all failed orders application wise
+
+```javascript
+// Promise
+const promise = order.failedOrders(company_id, application_id, );
+
+// Async/Await
+const data = await order.failedOrders(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+
+
+Failed Orders
+
+
+---
+
+
+#### Order#reprocessOrder
+Reprocess order by order id
+
+```javascript
+// Promise
+const promise = order.reprocessOrder(company_id, application_id, order_id, );
+
+// Async/Await
+const data = await order.reprocessOrder(company_id, application_id, order_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| order_id | string | Order Id | 
+
+
+Order Reprocess
+
+
+---
+
+
+#### Order#getPing
+Get Ping
+
+```javascript
+// Promise
+const promise = order.getPing(company_id, );
+
+// Async/Await
+const data = await order.getPing(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Get Ping
+
+
+---
+
+
+#### Order#voiceCallback
+Get Voice Callback
+
+```javascript
+// Promise
+const promise = order.voiceCallback(company_id, );
+
+// Async/Await
+const data = await order.voiceCallback(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Voice Callback
+
+
+---
+
+
+#### Order#voiceClickToCall
+Get Voice Click to Call
+
+```javascript
+// Promise
+const promise = order.voiceClickToCall(company_id, caller, receiver, );
+
+// Async/Await
+const data = await order.voiceClickToCall(company_id, caller, receiver, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| caller | string | Caller contact number | 
+| receiver | string | Receiver contact number | 
+
+
+Voice Click to Call
 
 
 ---

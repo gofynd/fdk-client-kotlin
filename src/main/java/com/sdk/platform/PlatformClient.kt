@@ -10,6 +10,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val payment by lazy { PaymentDataManagerClass(config)}
     
+    val order by lazy { OrderDataManagerClass(config)}
+    
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
     
     val inventory by lazy { InventoryDataManagerClass(config)}
@@ -29,6 +31,8 @@ class PlatformClient(val config:PlatformConfig) {
     val user by lazy { this@PlatformClient.user.Application(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.Application(applicationId,config)}
+    
+    val order by lazy { this@PlatformClient.order.Application(applicationId,config)}
     
     val companyProfile by lazy { this@PlatformClient.companyProfile.Application(applicationId,config)}
     

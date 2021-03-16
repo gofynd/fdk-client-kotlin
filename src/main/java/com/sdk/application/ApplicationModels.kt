@@ -6418,16 +6418,14 @@ data class StoreDetailsResponse(
 @Parcelize
 data class GetPincodeCityResponse(
     
+    @SerializedName("request_uuid")
+    var requestUuid: String?=null,
     @SerializedName("stormbreaker_uuid")
     var stormbreakerUuid: String?=null,
-    @SerializedName("error")
-    var error: @RawValue HashMap<String,Any>?=null,
     @SerializedName("success")
     var success: Boolean?=null,
     @SerializedName("data")
-    var data: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    @SerializedName("request_uuid")
-    var requestUuid: String?=null
+    var data: @RawValue ArrayList<HashMap<String,Any>>?=null
 ): Parcelable
 
 /*

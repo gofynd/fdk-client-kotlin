@@ -749,6 +749,172 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
 }
 }
 
+class OrderDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val orderApiList by lazy {
+        generateorderApiList()
+    }
+    
+    private fun generateorderApiList(): OrderApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformOrder",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
+    }
+    
+    
+    suspend fun shipmentStatusUpdate(body: UpdateShipmentStatusBody)
+    : Deferred<Response<UpdateShipmentStatusResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.shipmentStatusUpdate(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun activityStatus(bagId: String)
+    : Deferred<Response<GetActivityStatus>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.activityStatus(
+        companyId = config.companyId, bagId = bagId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun storeProcessShipmentUpdate(body: UpdateProcessShipmenstRequestBody)
+    : Deferred<Response<UpdateProcessShipmenstRequestResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.storeProcessShipmentUpdate(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getOrdersByCompanyId(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null, q: String?=null, stage: String?=null, salesChannels: String?=null, orderId: String?=null, stores: String?=null, status: String?=null, shortenUrls: Boolean?=null, filterType: String?=null)
+    : Deferred<Response<OrderListing>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getOrdersByCompanyId(
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, q = q, stage = stage, salesChannels = salesChannels, orderId = orderId, stores = stores, status = status, shortenUrls = shortenUrls, filterType = filterType )
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    
+    
+    
+    suspend fun getPing()
+    : Deferred<Response<GetPingResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getPing(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun voiceCallback()
+    : Deferred<Response<GetVoiceCallbackResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.voiceCallback(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun voiceClickToCall(caller: String, receiver: String)
+    : Deferred<Response<GetClickToCallResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.voiceClickToCall(
+        companyId = config.companyId, caller = caller, receiver = receiver )
+        } else {
+            null
+        } 
+    }
+    
+
+inner class Application(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    
+    
+    
+    
+    suspend fun trackShipmentPlatform(shipmentId: String)
+    : Deferred<Response<PlatformShipmentTrack>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.trackShipmentPlatform(companyId = config.companyId , applicationId = applicationId , shipmentId = shipmentId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun trackOrder(orderId: String)
+    : Deferred<Response<PlatformOrderTrack>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.trackOrder(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun failedOrders()
+    : Deferred<Response<FailedOrders>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.failedOrders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun reprocessOrder(orderId: String)
+    : Deferred<Response<UpdateOrderReprocessResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.reprocessOrder(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+}
+}
+
 class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val companyProfileApiList by lazy {

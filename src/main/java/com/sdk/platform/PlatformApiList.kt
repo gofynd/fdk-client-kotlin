@@ -232,6 +232,54 @@ interface PaymentApiList {
     
 }
 
+interface OrderApiList {
+    
+    @POST ("/service/platform/order/v1.0/company/{company_id}/actions/status")
+    fun shipmentStatusUpdate(@Path("company_id") companyId: String,@Body body: UpdateShipmentStatusBody)
+    : Deferred<Response<UpdateShipmentStatusResponse>>
+    
+    @GET ("/service/platform/order/v1.0/company/{company_id}/actions/activity/status")
+    fun activityStatus(@Path("company_id") companyId: String, @Query("bag_id") bagId: String)
+    : Deferred<Response<GetActivityStatus>>
+    
+    @POST ("/service/platform/order/v1.0/company/{company_id}/actions/store/process-shipments")
+    fun storeProcessShipmentUpdate(@Path("company_id") companyId: String,@Body body: UpdateProcessShipmenstRequestBody)
+    : Deferred<Response<UpdateProcessShipmenstRequestResponse>>
+    
+    @GET ("/service/platform/order/v1.0/company/{company_id}/orders")
+    fun getOrdersByCompanyId(@Path("company_id") companyId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("sales_channels") salesChannels: String?, @Query("order_id") orderId: String?, @Query("stores") stores: String?, @Query("status") status: String?, @Query("shorten_urls") shortenUrls: Boolean?, @Query("filter_type") filterType: String?)
+    : Deferred<Response<OrderListing>>
+    
+    @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/track")
+    fun trackShipmentPlatform(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)
+    : Deferred<Response<PlatformShipmentTrack>>
+    
+    @POST ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/{order_id}/track")
+    fun trackOrder(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("order_id") orderId: String)
+    : Deferred<Response<PlatformOrderTrack>>
+    
+    @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/failed")
+    fun failedOrders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<FailedOrders>>
+    
+    @POST ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/{order_id}/reprocess")
+    fun reprocessOrder(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("order_id") orderId: String)
+    : Deferred<Response<UpdateOrderReprocessResponse>>
+    
+    @GET ("/service/platform/order/v1.0/company/{company_id}/ping")
+    fun getPing(@Path("company_id") companyId: String)
+    : Deferred<Response<GetPingResponse>>
+    
+    @GET ("/service/platform/order/v1.0/company/{company_id}/voice/callback")
+    fun voiceCallback(@Path("company_id") companyId: String)
+    : Deferred<Response<GetVoiceCallbackResponse>>
+    
+    @GET ("/service/platform/order/v1.0/company/{company_id}/voice/click-to-call")
+    fun voiceClickToCall(@Path("company_id") companyId: String, @Query("caller") caller: String, @Query("receiver") receiver: String)
+    : Deferred<Response<GetClickToCallResponse>>
+    
+}
+
 interface CompanyProfileApiList {
     
     @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
