@@ -156,6 +156,262 @@ interface ThemeApiList {
     
 }
 
+interface UserApiList {
+    
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/list")
+    fun getCustomers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
+    : Deferred<Response<CustomerListResponseSchema>>
+    
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/search")
+    fun searchUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("query") query: String?)
+    : Deferred<Response<UserSearchResponseSchema>>
+    
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
+    fun getPlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<PlatformSchema>>
+    
+    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
+    fun updatePlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformSchema)
+    : Deferred<Response<PlatformSchema>>
+    
+}
+
+interface ContentApiList {
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements")
+    fun getAnnouncementsList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<GetAnnouncementListSchema>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements")
+    fun createAnnouncement(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AdminAnnouncementSchema)
+    : Deferred<Response<CreateAnnouncementSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements/{announcement_id}")
+    fun getAnnouncementById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("announcement_id") announcementId: String)
+    : Deferred<Response<AdminAnnouncementSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements/{announcement_id}")
+    fun updateAnnouncement(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("announcement_id") announcementId: String,@Body body: AdminAnnouncementSchema)
+    : Deferred<Response<CreateAnnouncementSchema>>
+    
+    @PATCH ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements/{announcement_id}")
+    fun updateAnnouncementSchedule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("announcement_id") announcementId: String,@Body body: ScheduleSchema)
+    : Deferred<Response<CreateAnnouncementSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements/{announcement_id}")
+    fun deleteAnnouncement(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("announcement_id") announcementId: String)
+    : Deferred<Response<CreateAnnouncementSchema>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/")
+    fun createBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlogRequest)
+    : Deferred<Response<BlogSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/")
+    fun getBlogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<BlogSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/{id}")
+    fun updateBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: BlogRequest)
+    : Deferred<Response<BlogSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/{id}")
+    fun deleteBlog(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<BlogSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/{slug}")
+    fun getComponentById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
+    : Deferred<Response<BlogSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/categories")
+    fun getFaqCategories(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<GetFaqCategoriesSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{id_or_slug}")
+    fun getFaqCategoryBySlugOrId(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id_or_slug") idOrSlug: String)
+    : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category")
+    fun createFaqCategory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateFaqCategoryRequestSchema)
+    : Deferred<Response<CreateFaqCategorySchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{id}")
+    fun updateFaqCategory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateFaqCategoryRequestSchema)
+    : Deferred<Response<CreateFaqCategorySchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{id}")
+    fun deleteFaqCategory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<CreateFaqCategorySchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{id_or_slug}/faqs")
+    fun getFaqsByCategoryIdOrSlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id_or_slug") idOrSlug: String)
+    : Deferred<Response<GetFaqSchema>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{category_id}/faqs")
+    fun addFaq(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("category_id") categoryId: String,@Body body: CreateFaqSchema)
+    : Deferred<Response<CreateFaqResponseSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{category_id}/faq/{faq_id}")
+    fun updateFaq(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("category_id") categoryId: String, @Path("faq_id") faqId: String,@Body body: CreateFaqSchema)
+    : Deferred<Response<CreateFaqResponseSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/category/{category_id}/faq/{faq_id}")
+    fun deleteFaq(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("category_id") categoryId: String, @Path("faq_id") faqId: String)
+    : Deferred<Response<CreateFaqResponseSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/faq/{id_or_slug}")
+    fun getFaqByIdOrSlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id_or_slug") idOrSlug: String)
+    : Deferred<Response<CreateFaqResponseSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
+    fun getLandingPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<LandingPageGetResponse>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
+    fun createLandingPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: LandingPageRequest)
+    : Deferred<Response<LandingPageSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/{id}")
+    fun updateLandingPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: LandingPageRequest)
+    : Deferred<Response<LandingPageSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/{id}")
+    fun deleteLandingPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<LandingPageSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/legal")
+    fun getLegalInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ApplicationLegal>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/legal")
+    fun updateLegalInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationLegal)
+    : Deferred<Response<ApplicationLegal>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/")
+    fun getNavigations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String)
+    : Deferred<Response<NavigationGetResponse>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/")
+    fun createNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: NavigationRequest)
+    : Deferred<Response<NavigationSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/default")
+    fun getDefaultNavigations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<DefaultNavigationResponse>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/{slug}")
+    fun getNavigationBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Query("device_platform") devicePlatform: String)
+    : Deferred<Response<NavigationSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/{id}")
+    fun updateNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: NavigationRequest)
+    : Deferred<Response<NavigationSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/{id}")
+    fun deleteNavigation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<NavigationSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/meta")
+    fun getPageMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<PageMetaSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/spec")
+    fun getPageSpec(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<PageSpec>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/")
+    fun createPage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequest)
+    : Deferred<Response<PageSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/")
+    fun getPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<PageGetResponse>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/preview/")
+    fun createPagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PageRequest)
+    : Deferred<Response<PageSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/publish/{slug}")
+    fun updatePagePreview(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String,@Body body: PagePublishRequest)
+    : Deferred<Response<PageSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/{id}")
+    fun updatePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PageRequest)
+    : Deferred<Response<PageSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/{id}")
+    fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<PageSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/{slug}")
+    fun getPageBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
+    : Deferred<Response<PageSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo")
+    fun getSeoConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<Seo>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo")
+    fun updateSeoConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Seo)
+    : Deferred<Response<Seo>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/")
+    fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String)
+    : Deferred<Response<SlideshowGetResponse>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/")
+    fun createSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SlideshowRequest)
+    : Deferred<Response<SlideshowSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{slug}")
+    fun getSlideshowBySlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String, @Query("device_platform") devicePlatform: String)
+    : Deferred<Response<SlideshowSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
+    fun updateSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SlideshowRequest)
+    : Deferred<Response<SlideshowSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/{id}")
+    fun deleteSlideshow(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<SlideshowSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/support")
+    fun getSupportInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<Support>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/support")
+    fun updateSupportInformation(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: Support)
+    : Deferred<Response<Support>>
+    
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    fun createInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
+    : Deferred<Response<TagsSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    fun updateInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
+    : Deferred<Response<TagsSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    fun deleteAllInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<TagsSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags")
+    fun getInjectableTags(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<TagsSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/add")
+    fun addInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateTagRequestSchema)
+    : Deferred<Response<TagsSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/remove/handpicked")
+    fun removeInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RemoveHandpickedSchema)
+    : Deferred<Response<TagsSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/tags/remove/handpicked/{tag_id}")
+    fun editInjectableTag(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("tag_id") tagId: String,@Body body: UpdateHandpickedSchema)
+    : Deferred<Response<TagsSchema>>
+    
+}
+
 interface PaymentApiList {
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")
@@ -226,41 +482,41 @@ interface CompanyProfileApiList {
     fun getCompanyMetrics(@Path("company_id") companyId: String)
     : Deferred<Response<MetricsSerializer>>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
-    fun getBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>
-    
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
     fun editBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String,@Body body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>
     
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
+    fun getBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>
+    
     @POST ("/service/platform/company-profile/v1.0/company/{company_id}/brand")
     fun createBrand(@Path("company_id") companyId: String,@Body body: CreateUpdateBrandRequestSerializer)
+    : Deferred<Response<SuccessResponse>>
+    
+    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
+    fun createBrand(@Path("company_id") companyId: String,@Body body: CompanyBrandPostRequestSerializer)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
     fun getBrands(@Path("company_id") companyId: String)
     : Deferred<Response<CompanyBrandListSerializer>>
     
-    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
-    fun createBrand(@Path("company_id") companyId: String,@Body body: CompanyBrandPostRequestSerializer)
+    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location")
+    fun createLocation(@Path("company_id") companyId: String,@Body body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location")
     fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LocationListSerializer>>
     
-    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location")
-    fun createLocation(@Path("company_id") companyId: String,@Body body: LocationSerializer)
+    @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
+    fun updateLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String,@Body body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
     fun getLocationDetail(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
     : Deferred<Response<GetLocationSerializer>>
-    
-    @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
-    fun updateLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String,@Body body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>
     
 }
 
@@ -293,6 +549,30 @@ interface InventoryApiList {
     @GET ("/v1.0/company/{company_id}/jobs/code/integration/{integration_id}")
     fun getJobCodesByCompanyAndIntegration(@Path("company_id") companyId: String, @Path("integration_id") integrationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ResponseEnvelopeListJobConfigListDTO>>
+    
+}
+
+interface CartApiList {
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
+    fun getCoupons(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_archived") isArchived: Boolean?, @Query("title") title: String?, @Query("is_public") isPublic: Boolean?, @Query("is_display") isDisplay: Boolean?, @Query("type_slug") typeSlug: String?, @Query("code") code: String?)
+    : Deferred<Response<CouponsResponse>>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
+    fun createCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CouponAdd)
+    : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
+    fun getCouponById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<CouponUpdate>>
+    
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
+    fun updateCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CouponUpdate)
+    : Deferred<Response<SuccessResponse>>
+    
+    @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
+    fun updateCouponPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CouponPartialUpdate)
+    : Deferred<Response<SuccessResponse>>
     
 }
 

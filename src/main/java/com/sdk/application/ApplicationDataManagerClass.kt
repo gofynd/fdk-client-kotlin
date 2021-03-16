@@ -693,8 +693,8 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
-        return cartApiList?.applyCoupon(i = i, b = b, p = p, body = body)}
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
+        return cartApiList?.applyCoupon(i = i, b = b, p = p, uid = uid, body = body)}
 
     
     
@@ -738,12 +738,12 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getPaymentModes(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentOptions>>? {
-        return cartApiList?.getPaymentModes(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )}
+    fun getPaymentModes(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, action: String?=null, type: String?=null): Deferred<Response<ValidateCouponPaymentMode>>? {
+        return cartApiList?.getPaymentModes(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode, action = action, type = type )}
 
     
     
-    fun selectPaymentMode(uid: String?=null,body: UpdateCartPaymentRequest): Deferred<Response<PaymentOptions>>? {
+    fun selectPaymentMode(uid: String?=null,body: UpdateCartPaymentRequest): Deferred<Response<CartResponse>>? {
         return cartApiList?.selectPaymentMode(uid = uid, body = body)}
 
     
@@ -874,6 +874,193 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun getThemeForPreview(themeId: String): Deferred<Response<ThemesSchema>>? {
         return themeApiList?.getThemeForPreview(themeId = themeId )}
+
+    
+    
+}
+
+
+class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val userApiList by lazy {
+        generateuserApiList()
+    }
+
+    private fun generateuserApiList(): UserApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationUser",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
+    }
+    
+    fun loginWithFacebook(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithFacebook( body = body)}
+
+    
+    
+    fun loginWithGoogle(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogle( body = body)}
+
+    
+    
+    fun loginWithGoogleAndroid(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleAndroid( body = body)}
+
+    
+    
+    fun loginWithGoogleIOS(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleIOS( body = body)}
+
+    
+    
+    fun loginWithOTP(platform: String?=null,body: SendOtpRequestSchema): Deferred<Response<SendOtpResponse>>? {
+        return userApiList?.loginWithOTP(platform = platform, body = body)}
+
+    
+    
+    fun loginWithEmailAndPassword(body: PasswordLoginRequestSchema): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.loginWithEmailAndPassword( body = body)}
+
+    
+    
+    fun sendResetPasswordEmail(platform: String?=null,body: SendResetPasswordEmailRequestSchema): Deferred<Response<ResetPasswordSuccess>>? {
+        return userApiList?.sendResetPasswordEmail(platform = platform, body = body)}
+
+    
+    
+    fun forgotPassword(body: ForgotPasswordRequestSchema): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.forgotPassword( body = body)}
+
+    
+    
+    fun sendResetToken(body: CodeRequestBodySchema): Deferred<Response<ResetPasswordSuccess>>? {
+        return userApiList?.sendResetToken( body = body)}
+
+    
+    
+    fun loginWithToken(body: TokenRequestBodySchema): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.loginWithToken( body = body)}
+
+    
+    
+    fun registerWithForm(platform: String?=null,body: FormRegisterRequestSchema): Deferred<Response<RegisterFormSuccess>>? {
+        return userApiList?.registerWithForm(platform = platform, body = body)}
+
+    
+    
+    fun verifyEmail(body: CodeRequestBodySchema): Deferred<Response<VerifyEmailSuccess>>? {
+        return userApiList?.verifyEmail( body = body)}
+
+    
+    
+    fun verifyMobile(body: CodeRequestBodySchema): Deferred<Response<VerifyEmailSuccess>>? {
+        return userApiList?.verifyMobile( body = body)}
+
+    
+    
+    fun hasPassword(): Deferred<Response<HasPasswordSuccess>>? {
+        return userApiList?.hasPassword( )}
+
+    
+    
+    fun updatePassword(body: UpdatePasswordRequestSchema): Deferred<Response<VerifyEmailSuccess>>? {
+        return userApiList?.updatePassword( body = body)}
+
+    
+    
+    fun logout(): Deferred<Response<LogoutSuccess>>? {
+        return userApiList?.logout( )}
+
+    
+    
+    fun sendOTPOnMobile(platform: String?=null,body: SendMobileOtpRequestSchema): Deferred<Response<OtpSuccess>>? {
+        return userApiList?.sendOTPOnMobile(platform = platform, body = body)}
+
+    
+    
+    fun verifyMobileOTP(platform: String?=null,body: VerifyOtpRequestSchema): Deferred<Response<VerifyOtpSuccess>>? {
+        return userApiList?.verifyMobileOTP(platform = platform, body = body)}
+
+    
+    
+    fun sendOTPOnEmail(platform: String?=null,body: SendEmailOtpRequestSchema): Deferred<Response<EmailOtpSuccess>>? {
+        return userApiList?.sendOTPOnEmail(platform = platform, body = body)}
+
+    
+    
+    fun verifyEmailOTP(platform: String?=null,body: VerifyOtpRequestSchema): Deferred<Response<VerifyOtpSuccess>>? {
+        return userApiList?.verifyEmailOTP(platform = platform, body = body)}
+
+    
+    
+    fun getLoggedInUser(): Deferred<Response<UserSchema>>? {
+        return userApiList?.getLoggedInUser( )}
+
+    
+    
+    fun getListOfActiveSessions(): Deferred<Response<SessionListSuccess>>? {
+        return userApiList?.getListOfActiveSessions( )}
+
+    
+    
+    fun getPlatformConfig(name: String?=null): Deferred<Response<PlatformSchema>>? {
+        return userApiList?.getPlatformConfig(name = name )}
+
+    
+    
+    fun updateProfile(platform: String?=null,body: EditProfileRequestSchema): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.updateProfile(platform = platform, body = body)}
+
+    
+    
+    fun addMobileNumber(platform: String?=null,body: EditMobileRequestSchema): Deferred<Response<VerifyMobileOTPSuccess>>? {
+        return userApiList?.addMobileNumber(platform = platform, body = body)}
+
+    
+    
+    fun deleteMobileNumber(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, countryCode: String, phone: String): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.deleteMobileNumber(platform = platform, active = active, primary = primary, verified = verified, countryCode = countryCode, phone = phone )}
+
+    
+    
+    fun setMobileNumberAsPrimary(body: SendVerificationLinkMobileRequestSchema): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.setMobileNumberAsPrimary( body = body)}
+
+    
+    
+    fun sendVerificationLinkToMobile(platform: String?=null,body: SendVerificationLinkMobileRequestSchema): Deferred<Response<SendMobileVerifyLinkSuccess>>? {
+        return userApiList?.sendVerificationLinkToMobile(platform = platform, body = body)}
+
+    
+    
+    fun addEmail(platform: String?=null,body: EditEmailRequestSchema): Deferred<Response<VerifyEmailOTPSuccess>>? {
+        return userApiList?.addEmail(platform = platform, body = body)}
+
+    
+    
+    fun deleteEmail(platform: String?=null, active: Boolean, primary: Boolean, verified: Boolean, email: String): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.deleteEmail(platform = platform, active = active, primary = primary, verified = verified, email = email )}
+
+    
+    
+    fun setEmailAsPrimary(body: EditEmailRequestSchema): Deferred<Response<LoginSuccess>>? {
+        return userApiList?.setEmailAsPrimary( body = body)}
+
+    
+    
+    fun sendVerificationLinkToEmail(platform: String?=null,body: EditEmailRequestSchema): Deferred<Response<SendEmailVerifyLinkSuccess>>? {
+        return userApiList?.sendVerificationLinkToEmail(platform = platform, body = body)}
 
     
     
@@ -1123,143 +1310,6 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
 }
 
 
-class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
-    
-    private val configurationApiList by lazy {
-        generateconfigurationApiList()
-    }
-
-    private fun generateconfigurationApiList(): ConfigurationApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerInterceptor = ApplicationHeaderInterceptor(config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            baseUrl = config.domain,
-            interceptorList = interceptorMap,
-            namespace = "ApplicationConfiguration",
-            persistentCookieStore = config.persistentCookieStore
-        )
-        return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
-    }
-    
-    fun getApplication(): Deferred<Response<Application>>? {
-        return configurationApiList?.getApplication( )}
-
-    
-    
-    fun getOwnerInfo(): Deferred<Response<ApplicationAboutResponse>>? {
-        return configurationApiList?.getOwnerInfo( )}
-
-    
-    
-    fun getBasicDetails(): Deferred<Response<ApplicationDetail>>? {
-        return configurationApiList?.getBasicDetails( )}
-
-    
-    
-    fun getIntegrationTokens(): Deferred<Response<TokensResponse>>? {
-        return configurationApiList?.getIntegrationTokens( )}
-
-    
-    
-    fun getAppVersion(body: AppVersionRequest): Deferred<Response<AppVersionResponse>>? {
-        return configurationApiList?.getAppVersion( body = body)}
-
-    
-    
-    fun getOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Deferred<Response<OrderingStores>>? {
-        return configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q )}
-
-    
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getOrderingStores
-    **/
-    fun getOrderingStoresPaginator(pageSize: Int?=null, q: String?=null) : Paginator<OrderingStores>{
-
-    val paginator = Paginator<OrderingStores>()
-
-    paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
-            override suspend fun onNext(
-                onSuccess: (Event<OrderingStores>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
-
-    })
-    return paginator
-    }
-    
-    fun getFeatures(): Deferred<Response<AppFeatureResponse>>? {
-        return configurationApiList?.getFeatures( )}
-
-    
-    
-    fun getContactInfo(): Deferred<Response<ApplicationInformation>>? {
-        return configurationApiList?.getContactInfo( )}
-
-    
-    
-    fun getCurrencies(): Deferred<Response<CurrenciesResponse>>? {
-        return configurationApiList?.getCurrencies( )}
-
-    
-    
-    fun getCurrencyById(id: String): Deferred<Response<Currency>>? {
-        return configurationApiList?.getCurrencyById(id = id )}
-
-    
-    
-    fun getLanguages(): Deferred<Response<LanguageResponse>>? {
-        return configurationApiList?.getLanguages( )}
-
-    
-    
-    fun removeOrderingStoreCookie(): Deferred<Response<SuccessResponse>>? {
-        return configurationApiList?.removeOrderingStoreCookie( )}
-
-    
-    
-    fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffResponse>>? {
-        return configurationApiList?.getAppStaffs(orderIncent = orderIncent, orderingStore = orderingStore, user = user )}
-
-    
-    
-}
-
-
 class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     private val paymentApiList by lazy {
@@ -1329,13 +1379,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, assignCardId: String?=null, deliveryAddress: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
-        return paymentApiList?.getPaymentModeRoutes(amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, assignCardId = assignCardId, deliveryAddress = deliveryAddress )}
+    fun getPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, assignCardId: String?=null, userDetails: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
+        return paymentApiList?.getPaymentModeRoutes(amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, assignCardId = assignCardId, userDetails = userDetails )}
 
     
     
-    fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, assignCardId: String?=null, orderType: String, deliveryAddress: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
-        return paymentApiList?.getPosPaymentModeRoutes(amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, assignCardId = assignCardId, orderType = orderType, deliveryAddress = deliveryAddress )}
+    fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, assignCardId: String?=null, orderType: String, userDetails: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
+        return paymentApiList?.getPosPaymentModeRoutes(amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, assignCardId = assignCardId, orderType = orderType, userDetails = userDetails )}
 
     
     
@@ -2162,8 +2212,8 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.applyCoupon(i = i, b = b, p = p, body = body)}
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.applyCoupon(i = i, b = b, p = p, uid = uid, body = body)}
 
     
     
@@ -2207,12 +2257,12 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getPaymentModes(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentOptions>>? {
-        return posCartApiList?.getPaymentModes(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )}
+    fun getPaymentModes(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, action: String?=null, type: String?=null): Deferred<Response<ValidateCouponPaymentMode>>? {
+        return posCartApiList?.getPaymentModes(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode, action = action, type = type )}
 
     
     
-    fun selectPaymentMode(uid: String?=null,body: UpdateCartPaymentRequest): Deferred<Response<PaymentOptions>>? {
+    fun selectPaymentMode(uid: String?=null,body: UpdateCartPaymentRequest): Deferred<Response<CartResponse>>? {
         return posCartApiList?.selectPaymentMode(uid = uid, body = body)}
 
     

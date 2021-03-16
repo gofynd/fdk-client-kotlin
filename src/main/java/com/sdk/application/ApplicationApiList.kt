@@ -147,7 +147,7 @@ interface CartApiList {
     : Deferred<Response<GetCouponResponse>>
     
     @POST ("/service/application/cart/v1.0/coupon")
-    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?,@Body body: ApplyCouponRequest)
+    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?,@Body body: ApplyCouponRequest)
     : Deferred<Response<CartResponse>>
     
     @DELETE ("/service/application/cart/v1.0/coupon")
@@ -183,12 +183,12 @@ interface CartApiList {
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/cart/v1.0/payment")
-    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
-    : Deferred<Response<PaymentOptions>>
+    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("action") action: String?, @Query("type") type: String?)
+    : Deferred<Response<ValidateCouponPaymentMode>>
     
     @PUT ("/service/application/cart/v1.0/payment")
     fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
-    : Deferred<Response<PaymentOptions>>
+    : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/cart/v1.0/shipment")
     fun getShipments(@Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?)
@@ -257,6 +257,138 @@ interface ThemeApiList {
     @GET ("/service/application/theme/v1.0/{theme_id}/preview")
     fun getThemeForPreview(@Path("theme_id") themeId: String)
     : Deferred<Response<ThemesSchema>>
+    
+}
+
+interface UserApiList {
+    
+    @POST ("/service/application/user/authentication/v1.0/login/facebook-token")
+    fun loginWithFacebook(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/google-token")
+    fun loginWithGoogle(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/google-android")
+    fun loginWithGoogleAndroid(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/google-ios")
+    fun loginWithGoogleIOS(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/otp")
+    fun loginWithOTP(@Query("platform") platform: String?,@Body body: SendOtpRequestSchema)
+    : Deferred<Response<SendOtpResponse>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/password")
+    fun loginWithEmailAndPassword(@Body body: PasswordLoginRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/password/reset")
+    fun sendResetPasswordEmail(@Query("platform") platform: String?,@Body body: SendResetPasswordEmailRequestSchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    @POST ("/service/application/userauthentication/v1.0/login/password/reset/forgot")
+    fun forgotPassword(@Body body: ForgotPasswordRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/password/reset/token")
+    fun sendResetToken(@Body body: CodeRequestBodySchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/token")
+    fun loginWithToken(@Body body: TokenRequestBodySchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/register/form")
+    fun registerWithForm(@Query("platform") platform: String?,@Body body: FormRegisterRequestSchema)
+    : Deferred<Response<RegisterFormSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/verify/email")
+    fun verifyEmail(@Body body: CodeRequestBodySchema)
+    : Deferred<Response<VerifyEmailSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/verify/mobile")
+    fun verifyMobile(@Body body: CodeRequestBodySchema)
+    : Deferred<Response<VerifyEmailSuccess>>
+    
+    @GET ("/service/application/user/authentication/v1.0/has-password")
+    fun hasPassword()
+    : Deferred<Response<HasPasswordSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/password")
+    fun updatePassword(@Body body: UpdatePasswordRequestSchema)
+    : Deferred<Response<VerifyEmailSuccess>>
+    
+    @GET ("/service/application/user/authentication/v1.0/logout")
+    fun logout()
+    : Deferred<Response<LogoutSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/mobile/send")
+    fun sendOTPOnMobile(@Query("platform") platform: String?,@Body body: SendMobileOtpRequestSchema)
+    : Deferred<Response<OtpSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/mobile/verify")
+    fun verifyMobileOTP(@Query("platform") platform: String?,@Body body: VerifyOtpRequestSchema)
+    : Deferred<Response<VerifyOtpSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/email/send")
+    fun sendOTPOnEmail(@Query("platform") platform: String?,@Body body: SendEmailOtpRequestSchema)
+    : Deferred<Response<EmailOtpSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/email/verify")
+    fun verifyEmailOTP(@Query("platform") platform: String?,@Body body: VerifyOtpRequestSchema)
+    : Deferred<Response<VerifyOtpSuccess>>
+    
+    @GET ("/service/application/user/authentication/v1.0/session")
+    fun getLoggedInUser()
+    : Deferred<Response<UserSchema>>
+    
+    @GET ("/service/application/user/authentication/v1.0/sessions")
+    fun getListOfActiveSessions()
+    : Deferred<Response<SessionListSuccess>>
+    
+    @GET ("/service/application/user/platform/v1.0/config")
+    fun getPlatformConfig(@Query("name") name: String?)
+    : Deferred<Response<PlatformSchema>>
+    
+    @POST ("/service/application/user/profile/v1.0/detail")
+    fun updateProfile(@Query("platform") platform: String?,@Body body: EditProfileRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @PUT ("/service/application/user/profile/v1.0/mobile")
+    fun addMobileNumber(@Query("platform") platform: String?,@Body body: EditMobileRequestSchema)
+    : Deferred<Response<VerifyMobileOTPSuccess>>
+    
+    @DELETE ("/service/application/user/profile/v1.0/mobile")
+    fun deleteMobileNumber(@Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") countryCode: String, @Query("phone") phone: String)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/mobile/primary")
+    fun setMobileNumberAsPrimary(@Body body: SendVerificationLinkMobileRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/mobile/link/send")
+    fun sendVerificationLinkToMobile(@Query("platform") platform: String?,@Body body: SendVerificationLinkMobileRequestSchema)
+    : Deferred<Response<SendMobileVerifyLinkSuccess>>
+    
+    @PUT ("/service/application/user/profile/v1.0/email")
+    fun addEmail(@Query("platform") platform: String?,@Body body: EditEmailRequestSchema)
+    : Deferred<Response<VerifyEmailOTPSuccess>>
+    
+    @DELETE ("/service/application/user/profile/v1.0/email")
+    fun deleteEmail(@Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("email") email: String)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/email/primary")
+    fun setEmailAsPrimary(@Body body: EditEmailRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/email/link/send")
+    fun sendVerificationLinkToEmail(@Query("platform") platform: String?,@Body body: EditEmailRequestSchema)
+    : Deferred<Response<SendEmailVerifyLinkSuccess>>
     
 }
 
@@ -384,62 +516,6 @@ interface FileStorageApiList {
     
 }
 
-interface ConfigurationApiList {
-    
-    @GET ("/service/application/configuration/v1.0/application")
-    fun getApplication()
-    : Deferred<Response<Application>>
-    
-    @GET ("/service/application/configuration/v1.0/about")
-    fun getOwnerInfo()
-    : Deferred<Response<ApplicationAboutResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/detail")
-    fun getBasicDetails()
-    : Deferred<Response<ApplicationDetail>>
-    
-    @GET ("/service/application/configuration/v1.0/token")
-    fun getIntegrationTokens()
-    : Deferred<Response<TokensResponse>>
-    
-    @POST ("/service/application/configuration/v1.0/version")
-    fun getAppVersion(@Body body: AppVersionRequest)
-    : Deferred<Response<AppVersionResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/ordering-store/stores")
-    fun getOrderingStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
-    : Deferred<Response<OrderingStores>>
-    
-    @GET ("/service/application/configuration/v1.0/feature")
-    fun getFeatures()
-    : Deferred<Response<AppFeatureResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/information")
-    fun getContactInfo()
-    : Deferred<Response<ApplicationInformation>>
-    
-    @GET ("/service/application/configuration/v1.0/currencies")
-    fun getCurrencies()
-    : Deferred<Response<CurrenciesResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/currency/{id}")
-    fun getCurrencyById(@Path("id") id: String)
-    : Deferred<Response<Currency>>
-    
-    @GET ("/service/application/configuration/v1.0/languages")
-    fun getLanguages()
-    : Deferred<Response<LanguageResponse>>
-    
-    @POST ("/application/current/ordering-store/select")
-    fun removeOrderingStoreCookie()
-    : Deferred<Response<SuccessResponse>>
-    
-    @GET ("/service/application/configuration/v1.0/staff")
-    fun getAppStaffs(@Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
-    : Deferred<Response<AppStaffResponse>>
-    
-}
-
 interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/config/aggregators/key")
@@ -479,11 +555,11 @@ interface PaymentApiList {
     : Deferred<Response<PaymentStatusUpdateResponse>>
     
     @GET ("/service/application/payment/v1.0/payment/options")
-    fun getPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("delivery_address") deliveryAddress: String?)
+    fun getPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("user_details") userDetails: String?)
     : Deferred<Response<PaymentModeRouteResponse>>
     
     @GET ("/service/application/payment/v1.0/payment/options/pos")
-    fun getPosPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("delivery_address") deliveryAddress: String?)
+    fun getPosPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?)
     : Deferred<Response<PaymentModeRouteResponse>>
     
     @GET ("/service/application/payment/v1.0/refund/beneficiary/user")
@@ -707,7 +783,7 @@ interface PosCartApiList {
     : Deferred<Response<GetCouponResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/coupon")
-    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?,@Body body: ApplyCouponRequest)
+    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?,@Body body: ApplyCouponRequest)
     : Deferred<Response<CartResponse>>
     
     @DELETE ("/service/application/pos/cart/v1.0/coupon")
@@ -743,12 +819,12 @@ interface PosCartApiList {
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/payment")
-    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
-    : Deferred<Response<PaymentOptions>>
+    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("action") action: String?, @Query("type") type: String?)
+    : Deferred<Response<ValidateCouponPaymentMode>>
     
     @PUT ("/service/application/pos/cart/v1.0/payment")
     fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
-    : Deferred<Response<PaymentOptions>>
+    : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/shipment")
     fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)

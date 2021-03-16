@@ -5,11 +5,11 @@
 * [Cart](#Cart) - Cart APIs 
 * [Lead](#Lead) - Handles communication between Staff and Users 
 * [Theme](#Theme) - Responsible for themes 
-* [Content](#Content) - Content 
+* [User](#User) - Authentication Service 
+* [Content](#Content) - Content System 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Share](#Share) - Short link and QR Code 
 * [FileStorage](#FileStorage) - File Storage 
-* [Configuration](#Configuration) - Application configuration apis 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Rewards](#Rewards) - Earn and redeem Reward Points 
@@ -99,6 +99,42 @@
     * [getThemeForPreview](#getthemeforpreview)
     
 
+* [User](#User)
+  * Methods
+    * [loginWithFacebook](#loginwithfacebook)
+    * [loginWithGoogle](#loginwithgoogle)
+    * [loginWithGoogleAndroid](#loginwithgoogleandroid)
+    * [loginWithGoogleIOS](#loginwithgoogleios)
+    * [loginWithOTP](#loginwithotp)
+    * [loginWithEmailAndPassword](#loginwithemailandpassword)
+    * [sendResetPasswordEmail](#sendresetpasswordemail)
+    * [forgotPassword](#forgotpassword)
+    * [sendResetToken](#sendresettoken)
+    * [loginWithToken](#loginwithtoken)
+    * [registerWithForm](#registerwithform)
+    * [verifyEmail](#verifyemail)
+    * [verifyMobile](#verifymobile)
+    * [hasPassword](#haspassword)
+    * [updatePassword](#updatepassword)
+    * [logout](#logout)
+    * [sendOTPOnMobile](#sendotponmobile)
+    * [verifyMobileOTP](#verifymobileotp)
+    * [sendOTPOnEmail](#sendotponemail)
+    * [verifyEmailOTP](#verifyemailotp)
+    * [getLoggedInUser](#getloggedinuser)
+    * [getListOfActiveSessions](#getlistofactivesessions)
+    * [getPlatformConfig](#getplatformconfig)
+    * [updateProfile](#updateprofile)
+    * [addMobileNumber](#addmobilenumber)
+    * [deleteMobileNumber](#deletemobilenumber)
+    * [setMobileNumberAsPrimary](#setmobilenumberasprimary)
+    * [sendVerificationLinkToMobile](#sendverificationlinktomobile)
+    * [addEmail](#addemail)
+    * [deleteEmail](#deleteemail)
+    * [setEmailAsPrimary](#setemailasprimary)
+    * [sendVerificationLinkToEmail](#sendverificationlinktoemail)
+    
+
 * [Content](#Content)
   * Methods
     * [getAnnouncements](#getannouncements)
@@ -140,23 +176,6 @@
   * Methods
     * [completeUpload](#completeupload)
     * [startUpload](#startupload)
-    
-
-* [Configuration](#Configuration)
-  * Methods
-    * [getApplication](#getapplication)
-    * [getOwnerInfo](#getownerinfo)
-    * [getBasicDetails](#getbasicdetails)
-    * [getIntegrationTokens](#getintegrationtokens)
-    * [getAppVersion](#getappversion)
-    * [getOrderingStores](#getorderingstores)
-    * [getFeatures](#getfeatures)
-    * [getContactInfo](#getcontactinfo)
-    * [getCurrencies](#getcurrencies)
-    * [getCurrencyById](#getcurrencybyid)
-    * [getLanguages](#getlanguages)
-    * [removeOrderingStoreCookie](#removeorderingstorecookie)
-    * [getAppStaffs](#getappstaffs)
     
 
 * [Payment](#Payment)
@@ -3017,7 +3036,7 @@ Schema: `GetCouponResponse`
 Apply Coupon
 
 ```kotlin
-cart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
+cart.applyCoupon(i: i, b: b, p: p, uid: uid, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -3032,6 +3051,7 @@ cart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
 | i | boolean |  | 
 | b | boolean |  | 
 | p | boolean |  | 
+| uid | integer |  | 
 
 <p>Apply Coupons on Items added to cart. On successful request, returns cart response containing details of items ,coupons applied etc.these attributes will be consumed by  api</p> <ul> <li> <font color="monochrome">coupon_code</font></li>
 </ul>
@@ -3512,7 +3532,7 @@ Pincode Not Serviciable
 Get Cart Payment for valid coupon
 
 ```kotlin
-cart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
+cart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode, action: action, type: type).safeAwait(
     { response ->
       // Use response
     },
@@ -3530,6 +3550,8 @@ cart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, p
 | paymentIdentifier | string |  | 
 | aggregatorName | string |  | 
 | merchantCode | string |  | 
+| action | string |  | 
+| type | string |  | 
 
 Validate coupon for selected payment mode
 
@@ -3540,7 +3562,7 @@ Validate coupon for selected payment mode
 Cart response with payment options
 
 
-Schema: `PaymentOptions`
+Schema: `ValidateCouponPaymentMode`
 
 
 
@@ -3580,7 +3602,7 @@ Update Cart Payment for Your Account
 Cart response with payment options
 
 
-Schema: `PaymentOptions`
+Schema: `CartResponse`
 
 
 
@@ -6368,6 +6390,2274 @@ Schema: `BlitzkriegApiError`
 ---
 
 
+## User
+
+
+#### loginWithFacebook
+Login/Register with Facebook
+
+```kotlin
+user.loginWithFacebook(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to login or register with Facebook
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `AuthSuccess`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/AuthSuccess"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### loginWithGoogle
+Login/Register with Google
+
+```kotlin
+user.loginWithGoogle(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to login or register with Google
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `AuthSuccess`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/AuthSuccess"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### loginWithGoogleAndroid
+Login/Register with Google for android
+
+```kotlin
+user.loginWithGoogleAndroid(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to login or register with Google for android
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `AuthSuccess`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/AuthSuccess"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### loginWithGoogleIOS
+Login/Register with Google for ios
+
+```kotlin
+user.loginWithGoogleIOS(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to login or register with google for ios
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `AuthSuccess`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/AuthSuccess"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### loginWithOTP
+Login/Register with OTP
+
+```kotlin
+user.loginWithOTP(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to login or register with OTP
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `SendOtpResponse`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/SendOtpResponse"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### loginWithEmailAndPassword
+Login/Register with password
+
+```kotlin
+user.loginWithEmailAndPassword(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to login or register with email & password
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### sendResetPasswordEmail
+Reset Password
+
+```kotlin
+user.sendResetPasswordEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to reset account password
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `ResetPasswordSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### forgotPassword
+
+
+```kotlin
+user.forgotPassword(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### sendResetToken
+
+
+```kotlin
+user.sendResetToken(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Send code incase of reset password
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `ResetPasswordSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### loginWithToken
+Login/Register with token
+
+```kotlin
+user.loginWithToken(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Login/Register with token
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `[String: Any]`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### registerWithForm
+Registration Form
+
+```kotlin
+user.registerWithForm(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Register using form
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `RegisterFormSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### verifyEmail
+Verify email
+
+```kotlin
+user.verifyEmail(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to verify email
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `VerifyEmailSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### verifyMobile
+Verify mobile
+
+```kotlin
+user.verifyMobile(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Verify mobile
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `VerifyEmailSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### hasPassword
+Check if user has password
+
+```kotlin
+user.hasPassword().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Checks if user is using password or not
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `HasPasswordSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updatePassword
+Update user password
+
+```kotlin
+user.updatePassword(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to update user password
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `VerifyEmailSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### logout
+Logout user
+
+```kotlin
+user.logout().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to log out user
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `LogoutSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### sendOTPOnMobile
+Send OTP on mobile
+
+```kotlin
+user.sendOTPOnMobile(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to send otp to mobile
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `OtpSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### verifyMobileOTP
+Verify OTP on mobile
+
+```kotlin
+user.verifyMobileOTP(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to verify otp sent to mobile
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `VerifyOtpSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/VerifyMobileOTP"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### sendOTPOnEmail
+Send OTP on email
+
+```kotlin
+user.sendOTPOnEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to send otp to email
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `EmailOtpSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### verifyEmailOTP
+Verify OTP on email
+
+```kotlin
+user.verifyEmailOTP(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to verify otp sent to email
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `VerifyOtpSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/VerifyMobileOTP"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getLoggedInUser
+Get logged in user
+
+```kotlin
+user.getLoggedInUser().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to get logged in user details
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `UserSchema`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/UserExample"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getListOfActiveSessions
+Get list of sessions
+
+```kotlin
+user.getListOfActiveSessions().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Lists all active sessions
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `SessionListSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getPlatformConfig
+Get platform config
+
+```kotlin
+user.getPlatformConfig(name: name).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| name | string | Name | 
+
+Used to get platform config
+
+*Success Response:*
+
+
+
+Platform Config
+
+
+Schema: `PlatformSchema`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateProfile
+Edit Profile Details
+
+```kotlin
+user.updateProfile(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to update profile
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### addMobileNumber
+Add mobile number to profile
+
+```kotlin
+user.addMobileNumber(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to add new mobile number to profile
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `VerifyMobileOTPSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/VerifyMobileOTP"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### deleteMobileNumber
+Delete mobile number from profile
+
+```kotlin
+user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+| active | boolean | Active mobile number | 
+| primary | boolean | Primary number | 
+| verified | boolean | Verified Number | 
+| countryCode | string | Country code of phone number | 
+| phone | string | Phone number | 
+
+Used to delete mobile number from profile
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### setMobileNumberAsPrimary
+Set mobile as primary
+
+```kotlin
+user.setMobileNumberAsPrimary(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to set a mobile number as primary
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### sendVerificationLinkToMobile
+Send verification link to mobile
+
+```kotlin
+user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to send verification link to a mobile number
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `SendMobileVerifyLinkSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/VerifyMobileOTP"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### addEmail
+Add email to profile
+
+```kotlin
+user.addEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to add new email to profile
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `VerifyEmailOTPSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/VerifyEmailOTP"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### deleteEmail
+Delete email from profile
+
+```kotlin
+user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+| active | boolean | Whether email id is active | 
+| primary | boolean | Whether email id is primary email | 
+| verified | boolean | Whether email id is verified | 
+| email | string | Email ID to be deleted | 
+
+Used to delete email from profile
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### setEmailAsPrimary
+Set email as primary
+
+```kotlin
+user.setEmailAsPrimary(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Used to set an email as primart
+
+*Success Response:*
+
+
+
+A JSON object with user details
+
+
+Schema: `LoginSuccess`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/UserExampleObject"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### sendVerificationLinkToEmail
+Send verification link to email
+
+```kotlin
+user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| platform | string | Platform | 
+
+Used to sent verification to an email
+
+*Success Response:*
+
+
+
+
+
+
+Schema: `SendEmailVerifyLinkSuccess`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
 ## Content
 
 
@@ -8076,587 +10366,6 @@ Schema: `FailedResponse`
 ---
 
 
-## Configuration
-
-
-#### getApplication
-Get current application details
-
-```kotlin
-configuration.getApplication().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get current application details.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `Application`
-
-
-
-
-
-
-
-
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getOwnerInfo
-Get application, owner and seller information
-
-```kotlin
-configuration.getOwnerInfo().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get application information with owner and seller basic details
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `ApplicationAboutResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getBasicDetails
-Get basic application details
-
-```kotlin
-configuration.getBasicDetails().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get basic application details like name
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `ApplicationDetail`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getIntegrationTokens
-Get integration tokens
-
-```kotlin
-configuration.getIntegrationTokens().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get tokens for multiple integrations like Facebook, Googlemaps, Segment, Firebase, etc. Note: token values are encrypted with AES encryption using secret key. Kindly reach to developers for secret key.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `TokensResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getAppVersion
-Check if a new app version is available
-
-```kotlin
-configuration.getAppVersion(body: body).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Before launching the app (android/iOS), check if a new version is available. Response gives 3 update modes viz. FORCE, AVAILABLE, UP_TO_DATE. `FORCE`- Application should be updated necessarily. `AVAILABLE`- A new version available. But its not necessary to update. `UP_TO_DATE`- Application is at the latest version. These 3 modes are computed at the backend based on the lastest version of app available and the oldest version of app supported by the system.
-
-*Success Response:*
-
-
-
-Android/IOS app version success response.
-
-
-Schema: `AppVersionResponse`
-
-
-
-
-
-
-
-
-Invalid app version api request data.
-
-
-Schema: `InvalidAppVersionRequest`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getOrderingStores
-Get deployment meta stores
-
-```kotlin
-configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| pageNo | integer | Current page no | 
-| pageSize | integer | Current request items count | 
-| q | string | Search ordering store by name or store code | 
-
-Get deployment meta stores.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `OrderingStores`
-
-
-
-
-
-
-
-
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getFeatures
-Get features of application
-
-```kotlin
-configuration.getFeatures().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get features of application
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `AppFeatureResponse`
-
-
-
-
-
-
-
-
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getContactInfo
-Get application information
-
-```kotlin
-configuration.getContactInfo().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `ApplicationInformation`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getCurrencies
-Get application enabled currencies
-
-```kotlin
-configuration.getCurrencies().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get currency list for allowed currencies under current application
-
-*Success Response:*
-
-
-
-Currencies Success response
-
-
-Schema: `CurrenciesResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getCurrencyById
-Get currency by id
-
-```kotlin
-configuration.getCurrencyById(id: id).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | string | Currency object id | 
-
-Get currency object with symbol and name information by id.
-
-*Success Response:*
-
-
-
-Success response
-
-
-Schema: `Currency`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getLanguages
-Get list of languages
-
-```kotlin
-configuration.getLanguages().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Get list of supported languages under application.
-
-*Success Response:*
-
-
-
-Success response
-
-
-Schema: `LanguageResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### removeOrderingStoreCookie
-Unset ordering store signed cookie on change of sales channel selection via domain in universal fynd store app.
-
-```kotlin
-configuration.removeOrderingStoreCookie().safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Unset ordering store cookie.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `SuccessResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getAppStaffs
-Get Staff List.
-
-```kotlin
-configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| orderIncent | boolean | This is to check which staff members are applicable for order incentives. | 
-| orderingStore | integer | This is to filter staff members from only selected ordering store. | 
-| user | string | Get single staff member details using staff user mongo id | 
-
-Get a staff list based on the user's session token passed in the header.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `AppStaffResponse`
-
-
-
-
-
-
-
-
-Request failed with internal server error.
-
-
-Schema: `UnhandledError`
-
-
-
-
-
-
-
-
-
----
-
-
-
----
-
-
 ## Payment
 
 
@@ -9235,7 +10944,7 @@ Schema: `HttpErrorCodeAndResponse`
 Get All Valid Payment Options
 
 ```kotlin
-payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, deliveryAddress: deliveryAddress).safeAwait(
+payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, userDetails: userDetails).safeAwait(
     { response ->
       // Use response
     },
@@ -9253,7 +10962,7 @@ payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, c
 | checkoutMode | string | Checkout mode | 
 | refresh | boolean |  | 
 | assignCardId | string | selected card id | 
-| deliveryAddress | string | URIencoded json delivery address of cart for annonymous user | 
+| userDetails | string | URIencoded json annonymous user | 
 
 Use this API to get Get All Valid Payment Options for making payment
 
@@ -9305,7 +11014,7 @@ Schema: `HttpErrorCodeAndResponse`
 Get All Valid Payment Options for POS
 
 ```kotlin
-payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, orderType: orderType, deliveryAddress: deliveryAddress).safeAwait(
+payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, orderType: orderType, userDetails: userDetails).safeAwait(
     { response ->
       // Use response
     },
@@ -9324,7 +11033,7 @@ payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode
 | refresh | boolean |  | 
 | assignCardId | string | selected card id | 
 | orderType | string | Order type | 
-| deliveryAddress | string | URIencoded json delivery address of cart for annonymous user | 
+| userDetails | string | URIencoded json annonymous user | 
 
 Use this API to get Get All Valid Payment Options for making payment
 
@@ -13158,7 +14867,7 @@ Schema: `GetCouponResponse`
 Apply Coupon
 
 ```kotlin
-poscart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
+poscart.applyCoupon(i: i, b: b, p: p, uid: uid, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -13173,6 +14882,7 @@ poscart.applyCoupon(i: i, b: b, p: p, body: body).safeAwait(
 | i | boolean |  | 
 | b | boolean |  | 
 | p | boolean |  | 
+| uid | integer |  | 
 
 <p>Apply Coupons on Items added to cart. On successful request, returns cart response containing details of items ,coupons applied etc.these attributes will be consumed by  api</p> <ul> <li> <font color="monochrome">coupon_code</font></li>
 </ul>
@@ -13653,7 +15363,7 @@ Pincode Not Serviciable
 Get Cart Payment for valid coupon
 
 ```kotlin
-poscart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
+poscart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode, action: action, type: type).safeAwait(
     { response ->
       // Use response
     },
@@ -13671,6 +15381,8 @@ poscart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode
 | paymentIdentifier | string |  | 
 | aggregatorName | string |  | 
 | merchantCode | string |  | 
+| action | string |  | 
+| type | string |  | 
 
 Validate coupon for selected payment mode
 
@@ -13681,7 +15393,7 @@ Validate coupon for selected payment mode
 Cart response with payment options
 
 
-Schema: `PaymentOptions`
+Schema: `ValidateCouponPaymentMode`
 
 
 
@@ -13721,7 +15433,7 @@ Update Cart Payment for Your Account
 Cart response with payment options
 
 
-Schema: `PaymentOptions`
+Schema: `CartResponse`
 
 
 
