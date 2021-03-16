@@ -4,6 +4,8 @@
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
 * [Theme](#Theme) - Responsible for themes 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
+* [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
+* [Inventory](#Inventory) -  
 
 ----
 ----
@@ -65,6 +67,29 @@
   * [Payment#deleteSubscriptionPaymentMethod](#paymentdeletesubscriptionpaymentmethod)
   * [Payment#getSubscriptionConfig](#paymentgetsubscriptionconfig)
   * [Payment#saveSubscriptionSetupIntent](#paymentsavesubscriptionsetupintent)
+ 
+* [CompanyProfile](#CompanyProfile)
+  * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
+  * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#createBrand](#companyprofilecreatebrand)
+  * [CompanyProfile#getBrands](#companyprofilegetbrands)
+  * [CompanyProfile#createBrand](#companyprofilecreatebrand)
+  * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+ 
+* [Inventory](#Inventory)
+  * [Inventory#getJobsByCompany](#inventorygetjobsbycompany)
+  * [Inventory#updateJob](#inventoryupdatejob)
+  * [Inventory#createJob](#inventorycreatejob)
+  * [Inventory#getJobByCompanyAndIntegration](#inventorygetjobbycompanyandintegration)
+  * [Inventory#getJobConfigDefaults](#inventorygetjobconfigdefaults)
+  * [Inventory#getJobByCode](#inventorygetjobbycode)
+  * [Inventory#getJobCodesByCompanyAndIntegration](#inventorygetjobcodesbycompanyandintegration)
  
 
 ---
@@ -1412,6 +1437,535 @@ const data = await payment.saveSubscriptionSetupIntent(company_id, );
 
 
 Uses this api to Save Subscription Setup Intent
+
+
+---
+
+
+
+---
+---
+
+
+## CompanyProfile
+
+```javascript
+const { Configuration, CompanyProfile } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const companyprofile = new CompanyProfile(conf);
+
+```
+
+
+#### CompanyProfile#updateCompany
+Edit company profile
+
+```javascript
+// Promise
+const promise = companyprofile.updateCompany(company_id, );
+
+// Async/Await
+const data = await companyprofile.updateCompany(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to edit the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#cbsOnboardGet
+Get company profile
+
+```javascript
+// Promise
+const promise = companyprofile.cbsOnboardGet(company_id, );
+
+// Async/Await
+const data = await companyprofile.cbsOnboardGet(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#getCompanyMetrics
+Get company metrics
+
+```javascript
+// Promise
+const promise = companyprofile.getCompanyMetrics(company_id, );
+
+// Async/Await
+const data = await companyprofile.getCompanyMetrics(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
+
+
+---
+
+
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```javascript
+// Promise
+const promise = companyprofile.getBrand(company_id, brand_id, );
+
+// Async/Await
+const data = await companyprofile.getBrand(company_id, brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
+
+
+---
+
+
+#### CompanyProfile#editBrand
+Edit a brand.
+
+```javascript
+// Promise
+const promise = companyprofile.editBrand(company_id, brand_id, );
+
+// Async/Await
+const data = await companyprofile.editBrand(company_id, brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API allows to edit meta of a brand.
+
+
+---
+
+
+#### CompanyProfile#createBrand
+Create a Brand.
+
+```javascript
+// Promise
+const promise = companyprofile.createBrand(company_id, );
+
+// Async/Await
+const data = await companyprofile.createBrand(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company. | 
+
+
+This API allows to create a brand associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getBrands
+Get brands associated to a company
+
+```javascript
+// Promise
+const promise = companyprofile.getBrands(company_id, );
+
+// Async/Await
+const data = await companyprofile.getBrands(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company. | 
+
+
+This API helps to get view brands associated to a particular company.
+
+
+---
+
+
+#### CompanyProfile#createBrand
+Create a company brand mapping.
+
+```javascript
+// Promise
+const promise = companyprofile.createBrand(company_id, );
+
+// Async/Await
+const data = await companyprofile.createBrand(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
+
+
+---
+
+
+#### CompanyProfile#getLocations
+Get list of locations
+
+```javascript
+// Promise
+const promise = companyprofile.getLocations(company_id, store_type, q, stage, page_no, page_size, );
+
+// Async/Await
+const data = await companyprofile.getLocations(company_id, store_type, q, stage, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company whose locations are to fetched | 
+| store_type | string | Helps to sort the location list on the basis of location type. | 
+| q | string | Query that is to be searched. | 
+| stage | string | to filter companies on basis of verified or unverified companies. | 
+| page_no | integer | The page number to navigate through the given set of results | 
+| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+
+
+This API allows to view all the locations asscoiated to a company.
+
+
+---
+
+
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.createLocation(company_id, );
+
+// Async/Await
+const data = await companyprofile.createLocation(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+
+
+This API allows to create a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getLocationDetail
+Get details of a specific location.
+
+```javascript
+// Promise
+const promise = companyprofile.getLocationDetail(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.getLocationDetail(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location lies. | 
+| location_id | string | Id of the location which you want to view. | 
+
+
+This API helps to get data associated to a specific location.
+
+
+---
+
+
+#### CompanyProfile#updateLocation
+Edit a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.updateLocation(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.updateLocation(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
+
+
+This API allows to edit a location associated to a company.
+
+
+---
+
+
+
+---
+---
+
+
+## Inventory
+
+```javascript
+const { Configuration, Inventory } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const inventory = new Inventory(conf);
+
+```
+
+
+#### Inventory#getJobsByCompany
+Get Job Configs For A Company
+
+```javascript
+// Promise
+const promise = inventory.getJobsByCompany(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await inventory.getJobsByCompany(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| page_no | integer | Page Number | 
+| page_size | integer | Page Size | 
+
+
+REST Endpoint that returns all job configs for a company
+
+
+---
+
+
+#### Inventory#updateJob
+Updates An Existing Job Config
+
+```javascript
+// Promise
+const promise = inventory.updateJob(company_id, x-user-data, );
+
+// Async/Await
+const data = await inventory.updateJob(company_id, x-user-data, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| x-user-data | string |  | 
+
+
+REST Endpoint that updates a job config
+
+
+---
+
+
+#### Inventory#createJob
+Creates A New Job Config
+
+```javascript
+// Promise
+const promise = inventory.createJob(company_id, x-user-data, );
+
+// Async/Await
+const data = await inventory.createJob(company_id, x-user-data, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| x-user-data | string |  | 
+
+
+REST Endpoint that creates a new job config
+
+
+---
+
+
+#### Inventory#getJobByCompanyAndIntegration
+Get Job Configs By Company And Integration
+
+```javascript
+// Promise
+const promise = inventory.getJobByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
+
+// Async/Await
+const data = await inventory.getJobByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| integration_id | string | Integration Id | 
+| page_no | integer | Page Number | 
+| page_size | integer | Page Size | 
+
+
+REST Endpoint that returns all job configs by company And integration
+
+
+---
+
+
+#### Inventory#getJobConfigDefaults
+Get Job Configs Defaults
+
+```javascript
+// Promise
+const promise = inventory.getJobConfigDefaults(company_id, );
+
+// Async/Await
+const data = await inventory.getJobConfigDefaults(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+
+
+REST Endpoint that returns default fields job configs by company And integration
+
+
+---
+
+
+#### Inventory#getJobByCode
+Get Job Config By Code
+
+```javascript
+// Promise
+const promise = inventory.getJobByCode(company_id, code, );
+
+// Async/Await
+const data = await inventory.getJobByCode(company_id, code, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| code | string | Job Code | 
+
+
+REST Endpoint that returns job config by code
+
+
+---
+
+
+#### Inventory#getJobCodesByCompanyAndIntegration
+Get Job Codes By Company And Integration
+
+```javascript
+// Promise
+const promise = inventory.getJobCodesByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
+
+// Async/Await
+const data = await inventory.getJobCodesByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| integration_id | string | Integration Id | 
+| page_no | integer | Page Number | 
+| page_size | integer | Page Size | 
+
+
+REST Endpoint that returns all job codes by company And integration
 
 
 ---
