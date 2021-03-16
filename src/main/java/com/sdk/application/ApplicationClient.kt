@@ -12,13 +12,13 @@ class ApplicationClient(val config:ApplicationConfig) {
     
     val user by lazy { UserDataManagerClass(config)}
     
-    val content by lazy { ContentDataManagerClass(config)}
-    
     val communication by lazy { CommunicationDataManagerClass(config)}
     
     val share by lazy { ShareDataManagerClass(config)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}
+    
+    val configuration by lazy { ConfigurationDataManagerClass(config)}
     
     val payment by lazy { PaymentDataManagerClass(config)}
     

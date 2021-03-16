@@ -392,70 +392,6 @@ interface UserApiList {
     
 }
 
-interface ContentApiList {
-    
-    @GET ("/service/application/content/v1.0/announcements")
-    fun getAnnouncements()
-    : Deferred<Response<AnnouncementsResponseSchema>>
-    
-    @GET ("/service/application/content/v1.0/blogs/{slug}")
-    fun getBlog(@Path("slug") slug: String)
-    : Deferred<Response<CustomBlog>>
-    
-    @GET ("/service/application/content/v1.0/faq")
-    fun getFaqs()
-    : Deferred<Response<FaqResponseSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/categories")
-    fun getFaqCategories()
-    : Deferred<Response<GetFaqCategoriesSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/{id_or_slug}")
-    fun getFaqByIdOrSlug(@Path("id_or_slug") idOrSlug: String)
-    : Deferred<Response<FaqSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}")
-    fun getFaqCategoryBySlugOrId(@Path("id_or_slug") idOrSlug: String)
-    : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}/faqs")
-    fun getFaqsByCategoryIdOrSlug(@Path("id_or_slug") idOrSlug: String)
-    : Deferred<Response<GetFaqSchema>>
-    
-    @GET ("/service/application/content/v1.0/landing-page")
-    fun getLandingPage()
-    : Deferred<Response<LandingPage>>
-    
-    @GET ("/service/application/content/v1.0/legal")
-    fun getLegalInformation()
-    : Deferred<Response<ApplicationLegal>>
-    
-    @GET ("/service/application/content/v1.0/navigations/")
-    fun getNavigations()
-    : Deferred<Response<Navigation>>
-    
-    @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String)
-    : Deferred<Response<CustomPage>>
-    
-    @GET ("/service/application/content/v1.0/seo")
-    fun getSeoConfiguration()
-    : Deferred<Response<Seo>>
-    
-    @GET ("/service/application/content/v1.0/slideshow/{slug}")
-    fun getSlideshow(@Path("slug") slug: String)
-    : Deferred<Response<Slideshow>>
-    
-    @GET ("/service/application/content/v1.0/support")
-    fun getSupportInformation()
-    : Deferred<Response<Support>>
-    
-    @GET ("/service/application/content/v1.0/tags")
-    fun getTags()
-    : Deferred<Response<TagsSchema>>
-    
-}
-
 interface CommunicationApiList {
     
     @GET ("/service/application/communication/v1.0/consent")
@@ -513,6 +449,62 @@ interface FileStorageApiList {
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
     fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: Int,@Body body: StartRequest)
     : Deferred<Response<StartResponse>>
+    
+}
+
+interface ConfigurationApiList {
+    
+    @GET ("/service/application/configuration/v1.0/application")
+    fun getApplication()
+    : Deferred<Response<Application>>
+    
+    @GET ("/service/application/configuration/v1.0/about")
+    fun getOwnerInfo()
+    : Deferred<Response<ApplicationAboutResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/detail")
+    fun getBasicDetails()
+    : Deferred<Response<ApplicationDetail>>
+    
+    @GET ("/service/application/configuration/v1.0/token")
+    fun getIntegrationTokens()
+    : Deferred<Response<TokensResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/ordering-store/stores")
+    fun getOrderingStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    : Deferred<Response<OrderingStores>>
+    
+    @GET ("/service/application/configuration/v1.0/feature")
+    fun getFeatures()
+    : Deferred<Response<AppFeatureResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/information")
+    fun getContactInfo()
+    : Deferred<Response<ApplicationInformation>>
+    
+    @GET ("/service/application/configuration/v1.0/currencies")
+    fun getCurrencies()
+    : Deferred<Response<CurrenciesResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/currency/{id}")
+    fun getCurrencyById(@Path("id") id: String)
+    : Deferred<Response<Currency>>
+    
+    @GET ("/service/application/configuration/v1.0/languages")
+    fun getLanguages()
+    : Deferred<Response<LanguageResponse>>
+    
+    @POST ("/application/current/ordering-store/select")
+    fun getOrderingStoreCookie(@Body body: OrderingStoreSelectRequest)
+    : Deferred<Response<SuccessResponse>>
+    
+    @DELETE ("/application/current/ordering-store/select")
+    fun removeOrderingStoreCookie()
+    : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/application/configuration/v1.0/staff")
+    fun getAppStaffs(@Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
+    : Deferred<Response<AppStaffResponse>>
     
 }
 
