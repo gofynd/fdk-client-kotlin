@@ -8,6 +8,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val user by lazy { UserDataManagerClass(config)}
     
+    val content by lazy { ContentDataManagerClass(config)}
+    
     val payment by lazy { PaymentDataManagerClass(config)}
     
     val order by lazy { OrderDataManagerClass(config)}
@@ -29,6 +31,8 @@ class PlatformClient(val config:PlatformConfig) {
     val theme by lazy { this@PlatformClient.theme.Application(applicationId,config)}
     
     val user by lazy { this@PlatformClient.user.Application(applicationId,config)}
+    
+    val content by lazy { this@PlatformClient.content.Application(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.Application(applicationId,config)}
     

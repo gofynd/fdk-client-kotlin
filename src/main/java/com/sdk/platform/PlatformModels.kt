@@ -1227,6 +1227,906 @@ data class UserSchema(
 
 
 /*
+    Model: ApplicationLegal
+*/
+@Parcelize
+data class ApplicationLegal(
+    
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("tnc")
+    var tnc: String?=null,
+    @SerializedName("policy")
+    var policy: String?=null,
+    @SerializedName("faq")
+    var faq: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("updatedAt")
+    var updatedAt: String?=null,
+    @SerializedName("createdAt")
+    var createdAt: String?=null,
+    @SerializedName("__v")
+    var v: Double?=null
+): Parcelable
+
+/*
+    Model: Seo
+*/
+@Parcelize
+data class Seo(
+    
+    @SerializedName("app")
+    var app: String?=null,
+    @SerializedName("robots_txt")
+    var robotsTxt: String?=null,
+    @SerializedName("sitemap_enabled")
+    var sitemapEnabled: Boolean?=null,
+    @SerializedName("custom_meta_tags")
+    var customMetaTags: @RawValue ArrayList<Any>?=null,
+    @SerializedName("details")
+    var details: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: StorefrontAnnouncement
+*/
+@Parcelize
+data class StorefrontAnnouncement(
+    
+    @SerializedName("announcements")
+    var announcements: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("refresh_rate")
+    var refreshRate: Int?=null,
+    @SerializedName("refresh_pages")
+    var refreshPages: ArrayList<String>?=null
+): Parcelable
+
+/*
+    Model: AdminAnnouncementSchema
+*/
+@Parcelize
+data class AdminAnnouncementSchema(
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("platform")
+    var platform: ArrayList<String>?=null,
+    @SerializedName("title")
+    var title: String?=null,
+    @SerializedName("announcement")
+    var announcement: String?=null,
+    @SerializedName("pages")
+    var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("editor_meta")
+    var editorMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("author")
+    var author: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    @SerializedName("app")
+    var app: String?=null,
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
+    @SerializedName("_schedule")
+    var schedule: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: ScheduleSchema
+*/
+@Parcelize
+data class ScheduleSchema(
+    
+    @SerializedName("schedule")
+    var schedule: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("published")
+    var published: Boolean?=null
+): Parcelable
+
+/*
+    Model: BlogGetResponse
+*/
+@Parcelize
+data class BlogGetResponse(
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: ResourceContent
+*/
+@Parcelize
+data class ResourceContent(
+    
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("value")
+    var value: String?=null
+): Parcelable
+
+/*
+    Model: Author
+*/
+@Parcelize
+data class Author(
+    
+    @SerializedName("designation")
+    var designation: String?=null,
+    @SerializedName("id")
+    var id: String?=null,
+    @SerializedName("name")
+    var name: String?=null
+): Parcelable
+
+/*
+    Model: BlogSchema
+*/
+@Parcelize
+data class BlogSchema(
+    
+    @SerializedName("_id")
+    var id: @RawValue ArrayList<Any>?=null,
+    @SerializedName("_schedule")
+    var schedule: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("archived")
+    var archived: Boolean?=null,
+    @SerializedName("author")
+    var author: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("content")
+    var content: ArrayList<ResourceContent>?=null,
+    @SerializedName("feature_image")
+    var featureImage: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("published")
+    var published: Boolean?=null,
+    @SerializedName("reading_time")
+    var readingTime: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    @SerializedName("title")
+    var title: String?=null,
+    @SerializedName("DateMeta")
+    var dateMeta: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: BlogRequest
+*/
+@Parcelize
+data class BlogRequest(
+    
+    @SerializedName("_schedule")
+    var schedule: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("author")
+    var author: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("content")
+    var content: ArrayList<ResourceContent>?=null,
+    @SerializedName("feature_image")
+    var featureImage: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("published")
+    var published: Boolean?=null,
+    @SerializedName("reading_time")
+    var readingTime: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    @SerializedName("title")
+    var title: String?=null
+): Parcelable
+
+/*
+    Model: GetAnnouncementListSchema
+*/
+@Parcelize
+data class GetAnnouncementListSchema(
+    
+    @SerializedName("items")
+    var items: ArrayList<AdminAnnouncementSchema>?=null
+): Parcelable
+
+/*
+    Model: CreateAnnouncementSchema
+*/
+@Parcelize
+data class CreateAnnouncementSchema(
+    
+    @SerializedName("message")
+    var message: String?=null,
+    @SerializedName("data")
+    var data: AdminAnnouncementSchema?=null
+): Parcelable
+
+/*
+    Model: FaqSchema
+*/
+@Parcelize
+data class FaqSchema(
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("__v")
+    var v: Int?=null,
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("question")
+    var question: String?=null,
+    @SerializedName("answer")
+    var answer: String?=null
+): Parcelable
+
+/*
+    Model: CreateFaqResponseSchema
+*/
+@Parcelize
+data class CreateFaqResponseSchema(
+    
+    @SerializedName("faq")
+    var faq: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: CreateFaqSchema
+*/
+@Parcelize
+data class CreateFaqSchema(
+    
+    @SerializedName("faq")
+    var faq: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: GetFaqSchema
+*/
+@Parcelize
+data class GetFaqSchema(
+    
+    @SerializedName("faqs")
+    var faqs: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: UpdateFaqCategoryRequestSchema
+*/
+@Parcelize
+data class UpdateFaqCategoryRequestSchema(
+    
+    @SerializedName("category")
+    var category: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: CreateFaqCategoryRequestSchema
+*/
+@Parcelize
+data class CreateFaqCategoryRequestSchema(
+    
+    @SerializedName("category")
+    var category: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: CreateFaqCategorySchema
+*/
+@Parcelize
+data class CreateFaqCategorySchema(
+    
+    @SerializedName("category")
+    var category: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: GetFaqCategoriesSchema
+*/
+@Parcelize
+data class GetFaqCategoriesSchema(
+    
+    @SerializedName("categories")
+    var categories: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: GetFaqCategoryByIdOrSlugSchema
+*/
+@Parcelize
+data class GetFaqCategoryByIdOrSlugSchema(
+    
+    @SerializedName("category")
+    var category: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: Navigation
+*/
+@Parcelize
+data class Navigation(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("orientation")
+    var orientation: String?=null,
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("date_meta")
+    var dateMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("position")
+    var position: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("platform")
+    var platform: String?=null,
+    @SerializedName("navigation")
+    var navigation: NavigationRef?=null
+): Parcelable
+
+/*
+    Model: NavigationRef
+*/
+@Parcelize
+data class NavigationRef(
+    
+    @SerializedName("acl")
+    var acl: @RawValue ArrayList<Any>?=null,
+    @SerializedName("_locale_language")
+    var localeLanguage: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("image")
+    var image: String?=null,
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("action")
+    var action: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("active")
+    var active: Boolean?=null,
+    @SerializedName("display")
+    var display: String?=null,
+    @SerializedName("sort_order")
+    var sortOrder: Int?=null,
+    @SerializedName("sub_navigation")
+    var subNavigation: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: LandingPage
+*/
+@Parcelize
+data class LandingPage(
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("action")
+    var action: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("platform")
+    var platform: @RawValue ArrayList<Any>?=null,
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("date_meta")
+    var dateMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("application")
+    var application: String?=null
+): Parcelable
+
+/*
+    Model: Slideshow
+*/
+@Parcelize
+data class Slideshow(
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("date_meta")
+    var dateMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("platform")
+    var platform: String?=null,
+    @SerializedName("configuration")
+    var configuration: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("media")
+    var media: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("active")
+    var active: Boolean?=null
+): Parcelable
+
+/*
+    Model: AnnouncementsResponseSchema
+*/
+@Parcelize
+data class AnnouncementsResponseSchema(
+    
+    @SerializedName("announcements")
+    var announcements: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: FaqResponseSchema
+*/
+@Parcelize
+data class FaqResponseSchema(
+    
+    @SerializedName("faqs")
+    var faqs: ArrayList<Faq>?=null
+): Parcelable
+
+/*
+    Model: UpdateHandpickedSchema
+*/
+@Parcelize
+data class UpdateHandpickedSchema(
+    
+    @SerializedName("tag")
+    var tag: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: RemoveHandpickedSchema
+*/
+@Parcelize
+data class RemoveHandpickedSchema(
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
+): Parcelable
+
+/*
+    Model: TagsSchema
+*/
+@Parcelize
+data class TagsSchema(
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("tags")
+    var tags: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("__v")
+    var v: Int?=null
+): Parcelable
+
+/*
+    Model: CreateTagRequestSchema
+*/
+@Parcelize
+data class CreateTagRequestSchema(
+    
+    @SerializedName("tags")
+    var tags: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: Faq
+*/
+@Parcelize
+data class Faq(
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("question")
+    var question: String?=null,
+    @SerializedName("answer")
+    var answer: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("__v")
+    var v: Int?=null
+): Parcelable
+
+/*
+    Model: LandingPageGetResponse
+*/
+@Parcelize
+data class LandingPageGetResponse(
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: LandingPageSchema
+*/
+@Parcelize
+data class LandingPageSchema(
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("action")
+    var action: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("platform")
+    var platform: ArrayList<String>?=null,
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("date_meta")
+    var dateMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("archived")
+    var archived: Boolean?=null
+): Parcelable
+
+/*
+    Model: LandingPageRequest
+*/
+@Parcelize
+data class LandingPageRequest(
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("action")
+    var action: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("platform")
+    var platform: ArrayList<String>?=null
+): Parcelable
+
+/*
+    Model: DefaultNavigationResponse
+*/
+@Parcelize
+data class DefaultNavigationResponse(
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: NavigationGetResponse
+*/
+@Parcelize
+data class NavigationGetResponse(
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: NavigationSchema
+*/
+@Parcelize
+data class NavigationSchema(
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("archived")
+    var archived: Boolean?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("platform")
+    var platform: ArrayList<String>?=null,
+    @SerializedName("orientation")
+    var orientation: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("navigation")
+    var navigation: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: NavigationRequest
+*/
+@Parcelize
+data class NavigationRequest(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("platform")
+    var platform: ArrayList<String>?=null,
+    @SerializedName("orientation")
+    var orientation: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("navigation")
+    var navigation: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: CustomPage
+*/
+@Parcelize
+data class CustomPage(
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: CustomBlog
+*/
+@Parcelize
+data class CustomBlog(
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: PageGetResponse
+*/
+@Parcelize
+data class PageGetResponse(
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: PageSpec
+*/
+@Parcelize
+data class PageSpec(
+    
+    @SerializedName("specifications")
+    var specifications: @RawValue ArrayList<HashMap<String,Any>>?=null
+): Parcelable
+
+/*
+    Model: PageSpecItem
+*/
+@Parcelize
+data class PageSpecItem(
+    
+    @SerializedName("page_type")
+    var pageType: String?=null,
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    @SerializedName("params")
+    var params: ArrayList<String>?=null,
+    @SerializedName("query")
+    var query: ArrayList<String>?=null
+): Parcelable
+
+/*
+    Model: PageSchema
+*/
+@Parcelize
+data class PageSchema(
+    
+    @SerializedName("_id")
+    var id: @RawValue ArrayList<Any>?=null,
+    @SerializedName("_schedule")
+    var schedule: String?=null,
+    @SerializedName("application")
+    var application: @RawValue ArrayList<Any>?=null,
+    @SerializedName("component_ids")
+    var componentIds: ArrayList<String>?=null,
+    @SerializedName("content")
+    var content: ArrayList<PageContent>?=null,
+    @SerializedName("created_by")
+    var createdBy: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("date_meta")
+    var dateMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("description")
+    var description: String?=null,
+    @SerializedName("feature_image")
+    var featureImage: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("page_meta")
+    var pageMeta: ArrayList<PageMeta>?=null,
+    @SerializedName("platform")
+    var platform: String?=null,
+    @SerializedName("published")
+    var published: Boolean?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    @SerializedName("title")
+    var title: String?=null,
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("visibility")
+    var visibility: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: CreatedBy
+*/
+@Parcelize
+data class CreatedBy(
+    
+    @SerializedName("id")
+    var id: String?=null
+): Parcelable
+
+/*
+    Model: DateMeta
+*/
+@Parcelize
+data class DateMeta(
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null
+): Parcelable
+
+/*
+    Model: PageContent
+*/
+@Parcelize
+data class PageContent(
+    
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("value")
+    var value: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: PageMeta
+*/
+@Parcelize
+data class PageMeta(
+    
+    @SerializedName("key")
+    var key: String?=null,
+    @SerializedName("value")
+    var value: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: PageRequest
+*/
+@Parcelize
+data class PageRequest(
+    
+    @SerializedName("_schedule")
+    var schedule: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("author")
+    var author: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("content")
+    var content: ArrayList<ResourceContent>?=null,
+    @SerializedName("feature_image")
+    var featureImage: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("published")
+    var published: Boolean?=null,
+    @SerializedName("reading_time")
+    var readingTime: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    @SerializedName("title")
+    var title: String?=null
+): Parcelable
+
+/*
+    Model: PagePublishRequest
+*/
+@Parcelize
+data class PagePublishRequest(
+    
+    @SerializedName("publish")
+    var publish: Boolean?=null
+): Parcelable
+
+/*
+    Model: PageMetaSchema
+*/
+@Parcelize
+data class PageMetaSchema(
+    
+    @SerializedName("system_pages")
+    var systemPages: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("custom_pages")
+    var customPages: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("application_id")
+    var applicationId: String?=null
+): Parcelable
+
+/*
+    Model: SlideshowGetResponse
+*/
+@Parcelize
+data class SlideshowGetResponse(
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("page")
+    var page: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
+    Model: SlideshowSchema
+*/
+@Parcelize
+data class SlideshowSchema(
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("date_meta")
+    var dateMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("platform")
+    var platform: String?=null,
+    @SerializedName("configuration")
+    var configuration: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("media")
+    var media: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("active")
+    var active: Boolean?=null,
+    @SerializedName("archived")
+    var archived: Boolean?=null
+): Parcelable
+
+/*
+    Model: SlideshowRequest
+*/
+@Parcelize
+data class SlideshowRequest(
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    @SerializedName("platform")
+    var platform: String?=null,
+    @SerializedName("configuration")
+    var configuration: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("media")
+    var media: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("active")
+    var active: Boolean?=null
+): Parcelable
+
+/*
+    Model: Support
+*/
+@Parcelize
+data class Support(
+    
+    @SerializedName("created")
+    var created: Boolean?=null,
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("config_type")
+    var configType: String?=null,
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    @SerializedName("contact")
+    var contact: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+
+
+/*
     Model: PaymentGatewayConfigResponse
 */
 @Parcelize
@@ -3766,30 +4666,6 @@ data class Rule(
     var min: Double?=null,
     @SerializedName("max")
     var max: Double?=null
-): Parcelable
-
-/*
-    Model: DateMeta
-*/
-@Parcelize
-data class DateMeta(
-    
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    @SerializedName("created_on")
-    var createdOn: String?=null
-): Parcelable
-
-/*
-    Model: Author
-*/
-@Parcelize
-data class Author(
-    
-    @SerializedName("created_by")
-    var createdBy: String?=null,
-    @SerializedName("modified_by")
-    var modifiedBy: String?=null
 ): Parcelable
 
 /*

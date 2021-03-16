@@ -6,6 +6,7 @@
 * [Lead](#Lead) - Handles communication between Staff and Users 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
+* [Content](#Content) - Content System 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Share](#Share) - Short link and QR Code 
 * [FileStorage](#FileStorage) - File Storage 
@@ -48,8 +49,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [unfollowById](#unfollowbyid)
     * [followById](#followbyid)
+    * [unfollowById](#unfollowbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -133,6 +134,25 @@
     * [deleteEmail](#deleteemail)
     * [setEmailAsPrimary](#setemailasprimary)
     * [sendVerificationLinkToEmail](#sendverificationlinktoemail)
+    
+
+* [Content](#Content)
+  * Methods
+    * [getAnnouncements](#getannouncements)
+    * [getBlog](#getblog)
+    * [getFaqs](#getfaqs)
+    * [getFaqCategories](#getfaqcategories)
+    * [getFaqByIdOrSlug](#getfaqbyidorslug)
+    * [getFaqCategoryBySlugOrId](#getfaqcategorybyslugorid)
+    * [getFaqsByCategoryIdOrSlug](#getfaqsbycategoryidorslug)
+    * [getLandingPage](#getlandingpage)
+    * [getLegalInformation](#getlegalinformation)
+    * [getNavigations](#getnavigations)
+    * [getPage](#getpage)
+    * [getSeoConfiguration](#getseoconfiguration)
+    * [getSlideshow](#getslideshow)
+    * [getSupportInformation](#getsupportinformation)
+    * [getTags](#gettags)
     
 
 * [Communication](#Communication)
@@ -1520,11 +1540,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-UnFollow a Product
+#### followById
+Follow a particular Product
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1537,9 +1557,9 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | integer | the `id` of the collection type you want to unfollow | 
+| collectionId | integer | the `id` of the collection type you want to follow | 
 
-You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
+Follow a particular Product specified by its uid. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -1573,11 +1593,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow a particular Product
+#### unfollowById
+UnFollow a Product
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1590,9 +1610,9 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | integer | the `id` of the collection type you want to follow | 
+| collectionId | integer | the `id` of the collection type you want to unfollow | 
 
-Follow a particular Product specified by its uid. Pass the uid of the product in request URL
+You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -8640,6 +8660,1085 @@ Schema: `AuthenticationApiError`
 
 
 Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Content
+
+
+#### getAnnouncements
+Get live announcements
+
+```kotlin
+content.getAnnouncements().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get live announcements for each or all pages with page slug of page and end date schedule.
+
+*Success Response:*
+
+
+
+Announcement api response. announcements object contains page slug name as propery with list of announcements enabled for that page. `$all` is special page slug to indicate show announcemnt on all pages.
+
+
+Schema: `AnnouncementsResponseSchema`
+
+
+*Examples:*
+
+
+Announcements enabled
+```json
+{
+  "$ref": "#/components/examples/AnnouncementEnabledExample"
+}
+```
+
+No Announcement enabled
+```json
+{
+  "value": {
+    "announcements": [],
+    "refresh_rate": 900,
+    "refresh_pages": []
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getBlog
+Get Blog by slug
+
+```kotlin
+content.getBlog(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The `slug` of a blog. Use this parameter to retrieve a particular blog | 
+
+Use this API to fetch a blog using `slug`
+
+*Success Response:*
+
+
+
+A JSON object with blog details
+
+
+Schema: `CustomBlog`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/CustomBlog"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getFaqs
+Get frequently asked questions
+
+```kotlin
+content.getFaqs().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get frequently asked questions list. These will be helpful for users to using website.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `FaqResponseSchema`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/AppFaqs"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getFaqCategories
+Get FAQ categories list
+
+```kotlin
+content.getFaqCategories().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get list of FAQ categories
+
+*Success Response:*
+
+
+
+Get FAQ Categories
+
+
+Schema: `GetFaqCategoriesSchema`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getFaqByIdOrSlug
+Get frequently asked question
+
+```kotlin
+content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| idOrSlug | string | Slug or Id of FAQ | 
+
+Get frequently asked questions list. These will be helpful for users to using website.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `FaqSchema`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getFaqCategoryBySlugOrId
+Get FAQ category by slug or id
+
+```kotlin
+content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| idOrSlug | string | Slug or Id of FAQ Category | 
+
+Get FAQ category by slug or id
+
+*Success Response:*
+
+
+
+Get FAQ Categories
+
+
+Schema: `GetFaqCategoryByIdOrSlugSchema`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getFaqsByCategoryIdOrSlug
+Get FAQs of a Faq Category id or slug
+
+```kotlin
+content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| idOrSlug | string | Faq category ID or slug | 
+
+Get FAQs of a Faq Category `id` or `slug`
+
+*Success Response:*
+
+
+
+Get FAQs by slug/id of FAQ Category
+
+
+Schema: `GetFaqSchema`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getLandingPage
+Get landing page
+
+```kotlin
+content.getLandingPage().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to fetch a landing page
+
+*Success Response:*
+
+
+
+A JSON object with landing details
+
+
+Schema: `LandingPage`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/LandingPage"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getLegalInformation
+Get legal information
+
+```kotlin
+content.getLegalInformation().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get legal information of application, which includes policy, Terms and Conditions, and FAQ information of application.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ApplicationLegal`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/Legal"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getNavigations
+Get navigation
+
+```kotlin
+content.getNavigations().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to fetch a navigation
+
+*Success Response:*
+
+
+
+A JSON object with navigation details
+
+
+Schema: `Navigation`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/Navigation"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getPage
+Get Page by slug
+
+```kotlin
+content.getPage(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The `slug` of a page. Use this parameter to retrieve a particular page | 
+
+Use this API to fetch a custom page using `slug`
+
+*Success Response:*
+
+
+
+A JSON object with page details
+
+
+Schema: `CustomPage`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/CustomPage"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getSeoConfiguration
+Get seo of application
+
+```kotlin
+content.getSeoConfiguration().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get seo of application
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `Seo`
+
+
+*Examples:*
+
+
+Success
+```json
+{
+  "$ref": "#/components/examples/Seo"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getSlideshow
+Get slideshow by slug
+
+```kotlin
+content.getSlideshow(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The `slug` of a slideshow. Use this parameter to retrieve a particular slideshow | 
+
+Use this API to fetch a slideshow using `slug`
+
+*Success Response:*
+
+
+
+A JSON object with slideshow details
+
+
+Schema: `Slideshow`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/Slideshow"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getSupportInformation
+Get support information
+
+```kotlin
+content.getSupportInformation().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get contact details for customer support. Including emails and phone numbers
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `Support`
+
+
+*Examples:*
+
+
+default
+```json
+{
+  "$ref": "#/components/examples/Support"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getTags
+Get Tags for application
+
+```kotlin
+content.getTags().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+
+
+*Success Response:*
+
+
+
+A JSON object of tags
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `ConvexApiError`
 
 
 

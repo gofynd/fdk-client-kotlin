@@ -551,13 +551,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun followById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -1061,6 +1061,108 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun sendVerificationLinkToEmail(platform: String?=null,body: EditEmailRequestSchema): Deferred<Response<SendEmailVerifyLinkSuccess>>? {
         return userApiList?.sendVerificationLinkToEmail(platform = platform, body = body)}
+
+    
+    
+}
+
+
+class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val contentApiList by lazy {
+        generatecontentApiList()
+    }
+
+    private fun generatecontentApiList(): ContentApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationContent",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
+    }
+    
+    fun getAnnouncements(): Deferred<Response<AnnouncementsResponseSchema>>? {
+        return contentApiList?.getAnnouncements( )}
+
+    
+    
+    fun getBlog(slug: String): Deferred<Response<CustomBlog>>? {
+        return contentApiList?.getBlog(slug = slug )}
+
+    
+    
+    fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
+        return contentApiList?.getFaqs( )}
+
+    
+    
+    fun getFaqCategories(): Deferred<Response<GetFaqCategoriesSchema>>? {
+        return contentApiList?.getFaqCategories( )}
+
+    
+    
+    fun getFaqByIdOrSlug(idOrSlug: String): Deferred<Response<FaqSchema>>? {
+        return contentApiList?.getFaqByIdOrSlug(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getFaqCategoryBySlugOrId(idOrSlug: String): Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>? {
+        return contentApiList?.getFaqCategoryBySlugOrId(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getFaqsByCategoryIdOrSlug(idOrSlug: String): Deferred<Response<GetFaqSchema>>? {
+        return contentApiList?.getFaqsByCategoryIdOrSlug(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getLandingPage(): Deferred<Response<LandingPage>>? {
+        return contentApiList?.getLandingPage( )}
+
+    
+    
+    fun getLegalInformation(): Deferred<Response<ApplicationLegal>>? {
+        return contentApiList?.getLegalInformation( )}
+
+    
+    
+    fun getNavigations(): Deferred<Response<Navigation>>? {
+        return contentApiList?.getNavigations( )}
+
+    
+    
+    fun getPage(slug: String): Deferred<Response<CustomPage>>? {
+        return contentApiList?.getPage(slug = slug )}
+
+    
+    
+    fun getSeoConfiguration(): Deferred<Response<Seo>>? {
+        return contentApiList?.getSeoConfiguration( )}
+
+    
+    
+    fun getSlideshow(slug: String): Deferred<Response<Slideshow>>? {
+        return contentApiList?.getSlideshow(slug = slug )}
+
+    
+    
+    fun getSupportInformation(): Deferred<Response<Support>>? {
+        return contentApiList?.getSupportInformation( )}
+
+    
+    
+    fun getTags(): Deferred<Response<TagsSchema>>? {
+        return contentApiList?.getTags( )}
 
     
     
