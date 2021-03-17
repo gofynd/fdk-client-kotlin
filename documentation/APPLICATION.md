@@ -159,7 +159,7 @@
   * Methods
     * [getCommunicationConsent](#getcommunicationconsent)
     * [upsertCommunicationConsent](#upsertcommunicationconsent)
-    * [upsertPushtoken](#upsertpushtoken)
+    * [upsertAppPushtoken](#upsertapppushtoken)
     
 
 * [Share](#Share)
@@ -9870,11 +9870,11 @@ Schema: `BadRequest`
 ---
 
 
-#### upsertPushtoken
+#### upsertAppPushtoken
 Upsert push token of a user
 
 ```kotlin
-communication.upsertPushtoken(body: body).safeAwait(
+communication.upsertAppPushtoken(body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -10843,7 +10843,7 @@ Get ordering store signed cookie on selection of ordering store.
 Success
 
 
-Schema: `SuccessResponse`
+Schema: `SuccessMessageResponse`
 
 
 
@@ -10894,7 +10894,7 @@ Unset ordering store cookie.
 Success
 
 
-Schema: `SuccessResponse`
+Schema: `SuccessMessageResponse`
 
 
 

@@ -1203,8 +1203,8 @@ class CommunicationDataManagerClass(val config: ApplicationConfig) : BaseReposit
 
     
     
-    fun upsertPushtoken(body: PushtokenReq): Deferred<Response<PushtokenRes>>? {
-        return communicationApiList?.upsertPushtoken( body = body)}
+    fun upsertAppPushtoken(body: PushtokenReq): Deferred<Response<PushtokenRes>>? {
+        return communicationApiList?.upsertAppPushtoken( body = body)}
 
     
     
@@ -1429,12 +1429,12 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
 
     
     
-    fun getOrderingStoreCookie(body: OrderingStoreSelectRequest): Deferred<Response<SuccessResponse>>? {
+    fun getOrderingStoreCookie(body: OrderingStoreSelectRequest): Deferred<Response<SuccessMessageResponse>>? {
         return configurationApiList?.getOrderingStoreCookie( body = body)}
 
     
     
-    fun removeOrderingStoreCookie(): Deferred<Response<SuccessResponse>>? {
+    fun removeOrderingStoreCookie(): Deferred<Response<SuccessMessageResponse>>? {
         return configurationApiList?.removeOrderingStoreCookie( )}
 
     

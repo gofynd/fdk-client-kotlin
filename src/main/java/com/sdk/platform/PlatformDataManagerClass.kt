@@ -525,10 +525,10 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     }
     
     
-    suspend fun searchUsers(query: String?=null)
+    suspend fun searchUsers(q: String?=null)
     : Deferred<Response<UserSearchResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , query = query )
+                userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q )
         } else {
             null
         }
@@ -1218,6 +1218,933 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     : Deferred<Response<TagsSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editInjectableTag(companyId = config.companyId , applicationId = applicationId , tagId = tagId, body = body)
+        } else {
+            null
+        }
+    }
+    
+}
+}
+
+class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val communicationApiList by lazy {
+        generatecommunicationApiList()
+    }
+    
+    private fun generatecommunicationApiList(): CommunicationApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformCommunication",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+inner class Application(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun getCampaigns()
+    : Deferred<Response<Campaigns>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getCampaigns
+    **/
+    fun getCampaignsPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<Campaigns>{
+        val paginator = Paginator<Campaigns>()
+        paginator.setCallBack(object : PaginatorCallback<Campaigns> {
+            override suspend fun onNext(
+                onSuccess: (Event<Campaigns>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getCampaigns(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun createCampaign(body: CampaignReq)
+    : Deferred<Response<Campaign>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createCampaign(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCampaignById(id: String)
+    : Deferred<Response<Campaign>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getCampaignById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCampaignById(id: String,body: CampaignReq)
+    : Deferred<Response<Campaign>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateCampaignById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getStatsOfCampaignById(id: String)
+    : Deferred<Response<GetStats>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getStatsOfCampaignById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAudiences()
+    : Deferred<Response<Audiences>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAudiences
+    **/
+    fun getAudiencesPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<Audiences>{
+        val paginator = Paginator<Audiences>()
+        paginator.setCallBack(object : PaginatorCallback<Audiences> {
+            override suspend fun onNext(
+                onSuccess: (Event<Audiences>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getAudiences(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun createAudience(body: AudienceReq)
+    : Deferred<Response<Audience>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createAudience(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getBigqueryHeaders(body: BigqueryHeadersReq)
+    : Deferred<Response<BigqueryHeadersRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getBigqueryHeaders(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAudienceById(id: String)
+    : Deferred<Response<Audience>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getAudienceById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAudienceById(id: String,body: AudienceReq)
+    : Deferred<Response<Audience>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateAudienceById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getNSampleRecordsFromCsv(body: GetNRecordsCsvReq)
+    : Deferred<Response<GetNRecordsCsvRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getNSampleRecordsFromCsv(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEmailProviders()
+    : Deferred<Response<EmailProviders>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getEmailProviders
+    **/
+    fun getEmailProvidersPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<EmailProviders>{
+        val paginator = Paginator<EmailProviders>()
+        paginator.setCallBack(object : PaginatorCallback<EmailProviders> {
+            override suspend fun onNext(
+                onSuccess: (Event<EmailProviders>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getEmailProviders(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun createEmailProvider(body: EmailProviderReq)
+    : Deferred<Response<EmailProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createEmailProvider(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEmailProviderById(id: String)
+    : Deferred<Response<EmailProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateEmailProviderById(id: String,body: EmailProviderReq)
+    : Deferred<Response<EmailProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateEmailProviderById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEmailTemplates()
+    : Deferred<Response<EmailTemplates>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getEmailTemplates
+    **/
+    fun getEmailTemplatesPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<EmailTemplates>{
+        val paginator = Paginator<EmailTemplates>()
+        paginator.setCallBack(object : PaginatorCallback<EmailTemplates> {
+            override suspend fun onNext(
+                onSuccess: (Event<EmailTemplates>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getEmailTemplates(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun createEmailTemplate(body: EmailTemplateReq)
+    : Deferred<Response<EmailTemplateRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createEmailTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSystemEmailTemplates()
+    : Deferred<Response<SystemEmailTemplates>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSystemEmailTemplates(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEmailTemplateById(id: String)
+    : Deferred<Response<EmailTemplate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateEmailTemplateById(id: String,body: EmailTemplateReq)
+    : Deferred<Response<EmailTemplateRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteEmailTemplateById(id: String)
+    : Deferred<Response<EmailTemplateDeleteSuccessRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.deleteEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEventSubscriptions()
+    : Deferred<Response<EventSubscriptions>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getEventSubscriptions
+    **/
+    fun getEventSubscriptionsPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<EventSubscriptions>{
+        val paginator = Paginator<EventSubscriptions>()
+        paginator.setCallBack(object : PaginatorCallback<EventSubscriptions> {
+            override suspend fun onNext(
+                onSuccess: (Event<EventSubscriptions>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getEventSubscriptions(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun getJobs()
+    : Deferred<Response<Jobs>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getJobs
+    **/
+    fun getJobsPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<Jobs>{
+        val paginator = Paginator<Jobs>()
+        paginator.setCallBack(object : PaginatorCallback<Jobs> {
+            override suspend fun onNext(
+                onSuccess: (Event<Jobs>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getJobs(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun triggerCampaignJob(body: TriggerJobRequest)
+    : Deferred<Response<TriggerJobResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.triggerCampaignJob(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getJobLogs()
+    : Deferred<Response<JobLogs>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getJobLogs
+    **/
+    fun getJobLogsPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<JobLogs>{
+        val paginator = Paginator<JobLogs>()
+        paginator.setCallBack(object : PaginatorCallback<JobLogs> {
+            override suspend fun onNext(
+                onSuccess: (Event<JobLogs>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getJobLogs(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun getCommunicationLogs()
+    : Deferred<Response<Logs>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getCommunicationLogs(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getCommunicationLogs
+    **/
+    fun getCommunicationLogsPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<Logs>{
+        val paginator = Paginator<Logs>()
+        paginator.setCallBack(object : PaginatorCallback<Logs> {
+            override suspend fun onNext(
+                onSuccess: (Event<Logs>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getCommunicationLogs(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun getSmsProviders()
+    : Deferred<Response<SmsProviders>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsProviders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getSmsProviders
+    **/
+    fun getSmsProvidersPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<SmsProviders>{
+        val paginator = Paginator<SmsProviders>()
+        paginator.setCallBack(object : PaginatorCallback<SmsProviders> {
+            override suspend fun onNext(
+                onSuccess: (Event<SmsProviders>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getSmsProviders(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun createSmsProvider(body: SmsProviderReq)
+    : Deferred<Response<SmsProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createSmsProvider(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSmsProviderById(id: String)
+    : Deferred<Response<SmsProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateSmsProviderById(id: String,body: SmsProviderReq)
+    : Deferred<Response<SmsProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateSmsProviderById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSmsTemplates()
+    : Deferred<Response<SmsTemplates>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getSmsTemplates
+    **/
+    fun getSmsTemplatesPaginator(
+    companyId: String, applicationId: String
+    
+    ) : Paginator<SmsTemplates>{
+        val paginator = Paginator<SmsTemplates>()
+        paginator.setCallBack(object : PaginatorCallback<SmsTemplates> {
+            override suspend fun onNext(
+                onSuccess: (Event<SmsTemplates>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getSmsTemplates(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+    suspend fun createSmsTemplate(body: SmsTemplateReq)
+    : Deferred<Response<SmsTemplateRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createSmsTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSmsTemplateById(id: String)
+    : Deferred<Response<SmsTemplate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateSmsTemplateById(id: String,body: SmsTemplateReq)
+    : Deferred<Response<SmsTemplateRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteSmsTemplateById(id: String)
+    : Deferred<Response<SmsTemplateDeleteSuccessRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.deleteSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSystemSystemTemplates()
+    : Deferred<Response<SystemSmsTemplates>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSystemSystemTemplates(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

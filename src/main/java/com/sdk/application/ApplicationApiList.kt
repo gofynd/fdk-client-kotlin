@@ -467,7 +467,7 @@ interface CommunicationApiList {
     : Deferred<Response<CommunicationConsentRes>>
     
     @POST ("/service/application/communication/v1.0/pn-token")
-    fun upsertPushtoken(@Body body: PushtokenReq)
+    fun upsertAppPushtoken(@Body body: PushtokenReq)
     : Deferred<Response<PushtokenRes>>
     
 }
@@ -560,11 +560,11 @@ interface ConfigurationApiList {
     
     @POST ("/application/current/ordering-store/select")
     fun getOrderingStoreCookie(@Body body: OrderingStoreSelectRequest)
-    : Deferred<Response<SuccessResponse>>
+    : Deferred<Response<SuccessMessageResponse>>
     
     @DELETE ("/application/current/ordering-store/select")
     fun removeOrderingStoreCookie()
-    : Deferred<Response<SuccessResponse>>
+    : Deferred<Response<SuccessMessageResponse>>
     
     @GET ("/service/application/configuration/v1.0/staff")
     fun getAppStaffs(@Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
