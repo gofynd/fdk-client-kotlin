@@ -1771,6 +1771,81 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
 }
 }
 
+class ShareDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val shareApiList by lazy {
+        generateshareApiList()
+    }
+    
+    private fun generateshareApiList(): ShareApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformShare",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
+    }
+    
+    
+    
+    
+    
+
+inner class Application(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun createShortLink(body: ShortLinkReq)
+    : Deferred<Response<ShortLinkRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.createShortLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getShortLinks(pageNo: String?=null, pageSize: String?=null, createdBy: String?=null, active: String?=null, q: String?=null)
+    : Deferred<Response<ShortLinkList>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, q = q )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getShortLinkByHash(hash: String)
+    : Deferred<Response<ShortLinkRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.getShortLinkByHash(companyId = config.companyId , applicationId = applicationId , hash = hash )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateShortLinkById(id: String)
+    : Deferred<Response<ShortLinkRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.updateShortLinkById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+}
+}
+
 class InventoryDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val inventoryApiList by lazy {

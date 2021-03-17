@@ -568,6 +568,26 @@ interface CompanyProfileApiList {
     
 }
 
+interface ShareApiList {
+    
+    @POST ("/service/platform/share/v1.0/company/{company_id}/application/{application_id}/links/short-link")
+    fun createShortLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ShortLinkReq)
+    : Deferred<Response<ShortLinkRes>>
+    
+    @GET ("/service/platform/share/v1.0/company/{company_id}/application/{application_id}/links/short-link")
+    fun getShortLinks(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("created_by") createdBy: String?, @Query("active") active: String?, @Query("q") q: String?)
+    : Deferred<Response<ShortLinkList>>
+    
+    @GET ("/service/platform/share/v1.0/company/{company_id}/application/{application_id}/links/short-link/{hash}")
+    fun getShortLinkByHash(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("hash") hash: String)
+    : Deferred<Response<ShortLinkRes>>
+    
+    @PATCH ("/services/platform/share/v1.0/company/{company_id}/application/{application_id}/links/short-link/{id}")
+    fun updateShortLinkById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<ShortLinkRes>>
+    
+}
+
 interface InventoryApiList {
     
     @GET ("/v1.0/company/{company_id}/jobs")

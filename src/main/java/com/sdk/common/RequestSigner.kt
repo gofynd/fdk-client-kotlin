@@ -3,6 +3,7 @@ package com.sdk.common
 import android.net.Uri
 import android.util.Log
 import okhttp3.Request
+import okio.Buffer
 import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.util.*
@@ -113,7 +114,7 @@ class RequestSigner(val request: Request) {
                 Uri.encode(it) ?: ""
             }.sorted().forEach { encodedQueryName ->
                 updatedReq.url().queryParameterValues(Uri.decode(encodedQueryName)).map {
-                    it?:""//Uri.encode(it) ?: ""
+                    it//Uri.encode(it) ?: ""
                 }.sorted().forEach { queryValue ->
                     val query = "${encodedQueryName}=${queryValue}"
                     if (encodedQueryPieces.isEmpty()) {
@@ -128,8 +129,8 @@ class RequestSigner(val request: Request) {
         Log.e("ReqSignER", "canonicalQueryString...... $canonicalQueryString")
 
         val encodedPathPieces = StringBuilder()
-        updatedReq.url().pathSegments().forEach { path ->
-            val path = "${Uri.encode(path)}"
+        updatedReq.url().encodedPathSegments().forEach { path ->
+            //val path = "${Uri.encode(path)}"
             if (encodedPathPieces.isEmpty()) {
                 encodedPathPieces.append("/").append(path)
             } else {
@@ -146,12 +147,15 @@ class RequestSigner(val request: Request) {
         canonicalRequest.append(canonicalQueryString).append("\n")
         canonicalRequest.append(canonicalHeaders()).append("\n").append("\n")
         canonicalRequest.append(signedHeaders()).append("\n")
-        canonicalRequest.append(hash(updatedReq.body()?.toString() ?: ""))
 
-        Log.e(
-            "ReqSignER",
-            "hash(updatedReq.body())...... ${hash(updatedReq.body()?.toString() ?: "")}"
-        )
+        val bodyBuffer = Buffer()
+        updatedReq.body()?.writeTo(bodyBuffer)
+        val body = bodyBuffer.readUtf8()
+
+        canonicalRequest.append(hash(body ?: ""))
+
+        Log.e("ReqSignER", " body()...... ${body?: ""}")
+        Log.e("ReqSignER", "hash(updatedReq.body())...... ${hash(body ?: "")}")
 
 
         return canonicalRequest.toString()
@@ -214,3 +218,4 @@ class RequestSigner(val request: Request) {
         return headerNames.toString()
     }
 }
+

@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -691,7 +691,7 @@ interface RewardsApiList {
     : Deferred<Response<PointsResponse>>
     
     @GET ("/service/application/rewards/v1.0/user/points/history/")
-    fun getUserPointsHistory(@Query("pageID") pageId: String?, @Query("pageSize") pageSize: Int?)
+    fun getUserPointsHistory(@Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<PointsHistoryResponse>>
     
     @GET ("/service/application/rewards/v1.0/user/referral/")

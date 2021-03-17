@@ -96,7 +96,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->
@@ -301,7 +301,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 catalogApiList?.getBrands(department = department, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->
@@ -539,7 +539,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 catalogApiList?.getFollowedListing(collectionType = collectionType)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->
@@ -551,13 +551,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -624,7 +624,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 catalogApiList?.getStores(pageNo = pageNo, pageSize = pageSize, q = q, range = range, latitude = latitude, longitude = longitude)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->
@@ -1392,7 +1392,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
                 configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->
@@ -1669,7 +1669,11 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         
             
             
+                
+            
         
+            
+                
             
             
         
@@ -1677,7 +1681,7 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     *
     * Summary: Paginator for getUserPointsHistory
     **/
-    fun getUserPointsHistoryPaginator() : Paginator<PointsHistoryResponse>{
+    fun getUserPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
 
     val paginator = Paginator<PointsHistoryResponse>()
 
@@ -1687,11 +1691,11 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
-                val pageType = "number"
+                val pageType = "cursor"
                 rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->
@@ -1845,7 +1849,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                 feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=(pageNo ?: 0) + 1)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->

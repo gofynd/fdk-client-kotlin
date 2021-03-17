@@ -8,6 +8,7 @@
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
+* [Share](#Share) - Short link and QR Code 
 * [Inventory](#Inventory) -  
 * [Cart](#Cart) - Cart APIs 
 
@@ -164,6 +165,12 @@
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+ 
+* [Share](#Share)
+  * [Share#createShortLink](#sharecreateshortlink)
+  * [Share#getShortLinks](#sharegetshortlinks)
+  * [Share#getShortLinkByHash](#sharegetshortlinkbyhash)
+  * [Share#updateShortLinkById](#shareupdateshortlinkbyid)
  
 * [Inventory](#Inventory)
   * [Inventory#getJobsByCompany](#inventorygetjobsbycompany)
@@ -3851,6 +3858,134 @@ const data = await companyprofile.getLocationDetail(company_id, location_id, );
 
 
 This API helps to get data associated to a specific location.
+
+
+---
+
+
+
+---
+---
+
+
+## Share
+
+```javascript
+const { Configuration, Share } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const share = new Share(conf);
+
+```
+
+
+#### Share#createShortLink
+Create short link
+
+```javascript
+// Promise
+const promise = share.createShortLink(company_id, application_id, );
+
+// Async/Await
+const data = await share.createShortLink(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+
+
+Create short link
+
+
+---
+
+
+#### Share#getShortLinks
+Get short links
+
+```javascript
+// Promise
+const promise = share.getShortLinks(company_id, application_id, page_no, page_size, created_by, active, q, );
+
+// Async/Await
+const data = await share.getShortLinks(company_id, application_id, page_no, page_size, created_by, active, q, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| page_no | string | Current page number | 
+| page_size | string | Current page size | 
+| created_by | string | Short link creator | 
+| active | string | Short link active status | 
+| q | string | Search text for original and short url | 
+
+
+Get short links
+
+
+---
+
+
+#### Share#getShortLinkByHash
+Get short link by hash
+
+```javascript
+// Promise
+const promise = share.getShortLinkByHash(company_id, application_id, hash, );
+
+// Async/Await
+const data = await share.getShortLinkByHash(company_id, application_id, hash, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| hash | string | Hash of short url | 
+
+
+Get short link by hash
+
+
+---
+
+
+#### Share#updateShortLinkById
+Update short link by id
+
+```javascript
+// Promise
+const promise = share.updateShortLinkById(company_id, application_id, id, );
+
+// Async/Await
+const data = await share.updateShortLinkById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| id | string | Short link document identifier | 
+
+
+Update short link by id
 
 
 ---
