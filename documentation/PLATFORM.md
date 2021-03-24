@@ -9,6 +9,7 @@
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
+* [Assets](#Assets) - File Storage 
 * [Share](#Share) - Short link and QR Code 
 * [Inventory](#Inventory) -  
 * [Cart](#Cart) - Cart APIs 
@@ -204,6 +205,14 @@
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+ 
+* [Assets](#Assets)
+  * [Assets#companyCopyFiles](#assetscompanycopyfiles)
+  * [Assets#appCopyFiles](#assetsappcopyfiles)
+  * [Assets#getSignUrls](#assetsgetsignurls)
+  * [Assets#companyBrowse](#assetscompanybrowse)
+  * [Assets#appBrowse](#assetsappbrowse)
+  * [Assets#proxy](#assetsproxy)
  
 * [Share](#Share)
   * [Share#createShortLink](#sharecreateshortlink)
@@ -4865,6 +4874,180 @@ const data = await companyprofile.getLocationDetail(company_id, location_id, );
 
 
 This API helps to get data associated to a specific location.
+
+
+---
+
+
+
+---
+---
+
+
+## Assets
+
+```javascript
+const { Configuration, Assets } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const assets = new Assets(conf);
+
+```
+
+
+#### Assets#companyCopyFiles
+Copy Files
+
+```javascript
+// Promise
+const promise = assets.companyCopyFiles(sync, company_id, );
+
+// Async/Await
+const data = await assets.companyCopyFiles(sync, company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| sync | boolean | sync | 
+| company_id | integer | company_id | 
+
+
+Copy Files
+
+
+---
+
+
+#### Assets#appCopyFiles
+Copy Files
+
+```javascript
+// Promise
+const promise = assets.appCopyFiles(sync, company_id, application_id, );
+
+// Async/Await
+const data = await assets.appCopyFiles(sync, company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| sync | boolean | sync | 
+| company_id | integer | company_id | 
+| application_id | integer | application_id | 
+
+
+Copy Files
+
+
+---
+
+
+#### Assets#getSignUrls
+Explain here
+
+```javascript
+// Promise
+const promise = assets.getSignUrls(company_id, );
+
+// Async/Await
+const data = await assets.getSignUrls(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+
+
+Describe here
+
+
+---
+
+
+#### Assets#companyBrowse
+Browse Files
+
+```javascript
+// Promise
+const promise = assets.companyBrowse(namespace, company_id, );
+
+// Async/Await
+const data = await assets.companyBrowse(namespace, company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| namespace | string | bucket name | 
+| company_id | integer | company_id | 
+
+
+Browse Files
+
+
+---
+
+
+#### Assets#appBrowse
+Browse Files
+
+```javascript
+// Promise
+const promise = assets.appBrowse(namespace, company_id, application_id, );
+
+// Async/Await
+const data = await assets.appBrowse(namespace, company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| namespace | string | bucket name | 
+| company_id | integer | company_id | 
+| application_id | integer | application_id | 
+
+
+Browse Files
+
+
+---
+
+
+#### Assets#proxy
+Proxy
+
+```javascript
+// Promise
+const promise = assets.proxy(company_id, url, );
+
+// Async/Await
+const data = await assets.proxy(company_id, url, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| url | string | url | 
+
+
+Proxy
 
 
 ---

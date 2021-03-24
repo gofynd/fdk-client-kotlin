@@ -2698,6 +2698,166 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
 }
 }
 
+class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val assetsApiList by lazy {
+        generateassetsApiList()
+    }
+    
+    private fun generateassetsApiList(): AssetsApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformAssets",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(AssetsApiList::class.java) as? AssetsApiList
+    }
+    
+    
+    suspend fun companyCopyFiles(sync: Boolean?=null, body: BulkRequest)
+    : Deferred<Response<BulkResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            assetsApiList?.companyCopyFiles(
+        sync = sync, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    suspend fun getSignUrls(body: SignUrlRequest)
+    : Deferred<Response<SignUrlResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            assetsApiList?.getSignUrls(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun companyBrowse(namespace: String, )
+    : Deferred<Response<BrowseResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            assetsApiList?.companyBrowse(
+        namespace = namespace, companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    suspend fun proxy(url: String)
+    : Deferred<Response<String>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            assetsApiList?.proxy(
+        companyId = config.companyId, url = url )
+        } else {
+            null
+        } 
+    }
+    
+
+inner class Application(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    
+    suspend fun appCopyFiles(sync: Boolean?=null, body: BulkRequest)
+    : Deferred<Response<BulkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assetsApiList?.appCopyFiles(sync = sync, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    suspend fun appBrowse(namespace: String, )
+    : Deferred<Response<BrowseResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assetsApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for appBrowse
+    **/
+    fun appBrowsePaginator(
+    namespace: String, companyId: Int, applicationId: Int
+    
+    ) : Paginator<BrowseResponse>{
+        val paginator = Paginator<BrowseResponse>()
+        paginator.setCallBack(object : PaginatorCallback<BrowseResponse> {
+            override suspend fun onNext(
+                onSuccess: (Event<BrowseResponse>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    assetsApiList?.appBrowse(namespace = namespace, companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
+}
+}
+
 class ShareDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val shareApiList by lazy {
@@ -2940,7 +3100,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     
     
     suspend fun createCoupon(body: CouponAdd)
-    : Deferred<Response<SuccessResponse>>? {
+    : Deferred<Response<SuccessMessageResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createCoupon(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -2960,7 +3120,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     
     
     suspend fun updateCoupon(id: String,body: CouponUpdate)
-    : Deferred<Response<SuccessResponse>>? {
+    : Deferred<Response<SuccessMessageResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCoupon(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -2970,7 +3130,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     
     
     suspend fun updateCouponPartially(id: String,body: CouponPartialUpdate)
-    : Deferred<Response<SuccessResponse>>? {
+    : Deferred<Response<SuccessMessageResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCouponPartially(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {

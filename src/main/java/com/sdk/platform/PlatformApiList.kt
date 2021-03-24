@@ -716,6 +716,34 @@ interface CompanyProfileApiList {
     
 }
 
+interface AssetsApiList {
+    
+    @POST ("/service/application/assets/v1.0/uploads/company/{company_id}/copy/")
+    fun companyCopyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String,@Body body: BulkRequest)
+    : Deferred<Response<BulkResponse>>
+    
+    @POST ("/service/application/assets/v1.0/uploads/company/{company_id}/application/{application_id}/copy/")
+    fun appCopyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkRequest)
+    : Deferred<Response<BulkResponse>>
+    
+    @POST ("/service/application/assets/v1.0/company/{company_id}/sign-urls/")
+    fun getSignUrls(@Path("company_id") companyId: String,@Body body: SignUrlRequest)
+    : Deferred<Response<SignUrlResponse>>
+    
+    @GET ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/browse/")
+    fun companyBrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String)
+    : Deferred<Response<BrowseResponse>>
+    
+    @GET ("/service/application/assets/v1.0/company/{company_id}/application/{application_id}/namespaces/{namespace}/browse/")
+    fun appBrowse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<BrowseResponse>>
+    
+    @POST ("/service/application/assets/v1.0/company/{company_id}/proxy/")
+    fun proxy(@Path("company_id") companyId: String, @Query("url") url: String)
+    : Deferred<Response<String>>
+    
+}
+
 interface ShareApiList {
     
     @POST ("/service/platform/share/v1.0/company/{company_id}/application/{application_id}/links/short-link")
@@ -776,7 +804,7 @@ interface CartApiList {
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon")
     fun createCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CouponAdd)
-    : Deferred<Response<SuccessResponse>>
+    : Deferred<Response<SuccessMessageResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
     fun getCouponById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
@@ -784,11 +812,11 @@ interface CartApiList {
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
     fun updateCoupon(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CouponUpdate)
-    : Deferred<Response<SuccessResponse>>
+    : Deferred<Response<SuccessMessageResponse>>
     
     @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon/{id}")
     fun updateCouponPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CouponPartialUpdate)
-    : Deferred<Response<SuccessResponse>>
+    : Deferred<Response<SuccessMessageResponse>>
     
 }
 

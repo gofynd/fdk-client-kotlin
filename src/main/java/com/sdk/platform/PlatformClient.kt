@@ -18,6 +18,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
     
+    val assets by lazy { AssetsDataManagerClass(config)}
+    
     val share by lazy { ShareDataManagerClass(config)}
     
     val inventory by lazy { InventoryDataManagerClass(config)}
@@ -45,6 +47,8 @@ class PlatformClient(val config:PlatformConfig) {
     val order by lazy { this@PlatformClient.order.Application(applicationId,config)}
     
     val companyProfile by lazy { this@PlatformClient.companyProfile.Application(applicationId,config)}
+    
+    val assets by lazy { this@PlatformClient.assets.Application(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.Application(applicationId,config)}
     

@@ -3277,7 +3277,7 @@ cart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
-| mobileNo | integer |  | 
+| mobileNo | string |  | 
 | checkoutMode | string |  | 
 | tags | integer |  | 
 | isDefault | boolean |  | 
@@ -3361,7 +3361,7 @@ cart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkout
 | --------- | ----  | --- |
 | id | integer |  | 
 | uid | integer |  | 
-| mobileNo | integer |  | 
+| mobileNo | string |  | 
 | checkoutMode | string |  | 
 | tags | integer |  | 
 | isDefault | boolean |  | 
@@ -15689,7 +15689,7 @@ poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, t
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | uid | integer |  | 
-| mobileNo | integer |  | 
+| mobileNo | string |  | 
 | checkoutMode | string |  | 
 | tags | integer |  | 
 | isDefault | boolean |  | 
@@ -15773,7 +15773,7 @@ poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: check
 | --------- | ----  | --- |
 | id | integer |  | 
 | uid | integer |  | 
-| mobileNo | integer |  | 
+| mobileNo | string |  | 
 | checkoutMode | string |  | 
 | tags | integer |  | 
 | isDefault | boolean |  | 
