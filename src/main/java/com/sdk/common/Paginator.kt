@@ -2,7 +2,7 @@ package com.sdk.common
 
 class Paginator<T:Any> {
 
-    private var hasNext :Boolean = true
+    var hasNext :Boolean = true
     var nextId: String?="*"
     var pageNo: Int?=1
 

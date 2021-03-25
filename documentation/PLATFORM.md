@@ -12,7 +12,6 @@
 * [Assets](#Assets) - File Storage 
 * [Share](#Share) - Short link and QR Code 
 * [Inventory](#Inventory) -  
-* [Cart](#Cart) - Cart APIs 
 
 ----
 ----
@@ -196,15 +195,15 @@
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
-  * [CompanyProfile#createBrand](#companyprofilecreatebrand)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
-  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
-  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
  
 * [Assets](#Assets)
   * [Assets#companyCopyFiles](#assetscompanycopyfiles)
@@ -229,13 +228,6 @@
   * [Inventory#getJobByCode](#inventorygetjobbycode)
   * [Inventory#getJobCodesByCompanyAndIntegration](#inventorygetjobcodesbycompanyandintegration)
  
-* [Cart](#Cart)
-  * [Cart#getCoupons](#cartgetcoupons)
-  * [Cart#createCoupon](#cartcreatecoupon)
-  * [Cart#getCouponById](#cartgetcouponbyid)
-  * [Cart#updateCoupon](#cartupdatecoupon)
-  * [Cart#updateCouponPartially](#cartupdatecouponpartially)
- 
 
 ---
 ---
@@ -259,10 +251,10 @@ Gets the list of company level tickets and/or ticket filters depending on query 
 
 ```javascript
 // Promise
-const promise = lead.getTickets(company_id, items, filters, page_no, page_size, );
+const promise = lead.getTickets(company_id, items, filters, q, status, priority, category, page_no, page_size, );
 
 // Async/Await
-const data = await lead.getTickets(company_id, items, filters, page_no, page_size, );
+const data = await lead.getTickets(company_id, items, filters, q, status, priority, category, page_no, page_size, );
 
 ```
 
@@ -273,6 +265,10 @@ const data = await lead.getTickets(company_id, items, filters, page_no, page_siz
 | company_id | string | Company ID for which the data will be returned | 
 | items | boolean | Decides that the reponse will contain the list of tickets | 
 | filters | boolean | Decides that the reponse will contain the ticket filters | 
+| q | string | Search through ticket titles and description | 
+| status | string | Filter tickets on status | 
+| priority | string | Filter tickets on priority | 
+| category | string | Filter tickets on category | 
 | page_no | integer | The page number to navigate through the given set of results. | 
 | page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 
@@ -313,10 +309,10 @@ Gets the list of Application level Tickets and/or ticket filters depending on qu
 
 ```javascript
 // Promise
-const promise = lead.getTickets(company_id, application_id, items, filters, );
+const promise = lead.getTickets(company_id, application_id, items, filters, q, status, priority, category, );
 
 // Async/Await
-const data = await lead.getTickets(company_id, application_id, items, filters, );
+const data = await lead.getTickets(company_id, application_id, items, filters, q, status, priority, category, );
 
 ```
 
@@ -328,6 +324,10 @@ const data = await lead.getTickets(company_id, application_id, items, filters, )
 | application_id | string | Application ID for which the data will be returned | 
 | items | boolean | Decides that the reponse will contain the list of tickets | 
 | filters | boolean | Decides that the reponse will contain the ticket filters | 
+| q | string | Search through ticket titles and description | 
+| status | string | Filter tickets on status | 
+| priority | string | Filter tickets on priority | 
+| category | string | Filter tickets on category | 
 
 
 Gets the list of Application level Tickets and/or ticket filters
@@ -4645,32 +4645,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#editBrand
-Edit a brand.
-
-```javascript
-// Promise
-const promise = companyprofile.editBrand(company_id, brand_id, );
-
-// Async/Await
-const data = await companyprofile.editBrand(company_id, brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API allows to edit meta of a brand.
-
-
----
-
-
 #### CompanyProfile#getBrand
 Get a single brand.
 
@@ -4692,6 +4666,32 @@ const data = await companyprofile.getBrand(company_id, brand_id, );
 
 
 This API helps to get data associated to a particular brand.
+
+
+---
+
+
+#### CompanyProfile#editBrand
+Edit a brand.
+
+```javascript
+// Promise
+const promise = companyprofile.editBrand(company_id, brand_id, );
+
+// Async/Await
+const data = await companyprofile.editBrand(company_id, brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API allows to edit meta of a brand.
 
 
 ---
@@ -4722,31 +4722,6 @@ This API allows to create a brand associated to a company.
 ---
 
 
-#### CompanyProfile#createBrand
-Create a company brand mapping.
-
-```javascript
-// Promise
-const promise = companyprofile.createBrand(company_id, );
-
-// Async/Await
-const data = await companyprofile.createBrand(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
-
-
-This API allows to create a company brand mapping, for a already existing brand in the system.
-
-
----
-
-
 #### CompanyProfile#getBrands
 Get brands associated to a company
 
@@ -4772,15 +4747,15 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### CompanyProfile#createBrand
+Create a company brand mapping.
 
 ```javascript
 // Promise
-const promise = companyprofile.createLocation(company_id, );
+const promise = companyprofile.createBrand(company_id, );
 
 // Async/Await
-const data = await companyprofile.createLocation(company_id, );
+const data = await companyprofile.createBrand(company_id, );
 
 ```
 
@@ -4788,10 +4763,10 @@ const data = await companyprofile.createLocation(company_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
 
 
-This API allows to create a location associated to a company.
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -4827,15 +4802,15 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#updateLocation
-Edit a location asscoiated to a company.
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
 
 ```javascript
 // Promise
-const promise = companyprofile.updateLocation(company_id, location_id, );
+const promise = companyprofile.createLocation(company_id, );
 
 // Async/Await
-const data = await companyprofile.updateLocation(company_id, location_id, );
+const data = await companyprofile.createLocation(company_id, );
 
 ```
 
@@ -4844,10 +4819,9 @@ const data = await companyprofile.updateLocation(company_id, location_id, );
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
 
 
-This API allows to edit a location associated to a company.
+This API allows to create a location associated to a company.
 
 
 ---
@@ -4874,6 +4848,32 @@ const data = await companyprofile.getLocationDetail(company_id, location_id, );
 
 
 This API helps to get data associated to a specific location.
+
+
+---
+
+
+#### CompanyProfile#updateLocation
+Edit a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.updateLocation(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.updateLocation(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
+
+
+This API allows to edit a location associated to a company.
 
 
 ---
@@ -5379,164 +5379,6 @@ const data = await inventory.getJobCodesByCompanyAndIntegration(company_id, inte
 
 
 REST Endpoint that returns all job codes by company And integration
-
-
----
-
-
-
----
----
-
-
-## Cart
-
-```javascript
-const { Configuration, Cart } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const cart = new Cart(conf);
-
-```
-
-
-#### Cart#getCoupons
-Get with single coupon details or coupon list
-
-```javascript
-// Promise
-const promise = cart.getCoupons(company_id, application_id, page_no, page_size, is_archived, title, is_public, is_display, type_slug, code, );
-
-// Async/Await
-const data = await cart.getCoupons(company_id, application_id, page_no, page_size, is_archived, title, is_public, is_display, type_slug, code, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| page_no | integer |  | 
-| page_size | integer |  | 
-| is_archived | boolean |  | 
-| title | string |  | 
-| is_public | boolean |  | 
-| is_display | boolean |  | 
-| type_slug | string |  | 
-| code | string |  | 
-
-
-Get coupon list with pagination
-
-
----
-
-
-#### Cart#createCoupon
-Create new coupon
-
-```javascript
-// Promise
-const promise = cart.createCoupon(company_id, application_id, );
-
-// Async/Await
-const data = await cart.createCoupon(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-
-
-Create new coupon
-
-
----
-
-
-#### Cart#getCouponById
-Get with single coupon details or coupon list
-
-```javascript
-// Promise
-const promise = cart.getCouponById(company_id, application_id, id, );
-
-// Async/Await
-const data = await cart.getCouponById(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| id | string |  | 
-
-
-Get single coupon details with `id` in path param
-
-
----
-
-
-#### Cart#updateCoupon
-Update existing coupon configuration
-
-```javascript
-// Promise
-const promise = cart.updateCoupon(company_id, application_id, id, );
-
-// Async/Await
-const data = await cart.updateCoupon(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| id | string |  | 
-
-
-Update coupon with id sent in `id`
-
-
----
-
-
-#### Cart#updateCouponPartially
-Update coupon archive state and schedule
-
-```javascript
-// Promise
-const promise = cart.updateCouponPartially(company_id, application_id, id, );
-
-// Async/Await
-const data = await cart.updateCouponPartially(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| id | string |  | 
-
-
-Update archive/unarchive and change schedule for coupon
 
 
 ---

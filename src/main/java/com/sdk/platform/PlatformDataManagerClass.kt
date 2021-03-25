@@ -1,13 +1,10 @@
 package com.sdk.platform
-import android.util.Log
-import com.sdk.common.AccessTokenInterceptor
-import com.sdk.common.BaseRepository
-import com.sdk.common.HttpClient
-import com.sdk.common.RequestSignerInterceptor
+
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
+import com.sdk.common.*
 
 
 
@@ -37,12 +34,12 @@ class LeadDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: String?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<TicketList>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             leadApiList?.getTickets(
-        companyId = config.companyId, items = items, filters = filters, pageNo = pageNo, pageSize = pageSize )
+        companyId = config.companyId, items = items, filters = filters, q = q, status = status, priority = priority, category = category, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 
@@ -128,10 +125,10 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     
     
     
-    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null)
+    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: String?=null, category: String?=null)
     : Deferred<Response<TicketList>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters )
+                leadApiList?.getTickets(companyId = config.companyId , applicationId = applicationId , items = items, filters = filters, q = q, status = status, priority = priority, category = category )
         } else {
             null
         }
@@ -1318,7 +1315,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getCampaigns
     **/
     fun getCampaignsPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<Campaigns>{
         val paginator = Paginator<Campaigns>()
@@ -1331,11 +1328,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getCampaigns(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1418,7 +1413,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getAudiences
     **/
     fun getAudiencesPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<Audiences>{
         val paginator = Paginator<Audiences>()
@@ -1431,11 +1426,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getAudiences(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1528,7 +1521,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getEmailProviders
     **/
     fun getEmailProvidersPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<EmailProviders>{
         val paginator = Paginator<EmailProviders>()
@@ -1541,11 +1534,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getEmailProviders(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1618,7 +1609,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getEmailTemplates
     **/
     fun getEmailTemplatesPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<EmailTemplates>{
         val paginator = Paginator<EmailTemplates>()
@@ -1631,11 +1622,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getEmailTemplates(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1728,7 +1717,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getEventSubscriptions
     **/
     fun getEventSubscriptionsPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<EventSubscriptions>{
         val paginator = Paginator<EventSubscriptions>()
@@ -1741,11 +1730,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getEventSubscriptions(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1788,7 +1775,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getJobs
     **/
     fun getJobsPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<Jobs>{
         val paginator = Paginator<Jobs>()
@@ -1801,11 +1788,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getJobs(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1858,7 +1843,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getJobLogs
     **/
     fun getJobLogsPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<JobLogs>{
         val paginator = Paginator<JobLogs>()
@@ -1871,11 +1856,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getJobLogs(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1918,7 +1901,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getCommunicationLogs
     **/
     fun getCommunicationLogsPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<Logs>{
         val paginator = Paginator<Logs>()
@@ -1931,11 +1914,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getCommunicationLogs(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getCommunicationLogs(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -1978,7 +1959,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getSmsProviders
     **/
     fun getSmsProvidersPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<SmsProviders>{
         val paginator = Paginator<SmsProviders>()
@@ -1991,11 +1972,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getSmsProviders(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getSmsProviders(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -2068,7 +2047,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for getSmsTemplates
     **/
     fun getSmsTemplatesPaginator(
-    companyId: String, applicationId: String
+    
     
     ) : Paginator<SmsTemplates>{
         val paginator = Paginator<SmsTemplates>()
@@ -2081,11 +2060,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    communicationApiList?.getSmsTemplates(companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -2572,18 +2549,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.editBrand(
-        companyId = config.companyId, brandId = brandId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getBrand(brandId: String)
     : Deferred<Response<GetBrandResponseSerializer>>? {
         
@@ -2596,19 +2561,19 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
+    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createBrand(
-        companyId = config.companyId, body = body)
+            companyProfileApiList?.editBrand(
+        companyId = config.companyId, brandId = brandId, body = body)
         } else {
             null
         } 
     }
     
     
-    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
+    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -2632,11 +2597,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createLocation(body: LocationSerializer)
+    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
+            companyProfileApiList?.createBrand(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -2656,12 +2621,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun updateLocation(locationId: String,body: LocationSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateLocation(
-        companyId = config.companyId, locationId = locationId, body = body)
+            companyProfileApiList?.createLocation(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -2674,6 +2639,18 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationDetail(
         companyId = config.companyId, locationId = locationId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateLocation(locationId: String,body: LocationSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.updateLocation(
+        companyId = config.companyId, locationId = locationId, body = body)
         } else {
             null
         } 
@@ -2723,7 +2700,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun companyCopyFiles(sync: Boolean?=null, body: BulkRequest)
+    suspend fun companyCopyFiles(sync: Boolean?=null,body: BulkRequest)
     : Deferred<Response<BulkResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -2748,7 +2725,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun companyBrowse(namespace: String, )
+    suspend fun companyBrowse(namespace: String)
     : Deferred<Response<BrowseResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -2778,7 +2755,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     
     
     
-    suspend fun appCopyFiles(sync: Boolean?=null, body: BulkRequest)
+    suspend fun appCopyFiles(sync: Boolean?=null,body: BulkRequest)
     : Deferred<Response<BulkResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 assetsApiList?.appCopyFiles(sync = sync, companyId = config.companyId , applicationId = applicationId , body = body)
@@ -2790,7 +2767,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     
     
     
-    suspend fun appBrowse(namespace: String, )
+    suspend fun appBrowse(namespace: String)
     : Deferred<Response<BrowseResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 assetsApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId  )
@@ -2822,7 +2799,7 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     * Summary: Paginator for appBrowse
     **/
     fun appBrowsePaginator(
-    namespace: String, companyId: Int, applicationId: Int
+    namespace: String
     
     ) : Paginator<BrowseResponse>{
         val paginator = Paginator<BrowseResponse>()
@@ -2835,11 +2812,9 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    assetsApiList?.appBrowse(namespace = namespace, companyId = companyId, applicationId = applicationId)?.safeAwait(
+                    assetsApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     
                     onSuccess.invoke(response)
                 },
@@ -3051,92 +3026,6 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     
     
     
-    
-}
-}
-
-class CartDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
-       
-    private val cartApiList by lazy {
-        generatecartApiList()
-    }
-    
-    private fun generatecartApiList(): CartApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            baseUrl = config.domain,
-            interceptorList = interceptorMap,
-            namespace = "PlatformCart",
-            persistentCookieStore = config.persistentCookieStore
-        )
-        return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
-    }
-    
-    
-    
-    
-    
-    
-
-inner class Application(val applicationId:String,val config: PlatformConfig){
-
-    
-    
-    suspend fun getCoupons(pageNo: Int?=null, pageSize: Int?=null, isArchived: Boolean?=null, title: String?=null, isPublic: Boolean?=null, isDisplay: Boolean?=null, typeSlug: String?=null, code: String?=null)
-    : Deferred<Response<CouponsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCoupons(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, isArchived = isArchived, title = title, isPublic = isPublic, isDisplay = isDisplay, typeSlug = typeSlug, code = code )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCoupon(body: CouponAdd)
-    : Deferred<Response<SuccessMessageResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.createCoupon(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCouponById(id: String)
-    : Deferred<Response<CouponUpdate>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCouponById(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateCoupon(id: String,body: CouponUpdate)
-    : Deferred<Response<SuccessMessageResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCoupon(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateCouponPartially(id: String,body: CouponPartialUpdate)
-    : Deferred<Response<SuccessMessageResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCouponPartially(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
     
 }
 }

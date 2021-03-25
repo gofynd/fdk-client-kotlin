@@ -24,8 +24,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val inventory by lazy { InventoryDataManagerClass(config)}
     
-    val cart by lazy { CartDataManagerClass(config)}
-    
     fun application(applicationId:String): Application {
         return Application(applicationId = applicationId,config = config)
     }
@@ -53,8 +51,6 @@ class PlatformClient(val config:PlatformConfig) {
     val share by lazy { this@PlatformClient.share.Application(applicationId,config)}
     
     val inventory by lazy { this@PlatformClient.inventory.Application(applicationId,config)}
-    
-    val cart by lazy { this@PlatformClient.cart.Application(applicationId,config)}
     
     }
 
