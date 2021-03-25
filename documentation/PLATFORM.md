@@ -5,6 +5,7 @@
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [Content](#Content) - Content System 
+* [Billing](#Billing) - Handle platform subscription 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
@@ -125,6 +126,16 @@
   * [Content#removeInjectableTag](#contentremoveinjectabletag)
   * [Content#editInjectableTag](#contenteditinjectabletag)
  
+* [Billing](#Billing)
+  * [Billing#getInvoices](#billinggetinvoices)
+  * [Billing#getInvoiceById](#billinggetinvoicebyid)
+  * [Billing#getCustomerDetail](#billinggetcustomerdetail)
+  * [Billing#upsertCustomerDetail](#billingupsertcustomerdetail)
+  * [Billing#getSubscription](#billinggetsubscription)
+  * [Billing#getFeatureLimitConfig](#billinggetfeaturelimitconfig)
+  * [Billing#activateSubscriptionPlan](#billingactivatesubscriptionplan)
+  * [Billing#cancelSubscriptionPlan](#billingcancelsubscriptionplan)
+ 
 * [Communication](#Communication)
   * [Communication#getCampaigns](#communicationgetcampaigns)
   * [Communication#createCampaign](#communicationcreatecampaign)
@@ -195,15 +206,15 @@
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [Assets](#Assets)
   * [Assets#companyCopyFiles](#assetscompanycopyfiles)
@@ -2922,6 +2933,225 @@ Edits a particular tag
 ---
 
 
+## Billing
+
+```javascript
+const { Configuration, Billing } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const billing = new Billing(conf);
+
+```
+
+
+#### Billing#getInvoices
+Get invoices
+
+```javascript
+// Promise
+const promise = billing.getInvoices(company_id, );
+
+// Async/Await
+const data = await billing.getInvoices(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Get invoices.
+
+
+---
+
+
+#### Billing#getInvoiceById
+Get invoice by id
+
+```javascript
+// Promise
+const promise = billing.getInvoiceById(company_id, invoice_id, );
+
+// Async/Await
+const data = await billing.getInvoiceById(company_id, invoice_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+| invoice_id | string | Invoice id | 
+
+
+Get invoice by id.
+
+
+---
+
+
+#### Billing#getCustomerDetail
+Get subscription customer detail
+
+```javascript
+// Promise
+const promise = billing.getCustomerDetail(company_id, );
+
+// Async/Await
+const data = await billing.getCustomerDetail(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Get subscription customer detail.
+
+
+---
+
+
+#### Billing#upsertCustomerDetail
+Upsert subscription customer detail
+
+```javascript
+// Promise
+const promise = billing.upsertCustomerDetail(company_id, );
+
+// Async/Await
+const data = await billing.upsertCustomerDetail(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Upsert subscription customer detail.
+
+
+---
+
+
+#### Billing#getSubscription
+Get current subscription detail
+
+```javascript
+// Promise
+const promise = billing.getSubscription(company_id, );
+
+// Async/Await
+const data = await billing.getSubscription(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+If subscription is active then it will return is_enabled true and return subscription object. If subscription is not active then is_enabled false and message.
+
+
+
+---
+
+
+#### Billing#getFeatureLimitConfig
+Get subscription subscription limits
+
+```javascript
+// Promise
+const promise = billing.getFeatureLimitConfig(company_id, );
+
+// Async/Await
+const data = await billing.getFeatureLimitConfig(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Get subscription subscription limits.
+
+
+---
+
+
+#### Billing#activateSubscriptionPlan
+Activate subscription
+
+```javascript
+// Promise
+const promise = billing.activateSubscriptionPlan(company_id, );
+
+// Async/Await
+const data = await billing.activateSubscriptionPlan(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+It will activate subscription plan for customer
+
+
+---
+
+
+#### Billing#cancelSubscriptionPlan
+Cancel subscription
+
+```javascript
+// Promise
+const promise = billing.cancelSubscriptionPlan(company_id, );
+
+// Async/Await
+const data = await billing.cancelSubscriptionPlan(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+It will cancel current active subscription.
+
+
+---
+
+
+
+---
+---
+
+
 ## Communication
 
 ```javascript
@@ -4645,32 +4875,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#getBrand
-Get a single brand.
-
-```javascript
-// Promise
-const promise = companyprofile.getBrand(company_id, brand_id, );
-
-// Async/Await
-const data = await companyprofile.getBrand(company_id, brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API helps to get data associated to a particular brand.
-
-
----
-
-
 #### CompanyProfile#editBrand
 Edit a brand.
 
@@ -4692,6 +4896,32 @@ const data = await companyprofile.editBrand(company_id, brand_id, );
 
 
 This API allows to edit meta of a brand.
+
+
+---
+
+
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```javascript
+// Promise
+const promise = companyprofile.getBrand(company_id, brand_id, );
+
+// Async/Await
+const data = await companyprofile.getBrand(company_id, brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
 
 
 ---
@@ -4827,32 +5057,6 @@ This API allows to create a location associated to a company.
 ---
 
 
-#### CompanyProfile#getLocationDetail
-Get details of a specific location.
-
-```javascript
-// Promise
-const promise = companyprofile.getLocationDetail(company_id, location_id, );
-
-// Async/Await
-const data = await companyprofile.getLocationDetail(company_id, location_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location lies. | 
-| location_id | string | Id of the location which you want to view. | 
-
-
-This API helps to get data associated to a specific location.
-
-
----
-
-
 #### CompanyProfile#updateLocation
 Edit a location asscoiated to a company.
 
@@ -4874,6 +5078,32 @@ const data = await companyprofile.updateLocation(company_id, location_id, );
 
 
 This API allows to edit a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getLocationDetail
+Get details of a specific location.
+
+```javascript
+// Promise
+const promise = companyprofile.getLocationDetail(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.getLocationDetail(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location lies. | 
+| location_id | string | Id of the location which you want to view. | 
+
+
+This API helps to get data associated to a specific location.
 
 
 ---

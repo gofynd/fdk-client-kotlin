@@ -412,6 +412,42 @@ interface ContentApiList {
     
 }
 
+interface BillingApiList {
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/invoice/list")
+    fun getInvoices(@Path("company_id") companyId: String)
+    : Deferred<Response<Invoices>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/invoice/{invoice_id}")
+    fun getInvoiceById(@Path("company_id") companyId: String, @Path("invoice_id") invoiceId: String)
+    : Deferred<Response<Invoice>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/subscription/customer-detail")
+    fun getCustomerDetail(@Path("company_id") companyId: String)
+    : Deferred<Response<SubscriptionCustomer>>
+    
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/subscription/customer-detail")
+    fun upsertCustomerDetail(@Path("company_id") companyId: String,@Body body: SubscriptionCustomerCreate)
+    : Deferred<Response<SubscriptionCustomer>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/subscription/current")
+    fun getSubscription(@Path("company_id") companyId: String)
+    : Deferred<Response<SubscriptionStatus>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/subscription/current-limit")
+    fun getFeatureLimitConfig(@Path("company_id") companyId: String)
+    : Deferred<Response<SubscriptionLimit>>
+    
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/subscription/activate")
+    fun activateSubscriptionPlan(@Path("company_id") companyId: String,@Body body: SubscriptionActivateReq)
+    : Deferred<Response<SubscriptionActivateRes>>
+    
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/subscription/cancel")
+    fun cancelSubscriptionPlan(@Path("company_id") companyId: String,@Body body: CancelSubscriptionReq)
+    : Deferred<Response<CancelSubscriptionRes>>
+    
+}
+
 interface CommunicationApiList {
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns")
@@ -678,13 +714,13 @@ interface CompanyProfileApiList {
     fun getCompanyMetrics(@Path("company_id") companyId: String)
     : Deferred<Response<MetricsSerializer>>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
-    fun getBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>
-    
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
     fun editBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String,@Body body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
+    fun getBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>
     
     @POST ("/service/platform/company-profile/v1.0/company/{company_id}/brand")
     fun createBrand(@Path("company_id") companyId: String,@Body body: CreateUpdateBrandRequestSerializer)
@@ -706,13 +742,13 @@ interface CompanyProfileApiList {
     fun createLocation(@Path("company_id") companyId: String,@Body body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
-    fun getLocationDetail(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
-    : Deferred<Response<GetLocationSerializer>>
-    
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
     fun updateLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String,@Body body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
+    fun getLocationDetail(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
+    : Deferred<Response<GetLocationSerializer>>
     
 }
 
