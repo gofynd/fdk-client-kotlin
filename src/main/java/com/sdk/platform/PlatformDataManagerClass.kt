@@ -2720,6 +2720,18 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
+    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createBrand(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getBrands()
     : Deferred<Response<CompanyBrandListSerializer>>? {
         
@@ -2732,11 +2744,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createBrand(
+            companyProfileApiList?.createLocation(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -2750,18 +2762,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocations(
         companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createLocation(body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
-        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -3227,12 +3227,12 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
-    suspend fun getApplications(pageNo: Int?=null, pageSize: Int?=null, query: HashMap<String,Any>?=null)
+    suspend fun getApplications(pageNo: Int?=null, pageSize: Int?=null, q: HashMap<String,Any>?=null)
     : Deferred<Response<ApplicationsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getApplications(
-        companyId = config.companyId, companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, query = query )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q )
         } else {
             null
         } 
