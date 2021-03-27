@@ -73,8 +73,8 @@
     * [updateAddress](#updateaddress)
     * [removeAddress](#removeaddress)
     * [selectAddress](#selectaddress)
-    * [getPaymentModes](#getpaymentmodes)
     * [selectPaymentMode](#selectpaymentmode)
+    * [validateCouponForPayment](#validatecouponforpayment)
     * [getShipments](#getshipments)
     * [checkoutCart](#checkoutcart)
     * [updateCartMeta](#updatecartmeta)
@@ -285,8 +285,8 @@
     * [updateAddress](#updateaddress)
     * [removeAddress](#removeaddress)
     * [selectAddress](#selectaddress)
-    * [getPaymentModes](#getpaymentmodes)
     * [selectPaymentMode](#selectpaymentmode)
+    * [validateCouponForPayment](#validatecouponforpayment)
     * [getShipments](#getshipments)
     * [updateShipments](#updateshipments)
     * [checkoutCart](#checkoutcart)
@@ -3546,53 +3546,6 @@ Pincode Not Serviciable
 ---
 
 
-#### getPaymentModes
-Get Cart Payment for valid coupon
-
-```kotlin
-cart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode, action: action, type: type).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| uid | string |  | 
-| addressId | string |  | 
-| paymentMode | string |  | 
-| paymentIdentifier | string |  | 
-| aggregatorName | string |  | 
-| merchantCode | string |  | 
-| action | string |  | 
-| type | string |  | 
-
-Validate coupon for selected payment mode
-
-*Success Response:*
-
-
-
-Cart response with payment options
-
-
-Schema: `ValidateCouponPaymentMode`
-
-
-
-
-
-
-
-
-
----
-
-
 #### selectPaymentMode
 Update Cart Payment
 
@@ -3621,6 +3574,51 @@ Cart response with payment options
 
 
 Schema: `CartResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### validateCouponForPayment
+Get Cart Payment for valid coupon
+
+```kotlin
+cart.validateCouponForPayment(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | string |  | 
+| addressId | string |  | 
+| paymentMode | string |  | 
+| paymentIdentifier | string |  | 
+| aggregatorName | string |  | 
+| merchantCode | string |  | 
+
+Validate coupon for selected payment mode
+
+*Success Response:*
+
+
+
+Cart Affiliates.
+
+
+Schema: `PaymentUpdate`
 
 
 
@@ -15958,53 +15956,6 @@ Pincode Not Serviciable
 ---
 
 
-#### getPaymentModes
-Get Cart Payment for valid coupon
-
-```kotlin
-poscart.getPaymentModes(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode, action: action, type: type).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| uid | string |  | 
-| addressId | string |  | 
-| paymentMode | string |  | 
-| paymentIdentifier | string |  | 
-| aggregatorName | string |  | 
-| merchantCode | string |  | 
-| action | string |  | 
-| type | string |  | 
-
-Validate coupon for selected payment mode
-
-*Success Response:*
-
-
-
-Cart response with payment options
-
-
-Schema: `ValidateCouponPaymentMode`
-
-
-
-
-
-
-
-
-
----
-
-
 #### selectPaymentMode
 Update Cart Payment
 
@@ -16033,6 +15984,51 @@ Cart response with payment options
 
 
 Schema: `CartResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### validateCouponForPayment
+Get Cart Payment for valid coupon
+
+```kotlin
+poscart.validateCouponForPayment(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| uid | string |  | 
+| addressId | string |  | 
+| paymentMode | string |  | 
+| paymentIdentifier | string |  | 
+| aggregatorName | string |  | 
+| merchantCode | string |  | 
+
+Validate coupon for selected payment mode
+
+*Success Response:*
+
+
+
+Cart Affiliates.
+
+
+Schema: `PaymentUpdate`
 
 
 

@@ -182,13 +182,13 @@ interface CartApiList {
     fun selectAddress(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: SelectCartAddressRequest)
     : Deferred<Response<CartResponse>>
     
-    @GET ("/service/application/cart/v1.0/payment")
-    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("action") action: String?, @Query("type") type: String?)
-    : Deferred<Response<ValidateCouponPaymentMode>>
-    
     @PUT ("/service/application/cart/v1.0/payment")
     fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
     : Deferred<Response<CartResponse>>
+    
+    @GET ("/service/application/cart/v1.0/payment/validate/")
+    fun validateCouponForPayment(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
+    : Deferred<Response<PaymentUpdate>>
     
     @GET ("/service/application/cart/v1.0/shipment")
     fun getShipments(@Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?)
@@ -874,13 +874,13 @@ interface PosCartApiList {
     fun selectAddress(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: SelectCartAddressRequest)
     : Deferred<Response<CartResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/payment")
-    fun getPaymentModes(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("action") action: String?, @Query("type") type: String?)
-    : Deferred<Response<ValidateCouponPaymentMode>>
-    
     @PUT ("/service/application/pos/cart/v1.0/payment")
     fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
     : Deferred<Response<CartResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/payment/validate/")
+    fun validateCouponForPayment(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
+    : Deferred<Response<PaymentUpdate>>
     
     @GET ("/service/application/pos/cart/v1.0/shipment")
     fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)

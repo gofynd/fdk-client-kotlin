@@ -14,6 +14,7 @@
 * [Share](#Share) - Short link and QR Code 
 * [Inventory](#Inventory) -  
 * [Configuration](#Configuration) - Application configuration apis 
+* [Analytics](#Analytics) - Perceptor analytics 
 
 ----
 ----
@@ -204,18 +205,18 @@
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
+  * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
-  * [CompanyProfile#createBrand](#companyprofilecreatebrand)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
-  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
-  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
  
 * [Assets](#Assets)
   * [Assets#companyCopyFiles](#assetscompanycopyfiles)
@@ -283,6 +284,20 @@
   * [Configuration#getOtherSellerApplications](#configurationgetothersellerapplications)
   * [Configuration#getOtherSellerApplicationById](#configurationgetothersellerapplicationbyid)
   * [Configuration#optOutFromApplication](#configurationoptoutfromapplication)
+ 
+* [Analytics](#Analytics)
+  * [Analytics#getStatiscticsGroups](#analyticsgetstatiscticsgroups)
+  * [Analytics#getStatiscticsGroupComponents](#analyticsgetstatiscticsgroupcomponents)
+  * [Analytics#getComponentStatsCSV](#analyticsgetcomponentstatscsv)
+  * [Analytics#getComponentStatsPDF](#analyticsgetcomponentstatspdf)
+  * [Analytics#getComponentStats](#analyticsgetcomponentstats)
+  * [Analytics#getAbandonCartList](#analyticsgetabandoncartlist)
+  * [Analytics#getAbandonCartsCSV](#analyticsgetabandoncartscsv)
+  * [Analytics#getAbandonCartDetail](#analyticsgetabandoncartdetail)
+  * [Analytics#createExportJob](#analyticscreateexportjob)
+  * [Analytics#getExportJobStatus](#analyticsgetexportjobstatus)
+  * [Analytics#getLogsList](#analyticsgetlogslist)
+  * [Analytics#searchLogs](#analyticssearchlogs)
  
 
 ---
@@ -4845,31 +4860,6 @@ const companyprofile = new CompanyProfile(conf);
 ```
 
 
-#### CompanyProfile#updateCompany
-Edit company profile
-
-```javascript
-// Promise
-const promise = companyprofile.updateCompany(company_id, );
-
-// Async/Await
-const data = await companyprofile.updateCompany(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to edit the company profile of the seller account.
-
-
----
-
-
 #### CompanyProfile#cbsOnboardGet
 Get company profile
 
@@ -4895,6 +4885,31 @@ This API allows to view the company profile of the seller account.
 ---
 
 
+#### CompanyProfile#updateCompany
+Edit company profile
+
+```javascript
+// Promise
+const promise = companyprofile.updateCompany(company_id, );
+
+// Async/Await
+const data = await companyprofile.updateCompany(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to edit the company profile of the seller account.
+
+
+---
+
+
 #### CompanyProfile#getCompanyMetrics
 Get company metrics
 
@@ -4915,32 +4930,6 @@ const data = await companyprofile.getCompanyMetrics(company_id, );
 
 
 This API allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
-
-
----
-
-
-#### CompanyProfile#editBrand
-Edit a brand.
-
-```javascript
-// Promise
-const promise = companyprofile.editBrand(company_id, brand_id, );
-
-// Async/Await
-const data = await companyprofile.editBrand(company_id, brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API allows to edit meta of a brand.
 
 
 ---
@@ -4972,6 +4961,32 @@ This API helps to get data associated to a particular brand.
 ---
 
 
+#### CompanyProfile#editBrand
+Edit a brand.
+
+```javascript
+// Promise
+const promise = companyprofile.editBrand(company_id, brand_id, );
+
+// Async/Await
+const data = await companyprofile.editBrand(company_id, brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API allows to edit meta of a brand.
+
+
+---
+
+
 #### CompanyProfile#createBrand
 Create a Brand.
 
@@ -4992,31 +5007,6 @@ const data = await companyprofile.createBrand(company_id, );
 
 
 This API allows to create a brand associated to a company.
-
-
----
-
-
-#### CompanyProfile#createBrand
-Create a company brand mapping.
-
-```javascript
-// Promise
-const promise = companyprofile.createBrand(company_id, );
-
-// Async/Await
-const data = await companyprofile.createBrand(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
-
-
-This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -5047,15 +5037,15 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### CompanyProfile#createBrand
+Create a company brand mapping.
 
 ```javascript
 // Promise
-const promise = companyprofile.createLocation(company_id, );
+const promise = companyprofile.createBrand(company_id, );
 
 // Async/Await
-const data = await companyprofile.createLocation(company_id, );
+const data = await companyprofile.createBrand(company_id, );
 
 ```
 
@@ -5063,10 +5053,10 @@ const data = await companyprofile.createLocation(company_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
 
 
-This API allows to create a location associated to a company.
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -5102,15 +5092,15 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#updateLocation
-Edit a location asscoiated to a company.
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
 
 ```javascript
 // Promise
-const promise = companyprofile.updateLocation(company_id, location_id, );
+const promise = companyprofile.createLocation(company_id, );
 
 // Async/Await
-const data = await companyprofile.updateLocation(company_id, location_id, );
+const data = await companyprofile.createLocation(company_id, );
 
 ```
 
@@ -5119,10 +5109,9 @@ const data = await companyprofile.updateLocation(company_id, location_id, );
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
 
 
-This API allows to edit a location associated to a company.
+This API allows to create a location associated to a company.
 
 
 ---
@@ -5149,6 +5138,32 @@ const data = await companyprofile.getLocationDetail(company_id, location_id, );
 
 
 This API helps to get data associated to a specific location.
+
+
+---
+
+
+#### CompanyProfile#updateLocation
+Edit a location asscoiated to a company.
+
+```javascript
+// Promise
+const promise = companyprofile.updateLocation(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.updateLocation(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
+
+
+This API allows to edit a location associated to a company.
 
 
 ---
@@ -6776,6 +6791,351 @@ const data = await configuration.optOutFromApplication(company_id, id, );
 
 
 Opt out company or store from other seller application
+
+
+---
+
+
+
+---
+---
+
+
+## Analytics
+
+```javascript
+const { Configuration, Analytics } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const analytics = new Analytics(conf);
+
+```
+
+
+#### Analytics#getStatiscticsGroups
+Get statistics groups
+
+```javascript
+// Promise
+const promise = analytics.getStatiscticsGroups(company_id, application_id, );
+
+// Async/Await
+const data = await analytics.getStatiscticsGroups(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+
+
+Get statistics groups
+
+
+---
+
+
+#### Analytics#getStatiscticsGroupComponents
+Get statistics group components
+
+```javascript
+// Promise
+const promise = analytics.getStatiscticsGroupComponents(company_id, application_id, group_name, );
+
+// Async/Await
+const data = await analytics.getStatiscticsGroupComponents(company_id, application_id, group_name, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| group_name | string | Group name | 
+
+
+Get statistics group components
+
+
+---
+
+
+#### Analytics#getComponentStatsCSV
+Get component statistics csv
+
+```javascript
+// Promise
+const promise = analytics.getComponentStatsCSV(company_id, application_id, component_name, );
+
+// Async/Await
+const data = await analytics.getComponentStatsCSV(company_id, application_id, component_name, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| component_name | string | Component name | 
+
+
+Get component statistics csv
+
+
+---
+
+
+#### Analytics#getComponentStatsPDF
+Get component statistics pdf
+
+```javascript
+// Promise
+const promise = analytics.getComponentStatsPDF(company_id, application_id, component_name, );
+
+// Async/Await
+const data = await analytics.getComponentStatsPDF(company_id, application_id, component_name, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| component_name | string | Component name | 
+
+
+Get component statistics pdf
+
+
+---
+
+
+#### Analytics#getComponentStats
+Get component statistics
+
+```javascript
+// Promise
+const promise = analytics.getComponentStats(company_id, application_id, component_name, );
+
+// Async/Await
+const data = await analytics.getComponentStats(company_id, application_id, component_name, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| component_name | string | Component name | 
+
+
+Get component statistics
+
+
+---
+
+
+#### Analytics#getAbandonCartList
+Get abandon carts list
+
+```javascript
+// Promise
+const promise = analytics.getAbandonCartList(company_id, application_id, from, to, page_no, page_size, );
+
+// Async/Await
+const data = await analytics.getAbandonCartList(company_id, application_id, from, to, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| from | string | From date | 
+| to | string | To date | 
+| page_no | string | Current page number | 
+| page_size | string | Current page size | 
+
+
+Get abandon carts list
+
+
+---
+
+
+#### Analytics#getAbandonCartsCSV
+Get abandon carts csv
+
+```javascript
+// Promise
+const promise = analytics.getAbandonCartsCSV(company_id, application_id, from, to, );
+
+// Async/Await
+const data = await analytics.getAbandonCartsCSV(company_id, application_id, from, to, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| from | string | From date | 
+| to | string | To date | 
+
+
+Get abandon carts csv
+
+
+---
+
+
+#### Analytics#getAbandonCartDetail
+Get abandon carts details
+
+```javascript
+// Promise
+const promise = analytics.getAbandonCartDetail(company_id, application_id, cart_id, );
+
+// Async/Await
+const data = await analytics.getAbandonCartDetail(company_id, application_id, cart_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| application_id | string | Application Id | 
+| cart_id | string | Cart Id | 
+
+
+Get abandon cart details
+
+
+---
+
+
+#### Analytics#createExportJob
+Create data export job in required format
+
+```javascript
+// Promise
+const promise = analytics.createExportJob(company_id, export_type, );
+
+// Async/Await
+const data = await analytics.createExportJob(company_id, export_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| export_type | string | Export type / format | 
+
+
+Create data export job in required format
+
+
+---
+
+
+#### Analytics#getExportJobStatus
+Get data export job status
+
+```javascript
+// Promise
+const promise = analytics.getExportJobStatus(company_id, export_type, job_id, );
+
+// Async/Await
+const data = await analytics.getExportJobStatus(company_id, export_type, job_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| export_type | string | Export type / format | 
+| job_id | string | Export job id | 
+
+
+Get data export job status
+
+
+---
+
+
+#### Analytics#getLogsList
+Get logs list
+
+```javascript
+// Promise
+const promise = analytics.getLogsList(company_id, log_type, page_no, page_size, );
+
+// Async/Await
+const data = await analytics.getLogsList(company_id, log_type, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| log_type | string | Log type | 
+| page_no | string | Current page number | 
+| page_size | string | Current page size | 
+
+
+Get logs list
+
+
+---
+
+
+#### Analytics#searchLogs
+Search logs
+
+```javascript
+// Promise
+const promise = analytics.searchLogs(company_id, page_no, page_size, log_type, );
+
+// Async/Await
+const data = await analytics.searchLogs(company_id, page_no, page_size, log_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| page_no | string | Current page number | 
+| page_size | string | Current page size | 
+| log_type | string | Log type | 
+
+
+Search logs
 
 
 ---
