@@ -175,8 +175,8 @@
 
 * [FileStorage](#FileStorage)
   * Methods
-    * [completeUpload](#completeupload)
     * [startUpload](#startupload)
+    * [completeUpload](#completeupload)
     
 
 * [Configuration](#Configuration)
@@ -10236,82 +10236,11 @@ Schema: `ShortLinkRes`
 ## FileStorage
 
 
-#### completeUpload
-This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
-
-```kotlin
-filestorage.completeUpload(namespace: namespace, companyId: companyId, body: body).safeAwait(
-    { response ->
-      // Use response
-    },
-    { error ->
-        
-    }
-)
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| namespace | string | bucket name | 
-| companyId | integer | company_id | 
-
-Uploads an arbitrarily sized buffer or blob.
-
-It has three Major Steps:
-* Start
-* Upload
-* Complete
-
-### Start
-Initiates the assets upload using `/v1.0/uploads/{namespace}/start`.
-It returns the storage link in response.
-
-### Upload
-Use the storage link to upload a file (Buffer or Blob) to the File Storage.
-Make a `PUT` request on storage link received from `/v1.0/uploads/{namespace}/start` api with file (Buffer or Blob) as a request body.
-
-### Complete
-After successfully upload, call `/v1.0/uploads/{namespace}/complete` api to complete the upload process.
-This operation will return the url for the uploaded file.
-
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `CompleteResponse`
-
-
-
-
-
-
-
-
-Failed
-
-
-Schema: `FailedResponse`
-
-
-
-
-
-
-
-
-
----
-
-
 #### startUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
 ```kotlin
-filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).safeAwait(
+filestorage.startUpload(namespace: namespace, body: body).safeAwait(
     { response ->
       // Use response
     },
@@ -10324,7 +10253,6 @@ filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | namespace | string | bucket name | 
-| companyId | integer | company_id | 
 
 Uploads an arbitrarily sized buffer or blob.
 
@@ -10354,6 +10282,76 @@ Success
 
 
 Schema: `StartResponse`
+
+
+
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### completeUpload
+This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
+
+```kotlin
+filestorage.completeUpload(namespace: namespace, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| namespace | string | bucket name | 
+
+Uploads an arbitrarily sized buffer or blob.
+
+It has three Major Steps:
+* Start
+* Upload
+* Complete
+
+### Start
+Initiates the assets upload using `/v1.0/uploads/{namespace}/start`.
+It returns the storage link in response.
+
+### Upload
+Use the storage link to upload a file (Buffer or Blob) to the File Storage.
+Make a `PUT` request on storage link received from `/v1.0/uploads/{namespace}/start` api with file (Buffer or Blob) as a request body.
+
+### Complete
+After successfully upload, call `/v1.0/uploads/{namespace}/complete` api to complete the upload process.
+This operation will return the url for the uploaded file.
+
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `CompleteResponse`
 
 
 

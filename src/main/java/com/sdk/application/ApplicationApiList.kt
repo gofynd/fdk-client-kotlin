@@ -506,13 +506,13 @@ interface ShareApiList {
 
 interface FileStorageApiList {
     
-    @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/complete/")
-    fun completeUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartResponse)
-    : Deferred<Response<CompleteResponse>>
-    
-    @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
-    fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartRequest)
+    @POST ("/service/application/assets/v1.0/namespaces/{namespace}/upload/start/")
+    fun startUpload(@Path("namespace") namespace: String,@Body body: StartRequest)
     : Deferred<Response<StartResponse>>
+    
+    @POST ("/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/")
+    fun completeUpload(@Path("namespace") namespace: String,@Body body: StartResponse)
+    : Deferred<Response<CompleteResponse>>
     
 }
 

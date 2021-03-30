@@ -1296,13 +1296,13 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
         return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }
     
-    fun completeUpload(namespace: String, companyId: String,body: StartResponse): Deferred<Response<CompleteResponse>>? {
-        return fileStorageApiList?.completeUpload(namespace = namespace, companyId = companyId, body = body)}
+    fun startUpload(namespace: String,body: StartRequest): Deferred<Response<StartResponse>>? {
+        return fileStorageApiList?.startUpload(namespace = namespace, body = body)}
 
     
     
-    fun startUpload(namespace: String, companyId: String,body: StartRequest): Deferred<Response<StartResponse>>? {
-        return fileStorageApiList?.startUpload(namespace = namespace, companyId = companyId, body = body)}
+    fun completeUpload(namespace: String,body: StartResponse): Deferred<Response<CompleteResponse>>? {
+        return fileStorageApiList?.completeUpload(namespace = namespace, body = body)}
 
     
     
