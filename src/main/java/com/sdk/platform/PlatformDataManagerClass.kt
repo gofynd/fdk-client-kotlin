@@ -119,7 +119,7 @@ class LeadDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -303,7 +303,7 @@ class ThemeDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -508,7 +508,7 @@ class UserDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -637,7 +637,7 @@ class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -1344,7 +1344,7 @@ class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -1419,7 +1419,7 @@ class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository
     
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -2498,7 +2498,7 @@ class PaymentDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -2666,7 +2666,7 @@ class OrderDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -2888,7 +2888,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -2981,7 +2981,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -3093,7 +3093,7 @@ class ShareDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -3248,7 +3248,7 @@ class InventoryDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -3360,7 +3360,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
-    suspend fun getIntegrationById(id: Int)
+    suspend fun getIntegrationById(id: String)
     : Deferred<Response<Integration>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3384,7 +3384,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
-    suspend fun getSelectedOptIns(level: String, uid: Int, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getSelectedOptIns(level: String, uid: String, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<GetIntegrationsOptInsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3408,7 +3408,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
-    suspend fun getIntegrationByLevelId(id: String, level: String, uid: Int)
+    suspend fun getIntegrationByLevelId(id: String, level: String, uid: String)
     : Deferred<Response<IntegrationLevel>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3420,7 +3420,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
-    suspend fun getLevelActiveIntegrations(id: String, level: String, uid: Int)
+    suspend fun getLevelActiveIntegrations(id: String, level: String, uid: String)
     : Deferred<Response<OptedStoreIntegration>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -3504,7 +3504,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
@@ -3867,7 +3867,7 @@ class AnalyticsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
 
-inner class Application(val applicationId:String,val config: PlatformConfig){
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     

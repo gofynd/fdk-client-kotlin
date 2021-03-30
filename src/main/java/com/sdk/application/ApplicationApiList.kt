@@ -99,11 +99,11 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: Int)
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -167,15 +167,15 @@ interface CartApiList {
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/cart/v1.0/address/{id}")
-    fun getAddressById(@Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
+    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
     @PUT ("/service/application/cart/v1.0/address/{id}")
-    fun updateAddress(@Path("id") id: Int,@Body body: Address)
+    fun updateAddress(@Path("id") id: String,@Body body: Address)
     : Deferred<Response<UpdateAddressResponse>>
     
     @DELETE ("/service/application/cart/v1.0/address/{id}")
-    fun removeAddress(@Path("id") id: Int)
+    fun removeAddress(@Path("id") id: String)
     : Deferred<Response<DeleteAddressResponse>>
     
     @POST ("/service/application/cart/v1.0/select-address")
@@ -507,11 +507,11 @@ interface ShareApiList {
 interface FileStorageApiList {
     
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/complete/")
-    fun completeUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: Int,@Body body: StartResponse)
+    fun completeUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartResponse)
     : Deferred<Response<CompleteResponse>>
     
     @POST ("/service/application/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
-    fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: Int,@Body body: StartRequest)
+    fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartRequest)
     : Deferred<Response<StartResponse>>
     
 }
@@ -859,15 +859,15 @@ interface PosCartApiList {
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address/{id}")
-    fun getAddressById(@Path("id") id: Int, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
+    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
     @PUT ("/service/application/pos/cart/v1.0/address/{id}")
-    fun updateAddress(@Path("id") id: Int,@Body body: Address)
+    fun updateAddress(@Path("id") id: String,@Body body: Address)
     : Deferred<Response<UpdateAddressResponse>>
     
     @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
-    fun removeAddress(@Path("id") id: Int)
+    fun removeAddress(@Path("id") id: String)
     : Deferred<Response<DeleteAddressResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/select-address")

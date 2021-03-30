@@ -30,39 +30,39 @@ class PlatformClient(val config:PlatformConfig) {
     
     val analytics by lazy { AnalyticsDataManagerClass(config)}
     
-    fun application(applicationId:String): Application {
-        return Application(applicationId = applicationId,config = config)
+    fun application(applicationId:String): ApplicationClient {
+        return ApplicationClient(applicationId = applicationId,config = config)
     }
 
-    inner class Application(val applicationId:String,val config: PlatformConfig) {     
+    inner class ApplicationClient(val applicationId:String,val config: PlatformConfig) {     
     
-    val lead by lazy { this@PlatformClient.lead.Application(applicationId,config)}
+    val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
     
-    val theme by lazy { this@PlatformClient.theme.Application(applicationId,config)}
+    val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
     
-    val user by lazy { this@PlatformClient.user.Application(applicationId,config)}
+    val user by lazy { this@PlatformClient.user.ApplicationClient(applicationId,config)}
     
-    val content by lazy { this@PlatformClient.content.Application(applicationId,config)}
+    val content by lazy { this@PlatformClient.content.ApplicationClient(applicationId,config)}
     
-    val billing by lazy { this@PlatformClient.billing.Application(applicationId,config)}
+    val billing by lazy { this@PlatformClient.billing.ApplicationClient(applicationId,config)}
     
-    val communication by lazy { this@PlatformClient.communication.Application(applicationId,config)}
+    val communication by lazy { this@PlatformClient.communication.ApplicationClient(applicationId,config)}
     
-    val payment by lazy { this@PlatformClient.payment.Application(applicationId,config)}
+    val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
-    val order by lazy { this@PlatformClient.order.Application(applicationId,config)}
+    val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
-    val companyProfile by lazy { this@PlatformClient.companyProfile.Application(applicationId,config)}
+    val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
     
-    val assets by lazy { this@PlatformClient.assets.Application(applicationId,config)}
+    val assets by lazy { this@PlatformClient.assets.ApplicationClient(applicationId,config)}
     
-    val share by lazy { this@PlatformClient.share.Application(applicationId,config)}
+    val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     
-    val inventory by lazy { this@PlatformClient.inventory.Application(applicationId,config)}
+    val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
     
-    val configuration by lazy { this@PlatformClient.configuration.Application(applicationId,config)}
+    val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
-    val analytics by lazy { this@PlatformClient.analytics.Application(applicationId,config)}
+    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     
     }
 

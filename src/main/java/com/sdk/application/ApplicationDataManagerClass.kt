@@ -550,12 +550,12 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
         return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: Int): Deferred<Response<FollowPostResponse>>? {
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
         return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
@@ -717,17 +717,17 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getAddressById(id: Int, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         return cartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
     
-    fun updateAddress(id: Int,body: Address): Deferred<Response<UpdateAddressResponse>>? {
+    fun updateAddress(id: String,body: Address): Deferred<Response<UpdateAddressResponse>>? {
         return cartApiList?.updateAddress(id = id, body = body)}
 
     
     
-    fun removeAddress(id: Int): Deferred<Response<DeleteAddressResponse>>? {
+    fun removeAddress(id: String): Deferred<Response<DeleteAddressResponse>>? {
         return cartApiList?.removeAddress(id = id )}
 
     
@@ -1296,12 +1296,12 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
         return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }
     
-    fun completeUpload(namespace: String, companyId: Int,body: StartResponse): Deferred<Response<CompleteResponse>>? {
+    fun completeUpload(namespace: String, companyId: String,body: StartResponse): Deferred<Response<CompleteResponse>>? {
         return fileStorageApiList?.completeUpload(namespace = namespace, companyId = companyId, body = body)}
 
     
     
-    fun startUpload(namespace: String, companyId: Int,body: StartRequest): Deferred<Response<StartResponse>>? {
+    fun startUpload(namespace: String, companyId: String,body: StartRequest): Deferred<Response<StartResponse>>? {
         return fileStorageApiList?.startUpload(namespace = namespace, companyId = companyId, body = body)}
 
     
@@ -2377,17 +2377,17 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getAddressById(id: Int, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         return posCartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
     
-    fun updateAddress(id: Int,body: Address): Deferred<Response<UpdateAddressResponse>>? {
+    fun updateAddress(id: String,body: Address): Deferred<Response<UpdateAddressResponse>>? {
         return posCartApiList?.updateAddress(id = id, body = body)}
 
     
     
-    fun removeAddress(id: Int): Deferred<Response<DeleteAddressResponse>>? {
+    fun removeAddress(id: String): Deferred<Response<DeleteAddressResponse>>? {
         return posCartApiList?.removeAddress(id = id )}
 
     
