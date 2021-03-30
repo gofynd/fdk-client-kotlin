@@ -249,10 +249,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun closeVideoRoom()
+    suspend fun closeVideoRoom(uniqueName: String)
     : Deferred<Response<CloseVideoRoomResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                leadApiList?.closeVideoRoom(companyId = config.companyId , applicationId = applicationId  )
+                leadApiList?.closeVideoRoom(companyId = config.companyId , applicationId = applicationId , uniqueName = uniqueName )
         } else {
             null
         }
@@ -2744,24 +2744,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun cbsOnboardGet()
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.cbsOnboardGet(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateCompany(body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateCompany(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cbsOnboardGet()
+    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.cbsOnboardGet(
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -2780,24 +2780,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun getBrand(brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getBrand(
-        companyId = config.companyId, brandId = brandId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.editBrand(
         companyId = config.companyId, brandId = brandId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBrand(brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getBrand(
+        companyId = config.companyId, brandId = brandId )
         } else {
             null
         } 
@@ -2864,24 +2864,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun getLocationDetail(locationId: String)
-    : Deferred<Response<GetLocationSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getLocationDetail(
-        companyId = config.companyId, locationId = locationId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateLocation(locationId: String,body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateLocation(
         companyId = config.companyId, locationId = locationId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getLocationDetail(locationId: String)
+    : Deferred<Response<GetLocationSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getLocationDetail(
+        companyId = config.companyId, locationId = locationId )
         } else {
             null
         } 
@@ -3768,6 +3768,284 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+}
+
+class MarketplacesDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val marketplacesApiList by lazy {
+        generatemarketplacesApiList()
+    }
+    
+    private fun generatemarketplacesApiList(): MarketplacesApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformMarketplaces",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(MarketplacesApiList::class.java) as? MarketplacesApiList
+    }
+    
+    
+    suspend fun getAvailableChannels()
+    : Deferred<Response<AllChannels>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getAvailableChannels(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannels()
+    : Deferred<Response<RegisteredChannels>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannels(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannel(channel: String)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannel(
+        companyId = config.companyId, channel = channel )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerMyntraChannel(body: MyntraPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerMyntraChannel(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateMyntraChannelCredentials(body: MyntraPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateMyntraChannelCredentials(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerAmazonChannel(body: AmazonPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerAmazonChannel(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateAmazonChannelCredentials(body: AmazonPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateAmazonChannelCredentials(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerFlipkartChannel(flipkartChannel: String,body: FlipkartPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerFlipkartChannel(
+        companyId = config.companyId, flipkartChannel = flipkartChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateFlipkartChannelCredentials(flipkartChannel: String,body: FlipkartPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateFlipkartChannelCredentials(
+        companyId = config.companyId, flipkartChannel = flipkartChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerTatacliqChannel(tatacliqChannel: String,body: TatacliqPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerTatacliqChannel(
+        companyId = config.companyId, tatacliqChannel = tatacliqChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateTatacliqChannelCredentials(tatacliqChannel: String,body: TatacliqPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateTatacliqChannelCredentials(
+        companyId = config.companyId, tatacliqChannel = tatacliqChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerAjioChannel(body: AjioPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerAjioChannel(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateAjioChannelCredentials(body: AjioPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateAjioChannelCredentials(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateChannelInventoryConfig(channel: String, validateCred: String?=null,body: InventoryConfig)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateChannelInventoryConfig(
+        companyId = config.companyId, channel = channel, validateCred = validateCred, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannelLocationConfig(channel: String)
+    : Deferred<Response<StoreMapping>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannelLocationConfig(
+        companyId = config.companyId, channel = channel )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateChannelLocationConfig(channel: String,body: StoreMappingPayload)
+    : Deferred<Response<StoreMapping>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateChannelLocationConfig(
+        companyId = config.companyId, channel = channel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannelStatus(channel: String)
+    : Deferred<Response<StatusPayload>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannelStatus(
+        companyId = config.companyId, channel = channel )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateChannelStatus(channel: String,body: StatusPayload)
+    : Deferred<Response<StatusResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateChannelStatus(
+        companyId = config.companyId, channel = channel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun triggerChannelInventoryUpdates(channel: String, updateType: String,body: SyncPayload)
+    : Deferred<Response<SyncResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.triggerChannelInventoryUpdates(
+        companyId = config.companyId, channel = channel, updateType = updateType, body = body)
+        } else {
+            null
+        } 
+    }
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    
+    
+    
     
     
     

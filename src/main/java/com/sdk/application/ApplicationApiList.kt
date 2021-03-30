@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -223,7 +223,7 @@ interface LeadApiList {
     : Deferred<Response<Ticket>>
     
     @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
-    fun createHistoryForTicket(@Path("ticket_id") ticketId: String,@Body body: TicketHistoryPayload)
+    fun createHistory(@Path("ticket_id") ticketId: String,@Body body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>
     
     @POST ("/service/application/lead/v1.0/ticket/")
@@ -558,11 +558,11 @@ interface ConfigurationApiList {
     fun getLanguages()
     : Deferred<Response<LanguageResponse>>
     
-    @POST ("/application/current/ordering-store/select")
+    @POST ("/service/application/configuration/v1.0/ordering-store/select")
     fun getOrderingStoreCookie(@Body body: OrderingStoreSelectRequest)
     : Deferred<Response<SuccessMessageResponse>>
     
-    @DELETE ("/application/current/ordering-store/select")
+    @DELETE ("/service/application/configuration/v1.0/ordering-store/select")
     fun removeOrderingStoreCookie()
     : Deferred<Response<SuccessMessageResponse>>
     

@@ -28,6 +28,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val configuration by lazy { ConfigurationDataManagerClass(config)}
     
+    val marketplaces by lazy { MarketplacesDataManagerClass(config)}
+    
     val analytics by lazy { AnalyticsDataManagerClass(config)}
     
     fun application(applicationId:String): ApplicationClient {
@@ -61,6 +63,8 @@ class PlatformClient(val config:PlatformConfig) {
     val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
     
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
+    
+    val marketplaces by lazy { this@PlatformClient.marketplaces.ApplicationClient(applicationId,config)}
     
     val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     

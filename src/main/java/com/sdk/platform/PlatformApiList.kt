@@ -78,8 +78,8 @@ interface LeadApiList {
     fun openVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateVideoRoomPayload)
     : Deferred<Response<CreateVideoRoomResponse>>
     
-    @DELETE ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room")
-    fun closeVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    @DELETE ("/service/platform/lead/v1.0/company/{company_id}/application/{application_id}/video/room/{unique_name}")
+    fun closeVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
     : Deferred<Response<CloseVideoRoomResponse>>
     
 }
@@ -702,25 +702,25 @@ interface OrderApiList {
 
 interface CompanyProfileApiList {
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
-    fun cbsOnboardGet(@Path("company_id") companyId: String)
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>
-    
     @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
     fun updateCompany(@Path("company_id") companyId: String,@Body body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
+    fun cbsOnboardGet(@Path("company_id") companyId: String)
+    : Deferred<Response<GetCompanyProfileSerializerResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/metrics")
     fun getCompanyMetrics(@Path("company_id") companyId: String)
     : Deferred<Response<MetricsSerializer>>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
-    fun getBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>
-    
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
     fun editBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String,@Body body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/brand/{brand_id}")
+    fun getBrand(@Path("company_id") companyId: String, @Path("brand_id") brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>
     
     @POST ("/service/platform/company-profile/v1.0/company/{company_id}/brand")
     fun createBrand(@Path("company_id") companyId: String,@Body body: CreateUpdateBrandRequestSerializer)
@@ -742,13 +742,13 @@ interface CompanyProfileApiList {
     fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LocationListSerializer>>
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
-    fun getLocationDetail(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
-    : Deferred<Response<GetLocationSerializer>>
-    
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
     fun updateLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String,@Body body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
+    fun getLocationDetail(@Path("company_id") companyId: String, @Path("location_id") locationId: String)
+    : Deferred<Response<GetLocationSerializer>>
     
 }
 
@@ -1001,6 +1001,86 @@ interface ConfigurationApiList {
     @PUT ("/service/platform/configuration/v1.0/company/{company_id}/other-seller-applications/{id}/opt_out")
     fun optOutFromApplication(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: OptOutInventory)
     : Deferred<Response<SuccessMessageResponse>>
+    
+}
+
+interface MarketplacesApiList {
+    
+    @GET ("/service/platform/marketplaces/v1.0/company/{company_id}/all-channels")
+    fun getAvailableChannels(@Path("company_id") companyId: String)
+    : Deferred<Response<AllChannels>>
+    
+    @GET ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/")
+    fun getChannels(@Path("company_id") companyId: String)
+    : Deferred<Response<RegisteredChannels>>
+    
+    @GET ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{channel}")
+    fun getChannel(@Path("company_id") companyId: String, @Path("channel") channel: String)
+    : Deferred<Response<MkpResp>>
+    
+    @POST ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/myntra_in")
+    fun registerMyntraChannel(@Path("company_id") companyId: String,@Body body: MyntraPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @PUT ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/myntra_in")
+    fun updateMyntraChannelCredentials(@Path("company_id") companyId: String,@Body body: MyntraPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @POST ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/amazon_in")
+    fun registerAmazonChannel(@Path("company_id") companyId: String,@Body body: AmazonPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @PUT ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/amazon_in")
+    fun updateAmazonChannelCredentials(@Path("company_id") companyId: String,@Body body: AmazonPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @POST ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{flipkart_channel}")
+    fun registerFlipkartChannel(@Path("company_id") companyId: String, @Path("flipkart_channel") flipkartChannel: String,@Body body: FlipkartPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @PUT ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{flipkart_channel}")
+    fun updateFlipkartChannelCredentials(@Path("company_id") companyId: String, @Path("flipkart_channel") flipkartChannel: String,@Body body: FlipkartPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @POST ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{tatacliq_channel}")
+    fun registerTatacliqChannel(@Path("company_id") companyId: String, @Path("tatacliq_channel") tatacliqChannel: String,@Body body: TatacliqPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @PUT ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{tatacliq_channel}")
+    fun updateTatacliqChannelCredentials(@Path("company_id") companyId: String, @Path("tatacliq_channel") tatacliqChannel: String,@Body body: TatacliqPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @POST ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/ajio_in")
+    fun registerAjioChannel(@Path("company_id") companyId: String,@Body body: AjioPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @PUT ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/ajio_in")
+    fun updateAjioChannelCredentials(@Path("company_id") companyId: String,@Body body: AjioPayload)
+    : Deferred<Response<MkpResp>>
+    
+    @PUT ("/service/platform/marketplaces/company/{company_id}/v1.0/channels/{channel}/inventory/config")
+    fun updateChannelInventoryConfig(@Path("company_id") companyId: String, @Path("channel") channel: String, @Query("validate_cred") validateCred: String?,@Body body: InventoryConfig)
+    : Deferred<Response<MkpResp>>
+    
+    @GET ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{channel}/location/config")
+    fun getChannelLocationConfig(@Path("company_id") companyId: String, @Path("channel") channel: String)
+    : Deferred<Response<StoreMapping>>
+    
+    @PUT ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{channel}/location/config")
+    fun updateChannelLocationConfig(@Path("company_id") companyId: String, @Path("channel") channel: String,@Body body: StoreMappingPayload)
+    : Deferred<Response<StoreMapping>>
+    
+    @GET ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{channel}/status")
+    fun getChannelStatus(@Path("company_id") companyId: String, @Path("channel") channel: String)
+    : Deferred<Response<StatusPayload>>
+    
+    @PUT ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{channel}/status")
+    fun updateChannelStatus(@Path("company_id") companyId: String, @Path("channel") channel: String,@Body body: StatusPayload)
+    : Deferred<Response<StatusResp>>
+    
+    @POST ("/service/platform/marketplaces/v1.0/company/{company_id}/channels/{channel}/inventory/{update_type}/sync")
+    fun triggerChannelInventoryUpdates(@Path("company_id") companyId: String, @Path("channel") channel: String, @Path("update_type") updateType: String,@Body body: SyncPayload)
+    : Deferred<Response<SyncResp>>
     
 }
 

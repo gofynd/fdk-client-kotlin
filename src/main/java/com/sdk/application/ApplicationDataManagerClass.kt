@@ -550,13 +550,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -809,8 +809,8 @@ class LeadDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun createHistoryForTicket(ticketId: String,body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
-        return leadApiList?.createHistoryForTicket(ticketId = ticketId, body = body)}
+    fun createHistory(ticketId: String,body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
+        return leadApiList?.createHistory(ticketId = ticketId, body = body)}
 
     
     

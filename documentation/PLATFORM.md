@@ -14,6 +14,7 @@
 * [Share](#Share) - Short link and QR Code 
 * [Inventory](#Inventory) -  
 * [Configuration](#Configuration) - Application configuration apis 
+* [Marketplaces](#Marketplaces) - Marketplaces 
 * [Analytics](#Analytics) - Perceptor analytics 
 
 ----
@@ -205,18 +206,18 @@
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [Assets](#Assets)
   * [Assets#companyCopyFiles](#assetscompanycopyfiles)
@@ -284,6 +285,27 @@
   * [Configuration#getOtherSellerApplications](#configurationgetothersellerapplications)
   * [Configuration#getOtherSellerApplicationById](#configurationgetothersellerapplicationbyid)
   * [Configuration#optOutFromApplication](#configurationoptoutfromapplication)
+ 
+* [Marketplaces](#Marketplaces)
+  * [Marketplaces#getAvailableChannels](#marketplacesgetavailablechannels)
+  * [Marketplaces#getChannels](#marketplacesgetchannels)
+  * [Marketplaces#getChannel](#marketplacesgetchannel)
+  * [Marketplaces#registerMyntraChannel](#marketplacesregistermyntrachannel)
+  * [Marketplaces#updateMyntraChannelCredentials](#marketplacesupdatemyntrachannelcredentials)
+  * [Marketplaces#registerAmazonChannel](#marketplacesregisteramazonchannel)
+  * [Marketplaces#updateAmazonChannelCredentials](#marketplacesupdateamazonchannelcredentials)
+  * [Marketplaces#registerFlipkartChannel](#marketplacesregisterflipkartchannel)
+  * [Marketplaces#updateFlipkartChannelCredentials](#marketplacesupdateflipkartchannelcredentials)
+  * [Marketplaces#registerTatacliqChannel](#marketplacesregistertatacliqchannel)
+  * [Marketplaces#updateTatacliqChannelCredentials](#marketplacesupdatetatacliqchannelcredentials)
+  * [Marketplaces#registerAjioChannel](#marketplacesregisterajiochannel)
+  * [Marketplaces#updateAjioChannelCredentials](#marketplacesupdateajiochannelcredentials)
+  * [Marketplaces#updateChannelInventoryConfig](#marketplacesupdatechannelinventoryconfig)
+  * [Marketplaces#getChannelLocationConfig](#marketplacesgetchannellocationconfig)
+  * [Marketplaces#updateChannelLocationConfig](#marketplacesupdatechannellocationconfig)
+  * [Marketplaces#getChannelStatus](#marketplacesgetchannelstatus)
+  * [Marketplaces#updateChannelStatus](#marketplacesupdatechannelstatus)
+  * [Marketplaces#triggerChannelInventoryUpdates](#marketplacestriggerchannelinventoryupdates)
  
 * [Analytics](#Analytics)
   * [Analytics#getStatiscticsGroups](#analyticsgetstatiscticsgroups)
@@ -810,10 +832,10 @@ Close the video room and force all participants to leave.
 
 ```javascript
 // Promise
-const promise = lead.closeVideoRoom(company_id, application_id, );
+const promise = lead.closeVideoRoom(company_id, application_id, unique_name, );
 
 // Async/Await
-const data = await lead.closeVideoRoom(company_id, application_id, );
+const data = await lead.closeVideoRoom(company_id, application_id, unique_name, );
 
 ```
 
@@ -823,6 +845,7 @@ const data = await lead.closeVideoRoom(company_id, application_id, );
 | --------- | ----  | --- |
 | company_id | string | Company ID of the application | 
 | application_id | string | Application ID for video room | 
+| unique_name | string | Unique name of Video Room | 
 
 
 Close the video room and force all participants to leave.
@@ -4860,31 +4883,6 @@ const companyprofile = new CompanyProfile(conf);
 ```
 
 
-#### CompanyProfile#cbsOnboardGet
-Get company profile
-
-```javascript
-// Promise
-const promise = companyprofile.cbsOnboardGet(company_id, );
-
-// Async/Await
-const data = await companyprofile.cbsOnboardGet(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to view the company profile of the seller account.
-
-
----
-
-
 #### CompanyProfile#updateCompany
 Edit company profile
 
@@ -4905,6 +4903,31 @@ const data = await companyprofile.updateCompany(company_id, );
 
 
 This API allows to edit the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#cbsOnboardGet
+Get company profile
+
+```javascript
+// Promise
+const promise = companyprofile.cbsOnboardGet(company_id, );
+
+// Async/Await
+const data = await companyprofile.cbsOnboardGet(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company profile of the seller account.
 
 
 ---
@@ -4935,32 +4958,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#getBrand
-Get a single brand.
-
-```javascript
-// Promise
-const promise = companyprofile.getBrand(company_id, brand_id, );
-
-// Async/Await
-const data = await companyprofile.getBrand(company_id, brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API helps to get data associated to a particular brand.
-
-
----
-
-
 #### CompanyProfile#editBrand
 Edit a brand.
 
@@ -4982,6 +4979,32 @@ const data = await companyprofile.editBrand(company_id, brand_id, );
 
 
 This API allows to edit meta of a brand.
+
+
+---
+
+
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```javascript
+// Promise
+const promise = companyprofile.getBrand(company_id, brand_id, );
+
+// Async/Await
+const data = await companyprofile.getBrand(company_id, brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
 
 
 ---
@@ -5117,32 +5140,6 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#getLocationDetail
-Get details of a specific location.
-
-```javascript
-// Promise
-const promise = companyprofile.getLocationDetail(company_id, location_id, );
-
-// Async/Await
-const data = await companyprofile.getLocationDetail(company_id, location_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location lies. | 
-| location_id | string | Id of the location which you want to view. | 
-
-
-This API helps to get data associated to a specific location.
-
-
----
-
-
 #### CompanyProfile#updateLocation
 Edit a location asscoiated to a company.
 
@@ -5164,6 +5161,32 @@ const data = await companyprofile.updateLocation(company_id, location_id, );
 
 
 This API allows to edit a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getLocationDetail
+Get details of a specific location.
+
+```javascript
+// Promise
+const promise = companyprofile.getLocationDetail(company_id, location_id, );
+
+// Async/Await
+const data = await companyprofile.getLocationDetail(company_id, location_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location lies. | 
+| location_id | string | Id of the location which you want to view. | 
+
+
+This API helps to get data associated to a specific location.
 
 
 ---
@@ -6791,6 +6814,511 @@ const data = await configuration.optOutFromApplication(company_id, id, );
 
 
 Opt out company or store from other seller application
+
+
+---
+
+
+
+---
+---
+
+
+## Marketplaces
+
+```javascript
+const { Configuration, Marketplaces } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const marketplaces = new Marketplaces(conf);
+
+```
+
+
+#### Marketplaces#getAvailableChannels
+Get available marketplace channels
+
+```javascript
+// Promise
+const promise = marketplaces.getAvailableChannels(company_id, );
+
+// Async/Await
+const data = await marketplaces.getAvailableChannels(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Get available marketplace channels
+
+
+---
+
+
+#### Marketplaces#getChannels
+Get all registered marketplace channels for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.getChannels(company_id, );
+
+// Async/Await
+const data = await marketplaces.getChannels(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Get all registered marketplace channels for a seller
+
+
+---
+
+
+#### Marketplaces#getChannel
+Get registered marketplace channel for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.getChannel(company_id, channel, );
+
+// Async/Await
+const data = await marketplaces.getChannel(company_id, channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| channel | string | Name of marketplace channel | 
+
+
+Get registered marketplace channel for a seller
+
+
+---
+
+
+#### Marketplaces#registerMyntraChannel
+Create Myntra marketplace channel for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.registerMyntraChannel(company_id, );
+
+// Async/Await
+const data = await marketplaces.registerMyntraChannel(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Create Myntra marketplace channel for a seller
+
+
+---
+
+
+#### Marketplaces#updateMyntraChannelCredentials
+Update Myntra marketplace channel credentials for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateMyntraChannelCredentials(company_id, );
+
+// Async/Await
+const data = await marketplaces.updateMyntraChannelCredentials(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Update Myntra marketplace channel credentials for a seller
+
+
+---
+
+
+#### Marketplaces#registerAmazonChannel
+Create Amazon marketplace channel for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.registerAmazonChannel(company_id, );
+
+// Async/Await
+const data = await marketplaces.registerAmazonChannel(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Create Amazon marketplace channel for a seller
+
+
+---
+
+
+#### Marketplaces#updateAmazonChannelCredentials
+Update Amazon marketplace channel credentials for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateAmazonChannelCredentials(company_id, );
+
+// Async/Await
+const data = await marketplaces.updateAmazonChannelCredentials(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Update Amazon marketplace channel credentials for a seller
+
+
+---
+
+
+#### Marketplaces#registerFlipkartChannel
+Create Flipkart / Flipkart Assured marketplace channel for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.registerFlipkartChannel(company_id, flipkart_channel, );
+
+// Async/Await
+const data = await marketplaces.registerFlipkartChannel(company_id, flipkart_channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| flipkart_channel | string | Name of marketplace channel | 
+
+
+Create Flipkart / Flipkart Assured marketplace channel for a seller
+
+
+---
+
+
+#### Marketplaces#updateFlipkartChannelCredentials
+Update Flipkart / Flipkart Assured marketplace channel credentials for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateFlipkartChannelCredentials(company_id, flipkart_channel, );
+
+// Async/Await
+const data = await marketplaces.updateFlipkartChannelCredentials(company_id, flipkart_channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| flipkart_channel | string | Name of marketplace channel | 
+
+
+Update Flipkart / Flipkart Assured marketplace channel credentials for a seller
+
+
+---
+
+
+#### Marketplaces#registerTatacliqChannel
+Create Tatacliq / Tatacliq Luxury marketplace channel for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.registerTatacliqChannel(company_id, tatacliq_channel, );
+
+// Async/Await
+const data = await marketplaces.registerTatacliqChannel(company_id, tatacliq_channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| tatacliq_channel | string | Name of marketplace channel | 
+
+
+Create Tatacliq / Tatacliq Luxury marketplace channel for a seller
+
+
+---
+
+
+#### Marketplaces#updateTatacliqChannelCredentials
+Update Tatacliq / Tatacliq Luxury Assured marketplace channel credentials for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateTatacliqChannelCredentials(company_id, tatacliq_channel, );
+
+// Async/Await
+const data = await marketplaces.updateTatacliqChannelCredentials(company_id, tatacliq_channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| tatacliq_channel | string | Name of marketplace channel | 
+
+
+Update Tatacliq / Tatacliq Luxury marketplace channel credentials for a seller
+
+
+---
+
+
+#### Marketplaces#registerAjioChannel
+Create Ajio marketplace channel for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.registerAjioChannel(company_id, );
+
+// Async/Await
+const data = await marketplaces.registerAjioChannel(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Create Ajio marketplace channel for a seller
+
+
+---
+
+
+#### Marketplaces#updateAjioChannelCredentials
+Update Ajio marketplace channel credentials for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateAjioChannelCredentials(company_id, );
+
+// Async/Await
+const data = await marketplaces.updateAjioChannelCredentials(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+
+
+Update Ajio marketplace channel credentials for a seller
+
+
+---
+
+
+#### Marketplaces#updateChannelInventoryConfig
+Update inventory sync configuration of marketplace channel for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateChannelInventoryConfig(company_id, channel, validate_cred, );
+
+// Async/Await
+const data = await marketplaces.updateChannelInventoryConfig(company_id, channel, validate_cred, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| channel | string | Name of marketplace channel | 
+| validate_cred | string | Validate marketplace cred while saving inventory config | 
+
+
+Update inventory sync configuration of marketplace channel for a seller
+
+
+---
+
+
+#### Marketplaces#getChannelLocationConfig
+Get marketplace channel location config for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.getChannelLocationConfig(company_id, channel, );
+
+// Async/Await
+const data = await marketplaces.getChannelLocationConfig(company_id, channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| channel | string | Name of marketplace channel | 
+
+
+Get marketplace channel location config for a seller
+
+
+---
+
+
+#### Marketplaces#updateChannelLocationConfig
+update marketplace channel location config for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateChannelLocationConfig(company_id, channel, );
+
+// Async/Await
+const data = await marketplaces.updateChannelLocationConfig(company_id, channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| channel | string | Name of marketplace channel | 
+
+
+update marketplace channel location config for a seller
+
+
+---
+
+
+#### Marketplaces#getChannelStatus
+Get marketplace channel active status for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.getChannelStatus(company_id, channel, );
+
+// Async/Await
+const data = await marketplaces.getChannelStatus(company_id, channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| channel | string | Name of marketplace channel | 
+
+
+Get marketplace channel active status for a seller
+
+
+---
+
+
+#### Marketplaces#updateChannelStatus
+Update marketplace channel active status for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.updateChannelStatus(company_id, channel, );
+
+// Async/Await
+const data = await marketplaces.updateChannelStatus(company_id, channel, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| channel | string | Name of marketplace channel | 
+
+
+Update marketplace channel active status for a seller
+
+
+---
+
+
+#### Marketplaces#triggerChannelInventoryUpdates
+Trigger marketplace channel inventory updates for a seller
+
+```javascript
+// Promise
+const promise = marketplaces.triggerChannelInventoryUpdates(company_id, channel, update_type, );
+
+// Async/Await
+const data = await marketplaces.triggerChannelInventoryUpdates(company_id, channel, update_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id | 
+| channel | string | Name of marketplace channel | 
+| update_type | string | Inventory update type | 
+
+
+Trigger marketplace channel inventory updates for a seller
 
 
 ---
