@@ -1795,6 +1795,54 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
     }
     
     
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getSystemEmailTemplates
+    **/
+    fun getSystemEmailTemplatesPaginator(
+    
+    
+    ) : Paginator<SystemEmailTemplates>{
+        val paginator = Paginator<SystemEmailTemplates>()
+        paginator.setCallBack(object : PaginatorCallback<SystemEmailTemplates> {
+            override suspend fun onNext(
+                onSuccess: (Event<SystemEmailTemplates>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getSystemEmailTemplates(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
+    
     suspend fun getEmailTemplateById(id: String)
     : Deferred<Response<EmailTemplate>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -2262,6 +2310,54 @@ inner class Application(val applicationId:String,val config: PlatformConfig){
         }
     }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getSystemSystemTemplates
+    **/
+    fun getSystemSystemTemplatesPaginator(
+    
+    
+    ) : Paginator<SystemSmsTemplates>{
+        val paginator = Paginator<SystemSmsTemplates>()
+        paginator.setCallBack(object : PaginatorCallback<SystemSmsTemplates> {
+            override suspend fun onNext(
+                onSuccess: (Event<SystemSmsTemplates>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getSystemSystemTemplates(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+        })
+        return paginator
+    }
 }
 }
 
@@ -2720,6 +2816,18 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
+    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createBrand(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getBrands()
     : Deferred<Response<CompanyBrandListSerializer>>? {
         
@@ -2732,11 +2840,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createBrand(
+            companyProfileApiList?.createLocation(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -2750,18 +2858,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocations(
         companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createLocation(body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
-        companyId = config.companyId, body = body)
         } else {
             null
         } 
