@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -618,7 +618,7 @@ interface PaymentApiList {
     fun getPosPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?)
     : Deferred<Response<PaymentModeRouteResponse>>
     
-    @GET ("/service/application/payment/v1.0/refund/beneficiary/user")
+    @GET ("/service/application/payment/v1.0/refund/user/beneficiary")
     fun getUserBeneficiariesDetail(@Query("order_id") orderId: String)
     : Deferred<Response<OrderBeneficiaryResponse>>
     
@@ -626,7 +626,7 @@ interface PaymentApiList {
     fun verifyIfscCode(@Query("ifsc_code") ifscCode: String?)
     : Deferred<Response<IfscCodeResponse>>
     
-    @GET ("/service/application/payment/v1.0/refund/beneficiaries/order")
+    @GET ("/service/application/payment/v1.0/refund/order/beneficiaries")
     fun getOrderBeneficiariesDetail(@Query("order_id") orderId: String)
     : Deferred<Response<OrderBeneficiaryResponse>>
     
@@ -673,6 +673,10 @@ interface OrderApiList {
     @GET ("/service/application/order/v1.0/orders/shipments/{shipment_id}/track")
     fun trackShipment(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentTrack>>
+    
+    @GET ("/service/application/order/v1.0/pos-order/{order_id}")
+    fun getPosOrderById(@Path("order_id") orderId: String)
+    : Deferred<Response<OrderById>>
     
 }
 

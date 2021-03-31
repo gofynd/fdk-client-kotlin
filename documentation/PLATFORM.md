@@ -206,8 +206,8 @@
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
+  * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
@@ -4883,31 +4883,6 @@ const companyprofile = new CompanyProfile(conf);
 ```
 
 
-#### CompanyProfile#updateCompany
-Edit company profile
-
-```javascript
-// Promise
-const promise = companyprofile.updateCompany(company_id, );
-
-// Async/Await
-const data = await companyprofile.updateCompany(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to edit the company profile of the seller account.
-
-
----
-
-
 #### CompanyProfile#cbsOnboardGet
 Get company profile
 
@@ -4928,6 +4903,31 @@ const data = await companyprofile.cbsOnboardGet(company_id, );
 
 
 This API allows to view the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#updateCompany
+Edit company profile
+
+```javascript
+// Promise
+const promise = companyprofile.updateCompany(company_id, );
+
+// Async/Await
+const data = await companyprofile.updateCompany(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to edit the company profile of the seller account.
 
 
 ---
