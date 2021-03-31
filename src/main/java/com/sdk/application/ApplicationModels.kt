@@ -6835,6 +6835,16 @@ data class Prices(
 ): Parcelable
 
 /*
+    Model: Promise
+*/
+@Parcelize
+data class Promise(
+    
+    @SerializedName("timestamp")
+    var timestamp: @RawValue HashMap<String,Any>?=null
+): Parcelable
+
+/*
     Model: ShipmentStatus
 */
 @Parcelize
@@ -6910,6 +6920,8 @@ data class Shipments(
     var comment: String?=null,
     @SerializedName("order_type")
     var orderType: String?=null,
+    @SerializedName("promise")
+    var promise: Promise?=null,
     @SerializedName("fulfilling_store")
     var fulfillingStore: FulfillingStore?=null,
     @SerializedName("total_items")
