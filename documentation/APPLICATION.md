@@ -4,8 +4,10 @@
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Cart](#Cart) - Cart APIs 
 * [FileStorage](#FileStorage) - File Storage 
+* [Order](#Order) - Handles Platform websites OMS 
 * [Feedback](#Feedback) - User Reviews and Rating System 
 * [PosCart](#PosCart) - Cart APIs 
+* [Logistic](#Logistic) - Handles Platform websites OMS 
 
 ----
 ----
@@ -78,6 +80,17 @@
     * [completeUpload](#completeupload)
     
 
+* [Order](#Order)
+  * Methods
+    * [getOrders](#getorders)
+    * [getOrderById](#getorderbyid)
+    * [getShipmentById](#getshipmentbyid)
+    * [getShipmentReasons](#getshipmentreasons)
+    * [updateShipmentStatus](#updateshipmentstatus)
+    * [trackShipment](#trackshipment)
+    * [getPosOrderById](#getposorderbyid)
+    
+
 * [Feedback](#Feedback)
   * Methods
     * [createAbuseReport](#createabusereport)
@@ -136,6 +149,12 @@
     * [getCartShareLink](#getcartsharelink)
     * [getCartSharedItems](#getcartshareditems)
     * [updateCartWithSharedItems](#updatecartwithshareditems)
+    
+
+* [Logistic](#Logistic)
+  * Methods
+    * [getTatProduct](#gettatproduct)
+    * [getPincodeCity](#getpincodecity)
     
 
 
@@ -1164,7 +1183,7 @@ Schema: `ErrorResponse`
 List all the collections
 
 ```kotlin
-catalog.getCollections(pageId: pageId, pageSize: pageSize).safeAwait(
+catalog.getCollections(pageNo: pageNo, pageSize: pageSize).safeAwait(
     { response ->
       // Use response
     },
@@ -1176,7 +1195,7 @@ catalog.getCollections(pageId: pageId, pageSize: pageSize).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| pageId | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
+| pageNo | string | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
 | pageSize | integer | Number of items to retrieve in each page. Default is 12. | 
 
 A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections`
@@ -5195,6 +5214,464 @@ Failed
 
 
 Schema: `FailedResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Order
+
+
+#### getOrders
+Get Orders for application based on application Id
+
+```kotlin
+order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| pageNo | string | Current page number | 
+| pageSize | string | Page limit | 
+| fromDate | string | From Date | 
+| toDate | string | To Date | 
+
+Get Orders
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `OrderList`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getOrderById
+Get Order by order id for application based on application Id
+
+```kotlin
+order.getOrderById(orderId: orderId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| orderId | string | Order Id | 
+
+Get Order By Fynd Order Id
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `OrderById`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getShipmentById
+Get Shipment by shipment id and order id for application based on application Id
+
+```kotlin
+order.getShipmentById(shipmentId: shipmentId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipmentId | string | Shipment Id | 
+
+Get Shipment
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ShipmentById`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getShipmentReasons
+Get Shipment reasons by shipment id and order id for application based on application Id
+
+```kotlin
+order.getShipmentReasons(shipmentId: shipmentId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipmentId | string | Shipment Id | 
+
+Get Shipment Reasons
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ShipmentReasons`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateShipmentStatus
+Update Shipment status by shipment id and order id for application based on application Id
+
+```kotlin
+order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipmentId | string | Shipment Id | 
+
+Update Shipment Status
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ShipmentStatusUpdate`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### trackShipment
+Track Shipment by shipment id and order id for application based on application Id
+
+```kotlin
+order.trackShipment(shipmentId: shipmentId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| shipmentId | string | Shipment Id | 
+
+Shipment Track
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ShipmentTrack`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getPosOrderById
+Get POS Order by order id for application based on application Id
+
+```kotlin
+order.getPosOrderById(orderId: orderId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| orderId | string | Order Id | 
+
+Get Order By Fynd Order Id
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `OrderById`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
 
 
 
@@ -10781,6 +11258,140 @@ Cart Merged/Replaced
   }
 }
 ```
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Logistic
+
+
+#### getTatProduct
+Get Tat Product
+
+```kotlin
+logistic.getTatProduct(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get Tat Product
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `GetTatProductResponse`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getPincodeCity
+Get City from Pincode
+
+```kotlin
+logistic.getPincodeCity(pincode: pincode).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| pincode | string | Pincode | 
+
+Get City from Pincode
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `GetPincodeCityResponse`
+
+
+
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
 
 
 

@@ -83,7 +83,7 @@ interface CatalogApiList {
     : Deferred<Response<AutoCompleteResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/")
-    fun getCollections(@Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    fun getCollections(@Query("page_no") pageNo: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetCollectionListingResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
@@ -225,6 +225,38 @@ interface FileStorageApiList {
     @POST ("/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/")
     fun completeUpload(@Path("namespace") namespace: String,@Body body: StartResponse)
     : Deferred<Response<CompleteResponse>>
+    
+}
+
+interface OrderApiList {
+    
+    @GET ("/service/application/order/v1.0/orders")
+    fun getOrders(@Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
+    : Deferred<Response<OrderList>>
+    
+    @GET ("/service/application/order/v1.0/orders/{order_id}")
+    fun getOrderById(@Path("order_id") orderId: String)
+    : Deferred<Response<OrderById>>
+    
+    @GET ("/service/application/order/v1.0/orders/shipments/{shipment_id}")
+    fun getShipmentById(@Path("shipment_id") shipmentId: String)
+    : Deferred<Response<ShipmentById>>
+    
+    @GET ("/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons")
+    fun getShipmentReasons(@Path("shipment_id") shipmentId: String)
+    : Deferred<Response<ShipmentReasons>>
+    
+    @PUT ("/service/application/order/v1.0/orders/shipments/{shipment_id}/status")
+    fun updateShipmentStatus(@Path("shipment_id") shipmentId: String,@Body body: ShipmentStatusUpdateBody)
+    : Deferred<Response<ShipmentStatusUpdate>>
+    
+    @GET ("/service/application/order/v1.0/orders/shipments/{shipment_id}/track")
+    fun trackShipment(@Path("shipment_id") shipmentId: String)
+    : Deferred<Response<ShipmentTrack>>
+    
+    @GET ("/service/application/order/v1.0/pos-order/{order_id}")
+    fun getPosOrderById(@Path("order_id") orderId: String)
+    : Deferred<Response<OrderById>>
     
 }
 
@@ -441,6 +473,18 @@ interface PosCartApiList {
     @POST ("/service/application/pos/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
+    
+}
+
+interface LogisticApiList {
+    
+    @POST ("/service/application/logistics/v1.0")
+    fun getTatProduct(@Body body: GetTatProductReqBody)
+    : Deferred<Response<GetTatProductResponse>>
+    
+    @GET ("/service/application/logistics/v1.0/pincode/{pincode}")
+    fun getPincodeCity(@Path("pincode") pincode: String)
+    : Deferred<Response<GetPincodeCityResponse>>
     
 }
 

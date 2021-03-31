@@ -262,18 +262,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.editBrand(
-        companyId = config.companyId, brandId = brandId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getBrand(brandId: String)
     : Deferred<Response<GetBrandResponseSerializer>>? {
         
@@ -286,19 +274,19 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
+    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createBrand(
-        companyId = config.companyId, body = body)
+            companyProfileApiList?.editBrand(
+        companyId = config.companyId, brandId = brandId, body = body)
         } else {
             null
         } 
     }
     
     
-    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
+    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -322,11 +310,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createLocation(body: LocationSerializer)
+    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
+            companyProfileApiList?.createBrand(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -346,12 +334,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun updateLocation(locationId: String,body: LocationSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateLocation(
-        companyId = config.companyId, locationId = locationId, body = body)
+            companyProfileApiList?.createLocation(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -364,6 +352,18 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationDetail(
         companyId = config.companyId, locationId = locationId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateLocation(locationId: String,body: LocationSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.updateLocation(
+        companyId = config.companyId, locationId = locationId, body = body)
         } else {
             null
         } 

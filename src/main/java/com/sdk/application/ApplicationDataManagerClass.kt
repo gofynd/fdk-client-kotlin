@@ -389,16 +389,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getCollections(pageId: String?=null, pageSize: Int?=null): Deferred<Response<GetCollectionListingResponse>>? {
-        return catalogApiList?.getCollections(pageId = pageId, pageSize = pageSize )}
+    fun getCollections(pageNo: String?=null, pageSize: Int?=null): Deferred<Response<GetCollectionListingResponse>>? {
+        return catalogApiList?.getCollections(pageNo = pageNo, pageSize = pageSize )}
 
     
     
     
         
             
-            
-                
             
         
             
@@ -420,11 +418,11 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                catalogApiList?.getCollections(pageId = pageId, pageSize = pageSize)?.safeAwait(
+                val pageType = "number"
+                catalogApiList?.getCollections(pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                     onSuccess.invoke(response)
                 },
                     onFailure = { error ->
@@ -811,6 +809,68 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
     
     fun completeUpload(namespace: String,body: StartResponse): Deferred<Response<CompleteResponse>>? {
         return fileStorageApiList?.completeUpload(namespace = namespace, body = body)}
+
+    
+    
+}
+
+
+class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val orderApiList by lazy {
+        generateorderApiList()
+    }
+
+    private fun generateorderApiList(): OrderApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationOrder",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
+    }
+    
+    fun getOrders(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null): Deferred<Response<OrderList>>? {
+        return orderApiList?.getOrders(pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate )}
+
+    
+    
+    fun getOrderById(orderId: String): Deferred<Response<OrderById>>? {
+        return orderApiList?.getOrderById(orderId = orderId )}
+
+    
+    
+    fun getShipmentById(shipmentId: String): Deferred<Response<ShipmentById>>? {
+        return orderApiList?.getShipmentById(shipmentId = shipmentId )}
+
+    
+    
+    fun getShipmentReasons(shipmentId: String): Deferred<Response<ShipmentReasons>>? {
+        return orderApiList?.getShipmentReasons(shipmentId = shipmentId )}
+
+    
+    
+    fun updateShipmentStatus(shipmentId: String,body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentStatusUpdate>>? {
+        return orderApiList?.updateShipmentStatus(shipmentId = shipmentId, body = body)}
+
+    
+    
+    fun trackShipment(shipmentId: String): Deferred<Response<ShipmentTrack>>? {
+        return orderApiList?.trackShipment(shipmentId = shipmentId )}
+
+    
+    
+    fun getPosOrderById(orderId: String): Deferred<Response<OrderById>>? {
+        return orderApiList?.getPosOrderById(orderId = orderId )}
 
     
     
@@ -1547,6 +1607,43 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     fun updateCartWithSharedItems(token: String, action: String): Deferred<Response<SharedCartResponse>>? {
         return posCartApiList?.updateCartWithSharedItems(token = token, action = action )}
+
+    
+    
+}
+
+
+class LogisticDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val logisticApiList by lazy {
+        generatelogisticApiList()
+    }
+
+    private fun generatelogisticApiList(): LogisticApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationLogistic",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
+    }
+    
+    fun getTatProduct(body: GetTatProductReqBody): Deferred<Response<GetTatProductResponse>>? {
+        return logisticApiList?.getTatProduct( body = body)}
+
+    
+    
+    fun getPincodeCity(pincode: String): Deferred<Response<GetPincodeCityResponse>>? {
+        return logisticApiList?.getPincodeCity(pincode = pincode )}
 
     
     
