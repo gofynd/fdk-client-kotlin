@@ -42,12 +42,12 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getProductPriceBySlug(slug: String, size: String, pincode: Int?=null, storeId: String?=null): Deferred<Response<ProductSizePriceResponse>>? {
+    fun getProductPriceBySlug(slug: String, size: String, pincode: String, storeId: String?=null): Deferred<Response<ProductSizePriceResponse>>? {
         return catalogApiList?.getProductPriceBySlug(slug = slug, size = size, pincode = pincode, storeId = storeId )}
 
     
     
-    fun getProductSellersBySlug(slug: String, size: String, pincode: Int?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponse>>? {
+    fun getProductSellersBySlug(slug: String, size: String, pincode: String, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponse>>? {
         return catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, pageNo = pageNo, pageSize = pageSize )}
 
     
@@ -81,7 +81,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     *
     * Summary: Paginator for getProductSellersBySlug
     **/
-    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: Int?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponse>{
+    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String, pageSize: Int?=null) : Paginator<ProductSizeSellersResponse>{
 
     val paginator = Paginator<ProductSizeSellersResponse>()
 
@@ -550,13 +550,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     

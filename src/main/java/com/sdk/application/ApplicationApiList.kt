@@ -14,12 +14,12 @@ interface CatalogApiList {
     fun getProductSizesBySlug(@Path("slug") slug: String, @Query("store_id") storeId: String?)
     : Deferred<Response<ProductSizes>>
     
-    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/price/")
-    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("store_id") storeId: String?)
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/price/")
+    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("store_id") storeId: String?)
     : Deferred<Response<ProductSizePriceResponse>>
     
-    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/sellers/")
-    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/sellers/")
+    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/compare/")
@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
