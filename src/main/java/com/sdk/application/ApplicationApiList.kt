@@ -83,7 +83,7 @@ interface CatalogApiList {
     : Deferred<Response<AutoCompleteResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/")
-    fun getCollections(@Query("page_no") pageNo: String?, @Query("page_size") pageSize: Int?)
+    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetCollectionListingResponse>>
     
     @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -213,6 +213,138 @@ interface CartApiList {
     @POST ("/service/application/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
+    
+}
+
+interface UserApiList {
+    
+    @POST ("/service/application/user/authentication/v1.0/login/facebook-token")
+    fun loginWithFacebook(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/google-token")
+    fun loginWithGoogle(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/google-android")
+    fun loginWithGoogleAndroid(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/google-ios")
+    fun loginWithGoogleIOS(@Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/otp")
+    fun loginWithOTP(@Query("platform") platform: String?,@Body body: SendOtpRequestSchema)
+    : Deferred<Response<SendOtpResponse>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/password")
+    fun loginWithEmailAndPassword(@Body body: PasswordLoginRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/password/reset")
+    fun sendResetPasswordEmail(@Query("platform") platform: String?,@Body body: SendResetPasswordEmailRequestSchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    @POST ("/service/application/userauthentication/v1.0/login/password/reset/forgot")
+    fun forgotPassword(@Body body: ForgotPasswordRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/password/reset/token")
+    fun sendResetToken(@Body body: CodeRequestBodySchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/login/token")
+    fun loginWithToken(@Body body: TokenRequestBodySchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/register/form")
+    fun registerWithForm(@Query("platform") platform: String?,@Body body: FormRegisterRequestSchema)
+    : Deferred<Response<RegisterFormSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/verify/email")
+    fun verifyEmail(@Body body: CodeRequestBodySchema)
+    : Deferred<Response<VerifyEmailSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/verify/mobile")
+    fun verifyMobile(@Body body: CodeRequestBodySchema)
+    : Deferred<Response<VerifyEmailSuccess>>
+    
+    @GET ("/service/application/user/authentication/v1.0/has-password")
+    fun hasPassword()
+    : Deferred<Response<HasPasswordSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/password")
+    fun updatePassword(@Body body: UpdatePasswordRequestSchema)
+    : Deferred<Response<VerifyEmailSuccess>>
+    
+    @GET ("/service/application/user/authentication/v1.0/logout")
+    fun logout()
+    : Deferred<Response<LogoutSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/mobile/send")
+    fun sendOTPOnMobile(@Query("platform") platform: String?,@Body body: SendMobileOtpRequestSchema)
+    : Deferred<Response<OtpSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/mobile/verify")
+    fun verifyMobileOTP(@Query("platform") platform: String?,@Body body: VerifyOtpRequestSchema)
+    : Deferred<Response<VerifyOtpSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/email/send")
+    fun sendOTPOnEmail(@Query("platform") platform: String?,@Body body: SendEmailOtpRequestSchema)
+    : Deferred<Response<EmailOtpSuccess>>
+    
+    @POST ("/service/application/user/authentication/v1.0/otp/email/verify")
+    fun verifyEmailOTP(@Query("platform") platform: String?,@Body body: VerifyOtpRequestSchema)
+    : Deferred<Response<VerifyOtpSuccess>>
+    
+    @GET ("/service/application/user/authentication/v1.0/session")
+    fun getLoggedInUser()
+    : Deferred<Response<UserSchema>>
+    
+    @GET ("/service/application/user/authentication/v1.0/sessions")
+    fun getListOfActiveSessions()
+    : Deferred<Response<SessionListSuccess>>
+    
+    @GET ("/service/application/user/platform/v1.0/config")
+    fun getPlatformConfig(@Query("name") name: String?)
+    : Deferred<Response<PlatformSchema>>
+    
+    @POST ("/service/application/user/profile/v1.0/detail")
+    fun updateProfile(@Query("platform") platform: String?,@Body body: EditProfileRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @PUT ("/service/application/user/profile/v1.0/mobile")
+    fun addMobileNumber(@Query("platform") platform: String?,@Body body: EditMobileRequestSchema)
+    : Deferred<Response<VerifyMobileOTPSuccess>>
+    
+    @DELETE ("/service/application/user/profile/v1.0/mobile")
+    fun deleteMobileNumber(@Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("country_code") countryCode: String, @Query("phone") phone: String)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/mobile/primary")
+    fun setMobileNumberAsPrimary(@Body body: SendVerificationLinkMobileRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/mobile/link/send")
+    fun sendVerificationLinkToMobile(@Query("platform") platform: String?,@Body body: SendVerificationLinkMobileRequestSchema)
+    : Deferred<Response<SendMobileVerifyLinkSuccess>>
+    
+    @PUT ("/service/application/user/profile/v1.0/email")
+    fun addEmail(@Query("platform") platform: String?,@Body body: EditEmailRequestSchema)
+    : Deferred<Response<VerifyEmailOTPSuccess>>
+    
+    @DELETE ("/service/application/user/profile/v1.0/email")
+    fun deleteEmail(@Query("platform") platform: String?, @Query("active") active: Boolean, @Query("primary") primary: Boolean, @Query("verified") verified: Boolean, @Query("email") email: String)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/email/primary")
+    fun setEmailAsPrimary(@Body body: EditEmailRequestSchema)
+    : Deferred<Response<LoginSuccess>>
+    
+    @POST ("/service/application/user/profile/v1.0/email/link/send")
+    fun sendVerificationLinkToEmail(@Query("platform") platform: String?,@Body body: EditEmailRequestSchema)
+    : Deferred<Response<SendEmailVerifyLinkSuccess>>
     
 }
 

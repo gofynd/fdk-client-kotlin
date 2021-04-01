@@ -17,7 +17,7 @@ abstract class BaseRepository {
             ) {
                 onSuccess.invoke(Event(call.body(), call.headers()))
             } else {
-                val response = JSONObject(call.errorBody()?.toString() ?: "")
+                val response = JSONObject(call.errorBody()?.string() ?: "")
                 val error = Gson().fromJson(response.toString(), FdkError::class.java)
                 error.status = call.code()
                 onFailure.invoke(error)

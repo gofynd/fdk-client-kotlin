@@ -2,7 +2,11 @@ package com.sdk.platform
 
 class PlatformClient(val config:PlatformConfig) {
     
+    val user by lazy { UserDataManagerClass(config)}
+    
     val payment by lazy { PaymentDataManagerClass(config)}
+    
+    val catalog by lazy { CatalogDataManagerClass(config)}
     
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
     
@@ -14,7 +18,11 @@ class PlatformClient(val config:PlatformConfig) {
 
     inner class ApplicationClient(val applicationId:String,val config: PlatformConfig) {     
     
+    val user by lazy { this@PlatformClient.user.ApplicationClient(applicationId,config)}
+    
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
+    
+    val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
     
     val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
     
