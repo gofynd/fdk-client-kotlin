@@ -216,6 +216,38 @@ interface CartApiList {
     
 }
 
+interface LeadApiList {
+    
+    @GET ("/service/application/lead/v1.0/ticket/{id}")
+    fun getTicket(@Path("id") id: String)
+    : Deferred<Response<Ticket>>
+    
+    @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
+    fun createHistory(@Path("ticket_id") ticketId: String,@Body body: TicketHistoryPayload)
+    : Deferred<Response<TicketHistory>>
+    
+    @POST ("/service/application/lead/v1.0/ticket/")
+    fun createTicket(@Body body: AddTicketPayload)
+    : Deferred<Response<Ticket>>
+    
+    @GET ("/service/application/lead/v1.0/form/{slug}")
+    fun getCustomForm(@Path("slug") slug: String)
+    : Deferred<Response<CustomForm>>
+    
+    @POST ("/service/application/lead/v1.0/form/{slug}/submit")
+    fun submitCustomForm(@Path("slug") slug: String,@Body body: CustomFormSubmissionPayload)
+    : Deferred<Response<SubmitCustomFormResponse>>
+    
+    @GET ("/service/application/lead/v1.0/video/room/{unique_name}/participants")
+    fun getParticipantsInsideVideoRoom(@Path("unique_name") uniqueName: String)
+    : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
+    
+    @GET ("/service/application/lead/v1.0/video/room/{unique_name}/token")
+    fun getTokenForVideoRoom(@Path("unique_name") uniqueName: String)
+    : Deferred<Response<GetTokenForVideoRoomResponse>>
+    
+}
+
 interface UserApiList {
     
     @POST ("/service/application/user/authentication/v1.0/login/facebook-token")
@@ -386,9 +418,9 @@ interface OrderApiList {
     fun trackShipment(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentTrack>>
     
-    @GET ("/service/application/order/v1.0/pos-order/{order_id}")
+    @GET ("/service/application/order/v1.0/orders/pos-order/{order_id}")
     fun getPosOrderById(@Path("order_id") orderId: String)
-    : Deferred<Response<OrderById>>
+    : Deferred<Response<PosOrderById>>
     
 }
 
