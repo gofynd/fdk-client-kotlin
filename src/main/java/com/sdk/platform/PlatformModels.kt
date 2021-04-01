@@ -609,6 +609,792 @@ data class Ticket(
 
 
 /*
+    Model: PaginationSchema
+*/
+@Parcelize
+data class PaginationSchema(
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("current")
+    var current: Int?=null
+): Parcelable
+
+/*
+    Model: ThemesListingResponseSchema
+*/
+@Parcelize
+data class ThemesListingResponseSchema(
+    
+    @SerializedName("items")
+    var items: ArrayList<ThemesSchema>?=null,
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+): Parcelable
+
+/*
+    Model: AddThemeRequestSchema
+*/
+@Parcelize
+data class AddThemeRequestSchema(
+    
+    @SerializedName("theme_id")
+    var themeId: String?=null
+): Parcelable
+
+/*
+    Model: UpgradableThemeSchema
+*/
+@Parcelize
+data class UpgradableThemeSchema(
+    
+    @SerializedName("parent_theme")
+    var parentTheme: String?=null,
+    @SerializedName("applied_theme")
+    var appliedTheme: String?=null,
+    @SerializedName("upgrade")
+    var upgrade: Boolean?=null
+): Parcelable
+
+/*
+    Model: FontsSchema
+*/
+@Parcelize
+data class FontsSchema(
+    
+    @SerializedName("items")
+    var items: FontsSchemaItems?=null,
+    @SerializedName("kind")
+    var kind: String?=null
+): Parcelable
+
+/*
+    Model: BlitzkriegApiErrorSchema
+*/
+@Parcelize
+data class BlitzkriegApiErrorSchema(
+    
+    @SerializedName("message")
+    var message: String?=null
+): Parcelable
+
+/*
+    Model: BlitzkriegNotFoundSchema
+*/
+@Parcelize
+data class BlitzkriegNotFoundSchema(
+    
+    @SerializedName("message")
+    var message: String?=null
+): Parcelable
+
+/*
+    Model: BlitzkriegInternalServerErrorSchema
+*/
+@Parcelize
+data class BlitzkriegInternalServerErrorSchema(
+    
+    @SerializedName("message")
+    var message: String?=null
+): Parcelable
+
+/*
+    Model: FontsSchemaItems
+*/
+@Parcelize
+data class FontsSchemaItems(
+    
+    @SerializedName("family")
+    var family: String?=null,
+    @SerializedName("variants")
+    var variants: ArrayList<String>?=null,
+    @SerializedName("subsets")
+    var subsets: ArrayList<String>?=null,
+    @SerializedName("version")
+    var version: String?=null,
+    @SerializedName("last_modified")
+    var lastModified: String?=null,
+    @SerializedName("files")
+    var files: FontsSchemaItemsFiles?=null,
+    @SerializedName("category")
+    var category: String?=null,
+    @SerializedName("kind")
+    var kind: String?=null
+): Parcelable
+
+/*
+    Model: FontsSchemaItemsFiles
+*/
+@Parcelize
+data class FontsSchemaItemsFiles(
+    
+    @SerializedName("regular")
+    var regular: String?=null,
+    @SerializedName("italic")
+    var italic: String?=null,
+    @SerializedName("bold")
+    var bold: String?=null
+): Parcelable
+
+/*
+    Model: ThemesSchema
+*/
+@Parcelize
+data class ThemesSchema(
+    
+    @SerializedName("application")
+    var application: String?=null,
+    @SerializedName("applied")
+    var applied: Boolean?=null,
+    @SerializedName("customized")
+    var customized: Boolean?=null,
+    @SerializedName("published")
+    var published: Boolean?=null,
+    @SerializedName("archived")
+    var archived: Boolean?=null,
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    @SerializedName("version")
+    var version: String?=null,
+    @SerializedName("parent_theme_version")
+    var parentThemeVersion: String?=null,
+    @SerializedName("parent_theme")
+    var parentTheme: String?=null,
+    @SerializedName("information")
+    var information: Information?=null,
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    @SerializedName("src")
+    var src: Src?=null,
+    @SerializedName("assets")
+    var assets: AssetsSchema?=null,
+    @SerializedName("available_pages")
+    var availablePages: AvailablePages?=null,
+    @SerializedName("pages")
+    var pages: Pages?=null,
+    @SerializedName("available_sections")
+    var availableSections: ArrayList<availableSectionSchema>?=null,
+    @SerializedName("sections")
+    var sections: ArrayList<sectionSchema>?=null,
+    @SerializedName("constants")
+    var constants: Constants?=null,
+    @SerializedName("styles")
+    var styles: Styles?=null,
+    @SerializedName("config")
+    var config: Config?=null,
+    @SerializedName("settings")
+    var settings: Settings?=null,
+    @SerializedName("font")
+    var font: Font?=null,
+    @SerializedName("_id")
+    var id: String?=null,
+    @SerializedName("__v")
+    var v: Int?=null,
+    @SerializedName("colors")
+    var colors: Colors?=null
+): Parcelable
+
+/*
+    Model: pagesSchema
+*/
+@Parcelize
+data class pagesSchema(
+    
+    @SerializedName("text")
+    var text: String?=null,
+    @SerializedName("path")
+    var path: String?=null,
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("value")
+    var value: String?=null,
+    @SerializedName("sections")
+    var sections: Sections?=null
+): Parcelable
+
+/*
+    Model: availableSectionSchema
+*/
+@Parcelize
+data class availableSectionSchema(
+    
+    @SerializedName("blocks")
+    var blocks: Blocks?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("label")
+    var label: String?=null,
+    @SerializedName("props")
+    var props: Props?=null
+): Parcelable
+
+/*
+    Model: sectionSchema
+*/
+@Parcelize
+data class sectionSchema(
+    
+    @SerializedName("page_key")
+    var pageKey: String?=null,
+    @SerializedName("page_sections")
+    var pageSections: PageSections?=null
+): Parcelable
+
+/*
+    Model: Information
+*/
+@Parcelize
+data class Information(
+    
+    @SerializedName("images")
+    var images: Images?=null,
+    @SerializedName("features")
+    var features: ArrayList<String>?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("description")
+    var description: String?=null
+): Parcelable
+
+/*
+    Model: Images
+*/
+@Parcelize
+data class Images(
+    
+    @SerializedName("desktop")
+    var desktop: ArrayList<String>?=null,
+    @SerializedName("android")
+    var android: ArrayList<String>?=null,
+    @SerializedName("ios")
+    var ios: ArrayList<String>?=null,
+    @SerializedName("thumbnail")
+    var thumbnail: ArrayList<String>?=null
+): Parcelable
+
+/*
+    Model: Src
+*/
+@Parcelize
+data class Src(
+    
+    @SerializedName("link")
+    var link: String?=null
+): Parcelable
+
+/*
+    Model: AssetsSchema
+*/
+@Parcelize
+data class AssetsSchema(
+    
+    @SerializedName("umd_js")
+    var umdJs: UmdJs?=null,
+    @SerializedName("common_js")
+    var commonJs: CommonJs?=null,
+    @SerializedName("css")
+    var css: Css?=null
+): Parcelable
+
+/*
+    Model: UmdJs
+*/
+@Parcelize
+data class UmdJs(
+    
+    @SerializedName("link")
+    var link: String?=null
+): Parcelable
+
+/*
+    Model: CommonJs
+*/
+@Parcelize
+data class CommonJs(
+    
+    @SerializedName("link")
+    var link: String?=null
+): Parcelable
+
+/*
+    Model: Css
+*/
+@Parcelize
+data class Css(
+    
+    @SerializedName("link")
+    var link: String?=null
+): Parcelable
+
+/*
+    Model: AvailablePages
+*/
+@Parcelize
+data class AvailablePages(
+    
+    @SerializedName("path")
+    var path: String?=null,
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("text")
+    var text: String?=null,
+    @SerializedName("value")
+    var value: String?=null,
+    @SerializedName("seo")
+    var seo: Seo?=null,
+    @SerializedName("props")
+    var props: Props?=null,
+    @SerializedName("sections")
+    var sections: Sections?=null
+): Parcelable
+
+/*
+    Model: Seo
+*/
+@Parcelize
+data class Seo(
+    
+    @SerializedName("title")
+    var title: String?=null,
+    @SerializedName("description")
+    var description: String?=null
+): Parcelable
+
+/*
+    Model: Props
+*/
+@Parcelize
+data class Props(
+    
+): Parcelable
+
+/*
+    Model: Sections
+*/
+@Parcelize
+data class Sections(
+    
+    @SerializedName("attributes")
+    var attributes: String?=null
+): Parcelable
+
+/*
+    Model: Attributes
+*/
+@Parcelize
+data class Attributes(
+    
+    @SerializedName("page")
+    var page: String?=null
+): Parcelable
+
+/*
+    Model: Pages
+*/
+@Parcelize
+data class Pages(
+    
+    @SerializedName("collection-listing")
+    var collectionListing: pagesSchema?=null,
+    @SerializedName("brands")
+    var brands: pagesSchema?=null,
+    @SerializedName("cart-landing")
+    var cartLanding: pagesSchema?=null,
+    @SerializedName("collections")
+    var collections: pagesSchema?=null,
+    @SerializedName("product-description")
+    var productDescription: pagesSchema?=null,
+    @SerializedName("product-listing")
+    var productListing: pagesSchema?=null,
+    @SerializedName("home")
+    var home: pagesSchema?=null,
+    @SerializedName("categories")
+    var categories: pagesSchema?=null,
+    @SerializedName("compare-products")
+    var compareProducts: pagesSchema?=null,
+    @SerializedName("wishlist")
+    var wishlist: pagesSchema?=null
+): Parcelable
+
+/*
+    Model: Constants
+*/
+@Parcelize
+data class Constants(
+    
+): Parcelable
+
+/*
+    Model: Styles
+*/
+@Parcelize
+data class Styles(
+    
+): Parcelable
+
+/*
+    Model: Config
+*/
+@Parcelize
+data class Config(
+    
+    @SerializedName("preset")
+    var preset: Preset?=null,
+    @SerializedName("global_schema")
+    var globalSchema: GlobalSchema?=null,
+    @SerializedName("current")
+    var current: String?=null,
+    @SerializedName("list")
+    var list: List?=null
+): Parcelable
+
+/*
+    Model: Preset
+*/
+@Parcelize
+data class Preset(
+    
+    @SerializedName("sections")
+    var sections: sectionSchema?=null
+): Parcelable
+
+/*
+    Model: GlobalSchema
+*/
+@Parcelize
+data class GlobalSchema(
+    
+    @SerializedName("props")
+    var props: GlobalSchemaProps?=null
+): Parcelable
+
+/*
+    Model: GlobalSchemaProps
+*/
+@Parcelize
+data class GlobalSchemaProps(
+    
+): Parcelable
+
+/*
+    Model: List
+*/
+@Parcelize
+data class List(
+    
+    @SerializedName("global")
+    var global: Global?=null,
+    @SerializedName("page")
+    var page: Page?=null,
+    @SerializedName("name")
+    var name: String?=null
+): Parcelable
+
+/*
+    Model: Global
+*/
+@Parcelize
+data class Global(
+    
+): Parcelable
+
+/*
+    Model: Colors
+*/
+@Parcelize
+data class Colors(
+    
+    @SerializedName("bg_color")
+    var bgColor: String?=null,
+    @SerializedName("primary_color")
+    var primaryColor: String?=null,
+    @SerializedName("secondary_color")
+    var secondaryColor: String?=null,
+    @SerializedName("accent_color")
+    var accentColor: String?=null,
+    @SerializedName("link_color")
+    var linkColor: String?=null,
+    @SerializedName("button_secondary_color")
+    var buttonSecondaryColor: String?=null
+): Parcelable
+
+/*
+    Model: Custom
+*/
+@Parcelize
+data class Custom(
+    
+    @SerializedName("props")
+    var props: CustomProps?=null
+): Parcelable
+
+/*
+    Model: CustomProps
+*/
+@Parcelize
+data class CustomProps(
+    
+): Parcelable
+
+/*
+    Model: Settings
+*/
+@Parcelize
+data class Settings(
+    
+): Parcelable
+
+/*
+    Model: SettingsProps
+*/
+@Parcelize
+data class SettingsProps(
+    
+): Parcelable
+
+/*
+    Model: Font
+*/
+@Parcelize
+data class Font(
+    
+    @SerializedName("family")
+    var family: String?=null,
+    @SerializedName("variants")
+    var variants: Variants?=null
+): Parcelable
+
+/*
+    Model: Variants
+*/
+@Parcelize
+data class Variants(
+    
+    @SerializedName("medium")
+    var medium: Medium?=null,
+    @SerializedName("semi_bold")
+    var semiBold: SemiBold?=null,
+    @SerializedName("bold")
+    var bold: Bold?=null,
+    @SerializedName("light")
+    var light: Light?=null,
+    @SerializedName("regular")
+    var regular: Regular?=null
+): Parcelable
+
+/*
+    Model: Medium
+*/
+@Parcelize
+data class Medium(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("file")
+    var file: String?=null
+): Parcelable
+
+/*
+    Model: SemiBold
+*/
+@Parcelize
+data class SemiBold(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("file")
+    var file: String?=null
+): Parcelable
+
+/*
+    Model: Bold
+*/
+@Parcelize
+data class Bold(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("file")
+    var file: String?=null
+): Parcelable
+
+/*
+    Model: Light
+*/
+@Parcelize
+data class Light(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("file")
+    var file: String?=null
+): Parcelable
+
+/*
+    Model: Regular
+*/
+@Parcelize
+data class Regular(
+    
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("file")
+    var file: String?=null
+): Parcelable
+
+/*
+    Model: Blocks
+*/
+@Parcelize
+data class Blocks(
+    
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("props")
+    var props: BlocksProps?=null
+): Parcelable
+
+/*
+    Model: BlocksProps
+*/
+@Parcelize
+data class BlocksProps(
+    
+    @SerializedName("id")
+    var id: String?=null,
+    @SerializedName("label")
+    var label: String?=null,
+    @SerializedName("type")
+    var type: String?=null
+): Parcelable
+
+/*
+    Model: PageSections
+*/
+@Parcelize
+data class PageSections(
+    
+    @SerializedName("blocks")
+    var blocks: PageSectionsBlocks?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("label")
+    var label: String?=null,
+    @SerializedName("props")
+    var props: PageSectionsProps?=null,
+    @SerializedName("preset")
+    var preset: PageSectionsPreset?=null,
+    @SerializedName("predicate")
+    var predicate: Predicate?=null
+): Parcelable
+
+/*
+    Model: PageSectionsBlocks
+*/
+@Parcelize
+data class PageSectionsBlocks(
+    
+    @SerializedName("type")
+    var type: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("props")
+    var props: PageSectionsBlocksProps?=null
+): Parcelable
+
+/*
+    Model: PageSectionsBlocksProps
+*/
+@Parcelize
+data class PageSectionsBlocksProps(
+    
+    @SerializedName("id")
+    var id: String?=null,
+    @SerializedName("label")
+    var label: String?=null,
+    @SerializedName("type")
+    var type: String?=null
+): Parcelable
+
+/*
+    Model: PageSectionsProps
+*/
+@Parcelize
+data class PageSectionsProps(
+    
+): Parcelable
+
+/*
+    Model: PageSectionsPreset
+*/
+@Parcelize
+data class PageSectionsPreset(
+    
+): Parcelable
+
+/*
+    Model: Predicate
+*/
+@Parcelize
+data class Predicate(
+    
+    @SerializedName("screen")
+    var screen: Screen?=null,
+    @SerializedName("user")
+    var user: UserSchema?=null,
+    @SerializedName("route")
+    var route: Route?=null
+): Parcelable
+
+/*
+    Model: Screen
+*/
+@Parcelize
+data class Screen(
+    
+    @SerializedName("mobile")
+    var mobile: Boolean?=null,
+    @SerializedName("desktop")
+    var desktop: Boolean?=null,
+    @SerializedName("tablet")
+    var tablet: Boolean?=null
+): Parcelable
+
+/*
+    Model: Route
+*/
+@Parcelize
+data class Route(
+    
+    @SerializedName("selected")
+    var selected: String?=null,
+    @SerializedName("exact_url")
+    var exactUrl: String?=null,
+    @SerializedName("query")
+    var query: Query?=null
+): Parcelable
+
+/*
+    Model: Query
+*/
+@Parcelize
+data class Query(
+    
+): Parcelable
+
+
+
+/*
     Model: EditEmailRequestSchema
 */
 @Parcelize
@@ -1072,24 +1858,6 @@ data class CustomerListResponseSchema(
     var items: ArrayList<UserSchema>?=null,
     @SerializedName("page")
     var page: PaginationSchema?=null
-): Parcelable
-
-/*
-    Model: PaginationSchema
-*/
-@Parcelize
-data class PaginationSchema(
-    
-    @SerializedName("size")
-    var size: Int?=null,
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    @SerializedName("type")
-    var type: String?=null,
-    @SerializedName("current")
-    var current: Int?=null
 ): Parcelable
 
 /*
@@ -4066,56 +4834,6 @@ data class VerifiedBy(
     var userId: String?=null,
     @SerializedName("username")
     var username: String?=null
-): Parcelable
-
-/*
-    Model: Attributes
-*/
-@Parcelize
-data class Attributes(
-    
-    @SerializedName("primary_material")
-    var primaryMaterial: String?=null,
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    @SerializedName("is_image_less_product")
-    var isImageLessProduct: Boolean?=null,
-    @SerializedName("neck_type")
-    var neckType: String?=null,
-    @SerializedName("stage")
-    var stage: String?=null,
-    @SerializedName("created_on")
-    var createdOn: String?=null,
-    @SerializedName("image_nature")
-    var imageNature: String?=null,
-    @SerializedName("product_fit")
-    var productFit: String?=null,
-    @SerializedName("sleeve_length")
-    var sleeveLength: String?=null,
-    @SerializedName("verified_on")
-    var verifiedOn: String?=null,
-    @SerializedName("essential")
-    var essential: String?=null,
-    @SerializedName("primary_color")
-    var primaryColor: String?=null,
-    @SerializedName("material")
-    var material: String?=null,
-    @SerializedName("color")
-    var color: String?=null,
-    @SerializedName("pattern")
-    var pattern: String?=null,
-    @SerializedName("meta_nature")
-    var metaNature: String?=null,
-    @SerializedName("created_by")
-    var createdBy: UserCommon?=null,
-    @SerializedName("modified_by")
-    var modifiedBy: UserCommon?=null,
-    @SerializedName("verified_by")
-    var verifiedBy: VerifiedBy?=null,
-    @SerializedName("l3_mapping")
-    var l3Mapping: ArrayList<String>?=null,
-    @SerializedName("gender")
-    var gender: ArrayList<String>?=null
 ): Parcelable
 
 /*

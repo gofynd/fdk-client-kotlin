@@ -2,6 +2,7 @@
 
 
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
+* [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
@@ -35,6 +36,25 @@
   * [Lead#getVideoParticipants](#leadgetvideoparticipants)
   * [Lead#openVideoRoom](#leadopenvideoroom)
   * [Lead#closeVideoRoom](#leadclosevideoroom)
+ 
+* [Theme](#Theme)
+  * [Theme#getThemeLibrary](#themegetthemelibrary)
+  * [Theme#addToThemeLibrary](#themeaddtothemelibrary)
+  * [Theme#applyTheme](#themeapplytheme)
+  * [Theme#isUpgradable](#themeisupgradable)
+  * [Theme#upgradeTheme](#themeupgradetheme)
+  * [Theme#getPublicThemes](#themegetpublicthemes)
+  * [Theme#createTheme](#themecreatetheme)
+  * [Theme#getAppliedTheme](#themegetappliedtheme)
+  * [Theme#getFonts](#themegetfonts)
+  * [Theme#getThemeById](#themegetthemebyid)
+  * [Theme#updateTheme](#themeupdatetheme)
+  * [Theme#deleteTheme](#themedeletetheme)
+  * [Theme#getThemeForPreview](#themegetthemeforpreview)
+  * [Theme#publishTheme](#themepublishtheme)
+  * [Theme#unpublishTheme](#themeunpublishtheme)
+  * [Theme#archiveTheme](#themearchivetheme)
+  * [Theme#unarchiveTheme](#themeunarchivetheme)
  
 * [User](#User)
   * [User#getCustomers](#usergetcustomers)
@@ -697,6 +717,479 @@ const data = await lead.closeVideoRoom(company_id, application_id, unique_name, 
 
 
 Close the video room and force all participants to leave.
+
+
+---
+
+
+
+---
+---
+
+
+## Theme
+
+```javascript
+const { Configuration, Theme } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const theme = new Theme(conf);
+
+```
+
+
+#### Theme#getThemeLibrary
+Gets list of themes in theme library
+
+```javascript
+// Promise
+const promise = theme.getThemeLibrary(company_id, application_id, page_size, page_no, );
+
+// Async/Await
+const data = await theme.getThemeLibrary(company_id, application_id, page_size, page_no, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+| page_no | integer | Page number. Default is 1. | 
+
+
+Gets list of themes in theme library
+
+
+---
+
+
+#### Theme#addToThemeLibrary
+Add theme to theme library
+
+```javascript
+// Promise
+const promise = theme.addToThemeLibrary(company_id, application_id, );
+
+// Async/Await
+const data = await theme.addToThemeLibrary(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+Add theme to theme library
+
+
+---
+
+
+#### Theme#applyTheme
+Apply theme
+
+```javascript
+// Promise
+const promise = theme.applyTheme(company_id, application_id, );
+
+// Async/Await
+const data = await theme.applyTheme(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+Apply theme
+
+
+---
+
+
+#### Theme#isUpgradable
+Checks if theme is upgradable
+
+```javascript
+// Promise
+const promise = theme.isUpgradable(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.isUpgradable(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Checks if theme is upgradable
+
+
+---
+
+
+#### Theme#upgradeTheme
+Upgrades theme
+
+```javascript
+// Promise
+const promise = theme.upgradeTheme(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.upgradeTheme(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Upgrades theme
+
+
+---
+
+
+#### Theme#getPublicThemes
+Gets public themes
+
+```javascript
+// Promise
+const promise = theme.getPublicThemes(company_id, application_id, page_size, page_no, );
+
+// Async/Await
+const data = await theme.getPublicThemes(company_id, application_id, page_size, page_no, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+| page_no | integer | Page number. Default is 1. | 
+
+
+Gets public themes
+
+
+---
+
+
+#### Theme#createTheme
+Create new theme
+
+```javascript
+// Promise
+const promise = theme.createTheme(company_id, application_id, );
+
+// Async/Await
+const data = await theme.createTheme(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+Create new theme
+
+
+---
+
+
+#### Theme#getAppliedTheme
+Get applied theme
+
+```javascript
+// Promise
+const promise = theme.getAppliedTheme(company_id, application_id, );
+
+// Async/Await
+const data = await theme.getAppliedTheme(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+Get applied theme
+
+
+---
+
+
+#### Theme#getFonts
+Gets fonts
+
+```javascript
+// Promise
+const promise = theme.getFonts(company_id, application_id, );
+
+// Async/Await
+const data = await theme.getFonts(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+
+
+Gets fonts
+
+
+---
+
+
+#### Theme#getThemeById
+Gets theme by id
+
+```javascript
+// Promise
+const promise = theme.getThemeById(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.getThemeById(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Gets theme by id
+
+
+---
+
+
+#### Theme#updateTheme
+Update theme
+
+```javascript
+// Promise
+const promise = theme.updateTheme(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.updateTheme(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Update theme
+
+
+---
+
+
+#### Theme#deleteTheme
+Delete theme
+
+```javascript
+// Promise
+const promise = theme.deleteTheme(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.deleteTheme(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Delete theme
+
+
+---
+
+
+#### Theme#getThemeForPreview
+Gets theme for preview
+
+```javascript
+// Promise
+const promise = theme.getThemeForPreview(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.getThemeForPreview(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Gets theme for preview
+
+
+---
+
+
+#### Theme#publishTheme
+Publish theme
+
+```javascript
+// Promise
+const promise = theme.publishTheme(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.publishTheme(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Publish theme
+
+
+---
+
+
+#### Theme#unpublishTheme
+Unpublish theme
+
+```javascript
+// Promise
+const promise = theme.unpublishTheme(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.unpublishTheme(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Unpublish theme
+
+
+---
+
+
+#### Theme#archiveTheme
+Archive theme
+
+```javascript
+// Promise
+const promise = theme.archiveTheme(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.archiveTheme(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Archive theme
+
+
+---
+
+
+#### Theme#unarchiveTheme
+Unarchive theme
+
+```javascript
+// Promise
+const promise = theme.unarchiveTheme(company_id, application_id, theme_id, );
+
+// Async/Await
+const data = await theme.unarchiveTheme(company_id, application_id, theme_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company ID | 
+| application_id | string | Application ID | 
+| theme_id | string | Theme ID | 
+
+
+Unarchive theme
 
 
 ---

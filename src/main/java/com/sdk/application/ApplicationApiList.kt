@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -245,6 +245,18 @@ interface LeadApiList {
     @GET ("/service/application/lead/v1.0/video/room/{unique_name}/token")
     fun getTokenForVideoRoom(@Path("unique_name") uniqueName: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>
+    
+}
+
+interface ThemeApiList {
+    
+    @GET ("/service/application/theme/v1.0/applied-theme")
+    fun getAppliedTheme()
+    : Deferred<Response<ThemesSchema>>
+    
+    @GET ("/service/application/theme/v1.0/{theme_id}/preview")
+    fun getThemeForPreview(@Path("theme_id") themeId: String)
+    : Deferred<Response<ThemesSchema>>
     
 }
 

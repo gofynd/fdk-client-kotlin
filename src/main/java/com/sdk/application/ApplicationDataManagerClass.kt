@@ -548,13 +548,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -834,6 +834,43 @@ class LeadDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun getTokenForVideoRoom(uniqueName: String): Deferred<Response<GetTokenForVideoRoomResponse>>? {
         return leadApiList?.getTokenForVideoRoom(uniqueName = uniqueName )}
+
+    
+    
+}
+
+
+class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val themeApiList by lazy {
+        generatethemeApiList()
+    }
+
+    private fun generatethemeApiList(): ThemeApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationTheme",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
+    }
+    
+    fun getAppliedTheme(): Deferred<Response<ThemesSchema>>? {
+        return themeApiList?.getAppliedTheme( )}
+
+    
+    
+    fun getThemeForPreview(themeId: String): Deferred<Response<ThemesSchema>>? {
+        return themeApiList?.getThemeForPreview(themeId = themeId )}
 
     
     

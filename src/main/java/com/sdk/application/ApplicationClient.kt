@@ -8,6 +8,8 @@ class ApplicationClient(val config:ApplicationConfig) {
     
     val lead by lazy { LeadDataManagerClass(config)}
     
+    val theme by lazy { ThemeDataManagerClass(config)}
+    
     val user by lazy { UserDataManagerClass(config)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}

@@ -4,6 +4,7 @@
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Cart](#Cart) - Cart APIs 
 * [Lead](#Lead) - Handles communication between Staff and Users 
+* [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [FileStorage](#FileStorage) - File Storage 
 * [Order](#Order) - Handles Platform websites OMS 
@@ -42,8 +43,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [followById](#followbyid)
     * [unfollowById](#unfollowbyid)
+    * [followById](#followbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -85,6 +86,12 @@
     * [submitCustomForm](#submitcustomform)
     * [getParticipantsInsideVideoRoom](#getparticipantsinsidevideoroom)
     * [getTokenForVideoRoom](#gettokenforvideoroom)
+    
+
+* [Theme](#Theme)
+  * Methods
+    * [getAppliedTheme](#getappliedtheme)
+    * [getThemeForPreview](#getthemeforpreview)
     
 
 * [User](#User)
@@ -1442,11 +1449,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow a particular Product
+#### unfollowById
+UnFollow a Product
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1459,9 +1466,9 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | integer | the `id` of the collection type you want to follow | 
+| collectionId | integer | the `id` of the collection type you want to unfollow | 
 
-Follow a particular Product specified by its uid. Pass the uid of the product in request URL
+You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -1495,11 +1502,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-UnFollow a Product
+#### followById
+Follow a particular Product
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1512,9 +1519,9 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | integer | the `id` of the collection type you want to unfollow | 
+| collectionId | integer | the `id` of the collection type you want to follow | 
 
-You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
+Follow a particular Product specified by its uid. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -6136,6 +6143,162 @@ Default
   }
 }
 ```
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Theme
+
+
+#### getAppliedTheme
+Get applied theme for an application
+
+```kotlin
+theme.getAppliedTheme().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+
+
+*Success Response:*
+
+
+
+A JSON object of theme
+
+
+Schema: `ThemesSchema`
+
+
+*Examples:*
+
+
+Applied Theme
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getThemeForPreview
+Get theme for preview
+
+```kotlin
+theme.getThemeForPreview(themeId: themeId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| themeId | string | ID of the theme to be retrieved | 
+
+
+
+*Success Response:*
+
+
+
+A JSON object of theme
+
+
+Schema: `ThemesSchema`
+
+
+*Examples:*
+
+
+Preview Theme
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
 
 
 

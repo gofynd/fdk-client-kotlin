@@ -4,6 +4,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val lead by lazy { LeadDataManagerClass(config)}
     
+    val theme by lazy { ThemeDataManagerClass(config)}
+    
     val user by lazy { UserDataManagerClass(config)}
     
     val payment by lazy { PaymentDataManagerClass(config)}
@@ -23,6 +25,8 @@ class PlatformClient(val config:PlatformConfig) {
     inner class ApplicationClient(val applicationId:String,val config: PlatformConfig) {     
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
+    
+    val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
     
     val user by lazy { this@PlatformClient.user.ApplicationClient(applicationId,config)}
     
