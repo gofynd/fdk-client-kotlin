@@ -16,6 +16,8 @@ class ApplicationClient(val config:ApplicationConfig) {
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}
     
+    val payment by lazy { PaymentDataManagerClass(config)}
+    
     val order by lazy { OrderDataManagerClass(config)}
     
     val feedback by lazy { FeedbackDataManagerClass(config)}

@@ -436,6 +436,82 @@ interface FileStorageApiList {
     
 }
 
+interface PaymentApiList {
+    
+    @GET ("/service/application/payment/v1.0/config/aggregators/key")
+    fun getAggregatorsConfig(@Header("x-api-token") xApiToken: String, @Query("refresh") refresh: Boolean?)
+    : Deferred<Response<AggregatorsConfigDetailResponse>>
+    
+    @POST ("/service/application/payment/v1.0/card/attach")
+    fun attachCardToCustomer(@Body body: AttachCardRequest)
+    : Deferred<Response<AttachCardsResponse>>
+    
+    @GET ("/service/application/payment/v1.0/card/aggregator")
+    fun getActiveCardAggregator(@Query("refresh") refresh: Boolean?)
+    : Deferred<Response<ActiveCardPaymentGatewayResponse>>
+    
+    @GET ("/service/application/payment/v1.0/cards")
+    fun getActiveUserCards(@Query("force_refresh") forceRefresh: Boolean?)
+    : Deferred<Response<ListCardsResponse>>
+    
+    @POST ("/service/application/payment/v1.0/card/remove")
+    fun deleteUserCard(@Body body: DeletehCardRequest)
+    : Deferred<Response<DeleteCardsResponse>>
+    
+    @POST ("/service/application/payment/v1.0/payment/customer/validation")
+    fun verifyCustomerForPayment(@Body body: ValidateCustomerRequest)
+    : Deferred<Response<ValidateCustomerResponse>>
+    
+    @POST ("/service/application/payment/v1.0/payment/confirm/charge")
+    fun verifyAndChargePayment(@Body body: ChargeCustomerRequest)
+    : Deferred<Response<ChargeCustomerResponse>>
+    
+    @POST ("/service/application/payment/v1.0/payment/request")
+    fun initialisePayment(@Body body: PaymentInitializationRequest)
+    : Deferred<Response<PaymentInitializationResponse>>
+    
+    @POST ("/service/application/payment/v1.0/payment/confirm/polling")
+    fun checkAndUpdatePaymentStatus(@Body body: PaymentStatusUpdateRequest)
+    : Deferred<Response<PaymentStatusUpdateResponse>>
+    
+    @GET ("/service/application/payment/v1.0/payment/options")
+    fun getPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("user_details") userDetails: String?)
+    : Deferred<Response<PaymentModeRouteResponse>>
+    
+    @GET ("/service/application/payment/v1.0/payment/options/pos")
+    fun getPosPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?)
+    : Deferred<Response<PaymentModeRouteResponse>>
+    
+    @GET ("/service/application/payment/v1.0/refund/user/beneficiary")
+    fun getUserBeneficiariesDetail(@Query("order_id") orderId: String)
+    : Deferred<Response<OrderBeneficiaryResponse>>
+    
+    @GET ("/service/application/payment/v1.0/ifsc-code/verify")
+    fun verifyIfscCode(@Query("ifsc_code") ifscCode: String?)
+    : Deferred<Response<IfscCodeResponse>>
+    
+    @GET ("/service/application/payment/v1.0/refund/order/beneficiaries")
+    fun getOrderBeneficiariesDetail(@Query("order_id") orderId: String)
+    : Deferred<Response<OrderBeneficiaryResponse>>
+    
+    @POST ("/service/application/payment/v1.0/refund/verification/bank")
+    fun verifyOtpAndAddBeneficiaryForBank(@Body body: AddBeneficiaryViaOtpVerificationRequest)
+    : Deferred<Response<AddBeneficiaryViaOtpVerificationResponse>>
+    
+    @POST ("/service/application/payment/v1.0/refund/account")
+    fun addBeneficiaryDetails(@Body body: AddBeneficiaryDetailsRequest)
+    : Deferred<Response<RefundAccountResponse>>
+    
+    @POST ("/service/application/payment/v1.0/refund/verification/wallet")
+    fun verifyOtpAndAddBeneficiaryForWallet(@Body body: WalletOtpRequest)
+    : Deferred<Response<WalletOtpResponse>>
+    
+    @POST ("/service/application/payment/v1.0/refund/beneficiary/default")
+    fun updateDefaultBeneficiary(@Body body: SetDefaultBeneficiaryRequest)
+    : Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+}
+
 interface OrderApiList {
     
     @GET ("/service/application/order/v1.0/orders")
