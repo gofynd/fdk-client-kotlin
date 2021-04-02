@@ -746,13 +746,13 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 }
 }
 
-class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+class OrderDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
-    private val catalogApiList by lazy {
-        generatecatalogApiList()
+    private val orderApiList by lazy {
+        generateorderApiList()
     }
     
-    private fun generatecatalogApiList(): CatalogApiList? {
+    private fun generateorderApiList(): OrderApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -764,40 +764,18 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformCatalog",
+            namespace = "PlatformOrder",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
+        return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun getProductBundle(q: String?=null)
-    : Deferred<Response<GetProductBundleListingResponse>>? {
+    suspend fun shipmentStatusUpdate(body: UpdateShipmentStatusBody)
+    : Deferred<Response<UpdateShipmentStatusResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundle(
-        companyId = config.companyId, q = q )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createProductBundle(body: ProductBundleRequest)
-    : Deferred<Response<GetProductBundleCreateResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductBundle(
+            orderApiList?.shipmentStatusUpdate(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -805,47 +783,23 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getProductBundleDetail(id: String)
-    : Deferred<Response<GetProductBundleResponse>>? {
+    suspend fun activityStatus(bagId: String)
+    : Deferred<Response<GetActivityStatus>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundleDetail(
-        companyId = config.companyId, id = id )
+            orderApiList?.activityStatus(
+        companyId = config.companyId, bagId = bagId )
         } else {
             null
         } 
     }
     
     
-    suspend fun updateProductBundle(id: String,body: ProductBundleUpdateRequest)
-    : Deferred<Response<GetProductBundleCreateResponse>>? {
+    suspend fun storeProcessShipmentUpdate(body: UpdateProcessShipmenstRequestBody)
+    : Deferred<Response<UpdateProcessShipmenstRequestResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateProductBundle(
-        companyId = config.companyId, id = id, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getSizeGuides(active: Boolean?=null, q: String?=null, tag: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ListSizeGuide>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSizeGuides(
-        companyId = config.companyId, active = active, q = q, tag = tag, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createSizeGuide(body: ValidateSizeGuide)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createSizeGuide(
+            orderApiList?.storeProcessShipmentUpdate(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -853,24 +807,12 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getSizeGuide(id: String)
-    : Deferred<Response<SizeGuideResponse>>? {
+    suspend fun getOrdersByCompanyId(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null, q: String?=null, stage: String?=null, salesChannels: String?=null, orderId: String?=null, stores: String?=null, status: String?=null, shortenUrls: Boolean?=null, filterType: String?=null)
+    : Deferred<Response<OrderListing>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSizeGuide(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateSizeGuide(id: String,body: ValidateSizeGuide)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateSizeGuide(
-        companyId = config.companyId, id = id, body = body)
+            orderApiList?.getOrdersByCompanyId(
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, q = q, stage = stage, salesChannels = salesChannels, orderId = orderId, stores = stores, status = status, shortenUrls = shortenUrls, filterType = filterType )
         } else {
             null
         } 
@@ -881,45 +823,11 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun getSellerInsights(sellerAppId: String)
-    : Deferred<Response<CrossSellingResponse>>? {
+    suspend fun getPing()
+    : Deferred<Response<GetPingResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSellerInsights(
-        companyId = config.companyId, sellerAppId = sellerAppId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createMarketplaceOptin(marketplace: String,body: OptInPostRequest)
-    : Deferred<Response<UpdatedResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createMarketplaceOptin(
-        companyId = config.companyId, marketplace = marketplace, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getMarketplaceOptinDetail()
-    : Deferred<Response<GetOptInPlatform>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getMarketplaceOptinDetail(
+            orderApiList?.getPing(
         companyId = config.companyId )
         } else {
             null
@@ -927,11 +835,11 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getCompanyDetail()
-    : Deferred<Response<OptinCompanyDetail>>? {
+    suspend fun voiceCallback()
+    : Deferred<Response<GetVoiceCallbackResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyDetail(
+            orderApiList?.voiceCallback(
         companyId = config.companyId )
         } else {
             null
@@ -939,516 +847,12 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getCompanyBrandDetail(isActive: Boolean?=null, q: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null, marketplace: String?=null)
-    : Deferred<Response<OptinCompanyBrandDetailsView>>? {
+    suspend fun voiceClickToCall(caller: String, receiver: String)
+    : Deferred<Response<GetClickToCallResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyBrandDetail(
-        companyId = config.companyId, isActive = isActive, q = q, pageNo = pageNo, pageSize = pageSize, marketplace = marketplace )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCompanyMetrics()
-    : Deferred<Response<OptinCompanyMetrics>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyMetrics(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getStoreDetail(q: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<OptinStoreDetails>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getStoreDetail(
-        companyId = config.companyId, q = q, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listProductTemplateCategories(department: String, itemType: String)
-    : Deferred<Response<ProdcutTemplateCategoriesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listProductTemplateCategories(
-        companyId = config.companyId, department = department, itemType = itemType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listDepartmentData()
-    : Deferred<Response<DepartmentsResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listDepartmentData(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getDepertmantsData(uid: String)
-    : Deferred<Response<DepartmentsResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getDepertmantsData(
-        companyId = config.companyId, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listProductTemplate(departments: String)
-    : Deferred<Response<TemplatesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listProductTemplate(
-        companyId = config.companyId, departments = departments )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun validateProductTemplate(slug: String)
-    : Deferred<Response<TemplatesValidationResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.validateProductTemplate(
-        companyId = config.companyId, slug = slug )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun downloadProductTemplateViews(slug: String)
-    : Deferred<Response<String>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.downloadProductTemplateViews(
-        companyId = config.companyId, slug = slug )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun downloadProductTemplateView(itemType: String)
-    : Deferred<Response<String>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.downloadProductTemplateView(
-        companyId = config.companyId, itemType = itemType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun validateProductTemplateSchema(itemType: String)
-    : Deferred<Response<InventoryValidationResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.validateProductTemplateSchema(
-        companyId = config.companyId, itemType = itemType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listHSNCodes()
-    : Deferred<Response<HSNCodesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listHSNCodes(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listProductTemplateExportDetails()
-    : Deferred<Response<TemplatesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listProductTemplateExportDetails(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listTemplateBrandTypeValues(filter: String)
-    : Deferred<Response<ProductConfligurationDownloads>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listTemplateBrandTypeValues(
-        companyId = config.companyId, filter = filter )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listCategories(level: String?=null, q: String?=null)
-    : Deferred<Response<CategoryResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listCategories(
-        companyId = config.companyId, level = level, q = q )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createCategories(body: CategoryRequestBody)
-    : Deferred<Response<CategoryCreateResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createCategories(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCategoryData(uid: String)
-    : Deferred<Response<Category>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCategoryData(
-        companyId = config.companyId, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateCategory(uid: String,body: CategoryRequestBody)
-    : Deferred<Response<CategoryUpdateResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateCategory(
-        companyId = config.companyId, uid = uid, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProducts(brandIds: Double?=null, categoryIds: Double?=null, search: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ProductListingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProducts(
-        companyId = config.companyId, brandIds = brandIds, categoryIds = categoryIds, search = search, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createProduct(body: ProductCreateUpdate)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProduct(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProduct(itemCode: String?=null, itemId: String, brandUid: Int?=null, uid: Int?=null)
-    : Deferred<Response<Product>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProduct(
-        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun editProduct(itemId: String,body: ProductCreateUpdate)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.editProduct(
-        companyId = config.companyId, itemId = itemId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteProduct(itemId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProduct(
-        companyId = config.companyId, itemId = itemId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductValidation()
-    : Deferred<Response<ValidateProduct>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductValidation(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductSize(itemCode: String?=null, itemId: String, brandUid: Int?=null, uid: Int?=null)
-    : Deferred<Response<ProductListingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductSize(
-        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductBulkUploadHistory(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ProductBulkRequestList>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBulkUploadHistory(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateProductAssetsInBulk(body: BulkJob)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateProductAssetsInBulk(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createProductsInBulk(batchId: String,body: BulkProductRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductsInBulk(
-        companyId = config.companyId, batchId = batchId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteProductBulkJob(batchId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProductBulkJob(
-        companyId = config.companyId, batchId = batchId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCompanyTags()
-    : Deferred<Response<ProductTagsViewResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyTags(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductAssetsInBulk(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<BulkAssetResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductAssetsInBulk(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createProductAssetsInBulk(body: ProductBulkAssets)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductAssetsInBulk(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteSize(itemId: String, size: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteSize(
-        companyId = config.companyId, itemId = itemId, size = size )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getInventory(itemId: String, size: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<InventoryRequest>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getInventory(
-        companyId = config.companyId, itemId = itemId, size = size, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun addInventory(itemId: String, size: String,body: InventoryRequest1)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.addInventory(
-        companyId = config.companyId, itemId = itemId, size = size, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteInventory(itemId: String, locationId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteInventory(
-        companyId = config.companyId, itemId = itemId, locationId = locationId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getInventoryBulkUploadHistory(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<BulkRequestGet>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getInventoryBulkUploadHistory(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createBulkInventoryJob(body: BulkJob)
-    : Deferred<Response<CommonResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createBulkInventoryJob(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createBulkInventory(body: InventoryBulkRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createBulkInventory(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteBulkInventoryJob()
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteBulkInventoryJob(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getInventoryExport()
-    : Deferred<Response<InventoryExportJob>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getInventoryExport(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createInventoryExportJob(body: InventoryExportRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createInventoryExportJob(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun exportInventoryConfig(filterType: String?=null)
-    : Deferred<Response<InventoryConfig>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.exportInventoryConfig(
-        companyId = config.companyId, filterType = filterType )
+            orderApiList?.voiceClickToCall(
+        companyId = config.companyId, caller = caller, receiver = receiver )
         } else {
             null
         } 
@@ -1459,296 +863,48 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getSearchKeywords(id: String)
-    : Deferred<Response<GetSearchWordsDetailResponse>>? {
+    
+    
+    
+    
+    suspend fun trackShipmentPlatform(shipmentId: String)
+    : Deferred<Response<PlatformShipmentTrack>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
+                orderApiList?.trackShipmentPlatform(companyId = config.companyId , applicationId = applicationId , shipmentId = shipmentId )
         } else {
             null
         }
     }
     
     
-    suspend fun updateSearchKeywords(id: String,body: CreateSearchKeyword)
-    : Deferred<Response<GetSearchWordsData>>? {
+    suspend fun trackOrder(orderId: String)
+    : Deferred<Response<PlatformOrderTrack>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                orderApiList?.trackOrder(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
         } else {
             null
         }
     }
     
     
-    suspend fun deleteSearchKeywords(id: String)
-    : Deferred<Response<DeleteResponse>>? {
+    suspend fun failedOrders()
+    : Deferred<Response<FailedOrders>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
+                orderApiList?.failedOrders(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
     }
     
     
-    suspend fun getAllSearchKeyword()
-    : Deferred<Response<GetSearchWordsResponse>>? {
+    suspend fun reprocessOrder(orderId: String)
+    : Deferred<Response<UpdateOrderReprocessResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAllSearchKeyword(companyId = config.companyId , applicationId = applicationId  )
+                orderApiList?.reprocessOrder(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
         } else {
             null
         }
     }
-    
-    
-    suspend fun createCustomKeyword(body: CreateSearchKeyword)
-    : Deferred<Response<GetSearchWordsData>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCustomKeyword(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAutocompleteKeywordDetail(id: String)
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateAutocompleteKeyword(id: String,body: CreateAutocompleteKeyword)
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteAutocompleteKeyword(id: String)
-    : Deferred<Response<DeleteResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAutocompleteConfig()
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteConfig(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCustomAutocompleteRule(body: CreateAutocompleteKeyword)
-    : Deferred<Response<CreateAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCustomAutocompleteRule(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun getCatalogConfiguration()
-    : Deferred<Response<GetCatalogConfigurationMetaData>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCatalogConfiguration(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getConfigurations()
-    : Deferred<Response<GetAppCatalogConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getConfigurations(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createConfigurationProductListing(body: AppConfiguration)
-    : Deferred<Response<GetAppCatalogConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createConfigurationProductListing(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getConfigurationByType(type: String)
-    : Deferred<Response<GetAppCatalogEntityConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getConfigurationByType(companyId = config.companyId , applicationId = applicationId , type = type )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createConfigurationByType(type: String,body: AppConfiguration)
-    : Deferred<Response<GetAppCatalogConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createConfigurationByType(companyId = config.companyId , applicationId = applicationId , type = type, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getQueryFilters()
-    : Deferred<Response<GetCollectionQueryOptionResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getQueryFilters(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAllCollections()
-    : Deferred<Response<GetCollectionListingResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAllCollections(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCollection(body: CreateCollection)
-    : Deferred<Response<CollectionCreateResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCollection(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCollectionDetail(slug: String)
-    : Deferred<Response<CollectionDetailResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCollectionDetail(companyId = config.companyId , applicationId = applicationId , slug = slug )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateCollection(id: String)
-    : Deferred<Response<CollectionCreateResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateCollection(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteCollection(id: String)
-    : Deferred<Response<DeleteResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteCollection(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCollectionItems(id: String, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null)
-    : Deferred<Response<GetCollectionItemsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCollectionItems(companyId = config.companyId , applicationId = applicationId , id = id, sortOn = sortOn, pageId = pageId, pageSize = pageSize )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addCollectionItems(id: String,body: CollectionItemRequest)
-    : Deferred<Response<UpdatedResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.addCollectionItems(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCatalogInsights(brand: String?=null)
-    : Deferred<Response<CatalogInsightResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCatalogInsights(companyId = config.companyId , applicationId = applicationId , brand = brand )
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1781,24 +937,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun cbsOnboardGet()
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.cbsOnboardGet(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateCompany(body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateCompany(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cbsOnboardGet()
+    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.cbsOnboardGet(
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -1817,18 +973,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun getBrand(brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getBrand(
-        companyId = config.companyId, brandId = brandId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
@@ -1841,7 +985,31 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
+    suspend fun getBrand(brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getBrand(
+        companyId = config.companyId, brandId = brandId )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createBrand(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1865,11 +1033,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createBrand(body: CompanyBrandPostRequestSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createBrand(
+            companyProfileApiList?.createLocation(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -1889,12 +1057,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createLocation(body: LocationSerializer)
+    suspend fun updateLocation(locationId: String,body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
-        companyId = config.companyId, body = body)
+            companyProfileApiList?.updateLocation(
+        companyId = config.companyId, locationId = locationId, body = body)
         } else {
             null
         } 
@@ -1907,18 +1075,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationDetail(
         companyId = config.companyId, locationId = locationId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateLocation(locationId: String,body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateLocation(
-        companyId = config.companyId, locationId = locationId, body = body)
         } else {
             null
         } 
@@ -1968,16 +1124,29 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun companyCopyFiles(sync: Boolean?=null,body: BulkRequest)
-    : Deferred<Response<BulkResponse>>? {
+    suspend fun startUpload(namespace: String,body: StartRequest)
+    : Deferred<Response<StartResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.companyCopyFiles(
-        sync = sync, companyId = config.companyId, body = body)
+            assetsApiList?.startUpload(
+        namespace = namespace, companyId = config.companyId, body = body)
         } else {
             null
         } 
     }
+    
+    
+    suspend fun completeUpload(namespace: String,body: StartResponse)
+    : Deferred<Response<CompleteResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            assetsApiList?.completeUpload(
+        namespace = namespace, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
     
     
     
@@ -1993,11 +1162,24 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun companyBrowse(namespace: String)
+    suspend fun copyFiles(sync: Boolean?=null,body: BulkRequest)
+    : Deferred<Response<BulkResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            assetsApiList?.copyFiles(
+        sync = sync, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    suspend fun browse(namespace: String)
     : Deferred<Response<BrowseResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.companyBrowse(
+            assetsApiList?.browse(
         namespace = namespace, companyId = config.companyId )
         } else {
             null
@@ -2023,6 +1205,29 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    suspend fun appStartUpload(namespace: String,body: StartRequest)
+    : Deferred<Response<StartResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assetsApiList?.appStartUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun appCompleteUpload(namespace: String,body: StartResponse)
+    : Deferred<Response<CompleteResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assetsApiList?.appCompleteUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
     suspend fun appCopyFiles(sync: Boolean?=null,body: BulkRequest)
     : Deferred<Response<BulkResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -2031,7 +1236,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     
@@ -2094,8 +1298,108 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     null
                  }
             }
-        })
-        return paginator
+
+            override suspend fun onNext(
+                onResponse: (Event<BrowseResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    assetsApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+}
+}
+
+class ShareDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val shareApiList by lazy {
+        generateshareApiList()
+    }
+    
+    private fun generateshareApiList(): ShareApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformShare",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
+    }
+    
+    
+    
+    
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun createShortLink(body: ShortLinkReq)
+    : Deferred<Response<ShortLinkRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.createShortLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getShortLinks(pageNo: String?=null, pageSize: String?=null, createdBy: String?=null, active: String?=null, q: String?=null)
+    : Deferred<Response<ShortLinkList>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, q = q )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getShortLinkByHash(hash: String)
+    : Deferred<Response<ShortLinkRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.getShortLinkByHash(companyId = config.companyId , applicationId = applicationId , hash = hash )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateShortLinkById(id: String)
+    : Deferred<Response<ShortLinkRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                shareApiList?.updateShortLinkById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
     }
     
 }
@@ -2215,6 +1519,455 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    
+    
+    
+    
+}
+}
+
+class MarketplacesDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val marketplacesApiList by lazy {
+        generatemarketplacesApiList()
+    }
+    
+    private fun generatemarketplacesApiList(): MarketplacesApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformMarketplaces",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(MarketplacesApiList::class.java) as? MarketplacesApiList
+    }
+    
+    
+    suspend fun getAvailableChannels()
+    : Deferred<Response<AllChannels>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getAvailableChannels(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannels()
+    : Deferred<Response<HashMap<String,Any>>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannels(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannel(channel: String)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannel(
+        companyId = config.companyId, channel = channel )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerMyntraChannel(body: MyntraPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerMyntraChannel(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateMyntraChannelCredentials(body: MyntraPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateMyntraChannelCredentials(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerAmazonChannel(body: AmazonPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerAmazonChannel(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateAmazonChannelCredentials(body: AmazonPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateAmazonChannelCredentials(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerFlipkartChannel(flipkartChannel: String,body: FlipkartPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerFlipkartChannel(
+        companyId = config.companyId, flipkartChannel = flipkartChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateFlipkartChannelCredentials(flipkartChannel: String,body: FlipkartPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateFlipkartChannelCredentials(
+        companyId = config.companyId, flipkartChannel = flipkartChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerTatacliqChannel(tatacliqChannel: String,body: TatacliqPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerTatacliqChannel(
+        companyId = config.companyId, tatacliqChannel = tatacliqChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateTatacliqChannelCredentials(tatacliqChannel: String,body: TatacliqPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateTatacliqChannelCredentials(
+        companyId = config.companyId, tatacliqChannel = tatacliqChannel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun registerAjioChannel(body: AjioPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.registerAjioChannel(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateAjioChannelCredentials(body: AjioPayload)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateAjioChannelCredentials(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateChannelInventoryConfig(channel: String, validateCred: String?=null,body: InventoryConfig)
+    : Deferred<Response<MkpResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateChannelInventoryConfig(
+        companyId = config.companyId, channel = channel, validateCred = validateCred, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannelLocationConfig(channel: String)
+    : Deferred<Response<StoreMapping>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannelLocationConfig(
+        companyId = config.companyId, channel = channel )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateChannelLocationConfig(channel: String,body: StoreMappingPayload)
+    : Deferred<Response<StoreMapping>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateChannelLocationConfig(
+        companyId = config.companyId, channel = channel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannelStatus(channel: String)
+    : Deferred<Response<StatusPayload>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.getChannelStatus(
+        companyId = config.companyId, channel = channel )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateChannelStatus(channel: String,body: StatusPayload)
+    : Deferred<Response<StatusResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.updateChannelStatus(
+        companyId = config.companyId, channel = channel, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun triggerChannelInventoryUpdates(channel: String, updateType: String,body: SyncPayload)
+    : Deferred<Response<SyncResp>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            marketplacesApiList?.triggerChannelInventoryUpdates(
+        companyId = config.companyId, channel = channel, updateType = updateType, body = body)
+        } else {
+            null
+        } 
+    }
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+}
+
+class AnalyticsDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val analyticsApiList by lazy {
+        generateanalyticsApiList()
+    }
+    
+    private fun generateanalyticsApiList(): AnalyticsApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformAnalytics",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(AnalyticsApiList::class.java) as? AnalyticsApiList
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    suspend fun createExportJob(exportType: String,body: ExportJobReq)
+    : Deferred<Response<ExportJobRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.createExportJob(
+        companyId = config.companyId, exportType = exportType, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getExportJobStatus(exportType: String, jobId: String)
+    : Deferred<Response<ExportJobStatusRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.getExportJobStatus(
+        companyId = config.companyId, exportType = exportType, jobId = jobId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getLogsList(logType: String, pageNo: String?=null, pageSize: String?=null,body: GetLogsListReq)
+    : Deferred<Response<GetLogsListRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.getLogsList(
+        companyId = config.companyId, logType = logType, pageNo = pageNo, pageSize = pageSize, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun searchLogs(pageNo: String?=null, pageSize: String?=null, logType: String,body: SearchLogReq)
+    : Deferred<Response<SearchLogRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.searchLogs(
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, logType = logType, body = body)
+        } else {
+            null
+        } 
+    }
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun getStatiscticsGroups()
+    : Deferred<Response<StatsGroups>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getStatiscticsGroups(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getStatiscticsGroupComponents(groupName: String)
+    : Deferred<Response<StatsGroupComponents>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getStatiscticsGroupComponents(companyId = config.companyId , applicationId = applicationId , groupName = groupName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentStatsCSV(componentName: String)
+    : Deferred<Response<String>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getComponentStatsCSV(companyId = config.companyId , applicationId = applicationId , componentName = componentName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentStatsPDF(componentName: String)
+    : Deferred<Response<String>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getComponentStatsPDF(companyId = config.companyId , applicationId = applicationId , componentName = componentName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentStats(componentName: String)
+    : Deferred<Response<StatsRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getComponentStats(companyId = config.companyId , applicationId = applicationId , componentName = componentName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAbandonCartList(from: String, to: String, pageNo: String?=null, pageSize: String?=null)
+    : Deferred<Response<AbandonCartsList>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getAbandonCartList(companyId = config.companyId , applicationId = applicationId , from = from, to = to, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAbandonCartsCSV(from: String, to: String)
+    : Deferred<Response<String>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getAbandonCartsCSV(companyId = config.companyId , applicationId = applicationId , from = from, to = to )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAbandonCartDetail(cartId: String)
+    : Deferred<Response<AbandonCartDetail>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getAbandonCartDetail(companyId = config.companyId , applicationId = applicationId , cartId = cartId )
+        } else {
+            null
+        }
+    }
     
     
     

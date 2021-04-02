@@ -1,10 +1,10 @@
 package com.sdk.common
 
-class Paginator<T:Any> {
+class Paginator<T : Any> {
 
-    var hasNext :Boolean = true
-    var nextId: String?="*"
-    var pageNo: Int?=1
+    var hasNext: Boolean = true
+    var nextId: String? = "*"
+    var pageNo: Int? = 1
 
     private var actionCallBack: PaginatorCallback<T>? = null
 
@@ -24,13 +24,19 @@ class Paginator<T:Any> {
         actionCallBack?.onNext(onSuccess, onFailure)
     }
 
+    suspend fun next(
+        onResponse: (Event<T>?, FdkError?) -> Unit = { response, error -> }
+    ) {
+        actionCallBack?.onNext(onResponse)
+    }
 
-    fun setPaginator(hasNext: Boolean,nextId:String?=null) {
+
+    fun setPaginator(hasNext: Boolean, nextId: String? = null) {
         this.hasNext = hasNext
         this.nextId = nextId
     }
 
-     fun setPaginator(hasNext: Boolean,pageNo:Int?=null) {
+    fun setPaginator(hasNext: Boolean, pageNo: Int? = null) {
         this.hasNext = hasNext
         this.pageNo = pageNo
     }

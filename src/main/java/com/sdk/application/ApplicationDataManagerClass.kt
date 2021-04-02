@@ -103,7 +103,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<ProductSizeSellersResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -185,7 +204,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<ProductStockPolling>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                catalogApiList?.getProductStockForTimeByIds(timestamp = timestamp, pageSize = pageSize, pageId = pageId)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -258,7 +296,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<ProductListingResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                catalogApiList?.getProducts(q = q, f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize, pageNo = pageNo, pageType = pageType)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -308,7 +365,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<BrandListingResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getBrands(department = department, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -375,7 +451,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<HomeListingResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                catalogApiList?.getHomeProducts(sortOn = sortOn, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -430,7 +525,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<GetCollectionListingResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getCollections(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -497,7 +611,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<ProductListingResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                catalogApiList?.getCollectionItemsBySlug(slug = slug, f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -544,17 +677,36 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<GetFollowListingResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getFollowedListing(collectionType = collectionType)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -629,7 +781,26 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<StoreListingResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getStores(pageNo = pageNo, pageSize = pageSize, q = q, range = range, latitude = latitude, longitude = longitude)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -1064,6 +1235,68 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 }
 
 
+class ShareDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val shareApiList by lazy {
+        generateshareApiList()
+    }
+
+    private fun generateshareApiList(): ShareApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationShare",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
+    }
+    
+    fun getApplicationQRCode(): Deferred<Response<QRCodeResp>>? {
+        return shareApiList?.getApplicationQRCode( )}
+
+    
+    
+    fun getProductQRCodeBySlug(slug: String): Deferred<Response<QRCodeResp>>? {
+        return shareApiList?.getProductQRCodeBySlug(slug = slug )}
+
+    
+    
+    fun getCollectionQRCodeBySlug(slug: String): Deferred<Response<QRCodeResp>>? {
+        return shareApiList?.getCollectionQRCodeBySlug(slug = slug )}
+
+    
+    
+    fun getUrlQRCode(url: String): Deferred<Response<QRCodeResp>>? {
+        return shareApiList?.getUrlQRCode(url = url )}
+
+    
+    
+    fun createShortLink(body: ShortLinkReq): Deferred<Response<ShortLinkRes>>? {
+        return shareApiList?.createShortLink( body = body)}
+
+    
+    
+    fun getShortLinkByHash(hash: String): Deferred<Response<ShortLinkRes>>? {
+        return shareApiList?.getShortLinkByHash(hash = hash )}
+
+    
+    
+    fun getOriginalShortLinkByHash(hash: String): Deferred<Response<ShortLinkRes>>? {
+        return shareApiList?.getOriginalShortLinkByHash(hash = hash )}
+
+    
+    
+}
+
+
 class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     private val fileStorageApiList by lazy {
@@ -1255,7 +1488,26 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getAbuseReports(entityId = entityId, entityType = entityType, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -1300,7 +1552,26 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<XNumberGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -1392,7 +1663,26 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getComments(entityType = entityType, id = id, entityId = entityId, userId = userId, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -1474,7 +1764,26 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -1536,7 +1845,26 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getReviewSummaries(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -1638,7 +1966,26 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getReviews(entityType = entityType, entityId = entityId, id = id, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     
@@ -1720,7 +2067,26 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                     })
             }
 
+            override suspend fun onNext(
+                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getQuestionAndAnswers(entityType = entityType, entityId = entityId, id = id, showAnswer = showAnswer, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
     })
+    
     return paginator
     }
     

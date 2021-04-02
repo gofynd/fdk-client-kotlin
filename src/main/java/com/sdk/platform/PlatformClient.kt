@@ -10,13 +10,19 @@ class PlatformClient(val config:PlatformConfig) {
     
     val payment by lazy { PaymentDataManagerClass(config)}
     
-    val catalog by lazy { CatalogDataManagerClass(config)}
+    val order by lazy { OrderDataManagerClass(config)}
     
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
     
     val assets by lazy { AssetsDataManagerClass(config)}
     
+    val share by lazy { ShareDataManagerClass(config)}
+    
     val inventory by lazy { InventoryDataManagerClass(config)}
+    
+    val marketplaces by lazy { MarketplacesDataManagerClass(config)}
+    
+    val analytics by lazy { AnalyticsDataManagerClass(config)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -32,13 +38,19 @@ class PlatformClient(val config:PlatformConfig) {
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
-    val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
+    val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
     val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
     
     val assets by lazy { this@PlatformClient.assets.ApplicationClient(applicationId,config)}
     
+    val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
+    
     val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
+    
+    val marketplaces by lazy { this@PlatformClient.marketplaces.ApplicationClient(applicationId,config)}
+    
+    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     
     }
 

@@ -3,7 +3,6 @@ package com.sdk.common
 import com.sdk.application.CompleteResponse
 import com.sdk.application.FileStorageDataManagerClass
 import com.sdk.application.StartRequest
-import com.sdk.application.StartResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -22,8 +21,7 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
     size: Int? = null,
     namespace: String? = null,
     file: File? = null,
-    onSuccess: (Event<CompleteResponse?>) -> Unit,
-    onFailure: (FdkError) -> Unit
+    onResponse: (Event<CompleteResponse>?, FdkError?) -> Unit = { response, error -> }
 ) {
 
     val apiList by lazy {
@@ -41,32 +39,43 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
             contentType = contentType,
             size = size
         )
-        startUpload(namespace, startRequest)?.safeAwait(
-            onSuccess = {
-                val response = it.peekContent()
-                val cdnUrl = response?.cdn?.url
-                if (!response?.cdn?.url.isNullOrEmpty() && file != null) {
+        startUpload(namespace, startRequest)?.safeAwait { response, error ->
+            response?.let {
+                val startResponse = it.peekContent()
+                val cdnUrl = startResponse?.cdn?.url
+                val uploadUrl = startResponse?.upload?.url
+                if (!cdnUrl.isNullOrEmpty() && file != null && !uploadUrl.isNullOrEmpty()) {
+                    val contentTypeFromResponse = startResponse.contentType ?: ""
                     apiList?.updateAWSMedia(
-                        response?.contentType ?: "",
-                        cdnUrl ?: "",
-                        RequestBody.create(MediaType.parse(response?.contentType ?: ""), file)
-                    )?.safeAwait(
-                        onSuccess = {
+                        contentTypeFromResponse,
+                        uploadUrl,
+                        RequestBody.create(MediaType.parse(contentTypeFromResponse), file)
+                    )?.safeAwait { response, error ->
+                        response?.let {
                             completeUpload(
                                 namespace = namespace,
-                                body = response ?: StartResponse()
-                            )?.safeAwait(onSuccess = {
-                                onSuccess.invoke(Event(it.peekContent()))
-                            }, onFailure = {
-                                onFailure.invoke(it)
-                            })
-                        }, onFailure = {
-                            onFailure.invoke(it)
-                        })
+                                body = startResponse
+                            )?.safeAwait { response, error ->
+                                response?.let {
+                                    onResponse.invoke(Event(it.peekContent()), null)
+                                }
+                                error?.let {
+                                    onResponse.invoke(null, it)
+                                }
+                            }
+                        }
+                        error?.let {
+                            onResponse.invoke(null, it)
+                        }
+                    }
+                } else {
+                    onResponse.invoke(null, FdkError(message = "Something went wrong"))
                 }
-            }, onFailure = {
-                onFailure.invoke(it)
-            })
+            }
+            error?.let {
+                onResponse.invoke(null, it)
+            }
+        }
     }
 }
 

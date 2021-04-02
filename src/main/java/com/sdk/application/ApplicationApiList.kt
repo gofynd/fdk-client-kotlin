@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -389,6 +389,38 @@ interface UserApiList {
     @POST ("/service/application/user/profile/v1.0/email/link/send")
     fun sendVerificationLinkToEmail(@Query("platform") platform: String?,@Body body: EditEmailRequestSchema)
     : Deferred<Response<SendEmailVerifyLinkSuccess>>
+    
+}
+
+interface ShareApiList {
+    
+    @POST ("/service/application/share/v1.0/qr/")
+    fun getApplicationQRCode()
+    : Deferred<Response<QRCodeResp>>
+    
+    @POST ("/service/application/share/v1.0/qr/products/{slug}/")
+    fun getProductQRCodeBySlug(@Path("slug") slug: String)
+    : Deferred<Response<QRCodeResp>>
+    
+    @POST ("/service/application/share/v1.0/qr/collection/{slug}/")
+    fun getCollectionQRCodeBySlug(@Path("slug") slug: String)
+    : Deferred<Response<QRCodeResp>>
+    
+    @POST ("/service/application/share/v1.0/qr/url/")
+    fun getUrlQRCode(@Query("url") url: String)
+    : Deferred<Response<QRCodeResp>>
+    
+    @POST ("/service/application/share/v1.0/links/short-link/")
+    fun createShortLink(@Body body: ShortLinkReq)
+    : Deferred<Response<ShortLinkRes>>
+    
+    @GET ("/service/application/share/v1.0/links/short-link/{hash}/")
+    fun getShortLinkByHash(@Path("hash") hash: String)
+    : Deferred<Response<ShortLinkRes>>
+    
+    @GET ("/service/application/share/v1.0/links/short-link/{hash}/original/")
+    fun getOriginalShortLinkByHash(@Path("hash") hash: String)
+    : Deferred<Response<ShortLinkRes>>
     
 }
 

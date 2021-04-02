@@ -9,6 +9,8 @@ import com.google.gson.annotations.SerializedName
 @Parcelize
 data class FdkError(
 
+    var authenticated:Boolean?=null,
+
     @SerializedName("message")
     var message: String? = null,
 

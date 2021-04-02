@@ -5,4 +5,8 @@ interface PaginatorCallback<T:Any>  {
       onSuccess: (Event<T>) -> Unit,
       onFailure: (FdkError) -> Unit
    )
+
+   suspend fun onNext(
+      onResponse: (Event<T>?, FdkError?) -> Unit = { response, error -> }
+   )
 }

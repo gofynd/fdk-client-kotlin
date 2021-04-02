@@ -6,6 +6,7 @@
 * [Lead](#Lead) - Handles communication between Staff and Users 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
+* [Share](#Share) - Short link and QR Code 
 * [FileStorage](#FileStorage) - File Storage 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Feedback](#Feedback) - User Reviews and Rating System 
@@ -43,8 +44,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [unfollowById](#unfollowbyid)
     * [followById](#followbyid)
+    * [unfollowById](#unfollowbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -128,6 +129,17 @@
     * [deleteEmail](#deleteemail)
     * [setEmailAsPrimary](#setemailasprimary)
     * [sendVerificationLinkToEmail](#sendverificationlinktoemail)
+    
+
+* [Share](#Share)
+  * Methods
+    * [getApplicationQRCode](#getapplicationqrcode)
+    * [getProductQRCodeBySlug](#getproductqrcodebyslug)
+    * [getCollectionQRCodeBySlug](#getcollectionqrcodebyslug)
+    * [getUrlQRCode](#geturlqrcode)
+    * [createShortLink](#createshortlink)
+    * [getShortLinkByHash](#getshortlinkbyhash)
+    * [getOriginalShortLinkByHash](#getoriginalshortlinkbyhash)
     
 
 * [FileStorage](#FileStorage)
@@ -1449,11 +1461,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-UnFollow a Product
+#### followById
+Follow a particular Product
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1466,9 +1478,9 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | integer | the `id` of the collection type you want to unfollow | 
+| collectionId | string | the `id` of the collection type you want to follow | 
 
-You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
+Follow a particular Product specified by its uid. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -1502,11 +1514,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow a particular Product
+#### unfollowById
+UnFollow a Product
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1519,9 +1531,9 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | integer | the `id` of the collection type you want to follow | 
+| collectionId | string | the `id` of the collection type you want to unfollow | 
 
-Follow a particular Product specified by its uid. Pass the uid of the product in request URL
+You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -8583,6 +8595,291 @@ Schema: `AuthenticationApiError`
 ---
 
 
+## Share
+
+
+#### getApplicationQRCode
+Create application QR Code
+
+```kotlin
+share.getApplicationQRCode().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Create application QR Code
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `QRCodeResp`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getProductQRCodeBySlug
+Create product QR Code
+
+```kotlin
+share.getProductQRCodeBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The unique identifier of a product | 
+
+Create product QR Code
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `QRCodeResp`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getCollectionQRCodeBySlug
+Create collection QR Code
+
+```kotlin
+share.getCollectionQRCodeBySlug(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | The unique identifier of a collection | 
+
+Create collection QR Code
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `QRCodeResp`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getUrlQRCode
+Create url QR Code
+
+```kotlin
+share.getUrlQRCode(url: url).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| url | string | Url | 
+
+Create url QR Code
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `QRCodeResp`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createShortLink
+Create short link
+
+```kotlin
+share.createShortLink(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Create short link
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ShortLinkRes`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getShortLinkByHash
+Get short link by hash
+
+```kotlin
+share.getShortLinkByHash(hash: hash).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| hash | string | Hash of short link | 
+
+Get short link by hash
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ShortLinkRes`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getOriginalShortLinkByHash
+Get original link by hash
+
+```kotlin
+share.getOriginalShortLinkByHash(hash: hash).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| hash | string | Hash of short link | 
+
+Get original link by hash
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ShortLinkRes`
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
 ## FileStorage
 
 
@@ -8612,15 +8909,15 @@ It has three Major Steps:
 * Complete
 
 ### Start
-Initiates the assets upload using `/v1.0/uploads/{namespace}/start`.
+Initiates the assets upload using `startUpload`.
 It returns the storage link in response.
 
 ### Upload
 Use the storage link to upload a file (Buffer or Blob) to the File Storage.
-Make a `PUT` request on storage link received from `/v1.0/uploads/{namespace}/start` api with file (Buffer or Blob) as a request body.
+Make a `PUT` request on storage link received from `startUpload` api with file (Buffer or Blob) as a request body.
 
 ### Complete
-After successfully upload, call `/v1.0/uploads/{namespace}/complete` api to complete the upload process.
+After successfully upload, call `completeUpload` api to complete the upload process.
 This operation will return the url for the uploaded file.
 
 
@@ -8682,15 +8979,15 @@ It has three Major Steps:
 * Complete
 
 ### Start
-Initiates the assets upload using `/v1.0/uploads/{namespace}/start`.
+Initiates the assets upload using `startUpload`.
 It returns the storage link in response.
 
 ### Upload
 Use the storage link to upload a file (Buffer or Blob) to the File Storage.
-Make a `PUT` request on storage link received from `/v1.0/uploads/{namespace}/start` api with file (Buffer or Blob) as a request body.
+Make a `PUT` request on storage link received from `startUpload` api with file (Buffer or Blob) as a request body.
 
 ### Complete
-After successfully upload, call `/v1.0/uploads/{namespace}/complete` api to complete the upload process.
+After successfully upload, call `completeUpload` api to complete the upload process.
 This operation will return the url for the uploaded file.
 
 
