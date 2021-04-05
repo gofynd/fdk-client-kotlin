@@ -704,10 +704,10 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}")
     fun getAbuseReports(@Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<XCursorGetResponse>>
+    : Deferred<Response<ReportAbuseGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/attributes")
-    fun getAttributes(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    fun getAttributes()
     : Deferred<Response<XNumberGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/attributes")
@@ -732,7 +732,7 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/comment/entity/{entity_type}")
     fun getComments(@Path("entity_type") entityType: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<XCursorGetResponse>>
+    : Deferred<Response<CommentGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/config/entity/{entity_type}/entity-id/{entity_id}")
     fun checkEligibility(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String)
@@ -752,11 +752,11 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/media/entity/{entity_type}/entity-id/{entity_id}")
     fun getMedias(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<XCursorGetResponse>>
+    : Deferred<Response<MediaGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
     fun getReviewSummaries(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<XCursorGetResponse>>
+    : Deferred<Response<RatingGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/review/")
     fun createReview(@Body body: UpdateReviewRequest)
@@ -768,7 +768,7 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/review/entity/{entity_type}/entity-id/{entity_id}")
     fun getReviews(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<XCursorGetResponse>>
+    : Deferred<Response<ReviewGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/template/")
     fun getTemplates(@Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?)
@@ -784,7 +784,7 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/template/qna/entity/{entity_type}/entity-id/{entity_id}")
     fun getQuestionAndAnswers(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<XCursorGetResponse>>
+    : Deferred<Response<QNAGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/vote/")
     fun getVotes(@Query("id") id: String?, @Query("ref_type") refType: String?)

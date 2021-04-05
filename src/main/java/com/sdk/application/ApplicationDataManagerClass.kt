@@ -1923,7 +1923,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun getAbuseReports(entityId: String, entityType: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<XCursorGetResponse>>? {
+    fun getAbuseReports(entityId: String, entityType: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<ReportAbuseGetResponse>>? {
         return feedbackApiList?.getAbuseReports(entityId = entityId, entityType = entityType, id = id, pageId = pageId, pageSize = pageSize )}
 
     
@@ -1959,13 +1959,13 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getAbuseReports
     **/
-    fun getAbuseReportsPaginator(entityId: String, entityType: String, id: String?=null, pageSize: Int?=null) : Paginator<XCursorGetResponse>{
+    fun getAbuseReportsPaginator(entityId: String, entityType: String, id: String?=null, pageSize: Int?=null) : Paginator<ReportAbuseGetResponse>{
 
-    val paginator = Paginator<XCursorGetResponse>()
+    val paginator = Paginator<ReportAbuseGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<XCursorGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<ReportAbuseGetResponse> {
             override suspend fun onNext(
-                onSuccess: (Event<XCursorGetResponse>) -> Unit,
+                onSuccess: (Event<ReportAbuseGetResponse>) -> Unit,
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
@@ -1982,7 +1982,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
             }
 
             override suspend fun onNext(
-                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<ReportAbuseGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
@@ -2004,69 +2004,10 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     return paginator
     }
     
-    fun getAttributes(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<XNumberGetResponse>>? {
-        return feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize )}
+    fun getAttributes(): Deferred<Response<XNumberGetResponse>>? {
+        return feedbackApiList?.getAttributes( )}
 
     
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getAttributes
-    **/
-    fun getAttributesPaginator(pageSize: Int?=null) : Paginator<XNumberGetResponse>{
-
-    val paginator = Paginator<XNumberGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<XNumberGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<XNumberGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
-
-            override suspend fun onNext(
-                onResponse: (Event<XNumberGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
     
     fun createAttribute(body: SaveAttributeRequest): Deferred<Response<XInsertResponse>>? {
         return feedbackApiList?.createAttribute( body = body)}
@@ -2093,7 +2034,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun getComments(entityType: String, id: String?=null, entityId: String?=null, userId: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<XCursorGetResponse>>? {
+    fun getComments(entityType: String, id: String?=null, entityId: String?=null, userId: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<CommentGetResponse>>? {
         return feedbackApiList?.getComments(entityType = entityType, id = id, entityId = entityId, userId = userId, pageId = pageId, pageSize = pageSize )}
 
     
@@ -2134,13 +2075,13 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getComments
     **/
-    fun getCommentsPaginator(entityType: String, id: String?=null, entityId: String?=null, userId: String?=null, pageSize: Int?=null) : Paginator<XCursorGetResponse>{
+    fun getCommentsPaginator(entityType: String, id: String?=null, entityId: String?=null, userId: String?=null, pageSize: Int?=null) : Paginator<CommentGetResponse>{
 
-    val paginator = Paginator<XCursorGetResponse>()
+    val paginator = Paginator<CommentGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<XCursorGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<CommentGetResponse> {
             override suspend fun onNext(
-                onSuccess: (Event<XCursorGetResponse>) -> Unit,
+                onSuccess: (Event<CommentGetResponse>) -> Unit,
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
@@ -2157,7 +2098,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
             }
 
             override suspend fun onNext(
-                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<CommentGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
@@ -2199,7 +2140,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun getMedias(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<XCursorGetResponse>>? {
+    fun getMedias(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<MediaGetResponse>>? {
         return feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize )}
 
     
@@ -2235,13 +2176,13 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getMedias
     **/
-    fun getMediasPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<XCursorGetResponse>{
+    fun getMediasPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<MediaGetResponse>{
 
-    val paginator = Paginator<XCursorGetResponse>()
+    val paginator = Paginator<MediaGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<XCursorGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<MediaGetResponse> {
             override suspend fun onNext(
-                onSuccess: (Event<XCursorGetResponse>) -> Unit,
+                onSuccess: (Event<MediaGetResponse>) -> Unit,
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
@@ -2258,7 +2199,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
             }
 
             override suspend fun onNext(
-                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<MediaGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
@@ -2280,7 +2221,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     return paginator
     }
     
-    fun getReviewSummaries(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<XCursorGetResponse>>? {
+    fun getReviewSummaries(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<RatingGetResponse>>? {
         return feedbackApiList?.getReviewSummaries(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize )}
 
     
@@ -2316,13 +2257,13 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getReviewSummaries
     **/
-    fun getReviewSummariesPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<XCursorGetResponse>{
+    fun getReviewSummariesPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<RatingGetResponse>{
 
-    val paginator = Paginator<XCursorGetResponse>()
+    val paginator = Paginator<RatingGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<XCursorGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<RatingGetResponse> {
             override suspend fun onNext(
-                onSuccess: (Event<XCursorGetResponse>) -> Unit,
+                onSuccess: (Event<RatingGetResponse>) -> Unit,
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
@@ -2339,7 +2280,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
             }
 
             override suspend fun onNext(
-                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<RatingGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
@@ -2371,7 +2312,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun getReviews(entityType: String, entityId: String, id: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<XCursorGetResponse>>? {
+    fun getReviews(entityType: String, entityId: String, id: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<ReviewGetResponse>>? {
         return feedbackApiList?.getReviews(entityType = entityType, entityId = entityId, id = id, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, pageId = pageId, pageSize = pageSize )}
 
     
@@ -2437,13 +2378,13 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getReviews
     **/
-    fun getReviewsPaginator(entityType: String, entityId: String, id: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, pageSize: Int?=null) : Paginator<XCursorGetResponse>{
+    fun getReviewsPaginator(entityType: String, entityId: String, id: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, pageSize: Int?=null) : Paginator<ReviewGetResponse>{
 
-    val paginator = Paginator<XCursorGetResponse>()
+    val paginator = Paginator<ReviewGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<XCursorGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<ReviewGetResponse> {
             override suspend fun onNext(
-                onSuccess: (Event<XCursorGetResponse>) -> Unit,
+                onSuccess: (Event<ReviewGetResponse>) -> Unit,
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
@@ -2460,7 +2401,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
             }
 
             override suspend fun onNext(
-                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<ReviewGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
@@ -2497,7 +2438,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun getQuestionAndAnswers(entityType: String, entityId: String, id: String?=null, showAnswer: Boolean?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<XCursorGetResponse>>? {
+    fun getQuestionAndAnswers(entityType: String, entityId: String, id: String?=null, showAnswer: Boolean?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<QNAGetResponse>>? {
         return feedbackApiList?.getQuestionAndAnswers(entityType = entityType, entityId = entityId, id = id, showAnswer = showAnswer, pageId = pageId, pageSize = pageSize )}
 
     
@@ -2538,13 +2479,13 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getQuestionAndAnswers
     **/
-    fun getQuestionAndAnswersPaginator(entityType: String, entityId: String, id: String?=null, showAnswer: Boolean?=null, pageSize: Int?=null) : Paginator<XCursorGetResponse>{
+    fun getQuestionAndAnswersPaginator(entityType: String, entityId: String, id: String?=null, showAnswer: Boolean?=null, pageSize: Int?=null) : Paginator<QNAGetResponse>{
 
-    val paginator = Paginator<XCursorGetResponse>()
+    val paginator = Paginator<QNAGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<XCursorGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<QNAGetResponse> {
             override suspend fun onNext(
-                onSuccess: (Event<XCursorGetResponse>) -> Unit,
+                onSuccess: (Event<QNAGetResponse>) -> Unit,
                 onFailure: (FdkError) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
@@ -2561,7 +2502,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
             }
 
             override suspend fun onNext(
-                onResponse: (Event<XCursorGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<QNAGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
