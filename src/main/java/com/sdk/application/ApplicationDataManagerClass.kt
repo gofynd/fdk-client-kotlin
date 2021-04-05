@@ -1235,6 +1235,108 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 }
 
 
+class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val contentApiList by lazy {
+        generatecontentApiList()
+    }
+
+    private fun generatecontentApiList(): ContentApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationContent",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
+    }
+    
+    fun getAnnouncements(): Deferred<Response<AnnouncementsResponseSchema>>? {
+        return contentApiList?.getAnnouncements( )}
+
+    
+    
+    fun getBlog(slug: String): Deferred<Response<CustomBlog>>? {
+        return contentApiList?.getBlog(slug = slug )}
+
+    
+    
+    fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
+        return contentApiList?.getFaqs( )}
+
+    
+    
+    fun getFaqCategories(): Deferred<Response<GetFaqCategoriesSchema>>? {
+        return contentApiList?.getFaqCategories( )}
+
+    
+    
+    fun getFaqByIdOrSlug(idOrSlug: String): Deferred<Response<FaqSchema>>? {
+        return contentApiList?.getFaqByIdOrSlug(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getFaqCategoryBySlugOrId(idOrSlug: String): Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>? {
+        return contentApiList?.getFaqCategoryBySlugOrId(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getFaqsByCategoryIdOrSlug(idOrSlug: String): Deferred<Response<GetFaqSchema>>? {
+        return contentApiList?.getFaqsByCategoryIdOrSlug(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getLandingPage(): Deferred<Response<LandingPage>>? {
+        return contentApiList?.getLandingPage( )}
+
+    
+    
+    fun getLegalInformation(): Deferred<Response<ApplicationLegal>>? {
+        return contentApiList?.getLegalInformation( )}
+
+    
+    
+    fun getNavigations(): Deferred<Response<Navigation>>? {
+        return contentApiList?.getNavigations( )}
+
+    
+    
+    fun getPage(slug: String): Deferred<Response<CustomPage>>? {
+        return contentApiList?.getPage(slug = slug )}
+
+    
+    
+    fun getSeoConfiguration(): Deferred<Response<Seo>>? {
+        return contentApiList?.getSeoConfiguration( )}
+
+    
+    
+    fun getSlideshow(slug: String): Deferred<Response<Slideshow>>? {
+        return contentApiList?.getSlideshow(slug = slug )}
+
+    
+    
+    fun getSupportInformation(): Deferred<Response<Support>>? {
+        return contentApiList?.getSupportInformation( )}
+
+    
+    
+    fun getTags(): Deferred<Response<TagsSchema>>? {
+        return contentApiList?.getTags( )}
+
+    
+    
+}
+
+
 class ShareDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     private val shareApiList by lazy {
@@ -1328,6 +1430,162 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
     
     fun completeUpload(namespace: String,body: StartResponse): Deferred<Response<CompleteResponse>>? {
         return fileStorageApiList?.completeUpload(namespace = namespace, body = body)}
+
+    
+    
+}
+
+
+class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val configurationApiList by lazy {
+        generateconfigurationApiList()
+    }
+
+    private fun generateconfigurationApiList(): ConfigurationApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationConfiguration",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
+    }
+    
+    fun getApplication(): Deferred<Response<Application>>? {
+        return configurationApiList?.getApplication( )}
+
+    
+    
+    fun getOwnerInfo(): Deferred<Response<ApplicationAboutResponse>>? {
+        return configurationApiList?.getOwnerInfo( )}
+
+    
+    
+    fun getBasicDetails(): Deferred<Response<ApplicationDetail>>? {
+        return configurationApiList?.getBasicDetails( )}
+
+    
+    
+    fun getIntegrationTokens(): Deferred<Response<TokenResponse>>? {
+        return configurationApiList?.getIntegrationTokens( )}
+
+    
+    
+    fun getOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null): Deferred<Response<OrderingStores>>? {
+        return configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q )}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getOrderingStores
+    **/
+    fun getOrderingStoresPaginator(pageSize: Int?=null, q: String?=null) : Paginator<OrderingStores>{
+
+    val paginator = Paginator<OrderingStores>()
+
+    paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
+            override suspend fun onNext(
+                onSuccess: (Event<OrderingStores>) -> Unit,
+                onFailure: (FdkError) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+            }
+
+            override suspend fun onNext(
+                onResponse: (Event<OrderingStores>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getFeatures(): Deferred<Response<AppFeatureResponse>>? {
+        return configurationApiList?.getFeatures( )}
+
+    
+    
+    fun getContactInfo(): Deferred<Response<ApplicationInformation>>? {
+        return configurationApiList?.getContactInfo( )}
+
+    
+    
+    fun getCurrencies(): Deferred<Response<CurrenciesResponse>>? {
+        return configurationApiList?.getCurrencies( )}
+
+    
+    
+    fun getCurrencyById(id: String): Deferred<Response<Currency>>? {
+        return configurationApiList?.getCurrencyById(id = id )}
+
+    
+    
+    fun getLanguages(): Deferred<Response<LanguageResponse>>? {
+        return configurationApiList?.getLanguages( )}
+
+    
+    
+    fun getOrderingStoreCookie(body: OrderingStoreSelectRequest): Deferred<Response<SuccessMessageResponse>>? {
+        return configurationApiList?.getOrderingStoreCookie( body = body)}
+
+    
+    
+    fun removeOrderingStoreCookie(): Deferred<Response<SuccessMessageResponse>>? {
+        return configurationApiList?.removeOrderingStoreCookie( )}
+
+    
+    
+    fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffResponse>>? {
+        return configurationApiList?.getAppStaffs(orderIncent = orderIncent, orderingStore = orderingStore, user = user )}
 
     
     
@@ -1507,6 +1765,124 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun getPosOrderById(orderId: String): Deferred<Response<PosOrderById>>? {
         return orderApiList?.getPosOrderById(orderId = orderId )}
+
+    
+    
+}
+
+
+class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val rewardsApiList by lazy {
+        generaterewardsApiList()
+    }
+
+    private fun generaterewardsApiList(): RewardsApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationRewards",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(RewardsApiList::class.java) as? RewardsApiList
+    }
+    
+    fun getPointsOnProduct(body: CatalogueOrderRequest): Deferred<Response<CatalogueOrderResponse>>? {
+        return rewardsApiList?.getPointsOnProduct( body = body)}
+
+    
+    
+    fun getOrderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
+        return rewardsApiList?.getOrderDiscount( body = body)}
+
+    
+    
+    fun getUserPoints(): Deferred<Response<PointsResponse>>? {
+        return rewardsApiList?.getUserPoints( )}
+
+    
+    
+    fun getUserPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
+        return rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize )}
+
+    
+    
+    
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getUserPointsHistory
+    **/
+    fun getUserPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
+
+    val paginator = Paginator<PointsHistoryResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<PointsHistoryResponse> {
+            override suspend fun onNext(
+                onSuccess: (Event<PointsHistoryResponse>) -> Unit,
+                onFailure: (FdkError) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+            }
+
+            override suspend fun onNext(
+                onResponse: (Event<PointsHistoryResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getUserReferralDetails(): Deferred<Response<ReferralDetailsResponse>>? {
+        return rewardsApiList?.getUserReferralDetails( )}
+
+    
+    
+    fun redeemReferralCode(body: RedeemReferralCodeRequest): Deferred<Response<RedeemReferralCodeResponse>>? {
+        return rewardsApiList?.redeemReferralCode( body = body)}
 
     
     
