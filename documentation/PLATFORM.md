@@ -4,7 +4,6 @@
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
-* [Content](#Content) - Content System 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
@@ -12,6 +11,7 @@
 * [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Assets](#Assets) - File Storage 
 * [Share](#Share) - Short link and QR Code 
+* [Configuration](#Configuration) - Application configuration apis 
 * [Cart](#Cart) - Cart APIs 
 * [Marketplaces](#Marketplaces) - Marketplaces 
 * [Analytics](#Analytics) - Perceptor analytics 
@@ -67,66 +67,6 @@
   * [User#searchUsers](#usersearchusers)
   * [User#getPlatformConfig](#usergetplatformconfig)
   * [User#updatePlatformConfig](#userupdateplatformconfig)
- 
-* [Content](#Content)
-  * [Content#getAnnouncementsList](#contentgetannouncementslist)
-  * [Content#createAnnouncement](#contentcreateannouncement)
-  * [Content#getAnnouncementById](#contentgetannouncementbyid)
-  * [Content#updateAnnouncement](#contentupdateannouncement)
-  * [Content#updateAnnouncementSchedule](#contentupdateannouncementschedule)
-  * [Content#deleteAnnouncement](#contentdeleteannouncement)
-  * [Content#createBlog](#contentcreateblog)
-  * [Content#getBlogs](#contentgetblogs)
-  * [Content#updateBlog](#contentupdateblog)
-  * [Content#deleteBlog](#contentdeleteblog)
-  * [Content#getComponentById](#contentgetcomponentbyid)
-  * [Content#getFaqCategories](#contentgetfaqcategories)
-  * [Content#getFaqCategoryBySlugOrId](#contentgetfaqcategorybyslugorid)
-  * [Content#createFaqCategory](#contentcreatefaqcategory)
-  * [Content#updateFaqCategory](#contentupdatefaqcategory)
-  * [Content#deleteFaqCategory](#contentdeletefaqcategory)
-  * [Content#getFaqsByCategoryIdOrSlug](#contentgetfaqsbycategoryidorslug)
-  * [Content#addFaq](#contentaddfaq)
-  * [Content#updateFaq](#contentupdatefaq)
-  * [Content#deleteFaq](#contentdeletefaq)
-  * [Content#getFaqByIdOrSlug](#contentgetfaqbyidorslug)
-  * [Content#getLandingPages](#contentgetlandingpages)
-  * [Content#createLandingPage](#contentcreatelandingpage)
-  * [Content#updateLandingPage](#contentupdatelandingpage)
-  * [Content#deleteLandingPage](#contentdeletelandingpage)
-  * [Content#getLegalInformation](#contentgetlegalinformation)
-  * [Content#updateLegalInformation](#contentupdatelegalinformation)
-  * [Content#getNavigations](#contentgetnavigations)
-  * [Content#createNavigation](#contentcreatenavigation)
-  * [Content#getDefaultNavigations](#contentgetdefaultnavigations)
-  * [Content#getNavigationBySlug](#contentgetnavigationbyslug)
-  * [Content#updateNavigation](#contentupdatenavigation)
-  * [Content#deleteNavigation](#contentdeletenavigation)
-  * [Content#getPageMeta](#contentgetpagemeta)
-  * [Content#getPageSpec](#contentgetpagespec)
-  * [Content#createPage](#contentcreatepage)
-  * [Content#getPages](#contentgetpages)
-  * [Content#createPagePreview](#contentcreatepagepreview)
-  * [Content#updatePagePreview](#contentupdatepagepreview)
-  * [Content#updatePage](#contentupdatepage)
-  * [Content#deletePage](#contentdeletepage)
-  * [Content#getPageBySlug](#contentgetpagebyslug)
-  * [Content#getSEOConfiguration](#contentgetseoconfiguration)
-  * [Content#updateSEOConfiguration](#contentupdateseoconfiguration)
-  * [Content#getSlideshows](#contentgetslideshows)
-  * [Content#createSlideshow](#contentcreateslideshow)
-  * [Content#getSlideshowBySlug](#contentgetslideshowbyslug)
-  * [Content#updateSlideshow](#contentupdateslideshow)
-  * [Content#deleteSlideshow](#contentdeleteslideshow)
-  * [Content#getSupportInformation](#contentgetsupportinformation)
-  * [Content#updateSupportInformation](#contentupdatesupportinformation)
-  * [Content#createInjectableTag](#contentcreateinjectabletag)
-  * [Content#updateInjectableTag](#contentupdateinjectabletag)
-  * [Content#deleteAllInjectableTags](#contentdeleteallinjectabletags)
-  * [Content#getInjectableTags](#contentgetinjectabletags)
-  * [Content#addInjectableTag](#contentaddinjectabletag)
-  * [Content#removeInjectableTag](#contentremoveinjectabletag)
-  * [Content#editInjectableTag](#contenteditinjectabletag)
  
 * [Communication](#Communication)
   * [Communication#getCampaigns](#communicationgetcampaigns)
@@ -307,6 +247,50 @@
   * [Share#getShortLinks](#sharegetshortlinks)
   * [Share#getShortLinkByHash](#sharegetshortlinkbyhash)
   * [Share#updateShortLinkById](#shareupdateshortlinkbyid)
+ 
+* [Configuration](#Configuration)
+  * [Configuration#getBuildConfig](#configurationgetbuildconfig)
+  * [Configuration#updateBuildConfig](#configurationupdatebuildconfig)
+  * [Configuration#getPreviousVersions](#configurationgetpreviousversions)
+  * [Configuration#getAppFeatures](#configurationgetappfeatures)
+  * [Configuration#updateAppFeatures](#configurationupdateappfeatures)
+  * [Configuration#getAppBasicDetails](#configurationgetappbasicdetails)
+  * [Configuration#updateAppBasicDetails](#configurationupdateappbasicdetails)
+  * [Configuration#getAppContactInfo](#configurationgetappcontactinfo)
+  * [Configuration#updateAppContactInfo](#configurationupdateappcontactinfo)
+  * [Configuration#getAppApiTokens](#configurationgetappapitokens)
+  * [Configuration#updateAppApiTokens](#configurationupdateappapitokens)
+  * [Configuration#getAppCompanies](#configurationgetappcompanies)
+  * [Configuration#getAppStores](#configurationgetappstores)
+  * [Configuration#getInventoryConfig](#configurationgetinventoryconfig)
+  * [Configuration#updateInventoryConfig](#configurationupdateinventoryconfig)
+  * [Configuration#partiallyUpdateInventoryConfig](#configurationpartiallyupdateinventoryconfig)
+  * [Configuration#getAppCurrencyConfig](#configurationgetappcurrencyconfig)
+  * [Configuration#updateAppCurrencyConfig](#configurationupdateappcurrencyconfig)
+  * [Configuration#getOrderingStoresByFilter](#configurationgetorderingstoresbyfilter)
+  * [Configuration#updateOrderingStoreConfig](#configurationupdateorderingstoreconfig)
+  * [Configuration#getDomains](#configurationgetdomains)
+  * [Configuration#addDomain](#configurationadddomain)
+  * [Configuration#removeDomainById](#configurationremovedomainbyid)
+  * [Configuration#changeDomainType](#configurationchangedomaintype)
+  * [Configuration#getDomainStatus](#configurationgetdomainstatus)
+  * [Configuration#createApplication](#configurationcreateapplication)
+  * [Configuration#getApplications](#configurationgetapplications)
+  * [Configuration#getApplicationById](#configurationgetapplicationbyid)
+  * [Configuration#getCurrencies](#configurationgetcurrencies)
+  * [Configuration#getDomainAvailibility](#configurationgetdomainavailibility)
+  * [Configuration#getIntegrationById](#configurationgetintegrationbyid)
+  * [Configuration#getAvailableOptIns](#configurationgetavailableoptins)
+  * [Configuration#getSelectedOptIns](#configurationgetselectedoptins)
+  * [Configuration#getIntegrationLevelConfig](#configurationgetintegrationlevelconfig)
+  * [Configuration#getIntegrationByLevelId](#configurationgetintegrationbylevelid)
+  * [Configuration#getLevelActiveIntegrations](#configurationgetlevelactiveintegrations)
+  * [Configuration#getBrandsByCompany](#configurationgetbrandsbycompany)
+  * [Configuration#getCompanyByBrands](#configurationgetcompanybybrands)
+  * [Configuration#getStoreByBrands](#configurationgetstorebybrands)
+  * [Configuration#getOtherSellerApplications](#configurationgetothersellerapplications)
+  * [Configuration#getOtherSellerApplicationById](#configurationgetothersellerapplicationbyid)
+  * [Configuration#optOutFromApplication](#configurationoptoutfromapplication)
  
 * [Cart](#Cart)
   * [Cart#getCoupons](#cartgetcoupons)
@@ -1476,1565 +1460,6 @@ const data = await user.updatePlatformConfig(company_id, application_id, );
 
 
 Used to update platform config
-
-
----
-
-
-
----
----
-
-
-## Content
-
-```javascript
-const { Configuration, Content } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const content = new Content(conf);
-
-```
-
-
-#### Content#getAnnouncementsList
-Get annoucements list
-
-```javascript
-// Promise
-const promise = content.getAnnouncementsList(company_id, application_id, );
-
-// Async/Await
-const data = await content.getAnnouncementsList(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get list of announcements
-
-
----
-
-
-#### Content#createAnnouncement
-Create an annoucement
-
-```javascript
-// Promise
-const promise = content.createAnnouncement(company_id, application_id, );
-
-// Async/Await
-const data = await content.createAnnouncement(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Create an announcement
-
-
----
-
-
-#### Content#getAnnouncementById
-Get annoucement by id
-
-```javascript
-// Promise
-const promise = content.getAnnouncementById(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.getAnnouncementById(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Get announcement by id
-
-
----
-
-
-#### Content#updateAnnouncement
-Update an annoucement
-
-```javascript
-// Promise
-const promise = content.updateAnnouncement(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.updateAnnouncement(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Update an announcement
-
-
----
-
-
-#### Content#updateAnnouncementSchedule
-Update schedule or published status of an annoucement
-
-```javascript
-// Promise
-const promise = content.updateAnnouncementSchedule(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.updateAnnouncementSchedule(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Update schedule or published status of an announcement
-
-
----
-
-
-#### Content#deleteAnnouncement
-Delete annoucement by id
-
-```javascript
-// Promise
-const promise = content.deleteAnnouncement(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.deleteAnnouncement(company_id, application_id, announcement_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
-
-
-Delete announcement by id
-
-
----
-
-
-#### Content#createBlog
-Create blog
-
-```javascript
-// Promise
-const promise = content.createBlog(company_id, application_id, );
-
-// Async/Await
-const data = await content.createBlog(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-
-
-Use this to create a blog.
-
-
----
-
-
-#### Content#getBlogs
-Get blogs
-
-```javascript
-// Promise
-const promise = content.getBlogs(company_id, application_id, );
-
-// Async/Await
-const data = await content.getBlogs(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-
-
-Use this to get blogs.
-
-
----
-
-
-#### Content#updateBlog
-Update blog
-
-```javascript
-// Promise
-const promise = content.updateBlog(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateBlog(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Blog Id | 
-
-
-Use this to update blog.
-
-
----
-
-
-#### Content#deleteBlog
-Delete blogs
-
-```javascript
-// Promise
-const promise = content.deleteBlog(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteBlog(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Blog Id | 
-
-
-Use this to delete blogs.
-
-
----
-
-
-#### Content#getComponentById
-Get components by component Id
-
-```javascript
-// Promise
-const promise = content.getComponentById(company_id, application_id, slug, );
-
-// Async/Await
-const data = await content.getComponentById(company_id, application_id, slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| slug | string | slug of page to be fetched | 
-
-
-The endpoint fetches the component by component Id
-
-
----
-
-
-#### Content#getFaqCategories
-Get FAQ categories list
-
-```javascript
-// Promise
-const promise = content.getFaqCategories(company_id, application_id, );
-
-// Async/Await
-const data = await content.getFaqCategories(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get list of FAQ categories
-
-
----
-
-
-#### Content#getFaqCategoryBySlugOrId
-Get FAQ category by slug or id
-
-```javascript
-// Promise
-const promise = content.getFaqCategoryBySlugOrId(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqCategoryBySlugOrId(company_id, application_id, id_or_slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Slug or Id of FAQ Category | 
-
-
-Get FAQ category by slug or id
-
-
----
-
-
-#### Content#createFaqCategory
-Creates a FAQ category
-
-```javascript
-// Promise
-const promise = content.createFaqCategory(company_id, application_id, );
-
-// Async/Await
-const data = await content.createFaqCategory(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Add Faq Category
-
-
----
-
-
-#### Content#updateFaqCategory
-Updates a FAQ category
-
-```javascript
-// Promise
-const promise = content.updateFaqCategory(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateFaqCategory(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Faq category ID | 
-
-
-Update Faq Category
-
-
----
-
-
-#### Content#deleteFaqCategory
-Deletes a FAQ category
-
-```javascript
-// Promise
-const promise = content.deleteFaqCategory(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteFaqCategory(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Faq category ID | 
-
-
-Delete Faq Category
-
-
----
-
-
-#### Content#getFaqsByCategoryIdOrSlug
-Get FAQs of a Faq Category id or slug
-
-```javascript
-// Promise
-const promise = content.getFaqsByCategoryIdOrSlug(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqsByCategoryIdOrSlug(company_id, application_id, id_or_slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Faq category ID or slug | 
-
-
-Get FAQs of a Faq Category `id` or `slug`
-
-
----
-
-
-#### Content#addFaq
-Creates FAQs for category whose `id` is specified
-
-```javascript
-// Promise
-const promise = content.addFaq(company_id, application_id, category_id, );
-
-// Async/Await
-const data = await content.addFaq(company_id, application_id, category_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-
-
-Creates FAQs for category whose `id` is specified
-
-
----
-
-
-#### Content#updateFaq
-Updates FAQ
-
-```javascript
-// Promise
-const promise = content.updateFaq(company_id, application_id, category_id, faq_id, );
-
-// Async/Await
-const data = await content.updateFaq(company_id, application_id, category_id, faq_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-| faq_id | string | Faq ID | 
-
-
-Updates FAQ
-
-
----
-
-
-#### Content#deleteFaq
-Delete FAQ
-
-```javascript
-// Promise
-const promise = content.deleteFaq(company_id, application_id, category_id, faq_id, );
-
-// Async/Await
-const data = await content.deleteFaq(company_id, application_id, category_id, faq_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-| faq_id | string | Faq ID | 
-
-
-Delete FAQ
-
-
----
-
-
-#### Content#getFaqByIdOrSlug
-Get frequently asked question
-
-```javascript
-// Promise
-const promise = content.getFaqByIdOrSlug(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqByIdOrSlug(company_id, application_id, id_or_slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Slug or Id of FAQ | 
-
-
-Get frequently asked questions list. These will be helpful for users to using website.
-
-
----
-
-
-#### Content#getLandingPages
-Get landing-pages
-
-```javascript
-// Promise
-const promise = content.getLandingPages(company_id, application_id, );
-
-// Async/Await
-const data = await content.getLandingPages(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to get landing-pages.
-
-
----
-
-
-#### Content#createLandingPage
-Create landing-page
-
-```javascript
-// Promise
-const promise = content.createLandingPage(company_id, application_id, );
-
-// Async/Await
-const data = await content.createLandingPage(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to create landing-page.
-
-
----
-
-
-#### Content#updateLandingPage
-Update landing-page
-
-```javascript
-// Promise
-const promise = content.updateLandingPage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateLandingPage(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Landing page ID | 
-
-
-Use this to update landing-page.
-
-
----
-
-
-#### Content#deleteLandingPage
-Delete landing-page
-
-```javascript
-// Promise
-const promise = content.deleteLandingPage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteLandingPage(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Landing page ID | 
-
-
-Use this to delete landing-page.
-
-
----
-
-
-#### Content#getLegalInformation
-Get legal information
-
-```javascript
-// Promise
-const promise = content.getLegalInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.getLegalInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get legal information of application, which includes policy, Terms and Conditions, and FAQ information of application.
-
-
----
-
-
-#### Content#updateLegalInformation
-Save legal information
-
-```javascript
-// Promise
-const promise = content.updateLegalInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateLegalInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Save legal information of application, which includes Policy, Terms and Conditions, and FAQ information of application.
-
-
----
-
-
-#### Content#getNavigations
-Get navigations
-
-```javascript
-// Promise
-const promise = content.getNavigations(company_id, application_id, device_platform, );
-
-// Async/Await
-const data = await content.getNavigations(company_id, application_id, device_platform, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| device_platform | string | Device platform | 
-
-
-Use this to get navigations.
-
-
----
-
-
-#### Content#createNavigation
-Create navigation
-
-```javascript
-// Promise
-const promise = content.createNavigation(company_id, application_id, );
-
-// Async/Await
-const data = await content.createNavigation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to create navigation.
-
-
----
-
-
-#### Content#getDefaultNavigations
-Get default navigations
-
-```javascript
-// Promise
-const promise = content.getDefaultNavigations(company_id, application_id, );
-
-// Async/Await
-const data = await content.getDefaultNavigations(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to get default navigations.
-
-
----
-
-
-#### Content#getNavigationBySlug
-Get navigation by slug
-
-```javascript
-// Promise
-const promise = content.getNavigationBySlug(company_id, application_id, slug, device_platform, );
-
-// Async/Await
-const data = await content.getNavigationBySlug(company_id, application_id, slug, device_platform, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| slug | string | Slug | 
-| device_platform | string | Device platform | 
-
-
-Use this to get navigation by slug.
-
-
----
-
-
-#### Content#updateNavigation
-Update navigation
-
-```javascript
-// Promise
-const promise = content.updateNavigation(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateNavigation(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Navigation ID | 
-
-
-Use this to update navigation.
-
-
----
-
-
-#### Content#deleteNavigation
-Delete navigation
-
-```javascript
-// Promise
-const promise = content.deleteNavigation(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteNavigation(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Navigation ID | 
-
-
-Use this to delete navigation.
-
-
----
-
-
-#### Content#getPageMeta
-Get page meta
-
-```javascript
-// Promise
-const promise = content.getPageMeta(company_id, application_id, );
-
-// Async/Await
-const data = await content.getPageMeta(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-
-
-Use this to get Page Meta.
-
-
----
-
-
-#### Content#getPageSpec
-Get page spec
-
-```javascript
-// Promise
-const promise = content.getPageSpec(company_id, application_id, );
-
-// Async/Await
-const data = await content.getPageSpec(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to get page spec.
-
-
----
-
-
-#### Content#createPage
-Create page
-
-```javascript
-// Promise
-const promise = content.createPage(company_id, application_id, );
-
-// Async/Await
-const data = await content.createPage(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-
-
-Use this to create a page.
-
-
----
-
-
-#### Content#getPages
-Get pages
-
-```javascript
-// Promise
-const promise = content.getPages(company_id, application_id, );
-
-// Async/Await
-const data = await content.getPages(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-
-
-Use this to get pages.
-
-
----
-
-
-#### Content#createPagePreview
-Create page preview
-
-```javascript
-// Promise
-const promise = content.createPagePreview(company_id, application_id, );
-
-// Async/Await
-const data = await content.createPagePreview(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-
-
-Use this to create a page preview.
-
-
----
-
-
-#### Content#updatePagePreview
-Update page
-
-```javascript
-// Promise
-const promise = content.updatePagePreview(company_id, application_id, slug, );
-
-// Async/Await
-const data = await content.updatePagePreview(company_id, application_id, slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| slug | string | Page publish slug | 
-
-
-Use this to update page.
-
-
----
-
-
-#### Content#updatePage
-Update page
-
-```javascript
-// Promise
-const promise = content.updatePage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updatePage(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Page Id | 
-
-
-Use this to update page.
-
-
----
-
-
-#### Content#deletePage
-Delete page
-
-```javascript
-// Promise
-const promise = content.deletePage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deletePage(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Page Id | 
-
-
-Use this to delete page.
-
-
----
-
-
-#### Content#getPageBySlug
-Get pages by component Id
-
-```javascript
-// Promise
-const promise = content.getPageBySlug(company_id, application_id, slug, );
-
-// Async/Await
-const data = await content.getPageBySlug(company_id, application_id, slug, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| slug | string | Slug of page to be fetched | 
-
-
-The endpoint fetches the component by component Id
-
-
----
-
-
-#### Content#getSEOConfiguration
-Get seo of application
-
-```javascript
-// Promise
-const promise = content.getSEOConfiguration(company_id, application_id, );
-
-// Async/Await
-const data = await content.getSEOConfiguration(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get seo of application
-
-
----
-
-
-#### Content#updateSEOConfiguration
-Update seo of application
-
-```javascript
-// Promise
-const promise = content.updateSEOConfiguration(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateSEOConfiguration(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Update seo of application
-
-
----
-
-
-#### Content#getSlideshows
-Get slideshows
-
-```javascript
-// Promise
-const promise = content.getSlideshows(company_id, application_id, device_platform, );
-
-// Async/Await
-const data = await content.getSlideshows(company_id, application_id, device_platform, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| device_platform | string | Device platform | 
-
-
-Use this to get slideshows.
-
-
----
-
-
-#### Content#createSlideshow
-Create slideshow
-
-```javascript
-// Promise
-const promise = content.createSlideshow(company_id, application_id, );
-
-// Async/Await
-const data = await content.createSlideshow(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Use this to create slideshow.
-
-
----
-
-
-#### Content#getSlideshowBySlug
-Get slideshow by slug
-
-```javascript
-// Promise
-const promise = content.getSlideshowBySlug(company_id, application_id, slug, device_platform, );
-
-// Async/Await
-const data = await content.getSlideshowBySlug(company_id, application_id, slug, device_platform, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| slug | string | Slug | 
-| device_platform | string | Device platform | 
-
-
-Use this to get slideshow by slug.
-
-
----
-
-
-#### Content#updateSlideshow
-Update slideshow
-
-```javascript
-// Promise
-const promise = content.updateSlideshow(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateSlideshow(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Slideshow ID | 
-
-
-Use this to update slideshow.
-
-
----
-
-
-#### Content#deleteSlideshow
-Delete slideshow
-
-```javascript
-// Promise
-const promise = content.deleteSlideshow(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteSlideshow(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Slideshow ID | 
-
-
-Use this to delete slideshow.
-
-
----
-
-
-#### Content#getSupportInformation
-Get support information
-
-```javascript
-// Promise
-const promise = content.getSupportInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.getSupportInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get contact details for customer support. Including emails and phone numbers
-
-
----
-
-
-#### Content#updateSupportInformation
-Update support data of application
-
-```javascript
-// Promise
-const promise = content.updateSupportInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateSupportInformation(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Update support data of application
-
-
----
-
-
-#### Content#createInjectableTag
-Creates Tag
-
-```javascript
-// Promise
-const promise = content.createInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.createInjectableTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Create tags
-
-
----
-
-
-#### Content#updateInjectableTag
-Updates a Tag
-
-```javascript
-// Promise
-const promise = content.updateInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateInjectableTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Update tag
-
-
----
-
-
-#### Content#deleteAllInjectableTags
-Delete tags for application
-
-```javascript
-// Promise
-const promise = content.deleteAllInjectableTags(company_id, application_id, );
-
-// Async/Await
-const data = await content.deleteAllInjectableTags(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Delete tags for application
-
-
----
-
-
-#### Content#getInjectableTags
-Get tags for application
-
-```javascript
-// Promise
-const promise = content.getInjectableTags(company_id, application_id, );
-
-// Async/Await
-const data = await content.getInjectableTags(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Get tags for application
-
-
----
-
-
-#### Content#addInjectableTag
-Adds a Tag
-
-```javascript
-// Promise
-const promise = content.addInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.addInjectableTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Add tag
-
-
----
-
-
-#### Content#removeInjectableTag
-Removes a Tag
-
-```javascript
-// Promise
-const promise = content.removeInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.removeInjectableTag(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-
-
-Remove a particular tag
-
-
----
-
-
-#### Content#editInjectableTag
-Edits a Tag by Id
-
-```javascript
-// Promise
-const promise = content.editInjectableTag(company_id, application_id, tag_id, );
-
-// Async/Await
-const data = await content.editInjectableTag(company_id, application_id, tag_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| tag_id | string | Tag ID | 
-
-
-Edits a particular tag
 
 
 ---
@@ -7605,6 +6030,1128 @@ const data = await share.updateShortLinkById(company_id, application_id, id, );
 
 
 Update short link by id
+
+
+---
+
+
+
+---
+---
+
+
+## Configuration
+
+```javascript
+const { Configuration, Configuration } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const configuration = new Configuration(conf);
+
+```
+
+
+#### Configuration#getBuildConfig
+Get latest build config
+
+```javascript
+// Promise
+const promise = configuration.getBuildConfig(company_id, application_id, platform_type, );
+
+// Async/Await
+const data = await configuration.getBuildConfig(company_id, application_id, platform_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| platform_type | string | Current platform name | 
+
+
+Get latest build config
+
+
+---
+
+
+#### Configuration#updateBuildConfig
+Update build config for next build
+
+```javascript
+// Promise
+const promise = configuration.updateBuildConfig(company_id, application_id, platform_type, );
+
+// Async/Await
+const data = await configuration.updateBuildConfig(company_id, application_id, platform_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| platform_type | string | Current platform name | 
+
+
+Update build config for next build
+
+
+---
+
+
+#### Configuration#getPreviousVersions
+Get previous versions
+
+```javascript
+// Promise
+const promise = configuration.getPreviousVersions(company_id, application_id, platform_type, );
+
+// Async/Await
+const data = await configuration.getPreviousVersions(company_id, application_id, platform_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| platform_type | string | Current platform name | 
+
+
+Get previous versions
+
+
+---
+
+
+#### Configuration#getAppFeatures
+Get features of application
+
+```javascript
+// Promise
+const promise = configuration.getAppFeatures(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppFeatures(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get features of application
+
+
+---
+
+
+#### Configuration#updateAppFeatures
+Update features of application
+
+```javascript
+// Promise
+const promise = configuration.updateAppFeatures(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppFeatures(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Update features of application
+
+
+---
+
+
+#### Configuration#getAppBasicDetails
+Get basic application details
+
+```javascript
+// Promise
+const promise = configuration.getAppBasicDetails(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppBasicDetails(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get basic application details like name
+
+
+---
+
+
+#### Configuration#updateAppBasicDetails
+Add or update application's basic details
+
+```javascript
+// Promise
+const promise = configuration.updateAppBasicDetails(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppBasicDetails(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add or update application's basic details
+
+
+---
+
+
+#### Configuration#getAppContactInfo
+Get application information
+
+```javascript
+// Promise
+const promise = configuration.getAppContactInfo(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppContactInfo(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
+
+
+---
+
+
+#### Configuration#updateAppContactInfo
+Get application information
+
+```javascript
+// Promise
+const promise = configuration.updateAppContactInfo(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppContactInfo(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Save Application Current Information. This includes information about social links, address and contact information of an application.
+
+
+---
+
+
+#### Configuration#getAppApiTokens
+Get social tokens
+
+```javascript
+// Promise
+const promise = configuration.getAppApiTokens(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppApiTokens(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get social tokens.
+
+
+---
+
+
+#### Configuration#updateAppApiTokens
+Add social tokens
+
+```javascript
+// Promise
+const promise = configuration.updateAppApiTokens(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppApiTokens(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add social tokens.
+
+
+---
+
+
+#### Configuration#getAppCompanies
+Application inventory enabled companies
+
+```javascript
+// Promise
+const promise = configuration.getAppCompanies(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppCompanies(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Application inventory enabled companies.
+
+
+---
+
+
+#### Configuration#getAppStores
+Application inventory enabled stores
+
+```javascript
+// Promise
+const promise = configuration.getAppStores(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppStores(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Application inventory enabled stores.
+
+
+---
+
+
+#### Configuration#getInventoryConfig
+Get application configuration
+
+```javascript
+// Promise
+const promise = configuration.getInventoryConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getInventoryConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get application configuration for various features and data
+
+
+---
+
+
+#### Configuration#updateInventoryConfig
+Update application configuration
+
+```javascript
+// Promise
+const promise = configuration.updateInventoryConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateInventoryConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Update application configuration for various features and data
+
+
+---
+
+
+#### Configuration#partiallyUpdateInventoryConfig
+Partially update application configuration
+
+```javascript
+// Promise
+const promise = configuration.partiallyUpdateInventoryConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.partiallyUpdateInventoryConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Partially update application configuration for various features and data
+
+
+---
+
+
+#### Configuration#getAppCurrencyConfig
+Get application enabled currency list
+
+```javascript
+// Promise
+const promise = configuration.getAppCurrencyConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppCurrencyConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get application enabled currency list
+
+
+---
+
+
+#### Configuration#updateAppCurrencyConfig
+Add initial application supported currency
+
+```javascript
+// Promise
+const promise = configuration.updateAppCurrencyConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppCurrencyConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add initial application supported currency for various features and data. Default INR will be enabled.
+
+
+---
+
+
+#### Configuration#getOrderingStoresByFilter
+Get ordering store by filter
+
+```javascript
+// Promise
+const promise = configuration.getOrderingStoresByFilter(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getOrderingStoresByFilter(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get ordering store by filter
+
+
+---
+
+
+#### Configuration#updateOrderingStoreConfig
+Add/Update ordering store config
+
+```javascript
+// Promise
+const promise = configuration.updateOrderingStoreConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateOrderingStoreConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add/Update ordering store config.
+
+
+---
+
+
+#### Configuration#getDomains
+Get attached domain list
+
+```javascript
+// Promise
+const promise = configuration.getDomains(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getDomains(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get attached domain list.
+
+
+---
+
+
+#### Configuration#addDomain
+Add new domain to application
+
+```javascript
+// Promise
+const promise = configuration.addDomain(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.addDomain(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add new domain to application.
+
+
+---
+
+
+#### Configuration#removeDomainById
+Remove attached domain
+
+```javascript
+// Promise
+const promise = configuration.removeDomainById(company_id, application_id, id, );
+
+// Async/Await
+const data = await configuration.removeDomainById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| id | string | Domain _id | 
+
+
+Remove attached domain.
+
+
+---
+
+
+#### Configuration#changeDomainType
+Change domain type
+
+```javascript
+// Promise
+const promise = configuration.changeDomainType(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.changeDomainType(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Change a domain to Primary or Shortlink domain
+
+
+---
+
+
+#### Configuration#getDomainStatus
+Get domain connected status.
+
+```javascript
+// Promise
+const promise = configuration.getDomainStatus(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getDomainStatus(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get domain connected status. Check if domain is live and mapped to appropriate IP to fynd servers.
+
+
+---
+
+
+#### Configuration#createApplication
+Create application
+
+```javascript
+// Promise
+const promise = configuration.createApplication(company_id, );
+
+// Async/Await
+const data = await configuration.createApplication(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+
+
+Create new application
+
+
+---
+
+
+#### Configuration#getApplications
+Get list of application under company
+
+```javascript
+// Promise
+const promise = configuration.getApplications(company_id, page_no, page_size, q, );
+
+// Async/Await
+const data = await configuration.getApplications(company_id, page_no, page_size, q, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer |  | 
+| page_size | integer |  | 
+| q | object | Url encoded object used as mongodb query | 
+
+
+Get list of application under company
+
+
+---
+
+
+#### Configuration#getApplicationById
+Get application data from id
+
+```javascript
+// Promise
+const promise = configuration.getApplicationById(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getApplicationById(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get application data from id
+
+
+---
+
+
+#### Configuration#getCurrencies
+Get all currencies
+
+```javascript
+// Promise
+const promise = configuration.getCurrencies(company_id, );
+
+// Async/Await
+const data = await configuration.getCurrencies(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+
+
+Get all currencies
+
+
+---
+
+
+#### Configuration#getDomainAvailibility
+Check domain availibility before linking to application
+
+```javascript
+// Promise
+const promise = configuration.getDomainAvailibility(company_id, );
+
+// Async/Await
+const data = await configuration.getDomainAvailibility(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+
+
+Check domain availibility before linking to application. Also sends domain suggestions with similar to queried domain. \ Custom domain search is currently powered by GoDaddy provider.
+
+
+---
+
+
+#### Configuration#getIntegrationById
+Get integration data
+
+```javascript
+// Promise
+const promise = configuration.getIntegrationById(company_id, id, );
+
+// Async/Await
+const data = await configuration.getIntegrationById(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | integer | Integration id | 
+
+
+Get integration data
+
+
+---
+
+
+#### Configuration#getAvailableOptIns
+Get all available integration opt-ins
+
+```javascript
+// Promise
+const promise = configuration.getAvailableOptIns(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getAvailableOptIns(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get all available integration opt-ins
+
+
+---
+
+
+#### Configuration#getSelectedOptIns
+Get company/store level integration opt-ins
+
+```javascript
+// Promise
+const promise = configuration.getSelectedOptIns(company_id, level, uid, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getSelectedOptIns(company_id, level, uid, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| level | string | Integration level | 
+| uid | integer | Integration level uid | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get company/store level integration opt-ins
+
+
+---
+
+
+#### Configuration#getIntegrationLevelConfig
+Get integration level config
+
+```javascript
+// Promise
+const promise = configuration.getIntegrationLevelConfig(company_id, id, level, );
+
+// Async/Await
+const data = await configuration.getIntegrationLevelConfig(company_id, id, level, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Integration id | 
+| level | string | Integration level | 
+
+
+Get integration level config
+
+
+---
+
+
+#### Configuration#getIntegrationByLevelId
+Get level data for integration
+
+```javascript
+// Promise
+const promise = configuration.getIntegrationByLevelId(company_id, id, level, uid, );
+
+// Async/Await
+const data = await configuration.getIntegrationByLevelId(company_id, id, level, uid, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Integration id | 
+| level | string | Integration level | 
+| uid | integer | Integration level uid | 
+
+
+Get level data for integration
+
+
+---
+
+
+#### Configuration#getLevelActiveIntegrations
+Check store has active integration
+
+```javascript
+// Promise
+const promise = configuration.getLevelActiveIntegrations(company_id, id, level, uid, );
+
+// Async/Await
+const data = await configuration.getLevelActiveIntegrations(company_id, id, level, uid, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Integration id | 
+| level | string | Integration level | 
+| uid | integer | Integration level uid | 
+
+
+API checks if a store is already opted in any other integrations
+
+
+---
+
+
+#### Configuration#getBrandsByCompany
+Get brands by company
+
+```javascript
+// Promise
+const promise = configuration.getBrandsByCompany(company_id, q, );
+
+// Async/Await
+const data = await configuration.getBrandsByCompany(company_id, q, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| q | string | Search text for brand name | 
+
+
+Get brands by company
+
+
+---
+
+
+#### Configuration#getCompanyByBrands
+Get company by brand uids
+
+```javascript
+// Promise
+const promise = configuration.getCompanyByBrands(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getCompanyByBrands(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get company by brand uids
+
+
+---
+
+
+#### Configuration#getStoreByBrands
+Get stores by brand uids
+
+```javascript
+// Promise
+const promise = configuration.getStoreByBrands(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getStoreByBrands(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get stores by brand uids
+
+
+---
+
+
+#### Configuration#getOtherSellerApplications
+Get other seller applications
+
+```javascript
+// Promise
+const promise = configuration.getOtherSellerApplications(company_id, );
+
+// Async/Await
+const data = await configuration.getOtherSellerApplications(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+
+
+Get other seller applications who has opted current company as inventory
+
+
+---
+
+
+#### Configuration#getOtherSellerApplicationById
+Get other seller applications
+
+```javascript
+// Promise
+const promise = configuration.getOtherSellerApplicationById(company_id, id, );
+
+// Async/Await
+const data = await configuration.getOtherSellerApplicationById(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Application Id | 
+
+
+Get other seller application
+
+
+---
+
+
+#### Configuration#optOutFromApplication
+Opt out company or store from other seller application
+
+```javascript
+// Promise
+const promise = configuration.optOutFromApplication(company_id, id, );
+
+// Async/Await
+const data = await configuration.optOutFromApplication(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Application Id | 
+
+
+Opt out company or store from other seller application
 
 
 ---

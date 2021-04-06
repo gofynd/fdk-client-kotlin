@@ -8,8 +8,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val user by lazy { UserDataManagerClass(config)}
     
-    val content by lazy { ContentDataManagerClass(config)}
-    
     val communication by lazy { CommunicationDataManagerClass(config)}
     
     val payment by lazy { PaymentDataManagerClass(config)}
@@ -23,6 +21,8 @@ class PlatformClient(val config:PlatformConfig) {
     val assets by lazy { AssetsDataManagerClass(config)}
     
     val share by lazy { ShareDataManagerClass(config)}
+    
+    val configuration by lazy { ConfigurationDataManagerClass(config)}
     
     val cart by lazy { CartDataManagerClass(config)}
     
@@ -42,8 +42,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val user by lazy { this@PlatformClient.user.ApplicationClient(applicationId,config)}
     
-    val content by lazy { this@PlatformClient.content.ApplicationClient(applicationId,config)}
-    
     val communication by lazy { this@PlatformClient.communication.ApplicationClient(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
@@ -57,6 +55,8 @@ class PlatformClient(val config:PlatformConfig) {
     val assets by lazy { this@PlatformClient.assets.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
+    
+    val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
     

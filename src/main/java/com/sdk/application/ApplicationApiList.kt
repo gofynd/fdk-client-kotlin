@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -392,70 +392,6 @@ interface UserApiList {
     
 }
 
-interface ContentApiList {
-    
-    @GET ("/service/application/content/v1.0/announcements")
-    fun getAnnouncements()
-    : Deferred<Response<AnnouncementsResponseSchema>>
-    
-    @GET ("/service/application/content/v1.0/blogs/{slug}")
-    fun getBlog(@Path("slug") slug: String)
-    : Deferred<Response<CustomBlogSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq")
-    fun getFaqs()
-    : Deferred<Response<FaqResponseSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/categories")
-    fun getFaqCategories()
-    : Deferred<Response<GetFaqCategoriesSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/{id_or_slug}")
-    fun getFaqByIdOrSlug(@Path("id_or_slug") idOrSlug: String)
-    : Deferred<Response<FaqSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}")
-    fun getFaqCategoryBySlugOrId(@Path("id_or_slug") idOrSlug: String)
-    : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>
-    
-    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}/faqs")
-    fun getFaqsByCategoryIdOrSlug(@Path("id_or_slug") idOrSlug: String)
-    : Deferred<Response<GetFaqSchema>>
-    
-    @GET ("/service/application/content/v1.0/landing-page")
-    fun getLandingPage()
-    : Deferred<Response<LandingPageSchema>>
-    
-    @GET ("/service/application/content/v1.0/legal")
-    fun getLegalInformation()
-    : Deferred<Response<ApplicationLegal>>
-    
-    @GET ("/service/application/content/v1.0/navigations/")
-    fun getNavigations()
-    : Deferred<Response<NavigationGetResponse>>
-    
-    @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String)
-    : Deferred<Response<CustomPageSchema>>
-    
-    @GET ("/service/application/content/v1.0/seo")
-    fun getSEOConfiguration()
-    : Deferred<Response<Seo>>
-    
-    @GET ("/service/application/content/v1.0/slideshow/{slug}")
-    fun getSlideshow(@Path("slug") slug: String)
-    : Deferred<Response<SlideshowSchema>>
-    
-    @GET ("/service/application/content/v1.0/support")
-    fun getSupportInformation()
-    : Deferred<Response<Support>>
-    
-    @GET ("/service/application/content/v1.0/tags")
-    fun getTags()
-    : Deferred<Response<TagsSchema>>
-    
-}
-
 interface ShareApiList {
     
     @POST ("/service/application/share/v1.0/qr/")
@@ -661,142 +597,6 @@ interface OrderApiList {
     @GET ("/service/application/order/v1.0/orders/pos-order/{order_id}")
     fun getPosOrderById(@Path("order_id") orderId: String)
     : Deferred<Response<PosOrderById>>
-    
-}
-
-interface RewardsApiList {
-    
-    @POST ("/service/application/rewards/v1.0/catalogue/offer/order/")
-    fun getPointsOnProduct(@Body body: CatalogueOrderRequest)
-    : Deferred<Response<CatalogueOrderResponse>>
-    
-    @POST ("/service/application/rewards/v1.0/user/offers/order-discount/")
-    fun getOrderDiscount(@Body body: OrderDiscountRequest)
-    : Deferred<Response<OrderDiscountResponse>>
-    
-    @GET ("/service/application/rewards/v1.0/user/points")
-    fun getUserPoints()
-    : Deferred<Response<PointsResponse>>
-    
-    @GET ("/service/application/rewards/v1.0/user/points/history/")
-    fun getUserPointsHistory(@Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PointsHistoryResponse>>
-    
-    @GET ("/service/application/rewards/v1.0/user/referral/")
-    fun getUserReferralDetails()
-    : Deferred<Response<ReferralDetailsResponse>>
-    
-    @POST ("/service/application/rewards/v1.0/user/referral/redeem/")
-    fun redeemReferralCode(@Body body: RedeemReferralCodeRequest)
-    : Deferred<Response<RedeemReferralCodeResponse>>
-    
-}
-
-interface FeedbackApiList {
-    
-    @POST ("/service/application/feedback/v1.0/abuse")
-    fun createAbuseReport(@Body body: ReportAbuseRequest)
-    : Deferred<Response<XInsertResponse>>
-    
-    @PUT ("/service/application/feedback/v1.0/abuse")
-    fun updateAbuseReport(@Body body: UpdateAbuseStatusRequest)
-    : Deferred<Response<XUpdateResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}")
-    fun getAbuseReports(@Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ReportAbuseGetResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/attributes")
-    fun getAttributes()
-    : Deferred<Response<XNumberGetResponse>>
-    
-    @POST ("/service/application/feedback/v1.0/attributes")
-    fun createAttribute(@Body body: SaveAttributeRequest)
-    : Deferred<Response<XInsertResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/attributes/{slug}")
-    fun getAttribute(@Path("slug") slug: String)
-    : Deferred<Response<Attribute>>
-    
-    @PUT ("/service/application/feedback/v1.0/attributes/{slug}")
-    fun updateAttribute(@Path("slug") slug: String,@Body body: UpdateAttributeRequest)
-    : Deferred<Response<XUpdateResponse>>
-    
-    @POST ("/service/application/feedback/v1.0/comment")
-    fun createComment(@Body body: CommentRequest)
-    : Deferred<Response<XInsertResponse>>
-    
-    @PUT ("/service/application/feedback/v1.0/comment")
-    fun updateComment(@Body body: UpdateCommentRequest)
-    : Deferred<Response<XUpdateResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/comment/entity/{entity_type}")
-    fun getComments(@Path("entity_type") entityType: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<CommentGetResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/config/entity/{entity_type}/entity-id/{entity_id}")
-    fun checkEligibility(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String)
-    : Deferred<Response<CheckEligibilityResponse>>
-    
-    @DELETE ("/service/application/feedback/v1.0/media/")
-    fun deleteMedia()
-    : Deferred<Response<XUpdateResponse>>
-    
-    @POST ("/service/application/feedback/v1.0/media/")
-    fun createMedia(@Body body: AddMediaListRequest)
-    : Deferred<Response<XInsertResponse>>
-    
-    @PUT ("/service/application/feedback/v1.0/media/")
-    fun updateMedia(@Body body: UpdateMediaListRequest)
-    : Deferred<Response<XUpdateResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/media/entity/{entity_type}/entity-id/{entity_id}")
-    fun getMedias(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<MediaGetResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
-    fun getReviewSummaries(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<RatingGetResponse>>
-    
-    @POST ("/service/application/feedback/v1.0/review/")
-    fun createReview(@Body body: UpdateReviewRequest)
-    : Deferred<Response<XUpdateResponse>>
-    
-    @PUT ("/service/application/feedback/v1.0/review/")
-    fun updateReview(@Body body: UpdateReviewRequest)
-    : Deferred<Response<XUpdateResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/review/entity/{entity_type}/entity-id/{entity_id}")
-    fun getReviews(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ReviewGetResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/template/")
-    fun getTemplates(@Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?)
-    : Deferred<Response<XCursorGetResponse>>
-    
-    @POST ("/service/application/feedback/v1.0/template/qna/")
-    fun createQuestion(@Body body: CreateQNARequest)
-    : Deferred<Response<XInsertResponse>>
-    
-    @PUT ("/service/application/feedback/v1.0/template/qna/")
-    fun updateQuestion(@Body body: UpdateQNARequest)
-    : Deferred<Response<XUpdateResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/template/qna/entity/{entity_type}/entity-id/{entity_id}")
-    fun getQuestionAndAnswers(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<QNAGetResponse>>
-    
-    @GET ("/service/application/feedback/v1.0/vote/")
-    fun getVotes(@Query("id") id: String?, @Query("ref_type") refType: String?)
-    : Deferred<Response<XNumberGetResponse>>
-    
-    @POST ("/service/application/feedback/v1.0/vote/")
-    fun createVote(@Body body: VoteRequest)
-    : Deferred<Response<XInsertResponse>>
-    
-    @PUT ("/service/application/feedback/v1.0/vote/")
-    fun updateVote(@Body body: UpdateVoteRequest)
-    : Deferred<Response<XUpdateResponse>>
     
 }
 

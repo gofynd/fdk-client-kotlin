@@ -12,8 +12,6 @@ class ApplicationClient(val config:ApplicationConfig) {
     
     val user by lazy { UserDataManagerClass(config)}
     
-    val content by lazy { ContentDataManagerClass(config)}
-    
     val share by lazy { ShareDataManagerClass(config)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}
@@ -23,10 +21,6 @@ class ApplicationClient(val config:ApplicationConfig) {
     val payment by lazy { PaymentDataManagerClass(config)}
     
     val order by lazy { OrderDataManagerClass(config)}
-    
-    val rewards by lazy { RewardsDataManagerClass(config)}
-    
-    val feedback by lazy { FeedbackDataManagerClass(config)}
     
     val posCart by lazy { PosCartDataManagerClass(config)}
     
