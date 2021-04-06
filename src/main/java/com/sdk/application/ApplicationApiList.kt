@@ -290,7 +290,7 @@ interface UserApiList {
     fun sendResetPasswordEmail(@Query("platform") platform: String?,@Body body: SendResetPasswordEmailRequestSchema)
     : Deferred<Response<ResetPasswordSuccess>>
     
-    @POST ("/service/application/userauthentication/v1.0/login/password/reset/forgot")
+    @POST ("/service/application/user/authentication/v1.0/login/password/reset/forgot")
     fun forgotPassword(@Body body: ForgotPasswordRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
@@ -400,7 +400,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/blogs/{slug}")
     fun getBlog(@Path("slug") slug: String)
-    : Deferred<Response<CustomBlog>>
+    : Deferred<Response<CustomBlogSchema>>
     
     @GET ("/service/application/content/v1.0/faq")
     fun getFaqs()
@@ -424,7 +424,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/landing-page")
     fun getLandingPage()
-    : Deferred<Response<LandingPage>>
+    : Deferred<Response<LandingPageSchema>>
     
     @GET ("/service/application/content/v1.0/legal")
     fun getLegalInformation()
@@ -432,19 +432,19 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/navigations/")
     fun getNavigations()
-    : Deferred<Response<Navigation>>
+    : Deferred<Response<NavigationGetResponse>>
     
     @GET ("/service/application/content/v1.0/pages/{slug}")
     fun getPage(@Path("slug") slug: String)
-    : Deferred<Response<CustomPage>>
+    : Deferred<Response<CustomPageSchema>>
     
     @GET ("/service/application/content/v1.0/seo")
-    fun getSeoConfiguration()
+    fun getSEOConfiguration()
     : Deferred<Response<Seo>>
     
     @GET ("/service/application/content/v1.0/slideshow/{slug}")
     fun getSlideshow(@Path("slug") slug: String)
-    : Deferred<Response<Slideshow>>
+    : Deferred<Response<SlideshowSchema>>
     
     @GET ("/service/application/content/v1.0/support")
     fun getSupportInformation()

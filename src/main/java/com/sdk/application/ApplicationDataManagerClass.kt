@@ -1264,7 +1264,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getBlog(slug: String): Deferred<Response<CustomBlog>>? {
+    fun getBlog(slug: String): Deferred<Response<CustomBlogSchema>>? {
         return contentApiList?.getBlog(slug = slug )}
 
     
@@ -1294,7 +1294,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getLandingPage(): Deferred<Response<LandingPage>>? {
+    fun getLandingPage(): Deferred<Response<LandingPageSchema>>? {
         return contentApiList?.getLandingPage( )}
 
     
@@ -1304,22 +1304,73 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getNavigations(): Deferred<Response<Navigation>>? {
+    fun getNavigations(): Deferred<Response<NavigationGetResponse>>? {
         return contentApiList?.getNavigations( )}
 
     
     
-    fun getPage(slug: String): Deferred<Response<CustomPage>>? {
+    
+        
+    /**
+    *
+    * Summary: Paginator for getNavigations
+    **/
+    fun getNavigationsPaginator() : Paginator<NavigationGetResponse>{
+
+    val paginator = Paginator<NavigationGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<NavigationGetResponse> {
+            override suspend fun onNext(
+                onSuccess: (Event<NavigationGetResponse>) -> Unit,
+                onFailure: (FdkError) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getNavigations()?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+            }
+
+            override suspend fun onNext(
+                onResponse: (Event<NavigationGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getNavigations()?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getPage(slug: String): Deferred<Response<CustomPageSchema>>? {
         return contentApiList?.getPage(slug = slug )}
 
     
     
-    fun getSeoConfiguration(): Deferred<Response<Seo>>? {
-        return contentApiList?.getSeoConfiguration( )}
+    fun getSEOConfiguration(): Deferred<Response<Seo>>? {
+        return contentApiList?.getSEOConfiguration( )}
 
     
     
-    fun getSlideshow(slug: String): Deferred<Response<Slideshow>>? {
+    fun getSlideshow(slug: String): Deferred<Response<SlideshowSchema>>? {
         return contentApiList?.getSlideshow(slug = slug )}
 
     
