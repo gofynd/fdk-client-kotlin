@@ -7601,6 +7601,19 @@ data class ShortLinkList(
 ): Parcelable
 
 
+/*
+    Model: ErrorRes
+*/
+@Parcelize
+data class ErrorRes(
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable
+
+
 
 
 /*
