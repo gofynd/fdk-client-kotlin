@@ -4,6 +4,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val lead by lazy { LeadDataManagerClass(config)}
     
+    val feedback by lazy { FeedbackDataManagerClass(config)}
+    
     val theme by lazy { ThemeDataManagerClass(config)}
     
     val user by lazy { UserDataManagerClass(config)}
@@ -22,7 +24,7 @@ class PlatformClient(val config:PlatformConfig) {
     
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
     
-    val assets by lazy { AssetsDataManagerClass(config)}
+    val fileStorage by lazy { FileStorageDataManagerClass(config)}
     
     val share by lazy { ShareDataManagerClass(config)}
     
@@ -42,6 +44,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
     
+    val feedback by lazy { this@PlatformClient.feedback.ApplicationClient(applicationId,config)}
+    
     val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
     
     val user by lazy { this@PlatformClient.user.ApplicationClient(applicationId,config)}
@@ -60,7 +64,7 @@ class PlatformClient(val config:PlatformConfig) {
     
     val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
     
-    val assets by lazy { this@PlatformClient.assets.ApplicationClient(applicationId,config)}
+    val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     

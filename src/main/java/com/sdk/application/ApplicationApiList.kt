@@ -431,7 +431,7 @@ interface ContentApiList {
     : Deferred<Response<ApplicationLegal>>
     
     @GET ("/service/application/content/v1.0/navigations/")
-    fun getNavigations()
+    fun getNavigations(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<NavigationGetResponse>>
     
     @GET ("/service/application/content/v1.0/pages/{slug}")
@@ -453,6 +453,22 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/tags")
     fun getTags()
     : Deferred<Response<TagsSchema>>
+    
+}
+
+interface CommunicationApiList {
+    
+    @GET ("/service/application/communication/v1.0/consent")
+    fun getCommunicationConsent()
+    : Deferred<Response<CommunicationConsent>>
+    
+    @POST ("/service/application/communication/v1.0/consent")
+    fun upsertCommunicationConsent(@Body body: CommunicationConsentReq)
+    : Deferred<Response<CommunicationConsentRes>>
+    
+    @POST ("/service/application/communication/v1.0/pn-token")
+    fun upsertAppPushtoken(@Body body: PushtokenReq)
+    : Deferred<Response<PushtokenRes>>
     
 }
 

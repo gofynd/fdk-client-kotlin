@@ -14,6 +14,8 @@ class ApplicationClient(val config:ApplicationConfig) {
     
     val content by lazy { ContentDataManagerClass(config)}
     
+    val communication by lazy { CommunicationDataManagerClass(config)}
+    
     val share by lazy { ShareDataManagerClass(config)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}

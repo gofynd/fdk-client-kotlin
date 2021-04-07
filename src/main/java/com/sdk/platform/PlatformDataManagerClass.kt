@@ -261,6 +261,430 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 }
 }
 
+class FeedbackDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val feedbackApiList by lazy {
+        generatefeedbackApiList()
+    }
+    
+    private fun generatefeedbackApiList(): FeedbackApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformFeedback",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(FeedbackApiList::class.java) as? FeedbackApiList
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun getAttributes()
+    : Deferred<Response<Attributes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.getAttributes(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAttributes
+    **/
+    fun getAttributesPaginator(
+    
+    
+    ) : Paginator<Attributes>{
+        val paginator = Paginator<Attributes>()
+        paginator.setCallBack(object : PaginatorCallback<Attributes> {
+            override suspend fun onNext(
+                onSuccess: (Event<Attributes>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    feedbackApiList?.getAttributes(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+
+            override suspend fun onNext(
+                onResponse: (Event<Attributes>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    feedbackApiList?.getAttributes(companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun getCustomerReviews(id: String?=null, entityId: String?=null, entityType: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, next: String?=null, start: String?=null, limit: String?=null, count: String?=null)
+    : Deferred<Response<GetReviewResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.getCustomerReviews(companyId = config.companyId , applicationId = applicationId , id = id, entityId = entityId, entityType = entityType, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, next = next, start = start, limit = limit, count = count )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getCustomerReviews
+    **/
+    fun getCustomerReviewsPaginator(
+    id: String?=null, entityId: String?=null, entityType: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, next: String?=null, start: String?=null, limit: String?=null, count: String?=null
+    
+    ) : Paginator<GetReviewResponse>{
+        val paginator = Paginator<GetReviewResponse>()
+        paginator.setCallBack(object : PaginatorCallback<GetReviewResponse> {
+            override suspend fun onNext(
+                onSuccess: (Event<GetReviewResponse>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    feedbackApiList?.getCustomerReviews(companyId = config.companyId , applicationId = applicationId , id = id, entityId = entityId, entityType = entityType, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, next = next, start = start, limit = limit, count = count)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+
+            override suspend fun onNext(
+                onResponse: (Event<GetReviewResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    feedbackApiList?.getCustomerReviews(companyId = config.companyId , applicationId = applicationId , id = id, entityId = entityId, entityType = entityType, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, next = next, start = start, limit = limit, count = count)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun updateApprove(reviewId: String,body: ApproveRequest)
+    : Deferred<Response<UpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.updateApprove(companyId = config.companyId , applicationId = applicationId , reviewId = reviewId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getHistory(reviewId: String)
+    : Deferred<Response<ArrayList<ActivityDump>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.getHistory(companyId = config.companyId , applicationId = applicationId , reviewId = reviewId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getApplicationTemplates(pageId: String?=null, pageSize: String?=null)
+    : Deferred<Response<TemplateGetResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.getApplicationTemplates(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getApplicationTemplates
+    **/
+    fun getApplicationTemplatesPaginator(
+    pageSize: String?=null
+    
+    ) : Paginator<TemplateGetResponse>{
+        val paginator = Paginator<TemplateGetResponse>()
+        paginator.setCallBack(object : PaginatorCallback<TemplateGetResponse> {
+            override suspend fun onNext(
+                onSuccess: (Event<TemplateGetResponse>) -> Unit,
+                onFailure: (FdkError) -> Unit ) {
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "cursor"
+                    feedbackApiList?.getApplicationTemplates(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize)?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+                
+                } else {
+                    null
+                 }
+            }
+
+            override suspend fun onNext(
+                onResponse: (Event<TemplateGetResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "cursor"
+                    feedbackApiList?.getApplicationTemplates(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun createTemplate(body: TemplateRequestList)
+    : Deferred<Response<InsertResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.createTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getTemplateById(id: String)
+    : Deferred<Response<Template>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.getTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateTemplate(id: String,body: UpdateTemplateRequest)
+    : Deferred<Response<UpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.updateTemplate(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateTemplateStatus(id: String,body: UpdateTemplateStatusRequest)
+    : Deferred<Response<UpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                feedbackApiList?.updateTemplateStatus(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+}
+}
+
 class ThemeDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val themeApiList by lazy {
@@ -641,10 +1065,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getAnnouncementsList()
+    suspend fun getAnnouncementsList(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<GetAnnouncementListSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -663,12 +1087,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getAnnouncementsList
     **/
     fun getAnnouncementsListPaginator(
-    
+    pageSize: Int?=null
     
     ) : Paginator<GetAnnouncementListSchema>{
         val paginator = Paginator<GetAnnouncementListSchema>()
@@ -681,7 +1113,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     
@@ -703,7 +1135,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                    contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             
@@ -784,10 +1216,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getBlogs()
+    suspend fun getBlogs(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<BlogGetResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -806,12 +1238,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getBlogs
     **/
     fun getBlogsPaginator(
-    
+    pageSize: Int?=null
     
     ) : Paginator<BlogGetResponse>{
         val paginator = Paginator<BlogGetResponse>()
@@ -824,7 +1264,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     
@@ -846,7 +1286,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                    contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             
@@ -997,10 +1437,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getLandingPages()
+    suspend fun getLandingPages(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<LandingPageGetResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -1019,12 +1459,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getLandingPages
     **/
     fun getLandingPagesPaginator(
-    
+    pageSize: Int?=null
     
     ) : Paginator<LandingPageGetResponse>{
         val paginator = Paginator<LandingPageGetResponse>()
@@ -1037,7 +1485,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     
@@ -1059,7 +1507,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                    contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             
@@ -1130,10 +1578,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getNavigations(devicePlatform: String)
+    suspend fun getNavigations(devicePlatform: String, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<NavigationGetResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform )
+                contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -1157,12 +1605,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getNavigations
     **/
     fun getNavigationsPaginator(
-    devicePlatform: String
+    devicePlatform: String, pageSize: Int?=null
     
     ) : Paginator<NavigationGetResponse>{
         val paginator = Paginator<NavigationGetResponse>()
@@ -1175,7 +1631,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform)?.safeAwait(
+                    contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     
@@ -1197,7 +1653,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform)?.safeAwait{ response, error ->
+                    contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             
@@ -1298,10 +1754,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPages()
+    suspend fun getPages(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<PageGetResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -1320,12 +1776,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getPages
     **/
     fun getPagesPaginator(
-    
+    pageSize: Int?=null
     
     ) : Paginator<PageGetResponse>{
         val paginator = Paginator<PageGetResponse>()
@@ -1338,7 +1802,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     
@@ -1360,7 +1824,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             
@@ -1451,10 +1915,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSlideshows(devicePlatform: String)
+    suspend fun getSlideshows(devicePlatform: String, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<SlideshowGetResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform )
+                contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -1478,12 +1942,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
             
         
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getSlideshows
     **/
     fun getSlideshowsPaginator(
-    devicePlatform: String
+    devicePlatform: String, pageSize: Int?=null
     
     ) : Paginator<SlideshowGetResponse>{
         val paginator = Paginator<SlideshowGetResponse>()
@@ -1496,7 +1968,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform)?.safeAwait(
+                    contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     
@@ -1518,7 +1990,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform)?.safeAwait{ response, error ->
+                    contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             
@@ -4677,13 +5149,13 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 }
 }
 
-class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+class FileStorageDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
-    private val assetsApiList by lazy {
-        generateassetsApiList()
+    private val fileStorageApiList by lazy {
+        generatefileStorageApiList()
     }
     
-    private fun generateassetsApiList(): AssetsApiList? {
+    private fun generatefileStorageApiList(): FileStorageApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -4695,10 +5167,10 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformAssets",
+            namespace = "PlatformFileStorage",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(AssetsApiList::class.java) as? AssetsApiList
+        return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }
     
     
@@ -4706,7 +5178,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     : Deferred<Response<StartResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.startUpload(
+            fileStorageApiList?.startUpload(
         namespace = namespace, companyId = config.companyId, body = body)
         } else {
             null
@@ -4718,7 +5190,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     : Deferred<Response<CompleteResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.completeUpload(
+            fileStorageApiList?.completeUpload(
         namespace = namespace, companyId = config.companyId, body = body)
         } else {
             null
@@ -4732,7 +5204,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     : Deferred<Response<SignUrlResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.getSignUrls(
+            fileStorageApiList?.getSignUrls(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -4744,7 +5216,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     : Deferred<Response<BulkResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.copyFiles(
+            fileStorageApiList?.copyFiles(
         sync = sync, companyId = config.companyId, body = body)
         } else {
             null
@@ -4757,7 +5229,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     : Deferred<Response<BrowseResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.browse(
+            fileStorageApiList?.browse(
         namespace = namespace, companyId = config.companyId )
         } else {
             null
@@ -4770,7 +5242,7 @@ class AssetsDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     : Deferred<Response<String>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            assetsApiList?.proxy(
+            fileStorageApiList?.proxy(
         companyId = config.companyId, url = url )
         } else {
             null
@@ -4787,7 +5259,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun appStartUpload(namespace: String,body: StartRequest)
     : Deferred<Response<StartResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                assetsApiList?.appStartUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
+                fileStorageApiList?.appStartUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -4797,7 +5269,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun appCompleteUpload(namespace: String,body: StartResponse)
     : Deferred<Response<CompleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                assetsApiList?.appCompleteUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
+                fileStorageApiList?.appCompleteUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -4809,7 +5281,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun appCopyFiles(sync: Boolean?=null,body: BulkRequest)
     : Deferred<Response<BulkResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                assetsApiList?.appCopyFiles(sync = sync, companyId = config.companyId , applicationId = applicationId , body = body)
+                fileStorageApiList?.appCopyFiles(sync = sync, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -4820,7 +5292,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun appBrowse(namespace: String)
     : Deferred<Response<BrowseResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                assetsApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId  )
+                fileStorageApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -4862,7 +5334,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    assetsApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId )?.safeAwait(
+                    fileStorageApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId )?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     
@@ -4884,7 +5356,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    assetsApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                    fileStorageApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             

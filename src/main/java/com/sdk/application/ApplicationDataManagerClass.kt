@@ -1304,18 +1304,26 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getNavigations(): Deferred<Response<NavigationGetResponse>>? {
-        return contentApiList?.getNavigations( )}
+    fun getNavigations(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<NavigationGetResponse>>? {
+        return contentApiList?.getNavigations(pageNo = pageNo, pageSize = pageSize )}
 
     
     
     
         
+            
+            
+        
+            
+                
+            
+            
+        
     /**
     *
     * Summary: Paginator for getNavigations
     **/
-    fun getNavigationsPaginator() : Paginator<NavigationGetResponse>{
+    fun getNavigationsPaginator(pageSize: Int?=null) : Paginator<NavigationGetResponse>{
 
     val paginator = Paginator<NavigationGetResponse>()
 
@@ -1326,7 +1334,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                contentApiList?.getNavigations()?.safeAwait(
+                contentApiList?.getNavigations(pageNo = pageNo, pageSize = pageSize)?.safeAwait(
                     onSuccess = { response ->
                     val page = response.peekContent()?.page
                     paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -1342,7 +1350,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                contentApiList?.getNavigations()?.safeAwait{ response, error ->
+                contentApiList?.getNavigations(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -1382,6 +1390,48 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     fun getTags(): Deferred<Response<TagsSchema>>? {
         return contentApiList?.getTags( )}
+
+    
+    
+}
+
+
+class CommunicationDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val communicationApiList by lazy {
+        generatecommunicationApiList()
+    }
+
+    private fun generatecommunicationApiList(): CommunicationApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationCommunication",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
+    }
+    
+    fun getCommunicationConsent(): Deferred<Response<CommunicationConsent>>? {
+        return communicationApiList?.getCommunicationConsent( )}
+
+    
+    
+    fun upsertCommunicationConsent(body: CommunicationConsentReq): Deferred<Response<CommunicationConsentRes>>? {
+        return communicationApiList?.upsertCommunicationConsent( body = body)}
+
+    
+    
+    fun upsertAppPushtoken(body: PushtokenReq): Deferred<Response<PushtokenRes>>? {
+        return communicationApiList?.upsertAppPushtoken( body = body)}
 
     
     

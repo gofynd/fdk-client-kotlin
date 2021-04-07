@@ -84,6 +84,46 @@ interface LeadApiList {
     
 }
 
+interface FeedbackApiList {
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/attributes/")
+    fun getAttributes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<Attributes>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/reviews/")
+    fun getCustomerReviews(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("next") next: String?, @Query("start") start: String?, @Query("limit") limit: String?, @Query("count") count: String?)
+    : Deferred<Response<GetReviewResponse>>
+    
+    @PUT ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/reviews/{review_id}/approve/")
+    fun updateApprove(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("review_id") reviewId: String,@Body body: ApproveRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/reviews/{review_id}/history/")
+    fun getHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("review_id") reviewId: String)
+    : Deferred<Response<ArrayList<ActivityDump>>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/")
+    fun getApplicationTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: String?)
+    : Deferred<Response<TemplateGetResponse>>
+    
+    @POST ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/")
+    fun createTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TemplateRequestList)
+    : Deferred<Response<InsertResponse>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/{id}/")
+    fun getTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<Template>>
+    
+    @PUT ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/{id}/")
+    fun updateTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateTemplateRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    @PATCH ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/{id}/status")
+    fun updateTemplateStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateTemplateStatusRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+}
+
 interface ThemeApiList {
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
@@ -179,7 +219,7 @@ interface UserApiList {
 interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements")
-    fun getAnnouncementsList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getAnnouncementsList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetAnnouncementListSchema>>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/announcements")
@@ -207,7 +247,7 @@ interface ContentApiList {
     : Deferred<Response<BlogSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/")
-    fun getBlogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getBlogs(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<BlogGetResponse>>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/blogs/{id}")
@@ -263,7 +303,7 @@ interface ContentApiList {
     : Deferred<Response<CreateFaqResponseSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
-    fun getLandingPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getLandingPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LandingPageGetResponse>>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
@@ -287,7 +327,7 @@ interface ContentApiList {
     : Deferred<Response<ApplicationLegal>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/")
-    fun getNavigations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String)
+    fun getNavigations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<NavigationGetResponse>>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/navigations/")
@@ -323,7 +363,7 @@ interface ContentApiList {
     : Deferred<Response<PageSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/")
-    fun getPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<PageGetResponse>>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/preview/")
@@ -355,7 +395,7 @@ interface ContentApiList {
     : Deferred<Response<SeoSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/")
-    fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String)
+    fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<SlideshowGetResponse>>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/")
@@ -1076,7 +1116,7 @@ interface CompanyProfileApiList {
     
 }
 
-interface AssetsApiList {
+interface FileStorageApiList {
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/namespaces/{namespace}/upload/start/")
     fun startUpload(@Path("namespace") namespace: String, @Path("company_id") companyId: String,@Body body: StartRequest)
