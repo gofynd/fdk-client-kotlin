@@ -554,6 +554,141 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 }
 }
 
+class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val billingApiList by lazy {
+        generatebillingApiList()
+    }
+    
+    private fun generatebillingApiList(): BillingApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformBilling",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(BillingApiList::class.java) as? BillingApiList
+    }
+    
+    
+    suspend fun getInvoices()
+    : Deferred<Response<Invoices>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getInvoices(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getInvoiceById(invoiceId: String)
+    : Deferred<Response<Invoice>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getInvoiceById(
+        companyId = config.companyId, invoiceId = invoiceId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getCustomerDetail()
+    : Deferred<Response<SubscriptionCustomer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getCustomerDetail(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun upsertCustomerDetail(body: SubscriptionCustomerCreate)
+    : Deferred<Response<SubscriptionCustomer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.upsertCustomerDetail(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getSubscription()
+    : Deferred<Response<SubscriptionStatus>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getSubscription(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getFeatureLimitConfig()
+    : Deferred<Response<SubscriptionLimit>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getFeatureLimitConfig(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun activateSubscriptionPlan(body: SubscriptionActivateReq)
+    : Deferred<Response<SubscriptionActivateRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.activateSubscriptionPlan(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelSubscriptionPlan(body: CancelSubscriptionReq)
+    : Deferred<Response<CancelSubscriptionRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.cancelSubscriptionPlan(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+}
+
 class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val communicationApiList by lazy {

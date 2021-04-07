@@ -4,6 +4,7 @@
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
+* [Billing](#Billing) - Handle platform subscription 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
@@ -67,6 +68,16 @@
   * [User#searchUsers](#usersearchusers)
   * [User#getPlatformConfig](#usergetplatformconfig)
   * [User#updatePlatformConfig](#userupdateplatformconfig)
+ 
+* [Billing](#Billing)
+  * [Billing#getInvoices](#billinggetinvoices)
+  * [Billing#getInvoiceById](#billinggetinvoicebyid)
+  * [Billing#getCustomerDetail](#billinggetcustomerdetail)
+  * [Billing#upsertCustomerDetail](#billingupsertcustomerdetail)
+  * [Billing#getSubscription](#billinggetsubscription)
+  * [Billing#getFeatureLimitConfig](#billinggetfeaturelimitconfig)
+  * [Billing#activateSubscriptionPlan](#billingactivatesubscriptionplan)
+  * [Billing#cancelSubscriptionPlan](#billingcancelsubscriptionplan)
  
 * [Communication](#Communication)
   * [Communication#getCampaigns](#communicationgetcampaigns)
@@ -1460,6 +1471,225 @@ const data = await user.updatePlatformConfig(company_id, application_id, );
 
 
 Used to update platform config
+
+
+---
+
+
+
+---
+---
+
+
+## Billing
+
+```javascript
+const { Configuration, Billing } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const billing = new Billing(conf);
+
+```
+
+
+#### Billing#getInvoices
+Get invoices
+
+```javascript
+// Promise
+const promise = billing.getInvoices(company_id, );
+
+// Async/Await
+const data = await billing.getInvoices(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Get invoices.
+
+
+---
+
+
+#### Billing#getInvoiceById
+Get invoice by id
+
+```javascript
+// Promise
+const promise = billing.getInvoiceById(company_id, invoice_id, );
+
+// Async/Await
+const data = await billing.getInvoiceById(company_id, invoice_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+| invoice_id | string | Invoice id | 
+
+
+Get invoice by id.
+
+
+---
+
+
+#### Billing#getCustomerDetail
+Get subscription customer detail
+
+```javascript
+// Promise
+const promise = billing.getCustomerDetail(company_id, );
+
+// Async/Await
+const data = await billing.getCustomerDetail(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Get subscription customer detail.
+
+
+---
+
+
+#### Billing#upsertCustomerDetail
+Upsert subscription customer detail
+
+```javascript
+// Promise
+const promise = billing.upsertCustomerDetail(company_id, );
+
+// Async/Await
+const data = await billing.upsertCustomerDetail(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Upsert subscription customer detail.
+
+
+---
+
+
+#### Billing#getSubscription
+Get current subscription detail
+
+```javascript
+// Promise
+const promise = billing.getSubscription(company_id, );
+
+// Async/Await
+const data = await billing.getSubscription(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+If subscription is active then it will return is_enabled true and return subscription object. If subscription is not active then is_enabled false and message.
+
+
+
+---
+
+
+#### Billing#getFeatureLimitConfig
+Get subscription subscription limits
+
+```javascript
+// Promise
+const promise = billing.getFeatureLimitConfig(company_id, );
+
+// Async/Await
+const data = await billing.getFeatureLimitConfig(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+Get subscription subscription limits.
+
+
+---
+
+
+#### Billing#activateSubscriptionPlan
+Activate subscription
+
+```javascript
+// Promise
+const promise = billing.activateSubscriptionPlan(company_id, );
+
+// Async/Await
+const data = await billing.activateSubscriptionPlan(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+It will activate subscription plan for customer
+
+
+---
+
+
+#### Billing#cancelSubscriptionPlan
+Cancel subscription
+
+```javascript
+// Promise
+const promise = billing.cancelSubscriptionPlan(company_id, );
+
+// Async/Await
+const data = await billing.cancelSubscriptionPlan(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Customer unique id. In case of company it will be company id. | 
+
+
+It will cancel current active subscription.
 
 
 ---

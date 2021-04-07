@@ -8,6 +8,8 @@ class PlatformClient(val config:PlatformConfig) {
     
     val user by lazy { UserDataManagerClass(config)}
     
+    val billing by lazy { BillingDataManagerClass(config)}
+    
     val communication by lazy { CommunicationDataManagerClass(config)}
     
     val payment by lazy { PaymentDataManagerClass(config)}
@@ -41,6 +43,8 @@ class PlatformClient(val config:PlatformConfig) {
     val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
     
     val user by lazy { this@PlatformClient.user.ApplicationClient(applicationId,config)}
+    
+    val billing by lazy { this@PlatformClient.billing.ApplicationClient(applicationId,config)}
     
     val communication by lazy { this@PlatformClient.communication.ApplicationClient(applicationId,config)}
     

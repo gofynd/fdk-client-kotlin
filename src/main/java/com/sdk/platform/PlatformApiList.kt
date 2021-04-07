@@ -176,6 +176,42 @@ interface UserApiList {
     
 }
 
+interface BillingApiList {
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/invoice/list")
+    fun getInvoices(@Path("company_id") companyId: String)
+    : Deferred<Response<Invoices>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/invoice/{invoice_id}")
+    fun getInvoiceById(@Path("company_id") companyId: String, @Path("invoice_id") invoiceId: String)
+    : Deferred<Response<Invoice>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/subscription/customer-detail")
+    fun getCustomerDetail(@Path("company_id") companyId: String)
+    : Deferred<Response<SubscriptionCustomer>>
+    
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/subscription/customer-detail")
+    fun upsertCustomerDetail(@Path("company_id") companyId: String,@Body body: SubscriptionCustomerCreate)
+    : Deferred<Response<SubscriptionCustomer>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/subscription/current")
+    fun getSubscription(@Path("company_id") companyId: String)
+    : Deferred<Response<SubscriptionStatus>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/subscription/current-limit")
+    fun getFeatureLimitConfig(@Path("company_id") companyId: String)
+    : Deferred<Response<SubscriptionLimit>>
+    
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/subscription/activate")
+    fun activateSubscriptionPlan(@Path("company_id") companyId: String,@Body body: SubscriptionActivateReq)
+    : Deferred<Response<SubscriptionActivateRes>>
+    
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/subscription/cancel")
+    fun cancelSubscriptionPlan(@Path("company_id") companyId: String,@Body body: CancelSubscriptionReq)
+    : Deferred<Response<CancelSubscriptionRes>>
+    
+}
+
 interface CommunicationApiList {
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns")
