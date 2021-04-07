@@ -1235,6 +1235,159 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 }
 
 
+class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val contentApiList by lazy {
+        generatecontentApiList()
+    }
+
+    private fun generatecontentApiList(): ContentApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationContent",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
+    }
+    
+    fun getAnnouncements(): Deferred<Response<AnnouncementsResponseSchema>>? {
+        return contentApiList?.getAnnouncements( )}
+
+    
+    
+    fun getBlog(slug: String): Deferred<Response<CustomBlogSchema>>? {
+        return contentApiList?.getBlog(slug = slug )}
+
+    
+    
+    fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
+        return contentApiList?.getFaqs( )}
+
+    
+    
+    fun getFaqCategories(): Deferred<Response<GetFaqCategoriesSchema>>? {
+        return contentApiList?.getFaqCategories( )}
+
+    
+    
+    fun getFaqByIdOrSlug(idOrSlug: String): Deferred<Response<FaqSchema>>? {
+        return contentApiList?.getFaqByIdOrSlug(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getFaqCategoryBySlugOrId(idOrSlug: String): Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>? {
+        return contentApiList?.getFaqCategoryBySlugOrId(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getFaqsByCategoryIdOrSlug(idOrSlug: String): Deferred<Response<GetFaqSchema>>? {
+        return contentApiList?.getFaqsByCategoryIdOrSlug(idOrSlug = idOrSlug )}
+
+    
+    
+    fun getLandingPage(): Deferred<Response<LandingPageSchema>>? {
+        return contentApiList?.getLandingPage( )}
+
+    
+    
+    fun getLegalInformation(): Deferred<Response<ApplicationLegal>>? {
+        return contentApiList?.getLegalInformation( )}
+
+    
+    
+    fun getNavigations(): Deferred<Response<NavigationGetResponse>>? {
+        return contentApiList?.getNavigations( )}
+
+    
+    
+    
+        
+    /**
+    *
+    * Summary: Paginator for getNavigations
+    **/
+    fun getNavigationsPaginator() : Paginator<NavigationGetResponse>{
+
+    val paginator = Paginator<NavigationGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<NavigationGetResponse> {
+            override suspend fun onNext(
+                onSuccess: (Event<NavigationGetResponse>) -> Unit,
+                onFailure: (FdkError) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getNavigations()?.safeAwait(
+                    onSuccess = { response ->
+                    val page = response.peekContent()?.page
+                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                    onSuccess.invoke(response)
+                },
+                    onFailure = { error ->
+                        onFailure.invoke(error)
+                    })
+            }
+
+            override suspend fun onNext(
+                onResponse: (Event<NavigationGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getNavigations()?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getPage(slug: String): Deferred<Response<CustomPageSchema>>? {
+        return contentApiList?.getPage(slug = slug )}
+
+    
+    
+    fun getSEOConfiguration(): Deferred<Response<SeoComponent>>? {
+        return contentApiList?.getSEOConfiguration( )}
+
+    
+    
+    fun getSlideshow(slug: String): Deferred<Response<SlideshowSchema>>? {
+        return contentApiList?.getSlideshow(slug = slug )}
+
+    
+    
+    fun getSupportInformation(): Deferred<Response<Support>>? {
+        return contentApiList?.getSupportInformation( )}
+
+    
+    
+    fun getTags(): Deferred<Response<TagsSchema>>? {
+        return contentApiList?.getTags( )}
+
+    
+    
+}
+
+
 class ShareDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     private val shareApiList by lazy {

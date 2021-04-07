@@ -392,6 +392,70 @@ interface UserApiList {
     
 }
 
+interface ContentApiList {
+    
+    @GET ("/service/application/content/v1.0/announcements")
+    fun getAnnouncements()
+    : Deferred<Response<AnnouncementsResponseSchema>>
+    
+    @GET ("/service/application/content/v1.0/blogs/{slug}")
+    fun getBlog(@Path("slug") slug: String)
+    : Deferred<Response<CustomBlogSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq")
+    fun getFaqs()
+    : Deferred<Response<FaqResponseSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq/categories")
+    fun getFaqCategories()
+    : Deferred<Response<GetFaqCategoriesSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq/{id_or_slug}")
+    fun getFaqByIdOrSlug(@Path("id_or_slug") idOrSlug: String)
+    : Deferred<Response<FaqSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}")
+    fun getFaqCategoryBySlugOrId(@Path("id_or_slug") idOrSlug: String)
+    : Deferred<Response<GetFaqCategoryByIdOrSlugSchema>>
+    
+    @GET ("/service/application/content/v1.0/faq/category/{id_or_slug}/faqs")
+    fun getFaqsByCategoryIdOrSlug(@Path("id_or_slug") idOrSlug: String)
+    : Deferred<Response<GetFaqSchema>>
+    
+    @GET ("/service/application/content/v1.0/landing-page")
+    fun getLandingPage()
+    : Deferred<Response<LandingPageSchema>>
+    
+    @GET ("/service/application/content/v1.0/legal")
+    fun getLegalInformation()
+    : Deferred<Response<ApplicationLegal>>
+    
+    @GET ("/service/application/content/v1.0/navigations/")
+    fun getNavigations()
+    : Deferred<Response<NavigationGetResponse>>
+    
+    @GET ("/service/application/content/v1.0/pages/{slug}")
+    fun getPage(@Path("slug") slug: String)
+    : Deferred<Response<CustomPageSchema>>
+    
+    @GET ("/service/application/content/v1.0/seo")
+    fun getSEOConfiguration()
+    : Deferred<Response<SeoComponent>>
+    
+    @GET ("/service/application/content/v1.0/slideshow/{slug}")
+    fun getSlideshow(@Path("slug") slug: String)
+    : Deferred<Response<SlideshowSchema>>
+    
+    @GET ("/service/application/content/v1.0/support")
+    fun getSupportInformation()
+    : Deferred<Response<Support>>
+    
+    @GET ("/service/application/content/v1.0/tags")
+    fun getTags()
+    : Deferred<Response<TagsSchema>>
+    
+}
+
 interface ShareApiList {
     
     @POST ("/service/application/share/v1.0/qr/")
