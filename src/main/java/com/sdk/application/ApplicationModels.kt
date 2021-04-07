@@ -5892,7 +5892,7 @@ data class Navigation(
     @SerializedName("orientation")
     var orientation: String?=null,
     @SerializedName("created_by")
-    var createdBy: CreatedBy?=null,
+    var createdBy: CreatedBySchema?=null,
     @SerializedName("date_meta")
     var dateMeta: DateMeta?=null,
     @SerializedName("_id")
@@ -6498,7 +6498,7 @@ data class LandingPageSchema(
     @SerializedName("platform")
     var platform: ArrayList<String>?=null,
     @SerializedName("created_by")
-    var createdBy: CreatedBy?=null,
+    var createdBy: CreatedBySchema?=null,
     @SerializedName("date_meta")
     var dateMeta: DateMeta?=null,
     @SerializedName("_id")
@@ -6576,7 +6576,7 @@ data class NavigationSchema(
     @SerializedName("platform")
     var platform: ArrayList<String>?=null,
     @SerializedName("created_by")
-    var createdBy: CreatedBy?=null,
+    var createdBy: CreatedBySchema?=null,
     @SerializedName("date_meta")
     var dateMeta: DateMeta?=null,
     @SerializedName("orientation")
@@ -6640,7 +6640,7 @@ data class CustomPageSchema(
     @SerializedName("content")
     var content: ArrayList<ContentSchema>?=null,
     @SerializedName("created_by")
-    var createdBy: CreatedBy?=null,
+    var createdBy: CreatedBySchema?=null,
     @SerializedName("date_meta")
     var dateMeta: DateMeta?=null,
     @SerializedName("_schedule")
@@ -6860,10 +6860,10 @@ data class PageSchema(
 
 
 /*
-    Model: CreatedBy
+    Model: CreatedBySchema
 */
 @Parcelize
-data class CreatedBy(
+data class CreatedBySchema(
     
     
     @SerializedName("id")

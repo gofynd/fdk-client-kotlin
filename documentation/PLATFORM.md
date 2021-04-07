@@ -8898,7 +8898,7 @@ const data = await configuration.getApplications(company_id, page_no, page_size,
 | company_id | string | Current company id | 
 | page_no | integer |  | 
 | page_size | integer |  | 
-| q | object | Url encoded object used as mongodb query | 
+| q | string | Url encoded object used as mongodb query | 
 
 
 Get list of application under company

@@ -5517,7 +5517,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
-    suspend fun getApplications(pageNo: Int?=null, pageSize: Int?=null, q: HashMap<String,Any>?=null)
+    suspend fun getApplications(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
     : Deferred<Response<ApplicationsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {

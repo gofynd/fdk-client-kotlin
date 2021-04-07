@@ -1287,7 +1287,7 @@ interface ConfigurationApiList {
     : Deferred<Response<CreateAppResponse>>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application")
-    fun getApplications(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: HashMap<String,Any>?)
+    fun getApplications(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Deferred<Response<ApplicationsResponse>>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}")
