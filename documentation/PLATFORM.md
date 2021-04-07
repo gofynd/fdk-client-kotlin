@@ -12,6 +12,7 @@
 * [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Share](#Share) - Short link and QR Code 
 * [Inventory](#Inventory) -  
+* [Configuration](#Configuration) - Application configuration apis 
 * [Cart](#Cart) - Cart APIs 
 * [Marketplaces](#Marketplaces) - Marketplaces 
 * [Rewards](#Rewards) - Rewards 
@@ -254,8 +255,8 @@
   * [Catalog#getHsnCode](#cataloggethsncode)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
@@ -281,6 +282,50 @@
   * [Inventory#getJobConfigDefaults](#inventorygetjobconfigdefaults)
   * [Inventory#getJobByCode](#inventorygetjobbycode)
   * [Inventory#getJobCodesByCompanyAndIntegration](#inventorygetjobcodesbycompanyandintegration)
+ 
+* [Configuration](#Configuration)
+  * [Configuration#getBuildConfig](#configurationgetbuildconfig)
+  * [Configuration#updateBuildConfig](#configurationupdatebuildconfig)
+  * [Configuration#getPreviousVersions](#configurationgetpreviousversions)
+  * [Configuration#getAppFeatures](#configurationgetappfeatures)
+  * [Configuration#updateAppFeatures](#configurationupdateappfeatures)
+  * [Configuration#getAppBasicDetails](#configurationgetappbasicdetails)
+  * [Configuration#updateAppBasicDetails](#configurationupdateappbasicdetails)
+  * [Configuration#getAppContactInfo](#configurationgetappcontactinfo)
+  * [Configuration#updateAppContactInfo](#configurationupdateappcontactinfo)
+  * [Configuration#getAppApiTokens](#configurationgetappapitokens)
+  * [Configuration#updateAppApiTokens](#configurationupdateappapitokens)
+  * [Configuration#getAppCompanies](#configurationgetappcompanies)
+  * [Configuration#getAppStores](#configurationgetappstores)
+  * [Configuration#getInventoryConfig](#configurationgetinventoryconfig)
+  * [Configuration#updateInventoryConfig](#configurationupdateinventoryconfig)
+  * [Configuration#partiallyUpdateInventoryConfig](#configurationpartiallyupdateinventoryconfig)
+  * [Configuration#getAppCurrencyConfig](#configurationgetappcurrencyconfig)
+  * [Configuration#updateAppCurrencyConfig](#configurationupdateappcurrencyconfig)
+  * [Configuration#getOrderingStoresByFilter](#configurationgetorderingstoresbyfilter)
+  * [Configuration#updateOrderingStoreConfig](#configurationupdateorderingstoreconfig)
+  * [Configuration#getDomains](#configurationgetdomains)
+  * [Configuration#addDomain](#configurationadddomain)
+  * [Configuration#removeDomainById](#configurationremovedomainbyid)
+  * [Configuration#changeDomainType](#configurationchangedomaintype)
+  * [Configuration#getDomainStatus](#configurationgetdomainstatus)
+  * [Configuration#createApplication](#configurationcreateapplication)
+  * [Configuration#getApplications](#configurationgetapplications)
+  * [Configuration#getApplicationById](#configurationgetapplicationbyid)
+  * [Configuration#getCurrencies](#configurationgetcurrencies)
+  * [Configuration#getDomainAvailibility](#configurationgetdomainavailibility)
+  * [Configuration#getIntegrationById](#configurationgetintegrationbyid)
+  * [Configuration#getAvailableOptIns](#configurationgetavailableoptins)
+  * [Configuration#getSelectedOptIns](#configurationgetselectedoptins)
+  * [Configuration#getIntegrationLevelConfig](#configurationgetintegrationlevelconfig)
+  * [Configuration#getIntegrationByLevelId](#configurationgetintegrationbylevelid)
+  * [Configuration#getLevelActiveIntegrations](#configurationgetlevelactiveintegrations)
+  * [Configuration#getBrandsByCompany](#configurationgetbrandsbycompany)
+  * [Configuration#getCompanyByBrands](#configurationgetcompanybybrands)
+  * [Configuration#getStoreByBrands](#configurationgetstorebybrands)
+  * [Configuration#getOtherSellerApplications](#configurationgetothersellerapplications)
+  * [Configuration#getOtherSellerApplicationById](#configurationgetothersellerapplicationbyid)
+  * [Configuration#optOutFromApplication](#configurationoptoutfromapplication)
  
 * [Cart](#Cart)
   * [Cart#getCoupons](#cartgetcoupons)
@@ -6159,31 +6204,6 @@ const companyprofile = new CompanyProfile(conf);
 ```
 
 
-#### CompanyProfile#cbsOnboardGet
-Get company profile
-
-```javascript
-// Promise
-const promise = companyprofile.cbsOnboardGet(company_id, );
-
-// Async/Await
-const data = await companyprofile.cbsOnboardGet(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to view the company profile of the seller account.
-
-
----
-
-
 #### CompanyProfile#updateCompany
 Edit company profile
 
@@ -6204,6 +6224,31 @@ const data = await companyprofile.updateCompany(company_id, );
 
 
 This API allows to edit the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#cbsOnboardGet
+Get company profile
+
+```javascript
+// Promise
+const promise = companyprofile.cbsOnboardGet(company_id, );
+
+// Async/Await
+const data = await companyprofile.cbsOnboardGet(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company profile of the seller account.
 
 
 ---
@@ -6794,6 +6839,1136 @@ const data = await inventory.getJobCodesByCompanyAndIntegration(company_id, inte
 
 
 REST Endpoint that returns all job codes by company And integration
+
+
+---
+
+
+
+---
+---
+
+
+## Configuration
+
+```javascript
+const { Configuration, Configuration } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const configuration = new Configuration(conf);
+
+```
+
+
+#### Configuration#getBuildConfig
+Get latest build config
+
+```javascript
+// Promise
+const promise = configuration.getBuildConfig(company_id, application_id, platform_type, );
+
+// Async/Await
+const data = await configuration.getBuildConfig(company_id, application_id, platform_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| platform_type | string | Current platform name | 
+
+
+Get latest build config
+
+
+---
+
+
+#### Configuration#updateBuildConfig
+Update build config for next build
+
+```javascript
+// Promise
+const promise = configuration.updateBuildConfig(company_id, application_id, platform_type, );
+
+// Async/Await
+const data = await configuration.updateBuildConfig(company_id, application_id, platform_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| platform_type | string | Current platform name | 
+
+
+Update build config for next build
+
+
+---
+
+
+#### Configuration#getPreviousVersions
+Get previous versions
+
+```javascript
+// Promise
+const promise = configuration.getPreviousVersions(company_id, application_id, platform_type, );
+
+// Async/Await
+const data = await configuration.getPreviousVersions(company_id, application_id, platform_type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| platform_type | string | Current platform name | 
+
+
+Get previous versions
+
+
+---
+
+
+#### Configuration#getAppFeatures
+Get features of application
+
+```javascript
+// Promise
+const promise = configuration.getAppFeatures(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppFeatures(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get features of application
+
+
+---
+
+
+#### Configuration#updateAppFeatures
+Update features of application
+
+```javascript
+// Promise
+const promise = configuration.updateAppFeatures(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppFeatures(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Update features of application
+
+
+---
+
+
+#### Configuration#getAppBasicDetails
+Get basic application details
+
+```javascript
+// Promise
+const promise = configuration.getAppBasicDetails(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppBasicDetails(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get basic application details like name
+
+
+---
+
+
+#### Configuration#updateAppBasicDetails
+Add or update application's basic details
+
+```javascript
+// Promise
+const promise = configuration.updateAppBasicDetails(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppBasicDetails(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add or update application's basic details
+
+
+---
+
+
+#### Configuration#getAppContactInfo
+Get application information
+
+```javascript
+// Promise
+const promise = configuration.getAppContactInfo(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppContactInfo(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
+
+
+---
+
+
+#### Configuration#updateAppContactInfo
+Get application information
+
+```javascript
+// Promise
+const promise = configuration.updateAppContactInfo(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppContactInfo(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Save Application Current Information. This includes information about social links, address and contact information of an application.
+
+
+---
+
+
+#### Configuration#getAppApiTokens
+Get social tokens
+
+```javascript
+// Promise
+const promise = configuration.getAppApiTokens(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppApiTokens(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get social tokens.
+
+
+---
+
+
+#### Configuration#updateAppApiTokens
+Add social tokens
+
+```javascript
+// Promise
+const promise = configuration.updateAppApiTokens(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppApiTokens(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add social tokens.
+
+
+---
+
+
+#### Configuration#getAppCompanies
+Application inventory enabled companies
+
+```javascript
+// Promise
+const promise = configuration.getAppCompanies(company_id, application_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getAppCompanies(company_id, application_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Application inventory enabled companies.
+
+
+---
+
+
+#### Configuration#getAppStores
+Application inventory enabled stores
+
+```javascript
+// Promise
+const promise = configuration.getAppStores(company_id, application_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getAppStores(company_id, application_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Application inventory enabled stores.
+
+
+---
+
+
+#### Configuration#getInventoryConfig
+Get application configuration
+
+```javascript
+// Promise
+const promise = configuration.getInventoryConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getInventoryConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get application configuration for various features and data
+
+
+---
+
+
+#### Configuration#updateInventoryConfig
+Update application configuration
+
+```javascript
+// Promise
+const promise = configuration.updateInventoryConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateInventoryConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Update application configuration for various features and data
+
+
+---
+
+
+#### Configuration#partiallyUpdateInventoryConfig
+Partially update application configuration
+
+```javascript
+// Promise
+const promise = configuration.partiallyUpdateInventoryConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.partiallyUpdateInventoryConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Partially update application configuration for various features and data
+
+
+---
+
+
+#### Configuration#getAppCurrencyConfig
+Get application enabled currency list
+
+```javascript
+// Promise
+const promise = configuration.getAppCurrencyConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getAppCurrencyConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get application enabled currency list
+
+
+---
+
+
+#### Configuration#updateAppCurrencyConfig
+Add initial application supported currency
+
+```javascript
+// Promise
+const promise = configuration.updateAppCurrencyConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateAppCurrencyConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add initial application supported currency for various features and data. Default INR will be enabled.
+
+
+---
+
+
+#### Configuration#getOrderingStoresByFilter
+Get ordering store by filter
+
+```javascript
+// Promise
+const promise = configuration.getOrderingStoresByFilter(company_id, application_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getOrderingStoresByFilter(company_id, application_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get ordering store by filter
+
+
+---
+
+
+#### Configuration#updateOrderingStoreConfig
+Add/Update ordering store config
+
+```javascript
+// Promise
+const promise = configuration.updateOrderingStoreConfig(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.updateOrderingStoreConfig(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add/Update ordering store config.
+
+
+---
+
+
+#### Configuration#getDomains
+Get attached domain list
+
+```javascript
+// Promise
+const promise = configuration.getDomains(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getDomains(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get attached domain list.
+
+
+---
+
+
+#### Configuration#addDomain
+Add new domain to application
+
+```javascript
+// Promise
+const promise = configuration.addDomain(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.addDomain(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Add new domain to application.
+
+
+---
+
+
+#### Configuration#removeDomainById
+Remove attached domain
+
+```javascript
+// Promise
+const promise = configuration.removeDomainById(company_id, application_id, id, );
+
+// Async/Await
+const data = await configuration.removeDomainById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| id | string | Domain _id | 
+
+
+Remove attached domain.
+
+
+---
+
+
+#### Configuration#changeDomainType
+Change domain type
+
+```javascript
+// Promise
+const promise = configuration.changeDomainType(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.changeDomainType(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Change a domain to Primary or Shortlink domain
+
+
+---
+
+
+#### Configuration#getDomainStatus
+Get domain connected status.
+
+```javascript
+// Promise
+const promise = configuration.getDomainStatus(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getDomainStatus(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get domain connected status. Check if domain is live and mapped to appropriate IP to fynd servers.
+
+
+---
+
+
+#### Configuration#createApplication
+Create application
+
+```javascript
+// Promise
+const promise = configuration.createApplication(company_id, );
+
+// Async/Await
+const data = await configuration.createApplication(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+
+
+Create new application
+
+
+---
+
+
+#### Configuration#getApplications
+Get list of application under company
+
+```javascript
+// Promise
+const promise = configuration.getApplications(company_id, page_no, page_size, q, );
+
+// Async/Await
+const data = await configuration.getApplications(company_id, page_no, page_size, q, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer |  | 
+| page_size | integer |  | 
+| q | string | Url encoded object used as mongodb query | 
+
+
+Get list of application under company
+
+
+---
+
+
+#### Configuration#getApplicationById
+Get application data from id
+
+```javascript
+// Promise
+const promise = configuration.getApplicationById(company_id, application_id, );
+
+// Async/Await
+const data = await configuration.getApplicationById(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+
+
+Get application data from id
+
+
+---
+
+
+#### Configuration#getCurrencies
+Get all currencies
+
+```javascript
+// Promise
+const promise = configuration.getCurrencies(company_id, );
+
+// Async/Await
+const data = await configuration.getCurrencies(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+
+
+Get all currencies
+
+
+---
+
+
+#### Configuration#getDomainAvailibility
+Check domain availibility before linking to application
+
+```javascript
+// Promise
+const promise = configuration.getDomainAvailibility(company_id, );
+
+// Async/Await
+const data = await configuration.getDomainAvailibility(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+
+
+Check domain availibility before linking to application. Also sends domain suggestions with similar to queried domain. \ Custom domain search is currently powered by GoDaddy provider.
+
+
+---
+
+
+#### Configuration#getIntegrationById
+Get integration data
+
+```javascript
+// Promise
+const promise = configuration.getIntegrationById(company_id, id, );
+
+// Async/Await
+const data = await configuration.getIntegrationById(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | integer | Integration id | 
+
+
+Get integration data
+
+
+---
+
+
+#### Configuration#getAvailableOptIns
+Get all available integration opt-ins
+
+```javascript
+// Promise
+const promise = configuration.getAvailableOptIns(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getAvailableOptIns(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get all available integration opt-ins
+
+
+---
+
+
+#### Configuration#getSelectedOptIns
+Get company/store level integration opt-ins
+
+```javascript
+// Promise
+const promise = configuration.getSelectedOptIns(company_id, level, uid, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getSelectedOptIns(company_id, level, uid, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| level | string | Integration level | 
+| uid | integer | Integration level uid | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get company/store level integration opt-ins
+
+
+---
+
+
+#### Configuration#getIntegrationLevelConfig
+Get integration level config
+
+```javascript
+// Promise
+const promise = configuration.getIntegrationLevelConfig(company_id, id, level, );
+
+// Async/Await
+const data = await configuration.getIntegrationLevelConfig(company_id, id, level, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Integration id | 
+| level | string | Integration level | 
+
+
+Get integration level config
+
+
+---
+
+
+#### Configuration#getIntegrationByLevelId
+Get level data for integration
+
+```javascript
+// Promise
+const promise = configuration.getIntegrationByLevelId(company_id, id, level, uid, );
+
+// Async/Await
+const data = await configuration.getIntegrationByLevelId(company_id, id, level, uid, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Integration id | 
+| level | string | Integration level | 
+| uid | integer | Integration level uid | 
+
+
+Get level data for integration
+
+
+---
+
+
+#### Configuration#getLevelActiveIntegrations
+Check store has active integration
+
+```javascript
+// Promise
+const promise = configuration.getLevelActiveIntegrations(company_id, id, level, uid, );
+
+// Async/Await
+const data = await configuration.getLevelActiveIntegrations(company_id, id, level, uid, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Integration id | 
+| level | string | Integration level | 
+| uid | integer | Integration level uid | 
+
+
+API checks if a store is already opted in any other integrations
+
+
+---
+
+
+#### Configuration#getBrandsByCompany
+Get brands by company
+
+```javascript
+// Promise
+const promise = configuration.getBrandsByCompany(company_id, q, );
+
+// Async/Await
+const data = await configuration.getBrandsByCompany(company_id, q, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| q | string | Search text for brand name | 
+
+
+Get brands by company
+
+
+---
+
+
+#### Configuration#getCompanyByBrands
+Get company by brand uids
+
+```javascript
+// Promise
+const promise = configuration.getCompanyByBrands(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getCompanyByBrands(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get company by brand uids
+
+
+---
+
+
+#### Configuration#getStoreByBrands
+Get stores by brand uids
+
+```javascript
+// Promise
+const promise = configuration.getStoreByBrands(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getStoreByBrands(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get stores by brand uids
+
+
+---
+
+
+#### Configuration#getOtherSellerApplications
+Get other seller applications
+
+```javascript
+// Promise
+const promise = configuration.getOtherSellerApplications(company_id, page_no, page_size, );
+
+// Async/Await
+const data = await configuration.getOtherSellerApplications(company_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+
+
+Get other seller applications who has opted current company as inventory
+
+
+---
+
+
+#### Configuration#getOtherSellerApplicationById
+Get other seller applications
+
+```javascript
+// Promise
+const promise = configuration.getOtherSellerApplicationById(company_id, id, );
+
+// Async/Await
+const data = await configuration.getOtherSellerApplicationById(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Application Id | 
+
+
+Get other seller application
+
+
+---
+
+
+#### Configuration#optOutFromApplication
+Opt out company or store from other seller application
+
+```javascript
+// Promise
+const promise = configuration.optOutFromApplication(company_id, id, );
+
+// Async/Await
+const data = await configuration.optOutFromApplication(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| id | string | Application Id | 
+
+
+Opt out company or store from other seller application
 
 
 ---

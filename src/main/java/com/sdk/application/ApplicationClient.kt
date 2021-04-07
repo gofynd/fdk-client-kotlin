@@ -2,6 +2,8 @@ package com.sdk.application
 
 class ApplicationClient(val config:ApplicationConfig) {
     
+    val catalog by lazy { CatalogDataManagerClass(config)}
+    
     val cart by lazy { CartDataManagerClass(config)}
     
     val lead by lazy { LeadDataManagerClass(config)}

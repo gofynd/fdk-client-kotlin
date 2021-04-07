@@ -4,6 +4,122 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.*
 
+interface CatalogApiList {
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/")
+    fun getProductDetailBySlug(@Path("slug") slug: String)
+    : Deferred<Response<ProductDetail>>
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/")
+    fun getProductSizesBySlug(@Path("slug") slug: String, @Query("store_id") storeId: String?)
+    : Deferred<Response<ProductSizes>>
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/price/")
+    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("store_id") storeId: String?)
+    : Deferred<Response<ProductSizePriceResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/sellers/")
+    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductSizeSellersResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/compare/")
+    fun getProductComparisonBySlugs(@Query("slug") slug: String)
+    : Deferred<Response<ProductsComparisonResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compare/")
+    fun getSimilarComparisonProductBySlug(@Path("slug") slug: String)
+    : Deferred<Response<ProductCompareResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently/")
+    fun getComparedFrequentlyProductBySlug(@Path("slug") slug: String)
+    : Deferred<Response<ProductFrequentlyComparedSimilarResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/similar/{similar_type}/")
+    fun getProductSimilarByIdentifier(@Path("slug") slug: String, @Path("similar_type") similarType: String)
+    : Deferred<Response<SimilarProductByTypeResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/{slug}/variants/")
+    fun getProductVariantsBySlug(@Path("slug") slug: String)
+    : Deferred<Response<ProductVariantsResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/stock-status/")
+    fun getProductStockByIds(@Query("item_id") itemId: String?, @Query("alu") alu: String?, @Query("sku_code") skuCode: String?, @Query("ean") ean: String?, @Query("upc") upc: String?)
+    : Deferred<Response<ProductStockStatusResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/products/stock-status/poll/")
+    fun getProductStockForTimeByIds(@Query("timestamp") timestamp: String, @Query("page_size") pageSize: Int?, @Query("page_id") pageId: String?)
+    : Deferred<Response<ProductStockPolling>>
+    
+    @GET ("/service/application/catalog/v1.0/products/")
+    fun getProducts(@Query("q") q: String?, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?)
+    : Deferred<Response<ProductListingResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/brands/")
+    fun getBrands(@Query("department") department: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<BrandListingResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/brands/{slug}/")
+    fun getBrandDetailBySlug(@Path("slug") slug: String)
+    : Deferred<Response<BrandDetailResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/categories/")
+    fun getCategories(@Query("department") department: String?)
+    : Deferred<Response<CategoryListingResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/categories/{slug}/")
+    fun getCategoryDetailBySlug(@Path("slug") slug: String)
+    : Deferred<Response<CategoryMetaResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/home/listing/")
+    fun getHomeProducts(@Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<HomeListingResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/departments/")
+    fun getDepartments()
+    : Deferred<Response<DepartmentResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/auto-complete/")
+    fun getSearchResults(@Query("q") q: String)
+    : Deferred<Response<AutoCompleteResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/collections/")
+    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<GetCollectionListingResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
+    fun getCollectionItemsBySlug(@Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductListingResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/collections/{slug}/")
+    fun getCollectionDetailBySlug(@Path("slug") slug: String)
+    : Deferred<Response<CollectionDetailResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
+    fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<GetFollowListingResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
+    fun getFollowerCountById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowerCountResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/follow/ids/")
+    fun getFollowIds(@Query("collection_type") collectionType: String?)
+    : Deferred<Response<FollowIdsResponse>>
+    
+    @GET ("/service/application/catalog/v1.0/locations/")
+    fun getStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
+    : Deferred<Response<StoreListingResponse>>
+    
+}
+
 interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/detail")
