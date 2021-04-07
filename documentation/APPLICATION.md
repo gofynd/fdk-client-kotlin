@@ -14,6 +14,7 @@
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Rewards](#Rewards) - Earn and redeem Reward Points 
+* [Feedback](#Feedback) - User Reviews and Rating System 
 * [PosCart](#PosCart) - Cart APIs 
 * [Logistic](#Logistic) - Handles Platform websites OMS 
 
@@ -48,8 +49,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [followById](#followbyid)
     * [unfollowById](#unfollowbyid)
+    * [followById](#followbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -141,9 +142,9 @@
     * [getBlog](#getblog)
     * [getFaqs](#getfaqs)
     * [getFaqCategories](#getfaqcategories)
-    * [getFaqByIdOrSlug](#getfaqbyidorslug)
-    * [getFaqCategoryBySlugOrId](#getfaqcategorybyslugorid)
-    * [getFaqsByCategoryIdOrSlug](#getfaqsbycategoryidorslug)
+    * [getFaqBySlug](#getfaqbyslug)
+    * [getFaqCategoryBySlug](#getfaqcategorybyslug)
+    * [getFaqsByCategorySlug](#getfaqsbycategoryslug)
     * [getLandingPage](#getlandingpage)
     * [getLegalInformation](#getlegalinformation)
     * [getNavigations](#getnavigations)
@@ -236,6 +237,36 @@
     * [getUserPointsHistory](#getuserpointshistory)
     * [getUserReferralDetails](#getuserreferraldetails)
     * [redeemReferralCode](#redeemreferralcode)
+    
+
+* [Feedback](#Feedback)
+  * Methods
+    * [createAbuseReport](#createabusereport)
+    * [updateAbuseReport](#updateabusereport)
+    * [getAbuseReports](#getabusereports)
+    * [getAttributes](#getattributes)
+    * [createAttribute](#createattribute)
+    * [getAttribute](#getattribute)
+    * [updateAttribute](#updateattribute)
+    * [createComment](#createcomment)
+    * [updateComment](#updatecomment)
+    * [getComments](#getcomments)
+    * [checkEligibility](#checkeligibility)
+    * [deleteMedia](#deletemedia)
+    * [createMedia](#createmedia)
+    * [updateMedia](#updatemedia)
+    * [getMedias](#getmedias)
+    * [getReviewSummaries](#getreviewsummaries)
+    * [createReview](#createreview)
+    * [updateReview](#updatereview)
+    * [getReviews](#getreviews)
+    * [getTemplates](#gettemplates)
+    * [createQuestion](#createquestion)
+    * [updateQuestion](#updatequestion)
+    * [getQuestionAndAnswers](#getquestionandanswers)
+    * [getVotes](#getvotes)
+    * [createVote](#createvote)
+    * [updateVote](#updatevote)
     
 
 * [PosCart](#PosCart)
@@ -1512,11 +1543,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow a particular Product
+#### unfollowById
+UnFollow a Product
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1529,9 +1560,9 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | string | the `id` of the collection type you want to follow | 
+| collectionId | string | the `id` of the collection type you want to unfollow | 
 
-Follow a particular Product specified by its uid. Pass the uid of the product in request URL
+You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -1565,11 +1596,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-UnFollow a Product
+#### followById
+Follow a particular Product
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
     { response ->
       // Use response
     },
@@ -1582,9 +1613,9 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | collectionType | string | Type of collection followed. i. e. products, brands, collections | 
-| collectionId | string | the `id` of the collection type you want to unfollow | 
+| collectionId | string | the `id` of the collection type you want to follow | 
 
-You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
+Follow a particular Product specified by its uid. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -9034,11 +9065,11 @@ default
 ---
 
 
-#### getFaqByIdOrSlug
+#### getFaqBySlug
 Get frequently asked question
 
 ```kotlin
-content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait(
+content.getFaqBySlug(slug: slug).safeAwait(
     { response ->
       // Use response
     },
@@ -9050,7 +9081,7 @@ content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| idOrSlug | string | Slug or Id of FAQ | 
+| slug | string | Slug of FAQ | 
 
 Get frequently asked questions list. These will be helpful for users to using website.
 
@@ -9120,11 +9151,11 @@ default
 ---
 
 
-#### getFaqCategoryBySlugOrId
-Get FAQ category by slug or id
+#### getFaqCategoryBySlug
+Get FAQ category by slug
 
 ```kotlin
-content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait(
+content.getFaqCategoryBySlug(slug: slug).safeAwait(
     { response ->
       // Use response
     },
@@ -9136,9 +9167,9 @@ content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| idOrSlug | string | Slug or Id of FAQ Category | 
+| slug | string | Slug of FAQ Category | 
 
-Get FAQ category by slug or id
+Get FAQ category by slug
 
 *Success Response:*
 
@@ -9147,7 +9178,7 @@ Get FAQ category by slug or id
 Get FAQ Categories
 
 
-Schema: `GetFaqCategoryByIdOrSlugSchema`
+Schema: `GetFaqCategoryBySlugSchema`
 
 
 
@@ -9206,11 +9237,11 @@ default
 ---
 
 
-#### getFaqsByCategoryIdOrSlug
-Get FAQs of a Faq Category id or slug
+#### getFaqsByCategorySlug
+Get FAQs of a Faq Category slug
 
 ```kotlin
-content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait(
+content.getFaqsByCategorySlug(slug: slug).safeAwait(
     { response ->
       // Use response
     },
@@ -9222,15 +9253,15 @@ content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait(
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| idOrSlug | string | Faq category ID or slug | 
+| slug | string | Faq category slug | 
 
-Get FAQs of a Faq Category `id` or `slug`
+Get FAQs of a Faq Category `slug`
 
 *Success Response:*
 
 
 
-Get FAQs by slug/id of FAQ Category
+Get FAQs by slug of FAQ Category
 
 
 Schema: `GetFaqSchema`
@@ -13258,6 +13289,1394 @@ Bad request
 
 
 Schema: `Error`
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Feedback
+
+
+#### createAbuseReport
+post a new abuse request
+
+```kotlin
+feedback.createAbuseReport(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Report a new abuse for specific entity with description text.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateAbuseReport
+Update abuse details
+
+```kotlin
+feedback.updateAbuseReport(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Update the abuse details like status and description text.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAbuseReports
+Get list of abuse data
+
+```kotlin
+feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| entityId | string | entity id | 
+| entityType | string | entity type | 
+| id | string | abuse id | 
+| pageId | string | pagination page id | 
+| pageSize | integer | pagination page size | 
+
+Get the list of abuse data from entity type and entity ID.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `ReportAbuseGetResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAttributes
+Get list of attribute data
+
+```kotlin
+feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| pageNo | integer | pagination page no | 
+| pageSize | integer | pagination page size | 
+
+Provides a list of all attribute data.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `AttributeResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createAttribute
+Add a new attribute request
+
+```kotlin
+feedback.createAttribute(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Add a new attribute with its name, slug and description.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAttribute
+Get single attribute data
+
+```kotlin
+feedback.getAttribute(slug: slug).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | Slug of attribute | 
+
+Get a single attribute data from a given slug.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `Attribute`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateAttribute
+Update attribute details
+
+```kotlin
+feedback.updateAttribute(slug: slug, body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| slug | string | Slug of attribute | 
+
+Update the attribute's name and description.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createComment
+post a new comment
+
+```kotlin
+feedback.createComment(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+This is used to add a new comment for specific entity.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateComment
+Update comment status
+
+```kotlin
+feedback.updateComment(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Update the comment status (active/approve) or text.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getComments
+Get list of comments
+
+```kotlin
+feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| entityType | string | entity type | 
+| id | string | comment id | 
+| entityId | string | entity id | 
+| userId | string | user id - flag/filter to get comments for user | 
+| pageId | string | pagination page id | 
+| pageSize | integer | pagination page size | 
+
+Get the list of comments from specific entity type.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `CommentGetResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### checkEligibility
+Checks eligibility and cloud media config
+
+```kotlin
+feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| entityType | string | entity type | 
+| entityId | string | entity id | 
+
+Checks eligibility to rate and review and cloud media configuration
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `CheckEligibilityResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### deleteMedia
+Delete Media
+
+```kotlin
+feedback.deleteMedia().safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Delete Media for the given entity IDs.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createMedia
+Add Media
+
+```kotlin
+feedback.createMedia(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Add Media list for specific entity.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateMedia
+Update Media
+
+```kotlin
+feedback.updateMedia(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Update Media (archive/approve) for the given entity.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getMedias
+Get Media
+
+```kotlin
+feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| entityType | string | entity type | 
+| entityId | string | entity id | 
+| id | string | vote id | 
+| pageId | string | pagination page id | 
+| pageSize | integer | pagination page size | 
+
+Get Media from the given entity type and entity ID.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `MediaGetResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getReviewSummaries
+Get a review summary
+
+```kotlin
+feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| entityType | string | entity type | 
+| entityId | string | entity id | 
+| id | string | review summary identifier | 
+| pageId | string | pagination page id | 
+| pageSize | integer | pagination page size | 
+
+Review summary gives ratings and attribute metrics of a review per entity
+It gives following response data: review count, rating average. review metrics / attribute rating metrics which contains name, type, average and count.
+
+*Success Response:*
+
+
+
+success
+
+
+Schema: `RatingGetResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createReview
+Add customer reviews
+
+```kotlin
+feedback.createReview(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Add customer reviews for specific entity with following data:
+attributes rating, entity rating, title, description, media resources and template id.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateReview
+Update customer reviews
+
+```kotlin
+feedback.updateReview(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Update customer reviews for specific entity with following data:
+attributes rating, entity rating, title, description, media resources and template id.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getReviews
+Get list of customer reviews
+
+```kotlin
+feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| entityType | string | entity type | 
+| entityId | string | entity id | 
+| id | string | review id | 
+| userId | string | user id | 
+| media | string | media type e.g. image | video | video_file | video_link | 
+| rating | array | rating filter, 1-5 | 
+| attributeRating | array | attribute rating filter | 
+| facets | boolean | facets (true|false) | 
+| sort | string | sort by : default | top | recent | 
+| pageId | string | pagination page id | 
+| pageSize | integer | pagination page size | 
+
+This is used to get the list of customer reviews based on entity and provided filters.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `ReviewGetResponse`
+
+
+
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getTemplates
+Get the templates for product or l3 type
+
+```kotlin
+feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| templateId | string | template id | 
+| entityId | string | entity id | 
+| entityType | string | entity type e.g. product | l3 | 
+
+This is used to get the templates details.
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `CursorGetResponse`
+
+
+
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createQuestion
+Create a new question
+
+```kotlin
+feedback.createQuestion(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+This is used to create a new question with following data:
+tags, text, type, choices for MCQ type questions, maximum length of answer.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateQuestion
+Update question
+
+```kotlin
+feedback.updateQuestion(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+This is used to update question's status, tags and choices.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getQuestionAndAnswers
+Get a list of QnA
+
+```kotlin
+feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| entityType | string | entity type | 
+| entityId | string | entity id | 
+| id | string | qna id | 
+| showAnswer | boolean | show answer flag | 
+| pageId | string | pagination page id | 
+| pageSize | integer | pagination page size | 
+
+This is used to get a list of questions and its answers.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `QNAGetResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getVotes
+Get list of votes
+
+```kotlin
+feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | string | vote id | 
+| refType | string | entity type e.g. review | comment | 
+| pageNo | integer | pagination page no | 
+| pageSize | integer | pagination page size | 
+
+This is used to get the list of votes of a current logged in user. Votes can be filtered using `ref_type` i.e. review | comment.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `VoteResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createVote
+Create a new vote
+
+```kotlin
+feedback.createVote(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+This is used to create a new vote and the actions can be upvote or downvote.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateVote
+Update vote
+
+```kotlin
+feedback.updateVote(body: body).safeAwait(
+    { response ->
+      // Use response
+    },
+    { error ->
+        
+    }
+)
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+This is used to update the vote and the actions can be upvote or downvote.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
 
 
 

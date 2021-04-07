@@ -2,6 +2,7 @@
 
 
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
+* [Feedback](#Feedback) - User Reviews and Rating System 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [Content](#Content) - Content System 
@@ -45,6 +46,17 @@
   * [Lead#getVideoParticipants](#leadgetvideoparticipants)
   * [Lead#openVideoRoom](#leadopenvideoroom)
   * [Lead#closeVideoRoom](#leadclosevideoroom)
+ 
+* [Feedback](#Feedback)
+  * [Feedback#getAttributes](#feedbackgetattributes)
+  * [Feedback#getCustomerReviews](#feedbackgetcustomerreviews)
+  * [Feedback#updateApprove](#feedbackupdateapprove)
+  * [Feedback#getHistory](#feedbackgethistory)
+  * [Feedback#getApplicationTemplates](#feedbackgetapplicationtemplates)
+  * [Feedback#createTemplate](#feedbackcreatetemplate)
+  * [Feedback#getTemplateById](#feedbackgettemplatebyid)
+  * [Feedback#updateTemplate](#feedbackupdatetemplate)
+  * [Feedback#updateTemplateStatus](#feedbackupdatetemplatestatus)
  
 * [Theme](#Theme)
   * [Theme#getThemeLibrary](#themegetthemelibrary)
@@ -921,6 +933,284 @@ const data = await lead.closeVideoRoom(company_id, application_id, unique_name, 
 
 
 Close the video room and force all participants to leave.
+
+
+---
+
+
+
+---
+---
+
+
+## Feedback
+
+```javascript
+const { Configuration, Feedback } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const feedback = new Feedback(conf);
+
+```
+
+
+#### Feedback#getAttributes
+Get list of attribute data
+
+```javascript
+// Promise
+const promise = feedback.getAttributes(company_id, application_id, page_no, page_size, );
+
+// Async/Await
+const data = await feedback.getAttributes(company_id, application_id, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| page_no | integer | pagination page no | 
+| page_size | integer | pagination page size | 
+
+
+Provides a list of all attribute data.
+
+
+---
+
+
+#### Feedback#getCustomerReviews
+Get list of customer reviews [admin]
+
+```javascript
+// Promise
+const promise = feedback.getCustomerReviews(company_id, application_id, id, entity_id, entity_type, user_id, media, rating, attribute_rating, facets, sort, next, start, limit, count, page_id, page_size, );
+
+// Async/Await
+const data = await feedback.getCustomerReviews(company_id, application_id, id, entity_id, entity_type, user_id, media, rating, attribute_rating, facets, sort, next, start, limit, count, page_id, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | review id | 
+| entity_id | string | entity id | 
+| entity_type | string | entity type | 
+| user_id | string | user id | 
+| media | string | media type e.g. image | video | video_file | video_link | 
+| rating | array | rating filter, 1-5 | 
+| attribute_rating | array | attribute rating filter with ma,e of attribute | 
+| facets | boolean | facets (true|false) | 
+| sort | string | sort by : default | top | recent | 
+| next | string | pagination next | 
+| start | string | pagination start | 
+| limit | string | pagination limit | 
+| count | string | pagination count | 
+| page_id | string | pagination page id | 
+| page_size | integer | pagination page size | 
+
+
+The endpoint provides a list of customer reviews based on entity and provided filters
+
+
+---
+
+
+#### Feedback#updateApprove
+update approve details
+
+```javascript
+// Promise
+const promise = feedback.updateApprove(company_id, application_id, review_id, );
+
+// Async/Await
+const data = await feedback.updateApprove(company_id, application_id, review_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| review_id | string | review id | 
+
+
+The is used to update approve details like status and description text
+
+
+---
+
+
+#### Feedback#getHistory
+get history details
+
+```javascript
+// Promise
+const promise = feedback.getHistory(company_id, application_id, review_id, );
+
+// Async/Await
+const data = await feedback.getHistory(company_id, application_id, review_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| review_id | string | review id | 
+
+
+The is used to get the history details like status and description text
+
+
+---
+
+
+#### Feedback#getApplicationTemplates
+Get list of templates
+
+```javascript
+// Promise
+const promise = feedback.getApplicationTemplates(company_id, application_id, page_id, page_size, );
+
+// Async/Await
+const data = await feedback.getApplicationTemplates(company_id, application_id, page_id, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| page_id | string | pagination page id | 
+| page_size | integer | pagination page size | 
+
+
+Get all templates of application
+
+
+---
+
+
+#### Feedback#createTemplate
+Create a new template
+
+```javascript
+// Promise
+const promise = feedback.createTemplate(company_id, application_id, );
+
+// Async/Await
+const data = await feedback.createTemplate(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+
+
+Create a new template for review with following data:
+- Enable media, rating and review
+- Rating - active/inactive/selected rate choices, attributes, text on rate, comment for each rate, type
+- Review - header, title, description, image and video meta, enable votes
+
+
+---
+
+
+#### Feedback#getTemplateById
+Get a template by ID
+
+```javascript
+// Promise
+const promise = feedback.getTemplateById(company_id, application_id, id, );
+
+// Async/Await
+const data = await feedback.getTemplateById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | template id | 
+
+
+Get the template for product or l3 type by ID
+
+
+---
+
+
+#### Feedback#updateTemplate
+Update a template's status
+
+```javascript
+// Promise
+const promise = feedback.updateTemplate(company_id, application_id, id, );
+
+// Async/Await
+const data = await feedback.updateTemplate(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | template id | 
+
+
+Update existing template status, active/archive
+
+
+---
+
+
+#### Feedback#updateTemplateStatus
+Update a template's status
+
+```javascript
+// Promise
+const promise = feedback.updateTemplateStatus(company_id, application_id, id, );
+
+// Async/Await
+const data = await feedback.updateTemplateStatus(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | template id | 
+
+
+Update existing template status, active/archive
 
 
 ---
@@ -8200,7 +8490,7 @@ Get all registered marketplace channels for a seller
 
 
 #### Marketplaces#getChannel
-Get registered marketplace channel for a seller
+Get registered marketplace channel credential configuration for a seller
 
 ```javascript
 // Promise
@@ -8219,7 +8509,7 @@ const data = await marketplaces.getChannel(company_id, channel, );
 | channel | string | Name of marketplace channel | 
 
 
-Get registered marketplace channel for a seller
+Get registered marketplace channel credentials configuration for a seller
 
 
 ---
