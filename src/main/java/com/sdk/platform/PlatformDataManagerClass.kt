@@ -5423,7 +5423,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getShortLinks(pageNo: String?=null, pageSize: String?=null, createdBy: String?=null, active: String?=null, q: String?=null)
+    suspend fun getShortLinks(pageNo: Int?=null, pageSize: Int?=null, createdBy: String?=null, active: String?=null, q: String?=null)
     : Deferred<Response<ShortLinkList>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, q = q )
@@ -5473,7 +5473,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getShortLinks
     **/
     fun getShortLinksPaginator(
-    pageSize: String?=null, createdBy: String?=null, active: String?=null, q: String?=null
+    pageSize: Int?=null, createdBy: String?=null, active: String?=null, q: String?=null
     
     ) : Paginator<ShortLinkList>{
         val paginator = Paginator<ShortLinkList>()
@@ -6933,6 +6933,167 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
+    
+    
+}
+}
+
+class DiscountDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val discountApiList by lazy {
+        generatediscountApiList()
+    }
+    
+    private fun generatediscountApiList(): DiscountApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformDiscount",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(DiscountApiList::class.java) as? DiscountApiList
+    }
+    
+    
+    suspend fun getDiscounts(view: String?=null, q: String?=null, pageNo: Int?=null, pageSize: Int?=null, archived: Boolean?=null, month: Int?=null, year: Int?=null, type: String?=null, appIds: ArrayList<String>?=null)
+    : Deferred<Response<ListOrCalender>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDiscounts(
+        companyId = config.companyId, view = view, q = q, pageNo = pageNo, pageSize = pageSize, archived = archived, month = month, year = year, type = type, appIds = appIds )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createDiscount(body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.createDiscount(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDiscount(id: String)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDiscount(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateDiscount(id: String,body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.updateDiscount(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun validateDiscountFile(discount: String?=null,body: DiscountJob)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.validateDiscountFile(
+        companyId = config.companyId, discount = discount, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun downloadDiscountFile(type: String,body: DownloadFileJob)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.downloadDiscountFile(
+        companyId = config.companyId, type = type, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getValidationJob(id: String)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getValidationJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelValidationJob(id: String)
+    : Deferred<Response<CancelJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.cancelValidationJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDownloadJob(id: String)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDownloadJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelDownloadJob(id: String)
+    : Deferred<Response<CancelJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.cancelDownloadJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    
+    
+    
+    
     
     
     

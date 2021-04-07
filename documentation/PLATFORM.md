@@ -18,6 +18,7 @@
 * [Cart](#Cart) - Cart APIs 
 * [Marketplaces](#Marketplaces) - Marketplaces 
 * [Analytics](#Analytics) - Perceptor analytics 
+* [Discount](#Discount) - Discount 
 
 ----
 ----
@@ -417,6 +418,18 @@
   * [Analytics#getExportJobStatus](#analyticsgetexportjobstatus)
   * [Analytics#getLogsList](#analyticsgetlogslist)
   * [Analytics#searchLogs](#analyticssearchlogs)
+ 
+* [Discount](#Discount)
+  * [Discount#getDiscounts](#discountgetdiscounts)
+  * [Discount#createDiscount](#discountcreatediscount)
+  * [Discount#getDiscount](#discountgetdiscount)
+  * [Discount#updateDiscount](#discountupdatediscount)
+  * [Discount#validateDiscountFile](#discountvalidatediscountfile)
+  * [Discount#downloadDiscountFile](#discountdownloaddiscountfile)
+  * [Discount#getValidationJob](#discountgetvalidationjob)
+  * [Discount#cancelValidationJob](#discountcancelvalidationjob)
+  * [Discount#getDownloadJob](#discountgetdownloadjob)
+  * [Discount#cancelDownloadJob](#discountcanceldownloadjob)
  
 
 ---
@@ -8116,8 +8129,8 @@ const data = await share.getShortLinks(company_id, application_id, page_no, page
 | --------- | ----  | --- |
 | company_id | string | Company Id | 
 | application_id | string | Application Id | 
-| page_no | string | Current page number | 
-| page_size | string | Current page size | 
+| page_no | integer | Current page number | 
+| page_size | integer | Current page size | 
 | created_by | string | Short link creator | 
 | active | string | Short link active status | 
 | q | string | Search text for original and short url | 
@@ -10308,6 +10321,290 @@ const data = await analytics.searchLogs(company_id, page_no, page_size, log_type
 
 
 Search logs
+
+
+---
+
+
+
+---
+---
+
+
+## Discount
+
+```javascript
+const { Configuration, Discount } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const discount = new Discount(conf);
+
+```
+
+
+#### Discount#getDiscounts
+Fetch discount list.
+
+```javascript
+// Promise
+const promise = discount.getDiscounts(company_id, view, q, page_no, page_size, archived, month, year, type, app_ids, );
+
+// Async/Await
+const data = await discount.getDiscounts(company_id, view, q, page_no, page_size, archived, month, year, type, app_ids, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| view | string | listing or calender.  Default is listing. | 
+| q | string | The search query. This can be a partial or complete name of a discount. | 
+| page_no | integer | page number. Default is 1. | 
+| page_size | integer | page size. Default is 12. | 
+| archived | boolean | archived. Default is false. | 
+| month | integer | month. Default is current month. | 
+| year | integer | year. Default is current year. | 
+| type | string | basic or custom. | 
+| app_ids | array | application ids. | 
+
+
+Fetch discount list.
+
+
+---
+
+
+#### Discount#createDiscount
+Create Discount.
+
+```javascript
+// Promise
+const promise = discount.createDiscount(company_id, );
+
+// Async/Await
+const data = await discount.createDiscount(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+
+
+Create Discount.
+
+
+---
+
+
+#### Discount#getDiscount
+Fetch discount.
+
+```javascript
+// Promise
+const promise = discount.getDiscount(company_id, id, );
+
+// Async/Await
+const data = await discount.getDiscount(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | unique id. | 
+
+
+Fetch discount.
+
+
+---
+
+
+#### Discount#updateDiscount
+Create Discount.
+
+```javascript
+// Promise
+const promise = discount.updateDiscount(company_id, id, );
+
+// Async/Await
+const data = await discount.updateDiscount(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Create Discount.
+
+
+---
+
+
+#### Discount#validateDiscountFile
+Validate File.
+
+```javascript
+// Promise
+const promise = discount.validateDiscountFile(company_id, discount, );
+
+// Async/Await
+const data = await discount.validateDiscountFile(company_id, discount, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| discount | string | discount | 
+
+
+Validate File.
+
+
+---
+
+
+#### Discount#downloadDiscountFile
+Validate File.
+
+```javascript
+// Promise
+const promise = discount.downloadDiscountFile(company_id, type, );
+
+// Async/Await
+const data = await discount.downloadDiscountFile(company_id, type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| type | string | type | 
+
+
+Validate File.
+
+
+---
+
+
+#### Discount#getValidationJob
+Validate File Job.
+
+```javascript
+// Promise
+const promise = discount.getValidationJob(company_id, id, );
+
+// Async/Await
+const data = await discount.getValidationJob(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Validate File Job.
+
+
+---
+
+
+#### Discount#cancelValidationJob
+Cancel Validation Job.
+
+```javascript
+// Promise
+const promise = discount.cancelValidationJob(company_id, id, );
+
+// Async/Await
+const data = await discount.cancelValidationJob(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Cancel Validation Job.
+
+
+---
+
+
+#### Discount#getDownloadJob
+Download File Job.
+
+```javascript
+// Promise
+const promise = discount.getDownloadJob(company_id, id, );
+
+// Async/Await
+const data = await discount.getDownloadJob(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Download File Job.
+
+
+---
+
+
+#### Discount#cancelDownloadJob
+Cancel Download Job.
+
+```javascript
+// Promise
+const promise = discount.cancelDownloadJob(company_id, id, );
+
+// Async/Await
+const data = await discount.cancelDownloadJob(company_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Cancel Download Job.
 
 
 ---

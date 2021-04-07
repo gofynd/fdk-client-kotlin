@@ -26,6 +26,8 @@ class ApplicationClient(val config:ApplicationConfig) {
     
     val order by lazy { OrderDataManagerClass(config)}
     
+    val feedback by lazy { FeedbackDataManagerClass(config)}
+    
     val posCart by lazy { PosCartDataManagerClass(config)}
     
     val logistic by lazy { LogisticDataManagerClass(config)}
