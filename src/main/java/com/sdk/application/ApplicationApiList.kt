@@ -23,7 +23,7 @@ interface CatalogApiList {
     : Deferred<Response<ProductSizeSellersResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/compare/")
-    fun getProductComparisonBySlugs(@Query("slug") slug: String)
+    fun getProductComparisonBySlugs(@Query("slug") slug: ArrayList<String>)
     : Deferred<Response<ProductsComparisonResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compare/")

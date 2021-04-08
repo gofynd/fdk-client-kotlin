@@ -7,6 +7,7 @@
 * [User](#User) - Authentication Service 
 * [Content](#Content) - Content System 
 * [Billing](#Billing) - Handle platform subscription 
+* [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
@@ -153,6 +154,45 @@
   * [Billing#activateSubscriptionPlan](#billingactivatesubscriptionplan)
   * [Billing#cancelSubscriptionPlan](#billingcancelsubscriptionplan)
  
+* [Communication](#Communication)
+  * [Communication#getCampaigns](#communicationgetcampaigns)
+  * [Communication#createCampaign](#communicationcreatecampaign)
+  * [Communication#getCampaignById](#communicationgetcampaignbyid)
+  * [Communication#updateCampaignById](#communicationupdatecampaignbyid)
+  * [Communication#getStatsOfCampaignById](#communicationgetstatsofcampaignbyid)
+  * [Communication#getAudiences](#communicationgetaudiences)
+  * [Communication#createAudience](#communicationcreateaudience)
+  * [Communication#getBigqueryHeaders](#communicationgetbigqueryheaders)
+  * [Communication#getAudienceById](#communicationgetaudiencebyid)
+  * [Communication#updateAudienceById](#communicationupdateaudiencebyid)
+  * [Communication#getNSampleRecordsFromCsv](#communicationgetnsamplerecordsfromcsv)
+  * [Communication#getEmailProviders](#communicationgetemailproviders)
+  * [Communication#createEmailProvider](#communicationcreateemailprovider)
+  * [Communication#getEmailProviderById](#communicationgetemailproviderbyid)
+  * [Communication#updateEmailProviderById](#communicationupdateemailproviderbyid)
+  * [Communication#getEmailTemplates](#communicationgetemailtemplates)
+  * [Communication#createEmailTemplate](#communicationcreateemailtemplate)
+  * [Communication#getSystemEmailTemplates](#communicationgetsystememailtemplates)
+  * [Communication#getEmailTemplateById](#communicationgetemailtemplatebyid)
+  * [Communication#updateEmailTemplateById](#communicationupdateemailtemplatebyid)
+  * [Communication#deleteEmailTemplateById](#communicationdeleteemailtemplatebyid)
+  * [Communication#getEventSubscriptions](#communicationgeteventsubscriptions)
+  * [Communication#getJobs](#communicationgetjobs)
+  * [Communication#triggerCampaignJob](#communicationtriggercampaignjob)
+  * [Communication#getJobLogs](#communicationgetjoblogs)
+  * [Communication#getCommunicationLogs](#communicationgetcommunicationlogs)
+  * [Communication#getSystemNotifications](#communicationgetsystemnotifications)
+  * [Communication#getSmsProviders](#communicationgetsmsproviders)
+  * [Communication#createSmsProvider](#communicationcreatesmsprovider)
+  * [Communication#getSmsProviderById](#communicationgetsmsproviderbyid)
+  * [Communication#updateSmsProviderById](#communicationupdatesmsproviderbyid)
+  * [Communication#getSmsTemplates](#communicationgetsmstemplates)
+  * [Communication#createSmsTemplate](#communicationcreatesmstemplate)
+  * [Communication#getSmsTemplateById](#communicationgetsmstemplatebyid)
+  * [Communication#updateSmsTemplateById](#communicationupdatesmstemplatebyid)
+  * [Communication#deleteSmsTemplateById](#communicationdeletesmstemplatebyid)
+  * [Communication#getSystemSystemTemplates](#communicationgetsystemsystemtemplates)
+ 
 * [Payment](#Payment)
   * [Payment#getBrandPaymentGatewayConfig](#paymentgetbrandpaymentgatewayconfig)
   * [Payment#saveBrandPaymentGatewayConfig](#paymentsavebrandpaymentgatewayconfig)
@@ -185,34 +225,34 @@
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
   * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
   * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
-  * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
+  * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
   * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
   * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
-  * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
-  * [Catalog#getProductBundle](#cataloggetproductbundle)
+  * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createProductBundle](#catalogcreateproductbundle)
+  * [Catalog#getProductBundle](#cataloggetproductbundle)
   * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
-  * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#createSizeGuide](#catalogcreatesizeguide)
+  * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getSizeGuide](#cataloggetsizeguide)
   * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
-  * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
-  * [Catalog#getConfigurationByType](#cataloggetconfigurationbytype)
+  * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationByType](#catalogcreateconfigurationbytype)
+  * [Catalog#getConfigurationByType](#cataloggetconfigurationbytype)
   * [Catalog#getQueryFilters](#cataloggetqueryfilters)
-  * [Catalog#getAllCollections](#cataloggetallcollections)
   * [Catalog#createCollection](#catalogcreatecollection)
+  * [Catalog#getAllCollections](#cataloggetallcollections)
   * [Catalog#getCollectionDetail](#cataloggetcollectiondetail)
   * [Catalog#deleteCollection](#catalogdeletecollection)
   * [Catalog#updateCollection](#catalogupdatecollection)
-  * [Catalog#getCollectionItems](#cataloggetcollectionitems)
   * [Catalog#addCollectionItems](#catalogaddcollectionitems)
+  * [Catalog#getCollectionItems](#cataloggetcollectionitems)
   * [Catalog#getCatalogInsights](#cataloggetcataloginsights)
   * [Catalog#getSellerInsights](#cataloggetsellerinsights)
   * [Catalog#createMarketplaceOptin](#catalogcreatemarketplaceoptin)
@@ -232,37 +272,37 @@
   * [Catalog#listHSNCodes](#cataloglisthsncodes)
   * [Catalog#listProductTemplateExportDetails](#cataloglistproducttemplateexportdetails)
   * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
-  * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#createCategories](#catalogcreatecategories)
+  * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getCategoryData](#cataloggetcategorydata)
-  * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
+  * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#editProduct](#catalogeditproduct)
   * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
-  * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
   * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
-  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
+  * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
   * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
+  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
   * [Catalog#getCompanyTags](#cataloggetcompanytags)
-  * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
   * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
+  * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
   * [Catalog#deleteSize](#catalogdeletesize)
-  * [Catalog#getInventory](#cataloggetinventory)
   * [Catalog#addInventory](#catalogaddinventory)
+  * [Catalog#getInventory](#cataloggetinventory)
   * [Catalog#deleteInventory](#catalogdeleteinventory)
-  * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
   * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
-  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
+  * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
   * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
-  * [Catalog#getInventoryExport](#cataloggetinventoryexport)
+  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
   * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
+  * [Catalog#getInventoryExport](#cataloggetinventoryexport)
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
-  * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#createHsnCode](#catalogcreatehsncode)
+  * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#getHsnCode](#cataloggethsncode)
  
@@ -270,15 +310,15 @@
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
-  * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [Share](#Share)
   * [Share#createShortLink](#sharecreateshortlink)
@@ -3609,6 +3649,1039 @@ It will cancel current active subscription.
 ---
 
 
+## Communication
+
+```javascript
+const { Configuration, Communication } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const communication = new Communication(conf);
+
+```
+
+
+#### Communication#getCampaigns
+Get campaigns
+
+```javascript
+// Promise
+const promise = communication.getCampaigns(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getCampaigns(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get campaigns
+
+
+---
+
+
+#### Communication#createCampaign
+Create campaign
+
+```javascript
+// Promise
+const promise = communication.createCampaign(company_id, application_id, );
+
+// Async/Await
+const data = await communication.createCampaign(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Create campaign
+
+
+---
+
+
+#### Communication#getCampaignById
+Get campaign by id
+
+```javascript
+// Promise
+const promise = communication.getCampaignById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.getCampaignById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Campaign id | 
+
+
+Get campaign by id
+
+
+---
+
+
+#### Communication#updateCampaignById
+Update campaign by id
+
+```javascript
+// Promise
+const promise = communication.updateCampaignById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.updateCampaignById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Campaign id | 
+
+
+Update campaign by id
+
+
+---
+
+
+#### Communication#getStatsOfCampaignById
+Get stats of campaign by id
+
+```javascript
+// Promise
+const promise = communication.getStatsOfCampaignById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.getStatsOfCampaignById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Campaign id | 
+
+
+Get stats of campaign by id
+
+
+---
+
+
+#### Communication#getAudiences
+Get audiences
+
+```javascript
+// Promise
+const promise = communication.getAudiences(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getAudiences(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get audiences
+
+
+---
+
+
+#### Communication#createAudience
+Create audience
+
+```javascript
+// Promise
+const promise = communication.createAudience(company_id, application_id, );
+
+// Async/Await
+const data = await communication.createAudience(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Create audience
+
+
+---
+
+
+#### Communication#getBigqueryHeaders
+Get bigquery headers
+
+```javascript
+// Promise
+const promise = communication.getBigqueryHeaders(company_id, application_id, );
+
+// Async/Await
+const data = await communication.getBigqueryHeaders(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Get bigquery headers
+
+
+---
+
+
+#### Communication#getAudienceById
+Get audience by id
+
+```javascript
+// Promise
+const promise = communication.getAudienceById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.getAudienceById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Audience id | 
+
+
+Get audience by id
+
+
+---
+
+
+#### Communication#updateAudienceById
+Update audience by id
+
+```javascript
+// Promise
+const promise = communication.updateAudienceById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.updateAudienceById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Audience id | 
+
+
+Update audience by id
+
+
+---
+
+
+#### Communication#getNSampleRecordsFromCsv
+Get n sample records from csv
+
+```javascript
+// Promise
+const promise = communication.getNSampleRecordsFromCsv(company_id, application_id, );
+
+// Async/Await
+const data = await communication.getNSampleRecordsFromCsv(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Get n sample records from csv
+
+
+---
+
+
+#### Communication#getEmailProviders
+Get email providers
+
+```javascript
+// Promise
+const promise = communication.getEmailProviders(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getEmailProviders(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get email providers
+
+
+---
+
+
+#### Communication#createEmailProvider
+Create email provider
+
+```javascript
+// Promise
+const promise = communication.createEmailProvider(company_id, application_id, );
+
+// Async/Await
+const data = await communication.createEmailProvider(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Create email provider
+
+
+---
+
+
+#### Communication#getEmailProviderById
+Get email provider by id
+
+```javascript
+// Promise
+const promise = communication.getEmailProviderById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.getEmailProviderById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Email provider id | 
+
+
+Get email provider by id
+
+
+---
+
+
+#### Communication#updateEmailProviderById
+Update email provider by id
+
+```javascript
+// Promise
+const promise = communication.updateEmailProviderById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.updateEmailProviderById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Email provider id | 
+
+
+Update email provider by id
+
+
+---
+
+
+#### Communication#getEmailTemplates
+Get email templates
+
+```javascript
+// Promise
+const promise = communication.getEmailTemplates(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getEmailTemplates(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get email templates
+
+
+---
+
+
+#### Communication#createEmailTemplate
+Create email template
+
+```javascript
+// Promise
+const promise = communication.createEmailTemplate(company_id, application_id, );
+
+// Async/Await
+const data = await communication.createEmailTemplate(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Create email template
+
+
+---
+
+
+#### Communication#getSystemEmailTemplates
+Get system email templates
+
+```javascript
+// Promise
+const promise = communication.getSystemEmailTemplates(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getSystemEmailTemplates(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get system email templates
+
+
+---
+
+
+#### Communication#getEmailTemplateById
+Get email template by id
+
+```javascript
+// Promise
+const promise = communication.getEmailTemplateById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.getEmailTemplateById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Email template id | 
+
+
+Get email template by id
+
+
+---
+
+
+#### Communication#updateEmailTemplateById
+Update email template by id
+
+```javascript
+// Promise
+const promise = communication.updateEmailTemplateById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.updateEmailTemplateById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Email template id | 
+
+
+Update email template by id
+
+
+---
+
+
+#### Communication#deleteEmailTemplateById
+Delete email template by id
+
+```javascript
+// Promise
+const promise = communication.deleteEmailTemplateById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.deleteEmailTemplateById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Email template id | 
+
+
+Delete email template by id
+
+
+---
+
+
+#### Communication#getEventSubscriptions
+Get event subscriptions
+
+```javascript
+// Promise
+const promise = communication.getEventSubscriptions(company_id, application_id, page_no, page_size, populate, );
+
+// Async/Await
+const data = await communication.getEventSubscriptions(company_id, application_id, page_no, page_size, populate, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| populate | string | populate fields | 
+
+
+Get event subscriptions
+
+
+---
+
+
+#### Communication#getJobs
+Get jobs
+
+```javascript
+// Promise
+const promise = communication.getJobs(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getJobs(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get jobs
+
+
+---
+
+
+#### Communication#triggerCampaignJob
+Trigger campaign job
+
+```javascript
+// Promise
+const promise = communication.triggerCampaignJob(company_id, application_id, );
+
+// Async/Await
+const data = await communication.triggerCampaignJob(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Trigger campaign job
+
+
+---
+
+
+#### Communication#getJobLogs
+Get job logs
+
+```javascript
+// Promise
+const promise = communication.getJobLogs(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getJobLogs(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get job logs
+
+
+---
+
+
+#### Communication#getCommunicationLogs
+Get communication logs
+
+```javascript
+// Promise
+const promise = communication.getCommunicationLogs(company_id, application_id, page_id, page_size, sort, query, );
+
+// Async/Await
+const data = await communication.getCommunicationLogs(company_id, application_id, page_id, page_size, sort, query, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_id | string | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on _id | 
+| query | object |  | 
+
+
+Get communication logs
+
+
+---
+
+
+#### Communication#getSystemNotifications
+Get system notifications
+
+```javascript
+// Promise
+const promise = communication.getSystemNotifications(company_id, query, page_no, page_size, );
+
+// Async/Await
+const data = await communication.getSystemNotifications(company_id, query, page_no, page_size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| query | object |  | 
+| page_no | integer |  | 
+| page_size | integer |  | 
+
+
+Get system notifications
+
+
+---
+
+
+#### Communication#getSmsProviders
+Get sms providers
+
+```javascript
+// Promise
+const promise = communication.getSmsProviders(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getSmsProviders(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get sms providers
+
+
+---
+
+
+#### Communication#createSmsProvider
+Create sms provider
+
+```javascript
+// Promise
+const promise = communication.createSmsProvider(company_id, application_id, );
+
+// Async/Await
+const data = await communication.createSmsProvider(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Create sms provider
+
+
+---
+
+
+#### Communication#getSmsProviderById
+Get sms provider by id
+
+```javascript
+// Promise
+const promise = communication.getSmsProviderById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.getSmsProviderById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Sms provider id | 
+
+
+Get sms provider by id
+
+
+---
+
+
+#### Communication#updateSmsProviderById
+Update sms provider by id
+
+```javascript
+// Promise
+const promise = communication.updateSmsProviderById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.updateSmsProviderById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Sms provider id | 
+
+
+Update sms provider by id
+
+
+---
+
+
+#### Communication#getSmsTemplates
+Get sms templates
+
+```javascript
+// Promise
+const promise = communication.getSmsTemplates(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getSmsTemplates(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get sms templates
+
+
+---
+
+
+#### Communication#createSmsTemplate
+Create sms template
+
+```javascript
+// Promise
+const promise = communication.createSmsTemplate(company_id, application_id, );
+
+// Async/Await
+const data = await communication.createSmsTemplate(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+
+
+Create sms template
+
+
+---
+
+
+#### Communication#getSmsTemplateById
+Get sms template by id
+
+```javascript
+// Promise
+const promise = communication.getSmsTemplateById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.getSmsTemplateById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Sms template id | 
+
+
+Get sms template by id
+
+
+---
+
+
+#### Communication#updateSmsTemplateById
+Update sms template by id
+
+```javascript
+// Promise
+const promise = communication.updateSmsTemplateById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.updateSmsTemplateById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Sms template id | 
+
+
+Update sms template by id
+
+
+---
+
+
+#### Communication#deleteSmsTemplateById
+Delete sms template by id
+
+```javascript
+// Promise
+const promise = communication.deleteSmsTemplateById(company_id, application_id, id, );
+
+// Async/Await
+const data = await communication.deleteSmsTemplateById(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| id | string | Sms template id | 
+
+
+Delete sms template by id
+
+
+---
+
+
+#### Communication#getSystemSystemTemplates
+Get system sms templates
+
+```javascript
+// Promise
+const promise = communication.getSystemSystemTemplates(company_id, application_id, page_no, page_size, sort, );
+
+// Async/Await
+const data = await communication.getSystemSystemTemplates(company_id, application_id, page_no, page_size, sort, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company id | 
+| application_id | string | Application id | 
+| page_no | integer | Current page no | 
+| page_size | integer | Current request items count | 
+| sort | object | To sort based on created_at | 
+
+
+Get system sms templates
+
+
+---
+
+
+
+---
+---
+
+
 ## Payment
 
 ```javascript
@@ -4370,32 +5443,6 @@ Get the details of a words by its `id`. If successful, returns a Collection reso
 ---
 
 
-#### Catalog#getAllSearchKeyword
-List all Search Custom Keyword Listing
-
-```javascript
-// Promise
-const promise = catalog.getAllSearchKeyword(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getAllSearchKeyword(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-Custom Search Keyword allows you to map conditions with keywords to give you the ultimate results
-
-
----
-
-
 #### Catalog#createCustomKeyword
 Add a Custom Search Keywords
 
@@ -4417,6 +5464,32 @@ const data = await catalog.createCustomKeyword(company_id, application_id, );
 
 
 Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateSearchKeywordSchema`
+
+
+---
+
+
+#### Catalog#getAllSearchKeyword
+List all Search Custom Keyword Listing
+
+```javascript
+// Promise
+const promise = catalog.getAllSearchKeyword(company_id, application_id, );
+
+// Async/Await
+const data = await catalog.getAllSearchKeyword(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+
+
+Custom Search Keyword allows you to map conditions with keywords to give you the ultimate results
 
 
 ---
@@ -4503,32 +5576,6 @@ Get the details of a words by its `id`. If successful, returns a keywords resour
 ---
 
 
-#### Catalog#getAutocompleteConfig
-List all Autocomplete Keyword Listing
-
-```javascript
-// Promise
-const promise = catalog.getAutocompleteConfig(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getAutocompleteConfig(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-Custom Autocomplete Keyword allows you to map conditions with keywords to give you the ultimate results
-
-
----
-
-
 #### Catalog#createCustomAutocompleteRule
 Add a Custom Autocomplete Keywords
 
@@ -4555,15 +5602,15 @@ Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for
 ---
 
 
-#### Catalog#getProductBundle
-List all Product Bundles
+#### Catalog#getAutocompleteConfig
+List all Autocomplete Keyword Listing
 
 ```javascript
 // Promise
-const promise = catalog.getProductBundle(company_id, q, );
+const promise = catalog.getAutocompleteConfig(company_id, application_id, );
 
 // Async/Await
-const data = await catalog.getProductBundle(company_id, q, );
+const data = await catalog.getAutocompleteConfig(company_id, application_id, );
 
 ```
 
@@ -4572,10 +5619,10 @@ const data = await catalog.getProductBundle(company_id, q, );
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| q | string | A search string that is searched with product bundle name. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
 
 
-Get all product bundles for a particular company
+Custom Autocomplete Keyword allows you to map conditions with keywords to give you the ultimate results
 
 
 ---
@@ -4601,6 +5648,32 @@ const data = await catalog.createProductBundle(company_id, );
 
 
 Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
+
+
+---
+
+
+#### Catalog#getProductBundle
+List all Product Bundles
+
+```javascript
+// Promise
+const promise = catalog.getProductBundle(company_id, q, );
+
+// Async/Await
+const data = await catalog.getProductBundle(company_id, q, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| q | string | A search string that is searched with product bundle name. | 
+
+
+Get all product bundles for a particular company
 
 
 ---
@@ -4658,6 +5731,31 @@ Get a particular Bundle details by its `id`. If successful, returns a Product bu
 ---
 
 
+#### Catalog#createSizeGuide
+Create a size guide.
+
+```javascript
+// Promise
+const promise = catalog.createSizeGuide(company_id, );
+
+// Async/Await
+const data = await catalog.createSizeGuide(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the size guide is to be created. | 
+
+
+This API allows to create a size guide associated to a brand.
+
+
+---
+
+
 #### Catalog#getSizeGuides
 Get list of size guides
 
@@ -4683,31 +5781,6 @@ const data = await catalog.getSizeGuides(company_id, active, q, tag, page_no, pa
 
 
 This API allows to view all the size guides associated to the seller.
-
-
----
-
-
-#### Catalog#createSizeGuide
-Create a size guide.
-
-```javascript
-// Promise
-const promise = catalog.createSizeGuide(company_id, );
-
-// Async/Await
-const data = await catalog.createSizeGuide(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the size guide is to be created. | 
-
-
-This API allows to create a size guide associated to a brand.
 
 
 ---
@@ -4791,32 +5864,6 @@ configuration meta  details for catalog.
 ---
 
 
-#### Catalog#getConfigurations
-Get configured details for catalog
-
-```javascript
-// Promise
-const promise = catalog.getConfigurations(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getConfigurations(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-configured details for catalog.
-
-
----
-
-
 #### Catalog#createConfigurationProductListing
 Add configuration for products & listings
 
@@ -4843,15 +5890,15 @@ Add configuration for products & listing.
 ---
 
 
-#### Catalog#getConfigurationByType
+#### Catalog#getConfigurations
 Get configured details for catalog
 
 ```javascript
 // Promise
-const promise = catalog.getConfigurationByType(company_id, application_id, type, );
+const promise = catalog.getConfigurations(company_id, application_id, );
 
 // Async/Await
-const data = await catalog.getConfigurationByType(company_id, application_id, type, );
+const data = await catalog.getConfigurations(company_id, application_id, );
 
 ```
 
@@ -4861,7 +5908,6 @@ const data = await catalog.getConfigurationByType(company_id, application_id, ty
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| type | string | type can be brands, categories etc. | 
 
 
 configured details for catalog.
@@ -4897,6 +5943,33 @@ Add configuration for categories & brands.
 ---
 
 
+#### Catalog#getConfigurationByType
+Get configured details for catalog
+
+```javascript
+// Promise
+const promise = catalog.getConfigurationByType(company_id, application_id, type, );
+
+// Async/Await
+const data = await catalog.getConfigurationByType(company_id, application_id, type, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| type | string | type can be brands, categories etc. | 
+
+
+configured details for catalog.
+
+
+---
+
+
 #### Catalog#getQueryFilters
 Get query filters to configure a collection
 
@@ -4923,32 +5996,6 @@ Get query filters to configure a collection
 ---
 
 
-#### Catalog#getAllCollections
-List all the collections
-
-```javascript
-// Promise
-const promise = catalog.getAllCollections(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getAllCollections(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections as specified in `CollectionListingSchema`
-
-
----
-
-
 #### Catalog#createCollection
 Add a Collection
 
@@ -4970,6 +6017,32 @@ const data = await catalog.createCollection(company_id, application_id, );
 
 
 Create a collection. See `CreateCollectionRequestSchema` for the list of attributes needed to create a collection and collections/query-options for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionCreateResponse`
+
+
+---
+
+
+#### Catalog#getAllCollections
+List all the collections
+
+```javascript
+// Promise
+const promise = catalog.getAllCollections(company_id, application_id, );
+
+// Async/Await
+const data = await catalog.getAllCollections(company_id, application_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+
+
+A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections as specified in `CollectionListingSchema`
 
 
 ---
@@ -5056,6 +6129,33 @@ Update a collection by it's id. On successful request, returns the updated colle
 ---
 
 
+#### Catalog#addCollectionItems
+Add items to a collection
+
+```javascript
+// Promise
+const promise = catalog.addCollectionItems(company_id, application_id, id, );
+
+// Async/Await
+const data = await catalog.addCollectionItems(company_id, application_id, id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier of a collection. | 
+
+
+Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
+
+
+---
+
+
 #### Catalog#getCollectionItems
 Get the items for a collection
 
@@ -5081,33 +6181,6 @@ const data = await catalog.getCollectionItems(company_id, application_id, id, so
 
 
 Get items from a collection specified by its `id`.
-
-
----
-
-
-#### Catalog#addCollectionItems
-Add items to a collection
-
-```javascript
-// Promise
-const promise = catalog.addCollectionItems(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.addCollectionItems(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier of a collection. | 
-
-
-Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
 
 
 ---
@@ -5609,6 +6682,31 @@ The filter type query parameter defines what type of data to return. The type of
 ---
 
 
+#### Catalog#createCategories
+Create product categories
+
+```javascript
+// Promise
+const promise = catalog.createCategories(company_id, );
+
+// Async/Await
+const data = await catalog.createCategories(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API lets user create product categories
+
+
+---
+
+
 #### Catalog#listCategories
 Get product categories list
 
@@ -5631,31 +6729,6 @@ const data = await catalog.listCategories(company_id, level, q, );
 
 
 This API gets meta associated to product categories.
-
-
----
-
-
-#### Catalog#createCategories
-Create product categories
-
-```javascript
-// Promise
-const promise = catalog.createCategories(company_id, );
-
-// Async/Await
-const data = await catalog.createCategories(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API lets user create product categories
 
 
 ---
@@ -5713,6 +6786,31 @@ This API gets meta associated to product categories.
 ---
 
 
+#### Catalog#createProduct
+Create a product.
+
+```javascript
+// Promise
+const promise = catalog.createProduct(company_id, );
+
+// Async/Await
+const data = await catalog.createProduct(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to product that is to be viewed. | 
+
+
+This API allows to create product.
+
+
+---
+
+
 #### Catalog#getProducts
 Get product list
 
@@ -5738,31 +6836,6 @@ const data = await catalog.getProducts(company_id, brand_ids, category_ids, sear
 
 
 This API gets meta associated to products.
-
-
----
-
-
-#### Catalog#createProduct
-Create a product.
-
-```javascript
-// Promise
-const promise = catalog.createProduct(company_id, );
-
-// Async/Await
-const data = await catalog.createProduct(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to product that is to be viewed. | 
-
-
-This API allows to create product.
 
 
 ---
@@ -5903,33 +6976,6 @@ This API helps to get data associated to a particular product size.
 ---
 
 
-#### Catalog#getProductBulkUploadHistory
-Get a list of all bulk product upload jobs.
-
-```javascript
-// Promise
-const promise = catalog.getProductBulkUploadHistory(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getProductBulkUploadHistory(company_id, page_no, page_size, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id of of which Product Bulk Upload History to be obtained. | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
-
-
-This API helps to get bulk product upload jobs data.
-
-
----
-
-
 #### Catalog#updateProductAssetsInBulk
 Create a Bulk asset upload Job.
 
@@ -5955,15 +7001,15 @@ This API helps to create a bulk asset upload job.
 ---
 
 
-#### Catalog#deleteProductBulkJob
-Delete Bulk product job.
+#### Catalog#getProductBulkUploadHistory
+Get a list of all bulk product upload jobs.
 
 ```javascript
 // Promise
-const promise = catalog.deleteProductBulkJob(company_id, batch_id, );
+const promise = catalog.getProductBulkUploadHistory(company_id, page_no, page_size, );
 
 // Async/Await
-const data = await catalog.deleteProductBulkJob(company_id, batch_id, );
+const data = await catalog.getProductBulkUploadHistory(company_id, page_no, page_size, );
 
 ```
 
@@ -5971,11 +7017,12 @@ const data = await catalog.deleteProductBulkJob(company_id, batch_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Company Id of the company associated to size that is to be deleted. | 
-| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
+| company_id | integer | Company Id of of which Product Bulk Upload History to be obtained. | 
+| page_no | integer | The page number to navigate through the given set of results | 
+| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
 
 
-This API allows to delete bulk product job associated with company.
+This API helps to get bulk product upload jobs data.
 
 
 ---
@@ -6007,6 +7054,32 @@ This API helps to create products in bulk push to kafka for approval/creation.
 ---
 
 
+#### Catalog#deleteProductBulkJob
+Delete Bulk product job.
+
+```javascript
+// Promise
+const promise = catalog.deleteProductBulkJob(company_id, batch_id, );
+
+// Async/Await
+const data = await catalog.deleteProductBulkJob(company_id, batch_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company associated to size that is to be deleted. | 
+| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
+
+
+This API allows to delete bulk product job associated with company.
+
+
+---
+
+
 #### Catalog#getCompanyTags
 Get a list of all tags associated with company.
 
@@ -6027,6 +7100,31 @@ const data = await catalog.getCompanyTags(company_id, );
 
 
 This API helps to get tags data associated to a particular copmpany.
+
+
+---
+
+
+#### Catalog#createProductAssetsInBulk
+Create a Bulk asset upload Job.
+
+```javascript
+// Promise
+const promise = catalog.createProductAssetsInBulk(company_id, );
+
+// Async/Await
+const data = await catalog.createProductAssetsInBulk(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which assets to be uploaded. | 
+
+
+This API helps to create a bulk asset upload job.
 
 
 ---
@@ -6059,31 +7157,6 @@ This API helps to get bulk asset jobs data associated to a particular company.
 ---
 
 
-#### Catalog#createProductAssetsInBulk
-Create a Bulk asset upload Job.
-
-```javascript
-// Promise
-const promise = catalog.createProductAssetsInBulk(company_id, );
-
-// Async/Await
-const data = await catalog.createProductAssetsInBulk(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
-
-
-This API helps to create a bulk asset upload job.
-
-
----
-
-
 #### Catalog#deleteSize
 Delete a Size associated with product.
 
@@ -6106,6 +7179,33 @@ const data = await catalog.deleteSize(company_id, item_id, size, );
 
 
 This API allows to delete size associated with product.
+
+
+---
+
+
+#### Catalog#addInventory
+Add Inventory for particular size and store.
+
+```javascript
+// Promise
+const promise = catalog.addInventory(company_id, item_id, size, );
+
+// Async/Await
+const data = await catalog.addInventory(company_id, item_id, size, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to product that is to be viewed. | 
+| item_id | number | Item of the company associated to product that is to be viewed. | 
+| size | string | Size in which inventory is to be added. | 
+
+
+This API allows add Inventory for particular size and store.
 
 
 ---
@@ -6140,33 +7240,6 @@ This API allows get Inventory data for particular company grouped by size and st
 ---
 
 
-#### Catalog#addInventory
-Add Inventory for particular size and store.
-
-```javascript
-// Promise
-const promise = catalog.addInventory(company_id, item_id, size, );
-
-// Async/Await
-const data = await catalog.addInventory(company_id, item_id, size, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to product that is to be viewed. | 
-| item_id | number | Item of the company associated to product that is to be viewed. | 
-| size | string | Size in which inventory is to be added. | 
-
-
-This API allows add Inventory for particular size and store.
-
-
----
-
-
 #### Catalog#deleteInventory
 Delete a Inventory.
 
@@ -6189,6 +7262,31 @@ const data = await catalog.deleteInventory(company_id, item_id, location_id, );
 
 
 This API allows to delete inventory of a particular product for particular company.
+
+
+---
+
+
+#### Catalog#createBulkInventoryJob
+Create a Bulk Inventory upload Job.
+
+```javascript
+// Promise
+const promise = catalog.createBulkInventoryJob(company_id, );
+
+// Async/Await
+const data = await catalog.createBulkInventoryJob(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which Inventory to be uploaded. | 
+
+
+This API helps to create a bulk Inventory upload job.
 
 
 ---
@@ -6221,15 +7319,15 @@ This API helps to get bulk Inventory upload jobs data.
 ---
 
 
-#### Catalog#createBulkInventoryJob
-Create a Bulk Inventory upload Job.
+#### Catalog#createBulkInventory
+Create products in bulk associated with given batch Id.
 
 ```javascript
 // Promise
-const promise = catalog.createBulkInventoryJob(company_id, );
+const promise = catalog.createBulkInventory(company_id, );
 
 // Async/Await
-const data = await catalog.createBulkInventoryJob(company_id, );
+const data = await catalog.createBulkInventory(company_id, );
 
 ```
 
@@ -6237,10 +7335,10 @@ const data = await catalog.createBulkInventoryJob(company_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | integer | Company Id in which Inventory to be uploaded. | 
+| company_id | integer | Company Id in which Inventory is to be uploaded. | 
 
 
-This API helps to create a bulk Inventory upload job.
+This API helps to create products in bulk push to kafka for approval/creation.
 
 
 ---
@@ -6271,15 +7369,15 @@ This API allows to delete bulk Inventory job associated with company.
 ---
 
 
-#### Catalog#createBulkInventory
-Create products in bulk associated with given batch Id.
+#### Catalog#createInventoryExportJob
+Create a Inventory export Job.
 
 ```javascript
 // Promise
-const promise = catalog.createBulkInventory(company_id, );
+const promise = catalog.createInventoryExportJob(company_id, );
 
 // Async/Await
-const data = await catalog.createBulkInventory(company_id, );
+const data = await catalog.createInventoryExportJob(company_id, );
 
 ```
 
@@ -6287,10 +7385,10 @@ const data = await catalog.createBulkInventory(company_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | integer | Company Id in which Inventory is to be uploaded. | 
+| company_id | integer | Company Id in which assets to be uploaded. | 
 
 
-This API helps to create products in bulk push to kafka for approval/creation.
+This API helps to create a Inventory export job.
 
 
 ---
@@ -6316,31 +7414,6 @@ const data = await catalog.getInventoryExport(company_id, );
 
 
 This API helps to get Inventory export history.
-
-
----
-
-
-#### Catalog#createInventoryExportJob
-Create a Inventory export Job.
-
-```javascript
-// Promise
-const promise = catalog.createInventoryExportJob(company_id, );
-
-// Async/Await
-const data = await catalog.createInventoryExportJob(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
-
-
-This API helps to create a Inventory export job.
 
 
 ---
@@ -6372,6 +7445,31 @@ This API allows get List of different filters like brand, store, and type for in
 ---
 
 
+#### Catalog#createHsnCode
+Create Hsn Code.
+
+```javascript
+// Promise
+const promise = catalog.createHsnCode(company_id, );
+
+// Async/Await
+const data = await catalog.createHsnCode(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+
+
+Create Hsn Code.
+
+
+---
+
+
 #### Catalog#getAllHsnCodes
 Hsn Code List.
 
@@ -6395,31 +7493,6 @@ const data = await catalog.getAllHsnCodes(company_id, page_no, page_size, q, );
 
 
 Hsn Code List.
-
-
----
-
-
-#### Catalog#createHsnCode
-Create Hsn Code.
-
-```javascript
-// Promise
-const promise = catalog.createHsnCode(company_id, );
-
-// Async/Await
-const data = await catalog.createHsnCode(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-
-
-Create Hsn Code.
 
 
 ---
@@ -6569,32 +7642,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#getBrand
-Get a single brand.
-
-```javascript
-// Promise
-const promise = companyprofile.getBrand(company_id, brand_id, );
-
-// Async/Await
-const data = await companyprofile.getBrand(company_id, brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API helps to get data associated to a particular brand.
-
-
----
-
-
 #### CompanyProfile#editBrand
 Edit a brand.
 
@@ -6616,6 +7663,32 @@ const data = await companyprofile.editBrand(company_id, brand_id, );
 
 
 This API allows to edit meta of a brand.
+
+
+---
+
+
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```javascript
+// Promise
+const promise = companyprofile.getBrand(company_id, brand_id, );
+
+// Async/Await
+const data = await companyprofile.getBrand(company_id, brand_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
 
 
 ---
@@ -6646,6 +7719,31 @@ This API allows to create a brand associated to a company.
 ---
 
 
+#### CompanyProfile#createCompanyBrandMapping
+Create a company brand mapping.
+
+```javascript
+// Promise
+const promise = companyprofile.createCompanyBrandMapping(company_id, );
+
+// Async/Await
+const data = await companyprofile.createCompanyBrandMapping(company_id, );
+
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
+
+
+---
+
+
 #### CompanyProfile#getBrands
 Get brands associated to a company
 
@@ -6671,15 +7769,15 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createCompanyBrandMapping
-Create a company brand mapping.
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
 
 ```javascript
 // Promise
-const promise = companyprofile.createCompanyBrandMapping(company_id, );
+const promise = companyprofile.createLocation(company_id, );
 
 // Async/Await
-const data = await companyprofile.createCompanyBrandMapping(company_id, );
+const data = await companyprofile.createLocation(company_id, );
 
 ```
 
@@ -6687,10 +7785,10 @@ const data = await companyprofile.createCompanyBrandMapping(company_id, );
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
+| company_id | string | Id of the company inside which the location is to be created. | 
 
 
-This API allows to create a company brand mapping, for a already existing brand in the system.
+This API allows to create a location associated to a company.
 
 
 ---
@@ -6726,15 +7824,15 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### CompanyProfile#updateLocation
+Edit a location asscoiated to a company.
 
 ```javascript
 // Promise
-const promise = companyprofile.createLocation(company_id, );
+const promise = companyprofile.updateLocation(company_id, location_id, );
 
 // Async/Await
-const data = await companyprofile.createLocation(company_id, );
+const data = await companyprofile.updateLocation(company_id, location_id, );
 
 ```
 
@@ -6743,9 +7841,10 @@ const data = await companyprofile.createLocation(company_id, );
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
 
 
-This API allows to create a location associated to a company.
+This API allows to edit a location associated to a company.
 
 
 ---
@@ -6772,32 +7871,6 @@ const data = await companyprofile.getLocationDetail(company_id, location_id, );
 
 
 This API helps to get data associated to a specific location.
-
-
----
-
-
-#### CompanyProfile#updateLocation
-Edit a location asscoiated to a company.
-
-```javascript
-// Promise
-const promise = companyprofile.updateLocation(company_id, location_id, );
-
-// Async/Await
-const data = await companyprofile.updateLocation(company_id, location_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
-
-
-This API allows to edit a location associated to a company.
 
 
 ---
