@@ -35,14 +35,13 @@ Get started with the Kotlin Development SDK for Fynd Platform
     val applicationClient = ApplicationClient(config = config)
         GlobalScope.launch {
             applicationClient.catalog.getProductDetailBySlug(slug: "product-slug")
-                .safeAwait(
-                    { product ->
-                        print(product.peekContent()?.name)
-                    },
-                    { error ->
-                        print(error.message)
+                .safeAwait{ response,error ->
+                    response?.let{
+                        print(it.peekContent()?.name)
                     }
-                )
+                    error?.let{
+                        print(it.message)
+                    }
         }
   }
 ```
