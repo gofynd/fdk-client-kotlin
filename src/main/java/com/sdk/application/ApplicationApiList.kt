@@ -402,6 +402,10 @@ interface ContentApiList {
     fun getBlog(@Path("slug") slug: String)
     : Deferred<Response<CustomBlogSchema>>
     
+    @GET ("/service/application/content/v1.0/blogs/")
+    fun getBlogs(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<BlogGetResponse>>
+    
     @GET ("/service/application/content/v1.0/faq")
     fun getFaqs()
     : Deferred<Response<FaqResponseSchema>>
@@ -437,6 +441,10 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/pages/{slug}")
     fun getPage(@Path("slug") slug: String)
     : Deferred<Response<CustomPageSchema>>
+    
+    @GET ("/service/application/content/v1.0/pages/")
+    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PageGetResponse>>
     
     @GET ("/service/application/content/v1.0/seo")
     fun getSEOConfiguration()

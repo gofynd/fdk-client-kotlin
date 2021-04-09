@@ -86,22 +86,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<ProductSizeSellersResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<ProductSizeSellersResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<ProductSizeSellersResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<ProductSizeSellersResponse>?,FdkError?) -> Unit) {
@@ -187,22 +171,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<ProductStockPolling>()
 
     paginator.setCallBack(object : PaginatorCallback<ProductStockPolling> {
-            override suspend fun onNext(
-                onSuccess: (Event<ProductStockPolling>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                catalogApiList?.getProductStockForTimeByIds(timestamp = timestamp, pageSize = pageSize, pageId = pageId)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<ProductStockPolling>?,FdkError?) -> Unit) {
@@ -279,22 +247,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<ProductListingResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<ProductListingResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<ProductListingResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                catalogApiList?.getProducts(q = q, f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize, pageNo = pageNo, pageType = pageType)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<ProductListingResponse>?,FdkError?) -> Unit) {
@@ -348,22 +300,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<BrandListingResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<BrandListingResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<BrandListingResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                catalogApiList?.getBrands(department = department, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<BrandListingResponse>?,FdkError?) -> Unit) {
@@ -434,22 +370,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<HomeListingResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<HomeListingResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<HomeListingResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                catalogApiList?.getHomeProducts(sortOn = sortOn, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<HomeListingResponse>?,FdkError?) -> Unit) {
@@ -508,22 +428,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<GetCollectionListingResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<GetCollectionListingResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<GetCollectionListingResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                catalogApiList?.getCollections(pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<GetCollectionListingResponse>?,FdkError?) -> Unit) {
@@ -594,22 +498,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<ProductListingResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<ProductListingResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<ProductListingResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                catalogApiList?.getCollectionItemsBySlug(slug = slug, f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<ProductListingResponse>?,FdkError?) -> Unit) {
@@ -670,22 +558,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<GetFollowListingResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<GetFollowListingResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<GetFollowListingResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                catalogApiList?.getFollowedListing(collectionType = collectionType, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<GetFollowListingResponse>?,FdkError?) -> Unit) {
@@ -774,22 +646,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<StoreListingResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<StoreListingResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<StoreListingResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                catalogApiList?.getStores(pageNo = pageNo, pageSize = pageSize, q = q, range = range, latitude = latitude, longitude = longitude)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<StoreListingResponse>?,FdkError?) -> Unit) {
@@ -1279,6 +1135,54 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun getBlogs(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<BlogGetResponse>>? {
+        return contentApiList?.getBlogs(pageNo = pageNo, pageSize = pageSize )}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getBlogs
+    **/
+    fun getBlogsPaginator(pageSize: Int?=null) : Paginator<BlogGetResponse>{
+
+    val paginator = Paginator<BlogGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<BlogGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<BlogGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getBlogs(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
         return contentApiList?.getFaqs( )}
 
@@ -1338,22 +1242,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<NavigationGetResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<NavigationGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<NavigationGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                contentApiList?.getNavigations(pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<NavigationGetResponse>?,FdkError?) -> Unit) {
@@ -1382,6 +1270,54 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         return contentApiList?.getPage(slug = slug )}
 
     
+    
+    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
+        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize )}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPages
+    **/
+    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
+
+    val paginator = Paginator<PageGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
     
     fun getSEOConfiguration(): Deferred<Response<SeoComponent>>? {
         return contentApiList?.getSEOConfiguration( )}
@@ -1620,22 +1556,6 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
     val paginator = Paginator<OrderingStores>()
 
     paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
-            override suspend fun onNext(
-                onSuccess: (Event<OrderingStores>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                configurationApiList?.getOrderingStores(pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<OrderingStores>?,FdkError?) -> Unit) {
@@ -1947,22 +1867,6 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     val paginator = Paginator<PointsHistoryResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<PointsHistoryResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<PointsHistoryResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<PointsHistoryResponse>?,FdkError?) -> Unit) {
@@ -2075,22 +1979,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<ReportAbuseGetResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<ReportAbuseGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<ReportAbuseGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                feedbackApiList?.getAbuseReports(entityId = entityId, entityType = entityType, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<ReportAbuseGetResponse>?,FdkError?) -> Unit) {
@@ -2139,22 +2027,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<AttributeResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<AttributeResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<AttributeResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<AttributeResponse>?,FdkError?) -> Unit) {
@@ -2250,22 +2122,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<CommentGetResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<CommentGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<CommentGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                feedbackApiList?.getComments(entityType = entityType, id = id, entityId = entityId, userId = userId, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<CommentGetResponse>?,FdkError?) -> Unit) {
@@ -2351,22 +2207,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<MediaGetResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<MediaGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<MediaGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<MediaGetResponse>?,FdkError?) -> Unit) {
@@ -2432,22 +2272,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<RatingGetResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<RatingGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<RatingGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                feedbackApiList?.getReviewSummaries(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<RatingGetResponse>?,FdkError?) -> Unit) {
@@ -2553,22 +2377,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<ReviewGetResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<ReviewGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<ReviewGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                feedbackApiList?.getReviews(entityType = entityType, entityId = entityId, id = id, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<ReviewGetResponse>?,FdkError?) -> Unit) {
@@ -2654,22 +2462,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<QNAGetResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<QNAGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<QNAGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                feedbackApiList?.getQuestionAndAnswers(entityType = entityType, entityId = entityId, id = id, showAnswer = showAnswer, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<QNAGetResponse>?,FdkError?) -> Unit) {
@@ -2728,22 +2520,6 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     val paginator = Paginator<VoteResponse>()
 
     paginator.setCallBack(object : PaginatorCallback<VoteResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<VoteResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                feedbackApiList?.getVotes(id = id, refType = refType, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-            }
 
             override suspend fun onNext(
                 onResponse: (Event<VoteResponse>?,FdkError?) -> Unit) {

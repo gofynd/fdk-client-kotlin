@@ -20,9 +20,7 @@ class PlatformClient(val config:PlatformConfig) {
     
     val order by lazy { OrderDataManagerClass(config)}
     
-    val catalog by lazy { CatalogDataManagerClass(config)}
-    
-    val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
+    val fileStorage by lazy { FileStorageDataManagerClass(config)}
     
     val share by lazy { ShareDataManagerClass(config)}
     
@@ -35,6 +33,10 @@ class PlatformClient(val config:PlatformConfig) {
     val marketplaces by lazy { MarketplacesDataManagerClass(config)}
     
     val rewards by lazy { RewardsDataManagerClass(config)}
+    
+    val analytics by lazy { AnalyticsDataManagerClass(config)}
+    
+    val discount by lazy { DiscountDataManagerClass(config)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -60,9 +62,7 @@ class PlatformClient(val config:PlatformConfig) {
     
     val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
-    val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
-    
-    val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
+    val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     
@@ -75,6 +75,10 @@ class PlatformClient(val config:PlatformConfig) {
     val marketplaces by lazy { this@PlatformClient.marketplaces.ApplicationClient(applicationId,config)}
     
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
+    
+    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
+    
+    val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
     }
 

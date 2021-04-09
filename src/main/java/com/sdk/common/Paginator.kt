@@ -18,13 +18,6 @@ class Paginator<T : Any> {
     }
 
     suspend fun next(
-        onSuccess: (Event<T>) -> Unit,
-        onFailure: (FdkError) -> Unit
-    ) {
-        actionCallBack?.onNext(onSuccess, onFailure)
-    }
-
-    suspend fun next(
         onResponse: (Event<T>?, FdkError?) -> Unit = { response, error -> }
     ) {
         actionCallBack?.onNext(onResponse)

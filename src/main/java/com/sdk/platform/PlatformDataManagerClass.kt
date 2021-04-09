@@ -339,29 +339,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<FeedbackAttributes>{
         val paginator = Paginator<FeedbackAttributes>()
         paginator.setCallBack(object : PaginatorCallback<FeedbackAttributes> {
-            override suspend fun onNext(
-                onSuccess: (Event<FeedbackAttributes>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    feedbackApiList?.getAttributes(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<FeedbackAttributes>?,FdkError?) -> Unit){
 
@@ -497,29 +475,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<GetReviewResponse>{
         val paginator = Paginator<GetReviewResponse>()
         paginator.setCallBack(object : PaginatorCallback<GetReviewResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<GetReviewResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "cursor"
-                    feedbackApiList?.getCustomerReviews(companyId = config.companyId , applicationId = applicationId , id = id, entityId = entityId, entityType = entityType, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, next = next, start = start, limit = limit, count = count, pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<GetReviewResponse>?,FdkError?) -> Unit){
 
@@ -610,29 +566,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<TemplateGetResponse>{
         val paginator = Paginator<TemplateGetResponse>()
         paginator.setCallBack(object : PaginatorCallback<TemplateGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<TemplateGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "cursor"
-                    feedbackApiList?.getApplicationTemplates(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<TemplateGetResponse>?,FdkError?) -> Unit){
 
@@ -1123,29 +1057,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<GetAnnouncementListSchema>{
         val paginator = Paginator<GetAnnouncementListSchema>()
         paginator.setCallBack(object : PaginatorCallback<GetAnnouncementListSchema> {
-            override suspend fun onNext(
-                onSuccess: (Event<GetAnnouncementListSchema>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<GetAnnouncementListSchema>?,FdkError?) -> Unit){
 
@@ -1274,29 +1186,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<BlogGetResponse>{
         val paginator = Paginator<BlogGetResponse>()
         paginator.setCallBack(object : PaginatorCallback<BlogGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<BlogGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<BlogGetResponse>?,FdkError?) -> Unit){
 
@@ -1495,29 +1385,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<LandingPageGetResponse>{
         val paginator = Paginator<LandingPageGetResponse>()
         paginator.setCallBack(object : PaginatorCallback<LandingPageGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<LandingPageGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<LandingPageGetResponse>?,FdkError?) -> Unit){
 
@@ -1641,29 +1509,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<NavigationGetResponse>{
         val paginator = Paginator<NavigationGetResponse>()
         paginator.setCallBack(object : PaginatorCallback<NavigationGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<NavigationGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<NavigationGetResponse>?,FdkError?) -> Unit){
 
@@ -1812,29 +1658,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<PageGetResponse>{
         val paginator = Paginator<PageGetResponse>()
         paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<PageGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit){
 
@@ -1978,29 +1802,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<SlideshowGetResponse>{
         val paginator = Paginator<SlideshowGetResponse>()
         paginator.setCallBack(object : PaginatorCallback<SlideshowGetResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<SlideshowGetResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<SlideshowGetResponse>?,FdkError?) -> Unit){
 
@@ -2347,12 +2149,12 @@ class CommunicationDataManagerClass(val config: PlatformConfig) : BaseRepository
     
     
     
-    suspend fun getSystemNotifications(query: HashMap<String,Any>?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getSystemNotifications(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<SystemNotifications>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             communicationApiList?.getSystemNotifications(
-        companyId = config.companyId, query = query, pageNo = pageNo, pageSize = pageSize )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 
@@ -2418,29 +2220,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<Campaigns>{
         val paginator = Paginator<Campaigns>()
         paginator.setCallBack(object : PaginatorCallback<Campaigns> {
-            override suspend fun onNext(
-                onSuccess: (Event<Campaigns>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<Campaigns>?,FdkError?) -> Unit){
 
@@ -2554,29 +2334,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<Audiences>{
         val paginator = Paginator<Audiences>()
         paginator.setCallBack(object : PaginatorCallback<Audiences> {
-            override suspend fun onNext(
-                onSuccess: (Event<Audiences>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<Audiences>?,FdkError?) -> Unit){
 
@@ -2700,29 +2458,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<EmailProviders>{
         val paginator = Paginator<EmailProviders>()
         paginator.setCallBack(object : PaginatorCallback<EmailProviders> {
-            override suspend fun onNext(
-                onSuccess: (Event<EmailProviders>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<EmailProviders>?,FdkError?) -> Unit){
 
@@ -2826,29 +2562,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<EmailTemplates>{
         val paginator = Paginator<EmailTemplates>()
         paginator.setCallBack(object : PaginatorCallback<EmailTemplates> {
-            override suspend fun onNext(
-                onSuccess: (Event<EmailTemplates>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<EmailTemplates>?,FdkError?) -> Unit){
 
@@ -2932,29 +2646,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<SystemEmailTemplates>{
         val paginator = Paginator<SystemEmailTemplates>()
         paginator.setCallBack(object : PaginatorCallback<SystemEmailTemplates> {
-            override suspend fun onNext(
-                onSuccess: (Event<SystemEmailTemplates>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getSystemEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<SystemEmailTemplates>?,FdkError?) -> Unit){
 
@@ -3058,29 +2750,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<EventSubscriptions>{
         val paginator = Paginator<EventSubscriptions>()
         paginator.setCallBack(object : PaginatorCallback<EventSubscriptions> {
-            override suspend fun onNext(
-                onSuccess: (Event<EventSubscriptions>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, populate = populate)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<EventSubscriptions>?,FdkError?) -> Unit){
 
@@ -3154,29 +2824,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<Jobs>{
         val paginator = Paginator<Jobs>()
         paginator.setCallBack(object : PaginatorCallback<Jobs> {
-            override suspend fun onNext(
-                onSuccess: (Event<Jobs>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<Jobs>?,FdkError?) -> Unit){
 
@@ -3260,29 +2908,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<JobLogs>{
         val paginator = Paginator<JobLogs>()
         paginator.setCallBack(object : PaginatorCallback<JobLogs> {
-            override suspend fun onNext(
-                onSuccess: (Event<JobLogs>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<JobLogs>?,FdkError?) -> Unit){
 
@@ -3363,29 +2989,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<Logs>{
         val paginator = Paginator<Logs>()
         paginator.setCallBack(object : PaginatorCallback<Logs> {
-            override suspend fun onNext(
-                onSuccess: (Event<Logs>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "cursor"
-                    communicationApiList?.getCommunicationLogs(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize, sort = sort, query = query)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<Logs>?,FdkError?) -> Unit){
 
@@ -3460,29 +3064,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<SmsProviders>{
         val paginator = Paginator<SmsProviders>()
         paginator.setCallBack(object : PaginatorCallback<SmsProviders> {
-            override suspend fun onNext(
-                onSuccess: (Event<SmsProviders>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getSmsProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<SmsProviders>?,FdkError?) -> Unit){
 
@@ -3586,29 +3168,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<SmsTemplates>{
         val paginator = Paginator<SmsTemplates>()
         paginator.setCallBack(object : PaginatorCallback<SmsTemplates> {
-            override suspend fun onNext(
-                onSuccess: (Event<SmsTemplates>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<SmsTemplates>?,FdkError?) -> Unit){
 
@@ -3722,29 +3282,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<SystemSmsTemplates>{
         val paginator = Paginator<SystemSmsTemplates>()
         paginator.setCallBack(object : PaginatorCallback<SystemSmsTemplates> {
-            override suspend fun onNext(
-                onSuccess: (Event<SystemSmsTemplates>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    communicationApiList?.getSystemSystemTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<SystemSmsTemplates>?,FdkError?) -> Unit){
 
@@ -4133,13 +3671,13 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 }
 }
 
-class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+class FileStorageDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
-    private val catalogApiList by lazy {
-        generatecatalogApiList()
+    private val fileStorageApiList by lazy {
+        generatefileStorageApiList()
     }
     
-    private fun generatecatalogApiList(): CatalogApiList? {
+    private fun generatefileStorageApiList(): FileStorageApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -4151,28 +3689,44 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformCatalog",
+            namespace = "PlatformFileStorage",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
+        return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
+    }
+    
+    
+    suspend fun startUpload(namespace: String,body: StartRequest)
+    : Deferred<Response<StartResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            fileStorageApiList?.startUpload(
+        namespace = namespace, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun completeUpload(namespace: String,body: StartResponse)
+    : Deferred<Response<CompleteResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            fileStorageApiList?.completeUpload(
+        namespace = namespace, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
     }
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun createProductBundle(body: ProductBundleRequest)
-    : Deferred<Response<GetProductBundleCreateResponse>>? {
+    suspend fun getSignUrls(body: SignUrlRequest)
+    : Deferred<Response<SignUrlResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductBundle(
+            fileStorageApiList?.getSignUrls(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -4180,84 +3734,12 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getProductBundle(q: String?=null)
-    : Deferred<Response<GetProductBundleListingResponse>>? {
+    suspend fun copyFiles(sync: Boolean?=null,body: BulkRequest)
+    : Deferred<Response<BulkResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundle(
-        companyId = config.companyId, q = q )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateProductBundle(id: String,body: ProductBundleUpdateRequest)
-    : Deferred<Response<GetProductBundleCreateResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateProductBundle(
-        companyId = config.companyId, id = id, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductBundleDetail(id: String)
-    : Deferred<Response<GetProductBundleResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundleDetail(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createSizeGuide(body: ValidateSizeGuide)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createSizeGuide(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getSizeGuides(active: Boolean?=null, q: String?=null, tag: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ListSizeGuide>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSizeGuides(
-        companyId = config.companyId, active = active, q = q, tag = tag, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateSizeGuide(id: String,body: ValidateSizeGuide)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateSizeGuide(
-        companyId = config.companyId, id = id, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getSizeGuide(id: String)
-    : Deferred<Response<SizeGuideResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSizeGuide(
-        companyId = config.companyId, id = id )
+            fileStorageApiList?.copyFiles(
+        sync = sync, companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -4265,1099 +3747,25 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun getSellerInsights(sellerAppId: String)
-    : Deferred<Response<CrossSellingResponse>>? {
+    suspend fun browse(namespace: String, pageNo: Int?=null)
+    : Deferred<Response<BrowseResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSellerInsights(
-        companyId = config.companyId, sellerAppId = sellerAppId )
+            fileStorageApiList?.browse(
+        namespace = namespace, companyId = config.companyId, pageNo = pageNo )
         } else {
             null
         } 
     }
     
     
-    suspend fun createMarketplaceOptin(marketplace: String,body: OptInPostRequest)
-    : Deferred<Response<UpdatedResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createMarketplaceOptin(
-        companyId = config.companyId, marketplace = marketplace, body = body)
-        } else {
-            null
-        } 
-    }
     
-    
-    suspend fun getMarketplaceOptinDetail()
-    : Deferred<Response<GetOptInPlatform>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getMarketplaceOptinDetail(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCompanyDetail()
-    : Deferred<Response<OptinCompanyDetail>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyDetail(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCompanyBrandDetail(isActive: Boolean?=null, q: Boolean?=null, pageNo: Int?=null, pageSize: Int?=null, marketplace: String?=null)
-    : Deferred<Response<OptinCompanyBrandDetailsView>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyBrandDetail(
-        companyId = config.companyId, isActive = isActive, q = q, pageNo = pageNo, pageSize = pageSize, marketplace = marketplace )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCompanyMetrics()
-    : Deferred<Response<OptinCompanyMetrics>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyMetrics(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getStoreDetail(q: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<OptinStoreDetails>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getStoreDetail(
-        companyId = config.companyId, q = q, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listProductTemplateCategories(departments: String, itemType: String)
-    : Deferred<Response<ProdcutTemplateCategoriesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listProductTemplateCategories(
-        companyId = config.companyId, departments = departments, itemType = itemType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listDepartmentsData()
-    : Deferred<Response<DepartmentsResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listDepartmentsData(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getDepartmentData(uid: String)
-    : Deferred<Response<DepartmentsResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getDepartmentData(
-        companyId = config.companyId, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listProductTemplate(departments: String)
-    : Deferred<Response<TemplatesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listProductTemplate(
-        companyId = config.companyId, departments = departments )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun validateProductTemplate(slug: String)
-    : Deferred<Response<TemplatesValidationResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.validateProductTemplate(
-        companyId = config.companyId, slug = slug )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun downloadProductTemplateViews(slug: String)
+    suspend fun proxy(url: String)
     : Deferred<Response<String>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.downloadProductTemplateViews(
-        companyId = config.companyId, slug = slug )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun downloadProductTemplateView(itemType: String)
-    : Deferred<Response<String>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.downloadProductTemplateView(
-        companyId = config.companyId, itemType = itemType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun validateProductTemplateSchema(itemType: String)
-    : Deferred<Response<InventoryValidationResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.validateProductTemplateSchema(
-        companyId = config.companyId, itemType = itemType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listHSNCodes()
-    : Deferred<Response<HSNCodesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listHSNCodes(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listProductTemplateExportDetails()
-    : Deferred<Response<TemplatesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listProductTemplateExportDetails(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listTemplateBrandTypeValues(filter: String)
-    : Deferred<Response<ProductConfligurationDownloads>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listTemplateBrandTypeValues(
-        companyId = config.companyId, filter = filter )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createCategories(body: CategoryRequestBody)
-    : Deferred<Response<CategoryCreateResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createCategories(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun listCategories(level: String?=null, q: String?=null)
-    : Deferred<Response<CategoryResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.listCategories(
-        companyId = config.companyId, level = level, q = q )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateCategory(uid: String,body: CategoryRequestBody)
-    : Deferred<Response<CategoryUpdateResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateCategory(
-        companyId = config.companyId, uid = uid, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCategoryData(uid: String)
-    : Deferred<Response<Category>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCategoryData(
-        companyId = config.companyId, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createProduct(body: ProductCreateUpdate)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProduct(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProducts(brandIds: Double?=null, categoryIds: Double?=null, search: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ProductListingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProducts(
-        companyId = config.companyId, brandIds = brandIds, categoryIds = categoryIds, search = search, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteProduct(itemId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProduct(
-        companyId = config.companyId, itemId = itemId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun editProduct(itemId: String,body: ProductCreateUpdate)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.editProduct(
-        companyId = config.companyId, itemId = itemId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProduct(itemCode: String?=null, itemId: String, brandUid: Int?=null, uid: Int?=null)
-    : Deferred<Response<Product>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProduct(
-        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductValidation()
-    : Deferred<Response<ValidateProduct>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductValidation(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductSize(itemCode: String?=null, itemId: String, brandUid: Int?=null, uid: Int?=null)
-    : Deferred<Response<ProductListingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductSize(
-        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateProductAssetsInBulk(body: BulkJob)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateProductAssetsInBulk(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductBulkUploadHistory(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ProductBulkRequestList>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBulkUploadHistory(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createProductsInBulk(batchId: String,body: BulkProductRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductsInBulk(
-        companyId = config.companyId, batchId = batchId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteProductBulkJob(batchId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProductBulkJob(
-        companyId = config.companyId, batchId = batchId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCompanyTags()
-    : Deferred<Response<ProductTagsViewResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCompanyTags(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createProductAssetsInBulk(body: ProductBulkAssets)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductAssetsInBulk(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getProductAssetsInBulk(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<BulkAssetResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductAssetsInBulk(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteSize(itemId: String, size: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteSize(
-        companyId = config.companyId, itemId = itemId, size = size )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun addInventory(itemId: String, size: String,body: InventoryRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.addInventory(
-        companyId = config.companyId, itemId = itemId, size = size, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getInventory(itemId: String, size: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<InventoryRequest1>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getInventory(
-        companyId = config.companyId, itemId = itemId, size = size, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteInventory(itemId: String, locationId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteInventory(
-        companyId = config.companyId, itemId = itemId, locationId = locationId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createBulkInventoryJob(body: BulkJob)
-    : Deferred<Response<CommonResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createBulkInventoryJob(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getInventoryBulkUploadHistory(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<BulkRequestGet>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getInventoryBulkUploadHistory(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createBulkInventory(body: InventoryBulkRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createBulkInventory(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteBulkInventoryJob()
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteBulkInventoryJob(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createInventoryExportJob(body: InventoryExportRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createInventoryExportJob(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getInventoryExport()
-    : Deferred<Response<InventoryExportJob>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getInventoryExport(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun exportInventoryConfig(filterType: String?=null)
-    : Deferred<Response<InventoryConfig>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.exportInventoryConfig(
-        companyId = config.companyId, filterType = filterType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createHsnCode(body: HsnUpsert)
-    : Deferred<Response<HsnCode>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createHsnCode(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getAllHsnCodes(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
-    : Deferred<Response<HsnCodesListingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getAllHsnCodes(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, q = q )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateHsnCode(uid: String,body: HsnUpsert)
-    : Deferred<Response<HsnCode>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.updateHsnCode(
-        companyId = config.companyId, uid = uid, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getHsnCode(uid: String)
-    : Deferred<Response<HsnCode>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getHsnCode(
-        companyId = config.companyId, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-
-inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
-
-    
-    
-    suspend fun deleteSearchKeywords(id: String)
-    : Deferred<Response<DeleteResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateSearchKeywords(id: String,body: CreateSearchKeyword)
-    : Deferred<Response<GetSearchWordsData>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getSearchKeywords(id: String)
-    : Deferred<Response<GetSearchWordsDetailResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCustomKeyword(body: CreateSearchKeyword)
-    : Deferred<Response<GetSearchWordsData>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCustomKeyword(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAllSearchKeyword()
-    : Deferred<Response<GetSearchWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAllSearchKeyword(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteAutocompleteKeyword(id: String)
-    : Deferred<Response<DeleteResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateAutocompleteKeyword(id: String,body: CreateAutocompleteKeyword)
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAutocompleteKeywordDetail(id: String)
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCustomAutocompleteRule(body: CreateAutocompleteKeyword)
-    : Deferred<Response<CreateAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCustomAutocompleteRule(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAutocompleteConfig()
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteConfig(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    suspend fun getCatalogConfiguration()
-    : Deferred<Response<GetCatalogConfigurationMetaData>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCatalogConfiguration(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createConfigurationProductListing(body: AppConfiguration)
-    : Deferred<Response<GetAppCatalogConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createConfigurationProductListing(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getConfigurations()
-    : Deferred<Response<GetAppCatalogConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getConfigurations(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createConfigurationByType(type: String,body: AppConfiguration)
-    : Deferred<Response<GetAppCatalogConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createConfigurationByType(companyId = config.companyId , applicationId = applicationId , type = type, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getConfigurationByType(type: String)
-    : Deferred<Response<GetAppCatalogEntityConfiguration>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getConfigurationByType(companyId = config.companyId , applicationId = applicationId , type = type )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getQueryFilters()
-    : Deferred<Response<GetCollectionQueryOptionResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getQueryFilters(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createCollection(body: CreateCollection)
-    : Deferred<Response<CollectionCreateResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.createCollection(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getAllCollections()
-    : Deferred<Response<GetCollectionListingResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAllCollections(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCollectionDetail(slug: String)
-    : Deferred<Response<CollectionDetailResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCollectionDetail(companyId = config.companyId , applicationId = applicationId , slug = slug )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteCollection(id: String)
-    : Deferred<Response<DeleteResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteCollection(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateCollection(id: String)
-    : Deferred<Response<CollectionCreateResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateCollection(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addCollectionItems(id: String,body: CollectionItemRequest)
-    : Deferred<Response<UpdatedResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.addCollectionItems(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCollectionItems(id: String, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null)
-    : Deferred<Response<GetCollectionItemsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCollectionItems(companyId = config.companyId , applicationId = applicationId , id = id, sortOn = sortOn, pageId = pageId, pageSize = pageSize )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCatalogInsights(brand: String?=null)
-    : Deferred<Response<CatalogInsightResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getCatalogInsights(companyId = config.companyId , applicationId = applicationId , brand = brand )
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-}
-
-class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
-       
-    private val companyProfileApiList by lazy {
-        generatecompanyProfileApiList()
-    }
-    
-    private fun generatecompanyProfileApiList(): CompanyProfileApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
-        val retrofitHttpClient = HttpClient.initialize(
-            baseUrl = config.domain,
-            interceptorList = interceptorMap,
-            namespace = "PlatformCompanyProfile",
-            persistentCookieStore = config.persistentCookieStore
-        )
-        return retrofitHttpClient?.initializeRestClient(CompanyProfileApiList::class.java) as? CompanyProfileApiList
-    }
-    
-    
-    suspend fun updateCompany(body: CompanyStoreSerializerRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateCompany(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun cbsOnboardGet()
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.cbsOnboardGet(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getCompanyMetrics()
-    : Deferred<Response<MetricsSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getCompanyMetrics(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.editBrand(
-        companyId = config.companyId, brandId = brandId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getBrand(brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getBrand(
-        companyId = config.companyId, brandId = brandId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createBrand(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createCompanyBrandMapping(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getBrands()
-    : Deferred<Response<CompanyBrandListSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getBrands(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createLocation(body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getLocations(storeType: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<LocationListSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getLocations(
-        companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateLocation(locationId: String,body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateLocation(
-        companyId = config.companyId, locationId = locationId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getLocationDetail(locationId: String)
-    : Deferred<Response<GetLocationSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getLocationDetail(
-        companyId = config.companyId, locationId = locationId )
+            fileStorageApiList?.proxy(
+        companyId = config.companyId, url = url )
         } else {
             null
         } 
@@ -5370,14 +3778,107 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    suspend fun appStartUpload(namespace: String,body: StartRequest)
+    : Deferred<Response<StartResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                fileStorageApiList?.appStartUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun appCompleteUpload(namespace: String,body: StartResponse)
+    : Deferred<Response<CompleteResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                fileStorageApiList?.appCompleteUpload(namespace = namespace, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
     
     
     
     
+    suspend fun appCopyFiles(sync: Boolean?=null,body: BulkRequest)
+    : Deferred<Response<BulkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                fileStorageApiList?.appCopyFiles(sync = sync, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
     
     
     
+    suspend fun appBrowse(namespace: String, pageNo: Int?=null)
+    : Deferred<Response<BrowseResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                fileStorageApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo )
+        } else {
+            null
+        }
+    }
     
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for appBrowse
+    **/
+    fun appBrowsePaginator(
+    namespace: String
+    
+    ) : Paginator<BrowseResponse>{
+        val paginator = Paginator<BrowseResponse>()
+        paginator.setCallBack(object : PaginatorCallback<BrowseResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<BrowseResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    fileStorageApiList?.appBrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
     
 }
 }
@@ -5480,29 +3981,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<ShortLinkList>{
         val paginator = Paginator<ShortLinkList>()
         paginator.setCallBack(object : PaginatorCallback<ShortLinkList> {
-            override suspend fun onNext(
-                onSuccess: (Event<ShortLinkList>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, q = q)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<ShortLinkList>?,FdkError?) -> Unit){
 
@@ -6072,29 +4551,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<CompaniesResponse>{
         val paginator = Paginator<CompaniesResponse>()
         paginator.setCallBack(object : PaginatorCallback<CompaniesResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<CompaniesResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<CompaniesResponse>?,FdkError?) -> Unit){
 
@@ -6163,29 +4620,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<StoresResponse>{
         val paginator = Paginator<StoresResponse>()
         paginator.setCallBack(object : PaginatorCallback<StoresResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<StoresResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getAppStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<StoresResponse>?,FdkError?) -> Unit){
 
@@ -6304,29 +4739,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<OrderingStores>{
         val paginator = Paginator<OrderingStores>()
         paginator.setCallBack(object : PaginatorCallback<OrderingStores> {
-            override suspend fun onNext(
-                onSuccess: (Event<OrderingStores>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize,body: FilterOrderingStoreRequest)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<OrderingStores>?,FdkError?) -> Unit){
 
@@ -6334,7 +4747,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize,body: FilterOrderingStoreRequest)?.safeAwait{ response, error ->
+                    configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize,body = body )?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             
@@ -6547,29 +4960,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<CouponsResponse>{
         val paginator = Paginator<CouponsResponse>()
         paginator.setCallBack(object : PaginatorCallback<CouponsResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<CouponsResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "number"
-                    cartApiList?.getCoupons(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, isArchived = isArchived, title = title, isPublic = isPublic, isDisplay = isDisplay, typeSlug = typeSlug, code = code)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<CouponsResponse>?,FdkError?) -> Unit){
 
@@ -6999,29 +5390,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     ) : Paginator<GiveawayResponse>{
         val paginator = Paginator<GiveawayResponse>()
         paginator.setCallBack(object : PaginatorCallback<GiveawayResponse> {
-            override suspend fun onNext(
-                onSuccess: (Event<GiveawayResponse>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "cursor"
-                    rewardsApiList?.getGiveaways(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<GiveawayResponse>?,FdkError?) -> Unit){
 
@@ -7163,6 +5532,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
         
             
+                
+            
             
         
             
@@ -7175,34 +5546,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getUserPointsHistory
     **/
     fun getUserPointsHistoryPaginator(
-    userId: String, pageSize: Int?=null
+    userId: String, pageLimit: Int?=null, pageSize: Int?=null
     
     ) : Paginator<HistoryRes>{
         val paginator = Paginator<HistoryRes>()
         paginator.setCallBack(object : PaginatorCallback<HistoryRes> {
-            override suspend fun onNext(
-                onSuccess: (Event<HistoryRes>) -> Unit,
-                onFailure: (FdkError) -> Unit ) {
-
-                if (config.oauthClient.isAccessTokenValid()) {
-                    val pageId = paginator.nextId
-                    val pageNo = paginator.pageNo
-                    val pageType = "cursor"
-                    rewardsApiList?.getUserPointsHistory(companyId = config.companyId , applicationId = applicationId , userId = userId, pageId = pageId, pageLimit = pageLimit, pageSize = pageSize)?.safeAwait(
-                    onSuccess = { response ->
-                    val page = response.peekContent()?.page
-                    
-                    onSuccess.invoke(response)
-                },
-                    onFailure = { error ->
-                        onFailure.invoke(error)
-                    })
-                
-                } else {
-                    null
-                 }
-            }
-
+            
             override suspend fun onNext(
                 onResponse: (Event<HistoryRes>?,FdkError?) -> Unit){
 
@@ -7230,5 +5579,406 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     })
     return paginator
     }
+}
+}
+
+class AnalyticsDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val analyticsApiList by lazy {
+        generateanalyticsApiList()
+    }
+    
+    private fun generateanalyticsApiList(): AnalyticsApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformAnalytics",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(AnalyticsApiList::class.java) as? AnalyticsApiList
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    suspend fun createExportJob(exportType: String,body: ExportJobReq)
+    : Deferred<Response<ExportJobRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.createExportJob(
+        companyId = config.companyId, exportType = exportType, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getExportJobStatus(exportType: String, jobId: String)
+    : Deferred<Response<ExportJobStatusRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.getExportJobStatus(
+        companyId = config.companyId, exportType = exportType, jobId = jobId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getLogsList(logType: String, pageNo: Int?=null, pageSize: Int?=null,body: GetLogsListReq)
+    : Deferred<Response<GetLogsListRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.getLogsList(
+        companyId = config.companyId, logType = logType, pageNo = pageNo, pageSize = pageSize, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun searchLogs(pageNo: Int?=null, pageSize: Int?=null, logType: String,body: SearchLogReq)
+    : Deferred<Response<SearchLogRes>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            analyticsApiList?.searchLogs(
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, logType = logType, body = body)
+        } else {
+            null
+        } 
+    }
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun getStatiscticsGroups()
+    : Deferred<Response<StatsGroups>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getStatiscticsGroups(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getStatiscticsGroupComponents(groupName: String)
+    : Deferred<Response<StatsGroupComponents>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getStatiscticsGroupComponents(companyId = config.companyId , applicationId = applicationId , groupName = groupName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentStatsCSV(componentName: String)
+    : Deferred<Response<String>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getComponentStatsCSV(companyId = config.companyId , applicationId = applicationId , componentName = componentName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentStatsPDF(componentName: String)
+    : Deferred<Response<String>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getComponentStatsPDF(companyId = config.companyId , applicationId = applicationId , componentName = componentName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getComponentStats(componentName: String)
+    : Deferred<Response<StatsRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getComponentStats(companyId = config.companyId , applicationId = applicationId , componentName = componentName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAbandonCartList(fromDate: String, toDate: String, pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<AbandonCartsList>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getAbandonCartList(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAbandonCartList
+    **/
+    fun getAbandonCartListPaginator(
+    fromDate: String, toDate: String, pageSize: Int?=null
+    
+    ) : Paginator<AbandonCartsList>{
+        val paginator = Paginator<AbandonCartsList>()
+        paginator.setCallBack(object : PaginatorCallback<AbandonCartsList> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<AbandonCartsList>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    analyticsApiList?.getAbandonCartList(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun getAbandonCartsCSV(fromDate: String, toDate: String)
+    : Deferred<Response<String>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getAbandonCartsCSV(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAbandonCartDetail(cartId: String)
+    : Deferred<Response<AbandonCartDetail>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                analyticsApiList?.getAbandonCartDetail(companyId = config.companyId , applicationId = applicationId , cartId = cartId )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    
+}
+}
+
+class DiscountDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val discountApiList by lazy {
+        generatediscountApiList()
+    }
+    
+    private fun generatediscountApiList(): DiscountApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformDiscount",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(DiscountApiList::class.java) as? DiscountApiList
+    }
+    
+    
+    suspend fun getDiscounts(view: String?=null, q: String?=null, pageNo: Int?=null, pageSize: Int?=null, archived: Boolean?=null, month: Int?=null, year: Int?=null, type: String?=null, appIds: ArrayList<String>?=null)
+    : Deferred<Response<ListOrCalender>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDiscounts(
+        companyId = config.companyId, view = view, q = q, pageNo = pageNo, pageSize = pageSize, archived = archived, month = month, year = year, type = type, appIds = appIds )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createDiscount(body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.createDiscount(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDiscount(id: String)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDiscount(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateDiscount(id: String,body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.updateDiscount(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun validateDiscountFile(discount: String?=null,body: DiscountJob)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.validateDiscountFile(
+        companyId = config.companyId, discount = discount, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun downloadDiscountFile(type: String,body: DownloadFileJob)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.downloadDiscountFile(
+        companyId = config.companyId, type = type, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getValidationJob(id: String)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getValidationJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelValidationJob(id: String)
+    : Deferred<Response<CancelJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.cancelValidationJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDownloadJob(id: String)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDownloadJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelDownloadJob(id: String)
+    : Deferred<Response<CancelJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.cancelDownloadJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 }
