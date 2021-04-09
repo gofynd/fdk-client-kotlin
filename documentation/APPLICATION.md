@@ -320,14 +320,16 @@
 Get a product
 
 ```kotlin
-catalog.getProductDetailBySlug(slug: slug).safeAwait(
-    { response ->
+catalog.getProductDetailBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -372,14 +374,16 @@ Schema: `ErrorResponse`
 Get the sizes of a product
 
 ```kotlin
-catalog.getProductSizesBySlug(slug: slug, storeId: storeId).safeAwait(
-    { response ->
+catalog.getProductSizesBySlug(slug: slug, storeId: storeId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -425,14 +429,16 @@ Schema: `ErrorResponse`
 Get price a product size
 
 ```kotlin
-catalog.getProductPriceBySlug(slug: slug, size: size, pincode: pincode, storeId: storeId).safeAwait(
-    { response ->
+catalog.getProductPriceBySlug(slug: slug, size: size, pincode: pincode, storeId: storeId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -480,14 +486,16 @@ Schema: `ErrorResponse`
 List sellers of a product
 
 ```kotlin
-catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -536,14 +544,16 @@ Schema: `ErrorResponse`
 Compare products
 
 ```kotlin
-catalog.getProductComparisonBySlugs(slug: slug).safeAwait(
-    { response ->
+catalog.getProductComparisonBySlugs(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -588,14 +598,16 @@ Schema: `ErrorResponse`
 Get comparison between similar products
 
 ```kotlin
-catalog.getSimilarComparisonProductBySlug(slug: slug).safeAwait(
-    { response ->
+catalog.getSimilarComparisonProductBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -640,14 +652,16 @@ Schema: `ErrorResponse`
 Get comparison between frequently compared products with the given product
 
 ```kotlin
-catalog.getComparedFrequentlyProductBySlug(slug: slug).safeAwait(
-    { response ->
+catalog.getComparedFrequentlyProductBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -692,14 +706,16 @@ Schema: `ErrorResponse`
 Get similar products
 
 ```kotlin
-catalog.getProductSimilarByIdentifier(slug: slug, similarType: similarType).safeAwait(
-    { response ->
+catalog.getProductSimilarByIdentifier(slug: slug, similarType: similarType).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -745,14 +761,16 @@ Schema: `ErrorResponse`
 Get variant of a particular product
 
 ```kotlin
-catalog.getProductVariantsBySlug(slug: slug).safeAwait(
-    { response ->
+catalog.getProductVariantsBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -797,14 +815,16 @@ Schema: `ErrorResponse`
 Get the stock of a product
 
 ```kotlin
-catalog.getProductStockByIds(itemId: itemId, alu: alu, skuCode: skuCode, ean: ean, upc: upc).safeAwait(
-    { response ->
+catalog.getProductStockByIds(itemId: itemId, alu: alu, skuCode: skuCode, ean: ean, upc: upc).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -853,14 +873,16 @@ Schema: `ErrorResponse`
 Get the stock of a product
 
 ```kotlin
-catalog.getProductStockForTimeByIds(timestamp: timestamp, pageSize: pageSize, pageId: pageId).safeAwait(
-    { response ->
+catalog.getProductStockForTimeByIds(timestamp: timestamp, pageSize: pageSize, pageId: pageId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -907,14 +929,16 @@ Schema: `ErrorResponse`
 List the products
 
 ```kotlin
-catalog.getProducts(q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize, pageNo: pageNo, pageType: pageType).safeAwait(
-    { response ->
+catalog.getProducts(q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize, pageNo: pageNo, pageType: pageType).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -966,14 +990,16 @@ Schema: `ErrorResponse`
 List all the brands
 
 ```kotlin
-catalog.getBrands(department: department, pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+catalog.getBrands(department: department, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1020,14 +1046,16 @@ Schema: `ErrorResponse`
 Get metadata of a brand
 
 ```kotlin
-catalog.getBrandDetailBySlug(slug: slug).safeAwait(
-    { response ->
+catalog.getBrandDetailBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1072,14 +1100,16 @@ Schema: `ErrorResponse`
 List all the categories
 
 ```kotlin
-catalog.getCategories(department: department).safeAwait(
-    { response ->
+catalog.getCategories(department: department).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1124,14 +1154,16 @@ Schema: `ErrorResponse`
 Get metadata of a category
 
 ```kotlin
-catalog.getCategoryDetailBySlug(slug: slug).safeAwait(
-    { response ->
+catalog.getCategoryDetailBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1176,14 +1208,16 @@ Schema: `ErrorResponse`
 List the products
 
 ```kotlin
-catalog.getHomeProducts(sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+catalog.getHomeProducts(sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1230,14 +1264,16 @@ Schema: `ErrorResponse`
 List all the departments
 
 ```kotlin
-catalog.getDepartments().safeAwait(
-    { response ->
+catalog.getDepartments().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1281,14 +1317,16 @@ Schema: `ErrorResponse`
 Get relevant suggestions for a search query
 
 ```kotlin
-catalog.getSearchResults(q: q).safeAwait(
-    { response ->
+catalog.getSearchResults(q: q).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1333,14 +1371,16 @@ Schema: `ErrorResponse`
 List all the collections
 
 ```kotlin
-catalog.getCollections(pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+catalog.getCollections(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1386,14 +1426,16 @@ Schema: `ErrorResponse`
 Get the items in a collection
 
 ```kotlin
-catalog.getCollectionItemsBySlug(slug: slug, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+catalog.getCollectionItemsBySlug(slug: slug, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1443,14 +1485,16 @@ Schema: `ErrorResponse`
 Get a particular collection
 
 ```kotlin
-catalog.getCollectionDetailBySlug(slug: slug).safeAwait(
-    { response ->
+catalog.getCollectionDetailBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1495,14 +1539,16 @@ Schema: `ErrorResponse`
 Get a list of followed Products, Brands, Collections
 
 ```kotlin
-catalog.getFollowedListing(collectionType: collectionType, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+catalog.getFollowedListing(collectionType: collectionType, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1549,14 +1595,16 @@ Schema: `ErrorResponse`
 Follow a particular Product
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait(
-    { response ->
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1602,14 +1650,16 @@ Schema: `ErrorResponse`
 UnFollow a Product
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait(
-    { response ->
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1655,14 +1705,16 @@ Schema: `ErrorResponse`
 Get Follow Count
 
 ```kotlin
-catalog.getFollowerCountById(collectionType: collectionType, collectionId: collectionId).safeAwait(
-    { response ->
+catalog.getFollowerCountById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1708,14 +1760,16 @@ Schema: `ErrorResponse`
 Get the Ids of followed product, brand and collection.
 
 ```kotlin
-catalog.getFollowIds(collectionType: collectionType).safeAwait(
-    { response ->
+catalog.getFollowIds(collectionType: collectionType).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1760,14 +1814,16 @@ Schema: `ErrorResponse`
 List store meta information.
 
 ```kotlin
-catalog.getStores(pageNo: pageNo, pageSize: pageSize, q: q, range: range, latitude: latitude, longitude: longitude).safeAwait(
-    { response ->
+catalog.getStores(pageNo: pageNo, pageSize: pageSize, q: q, range: range, latitude: latitude, longitude: longitude).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1824,14 +1880,16 @@ Schema: `ErrorResponse`
 Fetch all Items Added to  Cart
 
 ```kotlin
-cart.getCart(uid: uid, i: i, b: b, assignCardId: assignCardId).safeAwait(
-    { response ->
+cart.getCart(uid: uid, i: i, b: b, assignCardId: assignCardId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1867,14 +1925,16 @@ Schema: `CartResponse`
 Fetch Last-Modified timestamp
 
 ```kotlin
-cart.getCartLastModified(uid: uid).safeAwait(
-    { response ->
+cart.getCartLastModified(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -1901,14 +1961,16 @@ Fetch Last-Modified Timestamp Response
 Add Items to Cart
 
 ```kotlin
-cart.addItems(i: i, b: b, body: body).safeAwait(
-    { response ->
+cart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -2575,14 +2637,16 @@ Sorry, item is out of stock
 Update Items already added to Cart
 
 ```kotlin
-cart.updateCart(uid: uid, i: i, b: b, body: body).safeAwait(
-    { response ->
+cart.updateCart(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -2979,14 +3043,16 @@ Item updated in the cart
 Cart item count
 
 ```kotlin
-cart.getItemCount(uid: uid).safeAwait(
-    { response ->
+cart.getItemCount(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3019,14 +3085,16 @@ Schema: `CartItemCountResponse`
 Fetch Coupon
 
 ```kotlin
-cart.getCoupons(uid: uid).safeAwait(
-    { response ->
+cart.getCoupons(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3059,14 +3127,16 @@ Schema: `GetCouponResponse`
 Apply Coupon
 
 ```kotlin
-cart.applyCoupon(i: i, b: b, p: p, uid: uid, body: body).safeAwait(
-    { response ->
+cart.applyCoupon(i: i, b: b, p: p, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3103,14 +3173,16 @@ Schema: `CartResponse`
 Remove Coupon Applied
 
 ```kotlin
-cart.removeCoupon(uid: uid).safeAwait(
-    { response ->
+cart.removeCoupon(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3143,14 +3215,16 @@ Schema: `CartResponse`
 Get discount offers based on quantity
 
 ```kotlin
-cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait(
-    { response ->
+cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3269,14 +3343,16 @@ Schema: `[String: Any]`
 Fetch Address
 
 ```kotlin
-cart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
-    { response ->
+cart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3313,14 +3389,16 @@ Schema: `GetAddressesResponse`
 Add Address to the account
 
 ```kotlin
-cart.addAddress(body: body).safeAwait(
-    { response ->
+cart.addAddress(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3352,14 +3430,16 @@ Schema: `SaveAddressResponse`
 Fetch Single Address
 
 ```kotlin
-cart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
-    { response ->
+cart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3397,14 +3477,16 @@ Schema: `Address`
 Update Address alreay added to account
 
 ```kotlin
-cart.updateAddress(id: id, body: body).safeAwait(
-    { response ->
+cart.updateAddress(id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3437,14 +3519,16 @@ Schema: `UpdateAddressResponse`
 Remove Address Associated to the account
 
 ```kotlin
-cart.removeAddress(id: id).safeAwait(
-    { response ->
+cart.removeAddress(id: id).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3477,14 +3561,16 @@ Schema: `DeleteAddressResponse`
 Select Address from All Addresses
 
 ```kotlin
-cart.selectAddress(uid: uid, i: i, b: b, body: body).safeAwait(
-    { response ->
+cart.selectAddress(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3555,14 +3641,16 @@ Pincode Not Serviciable
 Update Cart Payment
 
 ```kotlin
-cart.selectPaymentMode(uid: uid, body: body).safeAwait(
-    { response ->
+cart.selectPaymentMode(uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3595,14 +3683,16 @@ Schema: `CartResponse`
 Get Cart Payment for valid coupon
 
 ```kotlin
-cart.validateCouponForPayment(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
-    { response ->
+cart.validateCouponForPayment(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -3640,14 +3730,16 @@ Schema: `PaymentUpdate`
 Get delivery date and options before checkout
 
 ```kotlin
-cart.getShipments(p: p, uid: uid, addressId: addressId, areaCode: areaCode).safeAwait(
-    { response ->
+cart.getShipments(p: p, uid: uid, addressId: addressId, areaCode: areaCode).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -4335,14 +4427,16 @@ Schema: `[String: Any]`
 Checkout Cart
 
 ```kotlin
-cart.checkoutCart(body: body).safeAwait(
-    { response ->
+cart.checkoutCart(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -4751,14 +4845,16 @@ Successful checkout cod payment
 Update Cart Meta
 
 ```kotlin
-cart.updateCartMeta(uid: uid, body: body).safeAwait(
-    { response ->
+cart.updateCartMeta(uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -4803,14 +4899,16 @@ Schema: `CartMetaMissingResponse`
 Generate Cart sharing link token
 
 ```kotlin
-cart.getCartShareLink(body: body).safeAwait(
-    { response ->
+cart.getCartShareLink(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -4856,14 +4954,16 @@ Token Generated
 Get shared cart snapshot and cart response
 
 ```kotlin
-cart.getCartSharedItems(token: token).safeAwait(
-    { response ->
+cart.getCartSharedItems(token: token).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -4908,14 +5008,16 @@ Schema: `SharedCartResponse`
 Merge or Replace existing cart
 
 ```kotlin
-cart.updateCartWithSharedItems(token: token, action: action).safeAwait(
-    { response ->
+cart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -5242,14 +5344,16 @@ Cart Merged/Replaced
 Get Ticket with the specific id
 
 ```kotlin
-lead.getTicket(id: id).safeAwait(
-    { response ->
+lead.getTicket(id: id).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -5484,14 +5588,16 @@ Default
 Create history for specific Ticket
 
 ```kotlin
-lead.createHistory(ticketId: ticketId, body: body).safeAwait(
-    { response ->
+lead.createHistory(ticketId: ticketId, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -5569,14 +5675,16 @@ Default
 Create Ticket
 
 ```kotlin
-lead.createTicket(body: body).safeAwait(
-    { response ->
+lead.createTicket(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -5810,14 +5918,16 @@ Default
 Get specific Custom Form using it's slug
 
 ```kotlin
-lead.getCustomForm(slug: slug).safeAwait(
-    { response ->
+lead.getCustomForm(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -5905,14 +6015,16 @@ Default
 Submit Response for a specific Custom Form using it's slug
 
 ```kotlin
-lead.submitCustomForm(slug: slug, body: body).safeAwait(
-    { response ->
+lead.submitCustomForm(slug: slug, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6149,14 +6261,16 @@ Default
 Get participants of a specific Video Room using it's unique name
 
 ```kotlin
-lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait(
-    { response ->
+lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6202,14 +6316,16 @@ Default
 Get Token to join a specific Video Room using it's unqiue name
 
 ```kotlin
-lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait(
-    { response ->
+lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6262,14 +6378,16 @@ Default
 Get applied theme for an application
 
 ```kotlin
-theme.getAppliedTheme().safeAwait(
-    { response ->
+theme.getAppliedTheme().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6336,14 +6454,16 @@ Schema: `BlitzkriegApiError`
 Get theme for preview
 
 ```kotlin
-theme.getThemeForPreview(themeId: themeId).safeAwait(
-    { response ->
+theme.getThemeForPreview(themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6418,14 +6538,16 @@ Schema: `BlitzkriegApiError`
 Login/Register with Facebook
 
 ```kotlin
-user.loginWithFacebook(body: body).safeAwait(
-    { response ->
+user.loginWithFacebook(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6492,14 +6614,16 @@ Schema: `AuthenticationApiError`
 Login/Register with Google
 
 ```kotlin
-user.loginWithGoogle(body: body).safeAwait(
-    { response ->
+user.loginWithGoogle(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6566,14 +6690,16 @@ Schema: `AuthenticationApiError`
 Login/Register with Google for android
 
 ```kotlin
-user.loginWithGoogleAndroid(body: body).safeAwait(
-    { response ->
+user.loginWithGoogleAndroid(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6640,14 +6766,16 @@ Schema: `AuthenticationApiError`
 Login/Register with Google for ios
 
 ```kotlin
-user.loginWithGoogleIOS(body: body).safeAwait(
-    { response ->
+user.loginWithGoogleIOS(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6714,14 +6842,16 @@ Schema: `AuthenticationApiError`
 Login/Register with OTP
 
 ```kotlin
-user.loginWithOTP(platform: platform, body: body).safeAwait(
-    { response ->
+user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6789,14 +6919,16 @@ Schema: `AuthenticationApiError`
 Login/Register with password
 
 ```kotlin
-user.loginWithEmailAndPassword(body: body).safeAwait(
-    { response ->
+user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6863,14 +6995,16 @@ Schema: `AuthenticationApiError`
 Reset Password
 
 ```kotlin
-user.sendResetPasswordEmail(platform: platform, body: body).safeAwait(
-    { response ->
+user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -6927,14 +7061,16 @@ Schema: `AuthenticationApiError`
 
 
 ```kotlin
-user.forgotPassword(body: body).safeAwait(
-    { response ->
+user.forgotPassword(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7001,14 +7137,16 @@ Schema: `AuthenticationApiError`
 
 
 ```kotlin
-user.sendResetToken(body: body).safeAwait(
-    { response ->
+user.sendResetToken(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7064,14 +7202,16 @@ Schema: `AuthenticationApiError`
 Login/Register with token
 
 ```kotlin
-user.loginWithToken(body: body).safeAwait(
-    { response ->
+user.loginWithToken(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7150,14 +7290,16 @@ Schema: `AuthenticationApiError`
 Registration Form
 
 ```kotlin
-user.registerWithForm(platform: platform, body: body).safeAwait(
-    { response ->
+user.registerWithForm(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7214,14 +7356,16 @@ Schema: `AuthenticationApiError`
 Verify email
 
 ```kotlin
-user.verifyEmail(body: body).safeAwait(
-    { response ->
+user.verifyEmail(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7277,14 +7421,16 @@ Schema: `AuthenticationApiError`
 Verify mobile
 
 ```kotlin
-user.verifyMobile(body: body).safeAwait(
-    { response ->
+user.verifyMobile(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7340,14 +7486,16 @@ Schema: `AuthenticationApiError`
 Check if user has password
 
 ```kotlin
-user.hasPassword().safeAwait(
-    { response ->
+user.hasPassword().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7403,14 +7551,16 @@ Schema: `AuthenticationApiError`
 Update user password
 
 ```kotlin
-user.updatePassword(body: body).safeAwait(
-    { response ->
+user.updatePassword(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7466,14 +7616,16 @@ Schema: `AuthenticationApiError`
 Logout user
 
 ```kotlin
-user.logout().safeAwait(
-    { response ->
+user.logout().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7529,14 +7681,16 @@ Schema: `AuthenticationApiError`
 Send OTP on mobile
 
 ```kotlin
-user.sendOTPOnMobile(platform: platform, body: body).safeAwait(
-    { response ->
+user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7593,14 +7747,16 @@ Schema: `AuthenticationApiError`
 Verify OTP on mobile
 
 ```kotlin
-user.verifyMobileOTP(platform: platform, body: body).safeAwait(
-    { response ->
+user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7668,14 +7824,16 @@ Schema: `AuthenticationApiError`
 Send OTP on email
 
 ```kotlin
-user.sendOTPOnEmail(platform: platform, body: body).safeAwait(
-    { response ->
+user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7732,14 +7890,16 @@ Schema: `AuthenticationApiError`
 Verify OTP on email
 
 ```kotlin
-user.verifyEmailOTP(platform: platform, body: body).safeAwait(
-    { response ->
+user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7807,14 +7967,16 @@ Schema: `AuthenticationApiError`
 Get logged in user
 
 ```kotlin
-user.getLoggedInUser().safeAwait(
-    { response ->
+user.getLoggedInUser().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7881,14 +8043,16 @@ Schema: `AuthenticationApiError`
 Get list of sessions
 
 ```kotlin
-user.getListOfActiveSessions().safeAwait(
-    { response ->
+user.getListOfActiveSessions().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -7944,14 +8108,16 @@ Schema: `AuthenticationApiError`
 Get platform config
 
 ```kotlin
-user.getPlatformConfig(name: name).safeAwait(
-    { response ->
+user.getPlatformConfig(name: name).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8008,14 +8174,16 @@ Schema: `AuthenticationApiError`
 Edit Profile Details
 
 ```kotlin
-user.updateProfile(platform: platform, body: body).safeAwait(
-    { response ->
+user.updateProfile(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8083,14 +8251,16 @@ Schema: `AuthenticationApiError`
 Add mobile number to profile
 
 ```kotlin
-user.addMobileNumber(platform: platform, body: body).safeAwait(
-    { response ->
+user.addMobileNumber(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8158,14 +8328,16 @@ Schema: `AuthenticationApiError`
 Delete mobile number from profile
 
 ```kotlin
-user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait(
-    { response ->
+user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8238,14 +8410,16 @@ Schema: `AuthenticationApiError`
 Set mobile as primary
 
 ```kotlin
-user.setMobileNumberAsPrimary(body: body).safeAwait(
-    { response ->
+user.setMobileNumberAsPrimary(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8312,14 +8486,16 @@ Schema: `AuthenticationApiError`
 Send verification link to mobile
 
 ```kotlin
-user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait(
-    { response ->
+user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8387,14 +8563,16 @@ Schema: `AuthenticationApiError`
 Add email to profile
 
 ```kotlin
-user.addEmail(platform: platform, body: body).safeAwait(
-    { response ->
+user.addEmail(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8462,14 +8640,16 @@ Schema: `AuthenticationApiError`
 Delete email from profile
 
 ```kotlin
-user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait(
-    { response ->
+user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8541,14 +8721,16 @@ Schema: `AuthenticationApiError`
 Set email as primary
 
 ```kotlin
-user.setEmailAsPrimary(body: body).safeAwait(
-    { response ->
+user.setEmailAsPrimary(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8615,14 +8797,16 @@ Schema: `AuthenticationApiError`
 Send verification link to email
 
 ```kotlin
-user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait(
-    { response ->
+user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8686,14 +8870,16 @@ Schema: `AuthenticationApiError`
 Get live announcements
 
 ```kotlin
-content.getAnnouncements().safeAwait(
-    { response ->
+content.getAnnouncements().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8793,14 +8979,16 @@ default
 Get Blog by slug
 
 ```kotlin
-content.getBlog(slug: slug).safeAwait(
-    { response ->
+content.getBlog(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8890,14 +9078,16 @@ default
 Get blogs
 
 ```kotlin
-content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -8988,14 +9178,16 @@ default
 Get frequently asked questions
 
 ```kotlin
-content.getFaqs().safeAwait(
-    { response ->
+content.getFaqs().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9084,14 +9276,16 @@ default
 Get FAQ categories list
 
 ```kotlin
-content.getFaqCategories().safeAwait(
-    { response ->
+content.getFaqCategories().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9169,14 +9363,16 @@ default
 Get frequently asked question
 
 ```kotlin
-content.getFaqBySlug(slug: slug).safeAwait(
-    { response ->
+content.getFaqBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9255,14 +9451,16 @@ default
 Get FAQ category by slug
 
 ```kotlin
-content.getFaqCategoryBySlug(slug: slug).safeAwait(
-    { response ->
+content.getFaqCategoryBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9341,14 +9539,16 @@ default
 Get FAQs of a Faq Category slug
 
 ```kotlin
-content.getFaqsByCategorySlug(slug: slug).safeAwait(
-    { response ->
+content.getFaqsByCategorySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9427,14 +9627,16 @@ default
 Get landing page
 
 ```kotlin
-content.getLandingPage().safeAwait(
-    { response ->
+content.getLandingPage().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9523,14 +9725,16 @@ default
 Get legal information
 
 ```kotlin
-content.getLegalInformation().safeAwait(
-    { response ->
+content.getLegalInformation().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9619,14 +9823,16 @@ default
 Get navigation
 
 ```kotlin
-content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9717,14 +9923,16 @@ default
 Get Page by slug
 
 ```kotlin
-content.getPage(slug: slug).safeAwait(
-    { response ->
+content.getPage(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9814,14 +10022,16 @@ default
 Get pages
 
 ```kotlin
-content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -9912,14 +10122,16 @@ default
 Get seo of application
 
 ```kotlin
-content.getSEOConfiguration().safeAwait(
-    { response ->
+content.getSEOConfiguration().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10008,14 +10220,16 @@ default
 Get slideshow by slug
 
 ```kotlin
-content.getSlideshow(slug: slug).safeAwait(
-    { response ->
+content.getSlideshow(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10105,14 +10319,16 @@ default
 Get support information
 
 ```kotlin
-content.getSupportInformation().safeAwait(
-    { response ->
+content.getSupportInformation().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10201,14 +10417,16 @@ default
 Get Tags for application
 
 ```kotlin
-content.getTags().safeAwait(
-    { response ->
+content.getTags().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10293,14 +10511,16 @@ default
 Get communication consent
 
 ```kotlin
-communication.getCommunicationConsent().safeAwait(
-    { response ->
+communication.getCommunicationConsent().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10343,14 +10563,16 @@ default
 Upsert communication consent
 
 ```kotlin
-communication.upsertCommunicationConsent(body: body).safeAwait(
-    { response ->
+communication.upsertCommunicationConsent(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10405,14 +10627,16 @@ Schema: `BadRequest`
 Upsert push token of a user
 
 ```kotlin
-communication.upsertAppPushtoken(body: body).safeAwait(
-    { response ->
+communication.upsertAppPushtoken(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10488,14 +10712,16 @@ Schema: `BadRequest`
 Create application QR Code
 
 ```kotlin
-share.getApplicationQRCode().safeAwait(
-    { response ->
+share.getApplicationQRCode().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10527,14 +10753,16 @@ Schema: `QRCodeResp`
 Create product QR Code
 
 ```kotlin
-share.getProductQRCodeBySlug(slug: slug).safeAwait(
-    { response ->
+share.getProductQRCodeBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10579,14 +10807,16 @@ Schema: `ErrorRes`
 Create collection QR Code
 
 ```kotlin
-share.getCollectionQRCodeBySlug(slug: slug).safeAwait(
-    { response ->
+share.getCollectionQRCodeBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10631,14 +10861,16 @@ Schema: `ErrorRes`
 Create url QR Code
 
 ```kotlin
-share.getUrlQRCode(url: url).safeAwait(
-    { response ->
+share.getUrlQRCode(url: url).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10683,14 +10915,16 @@ Schema: `ErrorRes`
 Create short link
 
 ```kotlin
-share.createShortLink(body: body).safeAwait(
-    { response ->
+share.createShortLink(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10734,14 +10968,16 @@ Schema: `ErrorRes`
 Get short link by hash
 
 ```kotlin
-share.getShortLinkByHash(hash: hash).safeAwait(
-    { response ->
+share.getShortLinkByHash(hash: hash).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10786,14 +11022,16 @@ Schema: `ErrorRes`
 Get original link by hash
 
 ```kotlin
-share.getOriginalShortLinkByHash(hash: hash).safeAwait(
-    { response ->
+share.getOriginalShortLinkByHash(hash: hash).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10845,14 +11083,16 @@ Schema: `ErrorRes`
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
 ```kotlin
-filestorage.startUpload(namespace: namespace, body: body).safeAwait(
-    { response ->
+filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10915,14 +11155,16 @@ Schema: `FailedResponse`
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
 ```kotlin
-filestorage.completeUpload(namespace: namespace, body: body).safeAwait(
-    { response ->
+filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -10992,14 +11234,16 @@ Schema: `FailedResponse`
 Get current application details
 
 ```kotlin
-configuration.getApplication().safeAwait(
-    { response ->
+configuration.getApplication().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11043,14 +11287,16 @@ Schema: `NotFound`
 Get application, owner and seller information
 
 ```kotlin
-configuration.getOwnerInfo().safeAwait(
-    { response ->
+configuration.getOwnerInfo().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11082,14 +11328,16 @@ Schema: `ApplicationAboutResponse`
 Get basic application details
 
 ```kotlin
-configuration.getBasicDetails().safeAwait(
-    { response ->
+configuration.getBasicDetails().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11121,14 +11369,16 @@ Schema: `ApplicationDetail`
 Get integration tokens
 
 ```kotlin
-configuration.getIntegrationTokens().safeAwait(
-    { response ->
+configuration.getIntegrationTokens().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11160,14 +11410,16 @@ Schema: `TokenResponse`
 Get deployment meta stores
 
 ```kotlin
-configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait(
-    { response ->
+configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11214,14 +11466,16 @@ Schema: `NotFound`
 Get features of application
 
 ```kotlin
-configuration.getFeatures().safeAwait(
-    { response ->
+configuration.getFeatures().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11265,14 +11519,16 @@ Schema: `NotFound`
 Get application information
 
 ```kotlin
-configuration.getContactInfo().safeAwait(
-    { response ->
+configuration.getContactInfo().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11304,14 +11560,16 @@ Schema: `ApplicationInformation`
 Get application enabled currencies
 
 ```kotlin
-configuration.getCurrencies().safeAwait(
-    { response ->
+configuration.getCurrencies().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11343,14 +11601,16 @@ Schema: `CurrenciesResponse`
 Get currency by id
 
 ```kotlin
-configuration.getCurrencyById(id: id).safeAwait(
-    { response ->
+configuration.getCurrencyById(id: id).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11383,14 +11643,16 @@ Schema: `Currency`
 Get list of languages
 
 ```kotlin
-configuration.getLanguages().safeAwait(
-    { response ->
+configuration.getLanguages().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11422,14 +11684,16 @@ Schema: `LanguageResponse`
 Get ordering store signed cookie on selection of ordering store. This will be used by cart service to verify coupon against selected ordering store in cart.
 
 ```kotlin
-configuration.getOrderingStoreCookie(body: body).safeAwait(
-    { response ->
+configuration.getOrderingStoreCookie(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11473,14 +11737,16 @@ Schema: `NotFound`
 Unset ordering store signed cookie on change of sales channel selection via domain in universal fynd store app.
 
 ```kotlin
-configuration.removeOrderingStoreCookie().safeAwait(
-    { response ->
+configuration.removeOrderingStoreCookie().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11512,14 +11778,16 @@ Schema: `SuccessMessageResponse`
 Get Staff List.
 
 ```kotlin
-configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait(
-    { response ->
+configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11573,14 +11841,16 @@ Schema: `UnhandledError`
 Get payment gateway keys
 
 ```kotlin
-payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait(
-    { response ->
+payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11638,14 +11908,16 @@ Schema: `HttpErrorCodeAndResponse`
 Attach a saved card to customer.
 
 ```kotlin
-payment.attachCardToCustomer(body: body).safeAwait(
-    { response ->
+payment.attachCardToCustomer(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11701,14 +11973,16 @@ Schema: `[String: Any]`
 Fetch active payment gateway for card
 
 ```kotlin
-payment.getActiveCardAggregator(refresh: refresh).safeAwait(
-    { response ->
+payment.getActiveCardAggregator(refresh: refresh).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11765,14 +12039,16 @@ Schema: `HttpErrorCodeAndResponse`
 Fetch the list of saved cards of user.
 
 ```kotlin
-payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait(
-    { response ->
+payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11829,14 +12105,16 @@ Schema: `HttpErrorCodeAndResponse`
 Delete an user card.
 
 ```kotlin
-payment.deleteUserCard(body: body).safeAwait(
-    { response ->
+payment.deleteUserCard(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11892,14 +12170,16 @@ Schema: `HttpErrorCodeAndResponse`
 Validate customer for payment.
 
 ```kotlin
-payment.verifyCustomerForPayment(body: body).safeAwait(
-    { response ->
+payment.verifyCustomerForPayment(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -11955,14 +12235,16 @@ Schema: `HttpErrorCodeAndResponse`
 Verify and charge payment
 
 ```kotlin
-payment.verifyAndChargePayment(body: body).safeAwait(
-    { response ->
+payment.verifyAndChargePayment(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12018,14 +12300,16 @@ Schema: `HttpErrorCodeAndResponse`
 Payment Initialisation server to server for UPI and BharatQR.
 
 ```kotlin
-payment.initialisePayment(body: body).safeAwait(
-    { response ->
+payment.initialisePayment(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12081,14 +12365,16 @@ Schema: `HttpErrorCodeAndResponse`
 Continous polling to check status of payment on server.
 
 ```kotlin
-payment.checkAndUpdatePaymentStatus(body: body).safeAwait(
-    { response ->
+payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12144,14 +12430,16 @@ Schema: `HttpErrorCodeAndResponse`
 Get All Valid Payment Options
 
 ```kotlin
-payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, userDetails: userDetails).safeAwait(
-    { response ->
+payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, userDetails: userDetails).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12214,14 +12502,16 @@ Schema: `HttpErrorCodeAndResponse`
 Get All Valid Payment Options for POS
 
 ```kotlin
-payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, orderType: orderType, userDetails: userDetails).safeAwait(
-    { response ->
+payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, orderType: orderType, userDetails: userDetails).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12285,14 +12575,16 @@ Schema: `HttpErrorCodeAndResponse`
 List User Beneficiary
 
 ```kotlin
-payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait(
-    { response ->
+payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12349,14 +12641,16 @@ Schema: `HttpErrorCodeAndResponse`
 Ifsc Code Verification
 
 ```kotlin
-payment.verifyIfscCode(ifscCode: ifscCode).safeAwait(
-    { response ->
+payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12413,14 +12707,16 @@ Schema: `ErrorCodeDescription`
 List Order Beneficiary
 
 ```kotlin
-payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait(
-    { response ->
+payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12477,14 +12773,16 @@ Schema: `HttpErrorCodeAndResponse`
 Save Beneficiary details on otp validation.
 
 ```kotlin
-payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait(
-    { response ->
+payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12540,14 +12838,16 @@ Schema: `HttpErrorCodeAndResponse`
 Save bank details for cancelled/returned order
 
 ```kotlin
-payment.addBeneficiaryDetails(body: body).safeAwait(
-    { response ->
+payment.addBeneficiaryDetails(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12603,14 +12903,16 @@ Schema: `HttpErrorCodeAndResponse`
 Send Otp on Adding wallet beneficiary
 
 ```kotlin
-payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait(
-    { response ->
+payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12666,14 +12968,16 @@ Schema: `HttpErrorCodeAndResponse`
 Mark Default Beneficiary For Refund
 
 ```kotlin
-payment.updateDefaultBeneficiary(body: body).safeAwait(
-    { response ->
+payment.updateDefaultBeneficiary(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12736,14 +13040,16 @@ Schema: `HttpErrorCodeAndResponse`
 Get Orders for application based on application Id
 
 ```kotlin
-order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate).safeAwait(
-    { response ->
+order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12803,14 +13109,16 @@ Schema: `ApefaceApiError`
 Get Order by order id for application based on application Id
 
 ```kotlin
-order.getOrderById(orderId: orderId).safeAwait(
-    { response ->
+order.getOrderById(orderId: orderId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12867,14 +13175,16 @@ Schema: `ApefaceApiError`
 Get Shipment by shipment id and order id for application based on application Id
 
 ```kotlin
-order.getShipmentById(shipmentId: shipmentId).safeAwait(
-    { response ->
+order.getShipmentById(shipmentId: shipmentId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12931,14 +13241,16 @@ Schema: `ApefaceApiError`
 Get Shipment reasons by shipment id and order id for application based on application Id
 
 ```kotlin
-order.getShipmentReasons(shipmentId: shipmentId).safeAwait(
-    { response ->
+order.getShipmentReasons(shipmentId: shipmentId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -12995,14 +13307,16 @@ Schema: `ApefaceApiError`
 Update Shipment status by shipment id and order id for application based on application Id
 
 ```kotlin
-order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait(
-    { response ->
+order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13059,14 +13373,16 @@ Schema: `ApefaceApiError`
 Track Shipment by shipment id and order id for application based on application Id
 
 ```kotlin
-order.trackShipment(shipmentId: shipmentId).safeAwait(
-    { response ->
+order.trackShipment(shipmentId: shipmentId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13123,14 +13439,16 @@ Schema: `ApefaceApiError`
 Get POS Order by order id for application based on application Id
 
 ```kotlin
-order.getPosOrderById(orderId: orderId).safeAwait(
-    { response ->
+order.getPosOrderById(orderId: orderId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13194,14 +13512,16 @@ Schema: `ApefaceApiError`
 Get reward points that could be earned on any catalogue product.
 
 ```kotlin
-rewards.getPointsOnProduct(body: body).safeAwait(
-    { response ->
+rewards.getPointsOnProduct(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13245,14 +13565,16 @@ Schema: `Error`
 Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
 
 ```kotlin
-rewards.getOrderDiscount(body: body).safeAwait(
-    { response ->
+rewards.getOrderDiscount(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13296,14 +13618,16 @@ Schema: `Error`
 Total available points of a user for current application
 
 ```kotlin
-rewards.getUserPoints().safeAwait(
-    { response ->
+rewards.getUserPoints().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13347,14 +13671,16 @@ Schema: `Error`
 Get list of points transactions.
 
 ```kotlin
-rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13401,14 +13727,16 @@ Schema: `Error`
 User's referral details.
 
 ```kotlin
-rewards.getUserReferralDetails().safeAwait(
-    { response ->
+rewards.getUserReferralDetails().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13452,14 +13780,16 @@ Schema: `Error`
 Redeems referral code and credits points to users points account.
 
 ```kotlin
-rewards.redeemReferralCode(body: body).safeAwait(
-    { response ->
+rewards.redeemReferralCode(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13510,14 +13840,16 @@ Schema: `Error`
 post a new abuse request
 
 ```kotlin
-feedback.createAbuseReport(body: body).safeAwait(
-    { response ->
+feedback.createAbuseReport(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13561,14 +13893,16 @@ Schema: `FeedbackError`
 Update abuse details
 
 ```kotlin
-feedback.updateAbuseReport(body: body).safeAwait(
-    { response ->
+feedback.updateAbuseReport(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13612,14 +13946,16 @@ Schema: `FeedbackError`
 Get list of abuse data
 
 ```kotlin
-feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13668,14 +14004,16 @@ Schema: `FeedbackError`
 Get list of attribute data
 
 ```kotlin
-feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13721,14 +14059,16 @@ Schema: `FeedbackError`
 Add a new attribute request
 
 ```kotlin
-feedback.createAttribute(body: body).safeAwait(
-    { response ->
+feedback.createAttribute(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13772,14 +14112,16 @@ Schema: `FeedbackError`
 Get single attribute data
 
 ```kotlin
-feedback.getAttribute(slug: slug).safeAwait(
-    { response ->
+feedback.getAttribute(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13824,14 +14166,16 @@ Schema: `FeedbackError`
 Update attribute details
 
 ```kotlin
-feedback.updateAttribute(slug: slug, body: body).safeAwait(
-    { response ->
+feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13876,14 +14220,16 @@ Schema: `FeedbackError`
 post a new comment
 
 ```kotlin
-feedback.createComment(body: body).safeAwait(
-    { response ->
+feedback.createComment(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13927,14 +14273,16 @@ Schema: `FeedbackError`
 Update comment status
 
 ```kotlin
-feedback.updateComment(body: body).safeAwait(
-    { response ->
+feedback.updateComment(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -13978,14 +14326,16 @@ Schema: `FeedbackError`
 Get list of comments
 
 ```kotlin
-feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14035,14 +14385,16 @@ Schema: `FeedbackError`
 Checks eligibility and cloud media config
 
 ```kotlin
-feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait(
-    { response ->
+feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14088,14 +14440,16 @@ Schema: `FeedbackError`
 Delete Media
 
 ```kotlin
-feedback.deleteMedia().safeAwait(
-    { response ->
+feedback.deleteMedia().safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14139,14 +14493,16 @@ Schema: `FeedbackError`
 Add Media
 
 ```kotlin
-feedback.createMedia(body: body).safeAwait(
-    { response ->
+feedback.createMedia(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14190,14 +14546,16 @@ Schema: `FeedbackError`
 Update Media
 
 ```kotlin
-feedback.updateMedia(body: body).safeAwait(
-    { response ->
+feedback.updateMedia(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14241,14 +14599,16 @@ Schema: `FeedbackError`
 Get Media
 
 ```kotlin
-feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14297,14 +14657,16 @@ Schema: `FeedbackError`
 Get a review summary
 
 ```kotlin
-feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14354,14 +14716,16 @@ Schema: `FeedbackError`
 Add customer reviews
 
 ```kotlin
-feedback.createReview(body: body).safeAwait(
-    { response ->
+feedback.createReview(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14406,14 +14770,16 @@ Schema: `FeedbackError`
 Update customer reviews
 
 ```kotlin
-feedback.updateReview(body: body).safeAwait(
-    { response ->
+feedback.updateReview(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14458,14 +14824,16 @@ Schema: `FeedbackError`
 Get list of customer reviews
 
 ```kotlin
-feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14520,14 +14888,16 @@ Schema: `FeedbackError`
 Get the templates for product or l3 type
 
 ```kotlin
-feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait(
-    { response ->
+feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14574,14 +14944,16 @@ Schema: `FeedbackError`
 Create a new question
 
 ```kotlin
-feedback.createQuestion(body: body).safeAwait(
-    { response ->
+feedback.createQuestion(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14626,14 +14998,16 @@ Schema: `FeedbackError`
 Update question
 
 ```kotlin
-feedback.updateQuestion(body: body).safeAwait(
-    { response ->
+feedback.updateQuestion(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14677,14 +15051,16 @@ Schema: `FeedbackError`
 Get a list of QnA
 
 ```kotlin
-feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14734,14 +15110,16 @@ Schema: `FeedbackError`
 Get list of votes
 
 ```kotlin
-feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait(
-    { response ->
+feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14789,14 +15167,16 @@ Schema: `FeedbackError`
 Create a new vote
 
 ```kotlin
-feedback.createVote(body: body).safeAwait(
-    { response ->
+feedback.createVote(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14840,14 +15220,16 @@ Schema: `FeedbackError`
 Update vote
 
 ```kotlin
-feedback.updateVote(body: body).safeAwait(
-    { response ->
+feedback.updateVote(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14898,14 +15280,16 @@ Schema: `FeedbackError`
 Fetch all Items Added to  Cart
 
 ```kotlin
-poscart.getCart(uid: uid, i: i, b: b, assignCardId: assignCardId).safeAwait(
-    { response ->
+poscart.getCart(uid: uid, i: i, b: b, assignCardId: assignCardId).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14941,14 +15325,16 @@ Schema: `CartResponse`
 Fetch Last-Modified timestamp
 
 ```kotlin
-poscart.getCartLastModified(uid: uid).safeAwait(
-    { response ->
+poscart.getCartLastModified(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -14975,14 +15361,16 @@ Fetch Last-Modified Timestamp Response
 Add Items to Cart
 
 ```kotlin
-poscart.addItems(i: i, b: b, body: body).safeAwait(
-    { response ->
+poscart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -15649,14 +16037,16 @@ Sorry, item is out of stock
 Update Items already added to Cart
 
 ```kotlin
-poscart.updateCart(uid: uid, i: i, b: b, body: body).safeAwait(
-    { response ->
+poscart.updateCart(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16053,14 +16443,16 @@ Item updated in the cart
 Cart item count
 
 ```kotlin
-poscart.getItemCount(uid: uid).safeAwait(
-    { response ->
+poscart.getItemCount(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16093,14 +16485,16 @@ Schema: `CartItemCountResponse`
 Fetch Coupon
 
 ```kotlin
-poscart.getCoupons(uid: uid).safeAwait(
-    { response ->
+poscart.getCoupons(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16133,14 +16527,16 @@ Schema: `GetCouponResponse`
 Apply Coupon
 
 ```kotlin
-poscart.applyCoupon(i: i, b: b, p: p, uid: uid, body: body).safeAwait(
-    { response ->
+poscart.applyCoupon(i: i, b: b, p: p, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16177,14 +16573,16 @@ Schema: `CartResponse`
 Remove Coupon Applied
 
 ```kotlin
-poscart.removeCoupon(uid: uid).safeAwait(
-    { response ->
+poscart.removeCoupon(uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16217,14 +16615,16 @@ Schema: `CartResponse`
 Get discount offers based on quantity
 
 ```kotlin
-poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait(
-    { response ->
+poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16343,14 +16743,16 @@ Schema: `[String: Any]`
 Fetch Address
 
 ```kotlin
-poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
-    { response ->
+poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16387,14 +16789,16 @@ Schema: `GetAddressesResponse`
 Add Address to the account
 
 ```kotlin
-poscart.addAddress(body: body).safeAwait(
-    { response ->
+poscart.addAddress(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16426,14 +16830,16 @@ Schema: `SaveAddressResponse`
 Fetch Single Address
 
 ```kotlin
-poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait(
-    { response ->
+poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16471,14 +16877,16 @@ Schema: `Address`
 Update Address alreay added to account
 
 ```kotlin
-poscart.updateAddress(id: id, body: body).safeAwait(
-    { response ->
+poscart.updateAddress(id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16511,14 +16919,16 @@ Schema: `UpdateAddressResponse`
 Remove Address Associated to the account
 
 ```kotlin
-poscart.removeAddress(id: id).safeAwait(
-    { response ->
+poscart.removeAddress(id: id).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16551,14 +16961,16 @@ Schema: `DeleteAddressResponse`
 Select Address from All Addresses
 
 ```kotlin
-poscart.selectAddress(uid: uid, i: i, b: b, body: body).safeAwait(
-    { response ->
+poscart.selectAddress(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16629,14 +17041,16 @@ Pincode Not Serviciable
 Update Cart Payment
 
 ```kotlin
-poscart.selectPaymentMode(uid: uid, body: body).safeAwait(
-    { response ->
+poscart.selectPaymentMode(uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16669,14 +17083,16 @@ Schema: `CartResponse`
 Get Cart Payment for valid coupon
 
 ```kotlin
-poscart.validateCouponForPayment(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait(
-    { response ->
+poscart.validateCouponForPayment(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -16714,14 +17130,16 @@ Schema: `PaymentUpdate`
 Get delivery date and options before checkout
 
 ```kotlin
-poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait(
-    { response ->
+poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -17412,14 +17830,16 @@ Schema: `[String: Any]`
 Update shipment delivery type and quantity before checkout
 
 ```kotlin
-poscart.updateShipments(i: i, p: p, uid: uid, addressId: addressId, orderType: orderType, body: body).safeAwait(
-    { response ->
+poscart.updateShipments(i: i, p: p, uid: uid, addressId: addressId, orderType: orderType, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -18109,14 +18529,16 @@ Schema: `[String: Any]`
 Checkout Cart
 
 ```kotlin
-poscart.checkoutCart(uid: uid, body: body).safeAwait(
-    { response ->
+poscart.checkoutCart(uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -18526,14 +18948,16 @@ Successful checkout cod payment
 Update Cart Meta
 
 ```kotlin
-poscart.updateCartMeta(uid: uid, body: body).safeAwait(
-    { response ->
+poscart.updateCartMeta(uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -18578,14 +19002,16 @@ Schema: `CartMetaMissingResponse`
 Get available delivery modes for cart
 
 ```kotlin
-poscart.getAvailableDeliveryModes(areaCode: areaCode, uid: uid).safeAwait(
-    { response ->
+poscart.getAvailableDeliveryModes(areaCode: areaCode, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -18619,14 +19045,16 @@ Schema: `CartDeliveryModesResponse`
 Get list of stores for give uids
 
 ```kotlin
-poscart.getStoreAddressByUid(storeUid: storeUid).safeAwait(
-    { response ->
+poscart.getStoreAddressByUid(storeUid: storeUid).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -18659,14 +19087,16 @@ Schema: `StoreDetailsResponse`
 Generate Cart sharing link token
 
 ```kotlin
-poscart.getCartShareLink(body: body).safeAwait(
-    { response ->
+poscart.getCartShareLink(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -18712,14 +19142,16 @@ Token Generated
 Get shared cart snapshot and cart response
 
 ```kotlin
-poscart.getCartSharedItems(token: token).safeAwait(
-    { response ->
+poscart.getCartSharedItems(token: token).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -18764,14 +19196,16 @@ Schema: `SharedCartResponse`
 Merge or Replace existing cart
 
 ```kotlin
-poscart.updateCartWithSharedItems(token: token, action: action).safeAwait(
-    { response ->
+poscart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -19098,14 +19532,16 @@ Cart Merged/Replaced
 Get Tat Product
 
 ```kotlin
-logistic.getTatProduct(body: body).safeAwait(
-    { response ->
+logistic.getTatProduct(body: body).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |
@@ -19161,14 +19597,16 @@ Schema: `ApefaceApiError`
 Get City from Pincode
 
 ```kotlin
-logistic.getPincodeCity(pincode: pincode).safeAwait(
-    { response ->
+logistic.getPincodeCity(pincode: pincode).safeAwait{ response,error->
+    
+    response?.let{
       // Use response
-    },
-    { error ->
-        
-    }
-)
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 | Argument  |  Type  | Description |

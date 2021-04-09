@@ -224,36 +224,36 @@
  
 * [Catalog](#Catalog)
   * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
-  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
-  * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
+  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
+  * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
-  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
-  * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
+  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
-  * [Catalog#getProductBundle](#cataloggetproductbundle)
+  * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createProductBundle](#catalogcreateproductbundle)
+  * [Catalog#getProductBundle](#cataloggetproductbundle)
   * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
-  * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#createSizeGuide](#catalogcreatesizeguide)
+  * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getSizeGuide](#cataloggetsizeguide)
   * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
-  * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
-  * [Catalog#getConfigurationByType](#cataloggetconfigurationbytype)
+  * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationByType](#catalogcreateconfigurationbytype)
+  * [Catalog#getConfigurationByType](#cataloggetconfigurationbytype)
   * [Catalog#getQueryFilters](#cataloggetqueryfilters)
-  * [Catalog#getAllCollections](#cataloggetallcollections)
   * [Catalog#createCollection](#catalogcreatecollection)
+  * [Catalog#getAllCollections](#cataloggetallcollections)
   * [Catalog#getCollectionDetail](#cataloggetcollectiondetail)
   * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#deleteCollection](#catalogdeletecollection)
-  * [Catalog#getCollectionItems](#cataloggetcollectionitems)
   * [Catalog#addCollectionItems](#catalogaddcollectionitems)
+  * [Catalog#getCollectionItems](#cataloggetcollectionitems)
   * [Catalog#getCatalogInsights](#cataloggetcataloginsights)
   * [Catalog#getSellerInsights](#cataloggetsellerinsights)
   * [Catalog#createMarketplaceOptin](#catalogcreatemarketplaceoptin)
@@ -274,54 +274,54 @@
   * [Catalog#listHSNCodes](#cataloglisthsncodes)
   * [Catalog#listProductTemplateExportDetails](#cataloglistproducttemplateexportdetails)
   * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
-  * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#createCategories](#catalogcreatecategories)
+  * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getCategoryData](#cataloggetcategorydata)
-  * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
+  * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#editProduct](#catalogeditproduct)
-  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
+  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
-  * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
   * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
-  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
+  * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
   * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
+  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
   * [Catalog#getCompanyTags](#cataloggetcompanytags)
-  * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
   * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
+  * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
   * [Catalog#deleteSize](#catalogdeletesize)
-  * [Catalog#getInventory](#cataloggetinventory)
   * [Catalog#addInventory](#catalogaddinventory)
+  * [Catalog#getInventory](#cataloggetinventory)
   * [Catalog#deleteInventory](#catalogdeleteinventory)
-  * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
   * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
-  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
+  * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
   * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
-  * [Catalog#getInventoryExport](#cataloggetinventoryexport)
+  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
   * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
+  * [Catalog#getInventoryExport](#cataloggetinventoryexport)
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
-  * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#createHsnCode](#catalogcreatehsncode)
+  * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#getHsnCode](#cataloggethsncode)
   * [Catalog#bulkHsnCode](#catalogbulkhsncode)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
-  * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
@@ -481,13 +481,17 @@ const lead = new Lead(conf);
 #### Lead#getTickets
 Gets the list of company level tickets and/or ticket filters depending on query params
 
-```javascript
-// Promise
-const promise = lead.getTickets(company_id, items, filters, q, status, priority, category, page_no, page_size, );
-
-// Async/Await
-const data = await lead.getTickets(company_id, items, filters, q, status, priority, category, page_no, page_size, );
-
+```kotlin
+lead.getTickets(companyId: companyId, items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -514,13 +518,17 @@ Gets the list of company level tickets and/or ticket filters
 #### Lead#createTicket
 Creates a company level ticket
 
-```javascript
-// Promise
-const promise = lead.createTicket(company_id, );
-
-// Async/Await
-const data = await lead.createTicket(company_id, );
-
+```kotlin
+lead.createTicket(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -539,13 +547,17 @@ Creates a company level ticket
 #### Lead#getTickets
 Gets the list of Application level Tickets and/or ticket filters depending on query params
 
-```javascript
-// Promise
-const promise = lead.getTickets(company_id, application_id, items, filters, q, status, priority, category, );
-
-// Async/Await
-const data = await lead.getTickets(company_id, application_id, items, filters, q, status, priority, category, );
-
+```kotlin
+lead.getTickets(companyId: companyId, applicationId: applicationId, items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -571,13 +583,17 @@ Gets the list of Application level Tickets and/or ticket filters
 #### Lead#getTicket
 Retreives ticket details of a company level ticket with ticket ID
 
-```javascript
-// Promise
-const promise = lead.getTicket(company_id, ticket_id, );
-
-// Async/Await
-const data = await lead.getTicket(company_id, ticket_id, );
-
+```kotlin
+lead.getTicket(companyId: companyId, ticketId: ticketId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -597,13 +613,17 @@ Retreives ticket details of a company level ticket
 #### Lead#editTicket
 Edits ticket details of a company level ticket
 
-```javascript
-// Promise
-const promise = lead.editTicket(company_id, ticket_id, );
-
-// Async/Await
-const data = await lead.editTicket(company_id, ticket_id, );
-
+```kotlin
+lead.editTicket(companyId: companyId, ticketId: ticketId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -623,13 +643,17 @@ Edits ticket details of a company level ticket such as status, priority, categor
 #### Lead#getTicket
 Retreives ticket details of a application level ticket
 
-```javascript
-// Promise
-const promise = lead.getTicket(company_id, application_id, ticket_id, );
-
-// Async/Await
-const data = await lead.getTicket(company_id, application_id, ticket_id, );
-
+```kotlin
+lead.getTicket(companyId: companyId, applicationId: applicationId, ticketId: ticketId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -650,13 +674,17 @@ Retreives ticket details of a application level ticket with ticket ID
 #### Lead#editTicket
 Edits ticket details of a application level ticket
 
-```javascript
-// Promise
-const promise = lead.editTicket(company_id, application_id, ticket_id, );
-
-// Async/Await
-const data = await lead.editTicket(company_id, application_id, ticket_id, );
-
+```kotlin
+lead.editTicket(companyId: companyId, applicationId: applicationId, ticketId: ticketId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -677,13 +705,17 @@ Edits ticket details of a application level ticket such as status, priority, cat
 #### Lead#createHistory
 Create history for specific company level ticket
 
-```javascript
-// Promise
-const promise = lead.createHistory(company_id, ticket_id, );
-
-// Async/Await
-const data = await lead.createHistory(company_id, ticket_id, );
-
+```kotlin
+lead.createHistory(companyId: companyId, ticketId: ticketId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -703,13 +735,17 @@ Create history for specific company level ticket, this history is seen on ticket
 #### Lead#getTicketHistory
 Gets history list for specific company level ticket
 
-```javascript
-// Promise
-const promise = lead.getTicketHistory(company_id, ticket_id, );
-
-// Async/Await
-const data = await lead.getTicketHistory(company_id, ticket_id, );
-
+```kotlin
+lead.getTicketHistory(companyId: companyId, ticketId: ticketId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -729,13 +765,17 @@ Gets history list for specific company level ticket, this history is seen on tic
 #### Lead#createHistory
 Create history for specific application level ticket
 
-```javascript
-// Promise
-const promise = lead.createHistory(company_id, application_id, ticket_id, );
-
-// Async/Await
-const data = await lead.createHistory(company_id, application_id, ticket_id, );
-
+```kotlin
+lead.createHistory(companyId: companyId, applicationId: applicationId, ticketId: ticketId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -756,13 +796,17 @@ Create history for specific application level ticket, this history is seen on ti
 #### Lead#getTicketHistory
 Gets history list for specific application level ticket
 
-```javascript
-// Promise
-const promise = lead.getTicketHistory(company_id, application_id, ticket_id, );
-
-// Async/Await
-const data = await lead.getTicketHistory(company_id, application_id, ticket_id, );
-
+```kotlin
+lead.getTicketHistory(companyId: companyId, applicationId: applicationId, ticketId: ticketId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -783,13 +827,17 @@ Gets history list for specific application level ticket, this history is seen on
 #### Lead#getCustomForm
 Get specific custom form using it's slug
 
-```javascript
-// Promise
-const promise = lead.getCustomForm(company_id, application_id, slug, );
-
-// Async/Await
-const data = await lead.getCustomForm(company_id, application_id, slug, );
-
+```kotlin
+lead.getCustomForm(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -810,13 +858,17 @@ Get specific custom form using it's slug, this is used to view the form.
 #### Lead#editCustomForm
 Edit the given custom form
 
-```javascript
-// Promise
-const promise = lead.editCustomForm(company_id, application_id, slug, );
-
-// Async/Await
-const data = await lead.editCustomForm(company_id, application_id, slug, );
-
+```kotlin
+lead.editCustomForm(companyId: companyId, applicationId: applicationId, slug: slug, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -837,13 +889,17 @@ Edit the given custom form field such as adding or deleting input, assignee, tit
 #### Lead#getCustomForms
 Get list of custom form
 
-```javascript
-// Promise
-const promise = lead.getCustomForms(company_id, application_id, );
-
-// Async/Await
-const data = await lead.getCustomForms(company_id, application_id, );
-
+```kotlin
+lead.getCustomForms(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -863,13 +919,17 @@ Get list of custom form for given application
 #### Lead#createCustomForm
 Creates a new custom form
 
-```javascript
-// Promise
-const promise = lead.createCustomForm(company_id, application_id, );
-
-// Async/Await
-const data = await lead.createCustomForm(company_id, application_id, );
-
+```kotlin
+lead.createCustomForm(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -889,13 +949,17 @@ Creates a new custom form for given application
 #### Lead#getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
-```javascript
-// Promise
-const promise = lead.getTokenForVideoRoom(company_id, application_id, unique_name, );
-
-// Async/Await
-const data = await lead.getTokenForVideoRoom(company_id, application_id, unique_name, );
-
+```kotlin
+lead.getTokenForVideoRoom(companyId: companyId, applicationId: applicationId, uniqueName: uniqueName).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -916,13 +980,17 @@ Get Token to join a specific Video Room using it's unqiue name, this Token is yo
 #### Lead#getVideoParticipants
 Get participants of a specific Video Room using it's unique name
 
-```javascript
-// Promise
-const promise = lead.getVideoParticipants(company_id, application_id, unique_name, );
-
-// Async/Await
-const data = await lead.getVideoParticipants(company_id, application_id, unique_name, );
-
+```kotlin
+lead.getVideoParticipants(companyId: companyId, applicationId: applicationId, uniqueName: uniqueName).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -943,13 +1011,17 @@ Get participants of a specific Video Room using it's unique name, this can be us
 #### Lead#openVideoRoom
 Open a video room.
 
-```javascript
-// Promise
-const promise = lead.openVideoRoom(company_id, application_id, );
-
-// Async/Await
-const data = await lead.openVideoRoom(company_id, application_id, );
-
+```kotlin
+lead.openVideoRoom(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -969,13 +1041,17 @@ Open a video room.
 #### Lead#closeVideoRoom
 Close the video room and force all participants to leave.
 
-```javascript
-// Promise
-const promise = lead.closeVideoRoom(company_id, application_id, unique_name, );
-
-// Async/Await
-const data = await lead.closeVideoRoom(company_id, application_id, unique_name, );
-
+```kotlin
+lead.closeVideoRoom(companyId: companyId, applicationId: applicationId, uniqueName: uniqueName).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1013,13 +1089,17 @@ const feedback = new Feedback(conf);
 #### Feedback#getAttributes
 Get list of attribute data
 
-```javascript
-// Promise
-const promise = feedback.getAttributes(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await feedback.getAttributes(company_id, application_id, page_no, page_size, );
-
+```kotlin
+feedback.getAttributes(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1041,13 +1121,17 @@ Provides a list of all attribute data.
 #### Feedback#getCustomerReviews
 Get list of customer reviews [admin]
 
-```javascript
-// Promise
-const promise = feedback.getCustomerReviews(company_id, application_id, id, entity_id, entity_type, user_id, media, rating, attribute_rating, facets, sort, next, start, limit, count, page_id, page_size, );
-
-// Async/Await
-const data = await feedback.getCustomerReviews(company_id, application_id, id, entity_id, entity_type, user_id, media, rating, attribute_rating, facets, sort, next, start, limit, count, page_id, page_size, );
-
+```kotlin
+feedback.getCustomerReviews(companyId: companyId, applicationId: applicationId, id: id, entityId: entityId, entityType: entityType, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, next: next, start: start, limit: limit, count: count, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1082,13 +1166,17 @@ The endpoint provides a list of customer reviews based on entity and provided fi
 #### Feedback#updateApprove
 update approve details
 
-```javascript
-// Promise
-const promise = feedback.updateApprove(company_id, application_id, review_id, );
-
-// Async/Await
-const data = await feedback.updateApprove(company_id, application_id, review_id, );
-
+```kotlin
+feedback.updateApprove(companyId: companyId, applicationId: applicationId, reviewId: reviewId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1109,13 +1197,17 @@ The is used to update approve details like status and description text
 #### Feedback#getHistory
 get history details
 
-```javascript
-// Promise
-const promise = feedback.getHistory(company_id, application_id, review_id, );
-
-// Async/Await
-const data = await feedback.getHistory(company_id, application_id, review_id, );
-
+```kotlin
+feedback.getHistory(companyId: companyId, applicationId: applicationId, reviewId: reviewId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1136,13 +1228,17 @@ The is used to get the history details like status and description text
 #### Feedback#getApplicationTemplates
 Get list of templates
 
-```javascript
-// Promise
-const promise = feedback.getApplicationTemplates(company_id, application_id, page_id, page_size, );
-
-// Async/Await
-const data = await feedback.getApplicationTemplates(company_id, application_id, page_id, page_size, );
-
+```kotlin
+feedback.getApplicationTemplates(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1164,13 +1260,17 @@ Get all templates of application
 #### Feedback#createTemplate
 Create a new template
 
-```javascript
-// Promise
-const promise = feedback.createTemplate(company_id, application_id, );
-
-// Async/Await
-const data = await feedback.createTemplate(company_id, application_id, );
-
+```kotlin
+feedback.createTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1193,13 +1293,17 @@ Create a new template for review with following data:
 #### Feedback#getTemplateById
 Get a template by ID
 
-```javascript
-// Promise
-const promise = feedback.getTemplateById(company_id, application_id, id, );
-
-// Async/Await
-const data = await feedback.getTemplateById(company_id, application_id, id, );
-
+```kotlin
+feedback.getTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1220,13 +1324,17 @@ Get the template for product or l3 type by ID
 #### Feedback#updateTemplate
 Update a template's status
 
-```javascript
-// Promise
-const promise = feedback.updateTemplate(company_id, application_id, id, );
-
-// Async/Await
-const data = await feedback.updateTemplate(company_id, application_id, id, );
-
+```kotlin
+feedback.updateTemplate(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1247,13 +1355,17 @@ Update existing template status, active/archive
 #### Feedback#updateTemplateStatus
 Update a template's status
 
-```javascript
-// Promise
-const promise = feedback.updateTemplateStatus(company_id, application_id, id, );
-
-// Async/Await
-const data = await feedback.updateTemplateStatus(company_id, application_id, id, );
-
+```kotlin
+feedback.updateTemplateStatus(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1291,13 +1403,17 @@ const theme = new Theme(conf);
 #### Theme#getThemeLibrary
 Gets list of themes in theme library
 
-```javascript
-// Promise
-const promise = theme.getThemeLibrary(company_id, application_id, page_size, page_no, );
-
-// Async/Await
-const data = await theme.getThemeLibrary(company_id, application_id, page_size, page_no, );
-
+```kotlin
+theme.getThemeLibrary(companyId: companyId, applicationId: applicationId, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1319,13 +1435,17 @@ Gets list of themes in theme library
 #### Theme#addToThemeLibrary
 Add theme to theme library
 
-```javascript
-// Promise
-const promise = theme.addToThemeLibrary(company_id, application_id, );
-
-// Async/Await
-const data = await theme.addToThemeLibrary(company_id, application_id, );
-
+```kotlin
+theme.addToThemeLibrary(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1345,13 +1465,17 @@ Add theme to theme library
 #### Theme#applyTheme
 Apply theme
 
-```javascript
-// Promise
-const promise = theme.applyTheme(company_id, application_id, );
-
-// Async/Await
-const data = await theme.applyTheme(company_id, application_id, );
-
+```kotlin
+theme.applyTheme(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1371,13 +1495,17 @@ Apply theme
 #### Theme#isUpgradable
 Checks if theme is upgradable
 
-```javascript
-// Promise
-const promise = theme.isUpgradable(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.isUpgradable(company_id, application_id, theme_id, );
-
+```kotlin
+theme.isUpgradable(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1398,13 +1526,17 @@ Checks if theme is upgradable
 #### Theme#upgradeTheme
 Upgrades theme
 
-```javascript
-// Promise
-const promise = theme.upgradeTheme(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.upgradeTheme(company_id, application_id, theme_id, );
-
+```kotlin
+theme.upgradeTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1425,13 +1557,17 @@ Upgrades theme
 #### Theme#getPublicThemes
 Gets public themes
 
-```javascript
-// Promise
-const promise = theme.getPublicThemes(company_id, application_id, page_size, page_no, );
-
-// Async/Await
-const data = await theme.getPublicThemes(company_id, application_id, page_size, page_no, );
-
+```kotlin
+theme.getPublicThemes(companyId: companyId, applicationId: applicationId, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1453,13 +1589,17 @@ Gets public themes
 #### Theme#createTheme
 Create new theme
 
-```javascript
-// Promise
-const promise = theme.createTheme(company_id, application_id, );
-
-// Async/Await
-const data = await theme.createTheme(company_id, application_id, );
-
+```kotlin
+theme.createTheme(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1479,13 +1619,17 @@ Create new theme
 #### Theme#getAppliedTheme
 Get applied theme
 
-```javascript
-// Promise
-const promise = theme.getAppliedTheme(company_id, application_id, );
-
-// Async/Await
-const data = await theme.getAppliedTheme(company_id, application_id, );
-
+```kotlin
+theme.getAppliedTheme(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1505,13 +1649,17 @@ Get applied theme
 #### Theme#getFonts
 Gets fonts
 
-```javascript
-// Promise
-const promise = theme.getFonts(company_id, application_id, );
-
-// Async/Await
-const data = await theme.getFonts(company_id, application_id, );
-
+```kotlin
+theme.getFonts(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1531,13 +1679,17 @@ Gets fonts
 #### Theme#getThemeById
 Gets theme by id
 
-```javascript
-// Promise
-const promise = theme.getThemeById(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.getThemeById(company_id, application_id, theme_id, );
-
+```kotlin
+theme.getThemeById(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1558,13 +1710,17 @@ Gets theme by id
 #### Theme#updateTheme
 Update theme
 
-```javascript
-// Promise
-const promise = theme.updateTheme(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.updateTheme(company_id, application_id, theme_id, );
-
+```kotlin
+theme.updateTheme(companyId: companyId, applicationId: applicationId, themeId: themeId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1585,13 +1741,17 @@ Update theme
 #### Theme#deleteTheme
 Delete theme
 
-```javascript
-// Promise
-const promise = theme.deleteTheme(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.deleteTheme(company_id, application_id, theme_id, );
-
+```kotlin
+theme.deleteTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1612,13 +1772,17 @@ Delete theme
 #### Theme#getThemeForPreview
 Gets theme for preview
 
-```javascript
-// Promise
-const promise = theme.getThemeForPreview(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.getThemeForPreview(company_id, application_id, theme_id, );
-
+```kotlin
+theme.getThemeForPreview(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1639,13 +1803,17 @@ Gets theme for preview
 #### Theme#publishTheme
 Publish theme
 
-```javascript
-// Promise
-const promise = theme.publishTheme(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.publishTheme(company_id, application_id, theme_id, );
-
+```kotlin
+theme.publishTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1666,13 +1834,17 @@ Publish theme
 #### Theme#unpublishTheme
 Unpublish theme
 
-```javascript
-// Promise
-const promise = theme.unpublishTheme(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.unpublishTheme(company_id, application_id, theme_id, );
-
+```kotlin
+theme.unpublishTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1693,13 +1865,17 @@ Unpublish theme
 #### Theme#archiveTheme
 Archive theme
 
-```javascript
-// Promise
-const promise = theme.archiveTheme(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.archiveTheme(company_id, application_id, theme_id, );
-
+```kotlin
+theme.archiveTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1720,13 +1896,17 @@ Archive theme
 #### Theme#unarchiveTheme
 Unarchive theme
 
-```javascript
-// Promise
-const promise = theme.unarchiveTheme(company_id, application_id, theme_id, );
-
-// Async/Await
-const data = await theme.unarchiveTheme(company_id, application_id, theme_id, );
-
+```kotlin
+theme.unarchiveTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1764,13 +1944,17 @@ const user = new User(conf);
 #### User#getCustomers
 Gets list of customers
 
-```javascript
-// Promise
-const promise = user.getCustomers(company_id, application_id, q, page_size, page_no, );
-
-// Async/Await
-const data = await user.getCustomers(company_id, application_id, q, page_size, page_no, );
-
+```kotlin
+user.getCustomers(companyId: companyId, applicationId: applicationId, q: q, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1793,13 +1977,17 @@ Used to get application customers list
 #### User#searchUsers
 Search users
 
-```javascript
-// Promise
-const promise = user.searchUsers(company_id, application_id, q, );
-
-// Async/Await
-const data = await user.searchUsers(company_id, application_id, q, );
-
+```kotlin
+user.searchUsers(companyId: companyId, applicationId: applicationId, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1820,13 +2008,17 @@ Search users
 #### User#getPlatformConfig
 Get platform config
 
-```javascript
-// Promise
-const promise = user.getPlatformConfig(company_id, application_id, );
-
-// Async/Await
-const data = await user.getPlatformConfig(company_id, application_id, );
-
+```kotlin
+user.getPlatformConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1846,13 +2038,17 @@ Used to get platform config
 #### User#updatePlatformConfig
 Update platform config
 
-```javascript
-// Promise
-const promise = user.updatePlatformConfig(company_id, application_id, );
-
-// Async/Await
-const data = await user.updatePlatformConfig(company_id, application_id, );
-
+```kotlin
+user.updatePlatformConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1889,13 +2085,17 @@ const content = new Content(conf);
 #### Content#getAnnouncementsList
 Get annoucements list
 
-```javascript
-// Promise
-const promise = content.getAnnouncementsList(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await content.getAnnouncementsList(company_id, application_id, page_no, page_size, );
-
+```kotlin
+content.getAnnouncementsList(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1917,13 +2117,17 @@ Get list of announcements
 #### Content#createAnnouncement
 Create an annoucement
 
-```javascript
-// Promise
-const promise = content.createAnnouncement(company_id, application_id, );
-
-// Async/Await
-const data = await content.createAnnouncement(company_id, application_id, );
-
+```kotlin
+content.createAnnouncement(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1943,13 +2147,17 @@ Create an announcement
 #### Content#getAnnouncementById
 Get annoucement by id
 
-```javascript
-// Promise
-const promise = content.getAnnouncementById(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.getAnnouncementById(company_id, application_id, announcement_id, );
-
+```kotlin
+content.getAnnouncementById(companyId: companyId, applicationId: applicationId, announcementId: announcementId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1970,13 +2178,17 @@ Get announcement by id
 #### Content#updateAnnouncement
 Update an annoucement
 
-```javascript
-// Promise
-const promise = content.updateAnnouncement(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.updateAnnouncement(company_id, application_id, announcement_id, );
-
+```kotlin
+content.updateAnnouncement(companyId: companyId, applicationId: applicationId, announcementId: announcementId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -1997,13 +2209,17 @@ Update an announcement
 #### Content#updateAnnouncementSchedule
 Update schedule or published status of an annoucement
 
-```javascript
-// Promise
-const promise = content.updateAnnouncementSchedule(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.updateAnnouncementSchedule(company_id, application_id, announcement_id, );
-
+```kotlin
+content.updateAnnouncementSchedule(companyId: companyId, applicationId: applicationId, announcementId: announcementId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2024,13 +2240,17 @@ Update schedule or published status of an announcement
 #### Content#deleteAnnouncement
 Delete annoucement by id
 
-```javascript
-// Promise
-const promise = content.deleteAnnouncement(company_id, application_id, announcement_id, );
-
-// Async/Await
-const data = await content.deleteAnnouncement(company_id, application_id, announcement_id, );
-
+```kotlin
+content.deleteAnnouncement(companyId: companyId, applicationId: applicationId, announcementId: announcementId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2051,13 +2271,17 @@ Delete announcement by id
 #### Content#createBlog
 Create blog
 
-```javascript
-// Promise
-const promise = content.createBlog(company_id, application_id, );
-
-// Async/Await
-const data = await content.createBlog(company_id, application_id, );
-
+```kotlin
+content.createBlog(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2077,13 +2301,17 @@ Use this to create a blog.
 #### Content#getBlogs
 Get blogs
 
-```javascript
-// Promise
-const promise = content.getBlogs(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await content.getBlogs(company_id, application_id, page_no, page_size, );
-
+```kotlin
+content.getBlogs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2105,13 +2333,17 @@ Use this to get blogs.
 #### Content#updateBlog
 Update blog
 
-```javascript
-// Promise
-const promise = content.updateBlog(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateBlog(company_id, application_id, id, );
-
+```kotlin
+content.updateBlog(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2132,13 +2364,17 @@ Use this to update blog.
 #### Content#deleteBlog
 Delete blogs
 
-```javascript
-// Promise
-const promise = content.deleteBlog(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteBlog(company_id, application_id, id, );
-
+```kotlin
+content.deleteBlog(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2159,13 +2395,17 @@ Use this to delete blogs.
 #### Content#getComponentById
 Get components by component Id
 
-```javascript
-// Promise
-const promise = content.getComponentById(company_id, application_id, slug, );
-
-// Async/Await
-const data = await content.getComponentById(company_id, application_id, slug, );
-
+```kotlin
+content.getComponentById(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2186,13 +2426,17 @@ The endpoint fetches the component by component Id
 #### Content#getFaqCategories
 Get FAQ categories list
 
-```javascript
-// Promise
-const promise = content.getFaqCategories(company_id, application_id, );
-
-// Async/Await
-const data = await content.getFaqCategories(company_id, application_id, );
-
+```kotlin
+content.getFaqCategories(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2212,13 +2456,17 @@ Get list of FAQ categories
 #### Content#getFaqCategoryBySlugOrId
 Get FAQ category by slug or id
 
-```javascript
-// Promise
-const promise = content.getFaqCategoryBySlugOrId(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqCategoryBySlugOrId(company_id, application_id, id_or_slug, );
-
+```kotlin
+content.getFaqCategoryBySlugOrId(companyId: companyId, applicationId: applicationId, idOrSlug: idOrSlug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2239,13 +2487,17 @@ Get FAQ category by slug or id
 #### Content#createFaqCategory
 Creates a FAQ category
 
-```javascript
-// Promise
-const promise = content.createFaqCategory(company_id, application_id, );
-
-// Async/Await
-const data = await content.createFaqCategory(company_id, application_id, );
-
+```kotlin
+content.createFaqCategory(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2265,13 +2517,17 @@ Add Faq Category
 #### Content#updateFaqCategory
 Updates a FAQ category
 
-```javascript
-// Promise
-const promise = content.updateFaqCategory(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateFaqCategory(company_id, application_id, id, );
-
+```kotlin
+content.updateFaqCategory(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2292,13 +2548,17 @@ Update Faq Category
 #### Content#deleteFaqCategory
 Deletes a FAQ category
 
-```javascript
-// Promise
-const promise = content.deleteFaqCategory(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteFaqCategory(company_id, application_id, id, );
-
+```kotlin
+content.deleteFaqCategory(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2319,13 +2579,17 @@ Delete Faq Category
 #### Content#getFaqsByCategoryIdOrSlug
 Get FAQs of a Faq Category id or slug
 
-```javascript
-// Promise
-const promise = content.getFaqsByCategoryIdOrSlug(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqsByCategoryIdOrSlug(company_id, application_id, id_or_slug, );
-
+```kotlin
+content.getFaqsByCategoryIdOrSlug(companyId: companyId, applicationId: applicationId, idOrSlug: idOrSlug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2346,13 +2610,17 @@ Get FAQs of a Faq Category `id` or `slug`
 #### Content#addFaq
 Creates FAQs for category whose `id` is specified
 
-```javascript
-// Promise
-const promise = content.addFaq(company_id, application_id, category_id, );
-
-// Async/Await
-const data = await content.addFaq(company_id, application_id, category_id, );
-
+```kotlin
+content.addFaq(companyId: companyId, applicationId: applicationId, categoryId: categoryId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2373,13 +2641,17 @@ Creates FAQs for category whose `id` is specified
 #### Content#updateFaq
 Updates FAQ
 
-```javascript
-// Promise
-const promise = content.updateFaq(company_id, application_id, category_id, faq_id, );
-
-// Async/Await
-const data = await content.updateFaq(company_id, application_id, category_id, faq_id, );
-
+```kotlin
+content.updateFaq(companyId: companyId, applicationId: applicationId, categoryId: categoryId, faqId: faqId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2401,13 +2673,17 @@ Updates FAQ
 #### Content#deleteFaq
 Delete FAQ
 
-```javascript
-// Promise
-const promise = content.deleteFaq(company_id, application_id, category_id, faq_id, );
-
-// Async/Await
-const data = await content.deleteFaq(company_id, application_id, category_id, faq_id, );
-
+```kotlin
+content.deleteFaq(companyId: companyId, applicationId: applicationId, categoryId: categoryId, faqId: faqId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2429,13 +2705,17 @@ Delete FAQ
 #### Content#getFaqByIdOrSlug
 Get frequently asked question
 
-```javascript
-// Promise
-const promise = content.getFaqByIdOrSlug(company_id, application_id, id_or_slug, );
-
-// Async/Await
-const data = await content.getFaqByIdOrSlug(company_id, application_id, id_or_slug, );
-
+```kotlin
+content.getFaqByIdOrSlug(companyId: companyId, applicationId: applicationId, idOrSlug: idOrSlug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2456,13 +2736,17 @@ Get frequently asked questions list. These will be helpful for users to using we
 #### Content#getLandingPages
 Get landing-pages
 
-```javascript
-// Promise
-const promise = content.getLandingPages(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await content.getLandingPages(company_id, application_id, page_no, page_size, );
-
+```kotlin
+content.getLandingPages(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2484,13 +2768,17 @@ Use this to get landing-pages.
 #### Content#createLandingPage
 Create landing-page
 
-```javascript
-// Promise
-const promise = content.createLandingPage(company_id, application_id, );
-
-// Async/Await
-const data = await content.createLandingPage(company_id, application_id, );
-
+```kotlin
+content.createLandingPage(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2510,13 +2798,17 @@ Use this to create landing-page.
 #### Content#updateLandingPage
 Update landing-page
 
-```javascript
-// Promise
-const promise = content.updateLandingPage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateLandingPage(company_id, application_id, id, );
-
+```kotlin
+content.updateLandingPage(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2537,13 +2829,17 @@ Use this to update landing-page.
 #### Content#deleteLandingPage
 Delete landing-page
 
-```javascript
-// Promise
-const promise = content.deleteLandingPage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteLandingPage(company_id, application_id, id, );
-
+```kotlin
+content.deleteLandingPage(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2564,13 +2860,17 @@ Use this to delete landing-page.
 #### Content#getLegalInformation
 Get legal information
 
-```javascript
-// Promise
-const promise = content.getLegalInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.getLegalInformation(company_id, application_id, );
-
+```kotlin
+content.getLegalInformation(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2590,13 +2890,17 @@ Get legal information of application, which includes policy, Terms and Condition
 #### Content#updateLegalInformation
 Save legal information
 
-```javascript
-// Promise
-const promise = content.updateLegalInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateLegalInformation(company_id, application_id, );
-
+```kotlin
+content.updateLegalInformation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2616,13 +2920,17 @@ Save legal information of application, which includes Policy, Terms and Conditio
 #### Content#getNavigations
 Get navigations
 
-```javascript
-// Promise
-const promise = content.getNavigations(company_id, application_id, device_platform, page_no, page_size, );
-
-// Async/Await
-const data = await content.getNavigations(company_id, application_id, device_platform, page_no, page_size, );
-
+```kotlin
+content.getNavigations(companyId: companyId, applicationId: applicationId, devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2645,13 +2953,17 @@ Use this to get navigations.
 #### Content#createNavigation
 Create navigation
 
-```javascript
-// Promise
-const promise = content.createNavigation(company_id, application_id, );
-
-// Async/Await
-const data = await content.createNavigation(company_id, application_id, );
-
+```kotlin
+content.createNavigation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2671,13 +2983,17 @@ Use this to create navigation.
 #### Content#getDefaultNavigations
 Get default navigations
 
-```javascript
-// Promise
-const promise = content.getDefaultNavigations(company_id, application_id, );
-
-// Async/Await
-const data = await content.getDefaultNavigations(company_id, application_id, );
-
+```kotlin
+content.getDefaultNavigations(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2697,13 +3013,17 @@ Use this to get default navigations.
 #### Content#getNavigationBySlug
 Get navigation by slug
 
-```javascript
-// Promise
-const promise = content.getNavigationBySlug(company_id, application_id, slug, device_platform, );
-
-// Async/Await
-const data = await content.getNavigationBySlug(company_id, application_id, slug, device_platform, );
-
+```kotlin
+content.getNavigationBySlug(companyId: companyId, applicationId: applicationId, slug: slug, devicePlatform: devicePlatform).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2725,13 +3045,17 @@ Use this to get navigation by slug.
 #### Content#updateNavigation
 Update navigation
 
-```javascript
-// Promise
-const promise = content.updateNavigation(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateNavigation(company_id, application_id, id, );
-
+```kotlin
+content.updateNavigation(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2752,13 +3076,17 @@ Use this to update navigation.
 #### Content#deleteNavigation
 Delete navigation
 
-```javascript
-// Promise
-const promise = content.deleteNavigation(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteNavigation(company_id, application_id, id, );
-
+```kotlin
+content.deleteNavigation(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2779,13 +3107,17 @@ Use this to delete navigation.
 #### Content#getPageMeta
 Get page meta
 
-```javascript
-// Promise
-const promise = content.getPageMeta(company_id, application_id, );
-
-// Async/Await
-const data = await content.getPageMeta(company_id, application_id, );
-
+```kotlin
+content.getPageMeta(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2805,13 +3137,17 @@ Use this to get Page Meta.
 #### Content#getPageSpec
 Get page spec
 
-```javascript
-// Promise
-const promise = content.getPageSpec(company_id, application_id, );
-
-// Async/Await
-const data = await content.getPageSpec(company_id, application_id, );
-
+```kotlin
+content.getPageSpec(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2831,13 +3167,17 @@ Use this to get page spec.
 #### Content#createPage
 Create page
 
-```javascript
-// Promise
-const promise = content.createPage(company_id, application_id, );
-
-// Async/Await
-const data = await content.createPage(company_id, application_id, );
-
+```kotlin
+content.createPage(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2857,13 +3197,17 @@ Use this to create a page.
 #### Content#getPages
 Get pages
 
-```javascript
-// Promise
-const promise = content.getPages(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await content.getPages(company_id, application_id, page_no, page_size, );
-
+```kotlin
+content.getPages(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2885,13 +3229,17 @@ Use this to get pages.
 #### Content#createPagePreview
 Create page preview
 
-```javascript
-// Promise
-const promise = content.createPagePreview(company_id, application_id, );
-
-// Async/Await
-const data = await content.createPagePreview(company_id, application_id, );
-
+```kotlin
+content.createPagePreview(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2911,13 +3259,17 @@ Use this to create a page preview.
 #### Content#updatePagePreview
 Update page
 
-```javascript
-// Promise
-const promise = content.updatePagePreview(company_id, application_id, slug, );
-
-// Async/Await
-const data = await content.updatePagePreview(company_id, application_id, slug, );
-
+```kotlin
+content.updatePagePreview(companyId: companyId, applicationId: applicationId, slug: slug, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2938,13 +3290,17 @@ Use this to update page.
 #### Content#updatePage
 Update page
 
-```javascript
-// Promise
-const promise = content.updatePage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updatePage(company_id, application_id, id, );
-
+```kotlin
+content.updatePage(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2965,13 +3321,17 @@ Use this to update page.
 #### Content#deletePage
 Delete page
 
-```javascript
-// Promise
-const promise = content.deletePage(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deletePage(company_id, application_id, id, );
-
+```kotlin
+content.deletePage(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -2992,13 +3352,17 @@ Use this to delete page.
 #### Content#getPageBySlug
 Get pages by component Id
 
-```javascript
-// Promise
-const promise = content.getPageBySlug(company_id, application_id, slug, );
-
-// Async/Await
-const data = await content.getPageBySlug(company_id, application_id, slug, );
-
+```kotlin
+content.getPageBySlug(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3019,13 +3383,17 @@ The endpoint fetches the component by component Id
 #### Content#getSEOConfiguration
 Get seo of application
 
-```javascript
-// Promise
-const promise = content.getSEOConfiguration(company_id, application_id, );
-
-// Async/Await
-const data = await content.getSEOConfiguration(company_id, application_id, );
-
+```kotlin
+content.getSEOConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3045,13 +3413,17 @@ Get seo of application
 #### Content#updateSEOConfiguration
 Update seo of application
 
-```javascript
-// Promise
-const promise = content.updateSEOConfiguration(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateSEOConfiguration(company_id, application_id, );
-
+```kotlin
+content.updateSEOConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3071,13 +3443,17 @@ Update seo of application
 #### Content#getSlideshows
 Get slideshows
 
-```javascript
-// Promise
-const promise = content.getSlideshows(company_id, application_id, device_platform, page_no, page_size, );
-
-// Async/Await
-const data = await content.getSlideshows(company_id, application_id, device_platform, page_no, page_size, );
-
+```kotlin
+content.getSlideshows(companyId: companyId, applicationId: applicationId, devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3100,13 +3476,17 @@ Use this to get slideshows.
 #### Content#createSlideshow
 Create slideshow
 
-```javascript
-// Promise
-const promise = content.createSlideshow(company_id, application_id, );
-
-// Async/Await
-const data = await content.createSlideshow(company_id, application_id, );
-
+```kotlin
+content.createSlideshow(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3126,13 +3506,17 @@ Use this to create slideshow.
 #### Content#getSlideshowBySlug
 Get slideshow by slug
 
-```javascript
-// Promise
-const promise = content.getSlideshowBySlug(company_id, application_id, slug, device_platform, );
-
-// Async/Await
-const data = await content.getSlideshowBySlug(company_id, application_id, slug, device_platform, );
-
+```kotlin
+content.getSlideshowBySlug(companyId: companyId, applicationId: applicationId, slug: slug, devicePlatform: devicePlatform).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3154,13 +3538,17 @@ Use this to get slideshow by slug.
 #### Content#updateSlideshow
 Update slideshow
 
-```javascript
-// Promise
-const promise = content.updateSlideshow(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.updateSlideshow(company_id, application_id, id, );
-
+```kotlin
+content.updateSlideshow(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3181,13 +3569,17 @@ Use this to update slideshow.
 #### Content#deleteSlideshow
 Delete slideshow
 
-```javascript
-// Promise
-const promise = content.deleteSlideshow(company_id, application_id, id, );
-
-// Async/Await
-const data = await content.deleteSlideshow(company_id, application_id, id, );
-
+```kotlin
+content.deleteSlideshow(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3208,13 +3600,17 @@ Use this to delete slideshow.
 #### Content#getSupportInformation
 Get support information
 
-```javascript
-// Promise
-const promise = content.getSupportInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.getSupportInformation(company_id, application_id, );
-
+```kotlin
+content.getSupportInformation(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3234,13 +3630,17 @@ Get contact details for customer support. Including emails and phone numbers
 #### Content#updateSupportInformation
 Update support data of application
 
-```javascript
-// Promise
-const promise = content.updateSupportInformation(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateSupportInformation(company_id, application_id, );
-
+```kotlin
+content.updateSupportInformation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3260,13 +3660,17 @@ Update support data of application
 #### Content#createInjectableTag
 Creates Tag
 
-```javascript
-// Promise
-const promise = content.createInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.createInjectableTag(company_id, application_id, );
-
+```kotlin
+content.createInjectableTag(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3286,13 +3690,17 @@ Create tags
 #### Content#updateInjectableTag
 Updates a Tag
 
-```javascript
-// Promise
-const promise = content.updateInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.updateInjectableTag(company_id, application_id, );
-
+```kotlin
+content.updateInjectableTag(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3312,13 +3720,17 @@ Update tag
 #### Content#deleteAllInjectableTags
 Delete tags for application
 
-```javascript
-// Promise
-const promise = content.deleteAllInjectableTags(company_id, application_id, );
-
-// Async/Await
-const data = await content.deleteAllInjectableTags(company_id, application_id, );
-
+```kotlin
+content.deleteAllInjectableTags(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3338,13 +3750,17 @@ Delete tags for application
 #### Content#getInjectableTags
 Get tags for application
 
-```javascript
-// Promise
-const promise = content.getInjectableTags(company_id, application_id, );
-
-// Async/Await
-const data = await content.getInjectableTags(company_id, application_id, );
-
+```kotlin
+content.getInjectableTags(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3364,13 +3780,17 @@ Get tags for application
 #### Content#addInjectableTag
 Adds a Tag
 
-```javascript
-// Promise
-const promise = content.addInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.addInjectableTag(company_id, application_id, );
-
+```kotlin
+content.addInjectableTag(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3390,13 +3810,17 @@ Add tag
 #### Content#removeInjectableTag
 Removes a Tag
 
-```javascript
-// Promise
-const promise = content.removeInjectableTag(company_id, application_id, );
-
-// Async/Await
-const data = await content.removeInjectableTag(company_id, application_id, );
-
+```kotlin
+content.removeInjectableTag(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3416,13 +3840,17 @@ Remove a particular tag
 #### Content#editInjectableTag
 Edits a Tag by Id
 
-```javascript
-// Promise
-const promise = content.editInjectableTag(company_id, application_id, tag_id, );
-
-// Async/Await
-const data = await content.editInjectableTag(company_id, application_id, tag_id, );
-
+```kotlin
+content.editInjectableTag(companyId: companyId, applicationId: applicationId, tagId: tagId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3460,13 +3888,17 @@ const billing = new Billing(conf);
 #### Billing#getInvoices
 Get invoices
 
-```javascript
-// Promise
-const promise = billing.getInvoices(company_id, );
-
-// Async/Await
-const data = await billing.getInvoices(company_id, );
-
+```kotlin
+billing.getInvoices(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3485,13 +3917,17 @@ Get invoices.
 #### Billing#getInvoiceById
 Get invoice by id
 
-```javascript
-// Promise
-const promise = billing.getInvoiceById(company_id, invoice_id, );
-
-// Async/Await
-const data = await billing.getInvoiceById(company_id, invoice_id, );
-
+```kotlin
+billing.getInvoiceById(companyId: companyId, invoiceId: invoiceId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3511,13 +3947,17 @@ Get invoice by id.
 #### Billing#getCustomerDetail
 Get subscription customer detail
 
-```javascript
-// Promise
-const promise = billing.getCustomerDetail(company_id, );
-
-// Async/Await
-const data = await billing.getCustomerDetail(company_id, );
-
+```kotlin
+billing.getCustomerDetail(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3536,13 +3976,17 @@ Get subscription customer detail.
 #### Billing#upsertCustomerDetail
 Upsert subscription customer detail
 
-```javascript
-// Promise
-const promise = billing.upsertCustomerDetail(company_id, );
-
-// Async/Await
-const data = await billing.upsertCustomerDetail(company_id, );
-
+```kotlin
+billing.upsertCustomerDetail(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3561,13 +4005,17 @@ Upsert subscription customer detail.
 #### Billing#getSubscription
 Get current subscription detail
 
-```javascript
-// Promise
-const promise = billing.getSubscription(company_id, );
-
-// Async/Await
-const data = await billing.getSubscription(company_id, );
-
+```kotlin
+billing.getSubscription(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3587,13 +4035,17 @@ If subscription is active then it will return is_enabled true and return subscri
 #### Billing#getFeatureLimitConfig
 Get subscription subscription limits
 
-```javascript
-// Promise
-const promise = billing.getFeatureLimitConfig(company_id, );
-
-// Async/Await
-const data = await billing.getFeatureLimitConfig(company_id, );
-
+```kotlin
+billing.getFeatureLimitConfig(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3612,13 +4064,17 @@ Get subscription subscription limits.
 #### Billing#activateSubscriptionPlan
 Activate subscription
 
-```javascript
-// Promise
-const promise = billing.activateSubscriptionPlan(company_id, );
-
-// Async/Await
-const data = await billing.activateSubscriptionPlan(company_id, );
-
+```kotlin
+billing.activateSubscriptionPlan(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3637,13 +4093,17 @@ It will activate subscription plan for customer
 #### Billing#cancelSubscriptionPlan
 Cancel subscription
 
-```javascript
-// Promise
-const promise = billing.cancelSubscriptionPlan(company_id, );
-
-// Async/Await
-const data = await billing.cancelSubscriptionPlan(company_id, );
-
+```kotlin
+billing.cancelSubscriptionPlan(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3679,13 +4139,17 @@ const communication = new Communication(conf);
 #### Communication#getCampaigns
 Get campaigns
 
-```javascript
-// Promise
-const promise = communication.getCampaigns(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getCampaigns(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getCampaigns(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3708,13 +4172,17 @@ Get campaigns
 #### Communication#createCampaign
 Create campaign
 
-```javascript
-// Promise
-const promise = communication.createCampaign(company_id, application_id, );
-
-// Async/Await
-const data = await communication.createCampaign(company_id, application_id, );
-
+```kotlin
+communication.createCampaign(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3734,13 +4202,17 @@ Create campaign
 #### Communication#getCampaignById
 Get campaign by id
 
-```javascript
-// Promise
-const promise = communication.getCampaignById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.getCampaignById(company_id, application_id, id, );
-
+```kotlin
+communication.getCampaignById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3761,13 +4233,17 @@ Get campaign by id
 #### Communication#updateCampaignById
 Update campaign by id
 
-```javascript
-// Promise
-const promise = communication.updateCampaignById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.updateCampaignById(company_id, application_id, id, );
-
+```kotlin
+communication.updateCampaignById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3788,13 +4264,17 @@ Update campaign by id
 #### Communication#getStatsOfCampaignById
 Get stats of campaign by id
 
-```javascript
-// Promise
-const promise = communication.getStatsOfCampaignById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.getStatsOfCampaignById(company_id, application_id, id, );
-
+```kotlin
+communication.getStatsOfCampaignById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3815,13 +4295,17 @@ Get stats of campaign by id
 #### Communication#getAudiences
 Get audiences
 
-```javascript
-// Promise
-const promise = communication.getAudiences(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getAudiences(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getAudiences(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3844,13 +4328,17 @@ Get audiences
 #### Communication#createAudience
 Create audience
 
-```javascript
-// Promise
-const promise = communication.createAudience(company_id, application_id, );
-
-// Async/Await
-const data = await communication.createAudience(company_id, application_id, );
-
+```kotlin
+communication.createAudience(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3870,13 +4358,17 @@ Create audience
 #### Communication#getBigqueryHeaders
 Get bigquery headers
 
-```javascript
-// Promise
-const promise = communication.getBigqueryHeaders(company_id, application_id, );
-
-// Async/Await
-const data = await communication.getBigqueryHeaders(company_id, application_id, );
-
+```kotlin
+communication.getBigqueryHeaders(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3896,13 +4388,17 @@ Get bigquery headers
 #### Communication#getAudienceById
 Get audience by id
 
-```javascript
-// Promise
-const promise = communication.getAudienceById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.getAudienceById(company_id, application_id, id, );
-
+```kotlin
+communication.getAudienceById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3923,13 +4419,17 @@ Get audience by id
 #### Communication#updateAudienceById
 Update audience by id
 
-```javascript
-// Promise
-const promise = communication.updateAudienceById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.updateAudienceById(company_id, application_id, id, );
-
+```kotlin
+communication.updateAudienceById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3950,13 +4450,17 @@ Update audience by id
 #### Communication#getNSampleRecordsFromCsv
 Get n sample records from csv
 
-```javascript
-// Promise
-const promise = communication.getNSampleRecordsFromCsv(company_id, application_id, );
-
-// Async/Await
-const data = await communication.getNSampleRecordsFromCsv(company_id, application_id, );
-
+```kotlin
+communication.getNSampleRecordsFromCsv(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -3976,13 +4480,17 @@ Get n sample records from csv
 #### Communication#getEmailProviders
 Get email providers
 
-```javascript
-// Promise
-const promise = communication.getEmailProviders(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getEmailProviders(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getEmailProviders(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4005,13 +4513,17 @@ Get email providers
 #### Communication#createEmailProvider
 Create email provider
 
-```javascript
-// Promise
-const promise = communication.createEmailProvider(company_id, application_id, );
-
-// Async/Await
-const data = await communication.createEmailProvider(company_id, application_id, );
-
+```kotlin
+communication.createEmailProvider(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4031,13 +4543,17 @@ Create email provider
 #### Communication#getEmailProviderById
 Get email provider by id
 
-```javascript
-// Promise
-const promise = communication.getEmailProviderById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.getEmailProviderById(company_id, application_id, id, );
-
+```kotlin
+communication.getEmailProviderById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4058,13 +4574,17 @@ Get email provider by id
 #### Communication#updateEmailProviderById
 Update email provider by id
 
-```javascript
-// Promise
-const promise = communication.updateEmailProviderById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.updateEmailProviderById(company_id, application_id, id, );
-
+```kotlin
+communication.updateEmailProviderById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4085,13 +4605,17 @@ Update email provider by id
 #### Communication#getEmailTemplates
 Get email templates
 
-```javascript
-// Promise
-const promise = communication.getEmailTemplates(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getEmailTemplates(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getEmailTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4114,13 +4638,17 @@ Get email templates
 #### Communication#createEmailTemplate
 Create email template
 
-```javascript
-// Promise
-const promise = communication.createEmailTemplate(company_id, application_id, );
-
-// Async/Await
-const data = await communication.createEmailTemplate(company_id, application_id, );
-
+```kotlin
+communication.createEmailTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4140,13 +4668,17 @@ Create email template
 #### Communication#getSystemEmailTemplates
 Get system email templates
 
-```javascript
-// Promise
-const promise = communication.getSystemEmailTemplates(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getSystemEmailTemplates(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getSystemEmailTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4169,13 +4701,17 @@ Get system email templates
 #### Communication#getEmailTemplateById
 Get email template by id
 
-```javascript
-// Promise
-const promise = communication.getEmailTemplateById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.getEmailTemplateById(company_id, application_id, id, );
-
+```kotlin
+communication.getEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4196,13 +4732,17 @@ Get email template by id
 #### Communication#updateEmailTemplateById
 Update email template by id
 
-```javascript
-// Promise
-const promise = communication.updateEmailTemplateById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.updateEmailTemplateById(company_id, application_id, id, );
-
+```kotlin
+communication.updateEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4223,13 +4763,17 @@ Update email template by id
 #### Communication#deleteEmailTemplateById
 Delete email template by id
 
-```javascript
-// Promise
-const promise = communication.deleteEmailTemplateById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.deleteEmailTemplateById(company_id, application_id, id, );
-
+```kotlin
+communication.deleteEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4250,13 +4794,17 @@ Delete email template by id
 #### Communication#getEventSubscriptions
 Get event subscriptions
 
-```javascript
-// Promise
-const promise = communication.getEventSubscriptions(company_id, application_id, page_no, page_size, populate, );
-
-// Async/Await
-const data = await communication.getEventSubscriptions(company_id, application_id, page_no, page_size, populate, );
-
+```kotlin
+communication.getEventSubscriptions(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, populate: populate).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4279,13 +4827,17 @@ Get event subscriptions
 #### Communication#getJobs
 Get jobs
 
-```javascript
-// Promise
-const promise = communication.getJobs(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getJobs(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getJobs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4308,13 +4860,17 @@ Get jobs
 #### Communication#triggerCampaignJob
 Trigger campaign job
 
-```javascript
-// Promise
-const promise = communication.triggerCampaignJob(company_id, application_id, );
-
-// Async/Await
-const data = await communication.triggerCampaignJob(company_id, application_id, );
-
+```kotlin
+communication.triggerCampaignJob(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4334,13 +4890,17 @@ Trigger campaign job
 #### Communication#getJobLogs
 Get job logs
 
-```javascript
-// Promise
-const promise = communication.getJobLogs(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getJobLogs(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getJobLogs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4363,13 +4923,17 @@ Get job logs
 #### Communication#getCommunicationLogs
 Get communication logs
 
-```javascript
-// Promise
-const promise = communication.getCommunicationLogs(company_id, application_id, page_id, page_size, sort, query, );
-
-// Async/Await
-const data = await communication.getCommunicationLogs(company_id, application_id, page_id, page_size, sort, query, );
-
+```kotlin
+communication.getCommunicationLogs(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize, sort: sort, query: query).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4393,13 +4957,17 @@ Get communication logs
 #### Communication#getSystemNotifications
 Get system notifications
 
-```javascript
-// Promise
-const promise = communication.getSystemNotifications(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await communication.getSystemNotifications(company_id, page_no, page_size, );
-
+```kotlin
+communication.getSystemNotifications(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4420,13 +4988,17 @@ Get system notifications
 #### Communication#getSmsProviders
 Get sms providers
 
-```javascript
-// Promise
-const promise = communication.getSmsProviders(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getSmsProviders(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getSmsProviders(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4449,13 +5021,17 @@ Get sms providers
 #### Communication#createSmsProvider
 Create sms provider
 
-```javascript
-// Promise
-const promise = communication.createSmsProvider(company_id, application_id, );
-
-// Async/Await
-const data = await communication.createSmsProvider(company_id, application_id, );
-
+```kotlin
+communication.createSmsProvider(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4475,13 +5051,17 @@ Create sms provider
 #### Communication#getSmsProviderById
 Get sms provider by id
 
-```javascript
-// Promise
-const promise = communication.getSmsProviderById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.getSmsProviderById(company_id, application_id, id, );
-
+```kotlin
+communication.getSmsProviderById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4502,13 +5082,17 @@ Get sms provider by id
 #### Communication#updateSmsProviderById
 Update sms provider by id
 
-```javascript
-// Promise
-const promise = communication.updateSmsProviderById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.updateSmsProviderById(company_id, application_id, id, );
-
+```kotlin
+communication.updateSmsProviderById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4529,13 +5113,17 @@ Update sms provider by id
 #### Communication#getSmsTemplates
 Get sms templates
 
-```javascript
-// Promise
-const promise = communication.getSmsTemplates(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getSmsTemplates(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getSmsTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4558,13 +5146,17 @@ Get sms templates
 #### Communication#createSmsTemplate
 Create sms template
 
-```javascript
-// Promise
-const promise = communication.createSmsTemplate(company_id, application_id, );
-
-// Async/Await
-const data = await communication.createSmsTemplate(company_id, application_id, );
-
+```kotlin
+communication.createSmsTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4584,13 +5176,17 @@ Create sms template
 #### Communication#getSmsTemplateById
 Get sms template by id
 
-```javascript
-// Promise
-const promise = communication.getSmsTemplateById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.getSmsTemplateById(company_id, application_id, id, );
-
+```kotlin
+communication.getSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4611,13 +5207,17 @@ Get sms template by id
 #### Communication#updateSmsTemplateById
 Update sms template by id
 
-```javascript
-// Promise
-const promise = communication.updateSmsTemplateById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.updateSmsTemplateById(company_id, application_id, id, );
-
+```kotlin
+communication.updateSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4638,13 +5238,17 @@ Update sms template by id
 #### Communication#deleteSmsTemplateById
 Delete sms template by id
 
-```javascript
-// Promise
-const promise = communication.deleteSmsTemplateById(company_id, application_id, id, );
-
-// Async/Await
-const data = await communication.deleteSmsTemplateById(company_id, application_id, id, );
-
+```kotlin
+communication.deleteSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4665,13 +5269,17 @@ Delete sms template by id
 #### Communication#getSystemSystemTemplates
 Get system sms templates
 
-```javascript
-// Promise
-const promise = communication.getSystemSystemTemplates(company_id, application_id, page_no, page_size, sort, );
-
-// Async/Await
-const data = await communication.getSystemSystemTemplates(company_id, application_id, page_no, page_size, sort, );
-
+```kotlin
+communication.getSystemSystemTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4711,13 +5319,17 @@ const payment = new Payment(conf);
 #### Payment#getBrandPaymentGatewayConfig
 Get All Brand Payment Gateway Config Secret
 
-```javascript
-// Promise
-const promise = payment.getBrandPaymentGatewayConfig(company_id, application_id, );
-
-// Async/Await
-const data = await payment.getBrandPaymentGatewayConfig(company_id, application_id, );
-
+```kotlin
+payment.getBrandPaymentGatewayConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4737,13 +5349,17 @@ Get All Brand Payment Gateway Config Secret
 #### Payment#saveBrandPaymentGatewayConfig
 Save Config Secret For Brand Payment Gateway
 
-```javascript
-// Promise
-const promise = payment.saveBrandPaymentGatewayConfig(company_id, application_id, );
-
-// Async/Await
-const data = await payment.saveBrandPaymentGatewayConfig(company_id, application_id, );
-
+```kotlin
+payment.saveBrandPaymentGatewayConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4763,13 +5379,17 @@ Save Config Secret For Brand Payment Gateway
 #### Payment#updateBrandPaymentGatewayConfig
 Save Config Secret For Brand Payment Gateway
 
-```javascript
-// Promise
-const promise = payment.updateBrandPaymentGatewayConfig(company_id, application_id, );
-
-// Async/Await
-const data = await payment.updateBrandPaymentGatewayConfig(company_id, application_id, );
-
+```kotlin
+payment.updateBrandPaymentGatewayConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4789,13 +5409,17 @@ Save Config Secret For Brand Payment Gateway
 #### Payment#getPaymentModeRoutes
 Get All Valid Payment Options
 
-```javascript
-// Promise
-const promise = payment.getPaymentModeRoutes(company_id, application_id, refresh, request_type, );
-
-// Async/Await
-const data = await payment.getPaymentModeRoutes(company_id, application_id, refresh, request_type, );
-
+```kotlin
+payment.getPaymentModeRoutes(companyId: companyId, applicationId: applicationId, refresh: refresh, requestType: requestType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4817,13 +5441,17 @@ Use this API to get Get All Valid Payment Options for making payment
 #### Payment#getAllPayouts
 Get All Payouts
 
-```javascript
-// Promise
-const promise = payment.getAllPayouts(company_id, unique_external_id, );
-
-// Async/Await
-const data = await payment.getAllPayouts(company_id, unique_external_id, );
-
+```kotlin
+payment.getAllPayouts(companyId: companyId, uniqueExternalId: uniqueExternalId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4843,13 +5471,17 @@ Get All Payouts
 #### Payment#savePayout
 Save Payout
 
-```javascript
-// Promise
-const promise = payment.savePayout(company_id, );
-
-// Async/Await
-const data = await payment.savePayout(company_id, );
-
+```kotlin
+payment.savePayout(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4868,13 +5500,17 @@ Save Payout
 #### Payment#updatePayout
 Update Payout
 
-```javascript
-// Promise
-const promise = payment.updatePayout(company_id, unique_transfer_no, );
-
-// Async/Await
-const data = await payment.updatePayout(company_id, unique_transfer_no, );
-
+```kotlin
+payment.updatePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4894,13 +5530,17 @@ Update Payout
 #### Payment#activateAndDectivatePayout
 Partial Update Payout
 
-```javascript
-// Promise
-const promise = payment.activateAndDectivatePayout(company_id, unique_transfer_no, );
-
-// Async/Await
-const data = await payment.activateAndDectivatePayout(company_id, unique_transfer_no, );
-
+```kotlin
+payment.activateAndDectivatePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4920,13 +5560,17 @@ Partial Update Payout
 #### Payment#deletePayout
 Delete Payout
 
-```javascript
-// Promise
-const promise = payment.deletePayout(company_id, unique_transfer_no, );
-
-// Async/Await
-const data = await payment.deletePayout(company_id, unique_transfer_no, );
-
+```kotlin
+payment.deletePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4946,13 +5590,17 @@ Delete Payout
 #### Payment#getSubscriptionPaymentMethod
 List Subscription Payment Method
 
-```javascript
-// Promise
-const promise = payment.getSubscriptionPaymentMethod(company_id, );
-
-// Async/Await
-const data = await payment.getSubscriptionPaymentMethod(company_id, );
-
+```kotlin
+payment.getSubscriptionPaymentMethod(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4971,13 +5619,17 @@ Get all  Subscription  Payment Method
 #### Payment#deleteSubscriptionPaymentMethod
 Delete Subscription Payment Method
 
-```javascript
-// Promise
-const promise = payment.deleteSubscriptionPaymentMethod(company_id, unique_external_id, payment_method_id, );
-
-// Async/Await
-const data = await payment.deleteSubscriptionPaymentMethod(company_id, unique_external_id, payment_method_id, );
-
+```kotlin
+payment.deleteSubscriptionPaymentMethod(companyId: companyId, uniqueExternalId: uniqueExternalId, paymentMethodId: paymentMethodId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -4998,13 +5650,17 @@ Uses this api to Delete Subscription Payment Method
 #### Payment#getSubscriptionConfig
 List Subscription Config
 
-```javascript
-// Promise
-const promise = payment.getSubscriptionConfig(company_id, );
-
-// Async/Await
-const data = await payment.getSubscriptionConfig(company_id, );
-
+```kotlin
+payment.getSubscriptionConfig(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5023,13 +5679,17 @@ Get all  Subscription Config details
 #### Payment#saveSubscriptionSetupIntent
 Save Subscription Setup Intent
 
-```javascript
-// Promise
-const promise = payment.saveSubscriptionSetupIntent(company_id, );
-
-// Async/Await
-const data = await payment.saveSubscriptionSetupIntent(company_id, );
-
+```kotlin
+payment.saveSubscriptionSetupIntent(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5065,13 +5725,17 @@ const order = new Order(conf);
 #### Order#shipmentStatusUpdate
 Update status of Shipment
 
-```javascript
-// Promise
-const promise = order.shipmentStatusUpdate(company_id, );
-
-// Async/Await
-const data = await order.shipmentStatusUpdate(company_id, );
-
+```kotlin
+order.shipmentStatusUpdate(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5090,13 +5754,17 @@ Update Shipment Status
 #### Order#activityStatus
 Get Activity Status
 
-```javascript
-// Promise
-const promise = order.activityStatus(company_id, bag_id, );
-
-// Async/Await
-const data = await order.activityStatus(company_id, bag_id, );
-
+```kotlin
+order.activityStatus(companyId: companyId, bagId: bagId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5116,13 +5784,17 @@ Get Activity Status
 #### Order#storeProcessShipmentUpdate
 Update Store Process-Shipment
 
-```javascript
-// Promise
-const promise = order.storeProcessShipmentUpdate(company_id, );
-
-// Async/Await
-const data = await order.storeProcessShipmentUpdate(company_id, );
-
+```kotlin
+order.storeProcessShipmentUpdate(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5141,13 +5813,17 @@ Update Store Process-Shipment
 #### Order#getOrdersByCompanyId
 Get Orders for company based on Company Id
 
-```javascript
-// Promise
-const promise = order.getOrdersByCompanyId(company_id, page_no, page_size, from_date, to_date, q, stage, sales_channels, order_id, stores, status, shorten_urls, filter_type, );
-
-// Async/Await
-const data = await order.getOrdersByCompanyId(company_id, page_no, page_size, from_date, to_date, q, stage, sales_channels, order_id, stores, status, shorten_urls, filter_type, );
-
+```kotlin
+order.getOrdersByCompanyId(companyId: companyId, pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5178,13 +5854,17 @@ Get Orders
 #### Order#trackShipmentPlatform
 Track Shipment by shipment id, for application based on application Id
 
-```javascript
-// Promise
-const promise = order.trackShipmentPlatform(company_id, application_id, shipment_id, );
-
-// Async/Await
-const data = await order.trackShipmentPlatform(company_id, application_id, shipment_id, );
-
+```kotlin
+order.trackShipmentPlatform(companyId: companyId, applicationId: applicationId, shipmentId: shipmentId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5205,13 +5885,17 @@ Shipment Track
 #### Order#trackOrder
 Track Order by order id, for application based on application Id
 
-```javascript
-// Promise
-const promise = order.trackOrder(company_id, application_id, order_id, );
-
-// Async/Await
-const data = await order.trackOrder(company_id, application_id, order_id, );
-
+```kotlin
+order.trackOrder(companyId: companyId, applicationId: applicationId, orderId: orderId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5232,13 +5916,17 @@ Order Track
 #### Order#failedOrders
 Get all failed orders application wise
 
-```javascript
-// Promise
-const promise = order.failedOrders(company_id, application_id, );
-
-// Async/Await
-const data = await order.failedOrders(company_id, application_id, );
-
+```kotlin
+order.failedOrders(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5258,13 +5946,17 @@ Failed Orders
 #### Order#reprocessOrder
 Reprocess order by order id
 
-```javascript
-// Promise
-const promise = order.reprocessOrder(company_id, application_id, order_id, );
-
-// Async/Await
-const data = await order.reprocessOrder(company_id, application_id, order_id, );
-
+```kotlin
+order.reprocessOrder(companyId: companyId, applicationId: applicationId, orderId: orderId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5285,13 +5977,17 @@ Order Reprocess
 #### Order#getPing
 Get Ping
 
-```javascript
-// Promise
-const promise = order.getPing(company_id, );
-
-// Async/Await
-const data = await order.getPing(company_id, );
-
+```kotlin
+order.getPing(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5310,13 +6006,17 @@ Get Ping
 #### Order#voiceCallback
 Get Voice Callback
 
-```javascript
-// Promise
-const promise = order.voiceCallback(company_id, );
-
-// Async/Await
-const data = await order.voiceCallback(company_id, );
-
+```kotlin
+order.voiceCallback(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5335,13 +6035,17 @@ Voice Callback
 #### Order#voiceClickToCall
 Get Voice Click to Call
 
-```javascript
-// Promise
-const promise = order.voiceClickToCall(company_id, caller, receiver, );
-
-// Async/Await
-const data = await order.voiceClickToCall(company_id, caller, receiver, );
-
+```kotlin
+order.voiceClickToCall(companyId: companyId, caller: caller, receiver: receiver).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5379,13 +6083,17 @@ const catalog = new Catalog(conf);
 #### Catalog#updateSearchKeywords
 Update Search Keyword
 
-```javascript
-// Promise
-const promise = catalog.updateSearchKeywords(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.updateSearchKeywords(company_id, application_id, id, );
-
+```kotlin
+catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5403,16 +6111,51 @@ Update Search Keyword by its id. On successful request, returns the updated coll
 ---
 
 
+#### Catalog#deleteSearchKeywords
+Delete a Search Keywords
+
+```kotlin
+catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
+
+
+---
+
+
 #### Catalog#getSearchKeywords
 Get a Search Keywords Details
 
-```javascript
-// Promise
-const promise = catalog.getSearchKeywords(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.getSearchKeywords(company_id, application_id, id, );
-
+```kotlin
+catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5430,69 +6173,20 @@ Get the details of a words by its `id`. If successful, returns a Collection reso
 ---
 
 
-#### Catalog#deleteSearchKeywords
-Delete a Search Keywords
-
-```javascript
-// Promise
-const promise = catalog.deleteSearchKeywords(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.deleteSearchKeywords(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-
----
-
-
-#### Catalog#getAllSearchKeyword
-List all Search Custom Keyword Listing
-
-```javascript
-// Promise
-const promise = catalog.getAllSearchKeyword(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getAllSearchKeyword(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-Custom Search Keyword allows you to map conditions with keywords to give you the ultimate results
-
-
----
-
-
 #### Catalog#createCustomKeyword
 Add a Custom Search Keywords
 
-```javascript
-// Promise
-const promise = catalog.createCustomKeyword(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.createCustomKeyword(company_id, application_id, );
-
+```kotlin
+catalog.createCustomKeyword(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5509,16 +6203,50 @@ Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of
 ---
 
 
+#### Catalog#getAllSearchKeyword
+List all Search Custom Keyword Listing
+
+```kotlin
+catalog.getAllSearchKeyword(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+
+
+Custom Search Keyword allows you to map conditions with keywords to give you the ultimate results
+
+
+---
+
+
 #### Catalog#updateAutocompleteKeyword
 Create & Update Autocomplete Keyword
 
-```javascript
-// Promise
-const promise = catalog.updateAutocompleteKeyword(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.updateAutocompleteKeyword(company_id, application_id, id, );
-
+```kotlin
+catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5536,43 +6264,20 @@ Update a mapping by it's id. On successful request, returns the updated Keyword 
 ---
 
 
-#### Catalog#getAutocompleteKeywordDetail
-Get a Autocomplete Keywords Details
-
-```javascript
-// Promise
-const promise = catalog.getAutocompleteKeywordDetail(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.getAutocompleteKeywordDetail(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. | 
-
-
-Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
-
-
----
-
-
 #### Catalog#deleteAutocompleteKeyword
 Delete a Autocomplete Keywords
 
-```javascript
-// Promise
-const promise = catalog.deleteAutocompleteKeyword(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.deleteAutocompleteKeyword(company_id, application_id, id, );
-
+```kotlin
+catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5590,16 +6295,20 @@ Delete a keywords by it's id. Returns an object that tells whether the keywords 
 ---
 
 
-#### Catalog#getAutocompleteConfig
-List all Autocomplete Keyword Listing
+#### Catalog#getAutocompleteKeywordDetail
+Get a Autocomplete Keywords Details
 
-```javascript
-// Promise
-const promise = catalog.getAutocompleteConfig(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getAutocompleteConfig(company_id, application_id, );
-
+```kotlin
+catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5608,9 +6317,10 @@ const data = await catalog.getAutocompleteConfig(company_id, application_id, );
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. | 
 
 
-Custom Autocomplete Keyword allows you to map conditions with keywords to give you the ultimate results
+Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
 
 
 ---
@@ -5619,13 +6329,17 @@ Custom Autocomplete Keyword allows you to map conditions with keywords to give y
 #### Catalog#createCustomAutocompleteRule
 Add a Custom Autocomplete Keywords
 
-```javascript
-// Promise
-const promise = catalog.createCustomAutocompleteRule(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.createCustomAutocompleteRule(company_id, application_id, );
-
+```kotlin
+catalog.createCustomAutocompleteRule(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5642,16 +6356,79 @@ Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for
 ---
 
 
+#### Catalog#getAutocompleteConfig
+List all Autocomplete Keyword Listing
+
+```kotlin
+catalog.getAutocompleteConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+
+
+Custom Autocomplete Keyword allows you to map conditions with keywords to give you the ultimate results
+
+
+---
+
+
+#### Catalog#createProductBundle
+Create Product Bundle
+
+```kotlin
+catalog.createProductBundle(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
+
+
+---
+
+
 #### Catalog#getProductBundle
 List all Product Bundles
 
-```javascript
-// Promise
-const promise = catalog.getProductBundle(company_id, q, );
-
-// Async/Await
-const data = await catalog.getProductBundle(company_id, q, );
-
+```kotlin
+catalog.getProductBundle(companyId: companyId, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5668,41 +6445,20 @@ Get all product bundles for a particular company
 ---
 
 
-#### Catalog#createProductBundle
-Create Product Bundle
-
-```javascript
-// Promise
-const promise = catalog.createProductBundle(company_id, );
-
-// Async/Await
-const data = await catalog.createProductBundle(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
-
-
----
-
-
 #### Catalog#updateProductBundle
 Update a Product Bundle
 
-```javascript
-// Promise
-const promise = catalog.updateProductBundle(company_id, id, );
-
-// Async/Await
-const data = await catalog.updateProductBundle(company_id, id, );
-
+```kotlin
+catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5722,13 +6478,17 @@ Update a Product Bundle by its id. On successful request, returns the updated pr
 #### Catalog#getProductBundleDetail
 Get a particular Product Bundle details
 
-```javascript
-// Promise
-const promise = catalog.getProductBundleDetail(company_id, id, );
-
-// Async/Await
-const data = await catalog.getProductBundleDetail(company_id, id, );
-
+```kotlin
+catalog.getProductBundleDetail(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5745,16 +6505,49 @@ Get a particular Bundle details by its `id`. If successful, returns a Product bu
 ---
 
 
+#### Catalog#createSizeGuide
+Create a size guide.
+
+```kotlin
+catalog.createSizeGuide(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the size guide is to be created. | 
+
+
+This API allows to create a size guide associated to a brand.
+
+
+---
+
+
 #### Catalog#getSizeGuides
 Get list of size guides
 
-```javascript
-// Promise
-const promise = catalog.getSizeGuides(company_id, active, q, tag, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getSizeGuides(company_id, active, q, tag, page_no, page_size, );
-
+```kotlin
+catalog.getSizeGuides(companyId: companyId, active: active, q: q, tag: tag, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5775,41 +6568,20 @@ This API allows to view all the size guides associated to the seller.
 ---
 
 
-#### Catalog#createSizeGuide
-Create a size guide.
-
-```javascript
-// Promise
-const promise = catalog.createSizeGuide(company_id, );
-
-// Async/Await
-const data = await catalog.createSizeGuide(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the size guide is to be created. | 
-
-
-This API allows to create a size guide associated to a brand.
-
-
----
-
-
 #### Catalog#updateSizeGuide
 Edit a size guide.
 
-```javascript
-// Promise
-const promise = catalog.updateSizeGuide(company_id, id, );
-
-// Async/Await
-const data = await catalog.updateSizeGuide(company_id, id, );
-
+```kotlin
+catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5829,13 +6601,17 @@ This API allows to edit a size guide.
 #### Catalog#getSizeGuide
 Get a single size guide.
 
-```javascript
-// Promise
-const promise = catalog.getSizeGuide(company_id, id, );
-
-// Async/Await
-const data = await catalog.getSizeGuide(company_id, id, );
-
+```kotlin
+catalog.getSizeGuide(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5855,13 +6631,17 @@ This API helps to get data associated to a size guide.
 #### Catalog#getCatalogConfiguration
 Get configuration meta  details for catalog for admin panel
 
-```javascript
-// Promise
-const promise = catalog.getCatalogConfiguration(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getCatalogConfiguration(company_id, application_id, );
-
+```kotlin
+catalog.getCatalogConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5878,42 +6658,20 @@ configuration meta  details for catalog.
 ---
 
 
-#### Catalog#getConfigurations
-Get configured details for catalog
-
-```javascript
-// Promise
-const promise = catalog.getConfigurations(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getConfigurations(company_id, application_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-configured details for catalog.
-
-
----
-
-
 #### Catalog#createConfigurationProductListing
 Add configuration for products & listings
 
-```javascript
-// Promise
-const promise = catalog.createConfigurationProductListing(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.createConfigurationProductListing(company_id, application_id, );
-
+```kotlin
+catalog.createConfigurationProductListing(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5930,16 +6688,20 @@ Add configuration for products & listing.
 ---
 
 
-#### Catalog#getConfigurationByType
+#### Catalog#getConfigurations
 Get configured details for catalog
 
-```javascript
-// Promise
-const promise = catalog.getConfigurationByType(company_id, application_id, type, );
-
-// Async/Await
-const data = await catalog.getConfigurationByType(company_id, application_id, type, );
-
+```kotlin
+catalog.getConfigurations(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5948,7 +6710,6 @@ const data = await catalog.getConfigurationByType(company_id, application_id, ty
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| type | string | type can be brands, categories etc. | 
 
 
 configured details for catalog.
@@ -5960,13 +6721,17 @@ configured details for catalog.
 #### Catalog#createConfigurationByType
 Add configuration for categories and brands
 
-```javascript
-// Promise
-const promise = catalog.createConfigurationByType(company_id, application_id, type, );
-
-// Async/Await
-const data = await catalog.createConfigurationByType(company_id, application_id, type, );
-
+```kotlin
+catalog.createConfigurationByType(companyId: companyId, applicationId: applicationId, type: type, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -5984,16 +6749,20 @@ Add configuration for categories & brands.
 ---
 
 
-#### Catalog#getQueryFilters
-Get query filters to configure a collection
+#### Catalog#getConfigurationByType
+Get configured details for catalog
 
-```javascript
-// Promise
-const promise = catalog.getQueryFilters(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getQueryFilters(company_id, application_id, );
-
+```kotlin
+catalog.getConfigurationByType(companyId: companyId, applicationId: applicationId, type: type).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6002,24 +6771,29 @@ const data = await catalog.getQueryFilters(company_id, application_id, );
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| type | string | type can be brands, categories etc. | 
 
 
-Get query filters to configure a collection
+configured details for catalog.
 
 
 ---
 
 
-#### Catalog#getAllCollections
-List all the collections
+#### Catalog#getQueryFilters
+Get query filters to configure a collection
 
-```javascript
-// Promise
-const promise = catalog.getAllCollections(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.getAllCollections(company_id, application_id, );
-
+```kotlin
+catalog.getQueryFilters(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6030,7 +6804,7 @@ const data = await catalog.getAllCollections(company_id, application_id, );
 | application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
 
 
-A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections as specified in `CollectionListingSchema`
+Get query filters to configure a collection
 
 
 ---
@@ -6039,13 +6813,17 @@ A Collection allows you to organize your products into hierarchical groups. For 
 #### Catalog#createCollection
 Add a Collection
 
-```javascript
-// Promise
-const promise = catalog.createCollection(company_id, application_id, );
-
-// Async/Await
-const data = await catalog.createCollection(company_id, application_id, );
-
+```kotlin
+catalog.createCollection(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6062,16 +6840,50 @@ Create a collection. See `CreateCollectionRequestSchema` for the list of attribu
 ---
 
 
+#### Catalog#getAllCollections
+List all the collections
+
+```kotlin
+catalog.getAllCollections(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+
+
+A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections as specified in `CollectionListingSchema`
+
+
+---
+
+
 #### Catalog#getCollectionDetail
 Get a particular collection
 
-```javascript
-// Promise
-const promise = catalog.getCollectionDetail(company_id, application_id, slug, );
-
-// Async/Await
-const data = await catalog.getCollectionDetail(company_id, application_id, slug, );
-
+```kotlin
+catalog.getCollectionDetail(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6092,13 +6904,17 @@ Get the details of a collection by its `slug`. If successful, returns a Collecti
 #### Catalog#updateCollection
 Update a collection
 
-```javascript
-// Promise
-const promise = catalog.updateCollection(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.updateCollection(company_id, application_id, id, );
-
+```kotlin
+catalog.updateCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6119,13 +6935,17 @@ Update a collection by it's id. On successful request, returns the updated colle
 #### Catalog#deleteCollection
 Delete a Collection
 
-```javascript
-// Promise
-const promise = catalog.deleteCollection(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.deleteCollection(company_id, application_id, id, );
-
+```kotlin
+catalog.deleteCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6143,16 +6963,51 @@ Delete a collection by it's id. Returns an object that tells whether the collect
 ---
 
 
+#### Catalog#addCollectionItems
+Add items to a collection
+
+```kotlin
+catalog.addCollectionItems(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier of a collection. | 
+
+
+Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
+
+
+---
+
+
 #### Catalog#getCollectionItems
 Get the items for a collection
 
-```javascript
-// Promise
-const promise = catalog.getCollectionItems(company_id, application_id, id, sort_on, page_id, page_size, );
-
-// Async/Await
-const data = await catalog.getCollectionItems(company_id, application_id, id, sort_on, page_id, page_size, );
-
+```kotlin
+catalog.getCollectionItems(companyId: companyId, applicationId: applicationId, id: id, sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6173,43 +7028,20 @@ Get items from a collection specified by its `id`.
 ---
 
 
-#### Catalog#addCollectionItems
-Add items to a collection
-
-```javascript
-// Promise
-const promise = catalog.addCollectionItems(company_id, application_id, id, );
-
-// Async/Await
-const data = await catalog.addCollectionItems(company_id, application_id, id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier of a collection. | 
-
-
-Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
-
-
----
-
-
 #### Catalog#getCatalogInsights
 Analytics data of catalog and inventory.
 
-```javascript
-// Promise
-const promise = catalog.getCatalogInsights(company_id, application_id, brand, );
-
-// Async/Await
-const data = await catalog.getCatalogInsights(company_id, application_id, brand, );
-
+```kotlin
+catalog.getCatalogInsights(companyId: companyId, applicationId: applicationId, brand: brand).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6230,13 +7062,17 @@ Catalog Insights api returns the count of catalog related data like products, br
 #### Catalog#getSellerInsights
 Analytics data of catalog and inventory that are being cross-selled.
 
-```javascript
-// Promise
-const promise = catalog.getSellerInsights(company_id, seller_app_id, );
-
-// Async/Await
-const data = await catalog.getSellerInsights(company_id, seller_app_id, );
-
+```kotlin
+catalog.getSellerInsights(companyId: companyId, sellerAppId: sellerAppId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6256,13 +7092,17 @@ Analytics data of catalog and inventory that are being cross-selled.
 #### Catalog#createMarketplaceOptin
 Create/Update opt-in infomation.
 
-```javascript
-// Promise
-const promise = catalog.createMarketplaceOptin(company_id, marketplace, );
-
-// Async/Await
-const data = await catalog.createMarketplaceOptin(company_id, marketplace, );
-
+```kotlin
+catalog.createMarketplaceOptin(companyId: companyId, marketplace: marketplace, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6282,13 +7122,17 @@ Use this API to create/update opt-in information for given platform. If successf
 #### Catalog#getMarketplaceOptinDetail
 Get opt-in infomation.
 
-```javascript
-// Promise
-const promise = catalog.getMarketplaceOptinDetail(company_id, );
-
-// Async/Await
-const data = await catalog.getMarketplaceOptinDetail(company_id, );
-
+```kotlin
+catalog.getMarketplaceOptinDetail(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6307,13 +7151,17 @@ Use this API to fetch opt-in information for all the platforms. If successful, r
 #### Catalog#getCompanyDetail
 Get the Company details.
 
-```javascript
-// Promise
-const promise = catalog.getCompanyDetail(company_id, );
-
-// Async/Await
-const data = await catalog.getCompanyDetail(company_id, );
-
+```kotlin
+catalog.getCompanyDetail(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6332,13 +7180,17 @@ Get the details of the company associated with the given company_id passed.
 #### Catalog#getCompanyBrandDetail
 Get the Company Brand details of Optin.
 
-```javascript
-// Promise
-const promise = catalog.getCompanyBrandDetail(company_id, is_active, q, page_no, page_size, marketplace, );
-
-// Async/Await
-const data = await catalog.getCompanyBrandDetail(company_id, is_active, q, page_no, page_size, marketplace, );
-
+```kotlin
+catalog.getCompanyBrandDetail(companyId: companyId, isActive: isActive, q: q, pageNo: pageNo, pageSize: pageSize, marketplace: marketplace).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6362,13 +7214,17 @@ Get the details of the Brands associated with the given company_id passed.
 #### Catalog#getCompanyMetrics
 Get the Company metrics
 
-```javascript
-// Promise
-const promise = catalog.getCompanyMetrics(company_id, );
-
-// Async/Await
-const data = await catalog.getCompanyMetrics(company_id, );
-
+```kotlin
+catalog.getCompanyMetrics(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6387,13 +7243,17 @@ Get the Company metrics associated with the company ID passed.
 #### Catalog#getStoreDetail
 Get the Store details.
 
-```javascript
-// Promise
-const promise = catalog.getStoreDetail(company_id, q, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getStoreDetail(company_id, q, page_no, page_size, );
-
+```kotlin
+catalog.getStoreDetail(companyId: companyId, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6415,13 +7275,17 @@ Get the details of the store associated with the company ID passed.
 #### Catalog#getGenderAttribute
 Get gender attribute details
 
-```javascript
-// Promise
-const promise = catalog.getGenderAttribute(company_id, department, );
-
-// Async/Await
-const data = await catalog.getGenderAttribute(company_id, department, );
-
+```kotlin
+catalog.getGenderAttribute(companyId: companyId, department: department).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6441,13 +7305,17 @@ This API allows to view the gender attribute details.
 #### Catalog#listProductTemplateCategories
 List Department specifiec product categories
 
-```javascript
-// Promise
-const promise = catalog.listProductTemplateCategories(company_id, departments, item_type, );
-
-// Async/Await
-const data = await catalog.listProductTemplateCategories(company_id, departments, item_type, );
-
+```kotlin
+catalog.listProductTemplateCategories(companyId: companyId, departments: departments, itemType: itemType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6468,13 +7336,17 @@ Allows you to list all product categories values for the departments specified
 #### Catalog#listDepartmentsData
 List all Departments
 
-```javascript
-// Promise
-const promise = catalog.listDepartmentsData(company_id, page_no, page_size, name, search, is_active, );
-
-// Async/Await
-const data = await catalog.listDepartmentsData(company_id, page_no, page_size, name, search, is_active, );
-
+```kotlin
+catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: pageSize, name: name, search: search, isActive: isActive).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6498,13 +7370,17 @@ Allows you to list all departments, also can search using name and filter active
 #### Catalog#getDepartmentData
 Get specific departments details by passing in unique id of the department
 
-```javascript
-// Promise
-const promise = catalog.getDepartmentData(company_id, uid, );
-
-// Async/Await
-const data = await catalog.getDepartmentData(company_id, uid, );
-
+```kotlin
+catalog.getDepartmentData(companyId: companyId, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6524,13 +7400,17 @@ Allows you to get department data, by uid
 #### Catalog#listProductTemplate
 List all Templates
 
-```javascript
-// Promise
-const promise = catalog.listProductTemplate(company_id, departments, );
-
-// Async/Await
-const data = await catalog.listProductTemplate(company_id, departments, );
-
+```kotlin
+catalog.listProductTemplate(companyId: companyId, departments: departments).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6550,13 +7430,17 @@ Allows you to list all product templates, also can filter by department
 #### Catalog#validateProductTemplate
 Validate Product Template Schema
 
-```javascript
-// Promise
-const promise = catalog.validateProductTemplate(company_id, slug, );
-
-// Async/Await
-const data = await catalog.validateProductTemplate(company_id, slug, );
-
+```kotlin
+catalog.validateProductTemplate(companyId: companyId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6576,13 +7460,17 @@ Allows you to list all product templates validation values for all the fields pr
 #### Catalog#downloadProductTemplateViews
 Download Product Template View
 
-```javascript
-// Promise
-const promise = catalog.downloadProductTemplateViews(company_id, slug, );
-
-// Async/Await
-const data = await catalog.downloadProductTemplateViews(company_id, slug, );
-
+```kotlin
+catalog.downloadProductTemplateViews(companyId: companyId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6602,13 +7490,17 @@ Allows you to download product template data
 #### Catalog#downloadProductTemplateView
 Download Product Template View
 
-```javascript
-// Promise
-const promise = catalog.downloadProductTemplateView(company_id, item_type, );
-
-// Async/Await
-const data = await catalog.downloadProductTemplateView(company_id, item_type, );
-
+```kotlin
+catalog.downloadProductTemplateView(companyId: companyId, itemType: itemType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6628,13 +7520,17 @@ Allows you to download product template data
 #### Catalog#validateProductTemplateSchema
 Validate Product Template Schema
 
-```javascript
-// Promise
-const promise = catalog.validateProductTemplateSchema(company_id, item_type, );
-
-// Async/Await
-const data = await catalog.validateProductTemplateSchema(company_id, item_type, );
-
+```kotlin
+catalog.validateProductTemplateSchema(companyId: companyId, itemType: itemType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6654,13 +7550,17 @@ Allows you to list all product templates validation values for all the fields pr
 #### Catalog#listHSNCodes
 List HSN Codes
 
-```javascript
-// Promise
-const promise = catalog.listHSNCodes(company_id, );
-
-// Async/Await
-const data = await catalog.listHSNCodes(company_id, );
-
+```kotlin
+catalog.listHSNCodes(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6679,13 +7579,17 @@ Allows you to list all hsn Codes
 #### Catalog#listProductTemplateExportDetails
 Allows you to list all product templates export list details
 
-```javascript
-// Promise
-const promise = catalog.listProductTemplateExportDetails(company_id, );
-
-// Async/Await
-const data = await catalog.listProductTemplateExportDetails(company_id, );
-
+```kotlin
+catalog.listProductTemplateExportDetails(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6704,13 +7608,17 @@ Can view details including trigger data, task id , etc.
 #### Catalog#listTemplateBrandTypeValues
 Allows you to list all values for Templates, Brands or Type
 
-```javascript
-// Promise
-const promise = catalog.listTemplateBrandTypeValues(company_id, filter, );
-
-// Async/Await
-const data = await catalog.listTemplateBrandTypeValues(company_id, filter, );
-
+```kotlin
+catalog.listTemplateBrandTypeValues(companyId: companyId, filter: filter).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6727,16 +7635,49 @@ The filter type query parameter defines what type of data to return. The type of
 ---
 
 
+#### Catalog#createCategories
+Create product categories
+
+```kotlin
+catalog.createCategories(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API lets user create product categories
+
+
+---
+
+
 #### Catalog#listCategories
 Get product categories list
 
-```javascript
-// Promise
-const promise = catalog.listCategories(company_id, level, departments, q, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.listCategories(company_id, level, departments, q, page_no, page_size, );
-
+```kotlin
+catalog.listCategories(companyId: companyId, level: level, departments: departments, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6757,41 +7698,20 @@ This API gets meta associated to product categories.
 ---
 
 
-#### Catalog#createCategories
-Create product categories
-
-```javascript
-// Promise
-const promise = catalog.createCategories(company_id, );
-
-// Async/Await
-const data = await catalog.createCategories(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API lets user create product categories
-
-
----
-
-
 #### Catalog#updateCategory
 Update product categories
 
-```javascript
-// Promise
-const promise = catalog.updateCategory(company_id, uid, );
-
-// Async/Await
-const data = await catalog.updateCategory(company_id, uid, );
-
+```kotlin
+catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6811,13 +7731,17 @@ Update a product category using this apu
 #### Catalog#getCategoryData
 Get product category by uid
 
-```javascript
-// Promise
-const promise = catalog.getCategoryData(company_id, uid, );
-
-// Async/Await
-const data = await catalog.getCategoryData(company_id, uid, );
-
+```kotlin
+catalog.getCategoryData(companyId: companyId, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6834,16 +7758,49 @@ This API gets meta associated to product categories.
 ---
 
 
+#### Catalog#createProduct
+Create a product.
+
+```kotlin
+catalog.createProduct(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to product that is to be viewed. | 
+
+
+This API allows to create product.
+
+
+---
+
+
 #### Catalog#getProducts
 Get product list
 
-```javascript
-// Promise
-const promise = catalog.getProducts(company_id, brand_ids, category_ids, search, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getProducts(company_id, brand_ids, category_ids, search, page_no, page_size, );
-
+```kotlin
+catalog.getProducts(companyId: companyId, brandIds: brandIds, categoryIds: categoryIds, search: search, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6864,41 +7821,20 @@ This API gets meta associated to products.
 ---
 
 
-#### Catalog#createProduct
-Create a product.
-
-```javascript
-// Promise
-const promise = catalog.createProduct(company_id, );
-
-// Async/Await
-const data = await catalog.createProduct(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to product that is to be viewed. | 
-
-
-This API allows to create product.
-
-
----
-
-
 #### Catalog#editProduct
 Edit a product.
 
-```javascript
-// Promise
-const promise = catalog.editProduct(company_id, item_id, );
-
-// Async/Await
-const data = await catalog.editProduct(company_id, item_id, );
-
+```kotlin
+catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6915,16 +7851,50 @@ This API allows to edit product.
 ---
 
 
+#### Catalog#deleteProduct
+Delete a product.
+
+```kotlin
+catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company associated to product that is to be deleted. | 
+| item_id | integer | Id of the product to be updated. | 
+
+
+This API allows to delete product.
+
+
+---
+
+
 #### Catalog#getProduct
 Get a single product.
 
-```javascript
-// Promise
-const promise = catalog.getProduct(item_code, company_id, item_id, brand_uid, uid, );
-
-// Async/Await
-const data = await catalog.getProduct(item_code, company_id, item_id, brand_uid, uid, );
-
+```kotlin
+catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6944,42 +7914,20 @@ This API helps to get data associated to a particular product.
 ---
 
 
-#### Catalog#deleteProduct
-Delete a product.
-
-```javascript
-// Promise
-const promise = catalog.deleteProduct(company_id, item_id, );
-
-// Async/Await
-const data = await catalog.deleteProduct(company_id, item_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company associated to product that is to be deleted. | 
-| item_id | integer | Id of the product to be updated. | 
-
-
-This API allows to delete product.
-
-
----
-
-
 #### Catalog#getProductValidation
 Validate product/size data
 
-```javascript
-// Promise
-const promise = catalog.getProductValidation(company_id, );
-
-// Async/Await
-const data = await catalog.getProductValidation(company_id, );
-
+```kotlin
+catalog.getProductValidation(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -6998,13 +7946,17 @@ This API validates product data.
 #### Catalog#getProductSize
 Get a single product size.
 
-```javascript
-// Promise
-const promise = catalog.getProductSize(item_code, company_id, item_id, brand_uid, uid, );
-
-// Async/Await
-const data = await catalog.getProductSize(item_code, company_id, item_id, brand_uid, uid, );
-
+```kotlin
+catalog.getProductSize(itemCode: itemCode, companyId: companyId, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7024,16 +7976,49 @@ This API helps to get data associated to a particular product size.
 ---
 
 
+#### Catalog#updateProductAssetsInBulk
+Create a Bulk asset upload Job.
+
+```kotlin
+catalog.updateProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which assets to be uploaded. | 
+
+
+This API helps to create a bulk asset upload job.
+
+
+---
+
+
 #### Catalog#getProductBulkUploadHistory
 Get a list of all bulk product upload jobs.
 
-```javascript
-// Promise
-const promise = catalog.getProductBulkUploadHistory(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getProductBulkUploadHistory(company_id, page_no, page_size, );
-
+```kotlin
+catalog.getProductBulkUploadHistory(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7051,67 +8036,20 @@ This API helps to get bulk product upload jobs data.
 ---
 
 
-#### Catalog#updateProductAssetsInBulk
-Create a Bulk asset upload Job.
-
-```javascript
-// Promise
-const promise = catalog.updateProductAssetsInBulk(company_id, );
-
-// Async/Await
-const data = await catalog.updateProductAssetsInBulk(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
-
-
-This API helps to create a bulk asset upload job.
-
-
----
-
-
-#### Catalog#deleteProductBulkJob
-Delete Bulk product job.
-
-```javascript
-// Promise
-const promise = catalog.deleteProductBulkJob(company_id, batch_id, );
-
-// Async/Await
-const data = await catalog.deleteProductBulkJob(company_id, batch_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company associated to size that is to be deleted. | 
-| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
-
-
-This API allows to delete bulk product job associated with company.
-
-
----
-
-
 #### Catalog#createProductsInBulk
 Create products in bulk associated with given batch Id.
 
-```javascript
-// Promise
-const promise = catalog.createProductsInBulk(company_id, batch_id, );
-
-// Async/Await
-const data = await catalog.createProductsInBulk(company_id, batch_id, );
-
+```kotlin
+catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7128,16 +8066,50 @@ This API helps to create products in bulk push to kafka for approval/creation.
 ---
 
 
+#### Catalog#deleteProductBulkJob
+Delete Bulk product job.
+
+```kotlin
+catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company associated to size that is to be deleted. | 
+| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
+
+
+This API allows to delete bulk product job associated with company.
+
+
+---
+
+
 #### Catalog#getCompanyTags
 Get a list of all tags associated with company.
 
-```javascript
-// Promise
-const promise = catalog.getCompanyTags(company_id, );
-
-// Async/Await
-const data = await catalog.getCompanyTags(company_id, );
-
+```kotlin
+catalog.getCompanyTags(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7153,16 +8125,49 @@ This API helps to get tags data associated to a particular copmpany.
 ---
 
 
+#### Catalog#createProductAssetsInBulk
+Create a Bulk asset upload Job.
+
+```kotlin
+catalog.createProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which assets to be uploaded. | 
+
+
+This API helps to create a bulk asset upload job.
+
+
+---
+
+
 #### Catalog#getProductAssetsInBulk
 Get a list of all bulk asset jobs.
 
-```javascript
-// Promise
-const promise = catalog.getProductAssetsInBulk(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getProductAssetsInBulk(company_id, page_no, page_size, );
-
+```kotlin
+catalog.getProductAssetsInBulk(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7180,41 +8185,20 @@ This API helps to get bulk asset jobs data associated to a particular company.
 ---
 
 
-#### Catalog#createProductAssetsInBulk
-Create a Bulk asset upload Job.
-
-```javascript
-// Promise
-const promise = catalog.createProductAssetsInBulk(company_id, );
-
-// Async/Await
-const data = await catalog.createProductAssetsInBulk(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
-
-
-This API helps to create a bulk asset upload job.
-
-
----
-
-
 #### Catalog#deleteSize
 Delete a Size associated with product.
 
-```javascript
-// Promise
-const promise = catalog.deleteSize(company_id, item_id, size, );
-
-// Async/Await
-const data = await catalog.deleteSize(company_id, item_id, size, );
-
+```kotlin
+catalog.deleteSize(companyId: companyId, itemId: itemId, size: size).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7232,16 +8216,51 @@ This API allows to delete size associated with product.
 ---
 
 
+#### Catalog#addInventory
+Add Inventory for particular size and store.
+
+```kotlin
+catalog.addInventory(companyId: companyId, itemId: itemId, size: size, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to product that is to be viewed. | 
+| item_id | number | Item code of the product of which size is to be get. | 
+| size | string | Size in which inventory is to be added. | 
+
+
+This API allows add Inventory for particular size and store.
+
+
+---
+
+
 #### Catalog#getInventory
 Get Inventory for company
 
-```javascript
-// Promise
-const promise = catalog.getInventory(company_id, item_id, size, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getInventory(company_id, item_id, size, page_no, page_size, );
-
+```kotlin
+catalog.getInventory(companyId: companyId, itemId: itemId, size: size, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7261,43 +8280,20 @@ This API allows get Inventory data for particular company grouped by size and st
 ---
 
 
-#### Catalog#addInventory
-Add Inventory for particular size and store.
-
-```javascript
-// Promise
-const promise = catalog.addInventory(company_id, item_id, size, );
-
-// Async/Await
-const data = await catalog.addInventory(company_id, item_id, size, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to product that is to be viewed. | 
-| item_id | number | Item code of the product of which size is to be get. | 
-| size | string | Size in which inventory is to be added. | 
-
-
-This API allows add Inventory for particular size and store.
-
-
----
-
-
 #### Catalog#deleteInventory
 Delete a Inventory.
 
-```javascript
-// Promise
-const promise = catalog.deleteInventory(company_id, item_id, location_id, );
-
-// Async/Await
-const data = await catalog.deleteInventory(company_id, item_id, location_id, );
-
+```kotlin
+catalog.deleteInventory(companyId: companyId, itemId: itemId, locationId: locationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7315,16 +8311,49 @@ This API allows to delete inventory of a particular product for particular compa
 ---
 
 
+#### Catalog#createBulkInventoryJob
+Create a Bulk Inventory upload Job.
+
+```kotlin
+catalog.createBulkInventoryJob(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which Inventory to be uploaded. | 
+
+
+This API helps to create a bulk Inventory upload job.
+
+
+---
+
+
 #### Catalog#getInventoryBulkUploadHistory
 Get a list of all bulk Inventory upload jobs.
 
-```javascript
-// Promise
-const promise = catalog.getInventoryBulkUploadHistory(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await catalog.getInventoryBulkUploadHistory(company_id, page_no, page_size, );
-
+```kotlin
+catalog.getInventoryBulkUploadHistory(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7342,66 +8371,20 @@ This API helps to get bulk Inventory upload jobs data.
 ---
 
 
-#### Catalog#createBulkInventoryJob
-Create a Bulk Inventory upload Job.
-
-```javascript
-// Promise
-const promise = catalog.createBulkInventoryJob(company_id, );
-
-// Async/Await
-const data = await catalog.createBulkInventoryJob(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which Inventory to be uploaded. | 
-
-
-This API helps to create a bulk Inventory upload job.
-
-
----
-
-
-#### Catalog#deleteBulkInventoryJob
-Delete Bulk Inventory job.
-
-```javascript
-// Promise
-const promise = catalog.deleteBulkInventoryJob(company_id, );
-
-// Async/Await
-const data = await catalog.deleteBulkInventoryJob(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company of which bulk Inventory job is to be deleted. | 
-
-
-This API allows to delete bulk Inventory job associated with company.
-
-
----
-
-
 #### Catalog#createBulkInventory
 Create products in bulk associated with given batch Id.
 
-```javascript
-// Promise
-const promise = catalog.createBulkInventory(company_id, );
-
-// Async/Await
-const data = await catalog.createBulkInventory(company_id, );
-
+```kotlin
+catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7417,26 +8400,30 @@ This API helps to create products in bulk push to kafka for approval/creation.
 ---
 
 
-#### Catalog#getInventoryExport
-Get Inventory export history.
+#### Catalog#deleteBulkInventoryJob
+Delete Bulk Inventory job.
 
-```javascript
-// Promise
-const promise = catalog.getInventoryExport(company_id, );
-
-// Async/Await
-const data = await catalog.getInventoryExport(company_id, );
-
+```kotlin
+catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
+| company_id | string | Company Id of the company of which bulk Inventory job is to be deleted. | 
 
 
-This API helps to get Inventory export history.
+This API allows to delete bulk Inventory job associated with company.
 
 
 ---
@@ -7445,13 +8432,17 @@ This API helps to get Inventory export history.
 #### Catalog#createInventoryExportJob
 Create a Inventory export Job.
 
-```javascript
-// Promise
-const promise = catalog.createInventoryExportJob(company_id, );
-
-// Async/Await
-const data = await catalog.createInventoryExportJob(company_id, );
-
+```kotlin
+catalog.createInventoryExportJob(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7467,16 +8458,49 @@ This API helps to create a Inventory export job.
 ---
 
 
+#### Catalog#getInventoryExport
+Get Inventory export history.
+
+```kotlin
+catalog.getInventoryExport(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which assets to be uploaded. | 
+
+
+This API helps to get Inventory export history.
+
+
+---
+
+
 #### Catalog#exportInventoryConfig
 Get List of different filters for inventory export
 
-```javascript
-// Promise
-const promise = catalog.exportInventoryConfig(company_id, filter_type, );
-
-// Async/Await
-const data = await catalog.exportInventoryConfig(company_id, filter_type, );
-
+```kotlin
+catalog.exportInventoryConfig(companyId: companyId, filterType: filterType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7493,16 +8517,49 @@ This API allows get List of different filters like brand, store, and type for in
 ---
 
 
+#### Catalog#createHsnCode
+Create Hsn Code.
+
+```kotlin
+catalog.createHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+
+
+Create Hsn Code.
+
+
+---
+
+
 #### Catalog#getAllHsnCodes
 Hsn Code List.
 
-```javascript
-// Promise
-const promise = catalog.getAllHsnCodes(company_id, page_no, page_size, q, );
-
-// Async/Await
-const data = await catalog.getAllHsnCodes(company_id, page_no, page_size, q, );
-
+```kotlin
+catalog.getAllHsnCodes(companyId: companyId, pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7521,41 +8578,20 @@ Hsn Code List.
 ---
 
 
-#### Catalog#createHsnCode
-Create Hsn Code.
-
-```javascript
-// Promise
-const promise = catalog.createHsnCode(company_id, );
-
-// Async/Await
-const data = await catalog.createHsnCode(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-
-
-Create Hsn Code.
-
-
----
-
-
 #### Catalog#updateHsnCode
 Update Hsn Code.
 
-```javascript
-// Promise
-const promise = catalog.updateHsnCode(company_id, uid, );
-
-// Async/Await
-const data = await catalog.updateHsnCode(company_id, uid, );
-
+```kotlin
+catalog.updateHsnCode(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7575,13 +8611,17 @@ Update Hsn Code.
 #### Catalog#getHsnCode
 Fetch Hsn Code.
 
-```javascript
-// Promise
-const promise = catalog.getHsnCode(company_id, uid, );
-
-// Async/Await
-const data = await catalog.getHsnCode(company_id, uid, );
-
+```kotlin
+catalog.getHsnCode(companyId: companyId, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7601,13 +8641,17 @@ Fetch Hsn Code.
 #### Catalog#bulkHsnCode
 Bulk Create or Update Hsn Code.
 
-```javascript
-// Promise
-const promise = catalog.bulkHsnCode(company_id, );
-
-// Async/Await
-const data = await catalog.bulkHsnCode(company_id, );
-
+```kotlin
+catalog.bulkHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7640,41 +8684,20 @@ const companyprofile = new CompanyProfile(conf);
 ```
 
 
-#### CompanyProfile#cbsOnboardGet
-Get company profile
-
-```javascript
-// Promise
-const promise = companyprofile.cbsOnboardGet(company_id, );
-
-// Async/Await
-const data = await companyprofile.cbsOnboardGet(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to view the company profile of the seller account.
-
-
----
-
-
 #### CompanyProfile#updateCompany
 Edit company profile
 
-```javascript
-// Promise
-const promise = companyprofile.updateCompany(company_id, );
-
-// Async/Await
-const data = await companyprofile.updateCompany(company_id, );
-
+```kotlin
+companyprofile.updateCompany(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7690,16 +8713,49 @@ This API allows to edit the company profile of the seller account.
 ---
 
 
+#### CompanyProfile#cbsOnboardGet
+Get company profile
+
+```kotlin
+companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company profile of the seller account.
+
+
+---
+
+
 #### CompanyProfile#getCompanyMetrics
 Get company metrics
 
-```javascript
-// Promise
-const promise = companyprofile.getCompanyMetrics(company_id, );
-
-// Async/Await
-const data = await companyprofile.getCompanyMetrics(company_id, );
-
+```kotlin
+companyprofile.getCompanyMetrics(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7715,42 +8771,20 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#getBrand
-Get a single brand.
-
-```javascript
-// Promise
-const promise = companyprofile.getBrand(company_id, brand_id, );
-
-// Async/Await
-const data = await companyprofile.getBrand(company_id, brand_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API helps to get data associated to a particular brand.
-
-
----
-
-
 #### CompanyProfile#editBrand
 Edit a brand.
 
-```javascript
-// Promise
-const promise = companyprofile.editBrand(company_id, brand_id, );
-
-// Async/Await
-const data = await companyprofile.editBrand(company_id, brand_id, );
-
+```kotlin
+companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7767,16 +8801,50 @@ This API allows to edit meta of a brand.
 ---
 
 
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```kotlin
+companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
+
+
+---
+
+
 #### CompanyProfile#createBrand
 Create a Brand.
 
-```javascript
-// Promise
-const promise = companyprofile.createBrand(company_id, );
-
-// Async/Await
-const data = await companyprofile.createBrand(company_id, );
-
+```kotlin
+companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7792,16 +8860,49 @@ This API allows to create a brand associated to a company.
 ---
 
 
+#### CompanyProfile#createCompanyBrandMapping
+Create a company brand mapping.
+
+```kotlin
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
+
+
+---
+
+
 #### CompanyProfile#getBrands
 Get brands associated to a company
 
-```javascript
-// Promise
-const promise = companyprofile.getBrands(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await companyprofile.getBrands(company_id, page_no, page_size, );
-
+```kotlin
+companyprofile.getBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7819,26 +8920,30 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createCompanyBrandMapping
-Create a company brand mapping.
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
 
-```javascript
-// Promise
-const promise = companyprofile.createCompanyBrandMapping(company_id, );
-
-// Async/Await
-const data = await companyprofile.createCompanyBrandMapping(company_id, );
-
+```kotlin
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
+| company_id | string | Id of the company inside which the location is to be created. | 
 
 
-This API allows to create a company brand mapping, for a already existing brand in the system.
+This API allows to create a location associated to a company.
 
 
 ---
@@ -7847,13 +8952,17 @@ This API allows to create a company brand mapping, for a already existing brand 
 #### CompanyProfile#getLocations
 Get list of locations
 
-```javascript
-// Promise
-const promise = companyprofile.getLocations(company_id, store_type, q, stage, page_no, page_size, );
-
-// Async/Await
-const data = await companyprofile.getLocations(company_id, store_type, q, stage, page_no, page_size, );
-
+```kotlin
+companyprofile.getLocations(companyId: companyId, storeType: storeType, q: q, stage: stage, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7874,67 +8983,20 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
-
-```javascript
-// Promise
-const promise = companyprofile.createLocation(company_id, );
-
-// Async/Await
-const data = await companyprofile.createLocation(company_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
-
-
-This API allows to create a location associated to a company.
-
-
----
-
-
-#### CompanyProfile#getLocationDetail
-Get details of a specific location.
-
-```javascript
-// Promise
-const promise = companyprofile.getLocationDetail(company_id, location_id, );
-
-// Async/Await
-const data = await companyprofile.getLocationDetail(company_id, location_id, );
-
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location lies. | 
-| location_id | string | Id of the location which you want to view. | 
-
-
-This API helps to get data associated to a specific location.
-
-
----
-
-
 #### CompanyProfile#updateLocation
 Edit a location asscoiated to a company.
 
-```javascript
-// Promise
-const promise = companyprofile.updateLocation(company_id, location_id, );
-
-// Async/Await
-const data = await companyprofile.updateLocation(company_id, location_id, );
-
+```kotlin
+companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -7946,6 +9008,36 @@ const data = await companyprofile.updateLocation(company_id, location_id, );
 
 
 This API allows to edit a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getLocationDetail
+Get details of a specific location.
+
+```kotlin
+companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location lies. | 
+| location_id | string | Id of the location which you want to view. | 
+
+
+This API helps to get data associated to a specific location.
 
 
 ---
@@ -7971,13 +9063,17 @@ const filestorage = new FileStorage(conf);
 #### FileStorage#startUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
-```javascript
-// Promise
-const promise = filestorage.startUpload(namespace, company_id, );
-
-// Async/Await
-const data = await filestorage.startUpload(namespace, company_id, );
-
+```kotlin
+filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8015,13 +9111,17 @@ This operation will return the url for the uploaded file.
 #### FileStorage#completeUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
-```javascript
-// Promise
-const promise = filestorage.completeUpload(namespace, company_id, );
-
-// Async/Await
-const data = await filestorage.completeUpload(namespace, company_id, );
-
+```kotlin
+filestorage.completeUpload(namespace: namespace, companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8059,13 +9159,17 @@ This operation will return the url for the uploaded file.
 #### FileStorage#appStartUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
-```javascript
-// Promise
-const promise = filestorage.appStartUpload(namespace, company_id, application_id, );
-
-// Async/Await
-const data = await filestorage.appStartUpload(namespace, company_id, application_id, );
-
+```kotlin
+filestorage.appStartUpload(namespace: namespace, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8104,13 +9208,17 @@ This operation will return the url for the uploaded file.
 #### FileStorage#appCompleteUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
-```javascript
-// Promise
-const promise = filestorage.appCompleteUpload(namespace, company_id, application_id, );
-
-// Async/Await
-const data = await filestorage.appCompleteUpload(namespace, company_id, application_id, );
-
+```kotlin
+filestorage.appCompleteUpload(namespace: namespace, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8149,13 +9257,17 @@ This operation will return the url for the uploaded file.
 #### FileStorage#getSignUrls
 Explain here
 
-```javascript
-// Promise
-const promise = filestorage.getSignUrls(company_id, );
-
-// Async/Await
-const data = await filestorage.getSignUrls(company_id, );
-
+```kotlin
+filestorage.getSignUrls(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8174,13 +9286,17 @@ Describe here
 #### FileStorage#copyFiles
 Copy Files
 
-```javascript
-// Promise
-const promise = filestorage.copyFiles(sync, company_id, );
-
-// Async/Await
-const data = await filestorage.copyFiles(sync, company_id, );
-
+```kotlin
+filestorage.copyFiles(sync: sync, companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8200,13 +9316,17 @@ Copy Files
 #### FileStorage#appCopyFiles
 Copy Files
 
-```javascript
-// Promise
-const promise = filestorage.appCopyFiles(sync, company_id, application_id, );
-
-// Async/Await
-const data = await filestorage.appCopyFiles(sync, company_id, application_id, );
-
+```kotlin
+filestorage.appCopyFiles(sync: sync, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8227,13 +9347,17 @@ Copy Files
 #### FileStorage#browse
 Browse Files
 
-```javascript
-// Promise
-const promise = filestorage.browse(namespace, company_id, page_no, );
-
-// Async/Await
-const data = await filestorage.browse(namespace, company_id, page_no, );
-
+```kotlin
+filestorage.browse(namespace: namespace, companyId: companyId, pageNo: pageNo).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8254,13 +9378,17 @@ Browse Files
 #### FileStorage#appBrowse
 Browse Files
 
-```javascript
-// Promise
-const promise = filestorage.appBrowse(namespace, company_id, application_id, page_no, );
-
-// Async/Await
-const data = await filestorage.appBrowse(namespace, company_id, application_id, page_no, );
-
+```kotlin
+filestorage.appBrowse(namespace: namespace, companyId: companyId, applicationId: applicationId, pageNo: pageNo).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8282,13 +9410,17 @@ Browse Files
 #### FileStorage#proxy
 Proxy
 
-```javascript
-// Promise
-const promise = filestorage.proxy(company_id, url, );
-
-// Async/Await
-const data = await filestorage.proxy(company_id, url, );
-
+```kotlin
+filestorage.proxy(companyId: companyId, url: url).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8325,13 +9457,17 @@ const share = new Share(conf);
 #### Share#createShortLink
 Create short link
 
-```javascript
-// Promise
-const promise = share.createShortLink(company_id, application_id, );
-
-// Async/Await
-const data = await share.createShortLink(company_id, application_id, );
-
+```kotlin
+share.createShortLink(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8351,13 +9487,17 @@ Create short link
 #### Share#getShortLinks
 Get short links
 
-```javascript
-// Promise
-const promise = share.getShortLinks(company_id, application_id, page_no, page_size, created_by, active, q, );
-
-// Async/Await
-const data = await share.getShortLinks(company_id, application_id, page_no, page_size, created_by, active, q, );
-
+```kotlin
+share.getShortLinks(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8382,13 +9522,17 @@ Get short links
 #### Share#getShortLinkByHash
 Get short link by hash
 
-```javascript
-// Promise
-const promise = share.getShortLinkByHash(company_id, application_id, hash, );
-
-// Async/Await
-const data = await share.getShortLinkByHash(company_id, application_id, hash, );
-
+```kotlin
+share.getShortLinkByHash(companyId: companyId, applicationId: applicationId, hash: hash).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8409,13 +9553,17 @@ Get short link by hash
 #### Share#updateShortLinkById
 Update short link by id
 
-```javascript
-// Promise
-const promise = share.updateShortLinkById(company_id, application_id, id, );
-
-// Async/Await
-const data = await share.updateShortLinkById(company_id, application_id, id, );
-
+```kotlin
+share.updateShortLinkById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8453,13 +9601,17 @@ const inventory = new Inventory(conf);
 #### Inventory#getJobsByCompany
 Get Job Configs For A Company
 
-```javascript
-// Promise
-const promise = inventory.getJobsByCompany(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await inventory.getJobsByCompany(company_id, page_no, page_size, );
-
+```kotlin
+inventory.getJobsByCompany(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8480,13 +9632,17 @@ REST Endpoint that returns all job configs for a company
 #### Inventory#updateJob
 Updates An Existing Job Config
 
-```javascript
-// Promise
-const promise = inventory.updateJob(company_id, x-user-data, );
-
-// Async/Await
-const data = await inventory.updateJob(company_id, x-user-data, );
-
+```kotlin
+inventory.updateJob(companyId: companyId, xUserData: xUserData, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8506,13 +9662,17 @@ REST Endpoint that updates a job config
 #### Inventory#createJob
 Creates A New Job Config
 
-```javascript
-// Promise
-const promise = inventory.createJob(company_id, x-user-data, );
-
-// Async/Await
-const data = await inventory.createJob(company_id, x-user-data, );
-
+```kotlin
+inventory.createJob(companyId: companyId, xUserData: xUserData, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8532,13 +9692,17 @@ REST Endpoint that creates a new job config
 #### Inventory#getJobByCompanyAndIntegration
 Get Job Configs By Company And Integration
 
-```javascript
-// Promise
-const promise = inventory.getJobByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
-
-// Async/Await
-const data = await inventory.getJobByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
-
+```kotlin
+inventory.getJobByCompanyAndIntegration(companyId: companyId, integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8560,13 +9724,17 @@ REST Endpoint that returns all job configs by company And integration
 #### Inventory#getJobConfigDefaults
 Get Job Configs Defaults
 
-```javascript
-// Promise
-const promise = inventory.getJobConfigDefaults(company_id, );
-
-// Async/Await
-const data = await inventory.getJobConfigDefaults(company_id, );
-
+```kotlin
+inventory.getJobConfigDefaults(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8585,13 +9753,17 @@ REST Endpoint that returns default fields job configs by company And integration
 #### Inventory#getJobByCode
 Get Job Config By Code
 
-```javascript
-// Promise
-const promise = inventory.getJobByCode(company_id, code, );
-
-// Async/Await
-const data = await inventory.getJobByCode(company_id, code, );
-
+```kotlin
+inventory.getJobByCode(companyId: companyId, code: code).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8611,13 +9783,17 @@ REST Endpoint that returns job config by code
 #### Inventory#getJobCodesByCompanyAndIntegration
 Get Job Codes By Company And Integration
 
-```javascript
-// Promise
-const promise = inventory.getJobCodesByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
-
-// Async/Await
-const data = await inventory.getJobCodesByCompanyAndIntegration(company_id, integration_id, page_no, page_size, );
-
+```kotlin
+inventory.getJobCodesByCompanyAndIntegration(companyId: companyId, integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8656,13 +9832,17 @@ const configuration = new Configuration(conf);
 #### Configuration#getBuildConfig
 Get latest build config
 
-```javascript
-// Promise
-const promise = configuration.getBuildConfig(company_id, application_id, platform_type, );
-
-// Async/Await
-const data = await configuration.getBuildConfig(company_id, application_id, platform_type, );
-
+```kotlin
+configuration.getBuildConfig(companyId: companyId, applicationId: applicationId, platformType: platformType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8683,13 +9863,17 @@ Get latest build config
 #### Configuration#updateBuildConfig
 Update build config for next build
 
-```javascript
-// Promise
-const promise = configuration.updateBuildConfig(company_id, application_id, platform_type, );
-
-// Async/Await
-const data = await configuration.updateBuildConfig(company_id, application_id, platform_type, );
-
+```kotlin
+configuration.updateBuildConfig(companyId: companyId, applicationId: applicationId, platformType: platformType, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8710,13 +9894,17 @@ Update build config for next build
 #### Configuration#getPreviousVersions
 Get previous versions
 
-```javascript
-// Promise
-const promise = configuration.getPreviousVersions(company_id, application_id, platform_type, );
-
-// Async/Await
-const data = await configuration.getPreviousVersions(company_id, application_id, platform_type, );
-
+```kotlin
+configuration.getPreviousVersions(companyId: companyId, applicationId: applicationId, platformType: platformType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8737,13 +9925,17 @@ Get previous versions
 #### Configuration#getAppFeatures
 Get features of application
 
-```javascript
-// Promise
-const promise = configuration.getAppFeatures(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getAppFeatures(company_id, application_id, );
-
+```kotlin
+configuration.getAppFeatures(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8763,13 +9955,17 @@ Get features of application
 #### Configuration#updateAppFeatures
 Update features of application
 
-```javascript
-// Promise
-const promise = configuration.updateAppFeatures(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.updateAppFeatures(company_id, application_id, );
-
+```kotlin
+configuration.updateAppFeatures(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8789,13 +9985,17 @@ Update features of application
 #### Configuration#getAppBasicDetails
 Get basic application details
 
-```javascript
-// Promise
-const promise = configuration.getAppBasicDetails(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getAppBasicDetails(company_id, application_id, );
-
+```kotlin
+configuration.getAppBasicDetails(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8815,13 +10015,17 @@ Get basic application details like name
 #### Configuration#updateAppBasicDetails
 Add or update application's basic details
 
-```javascript
-// Promise
-const promise = configuration.updateAppBasicDetails(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.updateAppBasicDetails(company_id, application_id, );
-
+```kotlin
+configuration.updateAppBasicDetails(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8841,13 +10045,17 @@ Add or update application's basic details
 #### Configuration#getAppContactInfo
 Get application information
 
-```javascript
-// Promise
-const promise = configuration.getAppContactInfo(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getAppContactInfo(company_id, application_id, );
-
+```kotlin
+configuration.getAppContactInfo(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8867,13 +10075,17 @@ Get Application Current Information. This includes information about social link
 #### Configuration#updateAppContactInfo
 Get application information
 
-```javascript
-// Promise
-const promise = configuration.updateAppContactInfo(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.updateAppContactInfo(company_id, application_id, );
-
+```kotlin
+configuration.updateAppContactInfo(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8893,13 +10105,17 @@ Save Application Current Information. This includes information about social lin
 #### Configuration#getAppApiTokens
 Get social tokens
 
-```javascript
-// Promise
-const promise = configuration.getAppApiTokens(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getAppApiTokens(company_id, application_id, );
-
+```kotlin
+configuration.getAppApiTokens(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8919,13 +10135,17 @@ Get social tokens.
 #### Configuration#updateAppApiTokens
 Add social tokens
 
-```javascript
-// Promise
-const promise = configuration.updateAppApiTokens(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.updateAppApiTokens(company_id, application_id, );
-
+```kotlin
+configuration.updateAppApiTokens(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8945,13 +10165,17 @@ Add social tokens.
 #### Configuration#getAppCompanies
 Application inventory enabled companies
 
-```javascript
-// Promise
-const promise = configuration.getAppCompanies(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getAppCompanies(company_id, application_id, page_no, page_size, );
-
+```kotlin
+configuration.getAppCompanies(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -8973,13 +10197,17 @@ Application inventory enabled companies.
 #### Configuration#getAppStores
 Application inventory enabled stores
 
-```javascript
-// Promise
-const promise = configuration.getAppStores(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getAppStores(company_id, application_id, page_no, page_size, );
-
+```kotlin
+configuration.getAppStores(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9001,13 +10229,17 @@ Application inventory enabled stores.
 #### Configuration#getInventoryConfig
 Get application configuration
 
-```javascript
-// Promise
-const promise = configuration.getInventoryConfig(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getInventoryConfig(company_id, application_id, );
-
+```kotlin
+configuration.getInventoryConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9027,13 +10259,17 @@ Get application configuration for various features and data
 #### Configuration#updateInventoryConfig
 Update application configuration
 
-```javascript
-// Promise
-const promise = configuration.updateInventoryConfig(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.updateInventoryConfig(company_id, application_id, );
-
+```kotlin
+configuration.updateInventoryConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9053,13 +10289,17 @@ Update application configuration for various features and data
 #### Configuration#partiallyUpdateInventoryConfig
 Partially update application configuration
 
-```javascript
-// Promise
-const promise = configuration.partiallyUpdateInventoryConfig(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.partiallyUpdateInventoryConfig(company_id, application_id, );
-
+```kotlin
+configuration.partiallyUpdateInventoryConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9079,13 +10319,17 @@ Partially update application configuration for various features and data
 #### Configuration#getAppCurrencyConfig
 Get application enabled currency list
 
-```javascript
-// Promise
-const promise = configuration.getAppCurrencyConfig(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getAppCurrencyConfig(company_id, application_id, );
-
+```kotlin
+configuration.getAppCurrencyConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9105,13 +10349,17 @@ Get application enabled currency list
 #### Configuration#updateAppCurrencyConfig
 Add initial application supported currency
 
-```javascript
-// Promise
-const promise = configuration.updateAppCurrencyConfig(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.updateAppCurrencyConfig(company_id, application_id, );
-
+```kotlin
+configuration.updateAppCurrencyConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9131,13 +10379,17 @@ Add initial application supported currency for various features and data. Defaul
 #### Configuration#getOrderingStoresByFilter
 Get ordering store by filter
 
-```javascript
-// Promise
-const promise = configuration.getOrderingStoresByFilter(company_id, application_id, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getOrderingStoresByFilter(company_id, application_id, page_no, page_size, );
-
+```kotlin
+configuration.getOrderingStoresByFilter(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9159,13 +10411,17 @@ Get ordering store by filter
 #### Configuration#updateOrderingStoreConfig
 Add/Update ordering store config
 
-```javascript
-// Promise
-const promise = configuration.updateOrderingStoreConfig(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.updateOrderingStoreConfig(company_id, application_id, );
-
+```kotlin
+configuration.updateOrderingStoreConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9185,13 +10441,17 @@ Add/Update ordering store config.
 #### Configuration#getDomains
 Get attached domain list
 
-```javascript
-// Promise
-const promise = configuration.getDomains(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getDomains(company_id, application_id, );
-
+```kotlin
+configuration.getDomains(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9211,13 +10471,17 @@ Get attached domain list.
 #### Configuration#addDomain
 Add new domain to application
 
-```javascript
-// Promise
-const promise = configuration.addDomain(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.addDomain(company_id, application_id, );
-
+```kotlin
+configuration.addDomain(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9237,13 +10501,17 @@ Add new domain to application.
 #### Configuration#removeDomainById
 Remove attached domain
 
-```javascript
-// Promise
-const promise = configuration.removeDomainById(company_id, application_id, id, );
-
-// Async/Await
-const data = await configuration.removeDomainById(company_id, application_id, id, );
-
+```kotlin
+configuration.removeDomainById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9264,13 +10532,17 @@ Remove attached domain.
 #### Configuration#changeDomainType
 Change domain type
 
-```javascript
-// Promise
-const promise = configuration.changeDomainType(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.changeDomainType(company_id, application_id, );
-
+```kotlin
+configuration.changeDomainType(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9290,13 +10562,17 @@ Change a domain to Primary or Shortlink domain
 #### Configuration#getDomainStatus
 Get domain connected status.
 
-```javascript
-// Promise
-const promise = configuration.getDomainStatus(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getDomainStatus(company_id, application_id, );
-
+```kotlin
+configuration.getDomainStatus(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9316,13 +10592,17 @@ Get domain connected status. Check if domain is live and mapped to appropriate I
 #### Configuration#createApplication
 Create application
 
-```javascript
-// Promise
-const promise = configuration.createApplication(company_id, );
-
-// Async/Await
-const data = await configuration.createApplication(company_id, );
-
+```kotlin
+configuration.createApplication(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9341,13 +10621,17 @@ Create new application
 #### Configuration#getApplications
 Get list of application under company
 
-```javascript
-// Promise
-const promise = configuration.getApplications(company_id, page_no, page_size, q, );
-
-// Async/Await
-const data = await configuration.getApplications(company_id, page_no, page_size, q, );
-
+```kotlin
+configuration.getApplications(companyId: companyId, pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9369,13 +10653,17 @@ Get list of application under company
 #### Configuration#getApplicationById
 Get application data from id
 
-```javascript
-// Promise
-const promise = configuration.getApplicationById(company_id, application_id, );
-
-// Async/Await
-const data = await configuration.getApplicationById(company_id, application_id, );
-
+```kotlin
+configuration.getApplicationById(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9395,13 +10683,17 @@ Get application data from id
 #### Configuration#getCurrencies
 Get all currencies
 
-```javascript
-// Promise
-const promise = configuration.getCurrencies(company_id, );
-
-// Async/Await
-const data = await configuration.getCurrencies(company_id, );
-
+```kotlin
+configuration.getCurrencies(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9420,13 +10712,17 @@ Get all currencies
 #### Configuration#getDomainAvailibility
 Check domain availibility before linking to application
 
-```javascript
-// Promise
-const promise = configuration.getDomainAvailibility(company_id, );
-
-// Async/Await
-const data = await configuration.getDomainAvailibility(company_id, );
-
+```kotlin
+configuration.getDomainAvailibility(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9445,13 +10741,17 @@ Check domain availibility before linking to application. Also sends domain sugge
 #### Configuration#getIntegrationById
 Get integration data
 
-```javascript
-// Promise
-const promise = configuration.getIntegrationById(company_id, id, );
-
-// Async/Await
-const data = await configuration.getIntegrationById(company_id, id, );
-
+```kotlin
+configuration.getIntegrationById(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9471,13 +10771,17 @@ Get integration data
 #### Configuration#getAvailableOptIns
 Get all available integration opt-ins
 
-```javascript
-// Promise
-const promise = configuration.getAvailableOptIns(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getAvailableOptIns(company_id, page_no, page_size, );
-
+```kotlin
+configuration.getAvailableOptIns(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9498,13 +10802,17 @@ Get all available integration opt-ins
 #### Configuration#getSelectedOptIns
 Get company/store level integration opt-ins
 
-```javascript
-// Promise
-const promise = configuration.getSelectedOptIns(company_id, level, uid, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getSelectedOptIns(company_id, level, uid, page_no, page_size, );
-
+```kotlin
+configuration.getSelectedOptIns(companyId: companyId, level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9527,13 +10835,17 @@ Get company/store level integration opt-ins
 #### Configuration#getIntegrationLevelConfig
 Get integration level config
 
-```javascript
-// Promise
-const promise = configuration.getIntegrationLevelConfig(company_id, id, level, );
-
-// Async/Await
-const data = await configuration.getIntegrationLevelConfig(company_id, id, level, );
-
+```kotlin
+configuration.getIntegrationLevelConfig(companyId: companyId, id: id, level: level).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9554,13 +10866,17 @@ Get integration level config
 #### Configuration#getIntegrationByLevelId
 Get level data for integration
 
-```javascript
-// Promise
-const promise = configuration.getIntegrationByLevelId(company_id, id, level, uid, );
-
-// Async/Await
-const data = await configuration.getIntegrationByLevelId(company_id, id, level, uid, );
-
+```kotlin
+configuration.getIntegrationByLevelId(companyId: companyId, id: id, level: level, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9582,13 +10898,17 @@ Get level data for integration
 #### Configuration#getLevelActiveIntegrations
 Check store has active integration
 
-```javascript
-// Promise
-const promise = configuration.getLevelActiveIntegrations(company_id, id, level, uid, );
-
-// Async/Await
-const data = await configuration.getLevelActiveIntegrations(company_id, id, level, uid, );
-
+```kotlin
+configuration.getLevelActiveIntegrations(companyId: companyId, id: id, level: level, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9610,13 +10930,17 @@ API checks if a store is already opted in any other integrations
 #### Configuration#getBrandsByCompany
 Get brands by company
 
-```javascript
-// Promise
-const promise = configuration.getBrandsByCompany(company_id, q, );
-
-// Async/Await
-const data = await configuration.getBrandsByCompany(company_id, q, );
-
+```kotlin
+configuration.getBrandsByCompany(companyId: companyId, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9636,13 +10960,17 @@ Get brands by company
 #### Configuration#getCompanyByBrands
 Get company by brand uids
 
-```javascript
-// Promise
-const promise = configuration.getCompanyByBrands(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getCompanyByBrands(company_id, page_no, page_size, );
-
+```kotlin
+configuration.getCompanyByBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9663,13 +10991,17 @@ Get company by brand uids
 #### Configuration#getStoreByBrands
 Get stores by brand uids
 
-```javascript
-// Promise
-const promise = configuration.getStoreByBrands(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getStoreByBrands(company_id, page_no, page_size, );
-
+```kotlin
+configuration.getStoreByBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9690,13 +11022,17 @@ Get stores by brand uids
 #### Configuration#getOtherSellerApplications
 Get other seller applications
 
-```javascript
-// Promise
-const promise = configuration.getOtherSellerApplications(company_id, page_no, page_size, );
-
-// Async/Await
-const data = await configuration.getOtherSellerApplications(company_id, page_no, page_size, );
-
+```kotlin
+configuration.getOtherSellerApplications(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9717,13 +11053,17 @@ Get other seller applications who has opted current company as inventory
 #### Configuration#getOtherSellerApplicationById
 Get other seller applications
 
-```javascript
-// Promise
-const promise = configuration.getOtherSellerApplicationById(company_id, id, );
-
-// Async/Await
-const data = await configuration.getOtherSellerApplicationById(company_id, id, );
-
+```kotlin
+configuration.getOtherSellerApplicationById(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9743,13 +11083,17 @@ Get other seller application
 #### Configuration#optOutFromApplication
 Opt out company or store from other seller application
 
-```javascript
-// Promise
-const promise = configuration.optOutFromApplication(company_id, id, );
-
-// Async/Await
-const data = await configuration.optOutFromApplication(company_id, id, );
-
+```kotlin
+configuration.optOutFromApplication(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9786,13 +11130,17 @@ const cart = new Cart(conf);
 #### Cart#getCoupons
 Get with single coupon details or coupon list
 
-```javascript
-// Promise
-const promise = cart.getCoupons(company_id, application_id, page_no, page_size, is_archived, title, is_public, is_display, type_slug, code, );
-
-// Async/Await
-const data = await cart.getCoupons(company_id, application_id, page_no, page_size, is_archived, title, is_public, is_display, type_slug, code, );
-
+```kotlin
+cart.getCoupons(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, isArchived: isArchived, title: title, isPublic: isPublic, isDisplay: isDisplay, typeSlug: typeSlug, code: code).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9820,13 +11168,17 @@ Get coupon list with pagination
 #### Cart#createCoupon
 Create new coupon
 
-```javascript
-// Promise
-const promise = cart.createCoupon(company_id, application_id, );
-
-// Async/Await
-const data = await cart.createCoupon(company_id, application_id, );
-
+```kotlin
+cart.createCoupon(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9846,13 +11198,17 @@ Create new coupon
 #### Cart#getCouponById
 Get with single coupon details or coupon list
 
-```javascript
-// Promise
-const promise = cart.getCouponById(company_id, application_id, id, );
-
-// Async/Await
-const data = await cart.getCouponById(company_id, application_id, id, );
-
+```kotlin
+cart.getCouponById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9873,13 +11229,17 @@ Get single coupon details with `id` in path param
 #### Cart#updateCoupon
 Update existing coupon configuration
 
-```javascript
-// Promise
-const promise = cart.updateCoupon(company_id, application_id, id, );
-
-// Async/Await
-const data = await cart.updateCoupon(company_id, application_id, id, );
-
+```kotlin
+cart.updateCoupon(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9900,13 +11260,17 @@ Update coupon with id sent in `id`
 #### Cart#updateCouponPartially
 Update coupon archive state and schedule
 
-```javascript
-// Promise
-const promise = cart.updateCouponPartially(company_id, application_id, id, );
-
-// Async/Await
-const data = await cart.updateCouponPartially(company_id, application_id, id, );
-
+```kotlin
+cart.updateCouponPartially(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9944,13 +11308,17 @@ const marketplaces = new Marketplaces(conf);
 #### Marketplaces#getAvailableChannels
 Get available marketplace channels
 
-```javascript
-// Promise
-const promise = marketplaces.getAvailableChannels(company_id, );
-
-// Async/Await
-const data = await marketplaces.getAvailableChannels(company_id, );
-
+```kotlin
+marketplaces.getAvailableChannels(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9969,13 +11337,17 @@ Get available marketplace channels
 #### Marketplaces#getChannels
 Get all registered marketplace channels for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.getChannels(company_id, );
-
-// Async/Await
-const data = await marketplaces.getChannels(company_id, );
-
+```kotlin
+marketplaces.getChannels(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -9994,13 +11366,17 @@ Get all registered marketplace channels for a seller
 #### Marketplaces#getChannel
 Get registered marketplace channel credential configuration for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.getChannel(company_id, channel, );
-
-// Async/Await
-const data = await marketplaces.getChannel(company_id, channel, );
-
+```kotlin
+marketplaces.getChannel(companyId: companyId, channel: channel).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10020,13 +11396,17 @@ Get registered marketplace channel credentials configuration for a seller
 #### Marketplaces#registerMyntraChannel
 Create Myntra marketplace channel for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.registerMyntraChannel(company_id, );
-
-// Async/Await
-const data = await marketplaces.registerMyntraChannel(company_id, );
-
+```kotlin
+marketplaces.registerMyntraChannel(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10045,13 +11425,17 @@ Create Myntra marketplace channel for a seller
 #### Marketplaces#updateMyntraChannelCredentials
 Update Myntra marketplace channel credentials for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateMyntraChannelCredentials(company_id, );
-
-// Async/Await
-const data = await marketplaces.updateMyntraChannelCredentials(company_id, );
-
+```kotlin
+marketplaces.updateMyntraChannelCredentials(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10070,13 +11454,17 @@ Update Myntra marketplace channel credentials for a seller
 #### Marketplaces#registerAmazonChannel
 Create Amazon marketplace channel for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.registerAmazonChannel(company_id, );
-
-// Async/Await
-const data = await marketplaces.registerAmazonChannel(company_id, );
-
+```kotlin
+marketplaces.registerAmazonChannel(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10095,13 +11483,17 @@ Create Amazon marketplace channel for a seller
 #### Marketplaces#updateAmazonChannelCredentials
 Update Amazon marketplace channel credentials for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateAmazonChannelCredentials(company_id, );
-
-// Async/Await
-const data = await marketplaces.updateAmazonChannelCredentials(company_id, );
-
+```kotlin
+marketplaces.updateAmazonChannelCredentials(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10120,13 +11512,17 @@ Update Amazon marketplace channel credentials for a seller
 #### Marketplaces#registerFlipkartChannel
 Create Flipkart / Flipkart Assured marketplace channel for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.registerFlipkartChannel(company_id, flipkart_channel, );
-
-// Async/Await
-const data = await marketplaces.registerFlipkartChannel(company_id, flipkart_channel, );
-
+```kotlin
+marketplaces.registerFlipkartChannel(companyId: companyId, flipkartChannel: flipkartChannel, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10146,13 +11542,17 @@ Create Flipkart / Flipkart Assured marketplace channel for a seller
 #### Marketplaces#updateFlipkartChannelCredentials
 Update Flipkart / Flipkart Assured marketplace channel credentials for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateFlipkartChannelCredentials(company_id, flipkart_channel, );
-
-// Async/Await
-const data = await marketplaces.updateFlipkartChannelCredentials(company_id, flipkart_channel, );
-
+```kotlin
+marketplaces.updateFlipkartChannelCredentials(companyId: companyId, flipkartChannel: flipkartChannel, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10172,13 +11572,17 @@ Update Flipkart / Flipkart Assured marketplace channel credentials for a seller
 #### Marketplaces#registerTatacliqChannel
 Create Tatacliq / Tatacliq Luxury marketplace channel for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.registerTatacliqChannel(company_id, tatacliq_channel, );
-
-// Async/Await
-const data = await marketplaces.registerTatacliqChannel(company_id, tatacliq_channel, );
-
+```kotlin
+marketplaces.registerTatacliqChannel(companyId: companyId, tatacliqChannel: tatacliqChannel, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10198,13 +11602,17 @@ Create Tatacliq / Tatacliq Luxury marketplace channel for a seller
 #### Marketplaces#updateTatacliqChannelCredentials
 Update Tatacliq / Tatacliq Luxury Assured marketplace channel credentials for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateTatacliqChannelCredentials(company_id, tatacliq_channel, );
-
-// Async/Await
-const data = await marketplaces.updateTatacliqChannelCredentials(company_id, tatacliq_channel, );
-
+```kotlin
+marketplaces.updateTatacliqChannelCredentials(companyId: companyId, tatacliqChannel: tatacliqChannel, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10224,13 +11632,17 @@ Update Tatacliq / Tatacliq Luxury marketplace channel credentials for a seller
 #### Marketplaces#registerAjioChannel
 Create Ajio marketplace channel for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.registerAjioChannel(company_id, );
-
-// Async/Await
-const data = await marketplaces.registerAjioChannel(company_id, );
-
+```kotlin
+marketplaces.registerAjioChannel(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10249,13 +11661,17 @@ Create Ajio marketplace channel for a seller
 #### Marketplaces#updateAjioChannelCredentials
 Update Ajio marketplace channel credentials for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateAjioChannelCredentials(company_id, );
-
-// Async/Await
-const data = await marketplaces.updateAjioChannelCredentials(company_id, );
-
+```kotlin
+marketplaces.updateAjioChannelCredentials(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10274,13 +11690,17 @@ Update Ajio marketplace channel credentials for a seller
 #### Marketplaces#updateChannelInventorySyncConfig
 Update inventory sync configuration of marketplace channel for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateChannelInventorySyncConfig(company_id, channel, validate_cred, );
-
-// Async/Await
-const data = await marketplaces.updateChannelInventorySyncConfig(company_id, channel, validate_cred, );
-
+```kotlin
+marketplaces.updateChannelInventorySyncConfig(companyId: companyId, channel: channel, validateCred: validateCred, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10301,13 +11721,17 @@ Update inventory sync configuration of marketplace channel for a seller
 #### Marketplaces#getChannelLocationConfig
 Get marketplace channel location config for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.getChannelLocationConfig(company_id, channel, );
-
-// Async/Await
-const data = await marketplaces.getChannelLocationConfig(company_id, channel, );
-
+```kotlin
+marketplaces.getChannelLocationConfig(companyId: companyId, channel: channel).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10327,13 +11751,17 @@ Get marketplace channel location config for a seller
 #### Marketplaces#updateChannelLocationConfig
 update marketplace channel location config for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateChannelLocationConfig(company_id, channel, );
-
-// Async/Await
-const data = await marketplaces.updateChannelLocationConfig(company_id, channel, );
-
+```kotlin
+marketplaces.updateChannelLocationConfig(companyId: companyId, channel: channel, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10353,13 +11781,17 @@ update marketplace channel location config for a seller
 #### Marketplaces#getChannelStatus
 Get marketplace channel active status for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.getChannelStatus(company_id, channel, );
-
-// Async/Await
-const data = await marketplaces.getChannelStatus(company_id, channel, );
-
+```kotlin
+marketplaces.getChannelStatus(companyId: companyId, channel: channel).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10379,13 +11811,17 @@ Get marketplace channel active status for a seller
 #### Marketplaces#updateChannelStatus
 Update marketplace channel active status for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.updateChannelStatus(company_id, channel, );
-
-// Async/Await
-const data = await marketplaces.updateChannelStatus(company_id, channel, );
-
+```kotlin
+marketplaces.updateChannelStatus(companyId: companyId, channel: channel, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10405,13 +11841,17 @@ Update marketplace channel active status for a seller
 #### Marketplaces#triggerChannelInventoryUpdates
 Trigger marketplace channel inventory updates for a seller
 
-```javascript
-// Promise
-const promise = marketplaces.triggerChannelInventoryUpdates(company_id, channel, update_type, );
-
-// Async/Await
-const data = await marketplaces.triggerChannelInventoryUpdates(company_id, channel, update_type, );
-
+```kotlin
+marketplaces.triggerChannelInventoryUpdates(companyId: companyId, channel: channel, updateType: updateType, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10449,13 +11889,17 @@ const rewards = new Rewards(conf);
 #### Rewards#getGiveaways
 List of giveaways of the current application.
 
-```javascript
-// Promise
-const promise = rewards.getGiveaways(company_id, application_id, page_id, page_size, );
-
-// Async/Await
-const data = await rewards.getGiveaways(company_id, application_id, page_id, page_size, );
-
+```kotlin
+rewards.getGiveaways(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10477,13 +11921,17 @@ List of giveaways of the current application.
 #### Rewards#createGiveaway
 Adds a new giveaway.
 
-```javascript
-// Promise
-const promise = rewards.createGiveaway(company_id, application_id, );
-
-// Async/Await
-const data = await rewards.createGiveaway(company_id, application_id, );
-
+```kotlin
+rewards.createGiveaway(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10503,13 +11951,17 @@ Adds a new giveaway.
 #### Rewards#getGiveawayByID
 Get giveaway by ID.
 
-```javascript
-// Promise
-const promise = rewards.getGiveawayByID(company_id, application_id, id, );
-
-// Async/Await
-const data = await rewards.getGiveawayByID(company_id, application_id, id, );
-
+```kotlin
+rewards.getGiveawayByID(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10530,13 +11982,17 @@ Get giveaway by ID.
 #### Rewards#updateGiveaway
 Updates the giveaway by it's ID.
 
-```javascript
-// Promise
-const promise = rewards.updateGiveaway(company_id, application_id, id, );
-
-// Async/Await
-const data = await rewards.updateGiveaway(company_id, application_id, id, );
-
+```kotlin
+rewards.updateGiveaway(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10557,13 +12013,17 @@ Updates the giveaway by it's ID.
 #### Rewards#getOffers
 List of offer of the current application.
 
-```javascript
-// Promise
-const promise = rewards.getOffers(company_id, application_id, );
-
-// Async/Await
-const data = await rewards.getOffers(company_id, application_id, );
-
+```kotlin
+rewards.getOffers(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10583,13 +12043,17 @@ List of offer of the current application.
 #### Rewards#getOfferByName
 Get offer by name.
 
-```javascript
-// Promise
-const promise = rewards.getOfferByName(company_id, application_id, cookie, name, );
-
-// Async/Await
-const data = await rewards.getOfferByName(company_id, application_id, cookie, name, );
-
+```kotlin
+rewards.getOfferByName(companyId: companyId, applicationId: applicationId, cookie: cookie, name: name).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10611,13 +12075,17 @@ Get offer by name.
 #### Rewards#updateOfferByName
 Updates the offer by name.
 
-```javascript
-// Promise
-const promise = rewards.updateOfferByName(company_id, application_id, name, );
-
-// Async/Await
-const data = await rewards.updateOfferByName(company_id, application_id, name, );
-
+```kotlin
+rewards.updateOfferByName(companyId: companyId, applicationId: applicationId, name: name, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10638,13 +12106,17 @@ Updates the offer by name.
 #### Rewards#getUserAvailablePoints
 User's reward details.
 
-```javascript
-// Promise
-const promise = rewards.getUserAvailablePoints(company_id, application_id, user_id, );
-
-// Async/Await
-const data = await rewards.getUserAvailablePoints(company_id, application_id, user_id, );
-
+```kotlin
+rewards.getUserAvailablePoints(companyId: companyId, applicationId: applicationId, userId: userId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10665,13 +12137,17 @@ User's reward details.
 #### Rewards#updateUserStatus
 Update User status
 
-```javascript
-// Promise
-const promise = rewards.updateUserStatus(company_id, application_id, user_id, );
-
-// Async/Await
-const data = await rewards.updateUserStatus(company_id, application_id, user_id, );
-
+```kotlin
+rewards.updateUserStatus(companyId: companyId, applicationId: applicationId, userId: userId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10692,13 +12168,17 @@ Update user status, active/archive
 #### Rewards#getUserPointsHistory
 Get list of points transactions.
 
-```javascript
-// Promise
-const promise = rewards.getUserPointsHistory(company_id, application_id, user_id, page_id, page_limit, page_size, );
-
-// Async/Await
-const data = await rewards.getUserPointsHistory(company_id, application_id, user_id, page_id, page_limit, page_size, );
-
+```kotlin
+rewards.getUserPointsHistory(companyId: companyId, applicationId: applicationId, userId: userId, pageId: pageId, pageLimit: pageLimit, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10740,13 +12220,17 @@ const analytics = new Analytics(conf);
 #### Analytics#getStatiscticsGroups
 Get statistics groups
 
-```javascript
-// Promise
-const promise = analytics.getStatiscticsGroups(company_id, application_id, );
-
-// Async/Await
-const data = await analytics.getStatiscticsGroups(company_id, application_id, );
-
+```kotlin
+analytics.getStatiscticsGroups(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10766,13 +12250,17 @@ Get statistics groups
 #### Analytics#getStatiscticsGroupComponents
 Get statistics group components
 
-```javascript
-// Promise
-const promise = analytics.getStatiscticsGroupComponents(company_id, application_id, group_name, );
-
-// Async/Await
-const data = await analytics.getStatiscticsGroupComponents(company_id, application_id, group_name, );
-
+```kotlin
+analytics.getStatiscticsGroupComponents(companyId: companyId, applicationId: applicationId, groupName: groupName).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10793,13 +12281,17 @@ Get statistics group components
 #### Analytics#getComponentStatsCSV
 Get component statistics csv
 
-```javascript
-// Promise
-const promise = analytics.getComponentStatsCSV(company_id, application_id, component_name, );
-
-// Async/Await
-const data = await analytics.getComponentStatsCSV(company_id, application_id, component_name, );
-
+```kotlin
+analytics.getComponentStatsCSV(companyId: companyId, applicationId: applicationId, componentName: componentName).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10820,13 +12312,17 @@ Get component statistics csv
 #### Analytics#getComponentStatsPDF
 Get component statistics pdf
 
-```javascript
-// Promise
-const promise = analytics.getComponentStatsPDF(company_id, application_id, component_name, );
-
-// Async/Await
-const data = await analytics.getComponentStatsPDF(company_id, application_id, component_name, );
-
+```kotlin
+analytics.getComponentStatsPDF(companyId: companyId, applicationId: applicationId, componentName: componentName).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10847,13 +12343,17 @@ Get component statistics pdf
 #### Analytics#getComponentStats
 Get component statistics
 
-```javascript
-// Promise
-const promise = analytics.getComponentStats(company_id, application_id, component_name, );
-
-// Async/Await
-const data = await analytics.getComponentStats(company_id, application_id, component_name, );
-
+```kotlin
+analytics.getComponentStats(companyId: companyId, applicationId: applicationId, componentName: componentName).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10874,13 +12374,17 @@ Get component statistics
 #### Analytics#getAbandonCartList
 Get abandon carts list
 
-```javascript
-// Promise
-const promise = analytics.getAbandonCartList(company_id, application_id, from_date, to_date, page_no, page_size, );
-
-// Async/Await
-const data = await analytics.getAbandonCartList(company_id, application_id, from_date, to_date, page_no, page_size, );
-
+```kotlin
+analytics.getAbandonCartList(companyId: companyId, applicationId: applicationId, fromDate: fromDate, toDate: toDate, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10904,13 +12408,17 @@ Get abandon carts list
 #### Analytics#getAbandonCartsCSV
 Get abandon carts csv
 
-```javascript
-// Promise
-const promise = analytics.getAbandonCartsCSV(company_id, application_id, from_date, to_date, );
-
-// Async/Await
-const data = await analytics.getAbandonCartsCSV(company_id, application_id, from_date, to_date, );
-
+```kotlin
+analytics.getAbandonCartsCSV(companyId: companyId, applicationId: applicationId, fromDate: fromDate, toDate: toDate).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10932,13 +12440,17 @@ Get abandon carts csv
 #### Analytics#getAbandonCartDetail
 Get abandon carts details
 
-```javascript
-// Promise
-const promise = analytics.getAbandonCartDetail(company_id, application_id, cart_id, );
-
-// Async/Await
-const data = await analytics.getAbandonCartDetail(company_id, application_id, cart_id, );
-
+```kotlin
+analytics.getAbandonCartDetail(companyId: companyId, applicationId: applicationId, cartId: cartId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10959,13 +12471,17 @@ Get abandon cart details
 #### Analytics#createExportJob
 Create data export job in required format
 
-```javascript
-// Promise
-const promise = analytics.createExportJob(company_id, export_type, );
-
-// Async/Await
-const data = await analytics.createExportJob(company_id, export_type, );
-
+```kotlin
+analytics.createExportJob(companyId: companyId, exportType: exportType, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -10985,13 +12501,17 @@ Create data export job in required format
 #### Analytics#getExportJobStatus
 Get data export job status
 
-```javascript
-// Promise
-const promise = analytics.getExportJobStatus(company_id, export_type, job_id, );
-
-// Async/Await
-const data = await analytics.getExportJobStatus(company_id, export_type, job_id, );
-
+```kotlin
+analytics.getExportJobStatus(companyId: companyId, exportType: exportType, jobId: jobId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11012,13 +12532,17 @@ Get data export job status
 #### Analytics#getLogsList
 Get logs list
 
-```javascript
-// Promise
-const promise = analytics.getLogsList(company_id, log_type, page_no, page_size, );
-
-// Async/Await
-const data = await analytics.getLogsList(company_id, log_type, page_no, page_size, );
-
+```kotlin
+analytics.getLogsList(companyId: companyId, logType: logType, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11040,13 +12564,17 @@ Get logs list
 #### Analytics#searchLogs
 Search logs
 
-```javascript
-// Promise
-const promise = analytics.searchLogs(company_id, page_no, page_size, log_type, );
-
-// Async/Await
-const data = await analytics.searchLogs(company_id, page_no, page_size, log_type, );
-
+```kotlin
+analytics.searchLogs(companyId: companyId, pageNo: pageNo, pageSize: pageSize, logType: logType, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11085,13 +12613,17 @@ const discount = new Discount(conf);
 #### Discount#getDiscounts
 Fetch discount list.
 
-```javascript
-// Promise
-const promise = discount.getDiscounts(company_id, view, q, page_no, page_size, archived, month, year, type, app_ids, );
-
-// Async/Await
-const data = await discount.getDiscounts(company_id, view, q, page_no, page_size, archived, month, year, type, app_ids, );
-
+```kotlin
+discount.getDiscounts(companyId: companyId, view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11119,13 +12651,17 @@ Fetch discount list.
 #### Discount#createDiscount
 Create Discount.
 
-```javascript
-// Promise
-const promise = discount.createDiscount(company_id, );
-
-// Async/Await
-const data = await discount.createDiscount(company_id, );
-
+```kotlin
+discount.createDiscount(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11144,13 +12680,17 @@ Create Discount.
 #### Discount#getDiscount
 Fetch discount.
 
-```javascript
-// Promise
-const promise = discount.getDiscount(company_id, id, );
-
-// Async/Await
-const data = await discount.getDiscount(company_id, id, );
-
+```kotlin
+discount.getDiscount(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11170,13 +12710,17 @@ Fetch discount.
 #### Discount#updateDiscount
 Create Discount.
 
-```javascript
-// Promise
-const promise = discount.updateDiscount(company_id, id, );
-
-// Async/Await
-const data = await discount.updateDiscount(company_id, id, );
-
+```kotlin
+discount.updateDiscount(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11196,13 +12740,17 @@ Create Discount.
 #### Discount#validateDiscountFile
 Validate File.
 
-```javascript
-// Promise
-const promise = discount.validateDiscountFile(company_id, discount, );
-
-// Async/Await
-const data = await discount.validateDiscountFile(company_id, discount, );
-
+```kotlin
+discount.validateDiscountFile(companyId: companyId, discount: discount, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11222,13 +12770,17 @@ Validate File.
 #### Discount#downloadDiscountFile
 Validate File.
 
-```javascript
-// Promise
-const promise = discount.downloadDiscountFile(company_id, type, );
-
-// Async/Await
-const data = await discount.downloadDiscountFile(company_id, type, );
-
+```kotlin
+discount.downloadDiscountFile(companyId: companyId, type: type, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11248,13 +12800,17 @@ Validate File.
 #### Discount#getValidationJob
 Validate File Job.
 
-```javascript
-// Promise
-const promise = discount.getValidationJob(company_id, id, );
-
-// Async/Await
-const data = await discount.getValidationJob(company_id, id, );
-
+```kotlin
+discount.getValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11274,13 +12830,17 @@ Validate File Job.
 #### Discount#cancelValidationJob
 Cancel Validation Job.
 
-```javascript
-// Promise
-const promise = discount.cancelValidationJob(company_id, id, );
-
-// Async/Await
-const data = await discount.cancelValidationJob(company_id, id, );
-
+```kotlin
+discount.cancelValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11300,13 +12860,17 @@ Cancel Validation Job.
 #### Discount#getDownloadJob
 Download File Job.
 
-```javascript
-// Promise
-const promise = discount.getDownloadJob(company_id, id, );
-
-// Async/Await
-const data = await discount.getDownloadJob(company_id, id, );
-
+```kotlin
+discount.getDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
@@ -11326,13 +12890,17 @@ Download File Job.
 #### Discount#cancelDownloadJob
 Cancel Download Job.
 
-```javascript
-// Promise
-const promise = discount.cancelDownloadJob(company_id, id, );
-
-// Async/Await
-const data = await discount.cancelDownloadJob(company_id, id, );
-
+```kotlin
+discount.cancelDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
 ```
 
 
