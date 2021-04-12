@@ -188,7 +188,7 @@ interface CartApiList {
     
     @GET ("/service/application/cart/v1.0/payment/validate/")
     fun validateCouponForPayment(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
-    : Deferred<Response<PaymentUpdate>>
+    : Deferred<Response<PaymentCouponValidate>>
     
     @GET ("/service/application/cart/v1.0/shipment")
     fun getShipments(@Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?)
@@ -892,7 +892,7 @@ interface PosCartApiList {
     
     @GET ("/service/application/pos/cart/v1.0/payment/validate/")
     fun validateCouponForPayment(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
-    : Deferred<Response<PaymentUpdate>>
+    : Deferred<Response<PaymentCouponValidate>>
     
     @GET ("/service/application/pos/cart/v1.0/shipment")
     fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)

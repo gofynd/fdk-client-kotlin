@@ -777,7 +777,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun validateCouponForPayment(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentUpdate>>? {
+    fun validateCouponForPayment(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         return cartApiList?.validateCouponForPayment(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )}
 
     
@@ -2661,7 +2661,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun validateCouponForPayment(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentUpdate>>? {
+    fun validateCouponForPayment(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         return posCartApiList?.validateCouponForPayment(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )}
 
     
