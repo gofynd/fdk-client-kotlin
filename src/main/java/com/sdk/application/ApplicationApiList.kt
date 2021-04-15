@@ -692,34 +692,6 @@ interface OrderApiList {
     
 }
 
-interface RewardsApiList {
-    
-    @POST ("/service/application/rewards/v1.0/catalogue/offer/order/")
-    fun getPointsOnProduct(@Body body: CatalogueOrderRequest)
-    : Deferred<Response<CatalogueOrderResponse>>
-    
-    @POST ("/service/application/rewards/v1.0/user/offers/order-discount/")
-    fun getOrderDiscount(@Body body: OrderDiscountRequest)
-    : Deferred<Response<OrderDiscountResponse>>
-    
-    @GET ("/service/application/rewards/v1.0/user/points")
-    fun getUserPoints()
-    : Deferred<Response<PointsResponse>>
-    
-    @GET ("/service/application/rewards/v1.0/user/points/history/")
-    fun getUserPointsHistory(@Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PointsHistoryResponse>>
-    
-    @GET ("/service/application/rewards/v1.0/user/referral/")
-    fun getUserReferralDetails()
-    : Deferred<Response<ReferralDetailsResponse>>
-    
-    @POST ("/service/application/rewards/v1.0/user/referral/redeem/")
-    fun redeemReferralCode(@Body body: RedeemReferralCodeRequest)
-    : Deferred<Response<RedeemReferralCodeResponse>>
-    
-}
-
 interface FeedbackApiList {
     
     @POST ("/service/application/feedback/v1.0/abuse")
