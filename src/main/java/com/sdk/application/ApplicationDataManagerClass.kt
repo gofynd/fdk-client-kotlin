@@ -742,7 +742,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getAddresses(uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
+    fun getAddresses(uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
         return cartApiList?.getAddresses(uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
@@ -752,7 +752,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         return cartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
@@ -1323,6 +1323,54 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         return contentApiList?.getSEOConfiguration( )}
 
     
+    
+    fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<SlideshowGetResponse>>? {
+        return contentApiList?.getSlideshows(pageNo = pageNo, pageSize = pageSize )}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getSlideshows
+    **/
+    fun getSlideshowsPaginator(pageSize: Int?=null) : Paginator<SlideshowGetResponse>{
+
+    val paginator = Paginator<SlideshowGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<SlideshowGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<SlideshowGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getSlideshows(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
     
     fun getSlideshow(slug: String): Deferred<Response<SlideshowSchema>>? {
         return contentApiList?.getSlideshow(slug = slug )}
@@ -2626,7 +2674,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getAddresses(uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
+    fun getAddresses(uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
         return posCartApiList?.getAddresses(uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     
@@ -2636,7 +2684,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: Int?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         return posCartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
     

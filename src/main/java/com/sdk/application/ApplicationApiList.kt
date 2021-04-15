@@ -159,7 +159,7 @@ interface CartApiList {
     : Deferred<Response<BulkPriceResponse>>
     
     @GET ("/service/application/cart/v1.0/address")
-    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
+    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressesResponse>>
     
     @POST ("/service/application/cart/v1.0/address")
@@ -167,7 +167,7 @@ interface CartApiList {
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/cart/v1.0/address/{id}")
-    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
+    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
     @PUT ("/service/application/cart/v1.0/address/{id}")
@@ -449,6 +449,10 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/seo")
     fun getSEOConfiguration()
     : Deferred<Response<SeoComponent>>
+    
+    @GET ("/service/application/content/v1.0/slideshow/")
+    fun getSlideshows(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<SlideshowGetResponse>>
     
     @GET ("/service/application/content/v1.0/slideshow/{slug}")
     fun getSlideshow(@Path("slug") slug: String)
@@ -863,7 +867,7 @@ interface PosCartApiList {
     : Deferred<Response<BulkPriceResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address")
-    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
+    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressesResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/address")
@@ -871,7 +875,7 @@ interface PosCartApiList {
     : Deferred<Response<SaveAddressResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address/{id}")
-    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: Int?, @Query("is_default") isDefault: Boolean?)
+    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
     @PUT ("/service/application/pos/cart/v1.0/address/{id}")
