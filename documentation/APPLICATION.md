@@ -13,7 +13,7 @@
 * [Configuration](#Configuration) - Application configuration apis 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
-* [Feedback](#Feedback) - User Reviews and Rating System 
+* [Rewards](#Rewards) - Earn and redeem Reward Points 
 * [PosCart](#PosCart) - Cart APIs 
 * [Logistic](#Logistic) - Handles Platform websites OMS 
 
@@ -151,7 +151,6 @@
     * [getPage](#getpage)
     * [getPages](#getpages)
     * [getSEOConfiguration](#getseoconfiguration)
-    * [getSlideshows](#getslideshows)
     * [getSlideshow](#getslideshow)
     * [getSupportInformation](#getsupportinformation)
     * [getTags](#gettags)
@@ -231,34 +230,14 @@
     * [getPosOrderById](#getposorderbyid)
     
 
-* [Feedback](#Feedback)
+* [Rewards](#Rewards)
   * Methods
-    * [createAbuseReport](#createabusereport)
-    * [updateAbuseReport](#updateabusereport)
-    * [getAbuseReports](#getabusereports)
-    * [getAttributes](#getattributes)
-    * [createAttribute](#createattribute)
-    * [getAttribute](#getattribute)
-    * [updateAttribute](#updateattribute)
-    * [createComment](#createcomment)
-    * [updateComment](#updatecomment)
-    * [getComments](#getcomments)
-    * [checkEligibility](#checkeligibility)
-    * [deleteMedia](#deletemedia)
-    * [createMedia](#createmedia)
-    * [updateMedia](#updatemedia)
-    * [getMedias](#getmedias)
-    * [getReviewSummaries](#getreviewsummaries)
-    * [createReview](#createreview)
-    * [updateReview](#updatereview)
-    * [getReviews](#getreviews)
-    * [getTemplates](#gettemplates)
-    * [createQuestion](#createquestion)
-    * [updateQuestion](#updatequestion)
-    * [getQuestionAndAnswers](#getquestionandanswers)
-    * [getVotes](#getvotes)
-    * [createVote](#createvote)
-    * [updateVote](#updatevote)
+    * [getPointsOnProduct](#getpointsonproduct)
+    * [getOrderDiscount](#getorderdiscount)
+    * [getUserPoints](#getuserpoints)
+    * [getUserPointsHistory](#getuserpointshistory)
+    * [getUserReferralDetails](#getuserreferraldetails)
+    * [redeemReferralCode](#redeemreferralcode)
     
 
 * [PosCart](#PosCart)
@@ -548,7 +527,7 @@ catalog.getProductComparisonBySlugs(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| slug | array | The unique identifier `slug` of a products. You can retrieve this from the APIs that list products like **v1.0/products/** | 
+| slug | string | The unique identifier `slug` of a products. You can retrieve this from the APIs that list products like **v1.0/products/** | 
 
 Compare between the features of the given set of products Use this API to compare how one product ranks against other products. Note that at least one slug is mandatory in request query.
 
@@ -3350,7 +3329,7 @@ cart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags
 | uid | integer |  | 
 | mobileNo | string |  | 
 | checkoutMode | string |  | 
-| tags | string |  | 
+| tags | integer |  | 
 | isDefault | boolean |  | 
 
 Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressesResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
@@ -3438,7 +3417,7 @@ cart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkout
 | uid | integer |  | 
 | mobileNo | string |  | 
 | checkoutMode | string |  | 
-| tags | string |  | 
+| tags | integer |  | 
 | isDefault | boolean |  | 
 
 Get a addresses with the given id. If successful, returns a Address resource in the response body specified in `Address`.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
@@ -10206,106 +10185,6 @@ default
 ---
 
 
-#### getSlideshows
-Get slideshows
-
-```kotlin
-content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| pageNo | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| pageSize | integer | Number of items to retrieve in each page. | 
-
-Use this to get slideshows.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `SlideshowGetResponse`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/SlideshowGetResponse"
-}
-```
-
-
-
-
-
-
-
-
-Failed
-
-
-Schema: `APIError`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/4XXAPIError"
-}
-```
-
-
-
-
-
-
-
-
-Failed
-
-
-Schema: `APIError`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/5XXAPIError"
-}
-```
-
-
-
-
-
-
-
-
-
----
-
-
 #### getSlideshow
 Get slideshow by slug
 
@@ -13595,14 +13474,14 @@ Schema: `ApefaceApiError`
 ---
 
 
-## Feedback
+## Rewards
 
 
-#### createAbuseReport
-post a new abuse request
+#### getPointsOnProduct
+Get reward points that could be earned on any catalogue product.
 
 ```kotlin
-feedback.createAbuseReport(body: body).safeAwait{ response,error->
+rewards.getPointsOnProduct(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13617,7 +13496,7 @@ feedback.createAbuseReport(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Report a new abuse for specific entity with description text.
+Evaluate the amount of reward points that could be earned on any catalogue product.
 
 *Success Response:*
 
@@ -13626,7 +13505,7 @@ Report a new abuse for specific entity with description text.
 ok
 
 
-Schema: `InsertResponse`
+Schema: `CatalogueOrderResponse`
 
 
 
@@ -13638,7 +13517,7 @@ Schema: `InsertResponse`
 Bad request
 
 
-Schema: `FeedbackError`
+Schema: `Error`
 
 
 
@@ -13651,11 +13530,11 @@ Schema: `FeedbackError`
 ---
 
 
-#### updateAbuseReport
-Update abuse details
+#### getOrderDiscount
+Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
 
 ```kotlin
-feedback.updateAbuseReport(body: body).safeAwait{ response,error->
+rewards.getOrderDiscount(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13670,7 +13549,7 @@ feedback.updateAbuseReport(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Update the abuse details like status and description text.
+Calculates the discount on order-amount based on amount ranges configured in order_discount reward.
 
 *Success Response:*
 
@@ -13679,7 +13558,7 @@ Update the abuse details like status and description text.
 ok
 
 
-Schema: `UpdateResponse`
+Schema: `OrderDiscountResponse`
 
 
 
@@ -13691,7 +13570,7 @@ Schema: `UpdateResponse`
 Bad request
 
 
-Schema: `FeedbackError`
+Schema: `Error`
 
 
 
@@ -13704,11 +13583,11 @@ Schema: `FeedbackError`
 ---
 
 
-#### getAbuseReports
-Get list of abuse data
+#### getUserPoints
+Total available points of a user for current application
 
 ```kotlin
-feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+rewards.getUserPoints().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13722,13 +13601,8 @@ feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pag
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| entityId | string | entity id | 
-| entityType | string | entity type | 
-| id | string | abuse id | 
-| pageId | string | pagination page id | 
-| pageSize | integer | pagination page size | 
 
-Get the list of abuse data from entity type and entity ID.
+Total available points of a user for current application
 
 *Success Response:*
 
@@ -13737,7 +13611,7 @@ Get the list of abuse data from entity type and entity ID.
 ok
 
 
-Schema: `ReportAbuseGetResponse`
+Schema: `PointsResponse`
 
 
 
@@ -13749,7 +13623,7 @@ Schema: `ReportAbuseGetResponse`
 Bad request
 
 
-Schema: `FeedbackError`
+Schema: `Error`
 
 
 
@@ -13762,11 +13636,11 @@ Schema: `FeedbackError`
 ---
 
 
-#### getAttributes
-Get list of attribute data
+#### getUserPointsHistory
+Get list of points transactions.
 
 ```kotlin
-feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13780,10 +13654,11 @@ feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,e
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| pageNo | integer | pagination page no | 
-| pageSize | integer | pagination page size | 
+| pageId | string | PageID is the ID of the requested page. For first request it should be kept empty. | 
+| pageSize | integer | PageSize is the number of requested items in response. | 
 
-Provides a list of all attribute data.
+Get list of points transactions.
+The list of points history is paginated.
 
 *Success Response:*
 
@@ -13792,7 +13667,7 @@ Provides a list of all attribute data.
 ok
 
 
-Schema: `AttributeResponse`
+Schema: `PointsHistoryResponse`
 
 
 
@@ -13804,7 +13679,7 @@ Schema: `AttributeResponse`
 Bad request
 
 
-Schema: `FeedbackError`
+Schema: `Error`
 
 
 
@@ -13817,11 +13692,11 @@ Schema: `FeedbackError`
 ---
 
 
-#### createAttribute
-Add a new attribute request
+#### getUserReferralDetails
+User's referral details.
 
 ```kotlin
-feedback.createAttribute(body: body).safeAwait{ response,error->
+rewards.getUserReferralDetails().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13836,7 +13711,7 @@ feedback.createAttribute(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Add a new attribute with its name, slug and description.
+User's referral details.
 
 *Success Response:*
 
@@ -13845,7 +13720,7 @@ Add a new attribute with its name, slug and description.
 ok
 
 
-Schema: `InsertResponse`
+Schema: `ReferralDetailsResponse`
 
 
 
@@ -13857,7 +13732,7 @@ Schema: `InsertResponse`
 Bad request
 
 
-Schema: `FeedbackError`
+Schema: `Error`
 
 
 
@@ -13870,11 +13745,11 @@ Schema: `FeedbackError`
 ---
 
 
-#### getAttribute
-Get single attribute data
+#### redeemReferralCode
+Redeems referral code and credits points to users points account.
 
 ```kotlin
-feedback.getAttribute(slug: slug).safeAwait{ response,error->
+rewards.redeemReferralCode(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13888,9 +13763,8 @@ feedback.getAttribute(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| slug | string | Slug of attribute | 
 
-Get a single attribute data from a given slug.
+Redeems referral code and credits points to users points account.
 
 *Success Response:*
 
@@ -13899,7 +13773,7 @@ Get a single attribute data from a given slug.
 ok
 
 
-Schema: `Attribute`
+Schema: `RedeemReferralCodeResponse`
 
 
 
@@ -13911,1114 +13785,7 @@ Schema: `Attribute`
 Bad request
 
 
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateAttribute
-Update attribute details
-
-```kotlin
-feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| slug | string | Slug of attribute | 
-
-Update the attribute's name and description.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### createComment
-post a new comment
-
-```kotlin
-feedback.createComment(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-This is used to add a new comment for specific entity.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `InsertResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateComment
-Update comment status
-
-```kotlin
-feedback.updateComment(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Update the comment status (active/approve) or text.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getComments
-Get list of comments
-
-```kotlin
-feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| entityType | string | entity type | 
-| id | string | comment id | 
-| entityId | string | entity id | 
-| userId | string | user id - flag/filter to get comments for user | 
-| pageId | string | pagination page id | 
-| pageSize | integer | pagination page size | 
-
-Get the list of comments from specific entity type.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `CommentGetResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### checkEligibility
-Checks eligibility and cloud media config
-
-```kotlin
-feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| entityType | string | entity type | 
-| entityId | string | entity id | 
-
-Checks eligibility to rate and review and cloud media configuration
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `CheckEligibilityResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### deleteMedia
-Delete Media
-
-```kotlin
-feedback.deleteMedia().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Delete Media for the given entity IDs.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### createMedia
-Add Media
-
-```kotlin
-feedback.createMedia(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Add Media list for specific entity.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `InsertResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateMedia
-Update Media
-
-```kotlin
-feedback.updateMedia(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Update Media (archive/approve) for the given entity.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getMedias
-Get Media
-
-```kotlin
-feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| entityType | string | entity type | 
-| entityId | string | entity id | 
-| id | string | vote id | 
-| pageId | string | pagination page id | 
-| pageSize | integer | pagination page size | 
-
-Get Media from the given entity type and entity ID.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `MediaGetResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getReviewSummaries
-Get a review summary
-
-```kotlin
-feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| entityType | string | entity type | 
-| entityId | string | entity id | 
-| id | string | review summary identifier | 
-| pageId | string | pagination page id | 
-| pageSize | integer | pagination page size | 
-
-Review summary gives ratings and attribute metrics of a review per entity
-It gives following response data: review count, rating average. review metrics / attribute rating metrics which contains name, type, average and count.
-
-*Success Response:*
-
-
-
-success
-
-
-Schema: `RatingGetResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### createReview
-Add customer reviews
-
-```kotlin
-feedback.createReview(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Add customer reviews for specific entity with following data:
-attributes rating, entity rating, title, description, media resources and template id.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad Request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateReview
-Update customer reviews
-
-```kotlin
-feedback.updateReview(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-Update customer reviews for specific entity with following data:
-attributes rating, entity rating, title, description, media resources and template id.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad Request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getReviews
-Get list of customer reviews
-
-```kotlin
-feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| entityType | string | entity type | 
-| entityId | string | entity id | 
-| id | string | review id | 
-| userId | string | user id | 
-| media | string | media type e.g. image | video | video_file | video_link | 
-| rating | array | rating filter, 1-5 | 
-| attributeRating | array | attribute rating filter | 
-| facets | boolean | facets (true|false) | 
-| sort | string | sort by : default | top | recent | 
-| pageId | string | pagination page id | 
-| pageSize | integer | pagination page size | 
-
-This is used to get the list of customer reviews based on entity and provided filters.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `ReviewGetResponse`
-
-
-
-
-
-
-
-
-Bad Request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getTemplates
-Get the templates for product or l3 type
-
-```kotlin
-feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| templateId | string | template id | 
-| entityId | string | entity id | 
-| entityType | string | entity type e.g. product | l3 | 
-
-This is used to get the templates details.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `CursorGetResponse`
-
-
-
-
-
-
-
-
-Bad Request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### createQuestion
-Create a new question
-
-```kotlin
-feedback.createQuestion(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-This is used to create a new question with following data:
-tags, text, type, choices for MCQ type questions, maximum length of answer.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `InsertResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateQuestion
-Update question
-
-```kotlin
-feedback.updateQuestion(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-This is used to update question's status, tags and choices.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getQuestionAndAnswers
-Get a list of QnA
-
-```kotlin
-feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| entityType | string | entity type | 
-| entityId | string | entity id | 
-| id | string | qna id | 
-| showAnswer | boolean | show answer flag | 
-| pageId | string | pagination page id | 
-| pageSize | integer | pagination page size | 
-
-This is used to get a list of questions and its answers.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `QNAGetResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getVotes
-Get list of votes
-
-```kotlin
-feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | string | vote id | 
-| refType | string | entity type e.g. review | comment | 
-| pageNo | integer | pagination page no | 
-| pageSize | integer | pagination page size | 
-
-This is used to get the list of votes of a current logged in user. Votes can be filtered using `ref_type` i.e. review | comment.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `VoteResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### createVote
-Create a new vote
-
-```kotlin
-feedback.createVote(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-This is used to create a new vote and the actions can be upvote or downvote.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `InsertResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateVote
-Update vote
-
-```kotlin
-feedback.updateVote(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-
-This is used to update the vote and the actions can be upvote or downvote.
-
-*Success Response:*
-
-
-
-ok
-
-
-Schema: `UpdateResponse`
-
-
-
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
+Schema: `Error`
 
 
 
@@ -16522,7 +15289,7 @@ poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, t
 | uid | integer |  | 
 | mobileNo | string |  | 
 | checkoutMode | string |  | 
-| tags | string |  | 
+| tags | integer |  | 
 | isDefault | boolean |  | 
 
 Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressesResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
@@ -16610,7 +15377,7 @@ poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: check
 | uid | integer |  | 
 | mobileNo | string |  | 
 | checkoutMode | string |  | 
-| tags | string |  | 
+| tags | integer |  | 
 | isDefault | boolean |  | 
 
 Get a addresses with the given id. If successful, returns a Address resource in the response body specified in `Address`.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
