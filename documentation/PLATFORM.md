@@ -2,6 +2,7 @@
 
 
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
+* [Feedback](#Feedback) - User Reviews and Rating System 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [Content](#Content) - Content System 
@@ -13,11 +14,14 @@
 * [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [FileStorage](#FileStorage) - File Storage 
 * [Share](#Share) - Short link and QR Code 
+* [Inventory](#Inventory) -  
 * [Configuration](#Configuration) - Application configuration apis 
 * [Cart](#Cart) - Cart APIs 
 * [Marketplaces](#Marketplaces) - Marketplaces 
 * [Rewards](#Rewards) - Rewards 
 * [Analytics](#Analytics) - Perceptor analytics 
+* [Discount](#Discount) - Discount 
+* [Partner](#Partner) - Partner configuration apis 
 
 ----
 ----
@@ -45,6 +49,17 @@
   * [Lead#getVideoParticipants](#leadgetvideoparticipants)
   * [Lead#openVideoRoom](#leadopenvideoroom)
   * [Lead#closeVideoRoom](#leadclosevideoroom)
+ 
+* [Feedback](#Feedback)
+  * [Feedback#getAttributes](#feedbackgetattributes)
+  * [Feedback#getCustomerReviews](#feedbackgetcustomerreviews)
+  * [Feedback#updateApprove](#feedbackupdateapprove)
+  * [Feedback#getHistory](#feedbackgethistory)
+  * [Feedback#getApplicationTemplates](#feedbackgetapplicationtemplates)
+  * [Feedback#createTemplate](#feedbackcreatetemplate)
+  * [Feedback#getTemplateById](#feedbackgettemplatebyid)
+  * [Feedback#updateTemplate](#feedbackupdatetemplate)
+  * [Feedback#updateTemplateStatus](#feedbackupdatetemplatestatus)
  
 * [Theme](#Theme)
   * [Theme#getThemeLibrary](#themegetthemelibrary)
@@ -248,6 +263,7 @@
   * [Catalog#getCompanyBrandDetail](#cataloggetcompanybranddetail)
   * [Catalog#getCompanyMetrics](#cataloggetcompanymetrics)
   * [Catalog#getStoreDetail](#cataloggetstoredetail)
+  * [Catalog#getGenderAttribute](#cataloggetgenderattribute)
   * [Catalog#listProductTemplateCategories](#cataloglistproducttemplatecategories)
   * [Catalog#listDepartmentsData](#cataloglistdepartmentsdata)
   * [Catalog#getDepartmentData](#cataloggetdepartmentdata)
@@ -298,15 +314,15 @@
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
-  * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
@@ -325,6 +341,15 @@
   * [Share#getShortLinks](#sharegetshortlinks)
   * [Share#getShortLinkByHash](#sharegetshortlinkbyhash)
   * [Share#updateShortLinkById](#shareupdateshortlinkbyid)
+ 
+* [Inventory](#Inventory)
+  * [Inventory#getJobsByCompany](#inventorygetjobsbycompany)
+  * [Inventory#updateJob](#inventoryupdatejob)
+  * [Inventory#createJob](#inventorycreatejob)
+  * [Inventory#getJobByCompanyAndIntegration](#inventorygetjobbycompanyandintegration)
+  * [Inventory#getJobConfigDefaults](#inventorygetjobconfigdefaults)
+  * [Inventory#getJobByCode](#inventorygetjobbycode)
+  * [Inventory#getJobCodesByCompanyAndIntegration](#inventorygetjobcodesbycompanyandintegration)
  
 * [Configuration](#Configuration)
   * [Configuration#getBuildConfig](#configurationgetbuildconfig)
@@ -423,6 +448,22 @@
   * [Analytics#getExportJobStatus](#analyticsgetexportjobstatus)
   * [Analytics#getLogsList](#analyticsgetlogslist)
   * [Analytics#searchLogs](#analyticssearchlogs)
+ 
+* [Discount](#Discount)
+  * [Discount#getDiscounts](#discountgetdiscounts)
+  * [Discount#createDiscount](#discountcreatediscount)
+  * [Discount#getDiscount](#discountgetdiscount)
+  * [Discount#updateDiscount](#discountupdatediscount)
+  * [Discount#validateDiscountFile](#discountvalidatediscountfile)
+  * [Discount#downloadDiscountFile](#discountdownloaddiscountfile)
+  * [Discount#getValidationJob](#discountgetvalidationjob)
+  * [Discount#cancelValidationJob](#discountcancelvalidationjob)
+  * [Discount#getDownloadJob](#discountgetdownloadjob)
+  * [Discount#cancelDownloadJob](#discountcanceldownloadjob)
+ 
+* [Partner](#Partner)
+  * [Partner#addProxyPath](#partneraddproxypath)
+  * [Partner#removeProxyPath](#partnerremoveproxypath)
  
 
 ---
@@ -1028,6 +1069,320 @@ lead.closeVideoRoom(companyId: companyId, applicationId: applicationId, uniqueNa
 
 
 Close the video room and force all participants to leave.
+
+
+---
+
+
+
+---
+---
+
+
+## Feedback
+
+```javascript
+const { Configuration, Feedback } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const feedback = new Feedback(conf);
+
+```
+
+
+#### Feedback#getAttributes
+Get list of attribute data
+
+```kotlin
+feedback.getAttributes(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| page_no | integer | pagination page no | 
+| page_size | integer | pagination page size | 
+
+
+Provides a list of all attribute data.
+
+
+---
+
+
+#### Feedback#getCustomerReviews
+Get list of customer reviews [admin]
+
+```kotlin
+feedback.getCustomerReviews(companyId: companyId, applicationId: applicationId, id: id, entityId: entityId, entityType: entityType, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, next: next, start: start, limit: limit, count: count, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | review id | 
+| entity_id | string | entity id | 
+| entity_type | string | entity type | 
+| user_id | string | user id | 
+| media | string | media type e.g. image | video | video_file | video_link | 
+| rating | array | rating filter, 1-5 | 
+| attribute_rating | array | attribute rating filter with ma,e of attribute | 
+| facets | boolean | facets (true|false) | 
+| sort | string | sort by : default | top | recent | 
+| next | string | pagination next | 
+| start | string | pagination start | 
+| limit | string | pagination limit | 
+| count | string | pagination count | 
+| page_id | string | pagination page id | 
+| page_size | integer | pagination page size | 
+
+
+The endpoint provides a list of customer reviews based on entity and provided filters
+
+
+---
+
+
+#### Feedback#updateApprove
+update approve details
+
+```kotlin
+feedback.updateApprove(companyId: companyId, applicationId: applicationId, reviewId: reviewId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| review_id | string | review id | 
+
+
+The is used to update approve details like status and description text
+
+
+---
+
+
+#### Feedback#getHistory
+get history details
+
+```kotlin
+feedback.getHistory(companyId: companyId, applicationId: applicationId, reviewId: reviewId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| review_id | string | review id | 
+
+
+The is used to get the history details like status and description text
+
+
+---
+
+
+#### Feedback#getApplicationTemplates
+Get list of templates
+
+```kotlin
+feedback.getApplicationTemplates(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| page_id | string | pagination page id | 
+| page_size | integer | pagination page size | 
+
+
+Get all templates of application
+
+
+---
+
+
+#### Feedback#createTemplate
+Create a new template
+
+```kotlin
+feedback.createTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+
+
+Create a new template for review with following data:
+- Enable media, rating and review
+- Rating - active/inactive/selected rate choices, attributes, text on rate, comment for each rate, type
+- Review - header, title, description, image and video meta, enable votes
+
+
+---
+
+
+#### Feedback#getTemplateById
+Get a template by ID
+
+```kotlin
+feedback.getTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | template id | 
+
+
+Get the template for product or l3 type by ID
+
+
+---
+
+
+#### Feedback#updateTemplate
+Update a template's status
+
+```kotlin
+feedback.updateTemplate(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | template id | 
+
+
+Update existing template status, active/archive
+
+
+---
+
+
+#### Feedback#updateTemplateStatus
+Update a template's status
+
+```kotlin
+feedback.updateTemplateStatus(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| application_id | string | application id | 
+| id | string | template id | 
+
+
+Update existing template status, active/archive
 
 
 ---
@@ -6922,6 +7277,36 @@ Get the details of the store associated with the company ID passed.
 ---
 
 
+#### Catalog#getGenderAttribute
+Get gender attribute details
+
+```kotlin
+catalog.getGenderAttribute(companyId: companyId, department: department).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company for which you want to view the genders | 
+| department | string | department for which you want to view the genders | 
+
+
+This API allows to view the gender attribute details.
+
+
+---
+
+
 #### Catalog#listProductTemplateCategories
 List Department specifiec product categories
 
@@ -6957,7 +7342,7 @@ Allows you to list all product categories values for the departments specified
 List all Departments
 
 ```kotlin
-catalog.listDepartmentsData(companyId: companyId).safeAwait{ response,error->
+catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: pageSize, name: name, search: search, isActive: isActive).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6974,6 +7359,11 @@ catalog.listDepartmentsData(companyId: companyId).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| page_no | integer | The page number to navigate through the given set of results | 
+| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+| name | string | Can search departments by passing name. | 
+| search | string | Can search departments by passing name of the department in search parameter. | 
+| is_active | boolean | Can query for departments based on whether they are active or inactive. | 
 
 
 Allows you to list all departments, also can search using name and filter active and incative departments, and item type
@@ -7214,7 +7604,7 @@ catalog.listProductTemplateExportDetails(companyId: companyId).safeAwait{ respon
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 
 
-Can vies details including trigger data, task id , etc.
+Can view details including trigger data, task id , etc.
 
 
 ---
@@ -7283,7 +7673,7 @@ This API lets user create product categories
 Get product categories list
 
 ```kotlin
-catalog.listCategories(companyId: companyId, level: level, q: q).safeAwait{ response,error->
+catalog.listCategories(companyId: companyId, level: level, departments: departments, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7301,7 +7691,10 @@ catalog.listCategories(companyId: companyId, level: level, q: q).safeAwait{ resp
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | level | string | Get category for multiple levels | 
+| departments | string | Get category for multiple departments filtered | 
 | q | string | Get multiple categories filtered by search string | 
+| page_no | integer | The page number to navigate through the given set of results | 
+| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
 
 
 This API gets meta associated to product categories.
@@ -8383,36 +8776,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#getBrand
-Get a single brand.
-
-```kotlin
-companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API helps to get data associated to a particular brand.
-
-
----
-
-
 #### CompanyProfile#editBrand
 Edit a brand.
 
@@ -8443,6 +8806,36 @@ This API allows to edit meta of a brand.
 ---
 
 
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```kotlin
+companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
+
+
+---
+
+
 #### CompanyProfile#createBrand
 Create a Brand.
 
@@ -8467,6 +8860,35 @@ companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response
 
 
 This API allows to create a brand associated to a company.
+
+
+---
+
+
+#### CompanyProfile#createCompanyBrandMapping
+Create a company brand mapping.
+
+```kotlin
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -8503,11 +8925,11 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createCompanyBrandMapping
-Create a company brand mapping.
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
 
 ```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8523,10 +8945,10 @@ companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeA
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
+| company_id | string | Id of the company inside which the location is to be created. | 
 
 
-This API allows to create a company brand mapping, for a already existing brand in the system.
+This API allows to create a location associated to a company.
 
 
 ---
@@ -8566,11 +8988,11 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### CompanyProfile#updateLocation
+Edit a location asscoiated to a company.
 
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8587,9 +9009,10 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
 
 
-This API allows to create a location associated to a company.
+This API allows to edit a location associated to a company.
 
 
 ---
@@ -8620,36 +9043,6 @@ companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).s
 
 
 This API helps to get data associated to a specific location.
-
-
----
-
-
-#### CompanyProfile#updateLocation
-Edit a location asscoiated to a company.
-
-```kotlin
-companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
-
-
-This API allows to edit a location associated to a company.
 
 
 ---
@@ -9188,6 +9581,237 @@ share.updateShortLinkById(companyId: companyId, applicationId: applicationId, id
 
 
 Update short link by id
+
+
+---
+
+
+
+---
+---
+
+
+## Inventory
+
+```javascript
+const { Configuration, Inventory } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const inventory = new Inventory(conf);
+
+```
+
+
+#### Inventory#getJobsByCompany
+Get Job Configs For A Company
+
+```kotlin
+inventory.getJobsByCompany(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| page_no | integer | Page Number | 
+| page_size | integer | Page Size | 
+
+
+REST Endpoint that returns all job configs for a company
+
+
+---
+
+
+#### Inventory#updateJob
+Updates An Existing Job Config
+
+```kotlin
+inventory.updateJob(companyId: companyId, xUserData: xUserData, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| x-user-data | string |  | 
+
+
+REST Endpoint that updates a job config
+
+
+---
+
+
+#### Inventory#createJob
+Creates A New Job Config
+
+```kotlin
+inventory.createJob(companyId: companyId, xUserData: xUserData, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| x-user-data | string |  | 
+
+
+REST Endpoint that creates a new job config
+
+
+---
+
+
+#### Inventory#getJobByCompanyAndIntegration
+Get Job Configs By Company And Integration
+
+```kotlin
+inventory.getJobByCompanyAndIntegration(companyId: companyId, integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| integration_id | string | Integration Id | 
+| page_no | integer | Page Number | 
+| page_size | integer | Page Size | 
+
+
+REST Endpoint that returns all job configs by company And integration
+
+
+---
+
+
+#### Inventory#getJobConfigDefaults
+Get Job Configs Defaults
+
+```kotlin
+inventory.getJobConfigDefaults(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+
+
+REST Endpoint that returns default fields job configs by company And integration
+
+
+---
+
+
+#### Inventory#getJobByCode
+Get Job Config By Code
+
+```kotlin
+inventory.getJobByCode(companyId: companyId, code: code).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| code | string | Job Code | 
+
+
+REST Endpoint that returns job config by code
+
+
+---
+
+
+#### Inventory#getJobCodesByCompanyAndIntegration
+Get Job Codes By Company And Integration
+
+```kotlin
+inventory.getJobCodesByCompanyAndIntegration(companyId: companyId, integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| integration_id | string | Integration Id | 
+| page_no | integer | Page Number | 
+| page_size | integer | Page Size | 
+
+
+REST Endpoint that returns all job codes by company And integration
 
 
 ---
@@ -10217,7 +10841,7 @@ Get company/store level integration opt-ins
 Get integration level config
 
 ```kotlin
-configuration.getIntegrationLevelConfig(companyId: companyId, id: id, level: level).safeAwait{ response,error->
+configuration.getIntegrationLevelConfig(companyId: companyId, id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10236,6 +10860,8 @@ configuration.getIntegrationLevelConfig(companyId: companyId, id: id, level: lev
 | company_id | string | Current company id | 
 | id | string | Integration id | 
 | level | string | Integration level | 
+| opted | boolean | Filter on opted stores | 
+| check_permission | boolean | Filter on if permissions are present | 
 
 
 Get integration level config
@@ -11969,6 +12595,410 @@ analytics.searchLogs(companyId: companyId, pageNo: pageNo, pageSize: pageSize, l
 
 
 Search logs
+
+
+---
+
+
+
+---
+---
+
+
+## Discount
+
+```javascript
+const { Configuration, Discount } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const discount = new Discount(conf);
+
+```
+
+
+#### Discount#getDiscounts
+Fetch discount list.
+
+```kotlin
+discount.getDiscounts(companyId: companyId, view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| view | string | listing or calender.  Default is listing. | 
+| q | string | The search query. This can be a partial or complete name of a discount. | 
+| page_no | integer | page number. Default is 1. | 
+| page_size | integer | page size. Default is 12. | 
+| archived | boolean | archived. Default is false. | 
+| month | integer | month. Default is current month. | 
+| year | integer | year. Default is current year. | 
+| type | string | basic or custom. | 
+| app_ids | array | application ids. | 
+
+
+Fetch discount list.
+
+
+---
+
+
+#### Discount#createDiscount
+Create Discount.
+
+```kotlin
+discount.createDiscount(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+
+
+Create Discount.
+
+
+---
+
+
+#### Discount#getDiscount
+Fetch discount.
+
+```kotlin
+discount.getDiscount(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | unique id. | 
+
+
+Fetch discount.
+
+
+---
+
+
+#### Discount#updateDiscount
+Create Discount.
+
+```kotlin
+discount.updateDiscount(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Create Discount.
+
+
+---
+
+
+#### Discount#validateDiscountFile
+Validate File.
+
+```kotlin
+discount.validateDiscountFile(companyId: companyId, discount: discount, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| discount | string | discount | 
+
+
+Validate File.
+
+
+---
+
+
+#### Discount#downloadDiscountFile
+Validate File.
+
+```kotlin
+discount.downloadDiscountFile(companyId: companyId, type: type, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| type | string | type | 
+
+
+Validate File.
+
+
+---
+
+
+#### Discount#getValidationJob
+Validate File Job.
+
+```kotlin
+discount.getValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Validate File Job.
+
+
+---
+
+
+#### Discount#cancelValidationJob
+Cancel Validation Job.
+
+```kotlin
+discount.cancelValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Cancel Validation Job.
+
+
+---
+
+
+#### Discount#getDownloadJob
+Download File Job.
+
+```kotlin
+discount.getDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Download File Job.
+
+
+---
+
+
+#### Discount#cancelDownloadJob
+Cancel Download Job.
+
+```kotlin
+discount.cancelDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | company_id | 
+| id | string | id | 
+
+
+Cancel Download Job.
+
+
+---
+
+
+
+---
+---
+
+
+## Partner
+
+```javascript
+const { Configuration, Partner } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const partner = new Partner(conf);
+
+```
+
+
+#### Partner#addProxyPath
+Add proxy path for external url
+
+```kotlin
+partner.addProxyPath(companyId: companyId, applicationId: applicationId, extensionId: extensionId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| extension_id | string | Extension id | 
+
+
+Add proxy path for external url
+
+
+---
+
+
+#### Partner#removeProxyPath
+Remove proxy path for external url
+
+```kotlin
+partner.removeProxyPath(companyId: companyId, applicationId: applicationId, extensionId: extensionId, attachedPath: attachedPath).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Current company id | 
+| application_id | string | Current application id | 
+| extension_id | string | Extension id | 
+| attached_path | string | Attachaed path slug | 
+
+
+Remove proxy path for external url
 
 
 ---
