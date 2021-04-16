@@ -40,10 +40,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val analytics by lazy { AnalyticsDataManagerClass(config)}
     
-    val discount by lazy { DiscountDataManagerClass(config)}
-    
-    val partner by lazy { PartnerDataManagerClass(config)}
-    
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
     }
@@ -87,10 +83,6 @@ class PlatformClient(val config:PlatformConfig) {
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
     val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
-    
-    val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
-    
-    val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
     
     }
 

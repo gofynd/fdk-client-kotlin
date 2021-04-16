@@ -152,7 +152,6 @@
     * [getPage](#getpage)
     * [getPages](#getpages)
     * [getSEOConfiguration](#getseoconfiguration)
-    * [getSlideshows](#getslideshows)
     * [getSlideshow](#getslideshow)
     * [getSupportInformation](#getsupportinformation)
     * [getTags](#gettags)
@@ -559,7 +558,7 @@ catalog.getProductComparisonBySlugs(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| slug | array | The unique identifier `slug` of a products. You can retrieve this from the APIs that list products like **v1.0/products/** | 
+| slug | string | The unique identifier `slug` of a products. You can retrieve this from the APIs that list products like **v1.0/products/** | 
 
 Compare between the features of the given set of products Use this API to compare how one product ranks against other products. Note that at least one slug is mandatory in request query.
 
@@ -10217,106 +10216,6 @@ default
 ---
 
 
-#### getSlideshows
-Get slideshows
-
-```kotlin
-content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| pageNo | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| pageSize | integer | Number of items to retrieve in each page. | 
-
-Use this to get slideshows.
-
-*Success Response:*
-
-
-
-Success
-
-
-Schema: `SlideshowGetResponse`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/SlideshowGetResponse"
-}
-```
-
-
-
-
-
-
-
-
-Failed
-
-
-Schema: `APIError`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/4XXAPIError"
-}
-```
-
-
-
-
-
-
-
-
-Failed
-
-
-Schema: `APIError`
-
-
-*Examples:*
-
-
-default
-```json
-{
-  "$ref": "#/components/examples/5XXAPIError"
-}
-```
-
-
-
-
-
-
-
-
-
----
-
-
 #### getSlideshow
 Get slideshow by slug
 
@@ -13141,7 +13040,7 @@ Schema: `HttpErrorCodeAndResponse`
 Get Orders for application based on application Id
 
 ```kotlin
-order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, orderStatus: orderStatus).safeAwait{ response,error->
+order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13159,7 +13058,6 @@ order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: 
 | pageSize | string | Page limit | 
 | fromDate | string | From Date | 
 | toDate | string | To Date | 
-| orderStatus | integer | Order Status | 
 
 Get Orders
 

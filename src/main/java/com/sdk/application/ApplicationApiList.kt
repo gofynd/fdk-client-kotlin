@@ -23,7 +23,7 @@ interface CatalogApiList {
     : Deferred<Response<ProductSizeSellersResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/compare/")
-    fun getProductComparisonBySlugs(@Query("slug") slug: ArrayList<String>)
+    fun getProductComparisonBySlugs(@Query("slug") slug: String)
     : Deferred<Response<ProductsComparisonResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compare/")
@@ -450,10 +450,6 @@ interface ContentApiList {
     fun getSEOConfiguration()
     : Deferred<Response<SeoComponent>>
     
-    @GET ("/service/application/content/v1.0/slideshow/")
-    fun getSlideshows(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<SlideshowGetResponse>>
-    
     @GET ("/service/application/content/v1.0/slideshow/{slug}")
     fun getSlideshow(@Path("slug") slug: String)
     : Deferred<Response<SlideshowSchema>>
@@ -663,7 +659,7 @@ interface PaymentApiList {
 interface OrderApiList {
     
     @GET ("/service/application/order/v1.0/orders")
-    fun getOrders(@Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("order_status") orderStatus: Int?)
+    fun getOrders(@Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
     : Deferred<Response<OrderList>>
     
     @GET ("/service/application/order/v1.0/orders/{order_id}")

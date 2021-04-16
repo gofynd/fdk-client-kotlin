@@ -110,7 +110,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun getProductComparisonBySlugs(slug: ArrayList<String>): Deferred<Response<ProductsComparisonResponse>>? {
+    fun getProductComparisonBySlugs(slug: String): Deferred<Response<ProductsComparisonResponse>>? {
         return catalogApiList?.getProductComparisonBySlugs(slug = slug )}
 
     
@@ -1324,54 +1324,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<SlideshowGetResponse>>? {
-        return contentApiList?.getSlideshows(pageNo = pageNo, pageSize = pageSize )}
-
-    
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getSlideshows
-    **/
-    fun getSlideshowsPaginator(pageSize: Int?=null) : Paginator<SlideshowGetResponse>{
-
-    val paginator = Paginator<SlideshowGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<SlideshowGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<SlideshowGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                contentApiList?.getSlideshows(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
-    
     fun getSlideshow(slug: String): Deferred<Response<SlideshowSchema>>? {
         return contentApiList?.getSlideshow(slug = slug )}
 
@@ -1812,8 +1764,8 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null, orderStatus: Int?=null): Deferred<Response<OrderList>>? {
-        return orderApiList?.getOrders(pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, orderStatus = orderStatus )}
+    fun getOrders(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null): Deferred<Response<OrderList>>? {
+        return orderApiList?.getOrders(pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate )}
 
     
     

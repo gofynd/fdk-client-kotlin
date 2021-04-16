@@ -20,8 +20,6 @@
 * [Marketplaces](#Marketplaces) - Marketplaces 
 * [Rewards](#Rewards) - Rewards 
 * [Analytics](#Analytics) - Perceptor analytics 
-* [Discount](#Discount) - Discount 
-* [Partner](#Partner) - Partner configuration apis 
 
 ----
 ----
@@ -263,7 +261,6 @@
   * [Catalog#getCompanyBrandDetail](#cataloggetcompanybranddetail)
   * [Catalog#getCompanyMetrics](#cataloggetcompanymetrics)
   * [Catalog#getStoreDetail](#cataloggetstoredetail)
-  * [Catalog#getGenderAttribute](#cataloggetgenderattribute)
   * [Catalog#listProductTemplateCategories](#cataloglistproducttemplatecategories)
   * [Catalog#listDepartmentsData](#cataloglistdepartmentsdata)
   * [Catalog#getDepartmentData](#cataloggetdepartmentdata)
@@ -288,8 +285,8 @@
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
-  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
   * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
+  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
   * [Catalog#getCompanyTags](#cataloggetcompanytags)
   * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
   * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
@@ -299,8 +296,8 @@
   * [Catalog#deleteInventory](#catalogdeleteinventory)
   * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
   * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
-  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
   * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
+  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
   * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
   * [Catalog#getInventoryExport](#cataloggetinventoryexport)
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
@@ -317,10 +314,10 @@
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
-  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
@@ -448,22 +445,6 @@
   * [Analytics#getExportJobStatus](#analyticsgetexportjobstatus)
   * [Analytics#getLogsList](#analyticsgetlogslist)
   * [Analytics#searchLogs](#analyticssearchlogs)
- 
-* [Discount](#Discount)
-  * [Discount#getDiscounts](#discountgetdiscounts)
-  * [Discount#createDiscount](#discountcreatediscount)
-  * [Discount#getDiscount](#discountgetdiscount)
-  * [Discount#updateDiscount](#discountupdatediscount)
-  * [Discount#validateDiscountFile](#discountvalidatediscountfile)
-  * [Discount#downloadDiscountFile](#discountdownloaddiscountfile)
-  * [Discount#getValidationJob](#discountgetvalidationjob)
-  * [Discount#cancelValidationJob](#discountcancelvalidationjob)
-  * [Discount#getDownloadJob](#discountgetdownloadjob)
-  * [Discount#cancelDownloadJob](#discountcanceldownloadjob)
- 
-* [Partner](#Partner)
-  * [Partner#addProxyPath](#partneraddproxypath)
-  * [Partner#removeProxyPath](#partnerremoveproxypath)
  
 
 ---
@@ -7277,36 +7258,6 @@ Get the details of the store associated with the company ID passed.
 ---
 
 
-#### Catalog#getGenderAttribute
-Get gender attribute details
-
-```kotlin
-catalog.getGenderAttribute(companyId: companyId, department: department).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company for which you want to view the genders | 
-| department | string | department for which you want to view the genders | 
-
-
-This API allows to view the gender attribute details.
-
-
----
-
-
 #### Catalog#listProductTemplateCategories
 List Department specifiec product categories
 
@@ -7342,7 +7293,7 @@ Allows you to list all product categories values for the departments specified
 List all Departments
 
 ```kotlin
-catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: pageSize, name: name, search: search, isActive: isActive).safeAwait{ response,error->
+catalog.listDepartmentsData(companyId: companyId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7359,11 +7310,6 @@ catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: page
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
-| name | string | Can search departments by passing name. | 
-| search | string | Can search departments by passing name of the department in search parameter. | 
-| is_active | boolean | Can query for departments based on whether they are active or inactive. | 
 
 
 Allows you to list all departments, also can search using name and filter active and incative departments, and item type
@@ -7604,7 +7550,7 @@ catalog.listProductTemplateExportDetails(companyId: companyId).safeAwait{ respon
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 
 
-Can view details including trigger data, task id , etc.
+Can vies details including trigger data, task id , etc.
 
 
 ---
@@ -7673,7 +7619,7 @@ This API lets user create product categories
 Get product categories list
 
 ```kotlin
-catalog.listCategories(companyId: companyId, level: level, departments: departments, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.listCategories(companyId: companyId, level: level, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7691,10 +7637,7 @@ catalog.listCategories(companyId: companyId, level: level, departments: departme
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | level | string | Get category for multiple levels | 
-| departments | string | Get category for multiple departments filtered | 
 | q | string | Get multiple categories filtered by search string | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
 
 
 This API gets meta associated to product categories.
@@ -8041,36 +7984,6 @@ This API helps to get bulk product upload jobs data.
 ---
 
 
-#### Catalog#deleteProductBulkJob
-Delete Bulk product job.
-
-```kotlin
-catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company associated to size that is to be deleted. | 
-| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
-
-
-This API allows to delete bulk product job associated with company.
-
-
----
-
-
 #### Catalog#createProductsInBulk
 Create products in bulk associated with given batch Id.
 
@@ -8096,6 +8009,36 @@ catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body)
 
 
 This API helps to create products in bulk push to kafka for approval/creation.
+
+
+---
+
+
+#### Catalog#deleteProductBulkJob
+Delete Bulk product job.
+
+```kotlin
+catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company associated to size that is to be deleted. | 
+| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
+
+
+This API allows to delete bulk product job associated with company.
 
 
 ---
@@ -8376,35 +8319,6 @@ This API helps to get bulk Inventory upload jobs data.
 ---
 
 
-#### Catalog#deleteBulkInventoryJob
-Delete Bulk Inventory job.
-
-```kotlin
-catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company of which bulk Inventory job is to be deleted. | 
-
-
-This API allows to delete bulk Inventory job associated with company.
-
-
----
-
-
 #### Catalog#createBulkInventory
 Create products in bulk associated with given batch Id.
 
@@ -8429,6 +8343,35 @@ catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ respons
 
 
 This API helps to create products in bulk push to kafka for approval/creation.
+
+
+---
+
+
+#### Catalog#deleteBulkInventoryJob
+Delete Bulk Inventory job.
+
+```kotlin
+catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company of which bulk Inventory job is to be deleted. | 
+
+
+This API allows to delete bulk Inventory job associated with company.
 
 
 ---
@@ -8865,35 +8808,6 @@ This API allows to create a brand associated to a company.
 ---
 
 
-#### CompanyProfile#createCompanyBrandMapping
-Create a company brand mapping.
-
-```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
-
-
-This API allows to create a company brand mapping, for a already existing brand in the system.
-
-
----
-
-
 #### CompanyProfile#getBrands
 Get brands associated to a company
 
@@ -8925,11 +8839,11 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### CompanyProfile#createCompanyBrandMapping
+Create a company brand mapping.
 
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8945,10 +8859,10 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
 
 
-This API allows to create a location associated to a company.
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -8983,6 +8897,35 @@ companyprofile.getLocations(companyId: companyId, storeType: storeType, q: q, st
 
 
 This API allows to view all the locations asscoiated to a company.
+
+
+---
+
+
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
+
+```kotlin
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+
+
+This API allows to create a location associated to a company.
 
 
 ---
@@ -12595,410 +12538,6 @@ analytics.searchLogs(companyId: companyId, pageNo: pageNo, pageSize: pageSize, l
 
 
 Search logs
-
-
----
-
-
-
----
----
-
-
-## Discount
-
-```javascript
-const { Configuration, Discount } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const discount = new Discount(conf);
-
-```
-
-
-#### Discount#getDiscounts
-Fetch discount list.
-
-```kotlin
-discount.getDiscounts(companyId: companyId, view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| view | string | listing or calender.  Default is listing. | 
-| q | string | The search query. This can be a partial or complete name of a discount. | 
-| page_no | integer | page number. Default is 1. | 
-| page_size | integer | page size. Default is 12. | 
-| archived | boolean | archived. Default is false. | 
-| month | integer | month. Default is current month. | 
-| year | integer | year. Default is current year. | 
-| type | string | basic or custom. | 
-| app_ids | array | application ids. | 
-
-
-Fetch discount list.
-
-
----
-
-
-#### Discount#createDiscount
-Create Discount.
-
-```kotlin
-discount.createDiscount(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-
-
-Create Discount.
-
-
----
-
-
-#### Discount#getDiscount
-Fetch discount.
-
-```kotlin
-discount.getDiscount(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | unique id. | 
-
-
-Fetch discount.
-
-
----
-
-
-#### Discount#updateDiscount
-Create Discount.
-
-```kotlin
-discount.updateDiscount(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
-
-
-Create Discount.
-
-
----
-
-
-#### Discount#validateDiscountFile
-Validate File.
-
-```kotlin
-discount.validateDiscountFile(companyId: companyId, discount: discount, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| discount | string | discount | 
-
-
-Validate File.
-
-
----
-
-
-#### Discount#downloadDiscountFile
-Validate File.
-
-```kotlin
-discount.downloadDiscountFile(companyId: companyId, type: type, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| type | string | type | 
-
-
-Validate File.
-
-
----
-
-
-#### Discount#getValidationJob
-Validate File Job.
-
-```kotlin
-discount.getValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
-
-
-Validate File Job.
-
-
----
-
-
-#### Discount#cancelValidationJob
-Cancel Validation Job.
-
-```kotlin
-discount.cancelValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
-
-
-Cancel Validation Job.
-
-
----
-
-
-#### Discount#getDownloadJob
-Download File Job.
-
-```kotlin
-discount.getDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
-
-
-Download File Job.
-
-
----
-
-
-#### Discount#cancelDownloadJob
-Cancel Download Job.
-
-```kotlin
-discount.cancelDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
-
-
-Cancel Download Job.
-
-
----
-
-
-
----
----
-
-
-## Partner
-
-```javascript
-const { Configuration, Partner } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const partner = new Partner(conf);
-
-```
-
-
-#### Partner#addProxyPath
-Add proxy path for external url
-
-```kotlin
-partner.addProxyPath(companyId: companyId, applicationId: applicationId, extensionId: extensionId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| extension_id | string | Extension id | 
-
-
-Add proxy path for external url
-
-
----
-
-
-#### Partner#removeProxyPath
-Remove proxy path for external url
-
-```kotlin
-partner.removeProxyPath(companyId: companyId, applicationId: applicationId, extensionId: extensionId, attachedPath: attachedPath).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| extension_id | string | Extension id | 
-| attached_path | string | Attachaed path slug | 
-
-
-Remove proxy path for external url
 
 
 ---
