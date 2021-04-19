@@ -13141,7 +13141,7 @@ Schema: `HttpErrorCodeAndResponse`
 Get Orders for application based on application Id
 
 ```kotlin
-order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate).safeAwait{ response,error->
+order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, orderStatus: orderStatus).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13159,6 +13159,7 @@ order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: 
 | pageSize | string | Page limit | 
 | fromDate | string | From Date | 
 | toDate | string | To Date | 
+| orderStatus | integer | Order Status | 
 
 Get Orders
 
