@@ -6,6 +6,7 @@
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
 * [Content](#Content) - Content System 
+* [Assignment](#Assignment) -  
 * [Billing](#Billing) - Handle platform subscription 
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
@@ -146,6 +147,25 @@
   * [Content#removeInjectableTag](#contentremoveinjectabletag)
   * [Content#editInjectableTag](#contenteditinjectabletag)
  
+* [Assignment](#Assignment)
+  * [Assignment#createPickupLocation](#assignmentcreatepickuplocation)
+  * [Assignment#getPickupLocation](#assignmentgetpickuplocation)
+  * [Assignment#updatePickupLocation](#assignmentupdatepickuplocation)
+  * [Assignment#getPickupLocationById](#assignmentgetpickuplocationbyid)
+  * [Assignment#createPickupConfiguration](#assignmentcreatepickupconfiguration)
+  * [Assignment#getPickupConfiguration](#assignmentgetpickupconfiguration)
+  * [Assignment#getAllocationConfiguration](#assignmentgetallocationconfiguration)
+  * [Assignment#createAllocationConfiguration](#assignmentcreateallocationconfiguration)
+  * [Assignment#updateAllocationConfiguration](#assignmentupdateallocationconfiguration)
+  * [Assignment#getAllocationLocations](#assignmentgetallocationlocations)
+  * [Assignment#getAllocationLocationById](#assignmentgetallocationlocationbyid)
+  * [Assignment#updateAllocationLocation](#assignmentupdateallocationlocation)
+  * [Assignment#createAllocationLocation](#assignmentcreateallocationlocation)
+  * [Assignment#getDestinationZones](#assignmentgetdestinationzones)
+  * [Assignment#postDestinationZone](#assignmentpostdestinationzone)
+  * [Assignment#getDestinationZoneById](#assignmentgetdestinationzonebyid)
+  * [Assignment#updateDestinationZone](#assignmentupdatedestinationzone)
+ 
 * [Billing](#Billing)
   * [Billing#getInvoices](#billinggetinvoices)
   * [Billing#getInvoiceById](#billinggetinvoicebyid)
@@ -225,13 +245,13 @@
  
 * [Catalog](#Catalog)
   * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
-  * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
   * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
+  * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
-  * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
   * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
+  * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createProductBundle](#catalogcreateproductbundle)
@@ -281,8 +301,8 @@
   * [Catalog#createProduct](#catalogcreateproduct)
   * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#editProduct](#catalogeditproduct)
-  * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#getProduct](#cataloggetproduct)
+  * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
@@ -313,15 +333,15 @@
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
-  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
-  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
  
 * [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
@@ -3877,6 +3897,590 @@ Edits a particular tag
 ---
 
 
+## Assignment
+
+```javascript
+const { Configuration, Assignment } = require('fdk-client-nodejs/platform')
+const conf = new Configuration({
+    OAuth2Token: "5ljdffg191e810c19729de860ea"
+});
+const assignment = new Assignment(conf);
+
+```
+
+
+#### Assignment#createPickupLocation
+
+
+```kotlin
+assignment.createPickupLocation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Create a new Pickup point for an application.
+
+
+
+---
+
+
+#### Assignment#getPickupLocation
+
+
+```kotlin
+assignment.getPickupLocation(q: q, pageNo: pageNo, pageSize: pageSize, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| q | string | Search query | 
+| page_no | integer | Request a page number | 
+| page_size | integer | Request a page size | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Update list of pickup points for an application.
+
+
+
+---
+
+
+#### Assignment#updatePickupLocation
+
+
+```kotlin
+assignment.updatePickupLocation(id: id, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | number | Pickup Point ID | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Update Pickup Point for an application. Pickup Point once created
+can be updated using this API. 'x-application-id'm and request body are required to trigger
+a successful update.
+
+
+
+---
+
+
+#### Assignment#getPickupLocationById
+
+
+```kotlin
+assignment.getPickupLocationById(id: id, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | number | Pickup Point Id | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+This API returns Pickup point data for an id. Returns not found if no data exists for the
+store id passed.
+
+
+
+---
+
+
+#### Assignment#createPickupConfiguration
+
+
+```kotlin
+assignment.createPickupConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Create a new pickup configuration for an application id. Only one configuration can be
+created per application id.
+
+
+
+---
+
+
+#### Assignment#getPickupConfiguration
+
+
+```kotlin
+assignment.getPickupConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Let pickup configuration for an application. z-application-id is required in
+the header to fetch the data.
+
+
+
+---
+
+
+#### Assignment#getAllocationConfiguration
+
+
+```kotlin
+assignment.getAllocationConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Get Shipping configuration for an application. Returns the global shipping configuration
+including shipping priority and default strategy, etc. Every application can have one set of
+configuration each. The endpoint requires an application id to get the data.
+
+
+
+---
+
+
+#### Assignment#createAllocationConfiguration
+
+
+```kotlin
+assignment.createAllocationConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Create a new Shipping configuration for an application The configuration is for
+all the stores under an application. There can be only one configuration for an
+application i.e, for an application configuration can be created only once.
+
+
+
+---
+
+
+#### Assignment#updateAllocationConfiguration
+
+
+```kotlin
+assignment.updateAllocationConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Update Shipping configuration for an application. Application configuration once created
+can be updated using this API. 'x-application-id'm and request body are required to trigger
+a successful update.
+
+
+
+---
+
+
+#### Assignment#getAllocationLocations
+
+
+```kotlin
+assignment.getAllocationLocations(q: q, pageNo: pageNo, pageSize: pageSize, type: type, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| q | string | Search query | 
+| page_no | integer | Request a page number | 
+| page_size | integer | Request a page size | 
+| type | string | Type can be 'standard' or 'advanced' | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+List Stores of an application. Two types of stores are listed,
+some having allocation types as standard and others, advanced.
+API has support for pagination, filter by type and search by name.
+
+
+
+---
+
+
+#### Assignment#getAllocationLocationById
+
+
+```kotlin
+assignment.getAllocationLocationById(id: id, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | number | Store Id | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+This API returns store data for an id. Returns not found if no data exists for the
+store id passed. The data is returned from sixspeed database which includes only the
+shipping configuration of the stores including store id and app id.
+
+
+
+---
+
+
+#### Assignment#updateAllocationLocation
+
+
+```kotlin
+assignment.updateAllocationLocation(id: id, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | number | Store Id | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+A store configuration once created can be updated via this API. Store id in request params
+and udpated request body are required to successfully update the store data.
+
+
+
+---
+
+
+#### Assignment#createAllocationLocation
+
+
+```kotlin
+assignment.createAllocationLocation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Create a new store shipping configuratiion. The configuration is stored into the
+sixspeed database. One one store data can be created for one store id. Ther can be one
+default configuration and multiple non-default ones. The default is not binded with product
+tags while others are required to be.
+
+
+
+---
+
+
+#### Assignment#getDestinationZones
+
+
+```kotlin
+assignment.getDestinationZones(q: q, pageNo: pageNo, pageSize: pageSize, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| q | string | Search query | 
+| page_no | integer | Request a page number | 
+| page_size | integer | Request a page size | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Get a list of zones created, where every zone has a unique name and id. They can be
+of three different types, radius, pincode and country.
+
+
+
+---
+
+
+#### Assignment#postDestinationZone
+
+
+```kotlin
+assignment.postDestinationZone(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+This API lets you create a zone which can be used further be mapped with store
+configuration rules to defined a shipping rule. Either of the three details need to
+be passed, zone_detail, pincode and region.
+
+
+
+---
+
+
+#### Assignment#getDestinationZoneById
+
+
+```kotlin
+assignment.getDestinationZoneById(id: id, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | number | Store Id | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Returns zone data for the specified zone id. Id is the required parameter and returns
+not found if no data is found for the passed zone id.
+
+
+
+---
+
+
+#### Assignment#updateDestinationZone
+
+
+```kotlin
+assignment.updateDestinationZone(id: id, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| id | number | Store Id | 
+| company_id | integer | Company Id | 
+| application_id | string | Application Id | 
+
+
+Zone once created can be updated using this API. Zone id and request body are the required
+data to update a zone.
+
+
+
+---
+
+
+
+---
+---
+
+
 ## Billing
 
 ```javascript
@@ -6115,37 +6719,6 @@ Update Search Keyword by its id. On successful request, returns the updated coll
 ---
 
 
-#### Catalog#deleteSearchKeywords
-Delete a Search Keywords
-
-```kotlin
-catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-
----
-
-
 #### Catalog#getSearchKeywords
 Get a Search Keywords Details
 
@@ -6172,6 +6745,37 @@ catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id
 
 
 Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
+
+
+---
+
+
+#### Catalog#deleteSearchKeywords
+Delete a Search Keywords
+
+```kotlin
+catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
 
 
 ---
@@ -6268,37 +6872,6 @@ Update a mapping by it's id. On successful request, returns the updated Keyword 
 ---
 
 
-#### Catalog#deleteAutocompleteKeyword
-Delete a Autocomplete Keywords
-
-```kotlin
-catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-
----
-
-
 #### Catalog#getAutocompleteKeywordDetail
 Get a Autocomplete Keywords Details
 
@@ -6325,6 +6898,37 @@ catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applic
 
 
 Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
+
+
+---
+
+
+#### Catalog#deleteAutocompleteKeyword
+Delete a Autocomplete Keywords
+
+```kotlin
+catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
 
 
 ---
@@ -7817,36 +8421,6 @@ This API allows to edit product.
 ---
 
 
-#### Catalog#deleteProduct
-Delete a product.
-
-```kotlin
-catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company associated to product that is to be deleted. | 
-| item_id | integer | Id of the product to be updated. | 
-
-
-This API allows to delete product.
-
-
----
-
-
 #### Catalog#getProduct
 Get a single product.
 
@@ -7875,6 +8449,36 @@ catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, bra
 
 
 This API helps to get data associated to a particular product.
+
+
+---
+
+
+#### Catalog#deleteProduct
+Delete a product.
+
+```kotlin
+catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company associated to product that is to be deleted. | 
+| item_id | integer | Id of the product to be updated. | 
+
+
+This API allows to delete product.
 
 
 ---
@@ -8737,36 +9341,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#editBrand
-Edit a brand.
-
-```kotlin
-companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API allows to edit meta of a brand.
-
-
----
-
-
 #### CompanyProfile#getBrand
 Get a single brand.
 
@@ -8797,6 +9371,36 @@ This API helps to get data associated to a particular brand.
 ---
 
 
+#### CompanyProfile#editBrand
+Edit a brand.
+
+```kotlin
+companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API allows to edit meta of a brand.
+
+
+---
+
+
 #### CompanyProfile#createBrand
 Create a Brand.
 
@@ -8821,35 +9425,6 @@ companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response
 
 
 This API allows to create a brand associated to a company.
-
-
----
-
-
-#### CompanyProfile#createCompanyBrandMapping
-Create a company brand mapping.
-
-```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
-
-
-This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -8886,11 +9461,11 @@ This API helps to get view brands associated to a particular company.
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### CompanyProfile#createCompanyBrandMapping
+Create a company brand mapping.
 
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8906,10 +9481,10 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
+| company_id | string | Id of the company inside which the brand is to be mapped. | 
 
 
-This API allows to create a location associated to a company.
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 
 ---
@@ -8949,11 +9524,11 @@ This API allows to view all the locations asscoiated to a company.
 ---
 
 
-#### CompanyProfile#updateLocation
-Edit a location asscoiated to a company.
+#### CompanyProfile#createLocation
+Create a location asscoiated to a company.
 
 ```kotlin
-companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8970,10 +9545,9 @@ companyprofile.updateLocation(companyId: companyId, locationId: locationId, body
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
 
 
-This API allows to edit a location associated to a company.
+This API allows to create a location associated to a company.
 
 
 ---
@@ -9004,6 +9578,36 @@ companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).s
 
 
 This API helps to get data associated to a specific location.
+
+
+---
+
+
+#### CompanyProfile#updateLocation
+Edit a location asscoiated to a company.
+
+```kotlin
+companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location is to be created. | 
+| location_id | string | Id of the location which you want to edit. | 
+
+
+This API allows to edit a location associated to a company.
 
 
 ---

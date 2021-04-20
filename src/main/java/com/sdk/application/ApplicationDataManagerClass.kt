@@ -110,7 +110,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun getProductComparisonBySlugs(slug: String): Deferred<Response<ProductsComparisonResponse>>? {
+    fun getProductComparisonBySlugs(slug: ArrayList<String>): Deferred<Response<ProductsComparisonResponse>>? {
         return catalogApiList?.getProductComparisonBySlugs(slug = slug )}
 
     

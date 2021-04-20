@@ -1963,6 +1963,421 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 }
 }
 
+class AssignmentDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+       
+    private val assignmentApiList by lazy {
+        generateassignmentApiList()
+    }
+    
+    private fun generateassignmentApiList(): AssignmentApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "PlatformAssignment",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(AssignmentApiList::class.java) as? AssignmentApiList
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
+
+    
+    
+    suspend fun createPickupLocation(body: PickupPointSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.createPickupLocation(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPickupLocation(q: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<PickupPointResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getPickupLocation(q = q, pageNo = pageNo, pageSize = pageSize, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPickupLocation
+    **/
+    fun getPickupLocationPaginator(
+    q: String?=null, pageSize: Int?=null
+    
+    ) : Paginator<PickupPointResponse>{
+        val paginator = Paginator<PickupPointResponse>()
+        paginator.setCallBack(object : PaginatorCallback<PickupPointResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<PickupPointResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    assignmentApiList?.getPickupLocation(q = q, pageNo = pageNo, pageSize = pageSize, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun updatePickupLocation(id: String,body: PickupPointSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.updatePickupLocation(id = id, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPickupLocationById(id: String)
+    : Deferred<Response<PickupPointSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getPickupLocationById(id = id, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createPickupConfiguration(body: PickupConfiguration)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.createPickupConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPickupConfiguration()
+    : Deferred<Response<PickupResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getPickupConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAllocationConfiguration()
+    : Deferred<Response<ShippingResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getAllocationConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createAllocationConfiguration(body: ShippingSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.createAllocationConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAllocationConfiguration(body: ShippingSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.updateAllocationConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAllocationLocations(q: String?=null, pageNo: Int?=null, pageSize: Int?=null, type: String?=null)
+    : Deferred<Response<StoreListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getAllocationLocations(q = q, pageNo = pageNo, pageSize = pageSize, type = type, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAllocationLocations
+    **/
+    fun getAllocationLocationsPaginator(
+    q: String?=null, pageSize: Int?=null, type: String?=null
+    
+    ) : Paginator<StoreListResponse>{
+        val paginator = Paginator<StoreListResponse>()
+        paginator.setCallBack(object : PaginatorCallback<StoreListResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<StoreListResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    assignmentApiList?.getAllocationLocations(q = q, pageNo = pageNo, pageSize = pageSize, type = type, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun getAllocationLocationById(id: String)
+    : Deferred<Response<StoreResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getAllocationLocationById(id = id, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAllocationLocation(id: String,body: StoreSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.updateAllocationLocation(id = id, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createAllocationLocation(body: StoreSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.createAllocationLocation(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDestinationZones(q: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<ZoneListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getDestinationZones(q = q, pageNo = pageNo, pageSize = pageSize, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getDestinationZones
+    **/
+    fun getDestinationZonesPaginator(
+    q: String?=null, pageSize: Int?=null
+    
+    ) : Paginator<ZoneListResponse>{
+        val paginator = Paginator<ZoneListResponse>()
+        paginator.setCallBack(object : PaginatorCallback<ZoneListResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<ZoneListResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    assignmentApiList?.getDestinationZones(q = q, pageNo = pageNo, pageSize = pageSize, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun postDestinationZone(body: ZoneSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.postDestinationZone(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDestinationZoneById(id: String)
+    : Deferred<Response<ZoneSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.getDestinationZoneById(id = id, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateDestinationZone(id: String,body: ZoneSchema)
+    : Deferred<Response<Success>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                assignmentApiList?.updateDestinationZone(id = id, companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+}
+}
+
 class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val billingApiList by lazy {
@@ -4116,24 +4531,24 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun deleteProduct(itemId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProduct(
-        companyId = config.companyId, itemId = itemId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getProduct(itemCode: String?=null, itemId: String, brandUid: Int?=null, uid: Int?=null)
     : Deferred<Response<Product>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProduct(
         itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid, uid = uid )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteProduct(itemId: String)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.deleteProduct(
+        companyId = config.companyId, itemId = itemId )
         } else {
             null
         } 
@@ -4454,20 +4869,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteSearchKeywords(id: String)
-    : Deferred<Response<DeleteResponse>>? {
+    suspend fun getSearchKeywords(id: String)
+    : Deferred<Response<GetSearchWordsDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
+                catalogApiList?.getSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun getSearchKeywords(id: String)
-    : Deferred<Response<GetSearchWordsDetailResponse>>? {
+    suspend fun deleteSearchKeywords(id: String)
+    : Deferred<Response<DeleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
+                catalogApiList?.deleteSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -4504,20 +4919,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteAutocompleteKeyword(id: String)
-    : Deferred<Response<DeleteResponse>>? {
+    suspend fun getAutocompleteKeywordDetail(id: String)
+    : Deferred<Response<GetAutocompleteWordsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id )
+                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
     }
     
     
-    suspend fun getAutocompleteKeywordDetail(id: String)
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
+    suspend fun deleteAutocompleteKeyword(id: String)
+    : Deferred<Response<DeleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId , applicationId = applicationId , id = id )
+                catalogApiList?.deleteAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -4807,18 +5222,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.editBrand(
-        companyId = config.companyId, brandId = brandId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getBrand(brandId: String)
     : Deferred<Response<GetBrandResponseSerializer>>? {
         
@@ -4831,23 +5234,23 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
+    suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createBrand(
-        companyId = config.companyId, body = body)
+            companyProfileApiList?.editBrand(
+        companyId = config.companyId, brandId = brandId, body = body)
         } else {
             null
         } 
     }
     
     
-    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
+    suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createCompanyBrandMapping(
+            companyProfileApiList?.createBrand(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -4867,11 +5270,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createLocation(body: LocationSerializer)
+    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
+            companyProfileApiList?.createCompanyBrandMapping(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -4891,12 +5294,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun updateLocation(locationId: String,body: LocationSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateLocation(
-        companyId = config.companyId, locationId = locationId, body = body)
+            companyProfileApiList?.createLocation(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -4909,6 +5312,18 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationDetail(
         companyId = config.companyId, locationId = locationId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateLocation(locationId: String,body: LocationSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.updateLocation(
+        companyId = config.companyId, locationId = locationId, body = body)
         } else {
             null
         } 
