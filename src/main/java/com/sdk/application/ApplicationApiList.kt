@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -629,6 +629,14 @@ interface PaymentApiList {
     @GET ("/service/application/payment/v1.0/payment/options/pos")
     fun getPosPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?)
     : Deferred<Response<PaymentModeRouteResponse>>
+    
+    @GET ("/service/application/payment/v1.0/refund/transfer-mode")
+    fun getActiveRefundTransferModes()
+    : Deferred<Response<TransferModeResponse>>
+    
+    @PUT ("/service/application/payment/v1.0/refund/transfer-mode")
+    fun enableOrDisableRefundTransferMode(@Body body: UpdateRefundTransferModeRequest)
+    : Deferred<Response<UpdateRefundTransferModeResponse>>
     
     @GET ("/service/application/payment/v1.0/refund/user/beneficiary")
     fun getUserBeneficiariesDetail(@Query("order_id") orderId: String)

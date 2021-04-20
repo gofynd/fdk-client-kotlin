@@ -582,13 +582,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -1747,6 +1747,16 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, assignCardId: String?=null, orderType: String, userDetails: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
         return paymentApiList?.getPosPaymentModeRoutes(amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, assignCardId = assignCardId, orderType = orderType, userDetails = userDetails )}
+
+    
+    
+    fun getActiveRefundTransferModes(): Deferred<Response<TransferModeResponse>>? {
+        return paymentApiList?.getActiveRefundTransferModes( )}
+
+    
+    
+    fun enableOrDisableRefundTransferMode(body: UpdateRefundTransferModeRequest): Deferred<Response<UpdateRefundTransferModeResponse>>? {
+        return paymentApiList?.enableOrDisableRefundTransferMode( body = body)}
 
     
     
