@@ -25,7 +25,7 @@ abstract class BaseRepository {
             }
         } catch (e: Exception) {
             val message = e.message
-            val error = FdkError(message = message)
+            val error = FdkError(status = 500,message = message)
             onFailure.invoke(error)
         }
     }
@@ -47,7 +47,7 @@ abstract class BaseRepository {
             }
         } catch (e: Exception) {
             val message = e.message
-            val error = FdkError(message = message)
+            val error = FdkError(status = 500,message = message)
             onResponse.invoke(null, error)
         }
     }
@@ -68,7 +68,7 @@ abstract class BaseRepository {
             }
         } catch (e: Exception) {
             val message = e.message
-            val error = FdkError(message = message)
+            val error = FdkError(status = 500,message = message)
             return Pair(null, error)
         }
     }
