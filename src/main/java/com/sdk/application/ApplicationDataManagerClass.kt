@@ -1812,7 +1812,7 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null, orderStatus: Int?=null): Deferred<Response<OrderList>>? {
+    fun getOrders(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, orderStatus: Int?=null): Deferred<Response<OrderList>>? {
         return orderApiList?.getOrders(pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, orderStatus = orderStatus )}
 
     

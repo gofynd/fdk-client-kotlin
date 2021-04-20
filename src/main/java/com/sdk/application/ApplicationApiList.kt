@@ -663,7 +663,7 @@ interface PaymentApiList {
 interface OrderApiList {
     
     @GET ("/service/application/order/v1.0/orders")
-    fun getOrders(@Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("order_status") orderStatus: Int?)
+    fun getOrders(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("order_status") orderStatus: Int?)
     : Deferred<Response<OrderList>>
     
     @GET ("/service/application/order/v1.0/orders/{order_id}")

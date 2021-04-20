@@ -10973,7 +10973,9 @@ data class Item(
     @SerializedName("slug_key")
     var slugKey: String?=null,
     @SerializedName("image")
-    var image: ArrayList<String>?=null
+    var image: ArrayList<String>?=null,
+    @SerializedName("code")
+    var code: String?=null
     
 ): Parcelable
 
@@ -11248,96 +11250,14 @@ data class Invoice(
 
 
 /*
-    Model: ProductItems
+    Model: Promise
 */
 @Parcelize
-data class ProductItems(
-    
-    
-    @SerializedName("code")
-    var code: String?=null,
-    @SerializedName("last_updated_at")
-    var lastUpdatedAt: String?=null,
-    @SerializedName("brand")
-    var brand: String?=null,
-    @SerializedName("image")
-    var image: ArrayList<String>?=null,
-    @SerializedName("l3_category")
-    var l3Category: Int?=null,
-    @SerializedName("brand_id")
-    var brandId: Int?=null,
-    @SerializedName("name")
-    var name: String?=null,
-    @SerializedName("can_cancel")
-    var canCancel: Boolean?=null,
-    @SerializedName("size")
-    var size: String?=null,
-    @SerializedName("slug_key")
-    var slugKey: String?=null,
-    @SerializedName("l3_category_name")
-    var l3CategoryName: String?=null,
-    @SerializedName("l2_category")
-    var l2Category: ArrayList<String>?=null,
-    @SerializedName("id")
-    var id: Int?=null,
-    @SerializedName("can_return")
-    var canReturn: Boolean?=null,
-    @SerializedName("l1_category")
-    var l1Category: ArrayList<String>?=null,
-    @SerializedName("attributes")
-    var attributes: ProductItemAttributes?=null
-    
-): Parcelable
-
-
-/*
-    Model: ProductItemAttributes
-*/
-@Parcelize
-data class ProductItemAttributes(
-    
-    
-    @SerializedName("item_code")
-    var itemCode: String?=null,
-    @SerializedName("brand_name")
-    var brandName: String?=null,
-    @SerializedName("country_of_origin")
-    var countryOfOrigin: String?=null
-    
-): Parcelable
-
-
-/*
-    Model: ShipmentMeta
-*/
-@Parcelize
-data class ShipmentMeta(
+data class Promise(
     
     
     @SerializedName("timestamp")
-    var timestamp: Timestamp?=null,
-    @SerializedName("bag_weight")
-    var bagWeight: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("dp_options")
-    var dpOptions: DpOptions?=null,
-    @SerializedName("order_type")
-    var orderType: String?=null,
-    @SerializedName("same_store_available")
-    var sameStoreAvailable: Boolean?=null,
-    @SerializedName("assign_dp_from_sb")
-    var assignDpFromSb: Boolean?=null,
-    @SerializedName("dp_id")
-    var dpId: String?=null,
-    @SerializedName("weight")
-    var weight: Int?=null,
-    @SerializedName("formatted")
-    var formatted: Formatted?=null,
-    @SerializedName("debug_info")
-    var debugInfo: DebugInfo?=null,
-    @SerializedName("dp_sort_key")
-    var dpSortKey: String?=null,
-    @SerializedName("packaging_name")
-    var packagingName: String?=null
+    var timestamp: Timestamp?=null
     
 ): Parcelable
 
@@ -11349,91 +11269,10 @@ data class ShipmentMeta(
 data class Timestamp(
     
     
-    @SerializedName("max")
-    var max: String?=null,
     @SerializedName("min")
-    var min: String?=null
-    
-): Parcelable
-
-
-/*
-    Model: DpOptions
-*/
-@Parcelize
-data class DpOptions(
-    
-    
-    @SerializedName("dp_option_id")
-    var dpOptionId: DpOptionId?=null
-    
-): Parcelable
-
-
-/*
-    Model: DpOptionId
-*/
-@Parcelize
-data class DpOptionId(
-    
-    
-    @SerializedName("f_priority")
-    var fPriority: Int?=null,
-    @SerializedName("operations")
-    var operations: String?=null,
-    @SerializedName("r_priority")
-    var rPriority: Int?=null,
-    @SerializedName("payment_mode")
-    var paymentMode: String?=null,
-    @SerializedName("fm_priority")
-    var fmPriority: Int?=null,
-    @SerializedName("lm_priority")
-    var lmPriority: Int?=null,
-    @SerializedName("rvp_priority")
-    var rvpPriority: Int?=null,
-    @SerializedName("assign_dp_from_sb")
-    var assignDpFromSb: Boolean?=null
-    
-): Parcelable
-
-
-/*
-    Model: Formatted
-*/
-@Parcelize
-data class Formatted(
-    
-    
+    var min: String?=null,
     @SerializedName("max")
-    var max: String?=null,
-    @SerializedName("min")
-    var min: String?=null
-    
-): Parcelable
-
-
-/*
-    Model: DebugInfo
-*/
-@Parcelize
-data class DebugInfo(
-    
-    
-    @SerializedName("stormbreaker_uuid")
-    var stormbreakerUuid: String?=null
-    
-): Parcelable
-
-
-/*
-    Model: Promise
-*/
-@Parcelize
-data class Promise(
-    
-    
-    @SerializedName("timestamp")
-    var timestamp: Timestamp?=null
+    var max: String?=null
     
 ): Parcelable
 
@@ -11548,8 +11387,6 @@ data class Shipments(
     var shipmentStatus: ShipmentStatus?=null,
     @SerializedName("user_info")
     var userInfo: ShipmentUserInfo?=null,
-    @SerializedName("meta")
-    var meta: ShipmentMeta?=null,
     @SerializedName("size_info")
     var sizeInfo: @RawValue HashMap<String,Any>?=null,
     @SerializedName("total_details")
@@ -13439,6 +13276,21 @@ data class LogisticTimestamp(
     var min: Int?=null,
     @SerializedName("max")
     var max: Int?=null
+    
+): Parcelable
+
+
+/*
+    Model: Formatted
+*/
+@Parcelize
+data class Formatted(
+    
+    
+    @SerializedName("min")
+    var min: String?=null,
+    @SerializedName("max")
+    var max: String?=null
     
 ): Parcelable
 

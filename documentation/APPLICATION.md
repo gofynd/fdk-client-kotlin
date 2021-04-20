@@ -13155,8 +13155,8 @@ order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| pageNo | string | Current page number | 
-| pageSize | string | Page limit | 
+| pageNo | integer | Current page number | 
+| pageSize | integer | Page limit | 
 | fromDate | string | From Date | 
 | toDate | string | To Date | 
 | orderStatus | integer | Order Status | 
