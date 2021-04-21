@@ -245,13 +245,13 @@
  
 * [Catalog](#Catalog)
   * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
-  * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
   * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
+  * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
   * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
-  * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
   * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
+  * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getProductBundle](#cataloggetproductbundle)
@@ -301,14 +301,14 @@
   * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
   * [Catalog#editProduct](#catalogeditproduct)
-  * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#getProduct](#cataloggetproduct)
+  * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
   * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
-  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
   * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
+  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
   * [Catalog#getCompanyTags](#cataloggetcompanytags)
   * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
   * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
@@ -318,8 +318,8 @@
   * [Catalog#deleteInventory](#catalogdeleteinventory)
   * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
   * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
-  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
   * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
+  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
   * [Catalog#getInventoryExport](#cataloggetinventoryexport)
   * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
@@ -6719,37 +6719,6 @@ Update Search Keyword by its id. On successful request, returns the updated coll
 ---
 
 
-#### Catalog#deleteSearchKeywords
-Delete a Search Keywords
-
-```kotlin
-catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-
----
-
-
 #### Catalog#getSearchKeywords
 Get a Search Keywords Details
 
@@ -6776,6 +6745,37 @@ catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id
 
 
 Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
+
+
+---
+
+
+#### Catalog#deleteSearchKeywords
+Delete a Search Keywords
+
+```kotlin
+catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
 
 
 ---
@@ -6872,37 +6872,6 @@ Update a mapping by it's id. On successful request, returns the updated Keyword 
 ---
 
 
-#### Catalog#deleteAutocompleteKeyword
-Delete a Autocomplete Keywords
-
-```kotlin
-catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-
----
-
-
 #### Catalog#getAutocompleteKeywordDetail
 Get a Autocomplete Keywords Details
 
@@ -6929,6 +6898,37 @@ catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applic
 
 
 Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
+
+
+---
+
+
+#### Catalog#deleteAutocompleteKeyword
+Delete a Autocomplete Keywords
+
+```kotlin
+catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
 
 
 ---
@@ -8421,36 +8421,6 @@ This API allows to edit product.
 ---
 
 
-#### Catalog#deleteProduct
-Delete a product.
-
-```kotlin
-catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company associated to product that is to be deleted. | 
-| item_id | integer | Id of the product to be updated. | 
-
-
-This API allows to delete product.
-
-
----
-
-
 #### Catalog#getProduct
 Get a single product.
 
@@ -8479,6 +8449,36 @@ catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, bra
 
 
 This API helps to get data associated to a particular product.
+
+
+---
+
+
+#### Catalog#deleteProduct
+Delete a product.
+
+```kotlin
+catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company associated to product that is to be deleted. | 
+| item_id | integer | Id of the product to be updated. | 
+
+
+This API allows to delete product.
 
 
 ---
@@ -8606,36 +8606,6 @@ This API helps to create a bulk asset upload job.
 ---
 
 
-#### Catalog#deleteProductBulkJob
-Delete Bulk product job.
-
-```kotlin
-catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company associated to size that is to be deleted. | 
-| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
-
-
-This API allows to delete bulk product job associated with company.
-
-
----
-
-
 #### Catalog#createProductsInBulk
 Create products in bulk associated with given batch Id.
 
@@ -8661,6 +8631,36 @@ catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body)
 
 
 This API helps to create products in bulk push to kafka for approval/creation.
+
+
+---
+
+
+#### Catalog#deleteProductBulkJob
+Delete Bulk product job.
+
+```kotlin
+catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company associated to size that is to be deleted. | 
+| batch_id | integer | Batch Id of the bulk product job to be deleted. | 
+
+
+This API allows to delete bulk product job associated with company.
 
 
 ---
@@ -8941,35 +8941,6 @@ This API helps to create a bulk Inventory upload job.
 ---
 
 
-#### Catalog#deleteBulkInventoryJob
-Delete Bulk Inventory job.
-
-```kotlin
-catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id of the company of which bulk Inventory job is to be deleted. | 
-
-
-This API allows to delete bulk Inventory job associated with company.
-
-
----
-
-
 #### Catalog#createBulkInventory
 Create products in bulk associated with given batch Id.
 
@@ -8994,6 +8965,35 @@ catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ respons
 
 
 This API helps to create products in bulk push to kafka for approval/creation.
+
+
+---
+
+
+#### Catalog#deleteBulkInventoryJob
+Delete Bulk Inventory job.
+
+```kotlin
+catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Company Id of the company of which bulk Inventory job is to be deleted. | 
+
+
+This API allows to delete bulk Inventory job associated with company.
 
 
 ---
