@@ -244,37 +244,37 @@
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
 * [Catalog](#Catalog)
-  * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
   * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
+  * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
-  * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
-  * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
+  * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
   * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
+  * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
-  * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
-  * [Catalog#createProductBundle](#catalogcreateproductbundle)
+  * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getProductBundle](#cataloggetproductbundle)
-  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
+  * [Catalog#createProductBundle](#catalogcreateproductbundle)
   * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
-  * [Catalog#createSizeGuide](#catalogcreatesizeguide)
+  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getSizeGuides](#cataloggetsizeguides)
-  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
+  * [Catalog#createSizeGuide](#catalogcreatesizeguide)
   * [Catalog#getSizeGuide](#cataloggetsizeguide)
+  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
-  * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
   * [Catalog#getConfigurations](#cataloggetconfigurations)
-  * [Catalog#createConfigurationByType](#catalogcreateconfigurationbytype)
+  * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
   * [Catalog#getConfigurationByType](#cataloggetconfigurationbytype)
+  * [Catalog#createConfigurationByType](#catalogcreateconfigurationbytype)
   * [Catalog#getQueryFilters](#cataloggetqueryfilters)
-  * [Catalog#createCollection](#catalogcreatecollection)
   * [Catalog#getAllCollections](#cataloggetallcollections)
+  * [Catalog#createCollection](#catalogcreatecollection)
   * [Catalog#getCollectionDetail](#cataloggetcollectiondetail)
   * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#deleteCollection](#catalogdeletecollection)
-  * [Catalog#addCollectionItems](#catalogaddcollectionitems)
   * [Catalog#getCollectionItems](#cataloggetcollectionitems)
+  * [Catalog#addCollectionItems](#catalogaddcollectionitems)
   * [Catalog#getCatalogInsights](#cataloggetcataloginsights)
   * [Catalog#getSellerInsights](#cataloggetsellerinsights)
   * [Catalog#createMarketplaceOptin](#catalogcreatemarketplaceoptin)
@@ -294,54 +294,54 @@
   * [Catalog#listHSNCodes](#cataloglisthsncodes)
   * [Catalog#listProductTemplateExportDetails](#cataloglistproducttemplateexportdetails)
   * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
-  * [Catalog#createCategories](#catalogcreatecategories)
   * [Catalog#listCategories](#cataloglistcategories)
-  * [Catalog#updateCategory](#catalogupdatecategory)
+  * [Catalog#createCategories](#catalogcreatecategories)
   * [Catalog#getCategoryData](#cataloggetcategorydata)
-  * [Catalog#createProduct](#catalogcreateproduct)
+  * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getProducts](#cataloggetproducts)
-  * [Catalog#editProduct](#catalogeditproduct)
+  * [Catalog#createProduct](#catalogcreateproduct)
   * [Catalog#getProduct](#cataloggetproduct)
+  * [Catalog#editProduct](#catalogeditproduct)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
-  * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
-  * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
+  * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
   * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
+  * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
   * [Catalog#getCompanyTags](#cataloggetcompanytags)
-  * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
   * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
+  * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
   * [Catalog#deleteSize](#catalogdeletesize)
-  * [Catalog#addInventory](#catalogaddinventory)
   * [Catalog#getInventory](#cataloggetinventory)
+  * [Catalog#addInventory](#catalogaddinventory)
   * [Catalog#deleteInventory](#catalogdeleteinventory)
-  * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
   * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
-  * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
+  * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
   * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
-  * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
+  * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
   * [Catalog#getInventoryExport](#cataloggetinventoryexport)
+  * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
-  * [Catalog#createHsnCode](#catalogcreatehsncode)
   * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
-  * [Catalog#updateHsnCode](#catalogupdatehsncode)
+  * [Catalog#createHsnCode](#catalogcreatehsncode)
   * [Catalog#getHsnCode](#cataloggethsncode)
+  * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#bulkHsnCode](#catalogbulkhsncode)
  
 * [CompanyProfile](#CompanyProfile)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
@@ -6688,37 +6688,6 @@ const catalog = new Catalog(conf);
 ```
 
 
-#### Catalog#updateSearchKeywords
-Update Search Keyword
-
-```kotlin
-catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Update Search Keyword by its id. On successful request, returns the updated collection
-
-
----
-
-
 #### Catalog#getSearchKeywords
 Get a Search Keywords Details
 
@@ -6745,6 +6714,37 @@ catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id
 
 
 Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
+
+
+---
+
+
+#### Catalog#updateSearchKeywords
+Update Search Keyword
+
+```kotlin
+catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Update Search Keyword by its id. On successful request, returns the updated collection
 
 
 ---
@@ -6781,36 +6781,6 @@ Delete a keywords by it's id. Returns an object that tells whether the keywords 
 ---
 
 
-#### Catalog#createCustomKeyword
-Add a Custom Search Keywords
-
-```kotlin
-catalog.createCustomKeyword(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateSearchKeywordSchema`
-
-
----
-
-
 #### Catalog#getAllSearchKeyword
 List all Search Custom Keyword Listing
 
@@ -6841,11 +6811,11 @@ Custom Search Keyword allows you to map conditions with keywords to give you the
 ---
 
 
-#### Catalog#updateAutocompleteKeyword
-Create & Update Autocomplete Keyword
+#### Catalog#createCustomKeyword
+Add a Custom Search Keywords
 
 ```kotlin
-catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+catalog.createCustomKeyword(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6863,10 +6833,9 @@ catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicati
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
 
 
-Update a mapping by it's id. On successful request, returns the updated Keyword mapping
+Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateSearchKeywordSchema`
 
 
 ---
@@ -6903,6 +6872,37 @@ Get the details of a words by its `id`. If successful, returns a keywords resour
 ---
 
 
+#### Catalog#updateAutocompleteKeyword
+Create & Update Autocomplete Keyword
+
+```kotlin
+catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Update a mapping by it's id. On successful request, returns the updated Keyword mapping
+
+
+---
+
+
 #### Catalog#deleteAutocompleteKeyword
 Delete a Autocomplete Keywords
 
@@ -6929,36 +6929,6 @@ catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicati
 
 
 Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-
----
-
-
-#### Catalog#createCustomAutocompleteRule
-Add a Custom Autocomplete Keywords
-
-```kotlin
-catalog.createCustomAutocompleteRule(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateAutocompleteKeywordSchema`
 
 
 ---
@@ -6994,11 +6964,11 @@ Custom Autocomplete Keyword allows you to map conditions with keywords to give y
 ---
 
 
-#### Catalog#createProductBundle
-Create Product Bundle
+#### Catalog#createCustomAutocompleteRule
+Add a Custom Autocomplete Keywords
 
 ```kotlin
-catalog.createProductBundle(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.createCustomAutocompleteRule(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7015,9 +6985,10 @@ catalog.createProductBundle(companyId: companyId, body: body).safeAwait{ respons
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
 
 
-Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
+Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateAutocompleteKeywordSchema`
 
 
 ---
@@ -7053,11 +7024,11 @@ Get all product bundles for a particular company
 ---
 
 
-#### Catalog#updateProductBundle
-Update a Product Bundle
+#### Catalog#createProductBundle
+Create Product Bundle
 
 ```kotlin
-catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+catalog.createProductBundle(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7074,10 +7045,9 @@ catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
 
 
-Update a Product Bundle by its id. On successful request, returns the updated product bundle
+Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
 
 
 ---
@@ -7113,11 +7083,11 @@ Get a particular Bundle details by its `id`. If successful, returns a Product bu
 ---
 
 
-#### Catalog#createSizeGuide
-Create a size guide.
+#### Catalog#updateProductBundle
+Update a Product Bundle
 
 ```kotlin
-catalog.createSizeGuide(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7133,10 +7103,11 @@ catalog.createSizeGuide(companyId: companyId, body: body).safeAwait{ response,er
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company inside which the size guide is to be created. | 
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
 
 
-This API allows to create a size guide associated to a brand.
+Update a Product Bundle by its id. On successful request, returns the updated product bundle
 
 
 ---
@@ -7176,11 +7147,11 @@ This API allows to view all the size guides associated to the seller.
 ---
 
 
-#### Catalog#updateSizeGuide
-Edit a size guide.
+#### Catalog#createSizeGuide
+Create a size guide.
 
 ```kotlin
-catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+catalog.createSizeGuide(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7196,11 +7167,10 @@ catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ res
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company. | 
-| id | string | Mongo id of the size guide to be edited | 
+| company_id | string | Id of the company inside which the size guide is to be created. | 
 
 
-This API allows to edit a size guide.
+This API allows to create a size guide associated to a brand.
 
 
 ---
@@ -7236,6 +7206,36 @@ This API helps to get data associated to a size guide.
 ---
 
 
+#### Catalog#updateSizeGuide
+Edit a size guide.
+
+```kotlin
+catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company. | 
+| id | string | Mongo id of the size guide to be edited | 
+
+
+This API allows to edit a size guide.
+
+
+---
+
+
 #### Catalog#getCatalogConfiguration
 Get configuration meta  details for catalog for admin panel
 
@@ -7261,6 +7261,36 @@ catalog.getCatalogConfiguration(companyId: companyId, applicationId: application
 
 
 configuration meta  details for catalog.
+
+
+---
+
+
+#### Catalog#getConfigurations
+Get configured details for catalog
+
+```kotlin
+catalog.getConfigurations(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+
+
+configured details for catalog.
 
 
 ---
@@ -7296,11 +7326,11 @@ Add configuration for products & listing.
 ---
 
 
-#### Catalog#getConfigurations
+#### Catalog#getConfigurationByType
 Get configured details for catalog
 
 ```kotlin
-catalog.getConfigurations(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.getConfigurationByType(companyId: companyId, applicationId: applicationId, type: type).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7318,6 +7348,7 @@ catalog.getConfigurations(companyId: companyId, applicationId: applicationId).sa
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| type | string | type can be brands, categories etc. | 
 
 
 configured details for catalog.
@@ -7357,37 +7388,6 @@ Add configuration for categories & brands.
 ---
 
 
-#### Catalog#getConfigurationByType
-Get configured details for catalog
-
-```kotlin
-catalog.getConfigurationByType(companyId: companyId, applicationId: applicationId, type: type).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| type | string | type can be brands, categories etc. | 
-
-
-configured details for catalog.
-
-
----
-
-
 #### Catalog#getQueryFilters
 Get query filters to configure a collection
 
@@ -7418,36 +7418,6 @@ Get query filters to configure a collection
 ---
 
 
-#### Catalog#createCollection
-Add a Collection
-
-```kotlin
-catalog.createCollection(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-
-
-Create a collection. See `CreateCollectionRequestSchema` for the list of attributes needed to create a collection and collections/query-options for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionCreateResponse`
-
-
----
-
-
 #### Catalog#getAllCollections
 List all the collections
 
@@ -7473,6 +7443,36 @@ catalog.getAllCollections(companyId: companyId, applicationId: applicationId).sa
 
 
 A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections as specified in `CollectionListingSchema`
+
+
+---
+
+
+#### Catalog#createCollection
+Add a Collection
+
+```kotlin
+catalog.createCollection(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+
+
+Create a collection. See `CreateCollectionRequestSchema` for the list of attributes needed to create a collection and collections/query-options for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionCreateResponse`
 
 
 ---
@@ -7571,37 +7571,6 @@ Delete a collection by it's id. Returns an object that tells whether the collect
 ---
 
 
-#### Catalog#addCollectionItems
-Add items to a collection
-
-```kotlin
-catalog.addCollectionItems(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier of a collection. | 
-
-
-Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
-
-
----
-
-
 #### Catalog#getCollectionItems
 Get the items for a collection
 
@@ -7631,6 +7600,37 @@ catalog.getCollectionItems(companyId: companyId, applicationId: applicationId, i
 
 
 Get items from a collection specified by its `id`.
+
+
+---
+
+
+#### Catalog#addCollectionItems
+Add items to a collection
+
+```kotlin
+catalog.addCollectionItems(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier of a collection. | 
+
+
+Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
 
 
 ---
@@ -8208,35 +8208,6 @@ The filter type query parameter defines what type of data to return. The type of
 ---
 
 
-#### Catalog#createCategories
-Create product categories
-
-```kotlin
-catalog.createCategories(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API lets user create product categories
-
-
----
-
-
 #### Catalog#listCategories
 Get product categories list
 
@@ -8268,11 +8239,11 @@ This API gets meta associated to product categories.
 ---
 
 
-#### Catalog#updateCategory
-Update product categories
+#### Catalog#createCategories
+Create product categories
 
 ```kotlin
-catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+catalog.createCategories(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8289,10 +8260,9 @@ catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ re
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| uid | string | Category unique id | 
 
 
-Update a product category using this apu
+This API lets user create product categories
 
 
 ---
@@ -8328,11 +8298,11 @@ This API gets meta associated to product categories.
 ---
 
 
-#### Catalog#createProduct
-Create a product.
+#### Catalog#updateCategory
+Update product categories
 
 ```kotlin
-catalog.createProduct(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8348,10 +8318,11 @@ catalog.createProduct(companyId: companyId, body: body).safeAwait{ response,erro
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | Id of the company associated to product that is to be viewed. | 
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| uid | string | Category unique id | 
 
 
-This API allows to create product.
+Update a product category using this apu
 
 
 ---
@@ -8391,11 +8362,11 @@ This API gets meta associated to products.
 ---
 
 
-#### Catalog#editProduct
-Edit a product.
+#### Catalog#createProduct
+Create a product.
 
 ```kotlin
-catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
+catalog.createProduct(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8412,10 +8383,9 @@ catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | Id of the company associated to product that is to be viewed. | 
-| item_id | integer | Id of the product to be updated. | 
 
 
-This API allows to edit product.
+This API allows to create product.
 
 
 ---
@@ -8449,6 +8419,36 @@ catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, bra
 
 
 This API helps to get data associated to a particular product.
+
+
+---
+
+
+#### Catalog#editProduct
+Edit a product.
+
+```kotlin
+catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to product that is to be viewed. | 
+| item_id | integer | Id of the product to be updated. | 
+
+
+This API allows to edit product.
 
 
 ---
@@ -8546,35 +8546,6 @@ This API helps to get data associated to a particular product size.
 ---
 
 
-#### Catalog#updateProductAssetsInBulk
-Create a Bulk asset upload Job.
-
-```kotlin
-catalog.updateProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
-
-
-This API helps to create a bulk asset upload job.
-
-
----
-
-
 #### Catalog#getProductBulkUploadHistory
 Get a list of all bulk product upload jobs.
 
@@ -8606,11 +8577,11 @@ This API helps to get bulk product upload jobs data.
 ---
 
 
-#### Catalog#createProductsInBulk
-Create products in bulk associated with given batch Id.
+#### Catalog#updateProductAssetsInBulk
+Create a Bulk asset upload Job.
 
 ```kotlin
-catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body).safeAwait{ response,error->
+catalog.updateProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8627,10 +8598,9 @@ catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body)
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | integer | Company Id in which assets to be uploaded. | 
-| batch_id | string | Batch Id in which assets to be uploaded. | 
 
 
-This API helps to create products in bulk push to kafka for approval/creation.
+This API helps to create a bulk asset upload job.
 
 
 ---
@@ -8666,6 +8636,36 @@ This API allows to delete bulk product job associated with company.
 ---
 
 
+#### Catalog#createProductsInBulk
+Create products in bulk associated with given batch Id.
+
+```kotlin
+catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which assets to be uploaded. | 
+| batch_id | string | Batch Id in which assets to be uploaded. | 
+
+
+This API helps to create products in bulk push to kafka for approval/creation.
+
+
+---
+
+
 #### Catalog#getCompanyTags
 Get a list of all tags associated with company.
 
@@ -8690,35 +8690,6 @@ catalog.getCompanyTags(companyId: companyId).safeAwait{ response,error->
 
 
 This API helps to get tags data associated to a particular copmpany.
-
-
----
-
-
-#### Catalog#createProductAssetsInBulk
-Create a Bulk asset upload Job.
-
-```kotlin
-catalog.createProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
-
-
-This API helps to create a bulk asset upload job.
 
 
 ---
@@ -8755,6 +8726,35 @@ This API helps to get bulk asset jobs data associated to a particular company.
 ---
 
 
+#### Catalog#createProductAssetsInBulk
+Create a Bulk asset upload Job.
+
+```kotlin
+catalog.createProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which assets to be uploaded. | 
+
+
+This API helps to create a bulk asset upload job.
+
+
+---
+
+
 #### Catalog#deleteSize
 Delete a Size associated with product.
 
@@ -8781,37 +8781,6 @@ catalog.deleteSize(companyId: companyId, itemId: itemId, size: size).safeAwait{ 
 
 
 This API allows to delete size associated with product.
-
-
----
-
-
-#### Catalog#addInventory
-Add Inventory for particular size and store.
-
-```kotlin
-catalog.addInventory(companyId: companyId, itemId: itemId, size: size, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to product that is to be viewed. | 
-| item_id | number | Item of the company associated to product that is to be viewed. | 
-| size | string | Size in which inventory is to be added. | 
-
-
-This API allows add Inventory for particular size and store.
 
 
 ---
@@ -8850,6 +8819,37 @@ This API allows get Inventory data for particular company grouped by size and st
 ---
 
 
+#### Catalog#addInventory
+Add Inventory for particular size and store.
+
+```kotlin
+catalog.addInventory(companyId: companyId, itemId: itemId, size: size, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to product that is to be viewed. | 
+| item_id | number | Item of the company associated to product that is to be viewed. | 
+| size | string | Size in which inventory is to be added. | 
+
+
+This API allows add Inventory for particular size and store.
+
+
+---
+
+
 #### Catalog#deleteInventory
 Delete a Inventory.
 
@@ -8876,35 +8876,6 @@ catalog.deleteInventory(companyId: companyId, itemId: itemId, locationId: locati
 
 
 This API allows to delete inventory of a particular product for particular company.
-
-
----
-
-
-#### Catalog#createBulkInventoryJob
-Create a Bulk Inventory upload Job.
-
-```kotlin
-catalog.createBulkInventoryJob(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id in which Inventory to be uploaded. | 
-
-
-This API helps to create a bulk Inventory upload job.
 
 
 ---
@@ -8941,11 +8912,11 @@ This API helps to get bulk Inventory upload jobs data.
 ---
 
 
-#### Catalog#createBulkInventory
-Create products in bulk associated with given batch Id.
+#### Catalog#createBulkInventoryJob
+Create a Bulk Inventory upload Job.
 
 ```kotlin
-catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.createBulkInventoryJob(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8961,10 +8932,10 @@ catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ respons
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | integer | Company Id in which Inventory is to be uploaded. | 
+| company_id | integer | Company Id in which Inventory to be uploaded. | 
 
 
-This API helps to create products in bulk push to kafka for approval/creation.
+This API helps to create a bulk Inventory upload job.
 
 
 ---
@@ -8999,11 +8970,11 @@ This API allows to delete bulk Inventory job associated with company.
 ---
 
 
-#### Catalog#createInventoryExportJob
-Create a Inventory export Job.
+#### Catalog#createBulkInventory
+Create products in bulk associated with given batch Id.
 
 ```kotlin
-catalog.createInventoryExportJob(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9019,10 +8990,10 @@ catalog.createInventoryExportJob(companyId: companyId, body: body).safeAwait{ re
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | integer | Company Id in which assets to be uploaded. | 
+| company_id | integer | Company Id in which Inventory is to be uploaded. | 
 
 
-This API helps to create a Inventory export job.
+This API helps to create products in bulk push to kafka for approval/creation.
 
 
 ---
@@ -9057,6 +9028,35 @@ This API helps to get Inventory export history.
 ---
 
 
+#### Catalog#createInventoryExportJob
+Create a Inventory export Job.
+
+```kotlin
+catalog.createInventoryExportJob(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | integer | Company Id in which assets to be uploaded. | 
+
+
+This API helps to create a Inventory export job.
+
+
+---
+
+
 #### Catalog#exportInventoryConfig
 Get List of different filters for inventory export
 
@@ -9082,35 +9082,6 @@ catalog.exportInventoryConfig(companyId: companyId, filterType: filterType).safe
 
 
 This API allows get List of different filters like brand, store, and type for inventory export.
-
-
----
-
-
-#### Catalog#createHsnCode
-Create Hsn Code.
-
-```kotlin
-catalog.createHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-
-
-Create Hsn Code.
 
 
 ---
@@ -9148,11 +9119,11 @@ Hsn Code List.
 ---
 
 
-#### Catalog#updateHsnCode
-Update Hsn Code.
+#### Catalog#createHsnCode
+Create Hsn Code.
 
 ```kotlin
-catalog.updateHsnCode(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+catalog.createHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9169,10 +9140,9 @@ catalog.updateHsnCode(companyId: companyId, uid: uid, body: body).safeAwait{ res
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | company id | 
-| uid | integer | uid | 
 
 
-Update Hsn Code.
+Create Hsn Code.
 
 
 ---
@@ -9203,6 +9173,36 @@ catalog.getHsnCode(companyId: companyId, uid: uid).safeAwait{ response,error->
 
 
 Fetch Hsn Code.
+
+
+---
+
+
+#### Catalog#updateHsnCode
+Update Hsn Code.
+
+```kotlin
+catalog.updateHsnCode(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | company id | 
+| uid | integer | uid | 
+
+
+Update Hsn Code.
 
 
 ---
@@ -9341,36 +9341,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#getBrand
-Get a single brand.
-
-```kotlin
-companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API helps to get data associated to a particular brand.
-
-
----
-
-
 #### CompanyProfile#editBrand
 Edit a brand.
 
@@ -9396,6 +9366,36 @@ companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).saf
 
 
 This API allows to edit meta of a brand.
+
+
+---
+
+
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```kotlin
+companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
 
 
 ---
@@ -9553,36 +9553,6 @@ This API allows to create a location associated to a company.
 ---
 
 
-#### CompanyProfile#getLocationDetail
-Get details of a specific location.
-
-```kotlin
-companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location lies. | 
-| location_id | string | Id of the location which you want to view. | 
-
-
-This API helps to get data associated to a specific location.
-
-
----
-
-
 #### CompanyProfile#updateLocation
 Edit a location asscoiated to a company.
 
@@ -9608,6 +9578,36 @@ companyprofile.updateLocation(companyId: companyId, locationId: locationId, body
 
 
 This API allows to edit a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getLocationDetail
+Get details of a specific location.
+
+```kotlin
+companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location lies. | 
+| location_id | string | Id of the location which you want to view. | 
+
+
+This API helps to get data associated to a specific location.
 
 
 ---
