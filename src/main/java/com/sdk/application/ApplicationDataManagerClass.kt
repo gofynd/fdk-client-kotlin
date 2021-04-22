@@ -1130,11 +1130,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getBlog(slug: String): Deferred<Response<CustomBlogSchema>>? {
-        return contentApiList?.getBlog(slug = slug )}
-
-    
-    
     fun getBlogs(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<BlogGetResponse>>? {
         return contentApiList?.getBlogs(pageNo = pageNo, pageSize = pageSize )}
 
@@ -1265,11 +1260,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     return paginator
     }
-    
-    fun getPage(slug: String): Deferred<Response<CustomPageSchema>>? {
-        return contentApiList?.getPage(slug = slug )}
-
-    
     
     fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
         return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize )}
