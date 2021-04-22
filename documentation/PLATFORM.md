@@ -1,4 +1,4 @@
-# FDK Application Front API Documentaion
+# FDK Platform Front API Documentaion
 
 
 * [Lead](#Lead) - Handles communication between Administrator <-> Staff and Staff <-> Users 
@@ -11,6 +11,7 @@
 * [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
+* [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [CompanyProfile](#CompanyProfile) - Company Profile API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [FileStorage](#FileStorage) - File Storage 
 * [Share](#Share) - Short link and QR Code 
@@ -242,17 +243,107 @@
   * [Order#voiceCallback](#ordervoicecallback)
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
+* [Catalog](#Catalog)
+  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
+  * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
+  * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
+  * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
+  * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
+  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
+  * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
+  * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
+  * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
+  * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
+  * [Catalog#getProductBundle](#cataloggetproductbundle)
+  * [Catalog#createProductBundle](#catalogcreateproductbundle)
+  * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
+  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
+  * [Catalog#getSizeGuides](#cataloggetsizeguides)
+  * [Catalog#createSizeGuide](#catalogcreatesizeguide)
+  * [Catalog#getSizeGuide](#cataloggetsizeguide)
+  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
+  * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
+  * [Catalog#getConfigurations](#cataloggetconfigurations)
+  * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
+  * [Catalog#getConfigurationByType](#cataloggetconfigurationbytype)
+  * [Catalog#createConfigurationByType](#catalogcreateconfigurationbytype)
+  * [Catalog#getQueryFilters](#cataloggetqueryfilters)
+  * [Catalog#getAllCollections](#cataloggetallcollections)
+  * [Catalog#createCollection](#catalogcreatecollection)
+  * [Catalog#getCollectionDetail](#cataloggetcollectiondetail)
+  * [Catalog#deleteCollection](#catalogdeletecollection)
+  * [Catalog#updateCollection](#catalogupdatecollection)
+  * [Catalog#getCollectionItems](#cataloggetcollectionitems)
+  * [Catalog#addCollectionItems](#catalogaddcollectionitems)
+  * [Catalog#getCatalogInsights](#cataloggetcataloginsights)
+  * [Catalog#getSellerInsights](#cataloggetsellerinsights)
+  * [Catalog#createMarketplaceOptin](#catalogcreatemarketplaceoptin)
+  * [Catalog#getMarketplaceOptinDetail](#cataloggetmarketplaceoptindetail)
+  * [Catalog#getCompanyDetail](#cataloggetcompanydetail)
+  * [Catalog#getCompanyBrandDetail](#cataloggetcompanybranddetail)
+  * [Catalog#getCompanyMetrics](#cataloggetcompanymetrics)
+  * [Catalog#getStoreDetail](#cataloggetstoredetail)
+  * [Catalog#getGenderAttribute](#cataloggetgenderattribute)
+  * [Catalog#listProductTemplateCategories](#cataloglistproducttemplatecategories)
+  * [Catalog#listDepartmentsData](#cataloglistdepartmentsdata)
+  * [Catalog#getDepartmentData](#cataloggetdepartmentdata)
+  * [Catalog#listProductTemplate](#cataloglistproducttemplate)
+  * [Catalog#validateProductTemplate](#catalogvalidateproducttemplate)
+  * [Catalog#downloadProductTemplateViews](#catalogdownloadproducttemplateviews)
+  * [Catalog#downloadProductTemplateView](#catalogdownloadproducttemplateview)
+  * [Catalog#validateProductTemplateSchema](#catalogvalidateproducttemplateschema)
+  * [Catalog#listHSNCodes](#cataloglisthsncodes)
+  * [Catalog#listProductTemplateExportDetails](#cataloglistproducttemplateexportdetails)
+  * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
+  * [Catalog#listCategories](#cataloglistcategories)
+  * [Catalog#createCategories](#catalogcreatecategories)
+  * [Catalog#getCategoryData](#cataloggetcategorydata)
+  * [Catalog#updateCategory](#catalogupdatecategory)
+  * [Catalog#getProducts](#cataloggetproducts)
+  * [Catalog#createProduct](#catalogcreateproduct)
+  * [Catalog#getProduct](#cataloggetproduct)
+  * [Catalog#deleteProduct](#catalogdeleteproduct)
+  * [Catalog#editProduct](#catalogeditproduct)
+  * [Catalog#getProductValidation](#cataloggetproductvalidation)
+  * [Catalog#getProductSize](#cataloggetproductsize)
+  * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
+  * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
+  * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
+  * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
+  * [Catalog#getCompanyTags](#cataloggetcompanytags)
+  * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
+  * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
+  * [Catalog#deleteSize](#catalogdeletesize)
+  * [Catalog#getInventory](#cataloggetinventory)
+  * [Catalog#addInventory](#catalogaddinventory)
+  * [Catalog#deleteInventory](#catalogdeleteinventory)
+  * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
+  * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
+  * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
+  * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
+  * [Catalog#getInventoryExport](#cataloggetinventoryexport)
+  * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
+  * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
+  * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
+  * [Catalog#createHsnCode](#catalogcreatehsncode)
+  * [Catalog#getHsnCode](#cataloggethsncode)
+  * [Catalog#updateHsnCode](#catalogupdatehsncode)
+  * [Catalog#bulkHsnCode](#catalogbulkhsncode)
+  * [Catalog#getApplicationBrands](#cataloggetapplicationbrands)
+  * [Catalog#getDepartments](#cataloggetdepartments)
+  * [Catalog#getCategories](#cataloggetcategories)
+ 
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
-  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
+  * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#createLocation](#companyprofilecreatelocation)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
@@ -405,17 +496,8 @@
 
 ## Lead
 
-```javascript
-const { Configuration, Lead } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const lead = new Lead(conf);
 
-```
-
-
-#### Lead#getTickets
+#### getTickets
 Gets the list of company level tickets and/or ticket filters depending on query params
 
 ```kotlin
@@ -431,28 +513,40 @@ lead.getTickets(companyId: companyId, items: items, filters: filters, q: q, stat
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID for which the data will be returned | 
-| items | boolean | Decides that the reponse will contain the list of tickets | 
-| filters | boolean | Decides that the reponse will contain the ticket filters | 
-| q | string | Search through ticket titles and description | 
-| status | string | Filter tickets on status | 
-| priority | string | Filter tickets on priority | 
-| category | string | Filter tickets on category | 
-| page_no | integer | The page number to navigate through the given set of results. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID for which the data will be returned |   
+| items | Boolean? | Decides that the reponse will contain the list of tickets |   
+| filters | Boolean? | Decides that the reponse will contain the ticket filters |   
+| q | String? | Search through ticket titles and description |   
+| status | String? | Filter tickets on status |   
+| priority | String? | Filter tickets on priority |   
+| category | String? | Filter tickets on category |   
+| pageNo | Int? | The page number to navigate through the given set of results. |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
+
 
 
 Gets the list of company level tickets and/or ticket filters
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TicketList`
+
+
+
+
 
 
 ---
 
 
-#### Lead#createTicket
+#### createTicket
 Creates a company level ticket
 
 ```kotlin
@@ -468,20 +562,32 @@ lead.createTicket(companyId: companyId, body: body).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID for which the data will be returned | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID for which the data will be returned |  
+
 
 
 Creates a company level ticket
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Ticket`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getTickets
+#### getTickets
 Gets the list of Application level Tickets and/or ticket filters depending on query params
 
 ```kotlin
@@ -497,27 +603,39 @@ lead.getTickets(companyId: companyId, applicationId: applicationId, items: items
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for which the data will be returned | 
-| items | boolean | Decides that the reponse will contain the list of tickets | 
-| filters | boolean | Decides that the reponse will contain the ticket filters | 
-| q | string | Search through ticket titles and description | 
-| status | string | Filter tickets on status | 
-| priority | string | Filter tickets on priority | 
-| category | string | Filter tickets on category | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for which the data will be returned |   
+| items | Boolean? | Decides that the reponse will contain the list of tickets |   
+| filters | Boolean? | Decides that the reponse will contain the ticket filters |   
+| q | String? | Search through ticket titles and description |   
+| status | String? | Filter tickets on status |   
+| priority | String? | Filter tickets on priority |   
+| category | String? | Filter tickets on category |  
+
 
 
 Gets the list of Application level Tickets and/or ticket filters
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TicketList`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getTicket
+#### getTicket
 Retreives ticket details of a company level ticket with ticket ID
 
 ```kotlin
@@ -533,21 +651,33 @@ lead.getTicket(companyId: companyId, ticketId: ticketId).safeAwait{ response,err
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID for which the data will be returned | 
-| ticket_id | string | Tiket ID of the ticket to be fetched | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID for which the data will be returned |   
+| ticketId | String? | Tiket ID of the ticket to be fetched |  
+
 
 
 Retreives ticket details of a company level ticket
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Ticket`
+
+
+
+
 
 
 ---
 
 
-#### Lead#editTicket
+#### editTicket
 Edits ticket details of a company level ticket
 
 ```kotlin
@@ -563,21 +693,33 @@ lead.editTicket(companyId: companyId, ticketId: ticketId, body: body).safeAwait{
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID for ticket | 
-| ticket_id | string | Ticket ID of ticket to be edited | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID for ticket |   
+| ticketId | String? | Ticket ID of ticket to be edited |  
+
 
 
 Edits ticket details of a company level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Ticket`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getTicket
+#### getTicket
 Retreives ticket details of a application level ticket
 
 ```kotlin
@@ -593,22 +735,34 @@ lead.getTicket(companyId: companyId, applicationId: applicationId, ticketId: tic
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for which the data will be returned | 
-| ticket_id | string | Tiket ID of the ticket to be fetched | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for which the data will be returned |   
+| ticketId | String? | Tiket ID of the ticket to be fetched |  
+
 
 
 Retreives ticket details of a application level ticket with ticket ID
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Ticket`
+
+
+
+
 
 
 ---
 
 
-#### Lead#editTicket
+#### editTicket
 Edits ticket details of a application level ticket
 
 ```kotlin
@@ -624,22 +778,34 @@ lead.editTicket(companyId: companyId, applicationId: applicationId, ticketId: ti
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for ticket | 
-| ticket_id | string | Ticket ID of ticket to be edited | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for ticket |   
+| ticketId | String? | Ticket ID of ticket to be edited |  
+
 
 
 Edits ticket details of a application level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Ticket`
+
+
+
+
 
 
 ---
 
 
-#### Lead#createHistory
+#### createHistory
 Create history for specific company level ticket
 
 ```kotlin
@@ -655,21 +821,33 @@ lead.createHistory(companyId: companyId, ticketId: ticketId, body: body).safeAwa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID for ticket | 
-| ticket_id | string | Ticket ID for which history is created | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID for ticket |   
+| ticketId | String? | Ticket ID for which history is created |  
+
 
 
 Create history for specific company level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TicketHistory`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getTicketHistory
+#### getTicketHistory
 Gets history list for specific company level ticket
 
 ```kotlin
@@ -685,21 +863,33 @@ lead.getTicketHistory(companyId: companyId, ticketId: ticketId).safeAwait{ respo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID for ticket | 
-| ticket_id | string | Ticket ID for which history is to be fetched | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID for ticket |   
+| ticketId | String? | Ticket ID for which history is to be fetched |  
+
 
 
 Gets history list for specific company level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TicketHistoryList`
+
+
+
+
 
 
 ---
 
 
-#### Lead#createHistory
+#### createHistory
 Create history for specific application level ticket
 
 ```kotlin
@@ -715,22 +905,34 @@ lead.createHistory(companyId: companyId, applicationId: applicationId, ticketId:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for ticket | 
-| ticket_id | string | Ticket ID for which history is created | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for ticket |   
+| ticketId | String? | Ticket ID for which history is created |  
+
 
 
 Create history for specific application level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TicketHistory`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getTicketHistory
+#### getTicketHistory
 Gets history list for specific application level ticket
 
 ```kotlin
@@ -746,22 +948,34 @@ lead.getTicketHistory(companyId: companyId, applicationId: applicationId, ticket
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of application | 
-| application_id | string | Application ID for ticket | 
-| ticket_id | string | Ticket ID for which history is to be fetched | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of application |   
+| applicationId | String? | Application ID for ticket |   
+| ticketId | String? | Ticket ID for which history is to be fetched |  
+
 
 
 Gets history list for specific application level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TicketHistoryList`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getCustomForm
+#### getCustomForm
 Get specific custom form using it's slug
 
 ```kotlin
@@ -777,22 +991,34 @@ lead.getCustomForm(companyId: companyId, applicationId: applicationId, slug: slu
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for the form | 
-| slug | string | Slug of form whose response is getting submitted | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for the form |   
+| slug | String? | Slug of form whose response is getting submitted |  
+
 
 
 Get specific custom form using it's slug, this is used to view the form.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CustomForm`
+
+
+
+
 
 
 ---
 
 
-#### Lead#editCustomForm
+#### editCustomForm
 Edit the given custom form
 
 ```kotlin
@@ -808,22 +1034,34 @@ lead.editCustomForm(companyId: companyId, applicationId: applicationId, slug: sl
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for the form | 
-| slug | string | Slug of form whose response is getting submitted | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for the form |   
+| slug | String? | Slug of form whose response is getting submitted |  
+
 
 
 Edit the given custom form field such as adding or deleting input, assignee, title, decription, notification and polling information.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CustomForm`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getCustomForms
+#### getCustomForms
 Get list of custom form
 
 ```kotlin
@@ -839,21 +1077,33 @@ lead.getCustomForms(companyId: companyId, applicationId: applicationId).safeAwai
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for the form | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for the form |  
+
 
 
 Get list of custom form for given application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CustomFormList`
+
+
+
+
 
 
 ---
 
 
-#### Lead#createCustomForm
+#### createCustomForm
 Creates a new custom form
 
 ```kotlin
@@ -869,21 +1119,33 @@ lead.createCustomForm(companyId: companyId, applicationId: applicationId, body: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for the form | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for the form |  
+
 
 
 Creates a new custom form for given application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CustomForm`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getTokenForVideoRoom
+#### getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
 ```kotlin
@@ -899,22 +1161,34 @@ lead.getTokenForVideoRoom(companyId: companyId, applicationId: applicationId, un
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for video room | 
-| unique_name | string | Unique name of video room | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for video room |   
+| uniqueName | String? | Unique name of video room |  
+
 
 
 Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetTokenForVideoRoomResponse`
+
+
+
+
 
 
 ---
 
 
-#### Lead#getVideoParticipants
+#### getVideoParticipants
 Get participants of a specific Video Room using it's unique name
 
 ```kotlin
@@ -930,22 +1204,34 @@ lead.getVideoParticipants(companyId: companyId, applicationId: applicationId, un
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for video room | 
-| unique_name | string | Unique name of Video Room | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for video room |   
+| uniqueName | String? | Unique name of Video Room |  
+
 
 
 Get participants of a specific Video Room using it's unique name, this can be used to check if people are already there in the room and also to show their names.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetParticipantsInsideVideoRoomResponse`
+
+
+
+
 
 
 ---
 
 
-#### Lead#openVideoRoom
+#### openVideoRoom
 Open a video room.
 
 ```kotlin
@@ -961,21 +1247,33 @@ lead.openVideoRoom(companyId: companyId, applicationId: applicationId, body: bod
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for video room | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for video room |  
+
 
 
 Open a video room.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CreateVideoRoomResponse`
+
+
+
+
 
 
 ---
 
 
-#### Lead#closeVideoRoom
+#### closeVideoRoom
 Close the video room and force all participants to leave.
 
 ```kotlin
@@ -991,16 +1289,28 @@ lead.closeVideoRoom(companyId: companyId, applicationId: applicationId, uniqueNa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID of the application | 
-| application_id | string | Application ID for video room | 
-| unique_name | string | Unique name of Video Room | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID of the application |   
+| applicationId | String? | Application ID for video room |   
+| uniqueName | String? | Unique name of Video Room |  
+
 
 
 Close the video room and force all participants to leave.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CloseVideoRoomResponse`
+
+
+
+
 
 
 ---
@@ -1013,17 +1323,8 @@ Close the video room and force all participants to leave.
 
 ## Feedback
 
-```javascript
-const { Configuration, Feedback } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const feedback = new Feedback(conf);
 
-```
-
-
-#### Feedback#getAttributes
+#### getAttributes
 Get list of attribute data
 
 ```kotlin
@@ -1039,23 +1340,44 @@ feedback.getAttributes(companyId: companyId, applicationId: applicationId, pageN
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| page_no | integer | pagination page no | 
-| page_size | integer | pagination page size | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| pageNo | Int? | pagination page no |   
+| pageSize | Int? | pagination page size |  
+
 
 
 Provides a list of all attribute data.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `FeedbackAttributes`
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
 
 
-#### Feedback#getCustomerReviews
+#### getCustomerReviews
 Get list of customer reviews [admin]
 
 ```kotlin
@@ -1071,36 +1393,57 @@ feedback.getCustomerReviews(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| id | string | review id | 
-| entity_id | string | entity id | 
-| entity_type | string | entity type | 
-| user_id | string | user id | 
-| media | string | media type e.g. image | video | video_file | video_link | 
-| rating | array | rating filter, 1-5 | 
-| attribute_rating | array | attribute rating filter with ma,e of attribute | 
-| facets | boolean | facets (true|false) | 
-| sort | string | sort by : default | top | recent | 
-| next | string | pagination next | 
-| start | string | pagination start | 
-| limit | string | pagination limit | 
-| count | string | pagination count | 
-| page_id | string | pagination page id | 
-| page_size | integer | pagination page size | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| id | String? | review id |   
+| entityId | String? | entity id |   
+| entityType | String? | entity type |   
+| userId | String? | user id |   
+| media | String? | media type e.g. image | video | video_file | video_link |   
+| rating | ArrayList<Double>? | rating filter, 1-5 |   
+| attributeRating | ArrayList<String>? | attribute rating filter with ma,e of attribute |   
+| facets | Boolean? | facets (true|false) |   
+| sort | String? | sort by : default | top | recent |   
+| next | String? | pagination next |   
+| start | String? | pagination start |   
+| limit | String? | pagination limit |   
+| count | String? | pagination count |   
+| pageId | String? | pagination page id |   
+| pageSize | Int? | pagination page size |  
+
 
 
 The endpoint provides a list of customer reviews based on entity and provided filters
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetReviewResponse`
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
 
 
-#### Feedback#updateApprove
+#### updateApprove
 update approve details
 
 ```kotlin
@@ -1116,22 +1459,43 @@ feedback.updateApprove(companyId: companyId, applicationId: applicationId, revie
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| review_id | string | review id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| reviewId | String? | review id |  
+
 
 
 The is used to update approve details like status and description text
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
 
 
-#### Feedback#getHistory
+#### getHistory
 get history details
 
 ```kotlin
@@ -1147,22 +1511,43 @@ feedback.getHistory(companyId: companyId, applicationId: applicationId, reviewId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| review_id | string | review id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| reviewId | String? | review id |  
+
 
 
 The is used to get the history details like status and description text
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `ArrayList<ActivityDump>`
+
+
+
+
+
+Bad request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
 
 
-#### Feedback#getApplicationTemplates
+#### getApplicationTemplates
 Get list of templates
 
 ```kotlin
@@ -1178,23 +1563,44 @@ feedback.getApplicationTemplates(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| page_id | string | pagination page id | 
-| page_size | integer | pagination page size | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| pageId | String? | pagination page id |   
+| pageSize | Int? | pagination page size |  
+
 
 
 Get all templates of application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TemplateGetResponse`
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
 
 
-#### Feedback#createTemplate
+#### createTemplate
 Create a new template
 
 ```kotlin
@@ -1210,12 +1616,11 @@ feedback.createTemplate(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |  
+
 
 
 Create a new template for review with following data:
@@ -1223,11 +1628,33 @@ Create a new template for review with following data:
 - Rating - active/inactive/selected rate choices, attributes, text on rate, comment for each rate, type
 - Review - header, title, description, image and video meta, enable votes
 
+*Success Response*
+
+
+
+Success
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
+
 
 ---
 
 
-#### Feedback#getTemplateById
+#### getTemplateById
 Get a template by ID
 
 ```kotlin
@@ -1243,22 +1670,43 @@ feedback.getTemplateById(companyId: companyId, applicationId: applicationId, id:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| id | string | template id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| id | String? | template id |  
+
 
 
 Get the template for product or l3 type by ID
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Template`
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
 
 
-#### Feedback#updateTemplate
+#### updateTemplate
 Update a template's status
 
 ```kotlin
@@ -1274,22 +1722,43 @@ feedback.updateTemplate(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| id | string | template id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| id | String? | template id |  
+
 
 
 Update existing template status, active/archive
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
 
 
-#### Feedback#updateTemplateStatus
+#### updateTemplateStatus
 Update a template's status
 
 ```kotlin
@@ -1305,16 +1774,37 @@ feedback.updateTemplateStatus(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| id | string | template id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| id | String? | template id |  
+
 
 
 Update existing template status, active/archive
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+Bad Request
+
+
+Schema: `FeedbackError`
+
+
+
+
 
 
 ---
@@ -1327,17 +1817,8 @@ Update existing template status, active/archive
 
 ## Theme
 
-```javascript
-const { Configuration, Theme } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const theme = new Theme(conf);
 
-```
-
-
-#### Theme#getThemeLibrary
+#### getThemeLibrary
 Gets list of themes in theme library
 
 ```kotlin
@@ -1353,23 +1834,53 @@ theme.getThemeLibrary(companyId: companyId, applicationId: applicationId, pageSi
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
-| page_no | integer | Page number. Default is 1. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |   
+| pageNo | Int? | Page number. Default is 1. |  
+
 
 
 Gets list of themes in theme library
+
+*Success Response*
+
+
+
+Themes list
+
+
+Schema: `ThemesListingResponseSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#addToThemeLibrary
+#### addToThemeLibrary
 Add theme to theme library
 
 ```kotlin
@@ -1385,21 +1896,51 @@ theme.addToThemeLibrary(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Add theme to theme library
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#applyTheme
+#### applyTheme
 Apply theme
 
 ```kotlin
@@ -1415,21 +1956,51 @@ theme.applyTheme(companyId: companyId, applicationId: applicationId, body: body)
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Apply theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#isUpgradable
+#### isUpgradable
 Checks if theme is upgradable
 
 ```kotlin
@@ -1445,22 +2016,52 @@ theme.isUpgradable(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Checks if theme is upgradable
+
+*Success Response*
+
+
+
+Upgradable Theme
+
+
+Schema: `UpgradableThemeSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#upgradeTheme
+#### upgradeTheme
 Upgrades theme
 
 ```kotlin
@@ -1476,22 +2077,52 @@ theme.upgradeTheme(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Upgrades theme
+
+*Success Response*
+
+
+
+Upgrades Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#getPublicThemes
+#### getPublicThemes
 Gets public themes
 
 ```kotlin
@@ -1507,23 +2138,53 @@ theme.getPublicThemes(companyId: companyId, applicationId: applicationId, pageSi
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
-| page_no | integer | Page number. Default is 1. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |   
+| pageNo | Int? | Page number. Default is 1. |  
+
 
 
 Gets public themes
+
+*Success Response*
+
+
+
+Themes list
+
+
+Schema: `ThemesListingResponseSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#createTheme
+#### createTheme
 Create new theme
 
 ```kotlin
@@ -1539,21 +2200,51 @@ theme.createTheme(companyId: companyId, applicationId: applicationId, body: body
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Create new theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#getAppliedTheme
+#### getAppliedTheme
 Get applied theme
 
 ```kotlin
@@ -1569,21 +2260,51 @@ theme.getAppliedTheme(companyId: companyId, applicationId: applicationId).safeAw
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Get applied theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#getFonts
+#### getFonts
 Gets fonts
 
 ```kotlin
@@ -1599,21 +2320,51 @@ theme.getFonts(companyId: companyId, applicationId: applicationId).safeAwait{ re
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Gets fonts
+
+*Success Response*
+
+
+
+Fonts list
+
+
+Schema: `FontsSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#getThemeById
+#### getThemeById
 Gets theme by id
 
 ```kotlin
@@ -1629,22 +2380,52 @@ theme.getThemeById(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Gets theme by id
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#updateTheme
+#### updateTheme
 Update theme
 
 ```kotlin
@@ -1660,22 +2441,52 @@ theme.updateTheme(companyId: companyId, applicationId: applicationId, themeId: t
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Update theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#deleteTheme
+#### deleteTheme
 Delete theme
 
 ```kotlin
@@ -1691,22 +2502,52 @@ theme.deleteTheme(companyId: companyId, applicationId: applicationId, themeId: t
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Delete theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#getThemeForPreview
+#### getThemeForPreview
 Gets theme for preview
 
 ```kotlin
@@ -1722,22 +2563,52 @@ theme.getThemeForPreview(companyId: companyId, applicationId: applicationId, the
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Gets theme for preview
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#publishTheme
+#### publishTheme
 Publish theme
 
 ```kotlin
@@ -1753,22 +2624,52 @@ theme.publishTheme(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Publish theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#unpublishTheme
+#### unpublishTheme
 Unpublish theme
 
 ```kotlin
@@ -1784,22 +2685,52 @@ theme.unpublishTheme(companyId: companyId, applicationId: applicationId, themeId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Unpublish theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#archiveTheme
+#### archiveTheme
 Archive theme
 
 ```kotlin
@@ -1815,22 +2746,52 @@ theme.archiveTheme(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Archive theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
 
 
-#### Theme#unarchiveTheme
+#### unarchiveTheme
 Unarchive theme
 
 ```kotlin
@@ -1846,16 +2807,46 @@ theme.unarchiveTheme(companyId: companyId, applicationId: applicationId, themeId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| theme_id | string | Theme ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| themeId | String? | Theme ID |  
+
 
 
 Unarchive theme
+
+*Success Response*
+
+
+
+Theme
+
+
+Schema: `ThemesSchema`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
 
 
 ---
@@ -1868,17 +2859,8 @@ Unarchive theme
 
 ## User
 
-```javascript
-const { Configuration, User } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const user = new User(conf);
 
-```
-
-
-#### User#getCustomers
+#### getCustomers
 Gets list of customers
 
 ```kotlin
@@ -1894,24 +2876,54 @@ user.getCustomers(companyId: companyId, applicationId: applicationId, q: q, page
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| q | string | The search query. This can be a partial or complete name of a either a product, brand or category | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
-| page_no | integer | Page number. Default is 1. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| q | String? | The search query. This can be a partial or complete name of a either a product, brand or category |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |   
+| pageNo | Int? | Page number. Default is 1. |  
+
 
 
 Used to get application customers list
+
+*Success Response*
+
+
+
+Customer list
+
+
+Schema: `CustomerListResponseSchema`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
 
 
 ---
 
 
-#### User#searchUsers
+#### searchUsers
 Search users
 
 ```kotlin
@@ -1927,22 +2939,52 @@ user.searchUsers(companyId: companyId, applicationId: applicationId, q: q).safeA
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| q | string | The search query. This can be a partial or complete name of a either a product, brand or category | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| q | String? | The search query. This can be a partial or complete name of a either a product, brand or category |  
+
 
 
 Search users
+
+*Success Response*
+
+
+
+User list
+
+
+Schema: `UserSearchResponseSchema`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
 
 
 ---
 
 
-#### User#getPlatformConfig
+#### getPlatformConfig
 Get platform config
 
 ```kotlin
@@ -1958,21 +3000,51 @@ user.getPlatformConfig(companyId: companyId, applicationId: applicationId).safeA
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Used to get platform config
+
+*Success Response*
+
+
+
+Platform Config
+
+
+Schema: `PlatformSchema`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
 
 
 ---
 
 
-#### User#updatePlatformConfig
+#### updatePlatformConfig
 Update platform config
 
 ```kotlin
@@ -1988,15 +3060,45 @@ user.updatePlatformConfig(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Used to update platform config
+
+*Success Response*
+
+
+
+Platform Config
+
+
+Schema: `PlatformSchema`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
+
+
+
+
+Schema: `AuthenticationApiError`
+
+
+
+
 
 
 ---
@@ -2009,17 +3111,8 @@ Used to update platform config
 
 ## Content
 
-```javascript
-const { Configuration, Content } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const content = new Content(conf);
 
-```
-
-
-#### Content#getAnnouncementsList
+#### getAnnouncementsList
 Get annoucements list
 
 ```kotlin
@@ -2035,23 +3128,53 @@ content.getAnnouncementsList(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| page_no | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |   
+| pageSize | Int? | Number of items to retrieve in each page. |  
+
 
 
 Get list of announcements
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetAnnouncementListSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createAnnouncement
+#### createAnnouncement
 Create an annoucement
 
 ```kotlin
@@ -2067,21 +3190,51 @@ content.createAnnouncement(companyId: companyId, applicationId: applicationId, b
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Create an announcement
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CreateAnnouncementSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getAnnouncementById
+#### getAnnouncementById
 Get annoucement by id
 
 ```kotlin
@@ -2097,22 +3250,52 @@ content.getAnnouncementById(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| announcementId | String? | Announcement ID |  
+
 
 
 Get announcement by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AdminAnnouncementSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateAnnouncement
+#### updateAnnouncement
 Update an annoucement
 
 ```kotlin
@@ -2128,22 +3311,52 @@ content.updateAnnouncement(companyId: companyId, applicationId: applicationId, a
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| announcementId | String? | Announcement ID |  
+
 
 
 Update an announcement
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CreateAnnouncementSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateAnnouncementSchedule
+#### updateAnnouncementSchedule
 Update schedule or published status of an annoucement
 
 ```kotlin
@@ -2159,22 +3372,52 @@ content.updateAnnouncementSchedule(companyId: companyId, applicationId: applicat
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| announcementId | String? | Announcement ID |  
+
 
 
 Update schedule or published status of an announcement
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CreateAnnouncementSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteAnnouncement
+#### deleteAnnouncement
 Delete annoucement by id
 
 ```kotlin
@@ -2190,22 +3433,52 @@ content.deleteAnnouncement(companyId: companyId, applicationId: applicationId, a
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| announcement_id | string | Announcement ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| announcementId | String? | Announcement ID |  
+
 
 
 Delete announcement by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CreateAnnouncementSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createBlog
+#### createBlog
 Create blog
 
 ```kotlin
@@ -2221,21 +3494,51 @@ content.createBlog(companyId: companyId, applicationId: applicationId, body: bod
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Use this to create a blog.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BlogSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getBlogs
+#### getBlogs
 Get blogs
 
 ```kotlin
@@ -2251,23 +3554,53 @@ content.getBlogs(companyId: companyId, applicationId: applicationId, pageNo: pag
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| page_no | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |   
+| pageSize | Int? | Number of items to retrieve in each page. |  
+
 
 
 Use this to get blogs.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BlogGetResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateBlog
+#### updateBlog
 Update blog
 
 ```kotlin
@@ -2283,22 +3616,52 @@ content.updateBlog(companyId: companyId, applicationId: applicationId, id: id, b
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Blog Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| id | String? | Blog Id |  
+
 
 
 Use this to update blog.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BlogSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteBlog
+#### deleteBlog
 Delete blogs
 
 ```kotlin
@@ -2314,22 +3677,52 @@ content.deleteBlog(companyId: companyId, applicationId: applicationId, id: id).s
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Blog Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| id | String? | Blog Id |  
+
 
 
 Use this to delete blogs.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BlogSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getComponentById
+#### getComponentById
 Get components by component Id
 
 ```kotlin
@@ -2345,22 +3738,52 @@ content.getComponentById(companyId: companyId, applicationId: applicationId, slu
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| slug | string | slug of page to be fetched | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| slug | String? | slug of page to be fetched |  
+
 
 
 The endpoint fetches the component by component Id
+
+*Success Response*
+
+
+
+A JSON object with components
+
+
+Schema: `BlogSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getFaqCategories
+#### getFaqCategories
 Get FAQ categories list
 
 ```kotlin
@@ -2376,21 +3799,51 @@ content.getFaqCategories(companyId: companyId, applicationId: applicationId).saf
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Get list of FAQ categories
+
+*Success Response*
+
+
+
+Get FAQ Categories
+
+
+Schema: `GetFaqCategoriesSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getFaqCategoryBySlugOrId
+#### getFaqCategoryBySlugOrId
 Get FAQ category by slug or id
 
 ```kotlin
@@ -2406,22 +3859,52 @@ content.getFaqCategoryBySlugOrId(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Slug or Id of FAQ Category | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| idOrSlug | String? | Slug or Id of FAQ Category |  
+
 
 
 Get FAQ category by slug or id
+
+*Success Response*
+
+
+
+Get FAQ Categories
+
+
+Schema: `GetFaqCategoryBySlugSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createFaqCategory
+#### createFaqCategory
 Creates a FAQ category
 
 ```kotlin
@@ -2437,21 +3920,51 @@ content.createFaqCategory(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Add Faq Category
+
+*Success Response*
+
+
+
+Create a FAQ Category
+
+
+Schema: `CreateFaqCategorySchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateFaqCategory
+#### updateFaqCategory
 Updates a FAQ category
 
 ```kotlin
@@ -2467,22 +3980,52 @@ content.updateFaqCategory(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Faq category ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Faq category ID |  
+
 
 
 Update Faq Category
+
+*Success Response*
+
+
+
+Update a FAQ Category
+
+
+Schema: `CreateFaqCategorySchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteFaqCategory
+#### deleteFaqCategory
 Deletes a FAQ category
 
 ```kotlin
@@ -2498,22 +4041,52 @@ content.deleteFaqCategory(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Faq category ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Faq category ID |  
+
 
 
 Delete Faq Category
+
+*Success Response*
+
+
+
+Delete a FAQ Category
+
+
+Schema: `FaqSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getFaqsByCategoryIdOrSlug
+#### getFaqsByCategoryIdOrSlug
 Get FAQs of a Faq Category id or slug
 
 ```kotlin
@@ -2529,22 +4102,52 @@ content.getFaqsByCategoryIdOrSlug(companyId: companyId, applicationId: applicati
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Faq category ID or slug | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| idOrSlug | String? | Faq category ID or slug |  
+
 
 
 Get FAQs of a Faq Category `id` or `slug`
+
+*Success Response*
+
+
+
+Get FAQs by slug/id of FAQ Category
+
+
+Schema: `GetFaqSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#addFaq
+#### addFaq
 Creates FAQs for category whose `id` is specified
 
 ```kotlin
@@ -2560,22 +4163,52 @@ content.addFaq(companyId: companyId, applicationId: applicationId, categoryId: c
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| categoryId | String? | Faq category ID |  
+
 
 
 Creates FAQs for category whose `id` is specified
+
+*Success Response*
+
+
+
+Create a FAQ for FAQ Category
+
+
+Schema: `CreateFaqResponseSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateFaq
+#### updateFaq
 Updates FAQ
 
 ```kotlin
@@ -2591,23 +4224,53 @@ content.updateFaq(companyId: companyId, applicationId: applicationId, categoryId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-| faq_id | string | Faq ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| categoryId | String? | Faq category ID |   
+| faqId | String? | Faq ID |  
+
 
 
 Updates FAQ
+
+*Success Response*
+
+
+
+Update FAQ by id
+
+
+Schema: `CreateFaqResponseSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteFaq
+#### deleteFaq
 Delete FAQ
 
 ```kotlin
@@ -2623,23 +4286,53 @@ content.deleteFaq(companyId: companyId, applicationId: applicationId, categoryId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| category_id | string | Faq category ID | 
-| faq_id | string | Faq ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| categoryId | String? | Faq category ID |   
+| faqId | String? | Faq ID |  
+
 
 
 Delete FAQ
+
+*Success Response*
+
+
+
+Delete FAQ by id
+
+
+Schema: `CreateFaqResponseSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getFaqByIdOrSlug
+#### getFaqByIdOrSlug
 Get frequently asked question
 
 ```kotlin
@@ -2655,22 +4348,52 @@ content.getFaqByIdOrSlug(companyId: companyId, applicationId: applicationId, idO
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id_or_slug | string | Slug or Id of FAQ | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| idOrSlug | String? | Slug or Id of FAQ |  
+
 
 
 Get frequently asked questions list. These will be helpful for users to using website.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CreateFaqResponseSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getLandingPages
+#### getLandingPages
 Get landing-pages
 
 ```kotlin
@@ -2686,23 +4409,53 @@ content.getLandingPages(companyId: companyId, applicationId: applicationId, page
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| page_no | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |   
+| pageSize | Int? | Number of items to retrieve in each page. |  
+
 
 
 Use this to get landing-pages.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `LandingPageGetResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createLandingPage
+#### createLandingPage
 Create landing-page
 
 ```kotlin
@@ -2718,21 +4471,51 @@ content.createLandingPage(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Use this to create landing-page.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `LandingPageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateLandingPage
+#### updateLandingPage
 Update landing-page
 
 ```kotlin
@@ -2748,22 +4531,52 @@ content.updateLandingPage(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Landing page ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Landing page ID |  
+
 
 
 Use this to update landing-page.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `LandingPageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteLandingPage
+#### deleteLandingPage
 Delete landing-page
 
 ```kotlin
@@ -2779,22 +4592,52 @@ content.deleteLandingPage(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Landing page ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Landing page ID |  
+
 
 
 Use this to delete landing-page.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `LandingPageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getLegalInformation
+#### getLegalInformation
 Get legal information
 
 ```kotlin
@@ -2810,21 +4653,51 @@ content.getLegalInformation(companyId: companyId, applicationId: applicationId).
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Get legal information of application, which includes policy, Terms and Conditions, and FAQ information of application.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationLegal`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateLegalInformation
+#### updateLegalInformation
 Save legal information
 
 ```kotlin
@@ -2840,21 +4713,51 @@ content.updateLegalInformation(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Save legal information of application, which includes Policy, Terms and Conditions, and FAQ information of application.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationLegal`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getNavigations
+#### getNavigations
 Get navigations
 
 ```kotlin
@@ -2870,24 +4773,54 @@ content.getNavigations(companyId: companyId, applicationId: applicationId, devic
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| device_platform | string | Device platform | 
-| page_no | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| devicePlatform | String? | Device platform |   
+| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |   
+| pageSize | Int? | Number of items to retrieve in each page. |  
+
 
 
 Use this to get navigations.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `NavigationGetResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createNavigation
+#### createNavigation
 Create navigation
 
 ```kotlin
@@ -2903,21 +4836,51 @@ content.createNavigation(companyId: companyId, applicationId: applicationId, bod
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Use this to create navigation.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `NavigationSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getDefaultNavigations
+#### getDefaultNavigations
 Get default navigations
 
 ```kotlin
@@ -2933,21 +4896,51 @@ content.getDefaultNavigations(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Use this to get default navigations.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DefaultNavigationResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getNavigationBySlug
+#### getNavigationBySlug
 Get navigation by slug
 
 ```kotlin
@@ -2963,23 +4956,53 @@ content.getNavigationBySlug(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| slug | string | Slug | 
-| device_platform | string | Device platform | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| slug | String? | Slug |   
+| devicePlatform | String? | Device platform |  
+
 
 
 Use this to get navigation by slug.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `NavigationSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateNavigation
+#### updateNavigation
 Update navigation
 
 ```kotlin
@@ -2995,22 +5018,52 @@ content.updateNavigation(companyId: companyId, applicationId: applicationId, id:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Navigation ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Navigation ID |  
+
 
 
 Use this to update navigation.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `NavigationSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteNavigation
+#### deleteNavigation
 Delete navigation
 
 ```kotlin
@@ -3026,22 +5079,52 @@ content.deleteNavigation(companyId: companyId, applicationId: applicationId, id:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Navigation ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Navigation ID |  
+
 
 
 Use this to delete navigation.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `NavigationSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getPageMeta
+#### getPageMeta
 Get page meta
 
 ```kotlin
@@ -3057,21 +5140,51 @@ content.getPageMeta(companyId: companyId, applicationId: applicationId).safeAwai
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Use this to get Page Meta.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageMetaSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getPageSpec
+#### getPageSpec
 Get page spec
 
 ```kotlin
@@ -3087,21 +5200,51 @@ content.getPageSpec(companyId: companyId, applicationId: applicationId).safeAwai
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Use this to get page spec.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageSpec`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createPage
+#### createPage
 Create page
 
 ```kotlin
@@ -3117,21 +5260,51 @@ content.createPage(companyId: companyId, applicationId: applicationId, body: bod
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Use this to create a page.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getPages
+#### getPages
 Get pages
 
 ```kotlin
@@ -3147,23 +5320,53 @@ content.getPages(companyId: companyId, applicationId: applicationId, pageNo: pag
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| page_no | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |   
+| pageSize | Int? | Number of items to retrieve in each page. |  
+
 
 
 Use this to get pages.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageGetResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createPagePreview
+#### createPagePreview
 Create page preview
 
 ```kotlin
@@ -3179,21 +5382,51 @@ content.createPagePreview(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Use this to create a page preview.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updatePagePreview
+#### updatePagePreview
 Update page
 
 ```kotlin
@@ -3209,22 +5442,52 @@ content.updatePagePreview(companyId: companyId, applicationId: applicationId, sl
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| slug | string | Page publish slug | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| slug | String? | Page publish slug |  
+
 
 
 Use this to update page.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updatePage
+#### updatePage
 Update page
 
 ```kotlin
@@ -3240,22 +5503,52 @@ content.updatePage(companyId: companyId, applicationId: applicationId, id: id, b
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Page Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| id | String? | Page Id |  
+
 
 
 Use this to update page.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deletePage
+#### deletePage
 Delete page
 
 ```kotlin
@@ -3271,22 +5564,52 @@ content.deletePage(companyId: companyId, applicationId: applicationId, id: id).s
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Page Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| id | String? | Page Id |  
+
 
 
 Use this to delete page.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getPageBySlug
+#### getPageBySlug
 Get pages by component Id
 
 ```kotlin
@@ -3302,22 +5625,52 @@ content.getPageBySlug(companyId: companyId, applicationId: applicationId, slug: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| slug | string | Slug of page to be fetched | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| slug | String? | Slug of page to be fetched |  
+
 
 
 The endpoint fetches the component by component Id
+
+*Success Response*
+
+
+
+A JSON object with page
+
+
+Schema: `PageSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getSEOConfiguration
+#### getSEOConfiguration
 Get seo of application
 
 ```kotlin
@@ -3333,21 +5686,51 @@ content.getSEOConfiguration(companyId: companyId, applicationId: applicationId).
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Get seo of application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SeoComponent`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateSEOConfiguration
+#### updateSEOConfiguration
 Update seo of application
 
 ```kotlin
@@ -3363,21 +5746,51 @@ content.updateSEOConfiguration(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Update seo of application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SeoSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getSlideshows
+#### getSlideshows
 Get slideshows
 
 ```kotlin
@@ -3393,24 +5806,54 @@ content.getSlideshows(companyId: companyId, applicationId: applicationId, device
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| device_platform | string | Device platform | 
-| page_no | integer | Each response will contain **page_no** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| devicePlatform | String? | Device platform |   
+| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |   
+| pageSize | Int? | Number of items to retrieve in each page. |  
+
 
 
 Use this to get slideshows.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SlideshowGetResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createSlideshow
+#### createSlideshow
 Create slideshow
 
 ```kotlin
@@ -3426,21 +5869,51 @@ content.createSlideshow(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Use this to create slideshow.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SlideshowSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getSlideshowBySlug
+#### getSlideshowBySlug
 Get slideshow by slug
 
 ```kotlin
@@ -3456,23 +5929,53 @@ content.getSlideshowBySlug(companyId: companyId, applicationId: applicationId, s
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| slug | string | Slug | 
-| device_platform | string | Device platform | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| slug | String? | Slug |   
+| devicePlatform | String? | Device platform |  
+
 
 
 Use this to get slideshow by slug.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SlideshowSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateSlideshow
+#### updateSlideshow
 Update slideshow
 
 ```kotlin
@@ -3488,22 +5991,52 @@ content.updateSlideshow(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Slideshow ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Slideshow ID |  
+
 
 
 Use this to update slideshow.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SlideshowSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteSlideshow
+#### deleteSlideshow
 Delete slideshow
 
 ```kotlin
@@ -3519,22 +6052,52 @@ content.deleteSlideshow(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| id | string | Slideshow ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| id | String? | Slideshow ID |  
+
 
 
 Use this to delete slideshow.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SlideshowSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getSupportInformation
+#### getSupportInformation
 Get support information
 
 ```kotlin
@@ -3550,21 +6113,51 @@ content.getSupportInformation(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Get contact details for customer support. Including emails and phone numbers
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Support`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateSupportInformation
+#### updateSupportInformation
 Update support data of application
 
 ```kotlin
@@ -3580,21 +6173,51 @@ content.updateSupportInformation(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Update support data of application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Support`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#createInjectableTag
+#### createInjectableTag
 Creates Tag
 
 ```kotlin
@@ -3610,21 +6233,51 @@ content.createInjectableTag(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Create tags
+
+*Success Response*
+
+
+
+Tags Array
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#updateInjectableTag
+#### updateInjectableTag
 Updates a Tag
 
 ```kotlin
@@ -3640,21 +6293,51 @@ content.updateInjectableTag(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Update tag
+
+*Success Response*
+
+
+
+Tags Array
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#deleteAllInjectableTags
+#### deleteAllInjectableTags
 Delete tags for application
 
 ```kotlin
@@ -3670,21 +6353,51 @@ content.deleteAllInjectableTags(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Delete tags for application
+
+*Success Response*
+
+
+
+Tags Array
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#getInjectableTags
+#### getInjectableTags
 Get tags for application
 
 ```kotlin
@@ -3700,21 +6413,51 @@ content.getInjectableTags(companyId: companyId, applicationId: applicationId).sa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Get tags for application
+
+*Success Response*
+
+
+
+Tags Array
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#addInjectableTag
+#### addInjectableTag
 Adds a Tag
 
 ```kotlin
@@ -3730,21 +6473,51 @@ content.addInjectableTag(companyId: companyId, applicationId: applicationId, bod
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Add tag
+
+*Success Response*
+
+
+
+Tags Array
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#removeInjectableTag
+#### removeInjectableTag
 Removes a Tag
 
 ```kotlin
@@ -3760,21 +6533,51 @@ content.removeInjectableTag(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |  
+
 
 
 Remove a particular tag
+
+*Success Response*
+
+
+
+Tags Array
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
 
 
-#### Content#editInjectableTag
+#### editInjectableTag
 Edits a Tag by Id
 
 ```kotlin
@@ -3790,16 +6593,46 @@ content.editInjectableTag(companyId: companyId, applicationId: applicationId, ta
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company ID | 
-| application_id | string | Application ID | 
-| tag_id | string | Tag ID | 
+| --------- | ----  | --- | 
+| companyId | String? | Company ID |   
+| applicationId | String? | Application ID |   
+| tagId | String? | Tag ID |  
+
 
 
 Edits a particular tag
+
+*Success Response*
+
+
+
+Tags Array
+
+
+Schema: `TagsSchema`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
+
+Failed
+
+
+Schema: `APIError`
+
+
+
+
 
 
 ---
@@ -3812,17 +6645,8 @@ Edits a particular tag
 
 ## Assignment
 
-```javascript
-const { Configuration, Assignment } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const assignment = new Assignment(conf);
 
-```
-
-
-#### Assignment#createPickupLocation
+#### createPickupLocation
 
 
 ```kotlin
@@ -3838,22 +6662,43 @@ assignment.createPickupLocation(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Create a new Pickup point for an application.
+
+
+*Success Response*
+
+
+
+Success Response - Store Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
 
 
 
 ---
 
 
-#### Assignment#getPickupLocation
+#### getPickupLocation
 
 
 ```kotlin
@@ -3869,25 +6714,46 @@ assignment.getPickupLocation(q: q, pageNo: pageNo, pageSize: pageSize, companyId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| q | string | Search query | 
-| page_no | integer | Request a page number | 
-| page_size | integer | Request a page size | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| q | String? | Search query |   
+| pageNo | Int? | Request a page number |   
+| pageSize | Int? | Request a page size |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Update list of pickup points for an application.
+
+
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `PickupPointResponse`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorResponseSchema`
+
+
+
 
 
 
 ---
 
 
-#### Assignment#updatePickupLocation
+#### updatePickupLocation
 
 
 ```kotlin
@@ -3903,13 +6769,12 @@ assignment.updatePickupLocation(id: id, companyId: companyId, applicationId: app
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | number | Pickup Point ID | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| id | Double? | Pickup Point ID |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Update Pickup Point for an application. Pickup Point once created
@@ -3917,11 +6782,33 @@ can be updated using this API. 'x-application-id'm and request body are required
 a successful update.
 
 
+*Success Response*
+
+
+
+Success Response - Store Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#getPickupLocationById
+#### getPickupLocationById
 
 
 ```kotlin
@@ -3937,24 +6824,45 @@ assignment.getPickupLocationById(id: id, companyId: companyId, applicationId: ap
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | number | Pickup Point Id | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| id | Double? | Pickup Point Id |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 This API returns Pickup point data for an id. Returns not found if no data exists for the
 store id passed.
 
 
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `PickupPointSchema`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#createPickupConfiguration
+#### createPickupConfiguration
 
 
 ```kotlin
@@ -3970,23 +6878,44 @@ assignment.createPickupConfiguration(companyId: companyId, applicationId: applic
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Create a new pickup configuration for an application id. Only one configuration can be
 created per application id.
 
 
+*Success Response*
+
+
+
+Success Response - Store Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#getPickupConfiguration
+#### getPickupConfiguration
 
 
 ```kotlin
@@ -4002,23 +6931,44 @@ assignment.getPickupConfiguration(companyId: companyId, applicationId: applicati
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Let pickup configuration for an application. z-application-id is required in
 the header to fetch the data.
 
 
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `PickupResponse`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#getAllocationConfiguration
+#### getAllocationConfiguration
 
 
 ```kotlin
@@ -4034,12 +6984,11 @@ assignment.getAllocationConfiguration(companyId: companyId, applicationId: appli
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Get Shipping configuration for an application. Returns the global shipping configuration
@@ -4047,11 +6996,33 @@ including shipping priority and default strategy, etc. Every application can hav
 configuration each. The endpoint requires an application id to get the data.
 
 
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `ShippingResponse`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#createAllocationConfiguration
+#### createAllocationConfiguration
 
 
 ```kotlin
@@ -4067,12 +7038,11 @@ assignment.createAllocationConfiguration(companyId: companyId, applicationId: ap
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Create a new Shipping configuration for an application The configuration is for
@@ -4080,11 +7050,33 @@ all the stores under an application. There can be only one configuration for an
 application i.e, for an application configuration can be created only once.
 
 
+*Success Response*
+
+
+
+Success Response - Store Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#updateAllocationConfiguration
+#### updateAllocationConfiguration
 
 
 ```kotlin
@@ -4100,12 +7092,11 @@ assignment.updateAllocationConfiguration(companyId: companyId, applicationId: ap
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Update Shipping configuration for an application. Application configuration once created
@@ -4113,11 +7104,33 @@ can be updated using this API. 'x-application-id'm and request body are required
 a successful update.
 
 
+*Success Response*
+
+
+
+Success Response - Store Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#getAllocationLocations
+#### getAllocationLocations
 
 
 ```kotlin
@@ -4133,16 +7146,15 @@ assignment.getAllocationLocations(q: q, pageNo: pageNo, pageSize: pageSize, type
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| q | string | Search query | 
-| page_no | integer | Request a page number | 
-| page_size | integer | Request a page size | 
-| type | string | Type can be 'standard' or 'advanced' | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| q | String? | Search query |   
+| pageNo | Int? | Request a page number |   
+| pageSize | Int? | Request a page size |   
+| type | String? | Type can be 'standard' or 'advanced' |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 List Stores of an application. Two types of stores are listed,
@@ -4150,11 +7162,33 @@ some having allocation types as standard and others, advanced.
 API has support for pagination, filter by type and search by name.
 
 
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `StoreListResponse`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#getAllocationLocationById
+#### getAllocationLocationById
 
 
 ```kotlin
@@ -4170,13 +7204,12 @@ assignment.getAllocationLocationById(id: id, companyId: companyId, applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | number | Store Id | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| id | Double? | Store Id |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 This API returns store data for an id. Returns not found if no data exists for the
@@ -4184,11 +7217,33 @@ store id passed. The data is returned from sixspeed database which includes only
 shipping configuration of the stores including store id and app id.
 
 
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `StoreResponse`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#updateAllocationLocation
+#### updateAllocationLocation
 
 
 ```kotlin
@@ -4204,24 +7259,45 @@ assignment.updateAllocationLocation(id: id, companyId: companyId, applicationId:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | number | Store Id | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| id | Double? | Store Id |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 A store configuration once created can be updated via this API. Store id in request params
 and udpated request body are required to successfully update the store data.
 
 
+*Success Response*
+
+
+
+Success Response - Store Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#createAllocationLocation
+#### createAllocationLocation
 
 
 ```kotlin
@@ -4237,12 +7313,11 @@ assignment.createAllocationLocation(companyId: companyId, applicationId: applica
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Create a new store shipping configuratiion. The configuration is stored into the
@@ -4251,11 +7326,33 @@ default configuration and multiple non-default ones. The default is not binded w
 tags while others are required to be.
 
 
+*Success Response*
+
+
+
+Success Response - Store Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#getDestinationZones
+#### getDestinationZones
 
 
 ```kotlin
@@ -4271,26 +7368,47 @@ assignment.getDestinationZones(q: q, pageNo: pageNo, pageSize: pageSize, company
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| q | string | Search query | 
-| page_no | integer | Request a page number | 
-| page_size | integer | Request a page size | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| q | String? | Search query |   
+| pageNo | Int? | Request a page number |   
+| pageSize | Int? | Request a page size |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Get a list of zones created, where every zone has a unique name and id. They can be
 of three different types, radius, pincode and country.
 
 
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `ZoneListResponse`
+
+
+
+
+
+Error Response
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#postDestinationZone
+#### postDestinationZone
 
 
 ```kotlin
@@ -4306,12 +7424,11 @@ assignment.postDestinationZone(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 This API lets you create a zone which can be used further be mapped with store
@@ -4319,11 +7436,33 @@ configuration rules to defined a shipping rule. Either of the three details need
 be passed, zone_detail, pincode and region.
 
 
+*Success Response*
+
+
+
+Success Response - Zone Created
+
+
+Schema: `Success`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#getDestinationZoneById
+#### getDestinationZoneById
 
 
 ```kotlin
@@ -4339,24 +7478,45 @@ assignment.getDestinationZoneById(id: id, companyId: companyId, applicationId: a
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | number | Store Id | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| id | Double? | Store Id |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Returns zone data for the specified zone id. Id is the required parameter and returns
 not found if no data is found for the passed zone id.
 
 
+*Success Response*
+
+
+
+Success Response
+
+
+Schema: `ZoneSchema`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ErrorResponseSchema`
+
+
+
+
+
 
 ---
 
 
-#### Assignment#updateDestinationZone
+#### updateDestinationZone
 
 
 ```kotlin
@@ -4372,17 +7532,38 @@ assignment.updateDestinationZone(id: id, companyId: companyId, applicationId: ap
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| id | number | Store Id | 
-| company_id | integer | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| id | Double? | Store Id |   
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Zone once created can be updated using this API. Zone id and request body are the required
 data to update a zone.
+
+
+*Success Response*
+
+
+
+Success Response - Zone Updated
+
+
+Schema: `Success`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ErrorResponseSchema`
+
+
+
 
 
 
@@ -4396,17 +7577,8 @@ data to update a zone.
 
 ## Billing
 
-```javascript
-const { Configuration, Billing } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const billing = new Billing(conf);
 
-```
-
-
-#### Billing#getInvoices
+#### getInvoices
 Get invoices
 
 ```kotlin
@@ -4422,20 +7594,32 @@ billing.getInvoices(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |  
+
 
 
 Get invoices.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Invoices`
+
+
+
+
 
 
 ---
 
 
-#### Billing#getInvoiceById
+#### getInvoiceById
 Get invoice by id
 
 ```kotlin
@@ -4451,21 +7635,33 @@ billing.getInvoiceById(companyId: companyId, invoiceId: invoiceId).safeAwait{ re
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
-| invoice_id | string | Invoice id | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |   
+| invoiceId | String? | Invoice id |  
+
 
 
 Get invoice by id.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Invoice`
+
+
+
+
 
 
 ---
 
 
-#### Billing#getCustomerDetail
+#### getCustomerDetail
 Get subscription customer detail
 
 ```kotlin
@@ -4481,20 +7677,41 @@ billing.getCustomerDetail(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |  
+
 
 
 Get subscription customer detail.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SubscriptionCustomer`
+
+
+
+
+
+Resource not found
+
+
+Schema: `ResourceNotFound`
+
+
+
+
 
 
 ---
 
 
-#### Billing#upsertCustomerDetail
+#### upsertCustomerDetail
 Upsert subscription customer detail
 
 ```kotlin
@@ -4510,20 +7727,50 @@ billing.upsertCustomerDetail(companyId: companyId, body: body).safeAwait{ respon
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |  
+
 
 
 Upsert subscription customer detail.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SubscriptionCustomer`
+
+
+
+
+
+Resource not found
+
+
+Schema: `ResourceNotFound`
+
+
+
+
+
+Internal server error
+
+
+Schema: `InternalServerError`
+
+
+
+
 
 
 ---
 
 
-#### Billing#getSubscription
+#### getSubscription
 Get current subscription detail
 
 ```kotlin
@@ -4539,21 +7786,42 @@ billing.getSubscription(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |  
+
 
 
 If subscription is active then it will return is_enabled true and return subscription object. If subscription is not active then is_enabled false and message.
+
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SubscriptionStatus`
+
+
+
+
+
+Internal server error
+
+
+Schema: `InternalServerError`
+
+
+
 
 
 
 ---
 
 
-#### Billing#getFeatureLimitConfig
+#### getFeatureLimitConfig
 Get subscription subscription limits
 
 ```kotlin
@@ -4569,20 +7837,41 @@ billing.getFeatureLimitConfig(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |  
+
 
 
 Get subscription subscription limits.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SubscriptionLimit`
+
+
+
+
+
+Internal server error
+
+
+Schema: `InternalServerError`
+
+
+
+
 
 
 ---
 
 
-#### Billing#activateSubscriptionPlan
+#### activateSubscriptionPlan
 Activate subscription
 
 ```kotlin
@@ -4598,20 +7887,50 @@ billing.activateSubscriptionPlan(companyId: companyId, body: body).safeAwait{ re
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |  
+
 
 
 It will activate subscription plan for customer
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SubscriptionActivateRes`
+
+
+
+
+
+Resource not found
+
+
+Schema: `ResourceNotFound`
+
+
+
+
+
+Internal server error
+
+
+Schema: `InternalServerError`
+
+
+
+
 
 
 ---
 
 
-#### Billing#cancelSubscriptionPlan
+#### cancelSubscriptionPlan
 Cancel subscription
 
 ```kotlin
@@ -4627,14 +7946,44 @@ billing.cancelSubscriptionPlan(companyId: companyId, body: body).safeAwait{ resp
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Customer unique id. In case of company it will be company id. | 
+| --------- | ----  | --- | 
+| companyId | String? | Customer unique id. In case of company it will be company id. |  
+
 
 
 It will cancel current active subscription.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CancelSubscriptionRes`
+
+
+
+
+
+Resource not found
+
+
+Schema: `ResourceNotFound`
+
+
+
+
+
+Internal server error
+
+
+Schema: `InternalServerError`
+
+
+
+
 
 
 ---
@@ -4647,17 +7996,8 @@ It will cancel current active subscription.
 
 ## Communication
 
-```javascript
-const { Configuration, Communication } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const communication = new Communication(conf);
 
-```
-
-
-#### Communication#getCampaigns
+#### getCampaigns
 Get campaigns
 
 ```kotlin
@@ -4673,24 +8013,36 @@ communication.getCampaigns(companyId: companyId, applicationId: applicationId, p
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get campaigns
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaigns`
+
+
+
+
 
 
 ---
 
 
-#### Communication#createCampaign
+#### createCampaign
 Create campaign
 
 ```kotlin
@@ -4706,21 +8058,33 @@ communication.createCampaign(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Create campaign
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaign`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getCampaignById
+#### getCampaignById
 Get campaign by id
 
 ```kotlin
@@ -4736,22 +8100,43 @@ communication.getCampaignById(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Campaign id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Campaign id |  
+
 
 
 Get campaign by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaign`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Communication#updateCampaignById
+#### updateCampaignById
 Update campaign by id
 
 ```kotlin
@@ -4767,22 +8152,43 @@ communication.updateCampaignById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Campaign id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Campaign id |  
+
 
 
 Update campaign by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaign`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getStatsOfCampaignById
+#### getStatsOfCampaignById
 Get stats of campaign by id
 
 ```kotlin
@@ -4798,22 +8204,43 @@ communication.getStatsOfCampaignById(companyId: companyId, applicationId: applic
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Campaign id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Campaign id |  
+
 
 
 Get stats of campaign by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetStats`
+
+
+
+
+
+Bad request
+
+
+Schema: `BadRequest`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getAudiences
+#### getAudiences
 Get audiences
 
 ```kotlin
@@ -4829,24 +8256,36 @@ communication.getAudiences(companyId: companyId, applicationId: applicationId, p
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get audiences
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audiences`
+
+
+
+
 
 
 ---
 
 
-#### Communication#createAudience
+#### createAudience
 Create audience
 
 ```kotlin
@@ -4862,21 +8301,33 @@ communication.createAudience(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Create audience
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audience`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getBigqueryHeaders
+#### getBigqueryHeaders
 Get bigquery headers
 
 ```kotlin
@@ -4892,21 +8343,42 @@ communication.getBigqueryHeaders(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Get bigquery headers
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BigqueryHeadersRes`
+
+
+
+
+
+Bad request
+
+
+Schema: `BadRequest`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getAudienceById
+#### getAudienceById
 Get audience by id
 
 ```kotlin
@@ -4922,22 +8394,43 @@ communication.getAudienceById(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Audience id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Audience id |  
+
 
 
 Get audience by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audience`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Communication#updateAudienceById
+#### updateAudienceById
 Update audience by id
 
 ```kotlin
@@ -4953,22 +8446,43 @@ communication.updateAudienceById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Audience id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Audience id |  
+
 
 
 Update audience by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audience`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getNSampleRecordsFromCsv
+#### getNSampleRecordsFromCsv
 Get n sample records from csv
 
 ```kotlin
@@ -4984,21 +8498,42 @@ communication.getNSampleRecordsFromCsv(companyId: companyId, applicationId: appl
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Get n sample records from csv
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetNRecordsCsvRes`
+
+
+
+
+
+Bad request
+
+
+Schema: `BadRequest`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getEmailProviders
+#### getEmailProviders
 Get email providers
 
 ```kotlin
@@ -5014,24 +8549,36 @@ communication.getEmailProviders(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get email providers
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProviders`
+
+
+
+
 
 
 ---
 
 
-#### Communication#createEmailProvider
+#### createEmailProvider
 Create email provider
 
 ```kotlin
@@ -5047,21 +8594,33 @@ communication.createEmailProvider(companyId: companyId, applicationId: applicati
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Create email provider
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProvider`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getEmailProviderById
+#### getEmailProviderById
 Get email provider by id
 
 ```kotlin
@@ -5077,22 +8636,34 @@ communication.getEmailProviderById(companyId: companyId, applicationId: applicat
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Email provider id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email provider id |  
+
 
 
 Get email provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProvider`
+
+
+
+
 
 
 ---
 
 
-#### Communication#updateEmailProviderById
+#### updateEmailProviderById
 Update email provider by id
 
 ```kotlin
@@ -5108,22 +8679,34 @@ communication.updateEmailProviderById(companyId: companyId, applicationId: appli
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Email provider id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email provider id |  
+
 
 
 Update email provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProvider`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getEmailTemplates
+#### getEmailTemplates
 Get email templates
 
 ```kotlin
@@ -5139,24 +8722,36 @@ communication.getEmailTemplates(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get email templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplates`
+
+
+
+
 
 
 ---
 
 
-#### Communication#createEmailTemplate
+#### createEmailTemplate
 Create email template
 
 ```kotlin
@@ -5172,21 +8767,33 @@ communication.createEmailTemplate(companyId: companyId, applicationId: applicati
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Create email template
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplateRes`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getSystemEmailTemplates
+#### getSystemEmailTemplates
 Get system email templates
 
 ```kotlin
@@ -5202,24 +8809,36 @@ communication.getSystemEmailTemplates(companyId: companyId, applicationId: appli
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get system email templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SystemEmailTemplates`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getEmailTemplateById
+#### getEmailTemplateById
 Get email template by id
 
 ```kotlin
@@ -5235,22 +8854,34 @@ communication.getEmailTemplateById(companyId: companyId, applicationId: applicat
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Email template id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email template id |  
+
 
 
 Get email template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplate`
+
+
+
+
 
 
 ---
 
 
-#### Communication#updateEmailTemplateById
+#### updateEmailTemplateById
 Update email template by id
 
 ```kotlin
@@ -5266,22 +8897,34 @@ communication.updateEmailTemplateById(companyId: companyId, applicationId: appli
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Email template id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email template id |  
+
 
 
 Update email template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplateRes`
+
+
+
+
 
 
 ---
 
 
-#### Communication#deleteEmailTemplateById
+#### deleteEmailTemplateById
 Delete email template by id
 
 ```kotlin
@@ -5297,22 +8940,43 @@ communication.deleteEmailTemplateById(companyId: companyId, applicationId: appli
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Email template id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email template id |  
+
 
 
 Delete email template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplateDeleteSuccessRes`
+
+
+
+
+
+Failure
+
+
+Schema: `EmailTemplateDeleteFailureRes`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getEventSubscriptions
+#### getEventSubscriptions
 Get event subscriptions
 
 ```kotlin
@@ -5328,24 +8992,36 @@ communication.getEventSubscriptions(companyId: companyId, applicationId: applica
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| populate | string | populate fields | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| populate | String? | populate fields |  
+
 
 
 Get event subscriptions
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EventSubscriptions`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getJobs
+#### getJobs
 Get jobs
 
 ```kotlin
@@ -5361,24 +9037,36 @@ communication.getJobs(companyId: companyId, applicationId: applicationId, pageNo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get jobs
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Jobs`
+
+
+
+
 
 
 ---
 
 
-#### Communication#triggerCampaignJob
+#### triggerCampaignJob
 Trigger campaign job
 
 ```kotlin
@@ -5394,21 +9082,33 @@ communication.triggerCampaignJob(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Trigger campaign job
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TriggerJobResponse`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getJobLogs
+#### getJobLogs
 Get job logs
 
 ```kotlin
@@ -5424,24 +9124,36 @@ communication.getJobLogs(companyId: companyId, applicationId: applicationId, pag
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get job logs
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `JobLogs`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getCommunicationLogs
+#### getCommunicationLogs
 Get communication logs
 
 ```kotlin
@@ -5457,25 +9169,37 @@ communication.getCommunicationLogs(companyId: companyId, applicationId: applicat
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_id | string | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on _id | 
-| query | object |  | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageId | String? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on _id |   
+| query | HashMap<String,Any>? |  |  
+
 
 
 Get communication logs
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Logs`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getSystemNotifications
+#### getSystemNotifications
 Get system notifications
 
 ```kotlin
@@ -5491,22 +9215,34 @@ communication.getSystemNotifications(companyId: companyId, pageNo: pageNo, pageS
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| page_no | integer |  | 
-| page_size | integer |  | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| pageNo | Int? |  |   
+| pageSize | Int? |  |  
+
 
 
 Get system notifications
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SystemNotifications`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getSmsProviders
+#### getSmsProviders
 Get sms providers
 
 ```kotlin
@@ -5522,24 +9258,36 @@ communication.getSmsProviders(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get sms providers
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProviders`
+
+
+
+
 
 
 ---
 
 
-#### Communication#createSmsProvider
+#### createSmsProvider
 Create sms provider
 
 ```kotlin
@@ -5555,21 +9303,33 @@ communication.createSmsProvider(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Create sms provider
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProvider`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getSmsProviderById
+#### getSmsProviderById
 Get sms provider by id
 
 ```kotlin
@@ -5585,22 +9345,34 @@ communication.getSmsProviderById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Sms provider id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms provider id |  
+
 
 
 Get sms provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProvider`
+
+
+
+
 
 
 ---
 
 
-#### Communication#updateSmsProviderById
+#### updateSmsProviderById
 Update sms provider by id
 
 ```kotlin
@@ -5616,22 +9388,34 @@ communication.updateSmsProviderById(companyId: companyId, applicationId: applica
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Sms provider id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms provider id |  
+
 
 
 Update sms provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProvider`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getSmsTemplates
+#### getSmsTemplates
 Get sms templates
 
 ```kotlin
@@ -5647,24 +9431,36 @@ communication.getSmsTemplates(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get sms templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplates`
+
+
+
+
 
 
 ---
 
 
-#### Communication#createSmsTemplate
+#### createSmsTemplate
 Create sms template
 
 ```kotlin
@@ -5680,21 +9476,33 @@ communication.createSmsTemplate(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
 
 
 Create sms template
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplateRes`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getSmsTemplateById
+#### getSmsTemplateById
 Get sms template by id
 
 ```kotlin
@@ -5710,22 +9518,43 @@ communication.getSmsTemplateById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Sms template id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms template id |  
+
 
 
 Get sms template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplate`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Communication#updateSmsTemplateById
+#### updateSmsTemplateById
 Update sms template by id
 
 ```kotlin
@@ -5741,22 +9570,43 @@ communication.updateSmsTemplateById(companyId: companyId, applicationId: applica
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Sms template id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms template id |  
+
 
 
 Update sms template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplateRes`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Communication#deleteSmsTemplateById
+#### deleteSmsTemplateById
 Delete sms template by id
 
 ```kotlin
@@ -5772,22 +9622,52 @@ communication.deleteSmsTemplateById(companyId: companyId, applicationId: applica
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| id | string | Sms template id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms template id |  
+
 
 
 Delete sms template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplateDeleteSuccessRes`
+
+
+
+
+
+Failure
+
+
+Schema: `SmsTemplateDeleteFailureRes`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Communication#getSystemSystemTemplates
+#### getSystemSystemTemplates
 Get system sms templates
 
 ```kotlin
@@ -5803,18 +9683,30 @@ communication.getSystemSystemTemplates(companyId: companyId, applicationId: appl
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company id | 
-| application_id | string | Application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
-| sort | object | To sort based on created_at | 
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
 
 
 Get system sms templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SystemSmsTemplates`
+
+
+
+
 
 
 ---
@@ -5827,17 +9719,8 @@ Get system sms templates
 
 ## Payment
 
-```javascript
-const { Configuration, Payment } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const payment = new Payment(conf);
 
-```
-
-
-#### Payment#getBrandPaymentGatewayConfig
+#### getBrandPaymentGatewayConfig
 Get All Brand Payment Gateway Config Secret
 
 ```kotlin
@@ -5853,21 +9736,51 @@ payment.getBrandPaymentGatewayConfig(companyId: companyId, applicationId: applic
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application id |  
+
 
 
 Get All Brand Payment Gateway Config Secret
+
+*Success Response*
+
+
+
+Refund Transfer Mode
+
+
+Schema: `PaymentGatewayConfigResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ErrorCodeDescription`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ErrorCodeDescription`
+
+
+
+
 
 
 ---
 
 
-#### Payment#saveBrandPaymentGatewayConfig
+#### saveBrandPaymentGatewayConfig
 Save Config Secret For Brand Payment Gateway
 
 ```kotlin
@@ -5883,21 +9796,51 @@ payment.saveBrandPaymentGatewayConfig(companyId: companyId, applicationId: appli
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application id |  
+
 
 
 Save Config Secret For Brand Payment Gateway
+
+*Success Response*
+
+
+
+Save Config Secret For Brand Payment Gateway Success Response.
+
+
+Schema: `PaymentGatewayToBeReviewed`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#updateBrandPaymentGatewayConfig
+#### updateBrandPaymentGatewayConfig
 Save Config Secret For Brand Payment Gateway
 
 ```kotlin
@@ -5913,21 +9856,51 @@ payment.updateBrandPaymentGatewayConfig(companyId: companyId, applicationId: app
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application id |  
+
 
 
 Save Config Secret For Brand Payment Gateway
+
+*Success Response*
+
+
+
+Save Config Secret For Brand Payment Gateway Success Response.
+
+
+Schema: `PaymentGatewayToBeReviewed`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#getPaymentModeRoutes
+#### getPaymentModeRoutes
 Get All Valid Payment Options
 
 ```kotlin
@@ -5943,23 +9916,53 @@ payment.getPaymentModeRoutes(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| application_id | string | Application id | 
-| refresh | boolean |  | 
-| request_type | string |  | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| applicationId | String? | Application id |   
+| refresh | Boolean? |  |   
+| requestType | String? |  |  
+
 
 
 Use this API to get Get All Valid Payment Options for making payment
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PaymentOptionsResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#getAllPayouts
+#### getAllPayouts
 Get All Payouts
 
 ```kotlin
@@ -5975,21 +9978,51 @@ payment.getAllPayouts(companyId: companyId, uniqueExternalId: uniqueExternalId).
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_external_id | string | Fetch payouts using unique external id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| uniqueExternalId | String? | Fetch payouts using unique external id |  
+
 
 
 Get All Payouts
+
+*Success Response*
+
+
+
+payouts response object
+
+
+Schema: `PayoutsResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#savePayout
+#### savePayout
 Save Payout
 
 ```kotlin
@@ -6005,20 +10038,50 @@ payment.savePayout(companyId: companyId, body: body).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |  
+
 
 
 Save Payout
+
+*Success Response*
+
+
+
+save payout response object
+
+
+Schema: `PayoutResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#updatePayout
+#### updatePayout
 Update Payout
 
 ```kotlin
@@ -6034,21 +10097,51 @@ payment.updatePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo, b
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_transfer_no | string | Unique transfer id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| uniqueTransferNo | String? | Unique transfer id |  
+
 
 
 Update Payout
+
+*Success Response*
+
+
+
+save payout response object
+
+
+Schema: `UpdatePayoutResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#activateAndDectivatePayout
+#### activateAndDectivatePayout
 Partial Update Payout
 
 ```kotlin
@@ -6064,21 +10157,51 @@ payment.activateAndDectivatePayout(companyId: companyId, uniqueTransferNo: uniqu
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_transfer_no | string | Unique transfer id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| uniqueTransferNo | String? | Unique transfer id |  
+
 
 
 Partial Update Payout
+
+*Success Response*
+
+
+
+save payout response object
+
+
+Schema: `UpdatePayoutResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#deletePayout
+#### deletePayout
 Delete Payout
 
 ```kotlin
@@ -6094,21 +10217,51 @@ payment.deletePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo).s
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_transfer_no | string | Unique transfer id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| uniqueTransferNo | String? | Unique transfer id |  
+
 
 
 Delete Payout
+
+*Success Response*
+
+
+
+delete payout response object
+
+
+Schema: `DeletePayoutResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#getSubscriptionPaymentMethod
+#### getSubscriptionPaymentMethod
 List Subscription Payment Method
 
 ```kotlin
@@ -6124,20 +10277,50 @@ payment.getSubscriptionPaymentMethod(companyId: companyId).safeAwait{ response,e
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |  
+
 
 
 Get all  Subscription  Payment Method
+
+*Success Response*
+
+
+
+List Subscription Payment Method Response
+
+
+Schema: `SubscriptionPaymentMethodResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#deleteSubscriptionPaymentMethod
+#### deleteSubscriptionPaymentMethod
 Delete Subscription Payment Method
 
 ```kotlin
@@ -6153,22 +10336,43 @@ payment.deleteSubscriptionPaymentMethod(companyId: companyId, uniqueExternalId: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| unique_external_id | string |  | 
-| payment_method_id | string |  | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| uniqueExternalId | String? |  |   
+| paymentMethodId | String? |  |  
+
 
 
 Uses this api to Delete Subscription Payment Method
+
+*Success Response*
+
+
+
+Delete Subscription Payment Method Response.
+
+
+Schema: `DeleteSubscriptionPaymentMethodResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#getSubscriptionConfig
+#### getSubscriptionConfig
 List Subscription Config
 
 ```kotlin
@@ -6184,20 +10388,50 @@ payment.getSubscriptionConfig(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |  
+
 
 
 Get all  Subscription Config details
+
+*Success Response*
+
+
+
+List Subscription Config Response
+
+
+Schema: `SubscriptionConfigResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
 
 
-#### Payment#saveSubscriptionSetupIntent
+#### saveSubscriptionSetupIntent
 Save Subscription Setup Intent
 
 ```kotlin
@@ -6213,14 +10447,44 @@ payment.saveSubscriptionSetupIntent(companyId: companyId, body: body).safeAwait{
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |  
+
 
 
 Uses this api to Save Subscription Setup Intent
+
+*Success Response*
+
+
+
+Save Subscription Setup Intent Response.
+
+
+Schema: `SaveSubscriptionSetupIntentResponse`
+
+
+
+
+
+Bad Request Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
 
 
 ---
@@ -6233,17 +10497,8 @@ Uses this api to Save Subscription Setup Intent
 
 ## Order
 
-```javascript
-const { Configuration, Order } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const order = new Order(conf);
 
-```
-
-
-#### Order#shipmentStatusUpdate
+#### shipmentStatusUpdate
 Update status of Shipment
 
 ```kotlin
@@ -6259,20 +10514,50 @@ order.shipmentStatusUpdate(companyId: companyId, body: body).safeAwait{ response
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Update Shipment Status
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `UpdateShipmentStatusResponse`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#activityStatus
+#### activityStatus
 Get Activity Status
 
 ```kotlin
@@ -6288,21 +10573,51 @@ order.activityStatus(companyId: companyId, bagId: bagId).safeAwait{ response,err
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| bag_id | string | Bag Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| bagId | String? | Bag Id |  
+
 
 
 Get Activity Status
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetActivityStatus`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#storeProcessShipmentUpdate
+#### storeProcessShipmentUpdate
 Update Store Process-Shipment
 
 ```kotlin
@@ -6318,20 +10633,50 @@ order.storeProcessShipmentUpdate(companyId: companyId, body: body).safeAwait{ re
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Update Store Process-Shipment
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `UpdateProcessShipmenstRequestResponse`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#getOrdersByCompanyId
+#### getOrdersByCompanyId
 Get Orders for company based on Company Id
 
 ```kotlin
@@ -6347,32 +10692,62 @@ order.getOrdersByCompanyId(companyId: companyId, pageNo: pageNo, pageSize: pageS
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| page_no | string | Current page number | 
-| page_size | string | Page limit | 
-| from_date | string | From Date | 
-| to_date | string | To Date | 
-| q | string | Keyword for Search | 
-| stage | string | Specefic Order Stage | 
-| sales_channels | string | Selected Sales Channel | 
-| order_id | string | Order Id | 
-| stores | string | Selected Stores | 
-| status | string | Status of order | 
-| shorten_urls | boolean | Shorten URL option | 
-| filter_type | string | Filters | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| pageNo | String? | Current page number |   
+| pageSize | String? | Page limit |   
+| fromDate | String? | From Date |   
+| toDate | String? | To Date |   
+| q | String? | Keyword for Search |   
+| stage | String? | Specefic Order Stage |   
+| salesChannels | String? | Selected Sales Channel |   
+| orderId | String? | Order Id |   
+| stores | String? | Selected Stores |   
+| status | String? | Status of order |   
+| shortenUrls | Boolean? | Shorten URL option |   
+| filterType | String? | Filters |  
+
 
 
 Get Orders
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `OrderListing`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#trackShipmentPlatform
+#### trackShipmentPlatform
 Track Shipment by shipment id, for application based on application Id
 
 ```kotlin
@@ -6388,22 +10763,52 @@ order.trackShipmentPlatform(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| shipment_id | string | Shipment Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| shipmentId | String? | Shipment Id |  
+
 
 
 Shipment Track
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PlatformShipmentTrack`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#trackOrder
+#### trackOrder
 Track Order by order id, for application based on application Id
 
 ```kotlin
@@ -6419,22 +10824,52 @@ order.trackOrder(companyId: companyId, applicationId: applicationId, orderId: or
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| order_id | string | Order Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| orderId | String? | Order Id |  
+
 
 
 Order Track
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `PlatformOrderTrack`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#failedOrders
+#### failedOrders
 Get all failed orders application wise
 
 ```kotlin
@@ -6450,21 +10885,51 @@ order.failedOrders(companyId: companyId, applicationId: applicationId).safeAwait
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Failed Orders
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `FailedOrders`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#reprocessOrder
+#### reprocessOrder
 Reprocess order by order id
 
 ```kotlin
@@ -6480,22 +10945,52 @@ order.reprocessOrder(companyId: companyId, applicationId: applicationId, orderId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| order_id | string | Order Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| orderId | String? | Order Id |  
+
 
 
 Order Reprocess
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `UpdateOrderReprocessResponse`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#getPing
+#### getPing
 Get Ping
 
 ```kotlin
@@ -6511,20 +11006,50 @@ order.getPing(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Get Ping
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetPingResponse`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#voiceCallback
+#### voiceCallback
 Get Voice Callback
 
 ```kotlin
@@ -6540,20 +11065,50 @@ order.voiceCallback(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Voice Callback
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetVoiceCallbackResponse`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
 
 
 ---
 
 
-#### Order#voiceClickToCall
+#### voiceClickToCall
 Get Voice Click to Call
 
 ```kotlin
@@ -6569,16 +11124,4569 @@ order.voiceClickToCall(companyId: companyId, caller: caller, receiver: receiver)
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| caller | string | Caller contact number | 
-| receiver | string | Receiver contact number | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| caller | String? | Caller contact number |   
+| receiver | String? | Receiver contact number |  
+
 
 
 Voice Click to Call
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetClickToCallResponse`
+
+
+
+
+
+API Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ApefaceApiError`
+
+
+
+
+
+
+---
+
+
+
+---
+---
+
+
+## Catalog
+
+
+#### getSearchKeywords
+Get a Search Keywords Details
+
+```kotlin
+catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
+
+
+
+Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetSearchWordsDetailResponseSchema` for details
+
+
+Schema: `GetSearchWordsDetailResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteSearchKeywords
+Delete a Search Keywords
+
+```kotlin
+catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
+
+*Success Response*
+
+
+
+Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
+
+
+Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateSearchKeywords
+Update Search Keyword
+
+```kotlin
+catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update Search Keyword by its id. On successful request, returns the updated collection
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetSearchWordsDataSchema` for details.
+
+
+Schema: `GetSearchWordsData`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getAllSearchKeyword
+List all Search Custom Keyword Listing
+
+```kotlin
+catalog.getAllSearchKeyword(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+Custom Search Keyword allows you to map conditions with keywords to give you the ultimate results
+
+*Success Response*
+
+
+
+List of custom search keywords. See example below or refer `GetSearchWordsResponseSchema` for details
+
+
+Schema: `GetSearchWordsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createCustomKeyword
+Add a Custom Search Keywords
+
+```kotlin
+catalog.createCustomKeyword(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateSearchKeywordSchema`
+
+*Success Response*
+
+
+
+Get keyword object with id that is added. See example below or refer `GetSearchWordsDataSchema` for details
+
+
+Schema: `GetSearchWordsData`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getAutocompleteKeywordDetail
+Get a Autocomplete Keywords Details
+
+```kotlin
+catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
+
+
+
+Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
+
+*Success Response*
+
+
+
+The mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details
+
+
+Schema: `GetAutocompleteWordsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteAutocompleteKeyword
+Delete a Autocomplete Keywords
+
+```kotlin
+catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
+
+*Success Response*
+
+
+
+Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
+
+
+Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateAutocompleteKeyword
+Create & Update Autocomplete Keyword
+
+```kotlin
+catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update a mapping by it's id. On successful request, returns the updated Keyword mapping
+
+*Success Response*
+
+
+
+The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
+
+
+Schema: `GetAutocompleteWordsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getAutocompleteConfig
+List all Autocomplete Keyword Listing
+
+```kotlin
+catalog.getAutocompleteConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+Custom Autocomplete Keyword allows you to map conditions with keywords to give you the ultimate results
+
+*Success Response*
+
+
+
+List of custom autocomplete keywords. See example below or refer `GetAutocompleteWordsResponseSchema` for details
+
+
+Schema: `GetAutocompleteWordsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createCustomAutocompleteRule
+Add a Custom Autocomplete Keywords
+
+```kotlin
+catalog.createCustomAutocompleteRule(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateAutocompleteKeywordSchema`
+
+*Success Response*
+
+
+
+List of all the collections including the one you added. See example below or refer `CreateAutocompleteWordsResponseSchema` for details
+
+
+Schema: `CreateAutocompleteWordsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProductBundle
+List all Product Bundles
+
+```kotlin
+catalog.getProductBundle(companyId: companyId, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| q | String? | A search string that is searched with product bundle name. |  
+
+
+
+Get all product bundles for a particular company
+
+*Success Response*
+
+
+
+List of bundle configured for a company. See example below or refer `GetProductBundleListingResponse` for details
+
+
+Schema: `GetProductBundleListingResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createProductBundle
+Create Product Bundle
+
+```kotlin
+catalog.createProductBundle(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
+
+*Success Response*
+
+
+
+Get bundle with id that is added. See example below or refer `GetProductBundleCreateResponse` for details
+
+
+Schema: `GetProductBundleCreateResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProductBundleDetail
+Get a particular Product Bundle details
+
+```kotlin
+catalog.getProductBundleDetail(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
+
+
+
+Get a particular Bundle details by its `id`. If successful, returns a Product bundle resource in the response body specified in `GetProductBundleResponse`
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetProductBundleResponse` for details
+
+
+Schema: `GetProductBundleResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateProductBundle
+Update a Product Bundle
+
+```kotlin
+catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update a Product Bundle by its id. On successful request, returns the updated product bundle
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetProductBundleCreateResponse` for details.
+
+
+Schema: `GetProductBundleCreateResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getSizeGuides
+Get list of size guides
+
+```kotlin
+catalog.getSizeGuides(companyId: companyId, active: active, q: q, tag: tag, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company for which the size guides are to be fetched. |   
+| active | Boolean? | filter size guide on basis of active, in-active |   
+| q | String? | Query that is to be searched. |   
+| tag | String? | to filter size guide on basis of tag. |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
+
+
+
+This API allows to view all the size guides associated to the seller.
+
+*Success Response*
+
+
+
+Size guide object. See example below or refer `ListSizeGuide` for details
+
+
+Schema: `ListSizeGuide`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createSizeGuide
+Create a size guide.
+
+```kotlin
+catalog.createSizeGuide(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the size guide is to be created. |  
+
+
+
+This API allows to create a size guide associated to a brand.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getSizeGuide
+Get a single size guide.
+
+```kotlin
+catalog.getSizeGuide(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to size guide. |   
+| id | String? | Id of the size guide to be viewed. |  
+
+
+
+This API helps to get data associated to a size guide.
+
+*Success Response*
+
+
+
+Brand object. See example below or refer `SizeGuideResponseSchema` for details
+
+
+Schema: `SizeGuideResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateSizeGuide
+Edit a size guide.
+
+```kotlin
+catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company. |   
+| id | String? | Mongo id of the size guide to be edited |  
+
+
+
+This API allows to edit a size guide.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCatalogConfiguration
+Get configuration meta  details for catalog for admin panel
+
+```kotlin
+catalog.getCatalogConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+configuration meta  details for catalog.
+
+*Success Response*
+
+
+
+configuration details for catalog. See example below or refer `GetCatalogConfigurationMetaDataSchema` for details
+
+
+Schema: `GetCatalogConfigurationMetaData`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getConfigurations
+Get configured details for catalog
+
+```kotlin
+catalog.getConfigurations(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+configured details for catalog.
+
+*Success Response*
+
+
+
+Get application level configured catalog details. See example below or refer `GetAppCatalogConfigurationSchema` for details
+
+
+Schema: `GetAppCatalogConfiguration`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createConfigurationProductListing
+Add configuration for products & listings
+
+```kotlin
+catalog.createConfigurationProductListing(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+Add configuration for products & listing.
+
+*Success Response*
+
+
+
+success flag will tell whether the operation was successful.
+
+
+Schema: `GetAppCatalogConfiguration`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getConfigurationByType
+Get configured details for catalog
+
+```kotlin
+catalog.getConfigurationByType(companyId: companyId, applicationId: applicationId, type: type).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| type | String? | type can be brands, categories etc. |  
+
+
+
+configured details for catalog.
+
+*Success Response*
+
+
+
+Get application level configured catalog details. See example below or refer `GetAppCatalogEntityConfigurationSchema` for details
+
+
+Schema: `GetAppCatalogEntityConfiguration`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createConfigurationByType
+Add configuration for categories and brands
+
+```kotlin
+catalog.createConfigurationByType(companyId: companyId, applicationId: applicationId, type: type, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| type | String? | type can be brands, categories etc. |  
+
+
+
+Add configuration for categories & brands.
+
+*Success Response*
+
+
+
+success flag will tell whether the operation was successful.
+
+
+Schema: `GetAppCatalogConfiguration`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getQueryFilters
+Get query filters to configure a collection
+
+```kotlin
+catalog.getQueryFilters(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+Get query filters to configure a collection
+
+*Success Response*
+
+
+
+The attached items of an collection. See example below or refer `GetCollectionQueryOptionResponse` for details
+
+
+Schema: `GetCollectionQueryOptionResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getAllCollections
+List all the collections
+
+```kotlin
+catalog.getAllCollections(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections as specified in `CollectionListingSchema`
+
+*Success Response*
+
+
+
+List of collections. See example below or refer `GetCollectionListingResponse` for details
+
+
+Schema: `GetCollectionListingResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createCollection
+Add a Collection
+
+```kotlin
+catalog.createCollection(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
+
+
+
+Create a collection. See `CreateCollectionRequestSchema` for the list of attributes needed to create a collection and collections/query-options for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionCreateResponse`
+
+*Success Response*
+
+
+
+List of all the collections including the one you added. See example below or refer `CollectionCreateResponse` for details
+
+
+Schema: `CollectionCreateResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCollectionDetail
+Get a particular collection
+
+```kotlin
+catalog.getCollectionDetail(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| slug | String? | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to retrieve. |  
+
+
+
+Get the details of a collection by its `slug`. If successful, returns a Collection resource in the response body specified in `CollectionDetailResponse`
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `CollectionDetailResponse` for details
+
+
+Schema: `CollectionDetailResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteCollection
+Delete a Collection
+
+```kotlin
+catalog.deleteCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier of a collection. |  
+
+
+
+Delete a collection by it's id. Returns an object that tells whether the collection was deleted successfully
+
+*Success Response*
+
+
+
+Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
+
+
+Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateCollection
+Update a collection
+
+```kotlin
+catalog.updateCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier of a collection. |  
+
+
+
+Update a collection by it's id. On successful request, returns the updated collection
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `CollectionCreateResponse` for details.
+
+
+Schema: `CollectionCreateResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCollectionItems
+Get the items for a collection
+
+```kotlin
+catalog.getCollectionItems(companyId: companyId, applicationId: applicationId, id: id, sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier of a collection. |   
+| sortOn | String? | Each response will contain sort_on param, which should be sent back to make pagination work. |   
+| pageId | String? | Each response will contain next_id param, which should be sent back to make pagination work. |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
+
+
+
+Get items from a collection specified by its `id`.
+
+*Success Response*
+
+
+
+The attached items of an collection. See example below or refer `GetCollectionItemsResponseSchema` for details
+
+
+Schema: `GetCollectionItemsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### addCollectionItems
+Add items to a collection
+
+```kotlin
+catalog.addCollectionItems(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier of a collection. |  
+
+
+
+Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
+
+*Success Response*
+
+
+
+Status object. Tells whether the operation was successful.
+
+
+Schema: `UpdatedResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCatalogInsights
+Analytics data of catalog and inventory.
+
+```kotlin
+catalog.getCatalogInsights(companyId: companyId, applicationId: applicationId, brand: brand).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| brand | String? | Brand slug |  
+
+
+
+Catalog Insights api returns the count of catalog related data like products, brands, departments and categories that have been made live as per configuration of the app.
+
+*Success Response*
+
+
+
+Response Data
+
+
+Schema: `CatalogInsightResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getSellerInsights
+Analytics data of catalog and inventory that are being cross-selled.
+
+```kotlin
+catalog.getSellerInsights(companyId: companyId, sellerAppId: sellerAppId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| sellerAppId | String? | Id of the seller application which is serving the invetory/catalog of the company |  
+
+
+
+Analytics data of catalog and inventory that are being cross-selled.
+
+*Success Response*
+
+
+
+Response Data
+
+
+Schema: `CrossSellingResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createMarketplaceOptin
+Create/Update opt-in infomation.
+
+```kotlin
+catalog.createMarketplaceOptin(companyId: companyId, marketplace: marketplace, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | The company id for which the detail needs to be retrieved. |   
+| marketplace | String? | The marketplace for which the detail needs to be retrieved. |  
+
+
+
+Use this API to create/update opt-in information for given platform. If successful, returns data in the response body as specified in `OptInPostResponseSchema`
+
+*Success Response*
+
+
+
+See example below or refer `UpdatedResponse` for details.
+
+
+Schema: `UpdatedResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getMarketplaceOptinDetail
+Get opt-in infomation.
+
+```kotlin
+catalog.getMarketplaceOptinDetail(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? |  |  
+
+
+
+Use this API to fetch opt-in information for all the platforms. If successful, returns a logs in the response body as specified in `GetOptInPlatformSchema`
+
+*Success Response*
+
+
+
+See example below or refer `GetOptInPlatformSchema` for details.
+
+
+Schema: `GetOptInPlatform`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCompanyDetail
+Get the Company details.
+
+```kotlin
+catalog.getCompanyDetail(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | The company id for which the detail needs to be retrieved. |  
+
+
+
+Get the details of the company associated with the given company_id passed.
+
+*Success Response*
+
+
+
+See example below or refer `OptinCompanyDetailSchema` for details
+
+
+Schema: `OptinCompanyDetail`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCompanyBrandDetail
+Get the Company Brand details of Optin.
+
+```kotlin
+catalog.getCompanyBrandDetail(companyId: companyId, isActive: isActive, q: q, pageNo: pageNo, pageSize: pageSize, marketplace: marketplace).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | The company id for which the detail needs to be retrieved. |   
+| isActive | Boolean? | The is_active status for the optin id. |   
+| q | Boolean? | The search value to filter the list. |   
+| pageNo | Int? | The number of page for the company id. |   
+| pageSize | Int? | Number of records that can be seen on the page for the company id. |   
+| marketplace | String? | The marketplace platform associated with the company id. |  
+
+
+
+Get the details of the Brands associated with the given company_id passed.
+
+*Success Response*
+
+
+
+See example below or refer `OptinCompanyBrandDetailsView` for details
+
+
+Schema: `OptinCompanyBrandDetailsView`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCompanyMetrics
+Get the Company metrics
+
+```kotlin
+catalog.getCompanyMetrics(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | The company id for which the detail needs to be retrieved. |  
+
+
+
+Get the Company metrics associated with the company ID passed.
+
+*Success Response*
+
+
+
+See example below or refer `OptinCompanyMetrics` for details
+
+
+Schema: `OptinCompanyMetrics`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getStoreDetail
+Get the Store details.
+
+```kotlin
+catalog.getStoreDetail(companyId: companyId, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | The company id for which the detail needs to be retrieved. |   
+| q | String? | The search related the store for the company id. |   
+| pageNo | Int? | The number of page for the company id. |   
+| pageSize | Int? | Number of records that can be seen on the page for the company id. |  
+
+
+
+Get the details of the store associated with the company ID passed.
+
+*Success Response*
+
+
+
+See example below or refer `OptinStoreDetailsSchema` for details
+
+
+Schema: `OptinStoreDetails`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getGenderAttribute
+Get gender attribute details
+
+```kotlin
+catalog.getGenderAttribute(companyId: companyId, department: department).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | company for which you want to view the genders |   
+| department | String? | department for which you want to view the genders |  
+
+
+
+This API allows to view the gender attribute details.
+
+*Success Response*
+
+
+
+Size guide object. See example below or refer `GenderDetailSchema` for details
+
+
+Schema: `GenderDetail`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### listProductTemplateCategories
+List Department specifiec product categories
+
+```kotlin
+catalog.listProductTemplateCategories(companyId: companyId, departments: departments, itemType: itemType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| departments | String? | A `department` is name of a departments whose category needs to be listed. Can specify multiple departments. |   
+| itemType | String? | An `item_type` is the type of item, it can be `set`, `standard`, `digital`, etc. |  
+
+
+
+Allows you to list all product categories values for the departments specified
+
+*Success Response*
+
+
+
+List of all categories attached to departments specified. See example below or refer `ProdcutTemplateCategoriesResponse` for details
+
+
+Schema: `ProdcutTemplateCategoriesResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### listDepartmentsData
+List all Departments
+
+```kotlin
+catalog.listDepartmentsData(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+Allows you to list all departments, also can search using name and filter active and incative departments, and item type
+
+*Success Response*
+
+
+
+List of custom search keywords. See example below or refer `DepartmentsResponse` for details
+
+
+Schema: `DepartmentsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `DepartmentErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getDepartmentData
+Get specific departments details by passing in unique id of the department
+
+```kotlin
+catalog.getDepartmentData(companyId: companyId, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String? | A `uid` is a unique identifier of a department. |  
+
+
+
+Allows you to get department data, by uid
+
+*Success Response*
+
+
+
+Departments Data. See example below or refer `DepartmentsResponse` for details
+
+
+Schema: `DepartmentsResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `DepartmentErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### listProductTemplate
+List all Templates
+
+```kotlin
+catalog.listProductTemplate(companyId: companyId, departments: departments).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| departments | String? | A `departments` is the name of a particular department. |  
+
+
+
+Allows you to list all product templates, also can filter by department
+
+*Success Response*
+
+
+
+List of custom search keywords. See example below or refer `TemplatesResponse` for details
+
+
+Schema: `TemplatesResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### validateProductTemplate
+Validate Product Template Schema
+
+```kotlin
+catalog.validateProductTemplate(companyId: companyId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| slug | String? | A `slug` is a unique identifier for a particular template. |  
+
+
+
+Allows you to list all product templates validation values for all the fields present in the database
+
+*Success Response*
+
+
+
+List of fields and validation values fro each. See example below or refer `TemplatesValidationResponse` for details
+
+
+Schema: `TemplatesValidationResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### downloadProductTemplateViews
+Download Product Template View
+
+```kotlin
+catalog.downloadProductTemplateViews(companyId: companyId, slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| slug | String? | A `slug` is a unique identifier for a particular template. |  
+
+
+
+Allows you to download product template data
+
+*Success Response*
+
+
+
+CSV File of product template data. See example below or refer `TemplatesResponse` for details
+
+
+Schema: `String`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### downloadProductTemplateView
+Download Product Template View
+
+```kotlin
+catalog.downloadProductTemplateView(companyId: companyId, itemType: itemType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| itemType | String? | An `item_type` defines the type of item. |  
+
+
+
+Allows you to download product template data
+
+*Success Response*
+
+
+
+CSV File of product template data.
+
+
+Schema: `String`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### validateProductTemplateSchema
+Validate Product Template Schema
+
+```kotlin
+catalog.validateProductTemplateSchema(companyId: companyId, itemType: itemType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| itemType | String? | An `item_type` defines the type of item. The default value is standard. |  
+
+
+
+Allows you to list all product templates validation values for all the fields present in the database
+
+*Success Response*
+
+
+
+List of fields and validation values fro each. See example below or refer `InventoryValidationResponse` for details
+
+
+Schema: `InventoryValidationResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### listHSNCodes
+List HSN Codes
+
+```kotlin
+catalog.listHSNCodes(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+Allows you to list all hsn Codes
+
+*Success Response*
+
+
+
+List of all HSN Codes. See example below or refer `HSNCodesResponse` for details
+
+
+Schema: `HSNCodesResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### listProductTemplateExportDetails
+Allows you to list all product templates export list details
+
+```kotlin
+catalog.listProductTemplateExportDetails(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+Can vies details including trigger data, task id , etc.
+
+*Success Response*
+
+
+
+List of custom search keywords. See example below or refer `TemplatesResponse` for details
+
+
+Schema: `TemplatesResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### listTemplateBrandTypeValues
+Allows you to list all values for Templates, Brands or Type
+
+```kotlin
+catalog.listTemplateBrandTypeValues(companyId: companyId, filter: filter).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| filter | String? | A `filter` is the unique identifier of the type of value required. |  
+
+
+
+The filter type query parameter defines what type of data to return. The type of query returns the valid values for the same
+
+*Success Response*
+
+
+
+List of Templates, Brands or Types. See example below or refer `ProductConfligurationDownloads` for details
+
+
+Schema: `ProductConfligurationDownloads`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `PTErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### listCategories
+Get product categories list
+
+```kotlin
+catalog.listCategories(companyId: companyId, level: level, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| level | String? | Get category for multiple levels |   
+| q | String? | Get multiple categories filtered by search string |  
+
+
+
+This API gets meta associated to product categories.
+
+*Success Response*
+
+
+
+Category Meta. See example below or refer `CategoryResponse` for details
+
+
+Schema: `CategoryResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createCategories
+Create product categories
+
+```kotlin
+catalog.createCategories(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+This API lets user create product categories
+
+*Success Response*
+
+
+
+Category Meta. See example below or refer `CategoryCreateResponse` for details
+
+
+Schema: `CategoryCreateResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCategoryData
+Get product category by uid
+
+```kotlin
+catalog.getCategoryData(companyId: companyId, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String? | Category unique id |  
+
+
+
+This API gets meta associated to product categories.
+
+*Success Response*
+
+
+
+Category Meta. See example below or refer `CategorySchema` for details
+
+
+Schema: `Category`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateCategory
+Update product categories
+
+```kotlin
+catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String? | Category unique id |  
+
+
+
+Update a product category using this apu
+
+*Success Response*
+
+
+
+Category Meta. See example below or refer `CategoryUpdateResponse` for details
+
+
+Schema: `CategoryUpdateResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProducts
+Get product list
+
+```kotlin
+catalog.getProducts(companyId: companyId, brandIds: brandIds, categoryIds: categoryIds, search: search, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Double? | Get list of products filtered by company Id |   
+| brandIds | Double? | Get multiple products filtered by brand Ids |   
+| categoryIds | Double? | Get multiple products filtered by category Ids |   
+| search | String? | Get multiple products filtered by search string |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
+
+
+
+This API gets meta associated to products.
+
+*Success Response*
+
+
+
+Product Meta. See example below for details
+
+
+Schema: `ProductListingResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createProduct
+Create a product.
+
+```kotlin
+catalog.createProduct(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to product that is to be viewed. |  
+
+
+
+This API allows to create product.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProduct
+Get a single product.
+
+```kotlin
+catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| itemCode | String? | Item code of the product. |   
+| companyId | Int? | Company Id of the product. |   
+| itemId | Int? | Item Id of the product. |   
+| brandUid | Int? | Brand Id of the product. |   
+| uid | Int? | Id of the product. |  
+
+
+
+This API helps to get data associated to a particular product.
+
+*Success Response*
+
+
+
+Product object. See example below or refer `product.utils.format_product_response` for details
+
+
+Schema: `Product`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteProduct
+Delete a product.
+
+```kotlin
+catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company Id of the company associated to product that is to be deleted. |   
+| itemId | Int? | Id of the product to be updated. |  
+
+
+
+This API allows to delete product.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### editProduct
+Edit a product.
+
+```kotlin
+catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to product that is to be viewed. |   
+| itemId | Int? | Id of the product to be updated. |  
+
+
+
+This API allows to edit product.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProductValidation
+Validate product/size data
+
+```kotlin
+catalog.getProductValidation(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Double? | Validates data against given company |  
+
+
+
+This API validates product data.
+
+*Success Response*
+
+
+
+Validate Meta. See example below for details
+
+
+Schema: `ValidateProduct`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProductSize
+Get a single product size.
+
+```kotlin
+catalog.getProductSize(itemCode: itemCode, companyId: companyId, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| itemCode | String? | Item code of the product size. |   
+| companyId | Int? | Company Id of the product size. |   
+| itemId | Int? | Item Id of the product size. |   
+| brandUid | Int? | Brand Id of the product size. |   
+| uid | Int? | Id of the product size. |  
+
+
+
+This API helps to get data associated to a particular product size.
+
+*Success Response*
+
+
+
+Product object. See example below for details
+
+
+Schema: `ProductListingResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProductBulkUploadHistory
+Get a list of all bulk product upload jobs.
+
+```kotlin
+catalog.getProductBulkUploadHistory(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id of of which Product Bulk Upload History to be obtained. |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
+
+
+
+This API helps to get bulk product upload jobs data.
+
+*Success Response*
+
+
+
+List of bulk product upload jobs. See `BulkRequestGetSchema` for details
+
+
+Schema: `ProductBulkRequestList`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateProductAssetsInBulk
+Create a Bulk asset upload Job.
+
+```kotlin
+catalog.updateProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id in which assets to be uploaded. |  
+
+
+
+This API helps to create a bulk asset upload job.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteProductBulkJob
+Delete Bulk product job.
+
+```kotlin
+catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company Id of the company associated to size that is to be deleted. |   
+| batchId | Int? | Batch Id of the bulk product job to be deleted. |  
+
+
+
+This API allows to delete bulk product job associated with company.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createProductsInBulk
+Create products in bulk associated with given batch Id.
+
+```kotlin
+catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id in which assets to be uploaded. |   
+| batchId | String? | Batch Id in which assets to be uploaded. |  
+
+
+
+This API helps to create products in bulk push to kafka for approval/creation.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCompanyTags
+Get a list of all tags associated with company.
+
+```kotlin
+catalog.getCompanyTags(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id of the product size. |  
+
+
+
+This API helps to get tags data associated to a particular copmpany.
+
+*Success Response*
+
+
+
+Tag List. See example below for details
+
+
+Schema: `ProductTagsViewResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getProductAssetsInBulk
+Get a list of all bulk asset jobs.
+
+```kotlin
+catalog.getProductAssetsInBulk(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id of the product size. |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
+
+
+
+This API helps to get bulk asset jobs data associated to a particular company.
+
+*Success Response*
+
+
+
+List of bulk asset jobs List. See `BulkUtil.modify_batch_response` for details
+
+
+Schema: `BulkAssetResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createProductAssetsInBulk
+Create a Bulk asset upload Job.
+
+```kotlin
+catalog.createProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id in which assets to be uploaded. |  
+
+
+
+This API helps to create a bulk asset upload job.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteSize
+Delete a Size associated with product.
+
+```kotlin
+catalog.deleteSize(companyId: companyId, itemId: itemId, size: size).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company Id of the company associated to size that is to be deleted. |   
+| itemId | Int? | Item Id of the product associated with size to be deleted. |   
+| size | Int? | size to be deleted. |  
+
+
+
+This API allows to delete size associated with product.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getInventory
+Get Inventory for company
+
+```kotlin
+catalog.getInventory(companyId: companyId, itemId: itemId, size: size, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to product that is to be viewed. |   
+| itemId | String? | Item code of the product of which size is to be get. |   
+| size | String? | Size of which inventory is to get. |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
+
+
+
+This API allows get Inventory data for particular company grouped by size and store.
+
+*Success Response*
+
+
+
+returns a list of all inventory grouped by size and store
+
+
+Schema: `InventoryRequest`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### addInventory
+Add Inventory for particular size and store.
+
+```kotlin
+catalog.addInventory(companyId: companyId, itemId: itemId, size: size, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to product that is to be viewed. |   
+| itemId | Double? | Item of the company associated to product that is to be viewed. |   
+| size | String? | Size in which inventory is to be added. |  
+
+
+
+This API allows add Inventory for particular size and store.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteInventory
+Delete a Inventory.
+
+```kotlin
+catalog.deleteInventory(companyId: companyId, itemId: itemId, locationId: locationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company Id of the company associated with Inventory that is to be deleted. |   
+| itemId | Int? | Id of the product associated with Inventory to be deleted. |   
+| locationId | Double? | Location ID of store of which inventory is to be deleted. |  
+
+
+
+This API allows to delete inventory of a particular product for particular company.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getInventoryBulkUploadHistory
+Get a list of all bulk Inventory upload jobs.
+
+```kotlin
+catalog.getInventoryBulkUploadHistory(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id of of which Inventory Bulk Upload History to be obtained. |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
+
+
+
+This API helps to get bulk Inventory upload jobs data.
+
+*Success Response*
+
+
+
+List of bulk Inventory upload jobs. See `BulkRequestGetSchema` for details
+
+
+Schema: `BulkRequestGet`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createBulkInventoryJob
+Create a Bulk Inventory upload Job.
+
+```kotlin
+catalog.createBulkInventoryJob(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id in which Inventory to be uploaded. |  
+
+
+
+This API helps to create a bulk Inventory upload job.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `CommonResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### deleteBulkInventoryJob
+Delete Bulk Inventory job.
+
+```kotlin
+catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company Id of the company of which bulk Inventory job is to be deleted. |  
+
+
+
+This API allows to delete bulk Inventory job associated with company.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createBulkInventory
+Create products in bulk associated with given batch Id.
+
+```kotlin
+catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id in which Inventory is to be uploaded. |  
+
+
+
+This API helps to create products in bulk push to kafka for approval/creation.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getInventoryExport
+Get Inventory export history.
+
+```kotlin
+catalog.getInventoryExport(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id in which assets to be uploaded. |  
+
+
+
+This API helps to get Inventory export history.
+
+*Success Response*
+
+
+
+Returns a list of inventory export jobs
+
+
+Schema: `InventoryExportJob`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createInventoryExportJob
+Create a Inventory export Job.
+
+```kotlin
+catalog.createInventoryExportJob(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id in which assets to be uploaded. |  
+
+
+
+This API helps to create a Inventory export job.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### exportInventoryConfig
+Get List of different filters for inventory export
+
+```kotlin
+catalog.exportInventoryConfig(companyId: companyId, filterType: filterType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to product that is to be viewed. |   
+| filterType | String? | filter type from any one of ['brand', 'store', 'type'] |  
+
+
+
+This API allows get List of different filters like brand, store, and type for inventory export.
+
+*Success Response*
+
+
+
+returns filters configuration for inventory export
+
+
+Schema: `InventoryConfig`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getAllHsnCodes
+Hsn Code List.
+
+```kotlin
+catalog.getAllHsnCodes(companyId: companyId, pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| pageNo | Int? | page no |   
+| pageSize | Int? | page size |   
+| q | String? | search using hsn code. |  
+
+
+
+Hsn Code List.
+
+*Success Response*
+
+
+
+List of all HSN Codes. See example below or refer `HsnCodesListingResponseSchema` for details
+
+
+Schema: `HsnCodesListingResponse`
+
+
+
+
+
+Bad request.
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createHsnCode
+Create Hsn Code.
+
+```kotlin
+catalog.createHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | company id |  
+
+
+
+Create Hsn Code.
+
+*Success Response*
+
+
+
+See example below for details
+
+
+Schema: `HsnCode`
+
+
+
+
+
+Bad request.
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getHsnCode
+Fetch Hsn Code.
+
+```kotlin
+catalog.getHsnCode(companyId: companyId, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| uid | Int? | uid |  
+
+
+
+Fetch Hsn Code.
+
+*Success Response*
+
+
+
+See example below details
+
+
+Schema: `HsnCode`
+
+
+
+
+
+Bad request.
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateHsnCode
+Update Hsn Code.
+
+```kotlin
+catalog.updateHsnCode(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| uid | Int? | uid |  
+
+
+
+Update Hsn Code.
+
+*Success Response*
+
+
+
+See example below for details
+
+
+Schema: `HsnCode`
+
+
+
+
+
+Bad request.
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### bulkHsnCode
+Bulk Create or Update Hsn Code.
+
+```kotlin
+catalog.bulkHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | company id |  
+
+
+
+Bulk Create or Update Hsn Code.
+
+*Success Response*
+
+
+
+See example below for details
+
+
+Schema: `BulkHsnResponse`
+
+
+
+
+
+Bad request.
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getApplicationBrands
+List all the brands
+
+```kotlin
+catalog.getApplicationBrands(department: department, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| department | String? | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
+
+
+
+A brand is the name under which a product is being sold. Use this API to list all the brands. You can pass optionally filter the brands by the department. If successful, returns a paginated list of brands specified in `BrandListingResponse`
+
+*Success Response*
+
+
+
+List of Brands. See example below or refer `BrandListingResponse` for details
+
+
+Schema: `BrandListingResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getDepartments
+List all the departments
+
+```kotlin
+catalog.getDepartments().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+
+
+Departments are a way to categorise similar products. A product can lie in multiple departments. For example, a skirt can below to the 'Women's Fashion' Department while a handbag can lie in 'Women's Accessories' Department. Use this API to list all the departments. If successful, returns the list of departments specified in `DepartmentResponse`
+
+*Success Response*
+
+
+
+List of Departments. See example below or refer `DepartmentResponse` for details.
+
+
+Schema: `DepartmentResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCategories
+List all the categories
+
+```kotlin
+catalog.getCategories(department: department).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| department | String? | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API |  
+
+
+
+List all the categories. You can optionally pass filter the brands by the department. If successful, returns a paginated list of brands specified in `CategoryListingResponse`
+
+*Success Response*
+
+
+
+List of Categories. See example below or refer `CategoryListingResponse` for details.
+
+
+Schema: `CategoryListingResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
@@ -6591,46 +15699,8 @@ Voice Click to Call
 
 ## CompanyProfile
 
-```javascript
-const { Configuration, CompanyProfile } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const companyprofile = new CompanyProfile(conf);
 
-```
-
-
-#### CompanyProfile#cbsOnboardGet
-Get company profile
-
-```kotlin
-companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to view the company profile of the seller account.
-
-
----
-
-
-#### CompanyProfile#updateCompany
+#### updateCompany
 Edit company profile
 
 ```kotlin
@@ -6646,20 +15716,91 @@ companyprofile.updateCompany(companyId: companyId, body: body).safeAwait{ respon
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
 
 
 This API allows to edit the company profile of the seller account.
+
+*Success Response*
+
+
+
+Returns a success message
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#getCompanyMetrics
+#### cbsOnboardGet
+Get company profile
+
+```kotlin
+companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+This API allows to view the company profile of the seller account.
+
+*Success Response*
+
+
+
+Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
+
+
+Schema: `GetCompanyProfileSerializerResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getCompanyMetrics
 Get company metrics
 
 ```kotlin
@@ -6675,20 +15816,41 @@ companyprofile.getCompanyMetrics(companyId: companyId).safeAwait{ response,error
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
 
 
 This API allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
+
+*Success Response*
+
+
+
+Metrics response object. See example below or refer `MetricsSerializer` for details
+
+
+Schema: `MetricsSerializer`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#editBrand
+#### editBrand
 Edit a brand.
 
 ```kotlin
@@ -6704,21 +15866,42 @@ companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).saf
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to brand that is to be viewed. |   
+| brandId | String? | Id of the brand to be viewed. |  
+
 
 
 This API allows to edit meta of a brand.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#getBrand
+#### getBrand
 Get a single brand.
 
 ```kotlin
@@ -6734,21 +15917,42 @@ companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ respo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to brand that is to be viewed. |   
+| brandId | String? | Id of the brand to be viewed. |  
+
 
 
 This API helps to get data associated to a particular brand.
+
+*Success Response*
+
+
+
+Brand object. See example below or refer `GetBrandResponseSerializer` for details
+
+
+Schema: `GetBrandResponseSerializer`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#createBrand
+#### createBrand
 Create a Brand.
 
 ```kotlin
@@ -6764,49 +15968,41 @@ companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company. |  
+
 
 
 This API allows to create a brand associated to a company.
 
-
----
-
-
-#### CompanyProfile#createCompanyBrandMapping
-Create a company brand mapping.
-
-```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
+*Success Response*
 
 
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the brand is to be mapped. | 
+Returns a success response
 
 
-This API allows to create a company brand mapping, for a already existing brand in the system.
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#getBrands
+#### getBrands
 Get brands associated to a company
 
 ```kotlin
@@ -6822,26 +16018,47 @@ companyprofile.getBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSiz
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company. | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company. |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
+
 
 
 This API helps to get view brands associated to a particular company.
+
+*Success Response*
+
+
+
+Brand object. See example below or refer `CompanyBrandListSerializer` for details
+
+
+Schema: `CompanyBrandListSerializer`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#createLocation
-Create a location asscoiated to a company.
+#### createCompanyBrandMapping
+Create a company brand mapping.
 
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6853,20 +16070,41 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the brand is to be mapped. |  
 
 
-This API allows to create a location associated to a company.
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#getLocations
+#### getLocations
 Get list of locations
 
 ```kotlin
@@ -6882,25 +16120,96 @@ companyprofile.getLocations(companyId: companyId, storeType: storeType, q: q, st
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company whose locations are to fetched | 
-| store_type | string | Helps to sort the location list on the basis of location type. | 
-| q | string | Query that is to be searched. | 
-| stage | string | to filter companies on basis of verified or unverified companies. | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company whose locations are to fetched |   
+| storeType | String? | Helps to sort the location list on the basis of location type. |   
+| q | String? | Query that is to be searched. |   
+| stage | String? | to filter companies on basis of verified or unverified companies. |   
+| pageNo | Int? | The page number to navigate through the given set of results |   
+| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
+
 
 
 This API allows to view all the locations asscoiated to a company.
+
+*Success Response*
+
+
+
+Company profile object. See example below or refer `LocationListSerializer` for details
+
+
+Schema: `LocationListSerializer`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#updateLocation
+#### createLocation
+Create a location asscoiated to a company.
+
+```kotlin
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the location is to be created. |  
+
+
+
+This API allows to create a location associated to a company.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateLocation
 Edit a location asscoiated to a company.
 
 ```kotlin
@@ -6916,21 +16225,42 @@ companyprofile.updateLocation(companyId: companyId, locationId: locationId, body
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location is to be created. | 
-| location_id | string | Id of the location which you want to edit. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the location is to be created. |   
+| locationId | String? | Id of the location which you want to edit. |  
+
 
 
 This API allows to edit a location associated to a company.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### CompanyProfile#getLocationDetail
+#### getLocationDetail
 Get details of a specific location.
 
 ```kotlin
@@ -6946,15 +16276,36 @@ companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).s
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location lies. | 
-| location_id | string | Id of the location which you want to view. | 
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the location lies. |   
+| locationId | String? | Id of the location which you want to view. |  
+
 
 
 This API helps to get data associated to a specific location.
+
+*Success Response*
+
+
+
+Brand object. See example below or refer `GetLocationSerializer` for details
+
+
+Schema: `GetLocationSerializer`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
 
 
 ---
@@ -6967,17 +16318,8 @@ This API helps to get data associated to a specific location.
 
 ## FileStorage
 
-```javascript
-const { Configuration, FileStorage } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const filestorage = new FileStorage(conf);
 
-```
-
-
-#### FileStorage#startUpload
+#### startUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
 ```kotlin
@@ -6993,12 +16335,11 @@ filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| namespace | string | bucket name | 
-| company_id | integer | company_id | 
+| --------- | ----  | --- | 
+| namespace | String? | bucket name |   
+| companyId | Int? | company_id |  
+
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -7021,11 +16362,33 @@ After successfully upload, call `completeUpload` api to complete the upload proc
 This operation will return the url for the uploaded file.
 
 
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StartResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
+
 
 ---
 
 
-#### FileStorage#completeUpload
+#### completeUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
 ```kotlin
@@ -7041,12 +16404,11 @@ filestorage.completeUpload(namespace: namespace, companyId: companyId, body: bod
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| namespace | string | bucket name | 
-| company_id | integer | company_id | 
+| --------- | ----  | --- | 
+| namespace | String? | bucket name |   
+| companyId | Int? | company_id |  
+
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -7069,11 +16431,33 @@ After successfully upload, call `completeUpload` api to complete the upload proc
 This operation will return the url for the uploaded file.
 
 
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CompleteResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
+
 
 ---
 
 
-#### FileStorage#appStartUpload
+#### appStartUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
 ```kotlin
@@ -7089,13 +16473,12 @@ filestorage.appStartUpload(namespace: namespace, companyId: companyId, applicati
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| namespace | string | bucket name | 
-| company_id | integer | company_id | 
-| application_id | string | application id | 
+| --------- | ----  | --- | 
+| namespace | String? | bucket name |   
+| companyId | Int? | company_id |   
+| applicationId | String? | application id |  
+
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -7118,11 +16501,33 @@ After successfully upload, call `appCompleteUpload` api to complete the upload p
 This operation will return the url for the uploaded file.
 
 
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StartResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
+
 
 ---
 
 
-#### FileStorage#appCompleteUpload
+#### appCompleteUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
 ```kotlin
@@ -7138,13 +16543,12 @@ filestorage.appCompleteUpload(namespace: namespace, companyId: companyId, applic
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| namespace | string | bucket name | 
-| company_id | integer | company_id | 
-| application_id | string | application id | 
+| --------- | ----  | --- | 
+| namespace | String? | bucket name |   
+| companyId | Int? | company_id |   
+| applicationId | String? | application id |  
+
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -7167,11 +16571,33 @@ After successfully upload, call `appCompleteUpload` api to complete the upload p
 This operation will return the url for the uploaded file.
 
 
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CompleteResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
+
 
 ---
 
 
-#### FileStorage#getSignUrls
+#### getSignUrls
 Explain here
 
 ```kotlin
@@ -7187,20 +16613,41 @@ filestorage.getSignUrls(companyId: companyId, body: body).safeAwait{ response,er
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |  
+
 
 
 Describe here
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SignUrlResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
 
 
 ---
 
 
-#### FileStorage#copyFiles
+#### copyFiles
 Copy Files
 
 ```kotlin
@@ -7216,21 +16663,42 @@ filestorage.copyFiles(sync: sync, companyId: companyId, body: body).safeAwait{ r
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| sync | boolean | sync | 
-| company_id | integer | company_id | 
+| --------- | ----  | --- | 
+| sync | Boolean? | sync |   
+| companyId | Int? | company_id |  
+
 
 
 Copy Files
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BulkResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
 
 
 ---
 
 
-#### FileStorage#appCopyFiles
+#### appCopyFiles
 Copy Files
 
 ```kotlin
@@ -7246,22 +16714,43 @@ filestorage.appCopyFiles(sync: sync, companyId: companyId, applicationId: applic
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| sync | boolean | sync | 
-| company_id | integer | company_id | 
-| application_id | integer | application_id | 
+| --------- | ----  | --- | 
+| sync | Boolean? | sync |   
+| companyId | Int? | company_id |   
+| applicationId | Int? | application_id |  
+
 
 
 Copy Files
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BulkResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
 
 
 ---
 
 
-#### FileStorage#browse
+#### browse
 Browse Files
 
 ```kotlin
@@ -7277,22 +16766,43 @@ filestorage.browse(namespace: namespace, companyId: companyId, pageNo: pageNo).s
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| namespace | string | bucket name | 
-| company_id | integer | company_id | 
-| page_no | integer | page no | 
+| --------- | ----  | --- | 
+| namespace | String? | bucket name |   
+| companyId | Int? | company_id |   
+| pageNo | Int? | page no |  
+
 
 
 Browse Files
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BrowseResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
 
 
 ---
 
 
-#### FileStorage#appBrowse
+#### appBrowse
 Browse Files
 
 ```kotlin
@@ -7308,23 +16818,44 @@ filestorage.appBrowse(namespace: namespace, companyId: companyId, applicationId:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| namespace | string | bucket name | 
-| company_id | integer | company_id | 
-| application_id | integer | application_id | 
-| page_no | integer | page no | 
+| --------- | ----  | --- | 
+| namespace | String? | bucket name |   
+| companyId | Int? | company_id |   
+| applicationId | Int? | application_id |   
+| pageNo | Int? | page no |  
+
 
 
 Browse Files
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BrowseResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `FailedResponse`
+
+
+
+
 
 
 ---
 
 
-#### FileStorage#proxy
+#### proxy
 Proxy
 
 ```kotlin
@@ -7340,15 +16871,27 @@ filestorage.proxy(companyId: companyId, url: url).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| url | string | url | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| url | String? | url |  
+
 
 
 Proxy
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `String`
+
+
+
+
 
 
 ---
@@ -7361,17 +16904,8 @@ Proxy
 
 ## Share
 
-```javascript
-const { Configuration, Share } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const share = new Share(conf);
 
-```
-
-
-#### Share#createShortLink
+#### createShortLink
 Create short link
 
 ```kotlin
@@ -7387,21 +16921,42 @@ share.createShortLink(companyId: companyId, applicationId: applicationId, body: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Create short link
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ShortLinkRes`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Share#getShortLinks
+#### getShortLinks
 Get short links
 
 ```kotlin
@@ -7417,26 +16972,47 @@ share.getShortLinks(companyId: companyId, applicationId: applicationId, pageNo: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| page_no | integer | Current page number | 
-| page_size | integer | Current page size | 
-| created_by | string | Short link creator | 
-| active | string | Short link active status | 
-| q | string | Search text for original and short url | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| pageNo | Int? | Current page number |   
+| pageSize | Int? | Current page size |   
+| createdBy | String? | Short link creator |   
+| active | String? | Short link active status |   
+| q | String? | Search text for original and short url |  
+
 
 
 Get short links
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ShortLinkList`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Share#getShortLinkByHash
+#### getShortLinkByHash
 Get short link by hash
 
 ```kotlin
@@ -7452,22 +17028,43 @@ share.getShortLinkByHash(companyId: companyId, applicationId: applicationId, has
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| hash | string | Hash of short url | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| hash | String? | Hash of short url |  
+
 
 
 Get short link by hash
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ShortLinkRes`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Share#updateShortLinkById
+#### updateShortLinkById
 Update short link by id
 
 ```kotlin
@@ -7483,16 +17080,37 @@ share.updateShortLinkById(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| id | string | Short link document identifier | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| id | String? | Short link document identifier |  
+
 
 
 Update short link by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ShortLinkRes`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
@@ -7505,17 +17123,8 @@ Update short link by id
 
 ## Inventory
 
-```javascript
-const { Configuration, Inventory } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const inventory = new Inventory(conf);
 
-```
-
-
-#### Inventory#getJobsByCompany
+#### getJobsByCompany
 Get Job Configs For A Company
 
 ```kotlin
@@ -7531,22 +17140,52 @@ inventory.getJobsByCompany(companyId: companyId, pageNo: pageNo, pageSize: pageS
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| page_no | integer | Page Number | 
-| page_size | integer | Page Size | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| pageNo | Int? | Page Number |   
+| pageSize | Int? | Page Size |  
+
 
 
 REST Endpoint that returns all job configs for a company
+
+*Success Response*
+
+
+
+Successful operation
+
+
+Schema: `ResponseEnvelopeListJobConfigRawDTO`
+
+
+
+
+
+Bad Request
+
+
+Schema: `ResponseEnvelopeListJobConfigRawDTO`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ResponseEnvelopeListJobConfigRawDTO`
+
+
+
+
 
 
 ---
 
 
-#### Inventory#updateJob
+#### updateJob
 Updates An Existing Job Config
 
 ```kotlin
@@ -7562,21 +17201,60 @@ inventory.updateJob(companyId: companyId, xUserData: xUserData, body: body).safe
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| x-user-data | string |  | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| xUserData | String? |  |  
+
 
 
 REST Endpoint that updates a job config
+
+*Success Response*
+
+
+
+Job Config Updated Successfully
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
+
+Bad Request
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
+
+Unauthorized
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
 
 
 ---
 
 
-#### Inventory#createJob
+#### createJob
 Creates A New Job Config
 
 ```kotlin
@@ -7592,21 +17270,69 @@ inventory.createJob(companyId: companyId, xUserData: xUserData, body: body).safe
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| x-user-data | string |  | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| xUserData | String? |  |  
+
 
 
 REST Endpoint that creates a new job config
+
+*Success Response*
+
+
+
+Job Config Created Successfully
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
+
+Bad Request
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
+
+Unauthorized
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
+
+Job Config Already Exists
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ResponseEnvelopeString`
+
+
+
+
 
 
 ---
 
 
-#### Inventory#getJobByCompanyAndIntegration
+#### getJobByCompanyAndIntegration
 Get Job Configs By Company And Integration
 
 ```kotlin
@@ -7622,23 +17348,53 @@ inventory.getJobByCompanyAndIntegration(companyId: companyId, integrationId: int
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| integration_id | string | Integration Id | 
-| page_no | integer | Page Number | 
-| page_size | integer | Page Size | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| integrationId | String? | Integration Id |   
+| pageNo | Int? | Page Number |   
+| pageSize | Int? | Page Size |  
+
 
 
 REST Endpoint that returns all job configs by company And integration
+
+*Success Response*
+
+
+
+Successful operation
+
+
+Schema: `ResponseEnvelopeListJobConfigDTO`
+
+
+
+
+
+Bad Request
+
+
+Schema: `ResponseEnvelopeListJobConfigDTO`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ResponseEnvelopeListJobConfigDTO`
+
+
+
+
 
 
 ---
 
 
-#### Inventory#getJobConfigDefaults
+#### getJobConfigDefaults
 Get Job Configs Defaults
 
 ```kotlin
@@ -7654,20 +17410,50 @@ inventory.getJobConfigDefaults(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |  
+
 
 
 REST Endpoint that returns default fields job configs by company And integration
+
+*Success Response*
+
+
+
+Successful operation
+
+
+Schema: `ResponseEnvelopeJobConfigDTO`
+
+
+
+
+
+Bad Request
+
+
+Schema: `ResponseEnvelopeJobConfigDTO`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ResponseEnvelopeJobConfigDTO`
+
+
+
+
 
 
 ---
 
 
-#### Inventory#getJobByCode
+#### getJobByCode
 Get Job Config By Code
 
 ```kotlin
@@ -7683,21 +17469,51 @@ inventory.getJobByCode(companyId: companyId, code: code).safeAwait{ response,err
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| code | string | Job Code | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| code | String? | Job Code |  
+
 
 
 REST Endpoint that returns job config by code
+
+*Success Response*
+
+
+
+Successful operation
+
+
+Schema: `ResponseEnvelopeJobConfigDTO`
+
+
+
+
+
+Bad Request
+
+
+Schema: `ResponseEnvelopeJobConfigDTO`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ResponseEnvelopeJobConfigDTO`
+
+
+
+
 
 
 ---
 
 
-#### Inventory#getJobCodesByCompanyAndIntegration
+#### getJobCodesByCompanyAndIntegration
 Get Job Codes By Company And Integration
 
 ```kotlin
@@ -7713,17 +17529,47 @@ inventory.getJobCodesByCompanyAndIntegration(companyId: companyId, integrationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | Company Id | 
-| integration_id | string | Integration Id | 
-| page_no | integer | Page Number | 
-| page_size | integer | Page Size | 
+| --------- | ----  | --- | 
+| companyId | Int? | Company Id |   
+| integrationId | String? | Integration Id |   
+| pageNo | Int? | Page Number |   
+| pageSize | Int? | Page Size |  
+
 
 
 REST Endpoint that returns all job codes by company And integration
+
+*Success Response*
+
+
+
+Successful operation
+
+
+Schema: `ResponseEnvelopeListJobConfigListDTO`
+
+
+
+
+
+Bad Request
+
+
+Schema: `ResponseEnvelopeListJobConfigListDTO`
+
+
+
+
+
+Internal Server Error
+
+
+Schema: `ResponseEnvelopeListJobConfigListDTO`
+
+
+
+
 
 
 ---
@@ -7736,17 +17582,8 @@ REST Endpoint that returns all job codes by company And integration
 
 ## Configuration
 
-```javascript
-const { Configuration, Configuration } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const configuration = new Configuration(conf);
 
-```
-
-
-#### Configuration#getBuildConfig
+#### getBuildConfig
 Get latest build config
 
 ```kotlin
@@ -7762,22 +17599,34 @@ configuration.getBuildConfig(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| platform_type | string | Current platform name | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| platformType | String? | Current platform name |  
+
 
 
 Get latest build config
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MobileAppConfiguration`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateBuildConfig
+#### updateBuildConfig
 Update build config for next build
 
 ```kotlin
@@ -7793,22 +17642,34 @@ configuration.updateBuildConfig(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| platform_type | string | Current platform name | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| platformType | String? | Current platform name |  
+
 
 
 Update build config for next build
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MobileAppConfiguration`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getPreviousVersions
+#### getPreviousVersions
 Get previous versions
 
 ```kotlin
@@ -7824,22 +17685,34 @@ configuration.getPreviousVersions(companyId: companyId, applicationId: applicati
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| platform_type | string | Current platform name | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| platformType | String? | Current platform name |  
+
 
 
 Get previous versions
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BuildVersionHistory`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAppFeatures
+#### getAppFeatures
 Get features of application
 
 ```kotlin
@@ -7855,21 +17728,42 @@ configuration.getAppFeatures(companyId: companyId, applicationId: applicationId)
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get features of application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AppFeatureResponse`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateAppFeatures
+#### updateAppFeatures
 Update features of application
 
 ```kotlin
@@ -7885,21 +17779,33 @@ configuration.updateAppFeatures(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Update features of application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AppFeature`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAppBasicDetails
+#### getAppBasicDetails
 Get basic application details
 
 ```kotlin
@@ -7915,21 +17821,33 @@ configuration.getAppBasicDetails(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get basic application details like name
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationDetail`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateAppBasicDetails
+#### updateAppBasicDetails
 Add or update application's basic details
 
 ```kotlin
@@ -7945,21 +17863,33 @@ configuration.updateAppBasicDetails(companyId: companyId, applicationId: applica
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Add or update application's basic details
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationDetail`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAppContactInfo
+#### getAppContactInfo
 Get application information
 
 ```kotlin
@@ -7975,21 +17905,33 @@ configuration.getAppContactInfo(companyId: companyId, applicationId: application
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationInformation`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateAppContactInfo
+#### updateAppContactInfo
 Get application information
 
 ```kotlin
@@ -8005,21 +17947,33 @@ configuration.updateAppContactInfo(companyId: companyId, applicationId: applicat
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Save Application Current Information. This includes information about social links, address and contact information of an application.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationInformation`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAppApiTokens
+#### getAppApiTokens
 Get social tokens
 
 ```kotlin
@@ -8035,21 +17989,33 @@ configuration.getAppApiTokens(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get social tokens.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TokenResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateAppApiTokens
+#### updateAppApiTokens
 Add social tokens
 
 ```kotlin
@@ -8065,21 +18031,33 @@ configuration.updateAppApiTokens(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Add social tokens.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TokenResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAppCompanies
+#### getAppCompanies
 Application inventory enabled companies
 
 ```kotlin
@@ -8095,23 +18073,35 @@ configuration.getAppCompanies(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Application inventory enabled companies.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CompaniesResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAppStores
+#### getAppStores
 Application inventory enabled stores
 
 ```kotlin
@@ -8127,23 +18117,35 @@ configuration.getAppStores(companyId: companyId, applicationId: applicationId, p
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Application inventory enabled stores.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StoresResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getInventoryConfig
+#### getInventoryConfig
 Get application configuration
 
 ```kotlin
@@ -8159,21 +18161,33 @@ configuration.getInventoryConfig(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get application configuration for various features and data
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationInventory`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateInventoryConfig
+#### updateInventoryConfig
 Update application configuration
 
 ```kotlin
@@ -8189,21 +18203,33 @@ configuration.updateInventoryConfig(companyId: companyId, applicationId: applica
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Update application configuration for various features and data
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationInventory`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#partiallyUpdateInventoryConfig
+#### partiallyUpdateInventoryConfig
 Partially update application configuration
 
 ```kotlin
@@ -8219,21 +18245,33 @@ configuration.partiallyUpdateInventoryConfig(companyId: companyId, applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Partially update application configuration for various features and data
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationInventory`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAppCurrencyConfig
+#### getAppCurrencyConfig
 Get application enabled currency list
 
 ```kotlin
@@ -8249,21 +18287,33 @@ configuration.getAppCurrencyConfig(companyId: companyId, applicationId: applicat
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get application enabled currency list
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AppSupportedCurrency`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateAppCurrencyConfig
+#### updateAppCurrencyConfig
 Add initial application supported currency
 
 ```kotlin
@@ -8279,21 +18329,33 @@ configuration.updateAppCurrencyConfig(companyId: companyId, applicationId: appli
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Add initial application supported currency for various features and data. Default INR will be enabled.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AppSupportedCurrency`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getOrderingStoresByFilter
+#### getOrderingStoresByFilter
 Get ordering store by filter
 
 ```kotlin
@@ -8309,23 +18371,35 @@ configuration.getOrderingStoresByFilter(companyId: companyId, applicationId: app
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Get ordering store by filter
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `OrderingStores`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#updateOrderingStoreConfig
+#### updateOrderingStoreConfig
 Add/Update ordering store config
 
 ```kotlin
@@ -8341,21 +18415,42 @@ configuration.updateOrderingStoreConfig(companyId: companyId, applicationId: app
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Add/Update ordering store config.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DeploymentMeta`
+
+
+
+
+
+Invalid/Missing params
+
+
+Schema: `InvalidPayloadRequest`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getDomains
+#### getDomains
 Get attached domain list
 
 ```kotlin
@@ -8371,21 +18466,33 @@ configuration.getDomains(companyId: companyId, applicationId: applicationId).saf
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get attached domain list.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DomainsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#addDomain
+#### addDomain
 Add new domain to application
 
 ```kotlin
@@ -8401,21 +18508,42 @@ configuration.addDomain(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Add new domain to application.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Domain`
+
+
+
+
+
+Invalid/Missing params
+
+
+Schema: `InvalidPayloadRequest`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#removeDomainById
+#### removeDomainById
 Remove attached domain
 
 ```kotlin
@@ -8431,22 +18559,52 @@ configuration.removeDomainById(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| id | string | Domain _id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| id | String? | Domain _id |  
+
 
 
 Remove attached domain.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SuccessMessageResponse`
+
+
+
+
+
+Invalid request or Missing params
+
+
+Schema: `InvalidPayloadRequest`
+
+
+
+
+
+Invalid/Missing params
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#changeDomainType
+#### changeDomainType
 Change domain type
 
 ```kotlin
@@ -8462,21 +18620,42 @@ configuration.changeDomainType(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Change a domain to Primary or Shortlink domain
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DomainsResponse`
+
+
+
+
+
+Invalid/Missing params
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getDomainStatus
+#### getDomainStatus
 Get domain connected status.
 
 ```kotlin
@@ -8492,21 +18671,33 @@ configuration.getDomainStatus(companyId: companyId, applicationId: applicationId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get domain connected status. Check if domain is live and mapped to appropriate IP to fynd servers.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DomainStatusResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#createApplication
+#### createApplication
 Create application
 
 ```kotlin
@@ -8522,20 +18713,32 @@ configuration.createApplication(companyId: companyId, body: body).safeAwait{ res
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |  
+
 
 
 Create new application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CreateAppResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getApplications
+#### getApplications
 Get list of application under company
 
 ```kotlin
@@ -8551,23 +18754,35 @@ configuration.getApplications(companyId: companyId, pageNo: pageNo, pageSize: pa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| page_no | integer |  | 
-| page_size | integer |  | 
-| q | string | Url encoded object used as mongodb query | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| pageNo | Int? |  |   
+| pageSize | Int? |  |   
+| q | String? | Url encoded object used as mongodb query |  
+
 
 
 Get list of application under company
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ApplicationsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getApplicationById
+#### getApplicationById
 Get application data from id
 
 ```kotlin
@@ -8583,21 +18798,33 @@ configuration.getApplicationById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |  
+
 
 
 Get application data from id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Application`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getCurrencies
+#### getCurrencies
 Get all currencies
 
 ```kotlin
@@ -8613,20 +18840,32 @@ configuration.getCurrencies(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |  
+
 
 
 Get all currencies
+
+*Success Response*
+
+
+
+Currencies Success response
+
+
+Schema: `CurrenciesResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getDomainAvailibility
+#### getDomainAvailibility
 Check domain availibility before linking to application
 
 ```kotlin
@@ -8642,20 +18881,32 @@ configuration.getDomainAvailibility(companyId: companyId, body: body).safeAwait{
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |  
+
 
 
 Check domain availibility before linking to application. Also sends domain suggestions with similar to queried domain. \ Custom domain search is currently powered by GoDaddy provider.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DomainSuggestionsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getIntegrationById
+#### getIntegrationById
 Get integration data
 
 ```kotlin
@@ -8671,21 +18922,33 @@ configuration.getIntegrationById(companyId: companyId, id: id).safeAwait{ respon
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| id | integer | Integration id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| id | Int? | Integration id |  
+
 
 
 Get integration data
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Integration`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getAvailableOptIns
+#### getAvailableOptIns
 Get all available integration opt-ins
 
 ```kotlin
@@ -8701,22 +18964,34 @@ configuration.getAvailableOptIns(companyId: companyId, pageNo: pageNo, pageSize:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Get all available integration opt-ins
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetIntegrationsOptInsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getSelectedOptIns
+#### getSelectedOptIns
 Get company/store level integration opt-ins
 
 ```kotlin
@@ -8732,24 +19007,36 @@ configuration.getSelectedOptIns(companyId: companyId, level: level, uid: uid, pa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| level | string | Integration level | 
-| uid | integer | Integration level uid | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| level | String? | Integration level |   
+| uid | Int? | Integration level uid |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Get company/store level integration opt-ins
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetIntegrationsOptInsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getIntegrationLevelConfig
+#### getIntegrationLevelConfig
 Get integration level config
 
 ```kotlin
@@ -8765,24 +19052,36 @@ configuration.getIntegrationLevelConfig(companyId: companyId, id: id, level: lev
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| id | string | Integration id | 
-| level | string | Integration level | 
-| opted | boolean | Filter on opted stores | 
-| check_permission | boolean | Filter on if permissions are present | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| id | String? | Integration id |   
+| level | String? | Integration level |   
+| opted | Boolean? | Filter on opted stores |   
+| checkPermission | Boolean? | Filter on if permissions are present |  
+
 
 
 Get integration level config
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `IntegrationConfigResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getIntegrationByLevelId
+#### getIntegrationByLevelId
 Get level data for integration
 
 ```kotlin
@@ -8798,23 +19097,35 @@ configuration.getIntegrationByLevelId(companyId: companyId, id: id, level: level
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| id | string | Integration id | 
-| level | string | Integration level | 
-| uid | integer | Integration level uid | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| id | String? | Integration id |   
+| level | String? | Integration level |   
+| uid | Int? | Integration level uid |  
+
 
 
 Get level data for integration
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `IntegrationLevel`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getLevelActiveIntegrations
+#### getLevelActiveIntegrations
 Check store has active integration
 
 ```kotlin
@@ -8830,23 +19141,35 @@ configuration.getLevelActiveIntegrations(companyId: companyId, id: id, level: le
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| id | string | Integration id | 
-| level | string | Integration level | 
-| uid | integer | Integration level uid | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| id | String? | Integration id |   
+| level | String? | Integration level |   
+| uid | Int? | Integration level uid |  
+
 
 
 API checks if a store is already opted in any other integrations
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `OptedStoreIntegration`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getBrandsByCompany
+#### getBrandsByCompany
 Get brands by company
 
 ```kotlin
@@ -8862,21 +19185,33 @@ configuration.getBrandsByCompany(companyId: companyId, q: q).safeAwait{ response
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| q | string | Search text for brand name | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| q | String? | Search text for brand name |  
+
 
 
 Get brands by company
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BrandsByCompanyResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getCompanyByBrands
+#### getCompanyByBrands
 Get company by brand uids
 
 ```kotlin
@@ -8892,22 +19227,34 @@ configuration.getCompanyByBrands(companyId: companyId, pageNo: pageNo, pageSize:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Get company by brand uids
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CompanyByBrandsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getStoreByBrands
+#### getStoreByBrands
 Get stores by brand uids
 
 ```kotlin
@@ -8923,22 +19270,34 @@ configuration.getStoreByBrands(companyId: companyId, pageNo: pageNo, pageSize: p
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Get stores by brand uids
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StoreByBrandsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getOtherSellerApplications
+#### getOtherSellerApplications
 Get other seller applications
 
 ```kotlin
@@ -8954,22 +19313,34 @@ configuration.getOtherSellerApplications(companyId: companyId, pageNo: pageNo, p
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| page_no | integer | Current page no | 
-| page_size | integer | Current request items count | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |  
+
 
 
 Get other seller applications who has opted current company as inventory
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `OtherSellerApplications`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#getOtherSellerApplicationById
+#### getOtherSellerApplicationById
 Get other seller applications
 
 ```kotlin
@@ -8985,21 +19356,42 @@ configuration.getOtherSellerApplicationById(companyId: companyId, id: id).safeAw
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| id | String? | Application Id |  
+
 
 
 Get other seller application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `OptedApplicationResponse`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
 
 
-#### Configuration#optOutFromApplication
+#### optOutFromApplication
 Opt out company or store from other seller application
 
 ```kotlin
@@ -9015,15 +19407,45 @@ configuration.optOutFromApplication(companyId: companyId, id: id, body: body).sa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| id | String? | Application Id |  
+
 
 
 Opt out company or store from other seller application
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SuccessMessageResponse`
+
+
+
+
+
+Invalid params or Not configured inventory
+
+
+Schema: `InvalidPayloadRequest`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
 
 
 ---
@@ -9036,17 +19458,8 @@ Opt out company or store from other seller application
 
 ## Cart
 
-```javascript
-const { Configuration, Cart } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const cart = new Cart(conf);
 
-```
-
-
-#### Cart#getCoupons
+#### getCoupons
 Get with single coupon details or coupon list
 
 ```kotlin
@@ -9062,29 +19475,41 @@ cart.getCoupons(companyId: companyId, applicationId: applicationId, pageNo: page
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| page_no | integer |  | 
-| page_size | integer |  | 
-| is_archived | boolean |  | 
-| title | string |  | 
-| is_public | boolean |  | 
-| is_display | boolean |  | 
-| type_slug | string |  | 
-| code | string |  | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current Application _id |   
+| pageNo | Int? |  |   
+| pageSize | Int? |  |   
+| isArchived | Boolean? |  |   
+| title | String? |  |   
+| isPublic | Boolean? |  |   
+| isDisplay | Boolean? |  |   
+| typeSlug | String? |  |   
+| code | String? |  |  
+
 
 
 Get coupon list with pagination
+
+*Success Response*
+
+
+
+Coupon List for sent page_size and page_no
+
+
+Schema: `CouponsResponse`
+
+
+
+
 
 
 ---
 
 
-#### Cart#createCoupon
+#### createCoupon
 Create new coupon
 
 ```kotlin
@@ -9100,21 +19525,42 @@ cart.createCoupon(companyId: companyId, applicationId: applicationId, body: body
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current Application _id |  
+
 
 
 Create new coupon
+
+*Success Response*
+
+
+
+Coupon Created successfully
+
+
+Schema: `SuccessMessage`
+
+
+
+
+
+Invalid coupon data or existing coupon code
+
+
+Schema: `OperationErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### Cart#getCouponById
+#### getCouponById
 Get with single coupon details or coupon list
 
 ```kotlin
@@ -9130,22 +19576,43 @@ cart.getCouponById(companyId: companyId, applicationId: applicationId, id: id).s
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| id | string |  | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current Application _id |   
+| id | String? |  |  
+
 
 
 Get single coupon details with `id` in path param
+
+*Success Response*
+
+
+
+Coupon object for sent `id`
+
+
+Schema: `CouponUpdate`
+
+
+
+
+
+Coupon not found for passed `id`
+
+
+Schema: `OperationErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### Cart#updateCoupon
+#### updateCoupon
 Update existing coupon configuration
 
 ```kotlin
@@ -9161,22 +19628,43 @@ cart.updateCoupon(companyId: companyId, applicationId: applicationId, id: id, bo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| id | string |  | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current Application _id |   
+| id | String? |  |  
+
 
 
 Update coupon with id sent in `id`
+
+*Success Response*
+
+
+
+Coupon updated successfully
+
+
+Schema: `SuccessMessage`
+
+
+
+
+
+Coupon not found for `id` from path params
+
+
+Schema: `OperationErrorResponse`
+
+
+
+
 
 
 ---
 
 
-#### Cart#updateCouponPartially
+#### updateCouponPartially
 Update coupon archive state and schedule
 
 ```kotlin
@@ -9192,16 +19680,37 @@ cart.updateCouponPartially(companyId: companyId, applicationId: applicationId, i
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current Application _id | 
-| id | string |  | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current Application _id |   
+| id | String? |  |  
+
 
 
 Update archive/unarchive and change schedule for coupon
+
+*Success Response*
+
+
+
+Coupon updated successfully
+
+
+Schema: `SuccessMessage`
+
+
+
+
+
+Coupon not found for `id` from path params
+
+
+Schema: `OperationErrorResponse`
+
+
+
+
 
 
 ---
@@ -9214,17 +19723,8 @@ Update archive/unarchive and change schedule for coupon
 
 ## Marketplaces
 
-```javascript
-const { Configuration, Marketplaces } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const marketplaces = new Marketplaces(conf);
 
-```
-
-
-#### Marketplaces#getAvailableChannels
+#### getAvailableChannels
 Get available marketplace channels
 
 ```kotlin
@@ -9240,20 +19740,41 @@ marketplaces.getAvailableChannels(companyId: companyId).safeAwait{ response,erro
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Get available marketplace channels
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `HashMap<String,Any>`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#getChannels
+#### getChannels
 Get all registered marketplace channels for a seller
 
 ```kotlin
@@ -9269,20 +19790,41 @@ marketplaces.getChannels(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Get all registered marketplace channels for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `HashMap<String,Any>`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#getChannel
+#### getChannel
 Get registered marketplace channel credential configuration for a seller
 
 ```kotlin
@@ -9298,21 +19840,42 @@ marketplaces.getChannel(companyId: companyId, channel: channel).safeAwait{ respo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| channel | String? | Name of marketplace channel |  
+
 
 
 Get registered marketplace channel credentials configuration for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `HashMap<String,Any>`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#registerMyntraChannel
+#### registerMyntraChannel
 Create Myntra marketplace channel for a seller
 
 ```kotlin
@@ -9328,20 +19891,41 @@ marketplaces.registerMyntraChannel(companyId: companyId, body: body).safeAwait{ 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Create Myntra marketplace channel for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateMyntraChannelCredentials
+#### updateMyntraChannelCredentials
 Update Myntra marketplace channel credentials for a seller
 
 ```kotlin
@@ -9357,20 +19941,41 @@ marketplaces.updateMyntraChannelCredentials(companyId: companyId, body: body).sa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Update Myntra marketplace channel credentials for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#registerAmazonChannel
+#### registerAmazonChannel
 Create Amazon marketplace channel for a seller
 
 ```kotlin
@@ -9386,20 +19991,41 @@ marketplaces.registerAmazonChannel(companyId: companyId, body: body).safeAwait{ 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Create Amazon marketplace channel for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateAmazonChannelCredentials
+#### updateAmazonChannelCredentials
 Update Amazon marketplace channel credentials for a seller
 
 ```kotlin
@@ -9415,20 +20041,41 @@ marketplaces.updateAmazonChannelCredentials(companyId: companyId, body: body).sa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Update Amazon marketplace channel credentials for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#registerFlipkartChannel
+#### registerFlipkartChannel
 Create Flipkart / Flipkart Assured marketplace channel for a seller
 
 ```kotlin
@@ -9444,21 +20091,42 @@ marketplaces.registerFlipkartChannel(companyId: companyId, flipkartChannel: flip
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| flipkart_channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| flipkartChannel | String? | Name of marketplace channel |  
+
 
 
 Create Flipkart / Flipkart Assured marketplace channel for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateFlipkartChannelCredentials
+#### updateFlipkartChannelCredentials
 Update Flipkart / Flipkart Assured marketplace channel credentials for a seller
 
 ```kotlin
@@ -9474,21 +20142,42 @@ marketplaces.updateFlipkartChannelCredentials(companyId: companyId, flipkartChan
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| flipkart_channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| flipkartChannel | String? | Name of marketplace channel |  
+
 
 
 Update Flipkart / Flipkart Assured marketplace channel credentials for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#registerTatacliqChannel
+#### registerTatacliqChannel
 Create Tatacliq / Tatacliq Luxury marketplace channel for a seller
 
 ```kotlin
@@ -9504,21 +20193,42 @@ marketplaces.registerTatacliqChannel(companyId: companyId, tatacliqChannel: tata
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| tatacliq_channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| tatacliqChannel | String? | Name of marketplace channel |  
+
 
 
 Create Tatacliq / Tatacliq Luxury marketplace channel for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateTatacliqChannelCredentials
+#### updateTatacliqChannelCredentials
 Update Tatacliq / Tatacliq Luxury Assured marketplace channel credentials for a seller
 
 ```kotlin
@@ -9534,21 +20244,42 @@ marketplaces.updateTatacliqChannelCredentials(companyId: companyId, tatacliqChan
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| tatacliq_channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| tatacliqChannel | String? | Name of marketplace channel |  
+
 
 
 Update Tatacliq / Tatacliq Luxury marketplace channel credentials for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#registerAjioChannel
+#### registerAjioChannel
 Create Ajio marketplace channel for a seller
 
 ```kotlin
@@ -9564,20 +20295,41 @@ marketplaces.registerAjioChannel(companyId: companyId, body: body).safeAwait{ re
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Create Ajio marketplace channel for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateAjioChannelCredentials
+#### updateAjioChannelCredentials
 Update Ajio marketplace channel credentials for a seller
 
 ```kotlin
@@ -9593,20 +20345,41 @@ marketplaces.updateAjioChannelCredentials(companyId: companyId, body: body).safe
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |  
+
 
 
 Update Ajio marketplace channel credentials for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateChannelInventorySyncConfig
+#### updateChannelInventorySyncConfig
 Update inventory sync configuration of marketplace channel for a seller
 
 ```kotlin
@@ -9622,22 +20395,43 @@ marketplaces.updateChannelInventorySyncConfig(companyId: companyId, channel: cha
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| channel | string | Name of marketplace channel | 
-| validate_cred | string | Validate marketplace cred while saving inventory config | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| channel | String? | Name of marketplace channel |   
+| validateCred | String? | Validate marketplace cred while saving inventory config |  
+
 
 
 Update inventory sync configuration of marketplace channel for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `MkpResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#getChannelLocationConfig
+#### getChannelLocationConfig
 Get marketplace channel location config for a seller
 
 ```kotlin
@@ -9653,21 +20447,42 @@ marketplaces.getChannelLocationConfig(companyId: companyId, channel: channel).sa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| channel | String? | Name of marketplace channel |  
+
 
 
 Get marketplace channel location config for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StoreMapping`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateChannelLocationConfig
+#### updateChannelLocationConfig
 update marketplace channel location config for a seller
 
 ```kotlin
@@ -9683,21 +20498,42 @@ marketplaces.updateChannelLocationConfig(companyId: companyId, channel: channel,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| channel | String? | Name of marketplace channel |  
+
 
 
 update marketplace channel location config for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StoreMapping`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#getChannelStatus
+#### getChannelStatus
 Get marketplace channel active status for a seller
 
 ```kotlin
@@ -9713,21 +20549,42 @@ marketplaces.getChannelStatus(companyId: companyId, channel: channel).safeAwait{
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| channel | String? | Name of marketplace channel |  
+
 
 
 Get marketplace channel active status for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StatusPayload`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#updateChannelStatus
+#### updateChannelStatus
 Update marketplace channel active status for a seller
 
 ```kotlin
@@ -9743,21 +20600,42 @@ marketplaces.updateChannelStatus(companyId: companyId, channel: channel, body: b
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| channel | string | Name of marketplace channel | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| channel | String? | Name of marketplace channel |  
+
 
 
 Update marketplace channel active status for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StatusResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Marketplaces#triggerChannelInventoryUpdates
+#### triggerChannelInventoryUpdates
 Trigger marketplace channel inventory updates for a seller
 
 ```kotlin
@@ -9773,16 +20651,37 @@ marketplaces.triggerChannelInventoryUpdates(companyId: companyId, channel: chann
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| channel | string | Name of marketplace channel | 
-| update_type | string | Inventory update type | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| channel | String? | Name of marketplace channel |   
+| updateType | String? | Inventory update type |  
+
 
 
 Trigger marketplace channel inventory updates for a seller
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SyncResp`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
@@ -9795,17 +20694,8 @@ Trigger marketplace channel inventory updates for a seller
 
 ## Rewards
 
-```javascript
-const { Configuration, Rewards } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const rewards = new Rewards(conf);
 
-```
-
-
-#### Rewards#getGiveaways
+#### getGiveaways
 List of giveaways of the current application.
 
 ```kotlin
@@ -9821,23 +20711,44 @@ rewards.getGiveaways(companyId: companyId, applicationId: applicationId, pageId:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| page_id | string | pagination page id | 
-| page_size | integer | pagination page size | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| pageId | String? | pagination page id |   
+| pageSize | Int? | pagination page size |  
+
 
 
 List of giveaways of the current application.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `GiveawayResponse`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#createGiveaway
+#### createGiveaway
 Adds a new giveaway.
 
 ```kotlin
@@ -9853,21 +20764,42 @@ rewards.createGiveaway(companyId: companyId, applicationId: applicationId, body:
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |  
+
 
 
 Adds a new giveaway.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `Giveaway`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#getGiveawayByID
+#### getGiveawayByID
 Get giveaway by ID.
 
 ```kotlin
@@ -9883,22 +20815,43 @@ rewards.getGiveawayByID(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| id | string | Giveaway ID | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| id | String? | Giveaway ID |  
+
 
 
 Get giveaway by ID.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `Giveaway`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#updateGiveaway
+#### updateGiveaway
 Updates the giveaway by it's ID.
 
 ```kotlin
@@ -9914,22 +20867,43 @@ rewards.updateGiveaway(companyId: companyId, applicationId: applicationId, id: i
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| id | string | Giveaway ID | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| id | String? | Giveaway ID |  
+
 
 
 Updates the giveaway by it's ID.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `Giveaway`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#getOffers
+#### getOffers
 List of offer of the current application.
 
 ```kotlin
@@ -9945,21 +20919,42 @@ rewards.getOffers(companyId: companyId, applicationId: applicationId).safeAwait{
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |  
+
 
 
 List of offer of the current application.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `ArrayList<Offer>`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#getOfferByName
+#### getOfferByName
 Get offer by name.
 
 ```kotlin
@@ -9975,23 +20970,44 @@ rewards.getOfferByName(companyId: companyId, applicationId: applicationId, cooki
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| cookie | string | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. | 
-| name | string | Offer name | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| cookie | String? | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |   
+| name | String? | Offer name |  
+
 
 
 Get offer by name.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `Offer`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#updateOfferByName
+#### updateOfferByName
 Updates the offer by name.
 
 ```kotlin
@@ -10007,22 +21023,43 @@ rewards.updateOfferByName(companyId: companyId, applicationId: applicationId, na
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| name | string | Offer name | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| name | String? | Offer name |  
+
 
 
 Updates the offer by name.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `Offer`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#getUserAvailablePoints
+#### getUserAvailablePoints
 User's reward details.
 
 ```kotlin
@@ -10038,22 +21075,43 @@ rewards.getUserAvailablePoints(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| user_id | string | user id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| userId | String? | user id |  
+
 
 
 User's reward details.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `UserRes`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#updateUserStatus
+#### updateUserStatus
 Update User status
 
 ```kotlin
@@ -10069,22 +21127,43 @@ rewards.updateUserStatus(companyId: companyId, applicationId: applicationId, use
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| user_id | string | user id | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| userId | String? | user id |  
+
 
 
 Update user status, active/archive
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AppUser`
+
+
+
+
+
+Bad Request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
 
 
-#### Rewards#getUserPointsHistory
+#### getUserPointsHistory
 Get list of points transactions.
 
 ```kotlin
@@ -10100,20 +21179,41 @@ rewards.getUserPointsHistory(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | company id | 
-| application_id | string | application id | 
-| user_id | string | user id | 
-| page_id | string | PageID is the ID of the requested page. For first request it should be kept empty. | 
-| page_limit | integer | PageLimit is the number of requested items in response. | 
-| page_size | integer | PageSize is the number of requested items in response. | 
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| applicationId | String? | application id |   
+| userId | String? | user id |   
+| pageId | String? | PageID is the ID of the requested page. For first request it should be kept empty. |   
+| pageLimit | Int? | PageLimit is the number of requested items in response. |   
+| pageSize | Int? | PageSize is the number of requested items in response. |  
+
 
 
 Get list of points transactions.
 The list of points history is paginated.
+
+*Success Response*
+
+
+
+ok
+
+
+Schema: `HistoryRes`
+
+
+
+
+
+Bad request
+
+
+Schema: `E`
+
+
+
+
 
 
 ---
@@ -10126,17 +21226,8 @@ The list of points history is paginated.
 
 ## Analytics
 
-```javascript
-const { Configuration, Analytics } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const analytics = new Analytics(conf);
 
-```
-
-
-#### Analytics#getStatiscticsGroups
+#### getStatiscticsGroups
 Get statistics groups
 
 ```kotlin
@@ -10152,21 +21243,42 @@ analytics.getStatiscticsGroups(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |  
+
 
 
 Get statistics groups
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StatsGroups`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getStatiscticsGroupComponents
+#### getStatiscticsGroupComponents
 Get statistics group components
 
 ```kotlin
@@ -10182,22 +21294,43 @@ analytics.getStatiscticsGroupComponents(companyId: companyId, applicationId: app
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| group_name | string | Group name | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| groupName | String? | Group name |  
+
 
 
 Get statistics group components
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StatsGroupComponents`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getComponentStatsCSV
+#### getComponentStatsCSV
 Get component statistics csv
 
 ```kotlin
@@ -10213,22 +21346,43 @@ analytics.getComponentStatsCSV(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| component_name | string | Component name | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| componentName | String? | Component name |  
+
 
 
 Get component statistics csv
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `String`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getComponentStatsPDF
+#### getComponentStatsPDF
 Get component statistics pdf
 
 ```kotlin
@@ -10244,22 +21398,43 @@ analytics.getComponentStatsPDF(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| component_name | string | Component name | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| componentName | String? | Component name |  
+
 
 
 Get component statistics pdf
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `String`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getComponentStats
+#### getComponentStats
 Get component statistics
 
 ```kotlin
@@ -10275,22 +21450,43 @@ analytics.getComponentStats(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| component_name | string | Component name | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| componentName | String? | Component name |  
+
 
 
 Get component statistics
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `StatsRes`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getAbandonCartList
+#### getAbandonCartList
 Get abandon carts list
 
 ```kotlin
@@ -10306,25 +21502,46 @@ analytics.getAbandonCartList(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| from_date | string | From date | 
-| to_date | string | To date | 
-| page_no | integer | Current page number | 
-| page_size | integer | Current page size | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| fromDate | String? | From date |   
+| toDate | String? | To date |   
+| pageNo | Int? | Current page number |   
+| pageSize | Int? | Current page size |  
+
 
 
 Get abandon carts list
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AbandonCartsList`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getAbandonCartsCSV
+#### getAbandonCartsCSV
 Get abandon carts csv
 
 ```kotlin
@@ -10340,23 +21557,44 @@ analytics.getAbandonCartsCSV(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| from_date | string | From date | 
-| to_date | string | To date | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| fromDate | String? | From date |   
+| toDate | String? | To date |  
+
 
 
 Get abandon carts csv
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `String`
+
+
+
+
+
+Error
+
+
+Schema: `ErrorRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getAbandonCartDetail
+#### getAbandonCartDetail
 Get abandon carts details
 
 ```kotlin
@@ -10372,22 +21610,34 @@ analytics.getAbandonCartDetail(companyId: companyId, applicationId: applicationI
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| application_id | string | Application Id | 
-| cart_id | string | Cart Id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| applicationId | String? | Application Id |   
+| cartId | String? | Cart Id |  
+
 
 
 Get abandon cart details
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AbandonCartDetail`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#createExportJob
+#### createExportJob
 Create data export job in required format
 
 ```kotlin
@@ -10403,21 +21653,33 @@ analytics.createExportJob(companyId: companyId, exportType: exportType, body: bo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| export_type | string | Export type / format | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| exportType | String? | Export type / format |  
+
 
 
 Create data export job in required format
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ExportJobRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getExportJobStatus
+#### getExportJobStatus
 Get data export job status
 
 ```kotlin
@@ -10433,22 +21695,34 @@ analytics.getExportJobStatus(companyId: companyId, exportType: exportType, jobId
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| export_type | string | Export type / format | 
-| job_id | string | Export job id | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| exportType | String? | Export type / format |   
+| jobId | String? | Export job id |  
+
 
 
 Get data export job status
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ExportJobStatusRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#getLogsList
+#### getLogsList
 Get logs list
 
 ```kotlin
@@ -10464,23 +21738,35 @@ analytics.getLogsList(companyId: companyId, logType: logType, pageNo: pageNo, pa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| log_type | string | Log type | 
-| page_no | integer | Current page number | 
-| page_size | integer | Current page size | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| logType | String? | Log type |   
+| pageNo | Int? | Current page number |   
+| pageSize | Int? | Current page size |  
+
 
 
 Get logs list
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetLogsListRes`
+
+
+
+
 
 
 ---
 
 
-#### Analytics#searchLogs
+#### searchLogs
 Search logs
 
 ```kotlin
@@ -10496,17 +21782,29 @@ analytics.searchLogs(companyId: companyId, pageNo: pageNo, pageSize: pageSize, l
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Company Id | 
-| page_no | integer | Current page number | 
-| page_size | integer | Current page size | 
-| log_type | string | Log type | 
+| --------- | ----  | --- | 
+| companyId | String? | Company Id |   
+| pageNo | Int? | Current page number |   
+| pageSize | Int? | Current page size |   
+| logType | String? | Log type |  
+
 
 
 Search logs
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SearchLogRes`
+
+
+
+
 
 
 ---
@@ -10519,17 +21817,8 @@ Search logs
 
 ## Discount
 
-```javascript
-const { Configuration, Discount } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const discount = new Discount(conf);
 
-```
-
-
-#### Discount#getDiscounts
+#### getDiscounts
 Fetch discount list.
 
 ```kotlin
@@ -10545,29 +21834,50 @@ discount.getDiscounts(companyId: companyId, view: view, q: q, pageNo: pageNo, pa
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| view | string | listing or calender.  Default is listing. | 
-| q | string | The search query. This can be a partial or complete name of a discount. | 
-| page_no | integer | page number. Default is 1. | 
-| page_size | integer | page size. Default is 12. | 
-| archived | boolean | archived. Default is false. | 
-| month | integer | month. Default is current month. | 
-| year | integer | year. Default is current year. | 
-| type | string | basic or custom. | 
-| app_ids | array | application ids. | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| view | String? | listing or calender.  Default is listing. |   
+| q | String? | The search query. This can be a partial or complete name of a discount. |   
+| pageNo | Int? | page number. Default is 1. |   
+| pageSize | Int? | page size. Default is 12. |   
+| archived | Boolean? | archived. Default is false. |   
+| month | Int? | month. Default is current month. |   
+| year | Int? | year. Default is current year. |   
+| type | String? | basic or custom. |   
+| appIds | ArrayList<String>? | application ids. |  
+
 
 
 Fetch discount list.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `ListOrCalender`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#createDiscount
+#### createDiscount
 Create Discount.
 
 ```kotlin
@@ -10583,20 +21893,41 @@ discount.createDiscount(companyId: companyId, body: body).safeAwait{ response,er
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |  
+
 
 
 Create Discount.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DiscountJob`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#getDiscount
+#### getDiscount
 Fetch discount.
 
 ```kotlin
@@ -10612,21 +21943,42 @@ discount.getDiscount(companyId: companyId, id: id).safeAwait{ response,error->
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | unique id. | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| id | String? | unique id. |  
+
 
 
 Fetch discount.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DiscountJob`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#updateDiscount
+#### updateDiscount
 Create Discount.
 
 ```kotlin
@@ -10642,21 +21994,42 @@ discount.updateDiscount(companyId: companyId, id: id, body: body).safeAwait{ res
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| id | String? | id |  
+
 
 
 Create Discount.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `DiscountJob`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#validateDiscountFile
+#### validateDiscountFile
 Validate File.
 
 ```kotlin
@@ -10672,21 +22045,42 @@ discount.validateDiscountFile(companyId: companyId, discount: discount, body: bo
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| discount | string | discount | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| discount | String? | discount |  
+
 
 
 Validate File.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `FileJobResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#downloadDiscountFile
+#### downloadDiscountFile
 Validate File.
 
 ```kotlin
@@ -10702,21 +22096,42 @@ discount.downloadDiscountFile(companyId: companyId, type: type, body: body).safe
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| type | string | type | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| type | String? | type |  
+
 
 
 Validate File.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `FileJobResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#getValidationJob
+#### getValidationJob
 Validate File Job.
 
 ```kotlin
@@ -10732,21 +22147,42 @@ discount.getValidationJob(companyId: companyId, id: id).safeAwait{ response,erro
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| id | String? | id |  
+
 
 
 Validate File Job.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `FileJobResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#cancelValidationJob
+#### cancelValidationJob
 Cancel Validation Job.
 
 ```kotlin
@@ -10762,21 +22198,42 @@ discount.cancelValidationJob(companyId: companyId, id: id).safeAwait{ response,e
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| id | String? | id |  
+
 
 
 Cancel Validation Job.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CancelJobResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#getDownloadJob
+#### getDownloadJob
 Download File Job.
 
 ```kotlin
@@ -10792,21 +22249,42 @@ discount.getDownloadJob(companyId: companyId, id: id).safeAwait{ response,error-
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| id | String? | id |  
+
 
 
 Download File Job.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `FileJobResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
 
 
-#### Discount#cancelDownloadJob
+#### cancelDownloadJob
 Cancel Download Job.
 
 ```kotlin
@@ -10822,15 +22300,36 @@ discount.cancelDownloadJob(companyId: companyId, id: id).safeAwait{ response,err
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | integer | company_id | 
-| id | string | id | 
+| --------- | ----  | --- | 
+| companyId | Int? | company_id |   
+| id | String? | id |  
+
 
 
 Cancel Download Job.
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `CancelJobResponse`
+
+
+
+
+
+Failed
+
+
+Schema: `BadRequestObject`
+
+
+
+
 
 
 ---
@@ -10843,17 +22342,8 @@ Cancel Download Job.
 
 ## Partner
 
-```javascript
-const { Configuration, Partner } = require('fdk-client-nodejs/platform')
-const conf = new Configuration({
-    OAuth2Token: "5ljdffg191e810c19729de860ea"
-});
-const partner = new Partner(conf);
 
-```
-
-
-#### Partner#addProxyPath
+#### addProxyPath
 Add proxy path for external url
 
 ```kotlin
@@ -10869,22 +22359,43 @@ partner.addProxyPath(companyId: companyId, applicationId: applicationId, extensi
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| extension_id | string | Extension id | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| extensionId | String? | Extension id |  
+
 
 
 Add proxy path for external url
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `AddProxyResponse`
+
+
+
+
+
+Duplicate proxy path
+
+
+Schema: `ApiError`
+
+
+
+
 
 
 ---
 
 
-#### Partner#removeProxyPath
+#### removeProxyPath
 Remove proxy path for external url
 
 ```kotlin
@@ -10900,17 +22411,38 @@ partner.removeProxyPath(companyId: companyId, applicationId: applicationId, exte
 }
 ```
 
-
-
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Current company id | 
-| application_id | string | Current application id | 
-| extension_id | string | Extension id | 
-| attached_path | string | Attachaed path slug | 
+| --------- | ----  | --- | 
+| companyId | String? | Current company id |   
+| applicationId | String? | Current application id |   
+| extensionId | String? | Extension id |   
+| attachedPath | String? | Attachaed path slug |  
+
 
 
 Remove proxy path for external url
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `RemoveProxyResponse`
+
+
+
+
+
+Entry not found attached path
+
+
+Schema: `ApiError`
+
+
+
+
 
 
 ---
