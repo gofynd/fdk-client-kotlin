@@ -22,8 +22,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val order by lazy { OrderDataManagerClass(config)}
     
-    val catalog by lazy { CatalogDataManagerClass(config)}
-    
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}
@@ -33,8 +31,6 @@ class PlatformClient(val config:PlatformConfig) {
     val inventory by lazy { InventoryDataManagerClass(config)}
     
     val configuration by lazy { ConfigurationDataManagerClass(config)}
-    
-    val cart by lazy { CartDataManagerClass(config)}
     
     val marketplaces by lazy { MarketplacesDataManagerClass(config)}
     
@@ -72,8 +68,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
-    val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
-    
     val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
     
     val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
@@ -83,8 +77,6 @@ class PlatformClient(val config:PlatformConfig) {
     val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
     
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
-    
-    val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
     
     val marketplaces by lazy { this@PlatformClient.marketplaces.ApplicationClient(applicationId,config)}
     
