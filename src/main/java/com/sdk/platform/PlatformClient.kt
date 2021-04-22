@@ -22,8 +22,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val order by lazy { OrderDataManagerClass(config)}
     
-    val catalog by lazy { CatalogDataManagerClass(config)}
-    
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
     
     val fileStorage by lazy { FileStorageDataManagerClass(config)}
@@ -45,8 +43,6 @@ class PlatformClient(val config:PlatformConfig) {
     val discount by lazy { DiscountDataManagerClass(config)}
     
     val partner by lazy { PartnerDataManagerClass(config)}
-    
-    val webhook by lazy { WebhookDataManagerClass(config)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -74,8 +70,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
-    val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
-    
     val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
     
     val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
@@ -97,8 +91,6 @@ class PlatformClient(val config:PlatformConfig) {
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
-    
-    val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     }
 
