@@ -245,24 +245,24 @@
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
 * [Catalog](#Catalog)
-  * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
   * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
+  * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
-  * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
   * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
+  * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getProductBundle](#cataloggetproductbundle)
   * [Catalog#createProductBundle](#catalogcreateproductbundle)
-  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
+  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#createSizeGuide](#catalogcreatesizeguide)
-  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getSizeGuide](#cataloggetsizeguide)
+  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
   * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
@@ -272,8 +272,8 @@
   * [Catalog#getAllCollections](#cataloggetallcollections)
   * [Catalog#createCollection](#catalogcreatecollection)
   * [Catalog#getCollectionDetail](#cataloggetcollectiondetail)
-  * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#deleteCollection](#catalogdeletecollection)
+  * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#getCollectionItems](#cataloggetcollectionitems)
   * [Catalog#addCollectionItems](#catalogaddcollectionitems)
   * [Catalog#getCatalogInsights](#cataloggetcataloginsights)
@@ -298,13 +298,13 @@
   * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
   * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#createCategories](#catalogcreatecategories)
-  * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getCategoryData](#cataloggetcategorydata)
+  * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
-  * [Catalog#editProduct](#catalogeditproduct)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#getProduct](#cataloggetproduct)
+  * [Catalog#editProduct](#catalogeditproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
@@ -327,28 +327,26 @@
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
   * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#createHsnCode](#catalogcreatehsncode)
-  * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#getHsnCode](#cataloggethsncode)
+  * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#bulkHsnCode](#catalogbulkhsncode)
   * [Catalog#getApplicationBrands](#cataloggetapplicationbrands)
   * [Catalog#getDepartments](#cataloggetdepartments)
   * [Catalog#getCategories](#cataloggetcategories)
-  * [Catalog#getAppicationProducts](#cataloggetappicationproducts)
-  * [Catalog#getProductDetailBySlug](#cataloggetproductdetailbyslug)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
   * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
   * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
@@ -6700,37 +6698,6 @@ const catalog = new Catalog(conf);
 ```
 
 
-#### Catalog#updateSearchKeywords
-Update Search Keyword
-
-```kotlin
-catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Update Search Keyword by its id. On successful request, returns the updated collection
-
-
----
-
-
 #### Catalog#deleteSearchKeywords
 Delete a Search Keywords
 
@@ -6788,6 +6755,37 @@ catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id
 
 
 Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
+
+
+---
+
+
+#### Catalog#updateSearchKeywords
+Update Search Keyword
+
+```kotlin
+catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Update Search Keyword by its id. On successful request, returns the updated collection
 
 
 ---
@@ -6853,37 +6851,6 @@ Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of
 ---
 
 
-#### Catalog#updateAutocompleteKeyword
-Create & Update Autocomplete Keyword
-
-```kotlin
-catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Update a mapping by it's id. On successful request, returns the updated Keyword mapping
-
-
----
-
-
 #### Catalog#deleteAutocompleteKeyword
 Delete a Autocomplete Keywords
 
@@ -6941,6 +6908,37 @@ catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applic
 
 
 Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
+
+
+---
+
+
+#### Catalog#updateAutocompleteKeyword
+Create & Update Autocomplete Keyword
+
+```kotlin
+catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Update a mapping by it's id. On successful request, returns the updated Keyword mapping
 
 
 ---
@@ -7065,36 +7063,6 @@ Create Product Bundle. See `ProductBundleRequest` for the request body parameter
 ---
 
 
-#### Catalog#updateProductBundle
-Update a Product Bundle
-
-```kotlin
-catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
-
-
-Update a Product Bundle by its id. On successful request, returns the updated product bundle
-
-
----
-
-
 #### Catalog#getProductBundleDetail
 Get a particular Product Bundle details
 
@@ -7120,6 +7088,36 @@ catalog.getProductBundleDetail(companyId: companyId, id: id).safeAwait{ response
 
 
 Get a particular Bundle details by its `id`. If successful, returns a Product bundle resource in the response body specified in `GetProductBundleResponse`
+
+
+---
+
+
+#### Catalog#updateProductBundle
+Update a Product Bundle
+
+```kotlin
+catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| id | string | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. | 
+
+
+Update a Product Bundle by its id. On successful request, returns the updated product bundle
 
 
 ---
@@ -7188,36 +7186,6 @@ This API allows to create a size guide associated to a brand.
 ---
 
 
-#### Catalog#updateSizeGuide
-Edit a size guide.
-
-```kotlin
-catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company. | 
-| id | string | Mongo id of the size guide to be edited | 
-
-
-This API allows to edit a size guide.
-
-
----
-
-
 #### Catalog#getSizeGuide
 Get a single size guide.
 
@@ -7243,6 +7211,36 @@ catalog.getSizeGuide(companyId: companyId, id: id).safeAwait{ response,error->
 
 
 This API helps to get data associated to a size guide.
+
+
+---
+
+
+#### Catalog#updateSizeGuide
+Edit a size guide.
+
+```kotlin
+catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company. | 
+| id | string | Mongo id of the size guide to be edited | 
+
+
+This API allows to edit a size guide.
 
 
 ---
@@ -7521,37 +7519,6 @@ Get the details of a collection by its `slug`. If successful, returns a Collecti
 ---
 
 
-#### Catalog#updateCollection
-Update a collection
-
-```kotlin
-catalog.updateCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| id | string | A `id` is a unique identifier of a collection. | 
-
-
-Update a collection by it's id. On successful request, returns the updated collection
-
-
----
-
-
 #### Catalog#deleteCollection
 Delete a Collection
 
@@ -7578,6 +7545,37 @@ catalog.deleteCollection(companyId: companyId, applicationId: applicationId, id:
 
 
 Delete a collection by it's id. Returns an object that tells whether the collection was deleted successfully
+
+
+---
+
+
+#### Catalog#updateCollection
+Update a collection
+
+```kotlin
+catalog.updateCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
+| id | string | A `id` is a unique identifier of a collection. | 
+
+
+Update a collection by it's id. On successful request, returns the updated collection
 
 
 ---
@@ -7896,7 +7894,7 @@ Get the details of the store associated with the company ID passed.
 Get gender attribute details
 
 ```kotlin
-catalog.getGenderAttribute(companyId: companyId, attributeSlug: attributeSlug).safeAwait{ response,error->
+catalog.getGenderAttribute(companyId: companyId, department: department).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7913,7 +7911,7 @@ catalog.getGenderAttribute(companyId: companyId, attributeSlug: attributeSlug).s
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | integer | company for which you want to view the genders | 
-| attribute_slug | string | slug of the attribute for which you want to view the genders | 
+| department | string | department for which you want to view the genders | 
 
 
 This API allows to view the gender attribute details.
@@ -7957,7 +7955,7 @@ Allows you to list all product categories values for the departments specified
 List all Departments
 
 ```kotlin
-catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: pageSize, name: name, search: search, isActive: isActive).safeAwait{ response,error->
+catalog.listDepartmentsData(companyId: companyId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7974,11 +7972,6 @@ catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: page
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
-| name | string | Can search departments by passing name. | 
-| search | string | Can search departments by passing name of the department in search parameter. | 
-| is_active | boolean | Can query for departments based on whether they are active or inactive. | 
 
 
 Allows you to list all departments, also can search using name and filter active and incative departments, and item type
@@ -8219,7 +8212,7 @@ catalog.listProductTemplateExportDetails(companyId: companyId).safeAwait{ respon
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 
 
-Can view details including trigger data, task id , etc.
+Can vies details including trigger data, task id , etc.
 
 
 ---
@@ -8259,7 +8252,7 @@ The filter type query parameter defines what type of data to return. The type of
 Get product categories list
 
 ```kotlin
-catalog.listCategories(companyId: companyId, level: level, departments: departments, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.listCategories(companyId: companyId, level: level, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8277,10 +8270,7 @@ catalog.listCategories(companyId: companyId, level: level, departments: departme
 | --------- | ----  | --- |
 | company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
 | level | string | Get category for multiple levels | 
-| departments | string | Get category for multiple departments filtered | 
 | q | string | Get multiple categories filtered by search string | 
-| page_no | integer | The page number to navigate through the given set of results | 
-| page_size | integer | Number of items to retrieve in each page. Default is 10. | 
 
 
 This API gets meta associated to product categories.
@@ -8318,36 +8308,6 @@ This API lets user create product categories
 ---
 
 
-#### Catalog#updateCategory
-Update product categories
-
-```kotlin
-catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| uid | string | Category unique id | 
-
-
-Update a product category using this apu
-
-
----
-
-
 #### Catalog#getCategoryData
 Get product category by uid
 
@@ -8373,6 +8333,36 @@ catalog.getCategoryData(companyId: companyId, uid: uid).safeAwait{ response,erro
 
 
 This API gets meta associated to product categories.
+
+
+---
+
+
+#### Catalog#updateCategory
+Update product categories
+
+```kotlin
+catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+| uid | string | Category unique id | 
+
+
+Update a product category using this apu
 
 
 ---
@@ -8441,36 +8431,6 @@ This API allows to create product.
 ---
 
 
-#### Catalog#editProduct
-Edit a product.
-
-```kotlin
-catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to product that is to be viewed. | 
-| item_id | integer | Id of the product to be updated. | 
-
-
-This API allows to edit product.
-
-
----
-
-
 #### Catalog#deleteProduct
 Delete a product.
 
@@ -8529,6 +8489,36 @@ catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, bra
 
 
 This API helps to get data associated to a particular product.
+
+
+---
+
+
+#### Catalog#editProduct
+Edit a product.
+
+```kotlin
+catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to product that is to be viewed. | 
+| item_id | integer | Id of the product to be updated. | 
+
+
+This API allows to edit product.
 
 
 ---
@@ -9198,11 +9188,11 @@ Create Hsn Code.
 ---
 
 
-#### Catalog#updateHsnCode
-Update Hsn Code.
+#### Catalog#getHsnCode
+Fetch Hsn Code.
 
 ```kotlin
-catalog.updateHsnCode(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+catalog.getHsnCode(companyId: companyId, uid: uid).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9219,20 +9209,20 @@ catalog.updateHsnCode(companyId: companyId, id: id, body: body).safeAwait{ respo
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | company id | 
-| id | string | id | 
+| uid | integer | uid | 
 
 
-Update Hsn Code.
+Fetch Hsn Code.
 
 
 ---
 
 
-#### Catalog#getHsnCode
-Fetch Hsn Code.
+#### Catalog#updateHsnCode
+Update Hsn Code.
 
 ```kotlin
-catalog.getHsnCode(companyId: companyId, id: id).safeAwait{ response,error->
+catalog.updateHsnCode(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9249,10 +9239,10 @@ catalog.getHsnCode(companyId: companyId, id: id).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 | company_id | string | company id | 
-| id | string | id | 
+| uid | integer | uid | 
 
 
-Fetch Hsn Code.
+Update Hsn Code.
 
 
 ---
@@ -9291,7 +9281,7 @@ Bulk Create or Update Hsn Code.
 List all the brands
 
 ```kotlin
-catalog.getApplicationBrands(companyId: companyId, applicationId: applicationId, department: department, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.getApplicationBrands(department: department, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9307,8 +9297,6 @@ catalog.getApplicationBrands(companyId: companyId, applicationId: applicationId,
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
 | department | string | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API | 
 | page_no | integer | The page number to navigate through the given set of results | 
 | page_size | integer | Number of items to retrieve in each page. Default is 12. | 
@@ -9324,7 +9312,7 @@ A brand is the name under which a product is being sold. Use this API to list al
 List all the departments
 
 ```kotlin
-catalog.getDepartments(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.getDepartments().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9337,11 +9325,6 @@ catalog.getDepartments(companyId: companyId, applicationId: applicationId).safeA
 ```
 
 
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
 
 
 Departments are a way to categorise similar products. A product can lie in multiple departments. For example, a skirt can below to the 'Women's Fashion' Department while a handbag can lie in 'Women's Accessories' Department. Use this API to list all the departments. If successful, returns the list of departments specified in `DepartmentResponse`
@@ -9354,7 +9337,7 @@ Departments are a way to categorise similar products. A product can lie in multi
 List all the categories
 
 ```kotlin
-catalog.getCategories(companyId: companyId, applicationId: applicationId, department: department).safeAwait{ response,error->
+catalog.getCategories(department: department).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9370,81 +9353,10 @@ catalog.getCategories(companyId: companyId, applicationId: applicationId, depart
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
 | department | string | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API | 
 
 
 List all the categories. You can optionally pass filter the brands by the department. If successful, returns a paginated list of brands specified in `CategoryListingResponse`
-
-
----
-
-
-#### Catalog#getAppicationProducts
-List the products
-
-```kotlin
-catalog.getAppicationProducts(companyId: companyId, applicationId: applicationId, q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize, pageNo: pageNo, pageType: pageType).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| q | string | The search query. This can be a partial or complete name of a either a product, brand or category | 
-| f | string | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::l3_categories:t-shirts||shirts** | 
-| filters | boolean | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters | 
-| sort_on | string | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. | 
-| page_id | string | Each response will contain **page_id** param, which should be sent back to make pagination work. | 
-| page_size | integer | Number of items to retrieve in each page. Default is 12. | 
-| page_no | integer | If page_type is number then pass it to fetch page items. Default is 1. | 
-| page_type | string | For pagination type should be cursor or number. Default is cursor. | 
-
-
-List all the products associated with a brand, collection or category in a requested sort order. The API additionally supports arbitrary search queries that may refer the name of any product, brand, category or collection. If successful, returns a paginated list of products specified in `ApplicationProductListingResponse`
-
-
----
-
-
-#### Catalog#getProductDetailBySlug
-Get a product
-
-```kotlin
-catalog.getProductDetailBySlug(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-| application_id | string | A `application_id` is a unique identifier for a particular sale channel. | 
-| slug | string | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** | 
-
-
-Products are the core resource of an application. Products can be associated by categories, collections, brands and more. This API retrieves the product specified by the given **slug**. If successful, returns a Product resource in the response body specified in `ProductDetail`
 
 
 ---
@@ -9465,35 +9377,6 @@ const conf = new Configuration({
 const companyprofile = new CompanyProfile(conf);
 
 ```
-
-
-#### CompanyProfile#cbsOnboardGet
-Get company profile
-
-```kotlin
-companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
-
-
-This API allows to view the company profile of the seller account.
-
-
----
 
 
 #### CompanyProfile#updateCompany
@@ -9520,6 +9403,35 @@ companyprofile.updateCompany(companyId: companyId, body: body).safeAwait{ respon
 
 
 This API allows to edit the company profile of the seller account.
+
+
+---
+
+
+#### CompanyProfile#cbsOnboardGet
+Get company profile
+
+```kotlin
+companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | A `company_id` is a unique identifier for a particular seller account. | 
+
+
+This API allows to view the company profile of the seller account.
 
 
 ---
@@ -9554,36 +9466,6 @@ This API allows to view the company metrics, i.e. the status of its brand and st
 ---
 
 
-#### CompanyProfile#getBrand
-Get a single brand.
-
-```kotlin
-companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company associated to brand that is to be viewed. | 
-| brand_id | string | Id of the brand to be viewed. | 
-
-
-This API helps to get data associated to a particular brand.
-
-
----
-
-
 #### CompanyProfile#editBrand
 Edit a brand.
 
@@ -9609,6 +9491,36 @@ companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).saf
 
 
 This API allows to edit meta of a brand.
+
+
+---
+
+
+#### CompanyProfile#getBrand
+Get a single brand.
+
+```kotlin
+companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company associated to brand that is to be viewed. | 
+| brand_id | string | Id of the brand to be viewed. | 
+
+
+This API helps to get data associated to a particular brand.
 
 
 ---
@@ -9766,36 +9678,6 @@ This API allows to create a location associated to a company.
 ---
 
 
-#### CompanyProfile#getLocationDetail
-Get details of a specific location.
-
-```kotlin
-companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |
-| company_id | string | Id of the company inside which the location lies. | 
-| location_id | string | Id of the location which you want to view. | 
-
-
-This API helps to get data associated to a specific location.
-
-
----
-
-
 #### CompanyProfile#updateLocation
 Edit a location asscoiated to a company.
 
@@ -9821,6 +9703,36 @@ companyprofile.updateLocation(companyId: companyId, locationId: locationId, body
 
 
 This API allows to edit a location associated to a company.
+
+
+---
+
+
+#### CompanyProfile#getLocationDetail
+Get details of a specific location.
+
+```kotlin
+companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+| company_id | string | Id of the company inside which the location lies. | 
+| location_id | string | Id of the location which you want to view. | 
+
+
+This API helps to get data associated to a specific location.
 
 
 ---
