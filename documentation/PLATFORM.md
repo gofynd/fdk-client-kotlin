@@ -8,6 +8,7 @@
 * [Content](#Content) - Content System 
 * [Assignment](#Assignment) -  
 * [Billing](#Billing) - Handle platform subscription 
+* [Communication](#Communication) - Manages email, sms, push notifications sent to users 
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
@@ -176,6 +177,45 @@
   * [Billing#activateSubscriptionPlan](#billingactivatesubscriptionplan)
   * [Billing#cancelSubscriptionPlan](#billingcancelsubscriptionplan)
  
+* [Communication](#Communication)
+  * [Communication#getCampaigns](#communicationgetcampaigns)
+  * [Communication#createCampaign](#communicationcreatecampaign)
+  * [Communication#getCampaignById](#communicationgetcampaignbyid)
+  * [Communication#updateCampaignById](#communicationupdatecampaignbyid)
+  * [Communication#getStatsOfCampaignById](#communicationgetstatsofcampaignbyid)
+  * [Communication#getAudiences](#communicationgetaudiences)
+  * [Communication#createAudience](#communicationcreateaudience)
+  * [Communication#getBigqueryHeaders](#communicationgetbigqueryheaders)
+  * [Communication#getAudienceById](#communicationgetaudiencebyid)
+  * [Communication#updateAudienceById](#communicationupdateaudiencebyid)
+  * [Communication#getNSampleRecordsFromCsv](#communicationgetnsamplerecordsfromcsv)
+  * [Communication#getEmailProviders](#communicationgetemailproviders)
+  * [Communication#createEmailProvider](#communicationcreateemailprovider)
+  * [Communication#getEmailProviderById](#communicationgetemailproviderbyid)
+  * [Communication#updateEmailProviderById](#communicationupdateemailproviderbyid)
+  * [Communication#getEmailTemplates](#communicationgetemailtemplates)
+  * [Communication#createEmailTemplate](#communicationcreateemailtemplate)
+  * [Communication#getSystemEmailTemplates](#communicationgetsystememailtemplates)
+  * [Communication#getEmailTemplateById](#communicationgetemailtemplatebyid)
+  * [Communication#updateEmailTemplateById](#communicationupdateemailtemplatebyid)
+  * [Communication#deleteEmailTemplateById](#communicationdeleteemailtemplatebyid)
+  * [Communication#getEventSubscriptions](#communicationgeteventsubscriptions)
+  * [Communication#getJobs](#communicationgetjobs)
+  * [Communication#triggerCampaignJob](#communicationtriggercampaignjob)
+  * [Communication#getJobLogs](#communicationgetjoblogs)
+  * [Communication#getCommunicationLogs](#communicationgetcommunicationlogs)
+  * [Communication#getSystemNotifications](#communicationgetsystemnotifications)
+  * [Communication#getSmsProviders](#communicationgetsmsproviders)
+  * [Communication#createSmsProvider](#communicationcreatesmsprovider)
+  * [Communication#getSmsProviderById](#communicationgetsmsproviderbyid)
+  * [Communication#updateSmsProviderById](#communicationupdatesmsproviderbyid)
+  * [Communication#getSmsTemplates](#communicationgetsmstemplates)
+  * [Communication#createSmsTemplate](#communicationcreatesmstemplate)
+  * [Communication#getSmsTemplateById](#communicationgetsmstemplatebyid)
+  * [Communication#updateSmsTemplateById](#communicationupdatesmstemplatebyid)
+  * [Communication#deleteSmsTemplateById](#communicationdeletesmstemplatebyid)
+  * [Communication#getSystemSystemTemplates](#communicationgetsystemsystemtemplates)
+ 
 * [Payment](#Payment)
   * [Payment#getBrandPaymentGatewayConfig](#paymentgetbrandpaymentgatewayconfig)
   * [Payment#saveBrandPaymentGatewayConfig](#paymentsavebrandpaymentgatewayconfig)
@@ -297,18 +337,18 @@
   * [Catalog#getProductDetailBySlug](#cataloggetproductdetailbyslug)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
-  * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
  
 * [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
@@ -7962,6 +8002,1729 @@ Schema: `InternalServerError`
 ---
 
 
+## Communication
+
+
+#### getCampaigns
+Get campaigns
+
+```kotlin
+communication.getCampaigns(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get campaigns
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaigns`
+
+
+
+
+
+
+---
+
+
+#### createCampaign
+Create campaign
+
+```kotlin
+communication.createCampaign(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Create campaign
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaign`
+
+
+
+
+
+
+---
+
+
+#### getCampaignById
+Get campaign by id
+
+```kotlin
+communication.getCampaignById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Campaign id |  
+
+
+
+Get campaign by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaign`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+---
+
+
+#### updateCampaignById
+Update campaign by id
+
+```kotlin
+communication.updateCampaignById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Campaign id |  
+
+
+
+Update campaign by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Campaign`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+---
+
+
+#### getStatsOfCampaignById
+Get stats of campaign by id
+
+```kotlin
+communication.getStatsOfCampaignById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Campaign id |  
+
+
+
+Get stats of campaign by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetStats`
+
+
+
+
+
+Bad request
+
+
+Schema: `BadRequest`
+
+
+
+
+
+
+---
+
+
+#### getAudiences
+Get audiences
+
+```kotlin
+communication.getAudiences(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get audiences
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audiences`
+
+
+
+
+
+
+---
+
+
+#### createAudience
+Create audience
+
+```kotlin
+communication.createAudience(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Create audience
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audience`
+
+
+
+
+
+
+---
+
+
+#### getBigqueryHeaders
+Get bigquery headers
+
+```kotlin
+communication.getBigqueryHeaders(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Get bigquery headers
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `BigqueryHeadersRes`
+
+
+
+
+
+Bad request
+
+
+Schema: `BadRequest`
+
+
+
+
+
+
+---
+
+
+#### getAudienceById
+Get audience by id
+
+```kotlin
+communication.getAudienceById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Audience id |  
+
+
+
+Get audience by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audience`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+---
+
+
+#### updateAudienceById
+Update audience by id
+
+```kotlin
+communication.updateAudienceById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Audience id |  
+
+
+
+Update audience by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Audience`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+---
+
+
+#### getNSampleRecordsFromCsv
+Get n sample records from csv
+
+```kotlin
+communication.getNSampleRecordsFromCsv(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Get n sample records from csv
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `GetNRecordsCsvRes`
+
+
+
+
+
+Bad request
+
+
+Schema: `BadRequest`
+
+
+
+
+
+
+---
+
+
+#### getEmailProviders
+Get email providers
+
+```kotlin
+communication.getEmailProviders(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get email providers
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProviders`
+
+
+
+
+
+
+---
+
+
+#### createEmailProvider
+Create email provider
+
+```kotlin
+communication.createEmailProvider(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Create email provider
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProvider`
+
+
+
+
+
+
+---
+
+
+#### getEmailProviderById
+Get email provider by id
+
+```kotlin
+communication.getEmailProviderById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email provider id |  
+
+
+
+Get email provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProvider`
+
+
+
+
+
+
+---
+
+
+#### updateEmailProviderById
+Update email provider by id
+
+```kotlin
+communication.updateEmailProviderById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email provider id |  
+
+
+
+Update email provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailProvider`
+
+
+
+
+
+
+---
+
+
+#### getEmailTemplates
+Get email templates
+
+```kotlin
+communication.getEmailTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get email templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplates`
+
+
+
+
+
+
+---
+
+
+#### createEmailTemplate
+Create email template
+
+```kotlin
+communication.createEmailTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Create email template
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplateRes`
+
+
+
+
+
+
+---
+
+
+#### getSystemEmailTemplates
+Get system email templates
+
+```kotlin
+communication.getSystemEmailTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get system email templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SystemEmailTemplates`
+
+
+
+
+
+
+---
+
+
+#### getEmailTemplateById
+Get email template by id
+
+```kotlin
+communication.getEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email template id |  
+
+
+
+Get email template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplate`
+
+
+
+
+
+
+---
+
+
+#### updateEmailTemplateById
+Update email template by id
+
+```kotlin
+communication.updateEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email template id |  
+
+
+
+Update email template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplateRes`
+
+
+
+
+
+
+---
+
+
+#### deleteEmailTemplateById
+Delete email template by id
+
+```kotlin
+communication.deleteEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Email template id |  
+
+
+
+Delete email template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EmailTemplateDeleteSuccessRes`
+
+
+
+
+
+Failure
+
+
+Schema: `EmailTemplateDeleteFailureRes`
+
+
+
+
+
+
+---
+
+
+#### getEventSubscriptions
+Get event subscriptions
+
+```kotlin
+communication.getEventSubscriptions(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, populate: populate).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| populate | String? | populate fields |  
+
+
+
+Get event subscriptions
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `EventSubscriptions`
+
+
+
+
+
+
+---
+
+
+#### getJobs
+Get jobs
+
+```kotlin
+communication.getJobs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get jobs
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Jobs`
+
+
+
+
+
+
+---
+
+
+#### triggerCampaignJob
+Trigger campaign job
+
+```kotlin
+communication.triggerCampaignJob(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Trigger campaign job
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `TriggerJobResponse`
+
+
+
+
+
+
+---
+
+
+#### getJobLogs
+Get job logs
+
+```kotlin
+communication.getJobLogs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get job logs
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `JobLogs`
+
+
+
+
+
+
+---
+
+
+#### getCommunicationLogs
+Get communication logs
+
+```kotlin
+communication.getCommunicationLogs(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize, sort: sort, query: query).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageId | String? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on _id |   
+| query | HashMap<String,Any>? |  |  
+
+
+
+Get communication logs
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `Logs`
+
+
+
+
+
+
+---
+
+
+#### getSystemNotifications
+Get system notifications
+
+```kotlin
+communication.getSystemNotifications(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| pageNo | Int? |  |   
+| pageSize | Int? |  |  
+
+
+
+Get system notifications
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SystemNotifications`
+
+
+
+
+
+
+---
+
+
+#### getSmsProviders
+Get sms providers
+
+```kotlin
+communication.getSmsProviders(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get sms providers
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProviders`
+
+
+
+
+
+
+---
+
+
+#### createSmsProvider
+Create sms provider
+
+```kotlin
+communication.createSmsProvider(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Create sms provider
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProvider`
+
+
+
+
+
+
+---
+
+
+#### getSmsProviderById
+Get sms provider by id
+
+```kotlin
+communication.getSmsProviderById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms provider id |  
+
+
+
+Get sms provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProvider`
+
+
+
+
+
+
+---
+
+
+#### updateSmsProviderById
+Update sms provider by id
+
+```kotlin
+communication.updateSmsProviderById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms provider id |  
+
+
+
+Update sms provider by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsProvider`
+
+
+
+
+
+
+---
+
+
+#### getSmsTemplates
+Get sms templates
+
+```kotlin
+communication.getSmsTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get sms templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplates`
+
+
+
+
+
+
+---
+
+
+#### createSmsTemplate
+Create sms template
+
+```kotlin
+communication.createSmsTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |  
+
+
+
+Create sms template
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplateRes`
+
+
+
+
+
+
+---
+
+
+#### getSmsTemplateById
+Get sms template by id
+
+```kotlin
+communication.getSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms template id |  
+
+
+
+Get sms template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplate`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+---
+
+
+#### updateSmsTemplateById
+Update sms template by id
+
+```kotlin
+communication.updateSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms template id |  
+
+
+
+Update sms template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplateRes`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+---
+
+
+#### deleteSmsTemplateById
+Delete sms template by id
+
+```kotlin
+communication.deleteSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| id | String? | Sms template id |  
+
+
+
+Delete sms template by id
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SmsTemplateDeleteSuccessRes`
+
+
+
+
+
+Failure
+
+
+Schema: `SmsTemplateDeleteFailureRes`
+
+
+
+
+
+Not found
+
+
+Schema: `NotFound`
+
+
+
+
+
+
+---
+
+
+#### getSystemSystemTemplates
+Get system sms templates
+
+```kotlin
+communication.getSystemSystemTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company id |   
+| applicationId | String? | Application id |   
+| pageNo | Int? | Current page no |   
+| pageSize | Int? | Current request items count |   
+| sort | HashMap<String,Any>? | To sort based on created_at |  
+
+
+
+Get system sms templates
+
+*Success Response*
+
+
+
+Success
+
+
+Schema: `SystemSmsTemplates`
+
+
+
+
+
+
+---
+
+
+
+---
+---
+
+
 ## Payment
 
 
@@ -14062,56 +15825,6 @@ Schema: `ErrorResponse`
 ## CompanyProfile
 
 
-#### cbsOnboardGet
-Get company profile
-
-```kotlin
-companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
-
-
-
-This API allows to view the company profile of the seller account.
-
-*Success Response*
-
-
-
-Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
-
-
-Schema: `GetCompanyProfileSerializerResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### updateCompany
 Edit company profile
 
@@ -14162,6 +15875,56 @@ Schema: `ErrorResponse`
 ---
 
 
+#### cbsOnboardGet
+Get company profile
+
+```kotlin
+companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+This API allows to view the company profile of the seller account.
+
+*Success Response*
+
+
+
+Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
+
+
+Schema: `GetCompanyProfileSerializerResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
 #### getCompanyMetrics
 Get company metrics
 
@@ -14194,57 +15957,6 @@ Metrics response object. See example below or refer `MetricsSerializer` for deta
 
 
 Schema: `MetricsSerializer`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### getBrand
-Get a single brand.
-
-```kotlin
-companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to brand that is to be viewed. |   
-| brandId | String? | Id of the brand to be viewed. |  
-
-
-
-This API helps to get data associated to a particular brand.
-
-*Success Response*
-
-
-
-Brand object. See example below or refer `GetBrandResponseSerializer` for details
-
-
-Schema: `GetBrandResponseSerializer`
 
 
 
@@ -14314,6 +16026,57 @@ Schema: `ErrorResponse`
 ---
 
 
+#### getBrand
+Get a single brand.
+
+```kotlin
+companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to brand that is to be viewed. |   
+| brandId | String? | Id of the brand to be viewed. |  
+
+
+
+This API helps to get data associated to a particular brand.
+
+*Success Response*
+
+
+
+Brand object. See example below or refer `GetBrandResponseSerializer` for details
+
+
+Schema: `GetBrandResponseSerializer`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
 #### createBrand
 Create a Brand.
 
@@ -14337,6 +16100,56 @@ companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response
 
 
 This API allows to create a brand associated to a company.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createCompanyBrandMapping
+Create a company brand mapping.
+
+```kotlin
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the brand is to be mapped. |  
+
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 *Success Response*
 
@@ -14416,11 +16229,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### createCompanyBrandMapping
-Create a company brand mapping.
+#### createLocation
+Create a location asscoiated to a company.
 
 ```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14434,11 +16247,11 @@ companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeA
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the brand is to be mapped. |  
+| companyId | String? | Id of the company inside which the location is to be created. |  
 
 
 
-This API allows to create a company brand mapping, for a already existing brand in the system.
+This API allows to create a location associated to a company.
 
 *Success Response*
 
@@ -14521,11 +16334,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### createLocation
-Create a location asscoiated to a company.
+#### updateLocation
+Edit a location asscoiated to a company.
 
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14539,11 +16352,12 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |  
+| companyId | String? | Id of the company inside which the location is to be created. |   
+| locationId | String? | Id of the location which you want to edit. |  
 
 
 
-This API allows to create a location associated to a company.
+This API allows to edit a location associated to a company.
 
 *Success Response*
 
@@ -14604,57 +16418,6 @@ Brand object. See example below or refer `GetLocationSerializer` for details
 
 
 Schema: `GetLocationSerializer`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### updateLocation
-Edit a location asscoiated to a company.
-
-```kotlin
-companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |   
-| locationId | String? | Id of the location which you want to edit. |  
-
-
-
-This API allows to edit a location associated to a company.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
