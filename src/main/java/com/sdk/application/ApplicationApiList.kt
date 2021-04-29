@@ -6,19 +6,19 @@ import retrofit2.http.*
 
 interface CatalogApiList {
     
-    @GET ("/service/application/catalog/v1.0/products/%s/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/")
     fun getProductDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductDetail>>
     
-    @GET ("/service/application/catalog/v1.0/products/%s/sizes/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/")
     fun getProductSizesBySlug(@Path("slug") slug: String, @Query("store_id") storeId: String?)
     : Deferred<Response<ProductSizes>>
     
-    @GET ("/service/application/catalog/v1.0/products/%s/sizes/%s/pincode/%s/price/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/price/")
     fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("store_id") storeId: String?)
     : Deferred<Response<ProductSizePriceResponse>>
     
-    @GET ("/service/application/catalog/v1.0/products/%s/sizes/%s/pincode/%s/sellers/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/sellers/")
     fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponse>>
     
@@ -26,19 +26,19 @@ interface CatalogApiList {
     fun getProductComparisonBySlugs(@Query("slug") slug: ArrayList<String>)
     : Deferred<Response<ProductsComparisonResponse>>
     
-    @GET ("/service/application/catalog/v1.0/products/%s/similar/compare/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compare/")
     fun getSimilarComparisonProductBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductCompareResponse>>
     
-    @GET ("/service/application/catalog/v1.0/products/%s/similar/compared-frequently/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently/")
     fun getComparedFrequentlyProductBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductFrequentlyComparedSimilarResponse>>
     
-    @GET ("/service/application/catalog/v1.0/products/%s/similar/%s/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/similar/{similar_type}/")
     fun getProductSimilarByIdentifier(@Path("slug") slug: String, @Path("similar_type") similarType: String)
     : Deferred<Response<SimilarProductByTypeResponse>>
     
-    @GET ("/service/application/catalog/v1.0/products/%s/variants/")
+    @GET ("/service/application/catalog/v1.0/products/{slug}/variants/")
     fun getProductVariantsBySlug(@Path("slug") slug: String)
     : Deferred<Response<ProductVariantsResponse>>
     
@@ -58,7 +58,7 @@ interface CatalogApiList {
     fun getBrands(@Query("department") department: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<BrandListingResponse>>
     
-    @GET ("/service/application/catalog/v1.0/brands/%s/")
+    @GET ("/service/application/catalog/v1.0/brands/{slug}/")
     fun getBrandDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<BrandDetailResponse>>
     
@@ -66,7 +66,7 @@ interface CatalogApiList {
     fun getCategories(@Query("department") department: String?)
     : Deferred<Response<CategoryListingResponse>>
     
-    @GET ("/service/application/catalog/v1.0/categories/%s/")
+    @GET ("/service/application/catalog/v1.0/categories/{slug}/")
     fun getCategoryDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<CategoryMetaResponse>>
     
@@ -86,27 +86,27 @@ interface CatalogApiList {
     fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetCollectionListingResponse>>
     
-    @GET ("/service/application/catalog/v1.0/collections/%s/items/")
+    @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
     fun getCollectionItemsBySlug(@Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductListingResponse>>
     
-    @GET ("/service/application/catalog/v1.0/collections/%s/")
+    @GET ("/service/application/catalog/v1.0/collections/{slug}/")
     fun getCollectionDetailBySlug(@Path("slug") slug: String)
     : Deferred<Response<CollectionDetailResponse>>
     
-    @GET ("/service/application/catalog/v1.0/follow/%s/")
+    @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/%s/%s/")
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/%s/%s/")
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
-    @GET ("/service/application/catalog/v1.0/follow/%s/%s/count/")
+    @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
     fun getFollowerCountById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowerCountResponse>>
     
@@ -166,15 +166,15 @@ interface CartApiList {
     fun addAddress(@Body body: Address)
     : Deferred<Response<SaveAddressResponse>>
     
-    @GET ("/service/application/cart/v1.0/address/%d")
+    @GET ("/service/application/cart/v1.0/address/{id}")
     fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
-    @PUT ("/service/application/cart/v1.0/address/%d")
+    @PUT ("/service/application/cart/v1.0/address/{id}")
     fun updateAddress(@Path("id") id: String,@Body body: Address)
     : Deferred<Response<UpdateAddressResponse>>
     
-    @DELETE ("/service/application/cart/v1.0/address/%d")
+    @DELETE ("/service/application/cart/v1.0/address/{id}")
     fun removeAddress(@Path("id") id: String)
     : Deferred<Response<DeleteAddressResponse>>
     
@@ -206,11 +206,11 @@ interface CartApiList {
     fun getCartShareLink(@Body body: GetShareCartLinkRequest)
     : Deferred<Response<GetShareCartLinkResponse>>
     
-    @GET ("/service/application/cart/v1.0/share-cart/%s")
+    @GET ("/service/application/cart/v1.0/share-cart/{token}")
     fun getCartSharedItems(@Path("token") token: String)
     : Deferred<Response<SharedCartResponse>>
     
-    @POST ("/service/application/cart/v1.0/share-cart/%s/%s")
+    @POST ("/service/application/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
     
@@ -218,11 +218,11 @@ interface CartApiList {
 
 interface LeadApiList {
     
-    @GET ("/service/application/lead/v1.0/ticket/%s")
+    @GET ("/service/application/lead/v1.0/ticket/{id}")
     fun getTicket(@Path("id") id: String)
     : Deferred<Response<Ticket>>
     
-    @POST ("/service/application/lead/v1.0/ticket/%s/history")
+    @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
     fun createHistory(@Path("ticket_id") ticketId: String,@Body body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>
     
@@ -230,19 +230,19 @@ interface LeadApiList {
     fun createTicket(@Body body: AddTicketPayload)
     : Deferred<Response<Ticket>>
     
-    @GET ("/service/application/lead/v1.0/form/%s")
+    @GET ("/service/application/lead/v1.0/form/{slug}")
     fun getCustomForm(@Path("slug") slug: String)
     : Deferred<Response<CustomForm>>
     
-    @POST ("/service/application/lead/v1.0/form/%s/submit")
+    @POST ("/service/application/lead/v1.0/form/{slug}/submit")
     fun submitCustomForm(@Path("slug") slug: String,@Body body: CustomFormSubmissionPayload)
     : Deferred<Response<SubmitCustomFormResponse>>
     
-    @GET ("/service/application/lead/v1.0/video/room/%s/participants")
+    @GET ("/service/application/lead/v1.0/video/room/{unique_name}/participants")
     fun getParticipantsInsideVideoRoom(@Path("unique_name") uniqueName: String)
     : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>
     
-    @GET ("/service/application/lead/v1.0/video/room/%s/token")
+    @GET ("/service/application/lead/v1.0/video/room/{unique_name}/token")
     fun getTokenForVideoRoom(@Path("unique_name") uniqueName: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>
     
@@ -254,7 +254,7 @@ interface ThemeApiList {
     fun getAppliedTheme()
     : Deferred<Response<ThemesSchema>>
     
-    @GET ("/service/application/theme/v1.0/%s/preview")
+    @GET ("/service/application/theme/v1.0/{theme_id}/preview")
     fun getThemeForPreview(@Path("theme_id") themeId: String)
     : Deferred<Response<ThemesSchema>>
     
@@ -398,7 +398,7 @@ interface ContentApiList {
     fun getAnnouncements()
     : Deferred<Response<AnnouncementsResponseSchema>>
     
-    @GET ("/service/application/content/v1.0/blogs/%s")
+    @GET ("/service/application/content/v1.0/blogs/{slug}")
     fun getBlog(@Path("slug") slug: String)
     : Deferred<Response<CustomBlogSchema>>
     
@@ -414,15 +414,15 @@ interface ContentApiList {
     fun getFaqCategories()
     : Deferred<Response<GetFaqCategoriesSchema>>
     
-    @GET ("/service/application/content/v1.0/faq/%s")
+    @GET ("/service/application/content/v1.0/faq/{slug}")
     fun getFaqBySlug(@Path("slug") slug: String)
     : Deferred<Response<FaqSchema>>
     
-    @GET ("/service/application/content/v1.0/faq/category/%s")
+    @GET ("/service/application/content/v1.0/faq/category/{slug}")
     fun getFaqCategoryBySlug(@Path("slug") slug: String)
     : Deferred<Response<GetFaqCategoryBySlugSchema>>
     
-    @GET ("/service/application/content/v1.0/faq/category/%s/faqs")
+    @GET ("/service/application/content/v1.0/faq/category/{slug}/faqs")
     fun getFaqsByCategorySlug(@Path("slug") slug: String)
     : Deferred<Response<GetFaqSchema>>
     
@@ -438,7 +438,7 @@ interface ContentApiList {
     fun getNavigations(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<NavigationGetResponse>>
     
-    @GET ("/service/application/content/v1.0/pages/%s")
+    @GET ("/service/application/content/v1.0/pages/{slug}")
     fun getPage(@Path("slug") slug: String)
     : Deferred<Response<CustomPageSchema>>
     
@@ -454,7 +454,7 @@ interface ContentApiList {
     fun getSlideshows(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<SlideshowGetResponse>>
     
-    @GET ("/service/application/content/v1.0/slideshow/%s")
+    @GET ("/service/application/content/v1.0/slideshow/{slug}")
     fun getSlideshow(@Path("slug") slug: String)
     : Deferred<Response<SlideshowSchema>>
     
@@ -490,11 +490,11 @@ interface ShareApiList {
     fun getApplicationQRCode()
     : Deferred<Response<QRCodeResp>>
     
-    @POST ("/service/application/share/v1.0/qr/products/%s/")
+    @POST ("/service/application/share/v1.0/qr/products/{slug}/")
     fun getProductQRCodeBySlug(@Path("slug") slug: String)
     : Deferred<Response<QRCodeResp>>
     
-    @POST ("/service/application/share/v1.0/qr/collection/%s/")
+    @POST ("/service/application/share/v1.0/qr/collection/{slug}/")
     fun getCollectionQRCodeBySlug(@Path("slug") slug: String)
     : Deferred<Response<QRCodeResp>>
     
@@ -506,11 +506,11 @@ interface ShareApiList {
     fun createShortLink(@Body body: ShortLinkReq)
     : Deferred<Response<ShortLinkRes>>
     
-    @GET ("/service/application/share/v1.0/links/short-link/%s/")
+    @GET ("/service/application/share/v1.0/links/short-link/{hash}/")
     fun getShortLinkByHash(@Path("hash") hash: String)
     : Deferred<Response<ShortLinkRes>>
     
-    @GET ("/service/application/share/v1.0/links/short-link/%s/original/")
+    @GET ("/service/application/share/v1.0/links/short-link/{hash}/original/")
     fun getOriginalShortLinkByHash(@Path("hash") hash: String)
     : Deferred<Response<ShortLinkRes>>
     
@@ -518,11 +518,11 @@ interface ShareApiList {
 
 interface FileStorageApiList {
     
-    @POST ("/service/application/assets/v1.0/namespaces/%s/upload/start/")
+    @POST ("/service/application/assets/v1.0/namespaces/{namespace}/upload/start/")
     fun startUpload(@Path("namespace") namespace: String,@Body body: StartRequest)
     : Deferred<Response<StartResponse>>
     
-    @POST ("/service/application/assets/v1.0/namespaces/%s/upload/complete/")
+    @POST ("/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/")
     fun completeUpload(@Path("namespace") namespace: String,@Body body: StartResponse)
     : Deferred<Response<CompleteResponse>>
     
@@ -562,7 +562,7 @@ interface ConfigurationApiList {
     fun getCurrencies()
     : Deferred<Response<CurrenciesResponse>>
     
-    @GET ("/service/application/configuration/v1.0/currency/%s")
+    @GET ("/service/application/configuration/v1.0/currency/{id}")
     fun getCurrencyById(@Path("id") id: String)
     : Deferred<Response<Currency>>
     
@@ -674,27 +674,27 @@ interface OrderApiList {
     fun getOrders(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("order_status") orderStatus: Int?)
     : Deferred<Response<OrderList>>
     
-    @GET ("/service/application/order/v1.0/orders/%s")
+    @GET ("/service/application/order/v1.0/orders/{order_id}")
     fun getOrderById(@Path("order_id") orderId: String)
     : Deferred<Response<OrderById>>
     
-    @GET ("/service/application/order/v1.0/orders/shipments/%s")
+    @GET ("/service/application/order/v1.0/orders/shipments/{shipment_id}")
     fun getShipmentById(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentById>>
     
-    @GET ("/service/application/order/v1.0/orders/shipments/%s/reasons")
+    @GET ("/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons")
     fun getShipmentReasons(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentReasons>>
     
-    @PUT ("/service/application/order/v1.0/orders/shipments/%s/status")
+    @PUT ("/service/application/order/v1.0/orders/shipments/{shipment_id}/status")
     fun updateShipmentStatus(@Path("shipment_id") shipmentId: String,@Body body: ShipmentStatusUpdateBody)
     : Deferred<Response<ShipmentStatusUpdate>>
     
-    @GET ("/service/application/order/v1.0/orders/shipments/%s/track")
+    @GET ("/service/application/order/v1.0/orders/shipments/{shipment_id}/track")
     fun trackShipment(@Path("shipment_id") shipmentId: String)
     : Deferred<Response<ShipmentTrack>>
     
-    @GET ("/service/application/order/v1.0/orders/pos-order/%s")
+    @GET ("/service/application/order/v1.0/orders/pos-order/{order_id}")
     fun getPosOrderById(@Path("order_id") orderId: String)
     : Deferred<Response<PosOrderById>>
     
@@ -738,7 +738,7 @@ interface FeedbackApiList {
     fun updateAbuseReport(@Body body: UpdateAbuseStatusRequest)
     : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/feedback/v1.0/abuse/entity/%s/entity-id/%s")
+    @GET ("/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}")
     fun getAbuseReports(@Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ReportAbuseGetResponse>>
     
@@ -750,11 +750,11 @@ interface FeedbackApiList {
     fun createAttribute(@Body body: SaveAttributeRequest)
     : Deferred<Response<InsertResponse>>
     
-    @GET ("/service/application/feedback/v1.0/attributes/%s")
+    @GET ("/service/application/feedback/v1.0/attributes/{slug}")
     fun getAttribute(@Path("slug") slug: String)
     : Deferred<Response<Attribute>>
     
-    @PUT ("/service/application/feedback/v1.0/attributes/%s")
+    @PUT ("/service/application/feedback/v1.0/attributes/{slug}")
     fun updateAttribute(@Path("slug") slug: String,@Body body: UpdateAttributeRequest)
     : Deferred<Response<UpdateResponse>>
     
@@ -766,11 +766,11 @@ interface FeedbackApiList {
     fun updateComment(@Body body: UpdateCommentRequest)
     : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/feedback/v1.0/comment/entity/%s")
+    @GET ("/service/application/feedback/v1.0/comment/entity/{entity_type}")
     fun getComments(@Path("entity_type") entityType: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<CommentGetResponse>>
     
-    @GET ("/service/application/feedback/v1.0/config/entity/%s/entity-id/%s")
+    @GET ("/service/application/feedback/v1.0/config/entity/{entity_type}/entity-id/{entity_id}")
     fun checkEligibility(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String)
     : Deferred<Response<CheckEligibilityResponse>>
     
@@ -786,11 +786,11 @@ interface FeedbackApiList {
     fun updateMedia(@Body body: UpdateMediaListRequest)
     : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/feedback/v1.0/media/entity/%s/entity-id/%s")
+    @GET ("/service/application/feedback/v1.0/media/entity/{entity_type}/entity-id/{entity_id}")
     fun getMedias(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<MediaGetResponse>>
     
-    @GET ("/service/application/feedback/v1.0/rating/summary/entity/%s/entity-id/%s")
+    @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
     fun getReviewSummaries(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<RatingGetResponse>>
     
@@ -802,7 +802,7 @@ interface FeedbackApiList {
     fun updateReview(@Body body: UpdateReviewRequest)
     : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/feedback/v1.0/review/entity/%s/entity-id/%s")
+    @GET ("/service/application/feedback/v1.0/review/entity/{entity_type}/entity-id/{entity_id}")
     fun getReviews(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ReviewGetResponse>>
     
@@ -818,7 +818,7 @@ interface FeedbackApiList {
     fun updateQuestion(@Body body: UpdateQNARequest)
     : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/feedback/v1.0/template/qna/entity/%s/entity-id/%s")
+    @GET ("/service/application/feedback/v1.0/template/qna/entity/{entity_type}/entity-id/{entity_id}")
     fun getQuestionAndAnswers(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<QNAGetResponse>>
     
@@ -882,15 +882,15 @@ interface PosCartApiList {
     fun addAddress(@Body body: Address)
     : Deferred<Response<SaveAddressResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/address/%d")
+    @GET ("/service/application/pos/cart/v1.0/address/{id}")
     fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
-    @PUT ("/service/application/pos/cart/v1.0/address/%d")
+    @PUT ("/service/application/pos/cart/v1.0/address/{id}")
     fun updateAddress(@Path("id") id: String,@Body body: Address)
     : Deferred<Response<UpdateAddressResponse>>
     
-    @DELETE ("/service/application/pos/cart/v1.0/address/%d")
+    @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
     fun removeAddress(@Path("id") id: String)
     : Deferred<Response<DeleteAddressResponse>>
     
@@ -934,11 +934,11 @@ interface PosCartApiList {
     fun getCartShareLink(@Body body: GetShareCartLinkRequest)
     : Deferred<Response<GetShareCartLinkResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/share-cart/%s")
+    @GET ("/service/application/pos/cart/v1.0/share-cart/{token}")
     fun getCartSharedItems(@Path("token") token: String)
     : Deferred<Response<SharedCartResponse>>
     
-    @POST ("/service/application/pos/cart/v1.0/share-cart/%s/%s")
+    @POST ("/service/application/pos/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
     
@@ -950,7 +950,7 @@ interface LogisticApiList {
     fun getTatProduct(@Body body: GetTatProductReqBody)
     : Deferred<Response<GetTatProductResponse>>
     
-    @GET ("/service/application/logistics/v1.0/pincode/%s")
+    @GET ("/service/application/logistics/v1.0/pincode/{pincode}")
     fun getPincodeCity(@Path("pincode") pincode: String)
     : Deferred<Response<GetPincodeCityResponse>>
     
