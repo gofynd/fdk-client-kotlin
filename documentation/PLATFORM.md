@@ -245,13 +245,13 @@
  
 * [Catalog](#Catalog)
   * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
-  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
+  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
   * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
-  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
+  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getProductBundle](#cataloggetproductbundle)
@@ -302,14 +302,14 @@
   * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
   * [Catalog#editProduct](#catalogeditproduct)
-  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
+  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
   * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
-  * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
   * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
+  * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
   * [Catalog#getCompanyTags](#cataloggetcompanytags)
   * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
   * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
@@ -319,8 +319,8 @@
   * [Catalog#deleteInventory](#catalogdeleteinventory)
   * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
   * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
-  * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
   * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
+  * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
   * [Catalog#getInventoryExport](#cataloggetinventoryexport)
   * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
@@ -336,8 +336,8 @@
   * [Catalog#getProductDetailBySlug](#cataloggetproductdetailbyslug)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
@@ -11231,58 +11231,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### getSearchKeywords
-Get a Search Keywords Details
-
-```kotlin
-catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
-
-
-
-Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `GetSearchWordsDetailResponseSchema` for details
-
-
-Schema: `GetSearchWordsDetailResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### deleteSearchKeywords
 Delete a Search Keywords
 
@@ -11317,6 +11265,58 @@ Status object. Tells whether the operation was successful. See example below or 
 
 
 Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getSearchKeywords
+Get a Search Keywords Details
+
+```kotlin
+catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
+
+
+
+Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetSearchWordsDetailResponseSchema` for details
+
+
+Schema: `GetSearchWordsDetailResponse`
 
 
 
@@ -11489,58 +11489,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### getAutocompleteKeywordDetail
-Get a Autocomplete Keywords Details
-
-```kotlin
-catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
-
-
-
-Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
-
-*Success Response*
-
-
-
-The mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details
-
-
-Schema: `GetAutocompleteWordsResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### deleteAutocompleteKeyword
 Delete a Autocomplete Keywords
 
@@ -11575,6 +11523,58 @@ Status object. Tells whether the operation was successful. See example below or 
 
 
 Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### getAutocompleteKeywordDetail
+Get a Autocomplete Keywords Details
+
+```kotlin
+catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
+
+
+
+Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
+
+*Success Response*
+
+
+
+The mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details
+
+
+Schema: `GetAutocompleteWordsResponse`
 
 
 
@@ -14160,6 +14160,57 @@ Schema: `ErrorResponse`
 ---
 
 
+#### deleteProduct
+Delete a product.
+
+```kotlin
+catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Company Id of the company associated to product that is to be deleted. |   
+| itemId | Int? | Id of the product to be updated. |  
+
+
+
+This API allows to delete product.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
 #### getProduct
 Get a single product.
 
@@ -14196,57 +14247,6 @@ Product object. See example below or refer `product.utils.format_product_respons
 
 
 Schema: `Product`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### deleteProduct
-Delete a product.
-
-```kotlin
-catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id of the company associated to product that is to be deleted. |   
-| itemId | Int? | Id of the product to be updated. |  
-
-
-
-This API allows to delete product.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -14471,11 +14471,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### createProductsInBulk
-Create products in bulk associated with given batch Id.
+#### deleteProductBulkJob
+Delete Bulk product job.
 
 ```kotlin
-catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body).safeAwait{ response,error->
+catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14489,12 +14489,12 @@ catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body)
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | Int? | Company Id in which assets to be uploaded. |   
-| batchId | String? | Batch Id in which assets to be uploaded. |  
+| companyId | String? | Company Id of the company associated to size that is to be deleted. |   
+| batchId | Int? | Batch Id of the bulk product job to be deleted. |  
 
 
 
-This API helps to create products in bulk push to kafka for approval/creation.
+This API allows to delete bulk product job associated with company.
 
 *Success Response*
 
@@ -14522,11 +14522,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### deleteProductBulkJob
-Delete Bulk product job.
+#### createProductsInBulk
+Create products in bulk associated with given batch Id.
 
 ```kotlin
-catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
+catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14540,12 +14540,12 @@ catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Company Id of the company associated to size that is to be deleted. |   
-| batchId | Int? | Batch Id of the bulk product job to be deleted. |  
+| companyId | Int? | Company Id in which assets to be uploaded. |   
+| batchId | String? | Batch Id in which assets to be uploaded. |  
 
 
 
-This API allows to delete bulk product job associated with company.
+This API helps to create products in bulk push to kafka for approval/creation.
 
 *Success Response*
 
@@ -15037,11 +15037,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### createBulkInventory
-Create products in bulk associated with given batch Id.
+#### deleteBulkInventoryJob
+Delete Bulk Inventory job.
 
 ```kotlin
-catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15055,11 +15055,11 @@ catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ respons
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | Int? | Company Id in which Inventory is to be uploaded. |  
+| companyId | String? | Company Id of the company of which bulk Inventory job is to be deleted. |  
 
 
 
-This API helps to create products in bulk push to kafka for approval/creation.
+This API allows to delete bulk Inventory job associated with company.
 
 *Success Response*
 
@@ -15087,11 +15087,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### deleteBulkInventoryJob
-Delete Bulk Inventory job.
+#### createBulkInventory
+Create products in bulk associated with given batch Id.
 
 ```kotlin
-catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
+catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15105,11 +15105,11 @@ catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Company Id of the company of which bulk Inventory job is to be deleted. |  
+| companyId | Int? | Company Id in which Inventory is to be uploaded. |  
 
 
 
-This API allows to delete bulk Inventory job associated with company.
+This API helps to create products in bulk push to kafka for approval/creation.
 
 *Success Response*
 
@@ -15819,56 +15819,6 @@ Schema: `ErrorResponse`
 ## CompanyProfile
 
 
-#### cbsOnboardGet
-Get company profile
-
-```kotlin
-companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
-
-
-
-This API allows to view the company profile of the seller account.
-
-*Success Response*
-
-
-
-Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
-
-
-Schema: `GetCompanyProfileSerializerResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### updateCompany
 Edit company profile
 
@@ -15901,6 +15851,56 @@ Returns a success message
 
 
 Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### cbsOnboardGet
+Get company profile
+
+```kotlin
+companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+This API allows to view the company profile of the seller account.
+
+*Success Response*
+
+
+
+Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
+
+
+Schema: `GetCompanyProfileSerializerResponse`
 
 
 
