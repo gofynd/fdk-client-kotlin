@@ -46,8 +46,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val partner by lazy { PartnerDataManagerClass(config)}
     
-    val webhook by lazy { WebhookDataManagerClass(config)}
-    
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
     }
@@ -97,8 +95,6 @@ class PlatformClient(val config:PlatformConfig) {
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
-    
-    val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     }
 
