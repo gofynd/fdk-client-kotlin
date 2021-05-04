@@ -49,8 +49,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [followById](#followbyid)
     * [unfollowById](#unfollowbyid)
+    * [followById](#followbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -237,6 +237,7 @@
 * [Rewards](#Rewards)
   * Methods
     * [getPointsOnProduct](#getpointsonproduct)
+    * [getOfferByName](#getofferbyname)
     * [getOrderDiscount](#getorderdiscount)
     * [getUserPoints](#getuserpoints)
     * [getUserPointsHistory](#getuserpointshistory)
@@ -1594,11 +1595,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow a particular Product
+#### unfollowById
+UnFollow a Product
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1613,9 +1614,9 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
 | collectionType | String? | Type of collection followed. i. e. products, brands, collections |    
-| collectionId | String? | the `id` of the collection type you want to follow |  
+| collectionId | String? | the `id` of the collection type you want to unfollow |  
 
-Follow a particular Product specified by its uid. Pass the uid of the product in request URL
+You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -1649,11 +1650,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-UnFollow a Product
+#### followById
+Follow a particular Product
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1668,9 +1669,9 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
 | collectionType | String? | Type of collection followed. i. e. products, brands, collections |    
-| collectionId | String? | the `id` of the collection type you want to unfollow |  
+| collectionId | String? | the `id` of the collection type you want to follow |  
 
-You can undo a followed Product or Brand by its id, we refer this action as _unfollow_. Pass the uid of the product in request URL
+Follow a particular Product specified by its uid. Pass the uid of the product in request URL
 
 *Success Response:*
 
@@ -13747,6 +13748,60 @@ ok
 
 
 Schema: `CatalogueOrderResponse`
+
+
+
+
+
+
+
+
+Bad request
+
+
+Schema: `Error`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getOfferByName
+Get offer by name.
+
+```kotlin
+rewards.getOfferByName(name: name).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| name | String? | Offer name |  
+
+Get offer by name.
+
+*Success Response:*
+
+
+
+ok
+
+
+Schema: `Offer`
 
 
 

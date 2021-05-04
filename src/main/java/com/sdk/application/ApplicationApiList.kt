@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -705,6 +705,10 @@ interface RewardsApiList {
     @POST ("/service/application/rewards/v1.0/catalogue/offer/order/")
     fun getPointsOnProduct(@Body body: CatalogueOrderRequest)
     : Deferred<Response<CatalogueOrderResponse>>
+    
+    @GET ("/service/application/rewards/v1.0/offers/{name}/")
+    fun getOfferByName(@Path("name") name: String)
+    : Deferred<Response<Offer>>
     
     @POST ("/service/application/rewards/v1.0/user/offers/order-discount/")
     fun getOrderDiscount(@Body body: OrderDiscountRequest)

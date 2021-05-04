@@ -245,24 +245,24 @@
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
 * [Catalog](#Catalog)
-  * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
   * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
+  * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
-  * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
   * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
+  * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getProductBundle](#cataloggetproductbundle)
   * [Catalog#createProductBundle](#catalogcreateproductbundle)
-  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
+  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#createSizeGuide](#catalogcreatesizeguide)
-  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getSizeGuide](#cataloggetsizeguide)
+  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
   * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
@@ -272,8 +272,8 @@
   * [Catalog#getAllCollections](#cataloggetallcollections)
   * [Catalog#createCollection](#catalogcreatecollection)
   * [Catalog#getCollectionDetail](#cataloggetcollectiondetail)
-  * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#deleteCollection](#catalogdeletecollection)
+  * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#getCollectionItems](#cataloggetcollectionitems)
   * [Catalog#addCollectionItems](#catalogaddcollectionitems)
   * [Catalog#getCatalogInsights](#cataloggetcataloginsights)
@@ -298,13 +298,13 @@
   * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
   * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#createCategories](#catalogcreatecategories)
-  * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getCategoryData](#cataloggetcategorydata)
+  * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
-  * [Catalog#editProduct](#catalogeditproduct)
   * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
+  * [Catalog#editProduct](#catalogeditproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
@@ -327,8 +327,8 @@
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
   * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#createHsnCode](#catalogcreatehsncode)
-  * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#getHsnCode](#cataloggethsncode)
+  * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#bulkHsnCode](#catalogbulkhsncode)
   * [Catalog#getApplicationBrands](#cataloggetapplicationbrands)
   * [Catalog#getDepartments](#cataloggetdepartments)
@@ -337,18 +337,18 @@
   * [Catalog#getProductDetailBySlug](#cataloggetproductdetailbyslug)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#getBrand](#companyprofilegetbrand)
+  * [CompanyProfile#editBrand](#companyprofileeditbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
-  * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
  
 * [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
@@ -11185,58 +11185,6 @@ Schema: `ApefaceApiError`
 ## Catalog
 
 
-#### updateSearchKeywords
-Update Search Keyword
-
-```kotlin
-catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Update Search Keyword by its id. On successful request, returns the updated collection
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `GetSearchWordsDataSchema` for details.
-
-
-Schema: `GetSearchWordsData`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### getSearchKeywords
 Get a Search Keywords Details
 
@@ -11323,6 +11271,58 @@ Status object. Tells whether the operation was successful. See example below or 
 
 
 Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateSearchKeywords
+Update Search Keyword
+
+```kotlin
+catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update Search Keyword by its id. On successful request, returns the updated collection
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetSearchWordsDataSchema` for details.
+
+
+Schema: `GetSearchWordsData`
 
 
 
@@ -11443,58 +11443,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### updateAutocompleteKeyword
-Create & Update Autocomplete Keyword
-
-```kotlin
-catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Update a mapping by it's id. On successful request, returns the updated Keyword mapping
-
-*Success Response*
-
-
-
-The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
-
-
-Schema: `GetAutocompleteWordsResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### getAutocompleteKeywordDetail
 Get a Autocomplete Keywords Details
 
@@ -11581,6 +11529,58 @@ Status object. Tells whether the operation was successful. See example below or 
 
 
 Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateAutocompleteKeyword
+Create & Update Autocomplete Keyword
+
+```kotlin
+catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update a mapping by it's id. On successful request, returns the updated Keyword mapping
+
+*Success Response*
+
+
+
+The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
+
+
+Schema: `GetAutocompleteWordsResponse`
 
 
 
@@ -11802,57 +11802,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### updateProductBundle
-Update a Product Bundle
-
-```kotlin
-catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Update a Product Bundle by its id. On successful request, returns the updated product bundle
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `GetProductBundleCreateResponse` for details.
-
-
-Schema: `GetProductBundleCreateResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### getProductBundleDetail
 Get a particular Product Bundle details
 
@@ -11886,6 +11835,57 @@ The Collection object. See example below or refer `GetProductBundleResponse` for
 
 
 Schema: `GetProductBundleResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateProductBundle
+Update a Product Bundle
+
+```kotlin
+catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update a Product Bundle by its id. On successful request, returns the updated product bundle
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetProductBundleCreateResponse` for details.
+
+
+Schema: `GetProductBundleCreateResponse`
 
 
 
@@ -12009,57 +12009,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### updateSizeGuide
-Edit a size guide.
-
-```kotlin
-catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company. |   
-| id | String? | Mongo id of the size guide to be edited |  
-
-
-
-This API allows to edit a size guide.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### getSizeGuide
 Get a single size guide.
 
@@ -12093,6 +12042,57 @@ Brand object. See example below or refer `SizeGuideResponseSchema` for details
 
 
 Schema: `SizeGuideResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateSizeGuide
+Edit a size guide.
+
+```kotlin
+catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company. |   
+| id | String? | Mongo id of the size guide to be edited |  
+
+
+
+This API allows to edit a size guide.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
 
 
 
@@ -12573,58 +12573,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### updateCollection
-Update a collection
-
-```kotlin
-catalog.updateCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier of a collection. |  
-
-
-
-Update a collection by it's id. On successful request, returns the updated collection
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `CollectionCreateResponse` for details.
-
-
-Schema: `CollectionCreateResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### deleteCollection
 Delete a Collection
 
@@ -12659,6 +12607,58 @@ Status object. Tells whether the operation was successful. See example below or 
 
 
 Schema: `DeleteResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateCollection
+Update a collection
+
+```kotlin
+catalog.updateCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier of a collection. |  
+
+
+
+Update a collection by it's id. On successful request, returns the updated collection
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `CollectionCreateResponse` for details.
+
+
+Schema: `CollectionCreateResponse`
 
 
 
@@ -13908,57 +13908,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### updateCategory
-Update product categories
-
-```kotlin
-catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| uid | String? | Category unique id |  
-
-
-
-Update a product category using this apu
-
-*Success Response*
-
-
-
-Category Meta. See example below or refer `CategoryUpdateResponse` for details
-
-
-Schema: `CategoryUpdateResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### getCategoryData
 Get product category by uid
 
@@ -13992,6 +13941,57 @@ Category Meta. See example below or refer `CategorySchema` for details
 
 
 Schema: `Category`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateCategory
+Update product categories
+
+```kotlin
+catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String? | Category unique id |  
+
+
+
+Update a product category using this apu
+
+*Success Response*
+
+
+
+Category Meta. See example below or refer `CategoryUpdateResponse` for details
+
+
+Schema: `CategoryUpdateResponse`
 
 
 
@@ -14115,57 +14115,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### editProduct
-Edit a product.
-
-```kotlin
-catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to product that is to be viewed. |   
-| itemId | Int? | Id of the product to be updated. |  
-
-
-
-This API allows to edit product.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### getProduct
 Get a single product.
 
@@ -14244,6 +14193,57 @@ catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,
 
 
 This API allows to delete product.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### editProduct
+Edit a product.
+
+```kotlin
+catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to product that is to be viewed. |   
+| itemId | Int? | Id of the product to be updated. |  
+
+
+
+This API allows to edit product.
 
 *Success Response*
 
@@ -15397,57 +15397,6 @@ Schema: `ErrorResponse`
 ---
 
 
-#### updateHsnCode
-Update Hsn Code.
-
-```kotlin
-catalog.updateHsnCode(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| id | String? | id |  
-
-
-
-Update Hsn Code.
-
-*Success Response*
-
-
-
-See example below for details
-
-
-Schema: `HsnCode`
-
-
-
-
-
-Bad request.
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### getHsnCode
 Fetch Hsn Code.
 
@@ -15478,6 +15427,57 @@ Fetch Hsn Code.
 
 
 See example below details
+
+
+Schema: `HsnCode`
+
+
+
+
+
+Bad request.
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### updateHsnCode
+Update Hsn Code.
+
+```kotlin
+catalog.updateHsnCode(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| id | String? | id |  
+
+
+
+Update Hsn Code.
+
+*Success Response*
+
+
+
+See example below for details
 
 
 Schema: `HsnCode`
@@ -15825,56 +15825,6 @@ Schema: `ErrorResponse`
 ## CompanyProfile
 
 
-#### cbsOnboardGet
-Get company profile
-
-```kotlin
-companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
-
-
-
-This API allows to view the company profile of the seller account.
-
-*Success Response*
-
-
-
-Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
-
-
-Schema: `GetCompanyProfileSerializerResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
 #### updateCompany
 Edit company profile
 
@@ -15925,6 +15875,56 @@ Schema: `ErrorResponse`
 ---
 
 
+#### cbsOnboardGet
+Get company profile
+
+```kotlin
+companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+This API allows to view the company profile of the seller account.
+
+*Success Response*
+
+
+
+Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
+
+
+Schema: `GetCompanyProfileSerializerResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
 #### getCompanyMetrics
 Get company metrics
 
@@ -15957,57 +15957,6 @@ Metrics response object. See example below or refer `MetricsSerializer` for deta
 
 
 Schema: `MetricsSerializer`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### editBrand
-Edit a brand.
-
-```kotlin
-companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to brand that is to be viewed. |   
-| brandId | String? | Id of the brand to be viewed. |  
-
-
-
-This API allows to edit meta of a brand.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -16077,6 +16026,57 @@ Schema: `ErrorResponse`
 ---
 
 
+#### editBrand
+Edit a brand.
+
+```kotlin
+companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to brand that is to be viewed. |   
+| brandId | String? | Id of the brand to be viewed. |  
+
+
+
+This API allows to edit meta of a brand.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
 #### createBrand
 Create a Brand.
 
@@ -16100,6 +16100,56 @@ companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response
 
 
 This API allows to create a brand associated to a company.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason
+
+
+Schema: `ErrorResponse`
+
+
+
+
+
+
+---
+
+
+#### createCompanyBrandMapping
+Create a company brand mapping.
+
+```kotlin
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the brand is to be mapped. |  
+
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
 
 *Success Response*
 
@@ -16179,11 +16229,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### createCompanyBrandMapping
-Create a company brand mapping.
+#### createLocation
+Create a location asscoiated to a company.
 
 ```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16197,11 +16247,11 @@ companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeA
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the brand is to be mapped. |  
+| companyId | String? | Id of the company inside which the location is to be created. |  
 
 
 
-This API allows to create a company brand mapping, for a already existing brand in the system.
+This API allows to create a location associated to a company.
 
 *Success Response*
 
@@ -16284,11 +16334,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### createLocation
-Create a location asscoiated to a company.
+#### getLocationDetail
+Get details of a specific location.
 
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16302,20 +16352,21 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |  
+| companyId | String? | Id of the company inside which the location lies. |   
+| locationId | String? | Id of the location which you want to view. |  
 
 
 
-This API allows to create a location associated to a company.
+This API helps to get data associated to a specific location.
 
 *Success Response*
 
 
 
-Returns a success response
+Brand object. See example below or refer `GetLocationSerializer` for details
 
 
-Schema: `SuccessResponse`
+Schema: `GetLocationSerializer`
 
 
 
@@ -16367,57 +16418,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### getLocationDetail
-Get details of a specific location.
-
-```kotlin
-companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location lies. |   
-| locationId | String? | Id of the location which you want to view. |  
-
-
-
-This API helps to get data associated to a specific location.
-
-*Success Response*
-
-
-
-Brand object. See example below or refer `GetLocationSerializer` for details
-
-
-Schema: `GetLocationSerializer`
 
 
 
