@@ -1033,12 +1033,12 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun verifyEmailOTP(platform: String?=null,body: VerifyOtpRequestSchema): Deferred<Response<VerifyOtpSuccess>>? {
+    fun verifyEmailOTP(platform: String?=null,body: VerifyEmailOtpRequestSchema): Deferred<Response<VerifyOtpSuccess>>? {
         return userApiList?.verifyEmailOTP(platform = platform, body = body)}
 
     
     
-    fun getLoggedInUser(): Deferred<Response<UserSchema>>? {
+    fun getLoggedInUser(): Deferred<Response<UserObjectSchema>>? {
         return userApiList?.getLoggedInUser( )}
 
     

@@ -339,12 +339,12 @@ interface UserApiList {
     : Deferred<Response<EmailOtpSuccess>>
     
     @POST ("/service/application/user/authentication/v1.0/otp/email/verify")
-    fun verifyEmailOTP(@Query("platform") platform: String?,@Body body: VerifyOtpRequestSchema)
+    fun verifyEmailOTP(@Query("platform") platform: String?,@Body body: VerifyEmailOtpRequestSchema)
     : Deferred<Response<VerifyOtpSuccess>>
     
     @GET ("/service/application/user/authentication/v1.0/session")
     fun getLoggedInUser()
-    : Deferred<Response<UserSchema>>
+    : Deferred<Response<UserObjectSchema>>
     
     @GET ("/service/application/user/authentication/v1.0/sessions")
     fun getListOfActiveSessions()
