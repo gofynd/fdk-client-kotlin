@@ -15593,16 +15593,58 @@ data class ProductDetail(
 data class Document(
     
     
-    @SerializedName("url")
-    var url: String?=null,
     @SerializedName("type")
     var type: String?=null,
     @SerializedName("verified")
     var verified: Boolean?=null,
-    @SerializedName("legal_name")
-    var legalName: String?=null,
+    @SerializedName("url")
+    var url: String?=null,
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    @SerializedName("legal_name")
+    var legalName: String?=null
+    
+): Parcelable
+
+/*
+    Model: CompanyAddress
+*/
+@Parcelize
+data class CompanyAddress(
+    
+    
+    @SerializedName("city")
+    var city: String?=null,
+    @SerializedName("address2")
+    var address2: String?=null,
+    @SerializedName("address1")
+    var address1: String?=null,
+    @SerializedName("country")
+    var country: String?=null,
+    @SerializedName("state")
+    var state: String?=null,
+    @SerializedName("latitude")
+    var latitude: Double?=null,
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    @SerializedName("landmark")
+    var landmark: String?=null,
+    @SerializedName("longitude")
+    var longitude: Double?=null
+    
+): Parcelable
+
+/*
+    Model: ReferralInfo
+*/
+@Parcelize
+data class ReferralInfo(
+    
+    
+    @SerializedName("referral_code")
+    var referralCode: String?=null
     
 ): Parcelable
 
@@ -15613,10 +15655,114 @@ data class Document(
 data class BusinessCountryInfo(
     
     
+    @SerializedName("country")
+    var country: String?=null,
+    @SerializedName("country_code")
+    var countryCode: String?=null
+    
+): Parcelable
+
+/*
+    Model: CompanyStoreSerializerRequest
+*/
+@Parcelize
+data class CompanyStoreSerializerRequest(
+    
+    
+    @SerializedName("document")
+    var document: Document?=null,
+    @SerializedName("address")
+    var address: CompanyAddress?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("notification_emails")
+    var notificationEmails: ArrayList<String>?=null,
+    @SerializedName("referral_info")
+    var referralInfo: ReferralInfo?=null,
+    @SerializedName("warnings")
+    var warnings: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("franchise_enabled")
+    var franchiseEnabled: Boolean?=null,
+    @SerializedName("business_type")
+    var businessType: String?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
+    @SerializedName("brands")
+    var brands: ArrayList<Int>?=null,
+    @SerializedName("business_country_info")
+    var businessCountryInfo: BusinessCountryInfo?=null,
+    @SerializedName("business_info")
+    var businessInfo: String?=null
+    
+): Parcelable
+
+/*
+    Model: Website
+*/
+@Parcelize
+data class Website(
+    
+    
+    @SerializedName("url")
+    var url: String?=null
+    
+): Parcelable
+
+/*
+    Model: BusinessDetails
+*/
+@Parcelize
+data class BusinessDetails(
+    
+    
+    @SerializedName("website")
+    var website: Website?=null
+    
+): Parcelable
+
+/*
+    Model: GetAddressSerializer
+*/
+@Parcelize
+data class GetAddressSerializer(
+    
+    
+    @SerializedName("city")
+    var city: String?=null,
+    @SerializedName("address_type")
+    var addressType: String?=null,
+    @SerializedName("address1")
+    var address1: String?=null,
+    @SerializedName("address2")
+    var address2: String?=null,
+    @SerializedName("country")
+    var country: String?=null,
+    @SerializedName("state")
+    var state: String?=null,
+    @SerializedName("latitude")
+    var latitude: Double?=null,
+    @SerializedName("pincode")
+    var pincode: Int?=null,
     @SerializedName("country_code")
     var countryCode: String?=null,
+    @SerializedName("landmark")
+    var landmark: String?=null,
+    @SerializedName("longitude")
+    var longitude: Double?=null
+    
+): Parcelable
+
+/*
+    Model: BusinessCountryInfo1
+*/
+@Parcelize
+data class BusinessCountryInfo1(
+    
+    
     @SerializedName("country")
-    var country: String?=null
+    var country: String?=null,
+    @SerializedName("country_code")
+    var countryCode: String?=null
     
 ): Parcelable
 
@@ -15649,198 +15795,52 @@ data class ContactDetails(
 ): Parcelable
 
 /*
-    Model: GetAddressSerializer
-*/
-@Parcelize
-data class GetAddressSerializer(
-    
-    
-    @SerializedName("address2")
-    var address2: String?=null,
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    @SerializedName("country")
-    var country: String?=null,
-    @SerializedName("longitude")
-    var longitude: Double?=null,
-    @SerializedName("latitude")
-    var latitude: Double?=null,
-    @SerializedName("landmark")
-    var landmark: String?=null,
-    @SerializedName("address_type")
-    var addressType: String?=null,
-    @SerializedName("state")
-    var state: String?=null,
-    @SerializedName("pincode")
-    var pincode: Int?=null,
-    @SerializedName("address1")
-    var address1: String?=null,
-    @SerializedName("city")
-    var city: String?=null
-    
-): Parcelable
-
-/*
-    Model: Website
-*/
-@Parcelize
-data class Website(
-    
-    
-    @SerializedName("url")
-    var url: String?=null
-    
-): Parcelable
-
-/*
-    Model: BusinessDetails
-*/
-@Parcelize
-data class BusinessDetails(
-    
-    
-    @SerializedName("website")
-    var website: Website?=null
-    
-): Parcelable
-
-/*
     Model: GetCompanyProfileSerializerResponse
 */
 @Parcelize
 data class GetCompanyProfileSerializerResponse(
     
     
-    @SerializedName("franchise_enabled")
-    var franchiseEnabled: Boolean?=null,
-    @SerializedName("documents")
-    var documents: ArrayList<Document>?=null,
-    @SerializedName("modified_by")
-    var modifiedBy: UserSerializer?=null,
-    @SerializedName("uid")
-    var uid: Int?=null,
-    @SerializedName("business_country_info")
-    var businessCountryInfo: BusinessCountryInfo?=null,
-    @SerializedName("created_by")
-    var createdBy: UserSerializer?=null,
-    @SerializedName("company_type")
-    var companyType: String?=null,
-    @SerializedName("contact_details")
-    var contactDetails: ContactDetails?=null,
-    @SerializedName("verified_on")
-    var verifiedOn: String?=null,
-    @SerializedName("name")
-    var name: String?=null,
-    @SerializedName("business_info")
-    var businessInfo: String?=null,
-    @SerializedName("warnings")
-    var warnings: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("stage")
-    var stage: String?=null,
-    @SerializedName("addresses")
-    var addresses: ArrayList<GetAddressSerializer>?=null,
-    @SerializedName("business_type")
-    var businessType: String?=null,
-    @SerializedName("verified_by")
-    var verifiedBy: UserSerializer?=null,
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    @SerializedName("created_on")
-    var createdOn: String?=null,
     @SerializedName("business_details")
     var businessDetails: BusinessDetails?=null,
-    @SerializedName("notification_emails")
-    var notificationEmails: ArrayList<String>?=null
-    
-): Parcelable
-
-/*
-    Model: BusinessCountryInfo1
-*/
-@Parcelize
-data class BusinessCountryInfo1(
-    
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    @SerializedName("country")
-    var country: String?=null
-    
-): Parcelable
-
-/*
-    Model: ReferralInfo
-*/
-@Parcelize
-data class ReferralInfo(
-    
-    
-    @SerializedName("referral_code")
-    var referralCode: String?=null
-    
-): Parcelable
-
-/*
-    Model: CompanyAddress
-*/
-@Parcelize
-data class CompanyAddress(
-    
-    
-    @SerializedName("address2")
-    var address2: String?=null,
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    @SerializedName("country")
-    var country: String?=null,
-    @SerializedName("longitude")
-    var longitude: Double?=null,
-    @SerializedName("latitude")
-    var latitude: Double?=null,
-    @SerializedName("landmark")
-    var landmark: String?=null,
-    @SerializedName("state")
-    var state: String?=null,
-    @SerializedName("pincode")
-    var pincode: Int?=null,
-    @SerializedName("address1")
-    var address1: String?=null,
-    @SerializedName("city")
-    var city: String?=null
-    
-): Parcelable
-
-/*
-    Model: CompanyStoreSerializerRequest
-*/
-@Parcelize
-data class CompanyStoreSerializerRequest(
-    
-    
-    @SerializedName("business_country_info")
-    var businessCountryInfo: BusinessCountryInfo1?=null,
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("modified_by")
+    var modifiedBy: UserSerializer?=null,
+    @SerializedName("documents")
+    var documents: ArrayList<Document>?=null,
     @SerializedName("franchise_enabled")
     var franchiseEnabled: Boolean?=null,
-    @SerializedName("business_type")
-    var businessType: String?=null,
-    @SerializedName("business_info")
-    var businessInfo: String?=null,
-    @SerializedName("brands")
-    var brands: ArrayList<Int>?=null,
-    @SerializedName("referral_info")
-    var referralInfo: ReferralInfo?=null,
+    @SerializedName("verified_on")
+    var verifiedOn: String?=null,
+    @SerializedName("company_type")
+    var companyType: String?=null,
+    @SerializedName("addresses")
+    var addresses: ArrayList<GetAddressSerializer>?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("created_by")
+    var createdBy: UserSerializer?=null,
+    @SerializedName("stage")
+    var stage: String?=null,
     @SerializedName("warnings")
     var warnings: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("document")
-    var document: Document?=null,
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    @SerializedName("business_type")
+    var businessType: String?=null,
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    @SerializedName("verified_by")
+    var verifiedBy: UserSerializer?=null,
+    @SerializedName("business_country_info")
+    var businessCountryInfo: BusinessCountryInfo1?=null,
+    @SerializedName("notification_emails")
+    var notificationEmails: ArrayList<String>?=null,
+    @SerializedName("contact_details")
+    var contactDetails: ContactDetails?=null,
     @SerializedName("uid")
     var uid: Int?=null,
-    @SerializedName("address")
-    var address: CompanyAddress?=null,
-    @SerializedName("notification_emails")
-    var notificationEmails: ArrayList<String>?=null
+    @SerializedName("business_info")
+    var businessInfo: String?=null
     
 ): Parcelable
 
@@ -15851,10 +15851,10 @@ data class CompanyStoreSerializerRequest(
 data class DocumentsObj(
     
     
-    @SerializedName("pending")
-    var pending: Int?=null,
     @SerializedName("verified")
-    var verified: Int?=null
+    var verified: Int?=null,
+    @SerializedName("pending")
+    var pending: Int?=null
     
 ): Parcelable
 
@@ -15867,18 +15867,18 @@ data class MetricsSerializer(
     
     @SerializedName("brand")
     var brand: DocumentsObj?=null,
-    @SerializedName("store_documents")
-    var storeDocuments: DocumentsObj?=null,
-    @SerializedName("product")
-    var product: DocumentsObj?=null,
-    @SerializedName("company_documents")
-    var companyDocuments: DocumentsObj?=null,
-    @SerializedName("uid")
-    var uid: Int?=null,
     @SerializedName("store")
     var store: DocumentsObj?=null,
+    @SerializedName("company_documents")
+    var companyDocuments: DocumentsObj?=null,
+    @SerializedName("product")
+    var product: DocumentsObj?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
     @SerializedName("stage")
-    var stage: String?=null
+    var stage: String?=null,
+    @SerializedName("store_documents")
+    var storeDocuments: DocumentsObj?=null
     
 ): Parcelable
 
@@ -15903,24 +15903,24 @@ data class BrandBannerSerializer(
 data class CreateUpdateBrandRequestSerializer(
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    @SerializedName("brand_tier")
-    var brandTier: String?=null,
-    @SerializedName("synonyms")
-    var synonyms: ArrayList<String>?=null,
-    @SerializedName("banner")
-    var banner: BrandBannerSerializer?=null,
     @SerializedName("description")
     var description: String?=null,
-    @SerializedName("_locale_language")
-    var localeLanguage: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("company_id")
-    var companyId: Int?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("banner")
+    var banner: BrandBannerSerializer?=null,
     @SerializedName("_custom_json")
     var customJson: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("_locale_language")
+    var localeLanguage: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("synonyms")
+    var synonyms: ArrayList<String>?=null,
     @SerializedName("uid")
     var uid: Int?=null,
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    @SerializedName("brand_tier")
+    var brandTier: String?=null,
     @SerializedName("logo")
     var logo: String?=null
     
@@ -15935,10 +15935,10 @@ data class UserSerializer1(
     
     @SerializedName("contact")
     var contact: String?=null,
-    @SerializedName("user_id")
-    var userId: String?=null,
     @SerializedName("username")
-    var username: String?=null
+    var username: String?=null,
+    @SerializedName("user_id")
+    var userId: String?=null
     
 ): Parcelable
 
@@ -15949,42 +15949,42 @@ data class UserSerializer1(
 data class GetBrandResponseSerializer(
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    @SerializedName("reject_reason")
-    var rejectReason: String?=null,
-    @SerializedName("synonyms")
-    var synonyms: ArrayList<String>?=null,
-    @SerializedName("banner")
-    var banner: BrandBannerSerializer?=null,
-    @SerializedName("verified_by")
-    var verifiedBy: UserSerializer1?=null,
     @SerializedName("description")
     var description: String?=null,
-    @SerializedName("_locale_language")
-    var localeLanguage: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    @SerializedName("modified_by")
-    var modifiedBy: UserSerializer1?=null,
-    @SerializedName("created_by")
-    var createdBy: UserSerializer1?=null,
-    @SerializedName("warnings")
-    var warnings: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("created_on")
-    var createdOn: String?=null,
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("uid")
-    var uid: Int?=null,
-    @SerializedName("logo")
-    var logo: String?=null,
-    @SerializedName("stage")
-    var stage: String?=null,
     @SerializedName("slug_key")
     var slugKey: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("banner")
+    var banner: BrandBannerSerializer?=null,
+    @SerializedName("_locale_language")
+    var localeLanguage: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("created_by")
+    var createdBy: UserSerializer1?=null,
+    @SerializedName("modified_by")
+    var modifiedBy: UserSerializer1?=null,
+    @SerializedName("warnings")
+    var warnings: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    @SerializedName("created_on")
+    var createdOn: String?=null,
     @SerializedName("verified_on")
-    var verifiedOn: String?=null
+    var verifiedOn: String?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
+    @SerializedName("synonyms")
+    var synonyms: ArrayList<String>?=null,
+    @SerializedName("reject_reason")
+    var rejectReason: String?=null,
+    @SerializedName("verified_by")
+    var verifiedBy: UserSerializer1?=null,
+    @SerializedName("stage")
+    var stage: String?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("logo")
+    var logo: String?=null
     
 ): Parcelable
 
@@ -15995,10 +15995,10 @@ data class GetBrandResponseSerializer(
 data class CompanyBrandPostRequestSerializer(
     
     
-    @SerializedName("company")
-    var company: Int?=null,
     @SerializedName("brands")
     var brands: ArrayList<Int>?=null,
+    @SerializedName("company")
+    var company: Int?=null,
     @SerializedName("uid")
     var uid: Int?=null
     
@@ -16011,32 +16011,32 @@ data class CompanyBrandPostRequestSerializer(
 data class GetCompanySerializer(
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    @SerializedName("reject_reason")
-    var rejectReason: String?=null,
-    @SerializedName("business_type")
-    var businessType: String?=null,
-    @SerializedName("verified_by")
-    var verifiedBy: UserSerializer?=null,
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    @SerializedName("addresses")
-    var addresses: ArrayList<GetAddressSerializer>?=null,
-    @SerializedName("modified_by")
-    var modifiedBy: UserSerializer?=null,
-    @SerializedName("created_by")
-    var createdBy: UserSerializer?=null,
-    @SerializedName("created_on")
-    var createdOn: String?=null,
     @SerializedName("company_type")
     var companyType: String?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("created_by")
+    var createdBy: UserSerializer?=null,
+    @SerializedName("modified_by")
+    var modifiedBy: UserSerializer?=null,
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    @SerializedName("business_type")
+    var businessType: String?=null,
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    @SerializedName("verified_on")
+    var verifiedOn: String?=null,
     @SerializedName("uid")
     var uid: Int?=null,
+    @SerializedName("reject_reason")
+    var rejectReason: String?=null,
+    @SerializedName("verified_by")
+    var verifiedBy: UserSerializer?=null,
     @SerializedName("stage")
     var stage: String?=null,
-    @SerializedName("verified_on")
-    var verifiedOn: String?=null
+    @SerializedName("addresses")
+    var addresses: ArrayList<GetAddressSerializer>?=null
     
 ): Parcelable
 
@@ -16047,30 +16047,30 @@ data class GetCompanySerializer(
 data class CompanyBrandSerializer(
     
     
-    @SerializedName("reject_reason")
-    var rejectReason: String?=null,
     @SerializedName("brand")
     var brand: GetBrandResponseSerializer?=null,
-    @SerializedName("verified_by")
-    var verifiedBy: UserSerializer1?=null,
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
-    @SerializedName("modified_by")
-    var modifiedBy: UserSerializer1?=null,
     @SerializedName("created_by")
     var createdBy: UserSerializer1?=null,
+    @SerializedName("modified_by")
+    var modifiedBy: UserSerializer1?=null,
+    @SerializedName("company")
+    var company: GetCompanySerializer?=null,
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
     @SerializedName("warnings")
     var warnings: @RawValue HashMap<String,Any>?=null,
     @SerializedName("created_on")
     var createdOn: String?=null,
+    @SerializedName("verified_on")
+    var verifiedOn: String?=null,
     @SerializedName("uid")
     var uid: Int?=null,
-    @SerializedName("company")
-    var company: GetCompanySerializer?=null,
+    @SerializedName("reject_reason")
+    var rejectReason: String?=null,
+    @SerializedName("verified_by")
+    var verifiedBy: UserSerializer1?=null,
     @SerializedName("stage")
-    var stage: String?=null,
-    @SerializedName("verified_on")
-    var verifiedOn: String?=null
+    var stage: String?=null
     
 ): Parcelable
 
@@ -16081,26 +16081,10 @@ data class CompanyBrandSerializer(
 data class CompanyBrandListSerializer(
     
     
-    @SerializedName("items")
-    var items: ArrayList<CompanyBrandSerializer>?=null,
     @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable
-
-/*
-    Model: LocationManagerSerializer
-*/
-@Parcelize
-data class LocationManagerSerializer(
-    
-    
-    @SerializedName("email")
-    var email: String?=null,
-    @SerializedName("name")
-    var name: String?=null,
-    @SerializedName("mobile_no")
-    var mobileNo: SellerPhoneNumber?=null
+    var page: Page?=null,
+    @SerializedName("items")
+    var items: ArrayList<CompanyBrandSerializer>?=null
     
 ): Parcelable
 
@@ -16111,12 +16095,12 @@ data class LocationManagerSerializer(
 data class InvoiceCredSerializer(
     
     
-    @SerializedName("password")
-    var password: String?=null,
     @SerializedName("enabled")
     var enabled: Boolean?=null,
     @SerializedName("username")
-    var username: String?=null
+    var username: String?=null,
+    @SerializedName("password")
+    var password: String?=null
     
 ): Parcelable
 
@@ -16141,28 +16125,28 @@ data class InvoiceDetailsSerializer(
 data class GetAddressSerializer1(
     
     
-    @SerializedName("address2")
-    var address2: String?=null,
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    @SerializedName("country")
-    var country: String?=null,
-    @SerializedName("longitude")
-    var longitude: Double?=null,
-    @SerializedName("latitude")
-    var latitude: Double?=null,
-    @SerializedName("landmark")
-    var landmark: String?=null,
+    @SerializedName("city")
+    var city: String?=null,
     @SerializedName("address_type")
     var addressType: String?=null,
-    @SerializedName("state")
-    var state: String?=null,
-    @SerializedName("pincode")
-    var pincode: Int?=null,
     @SerializedName("address1")
     var address1: String?=null,
-    @SerializedName("city")
-    var city: String?=null
+    @SerializedName("address2")
+    var address2: String?=null,
+    @SerializedName("country")
+    var country: String?=null,
+    @SerializedName("state")
+    var state: String?=null,
+    @SerializedName("latitude")
+    var latitude: Double?=null,
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    @SerializedName("landmark")
+    var landmark: String?=null,
+    @SerializedName("longitude")
+    var longitude: Double?=null
     
 ): Parcelable
 
@@ -16181,16 +16165,32 @@ data class ProductReturnConfigSerializer(
 ): Parcelable
 
 /*
+    Model: LocationManagerSerializer
+*/
+@Parcelize
+data class LocationManagerSerializer(
+    
+    
+    @SerializedName("mobile_no")
+    var mobileNo: SellerPhoneNumber?=null,
+    @SerializedName("name")
+    var name: String?=null,
+    @SerializedName("email")
+    var email: String?=null
+    
+): Parcelable
+
+/*
     Model: LocationTimingSerializer
 */
 @Parcelize
 data class LocationTimingSerializer(
     
     
-    @SerializedName("hour")
-    var hour: Int?=null,
     @SerializedName("minute")
-    var minute: Int?=null
+    var minute: Int?=null,
+    @SerializedName("hour")
+    var hour: Int?=null
     
 ): Parcelable
 
@@ -16201,14 +16201,14 @@ data class LocationTimingSerializer(
 data class LocationDayWiseSerializer(
     
     
+    @SerializedName("weekday")
+    var weekday: String?=null,
     @SerializedName("open")
     var open: Boolean?=null,
-    @SerializedName("opening")
-    var opening: LocationTimingSerializer?=null,
     @SerializedName("closing")
     var closing: LocationTimingSerializer?=null,
-    @SerializedName("weekday")
-    var weekday: String?=null
+    @SerializedName("opening")
+    var opening: LocationTimingSerializer?=null
     
 ): Parcelable
 
@@ -16219,38 +16219,38 @@ data class LocationDayWiseSerializer(
 data class LocationSerializer(
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    @SerializedName("manager")
-    var manager: LocationManagerSerializer?=null,
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    @SerializedName("documents")
-    var documents: ArrayList<Document>?=null,
-    @SerializedName("notification_emails")
-    var notificationEmails: ArrayList<String>?=null,
     @SerializedName("gst_credentials")
     var gstCredentials: InvoiceDetailsSerializer?=null,
-    @SerializedName("warnings")
-    var warnings: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("address")
-    var address: GetAddressSerializer1?=null,
-    @SerializedName("uid")
-    var uid: Int?=null,
+    @SerializedName("name")
+    var name: String?=null,
     @SerializedName("code")
     var code: String?=null,
+    @SerializedName("address")
+    var address: GetAddressSerializer1?=null,
+    @SerializedName("notification_emails")
+    var notificationEmails: ArrayList<String>?=null,
     @SerializedName("product_return_config")
     var productReturnConfig: ProductReturnConfigSerializer?=null,
+    @SerializedName("manager")
+    var manager: LocationManagerSerializer?=null,
     @SerializedName("company")
     var company: Int?=null,
+    @SerializedName("documents")
+    var documents: ArrayList<Document>?=null,
+    @SerializedName("warnings")
+    var warnings: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
     @SerializedName("timing")
     var timing: ArrayList<LocationDayWiseSerializer>?=null,
-    @SerializedName("stage")
-    var stage: String?=null,
     @SerializedName("store_type")
     var storeType: String?=null,
+    @SerializedName("stage")
+    var stage: String?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
     @SerializedName("contact_numbers")
     var contactNumbers: ArrayList<SellerPhoneNumber>?=null
     
@@ -16263,10 +16263,10 @@ data class LocationSerializer(
 data class LocationIntegrationType(
     
     
-    @SerializedName("order")
-    var order: String?=null,
     @SerializedName("inventory")
-    var inventory: String?=null
+    var inventory: String?=null,
+    @SerializedName("order")
+    var order: String?=null
     
 ): Parcelable
 
@@ -16277,56 +16277,56 @@ data class LocationIntegrationType(
 data class GetLocationSerializer(
     
     
-    @SerializedName("documents")
-    var documents: ArrayList<Document>?=null,
-    @SerializedName("gst_credentials")
-    var gstCredentials: InvoiceDetailsSerializer?=null,
-    @SerializedName("modified_by")
-    var modifiedBy: UserSerializer1?=null,
-    @SerializedName("uid")
-    var uid: Int?=null,
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    @SerializedName("created_by")
-    var createdBy: UserSerializer1?=null,
-    @SerializedName("code")
-    var code: String?=null,
-    @SerializedName("product_return_config")
-    var productReturnConfig: ProductReturnConfigSerializer?=null,
     @SerializedName("address")
     var address: GetAddressSerializer?=null,
+    @SerializedName("modified_by")
+    var modifiedBy: UserSerializer1?=null,
+    @SerializedName("documents")
+    var documents: ArrayList<Document>?=null,
+    @SerializedName("display_name")
+    var displayName: String?=null,
     @SerializedName("verified_on")
     var verifiedOn: String?=null,
+    @SerializedName("timing")
+    var timing: ArrayList<LocationDayWiseSerializer>?=null,
+    @SerializedName("gst_credentials")
+    var gstCredentials: InvoiceDetailsSerializer?=null,
     @SerializedName("name")
     var name: String?=null,
-    @SerializedName("phone_number")
-    var phoneNumber: String?=null,
-    @SerializedName("warnings")
-    var warnings: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    @SerializedName("integration_type")
-    var integrationType: LocationIntegrationType?=null,
-    @SerializedName("stage")
-    var stage: String?=null,
+    @SerializedName("created_by")
+    var createdBy: UserSerializer1?=null,
+    @SerializedName("company")
+    var company: GetCompanySerializer?=null,
     @SerializedName("manager")
     var manager: LocationManagerSerializer?=null,
-    @SerializedName("verified_by")
-    var verifiedBy: UserSerializer1?=null,
+    @SerializedName("contact_numbers")
+    var contactNumbers: ArrayList<SellerPhoneNumber>?=null,
+    @SerializedName("stage")
+    var stage: String?=null,
+    @SerializedName("code")
+    var code: String?=null,
+    @SerializedName("warnings")
+    var warnings: @RawValue HashMap<String,Any>?=null,
     @SerializedName("modified_on")
     var modifiedOn: String?=null,
     @SerializedName("created_on")
     var createdOn: String?=null,
-    @SerializedName("company")
-    var company: GetCompanySerializer?=null,
-    @SerializedName("timing")
-    var timing: ArrayList<LocationDayWiseSerializer>?=null,
-    @SerializedName("notification_emails")
-    var notificationEmails: ArrayList<String>?=null,
     @SerializedName("store_type")
     var storeType: String?=null,
-    @SerializedName("contact_numbers")
-    var contactNumbers: ArrayList<SellerPhoneNumber>?=null
+    @SerializedName("verified_by")
+    var verifiedBy: UserSerializer1?=null,
+    @SerializedName("product_return_config")
+    var productReturnConfig: ProductReturnConfigSerializer?=null,
+    @SerializedName("phone_number")
+    var phoneNumber: String?=null,
+    @SerializedName("notification_emails")
+    var notificationEmails: ArrayList<String>?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
+    @SerializedName("integration_type")
+    var integrationType: LocationIntegrationType?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable
 
@@ -16337,10 +16337,10 @@ data class GetLocationSerializer(
 data class LocationListSerializer(
     
     
-    @SerializedName("items")
-    var items: ArrayList<GetLocationSerializer>?=null,
     @SerializedName("page")
-    var page: Page?=null
+    var page: Page?=null,
+    @SerializedName("items")
+    var items: ArrayList<GetLocationSerializer>?=null
     
 ): Parcelable
 
