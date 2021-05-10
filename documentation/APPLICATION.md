@@ -96,6 +96,8 @@
 
 * [Theme](#Theme)
   * Methods
+    * [getAppliedTheme](#getappliedtheme)
+    * [getThemeForPreview](#getthemeforpreview)
     
 
 * [User](#User)
@@ -6376,6 +6378,159 @@ Default
 ## Theme
 
 
+#### getAppliedTheme
+Get applied theme for an application
+
+```kotlin
+theme.getAppliedTheme().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+
+
+*Success Response:*
+
+
+
+A JSON object of theme
+
+
+Schema: `ThemesSchema`
+
+
+*Examples:*
+
+
+Applied Theme
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getThemeForPreview
+Get theme for preview
+
+```kotlin
+theme.getThemeForPreview(themeId: themeId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| themeId | String? | ID of the theme to be retrieved |  
+
+
+
+*Success Response:*
+
+
+
+A JSON object of theme
+
+
+Schema: `ThemesSchema`
+
+
+*Examples:*
+
+
+Preview Theme
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+
+
+
+Schema: `BlitzkriegApiError`
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ---
 
@@ -6384,7 +6539,7 @@ Default
 
 
 #### loginWithFacebook
-Login or Register using Facebook
+Login/Register with Facebook
 
 ```kotlin
 user.loginWithFacebook(body: body).safeAwait{ response,error->
@@ -6402,13 +6557,13 @@ user.loginWithFacebook(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to login or register using Facebook credentials.
+Used to login or register with Facebook
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with the user details. Check the example shown below or refer `AuthSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `AuthSuccess`
@@ -6446,7 +6601,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6460,7 +6615,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### loginWithGoogle
-Login or Register using Google
+Login/Register with Google
 
 ```kotlin
 user.loginWithGoogle(body: body).safeAwait{ response,error->
@@ -6478,13 +6633,13 @@ user.loginWithGoogle(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to login or register using Google Account credentials.
+Used to login or register with Google
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with the user details. Check the example shown below or refer `AuthSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `AuthSuccess`
@@ -6522,7 +6677,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6536,7 +6691,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### loginWithGoogleAndroid
-Login or Register using Google on Android
+Login/Register with Google for android
 
 ```kotlin
 user.loginWithGoogleAndroid(body: body).safeAwait{ response,error->
@@ -6554,13 +6709,13 @@ user.loginWithGoogleAndroid(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to login or register in Android app using Google Account credentials.
+Used to login or register with Google for android
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with the user details. Check the example shown below or refer `AuthSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `AuthSuccess`
@@ -6598,7 +6753,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6612,7 +6767,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### loginWithGoogleIOS
-Login or Register using Google on iOS
+Login/Register with Google for ios
 
 ```kotlin
 user.loginWithGoogleIOS(body: body).safeAwait{ response,error->
@@ -6630,13 +6785,13 @@ user.loginWithGoogleIOS(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to login or register in iOS app using Google Account credentials.
+Used to login or register with google for ios
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with the user details. Check the example shown below or refer `AuthSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `AuthSuccess`
@@ -6674,7 +6829,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6688,7 +6843,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### loginWithOTP
-Login or Register with OTP
+Login/Register with OTP
 
 ```kotlin
 user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
@@ -6705,15 +6860,15 @@ user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to login or register with a One-time Password (OTP) sent via Email or SMS.
+Used to login or register with OTP
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `SendOtpResponse` for more details.
+
 
 
 Schema: `SendOtpResponse`
@@ -6751,7 +6906,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6765,7 +6920,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### loginWithEmailAndPassword
-Login or Register with password
+Login/Register with password
 
 ```kotlin
 user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
@@ -6783,13 +6938,13 @@ user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to login or register using an email address and password.
+Used to login or register with email & password
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `LoginSuccess` for more details.
+
 
 
 Schema: `LoginSuccess`
@@ -6827,7 +6982,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6858,15 +7013,15 @@ user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response,
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to reset a password using the link sent on email.
+Used to reset account password
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `ResetPasswordSuccess` for more details.
+
 
 
 Schema: `ResetPasswordSuccess`
@@ -6893,7 +7048,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6907,7 +7062,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### forgotPassword
-Forgot Password
+
 
 ```kotlin
 user.forgotPassword(body: body).safeAwait{ response,error->
@@ -6925,13 +7080,13 @@ user.forgotPassword(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to reset a password using the code sent on email or SMS.
+
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `LoginSuccess` for more details.
+
 
 
 Schema: `LoginSuccess`
@@ -6969,7 +7124,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -6983,7 +7138,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### sendResetToken
-Reset Password using token
+
 
 ```kotlin
 user.sendResetToken(body: body).safeAwait{ response,error->
@@ -7001,13 +7156,13 @@ user.sendResetToken(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to send code to reset password.
+Send code incase of reset password
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `ResetPasswordSuccess` for more details.
+
 
 
 Schema: `ResetPasswordSuccess`
@@ -7034,7 +7189,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7048,7 +7203,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### loginWithToken
-Login or Register with token
+Login/Register with token
 
 ```kotlin
 user.loginWithToken(body: body).safeAwait{ response,error->
@@ -7066,13 +7221,13 @@ user.loginWithToken(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to login or register using a token for authentication.
+Login/Register with token
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `LoginSuccess` for more details.
+
 
 
 Schema: `LoginSuccess`
@@ -7122,7 +7277,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7136,7 +7291,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### registerWithForm
-Registration using a form
+Registration Form
 
 ```kotlin
 user.registerWithForm(platform: platform, body: body).safeAwait{ response,error->
@@ -7153,15 +7308,15 @@ user.registerWithForm(platform: platform, body: body).safeAwait{ response,error-
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to perform user registration by sending form data in the request body.
+Register using form
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `RegisterFormSuccess` for more details.
+
 
 
 Schema: `RegisterFormSuccess`
@@ -7188,7 +7343,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7220,13 +7375,13 @@ user.verifyEmail(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to send a verification code to verify an email.
+Used to verify email
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `VerifyEmailSuccess` for more details.
+
 
 
 Schema: `VerifyEmailSuccess`
@@ -7253,7 +7408,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7285,13 +7440,13 @@ user.verifyMobile(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to send a verification code to verify a mobile number.
+Verify mobile
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `VerifyEmailSuccess` for more details.
+
 
 
 Schema: `VerifyEmailSuccess`
@@ -7318,7 +7473,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7332,7 +7487,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### hasPassword
-Check password
+Check if user has password
 
 ```kotlin
 user.hasPassword().safeAwait{ response,error->
@@ -7350,13 +7505,13 @@ user.hasPassword().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to check if user has created a password for login.
+Checks if user is using password or not
 
 *Success Response:*
 
 
 
-Success. Returns a boolean value. Check the example shown below or refer `HasPasswordSuccess` for more details.
+
 
 
 Schema: `HasPasswordSuccess`
@@ -7383,7 +7538,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7415,13 +7570,13 @@ user.updatePassword(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to update the password.
+Used to update user password
 
 *Success Response:*
 
 
 
-Success. Returns a success message. Refer `VerifyEmailSuccess` for more details.
+
 
 
 Schema: `VerifyEmailSuccess`
@@ -7462,7 +7617,7 @@ Schema: `AuthenticationApiError`
 
 
 #### logout
-Logs out currently logged in user
+Logout user
 
 ```kotlin
 user.logout().safeAwait{ response,error->
@@ -7480,13 +7635,13 @@ user.logout().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to check to logout a user from the app.
+Used to log out user
 
 *Success Response:*
 
 
 
-Success. Returns a success message as shown below. Refer `LogoutSuccess` for more details.
+
 
 
 Schema: `LogoutSuccess`
@@ -7513,7 +7668,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7544,15 +7699,15 @@ user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to send an OTP to a mobile number.
+Used to send otp to mobile
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object as shown below. Refer `OtpSuccess` for more details.
+
 
 
 Schema: `OtpSuccess`
@@ -7579,7 +7734,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7610,15 +7765,15 @@ user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to verify the OTP received on a mobile number.
+Used to verify otp sent to mobile
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more details.
+
 
 
 Schema: `VerifyOtpSuccess`
@@ -7656,7 +7811,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7687,15 +7842,15 @@ user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to send an OTP to an email ID.
+Used to send otp to email
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object as shown below. Refer `EmailOtpSuccess` for more details.
+
 
 
 Schema: `EmailOtpSuccess`
@@ -7722,7 +7877,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7753,15 +7908,15 @@ user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to verify the OTP received on an email ID.
+Used to verify otp sent to email
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more details.
+
 
 
 Schema: `VerifyOtpSuccess`
@@ -7799,7 +7954,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7831,13 +7986,13 @@ user.getLoggedInUser().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API  to get the details of a logged in user.
+Used to get logged in user details
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with user details. Refer `UserObjectSchema` for more details.
+
 
 
 Schema: `UserObjectSchema`
@@ -7875,7 +8030,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7907,13 +8062,13 @@ user.getListOfActiveSessions().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to retrieve all active sessions of a user.
+Lists all active sessions
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object containing an array of sessions. Refer `SessionListSuccess` for more details.
+
 
 
 Schema: `SessionListSuccess`
@@ -7940,7 +8095,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -7954,7 +8109,7 @@ Schema: `AuthenticationInternalServerError`
 
 
 #### getPlatformConfig
-Get platform configurations
+Get platform config
 
 ```kotlin
 user.getPlatformConfig(name: name).safeAwait{ response,error->
@@ -7971,15 +8126,15 @@ user.getPlatformConfig(name: name).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| name | String? | Name of the application, e.g. Fynd |  
+| name | String? | Name |  
 
-Use this API to get all the platform configurations such as mobile image, desktop image, social logins, and all other text.
+Used to get platform config
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object containing the all the platform configurations. Refer `PlatformSchema` for more details.
+Platform Config
 
 
 Schema: `PlatformSchema`
@@ -8006,7 +8161,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8037,15 +8192,15 @@ user.updateProfile(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to update details in the user profile. Details can be first name, last name, gender, email, phone number, or profile picture.
+Used to update profile
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `LoginSuccess` for more details.
+
 
 
 Schema: `LoginSuccess`
@@ -8083,7 +8238,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8114,15 +8269,15 @@ user.addMobileNumber(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to add a new mobile number to a profile.
+Used to add new mobile number to profile
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `VerifyMobileOTPSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `VerifyMobileOTPSuccess`
@@ -8160,7 +8315,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8191,20 +8346,20 @@ user.deleteMobileNumber(platform: platform, active: active, primary: primary, ve
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |    
-| active | Boolean? | This is a boolean value to check if mobile number is active 1.True - Number is active 2. False - Number is inactive |    
-| primary | Boolean? | This is a boolean value to check if mobile number is primary number (main number) 1. True - Number is primary 2. False - Number is not primary |    
-| verified | Boolean? | This is a boolean value to check if mobile number is verified 1. True - Number is verified 2.False - Number is not verified yet |    
-| countryCode | String? | Country code of the phone number, e.g. 91 |    
+| platform | String? | Platform |    
+| active | Boolean? | Active mobile number |    
+| primary | Boolean? | Primary number |    
+| verified | Boolean? | Verified Number |    
+| countryCode | String? | Country code of phone number |    
 | phone | String? | Phone number |  
 
-Use this API to delete a mobile number from a profile.
+Used to delete mobile number from profile
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `LoginSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `LoginSuccess`
@@ -8242,7 +8397,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8274,13 +8429,13 @@ user.setMobileNumberAsPrimary(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to set a mobile number as primary. Primary number is a verified number used for all future communications.
+Used to set a mobile number as primary
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `LoginSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `LoginSuccess`
@@ -8318,7 +8473,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8349,15 +8504,15 @@ user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ res
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to send a verification link to a mobile number
+Used to send verification link to a mobile number
 
 *Success Response:*
 
 
 
-Success. Check the example shown below or refer `SendMobileVerifyLinkSuccess` for more details.
+
 
 
 Schema: `SendMobileVerifyLinkSuccess`
@@ -8395,7 +8550,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8426,15 +8581,15 @@ user.addEmail(platform: platform, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to add a new email address to a profile
+Used to add new email to profile
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with user details. Refer `VerifyEmailOTPSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `VerifyEmailOTPSuccess`
@@ -8472,7 +8627,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8503,19 +8658,19 @@ user.deleteEmail(platform: platform, active: active, primary: primary, verified:
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |    
-| active | Boolean? | This is a boolean value to check if email ID is active 1. True - Email ID is active 2.False - Email ID is inactive |    
-| primary | Boolean? | This is a boolean value to check if email ID is primary (main email ID) 1. True - Email ID is primary 2.False - Email ID is not primary |    
-| verified | Boolean? | This is a boolean value to check if email ID is verified 1. True - Email ID is verified 2.False - Email ID is not verified yet |    
-| email | String? | The email ID to delete |  
+| platform | String? | Platform |    
+| active | Boolean? | Whether email id is active |    
+| primary | Boolean? | Whether email id is primary email |    
+| verified | Boolean? | Whether email id is verified |    
+| email | String? | Email ID to be deleted |  
 
-Use this API to delete an email address from a profile
+Used to delete email from profile
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with user details. Refer `LoginSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `LoginSuccess`
@@ -8553,7 +8708,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8585,13 +8740,13 @@ user.setEmailAsPrimary(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to set an email address as primary. Primary email ID is a email address used for all future communications.
+Used to set an email as primart
 
 *Success Response:*
 
 
 
-Success. Returns a JSON object with user details. Refer `LoginSuccess` for more details.
+A JSON object with user details
 
 
 Schema: `LoginSuccess`
@@ -8629,7 +8784,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 
@@ -8660,15 +8815,15 @@ user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ resp
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| platform | String? | ID of the application |  
+| platform | String? | Platform |  
 
-Use this API to send verification link to an email address.
+Used to sent verification to an email
 
 *Success Response:*
 
 
 
-Request body must contain an email ID. Refer `EditEmailRequestSchema` for more details.
+
 
 
 Schema: `SendEmailVerifyLinkSuccess`
@@ -8695,7 +8850,7 @@ Schema: `AuthenticationApiError`
 
 
 
-Schema: `AuthenticationInternalServerError`
+Schema: `AuthenticationApiError`
 
 
 

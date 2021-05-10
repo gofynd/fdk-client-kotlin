@@ -901,6 +901,16 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
     }
     
+    fun getAppliedTheme(): Deferred<Response<ThemesSchema>>? {
+        return themeApiList?.getAppliedTheme( )}
+
+    
+    
+    fun getThemeForPreview(themeId: String): Deferred<Response<ThemesSchema>>? {
+        return themeApiList?.getThemeForPreview(themeId = themeId )}
+
+    
+    
 }
 
 
