@@ -250,14 +250,6 @@ interface LeadApiList {
 
 interface ThemeApiList {
     
-    @GET ("/service/application/theme/v1.0/applied-theme")
-    fun getAppliedTheme()
-    : Deferred<Response<ThemesSchema>>
-    
-    @GET ("/service/application/theme/v1.0/{theme_id}/preview")
-    fun getThemeForPreview(@Path("theme_id") themeId: String)
-    : Deferred<Response<ThemesSchema>>
-    
 }
 
 interface UserApiList {
@@ -399,7 +391,7 @@ interface ContentApiList {
     : Deferred<Response<AnnouncementsResponseSchema>>
     
     @GET ("/service/application/content/v1.0/blogs/{slug}")
-    fun getBlog(@Path("slug") slug: String)
+    fun getBlog(@Path("slug") slug: String, @Query("root_id") rootId: String?)
     : Deferred<Response<CustomBlogSchema>>
     
     @GET ("/service/application/content/v1.0/blogs/")
@@ -439,7 +431,7 @@ interface ContentApiList {
     : Deferred<Response<NavigationGetResponse>>
     
     @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String)
+    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
     : Deferred<Response<CustomPageSchema>>
     
     @GET ("/service/application/content/v1.0/pages/")
@@ -714,7 +706,7 @@ interface RewardsApiList {
     fun getOrderDiscount(@Body body: OrderDiscountRequest)
     : Deferred<Response<OrderDiscountResponse>>
     
-    @GET ("/service/application/rewards/v1.0/user/points")
+    @GET ("/service/application/rewards/v1.0/user/points/")
     fun getUserPoints()
     : Deferred<Response<PointsResponse>>
     

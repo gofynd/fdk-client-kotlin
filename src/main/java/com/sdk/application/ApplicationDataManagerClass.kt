@@ -901,16 +901,6 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
     }
     
-    fun getAppliedTheme(): Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.getAppliedTheme( )}
-
-    
-    
-    fun getThemeForPreview(themeId: String): Deferred<Response<ThemesSchema>>? {
-        return themeApiList?.getThemeForPreview(themeId = themeId )}
-
-    
-    
 }
 
 
@@ -1130,8 +1120,8 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getBlog(slug: String): Deferred<Response<CustomBlogSchema>>? {
-        return contentApiList?.getBlog(slug = slug )}
+    fun getBlog(slug: String, rootId: String?=null): Deferred<Response<CustomBlogSchema>>? {
+        return contentApiList?.getBlog(slug = slug, rootId = rootId )}
 
     
     
@@ -1266,8 +1256,8 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun getPage(slug: String): Deferred<Response<CustomPageSchema>>? {
-        return contentApiList?.getPage(slug = slug )}
+    fun getPage(slug: String, rootId: String?=null): Deferred<Response<CustomPageSchema>>? {
+        return contentApiList?.getPage(slug = slug, rootId = rootId )}
 
     
     
