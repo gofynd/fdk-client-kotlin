@@ -5444,24 +5444,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun cbsOnboardGet()
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.cbsOnboardGet(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateCompany(body: CompanyStoreSerializerRequest)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateCompany(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cbsOnboardGet()
+    : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.cbsOnboardGet(
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -5516,18 +5516,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createCompanyBrandMapping(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getBrands(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<CompanyBrandListSerializer>>? {
         
@@ -5540,11 +5528,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createLocation(body: LocationSerializer)
+    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
+            companyProfileApiList?.createCompanyBrandMapping(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -5558,6 +5546,18 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocations(
         companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createLocation(body: LocationSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createLocation(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
