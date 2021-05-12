@@ -1053,7 +1053,7 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun updateProfile(platform: String?=null,body: EditProfileRequestSchema): Deferred<Response<LoginSuccess>>? {
+    fun updateProfile(platform: String?=null,body: EditProfileRequestSchema): Deferred<Response<ProfileEditSuccess>>? {
         return userApiList?.updateProfile(platform = platform, body = body)}
 
     

@@ -356,7 +356,7 @@ interface UserApiList {
     
     @POST ("/service/application/user/profile/v1.0/detail")
     fun updateProfile(@Query("platform") platform: String?,@Body body: EditProfileRequestSchema)
-    : Deferred<Response<LoginSuccess>>
+    : Deferred<Response<ProfileEditSuccess>>
     
     @PUT ("/service/application/user/profile/v1.0/mobile")
     fun addMobileNumber(@Query("platform") platform: String?,@Body body: EditMobileRequestSchema)
@@ -714,7 +714,7 @@ interface RewardsApiList {
     fun getOrderDiscount(@Body body: OrderDiscountRequest)
     : Deferred<Response<OrderDiscountResponse>>
     
-    @GET ("/service/application/rewards/v1.0/user/points")
+    @GET ("/service/application/rewards/v1.0/user/points/")
     fun getUserPoints()
     : Deferred<Response<PointsResponse>>
     
