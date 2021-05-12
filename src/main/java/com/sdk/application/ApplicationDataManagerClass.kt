@@ -37,7 +37,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getProductSizesBySlug(slug: String, storeId: String?=null): Deferred<Response<ProductSizes>>? {
+    fun getProductSizesBySlug(slug: String, storeId: Int?=null): Deferred<Response<ProductSizes>>? {
         return catalogApiList?.getProductSizesBySlug(slug = slug, storeId = storeId )}
 
     

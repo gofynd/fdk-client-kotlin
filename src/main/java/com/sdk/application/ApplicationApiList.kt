@@ -11,7 +11,7 @@ interface CatalogApiList {
     : Deferred<Response<ProductDetail>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/")
-    fun getProductSizesBySlug(@Path("slug") slug: String, @Query("store_id") storeId: String?)
+    fun getProductSizesBySlug(@Path("slug") slug: String, @Query("store_id") storeId: Int?)
     : Deferred<Response<ProductSizes>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/price/")
