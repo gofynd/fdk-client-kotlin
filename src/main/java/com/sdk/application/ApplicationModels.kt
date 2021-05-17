@@ -6306,7 +6306,7 @@ data class AnnouncementsResponseSchema(
     
     
     @SerializedName("announcements")
-    var announcements: @RawValue HashMap<String,Any>?=null,
+    var announcements: HashMap<String,ArrayList<AnnouncementSchema>>?=null,
     @SerializedName("refresh_rate")
     var refreshRate: Int?=null,
     @SerializedName("refresh_pages")
