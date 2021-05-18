@@ -14103,7 +14103,7 @@ Schema: `Error`
 
 
 #### createAbuseReport
-post a new abuse request
+Post a new abuse request
 
 ```kotlin
 feedback.createAbuseReport(body: body).safeAwait{ response,error->
@@ -14121,13 +14121,13 @@ feedback.createAbuseReport(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Report a new abuse for specific entity with description text.
+Use this API to report a specific entity (question/review/comment) for abuse.
 
 *Success Response:*
 
 
 
-ok
+Success. Returns an abuse ID.
 
 
 Schema: `InsertResponse`
@@ -14139,7 +14139,7 @@ Schema: `InsertResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14174,13 +14174,13 @@ feedback.updateAbuseReport(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Update the abuse details like status and description text.
+Use this API to update the abuse details, i.e. status and description.
 
 *Success Response:*
 
 
 
-ok
+Success.
 
 
 Schema: `UpdateResponse`
@@ -14192,7 +14192,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14209,7 +14209,7 @@ Schema: `FeedbackError`
 
 
 #### getAbuseReports
-Get list of abuse data
+Get a list of abuse data
 
 ```kotlin
 feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
@@ -14226,19 +14226,19 @@ feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pag
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| entityId | String? | entity id |    
-| entityType | String? | entity type |    
+| entityId | String? | ID of the eligible entity as specified in the entity type (question ID/review ID/comment ID). |    
+| entityType | String? | Type of entity, e.g. question, review or comment. |    
 | id | String? | abuse id |    
-| pageId | String? | pagination page id |    
-| pageSize | Int? | pagination page size |  
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Get the list of abuse data from entity type and entity ID.
+Use this API to retrieve a list of abuse data from entity type and entity ID.
 
 *Success Response:*
 
 
 
-ok
+Success. Check the example shown below or refer `ReportAbuseGetResponse` for more details.
 
 
 Schema: `ReportAbuseGetResponse`
@@ -14250,7 +14250,7 @@ Schema: `ReportAbuseGetResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14267,7 +14267,7 @@ Schema: `FeedbackError`
 
 
 #### getAttributes
-Get list of attribute data
+Get a list of attribute data
 
 ```kotlin
 feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
@@ -14284,16 +14284,16 @@ feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,e
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pageNo | Int? | pagination page no |    
-| pageSize | Int? | pagination page size |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Provides a list of all attribute data.
+Use this API to retrieve a list of all attribute data, e.g. quality, material, product fitting, packaging, etc.
 
 *Success Response:*
 
 
 
-ok
+Success. Check the example shown below or refer `AttributeResponse` for more details.
 
 
 Schema: `AttributeResponse`
@@ -14305,7 +14305,7 @@ Schema: `AttributeResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14340,13 +14340,13 @@ feedback.createAttribute(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Add a new attribute with its name, slug and description.
+Use this API to add a new attribute (e.g. product quality/material/value for money) with its name, slug and description.
 
 *Success Response:*
 
 
 
-ok
+Success. Returns an attribute ID.
 
 
 Schema: `InsertResponse`
@@ -14358,7 +14358,7 @@ Schema: `InsertResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14375,7 +14375,7 @@ Schema: `FeedbackError`
 
 
 #### getAttribute
-Get single attribute data
+Get data of a single attribute
 
 ```kotlin
 feedback.getAttribute(slug: slug).safeAwait{ response,error->
@@ -14392,15 +14392,15 @@ feedback.getAttribute(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | Slug of attribute |  
+| slug | String? | A short, human-readable, URL-friendly identifier of an attribute. You can get slug value from the endpoint 'service/application/feedback/v1.0/attributes'. |  
 
-Get a single attribute data from a given slug.
+Use this API to retrieve a single attribute data from a given slug.
 
 *Success Response:*
 
 
 
-ok
+Success. Check the example shown below or refer `Attribute` for more details.
 
 
 Schema: `Attribute`
@@ -14412,7 +14412,7 @@ Schema: `Attribute`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14429,7 +14429,7 @@ Schema: `FeedbackError`
 
 
 #### updateAttribute
-Update attribute details
+Update details of an attribute 
 
 ```kotlin
 feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
@@ -14446,15 +14446,15 @@ feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | Slug of attribute |  
+| slug | String? | A short, human-readable, URL-friendly identifier of an attribute. You can get slug value from the endpoint 'service/application/feedback/v1.0/attributes'. |  
 
-Update the attribute's name and description.
+Use this API update the attribute's name and description.
 
 *Success Response:*
 
 
 
-ok
+Success.
 
 
 Schema: `UpdateResponse`
@@ -14466,7 +14466,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14483,7 +14483,7 @@ Schema: `FeedbackError`
 
 
 #### createComment
-post a new comment
+Post a new comment
 
 ```kotlin
 feedback.createComment(body: body).safeAwait{ response,error->
@@ -14501,13 +14501,13 @@ feedback.createComment(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-This is used to add a new comment for specific entity.
+Use this API to add a new comment for a specific entity.
 
 *Success Response:*
 
 
 
-ok
+Success. Returns a comment ID.
 
 
 Schema: `InsertResponse`
@@ -14519,7 +14519,7 @@ Schema: `InsertResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14536,7 +14536,7 @@ Schema: `FeedbackError`
 
 
 #### updateComment
-Update comment status
+Update the status of a comment
 
 ```kotlin
 feedback.updateComment(body: body).safeAwait{ response,error->
@@ -14554,13 +14554,13 @@ feedback.updateComment(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Update the comment status (active/approve) or text.
+Use this API to update the comment status (active or approve) along with new comment if any.
 
 *Success Response:*
 
 
 
-ok
+Success.
 
 
 Schema: `UpdateResponse`
@@ -14572,7 +14572,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14589,7 +14589,7 @@ Schema: `FeedbackError`
 
 
 #### getComments
-Get list of comments
+Get a list of comments
 
 ```kotlin
 feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
@@ -14606,20 +14606,20 @@ feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId:
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| entityType | String? | entity type |    
-| id | String? | comment id |    
-| entityId | String? | entity id |    
-| userId | String? | user id - flag/filter to get comments for user |    
-| pageId | String? | pagination page id |    
-| pageSize | Int? | pagination page size |  
+| entityType | String? | Type of entity, e.g. question, review or comment. |    
+| id | String? | Comment ID |    
+| entityId | String? | ID of the eligible entity as specified in the entity type (question ID/review ID/comment ID). |    
+| userId | String? | User ID - a flag/filter to get comments for a user. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Get the list of comments from specific entity type.
+Use this API to retrieve a list of comments for a specific entity type, e.g. products.
 
 *Success Response:*
 
 
 
-ok
+Success. Check the example shown below or refer `CommentGetResponse` for more details.
 
 
 Schema: `CommentGetResponse`
@@ -14631,7 +14631,7 @@ Schema: `CommentGetResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14648,7 +14648,7 @@ Schema: `FeedbackError`
 
 
 #### checkEligibility
-Checks eligibility and cloud media config
+Checks eligibility to rate and review, and shows the cloud media configuration
 
 ```kotlin
 feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{ response,error->
@@ -14665,16 +14665,16 @@ feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| entityType | String? | entity type |    
-| entityId | String? | entity id |  
+| entityType | String? | Type of entity, e.g. question, rate, review, answer, or comment. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |  
 
-Checks eligibility to rate and review and cloud media configuration
+Use this API to check whether an entity is eligible to be rated and reviewed. Moreover, it shows the cloud media configuration too.
 
 *Success Response:*
 
 
 
-ok
+Success. Returns a Product object. Check the example shown below or refer `CheckEligibilityResponse` for more details.
 
 
 Schema: `CheckEligibilityResponse`
@@ -14686,7 +14686,7 @@ Schema: `CheckEligibilityResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14721,13 +14721,13 @@ feedback.deleteMedia().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Delete Media for the given entity IDs.
+Use this API to delete media for an entity ID.
 
 *Success Response:*
 
 
 
-ok
+Success.
 
 
 Schema: `UpdateResponse`
@@ -14739,7 +14739,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14774,13 +14774,13 @@ feedback.createMedia(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Add Media list for specific entity.
+Use this API to add media to an entity, e.g. review.
 
 *Success Response:*
 
 
 
-ok
+Success. Returns media IDs.
 
 
 Schema: `InsertResponse`
@@ -14792,7 +14792,7 @@ Schema: `InsertResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14827,13 +14827,13 @@ feedback.updateMedia(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Update Media (archive/approve) for the given entity.
+Use this API to update media (archive/approve) for an entity.
 
 *Success Response:*
 
 
 
-ok
+Success.
 
 
 Schema: `UpdateResponse`
@@ -14845,7 +14845,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14879,19 +14879,19 @@ feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: p
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| entityType | String? | entity type |    
-| entityId | String? | entity id |    
-| id | String? | vote id |    
-| pageId | String? | pagination page id |    
-| pageSize | Int? | pagination page size |  
+| entityType | String? | Type of entity, e.g. question or product. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type(question ID/product ID). |    
+| id | String? | ID of the media. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Get Media from the given entity type and entity ID.
+Use this API to retrieve all media from an entity.
 
 *Success Response:*
 
 
 
-ok
+Success. Check the example shown below or refer `MediaGetResponse` for more details.
 
 
 Schema: `MediaGetResponse`
@@ -14903,7 +14903,7 @@ Schema: `MediaGetResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14937,20 +14937,19 @@ feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| entityType | String? | entity type |    
-| entityId | String? | entity id |    
-| id | String? | review summary identifier |    
-| pageId | String? | pagination page id |    
-| pageSize | Int? | pagination page size |  
+| entityType | String? | Type of entity, e.g. product, delivery, seller, order placed, order delivered, application, or template. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| id | String? | Review summary identifier. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Review summary gives ratings and attribute metrics of a review per entity
-It gives following response data: review count, rating average. review metrics / attribute rating metrics which contains name, type, average and count.
+Review summary gives ratings and attribute metrics of a review per entity. Use this API to retrieve the following response data: review count, rating average. 'review metrics'/'attribute rating metrics' which contains name, type, average and count.
 
 *Success Response:*
 
 
 
-success
+Success. Check the example shown below or refer `RatingGetResponse` for more details.
 
 
 Schema: `RatingGetResponse`
@@ -14962,7 +14961,7 @@ Schema: `RatingGetResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -14997,14 +14996,13 @@ feedback.createReview(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Add customer reviews for specific entity with following data:
-attributes rating, entity rating, title, description, media resources and template id.
+Use this API to add customer reviews for a specific entity along with the following data: attributes rating, entity rating, title, description, media resources and template ID.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns a review ID.
 
 
 Schema: `UpdateResponse`
@@ -15016,7 +15014,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad Request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15051,14 +15049,13 @@ feedback.updateReview(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Update customer reviews for specific entity with following data:
-attributes rating, entity rating, title, description, media resources and template id.
+Use this API to update customer reviews for a specific entity along with following data: attributes rating, entity rating, title, description, media resources and template ID.
 
 *Success Response:*
 
 
 
-Success
+Success.
 
 
 Schema: `UpdateResponse`
@@ -15070,7 +15067,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad Request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15104,25 +15101,25 @@ feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| entityType | String? | entity type |    
-| entityId | String? | entity id |    
-| id | String? | review id |    
-| userId | String? | user id |    
-| media | String? | media type e.g. image | video | video_file | video_link |    
-| rating | ArrayList<Double>? | rating filter, 1-5 |    
-| attributeRating | ArrayList<String>? | attribute rating filter |    
-| facets | Boolean? | facets (true|false) |    
-| sort | String? | sort by : default | top | recent |    
-| pageId | String? | pagination page id |    
-| pageSize | Int? | pagination page size |  
+| entityType | String? | Type of entity, e.g. product, delivery, seller, l3, order placed, order delivered, application, or template. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| id | String? | ID of the review. |    
+| userId | String? | ID of the user. |    
+| media | String? | media type, e.g. image | video | video_file | video_link |    
+| rating | ArrayList<Double>? | rating filter, e.g. 1-5 |    
+| attributeRating | ArrayList<String>? | Filter for attribute rating. |    
+| facets | Boolean? | This is a boolean value for enabling metadata (facets). Selecting *true* will enable facets. |    
+| sort | String? | Sort by: default | top | recent |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-This is used to get the list of customer reviews based on entity and provided filters.
+Use this API to retrieve a list of customer reviews based on entity and filters provided.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ReviewGetResponse` for more details.
 
 
 Schema: `ReviewGetResponse`
@@ -15134,7 +15131,7 @@ Schema: `ReviewGetResponse`
 
 
 
-Bad Request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15151,7 +15148,7 @@ Schema: `FeedbackError`
 
 
 #### getTemplates
-Get the templates for product or l3 type
+Get the feedback templates for a product or l3
 
 ```kotlin
 feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait{ response,error->
@@ -15168,17 +15165,17 @@ feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: en
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| templateId | String? | template id |    
-| entityId | String? | entity id |    
-| entityType | String? | entity type e.g. product | l3 |  
+| templateId | String? | ID of the feedback template. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| entityType | String? | Type of entity, e.g. product, delivery, seller, l3, order placed, order delivered, or application. |  
 
-This is used to get the templates details.
+Use this API to retrieve the details of the following feedback template. order, delivered, application, seller, order, placed, product
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `CursorGetResponse` for more details.
 
 
 Schema: `CursorGetResponse`
@@ -15190,7 +15187,7 @@ Schema: `CursorGetResponse`
 
 
 
-Bad Request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15225,14 +15222,13 @@ feedback.createQuestion(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-This is used to create a new question with following data:
-tags, text, type, choices for MCQ type questions, maximum length of answer.
+Use this API to create a new question with following data- tags, text, type, choices for MCQ type questions, maximum length of answer.
 
 *Success Response:*
 
 
 
-ok
+Success. Returns a qna ID.
 
 
 Schema: `InsertResponse`
@@ -15244,7 +15240,7 @@ Schema: `InsertResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15261,7 +15257,7 @@ Schema: `FeedbackError`
 
 
 #### updateQuestion
-Update question
+Update a question
 
 ```kotlin
 feedback.updateQuestion(body: body).safeAwait{ response,error->
@@ -15279,13 +15275,13 @@ feedback.updateQuestion(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-This is used to update question's status, tags and choices.
+Use this API to update the status of a question, its tags and its choices.
 
 *Success Response:*
 
 
 
-ok
+Success.
 
 
 Schema: `UpdateResponse`
@@ -15297,7 +15293,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15331,20 +15327,20 @@ feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: i
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| entityType | String? | entity type |    
-| entityId | String? | entity id |    
-| id | String? | qna id |    
-| showAnswer | Boolean? | show answer flag |    
-| pageId | String? | pagination page id |    
-| pageSize | Int? | pagination page size |  
+| entityType | String? | Type of entity, e.g. product, l3, etc. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| id | String? | QNA ID |    
+| showAnswer | Boolean? | This is a boolean value. Select *true* to display answers given. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-This is used to get a list of questions and its answers.
+Use this API to retrieve a list of questions and answers for a given entity.
 
 *Success Response:*
 
 
 
-ok
+Success. Check the example shown below or refer `QNAGetResponse` for more details.
 
 
 Schema: `QNAGetResponse`
@@ -15356,7 +15352,7 @@ Schema: `QNAGetResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15373,7 +15369,7 @@ Schema: `FeedbackError`
 
 
 #### getVotes
-Get list of votes
+Get a list of votes
 
 ```kotlin
 feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
@@ -15390,18 +15386,18 @@ feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| id | String? | vote id |    
-| refType | String? | entity type e.g. review | comment |    
-| pageNo | Int? | pagination page no |    
-| pageSize | Int? | pagination page size |  
+| id | String? | vote ID |    
+| refType | String? | Entity type, e.g. review | comment. |    
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-This is used to get the list of votes of a current logged in user. Votes can be filtered using `ref_type` i.e. review | comment.
+Use this API to retrieve a list of votes of a current logged in user. Votes can be filtered using `ref_type`, i.e. review | comment.
 
 *Success Response:*
 
 
 
-ok
+Success. Check the example shown below or refer `VoteResponse` for more details.
 
 
 Schema: `VoteResponse`
@@ -15413,7 +15409,7 @@ Schema: `VoteResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15448,13 +15444,13 @@ feedback.createVote(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-This is used to create a new vote and the actions can be upvote or downvote.
+Use this API to create a new vote, where the action could be an upvote or a downvote. This is useful when you want to give a vote (say upvote) to a review (ref_type) of a product (entity_type).
 
 *Success Response:*
 
 
 
-ok
+Success. Returns a vote ID.
 
 
 Schema: `InsertResponse`
@@ -15466,7 +15462,7 @@ Schema: `InsertResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
@@ -15483,7 +15479,7 @@ Schema: `FeedbackError`
 
 
 #### updateVote
-Update vote
+Update a vote
 
 ```kotlin
 feedback.updateVote(body: body).safeAwait{ response,error->
@@ -15501,13 +15497,13 @@ feedback.updateVote(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-This is used to update the vote and the actions can be upvote or downvote.
+Use this API to update a vote with a new action, i.e. either an upvote or a downvote.
 
 *Success Response:*
 
 
 
-ok
+Success.
 
 
 Schema: `UpdateResponse`
@@ -15519,7 +15515,7 @@ Schema: `UpdateResponse`
 
 
 
-Bad request
+Bad request. See the error object in the response body for specific reason.
 
 
 Schema: `FeedbackError`
