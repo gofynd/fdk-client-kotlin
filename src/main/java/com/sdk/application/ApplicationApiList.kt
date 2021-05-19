@@ -98,12 +98,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -222,8 +222,8 @@ interface LeadApiList {
     fun getTicket(@Path("id") id: String)
     : Deferred<Response<Ticket>>
     
-    @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
-    fun createHistory(@Path("ticket_id") ticketId: String,@Body body: TicketHistoryPayload)
+    @POST ("/service/application/lead/v1.0/ticket/{id}/history")
+    fun createHistory(@Path("id") id: String,@Body body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>
     
     @POST ("/service/application/lead/v1.0/ticket/")
