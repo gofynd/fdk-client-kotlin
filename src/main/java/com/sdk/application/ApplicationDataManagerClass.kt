@@ -2294,7 +2294,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     return paginator
     }
     
-    fun getReviewSummaries(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<RatingGetResponse>>? {
+    fun getReviewSummaries(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<ReviewMetricGetResponse>>? {
         return feedbackApiList?.getReviewSummaries(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize )}
 
     
@@ -2330,14 +2330,14 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getReviewSummaries
     **/
-    fun getReviewSummariesPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<RatingGetResponse>{
+    fun getReviewSummariesPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<ReviewMetricGetResponse>{
 
-    val paginator = Paginator<RatingGetResponse>()
+    val paginator = Paginator<ReviewMetricGetResponse>()
 
-    paginator.setCallBack(object : PaginatorCallback<RatingGetResponse> {
+    paginator.setCallBack(object : PaginatorCallback<ReviewMetricGetResponse> {
 
             override suspend fun onNext(
-                onResponse: (Event<RatingGetResponse>?,FdkError?) -> Unit) {
+                onResponse: (Event<ReviewMetricGetResponse>?,FdkError?) -> Unit) {
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
@@ -2464,7 +2464,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     return paginator
     }
     
-    fun getTemplates(templateId: String?=null, entityId: String?=null, entityType: String?=null): Deferred<Response<CursorGetResponse>>? {
+    fun getTemplates(templateId: String?=null, entityId: String?=null, entityType: String?=null): Deferred<Response<TemplateGetResponse>>? {
         return feedbackApiList?.getTemplates(templateId = templateId, entityId = entityId, entityType = entityType )}
 
     

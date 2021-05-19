@@ -796,7 +796,7 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
     fun getReviewSummaries(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<RatingGetResponse>>
+    : Deferred<Response<ReviewMetricGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/review/")
     fun createReview(@Body body: UpdateReviewRequest)
@@ -812,7 +812,7 @@ interface FeedbackApiList {
     
     @GET ("/service/application/feedback/v1.0/template/")
     fun getTemplates(@Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?)
-    : Deferred<Response<CursorGetResponse>>
+    : Deferred<Response<TemplateGetResponse>>
     
     @POST ("/service/application/feedback/v1.0/template/qna/")
     fun createQuestion(@Body body: CreateQNARequest)
