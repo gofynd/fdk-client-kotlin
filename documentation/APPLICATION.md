@@ -8889,13 +8889,13 @@ content.getAnnouncements().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get live announcements for each or all pages with page slug of page and end date schedule.
+Announcements are useful to highlight a message or information on top of a webpage. Use this API to retrieve live announcements. Get announcements on individual pages or for all pages.
 
 *Success Response:*
 
 
 
-Announcement api response. announcements object contains page slug name as propery with list of announcements enabled for that page. `$all` is special page slug to indicate show announcemnt on all pages.
+Success. Returns a JSON object with the details of the announcement shown on an individual page. `$all` is a special slug to indicate that an announcement is being shown on all the pages. Check the example shown below or refer `AnnouncementsResponseSchema` for more details.
 
 
 Schema: `AnnouncementsResponseSchema`
@@ -8929,7 +8929,7 @@ No Announcement enabled
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -8952,7 +8952,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -8980,7 +8980,7 @@ default
 
 
 #### getBlog
-Get Blog by slug
+Get a blog
 
 ```kotlin
 content.getBlog(slug: slug, rootId: rootId).safeAwait{ response,error->
@@ -8997,16 +8997,16 @@ content.getBlog(slug: slug, rootId: rootId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | The `slug` of a blog. Use this parameter to retrieve a particular blog |    
-| rootId | String? |  |  
+| slug | String? | A short, human-readable, URL-friendly identifier of a blog. You can get slug value from the endpoint /service/application/content/v1.0/blogs/. |    
+| rootId | String? | ID given to the HTML element |  
 
-Use this API to fetch a blog using `slug`
+Use this API to get the details of a blog using its slug. Details include the title, reading time, publish status, feature image, tags, author, etc.
 
 *Success Response:*
 
 
 
-A JSON object with blog details
+Success. Returns a JSON object with blog details. Check the example shown below or refer `CustomBlogSchema` for more details.
 
 
 Schema: `CustomBlogSchema`
@@ -9029,7 +9029,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9052,7 +9052,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9080,7 +9080,7 @@ default
 
 
 #### getBlogs
-Get blogs
+Get a list of blogs
 
 ```kotlin
 content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
@@ -9097,16 +9097,16 @@ content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |    
-| pageSize | Int? | Number of items to retrieve in each page. |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Use this to get blogs.
+Use this API to get all the blogs.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `BlogGetResponse` for more details.
 
 
 Schema: `BlogGetResponse`
@@ -9129,7 +9129,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9152,7 +9152,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9180,7 +9180,7 @@ default
 
 
 #### getFaqs
-Get frequently asked questions
+Get a list of FAQs
 
 ```kotlin
 content.getFaqs().safeAwait{ response,error->
@@ -9198,13 +9198,13 @@ content.getFaqs().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get frequently asked questions list. These will be helpful for users to using website.
+Use this API to get a list of frequently asked questions. Users will benefit from it when facing any issue with the website.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns a JSON object with question and answers. Check the example shown below or refer `FaqResponseSchema` for more details.
 
 
 Schema: `FaqResponseSchema`
@@ -9227,7 +9227,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9250,7 +9250,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9278,7 +9278,7 @@ default
 
 
 #### getFaqCategories
-Get FAQ categories list
+Get a list of FAQ categories
 
 ```kotlin
 content.getFaqCategories().safeAwait{ response,error->
@@ -9296,13 +9296,13 @@ content.getFaqCategories().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get list of FAQ categories
+FAQs can be divided into categories. Use this API to get a list of FAQ categories.
 
 *Success Response:*
 
 
 
-Get FAQ Categories
+Success. Returns a JSON object with categories of FAQ. Check the example shown below or refer `GetFaqCategoriesSchema` for more details.
 
 
 Schema: `GetFaqCategoriesSchema`
@@ -9314,7 +9314,7 @@ Schema: `GetFaqCategoriesSchema`
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9337,7 +9337,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9365,7 +9365,7 @@ default
 
 
 #### getFaqBySlug
-Get frequently asked question
+Get an FAQ
 
 ```kotlin
 content.getFaqBySlug(slug: slug).safeAwait{ response,error->
@@ -9382,15 +9382,15 @@ content.getFaqBySlug(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | Slug of FAQ |  
+| slug | String? | A short, human-readable, URL-friendly identifier of an FAQ. You can get slug value from the endpoint /service/application/content/v1.0/faq. |  
 
-Get frequently asked questions list. These will be helpful for users to using website.
+Use this API to get a particular FAQ by its slug.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns a question and answer by its slug. Check the example shown below or refer `FaqSchema` for more details.
 
 
 Schema: `FaqSchema`
@@ -9402,7 +9402,7 @@ Schema: `FaqSchema`
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9425,7 +9425,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9453,7 +9453,7 @@ default
 
 
 #### getFaqCategoryBySlug
-Get FAQ category by slug
+Get the FAQ category
 
 ```kotlin
 content.getFaqCategoryBySlug(slug: slug).safeAwait{ response,error->
@@ -9470,15 +9470,15 @@ content.getFaqCategoryBySlug(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | Slug of FAQ Category |  
+| slug | String? | A short, human-readable, URL-friendly identifier of an FAQ category. You can get slug value from the endpoint /service/application/content/v1.0/faq/categories. |  
 
-Get FAQ category by slug
+FAQs can be divided into categories. Use this API to get the category to which an FAQ belongs.
 
 *Success Response:*
 
 
 
-Get FAQ Categories
+Success. Returns a FAQ category with its slug. Check the example shown below or refer `GetFaqCategoryBySlugSchema` for more details.
 
 
 Schema: `GetFaqCategoryBySlugSchema`
@@ -9490,7 +9490,7 @@ Schema: `GetFaqCategoryBySlugSchema`
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9513,7 +9513,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9541,7 +9541,7 @@ default
 
 
 #### getFaqsByCategorySlug
-Get FAQs of a Faq Category slug
+Get FAQs using the slug of FAQ category
 
 ```kotlin
 content.getFaqsByCategorySlug(slug: slug).safeAwait{ response,error->
@@ -9558,15 +9558,15 @@ content.getFaqsByCategorySlug(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | Faq category slug |  
+| slug | String? | A short, human-readable, URL-friendly identifier of an FAQ category. You can get slug value from the endpoint /service/application/content/v1.0/faq/categories. |  
 
-Get FAQs of a Faq Category `slug`
+FAQs can be divided into categories. Use this API to get all the FAQs belonging to a category by using the category slug.
 
 *Success Response:*
 
 
 
-Get FAQs by slug of FAQ Category
+Success. Returns a categorized list of question and answers using its slug. Check the example shown below or refer `GetFaqSchema` for more details.
 
 
 Schema: `GetFaqSchema`
@@ -9578,7 +9578,7 @@ Schema: `GetFaqSchema`
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9601,7 +9601,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9629,7 +9629,7 @@ default
 
 
 #### getLandingPage
-Get landing page
+Get the landing page
 
 ```kotlin
 content.getLandingPage().safeAwait{ response,error->
@@ -9647,13 +9647,13 @@ content.getLandingPage().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to fetch a landing page
+Landing page is the first page that a prospect lands upon while visiting a website. Use this API to fetch the details of a landing page.
 
 *Success Response:*
 
 
 
-A JSON object with landing details
+Success. Returns the landing page details. Check the example shown below or refer `LandingPageSchema` for more details.
 
 
 Schema: `LandingPageSchema`
@@ -9676,7 +9676,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9699,7 +9699,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9745,13 +9745,13 @@ content.getLegalInformation().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get legal information of application, which includes policy, Terms and Conditions, and FAQ information of application.
+Use this API to get the legal information of an application, which includes Privacy Policy, Terms and Conditions, Shipping Policy and FAQs regarding the usage of the application.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns the T&C, Shipping Policy, Privacy Policy and Return Policy. Check the example shown below or refer `ApplicationLegal` for more details.
 
 
 Schema: `ApplicationLegal`
@@ -9774,7 +9774,7 @@ Success
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9797,7 +9797,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9825,7 +9825,7 @@ default
 
 
 #### getNavigations
-Get navigation
+Get the navigation
 
 ```kotlin
 content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
@@ -9842,16 +9842,16 @@ content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,e
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |    
-| pageSize | Int? | Number of items to retrieve in each page. |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Use this API to fetch navigations
+Use this API to fetch the navigations details which includes the items of the navigation pane. It also shows the links and sub-navigations.
 
 *Success Response:*
 
 
 
-A JSON object with navigation details
+Success. Returns a JSON object with navigation details. Check the example shown below or refer `NavigationGetResponse` for more details.
 
 
 Schema: `NavigationGetResponse`
@@ -9874,7 +9874,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9897,7 +9897,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9925,7 +9925,7 @@ default
 
 
 #### getPage
-Get Page by slug
+Get a page
 
 ```kotlin
 content.getPage(slug: slug, rootId: rootId).safeAwait{ response,error->
@@ -9942,16 +9942,16 @@ content.getPage(slug: slug, rootId: rootId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | The `slug` of a page. Use this parameter to retrieve a particular page |    
-| rootId | String? |  |  
+| slug | String? | A short, human-readable, URL-friendly identifier of a page. You can get slug value from the endpoint /service/application/content/v1.0/pages/. |    
+| rootId | String? | ID given to the HTML element |  
 
-Use this API to fetch a custom page using `slug`
+Use this API to get the details of a page using its slug. Details include the title, seo, publish status, feature image, tags, meta, etc.
 
 *Success Response:*
 
 
 
-A JSON object with page details
+Success. Returns a JSON object with page details. Check the example shown below or refer `CustomPageSchema` for more details.
 
 
 Schema: `CustomPageSchema`
@@ -9974,7 +9974,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -9997,7 +9997,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10025,7 +10025,7 @@ default
 
 
 #### getPages
-Get pages
+Get all pages
 
 ```kotlin
 content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
@@ -10042,16 +10042,16 @@ content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |    
-| pageSize | Int? | Number of items to retrieve in each page. |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Use this to get pages.
+Use this API to get a list of pages.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns a list of pages along with their details. Check the example shown below or refer `PageGetResponse` for more details.
 
 
 Schema: `PageGetResponse`
@@ -10074,7 +10074,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10097,7 +10097,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10125,7 +10125,7 @@ default
 
 
 #### getSEOConfiguration
-Get seo of application
+Get the SEO of an application
 
 ```kotlin
 content.getSEOConfiguration().safeAwait{ response,error->
@@ -10143,13 +10143,13 @@ content.getSEOConfiguration().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get seo of application
+Use this API to get the SEO details of an application, which includes a robot.txt, meta-tags and sitemap.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns a JSON object SEO details such as robots.txt, meta-tags, and sitemap. Check the example shown below or refer `SeoComponent` for more details.
 
 
 Schema: `SeoComponent`
@@ -10172,7 +10172,7 @@ Success
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10195,7 +10195,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10223,7 +10223,7 @@ default
 
 
 #### getSlideshows
-Get slideshows
+Get the slideshows
 
 ```kotlin
 content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
@@ -10240,16 +10240,16 @@ content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,er
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pageNo | Int? | Each response will contain **page_no** param, which should be sent back to make pagination work. |    
-| pageSize | Int? | Number of items to retrieve in each page. |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Use this to get slideshows.
+Use this API to get a list of slideshows along with their details.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `SlideshowGetResponse` for more details.
 
 
 Schema: `SlideshowGetResponse`
@@ -10272,7 +10272,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10295,7 +10295,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10323,7 +10323,7 @@ default
 
 
 #### getSlideshow
-Get slideshow by slug
+Get a slideshow
 
 ```kotlin
 content.getSlideshow(slug: slug).safeAwait{ response,error->
@@ -10340,15 +10340,15 @@ content.getSlideshow(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| slug | String? | The `slug` of a slideshow. Use this parameter to retrieve a particular slideshow |  
+| slug | String? | A short, human-readable, URL-friendly identifier of a slideshow. You can get slug value from the endpoint /service/application/content/v1.0/slideshow/. |  
 
-Use this API to fetch a slideshow using `slug`
+A slideshow is a group of images, videos or a combination of both that are shown on the website in the form of slides. Use this API to fetch a slideshow using its `slug`.
 
 *Success Response:*
 
 
 
-A JSON object with slideshow details
+Success. Returns the details of how a slideshow is configured. Check the example shown below or refer `SlideshowSchema` for more details.
 
 
 Schema: `SlideshowSchema`
@@ -10371,7 +10371,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10394,7 +10394,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10422,7 +10422,7 @@ default
 
 
 #### getSupportInformation
-Get support information
+Get the support information
 
 ```kotlin
 content.getSupportInformation().safeAwait{ response,error->
@@ -10440,13 +10440,13 @@ content.getSupportInformation().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get contact details for customer support. Including emails and phone numbers
+Use this API to get contact details for customer support including emails and phone numbers.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns all support information including email and phone number. Check the example shown below or refer `Support` for more details.
 
 
 Schema: `Support`
@@ -10469,7 +10469,7 @@ default
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10492,7 +10492,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10520,7 +10520,7 @@ default
 
 
 #### getTags
-Get Tags for application
+Get the tags associated with an application
 
 ```kotlin
 content.getTags().safeAwait{ response,error->
@@ -10538,13 +10538,13 @@ content.getTags().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-
+Use this API to get all the CSS and JS injected in the application in the form of tags.
 
 *Success Response:*
 
 
 
-A JSON object of tags
+Success. Returns a JSON object containing all the tags injected in the application. Check the example shown below or refer `TagsSchema` for more details.
 
 
 Schema: `TagsSchema`
@@ -10556,7 +10556,7 @@ Schema: `TagsSchema`
 
 
 
-Failed
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
@@ -10579,7 +10579,7 @@ default
 
 
 
-Failed
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `APIError`
