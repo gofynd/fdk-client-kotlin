@@ -742,6 +742,11 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
+    fun applyRewardPoints(uid: Int?=null, i: Boolean?=null, b: Boolean?=null): Deferred<Response<CartResponse>>? {
+        return cartApiList?.applyRewardPoints(uid = uid, i = i, b = b )}
+
+    
+    
     fun getAddresses(uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
         return cartApiList?.getAddresses(uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
 
@@ -1695,7 +1700,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }
     
-    fun getAggregatorsConfig(xApiToken: String, refresh: Boolean?=null): Deferred<Response<AggregatorsConfigDetailResponse>>? {
+    fun getAggregatorsConfig(xApiToken: String?=null, refresh: Boolean?=null): Deferred<Response<AggregatorsConfigDetailResponse>>? {
         return paymentApiList?.getAggregatorsConfig(xApiToken = xApiToken, refresh = refresh )}
 
     
@@ -1747,6 +1752,11 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, assignCardId: String?=null, orderType: String, userDetails: String?=null): Deferred<Response<PaymentModeRouteResponse>>? {
         return paymentApiList?.getPosPaymentModeRoutes(amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, assignCardId = assignCardId, orderType = orderType, userDetails = userDetails )}
+
+    
+    
+    fun getRupifiBannerDetails(): Deferred<Response<RupifiBannerResponse>>? {
+        return paymentApiList?.getRupifiBannerDetails( )}
 
     
     
@@ -1967,13 +1977,13 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 }
 
 
-class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
-    private val posCartApiList by lazy {
-        generateposCartApiList()
+    private val feedbackApiList by lazy {
+        generatefeedbackApiList()
     }
 
-    private fun generateposCartApiList(): PosCartApiList? {
+    private fun generatefeedbackApiList(): FeedbackApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -1985,139 +1995,650 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "ApplicationPosCart",
+            namespace = "ApplicationFeedback",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(PosCartApiList::class.java) as? PosCartApiList
+        return retrofitHttpClient?.initializeRestClient(FeedbackApiList::class.java) as? FeedbackApiList
     }
     
-    fun getCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.getCart(uid = uid, i = i, b = b, assignCardId = assignCardId )}
+    fun createAbuseReport(body: ReportAbuseRequest): Deferred<Response<InsertResponse>>? {
+        return feedbackApiList?.createAbuseReport( body = body)}
 
     
     
-    fun getCartLastModified(uid: Int?=null): Deferred<Response<Any>>? {
-        return posCartApiList?.getCartLastModified(uid = uid )}
+    fun updateAbuseReport(body: UpdateAbuseStatusRequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.updateAbuseReport( body = body)}
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null,body: AddCartRequest): Deferred<Response<AddCartResponse>>? {
-        return posCartApiList?.addItems(i = i, b = b, body = body)}
+    fun getAbuseReports(entityId: String, entityType: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<ReportAbuseGetResponse>>? {
+        return feedbackApiList?.getAbuseReports(entityId = entityId, entityType = entityType, id = id, pageId = pageId, pageSize = pageSize )}
 
     
     
-    fun updateCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: UpdateCartRequest): Deferred<Response<UpdateCartResponse>>? {
-        return posCartApiList?.updateCart(uid = uid, i = i, b = b, body = body)}
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAbuseReports
+    **/
+    fun getAbuseReportsPaginator(entityId: String, entityType: String, id: String?=null, pageSize: Int?=null) : Paginator<ReportAbuseGetResponse>{
+
+    val paginator = Paginator<ReportAbuseGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<ReportAbuseGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ReportAbuseGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getAbuseReports(entityId = entityId, entityType = entityType, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getAttributes(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<AttributeResponse>>? {
+        return feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize )}
 
     
     
-    fun getItemCount(uid: Int?=null): Deferred<Response<CartItemCountResponse>>? {
-        return posCartApiList?.getItemCount(uid = uid )}
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAttributes
+    **/
+    fun getAttributesPaginator(pageSize: Int?=null) : Paginator<AttributeResponse>{
+
+    val paginator = Paginator<AttributeResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<AttributeResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<AttributeResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                feedbackApiList?.getAttributes(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun createAttribute(body: SaveAttributeRequest): Deferred<Response<InsertResponse>>? {
+        return feedbackApiList?.createAttribute( body = body)}
 
     
     
-    fun getCoupons(uid: Int?=null): Deferred<Response<GetCouponResponse>>? {
-        return posCartApiList?.getCoupons(uid = uid )}
+    fun getAttribute(slug: String): Deferred<Response<Attribute>>? {
+        return feedbackApiList?.getAttribute(slug = slug )}
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.applyCoupon(i = i, b = b, p = p, uid = uid, body = body)}
+    fun updateAttribute(slug: String,body: UpdateAttributeRequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.updateAttribute(slug = slug, body = body)}
 
     
     
-    fun removeCoupon(uid: Int?=null): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.removeCoupon(uid = uid )}
+    fun createComment(body: CommentRequest): Deferred<Response<InsertResponse>>? {
+        return feedbackApiList?.createComment( body = body)}
 
     
     
-    fun getBulkDiscountOffers(itemId: Int?=null, articleId: String?=null, uid: Int?=null, slug: String?=null): Deferred<Response<BulkPriceResponse>>? {
-        return posCartApiList?.getBulkDiscountOffers(itemId = itemId, articleId = articleId, uid = uid, slug = slug )}
+    fun updateComment(body: UpdateCommentRequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.updateComment( body = body)}
 
     
     
-    fun getAddresses(uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
-        return posCartApiList?.getAddresses(uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
+    fun getComments(entityType: String, id: String?=null, entityId: String?=null, userId: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<CommentGetResponse>>? {
+        return feedbackApiList?.getComments(entityType = entityType, id = id, entityId = entityId, userId = userId, pageId = pageId, pageSize = pageSize )}
 
     
     
-    fun addAddress(body: Address): Deferred<Response<SaveAddressResponse>>? {
-        return posCartApiList?.addAddress( body = body)}
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getComments
+    **/
+    fun getCommentsPaginator(entityType: String, id: String?=null, entityId: String?=null, userId: String?=null, pageSize: Int?=null) : Paginator<CommentGetResponse>{
+
+    val paginator = Paginator<CommentGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<CommentGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<CommentGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getComments(entityType = entityType, id = id, entityId = entityId, userId = userId, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun checkEligibility(entityType: String, entityId: String): Deferred<Response<CheckEligibilityResponse>>? {
+        return feedbackApiList?.checkEligibility(entityType = entityType, entityId = entityId )}
 
     
     
-    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
-        return posCartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
+    fun deleteMedia(): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.deleteMedia( )}
 
     
     
-    fun updateAddress(id: String,body: Address): Deferred<Response<UpdateAddressResponse>>? {
-        return posCartApiList?.updateAddress(id = id, body = body)}
+    fun createMedia(body: AddMediaListRequest): Deferred<Response<InsertResponse>>? {
+        return feedbackApiList?.createMedia( body = body)}
 
     
     
-    fun removeAddress(id: String): Deferred<Response<DeleteAddressResponse>>? {
-        return posCartApiList?.removeAddress(id = id )}
+    fun updateMedia(body: UpdateMediaListRequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.updateMedia( body = body)}
 
     
     
-    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.selectAddress(uid = uid, i = i, b = b, body = body)}
+    fun getMedias(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<MediaGetResponse>>? {
+        return feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize )}
 
     
     
-    fun selectPaymentMode(uid: String?=null,body: UpdateCartPaymentRequest): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.selectPaymentMode(uid = uid, body = body)}
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getMedias
+    **/
+    fun getMediasPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<MediaGetResponse>{
+
+    val paginator = Paginator<MediaGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<MediaGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<MediaGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getReviewSummaries(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<ReviewMetricGetResponse>>? {
+        return feedbackApiList?.getReviewSummaries(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize )}
 
     
     
-    fun validateCouponForPayment(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
-        return posCartApiList?.validateCouponForPayment(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )}
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getReviewSummaries
+    **/
+    fun getReviewSummariesPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<ReviewMetricGetResponse>{
+
+    val paginator = Paginator<ReviewMetricGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<ReviewMetricGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ReviewMetricGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getReviewSummaries(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun createReview(body: UpdateReviewRequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.createReview( body = body)}
 
     
     
-    fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: String?=null, orderType: String?=null): Deferred<Response<CartShipmentsResponse>>? {
-        return posCartApiList?.getShipments(pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, uid = uid, addressId = addressId, areaCode = areaCode, orderType = orderType )}
+    fun updateReview(body: UpdateReviewRequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.updateReview( body = body)}
 
     
     
-    fun updateShipments(i: Boolean?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null, orderType: String?=null,body: UpdateCartShipmentRequest): Deferred<Response<CartShipmentsResponse>>? {
-        return posCartApiList?.updateShipments(i = i, p = p, uid = uid, addressId = addressId, orderType = orderType, body = body)}
+    fun getReviews(entityType: String, entityId: String, id: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, active: Boolean?=null, approve: Boolean?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<ReviewGetResponse>>? {
+        return feedbackApiList?.getReviews(entityType = entityType, entityId = entityId, id = id, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, active = active, approve = approve, pageId = pageId, pageSize = pageSize )}
 
     
     
-    fun checkoutCart(uid: Int?=null,body: CartPosCheckoutRequest): Deferred<Response<CartCheckoutResponse>>? {
-        return posCartApiList?.checkoutCart(uid = uid, body = body)}
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getReviews
+    **/
+    fun getReviewsPaginator(entityType: String, entityId: String, id: String?=null, userId: String?=null, media: String?=null, rating: ArrayList<Double>?=null, attributeRating: ArrayList<String>?=null, facets: Boolean?=null, sort: String?=null, active: Boolean?=null, approve: Boolean?=null, pageSize: Int?=null) : Paginator<ReviewGetResponse>{
+
+    val paginator = Paginator<ReviewGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<ReviewGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ReviewGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getReviews(entityType = entityType, entityId = entityId, id = id, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, active = active, approve = approve, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getTemplates(templateId: String?=null, entityId: String?=null, entityType: String?=null): Deferred<Response<TemplateGetResponse>>? {
+        return feedbackApiList?.getTemplates(templateId = templateId, entityId = entityId, entityType = entityType )}
 
     
     
-    fun updateCartMeta(uid: Int?=null,body: CartMetaRequest): Deferred<Response<CartMetaResponse>>? {
-        return posCartApiList?.updateCartMeta(uid = uid, body = body)}
+    fun createQuestion(body: CreateQNARequest): Deferred<Response<InsertResponse>>? {
+        return feedbackApiList?.createQuestion( body = body)}
 
     
     
-    fun getAvailableDeliveryModes(areaCode: String, uid: Int?=null): Deferred<Response<CartDeliveryModesResponse>>? {
-        return posCartApiList?.getAvailableDeliveryModes(areaCode = areaCode, uid = uid )}
+    fun updateQuestion(body: UpdateQNARequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.updateQuestion( body = body)}
 
     
     
-    fun getStoreAddressByUid(storeUid: Int): Deferred<Response<StoreDetailsResponse>>? {
-        return posCartApiList?.getStoreAddressByUid(storeUid = storeUid )}
+    fun getQuestionAndAnswers(entityType: String, entityId: String, id: String?=null, userId: String?=null, showAnswer: Boolean?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<QNAGetResponse>>? {
+        return feedbackApiList?.getQuestionAndAnswers(entityType = entityType, entityId = entityId, id = id, userId = userId, showAnswer = showAnswer, pageId = pageId, pageSize = pageSize )}
 
     
     
-    fun getCartShareLink(body: GetShareCartLinkRequest): Deferred<Response<GetShareCartLinkResponse>>? {
-        return posCartApiList?.getCartShareLink( body = body)}
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getQuestionAndAnswers
+    **/
+    fun getQuestionAndAnswersPaginator(entityType: String, entityId: String, id: String?=null, userId: String?=null, showAnswer: Boolean?=null, pageSize: Int?=null) : Paginator<QNAGetResponse>{
+
+    val paginator = Paginator<QNAGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<QNAGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<QNAGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "cursor"
+                feedbackApiList?.getQuestionAndAnswers(entityType = entityType, entityId = entityId, id = id, userId = userId, showAnswer = showAnswer, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getVotes(id: String?=null, refType: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<VoteResponse>>? {
+        return feedbackApiList?.getVotes(id = id, refType = refType, pageNo = pageNo, pageSize = pageSize )}
 
     
     
-    fun getCartSharedItems(token: String): Deferred<Response<SharedCartResponse>>? {
-        return posCartApiList?.getCartSharedItems(token = token )}
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getVotes
+    **/
+    fun getVotesPaginator(id: String?=null, refType: String?=null, pageSize: Int?=null) : Paginator<VoteResponse>{
+
+    val paginator = Paginator<VoteResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<VoteResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<VoteResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                feedbackApiList?.getVotes(id = id, refType = refType, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun createVote(body: VoteRequest): Deferred<Response<InsertResponse>>? {
+        return feedbackApiList?.createVote( body = body)}
 
     
     
-    fun updateCartWithSharedItems(token: String, action: String): Deferred<Response<SharedCartResponse>>? {
-        return posCartApiList?.updateCartWithSharedItems(token = token, action = action )}
+    fun updateVote(body: UpdateVoteRequest): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.updateVote( body = body)}
 
     
     

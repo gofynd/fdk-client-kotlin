@@ -158,6 +158,10 @@ interface CartApiList {
     fun getBulkDiscountOffers(@Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?)
     : Deferred<Response<BulkPriceResponse>>
     
+    @POST ("/service/application/cart/v1.0/redeem/points/")
+    fun applyRewardPoints(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?)
+    : Deferred<Response<CartResponse>>
+    
     @GET ("/service/application/cart/v1.0/address")
     fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressesResponse>>
@@ -587,7 +591,7 @@ interface ConfigurationApiList {
 interface PaymentApiList {
     
     @GET ("/service/application/payment/v1.0/config/aggregators/key")
-    fun getAggregatorsConfig(@Header("x-api-token") xApiToken: String, @Query("refresh") refresh: Boolean?)
+    fun getAggregatorsConfig(@Header("x-api-token") xApiToken: String?, @Query("refresh") refresh: Boolean?)
     : Deferred<Response<AggregatorsConfigDetailResponse>>
     
     @POST ("/service/application/payment/v1.0/card/attach")
@@ -629,6 +633,10 @@ interface PaymentApiList {
     @GET ("/service/application/payment/v1.0/payment/options/pos")
     fun getPosPaymentModeRoutes(@Query("amount") amount: Int, @Query("cart_id") cartId: String, @Query("pincode") pincode: String, @Query("checkout_mode") checkoutMode: String, @Query("refresh") refresh: Boolean?, @Query("assign_card_id") assignCardId: String?, @Query("order_type") orderType: String, @Query("user_details") userDetails: String?)
     : Deferred<Response<PaymentModeRouteResponse>>
+    
+    @GET ("/service/application/payment/v1.0/rupifi/banner")
+    fun getRupifiBannerDetails()
+    : Deferred<Response<RupifiBannerResponse>>
     
     @GET ("/service/application/payment/v1.0/refund/transfer-mode")
     fun getActiveRefundTransferModes()
@@ -732,111 +740,111 @@ interface RewardsApiList {
     
 }
 
-interface PosCartApiList {
+interface FeedbackApiList {
     
-    @GET ("/service/application/pos/cart/v1.0/detail")
-    fun getCart(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
-    : Deferred<Response<CartResponse>>
+    @POST ("/service/application/feedback/v1.0/abuse")
+    fun createAbuseReport(@Body body: ReportAbuseRequest)
+    : Deferred<Response<InsertResponse>>
     
-    @HEAD ("/service/application/pos/cart/v1.0/detail")
-    fun getCartLastModified(@Query("uid") uid: Int?)
-    : Deferred<Response<Any>>
+    @PUT ("/service/application/feedback/v1.0/abuse")
+    fun updateAbuseReport(@Body body: UpdateAbuseStatusRequest)
+    : Deferred<Response<UpdateResponse>>
     
-    @POST ("/service/application/pos/cart/v1.0/detail")
-    fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: AddCartRequest)
-    : Deferred<Response<AddCartResponse>>
+    @GET ("/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}")
+    fun getAbuseReports(@Path("entity_id") entityId: String, @Path("entity_type") entityType: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ReportAbuseGetResponse>>
     
-    @PUT ("/service/application/pos/cart/v1.0/detail")
-    fun updateCart(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: UpdateCartRequest)
-    : Deferred<Response<UpdateCartResponse>>
+    @GET ("/service/application/feedback/v1.0/attributes")
+    fun getAttributes(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<AttributeResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/basic")
-    fun getItemCount(@Query("uid") uid: Int?)
-    : Deferred<Response<CartItemCountResponse>>
+    @POST ("/service/application/feedback/v1.0/attributes")
+    fun createAttribute(@Body body: SaveAttributeRequest)
+    : Deferred<Response<InsertResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/coupon")
-    fun getCoupons(@Query("uid") uid: Int?)
-    : Deferred<Response<GetCouponResponse>>
+    @GET ("/service/application/feedback/v1.0/attributes/{slug}")
+    fun getAttribute(@Path("slug") slug: String)
+    : Deferred<Response<Attribute>>
     
-    @POST ("/service/application/pos/cart/v1.0/coupon")
-    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?,@Body body: ApplyCouponRequest)
-    : Deferred<Response<CartResponse>>
+    @PUT ("/service/application/feedback/v1.0/attributes/{slug}")
+    fun updateAttribute(@Path("slug") slug: String,@Body body: UpdateAttributeRequest)
+    : Deferred<Response<UpdateResponse>>
     
-    @DELETE ("/service/application/pos/cart/v1.0/coupon")
-    fun removeCoupon(@Query("uid") uid: Int?)
-    : Deferred<Response<CartResponse>>
+    @POST ("/service/application/feedback/v1.0/comment")
+    fun createComment(@Body body: CommentRequest)
+    : Deferred<Response<InsertResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/bulk-price")
-    fun getBulkDiscountOffers(@Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?)
-    : Deferred<Response<BulkPriceResponse>>
+    @PUT ("/service/application/feedback/v1.0/comment")
+    fun updateComment(@Body body: UpdateCommentRequest)
+    : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/address")
-    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
-    : Deferred<Response<GetAddressesResponse>>
+    @GET ("/service/application/feedback/v1.0/comment/entity/{entity_type}")
+    fun getComments(@Path("entity_type") entityType: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<CommentGetResponse>>
     
-    @POST ("/service/application/pos/cart/v1.0/address")
-    fun addAddress(@Body body: Address)
-    : Deferred<Response<SaveAddressResponse>>
+    @GET ("/service/application/feedback/v1.0/config/entity/{entity_type}/entity-id/{entity_id}")
+    fun checkEligibility(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String)
+    : Deferred<Response<CheckEligibilityResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/address/{id}")
-    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
-    : Deferred<Response<Address>>
+    @DELETE ("/service/application/feedback/v1.0/media/")
+    fun deleteMedia()
+    : Deferred<Response<UpdateResponse>>
     
-    @PUT ("/service/application/pos/cart/v1.0/address/{id}")
-    fun updateAddress(@Path("id") id: String,@Body body: Address)
-    : Deferred<Response<UpdateAddressResponse>>
+    @POST ("/service/application/feedback/v1.0/media/")
+    fun createMedia(@Body body: AddMediaListRequest)
+    : Deferred<Response<InsertResponse>>
     
-    @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
-    fun removeAddress(@Path("id") id: String)
-    : Deferred<Response<DeleteAddressResponse>>
+    @PUT ("/service/application/feedback/v1.0/media/")
+    fun updateMedia(@Body body: UpdateMediaListRequest)
+    : Deferred<Response<UpdateResponse>>
     
-    @POST ("/service/application/pos/cart/v1.0/select-address")
-    fun selectAddress(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: SelectCartAddressRequest)
-    : Deferred<Response<CartResponse>>
+    @GET ("/service/application/feedback/v1.0/media/entity/{entity_type}/entity-id/{entity_id}")
+    fun getMedias(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<MediaGetResponse>>
     
-    @PUT ("/service/application/pos/cart/v1.0/payment")
-    fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
-    : Deferred<Response<CartResponse>>
+    @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
+    fun getReviewSummaries(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ReviewMetricGetResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/payment/validate/")
-    fun validateCouponForPayment(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
-    : Deferred<Response<PaymentCouponValidate>>
+    @POST ("/service/application/feedback/v1.0/review/")
+    fun createReview(@Body body: UpdateReviewRequest)
+    : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/shipment")
-    fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)
-    : Deferred<Response<CartShipmentsResponse>>
+    @PUT ("/service/application/feedback/v1.0/review/")
+    fun updateReview(@Body body: UpdateReviewRequest)
+    : Deferred<Response<UpdateResponse>>
     
-    @PUT ("/service/application/pos/cart/v1.0/shipment")
-    fun updateShipments(@Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("order_type") orderType: String?,@Body body: UpdateCartShipmentRequest)
-    : Deferred<Response<CartShipmentsResponse>>
+    @GET ("/service/application/feedback/v1.0/review/entity/{entity_type}/entity-id/{entity_id}")
+    fun getReviews(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("active") active: Boolean?, @Query("approve") approve: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ReviewGetResponse>>
     
-    @POST ("/service/application/pos/cart/v1.0/checkout")
-    fun checkoutCart(@Query("uid") uid: Int?,@Body body: CartPosCheckoutRequest)
-    : Deferred<Response<CartCheckoutResponse>>
+    @GET ("/service/application/feedback/v1.0/template/")
+    fun getTemplates(@Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?)
+    : Deferred<Response<TemplateGetResponse>>
     
-    @PUT ("/service/application/pos/cart/v1.0/meta")
-    fun updateCartMeta(@Query("uid") uid: Int?,@Body body: CartMetaRequest)
-    : Deferred<Response<CartMetaResponse>>
+    @POST ("/service/application/feedback/v1.0/template/qna/")
+    fun createQuestion(@Body body: CreateQNARequest)
+    : Deferred<Response<InsertResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/available-delivery-mode")
-    fun getAvailableDeliveryModes(@Query("area_code") areaCode: String, @Query("uid") uid: Int?)
-    : Deferred<Response<CartDeliveryModesResponse>>
+    @PUT ("/service/application/feedback/v1.0/template/qna/")
+    fun updateQuestion(@Body body: UpdateQNARequest)
+    : Deferred<Response<UpdateResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/store-address")
-    fun getStoreAddressByUid(@Query("store_uid") storeUid: Int)
-    : Deferred<Response<StoreDetailsResponse>>
+    @GET ("/service/application/feedback/v1.0/template/qna/entity/{entity_type}/entity-id/{entity_id}")
+    fun getQuestionAndAnswers(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("user_id") userId: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<QNAGetResponse>>
     
-    @POST ("/service/application/pos/cart/v1.0/share-cart")
-    fun getCartShareLink(@Body body: GetShareCartLinkRequest)
-    : Deferred<Response<GetShareCartLinkResponse>>
+    @GET ("/service/application/feedback/v1.0/vote/")
+    fun getVotes(@Query("id") id: String?, @Query("ref_type") refType: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<VoteResponse>>
     
-    @GET ("/service/application/pos/cart/v1.0/share-cart/{token}")
-    fun getCartSharedItems(@Path("token") token: String)
-    : Deferred<Response<SharedCartResponse>>
+    @POST ("/service/application/feedback/v1.0/vote/")
+    fun createVote(@Body body: VoteRequest)
+    : Deferred<Response<InsertResponse>>
     
-    @POST ("/service/application/pos/cart/v1.0/share-cart/{token}/{action}")
-    fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
-    : Deferred<Response<SharedCartResponse>>
+    @PUT ("/service/application/feedback/v1.0/vote/")
+    fun updateVote(@Body body: UpdateVoteRequest)
+    : Deferred<Response<UpdateResponse>>
     
 }
 

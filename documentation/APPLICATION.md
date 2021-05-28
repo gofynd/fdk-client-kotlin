@@ -14,7 +14,7 @@
 * [Payment](#Payment) - Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.into Fynd or Self account 
 * [Order](#Order) - Handles Platform websites OMS 
 * [Rewards](#Rewards) - Earn and redeem reward points 
-* [PosCart](#PosCart) - Cart APIs 
+* [Feedback](#Feedback) - User Reviews and Rating System 
 * [Logistic](#Logistic) - Handles Platform websites OMS 
 
 ----
@@ -66,6 +66,7 @@
     * [applyCoupon](#applycoupon)
     * [removeCoupon](#removecoupon)
     * [getBulkDiscountOffers](#getbulkdiscountoffers)
+    * [applyRewardPoints](#applyrewardpoints)
     * [getAddresses](#getaddresses)
     * [addAddress](#addaddress)
     * [getAddressById](#getaddressbyid)
@@ -211,6 +212,7 @@
     * [checkAndUpdatePaymentStatus](#checkandupdatepaymentstatus)
     * [getPaymentModeRoutes](#getpaymentmoderoutes)
     * [getPosPaymentModeRoutes](#getpospaymentmoderoutes)
+    * [getRupifiBannerDetails](#getrupifibannerdetails)
     * [getActiveRefundTransferModes](#getactiverefundtransfermodes)
     * [enableOrDisableRefundTransferMode](#enableordisablerefundtransfermode)
     * [getUserBeneficiariesDetail](#getuserbeneficiariesdetail)
@@ -244,34 +246,34 @@
     * [redeemReferralCode](#redeemreferralcode)
     
 
-* [PosCart](#PosCart)
+* [Feedback](#Feedback)
   * Methods
-    * [getCart](#getcart)
-    * [getCartLastModified](#getcartlastmodified)
-    * [addItems](#additems)
-    * [updateCart](#updatecart)
-    * [getItemCount](#getitemcount)
-    * [getCoupons](#getcoupons)
-    * [applyCoupon](#applycoupon)
-    * [removeCoupon](#removecoupon)
-    * [getBulkDiscountOffers](#getbulkdiscountoffers)
-    * [getAddresses](#getaddresses)
-    * [addAddress](#addaddress)
-    * [getAddressById](#getaddressbyid)
-    * [updateAddress](#updateaddress)
-    * [removeAddress](#removeaddress)
-    * [selectAddress](#selectaddress)
-    * [selectPaymentMode](#selectpaymentmode)
-    * [validateCouponForPayment](#validatecouponforpayment)
-    * [getShipments](#getshipments)
-    * [updateShipments](#updateshipments)
-    * [checkoutCart](#checkoutcart)
-    * [updateCartMeta](#updatecartmeta)
-    * [getAvailableDeliveryModes](#getavailabledeliverymodes)
-    * [getStoreAddressByUid](#getstoreaddressbyuid)
-    * [getCartShareLink](#getcartsharelink)
-    * [getCartSharedItems](#getcartshareditems)
-    * [updateCartWithSharedItems](#updatecartwithshareditems)
+    * [createAbuseReport](#createabusereport)
+    * [updateAbuseReport](#updateabusereport)
+    * [getAbuseReports](#getabusereports)
+    * [getAttributes](#getattributes)
+    * [createAttribute](#createattribute)
+    * [getAttribute](#getattribute)
+    * [updateAttribute](#updateattribute)
+    * [createComment](#createcomment)
+    * [updateComment](#updatecomment)
+    * [getComments](#getcomments)
+    * [checkEligibility](#checkeligibility)
+    * [deleteMedia](#deletemedia)
+    * [createMedia](#createmedia)
+    * [updateMedia](#updatemedia)
+    * [getMedias](#getmedias)
+    * [getReviewSummaries](#getreviewsummaries)
+    * [createReview](#createreview)
+    * [updateReview](#updatereview)
+    * [getReviews](#getreviews)
+    * [getTemplates](#gettemplates)
+    * [createQuestion](#createquestion)
+    * [updateQuestion](#updatequestion)
+    * [getQuestionAndAnswers](#getquestionandanswers)
+    * [getVotes](#getvotes)
+    * [createVote](#createvote)
+    * [updateVote](#updatevote)
     
 
 * [Logistic](#Logistic)
@@ -3300,6 +3302,50 @@ Unhandled api error
 
 
 Schema: `HashMap<String,Any>`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### applyRewardPoints
+Fetch all Items Added to  Cart
+
+```kotlin
+cart.applyRewardPoints(uid: uid, i: i, b: b).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| uid | Int? |  |    
+| i | Boolean? |  |    
+| b | Boolean? |  |  
+
+Get all the details of a items added to cart  by uid. If successful, returns a Cart resource in the response body specified in CartResponse
+
+*Success Response:*
+
+
+
+The Cart object. See example below or refer CartResponse for details
+
+
+Schema: `CartResponse`
 
 
 
@@ -10601,13 +10647,13 @@ communication.getCommunicationConsent().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get communication consent
+Use this API to retrieve the consent provided by the user for receiving communication messages over Email/SMS/WhatsApp.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns all available communication opt-ins along with the consent details. Check the example shown below or refer `CommunicationConsent` for more details.
 
 
 Schema: `CommunicationConsent`
@@ -10653,13 +10699,13 @@ communication.upsertCommunicationConsent(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Upsert communication consent
+Use this API to update and insert the consent provided by the user for receiving communication messages over Email/SMS/WhatsApp.
 
 *Success Response:*
 
 
 
-Success
+Success. Updates the channels for which user has consented. Check the example shown below or refer `CommunicationConsentRes` for more details.
 
 
 Schema: `CommunicationConsentRes`
@@ -10717,13 +10763,13 @@ communication.upsertAppPushtoken(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Upsert push token of a user
+Use this API to update and insert the push token of the user.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `PushtokenRes` for more details.
 
 
 Schema: `PushtokenRes`
@@ -11155,7 +11201,7 @@ Schema: `ErrorRes`
 
 
 #### startUpload
-This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
+Initiates an upload and returns a storage link that is valid for 30 minutes. You can use the storage link to make subsequent upload request with file buffer or blob.
 
 ```kotlin
 filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,error->
@@ -11172,33 +11218,33 @@ filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,er
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| namespace | String? | bucket name |  
+| namespace | String? | Name of the bucket created for storing objects. |  
 
-Uploads an arbitrarily sized buffer or blob.
+Use this API to perform the first step of uploading (i.e. **Start**) an arbitrarily sized buffer or blob.
 
-It has three Major Steps:
+The three major steps are:
 * Start
 * Upload
 * Complete
 
 ### Start
 Initiates the assets upload using `startUpload`.
-It returns the storage link in response.
+It returns a storage link in response.
 
 ### Upload
 Use the storage link to upload a file (Buffer or Blob) to the File Storage.
-Make a `PUT` request on storage link received from `startUpload` api with file (Buffer or Blob) as a request body.
+Make a `PUT` request on storage link received from `startUpload` API with the file (Buffer or Blob) in the request body.
 
 ### Complete
-After successfully upload, call `completeUpload` api to complete the upload process.
-This operation will return the url for the uploaded file.
+After successfully upload, call the `completeUpload` API to finish the upload process.
+This operation will return the URL of the uploaded file.
 
 
 *Success Response:*
 
 
 
-Success
+Success. Next, call the `completeUpload` API and pass the response payload of this API to finish the upload process.
 
 
 Schema: `StartResponse`
@@ -11227,7 +11273,7 @@ Schema: `FailedResponse`
 
 
 #### completeUpload
-This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
+Completes the upload process. After successfully uploading a file, call this API to finish the upload process.
 
 ```kotlin
 filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response,error->
@@ -11244,26 +11290,26 @@ filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| namespace | String? | bucket name |  
+| namespace | String? | Name of the bucket created for storing objects. |  
 
-Uploads an arbitrarily sized buffer or blob.
+Use this API to perform the third step of uploading (i.e. **Complete**) an arbitrarily sized buffer or blob.
 
-It has three Major Steps:
+The three major steps are:
 * Start
 * Upload
 * Complete
 
 ### Start
 Initiates the assets upload using `startUpload`.
-It returns the storage link in response.
+It returns a storage link in response.
 
 ### Upload
 Use the storage link to upload a file (Buffer or Blob) to the File Storage.
-Make a `PUT` request on storage link received from `startUpload` api with file (Buffer or Blob) as a request body.
+Make a `PUT` request on storage link received from `startUpload` API with the file (Buffer or Blob) in the request body.
 
 ### Complete
-After successfully upload, call `completeUpload` api to complete the upload process.
-This operation will return the url for the uploaded file.
+After successfully upload, call the `completeUpload` API to finish the upload process.
+This operation will return the URL of the uploaded file.
 
 
 *Success Response:*
@@ -11324,13 +11370,13 @@ configuration.getApplication().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get current application details.
+Use this API to get the current application details which includes configurations that indicate the status of the website, domain, ID, tokens, images, etc.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `Application` for more details.
 
 
 Schema: `Application`
@@ -11377,13 +11423,13 @@ configuration.getOwnerInfo().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get application information with owner and seller basic details
+Use this API to get the current application details which includes channel name, description, banner, logo, favicon, domain details, etc. This API also retrieves the seller and owner information such as address, email address, and phone number.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ApplicationAboutResponse` for more details.
 
 
 Schema: `ApplicationAboutResponse`
@@ -11418,13 +11464,13 @@ configuration.getBasicDetails().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get basic application details like name
+Use this API to retrieve only the basic details of the application which includes channel name, description, banner, logo, favicon, domain details, etc.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ApplicationDetail` for more details.
 
 
 Schema: `ApplicationDetail`
@@ -11459,13 +11505,13 @@ configuration.getIntegrationTokens().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get tokens for multiple integrations like Facebook, Googlemaps, Segment, Firebase, etc. Note: token values are encrypted with AES encryption using secret key. Kindly reach to developers for secret key.
+Use this API to retrieve the tokens used while integrating Firebase, MoEngage, Segment, GTM, Freshchat, Safetynet, Google Map and Facebook. **Note** - Token values are encrypted with AES encryption using a secret key. Kindly reach out to the developers for obtaining the secret key.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `TokenResponse` for more details.
 
 
 Schema: `TokenResponse`
@@ -11482,7 +11528,7 @@ Schema: `TokenResponse`
 
 
 #### getOrderingStores
-Get deployment meta stores
+Get deployment stores
 
 ```kotlin
 configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
@@ -11499,17 +11545,17 @@ configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAw
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pageNo | Int? | Current page no |    
-| pageSize | Int? | Current request items count |    
-| q | String? | Search ordering store by name or store code |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |    
+| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |    
+| q | String? | Store code or name of the ordering store. |  
 
-Get deployment meta stores.
+Use this API to retrieve the details of all the deployment stores (the selling locations where the application will be utilized for placing orders).
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `OrderingStores` for more details.
 
 
 Schema: `OrderingStores`
@@ -11556,13 +11602,13 @@ configuration.getFeatures().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get features of application
+Use this API to retrieve the configuration of features such as product detail, landing page, options in the login/registration screen, communication opt-in, cart options and many more.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `AppFeatureResponse` for more details.
 
 
 Schema: `AppFeatureResponse`
@@ -11609,13 +11655,13 @@ configuration.getContactInfo().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
+Use this API to retrieve information about the social links, address and contact information of the company/seller/brand operating the application.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ApplicationAboutResponse` for more details.
 
 
 Schema: `ApplicationInformation`
@@ -11632,7 +11678,7 @@ Schema: `ApplicationInformation`
 
 
 #### getCurrencies
-Get application enabled currencies
+Get currencies enabled in the application
 
 ```kotlin
 configuration.getCurrencies().safeAwait{ response,error->
@@ -11650,13 +11696,13 @@ configuration.getCurrencies().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get currency list for allowed currencies under current application
+Use this API to get a list of currencies allowed in the current application. Moreover, get the name, code, symbol, and the decimal digits of the currencies.
 
 *Success Response:*
 
 
 
-Currencies Success response
+Success. Check the example shown below or refer `CurrenciesResponse` for more details.
 
 
 Schema: `CurrenciesResponse`
@@ -11673,7 +11719,7 @@ Schema: `CurrenciesResponse`
 
 
 #### getCurrencyById
-Get currency by id
+Get currency by its ID
 
 ```kotlin
 configuration.getCurrencyById(id: id).safeAwait{ response,error->
@@ -11690,15 +11736,15 @@ configuration.getCurrencyById(id: id).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| id | String? | Currency object id |  
+| id | String? | Object ID assigned to the currency |  
 
-Get currency object with symbol and name information by id.
+Use this API to retrieve a currency using its ID.
 
 *Success Response:*
 
 
 
-Success response
+Success. Check the example shown below or refer `Currency` for more details.
 
 
 Schema: `Currency`
@@ -11733,13 +11779,13 @@ configuration.getLanguages().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get list of supported languages under application.
+Use this API to get a list of languages supported in the application.
 
 *Success Response:*
 
 
 
-Success response
+Success. Check the example shown below or refer `LanguageResponse` for more details.
 
 
 Schema: `LanguageResponse`
@@ -11756,7 +11802,7 @@ Schema: `LanguageResponse`
 
 
 #### getOrderingStoreCookie
-Get ordering store signed cookie on selection of ordering store. This will be used by cart service to verify coupon against selected ordering store in cart.
+Get an Ordering Store signed cookie on selection of ordering store.
 
 ```kotlin
 configuration.getOrderingStoreCookie(body: body).safeAwait{ response,error->
@@ -11774,7 +11820,7 @@ configuration.getOrderingStoreCookie(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get ordering store signed cookie on selection of ordering store.
+Use this API to get an Ordering Store signed cookie upon selecting an ordering store. This will be used by the cart service to verify a coupon against the selected ordering store in cart.
 
 *Success Response:*
 
@@ -11792,7 +11838,7 @@ Schema: `SuccessMessageResponse`
 
 
 
-Success
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `NotFound`
@@ -11809,7 +11855,7 @@ Schema: `NotFound`
 
 
 #### removeOrderingStoreCookie
-Unset ordering store signed cookie on change of sales channel selection via domain in universal fynd store app.
+Unset the Ordering Store signed cookie.
 
 ```kotlin
 configuration.removeOrderingStoreCookie().safeAwait{ response,error->
@@ -11827,7 +11873,7 @@ configuration.removeOrderingStoreCookie().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Unset ordering store cookie.
+Use this API to unset the Ordering Store cookie upon changing the sales channel, by its domain URL, in the Universal Fynd Store app.
 
 *Success Response:*
 
@@ -11850,7 +11896,7 @@ Schema: `SuccessMessageResponse`
 
 
 #### getAppStaffs
-Get Staff List.
+Get a list of staff.
 
 ```kotlin
 configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response,error->
@@ -11867,17 +11913,17 @@ configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStor
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| orderIncent | Boolean? | This is to check which staff members are applicable for order incentives. |    
-| orderingStore | Int? | This is to filter staff members from only selected ordering store. |    
-| user | String? | Get single staff member details using staff user mongo id |  
+| orderIncent | Boolean? | This is a boolean value. Select `true` to retrieve the staff members eligible for getting incentives on orders. |    
+| orderingStore | Int? | ID of the ordering store. Helps in retrieving staff members working at a particular ordering store. |    
+| user | String? | Mongo ID of the staff. Helps in retrieving the details of a particular staff member. |  
 
-Get a staff list based on the user's session token passed in the header.
+Use this API to get a list of staff including the names, employee code, incentive status, assigned ordering stores, and title of each staff added to the application.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `AppStaffResponse` for more details.
 
 
 Schema: `AppStaffResponse`
@@ -11889,7 +11935,7 @@ Schema: `AppStaffResponse`
 
 
 
-Request failed with internal server error.
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `UnhandledError`
@@ -11930,16 +11976,16 @@ payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait{ 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| xApiToken | String? | api token |    
-| refresh | Boolean? | refresh cache |  
+| xApiToken | String? | Used for basic authentication. |    
+| refresh | Boolean? | This is a boolean value. Select `true` to remove temporary cache files on payment gateway and replace with the latest one. |  
 
-Get payment gateway (key, secrets, merchant, sdk/api detail) to complete payment at front-end.
+Use this API to retrieve the payment gateway key, secrets, merchant, SDK/API details to complete a payment at front-end.
 
 *Success Response:*
 
 
 
-Keys of all payment gateway
+Success. Returns the keys of all payment gateways. Check the example shown below or refer `AggregatorsConfigDetailResponse` for more details.
 
 
 Schema: `AggregatorsConfigDetailResponse`
@@ -11951,7 +11997,7 @@ Schema: `AggregatorsConfigDetailResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -11963,7 +12009,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -11998,13 +12044,13 @@ payment.attachCardToCustomer(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Attach a saved card to customer at payment gateway i.e stripe and refresh card cache.
+Use this API to attach a customer's saved card at the payment gateway, such as Stripe.
 
 *Success Response:*
 
 
 
-List of cards objects
+Success. Check the example shown below or refer `AttachCardsResponse` for more details.
 
 
 Schema: `AttachCardsResponse`
@@ -12016,7 +12062,7 @@ Schema: `AttachCardsResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `Any`
@@ -12028,7 +12074,7 @@ Schema: `Any`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `Any`
@@ -12045,7 +12091,7 @@ Schema: `Any`
 
 
 #### getActiveCardAggregator
-Fetch active payment gateway for card
+Fetch active payment gateway for card payments
 
 ```kotlin
 payment.getActiveCardAggregator(refresh: refresh).safeAwait{ response,error->
@@ -12064,13 +12110,13 @@ payment.getActiveCardAggregator(refresh: refresh).safeAwait{ response,error->
 | --------- | ----  | --- |  
 | refresh | Boolean? |  |  
 
-Fetch active payment gateway along with customer id for cards payments.
+Use this API to retrieve an active payment aggregator along with the Customer ID. This is applicable for cards payments only.
 
 *Success Response:*
 
 
 
-Object of payment gateway and customer id
+Success. Returns an active payment gateway. Check the example shown below or refer `ActiveCardPaymentGatewayResponse` for more details.
 
 
 Schema: `ActiveCardPaymentGatewayResponse`
@@ -12082,7 +12128,7 @@ Schema: `ActiveCardPaymentGatewayResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12094,7 +12140,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12111,7 +12157,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### getActiveUserCards
-Fetch the list of saved cards of user.
+Fetch the list of cards saved by the user
 
 ```kotlin
 payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait{ response,error->
@@ -12130,13 +12176,13 @@ payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait{ response,error
 | --------- | ----  | --- |  
 | forceRefresh | Boolean? |  |  
 
-Fetch the list of saved cards of user from active payment gateway.
+Use this API to retrieve a list of cards stored by user from an active payment gateway.
 
 *Success Response:*
 
 
 
-List of cards objects
+Success. Returns a list of cards saved by the user. Check the example shown below or refer `ListCardsResponse` for more details.
 
 
 Schema: `ListCardsResponse`
@@ -12148,7 +12194,7 @@ Schema: `ListCardsResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12160,7 +12206,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12177,7 +12223,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### deleteUserCard
-Delete an user card.
+Delete a card
 
 ```kotlin
 payment.deleteUserCard(body: body).safeAwait{ response,error->
@@ -12195,13 +12241,13 @@ payment.deleteUserCard(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Delete an added user card on payment gateway and remove from cache.
+Use this API to delete a card added by a user on the payment gateway and clear the cache.
 
 *Success Response:*
 
 
 
-List of cards objects
+Success. Returns a success message if card is deleted.
 
 
 Schema: `DeleteCardsResponse`
@@ -12213,7 +12259,7 @@ Schema: `DeleteCardsResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12225,7 +12271,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12242,7 +12288,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### verifyCustomerForPayment
-Validate customer for payment.
+Validate customer for payment
 
 ```kotlin
 payment.verifyCustomerForPayment(body: body).safeAwait{ response,error->
@@ -12260,13 +12306,13 @@ payment.verifyCustomerForPayment(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Validate customer for payment i.e Simpl paylater, Rupifi loan.
+Use this API to check if the customer is eligible to use credit-line facilities such as Simpl Pay Later and Rupifi.
 
 *Success Response:*
 
 
 
-List of cards objects
+Success. Check the example shown below or refer `ValidateCustomerResponse` for more details.
 
 
 Schema: `ValidateCustomerResponse`
@@ -12278,7 +12324,7 @@ Schema: `ValidateCustomerResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12290,7 +12336,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12325,13 +12371,13 @@ payment.verifyAndChargePayment(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Verify and charge payment server to server for Simpl & Mswipe.
+Use this API to verify and check the status of a payment transaction (server-to-server) made through aggregators like Simpl and Mswipe.
 
 *Success Response:*
 
 
 
-List of cards objects
+Success. Check the example shown below or refer `ChargeCustomerResponse` for more details.
 
 
 Schema: `ChargeCustomerResponse`
@@ -12343,7 +12389,7 @@ Schema: `ChargeCustomerResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12355,7 +12401,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12372,7 +12418,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### initialisePayment
-Payment Initialisation server to server for UPI and BharatQR.
+Initialize a payment (server-to-server) for UPI and BharatQR
 
 ```kotlin
 payment.initialisePayment(body: body).safeAwait{ response,error->
@@ -12390,13 +12436,13 @@ payment.initialisePayment(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Payment Initialisation for UPI & BharatQR code, UPI requests to app and QR code to be displayed on screen.
+PUse this API to inititate payment using UPI, BharatQR, wherein the UPI requests are send to the app and QR code is displayed on the screen.
 
 *Success Response:*
 
 
 
-List of cards objects
+Success. Check the example shown below or refer `PaymentInitializationResponse` for more details.
 
 
 Schema: `PaymentInitializationResponse`
@@ -12408,7 +12454,7 @@ Schema: `PaymentInitializationResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12420,7 +12466,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12437,7 +12483,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### checkAndUpdatePaymentStatus
-Continous polling to check status of payment on server.
+Performs continuous polling to check status of payment on the server
 
 ```kotlin
 payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response,error->
@@ -12455,13 +12501,13 @@ payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Continous polling on interval to check status of payment untill timeout.
+Use this API to perform continuous polling at intervals to check the status of payment until timeout.
 
 *Success Response:*
 
 
 
-List of cards objects
+Success. Returns the status of payment. Check the example shown below or refer `PaymentStatusUpdateResponse` for more details.
 
 
 Schema: `PaymentStatusUpdateResponse`
@@ -12473,7 +12519,7 @@ Schema: `PaymentStatusUpdateResponse`
 
 
 
-Bad request error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12485,7 +12531,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12502,7 +12548,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### getPaymentModeRoutes
-Get All Valid Payment Options
+Get applicable payment options
 
 ```kotlin
 payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, userDetails: userDetails).safeAwait{ response,error->
@@ -12519,21 +12565,21 @@ payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, c
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| amount | Int? | Payment amount |    
-| cartId | String? | Cart id |    
-| pincode | String? | Pincode |    
-| checkoutMode | String? | Checkout mode |    
-| refresh | Boolean? |  |    
-| assignCardId | String? | selected card id |    
-| userDetails | String? | URIencoded json annonymous user |  
+| amount | Int? | Payable amount. |    
+| cartId | String? | Identifier of the cart. |    
+| pincode | String? | The PIN Code of the destination address, e.g. 400059 |    
+| checkoutMode | String? | Option to checkout for self or for others. |    
+| refresh | Boolean? | This is a boolean value. Select `true` to remove temporary cache files on payment gateway and replace with the latest one. |    
+| assignCardId | String? | Token of user's debit or credit card. |    
+| userDetails | String? | URIencoded JSON containing details of an anonymous user. |  
 
-Use this API to get Get All Valid Payment Options for making payment
+Use this API to get all valid payment options for doing a payment.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns all available options for payment. Check the example shown below or refer `PaymentModeRouteResponse` for more details.
 
 
 Schema: `PaymentModeRouteResponse`
@@ -12545,7 +12591,7 @@ Schema: `PaymentModeRouteResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12557,7 +12603,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12574,7 +12620,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### getPosPaymentModeRoutes
-Get All Valid Payment Options for POS
+Get applicable payment options for Point-of-Sale (POS)
 
 ```kotlin
 payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, assignCardId: assignCardId, orderType: orderType, userDetails: userDetails).safeAwait{ response,error->
@@ -12591,22 +12637,22 @@ payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| amount | Int? | Payment amount |    
-| cartId | String? | Cart id |    
-| pincode | String? | Pincode |    
-| checkoutMode | String? | Checkout mode |    
-| refresh | Boolean? |  |    
-| assignCardId | String? | selected card id |    
-| orderType | String? | Order type |    
-| userDetails | String? | URIencoded json annonymous user |  
+| amount | Int? | Payable amount. |    
+| cartId | String? | Identifier of the cart. |    
+| pincode | String? | The PIN Code of the destination address, e.g. 400059 |    
+| checkoutMode | String? | Option to checkout for self or for others. |    
+| refresh | Boolean? | This is a boolean value. Select `true` to remove temporary cache files on payment gateway and replace with the latest one. |    
+| assignCardId | String? | Token of user's debit or credit card. |    
+| orderType | String? | The order type of shipment * HomeDelivery - If the customer wants the order home-delivered * PickAtStore - If the customer wants the handover of an order at the store itself. |    
+| userDetails | String? | URIencoded JSON containing details of an anonymous user. |  
 
-Use this API to get Get All Valid Payment Options for making payment
+Use this API to get all valid payment options for doing a payment in POS.
 
 *Success Response:*
 
 
 
-Success
+Success. Returns all available options for payment. Check the example shown below or refer `PaymentModeRouteResponse` for more details.
 
 
 Schema: `PaymentModeRouteResponse`
@@ -12618,7 +12664,7 @@ Schema: `PaymentModeRouteResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12630,7 +12676,72 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getRupifiBannerDetails
+Get CreditLine Offer
+
+```kotlin
+payment.getRupifiBannerDetails().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Get CreditLine Offer if user is tentatively approved by rupifi
+
+*Success Response:*
+
+
+
+Success. Return CreditLine Offer detail. Check the example shown below or refer `RupifiBannerResponseSchema` for more details.
+
+
+Schema: `RupifiBannerResponse`
+
+
+
+
+
+
+
+
+Bad Request. See the error object in the response body to know the exact reason.
+
+
+Schema: `HttpErrorCodeAndResponse`
+
+
+
+
+
+
+
+
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12647,7 +12758,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### getActiveRefundTransferModes
-List Refund Transfer Mode
+Lists the mode of refund
 
 ```kotlin
 payment.getActiveRefundTransferModes().safeAwait{ response,error->
@@ -12665,13 +12776,13 @@ payment.getActiveRefundTransferModes().safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get all active transfer mode for adding beneficiary details
+Use this API to retrieve eligible refund modes (such as Netbanking) and add the beneficiary details.
 
 *Success Response:*
 
 
 
-Refund Transfer Mode
+Success. Shows the available refund mode to choose, e.g. Netbanking. Check the example shown below or refer `TransferModeResponse` for more details.
 
 
 Schema: `TransferModeResponse`
@@ -12683,7 +12794,7 @@ Schema: `TransferModeResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12700,7 +12811,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### enableOrDisableRefundTransferMode
-Enable/Disable Refund Transfer Mode
+Enable/Disable a mode for transferring a refund
 
 ```kotlin
 payment.enableOrDisableRefundTransferMode(body: body).safeAwait{ response,error->
@@ -12724,7 +12835,7 @@ Activate or Deactivate Transfer Mode to collect Beneficiary Details for Refund
 
 
 
-Update Refund Transfer Mode.
+Success. Shows whether the refund mode was successfully enabled or disabled.
 
 
 Schema: `UpdateRefundTransferModeResponse`
@@ -12736,7 +12847,7 @@ Schema: `UpdateRefundTransferModeResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12753,7 +12864,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### getUserBeneficiariesDetail
-List User Beneficiary
+Lists the beneficiary of a refund
 
 ```kotlin
 payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait{ response,error->
@@ -12770,15 +12881,15 @@ payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| orderId | String? |  |  
+| orderId | String? | A unique number used for identifying and tracking your orders. |  
 
-Get all active  beneficiary details added by the user for refund
+Use this API to get the details of all active beneficiary added by a user for refund.
 
 *Success Response:*
 
 
 
-List User Beneficiary
+Success. Returns the details of the beneficiary getting a refund. Check the example shown below or refer `OrderBeneficiaryResponse` for more details.
 
 
 Schema: `OrderBeneficiaryResponse`
@@ -12790,7 +12901,7 @@ Schema: `OrderBeneficiaryResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `NotFoundResourceError`
@@ -12802,7 +12913,7 @@ Schema: `NotFoundResourceError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12819,7 +12930,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### verifyIfscCode
-Ifsc Code Verification
+Verify IFSC Code
 
 ```kotlin
 payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
@@ -12836,15 +12947,15 @@ payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| ifscCode | String? |  |  
+| ifscCode | String? | A 11-digit alphanumeric code that uniquely identifies a bank branch. |  
 
-Get True/False for correct IFSC Code for adding bank details for refund
+Use this API to check whether the 11-digit IFSC code is valid and to fetch the bank details for refund.
 
 *Success Response:*
 
 
 
-Bank details on correct Ifsc Code
+Success. Shows whether the IFSC code is valid, and returns the bank details. Check the example shown below or refer `IfscCodeResponse` for more details.
 
 
 Schema: `IfscCodeResponse`
@@ -12856,7 +12967,7 @@ Schema: `IfscCodeResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `NotFoundResourceError`
@@ -12868,7 +12979,7 @@ Schema: `NotFoundResourceError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ErrorCodeDescription`
@@ -12885,7 +12996,7 @@ Schema: `ErrorCodeDescription`
 
 
 #### getOrderBeneficiariesDetail
-List Order Beneficiary
+Lists the beneficiary of a refund
 
 ```kotlin
 payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait{ response,error->
@@ -12902,15 +13013,15 @@ payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait{ response,error-
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| orderId | String? |  |  
+| orderId | String? | A unique number used for identifying and tracking your orders. |  
 
-Get all active  beneficiary details added by the user for refund
+Use this API to get the details of all active beneficiary added by a user for refund.
 
 *Success Response:*
 
 
 
-List Order Beneficiary
+Success. Returns the details of the beneficiary getting a refund. Check the example shown below or refer `OrderBeneficiaryResponse` for more details.
 
 
 Schema: `OrderBeneficiaryResponse`
@@ -12922,7 +13033,7 @@ Schema: `OrderBeneficiaryResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `NotFoundResourceError`
@@ -12934,7 +13045,7 @@ Schema: `NotFoundResourceError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -12951,7 +13062,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### verifyOtpAndAddBeneficiaryForBank
-Save Beneficiary details on otp validation.
+Verify the beneficiary details using OTP
 
 ```kotlin
 payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response,error->
@@ -12969,13 +13080,13 @@ payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response,error-
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Save Beneficiary details on otp validation.
+Use this API to perform an OTP validation before saving the beneficiary details added for a refund.
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `AddBeneficiaryViaOtpVerificationRequest` for more details.
 
 
 Schema: `AddBeneficiaryViaOtpVerificationResponse`
@@ -12987,7 +13098,7 @@ Schema: `AddBeneficiaryViaOtpVerificationResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `WrongOtpError`
@@ -12999,7 +13110,7 @@ Schema: `WrongOtpError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -13034,13 +13145,13 @@ payment.addBeneficiaryDetails(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Use this API to save bank details for returned/cancelled order to refund amount in his account.
+Use this API to save the bank details for a returned or cancelled order to refund the amount.
 
 *Success Response:*
 
 
 
-Success
+Success. Shows whether the beneficiary details were saved to a returned/cancelled order or not.
 
 
 Schema: `RefundAccountResponse`
@@ -13052,7 +13163,7 @@ Schema: `RefundAccountResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `NotFoundResourceError`
@@ -13064,7 +13175,7 @@ Schema: `NotFoundResourceError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -13081,7 +13192,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### verifyOtpAndAddBeneficiaryForWallet
-Send Otp on Adding wallet beneficiary
+Send OTP on adding a wallet beneficiary
 
 ```kotlin
 payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response,error->
@@ -13099,13 +13210,13 @@ payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response,erro
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Send Otp on Adding wallet beneficiary for user mobile verification
+Use this API to send an OTP while adding a wallet beneficiary by mobile no. verification.
 
 *Success Response:*
 
 
 
-WalletOtp
+Success. Sends the OTP to the given mobile number. Check the example shown below or refer `WalletOtpResponse` for more details.
 
 
 Schema: `WalletOtpResponse`
@@ -13117,7 +13228,7 @@ Schema: `WalletOtpResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `NotFoundResourceError`
@@ -13129,7 +13240,7 @@ Schema: `NotFoundResourceError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -13146,7 +13257,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### updateDefaultBeneficiary
-Mark Default Beneficiary For Refund
+Set a default beneficiary for a refund
 
 ```kotlin
 payment.updateDefaultBeneficiary(body: body).safeAwait{ response,error->
@@ -13164,13 +13275,13 @@ payment.updateDefaultBeneficiary(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Mark Default Beneficiary ot of all Beneficiary Details for Refund
+Use this API to set a default beneficiary for getting a refund.
 
 *Success Response:*
 
 
 
-Set Default Beneficiary Response.
+Success. Check the example shown below or refer `SetDefaultBeneficiaryResponse` for more details.
 
 
 Schema: `SetDefaultBeneficiaryResponse`
@@ -13182,7 +13293,7 @@ Schema: `SetDefaultBeneficiaryResponse`
 
 
 
-Bad Request Error
+Bad Request. See the error object in the response body to know the exact reason.
 
 
 Schema: `SetDefaultBeneficiaryResponse`
@@ -13194,7 +13305,7 @@ Schema: `SetDefaultBeneficiaryResponse`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `HttpErrorCodeAndResponse`
@@ -13218,7 +13329,7 @@ Schema: `HttpErrorCodeAndResponse`
 
 
 #### getOrders
-Get Orders for application based on application Id
+Use this API to retrieve all the orders.
 
 ```kotlin
 order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, orderStatus: orderStatus).safeAwait{ response,error->
@@ -13235,19 +13346,19 @@ order.getOrders(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: 
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pageNo | Int? | Current page number |    
-| pageSize | Int? | Page limit |    
-| fromDate | String? | From Date |    
-| toDate | String? | To Date |    
-| orderStatus | Int? | Order Status |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |    
+| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |    
+| fromDate | String? | The date from which the orders should be retrieved. |    
+| toDate | String? | The date till which the orders should be retrieved. |    
+| orderStatus | Int? | A filter to retrieve orders by their current status such as _placed_, _delivered_, etc. |  
 
-Get Orders
+Get all orders
 
 *Success Response:*
 
 
 
-Success
+Success. Returns all the orders. Check the example shown below or refer `OrderList` for more details.
 
 
 Schema: `OrderList`
@@ -13259,7 +13370,7 @@ Schema: `OrderList`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13271,7 +13382,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13288,7 +13399,7 @@ Schema: `ApefaceApiError`
 
 
 #### getOrderById
-Get Order by order id for application based on application Id
+Use this API to retrieve order details such as tracking details, shipment, store information using Fynd Order ID.
 
 ```kotlin
 order.getOrderById(orderId: orderId).safeAwait{ response,error->
@@ -13305,15 +13416,15 @@ order.getOrderById(orderId: orderId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| orderId | String? | Order Id |  
+| orderId | String? | A unique number used for identifying and tracking your orders. |  
 
-Get Order By Fynd Order Id
+Get details of an order
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `OrderById` for more details.
 
 
 Schema: `OrderById`
@@ -13325,7 +13436,7 @@ Schema: `OrderById`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13337,7 +13448,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13354,7 +13465,7 @@ Schema: `ApefaceApiError`
 
 
 #### getShipmentById
-Get Shipment by shipment id and order id for application based on application Id
+Use this API to retrieve shipment details such as price breakup, tracking details, store information, etc. using Shipment ID.
 
 ```kotlin
 order.getShipmentById(shipmentId: shipmentId).safeAwait{ response,error->
@@ -13371,15 +13482,15 @@ order.getShipmentById(shipmentId: shipmentId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| shipmentId | String? | Shipment Id |  
+| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
-Get Shipment
+Get details of a shipment
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ShipmentById` for more details.
 
 
 Schema: `ShipmentById`
@@ -13391,7 +13502,7 @@ Schema: `ShipmentById`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13403,7 +13514,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13420,7 +13531,7 @@ Schema: `ApefaceApiError`
 
 
 #### getShipmentReasons
-Get Shipment reasons by shipment id and order id for application based on application Id
+Use this API to retrieve the issues that led to the cancellation of bags within a shipment.
 
 ```kotlin
 order.getShipmentReasons(shipmentId: shipmentId).safeAwait{ response,error->
@@ -13437,15 +13548,15 @@ order.getShipmentReasons(shipmentId: shipmentId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| shipmentId | String? | Shipment Id |  
+| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
-Get Shipment Reasons
+Get reasons behind full or partial cancellation of a shipment
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ShipmentReasons` for more details.
 
 
 Schema: `ShipmentReasons`
@@ -13457,7 +13568,7 @@ Schema: `ShipmentReasons`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13469,7 +13580,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13486,7 +13597,7 @@ Schema: `ApefaceApiError`
 
 
 #### updateShipmentStatus
-Update Shipment status by shipment id and order id for application based on application Id
+Use this API to update the status of a shipment using its shipment ID.
 
 ```kotlin
 order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait{ response,error->
@@ -13503,15 +13614,15 @@ order.updateShipmentStatus(shipmentId: shipmentId, body: body).safeAwait{ respon
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| shipmentId | String? | Shipment Id |  
+| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
-Update Shipment Status
+Update the shipment status
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ShipmentStatusUpdateBody` for more details.
 
 
 Schema: `ShipmentStatusUpdate`
@@ -13523,7 +13634,7 @@ Schema: `ShipmentStatusUpdate`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13535,7 +13646,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13552,7 +13663,7 @@ Schema: `ApefaceApiError`
 
 
 #### trackShipment
-Track Shipment by shipment id and order id for application based on application Id
+Use this API to track a shipment using its shipment ID.
 
 ```kotlin
 order.trackShipment(shipmentId: shipmentId).safeAwait{ response,error->
@@ -13569,15 +13680,15 @@ order.trackShipment(shipmentId: shipmentId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| shipmentId | String? | Shipment Id |  
+| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
-Shipment Track
+Track shipment
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `ShipmentTrack` for more details.
 
 
 Schema: `ShipmentTrack`
@@ -13589,7 +13700,7 @@ Schema: `ShipmentTrack`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13601,7 +13712,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13618,7 +13729,7 @@ Schema: `ApefaceApiError`
 
 
 #### getPosOrderById
-Get POS Order by order id for application based on application Id
+Use this API to retrieve a POS order and all its details such as tracking details, shipment, store information using Fynd Order ID.
 
 ```kotlin
 order.getPosOrderById(orderId: orderId).safeAwait{ response,error->
@@ -13635,15 +13746,15 @@ order.getPosOrderById(orderId: orderId).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| orderId | String? | Order Id |  
+| orderId | String? | A unique number used for identifying and tracking your orders. |  
 
-Get Order By Fynd Order Id
+Get POS Order
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `PosOrderById` for more details.
 
 
 Schema: `PosOrderById`
@@ -13655,7 +13766,7 @@ Schema: `PosOrderById`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -13667,7 +13778,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -14068,1523 +14179,14 @@ Schema: `Error`
 ---
 
 
-## PosCart
+## Feedback
 
 
-#### getCart
-Fetch all Items Added to  Cart
-
-```kotlin
-poscart.getCart(uid: uid, i: i, b: b, assignCardId: assignCardId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? |  |    
-| i | Boolean? |  |    
-| b | Boolean? |  |    
-| assignCardId | Int? |  |  
-
-Get all the details of a items added to cart  by uid. If successful, returns a Cart resource in the response body specified in CartResponse
-
-*Success Response:*
-
-
-
-The Cart object. See example below or refer CartResponse for details
-
-
-Schema: `CartResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getCartLastModified
-Fetch Last-Modified timestamp
+#### createAbuseReport
+Post a new abuse request
 
 ```kotlin
-poscart.getCartLastModified(uid: uid).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? |  |  
-
-Fetch Last-Modified timestamp in header metadata
-
-*Success Response:*
-
-
-
-Fetch Last-Modified Timestamp Response
-
-
-
-
-
-
----
-
-
-#### addItems
-Add Items to Cart
-
-```kotlin
-poscart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| i | Boolean? |  |    
-| b | Boolean? |  |  
-
-<p>Add Items to cart. See `AddCartRequest` in schema of request body for the list of attributes needed to add items to a cart. On successful request, returns cart response containing details of items, coupons available etc.these attributes will be fetched from the folowing api's</p>
-
-*Success Response:*
-
-
-
-Response of the cart object including all item details included in .the cart,coupons etc.
-
-
-Schema: `AddCartResponse`
-
-
-*Examples:*
-
-
-Product has been added to your cart
-```json
-{
-  "value": {
-    "message": "Product has been added to your cart",
-    "success": true,
-    "cart": {
-      "breakup_values": {
-        "display": [
-          {
-            "display": "MRP Total",
-            "key": "mrp_total",
-            "value": 17486,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Discount",
-            "key": "discount",
-            "value": -3540,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Subtotal",
-            "key": "subtotal",
-            "value": 13946,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Total",
-            "key": "total",
-            "value": 13946,
-            "currency_code": "INR"
-          }
-        ],
-        "raw": {
-          "cod_charge": 0,
-          "convenience_fee": 0,
-          "coupon": 0,
-          "delivery_charge": 0,
-          "discount": -3540,
-          "fynd_cash": 0,
-          "gst_charges": 1529.96,
-          "mrp_total": 17486,
-          "subtotal": 13946,
-          "total": 13946,
-          "vog": 12416.04,
-          "you_saved": 0
-        },
-        "loyalty_points": {
-          "total": 0,
-          "applicable": 0,
-          "is_applied": false,
-          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-        },
-        "coupon": {
-          "type": "cash",
-          "code": "",
-          "uid": null,
-          "value": 0,
-          "is_applied": false,
-          "message": "Sorry! Invalid Coupon"
-        }
-      },
-      "items": [
-        {
-          "key": "751083_10",
-          "article": {
-            "type": "article",
-            "uid": "612_9_SE61201_19100302_10",
-            "size": "10",
-            "seller": {
-              "uid": 612,
-              "name": "SSR ENTERPRISE"
-            },
-            "store": {
-              "uid": 4431,
-              "name": "Motilal Nagar 1, Goregaon"
-            },
-            "quantity": 4,
-            "price": {
-              "base": {
-                "marked": 3999,
-                "effective": 2399,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 3999,
-                "effective": 2399,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "price": {
-            "base": {
-              "add_on": 4798,
-              "marked": 7998,
-              "effective": 4798,
-              "selling": 4798,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 4798,
-              "marked": 7998,
-              "effective": 4798,
-              "selling": 4798,
-              "currency_code": "INR"
-            }
-          },
-          "availability": {
-            "sizes": [
-              "10"
-            ],
-            "other_store_quantity": 2,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "product": {
-            "type": "product",
-            "uid": 751083,
-            "name": "Carson 2",
-            "slug": "puma-carson-2-751083-6ad98d",
-            "brand": {
-              "uid": 9,
-              "name": "Puma"
-            },
-            "categories": [
-              {
-                "uid": 165,
-                "name": "Outdoor Sports Shoes"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/9_19100302/1_1542807042296.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/9_19100302/1_1542807042296.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/puma-carson-2-751083-6ad98d/",
-              "query": {
-                "product_slug": [
-                  "puma-carson-2-751083-6ad98d"
-                ]
-              }
-            }
-          },
-          "coupon_message": "",
-          "quantity": 2,
-          "message": "",
-          "bulk_offer": {},
-          "discount": "41% OFF"
-        },
-        {
-          "key": "246228_S",
-          "article": {
-            "type": "article",
-            "uid": "46_235_TM62_M11029ONDSXNS_S",
-            "size": "S",
-            "seller": {
-              "uid": 46,
-              "name": "RELIANCE BRANDS LIMITED"
-            },
-            "store": {
-              "uid": 4550,
-              "name": "VR Mall"
-            },
-            "quantity": 1,
-            "price": {
-              "base": {
-                "marked": 4490,
-                "effective": 4490,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 4490,
-                "effective": 4490,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "price": {
-            "base": {
-              "add_on": 4490,
-              "marked": 4490,
-              "effective": 4490,
-              "selling": 4490,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 4490,
-              "marked": 4490,
-              "effective": 4490,
-              "selling": 4490,
-              "currency_code": "INR"
-            }
-          },
-          "availability": {
-            "sizes": [
-              "L",
-              "M",
-              "S",
-              "XL",
-              "XXL"
-            ],
-            "other_store_quantity": 0,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "product": {
-            "type": "product",
-            "uid": 246228,
-            "name": "Blue Solid T-Shirt",
-            "slug": "superdry-blue-solid-t-shirt-2",
-            "brand": {
-              "uid": 235,
-              "name": "Superdry"
-            },
-            "categories": [
-              {
-                "uid": 192,
-                "name": "T-Shirts"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/235_M11029ONDSXNS/1.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/235_M11029ONDSXNS/1.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/superdry-blue-solid-t-shirt-2/",
-              "query": {
-                "product_slug": [
-                  "superdry-blue-solid-t-shirt-2"
-                ]
-              }
-            }
-          },
-          "coupon_message": "",
-          "quantity": 1,
-          "message": "",
-          "bulk_offer": {},
-          "discount": ""
-        },
-        {
-          "key": "443175_S",
-          "article": {
-            "type": "article",
-            "uid": "162_207_1271_LJ03LBLUDN88_S",
-            "size": "S",
-            "seller": {
-              "uid": 162,
-              "name": "GO FASHION INDIA PRIVATE LIMITED"
-            },
-            "store": {
-              "uid": 5784,
-              "name": "Vega City mall"
-            },
-            "quantity": 3,
-            "price": {
-              "base": {
-                "marked": 1599,
-                "effective": 1599,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 1599,
-                "effective": 1599,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "price": {
-            "base": {
-              "add_on": 1599,
-              "marked": 1599,
-              "effective": 1599,
-              "selling": 1599,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 1599,
-              "marked": 1599,
-              "effective": 1599,
-              "selling": 1599,
-              "currency_code": "INR"
-            }
-          },
-          "availability": {
-            "sizes": [
-              "XL",
-              "M",
-              "L",
-              "S"
-            ],
-            "other_store_quantity": 8,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "product": {
-            "type": "product",
-            "uid": 443175,
-            "name": "Light Blue Denim Jeggings",
-            "slug": "go-colors-light-blue-denim-jeggings-443175-3c688c",
-            "brand": {
-              "uid": 207,
-              "name": "Go Colors"
-            },
-            "categories": [
-              {
-                "uid": 267,
-                "name": "Jeggings"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/207_LJ03LBLUDN88/1_1512382513548.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/207_LJ03LBLUDN88/1_1512382513548.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/go-colors-light-blue-denim-jeggings-443175-3c688c/",
-              "query": {
-                "product_slug": [
-                  "go-colors-light-blue-denim-jeggings-443175-3c688c"
-                ]
-              }
-            }
-          },
-          "coupon_message": "",
-          "quantity": 1,
-          "message": "",
-          "bulk_offer": {},
-          "discount": ""
-        },
-        {
-          "key": "778937_OS",
-          "article": {
-            "type": "article",
-            "uid": "686_963_IC68601_PWUPC01977_OS",
-            "size": "OS",
-            "seller": {
-              "uid": 686,
-              "name": "INDUS CORPORATION"
-            },
-            "store": {
-              "uid": 5059,
-              "name": "Vidyaranyapura Main Road"
-            },
-            "quantity": 3,
-            "price": {
-              "base": {
-                "marked": 3399,
-                "effective": 3059,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 3399,
-                "effective": 3059,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "price": {
-            "base": {
-              "add_on": 3059,
-              "marked": 3399,
-              "effective": 3059,
-              "selling": 3059,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 3059,
-              "marked": 3399,
-              "effective": 3059,
-              "selling": 3059,
-              "currency_code": "INR"
-            }
-          },
-          "availability": {
-            "sizes": [
-              "OS"
-            ],
-            "other_store_quantity": 2,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "product": {
-            "type": "product",
-            "uid": 778937,
-            "name": "Colourful Carnival Bouncer",
-            "slug": "fisher-price-colourful-carnival-bouncer-778937-fafa1f",
-            "brand": {
-              "uid": 963,
-              "name": "Fisher-Price"
-            },
-            "categories": [
-              {
-                "uid": 576,
-                "name": "Cradles"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/963_PWUPC01977/1_1545308400588.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/963_PWUPC01977/1_1545308400588.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/fisher-price-colourful-carnival-bouncer-778937-fafa1f/",
-              "query": {
-                "product_slug": [
-                  "fisher-price-colourful-carnival-bouncer-778937-fafa1f"
-                ]
-              }
-            }
-          },
-          "coupon_message": "",
-          "quantity": 1,
-          "message": "",
-          "bulk_offer": {},
-          "discount": "11% OFF"
-        }
-      ],
-      "delivery_charge_info": "",
-      "coupon_text": "View all offers",
-      "cart_id": 7927,
-      "uid": "7927",
-      "gstin": null,
-      "checkout_mode": "self",
-      "last_modified": "Tue, 03 Sep 2019 06:00:43 GMT",
-      "restrict_checkout": false,
-      "is_valid": true
-    },
-    "result": {}
-  }
-}
-```
-
-Sorry, item is out of stock
-```json
-{
-  "value": {
-    "message": "Sorry, item is out of stock",
-    "success": false,
-    "cart": {
-      "breakup_values": {
-        "raw": {
-          "cod_charge": 0,
-          "convenience_fee": 0,
-          "coupon": 0,
-          "delivery_charge": 0,
-          "discount": -202000,
-          "fynd_cash": 0,
-          "gst_charges": 4804.71,
-          "mrp_total": 302899,
-          "subtotal": 100899,
-          "total": 100899,
-          "vog": 96094.29,
-          "you_saved": 0
-        },
-        "coupon": {
-          "type": "cash",
-          "code": "",
-          "uid": null,
-          "value": 0,
-          "is_applied": false,
-          "message": "Sorry! Invalid Coupon"
-        },
-        "display": [
-          {
-            "display": "MRP Total",
-            "key": "mrp_total",
-            "value": 302899,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Discount",
-            "key": "discount",
-            "value": -202000,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Subtotal",
-            "key": "subtotal",
-            "value": 100899,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Total",
-            "key": "total",
-            "value": 100899,
-            "currency_code": "INR"
-          }
-        ],
-        "loyalty_points": {
-          "total": 0,
-          "applicable": 0,
-          "is_applied": false,
-          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-        }
-      },
-      "items": [
-        {
-          "bulk_offer": {},
-          "discount": "67% OFF",
-          "article": {
-            "type": "article",
-            "uid": "604_902_SSTC60401_636BLUE_1",
-            "size": "1",
-            "seller": {
-              "uid": 604,
-              "name": "SHRI SHANTINATH TRADING COMPANY"
-            },
-            "store": {
-              "uid": 4579,
-              "name": "Gandhi Nagar"
-            },
-            "quantity": 108,
-            "price": {
-              "base": {
-                "marked": 2999,
-                "effective": 999,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 2999,
-                "effective": 999,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "coupon_message": "",
-          "key": "707569_1",
-          "availability": {
-            "sizes": [
-              "1",
-              "8",
-              "7",
-              "2",
-              "9",
-              "5",
-              "3",
-              "6"
-            ],
-            "other_store_quantity": 7,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "product": {
-            "type": "product",
-            "uid": 707569,
-            "name": "Blue and Gold Printed Ethnic Set",
-            "slug": "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a",
-            "brand": {
-              "uid": 902,
-              "name": ""
-            },
-            "categories": [
-              {
-                "uid": 525,
-                "name": ""
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/v1/products/aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a/",
-              "query": {
-                "product_slug": [
-                  "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a"
-                ]
-              }
-            }
-          },
-          "price": {
-            "base": {
-              "add_on": 100899,
-              "marked": 302899,
-              "effective": 100899,
-              "selling": 100899,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 100899,
-              "marked": 302899,
-              "effective": 100899,
-              "selling": 100899,
-              "currency_code": "INR"
-            }
-          },
-          "message": "",
-          "quantity": 101
-        }
-      ],
-      "delivery_charge_info": "",
-      "coupon_text": "View all offers",
-      "cart_id": 54,
-      "uid": "54",
-      "gstin": null,
-      "checkout_mode": "self",
-      "restrict_checkout": false,
-      "is_valid": false,
-      "last_modified": "Tue, 03 Sep 2019 09:55:40 GMT"
-    },
-    "result": {}
-  }
-}
-```
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateCart
-Update Items already added to Cart
-
-```kotlin
-poscart.updateCart(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? |  |    
-| i | Boolean? |  |    
-| b | Boolean? |  |  
-
-Request object containing attributes like item_quantity and item_size which can be updated .these attributes will be fetched from the folowing api's</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
-
-*Success Response:*
-
-
-
-Response of the cart object including all item with their updated details included in .the cart,coupons etc..
-
-
-Schema: `UpdateCartResponse`
-
-
-*Examples:*
-
-
-Nothing updated
-```json
-{
-  "value": {
-    "cart": {
-      "breakup_values": {
-        "raw": {
-          "cod_charge": 0,
-          "convenience_fee": 0,
-          "coupon": 0,
-          "delivery_charge": 0,
-          "discount": -202000,
-          "fynd_cash": 0,
-          "gst_charges": 4804.71,
-          "mrp_total": 302899,
-          "subtotal": 100899,
-          "total": 100899,
-          "vog": 96094.29,
-          "you_saved": 0
-        },
-        "coupon": {
-          "type": "cash",
-          "code": "",
-          "uid": null,
-          "value": 0,
-          "is_applied": false,
-          "message": "Sorry! Invalid Coupon"
-        },
-        "display": [
-          {
-            "display": "MRP Total",
-            "key": "mrp_total",
-            "value": 302899,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Discount",
-            "key": "discount",
-            "value": -202000,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Subtotal",
-            "key": "subtotal",
-            "value": 100899,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Total",
-            "key": "total",
-            "value": 100899,
-            "currency_code": "INR"
-          }
-        ],
-        "loyalty_points": {
-          "total": 0,
-          "applicable": 0,
-          "is_applied": false,
-          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-        }
-      },
-      "items": [
-        {
-          "bulk_offer": {},
-          "discount": "67% OFF",
-          "article": {
-            "type": "article",
-            "uid": "604_902_SSTC60401_636BLUE_1",
-            "size": "1",
-            "seller": {
-              "uid": 604,
-              "name": "SHRI SHANTINATH TRADING COMPANY"
-            },
-            "store": {
-              "uid": 4579,
-              "name": "Gandhi Nagar"
-            },
-            "quantity": 108,
-            "price": {
-              "base": {
-                "marked": 2999,
-                "effective": 999,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 2999,
-                "effective": 999,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "coupon_message": "",
-          "key": "707569_1",
-          "availability": {
-            "sizes": [
-              "1",
-              "8",
-              "7",
-              "2",
-              "9",
-              "5",
-              "3",
-              "6"
-            ],
-            "other_store_quantity": 7,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "product": {
-            "type": "product",
-            "uid": 707569,
-            "name": "Blue and Gold Printed Ethnic Set",
-            "slug": "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a",
-            "brand": {
-              "uid": 902,
-              "name": ""
-            },
-            "categories": [
-              {
-                "uid": 525,
-                "name": ""
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/902_636BLUE/1_1540301094877.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/v1/products/aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a/",
-              "query": {
-                "product_slug": [
-                  "aj-dezines-blue-and-gold-printed-ethnic-set-707569-bff01a"
-                ]
-              }
-            }
-          },
-          "price": {
-            "base": {
-              "add_on": 100899,
-              "marked": 302899,
-              "effective": 100899,
-              "selling": 100899,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 100899,
-              "marked": 302899,
-              "effective": 100899,
-              "selling": 100899,
-              "currency_code": "INR"
-            }
-          },
-          "message": "",
-          "quantity": 101
-        }
-      ],
-      "delivery_charge_info": "",
-      "coupon_text": "View all offers",
-      "cart_id": 54,
-      "uid": "54",
-      "gstin": null,
-      "checkout_mode": "self",
-      "restrict_checkout": false,
-      "is_valid": true,
-      "last_modified": "Tue, 03 Sep 2019 10:19:20 GMT"
-    },
-    "result": {
-      "707569_90": {
-        "success": true,
-        "message": "Nothing updated"
-      }
-    },
-    "message": "Nothing updated",
-    "success": true
-  }
-}
-```
-
-Item updated in the cart
-```json
-{
-  "value": {
-    "cart": {
-      "breakup_values": {
-        "coupon": {
-          "type": "cash",
-          "code": "",
-          "uid": null,
-          "value": 0,
-          "is_applied": false,
-          "message": "Sorry! Invalid Coupon"
-        },
-        "loyalty_points": {
-          "total": 0,
-          "applicable": 0,
-          "is_applied": false,
-          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-        },
-        "raw": {
-          "cod_charge": 0,
-          "convenience_fee": 0,
-          "coupon": 0,
-          "delivery_charge": 0,
-          "discount": 0,
-          "fynd_cash": 0,
-          "gst_charges": 838.83,
-          "mrp_total": 5499,
-          "subtotal": 5499,
-          "total": 5499,
-          "vog": 4660.17,
-          "you_saved": 0
-        },
-        "display": [
-          {
-            "display": "MRP Total",
-            "key": "mrp_total",
-            "value": 5499,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Subtotal",
-            "key": "subtotal",
-            "value": 5499,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Total",
-            "key": "total",
-            "value": 5499,
-            "currency_code": "INR"
-          }
-        ]
-      },
-      "items": [
-        {
-          "key": "437414_7",
-          "message": "",
-          "bulk_offer": {},
-          "price": {
-            "base": {
-              "add_on": 5499,
-              "marked": 5499,
-              "effective": 5499,
-              "selling": 5499,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 5499,
-              "marked": 5499,
-              "effective": 5499,
-              "selling": 5499,
-              "currency_code": "INR"
-            }
-          },
-          "quantity": 1,
-          "discount": "",
-          "product": {
-            "type": "product",
-            "uid": 437414,
-            "name": "Suede Classic",
-            "slug": "puma-suede-classic-437414-6e6bbf",
-            "brand": {
-              "uid": 9,
-              "name": "Puma"
-            },
-            "categories": [
-              {
-                "uid": 165,
-                "name": "Outdoor Sports Shoes"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/9_35656851/1_1511171811830.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/9_35656851/1_1511171811830.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/puma-suede-classic-437414-6e6bbf/",
-              "query": {
-                "product_slug": [
-                  "puma-suede-classic-437414-6e6bbf"
-                ]
-              }
-            }
-          },
-          "article": {
-            "type": "article",
-            "uid": "507_9_96099_35656851_7",
-            "size": "7",
-            "seller": {
-              "uid": 507,
-              "name": "PUMA SPORTS INDIA PVT LTD"
-            },
-            "store": {
-              "uid": 3632,
-              "name": "Colaba Causway"
-            },
-            "quantity": 5,
-            "price": {
-              "base": {
-                "marked": 5499,
-                "effective": 5499,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 5499,
-                "effective": 5499,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "coupon_message": "",
-          "availability": {
-            "sizes": [
-              "10",
-              "11",
-              "6",
-              "9",
-              "7",
-              "8"
-            ],
-            "other_store_quantity": 22,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          }
-        }
-      ],
-      "delivery_charge_info": "",
-      "coupon_text": "View all offers",
-      "cart_id": 12426,
-      "uid": "12426",
-      "gstin": null,
-      "checkout_mode": "self",
-      "last_modified": "Thu, 22 Aug 2019 04:51:42 GMT",
-      "restrict_checkout": false,
-      "is_valid": true
-    },
-    "result": {
-      "437414_7": {
-        "success": true,
-        "message": "Item updated in the bag"
-      }
-    },
-    "message": "Item updated in the bag",
-    "success": true
-  }
-}
-```
-
-
-
-
-
-
-
-
-
----
-
-
-#### getItemCount
-Cart item count
-
-```kotlin
-poscart.getItemCount(uid: uid).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? | Cart id |  
-
-Get total count of item present in cart
-
-*Success Response:*
-
-
-
-OK
-
-
-Schema: `CartItemCountResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getCoupons
-Fetch Coupon
-
-```kotlin
-poscart.getCoupons(uid: uid).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? |  |  
-
-Get all the details of a coupons applicable to cart  by uid. If successful, returns a Coupon resource in the response body specified in GetCouponResponse
-
-*Success Response:*
-
-
-
-Returns The Couppon object which has list of all available_coupon applicale for the cart. See example below or refer GetCouponResponse for details
-
-
-Schema: `GetCouponResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### applyCoupon
-Apply Coupon
-
-```kotlin
-poscart.applyCoupon(i: i, b: b, p: p, uid: uid, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| i | Boolean? |  |    
-| b | Boolean? |  |    
-| p | Boolean? |  |    
-| uid | Int? |  |  
-
-<p>Apply Coupons on Items added to cart. On successful request, returns cart response containing details of items ,coupons applied etc.these attributes will be consumed by  api</p> <ul> <li> <font color="monochrome">coupon_code</font></li>
-</ul>
-
-*Success Response:*
-
-
-
-Response of the Coupon object including all item details included in .the cart,coupons applied etc.
-
-
-Schema: `CartResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### removeCoupon
-Remove Coupon Applied
-
-```kotlin
-poscart.removeCoupon(uid: uid).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? | Cart id |  
-
-Remove Coupon applied on the cart by passing uid in request body.
-
-*Success Response:*
-
-
-
-Response of the Coupon object including all item details included in .the cart,coupons removed etc.
-
-
-Schema: `CartResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getBulkDiscountOffers
-Get discount offers based on quantity
-
-```kotlin
-poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| itemId | Int? | Item id |    
-| articleId | String? | Article mongo id |    
-| uid | Int? | Item id |    
-| slug | String? | Item unique url from product page |  
-
-List applicable offers along with current, next and best offer for given product. Either one of **uid**, **item_id**, **slug** should be present*
-
-*Success Response:*
-
-
-
-Offers found or not found with valid input
-
-
-Schema: `BulkPriceResponse`
-
-
-*Examples:*
-
-
-Offers found
-```json
-{
-  "value": {
-    "data": [
-      {
-        "seller": {
-          "uid": 248,
-          "name": "MANYAVAR CREATIONS PRIVATE LIMITED"
-        },
-        "offers": [
-          {
-            "quantity": 1,
-            "auto_applied": true,
-            "margin": 10,
-            "type": "bundle",
-            "price": {
-              "marked": 3999,
-              "effective": 3999,
-              "bulk_effective": 3599.1,
-              "currency_code": "INR"
-            },
-            "total": 3599.1
-          },
-          {
-            "quantity": 3,
-            "auto_applied": true,
-            "margin": 20,
-            "type": "bundle",
-            "price": {
-              "marked": 3999,
-              "effective": 3999,
-              "bulk_effective": 3199.2,
-              "currency_code": "INR"
-            },
-            "total": 9597.6
-          },
-          {
-            "quantity": 9,
-            "auto_applied": true,
-            "margin": 30,
-            "type": "bundle",
-            "price": {
-              "marked": 3999,
-              "effective": 3999,
-              "bulk_effective": 3443.4444444444,
-              "currency_code": "INR"
-            },
-            "total": 30991,
-            "best": true
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-Offers not found
-```json
-{
-  "value": {
-    "data": []
-  }
-}
-```
-
-
-
-
-
-
-
-
-Unhandled api error
-
-
-Schema: `HashMap<String,Any>`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getAddresses
-Fetch Address
-
-```kotlin
-poscart.getAddresses(uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? |  |    
-| mobileNo | String? |  |    
-| checkoutMode | String? |  |    
-| tags | String? |  |    
-| isDefault | Boolean? |  |  
-
-Get all the addresses associated with the account. If successful, returns a Address resource in the response body specified in GetAddressesResponse.attibutes listed below are optional <ul> <li> <font color="monochrome">uid</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
-
-*Success Response:*
-
-
-
-Returns The Address object which has list of all address saved for the account. See example below or refer GetAddressesResponse for details
-
-
-Schema: `GetAddressesResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### addAddress
-Add Address to the account
-
-```kotlin
-poscart.addAddress(body: body).safeAwait{ response,error->
+feedback.createAbuseReport(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15599,16 +14201,28 @@ poscart.addAddress(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-<p>Add Address to account. See `Address` in schema of request body for the list of attributes needed to add Address to account. On successful request, returns response containing address_id ,is_default_address and success message.
+Use this API to report a specific entity (question/review/comment) for abuse.
 
 *Success Response:*
 
 
 
-Return Address Id on successfull completion of the request.
+Success. Returns an abuse ID.
 
 
-Schema: `SaveAddressResponse`
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
 
 
 
@@ -15621,2268 +14235,11 @@ Schema: `SaveAddressResponse`
 ---
 
 
-#### getAddressById
-Fetch Single Address
+#### updateAbuseReport
+Update abuse details
 
 ```kotlin
-poscart.getAddressById(id: id, uid: uid, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| id | Int? |  |    
-| uid | Int? |  |    
-| mobileNo | String? |  |    
-| checkoutMode | String? |  |    
-| tags | String? |  |    
-| isDefault | Boolean? |  |  
-
-Get a addresses with the given id. If successful, returns a Address resource in the response body specified in `Address`.attibutes listed below are optional <ul> <li> <font color="monochrome">mobile_no</font></li> <li> <font color="monochrome">checkout_mode</font></li> <li> <font color="monochrome">tags</font></li> <li> <font color="monochrome">default</font></li> </ul>
-
-*Success Response:*
-
-
-
-Returns The Address object which has list of all address saved for the account. See example below or refer Address for details
-
-
-Schema: `Address`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateAddress
-Update Address alreay added to account
-
-```kotlin
-poscart.updateAddress(id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| id | Int? | Address id |  
-
-Request object containing attributes mentioned in  <font color="blue">Address </font> can be updated .these attributes are :</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
-
-*Success Response:*
-
-
-
-Response of the Address object containing address_id and sucess message.
-
-
-Schema: `UpdateAddressResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### removeAddress
-Remove Address Associated to the account
-
-```kotlin
-poscart.removeAddress(id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| id | Int? | Address id |  
-
-Delete a Address by it's address_id. Returns an object that tells whether the address was deleted successfully
-
-*Success Response:*
-
-
-
-Status object. Tells whether the operation was successful. See example below or refer DeleteAddressResponse
-
-
-Schema: `DeleteAddressResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### selectAddress
-Select Address from All Addresses
-
-```kotlin
-poscart.selectAddress(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? |  |    
-| i | Boolean? |  |    
-| b | Boolean? |  |  
-
-<p>Select Address from all addresses associated with the account in order to ship the cart items to .that address,otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, returns Cart object response.below are the address attributes which needs to be sent. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
-
-*Success Response:*
-
-
-
-Response of the Address object containing Cart Object and success message.  .
-
-
-Schema: `CartResponse`
-
-
-
-
-
-
-
-
-Address or Pincode Error
-
-
-Schema: `HashMap<String,Any>`
-
-
-*Examples:*
-
-
-Address Not Found
-```json
-{
-  "value": {
-    "status": "ERROR",
-    "message": "ADDRESS_NOT_FOUND"
-  }
-}
-```
-
-Pincode Not Serviciable
-```json
-{
-  "value": {
-    "status": "ERROR",
-    "message": "PINCODE_NOT_SERVICIABLE"
-  }
-}
-```
-
-
-
-
-
-
-
-
-
----
-
-
-#### selectPaymentMode
-Update Cart Payment
-
-```kotlin
-poscart.selectPaymentMode(uid: uid, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | String? |  |  
-
-Update Cart Payment for Your Account
-
-*Success Response:*
-
-
-
-Cart response with payment options
-
-
-Schema: `CartResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### validateCouponForPayment
-Get Cart Payment for valid coupon
-
-```kotlin
-poscart.validateCouponForPayment(uid: uid, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | String? |  |    
-| addressId | String? |  |    
-| paymentMode | String? |  |    
-| paymentIdentifier | String? |  |    
-| aggregatorName | String? |  |    
-| merchantCode | String? |  |  
-
-Validate coupon for selected payment mode
-
-*Success Response:*
-
-
-
-Cart Affiliates.
-
-
-Schema: `PaymentCouponValidate`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getShipments
-Get delivery date and options before checkout
-
-```kotlin
-poscart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, p: p, uid: uid, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| pickAtStoreUid | Int? |  |    
-| orderingStoreId | Int? |  |    
-| p | Boolean? | Get payment options or not |    
-| uid | Int? | Cart id |    
-| addressId | Int? | Address id |    
-| areaCode | String? | Destination pincode. |    
-| orderType | String? | Order type of shipment |  
-
-Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created.
-
-*Success Response:*
-
-
-
-OK
-
-
-Schema: `CartShipmentsResponse`
-
-
-*Examples:*
-
-
-Shipment Generated
-```json
-{
-  "value": {
-    "items": [],
-    "cart_id": 7501,
-    "uid": "7501",
-    "success": true,
-    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
-    "payment_options": {
-      "payment_option": [
-        {
-          "name": "COD",
-          "display_name": "Cash on Delivery",
-          "display_priority": 1,
-          "payment_mode_id": 11,
-          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-          "logo_url": {
-            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
-          },
-          "list": []
-        },
-        {
-          "name": "CARD",
-          "display_priority": 2,
-          "payment_mode_id": 2,
-          "display_name": "Card",
-          "list": []
-        },
-        {
-          "name": "NB",
-          "display_priority": 3,
-          "payment_mode_id": 3,
-          "display_name": "Net Banking",
-          "list": [
-            {
-              "aggregator_name": "Razorpay",
-              "bank_name": "ICICI Bank",
-              "bank_code": "ICIC",
-              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
-              },
-              "merchant_code": "NB_ICICI",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "WL",
-          "display_priority": 4,
-          "payment_mode_id": 4,
-          "display_name": "Wallet",
-          "list": [
-            {
-              "wallet_name": "Paytm",
-              "wallet_code": "paytm",
-              "wallet_id": 4,
-              "merchant_code": "PAYTM",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
-              },
-              "aggregator_name": "Juspay",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "UPI",
-          "display_priority": 9,
-          "payment_mode_id": 6,
-          "display_name": "UPI",
-          "list": [
-            {
-              "aggregator_name": "UPI_Razorpay",
-              "name": "UPI",
-              "display_name": "BHIM UPI",
-              "code": "UPI",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
-              },
-              "merchant_code": "UPI",
-              "timeout": 240,
-              "retry_count": 0,
-              "fynd_vpa": "shopsense.rzp@hdfcbank",
-              "intent_flow": true,
-              "intent_app_error_list": [
-                "com.csam.icici.bank.imobile",
-                "in.org.npci.upiapp",
-                "com.whatsapp"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "PL",
-          "display_priority": 11,
-          "payment_mode_id": 1,
-          "display_name": "Pay Later",
-          "list": [
-            {
-              "aggregator_name": "Simpl",
-              "name": "Simpl",
-              "code": "simpl",
-              "merchant_code": "SIMPL",
-              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
-              }
-            }
-          ]
-        }
-      ],
-      "payment_flows": {
-        "Simpl": {
-          "data": {
-            "gateway": {
-              "route": "simpl",
-              "entity": "sdk",
-              "is_customer_validation_required": true,
-              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
-              "sdk": {
-                "config": {
-                  "redirect": false,
-                  "callback_url": null,
-                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
-                },
-                "data": {
-                  "user_phone": "8452996729",
-                  "user_email": "paymentsdummy@gofynd.com"
-                }
-              },
-              "return_url": null
-            }
-          },
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "Juspay": {
-          "data": {},
-          "api_link": "https://sandbox.juspay.in/txns",
-          "payment_flow": "api"
-        },
-        "Razorpay": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "UPI_Razorpay": {
-          "data": {},
-          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
-          "payment_flow": "api"
-        },
-        "Fynd": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "api"
-        }
-      },
-      "default": {}
-    },
-    "user_type": "Store User",
-    "cod_charges": 0,
-    "order_id": null,
-    "cod_available": true,
-    "cod_message": "No additional COD charges applicable",
-    "delivery_charges": 0,
-    "delivery_charge_order_value": 0,
-    "delivery_slots": [
-      {
-        "date": "Sat, 24 Aug",
-        "delivery_slot": [
-          {
-            "delivery_slot_timing": "By 9:00 PM",
-            "default": true,
-            "delivery_slot_id": 1
-          }
-        ]
-      }
-    ],
-    "store_code": "",
-    "store_emps": [],
-    "breakup_values": {
-      "loyalty_points": {
-        "total": 0,
-        "applicable": 0,
-        "is_applied": false,
-        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-      },
-      "coupon": {
-        "type": "cash",
-        "code": "",
-        "uid": null,
-        "value": 0,
-        "is_applied": false,
-        "message": "Sorry! Invalid Coupon"
-      },
-      "raw": {
-        "cod_charge": 0,
-        "convenience_fee": 0,
-        "coupon": 0,
-        "delivery_charge": 0,
-        "discount": 0,
-        "fynd_cash": 0,
-        "gst_charges": 214.18,
-        "mrp_total": 1999,
-        "subtotal": 1999,
-        "total": 1999,
-        "vog": 1784.82,
-        "you_saved": 0
-      },
-      "display": [
-        {
-          "display": "MRP Total",
-          "key": "mrp_total",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Subtotal",
-          "key": "subtotal",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Total",
-          "key": "total",
-          "value": 1999,
-          "currency_code": "INR"
-        }
-      ]
-    },
-    "shipments": [
-      {
-        "fulfillment_id": 3009,
-        "shipment_type": "single_shipment",
-        "fulfillment_type": "store",
-        "dp_id": "29",
-        "dp_options": {
-          "4": {
-            "f_priority": 4,
-            "r_priority": 5,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          },
-          "7": {
-            "f_priority": 3,
-            "r_priority": 4,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          },
-          "29": {
-            "f_priority": 1,
-            "r_priority": 2,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          }
-        },
-        "promise": {
-          "timestamp": {
-            "min": 1566678108,
-            "max": 1567023708
-          },
-          "formatted": {
-            "min": "Aug 24",
-            "max": "Aug 28"
-          }
-        },
-        "box_type": "Small Courier bag",
-        "shipments": 1,
-        "items": [
-          {
-            "quantity": 1,
-            "product": {
-              "type": "product",
-              "uid": 820312,
-              "name": "Navy Blue Melange Shorts",
-              "slug": "883-police-navy-blue-melange-shorts-820312-4943a8",
-              "brand": {
-                "uid": 610,
-                "name": "883 Police"
-              },
-              "categories": [
-                {
-                  "uid": 193,
-                  "name": "Shorts"
-                }
-              ],
-              "images": [
-                {
-                  "aspect_ratio": "16:25",
-                  "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg",
-                  "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg"
-                }
-              ],
-              "action": {
-                "type": "product",
-                "url": "https://api.addsale.com/platform/content/v1/products/883-police-navy-blue-melange-shorts-820312-4943a8/",
-                "query": {
-                  "product_slug": [
-                    "883-police-navy-blue-melange-shorts-820312-4943a8"
-                  ]
-                }
-              }
-            },
-            "discount": "",
-            "bulk_offer": {},
-            "key": "820312_L",
-            "price": {
-              "base": {
-                "add_on": 1999,
-                "marked": 1999,
-                "effective": 1999,
-                "selling": 1999,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "add_on": 1999,
-                "marked": 1999,
-                "effective": 1999,
-                "selling": 1999,
-                "currency_code": "INR"
-              }
-            },
-            "article": {
-              "type": "article",
-              "uid": "381_610_IGPL01_SPIRAL19ANAVY_L",
-              "size": "L",
-              "seller": {
-                "uid": 381,
-                "name": "INTERSOURCE GARMENTS PVT LTD"
-              },
-              "store": {
-                "uid": 3009,
-                "name": "Kormangala"
-              },
-              "quantity": 2,
-              "price": {
-                "base": {
-                  "marked": 1999,
-                  "effective": 1999,
-                  "currency_code": "INR"
-                },
-                "converted": {
-                  "marked": 1999,
-                  "effective": 1999,
-                  "currency_code": "INR"
-                }
-              }
-            },
-            "availability": {
-              "sizes": [
-                "L",
-                "XL",
-                "XXL"
-              ],
-              "other_store_quantity": 1,
-              "out_of_stock": false,
-              "deliverable": true,
-              "is_valid": true
-            },
-            "coupon_message": "",
-            "message": ""
-          }
-        ]
-      }
-    ],
-    "delivery_charge_info": "",
-    "coupon_text": "View all offers",
-    "gstin": null,
-    "checkout_mode": "self",
-    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
-    "restrict_checkout": false,
-    "is_valid": true
-  }
-}
-```
-
-Shipment Generation Failed
-```json
-{
-  "value": {
-    "items": [],
-    "cart_id": 7501,
-    "uid": "7501",
-    "success": true,
-    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
-    "payment_options": {
-      "payment_option": [
-        {
-          "name": "COD",
-          "display_name": "Cash on Delivery",
-          "display_priority": 1,
-          "payment_mode_id": 11,
-          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-          "logo_url": {
-            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
-          },
-          "list": []
-        },
-        {
-          "name": "CARD",
-          "display_priority": 2,
-          "payment_mode_id": 2,
-          "display_name": "Card",
-          "list": []
-        },
-        {
-          "name": "NB",
-          "display_priority": 3,
-          "payment_mode_id": 3,
-          "display_name": "Net Banking",
-          "list": [
-            {
-              "aggregator_name": "Razorpay",
-              "bank_name": "ICICI Bank",
-              "bank_code": "ICIC",
-              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
-              },
-              "merchant_code": "NB_ICICI",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "WL",
-          "display_priority": 4,
-          "payment_mode_id": 4,
-          "display_name": "Wallet",
-          "list": [
-            {
-              "wallet_name": "Paytm",
-              "wallet_code": "paytm",
-              "wallet_id": 4,
-              "merchant_code": "PAYTM",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
-              },
-              "aggregator_name": "Juspay",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "UPI",
-          "display_priority": 9,
-          "payment_mode_id": 6,
-          "display_name": "UPI",
-          "list": [
-            {
-              "aggregator_name": "UPI_Razorpay",
-              "name": "UPI",
-              "display_name": "BHIM UPI",
-              "code": "UPI",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
-              },
-              "merchant_code": "UPI",
-              "timeout": 240,
-              "retry_count": 0,
-              "fynd_vpa": "shopsense.rzp@hdfcbank",
-              "intent_flow": true,
-              "intent_app_error_list": [
-                "com.csam.icici.bank.imobile",
-                "in.org.npci.upiapp",
-                "com.whatsapp"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "PL",
-          "display_priority": 11,
-          "payment_mode_id": 1,
-          "display_name": "Pay Later",
-          "list": [
-            {
-              "aggregator_name": "Simpl",
-              "name": "Simpl",
-              "code": "simpl",
-              "merchant_code": "SIMPL",
-              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
-              }
-            }
-          ]
-        }
-      ],
-      "payment_flows": {
-        "Simpl": {
-          "data": {
-            "gateway": {
-              "route": "simpl",
-              "entity": "sdk",
-              "is_customer_validation_required": true,
-              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
-              "sdk": {
-                "config": {
-                  "redirect": false,
-                  "callback_url": null,
-                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
-                },
-                "data": {
-                  "user_phone": "8452996729",
-                  "user_email": "paymentsdummy@gofynd.com"
-                }
-              },
-              "return_url": null
-            }
-          },
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "Juspay": {
-          "data": {},
-          "api_link": "https://sandbox.juspay.in/txns",
-          "payment_flow": "api"
-        },
-        "Razorpay": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "UPI_Razorpay": {
-          "data": {},
-          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
-          "payment_flow": "api"
-        },
-        "Fynd": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "api"
-        }
-      },
-      "default": {}
-    },
-    "user_type": "Store User",
-    "cod_charges": 0,
-    "order_id": null,
-    "cod_available": true,
-    "cod_message": "No additional COD charges applicable",
-    "delivery_charges": 0,
-    "delivery_charge_order_value": 0,
-    "delivery_slots": [
-      {
-        "date": "Sat, 24 Aug",
-        "delivery_slot": [
-          {
-            "delivery_slot_timing": "By 9:00 PM",
-            "default": true,
-            "delivery_slot_id": 1
-          }
-        ]
-      }
-    ],
-    "store_code": "",
-    "store_emps": [],
-    "breakup_values": {
-      "loyalty_points": {
-        "total": 0,
-        "applicable": 0,
-        "is_applied": false,
-        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-      },
-      "coupon": {
-        "type": "cash",
-        "code": "",
-        "uid": null,
-        "value": 0,
-        "is_applied": false,
-        "message": "Sorry! Invalid Coupon"
-      },
-      "raw": {
-        "cod_charge": 0,
-        "convenience_fee": 0,
-        "coupon": 0,
-        "delivery_charge": 0,
-        "discount": 0,
-        "fynd_cash": 0,
-        "gst_charges": 214.18,
-        "mrp_total": 1999,
-        "subtotal": 1999,
-        "total": 1999,
-        "vog": 1784.82,
-        "you_saved": 0
-      },
-      "display": [
-        {
-          "display": "MRP Total",
-          "key": "mrp_total",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Subtotal",
-          "key": "subtotal",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Total",
-          "key": "total",
-          "value": 1999,
-          "currency_code": "INR"
-        }
-      ]
-    },
-    "shipments": [],
-    "message": "Shipments could not be generated. Please Try again after some time.",
-    "delivery_charge_info": "",
-    "coupon_text": "View all offers",
-    "gstin": null,
-    "checkout_mode": "self",
-    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
-    "restrict_checkout": false,
-    "is_valid": false
-  }
-}
-```
-
-
-
-
-
-
-
-
-Unhandled api error
-
-
-Schema: `HashMap<String,Any>`
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateShipments
-Update shipment delivery type and quantity before checkout
-
-```kotlin
-poscart.updateShipments(i: i, p: p, uid: uid, addressId: addressId, orderType: orderType, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| i | Boolean? | Get items or not |    
-| p | Boolean? | Get payment options or not |    
-| uid | Int? | Cart id |    
-| addressId | Int? | Address id |    
-| orderType | String? | Order is hand over or home delivery |  
-
-Shipment break up item wise with delivery date. Actual                      delivery will be during given dates only. Items will be                      delivered in group of shipments created. Update the shipment                      type and quantity as per customer preference for store pick up or home delivery
-
-*Success Response:*
-
-
-
-OK
-
-
-Schema: `CartShipmentsResponse`
-
-
-*Examples:*
-
-
-Shipment Generated
-```json
-{
-  "value": {
-    "items": [],
-    "cart_id": 7501,
-    "uid": "7501",
-    "success": true,
-    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
-    "payment_options": {
-      "payment_option": [
-        {
-          "name": "COD",
-          "display_name": "Cash on Delivery",
-          "display_priority": 1,
-          "payment_mode_id": 11,
-          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-          "logo_url": {
-            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
-          },
-          "list": []
-        },
-        {
-          "name": "CARD",
-          "display_priority": 2,
-          "payment_mode_id": 2,
-          "display_name": "Card",
-          "list": []
-        },
-        {
-          "name": "NB",
-          "display_priority": 3,
-          "payment_mode_id": 3,
-          "display_name": "Net Banking",
-          "list": [
-            {
-              "aggregator_name": "Razorpay",
-              "bank_name": "ICICI Bank",
-              "bank_code": "ICIC",
-              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
-              },
-              "merchant_code": "NB_ICICI",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "WL",
-          "display_priority": 4,
-          "payment_mode_id": 4,
-          "display_name": "Wallet",
-          "list": [
-            {
-              "wallet_name": "Paytm",
-              "wallet_code": "paytm",
-              "wallet_id": 4,
-              "merchant_code": "PAYTM",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
-              },
-              "aggregator_name": "Juspay",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "UPI",
-          "display_priority": 9,
-          "payment_mode_id": 6,
-          "display_name": "UPI",
-          "list": [
-            {
-              "aggregator_name": "UPI_Razorpay",
-              "name": "UPI",
-              "display_name": "BHIM UPI",
-              "code": "UPI",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
-              },
-              "merchant_code": "UPI",
-              "timeout": 240,
-              "retry_count": 0,
-              "fynd_vpa": "shopsense.rzp@hdfcbank",
-              "intent_flow": true,
-              "intent_app_error_list": [
-                "com.csam.icici.bank.imobile",
-                "in.org.npci.upiapp",
-                "com.whatsapp"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "PL",
-          "display_priority": 11,
-          "payment_mode_id": 1,
-          "display_name": "Pay Later",
-          "list": [
-            {
-              "aggregator_name": "Simpl",
-              "name": "Simpl",
-              "code": "simpl",
-              "merchant_code": "SIMPL",
-              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
-              }
-            }
-          ]
-        }
-      ],
-      "payment_flows": {
-        "Simpl": {
-          "data": {
-            "gateway": {
-              "route": "simpl",
-              "entity": "sdk",
-              "is_customer_validation_required": true,
-              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
-              "sdk": {
-                "config": {
-                  "redirect": false,
-                  "callback_url": null,
-                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
-                },
-                "data": {
-                  "user_phone": "8452996729",
-                  "user_email": "paymentsdummy@gofynd.com"
-                }
-              },
-              "return_url": null
-            }
-          },
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "Juspay": {
-          "data": {},
-          "api_link": "https://sandbox.juspay.in/txns",
-          "payment_flow": "api"
-        },
-        "Razorpay": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "UPI_Razorpay": {
-          "data": {},
-          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
-          "payment_flow": "api"
-        },
-        "Fynd": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "api"
-        }
-      },
-      "default": {}
-    },
-    "user_type": "Store User",
-    "cod_charges": 0,
-    "order_id": null,
-    "cod_available": true,
-    "cod_message": "No additional COD charges applicable",
-    "delivery_charges": 0,
-    "delivery_charge_order_value": 0,
-    "delivery_slots": [
-      {
-        "date": "Sat, 24 Aug",
-        "delivery_slot": [
-          {
-            "delivery_slot_timing": "By 9:00 PM",
-            "default": true,
-            "delivery_slot_id": 1
-          }
-        ]
-      }
-    ],
-    "store_code": "",
-    "store_emps": [],
-    "breakup_values": {
-      "loyalty_points": {
-        "total": 0,
-        "applicable": 0,
-        "is_applied": false,
-        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-      },
-      "coupon": {
-        "type": "cash",
-        "code": "",
-        "uid": null,
-        "value": 0,
-        "is_applied": false,
-        "message": "Sorry! Invalid Coupon"
-      },
-      "raw": {
-        "cod_charge": 0,
-        "convenience_fee": 0,
-        "coupon": 0,
-        "delivery_charge": 0,
-        "discount": 0,
-        "fynd_cash": 0,
-        "gst_charges": 214.18,
-        "mrp_total": 1999,
-        "subtotal": 1999,
-        "total": 1999,
-        "vog": 1784.82,
-        "you_saved": 0
-      },
-      "display": [
-        {
-          "display": "MRP Total",
-          "key": "mrp_total",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Subtotal",
-          "key": "subtotal",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Total",
-          "key": "total",
-          "value": 1999,
-          "currency_code": "INR"
-        }
-      ]
-    },
-    "shipments": [
-      {
-        "fulfillment_id": 3009,
-        "shipment_type": "single_shipment",
-        "fulfillment_type": "store",
-        "dp_id": "29",
-        "order_type": "PickAtStore",
-        "dp_options": {
-          "4": {
-            "f_priority": 4,
-            "r_priority": 5,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          },
-          "7": {
-            "f_priority": 3,
-            "r_priority": 4,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          },
-          "29": {
-            "f_priority": 1,
-            "r_priority": 2,
-            "is_cod": true,
-            "is_prepaid": true,
-            "is_reverse": true
-          }
-        },
-        "promise": {
-          "timestamp": {
-            "min": 1566678108,
-            "max": 1567023708
-          },
-          "formatted": {
-            "min": "Aug 24",
-            "max": "Aug 28"
-          }
-        },
-        "box_type": "Small Courier bag",
-        "shipments": 1,
-        "items": [
-          {
-            "quantity": 1,
-            "product": {
-              "type": "product",
-              "uid": 820312,
-              "name": "Navy Blue Melange Shorts",
-              "slug": "883-police-navy-blue-melange-shorts-820312-4943a8",
-              "brand": {
-                "uid": 610,
-                "name": "883 Police"
-              },
-              "categories": [
-                {
-                  "uid": 193,
-                  "name": "Shorts"
-                }
-              ],
-              "images": [
-                {
-                  "aspect_ratio": "16:25",
-                  "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg",
-                  "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg"
-                }
-              ],
-              "action": {
-                "type": "product",
-                "url": "https://api.addsale.com/platform/content/v1/products/883-police-navy-blue-melange-shorts-820312-4943a8/",
-                "query": {
-                  "product_slug": [
-                    "883-police-navy-blue-melange-shorts-820312-4943a8"
-                  ]
-                }
-              }
-            },
-            "discount": "",
-            "bulk_offer": {},
-            "key": "820312_L",
-            "price": {
-              "base": {
-                "add_on": 1999,
-                "marked": 1999,
-                "effective": 1999,
-                "selling": 1999,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "add_on": 1999,
-                "marked": 1999,
-                "effective": 1999,
-                "selling": 1999,
-                "currency_code": "INR"
-              }
-            },
-            "article": {
-              "type": "article",
-              "uid": "381_610_IGPL01_SPIRAL19ANAVY_L",
-              "size": "L",
-              "seller": {
-                "uid": 381,
-                "name": "INTERSOURCE GARMENTS PVT LTD"
-              },
-              "store": {
-                "uid": 3009,
-                "name": "Kormangala"
-              },
-              "quantity": 2,
-              "price": {
-                "base": {
-                  "marked": 1999,
-                  "effective": 1999,
-                  "currency_code": "INR"
-                },
-                "converted": {
-                  "marked": 1999,
-                  "effective": 1999,
-                  "currency_code": "INR"
-                }
-              }
-            },
-            "availability": {
-              "sizes": [
-                "L",
-                "XL",
-                "XXL"
-              ],
-              "other_store_quantity": 1,
-              "out_of_stock": false,
-              "deliverable": true,
-              "is_valid": true
-            },
-            "coupon_message": "",
-            "message": ""
-          }
-        ]
-      }
-    ],
-    "delivery_charge_info": "",
-    "coupon_text": "View all offers",
-    "gstin": null,
-    "checkout_mode": "self",
-    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
-    "restrict_checkout": false,
-    "is_valid": true
-  }
-}
-```
-
-Shipment Generation Failed
-```json
-{
-  "value": {
-    "items": [],
-    "cart_id": 7501,
-    "uid": "7501",
-    "success": true,
-    "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
-    "payment_options": {
-      "payment_option": [
-        {
-          "name": "COD",
-          "display_name": "Cash on Delivery",
-          "display_priority": 1,
-          "payment_mode_id": 11,
-          "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-          "logo_url": {
-            "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-            "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
-          },
-          "list": []
-        },
-        {
-          "name": "CARD",
-          "display_priority": 2,
-          "payment_mode_id": 2,
-          "display_name": "Card",
-          "list": []
-        },
-        {
-          "name": "NB",
-          "display_priority": 3,
-          "payment_mode_id": 3,
-          "display_name": "Net Banking",
-          "list": [
-            {
-              "aggregator_name": "Razorpay",
-              "bank_name": "ICICI Bank",
-              "bank_code": "ICIC",
-              "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
-              },
-              "merchant_code": "NB_ICICI",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "WL",
-          "display_priority": 4,
-          "payment_mode_id": 4,
-          "display_name": "Wallet",
-          "list": [
-            {
-              "wallet_name": "Paytm",
-              "wallet_code": "paytm",
-              "wallet_id": 4,
-              "merchant_code": "PAYTM",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
-              },
-              "aggregator_name": "Juspay",
-              "display_priority": 1
-            }
-          ]
-        },
-        {
-          "name": "UPI",
-          "display_priority": 9,
-          "payment_mode_id": 6,
-          "display_name": "UPI",
-          "list": [
-            {
-              "aggregator_name": "UPI_Razorpay",
-              "name": "UPI",
-              "display_name": "BHIM UPI",
-              "code": "UPI",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
-              },
-              "merchant_code": "UPI",
-              "timeout": 240,
-              "retry_count": 0,
-              "fynd_vpa": "shopsense.rzp@hdfcbank",
-              "intent_flow": true,
-              "intent_app_error_list": [
-                "com.csam.icici.bank.imobile",
-                "in.org.npci.upiapp",
-                "com.whatsapp"
-              ]
-            }
-          ]
-        },
-        {
-          "name": "PL",
-          "display_priority": 11,
-          "payment_mode_id": 1,
-          "display_name": "Pay Later",
-          "list": [
-            {
-              "aggregator_name": "Simpl",
-              "name": "Simpl",
-              "code": "simpl",
-              "merchant_code": "SIMPL",
-              "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-              "logo_url": {
-                "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
-              }
-            }
-          ]
-        }
-      ],
-      "payment_flows": {
-        "Simpl": {
-          "data": {
-            "gateway": {
-              "route": "simpl",
-              "entity": "sdk",
-              "is_customer_validation_required": true,
-              "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
-              "sdk": {
-                "config": {
-                  "redirect": false,
-                  "callback_url": null,
-                  "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
-                },
-                "data": {
-                  "user_phone": "8452996729",
-                  "user_email": "paymentsdummy@gofynd.com"
-                }
-              },
-              "return_url": null
-            }
-          },
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "Juspay": {
-          "data": {},
-          "api_link": "https://sandbox.juspay.in/txns",
-          "payment_flow": "api"
-        },
-        "Razorpay": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "sdk"
-        },
-        "UPI_Razorpay": {
-          "data": {},
-          "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
-          "payment_flow": "api"
-        },
-        "Fynd": {
-          "data": {},
-          "api_link": "",
-          "payment_flow": "api"
-        }
-      },
-      "default": {}
-    },
-    "user_type": "Store User",
-    "cod_charges": 0,
-    "order_id": null,
-    "cod_available": true,
-    "cod_message": "No additional COD charges applicable",
-    "delivery_charges": 0,
-    "delivery_charge_order_value": 0,
-    "delivery_slots": [
-      {
-        "date": "Sat, 24 Aug",
-        "delivery_slot": [
-          {
-            "delivery_slot_timing": "By 9:00 PM",
-            "default": true,
-            "delivery_slot_id": 1
-          }
-        ]
-      }
-    ],
-    "store_code": "",
-    "store_emps": [],
-    "breakup_values": {
-      "loyalty_points": {
-        "total": 0,
-        "applicable": 0,
-        "is_applied": false,
-        "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-      },
-      "coupon": {
-        "type": "cash",
-        "code": "",
-        "uid": null,
-        "value": 0,
-        "is_applied": false,
-        "message": "Sorry! Invalid Coupon"
-      },
-      "raw": {
-        "cod_charge": 0,
-        "convenience_fee": 0,
-        "coupon": 0,
-        "delivery_charge": 0,
-        "discount": 0,
-        "fynd_cash": 0,
-        "gst_charges": 214.18,
-        "mrp_total": 1999,
-        "subtotal": 1999,
-        "total": 1999,
-        "vog": 1784.82,
-        "you_saved": 0
-      },
-      "display": [
-        {
-          "display": "MRP Total",
-          "key": "mrp_total",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Subtotal",
-          "key": "subtotal",
-          "value": 1999,
-          "currency_code": "INR"
-        },
-        {
-          "display": "Total",
-          "key": "total",
-          "value": 1999,
-          "currency_code": "INR"
-        }
-      ]
-    },
-    "shipments": [],
-    "message": "Shipments could not be generated. Please Try again after some time.",
-    "delivery_charge_info": "",
-    "coupon_text": "View all offers",
-    "gstin": null,
-    "checkout_mode": "self",
-    "last_modified": "Thu, 22 Aug 2019 20:21:48 GMT",
-    "restrict_checkout": false,
-    "is_valid": false
-  }
-}
-```
-
-
-
-
-
-
-
-
-Unhandled api error
-
-
-Schema: `HashMap<String,Any>`
-
-
-
-
-
-
-
-
-
----
-
-
-#### checkoutCart
-Checkout Cart
-
-```kotlin
-poscart.checkoutCart(uid: uid, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? |  |  
-
-Checkout all items in cart to payment and order generation.                        For COD only order will be generated while for other checkout mode                        user will be redirected to payment gateway
-
-*Success Response:*
-
-
-
-OK
-
-
-Schema: `CartCheckoutResponse`
-
-
-*Examples:*
-
-
-Address id not found
-```json
-{
-  "value": {
-    "success": false,
-    "message": "No address found with address id {address_id}"
-  }
-}
-```
-
-Missing address_id
-```json
-{
-  "value": {
-    "address_id": [
-      "Missing data for required field."
-    ]
-  }
-}
-```
-
-Successful checkout cod payment
-```json
-{
-  "value": {
-    "success": true,
-    "cart": {
-      "success": true,
-      "error_message": "Note: Your order delivery will be delayed by 7-10 Days",
-      "payment_options": {
-        "payment_option": [
-          {
-            "name": "COD",
-            "display_name": "Cash on Delivery",
-            "display_priority": 1,
-            "payment_mode_id": 11,
-            "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-            "logo_url": {
-              "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png",
-              "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/cod.png"
-            },
-            "list": []
-          },
-          {
-            "name": "CARD",
-            "display_priority": 2,
-            "payment_mode_id": 2,
-            "display_name": "Card",
-            "list": []
-          },
-          {
-            "name": "NB",
-            "display_priority": 3,
-            "payment_mode_id": 3,
-            "display_name": "Net Banking",
-            "list": [
-              {
-                "aggregator_name": "Razorpay",
-                "bank_name": "ICICI Bank",
-                "bank_code": "ICIC",
-                "url": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                "logo_url": {
-                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png",
-                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/NB_ICICI.png"
-                },
-                "merchant_code": "NB_ICICI",
-                "display_priority": 1
-              }
-            ]
-          },
-          {
-            "name": "WL",
-            "display_priority": 4,
-            "payment_mode_id": 4,
-            "display_name": "Wallet",
-            "list": [
-              {
-                "wallet_name": "Paytm",
-                "wallet_code": "paytm",
-                "wallet_id": 4,
-                "merchant_code": "PAYTM",
-                "logo_url": {
-                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_small.png",
-                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/paytm_logo_large.png"
-                },
-                "aggregator_name": "Juspay",
-                "display_priority": 1
-              }
-            ]
-          },
-          {
-            "name": "UPI",
-            "display_priority": 9,
-            "payment_mode_id": 6,
-            "display_name": "UPI",
-            "list": [
-              {
-                "aggregator_name": "UPI_Razorpay",
-                "name": "UPI",
-                "display_name": "BHIM UPI",
-                "code": "UPI",
-                "logo_url": {
-                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_100x78.png",
-                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/upi_150x100.png"
-                },
-                "merchant_code": "UPI",
-                "timeout": 240,
-                "retry_count": 0,
-                "fynd_vpa": "shopsense.rzp@hdfcbank",
-                "intent_flow": true,
-                "intent_app_error_list": [
-                  "com.csam.icici.bank.imobile",
-                  "in.org.npci.upiapp",
-                  "com.whatsapp"
-                ]
-              }
-            ]
-          },
-          {
-            "name": "PL",
-            "display_priority": 11,
-            "payment_mode_id": 1,
-            "display_name": "Pay Later",
-            "list": [
-              {
-                "aggregator_name": "Simpl",
-                "name": "Simpl",
-                "code": "simpl",
-                "merchant_code": "SIMPL",
-                "logo": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                "logo_url": {
-                  "small": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png",
-                  "large": "https://d2co8r51m5ca2d.cloudfront.net/payments_assets/simpl_logo.png"
-                }
-              }
-            ]
-          }
-        ],
-        "payment_flows": {
-          "Simpl": {
-            "data": {
-              "gateway": {
-                "route": "simpl",
-                "entity": "sdk",
-                "is_customer_validation_required": true,
-                "cust_validation_url": "https://api.addsale.com/gringotts/api/v1/validate-customer/",
-                "sdk": {
-                  "config": {
-                    "redirect": false,
-                    "callback_url": null,
-                    "action_url": "https://api.addsale.com/avis/api/v1/payments/charge-gringotts-transaction/"
-                  },
-                  "data": {
-                    "user_phone": "8452996729",
-                    "user_email": "paymentsdummy@gofynd.com"
-                  }
-                },
-                "return_url": null
-              }
-            },
-            "api_link": "",
-            "payment_flow": "sdk"
-          },
-          "Juspay": {
-            "data": {},
-            "api_link": "https://sandbox.juspay.in/txns",
-            "payment_flow": "api"
-          },
-          "Razorpay": {
-            "data": {},
-            "api_link": "",
-            "payment_flow": "sdk"
-          },
-          "UPI_Razorpay": {
-            "data": {},
-            "api_link": "https://api.addsale.com/gringotts/api/v1/external/payment-initialisation/",
-            "payment_flow": "api"
-          },
-          "Fynd": {
-            "data": {},
-            "api_link": "",
-            "payment_flow": "api"
-          }
-        },
-        "default": {}
-      },
-      "user_type": "Store User",
-      "cod_charges": 0,
-      "order_id": "FY5D5E215CF287584CE6",
-      "cod_available": true,
-      "cod_message": "No additional COD charges applicable",
-      "delivery_charges": 0,
-      "delivery_charge_order_value": 0,
-      "delivery_slots": [
-        {
-          "date": "Sat, 24 Aug",
-          "delivery_slot": [
-            {
-              "delivery_slot_timing": "By 9:00 PM",
-              "default": true,
-              "delivery_slot_id": 1
-            }
-          ]
-        }
-      ],
-      "store_code": "",
-      "store_emps": [],
-      "breakup_values": {
-        "coupon": {
-          "type": "cash",
-          "code": "",
-          "uid": null,
-          "value": 0,
-          "is_applied": false,
-          "message": "Sorry! Invalid Coupon"
-        },
-        "loyalty_points": {
-          "total": 0,
-          "applicable": 0,
-          "is_applied": false,
-          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-        },
-        "raw": {
-          "cod_charge": 0,
-          "convenience_fee": 0,
-          "coupon": 0,
-          "delivery_charge": 0,
-          "discount": 0,
-          "fynd_cash": 0,
-          "gst_charges": 214.18,
-          "mrp_total": 1999,
-          "subtotal": 1999,
-          "total": 1999,
-          "vog": 1784.82,
-          "you_saved": 0
-        },
-        "display": [
-          {
-            "display": "MRP Total",
-            "key": "mrp_total",
-            "value": 1999,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Subtotal",
-            "key": "subtotal",
-            "value": 1999,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Total",
-            "key": "total",
-            "value": 1999,
-            "currency_code": "INR"
-          }
-        ]
-      },
-      "items": [
-        {
-          "key": "820312_L",
-          "message": "",
-          "bulk_offer": {},
-          "price": {
-            "base": {
-              "add_on": 1999,
-              "marked": 1999,
-              "effective": 1999,
-              "selling": 1999,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 1999,
-              "marked": 1999,
-              "effective": 1999,
-              "selling": 1999,
-              "currency_code": "INR"
-            }
-          },
-          "quantity": 1,
-          "discount": "",
-          "product": {
-            "type": "product",
-            "uid": 820312,
-            "name": "Navy Blue Melange Shorts",
-            "slug": "883-police-navy-blue-melange-shorts-820312-4943a8",
-            "brand": {
-              "uid": 610,
-              "name": "883 Police"
-            },
-            "categories": [
-              {
-                "uid": 193,
-                "name": "Shorts"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/610_SPIRAL19ANAVY/1_1549105947281.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/883-police-navy-blue-melange-shorts-820312-4943a8/",
-              "query": {
-                "product_slug": [
-                  "883-police-navy-blue-melange-shorts-820312-4943a8"
-                ]
-              }
-            }
-          },
-          "article": {
-            "type": "article",
-            "uid": "381_610_IGPL01_SPIRAL19ANAVY_L",
-            "size": "L",
-            "seller": {
-              "uid": 381,
-              "name": "INTERSOURCE GARMENTS PVT LTD"
-            },
-            "store": {
-              "uid": 3009,
-              "name": "Kormangala"
-            },
-            "quantity": 2,
-            "price": {
-              "base": {
-                "marked": 1999,
-                "effective": 1999,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 1999,
-                "effective": 1999,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "coupon_message": "",
-          "availability": {
-            "sizes": [
-              "L",
-              "XL",
-              "XXL"
-            ],
-            "other_store_quantity": 1,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          }
-        }
-      ],
-      "delivery_charge_info": "",
-      "coupon_text": "View all offers",
-      "cart_id": 7483,
-      "uid": "7483",
-      "gstin": null,
-      "checkout_mode": "self",
-      "last_modified": "Thu, 22 Aug 2019 04:58:44 GMT",
-      "restrict_checkout": false,
-      "is_valid": true
-    },
-    "callback_url": "https://api.addsale.com/gringotts/api/v1/external/payment-callback/",
-    "app_intercept_url": "http://uniket-testing.addsale.link/cart/order-status",
-    "message": "",
-    "data": {
-      "order_id": "FY5D5E215CF287584CE6"
-    },
-    "order_id": "FY5D5E215CF287584CE6"
-  }
-}
-```
-
-
-
-
-
-
-
-
-
----
-
-
-#### updateCartMeta
-Update Cart Meta
-
-```kotlin
-poscart.updateCartMeta(uid: uid, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| uid | Int? | Cart id received in get cart. |  
-
-Update cart meta like checkout_mode, gstin.
-
-*Success Response:*
-
-
-
-Cart meta updated successfully
-
-
-Schema: `CartMetaResponse`
-
-
-
-
-
-
-
-
-Missing required Field
-
-
-Schema: `CartMetaMissingResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getAvailableDeliveryModes
-Get available delivery modes for cart
-
-```kotlin
-poscart.getAvailableDeliveryModes(areaCode: areaCode, uid: uid).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| areaCode | String? |  |    
-| uid | Int? |  |  
-
-Get available delivery modes for cart and pick up store uid list. From given pick stores list user can pick up delivery. Use this uid to show store address
-
-*Success Response:*
-
-
-
-Returns Available delivery modes for cart and pick up available store uid for current cart items
-
-
-Schema: `CartDeliveryModesResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getStoreAddressByUid
-Get list of stores for give uids
-
-```kotlin
-poscart.getStoreAddressByUid(storeUid: storeUid).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- |  
-| storeUid | Int? |  |  
-
-Get list of stores by providing pick up available store uids.
-
-*Success Response:*
-
-
-
-Returns available store information with its address
-
-
-Schema: `StoreDetailsResponse`
-
-
-
-
-
-
-
-
-
----
-
-
-#### getCartShareLink
-Generate Cart sharing link token
-
-```kotlin
-poscart.getCartShareLink(body: body).safeAwait{ response,error->
+feedback.updateAbuseReport(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17897,30 +14254,28 @@ poscart.getCartShareLink(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Generates shared cart snapshot and returns shortlink token
+Use this API to update the abuse details, i.e. status and description.
 
 *Success Response:*
 
 
 
-Token Generated successfully
+Success.
 
 
-Schema: `GetShareCartLinkResponse`
+Schema: `UpdateResponse`
 
 
-*Examples:*
 
 
-Token Generated
-```json
-{
-  "value": {
-    "token": "ZweG1XyX",
-    "share_url": "https://uniket-testing.addsale.link/shared-cart/ZweG1XyX"
-  }
-}
-```
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
 
 
 
@@ -17933,11 +14288,11 @@ Token Generated
 ---
 
 
-#### getCartSharedItems
-Get shared cart snapshot and cart response
+#### getAbuseReports
+Get a list of abuse data
 
 ```kotlin
-poscart.getCartSharedItems(token: token).safeAwait{ response,error->
+feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17951,30 +14306,34 @@ poscart.getCartSharedItems(token: token).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| token | String? | Shared short link token. |  
+| entityId | String? | ID of the eligible entity as specified in the entity type (question ID/review ID/comment ID). |    
+| entityType | String? | Type of entity, e.g. question, review or comment. |    
+| id | String? | abuse id |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Returns shared cart response for sent token with `shared_cart_details`                    containing shared cart details in response.
+Use this API to retrieve a list of abuse data from entity type and entity ID.
 
 *Success Response:*
 
 
 
-Cart for valid token
+Success. Check the example shown below or refer `ReportAbuseGetResponse` for more details.
 
 
-Schema: `SharedCartResponse`
-
-
-
+Schema: `ReportAbuseGetResponse`
 
 
 
 
 
-No cart found for sent token
 
 
-Schema: `SharedCartResponse`
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
 
 
 
@@ -17987,11 +14346,11 @@ Schema: `SharedCartResponse`
 ---
 
 
-#### updateCartWithSharedItems
-Merge or Replace existing cart
+#### getAttributes
+Get a list of attribute data
 
 ```kotlin
-poscart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response,error->
+feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18005,305 +14364,1244 @@ poscart.updateCartWithSharedItems(token: token, action: action).safeAwait{ respo
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| token | String? | Shared short link token. |    
-| action | String? | Operation to perform on existing cart, whether to merge or replace. |  
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
 
-Merge or Replace cart based on `action` parameter with shared cart of `token`
+Use this API to retrieve a list of all attribute data, e.g. quality, material, product fitting, packaging, etc.
 
 *Success Response:*
 
 
 
-Success of Merge or Replace of cart with `shared_cart_details`                    containing shared cart details in response
+Success. Check the example shown below or refer `AttributeResponse` for more details.
 
 
-Schema: `SharedCartResponse`
+Schema: `AttributeResponse`
 
 
-*Examples:*
 
 
-Cart Merged/Replaced
-```json
-{
-  "value": {
-    "cart": {
-      "shared_cart_details": {
-        "token": "BQ9jySQ9",
-        "user": {
-          "user_id": "23109086",
-          "is_anonymous": false
-        },
-        "meta": {
-          "selected_staff": "",
-          "ordering_store": null
-        },
-        "selected_staff": "",
-        "ordering_store": null,
-        "source": {},
-        "created_on": "2019-12-18T14:00:07.165000"
-      },
-      "items": [
-        {
-          "key": "791651_6",
-          "discount": "",
-          "bulk_offer": {},
-          "coupon_message": "",
-          "article": {
-            "type": "article",
-            "uid": "304_1054_9036_R1005753_6",
-            "size": "6",
-            "seller": {
-              "uid": 304,
-              "name": "LEAYAN GLOBAL PVT. LTD."
-            },
-            "store": {
-              "uid": 5322,
-              "name": "Vaisali Nagar"
-            },
-            "quantity": 1,
-            "price": {
-              "base": {
-                "marked": 2095,
-                "effective": 2095,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 2095,
-                "effective": 2095,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "product": {
-            "type": "product",
-            "uid": 791651,
-            "name": "Black Running Shoes",
-            "slug": "furo-black-running-shoes-791651-f8bcc3",
-            "brand": {
-              "uid": 1054,
-              "name": "Furo"
-            },
-            "categories": [
-              {
-                "uid": 160,
-                "name": "Running Shoes"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/furo-black-running-shoes-791651-f8bcc3/",
-              "query": {
-                "product_slug": [
-                  "furo-black-running-shoes-791651-f8bcc3"
-                ]
-              }
-            }
-          },
-          "message": "",
-          "quantity": 1,
-          "availability": {
-            "sizes": [
-              "7",
-              "8",
-              "9",
-              "10",
-              "6"
-            ],
-            "other_store_quantity": 12,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "price": {
-            "base": {
-              "add_on": 2095,
-              "marked": 2095,
-              "effective": 2095,
-              "selling": 2095,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 2095,
-              "marked": 2095,
-              "effective": 2095,
-              "selling": 2095,
-              "currency_code": "INR"
-            }
-          }
-        },
-        {
-          "key": "791651_7",
-          "discount": "",
-          "bulk_offer": {},
-          "coupon_message": "",
-          "article": {
-            "type": "article",
-            "uid": "304_1054_9036_R1005753_7",
-            "size": "7",
-            "seller": {
-              "uid": 304,
-              "name": "LEAYAN GLOBAL PVT. LTD."
-            },
-            "store": {
-              "uid": 5322,
-              "name": "Vaisali Nagar"
-            },
-            "quantity": 2,
-            "price": {
-              "base": {
-                "marked": 2095,
-                "effective": 2095,
-                "currency_code": "INR"
-              },
-              "converted": {
-                "marked": 2095,
-                "effective": 2095,
-                "currency_code": "INR"
-              }
-            }
-          },
-          "product": {
-            "type": "product",
-            "uid": 791651,
-            "name": "Black Running Shoes",
-            "slug": "furo-black-running-shoes-791651-f8bcc3",
-            "brand": {
-              "uid": 1054,
-              "name": "Furo"
-            },
-            "categories": [
-              {
-                "uid": 160,
-                "name": "Running Shoes"
-              }
-            ],
-            "images": [
-              {
-                "aspect_ratio": "16:25",
-                "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg",
-                "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/1054_R1005753/1_1546490507364.jpg"
-              }
-            ],
-            "action": {
-              "type": "product",
-              "url": "https://api.addsale.com/platform/content/v1/products/furo-black-running-shoes-791651-f8bcc3/",
-              "query": {
-                "product_slug": [
-                  "furo-black-running-shoes-791651-f8bcc3"
-                ]
-              }
-            }
-          },
-          "message": "",
-          "quantity": 2,
-          "availability": {
-            "sizes": [
-              "7",
-              "8",
-              "9",
-              "10",
-              "6"
-            ],
-            "other_store_quantity": 7,
-            "out_of_stock": false,
-            "deliverable": true,
-            "is_valid": true
-          },
-          "price": {
-            "base": {
-              "add_on": 4190,
-              "marked": 4190,
-              "effective": 4190,
-              "selling": 4190,
-              "currency_code": "INR"
-            },
-            "converted": {
-              "add_on": 4190,
-              "marked": 4190,
-              "effective": 4190,
-              "selling": 4190,
-              "currency_code": "INR"
-            }
-          }
-        }
-      ],
-      "cart_id": 13055,
-      "uid": "13055",
-      "breakup_values": {
-        "raw": {
-          "cod_charge": 0,
-          "convenience_fee": 0,
-          "coupon": 0,
-          "delivery_charge": 0,
-          "discount": 0,
-          "fynd_cash": 0,
-          "gst_charges": 958.73,
-          "mrp_total": 6285,
-          "subtotal": 6285,
-          "total": 6285,
-          "vog": 5326.27,
-          "you_saved": 0
-        },
-        "loyalty_points": {
-          "total": 0,
-          "applicable": 0,
-          "is_applied": false,
-          "description": "Your cashback, referrals, and refund amount get credited to Fynd Cash which can be redeemed while placing an order."
-        },
-        "coupon": {
-          "type": "cash",
-          "code": "",
-          "uid": null,
-          "value": 0,
-          "is_applied": false,
-          "message": "Sorry! Invalid coupon"
-        },
-        "display": [
-          {
-            "display": "MRP Total",
-            "key": "mrp_total",
-            "value": 6285,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Subtotal",
-            "key": "subtotal",
-            "value": 6285,
-            "currency_code": "INR"
-          },
-          {
-            "display": "Total",
-            "key": "total",
-            "value": 6285,
-            "currency_code": "INR"
-          }
-        ]
-      },
-      "delivery_charge_info": "",
-      "coupon_text": "View all offers",
-      "gstin": null,
-      "comment": "",
-      "checkout_mode": "self",
-      "payment_selection_lock": {
-        "enabled": false,
-        "default_options": "COD",
-        "payment_identifier": null
-      },
-      "restrict_checkout": false,
-      "is_valid": true,
-      "last_modified": "Mon, 16 Dec 2019 07:02:18 GMT"
-    }
-  }
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createAttribute
+Add a new attribute request
+
+```kotlin
+feedback.createAttribute(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
 }
 ```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to add a new attribute (e.g. product quality/material/value for money) with its name, slug and description.
+
+*Success Response:*
+
+
+
+Success. Returns an attribute ID.
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAttribute
+Get data of a single attribute
+
+```kotlin
+feedback.getAttribute(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| slug | String? | A short, human-readable, URL-friendly identifier of an attribute. You can get slug value from the endpoint 'service/application/feedback/v1.0/attributes'. |  
+
+Use this API to retrieve a single attribute data from a given slug.
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `Attribute` for more details.
+
+
+Schema: `Attribute`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateAttribute
+Update details of an attribute 
+
+```kotlin
+feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| slug | String? | A short, human-readable, URL-friendly identifier of an attribute. You can get slug value from the endpoint 'service/application/feedback/v1.0/attributes'. |  
+
+Use this API update the attribute's name and description.
+
+*Success Response:*
+
+
+
+Success.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createComment
+Post a new comment
+
+```kotlin
+feedback.createComment(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to add a new comment for a specific entity.
+
+*Success Response:*
+
+
+
+Success. Returns a comment ID.
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateComment
+Update the status of a comment
+
+```kotlin
+feedback.updateComment(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to update the comment status (active or approve) along with new comment if any.
+
+*Success Response:*
+
+
+
+Success.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getComments
+Get a list of comments
+
+```kotlin
+feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| entityType | String? | Type of entity, e.g. question, review or comment. |    
+| id | String? | Comment ID |    
+| entityId | String? | ID of the eligible entity as specified in the entity type (question ID/review ID/comment ID). |    
+| userId | String? | User ID - a flag/filter to get comments for a user. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
+
+Use this API to retrieve a list of comments for a specific entity type, e.g. products.
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `CommentGetResponse` for more details.
+
+
+Schema: `CommentGetResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### checkEligibility
+Checks eligibility to rate and review, and shows the cloud media configuration
+
+```kotlin
+feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| entityType | String? | Type of entity, e.g. question, rate, review, answer, or comment. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |  
+
+Use this API to check whether an entity is eligible to be rated and reviewed. Moreover, it shows the cloud media configuration too.
+
+*Success Response:*
+
+
+
+Success. Returns a Product object. Check the example shown below or refer `CheckEligibilityResponse` for more details.
+
+
+Schema: `CheckEligibilityResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### deleteMedia
+Delete Media
+
+```kotlin
+feedback.deleteMedia().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to delete media for an entity ID.
+
+*Success Response:*
+
+
+
+Success.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createMedia
+Add Media
+
+```kotlin
+feedback.createMedia(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to add media to an entity, e.g. review.
+
+*Success Response:*
+
+
+
+Success. Returns media IDs.
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateMedia
+Update Media
+
+```kotlin
+feedback.updateMedia(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to update media (archive/approve) for an entity.
+
+*Success Response:*
+
+
+
+Success.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getMedias
+Get Media
+
+```kotlin
+feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| entityType | String? | Type of entity, e.g. question or product. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type(question ID/product ID). |    
+| id | String? | ID of the media. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
+
+Use this API to retrieve all media from an entity.
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `MediaGetResponse` for more details.
+
+
+Schema: `MediaGetResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getReviewSummaries
+Get a review summary
+
+```kotlin
+feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| entityType | String? | Type of entity, e.g. product, delivery, seller, order placed, order delivered, application, or template. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| id | String? | Review summary identifier. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
+
+Review summary gives ratings and attribute metrics of a review per entity. Use this API to retrieve the following response data: review count, rating average. 'review metrics'/'attribute rating metrics' which contains name, type, average and count.
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `ReviewMetricGetResponse` for more details.
+
+
+Schema: `ReviewMetricGetResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createReview
+Add customer reviews
+
+```kotlin
+feedback.createReview(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to add customer reviews for a specific entity along with the following data: attributes rating, entity rating, title, description, media resources and template ID.
+
+*Success Response:*
+
+
+
+Success. Returns a review ID.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateReview
+Update customer reviews
+
+```kotlin
+feedback.updateReview(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to update customer reviews for a specific entity along with following data: attributes rating, entity rating, title, description, media resources and template ID.
+
+*Success Response:*
+
+
+
+Success.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getReviews
+Get list of customer reviews
+
+```kotlin
+feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, active: active, approve: approve, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| entityType | String? | Type of entity, e.g. product, delivery, seller, l3, order placed, order delivered, application, or template. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| id | String? | ID of the review. |    
+| userId | String? | ID of the user. |    
+| media | String? | media type, e.g. image | video | video_file | video_link |    
+| rating | ArrayList<Double>? | rating filter, e.g. 1-5 |    
+| attributeRating | ArrayList<String>? | Filter for attribute rating. |    
+| facets | Boolean? | This is a boolean value for enabling metadata (facets). Selecting *true* will enable facets. |    
+| sort | String? | Sort by: default | top | recent |    
+| active | Boolean? | Get the active reviews. |    
+| approve | Boolean? | Get the approved reviews. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
+
+Use this API to retrieve a list of customer reviews based on entity and filters provided.
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `ReviewGetResponse` for more details.
+
+
+Schema: `ReviewGetResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getTemplates
+Get the feedback templates for a product or l3
+
+```kotlin
+feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| templateId | String? | ID of the feedback template. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| entityType | String? | Type of entity, e.g. product, delivery, seller, l3, order placed, order delivered, or application. |  
+
+Use this API to retrieve the details of the following feedback template. order, delivered, application, seller, order, placed, product
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `TemplateGetResponse` for more details.
+
+
+Schema: `TemplateGetResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createQuestion
+Create a new question
+
+```kotlin
+feedback.createQuestion(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to create a new question with following data- tags, text, type, choices for MCQ type questions, maximum length of answer.
+
+*Success Response:*
+
+
+
+Success. Returns a qna ID.
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateQuestion
+Update a question
+
+```kotlin
+feedback.updateQuestion(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to update the status of a question, its tags and its choices.
+
+*Success Response:*
+
+
+
+Success.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getQuestionAndAnswers
+Get a list of QnA
+
+```kotlin
+feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, userId: userId, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| entityType | String? | Type of entity, e.g. product, l3, etc. |    
+| entityId | String? | ID of the eligible entity as specified in the entity type. |    
+| id | String? | QNA ID |    
+| userId | String? | User ID |    
+| showAnswer | Boolean? | This is a boolean value. Select *true* to display answers given. |    
+| pageId | String? | Pagination page ID to retrieve next set of results. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
+
+Use this API to retrieve a list of questions and answers for a given entity.
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `QNAGetResponse` for more details.
+
+
+Schema: `QNAGetResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getVotes
+Get a list of votes
+
+```kotlin
+feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| id | String? | vote ID |    
+| refType | String? | Entity type, e.g. review | comment. |    
+| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |    
+| pageSize | Int? | The number of items to retrieve in each page. |  
+
+Use this API to retrieve a list of votes of a current logged in user. Votes can be filtered using `ref_type`, i.e. review | comment.
+
+*Success Response:*
+
+
+
+Success. Check the example shown below or refer `VoteResponse` for more details.
+
+
+Schema: `VoteResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createVote
+Create a new vote
+
+```kotlin
+feedback.createVote(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to create a new vote, where the action could be an upvote or a downvote. This is useful when you want to give a vote (say upvote) to a review (ref_type) of a product (entity_type).
+
+*Success Response:*
+
+
+
+Success. Returns a vote ID.
+
+
+Schema: `InsertResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateVote
+Update a vote
+
+```kotlin
+feedback.updateVote(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |
+
+Use this API to update a vote with a new action, i.e. either an upvote or a downvote.
+
+*Success Response:*
+
+
+
+Success.
+
+
+Schema: `UpdateResponse`
+
+
+
+
+
+
+
+
+Bad request. See the error object in the response body for specific reason.
+
+
+Schema: `FeedbackError`
 
 
 
@@ -18324,7 +15622,7 @@ Cart Merged/Replaced
 
 
 #### getTatProduct
-Get Tat Product
+Use this API to know the delivery turnaround time (TAT) by entering the product details along with the PIN Code of the location.
 
 ```kotlin
 logistic.getTatProduct(body: body).safeAwait{ response,error->
@@ -18342,13 +15640,13 @@ logistic.getTatProduct(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get Tat Product
+Get TAT of a product
 
 *Success Response:*
 
 
 
-Success
+Success. Check the example shown below or refer `GetTatProductResponse` for more details.
 
 
 Schema: `GetTatProductResponse`
@@ -18360,7 +15658,7 @@ Schema: `GetTatProductResponse`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -18372,7 +15670,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -18389,7 +15687,7 @@ Schema: `ApefaceApiError`
 
 
 #### getPincodeCity
-Get City from Pincode
+Use this API to retrieve a city by its PIN Code.
 
 ```kotlin
 logistic.getPincodeCity(pincode: pincode).safeAwait{ response,error->
@@ -18406,15 +15704,15 @@ logistic.getPincodeCity(pincode: pincode).safeAwait{ response,error->
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
-| pincode | String? | Pincode |  
+| pincode | String? | The PIN Code of the area, e.g. 400059 |  
 
-Get City from Pincode
+Get city from PIN Code
 
 *Success Response:*
 
 
 
-Success
+Success. Returns a JSON object containing the city name, state and country identified by its PIN Code. Check the example shown below or refer `GetPincodeCityResponse` for more details.
 
 
 Schema: `GetPincodeCityResponse`
@@ -18426,7 +15724,7 @@ Schema: `GetPincodeCityResponse`
 
 
 
-API Error
+API Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
@@ -18438,7 +15736,7 @@ Schema: `ApefaceApiError`
 
 
 
-Internal Server Error
+Internal Server Error. See the error object in the response body to know the exact reason.
 
 
 Schema: `ApefaceApiError`
