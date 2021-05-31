@@ -2,6 +2,7 @@ package com.sdk.application
 
 import com.sdk.common.*
 import kotlinx.coroutines.Deferred
+import okhttp3.ResponseBody
 import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
@@ -1135,7 +1136,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getBlog(slug: String, rootId: String?=null): Deferred<Response<CustomBlogSchema>>? {
+    fun getBlog(slug: String, rootId: String?=null): Deferred<Response<BlogSchema>>? {
         return contentApiList?.getBlog(slug = slug, rootId = rootId )}
 
     
@@ -2639,6 +2640,168 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     
     fun updateVote(body: UpdateVoteRequest): Deferred<Response<UpdateResponse>>? {
         return feedbackApiList?.updateVote( body = body)}
+
+    
+    
+}
+
+
+class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val posCartApiList by lazy {
+        generateposCartApiList()
+    }
+
+    private fun generateposCartApiList(): PosCartApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationPosCart",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(PosCartApiList::class.java) as? PosCartApiList
+    }
+    
+    fun getCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.getCart(uid = uid, i = i, b = b, assignCardId = assignCardId )}
+
+    
+    
+    fun getCartLastModified(uid: Int?=null): Deferred<Response<Any>>? {
+        return posCartApiList?.getCartLastModified(uid = uid )}
+
+    
+    
+    fun addItems(i: Boolean?=null, b: Boolean?=null,body: AddCartRequest): Deferred<Response<AddCartResponse>>? {
+        return posCartApiList?.addItems(i = i, b = b, body = body)}
+
+    
+    
+    fun updateCart(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: UpdateCartRequest): Deferred<Response<UpdateCartResponse>>? {
+        return posCartApiList?.updateCart(uid = uid, i = i, b = b, body = body)}
+
+    
+    
+    fun getItemCount(uid: Int?=null): Deferred<Response<CartItemCountResponse>>? {
+        return posCartApiList?.getItemCount(uid = uid )}
+
+    
+    
+    fun getCoupons(uid: Int?=null): Deferred<Response<GetCouponResponse>>? {
+        return posCartApiList?.getCoupons(uid = uid )}
+
+    
+    
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null,body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.applyCoupon(i = i, b = b, p = p, uid = uid, body = body)}
+
+    
+    
+    fun removeCoupon(uid: Int?=null): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.removeCoupon(uid = uid )}
+
+    
+    
+    fun getBulkDiscountOffers(itemId: Int?=null, articleId: String?=null, uid: Int?=null, slug: String?=null): Deferred<Response<BulkPriceResponse>>? {
+        return posCartApiList?.getBulkDiscountOffers(itemId = itemId, articleId = articleId, uid = uid, slug = slug )}
+
+    
+    
+    fun applyRewardPoints(uid: Int?=null, i: Boolean?=null, b: Boolean?=null): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.applyRewardPoints(uid = uid, i = i, b = b )}
+
+    
+    
+    fun getAddresses(uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
+        return posCartApiList?.getAddresses(uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
+
+    
+    
+    fun addAddress(body: Address): Deferred<Response<SaveAddressResponse>>? {
+        return posCartApiList?.addAddress( body = body)}
+
+    
+    
+    fun getAddressById(id: String, uid: Int?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+        return posCartApiList?.getAddressById(id = id, uid = uid, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault )}
+
+    
+    
+    fun updateAddress(id: String,body: Address): Deferred<Response<UpdateAddressResponse>>? {
+        return posCartApiList?.updateAddress(id = id, body = body)}
+
+    
+    
+    fun removeAddress(id: String): Deferred<Response<DeleteAddressResponse>>? {
+        return posCartApiList?.removeAddress(id = id )}
+
+    
+    
+    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.selectAddress(uid = uid, i = i, b = b, body = body)}
+
+    
+    
+    fun selectPaymentMode(uid: String?=null,body: UpdateCartPaymentRequest): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.selectPaymentMode(uid = uid, body = body)}
+
+    
+    
+    fun validateCouponForPayment(uid: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
+        return posCartApiList?.validateCouponForPayment(uid = uid, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )}
+
+    
+    
+    fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null, areaCode: String?=null, orderType: String?=null): Deferred<Response<CartShipmentsResponse>>? {
+        return posCartApiList?.getShipments(pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, uid = uid, addressId = addressId, areaCode = areaCode, orderType = orderType )}
+
+    
+    
+    fun updateShipments(i: Boolean?=null, p: Boolean?=null, uid: Int?=null, addressId: Int?=null, orderType: String?=null,body: UpdateCartShipmentRequest): Deferred<Response<CartShipmentsResponse>>? {
+        return posCartApiList?.updateShipments(i = i, p = p, uid = uid, addressId = addressId, orderType = orderType, body = body)}
+
+    
+    
+    fun checkoutCart(uid: Int?=null,body: CartPosCheckoutRequest): Deferred<Response<CartCheckoutResponse>>? {
+        return posCartApiList?.checkoutCart(uid = uid, body = body)}
+
+    
+    
+    fun updateCartMeta(uid: Int?=null,body: CartMetaRequest): Deferred<Response<CartMetaResponse>>? {
+        return posCartApiList?.updateCartMeta(uid = uid, body = body)}
+
+    
+    
+    fun getAvailableDeliveryModes(areaCode: String, uid: Int?=null): Deferred<Response<CartDeliveryModesResponse>>? {
+        return posCartApiList?.getAvailableDeliveryModes(areaCode = areaCode, uid = uid )}
+
+    
+    
+    fun getStoreAddressByUid(storeUid: Int): Deferred<Response<StoreDetailsResponse>>? {
+        return posCartApiList?.getStoreAddressByUid(storeUid = storeUid )}
+
+    
+    
+    fun getCartShareLink(body: GetShareCartLinkRequest): Deferred<Response<GetShareCartLinkResponse>>? {
+        return posCartApiList?.getCartShareLink( body = body)}
+
+    
+    
+    fun getCartSharedItems(token: String): Deferred<Response<SharedCartResponse>>? {
+        return posCartApiList?.getCartSharedItems(token = token )}
+
+    
+    
+    fun updateCartWithSharedItems(token: String, action: String): Deferred<Response<SharedCartResponse>>? {
+        return posCartApiList?.updateCartWithSharedItems(token = token, action = action )}
 
     
     

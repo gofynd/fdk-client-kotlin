@@ -3,6 +3,7 @@ package com.sdk.common
 import android.os.Build
 import android.util.Log
 import com.google.gson.GsonBuilder
+import com.moczul.ok2curl.CurlInterceptor
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.sdk.common.HttpClient.getHttpLoggingInterceptor
 import okhttp3.*
@@ -107,6 +108,7 @@ class RetrofitHttpClient constructor(
                     )
                 ) builder.addNetworkInterceptor(interceptor) else builder.addInterceptor(interceptor)
             }
+            builder.addInterceptor(CurlInterceptor { message -> Log.v("Ok2Curl", message ?: "") })
             if (null != headerList) {
                 builder.addInterceptor { chain: Interceptor.Chain ->
                     val original = chain.request()

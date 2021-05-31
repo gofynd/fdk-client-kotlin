@@ -2,6 +2,7 @@ package com.sdk.application
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
+import okhttp3.ResponseBody
 import retrofit2.http.*
 
 interface CatalogApiList {
@@ -404,7 +405,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/blogs/{slug}")
     fun getBlog(@Path("slug") slug: String, @Query("root_id") rootId: String?)
-    : Deferred<Response<CustomBlogSchema>>
+    : Deferred<Response<BlogSchema>>
     
     @GET ("/service/application/content/v1.0/blogs/")
     fun getBlogs(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
@@ -845,6 +846,118 @@ interface FeedbackApiList {
     @PUT ("/service/application/feedback/v1.0/vote/")
     fun updateVote(@Body body: UpdateVoteRequest)
     : Deferred<Response<UpdateResponse>>
+    
+}
+
+interface PosCartApiList {
+    
+    @GET ("/service/application/pos/cart/v1.0/detail")
+    fun getCart(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
+    : Deferred<Response<CartResponse>>
+    
+    @HEAD ("/service/application/pos/cart/v1.0/detail")
+    fun getCartLastModified(@Query("uid") uid: Int?)
+    : Deferred<Response<Any>>
+    
+    @POST ("/service/application/pos/cart/v1.0/detail")
+    fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: AddCartRequest)
+    : Deferred<Response<AddCartResponse>>
+    
+    @PUT ("/service/application/pos/cart/v1.0/detail")
+    fun updateCart(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: UpdateCartRequest)
+    : Deferred<Response<UpdateCartResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/basic")
+    fun getItemCount(@Query("uid") uid: Int?)
+    : Deferred<Response<CartItemCountResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/coupon")
+    fun getCoupons(@Query("uid") uid: Int?)
+    : Deferred<Response<GetCouponResponse>>
+    
+    @POST ("/service/application/pos/cart/v1.0/coupon")
+    fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?,@Body body: ApplyCouponRequest)
+    : Deferred<Response<CartResponse>>
+    
+    @DELETE ("/service/application/pos/cart/v1.0/coupon")
+    fun removeCoupon(@Query("uid") uid: Int?)
+    : Deferred<Response<CartResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/bulk-price")
+    fun getBulkDiscountOffers(@Query("item_id") itemId: Int?, @Query("article_id") articleId: String?, @Query("uid") uid: Int?, @Query("slug") slug: String?)
+    : Deferred<Response<BulkPriceResponse>>
+    
+    @POST ("/service/application/pos/cart/v1.0/redeem/points/")
+    fun applyRewardPoints(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?)
+    : Deferred<Response<CartResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/address")
+    fun getAddresses(@Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
+    : Deferred<Response<GetAddressesResponse>>
+    
+    @POST ("/service/application/pos/cart/v1.0/address")
+    fun addAddress(@Body body: Address)
+    : Deferred<Response<SaveAddressResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/address/{id}")
+    fun getAddressById(@Path("id") id: String, @Query("uid") uid: Int?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
+    : Deferred<Response<Address>>
+    
+    @PUT ("/service/application/pos/cart/v1.0/address/{id}")
+    fun updateAddress(@Path("id") id: String,@Body body: Address)
+    : Deferred<Response<UpdateAddressResponse>>
+    
+    @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
+    fun removeAddress(@Path("id") id: String)
+    : Deferred<Response<DeleteAddressResponse>>
+    
+    @POST ("/service/application/pos/cart/v1.0/select-address")
+    fun selectAddress(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: SelectCartAddressRequest)
+    : Deferred<Response<CartResponse>>
+    
+    @PUT ("/service/application/pos/cart/v1.0/payment")
+    fun selectPaymentMode(@Query("uid") uid: String?,@Body body: UpdateCartPaymentRequest)
+    : Deferred<Response<CartResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/payment/validate/")
+    fun validateCouponForPayment(@Query("uid") uid: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
+    : Deferred<Response<PaymentCouponValidate>>
+    
+    @GET ("/service/application/pos/cart/v1.0/shipment")
+    fun getShipments(@Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)
+    : Deferred<Response<CartShipmentsResponse>>
+    
+    @PUT ("/service/application/pos/cart/v1.0/shipment")
+    fun updateShipments(@Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Query("address_id") addressId: Int?, @Query("order_type") orderType: String?,@Body body: UpdateCartShipmentRequest)
+    : Deferred<Response<CartShipmentsResponse>>
+    
+    @POST ("/service/application/pos/cart/v1.0/checkout")
+    fun checkoutCart(@Query("uid") uid: Int?,@Body body: CartPosCheckoutRequest)
+    : Deferred<Response<CartCheckoutResponse>>
+    
+    @PUT ("/service/application/pos/cart/v1.0/meta")
+    fun updateCartMeta(@Query("uid") uid: Int?,@Body body: CartMetaRequest)
+    : Deferred<Response<CartMetaResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/available-delivery-mode")
+    fun getAvailableDeliveryModes(@Query("area_code") areaCode: String, @Query("uid") uid: Int?)
+    : Deferred<Response<CartDeliveryModesResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/store-address")
+    fun getStoreAddressByUid(@Query("store_uid") storeUid: Int)
+    : Deferred<Response<StoreDetailsResponse>>
+    
+    @POST ("/service/application/pos/cart/v1.0/share-cart")
+    fun getCartShareLink(@Body body: GetShareCartLinkRequest)
+    : Deferred<Response<GetShareCartLinkResponse>>
+    
+    @GET ("/service/application/pos/cart/v1.0/share-cart/{token}")
+    fun getCartSharedItems(@Path("token") token: String)
+    : Deferred<Response<SharedCartResponse>>
+    
+    @POST ("/service/application/pos/cart/v1.0/share-cart/{token}/{action}")
+    fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
+    : Deferred<Response<SharedCartResponse>>
     
 }
 

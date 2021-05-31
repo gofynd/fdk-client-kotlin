@@ -27,7 +27,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 2
-        versionName "0.0.640"
+        versionName "0.0.645"
         multiDexEnabled true
 
         vectorDrawables.useSupportLibrary = true
@@ -127,4 +127,5 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp-urlconnection:3.11.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.11.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.github.mrmike:ok2curl:0.7.0'
 }
