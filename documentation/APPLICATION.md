@@ -49,8 +49,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [unfollowById](#unfollowbyid)
     * [followById](#followbyid)
+    * [unfollowById](#unfollowbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -493,7 +493,7 @@ Schema: `ErrorResponse`
 Get the sellers of a product size at a PIN Code
 
 ```kotlin
-catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, strategy: strategy, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -510,6 +510,7 @@ catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, pageNo
 | slug | String? | A short, human-readable, URL-friendly identifier of a product. You can get slug value from the endpoint /service/application/catalog/v1.0/products/ |    
 | size | String? | A string indicating the size of the product, e.g. S, M, XL. You can get slug value from the endpoint /service/application/catalog/v1.0/products/sizes |    
 | pincode | String? | The 6-digit PIN Code of the area near which the selling locations should be searched, e.g. 400059 |    
+| strategy | String? | Sort stores on the basis of strategy. eg, fast-delivery, low-price, optimal. |    
 | pageNo | Int? | The page number to navigate through the given set of results. |    
 | pageSize | Int? | The number of items to retrieve in each page. |  
 
@@ -1598,11 +1599,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-Unfollow an entity (product/brand/collection)
+#### followById
+Follow an entity (product/brand/collection)
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1619,7 +1620,7 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | collectionType | String? | Type of collection followed, i.e. products, brands, or collections. |    
 | collectionId | String? | The ID of the collection type. |  
 
-You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
+Follow a particular entity such as product, brand, collection specified by its ID.
 
 *Success Response:*
 
@@ -1653,11 +1654,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow an entity (product/brand/collection)
+#### unfollowById
+Unfollow an entity (product/brand/collection)
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1674,7 +1675,7 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | collectionType | String? | Type of collection followed, i.e. products, brands, or collections. |    
 | collectionId | String? | The ID of the collection type. |  
 
-Follow a particular entity such as product, brand, collection specified by its ID.
+You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
 
 *Success Response:*
 
@@ -3350,7 +3351,7 @@ Schema: `HashMap<String,Any>`
 Fetch all Items Added to  Cart
 
 ```kotlin
-cart.applyRewardPoints(uid: uid, i: i, b: b).safeAwait{ response,error->
+cart.applyRewardPoints(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17120,7 +17121,7 @@ Schema: `HashMap<String,Any>`
 Fetch all Items Added to  Cart
 
 ```kotlin
-poscart.applyRewardPoints(uid: uid, i: i, b: b).safeAwait{ response,error->
+poscart.applyRewardPoints(uid: uid, i: i, b: b, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response

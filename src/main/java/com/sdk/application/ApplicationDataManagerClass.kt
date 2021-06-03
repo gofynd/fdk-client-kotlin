@@ -48,12 +48,17 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getProductSellersBySlug(slug: String, size: String, pincode: String, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponse>>? {
-        return catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, pageNo = pageNo, pageSize = pageSize )}
+    fun getProductSellersBySlug(slug: String, size: String, pincode: String, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponse>>? {
+        return catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize )}
 
     
     
     
+        
+            
+                
+            
+            
         
             
                 
@@ -82,7 +87,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     *
     * Summary: Paginator for getProductSellersBySlug
     **/
-    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String, pageSize: Int?=null) : Paginator<ProductSizeSellersResponse>{
+    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponse>{
 
     val paginator = Paginator<ProductSizeSellersResponse>()
 
@@ -93,7 +98,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                catalogApiList?.getProductSellersBySlug(slug = slug, size = size, pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -583,13 +588,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -743,8 +748,8 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun applyRewardPoints(uid: Int?=null, i: Boolean?=null, b: Boolean?=null): Deferred<Response<CartResponse>>? {
-        return cartApiList?.applyRewardPoints(uid = uid, i = i, b = b )}
+    fun applyRewardPoints(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: RewardPointRequest): Deferred<Response<CartResponse>>? {
+        return cartApiList?.applyRewardPoints(uid = uid, i = i, b = b, body = body)}
 
     
     
@@ -2715,8 +2720,8 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun applyRewardPoints(uid: Int?=null, i: Boolean?=null, b: Boolean?=null): Deferred<Response<CartResponse>>? {
-        return posCartApiList?.applyRewardPoints(uid = uid, i = i, b = b )}
+    fun applyRewardPoints(uid: Int?=null, i: Boolean?=null, b: Boolean?=null,body: RewardPointRequest): Deferred<Response<CartResponse>>? {
+        return posCartApiList?.applyRewardPoints(uid = uid, i = i, b = b, body = body)}
 
     
     

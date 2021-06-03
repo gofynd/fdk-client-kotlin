@@ -20,7 +20,7 @@ interface CatalogApiList {
     : Deferred<Response<ProductSizePriceResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/sellers/")
-    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponse>>
     
     @GET ("/service/application/catalog/v1.0/products/compare/")
@@ -99,12 +99,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -160,7 +160,7 @@ interface CartApiList {
     : Deferred<Response<BulkPriceResponse>>
     
     @POST ("/service/application/cart/v1.0/redeem/points/")
-    fun applyRewardPoints(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?)
+    fun applyRewardPoints(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: RewardPointRequest)
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/cart/v1.0/address")
@@ -888,7 +888,7 @@ interface PosCartApiList {
     : Deferred<Response<BulkPriceResponse>>
     
     @POST ("/service/application/pos/cart/v1.0/redeem/points/")
-    fun applyRewardPoints(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?)
+    fun applyRewardPoints(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: RewardPointRequest)
     : Deferred<Response<CartResponse>>
     
     @GET ("/service/application/pos/cart/v1.0/address")
