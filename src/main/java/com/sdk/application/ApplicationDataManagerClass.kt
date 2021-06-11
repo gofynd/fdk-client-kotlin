@@ -588,13 +588,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -911,6 +911,16 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         )
         return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
     }
+    
+    fun getAllPages(themeId: String): Deferred<Response<AllAvailablePageSchema>>? {
+        return themeApiList?.getAllPages(themeId = themeId )}
+
+    
+    
+    fun getPage(themeId: String, pageValue: String): Deferred<Response<AvailablePageSchema>>? {
+        return themeApiList?.getPage(themeId = themeId, pageValue = pageValue )}
+
+    
     
     fun getAppliedTheme(): Deferred<Response<ThemesSchema>>? {
         return themeApiList?.getAppliedTheme( )}
@@ -1581,7 +1591,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
 
     
     
-    fun getIntegrationTokens(): Deferred<Response<TokenResponse>>? {
+    fun getIntegrationTokens(): Deferred<Response<AppTokenResponse>>? {
         return configurationApiList?.getIntegrationTokens( )}
 
     

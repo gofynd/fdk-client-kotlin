@@ -99,12 +99,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -254,6 +254,14 @@ interface LeadApiList {
 }
 
 interface ThemeApiList {
+    
+    @GET ("/service/application/theme/v1.0/{theme_id}/page")
+    fun getAllPages(@Path("theme_id") themeId: String)
+    : Deferred<Response<AllAvailablePageSchema>>
+    
+    @GET ("/service/application/theme/v1.0/{theme_id}/{page_value}")
+    fun getPage(@Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
+    : Deferred<Response<AvailablePageSchema>>
     
     @GET ("/service/application/theme/v1.0/applied-theme")
     fun getAppliedTheme()
@@ -549,7 +557,7 @@ interface ConfigurationApiList {
     
     @GET ("/service/application/configuration/v1.0/token")
     fun getIntegrationTokens()
-    : Deferred<Response<TokenResponse>>
+    : Deferred<Response<AppTokenResponse>>
     
     @GET ("/service/application/configuration/v1.0/ordering-store/stores")
     fun getOrderingStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)

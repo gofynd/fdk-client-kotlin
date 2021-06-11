@@ -36,8 +36,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val cart by lazy { CartDataManagerClass(config)}
     
-    val marketplaces by lazy { MarketplacesDataManagerClass(config)}
-    
     val rewards by lazy { RewardsDataManagerClass(config)}
     
     val analytics by lazy { AnalyticsDataManagerClass(config)}
@@ -87,8 +85,6 @@ class PlatformClient(val config:PlatformConfig) {
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
-    
-    val marketplaces by lazy { this@PlatformClient.marketplaces.ApplicationClient(applicationId,config)}
     
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
