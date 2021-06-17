@@ -99,12 +99,12 @@ interface CatalogApiList {
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
-    : Deferred<Response<FollowPostResponse>>
-    
     @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
     fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    : Deferred<Response<FollowPostResponse>>
+    
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/")
@@ -129,7 +129,7 @@ interface CartApiList {
     
     @HEAD ("/service/application/cart/v1.0/detail")
     fun getCartLastModified(@Query("uid") uid: Int?)
-    : Deferred<Response<Any>>
+    : Deferred<Response<Void>>
     
     @POST ("/service/application/cart/v1.0/detail")
     fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: AddCartRequest)
@@ -808,7 +808,7 @@ interface FeedbackApiList {
     : Deferred<Response<UpdateResponse>>
     
     @GET ("/service/application/feedback/v1.0/media/entity/{entity_type}/entity-id/{entity_id}")
-    fun getMedias(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    fun getMedias(@Path("entity_type") entityType: String, @Path("entity_id") entityId: String, @Query("id") id: String?, @Query("type") type: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<MediaGetResponse>>
     
     @GET ("/service/application/feedback/v1.0/rating/summary/entity/{entity_type}/entity-id/{entity_id}")
@@ -865,7 +865,7 @@ interface PosCartApiList {
     
     @HEAD ("/service/application/pos/cart/v1.0/detail")
     fun getCartLastModified(@Query("uid") uid: Int?)
-    : Deferred<Response<Any>>
+    : Deferred<Response<Void>>
     
     @POST ("/service/application/pos/cart/v1.0/detail")
     fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?,@Body body: AddCartRequest)

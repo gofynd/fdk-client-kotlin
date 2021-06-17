@@ -49,8 +49,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [followById](#followbyid)
     * [unfollowById](#unfollowbyid)
+    * [followById](#followbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -1601,11 +1601,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow an entity (product/brand/collection)
+#### unfollowById
+Unfollow an entity (product/brand/collection)
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1622,7 +1622,7 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | collectionType | String? | Type of collection followed, i.e. products, brands, or collections. |    
 | collectionId | String? | The ID of the collection type. |  
 
-Follow a particular entity such as product, brand, collection specified by its ID.
+You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
 
 *Success Response:*
 
@@ -1656,11 +1656,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-Unfollow an entity (product/brand/collection)
+#### followById
+Follow an entity (product/brand/collection)
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1677,7 +1677,7 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | collectionType | String? | Type of collection followed, i.e. products, brands, or collections. |    
 | collectionId | String? | The ID of the collection type. |  
 
-You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
+Follow a particular entity such as product, brand, collection specified by its ID.
 
 *Success Response:*
 
@@ -15134,7 +15134,7 @@ Schema: `FeedbackError`
 Get Media
 
 ```kotlin
-feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+feedback.getMedias(entityType: entityType, entityId: entityId, id: id, type: type, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15151,6 +15151,7 @@ feedback.getMedias(entityType: entityType, entityId: entityId, id: id, pageId: p
 | entityType | String? | Type of entity, e.g. question or product. |    
 | entityId | String? | ID of the eligible entity as specified in the entity type(question ID/product ID). |    
 | id | String? | ID of the media. |    
+| type | String? | Media type. |    
 | pageId | String? | Pagination page ID to retrieve next set of results. |    
 | pageSize | Int? | The number of items to retrieve in each page. |  
 
@@ -20106,7 +20107,7 @@ Cart Merged/Replaced
 
 
 #### getTatProduct
-Use this API to know the delivery turnaround time (TAT) by entering the product details along with the PIN Code of the location.
+Get TAT of a product
 
 ```kotlin
 logistic.getTatProduct(body: body).safeAwait{ response,error->
@@ -20124,7 +20125,7 @@ logistic.getTatProduct(body: body).safeAwait{ response,error->
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |
 
-Get TAT of a product
+Use this API to know the delivery turnaround time (TAT) by entering the product details along with the PIN Code of the location.
 
 *Success Response:*
 
@@ -20171,7 +20172,7 @@ Schema: `ApefaceApiError`
 
 
 #### getPincodeCity
-Use this API to retrieve a city by its PIN Code.
+Get city from PIN Code
 
 ```kotlin
 logistic.getPincodeCity(pincode: pincode).safeAwait{ response,error->
@@ -20190,7 +20191,7 @@ logistic.getPincodeCity(pincode: pincode).safeAwait{ response,error->
 | --------- | ----  | --- |  
 | pincode | String? | The PIN Code of the area, e.g. 400059 |  
 
-Get city from PIN Code
+Use this API to retrieve a city by its PIN Code.
 
 *Success Response:*
 

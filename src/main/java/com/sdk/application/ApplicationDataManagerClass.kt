@@ -588,13 +588,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId )}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId )}
 
     
     
@@ -708,7 +708,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getCartLastModified(uid: Int?=null): Deferred<Response<Any>>? {
+    fun getCartLastModified(uid: Int?=null): Deferred<Response<Void>>? {
         return cartApiList?.getCartLastModified(uid = uid )}
 
     
@@ -2255,12 +2255,17 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun getMedias(entityType: String, entityId: String, id: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<MediaGetResponse>>? {
-        return feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize )}
+    fun getMedias(entityType: String, entityId: String, id: String?=null, type: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<MediaGetResponse>>? {
+        return feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, type = type, pageId = pageId, pageSize = pageSize )}
 
     
     
     
+        
+            
+                
+            
+            
         
             
                 
@@ -2291,7 +2296,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
     *
     * Summary: Paginator for getMedias
     **/
-    fun getMediasPaginator(entityType: String, entityId: String, id: String?=null, pageSize: Int?=null) : Paginator<MediaGetResponse>{
+    fun getMediasPaginator(entityType: String, entityId: String, id: String?=null, type: String?=null, pageSize: Int?=null) : Paginator<MediaGetResponse>{
 
     val paginator = Paginator<MediaGetResponse>()
 
@@ -2302,7 +2307,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                feedbackApiList?.getMedias(entityType = entityType, entityId = entityId, id = id, type = type, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
@@ -2690,7 +2695,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getCartLastModified(uid: Int?=null): Deferred<Response<Any>>? {
+    fun getCartLastModified(uid: Int?=null): Deferred<Response<Void>>? {
         return posCartApiList?.getCartLastModified(uid = uid )}
 
     
