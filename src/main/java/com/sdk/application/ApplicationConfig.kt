@@ -7,8 +7,6 @@ class ApplicationConfig(
     var applicationToken: String?,
     var domain: String = "https://api.fynd.com",
     var userAgent: String,
-    var auth_user_name: String = "slingshotapptoken",
-    var auth_user_password: String = "slingsh0t@ppt0ken#fynd",
     val persistentCookieStore: CookieStore?=null
 ) {
     init {

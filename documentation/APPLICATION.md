@@ -49,8 +49,8 @@
     * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
     * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
     * [getFollowedListing](#getfollowedlisting)
-    * [unfollowById](#unfollowbyid)
     * [followById](#followbyid)
+    * [unfollowById](#unfollowbyid)
     * [getFollowerCountById](#getfollowercountbyid)
     * [getFollowIds](#getfollowids)
     * [getStores](#getstores)
@@ -1381,7 +1381,7 @@ Schema: `ErrorResponse`
 List all the collections
 
 ```kotlin
-catalog.getCollections(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.getCollections(pageNo: pageNo, pageSize: pageSize, tag: tag).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1396,7 +1396,8 @@ catalog.getCollections(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,e
 | Argument  |  Type  | Description |
 | --------- | ----  | --- |  
 | pageNo | Int? | The page number to navigate through the given set of results. |    
-| pageSize | Int? | The number of items to retrieve in each page. |  
+| pageSize | Int? | The number of items to retrieve in each page. |    
+| tag | String? | List of tags  to filter collections |  
 
 Collections are a great way to organize your products and can improve the ability for customers to find items quickly and efficiently.
 
@@ -1601,11 +1602,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### unfollowById
-Unfollow an entity (product/brand/collection)
+#### followById
+Follow an entity (product/brand/collection)
 
 ```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1622,7 +1623,7 @@ catalog.unfollowById(collectionType: collectionType, collectionId: collectionId)
 | collectionType | String? | Type of collection followed, i.e. products, brands, or collections. |    
 | collectionId | String? | The ID of the collection type. |  
 
-You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
+Follow a particular entity such as product, brand, collection specified by its ID.
 
 *Success Response:*
 
@@ -1656,11 +1657,11 @@ Schema: `ErrorResponse`
 ---
 
 
-#### followById
-Follow an entity (product/brand/collection)
+#### unfollowById
+Unfollow an entity (product/brand/collection)
 
 ```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1677,7 +1678,7 @@ catalog.followById(collectionType: collectionType, collectionId: collectionId).s
 | collectionType | String? | Type of collection followed, i.e. products, brands, or collections. |    
 | collectionId | String? | The ID of the collection type. |  
 
-Follow a particular entity such as product, brand, collection specified by its ID.
+You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
 
 *Success Response:*
 
