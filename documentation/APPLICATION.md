@@ -3,6 +3,7 @@
 
 * [Catalog](#Catalog) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
 * [Cart](#Cart) - Cart APIs 
+* [Common](#Common) - Application configuration apis 
 * [Lead](#Lead) - Handles communication between Staff and Users 
 * [Theme](#Theme) - Responsible for themes 
 * [User](#User) - Authentication Service 
@@ -82,6 +83,11 @@
     * [getCartShareLink](#getcartsharelink)
     * [getCartSharedItems](#getcartshareditems)
     * [updateCartWithSharedItems](#updatecartwithshareditems)
+    
+
+* [Common](#Common)
+  * Methods
+    * [getLocations](#getlocations)
     
 
 * [Lead](#Lead)
@@ -1397,7 +1403,7 @@ catalog.getCollections(pageNo: pageNo, pageSize: pageSize, tag: tag).safeAwait{ 
 | --------- | ----  | --- |  
 | pageNo | Int? | The page number to navigate through the given set of results. |    
 | pageSize | Int? | The number of items to retrieve in each page. |    
-| tag | String? | List of tags  to filter collections |  
+| tag | ArrayList<String>? | List of tags  to filter collections |  
 
 Collections are a great way to organize your products and can improve the ability for customers to find items quickly and efficiently.
 
@@ -5375,6 +5381,56 @@ Cart Merged/Replaced
   }
 }
 ```
+
+
+
+
+
+
+
+
+
+---
+
+
+
+---
+
+
+## Common
+
+
+#### getLocations
+Get countries, states, cities
+
+```kotlin
+common.getLocations(locationType: locationType, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- |  
+| locationType | String? | Provide location type to query on |    
+| id | String? | Field is optional when location_type is country. If querying for state, provide id of country. If querying for city, provide id of state. |  
+
+
+
+*Success Response:*
+
+
+
+Success
+
+
+Schema: `Locations`
 
 
 
@@ -14976,7 +15032,7 @@ Schema: `FeedbackError`
 Delete Media
 
 ```kotlin
-feedback.deleteMedia().safeAwait{ response,error->
+feedback.deleteMedia(ids: ids).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14989,7 +15045,8 @@ feedback.deleteMedia().safeAwait{ response,error->
 ```
 
 | Argument  |  Type  | Description |
-| --------- | ----  | --- |
+| --------- | ----  | --- |  
+| ids | ArrayList<String>? | List of media ID |  
 
 Use this API to delete media for an entity ID.
 

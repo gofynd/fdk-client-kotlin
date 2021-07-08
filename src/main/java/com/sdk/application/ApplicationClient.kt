@@ -6,6 +6,8 @@ class ApplicationClient(val config:ApplicationConfig) {
     
     val cart by lazy { CartDataManagerClass(config)}
     
+    val common by lazy { CommonDataManagerClass(config)}
+    
     val lead by lazy { LeadDataManagerClass(config)}
     
     val theme by lazy { ThemeDataManagerClass(config)}

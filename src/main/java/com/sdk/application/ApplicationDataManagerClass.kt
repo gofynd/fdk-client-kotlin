@@ -410,7 +410,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: String?=null): Deferred<Response<GetCollectionListingResponse>>? {
+    fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null): Deferred<Response<GetCollectionListingResponse>>? {
         return catalogApiList?.getCollections(pageNo = pageNo, pageSize = pageSize, tag = tag)}
 
     
@@ -434,7 +434,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     *
     * Summary: Paginator for getCollections
     **/
-    fun getCollectionsPaginator(pageSize: Int?=null, tag: String?=null) : Paginator<GetCollectionListingResponse>{
+    fun getCollectionsPaginator(pageSize: Int?=null, tag: ArrayList<String>?=null) : Paginator<GetCollectionListingResponse>{
 
     val paginator = Paginator<GetCollectionListingResponse>()
 
@@ -825,6 +825,38 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun updateCartWithSharedItems(token: String, action: String): Deferred<Response<SharedCartResponse>>? {
         return cartApiList?.updateCartWithSharedItems(token = token, action = action)}
+
+    
+    
+}
+
+
+class CommonDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+    
+    private val commonApiList by lazy {
+        generatecommonApiList()
+    }
+
+    private fun generatecommonApiList(): CommonApiList? {
+        val interceptorMap = HashMap<String, List<Interceptor>>()
+        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val requestSignerInterceptor = RequestSignerInterceptor()
+        val interceptorList = ArrayList<Interceptor>()
+        interceptorList.add(headerInterceptor)
+        interceptorList.add(requestSignerInterceptor)
+        interceptorMap["interceptor"] = interceptorList
+        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        val retrofitHttpClient = HttpClient.initialize(
+            baseUrl = config.domain,
+            interceptorList = interceptorMap,
+            namespace = "ApplicationCommon",
+            persistentCookieStore = config.persistentCookieStore
+        )
+        return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
+    }
+    
+    fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
+        return commonApiList?.getLocations(locationType = locationType, id = id)}
 
     
     
@@ -2245,8 +2277,8 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun deleteMedia(): Deferred<Response<UpdateResponse>>? {
-        return feedbackApiList?.deleteMedia()}
+    fun deleteMedia(ids: ArrayList<String>): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.deleteMedia(ids = ids)}
 
     
     

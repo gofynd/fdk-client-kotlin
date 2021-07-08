@@ -104,7 +104,7 @@ interface CatalogApiList {
     
     
     @GET ("/service/application/catalog/v1.0/collections/")
-    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: String?)
+    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
     : Deferred<Response<GetCollectionListingResponse>>
     
     
@@ -270,6 +270,15 @@ interface CartApiList {
     @POST ("/service/application/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
+    
+}
+
+interface CommonApiList {
+    
+    
+    @GET ("/service/common/configuration/v1.0/location")
+    fun getLocations(@Query("location_type") locationType: String?, @Query("id") id: String?)
+    : Deferred<Response<Locations>>
     
 }
 
@@ -981,7 +990,7 @@ interface FeedbackApiList {
     
     
     @DELETE ("/service/application/feedback/v1.0/media/")
-    fun deleteMedia()
+    fun deleteMedia(@Query("ids") ids: ArrayList<String>)
     : Deferred<Response<UpdateResponse>>
     
     

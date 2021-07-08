@@ -2,6 +2,8 @@ package com.sdk.platform
 
 class PlatformClient(val config:PlatformConfig) {
     
+    val common by lazy { CommonDataManagerClass(config)}
+    
     val lead by lazy { LeadDataManagerClass(config)}
     
     val feedback by lazy { FeedbackDataManagerClass(config)}
@@ -51,6 +53,8 @@ class PlatformClient(val config:PlatformConfig) {
     }
 
     inner class ApplicationClient(val applicationId:String,val config: PlatformConfig) {     
+    
+    val common by lazy { this@PlatformClient.common.ApplicationClient(applicationId,config)}
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
     
