@@ -19,7 +19,8 @@ object NetworkUtils {
         val affiliateId = applicationConfig?.applicationId ?: ""
         headerList["x-application-token"] = token
         headerList["x-application-id"] = affiliateId
-        headerList["Accept-Language"] = "en-IN"
+        headerList["Accept-Language"] = applicationConfig?.languageCode ?: "en-IN"
+        headerList["x-currency-code"] = applicationConfig?.currencyCode ?: "INR"
         val bearerToken =
             encodeToString("$affiliateId:$token".toByteArray(), NO_WRAP)
         headerList["Authorization"] = "Bearer $bearerToken"

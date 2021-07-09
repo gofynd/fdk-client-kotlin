@@ -15,9 +15,14 @@ class ApplicationHeaderInterceptor(
             header("User-Agent", applicationConfig?.userAgent ?: "")
             val applicationId = applicationConfig?.applicationId ?: ""
             val applicationToken = applicationConfig?.applicationToken ?: ""
+            val languageCode = applicationConfig?.languageCode ?: "en-IN"
+            val currencyCode = applicationConfig?.currencyCode ?: "INR"
+
             header("x-application-id", applicationId)
             header("x-application-token", applicationToken)
-            header("Accept-Language", "en-IN")
+            header("Accept-Language", languageCode)
+            header("x-currency-code", currencyCode)
+            
             val bearerToken =
                 Base64.encodeToString(
                     "$applicationId:$applicationToken".toByteArray(),

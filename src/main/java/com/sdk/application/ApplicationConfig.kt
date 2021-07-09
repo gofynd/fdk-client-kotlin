@@ -7,7 +7,9 @@ class ApplicationConfig(
     var applicationToken: String?,
     var domain: String = "https://api.fynd.com",
     var userAgent: String,
-    val persistentCookieStore: CookieStore?=null
+    val persistentCookieStore: CookieStore?=null,
+    var languageCode: String = "en-IN",
+    var currencyCode: String = "INR"
 ) {
     init {
         val regex = "^[0-9a-fA-F]{24}$"
