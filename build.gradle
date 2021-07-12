@@ -14,7 +14,6 @@ buildscript {
     }
 }
 
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -27,7 +26,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 2
-        versionName "0.0.739"
+        versionName "0.0.748"
         multiDexEnabled true
 
         vectorDrawables.useSupportLibrary = true
