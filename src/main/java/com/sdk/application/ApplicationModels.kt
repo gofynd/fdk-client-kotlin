@@ -6101,28 +6101,13 @@ data class TicketHistoryList(
     
     
     
-    @SerializedName("docs")
-    var docs: ArrayList<TicketHistory>?=null,
-    
-    @SerializedName("limit")
-    var limit: Int?=null,
+    @SerializedName("items")
+    var items: ArrayList<TicketHistory>?=null,
     
     @SerializedName("page")
-    var page: Int?=null,
-    
-    @SerializedName("pages")
-    var pages: Int?=null,
-    
-    @SerializedName("total")
-    var total: Int?=null
+    var page: Page?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -6141,28 +6126,13 @@ data class CustomFormList(
     
     
     
-    @SerializedName("docs")
-    var docs: ArrayList<CustomForm>?=null,
-    
-    @SerializedName("limit")
-    var limit: Int?=null,
+    @SerializedName("items")
+    var items: ArrayList<CustomForm>?=null,
     
     @SerializedName("page")
-    var page: Int?=null,
-    
-    @SerializedName("pages")
-    var pages: Int?=null,
-    
-    @SerializedName("total")
-    var total: Int?=null
+    var page: Page?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -6197,7 +6167,7 @@ data class CreateCustomFormPayload(
     var headerImage: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: @RawValue Any?=null,
     
     @SerializedName("should_notify")
     var shouldNotify: Boolean?=null,
@@ -6251,7 +6221,7 @@ data class EditCustomFormPayload(
     var description: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: @RawValue Any?=null,
     
     @SerializedName("header_image")
     var headerImage: String?=null,
@@ -6317,7 +6287,7 @@ data class EditTicketPayload(
     var status: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: @RawValue Any?=null,
     
     @SerializedName("assigned_to")
     var assignedTo: AgentChangePayload?=null,
@@ -6420,7 +6390,32 @@ data class CreateVideoRoomPayload(
     var uniqueName: String?=null,
     
     @SerializedName("notify")
-    var notify: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var notify: ArrayList<NotifyUser>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: NotifyUser
+*/
+@Parcelize
+data class NotifyUser(
+    
+    
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("phone_number")
+    var phoneNumber: String?=null
     
 ): Parcelable {
     
@@ -6480,7 +6475,7 @@ data class TicketHistoryPayload(
     var value: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -6502,9 +6497,14 @@ data class CustomFormSubmissionPayload(
     
     
     @SerializedName("response")
-    var response: ArrayList<KeyValue>?=null
+    var response: ArrayList<KeyValue>?=null,
+    
+    @SerializedName("attachments")
+    var attachments: ArrayList<TicketAsset>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6788,7 +6788,7 @@ data class TicketAsset(
     var value: String?=null,
     
     @SerializedName("type")
-    var type: String?=null
+    var type: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -6815,7 +6815,8 @@ data class TicketContent(
     var title: String?=null,
     
     @SerializedName("description")
-    var description: String?=null,
+    private var description_b64: String?=null,
+    
     
     @SerializedName("attachments")
     var attachments: ArrayList<TicketAsset>?=null
@@ -6825,6 +6826,18 @@ data class TicketContent(
     
     
     
+    
+    var description : String
+    get(){
+        try{
+            return String(Base64.decode(description_b64,Base64.DEFAULT))
+        }catch(e: Exception){
+            return description_b64 ?: ""
+        }
+    }
+    set(value){
+        description_b64 = Base64.encodeToString(value?.toByteArray(),Base64.DEFAULT)
+    }
     
     
     
@@ -6848,7 +6861,7 @@ data class AddTicketPayload(
     var status: String?=null,
     
     @SerializedName("priority")
-    var priority: String?=null,
+    var priority: @RawValue Any?=null,
     
     @SerializedName("category")
     var category: String?=null,
@@ -6882,7 +6895,7 @@ data class Priority(
     
     
     @SerializedName("key")
-    var key: String?=null,
+    var key: PriorityEnum?=null,
     
     @SerializedName("display")
     var display: String?=null,
@@ -6951,9 +6964,14 @@ data class TicketCategory(
     var form: CustomForm?=null,
     
     @SerializedName("sub_categories")
-    var subCategories: ArrayList<TicketSubCategory>?=null
+    var subCategories: ArrayList<TicketSubCategory>?=null,
+    
+    @SerializedName("feedback_form")
+    var feedbackForm: TicketFeedbackForm?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -6985,6 +7003,71 @@ data class TicketSubCategory(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: TicketFeedbackForm
+*/
+@Parcelize
+data class TicketFeedbackForm(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("display")
+    var display: @RawValue ArrayList<HashMap<String,Any>>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: TicketFeedbackList
+*/
+@Parcelize
+data class TicketFeedbackList(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<TicketFeedback>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: TicketFeedbackPayload
+*/
+@Parcelize
+data class TicketFeedbackPayload(
+    
+    
+    
+    @SerializedName("form_response")
+    var formResponse: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
     
     
     
@@ -7149,6 +7232,91 @@ data class CustomForm(
 
 
 /*
+    Model: FeedbackResponseItem
+*/
+@Parcelize
+data class FeedbackResponseItem(
+    
+    
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: TicketFeedback
+*/
+@Parcelize
+data class TicketFeedback(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("ticket_id")
+    var ticketId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: String?=null,
+    
+    @SerializedName("response")
+    var response: ArrayList<FeedbackResponseItem>?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("user")
+    var user: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: TicketHistory
 */
 @Parcelize
@@ -7233,7 +7401,7 @@ data class Ticket(
     var subCategory: TicketSubCategory?=null,
     
     @SerializedName("source")
-    var source: String?=null,
+    var source: @RawValue Any?=null,
     
     @SerializedName("status")
     var status: Status?=null,
@@ -7253,6 +7421,9 @@ data class Ticket(
     @SerializedName("_custom_json")
     var customJson: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("is_feedback_pending")
+    var isFeedbackPending: Boolean?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -7263,6 +7434,8 @@ data class Ticket(
     var createdAt: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
