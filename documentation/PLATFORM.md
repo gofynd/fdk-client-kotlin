@@ -276,23 +276,23 @@
  
 * [Catalog](#Catalog)
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
-  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
+  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
-  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
+  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getProductBundle](#cataloggetproductbundle)
   * [Catalog#createProductBundle](#catalogcreateproductbundle)
-  * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
   * [Catalog#updateProductBundle](#catalogupdateproductbundle)
+  * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
   * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#createSizeGuide](#catalogcreatesizeguide)
-  * [Catalog#getSizeGuide](#cataloggetsizeguide)
   * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
+  * [Catalog#getSizeGuide](#cataloggetsizeguide)
   * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
   * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
@@ -328,13 +328,13 @@
   * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
   * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#createCategories](#catalogcreatecategories)
-  * [Catalog#getCategoryData](#cataloggetcategorydata)
   * [Catalog#updateCategory](#catalogupdatecategory)
+  * [Catalog#getCategoryData](#cataloggetcategorydata)
   * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
-  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#editProduct](#catalogeditproduct)
+  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
@@ -357,8 +357,8 @@
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
   * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#createHsnCode](#catalogcreatehsncode)
-  * [Catalog#getHsnCode](#cataloggethsncode)
   * [Catalog#updateHsnCode](#catalogupdatehsncode)
+  * [Catalog#getHsnCode](#cataloggethsncode)
   * [Catalog#bulkHsnCode](#catalogbulkhsncode)
   * [Catalog#getApplicationBrands](#cataloggetapplicationbrands)
   * [Catalog#getDepartments](#cataloggetdepartments)
@@ -367,18 +367,18 @@
   * [Catalog#getProductDetailBySlug](#cataloggetproductdetailbyslug)
  
 * [CompanyProfile](#CompanyProfile)
-  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
+  * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
-  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#editBrand](#companyprofileeditbrand)
+  * [CompanyProfile#getBrand](#companyprofilegetbrand)
   * [CompanyProfile#createBrand](#companyprofilecreatebrand)
-  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createCompanyBrandMapping](#companyprofilecreatecompanybrandmapping)
-  * [CompanyProfile#getLocations](#companyprofilegetlocations)
+  * [CompanyProfile#getBrands](#companyprofilegetbrands)
   * [CompanyProfile#createLocation](#companyprofilecreatelocation)
-  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
+  * [CompanyProfile#getLocations](#companyprofilegetlocations)
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
+  * [CompanyProfile#getLocationDetail](#companyprofilegetlocationdetail)
   * [CompanyProfile#createLocationBulk](#companyprofilecreatelocationbulk)
  
 * [FileStorage](#FileStorage)
@@ -589,7 +589,7 @@ lead.getTickets(companyId: companyId, items: items, filters: filters, q: q, stat
 | filters | Boolean? | Decides that the reponse will contain the ticket filters |   
 | q | String? | Search through ticket titles and description |   
 | status | String? | Filter tickets on status |   
-| priority | String? | Filter tickets on priority |   
+| priority | PriorityEnum? | Filter tickets on priority |   
 | category | String? | Filter tickets on category |   
 | pageNo | Int? | The page number to navigate through the given set of results. |   
 | pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
@@ -680,7 +680,7 @@ lead.getTickets(companyId: companyId, applicationId: applicationId, items: items
 | filters | Boolean? | Decides that the reponse will contain the ticket filters |   
 | q | String? | Search through ticket titles and description |   
 | status | String? | Filter tickets on status |   
-| priority | String? | Filter tickets on priority |   
+| priority | PriorityEnum? | Filter tickets on priority |   
 | category | String? | Filter tickets on category |  
 
 
@@ -1601,15 +1601,6 @@ Schema: `FeedbackAttributes`
 
 
 
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
 
 ---
 
@@ -1667,15 +1658,6 @@ Schema: `GetReviewResponse`
 
 
 
-Bad Request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
 
 ---
 
@@ -1714,15 +1696,6 @@ ok
 
 
 Schema: `UpdateResponse`
-
-
-
-
-
-Bad request
-
-
-Schema: `FeedbackError`
 
 
 
@@ -1771,15 +1744,6 @@ Schema: `ArrayList<ActivityDump>`
 
 
 
-Bad request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
 
 ---
 
@@ -1819,15 +1783,6 @@ Success
 
 
 Schema: `TemplateGetResponse`
-
-
-
-
-
-Bad Request
-
-
-Schema: `FeedbackError`
 
 
 
@@ -1878,15 +1833,6 @@ Schema: `InsertResponse`
 
 
 
-Bad Request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
 
 ---
 
@@ -1925,15 +1871,6 @@ Success
 
 
 Schema: `Template`
-
-
-
-
-
-Bad Request
-
-
-Schema: `FeedbackError`
 
 
 
@@ -1982,15 +1919,6 @@ Schema: `UpdateResponse`
 
 
 
-Bad Request
-
-
-Schema: `FeedbackError`
-
-
-
-
-
 
 ---
 
@@ -2029,15 +1957,6 @@ Success
 
 
 Schema: `UpdateResponse`
-
-
-
-
-
-Bad Request
-
-
-Schema: `FeedbackError`
 
 
 
@@ -2095,24 +2014,6 @@ Schema: `AllAvailablePageSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegInternalServerError`
-
-
-
-
-
-
 ---
 
 
@@ -2156,24 +2057,6 @@ Schema: `AvailablePageSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegInternalServerError`
-
-
-
-
-
-
 ---
 
 
@@ -2211,24 +2094,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
 
 
 Schema: `AllAvailablePageSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegInternalServerError`
 
 
 
@@ -2279,24 +2144,6 @@ Schema: `AvailablePageSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegInternalServerError`
-
-
-
-
-
-
 ---
 
 
@@ -2335,24 +2182,6 @@ Success. Returns a the page of the theme. Refer `AvailablePageSchema` for more d
 
 
 Schema: `AvailablePageSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegInternalServerError`
 
 
 
@@ -2403,24 +2232,6 @@ Schema: `AvailablePageSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegInternalServerError`
-
-
-
-
-
-
 ---
 
 
@@ -2459,24 +2270,6 @@ Success. Refer `ThemesListingResponseSchema` for more details.
 
 
 Schema: `ThemesListingResponseSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -2525,24 +2318,6 @@ Schema: `ThemesSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -2579,24 +2354,6 @@ Success. Refer `ThemesSchema` for more details.
 
 
 Schema: `ThemesSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -2646,24 +2403,6 @@ Schema: `UpgradableThemeSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -2701,24 +2440,6 @@ Success. Upgrades the theme and shares the details of the new version in the res
 
 
 Schema: `ThemesSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -2769,24 +2490,6 @@ Schema: `ThemesListingResponseSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -2823,24 +2526,6 @@ Theme
 
 
 Schema: `ThemesSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -2889,24 +2574,6 @@ Schema: `ThemesSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -2943,24 +2610,6 @@ Success. Refer `FontsSchema` for more details.
 
 
 Schema: `FontsSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -3010,24 +2659,6 @@ Schema: `ThemesSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3065,24 +2696,6 @@ Success. Refer `ThemesSchema` for more details.
 
 
 Schema: `ThemesSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -3132,24 +2745,6 @@ Schema: `ThemesSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3187,24 +2782,6 @@ Success. Refer `ThemesSchema` for more details.
 
 
 Schema: `ThemesSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -3254,24 +2831,6 @@ Schema: `ThemesSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3309,24 +2868,6 @@ Success. Refer `ThemesSchema` for more details.
 
 
 Schema: `ThemesSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -3376,24 +2917,6 @@ Schema: `ThemesSchema`
 
 
 
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3431,24 +2954,6 @@ Success. Refer `ThemesSchema` for more details.
 
 
 Schema: `ThemesSchema`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
-
-
-
-
-
-
-
-
-Schema: `BlitzkriegApiError`
 
 
 
@@ -3508,24 +3013,6 @@ Schema: `CustomerListResponseSchema`
 
 
 
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3569,24 +3056,6 @@ Schema: `UserSearchResponseSchema`
 
 
 
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3623,24 +3092,6 @@ User create
 
 
 Schema: `CreateUserResponseSchema`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
 
 
 
@@ -3690,24 +3141,6 @@ Schema: `CreateUserResponseSchema`
 
 
 
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3744,24 +3177,6 @@ Create user session
 
 
 Schema: `CreateUserSessionResponseSchema`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
 
 
 
@@ -3810,24 +3225,6 @@ Schema: `PlatformSchema`
 
 
 
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
 ---
 
 
@@ -3864,24 +3261,6 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
 
 Schema: `PlatformSchema`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
-
-
-
-
-
-
-
-
-Schema: `AuthenticationApiError`
 
 
 
@@ -3939,24 +3318,6 @@ Schema: `GetAnnouncementListSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -3994,24 +3355,6 @@ Success. Refer `CreateAnnouncementSchema` for more details.
 
 
 Schema: `CreateAnnouncementSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -4060,24 +3403,6 @@ Schema: `AdminAnnouncementSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4116,24 +3441,6 @@ Success. Refer `CreateAnnouncementSchema` for more details.
 
 
 Schema: `CreateAnnouncementSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -4182,24 +3489,6 @@ Schema: `CreateAnnouncementSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4243,24 +3532,6 @@ Schema: `CreateAnnouncementSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4298,24 +3569,6 @@ Success. Refer `BlogSchema` for more details.
 
 
 Schema: `BlogSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -4365,24 +3618,6 @@ Schema: `BlogGetResponse`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4421,24 +3656,6 @@ Success.
 
 
 Schema: `BlogSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -4487,24 +3704,6 @@ Schema: `BlogSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4548,24 +3747,6 @@ Schema: `BlogSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4603,24 +3784,6 @@ Success. Refer `GetFaqCategoriesSchema` for more details.
 
 
 Schema: `GetFaqCategoriesSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -4669,24 +3832,6 @@ Schema: `GetFaqCategoryBySlugSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4724,24 +3869,6 @@ Success.
 
 
 Schema: `CreateFaqCategorySchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -4790,24 +3917,6 @@ Schema: `CreateFaqCategorySchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4846,24 +3955,6 @@ Success.
 
 
 Schema: `FaqSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -4912,24 +4003,6 @@ Schema: `GetFaqSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -4968,24 +4041,6 @@ Success.
 
 
 Schema: `CreateFaqResponseSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -5035,24 +4090,6 @@ Schema: `CreateFaqResponseSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5097,24 +4134,6 @@ Schema: `CreateFaqResponseSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5153,24 +4172,6 @@ Success. Refer `CreateFaqResponseSchema` for more details.
 
 
 Schema: `CreateFaqResponseSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -5220,24 +4221,6 @@ Schema: `LandingPageGetResponse`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5275,24 +4258,6 @@ Success.
 
 
 Schema: `LandingPageSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -5341,24 +4306,6 @@ Schema: `LandingPageSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5397,24 +4344,6 @@ Success.
 
 
 Schema: `LandingPageSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -5462,24 +4391,6 @@ Schema: `ApplicationLegal`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5517,24 +4428,6 @@ Success. Refer `ApplicationLegal` for more details.
 
 
 Schema: `ApplicationLegal`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -5585,24 +4478,6 @@ Schema: `NavigationGetResponse`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5645,24 +4520,6 @@ Schema: `NavigationSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5700,24 +4557,6 @@ Success. Refer `DefaultNavigationResponse` for more details.
 
 
 Schema: `DefaultNavigationResponse`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -5767,24 +4606,6 @@ Schema: `NavigationSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5823,24 +4644,6 @@ Success.
 
 
 Schema: `NavigationSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -5889,24 +4692,6 @@ Schema: `NavigationSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -5944,24 +4729,6 @@ Success. Refer `PageMetaSchema` for more details.
 
 
 Schema: `PageMetaSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6009,24 +4776,6 @@ Schema: `PageSpec`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6064,24 +4813,6 @@ Success. Refer `PageSchema` for more details.
 
 
 Schema: `PageSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6131,24 +4862,6 @@ Schema: `PageGetResponse`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6186,24 +4899,6 @@ Success. Refer `PageSchema` for more details.
 
 
 Schema: `PageSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6252,24 +4947,6 @@ Schema: `PageSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6308,24 +4985,6 @@ Success. Refer `PageSchema` for more details.
 
 
 Schema: `PageSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6374,24 +5033,6 @@ Schema: `PageSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6430,24 +5071,6 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
 
 Schema: `PageSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6495,24 +5118,6 @@ Schema: `SeoComponent`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6550,24 +5155,6 @@ Success. Refer `SeoSchema` for more details.
 
 
 Schema: `SeoSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6618,24 +5205,6 @@ Schema: `SlideshowGetResponse`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6673,24 +5242,6 @@ Success. Refer `SlideshowSchema` for more details.
 
 
 Schema: `SlideshowSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6740,24 +5291,6 @@ Schema: `SlideshowSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6796,24 +5329,6 @@ Success. Refer `SlideshowSchema` for more details.
 
 
 Schema: `SlideshowSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6862,24 +5377,6 @@ Schema: `SlideshowSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -6917,24 +5414,6 @@ Success. Refer `Support` for more details.
 
 
 Schema: `Support`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -6982,24 +5461,6 @@ Schema: `Support`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -7037,24 +5498,6 @@ Success.
 
 
 Schema: `TagsSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -7102,24 +5545,6 @@ Schema: `TagsSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -7157,24 +5582,6 @@ Success. Refer `TagsSchema` for more details.
 
 
 Schema: `TagsSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -7222,24 +5629,6 @@ Schema: `TagsSchema`
 
 
 
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
 
 ---
 
@@ -7277,24 +5666,6 @@ Success.
 
 
 Schema: `TagsSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -7338,24 +5709,6 @@ Success.
 
 
 Schema: `TagsSchema`
-
-
-
-
-
-Bad Request. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `APIError`
 
 
 
@@ -7412,15 +5765,6 @@ Schema: `Success`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -7462,15 +5806,6 @@ Success Response
 
 
 Schema: `PickupPointResponse`
-
-
-
-
-
-Error
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -7522,15 +5857,6 @@ Schema: `Success`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -7571,15 +5897,6 @@ Success Response
 
 
 Schema: `PickupPointSchema`
-
-
-
-
-
-Error Response
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -7629,15 +5946,6 @@ Schema: `Success`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -7677,15 +5985,6 @@ Success Response
 
 
 Schema: `PickupResponse`
-
-
-
-
-
-Error Response
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -7736,15 +6035,6 @@ Schema: `ShippingResponse`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -7790,15 +6080,6 @@ Schema: `Success`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -7839,15 +6120,6 @@ Success Response - Store Updated
 
 
 Schema: `Success`
-
-
-
-
-
-Error Response
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -7902,15 +6174,6 @@ Schema: `StoreListResponse`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -7952,15 +6215,6 @@ Success Response
 
 
 Schema: `StoreResponse`
-
-
-
-
-
-Error Response
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -8011,15 +6265,6 @@ Schema: `Success`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -8061,15 +6306,6 @@ Success Response - Store Updated
 
 
 Schema: `Success`
-
-
-
-
-
-Error Response
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -8122,15 +6358,6 @@ Schema: `ZoneListResponse`
 
 
 
-Error Response
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -8171,15 +6398,6 @@ Success Response - Zone Created
 
 
 Schema: `Success`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -8230,15 +6448,6 @@ Schema: `ZoneSchema`
 
 
 
-Internal Server Error
-
-
-Schema: `ErrorResponseSchema`
-
-
-
-
-
 
 ---
 
@@ -8279,15 +6488,6 @@ Success Response - Zone Updated
 
 
 Schema: `Success`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ErrorResponseSchema`
 
 
 
@@ -8343,15 +6543,6 @@ Schema: `CreateSubscriptionResponse`
 
 
 
-Request failed due to invalid data
-
-
-Schema: `BadRequest`
-
-
-
-
-
 
 ---
 
@@ -8395,15 +6586,6 @@ Schema: `EntitySubscription`
 
 
 
-Not found
-
-
-Schema: `ResourceNotFound`
-
-
-
-
-
 
 ---
 
@@ -8442,24 +6624,6 @@ Success
 
 
 Schema: `EntitySubscription`
-
-
-
-
-
-Request failed due to invalid data
-
-
-Schema: `BadRequest`
-
-
-
-
-
-Resource Not found
-
-
-Schema: `ResourceNotFound`
 
 
 
@@ -8589,15 +6753,6 @@ Schema: `SubscriptionCustomer`
 
 
 
-Resource not found
-
-
-Schema: `ResourceNotFound`
-
-
-
-
-
 
 ---
 
@@ -8634,24 +6789,6 @@ Success
 
 
 Schema: `SubscriptionCustomer`
-
-
-
-
-
-Resource not found
-
-
-Schema: `ResourceNotFound`
-
-
-
-
-
-Internal server error
-
-
-Schema: `InternalServerError`
 
 
 
@@ -8699,15 +6836,6 @@ Schema: `SubscriptionStatus`
 
 
 
-Internal server error
-
-
-Schema: `InternalServerError`
-
-
-
-
-
 
 ---
 
@@ -8744,15 +6872,6 @@ Success
 
 
 Schema: `SubscriptionLimit`
-
-
-
-
-
-Internal server error
-
-
-Schema: `InternalServerError`
 
 
 
@@ -8799,24 +6918,6 @@ Schema: `SubscriptionActivateRes`
 
 
 
-Resource not found
-
-
-Schema: `ResourceNotFound`
-
-
-
-
-
-Internal server error
-
-
-Schema: `InternalServerError`
-
-
-
-
-
 
 ---
 
@@ -8853,24 +6954,6 @@ Success
 
 
 Schema: `CancelSubscriptionRes`
-
-
-
-
-
-Resource not found
-
-
-Schema: `ResourceNotFound`
-
-
-
-
-
-Internal server error
-
-
-Schema: `InternalServerError`
 
 
 
@@ -9014,15 +7097,6 @@ Schema: `Campaign`
 
 
 
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
 
 ---
 
@@ -9066,15 +7140,6 @@ Schema: `Campaign`
 
 
 
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
 
 ---
 
@@ -9113,15 +7178,6 @@ Success
 
 
 Schema: `GetStats`
-
-
-
-
-
-Bad request
-
-
-Schema: `BadRequest`
 
 
 
@@ -9256,15 +7312,6 @@ Schema: `BigqueryHeadersRes`
 
 
 
-Bad request
-
-
-Schema: `BadRequest`
-
-
-
-
-
 
 ---
 
@@ -9303,15 +7350,6 @@ Success
 
 
 Schema: `Audience`
-
-
-
-
-
-Not found
-
-
-Schema: `NotFound`
 
 
 
@@ -9360,15 +7398,6 @@ Schema: `Audience`
 
 
 
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
 
 ---
 
@@ -9406,15 +7435,6 @@ Success
 
 
 Schema: `GetNRecordsCsvRes`
-
-
-
-
-
-Bad request
-
-
-Schema: `BadRequest`
 
 
 
@@ -9849,15 +7869,6 @@ Success
 
 
 Schema: `EmailTemplateDeleteSuccessRes`
-
-
-
-
-
-Failure
-
-
-Schema: `EmailTemplateDeleteFailureRes`
 
 
 
@@ -10432,15 +8443,6 @@ Schema: `SmsTemplate`
 
 
 
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
 
 ---
 
@@ -10484,15 +8486,6 @@ Schema: `SmsTemplateRes`
 
 
 
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
 
 ---
 
@@ -10531,24 +8524,6 @@ Success
 
 
 Schema: `SmsTemplateDeleteSuccessRes`
-
-
-
-
-
-Failure
-
-
-Schema: `SmsTemplateDeleteFailureRes`
-
-
-
-
-
-Not found
-
-
-Schema: `NotFound`
 
 
 
@@ -10649,24 +8624,6 @@ Schema: `PaymentGatewayConfigResponse`
 
 
 
-Internal Server Error
-
-
-Schema: `ErrorCodeDescription`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ErrorCodeDescription`
-
-
-
-
-
 
 ---
 
@@ -10709,24 +8666,6 @@ Schema: `PaymentGatewayToBeReviewed`
 
 
 
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -10764,24 +8703,6 @@ Save Config Secret For Brand Payment Gateway Success Response.
 
 
 Schema: `PaymentGatewayToBeReviewed`
-
-
-
-
-
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -10831,24 +8752,6 @@ Schema: `PaymentOptionsResponse`
 
 
 
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -10891,24 +8794,6 @@ Schema: `PayoutsResponse`
 
 
 
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -10945,24 +8830,6 @@ save payout response object
 
 
 Schema: `PayoutResponse`
-
-
-
-
-
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11010,24 +8877,6 @@ Schema: `UpdatePayoutResponse`
 
 
 
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -11065,24 +8914,6 @@ save payout response object
 
 
 Schema: `UpdatePayoutResponse`
-
-
-
-
-
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11130,24 +8961,6 @@ Schema: `DeletePayoutResponse`
 
 
 
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -11184,24 +8997,6 @@ List Subscription Payment Method Response
 
 
 Schema: `SubscriptionPaymentMethodResponse`
-
-
-
-
-
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11250,15 +9045,6 @@ Schema: `DeleteSubscriptionPaymentMethodResponse`
 
 
 
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -11300,24 +9086,6 @@ Schema: `SubscriptionConfigResponse`
 
 
 
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -11354,24 +9122,6 @@ Save Subscription Setup Intent Response.
 
 
 Schema: `SaveSubscriptionSetupIntentResponse`
-
-
-
-
-
-Bad Request Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11419,24 +9169,6 @@ Schema: `RefundAccountResponse`
 
 
 
-Bad Request Error
-
-
-Schema: `NotFoundResourceError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -11474,24 +9206,6 @@ Bank details on correct Ifsc Code
 
 
 Schema: `IfscCodeResponse`
-
-
-
-
-
-Bad Request Error
-
-
-Schema: `NotFoundResourceError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ErrorCodeDescription`
 
 
 
@@ -11540,24 +9254,6 @@ Schema: `OrderBeneficiaryResponse`
 
 
 
-Bad Request Error
-
-
-Schema: `NotFoundResourceError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
-
-
-
-
-
 
 ---
 
@@ -11596,24 +9292,6 @@ List User Beneficiary
 
 
 Schema: `OrderBeneficiaryResponse`
-
-
-
-
-
-Bad Request Error
-
-
-Schema: `NotFoundResourceError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `HttpErrorCodeAndResponse`
 
 
 
@@ -11668,24 +9346,6 @@ Schema: `UpdateShipmentStatusResponse`
 
 
 
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -11723,24 +9383,6 @@ Success
 
 
 Schema: `GetActivityStatus`
-
-
-
-
-
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -11787,24 +9429,6 @@ Schema: `UpdateProcessShipmenstRequestResponse`
 
 
 
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -11842,24 +9466,6 @@ Success
 
 
 Schema: `HashMap<String,Any>`
-
-
-
-
-
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -11918,24 +9524,6 @@ Schema: `OrderListing`
 
 
 
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -11975,24 +9563,6 @@ Success
 
 
 Schema: `OrderDetails`
-
-
-
-
-
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -12051,24 +9621,6 @@ Schema: `OrderPicklistListing`
 
 
 
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -12107,24 +9659,6 @@ Success
 
 
 Schema: `PlatformShipmentTrack`
-
-
-
-
-
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -12173,24 +9707,6 @@ Schema: `PlatformOrderTrack`
 
 
 
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -12228,24 +9744,6 @@ Success
 
 
 Schema: `FailedOrders`
-
-
-
-
-
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -12294,24 +9792,6 @@ Schema: `UpdateOrderReprocessResponse`
 
 
 
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -12355,24 +9835,6 @@ Schema: `ShipmentUpdateResponse`
 
 
 
-API Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -12411,24 +9873,6 @@ Success. Check the example shown below or refer `ShipmentReasonsResponse` for mo
 
 
 Schema: `ShipmentReasonsResponse`
-
-
-
-
-
-API Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -12478,24 +9922,6 @@ Schema: `ShipmentTrackResponse`
 
 
 
-API Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -12534,24 +9960,6 @@ Success. Check the example shown below or refer `GetShipmentAddressResponse` for
 
 
 Schema: `GetShipmentAddressResponse`
-
-
-
-
-
-API Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -12600,24 +10008,6 @@ Schema: `UpdateShipmentAddressResponse`
 
 
 
-API Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error. See the error object in the response body to know the exact reason.
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -12654,24 +10044,6 @@ Success
 
 
 Schema: `GetPingResponse`
-
-
-
-
-
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -12718,24 +10090,6 @@ Schema: `GetVoiceCallbackResponse`
 
 
 
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
 
 ---
 
@@ -12774,24 +10128,6 @@ Success
 
 
 Schema: `GetClickToCallResponse`
-
-
-
-
-
-API Error
-
-
-Schema: `ApefaceApiError`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ApefaceApiError`
 
 
 
@@ -12848,10 +10184,44 @@ Schema: `DeleteResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### updateSearchKeywords
+Update Search Keyword
+
+```kotlin
+catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update Search Keyword by its id. On successful request, returns the updated collection
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetSearchWordsDataSchema` for details.
+
+
+Schema: `GetSearchWordsData`
 
 
 
@@ -12900,67 +10270,6 @@ Schema: `GetSearchWordsDetailResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### updateSearchKeywords
-Update Search Keyword
-
-```kotlin
-catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Update Search Keyword by its id. On successful request, returns the updated collection
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `GetSearchWordsDataSchema` for details.
-
-
-Schema: `GetSearchWordsData`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13003,15 +10312,6 @@ Schema: `GetSearchWordsResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13049,15 +10349,6 @@ Get keyword object with id that is added. See example below or refer `GetSearchW
 
 
 Schema: `GetSearchWordsData`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -13106,10 +10397,44 @@ Schema: `DeleteResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### updateAutocompleteKeyword
+Create & Update Autocomplete Keyword
+
+```kotlin
+catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Update a mapping by it's id. On successful request, returns the updated Keyword mapping
+
+*Success Response*
+
+
+
+The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
+
+
+Schema: `GetAutocompleteWordsResponse`
 
 
 
@@ -13158,67 +10483,6 @@ Schema: `GetAutocompleteWordsResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### updateAutocompleteKeyword
-Create & Update Autocomplete Keyword
-
-```kotlin
-catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Update a mapping by it's id. On successful request, returns the updated Keyword mapping
-
-*Success Response*
-
-
-
-The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
-
-
-Schema: `GetAutocompleteWordsResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13256,15 +10520,6 @@ List of custom autocomplete keywords. See example below or refer `GetAutocomplet
 
 
 Schema: `GetAutocompleteWordsResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -13312,15 +10567,6 @@ Schema: `CreateAutocompleteWordsResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13363,15 +10609,6 @@ Schema: `GetProductBundleListingResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13408,66 +10645,6 @@ Get bundle with id that is added. See example below or refer `GetProductBundleCr
 
 
 Schema: `GetProductBundleCreateResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### getProductBundleDetail
-Get a particular Product Bundle details
-
-```kotlin
-catalog.getProductBundleDetail(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
-
-
-
-Get a particular Bundle details by its `id`. If successful, returns a Product bundle resource in the response body specified in `GetProductBundleResponse`
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `GetProductBundleResponse` for details
-
-
-Schema: `GetProductBundleResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -13515,10 +10692,43 @@ Schema: `GetProductBundleCreateResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### getProductBundleDetail
+Get a particular Product Bundle details
+
+```kotlin
+catalog.getProductBundleDetail(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
+
+
+
+Get a particular Bundle details by its `id`. If successful, returns a Product bundle resource in the response body specified in `GetProductBundleResponse`
+
+*Success Response*
+
+
+
+The Collection object. See example below or refer `GetProductBundleResponse` for details
+
+
+Schema: `GetProductBundleResponse`
 
 
 
@@ -13570,15 +10780,6 @@ Schema: `ListSizeGuide`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13615,66 +10816,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### getSizeGuide
-Get a single size guide.
-
-```kotlin
-catalog.getSizeGuide(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to size guide. |   
-| id | String? | Id of the size guide to be viewed. |  
-
-
-
-This API helps to get data associated to a size guide.
-
-*Success Response*
-
-
-
-Brand object. See example below or refer `SizeGuideResponseSchema` for details
-
-
-Schema: `SizeGuideResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -13722,10 +10863,43 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### getSizeGuide
+Get a single size guide.
+
+```kotlin
+catalog.getSizeGuide(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to size guide. |   
+| id | String? | Id of the size guide to be viewed. |  
+
+
+
+This API helps to get data associated to a size guide.
+
+*Success Response*
+
+
+
+Brand object. See example below or refer `SizeGuideResponseSchema` for details
+
+
+Schema: `SizeGuideResponse`
 
 
 
@@ -13773,15 +10947,6 @@ Schema: `GetCatalogConfigurationMetaData`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13824,15 +10989,6 @@ Schema: `GetAppCatalogConfiguration`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13870,15 +11026,6 @@ success flag will tell whether the operation was successful.
 
 
 Schema: `GetAppCatalogConfiguration`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -13927,15 +11074,6 @@ Schema: `GetAppCatalogEntityConfiguration`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -13974,15 +11112,6 @@ success flag will tell whether the operation was successful.
 
 
 Schema: `GetAppCatalogConfiguration`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14030,15 +11159,6 @@ Schema: `GetCollectionQueryOptionResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14081,15 +11201,6 @@ Schema: `GetCollectionListingResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14127,15 +11238,6 @@ List of all the collections including the one you added. See example below or re
 
 
 Schema: `CollectionCreateResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14184,15 +11286,6 @@ Schema: `CollectionDetailResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14236,15 +11329,6 @@ Schema: `DeleteResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14283,15 +11367,6 @@ The Collection object. See example below or refer `UpdateCollectionSchema` for d
 
 
 Schema: `UpdateCollection`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14343,15 +11418,6 @@ Schema: `GetCollectionItemsResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14390,15 +11456,6 @@ Status object. Tells whether the operation was successful.
 
 
 Schema: `UpdatedResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14447,15 +11504,6 @@ Schema: `CatalogInsightResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14493,15 +11541,6 @@ Response Data
 
 
 Schema: `CrossSellingResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14549,15 +11588,6 @@ Schema: `UpdatedResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14599,15 +11629,6 @@ Schema: `GetOptInPlatform`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14644,15 +11665,6 @@ See example below or refer `OptinCompanyDetailSchema` for details
 
 
 Schema: `OptinCompanyDetail`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14704,15 +11716,6 @@ Schema: `OptinCompanyBrandDetailsView`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14749,15 +11752,6 @@ See example below or refer `OptinCompanyMetrics` for details
 
 
 Schema: `OptinCompanyMetrics`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14807,15 +11801,6 @@ Schema: `OptinStoreDetails`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -14853,15 +11838,6 @@ Size guide object. See example below or refer `GenderDetailSchema` for details
 
 
 Schema: `GenderDetail`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -14905,15 +11881,6 @@ List of all categories attached to departments specified. See example below or r
 
 
 Schema: `ProdcutTemplateCategoriesResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
 
 
 
@@ -14965,15 +11932,6 @@ Schema: `DepartmentsResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `DepartmentErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15011,15 +11969,6 @@ Departments Data. See example below or refer `DepartmentsResponse` for details
 
 
 Schema: `DepartmentsResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `DepartmentErrorResponse`
 
 
 
@@ -15067,15 +12016,6 @@ Schema: `TemplatesResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15113,15 +12053,6 @@ List of fields and validation values fro each. See example below or refer `Templ
 
 
 Schema: `TemplatesValidationResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
 
 
 
@@ -15169,15 +12100,6 @@ Schema: `String`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15215,15 +12137,6 @@ CSV File of product template data.
 
 
 Schema: `String`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
 
 
 
@@ -15271,15 +12184,6 @@ Schema: `InventoryValidationResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15316,15 +12220,6 @@ List of all HSN Codes. See example below or refer `HSNCodesResponse` for details
 
 
 Schema: `HSNCodesResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
 
 
 
@@ -15371,15 +12266,6 @@ Schema: `ProductDownloadsResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15417,15 +12303,6 @@ See example below or refer `ProductConfigurationDownloadsSchema` for details
 
 
 Schema: `ProductConfigurationDownloads`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `PTErrorResponse`
 
 
 
@@ -15477,15 +12354,6 @@ Schema: `CategoryResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15522,66 +12390,6 @@ Category Meta. See example below or refer `CategoryCreateResponse` for details
 
 
 Schema: `CategoryCreateResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### getCategoryData
-Get product category by uid
-
-```kotlin
-catalog.getCategoryData(companyId: companyId, uid: uid).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| uid | String? | Category unique id |  
-
-
-
-This API gets meta associated to product categories.
-
-*Success Response*
-
-
-
-Get Data for one category. See example below or refer `CategoryResponse` for details
-
-
-Schema: `SingleCategoryResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -15629,10 +12437,43 @@ Schema: `CategoryUpdateResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### getCategoryData
+Get product category by uid
+
+```kotlin
+catalog.getCategoryData(companyId: companyId, uid: uid).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String? | Category unique id |  
+
+
+
+This API gets meta associated to product categories.
+
+*Success Response*
+
+
+
+Get Data for one category. See example below or refer `CategoryResponse` for details
+
+
+Schema: `SingleCategoryResponse`
 
 
 
@@ -15684,15 +12525,6 @@ Schema: `ProductListingResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15729,15 +12561,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -15785,10 +12608,43 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### editProduct
+Edit a product.
+
+```kotlin
+catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to product that is to be viewed. |   
+| itemId | Int? | Id of the product to be updated. |  
+
+
+
+This API allows to edit product.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
 
 
 
@@ -15839,66 +12695,6 @@ Schema: `Product`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### editProduct
-Edit a product.
-
-```kotlin
-catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to product that is to be viewed. |   
-| itemId | Int? | Id of the product to be updated. |  
-
-
-
-This API allows to edit product.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -15935,15 +12731,6 @@ Validate Meta. See example below for details
 
 
 Schema: `ValidateProduct`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -15994,15 +12781,6 @@ Schema: `ProductListingResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16046,15 +12824,6 @@ Schema: `ProductBulkRequestList`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16091,15 +12860,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16147,15 +12907,6 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16198,15 +12949,6 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16243,15 +12985,6 @@ Tag List. See example below for details
 
 
 Schema: `ProductTagsViewResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16300,15 +13033,6 @@ Schema: `BulkAssetResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16345,15 +13069,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16397,15 +13112,6 @@ Returns a success response
 
 
 Schema: `ProductSizeDeleteResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16456,15 +13162,6 @@ Schema: `InventoryResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16503,15 +13200,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16560,15 +13248,6 @@ Schema: `InventoryDelete`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16607,15 +13286,6 @@ List of bulk Inventory upload jobs. See `BulkInventoryGetSchema` for details
 
 
 Schema: `BulkInventoryGet`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16662,15 +13332,6 @@ Schema: `CommonResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16707,15 +13368,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16762,15 +13414,6 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16807,15 +13450,6 @@ Returns a list of inventory export jobs
 
 
 Schema: `InventoryExportJob`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16862,15 +13496,6 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -16908,15 +13533,6 @@ returns filters configuration for inventory export
 
 
 Schema: `InventoryConfig`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -16966,15 +13582,6 @@ Schema: `HsnCodesListingResponse`
 
 
 
-Bad request.
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -17011,66 +13618,6 @@ See example below for details
 
 
 Schema: `HsnCode`
-
-
-
-
-
-Bad request.
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### getHsnCode
-Fetch Hsn Code.
-
-```kotlin
-catalog.getHsnCode(companyId: companyId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| id | String? | Unique id |  
-
-
-
-Fetch Hsn Code.
-
-*Success Response*
-
-
-
-See example below details
-
-
-Schema: `HsnCode`
-
-
-
-
-
-Bad request.
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -17118,10 +13665,43 @@ Schema: `HsnCode`
 
 
 
-Bad request.
+
+---
 
 
-Schema: `ErrorResponse`
+#### getHsnCode
+Fetch Hsn Code.
+
+```kotlin
+catalog.getHsnCode(companyId: companyId, id: id).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | company id |   
+| id | String? | Unique id |  
+
+
+
+Fetch Hsn Code.
+
+*Success Response*
+
+
+
+See example below details
+
+
+Schema: `HsnCode`
 
 
 
@@ -17163,15 +13743,6 @@ See example below for details
 
 
 Schema: `BulkHsnResponse`
-
-
-
-
-
-Bad request.
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -17222,15 +13793,6 @@ Schema: `BrandListingResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -17268,15 +13830,6 @@ List of Departments. See example below or refer `DepartmentResponse` for details
 
 
 Schema: `DepartmentResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -17320,15 +13873,6 @@ List of Categories. See example below or refer `CategoryListingResponse` for det
 
 
 Schema: `CategoryListingResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -17384,15 +13928,6 @@ Schema: `ApplicationProductListingResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -17436,15 +13971,6 @@ Schema: `ProductDetail`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -17455,56 +13981,6 @@ Schema: `ErrorResponse`
 
 
 ## CompanyProfile
-
-
-#### cbsOnboardGet
-Get company profile
-
-```kotlin
-companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
-
-
-
-This API allows to view the company profile of the seller account.
-
-*Success Response*
-
-
-
-Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
-
-
-Schema: `GetCompanyProfileSerializerResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
 
 
 #### updateCompany
@@ -17544,10 +14020,42 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### cbsOnboardGet
+Get company profile
+
+```kotlin
+companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
+
+
+
+This API allows to view the company profile of the seller account.
+
+*Success Response*
+
+
+
+Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
+
+
+Schema: `GetCompanyProfileSerializerResponse`
 
 
 
@@ -17589,66 +14097,6 @@ Metrics response object. See example below or refer `MetricsSerializer` for deta
 
 
 Schema: `MetricsSerializer`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### getBrand
-Get a single brand.
-
-```kotlin
-companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to brand that is to be viewed. |   
-| brandId | String? | Id of the brand to be viewed. |  
-
-
-
-This API helps to get data associated to a particular brand.
-
-*Success Response*
-
-
-
-Brand object. See example below or refer `GetBrandResponseSerializer` for details
-
-
-Schema: `GetBrandResponseSerializer`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -17696,10 +14144,43 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### getBrand
+Get a single brand.
+
+```kotlin
+companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company associated to brand that is to be viewed. |   
+| brandId | String? | Id of the brand to be viewed. |  
+
+
+
+This API helps to get data associated to a particular brand.
+
+*Success Response*
+
+
+
+Brand object. See example below or refer `GetBrandResponseSerializer` for details
+
+
+Schema: `GetBrandResponseSerializer`
 
 
 
@@ -17746,10 +14227,42 @@ Schema: `SuccessResponse`
 
 
 
-Bad request. See the error object in the response body for specific reason
+
+---
 
 
-Schema: `ErrorResponse`
+#### createCompanyBrandMapping
+Create a company brand mapping.
+
+```kotlin
+companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+| Argument  |  Type  | Description |
+| --------- | ----  | --- | 
+| companyId | String? | Id of the company inside which the brand is to be mapped. |  
+
+
+
+This API allows to create a company brand mapping, for a already existing brand in the system.
+
+*Success Response*
+
+
+
+Returns a success response
+
+
+Schema: `SuccessResponse`
 
 
 
@@ -17798,24 +14311,15 @@ Schema: `CompanyBrandListSerializer`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
 
-#### createCompanyBrandMapping
-Create a company brand mapping.
+#### createLocation
+Create a location asscoiated to a company.
 
 ```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17829,11 +14333,11 @@ companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeA
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the brand is to be mapped. |  
+| companyId | String? | Id of the company inside which the location is to be created. |  
 
 
 
-This API allows to create a company brand mapping, for a already existing brand in the system.
+This API allows to create a location associated to a company.
 
 *Success Response*
 
@@ -17843,15 +14347,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -17903,24 +14398,15 @@ Schema: `LocationListSerializer`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
 
-#### createLocation
-Create a location asscoiated to a company.
+#### updateLocation
+Edit a location asscoiated to a company.
 
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17934,11 +14420,12 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 
 | Argument  |  Type  | Description |
 | --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |  
+| companyId | String? | Id of the company inside which the location is to be created. |   
+| locationId | String? | Id of the location which you want to edit. |  
 
 
 
-This API allows to create a location associated to a company.
+This API allows to edit a location associated to a company.
 
 *Success Response*
 
@@ -17948,15 +14435,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -18004,66 +14482,6 @@ Schema: `GetLocationSerializer`
 
 
 
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
-
----
-
-
-#### updateLocation
-Edit a location asscoiated to a company.
-
-```kotlin
-companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |   
-| locationId | String? | Id of the location which you want to edit. |  
-
-
-
-This API allows to edit a location associated to a company.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -18100,15 +14518,6 @@ Returns a success response
 
 
 Schema: `SuccessResponse`
-
-
-
-
-
-Bad request. See the error object in the response body for specific reason
-
-
-Schema: `ErrorResponse`
 
 
 
@@ -18182,15 +14591,6 @@ Schema: `StartResponse`
 
 
 
-Failed
-
-
-Schema: `FailedResponse`
-
-
-
-
-
 
 ---
 
@@ -18246,15 +14646,6 @@ Success
 
 
 Schema: `CompleteResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `FailedResponse`
 
 
 
@@ -18321,15 +14712,6 @@ Schema: `StartResponse`
 
 
 
-Failed
-
-
-Schema: `FailedResponse`
-
-
-
-
-
 
 ---
 
@@ -18391,15 +14773,6 @@ Schema: `CompleteResponse`
 
 
 
-Failed
-
-
-Schema: `FailedResponse`
-
-
-
-
-
 
 ---
 
@@ -18436,15 +14809,6 @@ Success
 
 
 Schema: `SignUrlResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `FailedResponse`
 
 
 
@@ -18487,15 +14851,6 @@ Success
 
 
 Schema: `BulkResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `FailedResponse`
 
 
 
@@ -18544,15 +14899,6 @@ Schema: `BulkResponse`
 
 
 
-Failed
-
-
-Schema: `FailedResponse`
-
-
-
-
-
 
 ---
 
@@ -18591,15 +14937,6 @@ Success
 
 
 Schema: `BrowseResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `FailedResponse`
 
 
 
@@ -18644,15 +14981,6 @@ Success
 
 
 Schema: `BrowseResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `FailedResponse`
 
 
 
@@ -18750,15 +15078,6 @@ Schema: `ShortLinkRes`
 
 
 
-Error
-
-
-Schema: `ErrorRes`
-
-
-
-
-
 
 ---
 
@@ -18801,15 +15120,6 @@ Success
 
 
 Schema: `ShortLinkList`
-
-
-
-
-
-Error
-
-
-Schema: `ErrorRes`
 
 
 
@@ -18858,15 +15168,6 @@ Schema: `ShortLinkRes`
 
 
 
-Error
-
-
-Schema: `ErrorRes`
-
-
-
-
-
 
 ---
 
@@ -18905,15 +15206,6 @@ Success
 
 
 Schema: `ShortLinkRes`
-
-
-
-
-
-Error
-
-
-Schema: `ErrorRes`
 
 
 
@@ -18970,24 +15262,6 @@ Schema: `ResponseEnvelopeListJobConfigRawDTO`
 
 
 
-Bad Request
-
-
-Schema: `ResponseEnvelopeListJobConfigRawDTO`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ResponseEnvelopeListJobConfigRawDTO`
-
-
-
-
-
 
 ---
 
@@ -19017,42 +15291,6 @@ inventory.updateJob(companyId: companyId, body: body).safeAwait{ response,error-
 REST Endpoint that updates a job config
 
 *Success Response*
-
-
-
-Job Config Updated Successfully
-
-
-Schema: `ResponseEnvelopeString`
-
-
-
-
-
-Bad Request
-
-
-Schema: `ResponseEnvelopeString`
-
-
-
-
-
-Unauthorized
-
-
-Schema: `ResponseEnvelopeString`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ResponseEnvelopeString`
-
-
 
 
 
@@ -19089,42 +15327,6 @@ REST Endpoint that creates a new job config
 
 
 Job Config Created Successfully
-
-
-Schema: `ResponseEnvelopeString`
-
-
-
-
-
-Bad Request
-
-
-Schema: `ResponseEnvelopeString`
-
-
-
-
-
-Unauthorized
-
-
-Schema: `ResponseEnvelopeString`
-
-
-
-
-
-Job Config Already Exists
-
-
-Schema: `ResponseEnvelopeString`
-
-
-
-
-
-Internal Server Error
 
 
 Schema: `ResponseEnvelopeString`
@@ -19177,24 +15379,6 @@ Schema: `ResponseEnvelopeListJobConfigDTO`
 
 
 
-Bad Request
-
-
-Schema: `ResponseEnvelopeListJobConfigDTO`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ResponseEnvelopeListJobConfigDTO`
-
-
-
-
-
 
 ---
 
@@ -19228,24 +15412,6 @@ REST Endpoint that returns default fields job configs by company And integration
 
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeJobConfigDTO`
-
-
-
-
-
-Bad Request
-
-
-Schema: `ResponseEnvelopeJobConfigDTO`
-
-
-
-
-
-Internal Server Error
 
 
 Schema: `ResponseEnvelopeJobConfigDTO`
@@ -19288,24 +15454,6 @@ REST Endpoint that returns job config by code
 
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeJobConfigDTO`
-
-
-
-
-
-Bad Request
-
-
-Schema: `ResponseEnvelopeJobConfigDTO`
-
-
-
-
-
-Internal Server Error
 
 
 Schema: `ResponseEnvelopeJobConfigDTO`
@@ -19358,24 +15506,6 @@ Schema: `ResponseEnvelopeJobMetricsDto`
 
 
 
-Bad Request
-
-
-Schema: `ResponseEnvelopeJobMetricsDto`
-
-
-
-
-
-Internal Server Error
-
-
-Schema: `ResponseEnvelopeJobMetricsDto`
-
-
-
-
-
 
 ---
 
@@ -19412,24 +15542,6 @@ REST Endpoint that returns all job codes by company And integration
 
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeListJobConfigListDTO`
-
-
-
-
-
-Bad Request
-
-
-Schema: `ResponseEnvelopeListJobConfigListDTO`
-
-
-
-
-
-Internal Server Error
 
 
 Schema: `ResponseEnvelopeListJobConfigListDTO`
@@ -19612,15 +15724,6 @@ Success
 
 
 Schema: `AppFeatureResponse`
-
-
-
-
-
-Not found
-
-
-Schema: `NotFound`
 
 
 
@@ -20304,15 +16407,6 @@ Schema: `DeploymentMeta`
 
 
 
-Invalid/Missing params
-
-
-Schema: `InvalidPayloadRequest`
-
-
-
-
-
 
 ---
 
@@ -20397,15 +16491,6 @@ Schema: `Domain`
 
 
 
-Invalid/Missing params
-
-
-Schema: `InvalidPayloadRequest`
-
-
-
-
-
 
 ---
 
@@ -20449,24 +16534,6 @@ Schema: `SuccessMessageResponse`
 
 
 
-Invalid request or Missing params
-
-
-Schema: `InvalidPayloadRequest`
-
-
-
-
-
-Invalid/Missing params
-
-
-Schema: `NotFound`
-
-
-
-
-
 
 ---
 
@@ -20504,15 +16571,6 @@ Success
 
 
 Schema: `DomainsResponse`
-
-
-
-
-
-Invalid/Missing params
-
-
-Schema: `NotFound`
 
 
 
@@ -21245,15 +17303,6 @@ Schema: `OptedApplicationResponse`
 
 
 
-Not found
-
-
-Schema: `NotFound`
-
-
-
-
-
 
 ---
 
@@ -21291,24 +17340,6 @@ Success
 
 
 Schema: `SuccessMessageResponse`
-
-
-
-
-
-Invalid params or Not configured inventory
-
-
-Schema: `InvalidPayloadRequest`
-
-
-
-
-
-Not found
-
-
-Schema: `NotFound`
 
 
 
@@ -21405,24 +17436,6 @@ Create new coupon
 
 
 
-Coupon Created successfully
-
-
-Schema: `SuccessMessage`
-
-
-
-
-
-Invalid coupon data or existing coupon code
-
-
-Schema: `OperationErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -21461,15 +17474,6 @@ Coupon object for sent `id`
 
 
 Schema: `CouponUpdate`
-
-
-
-
-
-Coupon not found for passed `id`
-
-
-Schema: `OperationErrorResponse`
 
 
 
@@ -21518,15 +17522,6 @@ Schema: `SuccessMessage`
 
 
 
-Coupon not found for `id` from path params
-
-
-Schema: `OperationErrorResponse`
-
-
-
-
-
 
 ---
 
@@ -21565,15 +17560,6 @@ Coupon updated successfully
 
 
 Schema: `SuccessMessage`
-
-
-
-
-
-Coupon not found for `id` from path params
-
-
-Schema: `OperationErrorResponse`
 
 
 
@@ -21631,15 +17617,6 @@ Schema: `GiveawayResponse`
 
 
 
-Bad request
-
-
-Schema: `E`
-
-
-
-
-
 
 ---
 
@@ -21677,15 +17654,6 @@ ok
 
 
 Schema: `Giveaway`
-
-
-
-
-
-Bad request
-
-
-Schema: `E`
 
 
 
@@ -21734,15 +17702,6 @@ Schema: `Giveaway`
 
 
 
-Bad request
-
-
-Schema: `E`
-
-
-
-
-
 
 ---
 
@@ -21786,15 +17745,6 @@ Schema: `Giveaway`
 
 
 
-Bad request
-
-
-Schema: `E`
-
-
-
-
-
 
 ---
 
@@ -21832,15 +17782,6 @@ ok
 
 
 Schema: `ArrayList<Offer>`
-
-
-
-
-
-Bad request
-
-
-Schema: `E`
 
 
 
@@ -21890,15 +17831,6 @@ Schema: `Offer`
 
 
 
-Bad request
-
-
-Schema: `E`
-
-
-
-
-
 
 ---
 
@@ -21937,15 +17869,6 @@ ok
 
 
 Schema: `Offer`
-
-
-
-
-
-Bad request
-
-
-Schema: `E`
 
 
 
@@ -21994,15 +17917,6 @@ Schema: `UserRes`
 
 
 
-Bad request
-
-
-Schema: `E`
-
-
-
-
-
 
 ---
 
@@ -22041,15 +17955,6 @@ Success
 
 
 Schema: `AppUser`
-
-
-
-
-
-Bad Request
-
-
-Schema: `E`
 
 
 
@@ -22097,15 +18002,6 @@ ok
 
 
 Schema: `HistoryRes`
-
-
-
-
-
-Bad request
-
-
-Schema: `E`
 
 
 
@@ -22161,15 +18057,6 @@ Schema: `StatsGroups`
 
 
 
-Error
-
-
-Schema: `ErrorRes`
-
-
-
-
-
 
 ---
 
@@ -22208,15 +18095,6 @@ Success
 
 
 Schema: `StatsGroupComponents`
-
-
-
-
-
-Error
-
-
-Schema: `ErrorRes`
 
 
 
@@ -22265,15 +18143,6 @@ Schema: `String`
 
 
 
-Error
-
-
-Schema: `ErrorRes`
-
-
-
-
-
 
 ---
 
@@ -22317,15 +18186,6 @@ Schema: `String`
 
 
 
-Error
-
-
-Schema: `ErrorRes`
-
-
-
-
-
 
 ---
 
@@ -22364,15 +18224,6 @@ Success
 
 
 Schema: `StatsRes`
-
-
-
-
-
-Error
-
-
-Schema: `ErrorRes`
 
 
 
@@ -22424,15 +18275,6 @@ Schema: `AbandonCartsList`
 
 
 
-Error
-
-
-Schema: `ErrorRes`
-
-
-
-
-
 
 ---
 
@@ -22472,15 +18314,6 @@ Success
 
 
 Schema: `String`
-
-
-
-
-
-Error
-
-
-Schema: `ErrorRes`
 
 
 
@@ -22760,15 +18593,6 @@ Schema: `ListOrCalender`
 
 
 
-Failed
-
-
-Schema: `BadRequestObject`
-
-
-
-
-
 
 ---
 
@@ -22805,15 +18629,6 @@ Success
 
 
 Schema: `DiscountJob`
-
-
-
-
-
-Failed
-
-
-Schema: `BadRequestObject`
 
 
 
@@ -22861,15 +18676,6 @@ Schema: `DiscountJob`
 
 
 
-Failed
-
-
-Schema: `BadRequestObject`
-
-
-
-
-
 
 ---
 
@@ -22907,15 +18713,6 @@ Success
 
 
 Schema: `DiscountJob`
-
-
-
-
-
-Failed
-
-
-Schema: `BadRequestObject`
 
 
 
@@ -22963,15 +18760,6 @@ Schema: `FileJobResponse`
 
 
 
-Failed
-
-
-Schema: `BadRequestObject`
-
-
-
-
-
 
 ---
 
@@ -23009,15 +18797,6 @@ Success
 
 
 Schema: `FileJobResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `BadRequestObject`
 
 
 
@@ -23065,15 +18844,6 @@ Schema: `FileJobResponse`
 
 
 
-Failed
-
-
-Schema: `BadRequestObject`
-
-
-
-
-
 
 ---
 
@@ -23111,15 +18881,6 @@ Success
 
 
 Schema: `CancelJobResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `BadRequestObject`
 
 
 
@@ -23167,15 +18928,6 @@ Schema: `FileJobResponse`
 
 
 
-Failed
-
-
-Schema: `BadRequestObject`
-
-
-
-
-
 
 ---
 
@@ -23213,15 +18965,6 @@ Success
 
 
 Schema: `CancelJobResponse`
-
-
-
-
-
-Failed
-
-
-Schema: `BadRequestObject`
 
 
 
@@ -23278,15 +19021,6 @@ Schema: `AddProxyResponse`
 
 
 
-Duplicate proxy path
-
-
-Schema: `ApiError`
-
-
-
-
-
 
 ---
 
@@ -23319,24 +19053,6 @@ partner.removeProxyPath(companyId: companyId, applicationId: applicationId, exte
 Remove proxy path for external url
 
 *Success Response*
-
-
-
-Success
-
-
-Schema: `RemoveProxyResponse`
-
-
-
-
-
-Entry not found attached path
-
-
-Schema: `ApiError`
-
-
 
 
 

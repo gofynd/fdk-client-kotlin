@@ -738,7 +738,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null, body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null, body: ApplyCouponRequest): Deferred<Response<Any>>? {
         return cartApiList?.applyCoupon(i = i, b = b, p = p, uid = uid, body = body)}
 
     
@@ -773,17 +773,17 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun updateAddress(id: Int, body: Address): Deferred<Response<UpdateAddressResponse>>? {
+    fun updateAddress(id: Int, body: Address): Deferred<Response<Any>>? {
         return cartApiList?.updateAddress(id = id, body = body)}
 
     
     
-    fun removeAddress(id: Int): Deferred<Response<DeleteAddressResponse>>? {
+    fun removeAddress(id: Int): Deferred<Response<Any>>? {
         return cartApiList?.removeAddress(id = id)}
 
     
     
-    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
+    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<Any>>? {
         return cartApiList?.selectAddress(uid = uid, i = i, b = b, body = body)}
 
     
@@ -2757,7 +2757,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null, body: ApplyCouponRequest): Deferred<Response<CartResponse>>? {
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, uid: Int?=null, body: ApplyCouponRequest): Deferred<Response<Any>>? {
         return posCartApiList?.applyCoupon(i = i, b = b, p = p, uid = uid, body = body)}
 
     
@@ -2792,17 +2792,17 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun updateAddress(id: Int, body: Address): Deferred<Response<UpdateAddressResponse>>? {
+    fun updateAddress(id: Int, body: Address): Deferred<Response<Any>>? {
         return posCartApiList?.updateAddress(id = id, body = body)}
 
     
     
-    fun removeAddress(id: Int): Deferred<Response<DeleteAddressResponse>>? {
+    fun removeAddress(id: Int): Deferred<Response<Any>>? {
         return posCartApiList?.removeAddress(id = id)}
 
     
     
-    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartResponse>>? {
+    fun selectAddress(uid: Int?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<Any>>? {
         return posCartApiList?.selectAddress(uid = uid, i = i, b = b, body = body)}
 
     

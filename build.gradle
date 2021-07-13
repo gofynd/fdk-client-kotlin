@@ -14,7 +14,6 @@ buildscript {
     }
 }
 
-apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -27,7 +26,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 2
-        versionName "0.0.762"
+        versionName "0.0.763"
         multiDexEnabled true
 
         vectorDrawables.useSupportLibrary = true
@@ -74,6 +73,14 @@ android {
         }
 
         debug {
+            minifyEnabled false
+            versionNameSuffix "snapshot"
+            resValue "string", "app_name_header", System.getenv("APP_NAME_USER_AGENT") as String ?: "Fynd-Platform"
+            resValue "string", "auth_user_name", System.getenv("AUTH_USER_NAME") as String ?: "slingshotapptoken"
+            resValue "string", "auth_user_password", System.getenv("AUTH_USER_PASSWORD") as String ?: "slingsh0t@ppt0ken#fynd"
+        }
+
+        pre_release{
             minifyEnabled false
             versionNameSuffix "snapshot"
             resValue "string", "app_name_header", System.getenv("APP_NAME_USER_AGENT") as String ?: "Fynd-Platform"

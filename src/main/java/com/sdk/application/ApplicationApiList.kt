@@ -184,7 +184,7 @@ interface CartApiList {
     
     @POST ("/service/application/cart/v1.0/coupon")
     fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Body body: ApplyCouponRequest)
-    : Deferred<Response<CartResponse>>
+    : Deferred<Response<Any>>
     
     
     @DELETE ("/service/application/cart/v1.0/coupon")
@@ -219,17 +219,17 @@ interface CartApiList {
     
     @PUT ("/service/application/cart/v1.0/address/{id}")
     fun updateAddress(@Path("id") id: Int, @Body body: Address)
-    : Deferred<Response<UpdateAddressResponse>>
+    : Deferred<Response<Any>>
     
     
     @DELETE ("/service/application/cart/v1.0/address/{id}")
     fun removeAddress(@Path("id") id: Int)
-    : Deferred<Response<DeleteAddressResponse>>
+    : Deferred<Response<Any>>
     
     
     @POST ("/service/application/cart/v1.0/select-address")
     fun selectAddress(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
-    : Deferred<Response<CartResponse>>
+    : Deferred<Response<Any>>
     
     
     @PUT ("/service/application/cart/v1.0/payment")
@@ -1100,7 +1100,7 @@ interface PosCartApiList {
     
     @POST ("/service/application/pos/cart/v1.0/coupon")
     fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("uid") uid: Int?, @Body body: ApplyCouponRequest)
-    : Deferred<Response<CartResponse>>
+    : Deferred<Response<Any>>
     
     
     @DELETE ("/service/application/pos/cart/v1.0/coupon")
@@ -1135,17 +1135,17 @@ interface PosCartApiList {
     
     @PUT ("/service/application/pos/cart/v1.0/address/{id}")
     fun updateAddress(@Path("id") id: Int, @Body body: Address)
-    : Deferred<Response<UpdateAddressResponse>>
+    : Deferred<Response<Any>>
     
     
     @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
     fun removeAddress(@Path("id") id: Int)
-    : Deferred<Response<DeleteAddressResponse>>
+    : Deferred<Response<Any>>
     
     
     @POST ("/service/application/pos/cart/v1.0/select-address")
     fun selectAddress(@Query("uid") uid: Int?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
-    : Deferred<Response<CartResponse>>
+    : Deferred<Response<Any>>
     
     
     @PUT ("/service/application/pos/cart/v1.0/payment")
