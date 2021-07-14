@@ -1,3 +1,5 @@
+
+
 # FDK Platform Front API Documentaion
 
 
@@ -26,15 +28,14 @@
 * [Webhook](#Webhook) - Webhook dispatcher with retry and one event to many subscriber vice versa 
 
 ----
-----
 
 ### Classes and Methods
 
 
-* [Common](#Common)
+* ## [Common](#Common)
   * [Common#getLocations](#commongetlocations)
  
-* [Lead](#Lead)
+* ## [Lead](#Lead)
   * [Lead#getTickets](#leadgettickets)
   * [Lead#createTicket](#leadcreateticket)
   * [Lead#getTickets](#leadgettickets)
@@ -59,7 +60,7 @@
   * [Lead#openVideoRoom](#leadopenvideoroom)
   * [Lead#closeVideoRoom](#leadclosevideoroom)
  
-* [Feedback](#Feedback)
+* ## [Feedback](#Feedback)
   * [Feedback#getAttributes](#feedbackgetattributes)
   * [Feedback#getCustomerReviews](#feedbackgetcustomerreviews)
   * [Feedback#updateApprove](#feedbackupdateapprove)
@@ -70,7 +71,7 @@
   * [Feedback#updateTemplate](#feedbackupdatetemplate)
   * [Feedback#updateTemplateStatus](#feedbackupdatetemplatestatus)
  
-* [Theme](#Theme)
+* ## [Theme](#Theme)
   * [Theme#getAllPages](#themegetallpages)
   * [Theme#createPage](#themecreatepage)
   * [Theme#updateMultiplePages](#themeupdatemultiplepages)
@@ -95,7 +96,7 @@
   * [Theme#archiveTheme](#themearchivetheme)
   * [Theme#unarchiveTheme](#themeunarchivetheme)
  
-* [User](#User)
+* ## [User](#User)
   * [User#getCustomers](#usergetcustomers)
   * [User#searchUsers](#usersearchusers)
   * [User#createUser](#usercreateuser)
@@ -104,7 +105,7 @@
   * [User#getPlatformConfig](#usergetplatformconfig)
   * [User#updatePlatformConfig](#userupdateplatformconfig)
  
-* [Content](#Content)
+* ## [Content](#Content)
   * [Content#getAnnouncementsList](#contentgetannouncementslist)
   * [Content#createAnnouncement](#contentcreateannouncement)
   * [Content#getAnnouncementById](#contentgetannouncementbyid)
@@ -163,7 +164,7 @@
   * [Content#removeInjectableTag](#contentremoveinjectabletag)
   * [Content#editInjectableTag](#contenteditinjectabletag)
  
-* [Assignment](#Assignment)
+* ## [Assignment](#Assignment)
   * [Assignment#createPickupLocation](#assignmentcreatepickuplocation)
   * [Assignment#getPickupLocation](#assignmentgetpickuplocation)
   * [Assignment#updatePickupLocation](#assignmentupdatepickuplocation)
@@ -182,7 +183,7 @@
   * [Assignment#getDestinationZoneById](#assignmentgetdestinationzonebyid)
   * [Assignment#updateDestinationZone](#assignmentupdatedestinationzone)
  
-* [Billing](#Billing)
+* ## [Billing](#Billing)
   * [Billing#createSubscriptionCharge](#billingcreatesubscriptioncharge)
   * [Billing#getSubscriptionCharge](#billinggetsubscriptioncharge)
   * [Billing#cancelSubscriptionCharge](#billingcancelsubscriptioncharge)
@@ -195,7 +196,7 @@
   * [Billing#activateSubscriptionPlan](#billingactivatesubscriptionplan)
   * [Billing#cancelSubscriptionPlan](#billingcancelsubscriptionplan)
  
-* [Communication](#Communication)
+* ## [Communication](#Communication)
   * [Communication#getCampaigns](#communicationgetcampaigns)
   * [Communication#createCampaign](#communicationcreatecampaign)
   * [Communication#getCampaignById](#communicationgetcampaignbyid)
@@ -234,7 +235,7 @@
   * [Communication#deleteSmsTemplateById](#communicationdeletesmstemplatebyid)
   * [Communication#getSystemSystemTemplates](#communicationgetsystemsystemtemplates)
  
-* [Payment](#Payment)
+* ## [Payment](#Payment)
   * [Payment#getBrandPaymentGatewayConfig](#paymentgetbrandpaymentgatewayconfig)
   * [Payment#saveBrandPaymentGatewayConfig](#paymentsavebrandpaymentgatewayconfig)
   * [Payment#updateBrandPaymentGatewayConfig](#paymentupdatebrandpaymentgatewayconfig)
@@ -253,7 +254,7 @@
   * [Payment#getUserOrderBeneficiaries](#paymentgetuserorderbeneficiaries)
   * [Payment#getUserBeneficiaries](#paymentgetuserbeneficiaries)
  
-* [Order](#Order)
+* ## [Order](#Order)
   * [Order#shipmentStatusUpdate](#ordershipmentstatusupdate)
   * [Order#activityStatus](#orderactivitystatus)
   * [Order#storeProcessShipmentUpdate](#orderstoreprocessshipmentupdate)
@@ -274,25 +275,25 @@
   * [Order#voiceCallback](#ordervoicecallback)
   * [Order#voiceClickToCall](#ordervoiceclicktocall)
  
-* [Catalog](#Catalog)
+* ## [Catalog](#Catalog)
+  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#deleteSearchKeywords](#catalogdeletesearchkeywords)
   * [Catalog#updateSearchKeywords](#catalogupdatesearchkeywords)
-  * [Catalog#getSearchKeywords](#cataloggetsearchkeywords)
   * [Catalog#getAllSearchKeyword](#cataloggetallsearchkeyword)
   * [Catalog#createCustomKeyword](#catalogcreatecustomkeyword)
+  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#deleteAutocompleteKeyword](#catalogdeleteautocompletekeyword)
   * [Catalog#updateAutocompleteKeyword](#catalogupdateautocompletekeyword)
-  * [Catalog#getAutocompleteKeywordDetail](#cataloggetautocompletekeyworddetail)
   * [Catalog#getAutocompleteConfig](#cataloggetautocompleteconfig)
   * [Catalog#createCustomAutocompleteRule](#catalogcreatecustomautocompleterule)
   * [Catalog#getProductBundle](#cataloggetproductbundle)
   * [Catalog#createProductBundle](#catalogcreateproductbundle)
-  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getProductBundleDetail](#cataloggetproductbundledetail)
+  * [Catalog#updateProductBundle](#catalogupdateproductbundle)
   * [Catalog#getSizeGuides](#cataloggetsizeguides)
   * [Catalog#createSizeGuide](#catalogcreatesizeguide)
-  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getSizeGuide](#cataloggetsizeguide)
+  * [Catalog#updateSizeGuide](#catalogupdatesizeguide)
   * [Catalog#getCatalogConfiguration](#cataloggetcatalogconfiguration)
   * [Catalog#getConfigurations](#cataloggetconfigurations)
   * [Catalog#createConfigurationProductListing](#catalogcreateconfigurationproductlisting)
@@ -302,8 +303,8 @@
   * [Catalog#getAllCollections](#cataloggetallcollections)
   * [Catalog#createCollection](#catalogcreatecollection)
   * [Catalog#getCollectionDetail](#cataloggetcollectiondetail)
-  * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#deleteCollection](#catalogdeletecollection)
+  * [Catalog#updateCollection](#catalogupdatecollection)
   * [Catalog#getCollectionItems](#cataloggetcollectionitems)
   * [Catalog#addCollectionItems](#catalogaddcollectionitems)
   * [Catalog#getCatalogInsights](#cataloggetcataloginsights)
@@ -328,19 +329,19 @@
   * [Catalog#listTemplateBrandTypeValues](#cataloglisttemplatebrandtypevalues)
   * [Catalog#listCategories](#cataloglistcategories)
   * [Catalog#createCategories](#catalogcreatecategories)
-  * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getCategoryData](#cataloggetcategorydata)
+  * [Catalog#updateCategory](#catalogupdatecategory)
   * [Catalog#getProducts](#cataloggetproducts)
   * [Catalog#createProduct](#catalogcreateproduct)
+  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#deleteProduct](#catalogdeleteproduct)
   * [Catalog#editProduct](#catalogeditproduct)
-  * [Catalog#getProduct](#cataloggetproduct)
   * [Catalog#getProductValidation](#cataloggetproductvalidation)
   * [Catalog#getProductSize](#cataloggetproductsize)
   * [Catalog#getProductBulkUploadHistory](#cataloggetproductbulkuploadhistory)
   * [Catalog#updateProductAssetsInBulk](#catalogupdateproductassetsinbulk)
-  * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
   * [Catalog#deleteProductBulkJob](#catalogdeleteproductbulkjob)
+  * [Catalog#createProductsInBulk](#catalogcreateproductsinbulk)
   * [Catalog#getCompanyTags](#cataloggetcompanytags)
   * [Catalog#getProductAssetsInBulk](#cataloggetproductassetsinbulk)
   * [Catalog#createProductAssetsInBulk](#catalogcreateproductassetsinbulk)
@@ -350,15 +351,15 @@
   * [Catalog#deleteInventory](#catalogdeleteinventory)
   * [Catalog#getInventoryBulkUploadHistory](#cataloggetinventorybulkuploadhistory)
   * [Catalog#createBulkInventoryJob](#catalogcreatebulkinventoryjob)
-  * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
   * [Catalog#deleteBulkInventoryJob](#catalogdeletebulkinventoryjob)
+  * [Catalog#createBulkInventory](#catalogcreatebulkinventory)
   * [Catalog#getInventoryExport](#cataloggetinventoryexport)
   * [Catalog#createInventoryExportJob](#catalogcreateinventoryexportjob)
   * [Catalog#exportInventoryConfig](#catalogexportinventoryconfig)
   * [Catalog#getAllHsnCodes](#cataloggetallhsncodes)
   * [Catalog#createHsnCode](#catalogcreatehsncode)
-  * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#getHsnCode](#cataloggethsncode)
+  * [Catalog#updateHsnCode](#catalogupdatehsncode)
   * [Catalog#bulkHsnCode](#catalogbulkhsncode)
   * [Catalog#getApplicationBrands](#cataloggetapplicationbrands)
   * [Catalog#getDepartments](#cataloggetdepartments)
@@ -366,7 +367,7 @@
   * [Catalog#getAppicationProducts](#cataloggetappicationproducts)
   * [Catalog#getProductDetailBySlug](#cataloggetproductdetailbyslug)
  
-* [CompanyProfile](#CompanyProfile)
+* ## [CompanyProfile](#CompanyProfile)
   * [CompanyProfile#cbsOnboardGet](#companyprofilecbsonboardget)
   * [CompanyProfile#updateCompany](#companyprofileupdatecompany)
   * [CompanyProfile#getCompanyMetrics](#companyprofilegetcompanymetrics)
@@ -381,7 +382,7 @@
   * [CompanyProfile#updateLocation](#companyprofileupdatelocation)
   * [CompanyProfile#createLocationBulk](#companyprofilecreatelocationbulk)
  
-* [FileStorage](#FileStorage)
+* ## [FileStorage](#FileStorage)
   * [FileStorage#startUpload](#filestoragestartupload)
   * [FileStorage#completeUpload](#filestoragecompleteupload)
   * [FileStorage#appStartUpload](#filestorageappstartupload)
@@ -393,13 +394,13 @@
   * [FileStorage#browse](#filestoragebrowse)
   * [FileStorage#proxy](#filestorageproxy)
  
-* [Share](#Share)
+* ## [Share](#Share)
   * [Share#createShortLink](#sharecreateshortlink)
   * [Share#getShortLinks](#sharegetshortlinks)
   * [Share#getShortLinkByHash](#sharegetshortlinkbyhash)
   * [Share#updateShortLinkById](#shareupdateshortlinkbyid)
  
-* [Inventory](#Inventory)
+* ## [Inventory](#Inventory)
   * [Inventory#getJobsByCompany](#inventorygetjobsbycompany)
   * [Inventory#updateJob](#inventoryupdatejob)
   * [Inventory#createJob](#inventorycreatejob)
@@ -409,7 +410,7 @@
   * [Inventory#getJobCodeMetrics](#inventorygetjobcodemetrics)
   * [Inventory#getJobCodesByCompanyAndIntegration](#inventorygetjobcodesbycompanyandintegration)
  
-* [Configuration](#Configuration)
+* ## [Configuration](#Configuration)
   * [Configuration#getBuildConfig](#configurationgetbuildconfig)
   * [Configuration#updateBuildConfig](#configurationupdatebuildconfig)
   * [Configuration#getPreviousVersions](#configurationgetpreviousversions)
@@ -453,14 +454,14 @@
   * [Configuration#getOtherSellerApplicationById](#configurationgetothersellerapplicationbyid)
   * [Configuration#optOutFromApplication](#configurationoptoutfromapplication)
  
-* [Cart](#Cart)
+* ## [Cart](#Cart)
   * [Cart#getCoupons](#cartgetcoupons)
   * [Cart#createCoupon](#cartcreatecoupon)
   * [Cart#getCouponById](#cartgetcouponbyid)
   * [Cart#updateCoupon](#cartupdatecoupon)
   * [Cart#updateCouponPartially](#cartupdatecouponpartially)
  
-* [Rewards](#Rewards)
+* ## [Rewards](#Rewards)
   * [Rewards#getGiveaways](#rewardsgetgiveaways)
   * [Rewards#createGiveaway](#rewardscreategiveaway)
   * [Rewards#getGiveawayByID](#rewardsgetgiveawaybyid)
@@ -472,7 +473,7 @@
   * [Rewards#updateUserStatus](#rewardsupdateuserstatus)
   * [Rewards#getUserPointsHistory](#rewardsgetuserpointshistory)
  
-* [Analytics](#Analytics)
+* ## [Analytics](#Analytics)
   * [Analytics#getStatiscticsGroups](#analyticsgetstatiscticsgroups)
   * [Analytics#getStatiscticsGroupComponents](#analyticsgetstatiscticsgroupcomponents)
   * [Analytics#getComponentStatsCSV](#analyticsgetcomponentstatscsv)
@@ -486,7 +487,7 @@
   * [Analytics#getLogsList](#analyticsgetlogslist)
   * [Analytics#searchLogs](#analyticssearchlogs)
  
-* [Discount](#Discount)
+* ## [Discount](#Discount)
   * [Discount#getDiscounts](#discountgetdiscounts)
   * [Discount#createDiscount](#discountcreatediscount)
   * [Discount#getDiscount](#discountgetdiscount)
@@ -498,17 +499,16 @@
   * [Discount#getDownloadJob](#discountgetdownloadjob)
   * [Discount#cancelDownloadJob](#discountcanceldownloadjob)
  
-* [Partner](#Partner)
+* ## [Partner](#Partner)
   * [Partner#addProxyPath](#partneraddproxypath)
   * [Partner#removeProxyPath](#partnerremoveproxypath)
  
-* [Webhook](#Webhook)
+* ## [Webhook](#Webhook)
   * [Webhook#getSubscribersByCompanyAndEventId](#webhookgetsubscribersbycompanyandeventid)
   * [Webhook#registerSubscriberToEvent](#webhookregistersubscribertoevent)
   * [Webhook#updateSubscriberConfig](#webhookupdatesubscriberconfig)
  
 
----
 ---
 
 
@@ -519,8 +519,10 @@
 #### getLocations
 Get countries, states, cities
 
+
+
 ```kotlin
-common.getLocations(locationType: locationType, id: id).safeAwait{ response,error->
+common.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -532,25 +534,21 @@ common.getLocations(locationType: locationType, id: id).safeAwait{ response,erro
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| locationType | String? | Provide location type to query on |   
-| id | String? | Field is optional when location_type is country. If querying for state, provide id of country. If querying for city, provide id of state. |  
 
 
 
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Locations](#Locations)
 
 Success
 
 
-Schema: `Locations`
-
-
 
 
 
@@ -558,9 +556,6 @@ Schema: `Locations`
 ---
 
 
-
----
----
 
 
 ## Lead
@@ -569,8 +564,10 @@ Schema: `Locations`
 #### getTickets
 Gets the list of company level tickets and/or ticket filters depending on query params
 
+
+
 ```kotlin
-lead.getTickets(companyId: companyId, items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -582,30 +579,19 @@ lead.getTickets(companyId: companyId, items: items, filters: filters, q: q, stat
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for which the data will be returned |   
-| items | Boolean? | Decides that the reponse will contain the list of tickets |   
-| filters | Boolean? | Decides that the reponse will contain the ticket filters |   
-| q | String? | Search through ticket titles and description |   
-| status | String? | Filter tickets on status |   
-| priority | PriorityEnum? | Filter tickets on priority |   
-| category | String? | Filter tickets on category |   
-| pageNo | Int? | The page number to navigate through the given set of results. |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
 
 
 
 Gets the list of company level tickets and/or ticket filters
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketList](#TicketList)
 
 Success
-
-
-Schema: `TicketList`
 
 
 
@@ -618,8 +604,10 @@ Schema: `TicketList`
 #### createTicket
 Creates a company level ticket
 
+
+
 ```kotlin
-lead.createTicket(companyId: companyId, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -631,22 +619,19 @@ lead.createTicket(companyId: companyId, body: body).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for which the data will be returned |  
 
 
 
 Creates a company level ticket
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Ticket](#Ticket)
 
 Success
-
-
-Schema: `Ticket`
 
 
 
@@ -659,8 +644,10 @@ Schema: `Ticket`
 #### getTickets
 Gets the list of Application level Tickets and/or ticket filters depending on query params
 
+
+
 ```kotlin
-lead.getTickets(companyId: companyId, applicationId: applicationId, items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -672,29 +659,19 @@ lead.getTickets(companyId: companyId, applicationId: applicationId, items: items
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for which the data will be returned |   
-| items | Boolean? | Decides that the reponse will contain the list of tickets |   
-| filters | Boolean? | Decides that the reponse will contain the ticket filters |   
-| q | String? | Search through ticket titles and description |   
-| status | String? | Filter tickets on status |   
-| priority | PriorityEnum? | Filter tickets on priority |   
-| category | String? | Filter tickets on category |  
 
 
 
 Gets the list of Application level Tickets and/or ticket filters
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketList](#TicketList)
 
 Success
-
-
-Schema: `TicketList`
 
 
 
@@ -707,8 +684,10 @@ Schema: `TicketList`
 #### getTicket
 Retreives ticket details of a company level ticket with ticket ID
 
+
+
 ```kotlin
-lead.getTicket(companyId: companyId, id: id).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -720,23 +699,19 @@ lead.getTicket(companyId: companyId, id: id).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for which the data will be returned |   
-| id | String? | Tiket ID of the ticket to be fetched |  
 
 
 
 Retreives ticket details of a company level ticket
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Ticket](#Ticket)
 
 Success
-
-
-Schema: `Ticket`
 
 
 
@@ -749,8 +724,10 @@ Schema: `Ticket`
 #### editTicket
 Edits ticket details of a company level ticket
 
+
+
 ```kotlin
-lead.editTicket(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -762,23 +739,19 @@ lead.editTicket(companyId: companyId, id: id, body: body).safeAwait{ response,er
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for ticket |   
-| id | String? | Ticket ID of ticket to be edited |  
 
 
 
 Edits ticket details of a company level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Ticket](#Ticket)
 
 Success
-
-
-Schema: `Ticket`
 
 
 
@@ -791,8 +764,10 @@ Schema: `Ticket`
 #### getTicket
 Retreives ticket details of a application level ticket
 
+
+
 ```kotlin
-lead.getTicket(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -804,24 +779,19 @@ lead.getTicket(companyId: companyId, applicationId: applicationId, id: id).safeA
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for which the data will be returned |   
-| id | String? | Tiket ID of the ticket to be fetched |  
 
 
 
 Retreives ticket details of a application level ticket with ticket ID
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Ticket](#Ticket)
 
 Success
-
-
-Schema: `Ticket`
 
 
 
@@ -834,8 +804,10 @@ Schema: `Ticket`
 #### editTicket
 Edits ticket details of a application level ticket
 
+
+
 ```kotlin
-lead.editTicket(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -847,24 +819,19 @@ lead.editTicket(companyId: companyId, applicationId: applicationId, id: id, body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for ticket |   
-| id | String? | Ticket ID of ticket to be edited |  
 
 
 
 Edits ticket details of a application level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Ticket](#Ticket)
 
 Success
-
-
-Schema: `Ticket`
 
 
 
@@ -877,8 +844,10 @@ Schema: `Ticket`
 #### createHistory
 Create history for specific company level ticket
 
+
+
 ```kotlin
-lead.createHistory(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -890,23 +859,19 @@ lead.createHistory(companyId: companyId, id: id, body: body).safeAwait{ response
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for ticket |   
-| id | String? | Ticket ID for which history is created |  
 
 
 
 Create history for specific company level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketHistory](#TicketHistory)
 
 Success
-
-
-Schema: `TicketHistory`
 
 
 
@@ -919,8 +884,10 @@ Schema: `TicketHistory`
 #### getTicketHistory
 Gets history list for specific company level ticket
 
+
+
 ```kotlin
-lead.getTicketHistory(companyId: companyId, id: id).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -932,23 +899,19 @@ lead.getTicketHistory(companyId: companyId, id: id).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for ticket |   
-| id | String? | Ticket ID for which history is to be fetched |  
 
 
 
 Gets history list for specific company level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketHistoryList](#TicketHistoryList)
 
 Success
-
-
-Schema: `TicketHistoryList`
 
 
 
@@ -961,8 +924,10 @@ Schema: `TicketHistoryList`
 #### getFeedbacks
 Gets a list of feedback submitted against that ticket
 
+
+
 ```kotlin
-lead.getFeedbacks(companyId: companyId, id: id).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -974,23 +939,19 @@ lead.getFeedbacks(companyId: companyId, id: id).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for ticket |   
-| id | String? | Ticket ID for which feedbacks are to be fetched |  
 
 
 
 Gets a list of feedback submitted against that ticket
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketFeedbackList](#TicketFeedbackList)
 
 Success
-
-
-Schema: `TicketFeedbackList`
 
 
 
@@ -1003,8 +964,10 @@ Schema: `TicketFeedbackList`
 #### submitFeedback
 Submit a response for feeback form against that ticket
 
+
+
 ```kotlin
-lead.submitFeedback(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1016,23 +979,19 @@ lead.submitFeedback(companyId: companyId, id: id, body: body).safeAwait{ respons
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID for ticket |   
-| id | String? | Ticket ID for which feedback is to be submitted |  
 
 
 
 Submit a response for feeback form against that ticket
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketFeedback](#TicketFeedback)
 
 Success
-
-
-Schema: `TicketFeedback`
 
 
 
@@ -1045,8 +1004,10 @@ Schema: `TicketFeedback`
 #### createHistory
 Create history for specific application level ticket
 
+
+
 ```kotlin
-lead.createHistory(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1058,24 +1019,19 @@ lead.createHistory(companyId: companyId, applicationId: applicationId, id: id, b
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for ticket |   
-| id | String? | Ticket ID for which history is created |  
 
 
 
 Create history for specific application level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketHistory](#TicketHistory)
 
 Success
-
-
-Schema: `TicketHistory`
 
 
 
@@ -1088,8 +1044,10 @@ Schema: `TicketHistory`
 #### getTicketHistory
 Gets history list for specific application level ticket
 
+
+
 ```kotlin
-lead.getTicketHistory(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1101,24 +1059,19 @@ lead.getTicketHistory(companyId: companyId, applicationId: applicationId, id: id
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of application |   
-| applicationId | String? | Application ID for ticket |   
-| id | String? | Ticket ID for which history is to be fetched |  
 
 
 
 Gets history list for specific application level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TicketHistoryList](#TicketHistoryList)
 
 Success
-
-
-Schema: `TicketHistoryList`
 
 
 
@@ -1131,8 +1084,10 @@ Schema: `TicketHistoryList`
 #### getCustomForm
 Get specific custom form using it's slug
 
+
+
 ```kotlin
-lead.getCustomForm(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1144,24 +1099,19 @@ lead.getCustomForm(companyId: companyId, applicationId: applicationId, slug: slu
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for the form |   
-| slug | String? | Slug of form whose response is getting submitted |  
 
 
 
 Get specific custom form using it's slug, this is used to view the form.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CustomForm](#CustomForm)
 
 Success
-
-
-Schema: `CustomForm`
 
 
 
@@ -1174,8 +1124,10 @@ Schema: `CustomForm`
 #### editCustomForm
 Edit the given custom form
 
+
+
 ```kotlin
-lead.editCustomForm(companyId: companyId, applicationId: applicationId, slug: slug, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1187,24 +1139,19 @@ lead.editCustomForm(companyId: companyId, applicationId: applicationId, slug: sl
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for the form |   
-| slug | String? | Slug of form whose response is getting submitted |  
 
 
 
 Edit the given custom form field such as adding or deleting input, assignee, title, decription, notification and polling information.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CustomForm](#CustomForm)
 
 Success
-
-
-Schema: `CustomForm`
 
 
 
@@ -1217,8 +1164,10 @@ Schema: `CustomForm`
 #### getCustomForms
 Get list of custom form
 
+
+
 ```kotlin
-lead.getCustomForms(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1230,23 +1179,19 @@ lead.getCustomForms(companyId: companyId, applicationId: applicationId).safeAwai
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for the form |  
 
 
 
 Get list of custom form for given application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CustomFormList](#CustomFormList)
 
 Success
-
-
-Schema: `CustomFormList`
 
 
 
@@ -1259,8 +1204,10 @@ Schema: `CustomFormList`
 #### createCustomForm
 Creates a new custom form
 
+
+
 ```kotlin
-lead.createCustomForm(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1272,23 +1219,19 @@ lead.createCustomForm(companyId: companyId, applicationId: applicationId, body: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for the form |  
 
 
 
 Creates a new custom form for given application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CustomForm](#CustomForm)
 
 Success
-
-
-Schema: `CustomForm`
 
 
 
@@ -1301,8 +1244,10 @@ Schema: `CustomForm`
 #### getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
+
+
 ```kotlin
-lead.getTokenForVideoRoom(companyId: companyId, uniqueName: uniqueName).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1314,23 +1259,19 @@ lead.getTokenForVideoRoom(companyId: companyId, uniqueName: uniqueName).safeAwai
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id for video room |   
-| uniqueName | String? | Unique name of video room |  
 
 
 
 Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetTokenForVideoRoomResponse](#GetTokenForVideoRoomResponse)
 
 Success
-
-
-Schema: `GetTokenForVideoRoomResponse`
 
 
 
@@ -1343,8 +1284,10 @@ Schema: `GetTokenForVideoRoomResponse`
 #### getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
 
+
+
 ```kotlin
-lead.getTokenForVideoRoom(companyId: companyId, applicationId: applicationId, uniqueName: uniqueName).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1356,24 +1299,19 @@ lead.getTokenForVideoRoom(companyId: companyId, applicationId: applicationId, un
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for video room |   
-| uniqueName | String? | Unique name of video room |  
 
 
 
 Get Token to join a specific Video Room using it's unqiue name, this Token is your ticket to Room and also creates your identity there.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetTokenForVideoRoomResponse](#GetTokenForVideoRoomResponse)
 
 Success
-
-
-Schema: `GetTokenForVideoRoomResponse`
 
 
 
@@ -1386,8 +1324,10 @@ Schema: `GetTokenForVideoRoomResponse`
 #### getVideoParticipants
 Get participants of a specific Video Room using it's unique name
 
+
+
 ```kotlin
-lead.getVideoParticipants(companyId: companyId, uniqueName: uniqueName).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1399,23 +1339,19 @@ lead.getVideoParticipants(companyId: companyId, uniqueName: uniqueName).safeAwai
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id for video room |   
-| uniqueName | String? | Unique name of Video Room |  
 
 
 
 Get participants of a specific Video Room using it's unique name, this can be used to check if people are already there in the room and also to show their names.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetParticipantsInsideVideoRoomResponse](#GetParticipantsInsideVideoRoomResponse)
 
 Success
-
-
-Schema: `GetParticipantsInsideVideoRoomResponse`
 
 
 
@@ -1428,8 +1364,10 @@ Schema: `GetParticipantsInsideVideoRoomResponse`
 #### getVideoParticipants
 Get participants of a specific Video Room using it's unique name
 
+
+
 ```kotlin
-lead.getVideoParticipants(companyId: companyId, applicationId: applicationId, uniqueName: uniqueName).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1441,24 +1379,19 @@ lead.getVideoParticipants(companyId: companyId, applicationId: applicationId, un
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for video room |   
-| uniqueName | String? | Unique name of Video Room |  
 
 
 
 Get participants of a specific Video Room using it's unique name, this can be used to check if people are already there in the room and also to show their names.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetParticipantsInsideVideoRoomResponse](#GetParticipantsInsideVideoRoomResponse)
 
 Success
-
-
-Schema: `GetParticipantsInsideVideoRoomResponse`
 
 
 
@@ -1471,8 +1404,10 @@ Schema: `GetParticipantsInsideVideoRoomResponse`
 #### openVideoRoom
 Open a video room.
 
+
+
 ```kotlin
-lead.openVideoRoom(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1484,23 +1419,19 @@ lead.openVideoRoom(companyId: companyId, applicationId: applicationId, body: bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for video room |  
 
 
 
 Open a video room.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateVideoRoomResponse](#CreateVideoRoomResponse)
 
 Success
-
-
-Schema: `CreateVideoRoomResponse`
 
 
 
@@ -1513,8 +1444,10 @@ Schema: `CreateVideoRoomResponse`
 #### closeVideoRoom
 Close the video room and force all participants to leave.
 
+
+
 ```kotlin
-lead.closeVideoRoom(companyId: companyId, applicationId: applicationId, uniqueName: uniqueName).safeAwait{ response,error->
+lead.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1526,26 +1459,21 @@ lead.closeVideoRoom(companyId: companyId, applicationId: applicationId, uniqueNa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |   
-| applicationId | String? | Application ID for video room |   
-| uniqueName | String? | Unique name of Video Room |  
 
 
 
 Close the video room and force all participants to leave.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CloseVideoRoomResponse](#CloseVideoRoomResponse)
 
 Success
 
 
-Schema: `CloseVideoRoomResponse`
-
-
 
 
 
@@ -1553,9 +1481,6 @@ Schema: `CloseVideoRoomResponse`
 ---
 
 
-
----
----
 
 
 ## Feedback
@@ -1564,8 +1489,10 @@ Schema: `CloseVideoRoomResponse`
 #### getAttributes
 Get list of attribute data
 
+
+
 ```kotlin
-feedback.getAttributes(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1577,25 +1504,19 @@ feedback.getAttributes(companyId: companyId, applicationId: applicationId, pageN
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| pageNo | Int? | pagination page no |   
-| pageSize | Int? | pagination page size |  
 
 
 
 Provides a list of all attribute data.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FeedbackAttributes](#FeedbackAttributes)
 
 ok
-
-
-Schema: `FeedbackAttributes`
 
 
 
@@ -1608,8 +1529,10 @@ Schema: `FeedbackAttributes`
 #### getCustomerReviews
 Get list of customer reviews [admin]
 
+
+
 ```kotlin
-feedback.getCustomerReviews(companyId: companyId, applicationId: applicationId, id: id, entityId: entityId, entityType: entityType, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, next: next, start: start, limit: limit, count: count, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1621,38 +1544,19 @@ feedback.getCustomerReviews(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| id | String? | review id |   
-| entityId | String? | entity id |   
-| entityType | String? | entity type |   
-| userId | String? | user id |   
-| media | String? | media type e.g. image | video | video_file | video_link |   
-| rating | ArrayList<Double>? | rating filter, 1-5 |   
-| attributeRating | ArrayList<String>? | attribute rating filter with ma,e of attribute |   
-| facets | Boolean? | facets (true|false) |   
-| sort | String? | sort by : default | top | recent |   
-| next | String? | pagination next |   
-| start | String? | pagination start |   
-| limit | String? | pagination limit |   
-| count | String? | pagination count |   
-| pageId | String? | pagination page id |   
-| pageSize | Int? | pagination page size |  
 
 
 
 The endpoint provides a list of customer reviews based on entity and provided filters
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetReviewResponse](#GetReviewResponse)
 
 Success
-
-
-Schema: `GetReviewResponse`
 
 
 
@@ -1665,8 +1569,10 @@ Schema: `GetReviewResponse`
 #### updateApprove
 update approve details
 
+
+
 ```kotlin
-feedback.updateApprove(companyId: companyId, applicationId: applicationId, reviewId: reviewId, body: body).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1678,24 +1584,19 @@ feedback.updateApprove(companyId: companyId, applicationId: applicationId, revie
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| reviewId | String? | review id |  
 
 
 
 The is used to update approve details like status and description text
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdateResponse](#UpdateResponse)
 
 ok
-
-
-Schema: `UpdateResponse`
 
 
 
@@ -1708,8 +1609,10 @@ Schema: `UpdateResponse`
 #### getHistory
 get history details
 
+
+
 ```kotlin
-feedback.getHistory(companyId: companyId, applicationId: applicationId, reviewId: reviewId).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1721,24 +1624,19 @@ feedback.getHistory(companyId: companyId, applicationId: applicationId, reviewId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| reviewId | String? | review id |  
 
 
 
 The is used to get the history details like status and description text
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ArrayList<ActivityDump>](#ArrayList<ActivityDump>)
 
 ok
-
-
-Schema: `ArrayList<ActivityDump>`
 
 
 
@@ -1751,8 +1649,10 @@ Schema: `ArrayList<ActivityDump>`
 #### getApplicationTemplates
 Get list of templates
 
+
+
 ```kotlin
-feedback.getApplicationTemplates(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1764,25 +1664,19 @@ feedback.getApplicationTemplates(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| pageId | String? | pagination page id |   
-| pageSize | Int? | pagination page size |  
 
 
 
 Get all templates of application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TemplateGetResponse](#TemplateGetResponse)
 
 Success
-
-
-Schema: `TemplateGetResponse`
 
 
 
@@ -1795,8 +1689,10 @@ Schema: `TemplateGetResponse`
 #### createTemplate
 Create a new template
 
+
+
 ```kotlin
-feedback.createTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1808,10 +1704,6 @@ feedback.createTemplate(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |  
 
 
 
@@ -1820,14 +1712,14 @@ Create a new template for review with following data:
 - Rating - active/inactive/selected rate choices, attributes, text on rate, comment for each rate, type
 - Review - header, title, description, image and video meta, enable votes
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[InsertResponse](#InsertResponse)
 
 Success
-
-
-Schema: `InsertResponse`
 
 
 
@@ -1840,8 +1732,10 @@ Schema: `InsertResponse`
 #### getTemplateById
 Get a template by ID
 
+
+
 ```kotlin
-feedback.getTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1853,24 +1747,19 @@ feedback.getTemplateById(companyId: companyId, applicationId: applicationId, id:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| id | String? | template id |  
 
 
 
 Get the template for product or l3 type by ID
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Template](#Template)
 
 Success
-
-
-Schema: `Template`
 
 
 
@@ -1883,8 +1772,10 @@ Schema: `Template`
 #### updateTemplate
 Update a template's status
 
+
+
 ```kotlin
-feedback.updateTemplate(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1896,24 +1787,19 @@ feedback.updateTemplate(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| id | String? | template id |  
 
 
 
 Update existing template status, active/archive
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdateResponse](#UpdateResponse)
 
 Success
-
-
-Schema: `UpdateResponse`
 
 
 
@@ -1926,8 +1812,10 @@ Schema: `UpdateResponse`
 #### updateTemplateStatus
 Update a template's status
 
+
+
 ```kotlin
-feedback.updateTemplateStatus(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+feedback.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1939,26 +1827,21 @@ feedback.updateTemplateStatus(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| id | String? | template id |  
 
 
 
 Update existing template status, active/archive
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdateResponse](#UpdateResponse)
 
 Success
 
 
-Schema: `UpdateResponse`
-
-
 
 
 
@@ -1966,9 +1849,6 @@ Schema: `UpdateResponse`
 ---
 
 
-
----
----
 
 
 ## Theme
@@ -1977,8 +1857,10 @@ Schema: `UpdateResponse`
 #### getAllPages
 Get all pages of a theme
 
+
+
 ```kotlin
-theme.getAllPages(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1990,24 +1872,19 @@ theme.getAllPages(companyId: companyId, applicationId: applicationId, themeId: t
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |   
-| themeId | String? | ID of the theme to be retrieved |  
 
 
 
 Use this API to retrieve all the available pages of a theme by its ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AllAvailablePageSchema](#AllAvailablePageSchema)
 
 Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSchema` for more details.
-
-
-Schema: `AllAvailablePageSchema`
 
 
 
@@ -2020,8 +1897,10 @@ Schema: `AllAvailablePageSchema`
 #### createPage
 Create a page 
 
+
+
 ```kotlin
-theme.createPage(companyId: companyId, applicationId: applicationId, themeId: themeId, body: body).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2033,24 +1912,19 @@ theme.createPage(companyId: companyId, applicationId: applicationId, themeId: th
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |   
-| themeId | String? | ID of the theme |  
 
 
 
 Use this API to create a page for a theme by its ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AvailablePageSchema](#AvailablePageSchema)
 
 Success. Returns the page of the theme. Refer `AvailablePageSchema` for more details.
-
-
-Schema: `AvailablePageSchema`
 
 
 
@@ -2063,8 +1937,10 @@ Schema: `AvailablePageSchema`
 #### updateMultiplePages
 Update multiple pages of a theme
 
+
+
 ```kotlin
-theme.updateMultiplePages(companyId: companyId, applicationId: applicationId, themeId: themeId, body: body).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2076,24 +1952,19 @@ theme.updateMultiplePages(companyId: companyId, applicationId: applicationId, th
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |   
-| themeId | String? | ID of the theme to be retrieved |  
 
 
 
 Use this API to update multiple pages of a theme by its ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AllAvailablePageSchema](#AllAvailablePageSchema)
 
 Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSchema` for more details.
-
-
-Schema: `AllAvailablePageSchema`
 
 
 
@@ -2106,8 +1977,10 @@ Schema: `AllAvailablePageSchema`
 #### getPage
 Get page of a theme
 
+
+
 ```kotlin
-theme.getPage(companyId: companyId, applicationId: applicationId, themeId: themeId, pageValue: pageValue).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2119,25 +1992,19 @@ theme.getPage(companyId: companyId, applicationId: applicationId, themeId: theme
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |   
-| themeId | String? | ID of the theme to be retrieved |   
-| pageValue | String? | Value of the page to be retrieved |  
 
 
 
 Use this API to retrieve a page of a theme.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AvailablePageSchema](#AvailablePageSchema)
 
 Success. Returns an object of the page.  Refer `AvailablePageSchema` for more details.
-
-
-Schema: `AvailablePageSchema`
 
 
 
@@ -2150,8 +2017,10 @@ Schema: `AvailablePageSchema`
 #### updatePage
 Updates a page 
 
+
+
 ```kotlin
-theme.updatePage(companyId: companyId, applicationId: applicationId, themeId: themeId, pageValue: pageValue, body: body).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2163,25 +2032,19 @@ theme.updatePage(companyId: companyId, applicationId: applicationId, themeId: th
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |   
-| themeId | String? | ID of the theme |   
-| pageValue | String? | Value of the page to be updated |  
 
 
 
 Use this API to update a page for a theme by its ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AvailablePageSchema](#AvailablePageSchema)
 
 Success. Returns a the page of the theme. Refer `AvailablePageSchema` for more details.
-
-
-Schema: `AvailablePageSchema`
 
 
 
@@ -2194,8 +2057,10 @@ Schema: `AvailablePageSchema`
 #### deletePage
 Deletes a page 
 
+
+
 ```kotlin
-theme.deletePage(companyId: companyId, applicationId: applicationId, themeId: themeId, pageValue: pageValue).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2207,25 +2072,19 @@ theme.deletePage(companyId: companyId, applicationId: applicationId, themeId: th
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |   
-| themeId | String? | ID of the theme |   
-| pageValue | String? | Value of the page to be updated |  
 
 
 
 Use this API to delete a page for a theme by its ID and page_value.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AvailablePageSchema](#AvailablePageSchema)
 
 Success. Returns a the page of the theme. Refer `AvailablePageSchema` for more details.
-
-
-Schema: `AvailablePageSchema`
 
 
 
@@ -2238,8 +2097,10 @@ Schema: `AvailablePageSchema`
 #### getThemeLibrary
 Get a list of themes from the theme library
 
+
+
 ```kotlin
-theme.getThemeLibrary(companyId: companyId, applicationId: applicationId, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2251,25 +2112,19 @@ theme.getThemeLibrary(companyId: companyId, applicationId: applicationId, pageSi
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10.  |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |  
 
 
 
 Theme library is a personalized collection of themes that are chosen and added from the available themes. Use this API to fetch a list of themes from the library along with their configuration details. 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesListingResponseSchema](#ThemesListingResponseSchema)
 
 Success. Refer `ThemesListingResponseSchema` for more details.
-
-
-Schema: `ThemesListingResponseSchema`
 
 
 
@@ -2282,8 +2137,10 @@ Schema: `ThemesListingResponseSchema`
 #### addToThemeLibrary
 Add a theme to the theme library
 
+
+
 ```kotlin
-theme.addToThemeLibrary(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2295,23 +2152,19 @@ theme.addToThemeLibrary(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Theme library is a personalized collection of themes that are chosen and added from the available themes. Use this API to choose a theme and add it to the theme library.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2324,8 +2177,10 @@ Schema: `ThemesSchema`
 #### applyTheme
 Apply a theme
 
+
+
 ```kotlin
-theme.applyTheme(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2337,23 +2192,19 @@ theme.applyTheme(companyId: companyId, applicationId: applicationId, body: body)
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to apply a theme to the website.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2366,8 +2217,10 @@ Schema: `ThemesSchema`
 #### isUpgradable
 Checks if theme is upgradable
 
+
+
 ```kotlin
-theme.isUpgradable(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2379,24 +2232,19 @@ theme.isUpgradable(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | Theme ID |  
 
 
 
 There's always a possibility that new features get added to a theme. Use this API to check if the applied theme has an upgrade available.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpgradableThemeSchema](#UpgradableThemeSchema)
 
 Success. If the boolean value of `upgrade` returns **true**, the theme can be upgraded. Refer `UpgradableThemeSchema` for more details.
-
-
-Schema: `UpgradableThemeSchema`
 
 
 
@@ -2409,8 +2257,10 @@ Schema: `UpgradableThemeSchema`
 #### upgradeTheme
 Upgrade a theme
 
+
+
 ```kotlin
-theme.upgradeTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2422,24 +2272,19 @@ theme.upgradeTheme(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to upgrade the current theme to its latest version.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Upgrades the theme and shares the details of the new version in the response. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2452,8 +2297,10 @@ Schema: `ThemesSchema`
 #### getPublicThemes
 Get all public themes
 
+
+
 ```kotlin
-theme.getPublicThemes(companyId: companyId, applicationId: applicationId, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2465,25 +2312,19 @@ theme.getPublicThemes(companyId: companyId, applicationId: applicationId, pageSi
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10.  |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |  
 
 
 
 Use this API to get a list of free themes that you can apply to your website.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesListingResponseSchema](#ThemesListingResponseSchema)
 
 Success. Refer `ThemesListingResponseSchema` for more details.
-
-
-Schema: `ThemesListingResponseSchema`
 
 
 
@@ -2496,8 +2337,10 @@ Schema: `ThemesListingResponseSchema`
 #### createTheme
 Create a new theme
 
+
+
 ```kotlin
-theme.createTheme(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2509,23 +2352,19 @@ theme.createTheme(companyId: companyId, applicationId: applicationId, body: body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Themes improve the look and appearance of a website. Use this API to create a theme.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Theme
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2538,8 +2377,10 @@ Schema: `ThemesSchema`
 #### getAppliedTheme
 Get the applied theme
 
+
+
 ```kotlin
-theme.getAppliedTheme(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2551,23 +2392,19 @@ theme.getAppliedTheme(companyId: companyId, applicationId: applicationId).safeAw
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to retrieve the theme that is currently applied to the website along with its details.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2580,8 +2417,10 @@ Schema: `ThemesSchema`
 #### getFonts
 Get all the supported fonts in a theme
 
+
+
 ```kotlin
-theme.getFonts(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2593,23 +2432,19 @@ theme.getFonts(companyId: companyId, applicationId: applicationId).safeAwait{ re
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Font is a collection of characters with a similar design. Use this API to retrieve a list of website fonts.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FontsSchema](#FontsSchema)
 
 Success. Refer `FontsSchema` for more details.
-
-
-Schema: `FontsSchema`
 
 
 
@@ -2622,8 +2457,10 @@ Schema: `FontsSchema`
 #### getThemeById
 Gets theme by id
 
+
+
 ```kotlin
-theme.getThemeById(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2635,24 +2472,19 @@ theme.getThemeById(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to retrieve the details of a specific theme by using its ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2665,8 +2497,10 @@ Schema: `ThemesSchema`
 #### updateTheme
 Update a theme
 
+
+
 ```kotlin
-theme.updateTheme(companyId: companyId, applicationId: applicationId, themeId: themeId, body: body).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2678,24 +2512,19 @@ theme.updateTheme(companyId: companyId, applicationId: applicationId, themeId: t
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to edit an existing theme. You can customize the website font, sections, images, styles, and many more.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2708,8 +2537,10 @@ Schema: `ThemesSchema`
 #### deleteTheme
 Delete a theme
 
+
+
 ```kotlin
-theme.deleteTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2721,24 +2552,19 @@ theme.deleteTheme(companyId: companyId, applicationId: applicationId, themeId: t
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to delete a theme from the theme library.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2751,8 +2577,10 @@ Schema: `ThemesSchema`
 #### getThemeForPreview
 Get a theme preview
 
+
+
 ```kotlin
-theme.getThemeForPreview(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2764,24 +2592,19 @@ theme.getThemeForPreview(companyId: companyId, applicationId: applicationId, the
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 A theme can be previewed before applying it. Use this API to retrieve the theme preview by using its ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2794,8 +2617,10 @@ Schema: `ThemesSchema`
 #### publishTheme
 Publish a theme
 
+
+
 ```kotlin
-theme.publishTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2807,24 +2632,19 @@ theme.publishTheme(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to publish a theme that is either newly created or edited.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2837,8 +2657,10 @@ Schema: `ThemesSchema`
 #### unpublishTheme
 Unpublish a theme
 
+
+
 ```kotlin
-theme.unpublishTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2850,24 +2672,19 @@ theme.unpublishTheme(companyId: companyId, applicationId: applicationId, themeId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to remove an existing theme from the list of available themes.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2880,8 +2697,10 @@ Schema: `ThemesSchema`
 #### archiveTheme
 Archive a theme
 
+
+
 ```kotlin
-theme.archiveTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2893,24 +2712,19 @@ theme.archiveTheme(companyId: companyId, applicationId: applicationId, themeId: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to store an existing theme but not delete it so that it can be used in future if required. 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
-
-
-Schema: `ThemesSchema`
 
 
 
@@ -2923,8 +2737,10 @@ Schema: `ThemesSchema`
 #### unarchiveTheme
 Unarchive a theme
 
+
+
 ```kotlin
-theme.unarchiveTheme(companyId: companyId, applicationId: applicationId, themeId: themeId).safeAwait{ response,error->
+theme.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2936,26 +2752,21 @@ theme.unarchiveTheme(companyId: companyId, applicationId: applicationId, themeId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| themeId | String? | ID allotted to the theme. |  
 
 
 
 Use this API to restore an archived theme and bring it back for editing or publishing. 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
 
 
-Schema: `ThemesSchema`
-
-
 
 
 
@@ -2963,9 +2774,6 @@ Schema: `ThemesSchema`
 ---
 
 
-
----
----
 
 
 ## User
@@ -2974,8 +2782,10 @@ Schema: `ThemesSchema`
 #### getCustomers
 Get a list of customers
 
+
+
 ```kotlin
-user.getCustomers(companyId: companyId, applicationId: applicationId, q: q, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
+user.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2987,26 +2797,19 @@ user.getCustomers(companyId: companyId, applicationId: applicationId, q: q, page
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| q | String? | The search query. Mobile number or email ID of a customer. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1.  |  
 
 
 
 Use this API to retrieve a list of customers who have registered in the application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CustomerListResponseSchema](#CustomerListResponseSchema)
 
 Success. Refer `CustomerListResponseSchema` for more details.
-
-
-Schema: `CustomerListResponseSchema`
 
 
 
@@ -3019,8 +2822,10 @@ Schema: `CustomerListResponseSchema`
 #### searchUsers
 Search an existing user.
 
+
+
 ```kotlin
-user.searchUsers(companyId: companyId, applicationId: applicationId, q: q).safeAwait{ response,error->
+user.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3032,24 +2837,19 @@ user.searchUsers(companyId: companyId, applicationId: applicationId, q: q).safeA
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| q | String? | The search query. Mobile number or email ID of a customer. |  
 
 
 
 Use this API to retrieve an existing user from a list.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UserSearchResponseSchema](#UserSearchResponseSchema)
 
 Success. Returns first name, last name, emails, phone number and gender of the user. Refer `UserSearchResponseSchema` for more details.
-
-
-Schema: `UserSearchResponseSchema`
 
 
 
@@ -3062,8 +2862,10 @@ Schema: `UserSearchResponseSchema`
 #### createUser
 Create user
 
+
+
 ```kotlin
-user.createUser(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+user.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3075,23 +2877,19 @@ user.createUser(companyId: companyId, applicationId: applicationId, body: body).
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |  
 
 
 
 Create user
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateUserResponseSchema](#CreateUserResponseSchema)
 
 User create
-
-
-Schema: `CreateUserResponseSchema`
 
 
 
@@ -3104,8 +2902,10 @@ Schema: `CreateUserResponseSchema`
 #### updateUser
 Update user
 
+
+
 ```kotlin
-user.updateUser(companyId: companyId, applicationId: applicationId, userId: userId, body: body).safeAwait{ response,error->
+user.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3117,24 +2917,19 @@ user.updateUser(companyId: companyId, applicationId: applicationId, userId: user
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |   
-| userId | String? | User ID |  
 
 
 
 Update user
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateUserResponseSchema](#CreateUserResponseSchema)
 
 User update
-
-
-Schema: `CreateUserResponseSchema`
 
 
 
@@ -3147,8 +2942,10 @@ Schema: `CreateUserResponseSchema`
 #### createUserSession
 Create user session
 
+
+
 ```kotlin
-user.createUserSession(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+user.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3160,23 +2957,19 @@ user.createUserSession(companyId: companyId, applicationId: applicationId, body:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID |   
-| applicationId | String? | Application ID |  
 
 
 
 Create user session
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateUserSessionResponseSchema](#CreateUserSessionResponseSchema)
 
 Create user session
-
-
-Schema: `CreateUserSessionResponseSchema`
 
 
 
@@ -3189,8 +2982,10 @@ Schema: `CreateUserSessionResponseSchema`
 #### getPlatformConfig
 Get platform configurations
 
+
+
 ```kotlin
-user.getPlatformConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+user.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3202,23 +2997,19 @@ user.getPlatformConfig(companyId: companyId, applicationId: applicationId).safeA
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to get all the platform configurations such as mobile image, desktop image, social logins, and all other text.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PlatformSchema](#PlatformSchema)
 
 Success. Returns a JSON object containing the all the platform configurations. Refer `PlatformSchema` for more details.
-
-
-Schema: `PlatformSchema`
 
 
 
@@ -3231,8 +3022,10 @@ Schema: `PlatformSchema`
 #### updatePlatformConfig
 Update platform configurations
 
+
+
 ```kotlin
-user.updatePlatformConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+user.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3244,25 +3037,21 @@ user.updatePlatformConfig(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to edit the existing platform configurations such as mobile image, desktop image, social logins, and all other text.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PlatformSchema](#PlatformSchema)
 
 Success. Returns a JSON object with the updated platform configurations. Refer `PlatformSchema` for more details.
 
 
-Schema: `PlatformSchema`
-
-
 
 
 
@@ -3270,9 +3059,6 @@ Schema: `PlatformSchema`
 ---
 
 
-
----
----
 
 
 ## Content
@@ -3281,8 +3067,10 @@ Schema: `PlatformSchema`
 #### getAnnouncementsList
 Get a list of announcements
 
+
+
 ```kotlin
-content.getAnnouncementsList(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3294,25 +3082,19 @@ content.getAnnouncementsList(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
 Announcements are useful to highlight a message or information on top of a webpage. Use this API to retrieve a list of announcements.	
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetAnnouncementListSchema](#GetAnnouncementListSchema)
 
 Success. Refer `GetAnnouncementListSchema` for more details.
-
-
-Schema: `GetAnnouncementListSchema`
 
 
 
@@ -3325,8 +3107,10 @@ Schema: `GetAnnouncementListSchema`
 #### createAnnouncement
 Create an announcement
 
+
+
 ```kotlin
-content.createAnnouncement(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3338,23 +3122,19 @@ content.createAnnouncement(companyId: companyId, applicationId: applicationId, b
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Announcements are useful to highlight a message or information on top of a webpage. Use this API to create an announcement.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateAnnouncementSchema](#CreateAnnouncementSchema)
 
 Success. Refer `CreateAnnouncementSchema` for more details.
-
-
-Schema: `CreateAnnouncementSchema`
 
 
 
@@ -3367,8 +3147,10 @@ Schema: `CreateAnnouncementSchema`
 #### getAnnouncementById
 Get announcement by ID
 
+
+
 ```kotlin
-content.getAnnouncementById(companyId: companyId, applicationId: applicationId, announcementId: announcementId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3380,24 +3162,19 @@ content.getAnnouncementById(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| announcementId | String? | ID allotted to the announcement. |  
 
 
 
 Use this API to retrieve an announcement and its details such as the target platform and pages on which it's applicable
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AdminAnnouncementSchema](#AdminAnnouncementSchema)
 
 Success. Refer `AdminAnnouncementSchema` for more details.
-
-
-Schema: `AdminAnnouncementSchema`
 
 
 
@@ -3410,8 +3187,10 @@ Schema: `AdminAnnouncementSchema`
 #### updateAnnouncement
 Update an announcement
 
+
+
 ```kotlin
-content.updateAnnouncement(companyId: companyId, applicationId: applicationId, announcementId: announcementId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3423,24 +3202,19 @@ content.updateAnnouncement(companyId: companyId, applicationId: applicationId, a
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| announcementId | String? | ID allotted to the announcement. |  
 
 
 
 Use this API to edit an existing announcement and its details such as the target platform and pages on which it's applicable
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateAnnouncementSchema](#CreateAnnouncementSchema)
 
 Success. Refer `CreateAnnouncementSchema` for more details.
-
-
-Schema: `CreateAnnouncementSchema`
 
 
 
@@ -3453,8 +3227,10 @@ Schema: `CreateAnnouncementSchema`
 #### updateAnnouncementSchedule
 Update the schedule and the publish status of an announcement
 
+
+
 ```kotlin
-content.updateAnnouncementSchedule(companyId: companyId, applicationId: applicationId, announcementId: announcementId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3466,24 +3242,19 @@ content.updateAnnouncementSchedule(companyId: companyId, applicationId: applicat
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| announcementId | String? | ID allotted to the announcement. |  
 
 
 
 Use this API to edit the duration, i.e. start date-time and end date-time of an announcement. Moreover, you can enable/disable an announcement using this API.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateAnnouncementSchema](#CreateAnnouncementSchema)
 
 Success. Refer `CreateAnnouncementSchema` for more details.
-
-
-Schema: `CreateAnnouncementSchema`
 
 
 
@@ -3496,8 +3267,10 @@ Schema: `CreateAnnouncementSchema`
 #### deleteAnnouncement
 Delete announcement by id
 
+
+
 ```kotlin
-content.deleteAnnouncement(companyId: companyId, applicationId: applicationId, announcementId: announcementId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3509,24 +3282,19 @@ content.deleteAnnouncement(companyId: companyId, applicationId: applicationId, a
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| announcementId | String? | ID allotted to the announcement. |  
 
 
 
 Use this API to delete an existing announcement.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateAnnouncementSchema](#CreateAnnouncementSchema)
 
 Success.
-
-
-Schema: `CreateAnnouncementSchema`
 
 
 
@@ -3539,8 +3307,10 @@ Schema: `CreateAnnouncementSchema`
 #### createBlog
 Create a blog
 
+
+
 ```kotlin
-content.createBlog(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3552,23 +3322,19 @@ content.createBlog(companyId: companyId, applicationId: applicationId, body: bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to create a blog.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BlogSchema](#BlogSchema)
 
 Success. Refer `BlogSchema` for more details.
-
-
-Schema: `BlogSchema`
 
 
 
@@ -3581,8 +3347,10 @@ Schema: `BlogSchema`
 #### getBlogs
 Get blogs
 
+
+
 ```kotlin
-content.getBlogs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3594,25 +3362,19 @@ content.getBlogs(companyId: companyId, applicationId: applicationId, pageNo: pag
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
 Use this API to get a list of blogs along with their details, such as the title, reading time, publish status, feature image, tags, author, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BlogGetResponse](#BlogGetResponse)
 
 Success. Refer `BlogGetResponse` for more details.
-
-
-Schema: `BlogGetResponse`
 
 
 
@@ -3625,8 +3387,10 @@ Schema: `BlogGetResponse`
 #### updateBlog
 Update a blog
 
+
+
 ```kotlin
-content.updateBlog(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3638,24 +3402,19 @@ content.updateBlog(companyId: companyId, applicationId: applicationId, id: id, b
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the blog. |  
 
 
 
 Use this API to update the details of an existing blog which includes title, feature image, content, SEO details, expiry, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BlogSchema](#BlogSchema)
 
 Success.
-
-
-Schema: `BlogSchema`
 
 
 
@@ -3668,8 +3427,10 @@ Schema: `BlogSchema`
 #### deleteBlog
 Delete blogs
 
+
+
 ```kotlin
-content.deleteBlog(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3681,24 +3442,19 @@ content.deleteBlog(companyId: companyId, applicationId: applicationId, id: id).s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the blog. |  
 
 
 
 Use this API to delete a blog.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BlogSchema](#BlogSchema)
 
 Success.
-
-
-Schema: `BlogSchema`
 
 
 
@@ -3711,8 +3467,10 @@ Schema: `BlogSchema`
 #### getComponentById
 Get components of a blog
 
+
+
 ```kotlin
-content.getComponentById(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3724,24 +3482,19 @@ content.getComponentById(companyId: companyId, applicationId: applicationId, slu
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| slug | String? | A short, human-readable, URL-friendly identifier of a blog page. You can get slug value of a blog from `getBlogs` API. |  
 
 
 
 Use this API to retrieve the components of a blog, such as title, slug, feature image, content, schedule, publish status, author, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BlogSchema](#BlogSchema)
 
 Success. Returns a a JSON object with components. Refer `BlogSchema` for more details.
-
-
-Schema: `BlogSchema`
 
 
 
@@ -3754,8 +3507,10 @@ Schema: `BlogSchema`
 #### getFaqCategories
 Get a list of FAQ categories
 
+
+
 ```kotlin
-content.getFaqCategories(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3767,23 +3522,19 @@ content.getFaqCategories(companyId: companyId, applicationId: applicationId).saf
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 FAQs can be divided into categories. Use this API to get a list of FAQ categories.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetFaqCategoriesSchema](#GetFaqCategoriesSchema)
 
 Success. Refer `GetFaqCategoriesSchema` for more details.
-
-
-Schema: `GetFaqCategoriesSchema`
 
 
 
@@ -3796,8 +3547,10 @@ Schema: `GetFaqCategoriesSchema`
 #### getFaqCategoryBySlugOrId
 Get an FAQ category by slug or id
 
+
+
 ```kotlin
-content.getFaqCategoryBySlugOrId(companyId: companyId, applicationId: applicationId, idOrSlug: idOrSlug).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3809,24 +3562,19 @@ content.getFaqCategoryBySlugOrId(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| idOrSlug | String? | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
 
 
 
 FAQs can be divided into categories. Use this API to get an FAQ categories using its slug or ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetFaqCategoryBySlugSchema](#GetFaqCategoryBySlugSchema)
 
 Success. Refer `GetFaqCategoryBySlugSchema` for more details.
-
-
-Schema: `GetFaqCategoryBySlugSchema`
 
 
 
@@ -3839,8 +3587,10 @@ Schema: `GetFaqCategoryBySlugSchema`
 #### createFaqCategory
 Create an FAQ category
 
+
+
 ```kotlin
-content.createFaqCategory(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3852,23 +3602,19 @@ content.createFaqCategory(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 FAQs help users to solve an issue or know more about a process. FAQs can be categorized separately, for e.g. some questions can be related to payment, some could be related to purchase, shipping, navigating, etc. Use this API to create an FAQ category.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateFaqCategorySchema](#CreateFaqCategorySchema)
 
 Success.
-
-
-Schema: `CreateFaqCategorySchema`
 
 
 
@@ -3881,8 +3627,10 @@ Schema: `CreateFaqCategorySchema`
 #### updateFaqCategory
 Update an FAQ category
 
+
+
 ```kotlin
-content.updateFaqCategory(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3894,24 +3642,19 @@ content.updateFaqCategory(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to an FAQ category. |  
 
 
 
 Use this API to edit an existing FAQ category.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateFaqCategorySchema](#CreateFaqCategorySchema)
 
 Success.
-
-
-Schema: `CreateFaqCategorySchema`
 
 
 
@@ -3924,8 +3667,10 @@ Schema: `CreateFaqCategorySchema`
 #### deleteFaqCategory
 Delete an FAQ category
 
+
+
 ```kotlin
-content.deleteFaqCategory(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3937,24 +3682,19 @@ content.deleteFaqCategory(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to an FAQ category. |  
 
 
 
 Use this API to delete an FAQ category.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FaqSchema](#FaqSchema)
 
 Success.
-
-
-Schema: `FaqSchema`
 
 
 
@@ -3967,8 +3707,10 @@ Schema: `FaqSchema`
 #### getFaqsByCategoryIdOrSlug
 Get question and answers within an FAQ category
 
+
+
 ```kotlin
-content.getFaqsByCategoryIdOrSlug(companyId: companyId, applicationId: applicationId, idOrSlug: idOrSlug).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3980,24 +3722,19 @@ content.getFaqsByCategoryIdOrSlug(companyId: companyId, applicationId: applicati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| idOrSlug | String? | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
 
 
 
 Use this API to retrieve all the commonly asked question and answers belonging to an FAQ category.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetFaqSchema](#GetFaqSchema)
 
 Success. Refer `GetFaqSchema` for more details.
-
-
-Schema: `GetFaqSchema`
 
 
 
@@ -4010,8 +3747,10 @@ Schema: `GetFaqSchema`
 #### addFaq
 Create an FAQ
 
+
+
 ```kotlin
-content.addFaq(companyId: companyId, applicationId: applicationId, categoryId: categoryId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4023,24 +3762,19 @@ content.addFaq(companyId: companyId, applicationId: applicationId, categoryId: c
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| categoryId | String? | ID allotted to an FAQ category. |  
 
 
 
 FAQs help users to solve an issue or know more about a process. Use this API to create an FAQ for a given FAQ category.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
 
 Success.
-
-
-Schema: `CreateFaqResponseSchema`
 
 
 
@@ -4053,8 +3787,10 @@ Schema: `CreateFaqResponseSchema`
 #### updateFaq
 Update an FAQ
 
+
+
 ```kotlin
-content.updateFaq(companyId: companyId, applicationId: applicationId, categoryId: categoryId, faqId: faqId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4066,25 +3802,19 @@ content.updateFaq(companyId: companyId, applicationId: applicationId, categoryId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| categoryId | String? | ID allotted to an FAQ category. |   
-| faqId | String? | ID allotted to an FAQ. |  
 
 
 
 Use this API to edit an existing FAQ.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
 
 Success.
-
-
-Schema: `CreateFaqResponseSchema`
 
 
 
@@ -4097,8 +3827,10 @@ Schema: `CreateFaqResponseSchema`
 #### deleteFaq
 Delete an FAQ
 
+
+
 ```kotlin
-content.deleteFaq(companyId: companyId, applicationId: applicationId, categoryId: categoryId, faqId: faqId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4110,25 +3842,19 @@ content.deleteFaq(companyId: companyId, applicationId: applicationId, categoryId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| categoryId | String? | ID allotted to an FAQ category. |   
-| faqId | String? | ID allotted to an FAQ. |  
 
 
 
 Use this API to delete an existing FAQ.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
 
 Success.
-
-
-Schema: `CreateFaqResponseSchema`
 
 
 
@@ -4141,8 +3867,10 @@ Schema: `CreateFaqResponseSchema`
 #### getFaqByIdOrSlug
 Get an FAQ
 
+
+
 ```kotlin
-content.getFaqByIdOrSlug(companyId: companyId, applicationId: applicationId, idOrSlug: idOrSlug).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4154,24 +3882,19 @@ content.getFaqByIdOrSlug(companyId: companyId, applicationId: applicationId, idO
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| idOrSlug | String? | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
 
 
 
 Use this API to retrieve a specific FAQ. You will get the question and answer of that FAQ.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateFaqResponseSchema](#CreateFaqResponseSchema)
 
 Success. Refer `CreateFaqResponseSchema` for more details.
-
-
-Schema: `CreateFaqResponseSchema`
 
 
 
@@ -4184,8 +3907,10 @@ Schema: `CreateFaqResponseSchema`
 #### getLandingPages
 Get landing pages
 
+
+
 ```kotlin
-content.getLandingPages(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4197,25 +3922,19 @@ content.getLandingPages(companyId: companyId, applicationId: applicationId, page
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
 Landing page is the first page that a prospect lands upon while visiting a website. Use this API to fetch a list of landing pages.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[LandingPageGetResponse](#LandingPageGetResponse)
 
 Success. Refer `LandingPageGetResponse` for more details.
-
-
-Schema: `LandingPageGetResponse`
 
 
 
@@ -4228,8 +3947,10 @@ Schema: `LandingPageGetResponse`
 #### createLandingPage
 Create a landing page
 
+
+
 ```kotlin
-content.createLandingPage(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4241,23 +3962,19 @@ content.createLandingPage(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Landing page is the first page that a prospect lands upon while visiting a website. Use this API to create a landing page.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[LandingPageSchema](#LandingPageSchema)
 
 Success.
-
-
-Schema: `LandingPageSchema`
 
 
 
@@ -4270,8 +3987,10 @@ Schema: `LandingPageSchema`
 #### updateLandingPage
 Update a landing page
 
+
+
 ```kotlin
-content.updateLandingPage(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4283,24 +4002,19 @@ content.updateLandingPage(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to a landing page. |  
 
 
 
 Use this API to edit the details of an existing landing page.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[LandingPageSchema](#LandingPageSchema)
 
 Success.
-
-
-Schema: `LandingPageSchema`
 
 
 
@@ -4313,8 +4027,10 @@ Schema: `LandingPageSchema`
 #### deleteLandingPage
 Delete a landing page
 
+
+
 ```kotlin
-content.deleteLandingPage(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4326,24 +4042,19 @@ content.deleteLandingPage(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to a landing page. |  
 
 
 
 Use this API to delete an existing landing page.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[LandingPageSchema](#LandingPageSchema)
 
 Success.
-
-
-Schema: `LandingPageSchema`
 
 
 
@@ -4356,8 +4067,10 @@ Schema: `LandingPageSchema`
 #### getLegalInformation
 Get legal information
 
+
+
 ```kotlin
-content.getLegalInformation(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4369,23 +4082,19 @@ content.getLegalInformation(companyId: companyId, applicationId: applicationId).
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to get the legal information of an application, which includes Policy, Terms and Conditions, Shipping Policy and FAQ regarding the application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationLegal](#ApplicationLegal)
 
 Success. Refer `ApplicationLegal` for more details.
-
-
-Schema: `ApplicationLegal`
 
 
 
@@ -4398,8 +4107,10 @@ Schema: `ApplicationLegal`
 #### updateLegalInformation
 Save legal information
 
+
+
 ```kotlin
-content.updateLegalInformation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4411,23 +4122,19 @@ content.updateLegalInformation(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to edit, update and save the legal information of an application, which includes Policy, Terms and Conditions, Shipping Policy and FAQ regarding the application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationLegal](#ApplicationLegal)
 
 Success. Refer `ApplicationLegal` for more details.
-
-
-Schema: `ApplicationLegal`
 
 
 
@@ -4440,8 +4147,10 @@ Schema: `ApplicationLegal`
 #### getNavigations
 Get navigations
 
+
+
 ```kotlin
-content.getNavigations(companyId: companyId, applicationId: applicationId, devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4453,26 +4162,19 @@ content.getNavigations(companyId: companyId, applicationId: applicationId, devic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| devicePlatform | String? | Filter navigations by platform. Acceptable values are: web, android, ios, all |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
 Use this API to fetch the navigations details which includes the items of the navigation pane. It also shows the orientation, links, sub-navigations, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[NavigationGetResponse](#NavigationGetResponse)
 
 Success. Refer `NavigationGetResponse` for more details.
-
-
-Schema: `NavigationGetResponse`
 
 
 
@@ -4485,8 +4187,10 @@ Schema: `NavigationGetResponse`
 #### createNavigation
 Create a navigation
 
+
+
 ```kotlin
-content.createNavigation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4498,23 +4202,19 @@ content.createNavigation(companyId: companyId, applicationId: applicationId, bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Navigation is the arrangement of navigational items to ease the accessibility of resources for users on a website. Use this API to create a navigation.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[NavigationSchema](#NavigationSchema)
 
 Success.
-
-
-Schema: `NavigationSchema`
 
 
 
@@ -4527,8 +4227,10 @@ Schema: `NavigationSchema`
 #### getDefaultNavigations
 Get default navigations
 
+
+
 ```kotlin
-content.getDefaultNavigations(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4540,23 +4242,19 @@ content.getDefaultNavigations(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 On any website (application), there are navigations that are present by default. Use this API to retrieve those default navigations.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DefaultNavigationResponse](#DefaultNavigationResponse)
 
 Success. Refer `DefaultNavigationResponse` for more details.
-
-
-Schema: `DefaultNavigationResponse`
 
 
 
@@ -4569,8 +4267,10 @@ Schema: `DefaultNavigationResponse`
 #### getNavigationBySlug
 Get a navigation by slug
 
+
+
 ```kotlin
-content.getNavigationBySlug(companyId: companyId, applicationId: applicationId, slug: slug, devicePlatform: devicePlatform).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4582,25 +4282,19 @@ content.getNavigationBySlug(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| slug | String? | A short, human-readable, URL-friendly identifier of a navigation. You can get slug value of a navigation from `getNavigations` API. |   
-| devicePlatform | String? | Filter navigations by platform. Acceptable values are: web, android, ios, all |  
 
 
 
 Use this API to retrieve a navigation by its slug.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[NavigationSchema](#NavigationSchema)
 
 Success. Refer `NavigationSchema` for more details.
-
-
-Schema: `NavigationSchema`
 
 
 
@@ -4613,8 +4307,10 @@ Schema: `NavigationSchema`
 #### updateNavigation
 Update a navigation
 
+
+
 ```kotlin
-content.updateNavigation(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4626,24 +4322,19 @@ content.updateNavigation(companyId: companyId, applicationId: applicationId, id:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the navigation. |  
 
 
 
 Use this API to edit the details of an existing navigation.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[NavigationSchema](#NavigationSchema)
 
 Success.
-
-
-Schema: `NavigationSchema`
 
 
 
@@ -4656,8 +4347,10 @@ Schema: `NavigationSchema`
 #### deleteNavigation
 Delete a navigation
 
+
+
 ```kotlin
-content.deleteNavigation(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4669,24 +4362,19 @@ content.deleteNavigation(companyId: companyId, applicationId: applicationId, id:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the navigation. |  
 
 
 
 Use this API to delete an existing navigation.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[NavigationSchema](#NavigationSchema)
 
 Success.
-
-
-Schema: `NavigationSchema`
 
 
 
@@ -4699,8 +4387,10 @@ Schema: `NavigationSchema`
 #### getPageMeta
 Get page meta
 
+
+
 ```kotlin
-content.getPageMeta(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4712,23 +4402,19 @@ content.getPageMeta(companyId: companyId, applicationId: applicationId).safeAwai
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to get the meta of custom pages (blog, page) and default system pages (e.g. home/brand/category/collection).
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageMetaSchema](#PageMetaSchema)
 
 Success. Refer `PageMetaSchema` for more details.
-
-
-Schema: `PageMetaSchema`
 
 
 
@@ -4741,8 +4427,10 @@ Schema: `PageMetaSchema`
 #### getPageSpec
 Get page spec
 
+
+
 ```kotlin
-content.getPageSpec(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4754,23 +4442,19 @@ content.getPageSpec(companyId: companyId, applicationId: applicationId).safeAwai
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to get the specifications of a page, such as page type, display name, params and query.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageSpec](#PageSpec)
 
 Success. Refer `PageSpec` for more details.
-
-
-Schema: `PageSpec`
 
 
 
@@ -4783,8 +4467,10 @@ Schema: `PageSpec`
 #### createPage
 Create a page
 
+
+
 ```kotlin
-content.createPage(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4796,23 +4482,19 @@ content.createPage(companyId: companyId, applicationId: applicationId, body: bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageSchema](#PageSchema)
 
 Success. Refer `PageSchema` for more details.
-
-
-Schema: `PageSchema`
 
 
 
@@ -4825,8 +4507,10 @@ Schema: `PageSchema`
 #### getPages
 Get a list of pages
 
+
+
 ```kotlin
-content.getPages(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4838,25 +4522,19 @@ content.getPages(companyId: companyId, applicationId: applicationId, pageNo: pag
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
 Use this API to retrieve a list of pages.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageGetResponse](#PageGetResponse)
 
 Success. Refer `PageGetResponse` for more details.
-
-
-Schema: `PageGetResponse`
 
 
 
@@ -4869,8 +4547,10 @@ Schema: `PageGetResponse`
 #### createPagePreview
 Create a page preview
 
+
+
 ```kotlin
-content.createPagePreview(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4882,23 +4562,19 @@ content.createPagePreview(companyId: companyId, applicationId: applicationId, bo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to create a page preview to check the appearance of a custom page.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageSchema](#PageSchema)
 
 Success. Refer `PageSchema` for more details.
-
-
-Schema: `PageSchema`
 
 
 
@@ -4911,8 +4587,10 @@ Schema: `PageSchema`
 #### updatePagePreview
 Change the publish status of a page
 
+
+
 ```kotlin
-content.updatePagePreview(companyId: companyId, applicationId: applicationId, slug: slug, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4924,24 +4602,19 @@ content.updatePagePreview(companyId: companyId, applicationId: applicationId, sl
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| slug | String? | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
 
 
 
 Use this API to change the publish status of an existing page. Allows you to publish and unpublish the page.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageSchema](#PageSchema)
 
 Success.
-
-
-Schema: `PageSchema`
 
 
 
@@ -4954,8 +4627,10 @@ Schema: `PageSchema`
 #### updatePage
 Update a page
 
+
+
 ```kotlin
-content.updatePage(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4967,24 +4642,19 @@ content.updatePage(companyId: companyId, applicationId: applicationId, id: id, b
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the page. |  
 
 
 
 Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageSchema](#PageSchema)
 
 Success. Refer `PageSchema` for more details.
-
-
-Schema: `PageSchema`
 
 
 
@@ -4997,8 +4667,10 @@ Schema: `PageSchema`
 #### deletePage
 Delete a page
 
+
+
 ```kotlin
-content.deletePage(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5010,24 +4682,19 @@ content.deletePage(companyId: companyId, applicationId: applicationId, id: id).s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the page. |  
 
 
 
 Use this API to delete an existing page.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageSchema](#PageSchema)
 
 Success.
-
-
-Schema: `PageSchema`
 
 
 
@@ -5040,8 +4707,10 @@ Schema: `PageSchema`
 #### getPageBySlug
 Get pages by component Id
 
+
+
 ```kotlin
-content.getPageBySlug(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5053,24 +4722,19 @@ content.getPageBySlug(companyId: companyId, applicationId: applicationId, slug: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| slug | String? | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
 
 
 
 Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PageSchema](#PageSchema)
 
 Success. Returns a JSON object of components. Refer `PageSchema` for more details.
-
-
-Schema: `PageSchema`
 
 
 
@@ -5083,8 +4747,10 @@ Schema: `PageSchema`
 #### getSEOConfiguration
 Get SEO configuration of an application
 
+
+
 ```kotlin
-content.getSEOConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5096,23 +4762,19 @@ content.getSEOConfiguration(companyId: companyId, applicationId: applicationId).
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to know how the SEO is configured in the application. This includes the sitemap, robot.txt, custom meta tags, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SeoComponent](#SeoComponent)
 
 Success. Refer `SeoComponent` for more details.
-
-
-Schema: `SeoComponent`
 
 
 
@@ -5125,8 +4787,10 @@ Schema: `SeoComponent`
 #### updateSEOConfiguration
 Update SEO of application
 
+
+
 ```kotlin
-content.updateSEOConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5138,23 +4802,19 @@ content.updateSEOConfiguration(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to edit the SEO details of an application. This includes the sitemap, robot.txt, custom meta tags, etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SeoSchema](#SeoSchema)
 
 Success. Refer `SeoSchema` for more details.
-
-
-Schema: `SeoSchema`
 
 
 
@@ -5167,8 +4827,10 @@ Schema: `SeoSchema`
 #### getSlideshows
 Get slideshows
 
+
+
 ```kotlin
-content.getSlideshows(companyId: companyId, applicationId: applicationId, devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5180,26 +4842,19 @@ content.getSlideshows(companyId: companyId, applicationId: applicationId, device
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| devicePlatform | String? | Filter slideshows by platform. Acceptable values are: web, android, ios and all |   
-| pageNo | Int? | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
 A slideshow is a group of images, videos or a combination of both that are shown on the website in the form of slides. Use this API to fetch a list of slideshows.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SlideshowGetResponse](#SlideshowGetResponse)
 
 Success. Refer `SlideshowGetResponse` for more details.
-
-
-Schema: `SlideshowGetResponse`
 
 
 
@@ -5212,8 +4867,10 @@ Schema: `SlideshowGetResponse`
 #### createSlideshow
 Create a slideshow
 
+
+
 ```kotlin
-content.createSlideshow(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5225,23 +4882,19 @@ content.createSlideshow(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |  
 
 
 
 A slideshow is a group of images, videos or a combination of both that are shown on the website in the form of slides. Use this API to create a slideshow.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SlideshowSchema](#SlideshowSchema)
 
 Success. Refer `SlideshowSchema` for more details.
-
-
-Schema: `SlideshowSchema`
 
 
 
@@ -5254,8 +4907,10 @@ Schema: `SlideshowSchema`
 #### getSlideshowBySlug
 Get slideshow by slug
 
+
+
 ```kotlin
-content.getSlideshowBySlug(companyId: companyId, applicationId: applicationId, slug: slug, devicePlatform: devicePlatform).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5267,25 +4922,19 @@ content.getSlideshowBySlug(companyId: companyId, applicationId: applicationId, s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| slug | String? | A short, human-readable, URL-friendly identifier of a slideshow. You can get slug value of a page from `getSlideshows` API. |   
-| devicePlatform | String? | Filter slideshows by platform. Acceptable values are: web, android, ios and all |  
 
 
 
 Use this API to retrieve the details of a slideshow by its slug.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SlideshowSchema](#SlideshowSchema)
 
 Success. Refer `SlideshowSchema` for more details.
-
-
-Schema: `SlideshowSchema`
 
 
 
@@ -5298,8 +4947,10 @@ Schema: `SlideshowSchema`
 #### updateSlideshow
 Update a slideshow
 
+
+
 ```kotlin
-content.updateSlideshow(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5311,24 +4962,19 @@ content.updateSlideshow(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the slideshow. |  
 
 
 
 Use this API to edit the details of an existing slideshow.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SlideshowSchema](#SlideshowSchema)
 
 Success. Refer `SlideshowSchema` for more details.
-
-
-Schema: `SlideshowSchema`
 
 
 
@@ -5341,8 +4987,10 @@ Schema: `SlideshowSchema`
 #### deleteSlideshow
 Delete a slideshow
 
+
+
 ```kotlin
-content.deleteSlideshow(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5354,24 +5002,19 @@ content.deleteSlideshow(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String? | Numeric ID allotted to an application created within a business account. |   
-| id | String? | ID allotted to the slideshow. |  
 
 
 
 Use this API to delete an existing slideshow.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SlideshowSchema](#SlideshowSchema)
 
 Success.
-
-
-Schema: `SlideshowSchema`
 
 
 
@@ -5384,8 +5027,10 @@ Schema: `SlideshowSchema`
 #### getSupportInformation
 Get support information
 
+
+
 ```kotlin
-content.getSupportInformation(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5397,23 +5042,19 @@ content.getSupportInformation(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to get the contact details for customer support, including emails and phone numbers.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Support](#Support)
 
 Success. Refer `Support` for more details.
-
-
-Schema: `Support`
 
 
 
@@ -5426,8 +5067,10 @@ Schema: `Support`
 #### updateSupportInformation
 Update the support data of an application
 
+
+
 ```kotlin
-content.updateSupportInformation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5439,23 +5082,19 @@ content.updateSupportInformation(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to edit the existing contact details for customer support, including emails and phone numbers.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Support](#Support)
 
 Success. Refer `Support` for more details.
-
-
-Schema: `Support`
 
 
 
@@ -5468,8 +5107,10 @@ Schema: `Support`
 #### updateInjectableTag
 Update a tag
 
+
+
 ```kotlin
-content.updateInjectableTag(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5481,23 +5122,19 @@ content.updateInjectableTag(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to edit the details of an existing tag. This includes the tag name, tag type (css/js), url and position of the tag.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TagsSchema](#TagsSchema)
 
 Success.
-
-
-Schema: `TagsSchema`
 
 
 
@@ -5510,8 +5147,10 @@ Schema: `TagsSchema`
 #### deleteAllInjectableTags
 Delete tags in application
 
+
+
 ```kotlin
-content.deleteAllInjectableTags(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5523,23 +5162,19 @@ content.deleteAllInjectableTags(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to delete all the existing tags at once.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TagsSchema](#TagsSchema)
 
 Success.
-
-
-Schema: `TagsSchema`
 
 
 
@@ -5552,8 +5187,10 @@ Schema: `TagsSchema`
 #### getInjectableTags
 Get all the tags in an application
 
+
+
 ```kotlin
-content.getInjectableTags(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5565,23 +5202,19 @@ content.getInjectableTags(companyId: companyId, applicationId: applicationId).sa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to get all the CSS and JS injected in the application in the form of tags.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TagsSchema](#TagsSchema)
 
 Success. Refer `TagsSchema` for more details.
-
-
-Schema: `TagsSchema`
 
 
 
@@ -5594,8 +5227,10 @@ Schema: `TagsSchema`
 #### addInjectableTag
 Add a tag
 
+
+
 ```kotlin
-content.addInjectableTag(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5607,23 +5242,19 @@ content.addInjectableTag(companyId: companyId, applicationId: applicationId, bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 CSS and JS can be injected in the application (website) with the help of tags. Use this API to create such tags by entering the tag name, tag type (css/js), url and position of the tag.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TagsSchema](#TagsSchema)
 
 Success.
-
-
-Schema: `TagsSchema`
 
 
 
@@ -5636,8 +5267,10 @@ Schema: `TagsSchema`
 #### removeInjectableTag
 Remove a tag
 
+
+
 ```kotlin
-content.removeInjectableTag(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5649,23 +5282,19 @@ content.removeInjectableTag(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
 Use this API to delete an existing tag.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TagsSchema](#TagsSchema)
 
 Success.
-
-
-Schema: `TagsSchema`
 
 
 
@@ -5678,8 +5307,10 @@ Schema: `TagsSchema`
 #### editInjectableTag
 Edit a tag by id
 
+
+
 ```kotlin
-content.editInjectableTag(companyId: companyId, applicationId: applicationId, tagId: tagId, body: body).safeAwait{ response,error->
+content.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5691,26 +5322,21 @@ content.editInjectableTag(companyId: companyId, applicationId: applicationId, ta
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Numeric ID allotted to a business account on Fynd Platform. |   
-| applicationId | String? | Alphanumeric ID allotted to an application created within a business account. |   
-| tagId | String? | ID allotted to the tag. |  
 
 
 
 Use this API to edit the details of an existing tag by its ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TagsSchema](#TagsSchema)
 
 Success.
 
 
-Schema: `TagsSchema`
-
-
 
 
 
@@ -5718,9 +5344,6 @@ Schema: `TagsSchema`
 ---
 
 
-
----
----
 
 
 ## Assignment
@@ -5729,8 +5352,10 @@ Schema: `TagsSchema`
 #### createPickupLocation
 
 
+
+
 ```kotlin
-assignment.createPickupLocation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5742,24 +5367,20 @@ assignment.createPickupLocation(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
 Create a new Pickup point for an application.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Store Updated
-
-
-Schema: `Success`
 
 
 
@@ -5772,8 +5393,10 @@ Schema: `Success`
 #### getPickupLocation
 
 
+
+
 ```kotlin
-assignment.getPickupLocation(q: q, pageNo: pageNo, pageSize: pageSize, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5785,27 +5408,20 @@ assignment.getPickupLocation(q: q, pageNo: pageNo, pageSize: pageSize, companyId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| q | String? | Search query |   
-| pageNo | Int? | Request a page number |   
-| pageSize | Int? | Request a page size |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
 Update list of pickup points for an application.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PickupPointResponse](#PickupPointResponse)
 
 Success Response
-
-
-Schema: `PickupPointResponse`
 
 
 
@@ -5818,8 +5434,10 @@ Schema: `PickupPointResponse`
 #### updatePickupLocation
 
 
+
+
 ```kotlin
-assignment.updatePickupLocation(id: id, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5831,11 +5449,6 @@ assignment.updatePickupLocation(id: id, companyId: companyId, applicationId: app
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| id | Double? | Pickup Point ID |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -5844,14 +5457,14 @@ can be updated using this API. 'x-application-id'm and request body are required
 a successful update.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Store Updated
-
-
-Schema: `Success`
 
 
 
@@ -5864,8 +5477,10 @@ Schema: `Success`
 #### getPickupLocationById
 
 
+
+
 ```kotlin
-assignment.getPickupLocationById(id: id, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5877,11 +5492,6 @@ assignment.getPickupLocationById(id: id, companyId: companyId, applicationId: ap
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| id | Double? | Pickup Point Id |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -5889,14 +5499,14 @@ This API returns Pickup point data for an id. Returns not found if no data exist
 store id passed.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PickupPointSchema](#PickupPointSchema)
 
 Success Response
-
-
-Schema: `PickupPointSchema`
 
 
 
@@ -5909,8 +5519,10 @@ Schema: `PickupPointSchema`
 #### createPickupConfiguration
 
 
+
+
 ```kotlin
-assignment.createPickupConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5922,10 +5534,6 @@ assignment.createPickupConfiguration(companyId: companyId, applicationId: applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -5933,14 +5541,14 @@ Create a new pickup configuration for an application id. Only one configuration 
 created per application id.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Store Updated
-
-
-Schema: `Success`
 
 
 
@@ -5953,8 +5561,10 @@ Schema: `Success`
 #### getPickupConfiguration
 
 
+
+
 ```kotlin
-assignment.getPickupConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5966,10 +5576,6 @@ assignment.getPickupConfiguration(companyId: companyId, applicationId: applicati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -5977,14 +5583,14 @@ Let pickup configuration for an application. z-application-id is required in
 the header to fetch the data.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PickupResponse](#PickupResponse)
 
 Success Response
-
-
-Schema: `PickupResponse`
 
 
 
@@ -5997,8 +5603,10 @@ Schema: `PickupResponse`
 #### getAllocationConfiguration
 
 
+
+
 ```kotlin
-assignment.getAllocationConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6010,10 +5618,6 @@ assignment.getAllocationConfiguration(companyId: companyId, applicationId: appli
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6022,14 +5626,14 @@ including shipping priority and default strategy, etc. Every application can hav
 configuration each. The endpoint requires an application id to get the data.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShippingResponse](#ShippingResponse)
 
 Success Response
-
-
-Schema: `ShippingResponse`
 
 
 
@@ -6042,8 +5646,10 @@ Schema: `ShippingResponse`
 #### createAllocationConfiguration
 
 
+
+
 ```kotlin
-assignment.createAllocationConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6055,10 +5661,6 @@ assignment.createAllocationConfiguration(companyId: companyId, applicationId: ap
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6067,14 +5669,14 @@ all the stores under an application. There can be only one configuration for an
 application i.e, for an application configuration can be created only once.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Store Updated
-
-
-Schema: `Success`
 
 
 
@@ -6087,8 +5689,10 @@ Schema: `Success`
 #### updateAllocationConfiguration
 
 
+
+
 ```kotlin
-assignment.updateAllocationConfiguration(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6100,10 +5704,6 @@ assignment.updateAllocationConfiguration(companyId: companyId, applicationId: ap
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6112,14 +5712,14 @@ can be updated using this API. 'x-application-id'm and request body are required
 a successful update.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Store Updated
-
-
-Schema: `Success`
 
 
 
@@ -6132,8 +5732,10 @@ Schema: `Success`
 #### getAllocationLocations
 
 
+
+
 ```kotlin
-assignment.getAllocationLocations(q: q, pageNo: pageNo, pageSize: pageSize, type: type, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6145,14 +5747,6 @@ assignment.getAllocationLocations(q: q, pageNo: pageNo, pageSize: pageSize, type
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| q | String? | Search query |   
-| pageNo | Int? | Request a page number |   
-| pageSize | Int? | Request a page size |   
-| type | String? | Type can be 'standard' or 'advanced' |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6161,14 +5755,14 @@ some having allocation types as standard and others, advanced.
 API has support for pagination, filter by type and search by name.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StoreListResponse](#StoreListResponse)
 
 Success Response
-
-
-Schema: `StoreListResponse`
 
 
 
@@ -6181,8 +5775,10 @@ Schema: `StoreListResponse`
 #### getAllocationLocationById
 
 
+
+
 ```kotlin
-assignment.getAllocationLocationById(id: id, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6194,11 +5790,6 @@ assignment.getAllocationLocationById(id: id, companyId: companyId, applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| id | Double? | Store Id |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6207,14 +5798,14 @@ store id passed. The data is returned from sixspeed database which includes only
 shipping configuration of the stores including store id and app id.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StoreResponse](#StoreResponse)
 
 Success Response
-
-
-Schema: `StoreResponse`
 
 
 
@@ -6227,8 +5818,10 @@ Schema: `StoreResponse`
 #### updateAllocationLocation
 
 
+
+
 ```kotlin
-assignment.updateAllocationLocation(id: id, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6240,11 +5833,6 @@ assignment.updateAllocationLocation(id: id, companyId: companyId, applicationId:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| id | Double? | Store Id |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6252,14 +5840,14 @@ A store configuration once created can be updated via this API. Store id in requ
 and udpated request body are required to successfully update the store data.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Store Updated
-
-
-Schema: `Success`
 
 
 
@@ -6272,8 +5860,10 @@ Schema: `Success`
 #### createAllocationLocation
 
 
+
+
 ```kotlin
-assignment.createAllocationLocation(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6285,10 +5875,6 @@ assignment.createAllocationLocation(companyId: companyId, applicationId: applica
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6298,14 +5884,14 @@ default configuration and multiple non-default ones. The default is not binded w
 tags while others are required to be.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Store Updated
-
-
-Schema: `Success`
 
 
 
@@ -6318,8 +5904,10 @@ Schema: `Success`
 #### getDestinationZones
 
 
+
+
 ```kotlin
-assignment.getDestinationZones(q: q, pageNo: pageNo, pageSize: pageSize, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6331,13 +5919,6 @@ assignment.getDestinationZones(q: q, pageNo: pageNo, pageSize: pageSize, company
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| q | String? | Search query |   
-| pageNo | Int? | Request a page number |   
-| pageSize | Int? | Request a page size |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6345,14 +5926,14 @@ Get a list of zones created, where every zone has a unique name and id. They can
 of three different types, radius, pincode and country.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ZoneListResponse](#ZoneListResponse)
 
 Success Response
-
-
-Schema: `ZoneListResponse`
 
 
 
@@ -6365,8 +5946,10 @@ Schema: `ZoneListResponse`
 #### postDestinationZone
 
 
+
+
 ```kotlin
-assignment.postDestinationZone(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6378,10 +5961,6 @@ assignment.postDestinationZone(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6390,14 +5969,14 @@ configuration rules to defined a shipping rule. Either of the three details need
 be passed, zone_detail, pincode and region.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Zone Created
-
-
-Schema: `Success`
 
 
 
@@ -6410,8 +5989,10 @@ Schema: `Success`
 #### getDestinationZoneById
 
 
+
+
 ```kotlin
-assignment.getDestinationZoneById(id: id, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6423,11 +6004,6 @@ assignment.getDestinationZoneById(id: id, companyId: companyId, applicationId: a
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| id | Double? | Store Id |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6435,14 +6011,14 @@ Returns zone data for the specified zone id. Id is the required parameter and re
 not found if no data is found for the passed zone id.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ZoneSchema](#ZoneSchema)
 
 Success Response
-
-
-Schema: `ZoneSchema`
 
 
 
@@ -6455,8 +6031,10 @@ Schema: `ZoneSchema`
 #### updateDestinationZone
 
 
+
+
 ```kotlin
-assignment.updateDestinationZone(id: id, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+assignment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6468,11 +6046,6 @@ assignment.updateDestinationZone(id: id, companyId: companyId, applicationId: ap
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| id | Double? | Store Id |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
@@ -6480,16 +6053,16 @@ Zone once created can be updated using this API. Zone id and request body are th
 data to update a zone.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Success](#Success)
 
 Success Response - Zone Updated
 
 
-Schema: `Success`
-
-
 
 
 
@@ -6497,9 +6070,6 @@ Schema: `Success`
 ---
 
 
-
----
----
 
 
 ## Billing
@@ -6508,8 +6078,10 @@ Schema: `Success`
 #### createSubscriptionCharge
 Create subscription charge
 
+
+
 ```kotlin
-billing.createSubscriptionCharge(companyId: companyId, extensionId: extensionId, body: body).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6521,23 +6093,19 @@ billing.createSubscriptionCharge(companyId: companyId, extensionId: extensionId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |   
-| extensionId | String? | Extension _id |  
 
 
 
 Register subscription charge for a seller of your extension.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateSubscriptionResponse](#CreateSubscriptionResponse)
 
 Success
-
-
-Schema: `CreateSubscriptionResponse`
 
 
 
@@ -6550,8 +6118,10 @@ Schema: `CreateSubscriptionResponse`
 #### getSubscriptionCharge
 Get subscription charge details
 
+
+
 ```kotlin
-billing.getSubscriptionCharge(companyId: companyId, extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6563,24 +6133,19 @@ billing.getSubscriptionCharge(companyId: companyId, extensionId: extensionId, su
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |   
-| extensionId | String? | Extension _id |   
-| subscriptionId | String? | Subscription charge _id |  
 
 
 
 Get created subscription charge details
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EntitySubscription](#EntitySubscription)
 
 Success
-
-
-Schema: `EntitySubscription`
 
 
 
@@ -6593,8 +6158,10 @@ Schema: `EntitySubscription`
 #### cancelSubscriptionCharge
 Cancel subscription charge
 
+
+
 ```kotlin
-billing.cancelSubscriptionCharge(companyId: companyId, extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6606,24 +6173,19 @@ billing.cancelSubscriptionCharge(companyId: companyId, extensionId: extensionId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |   
-| extensionId | String? | Extension _id |   
-| subscriptionId | String? | Subscription charge _id |  
 
 
 
 Cancel subscription and attached charges.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EntitySubscription](#EntitySubscription)
 
 Success
-
-
-Schema: `EntitySubscription`
 
 
 
@@ -6636,8 +6198,10 @@ Schema: `EntitySubscription`
 #### getInvoices
 Get invoices
 
+
+
 ```kotlin
-billing.getInvoices(companyId: companyId).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6649,22 +6213,19 @@ billing.getInvoices(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |  
 
 
 
 Get invoices.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Invoices](#Invoices)
 
 Success
-
-
-Schema: `Invoices`
 
 
 
@@ -6677,8 +6238,10 @@ Schema: `Invoices`
 #### getInvoiceById
 Get invoice by id
 
+
+
 ```kotlin
-billing.getInvoiceById(companyId: companyId, invoiceId: invoiceId).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6690,23 +6253,19 @@ billing.getInvoiceById(companyId: companyId, invoiceId: invoiceId).safeAwait{ re
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |   
-| invoiceId | String? | Invoice id |  
 
 
 
 Get invoice by id.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Invoice](#Invoice)
 
 Success
-
-
-Schema: `Invoice`
 
 
 
@@ -6719,8 +6278,10 @@ Schema: `Invoice`
 #### getCustomerDetail
 Get subscription customer detail
 
+
+
 ```kotlin
-billing.getCustomerDetail(companyId: companyId).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6732,22 +6293,19 @@ billing.getCustomerDetail(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |  
 
 
 
 Get subscription customer detail.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriptionCustomer](#SubscriptionCustomer)
 
 Success
-
-
-Schema: `SubscriptionCustomer`
 
 
 
@@ -6760,8 +6318,10 @@ Schema: `SubscriptionCustomer`
 #### upsertCustomerDetail
 Upsert subscription customer detail
 
+
+
 ```kotlin
-billing.upsertCustomerDetail(companyId: companyId, body: body).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6773,22 +6333,19 @@ billing.upsertCustomerDetail(companyId: companyId, body: body).safeAwait{ respon
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |  
 
 
 
 Upsert subscription customer detail.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriptionCustomer](#SubscriptionCustomer)
 
 Success
-
-
-Schema: `SubscriptionCustomer`
 
 
 
@@ -6801,8 +6358,10 @@ Schema: `SubscriptionCustomer`
 #### getSubscription
 Get current subscription detail
 
+
+
 ```kotlin
-billing.getSubscription(companyId: companyId).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6814,23 +6373,20 @@ billing.getSubscription(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |  
 
 
 
 If subscription is active then it will return is_enabled true and return subscription object. If subscription is not active then is_enabled false and message.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriptionStatus](#SubscriptionStatus)
 
 Success
-
-
-Schema: `SubscriptionStatus`
 
 
 
@@ -6843,8 +6399,10 @@ Schema: `SubscriptionStatus`
 #### getFeatureLimitConfig
 Get subscription subscription limits
 
+
+
 ```kotlin
-billing.getFeatureLimitConfig(companyId: companyId).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6856,22 +6414,19 @@ billing.getFeatureLimitConfig(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |  
 
 
 
 Get subscription subscription limits.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriptionLimit](#SubscriptionLimit)
 
 Success
-
-
-Schema: `SubscriptionLimit`
 
 
 
@@ -6884,8 +6439,10 @@ Schema: `SubscriptionLimit`
 #### activateSubscriptionPlan
 Activate subscription
 
+
+
 ```kotlin
-billing.activateSubscriptionPlan(companyId: companyId, body: body).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6897,22 +6454,19 @@ billing.activateSubscriptionPlan(companyId: companyId, body: body).safeAwait{ re
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |  
 
 
 
 It will activate subscription plan for customer
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriptionActivateRes](#SubscriptionActivateRes)
 
 Success
-
-
-Schema: `SubscriptionActivateRes`
 
 
 
@@ -6925,8 +6479,10 @@ Schema: `SubscriptionActivateRes`
 #### cancelSubscriptionPlan
 Cancel subscription
 
+
+
 ```kotlin
-billing.cancelSubscriptionPlan(companyId: companyId, body: body).safeAwait{ response,error->
+billing.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6938,24 +6494,21 @@ billing.cancelSubscriptionPlan(companyId: companyId, body: body).safeAwait{ resp
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Customer unique id. In case of company it will be company id. |  
 
 
 
 It will cancel current active subscription.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CancelSubscriptionRes](#CancelSubscriptionRes)
 
 Success
 
 
-Schema: `CancelSubscriptionRes`
-
-
 
 
 
@@ -6963,9 +6516,6 @@ Schema: `CancelSubscriptionRes`
 ---
 
 
-
----
----
 
 
 ## Communication
@@ -6974,8 +6524,10 @@ Schema: `CancelSubscriptionRes`
 #### getCampaigns
 Get campaigns
 
+
+
 ```kotlin
-communication.getCampaigns(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6987,26 +6539,19 @@ communication.getCampaigns(companyId: companyId, applicationId: applicationId, p
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get campaigns
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Campaigns](#Campaigns)
 
 Success
-
-
-Schema: `Campaigns`
 
 
 
@@ -7019,8 +6564,10 @@ Schema: `Campaigns`
 #### createCampaign
 Create campaign
 
+
+
 ```kotlin
-communication.createCampaign(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7032,23 +6579,19 @@ communication.createCampaign(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Create campaign
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Campaign](#Campaign)
 
 Success
-
-
-Schema: `Campaign`
 
 
 
@@ -7061,8 +6604,10 @@ Schema: `Campaign`
 #### getCampaignById
 Get campaign by id
 
+
+
 ```kotlin
-communication.getCampaignById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7074,24 +6619,19 @@ communication.getCampaignById(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Campaign id |  
 
 
 
 Get campaign by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Campaign](#Campaign)
 
 Success
-
-
-Schema: `Campaign`
 
 
 
@@ -7104,8 +6644,10 @@ Schema: `Campaign`
 #### updateCampaignById
 Update campaign by id
 
+
+
 ```kotlin
-communication.updateCampaignById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7117,24 +6659,19 @@ communication.updateCampaignById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Campaign id |  
 
 
 
 Update campaign by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Campaign](#Campaign)
 
 Success
-
-
-Schema: `Campaign`
 
 
 
@@ -7147,8 +6684,10 @@ Schema: `Campaign`
 #### getStatsOfCampaignById
 Get stats of campaign by id
 
+
+
 ```kotlin
-communication.getStatsOfCampaignById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7160,24 +6699,19 @@ communication.getStatsOfCampaignById(companyId: companyId, applicationId: applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Campaign id |  
 
 
 
 Get stats of campaign by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetStats](#GetStats)
 
 Success
-
-
-Schema: `GetStats`
 
 
 
@@ -7190,8 +6724,10 @@ Schema: `GetStats`
 #### getAudiences
 Get audiences
 
+
+
 ```kotlin
-communication.getAudiences(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7203,26 +6739,19 @@ communication.getAudiences(companyId: companyId, applicationId: applicationId, p
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get audiences
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Audiences](#Audiences)
 
 Success
-
-
-Schema: `Audiences`
 
 
 
@@ -7235,8 +6764,10 @@ Schema: `Audiences`
 #### createAudience
 Create audience
 
+
+
 ```kotlin
-communication.createAudience(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7248,23 +6779,19 @@ communication.createAudience(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Create audience
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Audience](#Audience)
 
 Success
-
-
-Schema: `Audience`
 
 
 
@@ -7277,8 +6804,10 @@ Schema: `Audience`
 #### getBigqueryHeaders
 Get bigquery headers
 
+
+
 ```kotlin
-communication.getBigqueryHeaders(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7290,23 +6819,19 @@ communication.getBigqueryHeaders(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Get bigquery headers
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BigqueryHeadersRes](#BigqueryHeadersRes)
 
 Success
-
-
-Schema: `BigqueryHeadersRes`
 
 
 
@@ -7319,8 +6844,10 @@ Schema: `BigqueryHeadersRes`
 #### getAudienceById
 Get audience by id
 
+
+
 ```kotlin
-communication.getAudienceById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7332,24 +6859,19 @@ communication.getAudienceById(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Audience id |  
 
 
 
 Get audience by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Audience](#Audience)
 
 Success
-
-
-Schema: `Audience`
 
 
 
@@ -7362,8 +6884,10 @@ Schema: `Audience`
 #### updateAudienceById
 Update audience by id
 
+
+
 ```kotlin
-communication.updateAudienceById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7375,24 +6899,19 @@ communication.updateAudienceById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Audience id |  
 
 
 
 Update audience by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Audience](#Audience)
 
 Success
-
-
-Schema: `Audience`
 
 
 
@@ -7405,8 +6924,10 @@ Schema: `Audience`
 #### getNSampleRecordsFromCsv
 Get n sample records from csv
 
+
+
 ```kotlin
-communication.getNSampleRecordsFromCsv(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7418,23 +6939,19 @@ communication.getNSampleRecordsFromCsv(companyId: companyId, applicationId: appl
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Get n sample records from csv
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetNRecordsCsvRes](#GetNRecordsCsvRes)
 
 Success
-
-
-Schema: `GetNRecordsCsvRes`
 
 
 
@@ -7447,8 +6964,10 @@ Schema: `GetNRecordsCsvRes`
 #### getEmailProviders
 Get email providers
 
+
+
 ```kotlin
-communication.getEmailProviders(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7460,26 +6979,19 @@ communication.getEmailProviders(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get email providers
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailProviders](#EmailProviders)
 
 Success
-
-
-Schema: `EmailProviders`
 
 
 
@@ -7492,8 +7004,10 @@ Schema: `EmailProviders`
 #### createEmailProvider
 Create email provider
 
+
+
 ```kotlin
-communication.createEmailProvider(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7505,23 +7019,19 @@ communication.createEmailProvider(companyId: companyId, applicationId: applicati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Create email provider
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailProvider](#EmailProvider)
 
 Success
-
-
-Schema: `EmailProvider`
 
 
 
@@ -7534,8 +7044,10 @@ Schema: `EmailProvider`
 #### getEmailProviderById
 Get email provider by id
 
+
+
 ```kotlin
-communication.getEmailProviderById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7547,24 +7059,19 @@ communication.getEmailProviderById(companyId: companyId, applicationId: applicat
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Email provider id |  
 
 
 
 Get email provider by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailProvider](#EmailProvider)
 
 Success
-
-
-Schema: `EmailProvider`
 
 
 
@@ -7577,8 +7084,10 @@ Schema: `EmailProvider`
 #### updateEmailProviderById
 Update email provider by id
 
+
+
 ```kotlin
-communication.updateEmailProviderById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7590,24 +7099,19 @@ communication.updateEmailProviderById(companyId: companyId, applicationId: appli
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Email provider id |  
 
 
 
 Update email provider by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailProvider](#EmailProvider)
 
 Success
-
-
-Schema: `EmailProvider`
 
 
 
@@ -7620,8 +7124,10 @@ Schema: `EmailProvider`
 #### getEmailTemplates
 Get email templates
 
+
+
 ```kotlin
-communication.getEmailTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7633,26 +7139,19 @@ communication.getEmailTemplates(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get email templates
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailTemplates](#EmailTemplates)
 
 Success
-
-
-Schema: `EmailTemplates`
 
 
 
@@ -7665,8 +7164,10 @@ Schema: `EmailTemplates`
 #### createEmailTemplate
 Create email template
 
+
+
 ```kotlin
-communication.createEmailTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7678,23 +7179,19 @@ communication.createEmailTemplate(companyId: companyId, applicationId: applicati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Create email template
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailTemplateRes](#EmailTemplateRes)
 
 Success
-
-
-Schema: `EmailTemplateRes`
 
 
 
@@ -7707,8 +7204,10 @@ Schema: `EmailTemplateRes`
 #### getSystemEmailTemplates
 Get system email templates
 
+
+
 ```kotlin
-communication.getSystemEmailTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7720,26 +7219,19 @@ communication.getSystemEmailTemplates(companyId: companyId, applicationId: appli
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get system email templates
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SystemEmailTemplates](#SystemEmailTemplates)
 
 Success
-
-
-Schema: `SystemEmailTemplates`
 
 
 
@@ -7752,8 +7244,10 @@ Schema: `SystemEmailTemplates`
 #### getEmailTemplateById
 Get email template by id
 
+
+
 ```kotlin
-communication.getEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7765,24 +7259,19 @@ communication.getEmailTemplateById(companyId: companyId, applicationId: applicat
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Email template id |  
 
 
 
 Get email template by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailTemplate](#EmailTemplate)
 
 Success
-
-
-Schema: `EmailTemplate`
 
 
 
@@ -7795,8 +7284,10 @@ Schema: `EmailTemplate`
 #### updateEmailTemplateById
 Update email template by id
 
+
+
 ```kotlin
-communication.updateEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7808,24 +7299,19 @@ communication.updateEmailTemplateById(companyId: companyId, applicationId: appli
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Email template id |  
 
 
 
 Update email template by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailTemplateRes](#EmailTemplateRes)
 
 Success
-
-
-Schema: `EmailTemplateRes`
 
 
 
@@ -7838,8 +7324,10 @@ Schema: `EmailTemplateRes`
 #### deleteEmailTemplateById
 Delete email template by id
 
+
+
 ```kotlin
-communication.deleteEmailTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7851,24 +7339,19 @@ communication.deleteEmailTemplateById(companyId: companyId, applicationId: appli
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Email template id |  
 
 
 
 Delete email template by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EmailTemplateDeleteSuccessRes](#EmailTemplateDeleteSuccessRes)
 
 Success
-
-
-Schema: `EmailTemplateDeleteSuccessRes`
 
 
 
@@ -7881,8 +7364,10 @@ Schema: `EmailTemplateDeleteSuccessRes`
 #### getEventSubscriptions
 Get event subscriptions
 
+
+
 ```kotlin
-communication.getEventSubscriptions(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, populate: populate).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7894,26 +7379,19 @@ communication.getEventSubscriptions(companyId: companyId, applicationId: applica
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| populate | String? | populate fields |  
 
 
 
 Get event subscriptions
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[EventSubscriptions](#EventSubscriptions)
 
 Success
-
-
-Schema: `EventSubscriptions`
 
 
 
@@ -7926,8 +7404,10 @@ Schema: `EventSubscriptions`
 #### getJobs
 Get jobs
 
+
+
 ```kotlin
-communication.getJobs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7939,26 +7419,19 @@ communication.getJobs(companyId: companyId, applicationId: applicationId, pageNo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get jobs
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Jobs](#Jobs)
 
 Success
-
-
-Schema: `Jobs`
 
 
 
@@ -7971,8 +7444,10 @@ Schema: `Jobs`
 #### triggerCampaignJob
 Trigger campaign job
 
+
+
 ```kotlin
-communication.triggerCampaignJob(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7984,23 +7459,19 @@ communication.triggerCampaignJob(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Trigger campaign job
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TriggerJobResponse](#TriggerJobResponse)
 
 Success
-
-
-Schema: `TriggerJobResponse`
 
 
 
@@ -8013,8 +7484,10 @@ Schema: `TriggerJobResponse`
 #### getJobLogs
 Get job logs
 
+
+
 ```kotlin
-communication.getJobLogs(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8026,26 +7499,19 @@ communication.getJobLogs(companyId: companyId, applicationId: applicationId, pag
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get job logs
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[JobLogs](#JobLogs)
 
 Success
-
-
-Schema: `JobLogs`
 
 
 
@@ -8058,8 +7524,10 @@ Schema: `JobLogs`
 #### getCommunicationLogs
 Get communication logs
 
+
+
 ```kotlin
-communication.getCommunicationLogs(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize, sort: sort, query: query).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8071,27 +7539,19 @@ communication.getCommunicationLogs(companyId: companyId, applicationId: applicat
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageId | String? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on _id |   
-| query | HashMap<String,Any>? |  |  
 
 
 
 Get communication logs
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Logs](#Logs)
 
 Success
-
-
-Schema: `Logs`
 
 
 
@@ -8104,8 +7564,10 @@ Schema: `Logs`
 #### getSystemNotifications
 Get system notifications
 
+
+
 ```kotlin
-communication.getSystemNotifications(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8117,24 +7579,19 @@ communication.getSystemNotifications(companyId: companyId, pageNo: pageNo, pageS
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| pageNo | Int? |  |   
-| pageSize | Int? |  |  
 
 
 
 Get system notifications
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SystemNotifications](#SystemNotifications)
 
 Success
-
-
-Schema: `SystemNotifications`
 
 
 
@@ -8147,8 +7604,10 @@ Schema: `SystemNotifications`
 #### getSmsProviders
 Get sms providers
 
+
+
 ```kotlin
-communication.getSmsProviders(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8160,26 +7619,19 @@ communication.getSmsProviders(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get sms providers
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsProviders](#SmsProviders)
 
 Success
-
-
-Schema: `SmsProviders`
 
 
 
@@ -8192,8 +7644,10 @@ Schema: `SmsProviders`
 #### createSmsProvider
 Create sms provider
 
+
+
 ```kotlin
-communication.createSmsProvider(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8205,23 +7659,19 @@ communication.createSmsProvider(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Create sms provider
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsProvider](#SmsProvider)
 
 Success
-
-
-Schema: `SmsProvider`
 
 
 
@@ -8234,8 +7684,10 @@ Schema: `SmsProvider`
 #### getSmsProviderById
 Get sms provider by id
 
+
+
 ```kotlin
-communication.getSmsProviderById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8247,24 +7699,19 @@ communication.getSmsProviderById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Sms provider id |  
 
 
 
 Get sms provider by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsProvider](#SmsProvider)
 
 Success
-
-
-Schema: `SmsProvider`
 
 
 
@@ -8277,8 +7724,10 @@ Schema: `SmsProvider`
 #### updateSmsProviderById
 Update sms provider by id
 
+
+
 ```kotlin
-communication.updateSmsProviderById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8290,24 +7739,19 @@ communication.updateSmsProviderById(companyId: companyId, applicationId: applica
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Sms provider id |  
 
 
 
 Update sms provider by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsProvider](#SmsProvider)
 
 Success
-
-
-Schema: `SmsProvider`
 
 
 
@@ -8320,8 +7764,10 @@ Schema: `SmsProvider`
 #### getSmsTemplates
 Get sms templates
 
+
+
 ```kotlin
-communication.getSmsTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8333,26 +7779,19 @@ communication.getSmsTemplates(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get sms templates
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsTemplates](#SmsTemplates)
 
 Success
-
-
-Schema: `SmsTemplates`
 
 
 
@@ -8365,8 +7804,10 @@ Schema: `SmsTemplates`
 #### createSmsTemplate
 Create sms template
 
+
+
 ```kotlin
-communication.createSmsTemplate(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8378,23 +7819,19 @@ communication.createSmsTemplate(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |  
 
 
 
 Create sms template
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsTemplateRes](#SmsTemplateRes)
 
 Success
-
-
-Schema: `SmsTemplateRes`
 
 
 
@@ -8407,8 +7844,10 @@ Schema: `SmsTemplateRes`
 #### getSmsTemplateById
 Get sms template by id
 
+
+
 ```kotlin
-communication.getSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8420,24 +7859,19 @@ communication.getSmsTemplateById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Sms template id |  
 
 
 
 Get sms template by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsTemplate](#SmsTemplate)
 
 Success
-
-
-Schema: `SmsTemplate`
 
 
 
@@ -8450,8 +7884,10 @@ Schema: `SmsTemplate`
 #### updateSmsTemplateById
 Update sms template by id
 
+
+
 ```kotlin
-communication.updateSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8463,24 +7899,19 @@ communication.updateSmsTemplateById(companyId: companyId, applicationId: applica
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Sms template id |  
 
 
 
 Update sms template by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsTemplateRes](#SmsTemplateRes)
 
 Success
-
-
-Schema: `SmsTemplateRes`
 
 
 
@@ -8493,8 +7924,10 @@ Schema: `SmsTemplateRes`
 #### deleteSmsTemplateById
 Delete sms template by id
 
+
+
 ```kotlin
-communication.deleteSmsTemplateById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8506,24 +7939,19 @@ communication.deleteSmsTemplateById(companyId: companyId, applicationId: applica
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| id | String? | Sms template id |  
 
 
 
 Delete sms template by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SmsTemplateDeleteSuccessRes](#SmsTemplateDeleteSuccessRes)
 
 Success
-
-
-Schema: `SmsTemplateDeleteSuccessRes`
 
 
 
@@ -8536,8 +7964,10 @@ Schema: `SmsTemplateDeleteSuccessRes`
 #### getSystemSystemTemplates
 Get system sms templates
 
+
+
 ```kotlin
-communication.getSystemSystemTemplates(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
+communication.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8549,28 +7979,21 @@ communication.getSystemSystemTemplates(companyId: companyId, applicationId: appl
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company id |   
-| applicationId | String? | Application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |   
-| sort | HashMap<String,Any>? | To sort based on created_at |  
 
 
 
 Get system sms templates
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SystemSmsTemplates](#SystemSmsTemplates)
 
 Success
 
 
-Schema: `SystemSmsTemplates`
-
-
 
 
 
@@ -8578,9 +8001,6 @@ Schema: `SystemSmsTemplates`
 ---
 
 
-
----
----
 
 
 ## Payment
@@ -8589,8 +8009,10 @@ Schema: `SystemSmsTemplates`
 #### getBrandPaymentGatewayConfig
 Get All Brand Payment Gateway Config Secret
 
+
+
 ```kotlin
-payment.getBrandPaymentGatewayConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8602,23 +8024,19 @@ payment.getBrandPaymentGatewayConfig(companyId: companyId, applicationId: applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application id |  
 
 
 
 Get All Brand Payment Gateway Config Secret
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PaymentGatewayConfigResponse](#PaymentGatewayConfigResponse)
 
 Refund Transfer Mode
-
-
-Schema: `PaymentGatewayConfigResponse`
 
 
 
@@ -8631,8 +8049,10 @@ Schema: `PaymentGatewayConfigResponse`
 #### saveBrandPaymentGatewayConfig
 Save Config Secret For Brand Payment Gateway
 
+
+
 ```kotlin
-payment.saveBrandPaymentGatewayConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8644,23 +8064,19 @@ payment.saveBrandPaymentGatewayConfig(companyId: companyId, applicationId: appli
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application id |  
 
 
 
 Save Config Secret For Brand Payment Gateway
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PaymentGatewayToBeReviewed](#PaymentGatewayToBeReviewed)
 
 Save Config Secret For Brand Payment Gateway Success Response.
-
-
-Schema: `PaymentGatewayToBeReviewed`
 
 
 
@@ -8673,8 +8089,10 @@ Schema: `PaymentGatewayToBeReviewed`
 #### updateBrandPaymentGatewayConfig
 Save Config Secret For Brand Payment Gateway
 
+
+
 ```kotlin
-payment.updateBrandPaymentGatewayConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8686,23 +8104,19 @@ payment.updateBrandPaymentGatewayConfig(companyId: companyId, applicationId: app
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application id |  
 
 
 
 Save Config Secret For Brand Payment Gateway
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PaymentGatewayToBeReviewed](#PaymentGatewayToBeReviewed)
 
 Save Config Secret For Brand Payment Gateway Success Response.
-
-
-Schema: `PaymentGatewayToBeReviewed`
 
 
 
@@ -8715,8 +8129,10 @@ Schema: `PaymentGatewayToBeReviewed`
 #### getPaymentModeRoutes
 Get All Valid Payment Options
 
+
+
 ```kotlin
-payment.getPaymentModeRoutes(companyId: companyId, applicationId: applicationId, refresh: refresh, requestType: requestType).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8728,25 +8144,19 @@ payment.getPaymentModeRoutes(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application id |   
-| refresh | Boolean? |  |   
-| requestType | String? |  |  
 
 
 
 Use this API to get Get All Valid Payment Options for making payment
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PaymentOptionsResponse](#PaymentOptionsResponse)
 
 Success
-
-
-Schema: `PaymentOptionsResponse`
 
 
 
@@ -8759,8 +8169,10 @@ Schema: `PaymentOptionsResponse`
 #### getAllPayouts
 Get All Payouts
 
+
+
 ```kotlin
-payment.getAllPayouts(companyId: companyId, uniqueExternalId: uniqueExternalId).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8772,23 +8184,19 @@ payment.getAllPayouts(companyId: companyId, uniqueExternalId: uniqueExternalId).
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| uniqueExternalId | String? | Fetch payouts using unique external id |  
 
 
 
 Get All Payouts
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PayoutsResponse](#PayoutsResponse)
 
 payouts response object
-
-
-Schema: `PayoutsResponse`
 
 
 
@@ -8801,8 +8209,10 @@ Schema: `PayoutsResponse`
 #### savePayout
 Save Payout
 
+
+
 ```kotlin
-payment.savePayout(companyId: companyId, body: body).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8814,22 +8224,19 @@ payment.savePayout(companyId: companyId, body: body).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |  
 
 
 
 Save Payout
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PayoutResponse](#PayoutResponse)
 
 save payout response object
-
-
-Schema: `PayoutResponse`
 
 
 
@@ -8842,8 +8249,10 @@ Schema: `PayoutResponse`
 #### updatePayout
 Update Payout
 
+
+
 ```kotlin
-payment.updatePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8855,23 +8264,19 @@ payment.updatePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo, b
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| uniqueTransferNo | String? | Unique transfer id |  
 
 
 
 Update Payout
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdatePayoutResponse](#UpdatePayoutResponse)
 
 save payout response object
-
-
-Schema: `UpdatePayoutResponse`
 
 
 
@@ -8884,8 +8289,10 @@ Schema: `UpdatePayoutResponse`
 #### activateAndDectivatePayout
 Partial Update Payout
 
+
+
 ```kotlin
-payment.activateAndDectivatePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8897,23 +8304,19 @@ payment.activateAndDectivatePayout(companyId: companyId, uniqueTransferNo: uniqu
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| uniqueTransferNo | String? | Unique transfer id |  
 
 
 
 Partial Update Payout
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdatePayoutResponse](#UpdatePayoutResponse)
 
 save payout response object
-
-
-Schema: `UpdatePayoutResponse`
 
 
 
@@ -8926,8 +8329,10 @@ Schema: `UpdatePayoutResponse`
 #### deletePayout
 Delete Payout
 
+
+
 ```kotlin
-payment.deletePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8939,23 +8344,19 @@ payment.deletePayout(companyId: companyId, uniqueTransferNo: uniqueTransferNo).s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| uniqueTransferNo | String? | Unique transfer id |  
 
 
 
 Delete Payout
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DeletePayoutResponse](#DeletePayoutResponse)
 
 delete payout response object
-
-
-Schema: `DeletePayoutResponse`
 
 
 
@@ -8968,8 +8369,10 @@ Schema: `DeletePayoutResponse`
 #### getSubscriptionPaymentMethod
 List Subscription Payment Method
 
+
+
 ```kotlin
-payment.getSubscriptionPaymentMethod(companyId: companyId).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8981,22 +8384,19 @@ payment.getSubscriptionPaymentMethod(companyId: companyId).safeAwait{ response,e
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |  
 
 
 
 Get all  Subscription  Payment Method
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriptionPaymentMethodResponse](#SubscriptionPaymentMethodResponse)
 
 List Subscription Payment Method Response
-
-
-Schema: `SubscriptionPaymentMethodResponse`
 
 
 
@@ -9009,8 +8409,10 @@ Schema: `SubscriptionPaymentMethodResponse`
 #### deleteSubscriptionPaymentMethod
 Delete Subscription Payment Method
 
+
+
 ```kotlin
-payment.deleteSubscriptionPaymentMethod(companyId: companyId, uniqueExternalId: uniqueExternalId, paymentMethodId: paymentMethodId).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9022,24 +8424,19 @@ payment.deleteSubscriptionPaymentMethod(companyId: companyId, uniqueExternalId: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| uniqueExternalId | String? |  |   
-| paymentMethodId | String? |  |  
 
 
 
 Uses this api to Delete Subscription Payment Method
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DeleteSubscriptionPaymentMethodResponse](#DeleteSubscriptionPaymentMethodResponse)
 
 Delete Subscription Payment Method Response.
-
-
-Schema: `DeleteSubscriptionPaymentMethodResponse`
 
 
 
@@ -9052,8 +8449,10 @@ Schema: `DeleteSubscriptionPaymentMethodResponse`
 #### getSubscriptionConfig
 List Subscription Config
 
+
+
 ```kotlin
-payment.getSubscriptionConfig(companyId: companyId).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9065,22 +8464,19 @@ payment.getSubscriptionConfig(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |  
 
 
 
 Get all  Subscription Config details
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriptionConfigResponse](#SubscriptionConfigResponse)
 
 List Subscription Config Response
-
-
-Schema: `SubscriptionConfigResponse`
 
 
 
@@ -9093,8 +8489,10 @@ Schema: `SubscriptionConfigResponse`
 #### saveSubscriptionSetupIntent
 Save Subscription Setup Intent
 
+
+
 ```kotlin
-payment.saveSubscriptionSetupIntent(companyId: companyId, body: body).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9106,22 +8504,19 @@ payment.saveSubscriptionSetupIntent(companyId: companyId, body: body).safeAwait{
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |  
 
 
 
 Uses this api to Save Subscription Setup Intent
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SaveSubscriptionSetupIntentResponse](#SaveSubscriptionSetupIntentResponse)
 
 Save Subscription Setup Intent Response.
-
-
-Schema: `SaveSubscriptionSetupIntentResponse`
 
 
 
@@ -9134,8 +8529,10 @@ Schema: `SaveSubscriptionSetupIntentResponse`
 #### addBeneficiaryDetails
 Save bank details for cancelled/returned order
 
+
+
 ```kotlin
-payment.addBeneficiaryDetails(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9147,23 +8544,19 @@ payment.addBeneficiaryDetails(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application id |  
 
 
 
 Use this API to save bank details for returned/cancelled order to refund amount in his account.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[RefundAccountResponse](#RefundAccountResponse)
 
 Success
-
-
-Schema: `RefundAccountResponse`
 
 
 
@@ -9176,8 +8569,10 @@ Schema: `RefundAccountResponse`
 #### verifyIfscCode
 Ifsc Code Verification
 
+
+
 ```kotlin
-payment.verifyIfscCode(companyId: companyId, ifscCode: ifscCode).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9189,23 +8584,19 @@ payment.verifyIfscCode(companyId: companyId, ifscCode: ifscCode).safeAwait{ resp
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| ifscCode | String? |  |  
 
 
 
 Get True/False for correct IFSC Code for adding bank details for refund
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[IfscCodeResponse](#IfscCodeResponse)
 
 Bank details on correct Ifsc Code
-
-
-Schema: `IfscCodeResponse`
 
 
 
@@ -9218,8 +8609,10 @@ Schema: `IfscCodeResponse`
 #### getUserOrderBeneficiaries
 List Order Beneficiary
 
+
+
 ```kotlin
-payment.getUserOrderBeneficiaries(orderId: orderId, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9231,24 +8624,19 @@ payment.getUserOrderBeneficiaries(orderId: orderId, companyId: companyId, applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| orderId | String? |  |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application id |  
 
 
 
 Get all active  beneficiary details added by the user for refund
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OrderBeneficiaryResponse](#OrderBeneficiaryResponse)
 
 List Order Beneficiary
-
-
-Schema: `OrderBeneficiaryResponse`
 
 
 
@@ -9261,8 +8649,10 @@ Schema: `OrderBeneficiaryResponse`
 #### getUserBeneficiaries
 List User Beneficiary
 
+
+
 ```kotlin
-payment.getUserBeneficiaries(orderId: orderId, companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+payment.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9274,26 +8664,21 @@ payment.getUserBeneficiaries(orderId: orderId, companyId: companyId, application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| orderId | String? |  |   
-| companyId | Int? | Company Id |   
-| applicationId | String? | Application id |  
 
 
 
 Get all active  beneficiary details added by the user for refund
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OrderBeneficiaryResponse](#OrderBeneficiaryResponse)
 
 List User Beneficiary
 
 
-Schema: `OrderBeneficiaryResponse`
-
-
 
 
 
@@ -9301,9 +8686,6 @@ Schema: `OrderBeneficiaryResponse`
 ---
 
 
-
----
----
 
 
 ## Order
@@ -9312,8 +8694,10 @@ Schema: `OrderBeneficiaryResponse`
 #### shipmentStatusUpdate
 Update status of Shipment
 
+
+
 ```kotlin
-order.shipmentStatusUpdate(companyId: companyId, body: body).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9325,22 +8709,19 @@ order.shipmentStatusUpdate(companyId: companyId, body: body).safeAwait{ response
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |  
 
 
 
 Update Shipment Status
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdateShipmentStatusResponse](#UpdateShipmentStatusResponse)
 
 Success
-
-
-Schema: `UpdateShipmentStatusResponse`
 
 
 
@@ -9353,8 +8734,10 @@ Schema: `UpdateShipmentStatusResponse`
 #### activityStatus
 Get Activity Status
 
+
+
 ```kotlin
-order.activityStatus(companyId: companyId, bagId: bagId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9366,23 +8749,19 @@ order.activityStatus(companyId: companyId, bagId: bagId).safeAwait{ response,err
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| bagId | String? | Bag Id |  
 
 
 
 Get Activity Status
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetActivityStatus](#GetActivityStatus)
 
 Success
-
-
-Schema: `GetActivityStatus`
 
 
 
@@ -9395,8 +8774,10 @@ Schema: `GetActivityStatus`
 #### storeProcessShipmentUpdate
 Update Store Process-Shipment
 
+
+
 ```kotlin
-order.storeProcessShipmentUpdate(companyId: companyId, body: body).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9408,22 +8789,19 @@ order.storeProcessShipmentUpdate(companyId: companyId, body: body).safeAwait{ re
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |  
 
 
 
 Update Store Process-Shipment
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdateProcessShipmenstRequestResponse](#UpdateProcessShipmenstRequestResponse)
 
 Success
-
-
-Schema: `UpdateProcessShipmenstRequestResponse`
 
 
 
@@ -9436,8 +8814,10 @@ Schema: `UpdateProcessShipmenstRequestResponse`
 #### checkRefund
 Check Refund is available or not
 
+
+
 ```kotlin
-order.checkRefund(companyId: companyId, shipmentId: shipmentId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9449,23 +8829,19 @@ order.checkRefund(companyId: companyId, shipmentId: shipmentId).safeAwait{ respo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| shipmentId | String? | Shipment Id |  
 
 
 
 Check Refund is available or not
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
 
 Success
-
-
-Schema: `HashMap<String,Any>`
 
 
 
@@ -9478,8 +8854,10 @@ Schema: `HashMap<String,Any>`
 #### getOrdersByCompanyId
 Get Orders for company based on Company Id
 
+
+
 ```kotlin
-order.getOrdersByCompanyId(companyId: companyId, pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9491,34 +8869,19 @@ order.getOrdersByCompanyId(companyId: companyId, pageNo: pageNo, pageSize: pageS
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| pageNo | String? | Current page number |   
-| pageSize | String? | Page limit |   
-| fromDate | String? | From Date |   
-| toDate | String? | To Date |   
-| q | String? | Keyword for Search |   
-| stage | String? | Specefic Order Stage |   
-| salesChannels | String? | Selected Sales Channel |   
-| orderId | String? | Order Id |   
-| stores | String? | Selected Stores |   
-| status | String? | Status of order |   
-| shortenUrls | Boolean? | Shorten URL option |   
-| filterType | String? | Filters |  
 
 
 
 Get Orders
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OrderListing](#OrderListing)
 
 Success
-
-
-Schema: `OrderListing`
 
 
 
@@ -9531,8 +8894,10 @@ Schema: `OrderListing`
 #### getOrderDetails
 Get Order Details for company based on Company Id and Order Id
 
+
+
 ```kotlin
-order.getOrderDetails(companyId: companyId, orderId: orderId, next: next, previous: previous).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9544,25 +8909,19 @@ order.getOrderDetails(companyId: companyId, orderId: orderId, next: next, previo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| orderId | String? | Order Id |   
-| next | String? | Next |   
-| previous | String? | Previous |  
 
 
 
 Get Orders
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OrderDetails](#OrderDetails)
 
 Success
-
-
-Schema: `OrderDetails`
 
 
 
@@ -9575,8 +8934,10 @@ Schema: `OrderDetails`
 #### getPicklistOrdersByCompanyId
 Get Orders for company based on Company Id
 
+
+
 ```kotlin
-order.getPicklistOrdersByCompanyId(companyId: companyId, pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9588,34 +8949,19 @@ order.getPicklistOrdersByCompanyId(companyId: companyId, pageNo: pageNo, pageSiz
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| pageNo | String? | Current page number |   
-| pageSize | String? | Page limit |   
-| fromDate | String? | From Date |   
-| toDate | String? | To Date |   
-| q | String? | Keyword for Search |   
-| stage | String? | Specefic Order Stage |   
-| salesChannels | String? | Selected Sales Channel |   
-| orderId | String? | Order Id |   
-| stores | String? | Selected Stores |   
-| status | String? | Status of order |   
-| shortenUrls | Boolean? | Shorten URL option |   
-| filterType | String? | Filters |  
 
 
 
 Get Orders
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OrderPicklistListing](#OrderPicklistListing)
 
 Success
-
-
-Schema: `OrderPicklistListing`
 
 
 
@@ -9628,8 +8974,10 @@ Schema: `OrderPicklistListing`
 #### trackShipmentPlatform
 Track Shipment by shipment id, for application based on application Id
 
+
+
 ```kotlin
-order.trackShipmentPlatform(companyId: companyId, applicationId: applicationId, shipmentId: shipmentId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9641,24 +8989,19 @@ order.trackShipmentPlatform(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| shipmentId | String? | Shipment Id |  
 
 
 
 Shipment Track
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PlatformShipmentTrack](#PlatformShipmentTrack)
 
 Success
-
-
-Schema: `PlatformShipmentTrack`
 
 
 
@@ -9671,8 +9014,10 @@ Schema: `PlatformShipmentTrack`
 #### trackOrder
 Track Order by order id, for application based on application Id
 
+
+
 ```kotlin
-order.trackOrder(companyId: companyId, applicationId: applicationId, orderId: orderId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9684,24 +9029,19 @@ order.trackOrder(companyId: companyId, applicationId: applicationId, orderId: or
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| orderId | String? | Order Id |  
 
 
 
 Order Track
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[PlatformOrderTrack](#PlatformOrderTrack)
 
 Success
-
-
-Schema: `PlatformOrderTrack`
 
 
 
@@ -9714,8 +9054,10 @@ Schema: `PlatformOrderTrack`
 #### failedOrders
 Get all failed orders application wise
 
+
+
 ```kotlin
-order.failedOrders(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9727,23 +9069,19 @@ order.failedOrders(companyId: companyId, applicationId: applicationId).safeAwait
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
 Failed Orders
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FailedOrders](#FailedOrders)
 
 Success
-
-
-Schema: `FailedOrders`
 
 
 
@@ -9756,8 +9094,10 @@ Schema: `FailedOrders`
 #### reprocessOrder
 Reprocess order by order id
 
+
+
 ```kotlin
-order.reprocessOrder(companyId: companyId, applicationId: applicationId, orderId: orderId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9769,24 +9109,19 @@ order.reprocessOrder(companyId: companyId, applicationId: applicationId, orderId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| orderId | String? | Order Id |  
 
 
 
 Order Reprocess
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdateOrderReprocessResponse](#UpdateOrderReprocessResponse)
 
 Success
-
-
-Schema: `UpdateOrderReprocessResponse`
 
 
 
@@ -9799,8 +9134,10 @@ Schema: `UpdateOrderReprocessResponse`
 #### updateShipment
 Use this API to update the shipment using its shipment ID.
 
+
+
 ```kotlin
-order.updateShipment(companyId: companyId, applicationId: applicationId, shipmentId: shipmentId, body: body).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9812,24 +9149,19 @@ order.updateShipment(companyId: companyId, applicationId: applicationId, shipmen
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
 
 
 Update the shipment
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShipmentUpdateResponse](#ShipmentUpdateResponse)
 
 Success. Check the example shown below or refer `ShipmentUpdateRequest` for more details.
-
-
-Schema: `ShipmentUpdateResponse`
 
 
 
@@ -9842,8 +9174,10 @@ Schema: `ShipmentUpdateResponse`
 #### getPlatformShipmentReasons
 Use this API to retrieve the issues that led to the cancellation of bags within a shipment.
 
+
+
 ```kotlin
-order.getPlatformShipmentReasons(companyId: companyId, applicationId: applicationId, action: action).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9855,24 +9189,19 @@ order.getPlatformShipmentReasons(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| action | String? | Action |  
 
 
 
 Get reasons behind full or partial cancellation of a shipment
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShipmentReasonsResponse](#ShipmentReasonsResponse)
 
 Success. Check the example shown below or refer `ShipmentReasonsResponse` for more details.
-
-
-Schema: `ShipmentReasonsResponse`
 
 
 
@@ -9885,8 +9214,10 @@ Schema: `ShipmentReasonsResponse`
 #### getShipmentTrackDetails
 Use this API to track a shipment using its shipment ID.
 
+
+
 ```kotlin
-order.getShipmentTrackDetails(companyId: companyId, applicationId: applicationId, orderId: orderId, shipmentId: shipmentId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9898,25 +9229,19 @@ order.getShipmentTrackDetails(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| orderId | String? | ID of the order. |   
-| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
 
 
 Track shipment
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShipmentTrackResponse](#ShipmentTrackResponse)
 
 Success. Check the example shown below or refer `ShipmentTrackResponse` for more details.
-
-
-Schema: `ShipmentTrackResponse`
 
 
 
@@ -9929,8 +9254,10 @@ Schema: `ShipmentTrackResponse`
 #### getShipmentAddress
 Use this API to get address of a shipment using its shipment ID and Address Category.
 
+
+
 ```kotlin
-order.getShipmentAddress(companyId: companyId, shipmentId: shipmentId, addressCategory: addressCategory).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9942,24 +9269,19 @@ order.getShipmentAddress(companyId: companyId, shipmentId: shipmentId, addressCa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
-| addressCategory | String? | Category of the address it falls into(billing or delivery). |  
 
 
 
 Get Shipment Address
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetShipmentAddressResponse](#GetShipmentAddressResponse)
 
 Success. Check the example shown below or refer `GetShipmentAddressResponse` for more details.
-
-
-Schema: `GetShipmentAddressResponse`
 
 
 
@@ -9972,8 +9294,10 @@ Schema: `GetShipmentAddressResponse`
 #### updateShipmentAddress
 Use this API to update address of a shipment using its shipment ID and Address Category.
 
+
+
 ```kotlin
-order.updateShipmentAddress(companyId: companyId, shipmentId: shipmentId, addressCategory: addressCategory, body: body).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9985,24 +9309,19 @@ order.updateShipmentAddress(companyId: companyId, shipmentId: shipmentId, addres
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| shipmentId | String? | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
-| addressCategory | String? | Category of the address it falls into(billing or delivery). |  
 
 
 
 Update Shipment Address
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdateShipmentAddressResponse](#UpdateShipmentAddressResponse)
 
 Success. Check the example shown below or refer `UpdateShipmentAddressResponse` for more details.
-
-
-Schema: `UpdateShipmentAddressResponse`
 
 
 
@@ -10015,8 +9334,10 @@ Schema: `UpdateShipmentAddressResponse`
 #### getPing
 Get Ping
 
+
+
 ```kotlin
-order.getPing(companyId: companyId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10028,22 +9349,19 @@ order.getPing(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |  
 
 
 
 Get Ping
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetPingResponse](#GetPingResponse)
 
 Success
-
-
-Schema: `GetPingResponse`
 
 
 
@@ -10056,8 +9374,10 @@ Schema: `GetPingResponse`
 #### voiceCallback
 Get Voice Callback
 
+
+
 ```kotlin
-order.voiceCallback(companyId: companyId).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10069,22 +9389,19 @@ order.voiceCallback(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |  
 
 
 
 Voice Callback
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetVoiceCallbackResponse](#GetVoiceCallbackResponse)
 
 Success
-
-
-Schema: `GetVoiceCallbackResponse`
 
 
 
@@ -10097,8 +9414,10 @@ Schema: `GetVoiceCallbackResponse`
 #### voiceClickToCall
 Get Voice Click to Call
 
+
+
 ```kotlin
-order.voiceClickToCall(companyId: companyId, caller: caller, receiver: receiver).safeAwait{ response,error->
+order.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10110,26 +9429,21 @@ order.voiceClickToCall(companyId: companyId, caller: caller, receiver: receiver)
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| caller | String? | Caller contact number |   
-| receiver | String? | Receiver contact number |  
 
 
 
 Voice Click to Call
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetClickToCallResponse](#GetClickToCallResponse)
 
 Success
 
 
-Schema: `GetClickToCallResponse`
-
-
 
 
 
@@ -10137,19 +9451,18 @@ Schema: `GetClickToCallResponse`
 ---
 
 
-
----
----
 
 
 ## Catalog
 
 
-#### deleteSearchKeywords
-Delete a Search Keywords
+#### getSearchKeywords
+Get a Search Keywords Details
+
+
 
 ```kotlin
-catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10161,24 +9474,59 @@ catalog.deleteSearchKeywords(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+
+
+
+Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
+
+*Returned Response*
+
+
+
+
+[GetSearchWordsDetailResponse](#GetSearchWordsDetailResponse)
+
+The Collection object. See example below or refer `GetSearchWordsDetailResponseSchema` for details
+
+
+
+
+
+
+---
+
+
+#### deleteSearchKeywords
+Delete a Search Keywords
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
 
 
 
 Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DeleteResponse](#DeleteResponse)
 
 Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
-
-
-Schema: `DeleteResponse`
 
 
 
@@ -10191,8 +9539,10 @@ Schema: `DeleteResponse`
 #### updateSearchKeywords
 Update Search Keyword
 
+
+
 ```kotlin
-catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10204,67 +9554,19 @@ catalog.updateSearchKeywords(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
 
 
 
 Update Search Keyword by its id. On successful request, returns the updated collection
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetSearchWordsData](#GetSearchWordsData)
 
 The Collection object. See example below or refer `GetSearchWordsDataSchema` for details.
-
-
-Schema: `GetSearchWordsData`
-
-
-
-
-
-
----
-
-
-#### getSearchKeywords
-Get a Search Keywords Details
-
-```kotlin
-catalog.getSearchKeywords(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
-
-
-
-Get the details of a words by its `id`. If successful, returns a Collection resource in the response body specified in `GetSearchWordsDetailResponseSchema`
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `GetSearchWordsDetailResponseSchema` for details
-
-
-Schema: `GetSearchWordsDetailResponse`
 
 
 
@@ -10277,8 +9579,10 @@ Schema: `GetSearchWordsDetailResponse`
 #### getAllSearchKeyword
 List all Search Custom Keyword Listing
 
+
+
 ```kotlin
-catalog.getAllSearchKeyword(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10290,23 +9594,19 @@ catalog.getAllSearchKeyword(companyId: companyId, applicationId: applicationId).
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Custom Search Keyword allows you to map conditions with keywords to give you the ultimate results
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetSearchWordsResponse](#GetSearchWordsResponse)
 
 List of custom search keywords. See example below or refer `GetSearchWordsResponseSchema` for details
-
-
-Schema: `GetSearchWordsResponse`
 
 
 
@@ -10319,8 +9619,10 @@ Schema: `GetSearchWordsResponse`
 #### createCustomKeyword
 Add a Custom Search Keywords
 
+
+
 ```kotlin
-catalog.createCustomKeyword(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10332,109 +9634,19 @@ catalog.createCustomKeyword(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateSearchKeywordSchema`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetSearchWordsData](#GetSearchWordsData)
 
 Get keyword object with id that is added. See example below or refer `GetSearchWordsDataSchema` for details
-
-
-Schema: `GetSearchWordsData`
-
-
-
-
-
-
----
-
-
-#### deleteAutocompleteKeyword
-Delete a Autocomplete Keywords
-
-```kotlin
-catalog.deleteAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-*Success Response*
-
-
-
-Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
-
-
-Schema: `DeleteResponse`
-
-
-
-
-
-
----
-
-
-#### updateAutocompleteKeyword
-Create & Update Autocomplete Keyword
-
-```kotlin
-catalog.updateAutocompleteKeyword(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Update a mapping by it's id. On successful request, returns the updated Keyword mapping
-
-*Success Response*
-
-
-
-The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
-
-
-Schema: `GetAutocompleteWordsResponse`
 
 
 
@@ -10447,8 +9659,10 @@ Schema: `GetAutocompleteWordsResponse`
 #### getAutocompleteKeywordDetail
 Get a Autocomplete Keywords Details
 
+
+
 ```kotlin
-catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10460,24 +9674,99 @@ catalog.getAutocompleteKeywordDetail(companyId: companyId, applicationId: applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
 
 
 
 Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
 
 The mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details
 
 
-Schema: `GetAutocompleteWordsResponse`
+
+
+
+
+---
+
+
+#### deleteAutocompleteKeyword
+Delete a Autocomplete Keywords
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
+
+*Returned Response*
+
+
+
+
+[DeleteResponse](#DeleteResponse)
+
+Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
+
+
+
+
+
+
+---
+
+
+#### updateAutocompleteKeyword
+Create & Update Autocomplete Keyword
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Update a mapping by it's id. On successful request, returns the updated Keyword mapping
+
+*Returned Response*
+
+
+
+
+[GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
+
+The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
 
 
 
@@ -10490,8 +9779,10 @@ Schema: `GetAutocompleteWordsResponse`
 #### getAutocompleteConfig
 List all Autocomplete Keyword Listing
 
+
+
 ```kotlin
-catalog.getAutocompleteConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10503,23 +9794,19 @@ catalog.getAutocompleteConfig(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Custom Autocomplete Keyword allows you to map conditions with keywords to give you the ultimate results
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
 
 List of custom autocomplete keywords. See example below or refer `GetAutocompleteWordsResponseSchema` for details
-
-
-Schema: `GetAutocompleteWordsResponse`
 
 
 
@@ -10532,8 +9819,10 @@ Schema: `GetAutocompleteWordsResponse`
 #### createCustomAutocompleteRule
 Add a Custom Autocomplete Keywords
 
+
+
 ```kotlin
-catalog.createCustomAutocompleteRule(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10545,23 +9834,19 @@ catalog.createCustomAutocompleteRule(companyId: companyId, applicationId: applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateAutocompleteKeywordSchema`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateAutocompleteWordsResponse](#CreateAutocompleteWordsResponse)
 
 List of all the collections including the one you added. See example below or refer `CreateAutocompleteWordsResponseSchema` for details
-
-
-Schema: `CreateAutocompleteWordsResponse`
 
 
 
@@ -10574,8 +9859,10 @@ Schema: `CreateAutocompleteWordsResponse`
 #### getProductBundle
 List all Product Bundles
 
+
+
 ```kotlin
-catalog.getProductBundle(companyId: companyId, q: q).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10587,23 +9874,19 @@ catalog.getProductBundle(companyId: companyId, q: q).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| q | String? | A search string that is searched with product bundle name. |  
 
 
 
 Get all product bundles for a particular company
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetProductBundleListingResponse](#GetProductBundleListingResponse)
 
 List of bundle configured for a company. See example below or refer `GetProductBundleListingResponse` for details
-
-
-Schema: `GetProductBundleListingResponse`
 
 
 
@@ -10616,8 +9899,10 @@ Schema: `GetProductBundleListingResponse`
 #### createProductBundle
 Create Product Bundle
 
+
+
 ```kotlin
-catalog.createProductBundle(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10629,64 +9914,19 @@ catalog.createProductBundle(companyId: companyId, body: body).safeAwait{ respons
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
 Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetProductBundleCreateResponse](#GetProductBundleCreateResponse)
 
 Get bundle with id that is added. See example below or refer `GetProductBundleCreateResponse` for details
-
-
-Schema: `GetProductBundleCreateResponse`
-
-
-
-
-
-
----
-
-
-#### updateProductBundle
-Update a Product Bundle
-
-```kotlin
-catalog.updateProductBundle(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
-
-
-
-Update a Product Bundle by its id. On successful request, returns the updated product bundle
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `GetProductBundleCreateResponse` for details.
-
-
-Schema: `GetProductBundleCreateResponse`
 
 
 
@@ -10699,8 +9939,10 @@ Schema: `GetProductBundleCreateResponse`
 #### getProductBundleDetail
 Get a particular Product Bundle details
 
+
+
 ```kotlin
-catalog.getProductBundleDetail(companyId: companyId, id: id).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10712,23 +9954,59 @@ catalog.getProductBundleDetail(companyId: companyId, id: id).safeAwait{ response
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| id | String? | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
 
 
 
 Get a particular Bundle details by its `id`. If successful, returns a Product bundle resource in the response body specified in `GetProductBundleResponse`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetProductBundleResponse](#GetProductBundleResponse)
 
 The Collection object. See example below or refer `GetProductBundleResponse` for details
 
 
-Schema: `GetProductBundleResponse`
+
+
+
+
+---
+
+
+#### updateProductBundle
+Update a Product Bundle
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Update a Product Bundle by its id. On successful request, returns the updated product bundle
+
+*Returned Response*
+
+
+
+
+[GetProductBundleCreateResponse](#GetProductBundleCreateResponse)
+
+The Collection object. See example below or refer `GetProductBundleCreateResponse` for details.
 
 
 
@@ -10741,8 +10019,10 @@ Schema: `GetProductBundleResponse`
 #### getSizeGuides
 Get list of size guides
 
+
+
 ```kotlin
-catalog.getSizeGuides(companyId: companyId, active: active, q: q, tag: tag, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10754,27 +10034,19 @@ catalog.getSizeGuides(companyId: companyId, active: active, q: q, tag: tag, page
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company for which the size guides are to be fetched. |   
-| active | Boolean? | filter size guide on basis of active, in-active |   
-| q | String? | Query that is to be searched. |   
-| tag | String? | to filter size guide on basis of tag. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
 
 
 
 This API allows to view all the size guides associated to the seller.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ListSizeGuide](#ListSizeGuide)
 
 Size guide object. See example below or refer `ListSizeGuide` for details
-
-
-Schema: `ListSizeGuide`
 
 
 
@@ -10787,8 +10059,10 @@ Schema: `ListSizeGuide`
 #### createSizeGuide
 Create a size guide.
 
+
+
 ```kotlin
-catalog.createSizeGuide(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10800,64 +10074,19 @@ catalog.createSizeGuide(companyId: companyId, body: body).safeAwait{ response,er
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the size guide is to be created. |  
 
 
 
 This API allows to create a size guide associated to a brand.
 
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
+*Returned Response*
 
 
 
 
-
-
----
-
-
-#### updateSizeGuide
-Edit a size guide.
-
-```kotlin
-catalog.updateSizeGuide(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company. |   
-| id | String? | Mongo id of the size guide to be edited |  
-
-
-
-This API allows to edit a size guide.
-
-*Success Response*
-
-
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -10870,8 +10099,10 @@ Schema: `SuccessResponse`
 #### getSizeGuide
 Get a single size guide.
 
+
+
 ```kotlin
-catalog.getSizeGuide(companyId: companyId, id: id).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10883,23 +10114,59 @@ catalog.getSizeGuide(companyId: companyId, id: id).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to size guide. |   
-| id | String? | Id of the size guide to be viewed. |  
 
 
 
 This API helps to get data associated to a size guide.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SizeGuideResponse](#SizeGuideResponse)
 
 Brand object. See example below or refer `SizeGuideResponseSchema` for details
 
 
-Schema: `SizeGuideResponse`
+
+
+
+
+---
+
+
+#### updateSizeGuide
+Edit a size guide.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API allows to edit a size guide.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
 
 
 
@@ -10912,8 +10179,10 @@ Schema: `SizeGuideResponse`
 #### getCatalogConfiguration
 Get configuration meta  details for catalog for admin panel
 
+
+
 ```kotlin
-catalog.getCatalogConfiguration(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10925,23 +10194,19 @@ catalog.getCatalogConfiguration(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 configuration meta  details for catalog.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetCatalogConfigurationMetaData](#GetCatalogConfigurationMetaData)
 
 configuration details for catalog. See example below or refer `GetCatalogConfigurationMetaDataSchema` for details
-
-
-Schema: `GetCatalogConfigurationMetaData`
 
 
 
@@ -10954,8 +10219,10 @@ Schema: `GetCatalogConfigurationMetaData`
 #### getConfigurations
 Get configured details for catalog
 
+
+
 ```kotlin
-catalog.getConfigurations(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10967,23 +10234,19 @@ catalog.getConfigurations(companyId: companyId, applicationId: applicationId).sa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 configured details for catalog.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetAppCatalogConfiguration](#GetAppCatalogConfiguration)
 
 Get application level configured catalog details. See example below or refer `GetAppCatalogConfigurationSchema` for details
-
-
-Schema: `GetAppCatalogConfiguration`
 
 
 
@@ -10996,8 +10259,10 @@ Schema: `GetAppCatalogConfiguration`
 #### createConfigurationProductListing
 Add configuration for products & listings
 
+
+
 ```kotlin
-catalog.createConfigurationProductListing(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11009,23 +10274,19 @@ catalog.createConfigurationProductListing(companyId: companyId, applicationId: a
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Add configuration for products & listing.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetAppCatalogConfiguration](#GetAppCatalogConfiguration)
 
 success flag will tell whether the operation was successful.
-
-
-Schema: `GetAppCatalogConfiguration`
 
 
 
@@ -11038,8 +10299,10 @@ Schema: `GetAppCatalogConfiguration`
 #### getConfigurationByType
 Get configured details for catalog
 
+
+
 ```kotlin
-catalog.getConfigurationByType(companyId: companyId, applicationId: applicationId, type: type).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11051,24 +10314,19 @@ catalog.getConfigurationByType(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| type | String? | type can be brands, categories etc. |  
 
 
 
 configured details for catalog.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetAppCatalogEntityConfiguration](#GetAppCatalogEntityConfiguration)
 
 Get application level configured catalog details. See example below or refer `GetAppCatalogEntityConfigurationSchema` for details
-
-
-Schema: `GetAppCatalogEntityConfiguration`
 
 
 
@@ -11081,8 +10339,10 @@ Schema: `GetAppCatalogEntityConfiguration`
 #### createConfigurationByType
 Add configuration for categories and brands
 
+
+
 ```kotlin
-catalog.createConfigurationByType(companyId: companyId, applicationId: applicationId, type: type, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11094,24 +10354,19 @@ catalog.createConfigurationByType(companyId: companyId, applicationId: applicati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| type | String? | type can be brands, categories etc. |  
 
 
 
 Add configuration for categories & brands.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetAppCatalogConfiguration](#GetAppCatalogConfiguration)
 
 success flag will tell whether the operation was successful.
-
-
-Schema: `GetAppCatalogConfiguration`
 
 
 
@@ -11124,8 +10379,10 @@ Schema: `GetAppCatalogConfiguration`
 #### getQueryFilters
 Get query filters to configure a collection
 
+
+
 ```kotlin
-catalog.getQueryFilters(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11137,23 +10394,19 @@ catalog.getQueryFilters(companyId: companyId, applicationId: applicationId).safe
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Get query filters to configure a collection
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetCollectionQueryOptionResponse](#GetCollectionQueryOptionResponse)
 
 The attached items of an collection. See example below or refer `GetCollectionQueryOptionResponse` for details
-
-
-Schema: `GetCollectionQueryOptionResponse`
 
 
 
@@ -11166,8 +10419,10 @@ Schema: `GetCollectionQueryOptionResponse`
 #### getAllCollections
 List all the collections
 
+
+
 ```kotlin
-catalog.getAllCollections(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11179,23 +10434,19 @@ catalog.getAllCollections(companyId: companyId, applicationId: applicationId).sa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 A Collection allows you to organize your products into hierarchical groups. For example, a dress might be in the category _Clothing_, the individual product might also be in the collection _Summer_. On successful request, returns all the collections as specified in `CollectionListingSchema`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetCollectionListingResponse](#GetCollectionListingResponse)
 
 List of collections. See example below or refer `GetCollectionListingResponse` for details
-
-
-Schema: `GetCollectionListingResponse`
 
 
 
@@ -11208,8 +10459,10 @@ Schema: `GetCollectionListingResponse`
 #### createCollection
 Add a Collection
 
+
+
 ```kotlin
-catalog.createCollection(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11221,23 +10474,19 @@ catalog.createCollection(companyId: companyId, applicationId: applicationId, bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Create a collection. See `CreateCollectionRequestSchema` for the list of attributes needed to create a collection and collections/query-options for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionCreateResponse`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CollectionCreateResponse](#CollectionCreateResponse)
 
 List of all the collections including the one you added. See example below or refer `CollectionCreateResponse` for details
-
-
-Schema: `CollectionCreateResponse`
 
 
 
@@ -11250,8 +10499,10 @@ Schema: `CollectionCreateResponse`
 #### getCollectionDetail
 Get a particular collection
 
+
+
 ```kotlin
-catalog.getCollectionDetail(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11263,67 +10514,19 @@ catalog.getCollectionDetail(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| slug | String? | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to retrieve. |  
 
 
 
 Get the details of a collection by its `slug`. If successful, returns a Collection resource in the response body specified in `CollectionDetailResponse`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CollectionDetailResponse](#CollectionDetailResponse)
 
 The Collection object. See example below or refer `CollectionDetailResponse` for details
-
-
-Schema: `CollectionDetailResponse`
-
-
-
-
-
-
----
-
-
-#### updateCollection
-Update a collection
-
-```kotlin
-catalog.updateCollection(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier of a collection. |  
-
-
-
-Update a collection by it's id. On successful request, returns the updated collection
-
-*Success Response*
-
-
-
-The Collection object. See example below or refer `UpdateCollectionSchema` for details.
-
-
-Schema: `UpdateCollection`
 
 
 
@@ -11336,8 +10539,10 @@ Schema: `UpdateCollection`
 #### deleteCollection
 Delete a Collection
 
+
+
 ```kotlin
-catalog.deleteCollection(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11349,24 +10554,59 @@ catalog.deleteCollection(companyId: companyId, applicationId: applicationId, id:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier of a collection. |  
 
 
 
 Delete a collection by it's id. Returns an object that tells whether the collection was deleted successfully
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DeleteResponse](#DeleteResponse)
 
 Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
 
 
-Schema: `DeleteResponse`
+
+
+
+
+---
+
+
+#### updateCollection
+Update a collection
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Update a collection by it's id. On successful request, returns the updated collection
+
+*Returned Response*
+
+
+
+
+[UpdateCollection](#UpdateCollection)
+
+The Collection object. See example below or refer `UpdateCollectionSchema` for details.
 
 
 
@@ -11379,8 +10619,10 @@ Schema: `DeleteResponse`
 #### getCollectionItems
 Get the items for a collection
 
+
+
 ```kotlin
-catalog.getCollectionItems(companyId: companyId, applicationId: applicationId, id: id, sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11392,27 +10634,19 @@ catalog.getCollectionItems(companyId: companyId, applicationId: applicationId, i
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier of a collection. |   
-| sortOn | String? | Each response will contain sort_on param, which should be sent back to make pagination work. |   
-| pageId | String? | Each response will contain next_id param, which should be sent back to make pagination work. |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
 
 
 
 Get items from a collection specified by its `id`.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetCollectionItemsResponse](#GetCollectionItemsResponse)
 
 The attached items of an collection. See example below or refer `GetCollectionItemsResponseSchema` for details
-
-
-Schema: `GetCollectionItemsResponse`
 
 
 
@@ -11425,8 +10659,10 @@ Schema: `GetCollectionItemsResponse`
 #### addCollectionItems
 Add items to a collection
 
+
+
 ```kotlin
-catalog.addCollectionItems(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11438,24 +10674,19 @@ catalog.addCollectionItems(companyId: companyId, applicationId: applicationId, i
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| id | String? | A `id` is a unique identifier of a collection. |  
 
 
 
 Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdatedResponse](#UpdatedResponse)
 
 Status object. Tells whether the operation was successful.
-
-
-Schema: `UpdatedResponse`
 
 
 
@@ -11468,8 +10699,10 @@ Schema: `UpdatedResponse`
 #### getCatalogInsights
 Analytics data of catalog and inventory.
 
+
+
 ```kotlin
-catalog.getCatalogInsights(companyId: companyId, applicationId: applicationId, brand: brand).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11481,24 +10714,19 @@ catalog.getCatalogInsights(companyId: companyId, applicationId: applicationId, b
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| brand | String? | Brand slug |  
 
 
 
 Catalog Insights api returns the count of catalog related data like products, brands, departments and categories that have been made live as per configuration of the app.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CatalogInsightResponse](#CatalogInsightResponse)
 
 Response Data
-
-
-Schema: `CatalogInsightResponse`
 
 
 
@@ -11511,8 +10739,10 @@ Schema: `CatalogInsightResponse`
 #### getSellerInsights
 Analytics data of catalog and inventory that are being cross-selled.
 
+
+
 ```kotlin
-catalog.getSellerInsights(companyId: companyId, sellerAppId: sellerAppId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11524,23 +10754,19 @@ catalog.getSellerInsights(companyId: companyId, sellerAppId: sellerAppId).safeAw
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| sellerAppId | String? | Id of the seller application which is serving the invetory/catalog of the company |  
 
 
 
 Analytics data of catalog and inventory that are being cross-selled.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CrossSellingResponse](#CrossSellingResponse)
 
 Response Data
-
-
-Schema: `CrossSellingResponse`
 
 
 
@@ -11553,8 +10779,10 @@ Schema: `CrossSellingResponse`
 #### createMarketplaceOptin
 Create/Update opt-in infomation.
 
+
+
 ```kotlin
-catalog.createMarketplaceOptin(companyId: companyId, marketplace: marketplace, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11566,23 +10794,19 @@ catalog.createMarketplaceOptin(companyId: companyId, marketplace: marketplace, b
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | The company id for which the detail needs to be retrieved. |   
-| marketplace | String? | The marketplace for which the detail needs to be retrieved. |  
 
 
 
 Use this API to create/update opt-in information for given platform. If successful, returns data in the response body as specified in `OptInPostResponseSchema`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UpdatedResponse](#UpdatedResponse)
 
 See example below or refer `UpdatedResponse` for details.
-
-
-Schema: `UpdatedResponse`
 
 
 
@@ -11595,8 +10819,10 @@ Schema: `UpdatedResponse`
 #### getMarketplaceOptinDetail
 Get opt-in infomation.
 
+
+
 ```kotlin
-catalog.getMarketplaceOptinDetail(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11608,22 +10834,19 @@ catalog.getMarketplaceOptinDetail(companyId: companyId).safeAwait{ response,erro
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? |  |  
 
 
 
 Use this API to fetch opt-in information for all the platforms. If successful, returns a logs in the response body as specified in `GetOptInPlatformSchema`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetOptInPlatform](#GetOptInPlatform)
 
 See example below or refer `GetOptInPlatformSchema` for details.
-
-
-Schema: `GetOptInPlatform`
 
 
 
@@ -11636,8 +10859,10 @@ Schema: `GetOptInPlatform`
 #### getCompanyDetail
 Get the Company details.
 
+
+
 ```kotlin
-catalog.getCompanyDetail(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11649,22 +10874,19 @@ catalog.getCompanyDetail(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | The company id for which the detail needs to be retrieved. |  
 
 
 
 Get the details of the company associated with the given company_id passed.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OptinCompanyDetail](#OptinCompanyDetail)
 
 See example below or refer `OptinCompanyDetailSchema` for details
-
-
-Schema: `OptinCompanyDetail`
 
 
 
@@ -11677,8 +10899,10 @@ Schema: `OptinCompanyDetail`
 #### getCompanyBrandDetail
 Get the Company Brand details of Optin.
 
+
+
 ```kotlin
-catalog.getCompanyBrandDetail(companyId: companyId, isActive: isActive, q: q, pageNo: pageNo, pageSize: pageSize, marketplace: marketplace).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11690,27 +10914,19 @@ catalog.getCompanyBrandDetail(companyId: companyId, isActive: isActive, q: q, pa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | The company id for which the detail needs to be retrieved. |   
-| isActive | Boolean? | The is_active status for the optin id. |   
-| q | Boolean? | The search value to filter the list. |   
-| pageNo | Int? | The number of page for the company id. |   
-| pageSize | Int? | Number of records that can be seen on the page for the company id. |   
-| marketplace | String? | The marketplace platform associated with the company id. |  
 
 
 
 Get the details of the Brands associated with the given company_id passed.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OptinCompanyBrandDetailsView](#OptinCompanyBrandDetailsView)
 
 See example below or refer `OptinCompanyBrandDetailsView` for details
-
-
-Schema: `OptinCompanyBrandDetailsView`
 
 
 
@@ -11723,8 +10939,10 @@ Schema: `OptinCompanyBrandDetailsView`
 #### getCompanyMetrics
 Get the Company metrics
 
+
+
 ```kotlin
-catalog.getCompanyMetrics(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11736,22 +10954,19 @@ catalog.getCompanyMetrics(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | The company id for which the detail needs to be retrieved. |  
 
 
 
 Get the Company metrics associated with the company ID passed.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OptinCompanyMetrics](#OptinCompanyMetrics)
 
 See example below or refer `OptinCompanyMetrics` for details
-
-
-Schema: `OptinCompanyMetrics`
 
 
 
@@ -11764,8 +10979,10 @@ Schema: `OptinCompanyMetrics`
 #### getStoreDetail
 Get the Store details.
 
+
+
 ```kotlin
-catalog.getStoreDetail(companyId: companyId, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11777,25 +10994,19 @@ catalog.getStoreDetail(companyId: companyId, q: q, pageNo: pageNo, pageSize: pag
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | The company id for which the detail needs to be retrieved. |   
-| q | String? | The search related the store for the company id. |   
-| pageNo | Int? | The number of page for the company id. |   
-| pageSize | Int? | Number of records that can be seen on the page for the company id. |  
 
 
 
 Get the details of the store associated with the company ID passed.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OptinStoreDetails](#OptinStoreDetails)
 
 See example below or refer `OptinStoreDetailsSchema` for details
-
-
-Schema: `OptinStoreDetails`
 
 
 
@@ -11808,8 +11019,10 @@ Schema: `OptinStoreDetails`
 #### getGenderAttribute
 Get gender attribute details
 
+
+
 ```kotlin
-catalog.getGenderAttribute(companyId: companyId, attributeSlug: attributeSlug).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11821,23 +11034,19 @@ catalog.getGenderAttribute(companyId: companyId, attributeSlug: attributeSlug).s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company for which you want to view the genders |   
-| attributeSlug | String? | slug of the attribute for which you want to view the genders |  
 
 
 
 This API allows to view the gender attribute details.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GenderDetail](#GenderDetail)
 
 Size guide object. See example below or refer `GenderDetailSchema` for details
-
-
-Schema: `GenderDetail`
 
 
 
@@ -11850,8 +11059,10 @@ Schema: `GenderDetail`
 #### listProductTemplateCategories
 List Department specifiec product categories
 
+
+
 ```kotlin
-catalog.listProductTemplateCategories(companyId: companyId, departments: departments, itemType: itemType).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11863,24 +11074,19 @@ catalog.listProductTemplateCategories(companyId: companyId, departments: departm
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| departments | String? | A `department` is name of a departments whose category needs to be listed. Can specify multiple departments. |   
-| itemType | String? | An `item_type` is the type of item, it can be `set`, `standard`, `digital`, etc. |  
 
 
 
 Allows you to list all product categories values for the departments specified
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProdcutTemplateCategoriesResponse](#ProdcutTemplateCategoriesResponse)
 
 List of all categories attached to departments specified. See example below or refer `ProdcutTemplateCategoriesResponse` for details
-
-
-Schema: `ProdcutTemplateCategoriesResponse`
 
 
 
@@ -11893,8 +11099,10 @@ Schema: `ProdcutTemplateCategoriesResponse`
 #### listDepartmentsData
 List all Departments
 
+
+
 ```kotlin
-catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: pageSize, name: name, search: search, isActive: isActive).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11906,27 +11114,19 @@ catalog.listDepartmentsData(companyId: companyId, pageNo: pageNo, pageSize: page
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |   
-| name | String? | Can search departments by passing name. |   
-| search | String? | Can search departments by passing name of the department in search parameter. |   
-| isActive | Boolean? | Can query for departments based on whether they are active or inactive. |  
 
 
 
 Allows you to list all departments, also can search using name and filter active and incative departments, and item type
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DepartmentsResponse](#DepartmentsResponse)
 
 List of departments data. See example below or refer `DepartmentsResponse` for details
-
-
-Schema: `DepartmentsResponse`
 
 
 
@@ -11939,8 +11139,10 @@ Schema: `DepartmentsResponse`
 #### getDepartmentData
 Get specific departments details by passing in unique id of the department
 
+
+
 ```kotlin
-catalog.getDepartmentData(companyId: companyId, uid: uid).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11952,23 +11154,19 @@ catalog.getDepartmentData(companyId: companyId, uid: uid).safeAwait{ response,er
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| uid | String? | A `uid` is a unique identifier of a department. |  
 
 
 
 Allows you to get department data, by uid
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DepartmentsResponse](#DepartmentsResponse)
 
 Departments Data. See example below or refer `DepartmentsResponse` for details
-
-
-Schema: `DepartmentsResponse`
 
 
 
@@ -11981,8 +11179,10 @@ Schema: `DepartmentsResponse`
 #### listProductTemplate
 List all Templates
 
+
+
 ```kotlin
-catalog.listProductTemplate(companyId: companyId, departments: departments).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11994,23 +11194,19 @@ catalog.listProductTemplate(companyId: companyId, departments: departments).safe
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| departments | String? | A `departments` is the name of a particular department. |  
 
 
 
 Allows you to list all product templates, also can filter by department
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TemplatesResponse](#TemplatesResponse)
 
 List of product templates. See example below or refer `TemplatesResponse` for details
-
-
-Schema: `TemplatesResponse`
 
 
 
@@ -12023,8 +11219,10 @@ Schema: `TemplatesResponse`
 #### validateProductTemplate
 Validate Product Template Schema
 
+
+
 ```kotlin
-catalog.validateProductTemplate(companyId: companyId, slug: slug).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12036,23 +11234,19 @@ catalog.validateProductTemplate(companyId: companyId, slug: slug).safeAwait{ res
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| slug | String? | A `slug` is a unique identifier for a particular template. |  
 
 
 
 Allows you to list all product templates validation values for all the fields present in the database
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TemplatesValidationResponse](#TemplatesValidationResponse)
 
 List of fields and validation values fro each. See example below or refer `TemplatesValidationResponse` for details
-
-
-Schema: `TemplatesValidationResponse`
 
 
 
@@ -12065,8 +11259,10 @@ Schema: `TemplatesValidationResponse`
 #### downloadProductTemplateViews
 Download Product Template View
 
+
+
 ```kotlin
-catalog.downloadProductTemplateViews(companyId: companyId, slug: slug).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12078,23 +11274,19 @@ catalog.downloadProductTemplateViews(companyId: companyId, slug: slug).safeAwait
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| slug | String? | A `slug` is a unique identifier for a particular template. |  
 
 
 
 Allows you to download product template data
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[String](#String)
 
 CSV File of product template data. See example below or refer `TemplatesResponse` for details
-
-
-Schema: `String`
 
 
 
@@ -12107,8 +11299,10 @@ Schema: `String`
 #### downloadProductTemplateView
 Download Product Template View
 
+
+
 ```kotlin
-catalog.downloadProductTemplateView(companyId: companyId, itemType: itemType).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12120,23 +11314,19 @@ catalog.downloadProductTemplateView(companyId: companyId, itemType: itemType).sa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| itemType | String? | An `item_type` defines the type of item. |  
 
 
 
 Allows you to download product template data
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[String](#String)
 
 CSV File of product template data.
-
-
-Schema: `String`
 
 
 
@@ -12149,8 +11339,10 @@ Schema: `String`
 #### validateProductTemplateSchema
 Validate Product Template Schema
 
+
+
 ```kotlin
-catalog.validateProductTemplateSchema(companyId: companyId, itemType: itemType).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12162,23 +11354,19 @@ catalog.validateProductTemplateSchema(companyId: companyId, itemType: itemType).
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| itemType | String? | An `item_type` defines the type of item. The default value is standard. |  
 
 
 
 Allows you to list all product templates validation values for all the fields present in the database
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[InventoryValidationResponse](#InventoryValidationResponse)
 
 List of fields and validation values fro each. See example below or refer `InventoryValidationResponse` for details
-
-
-Schema: `InventoryValidationResponse`
 
 
 
@@ -12191,8 +11379,10 @@ Schema: `InventoryValidationResponse`
 #### listHSNCodes
 List HSN Codes
 
+
+
 ```kotlin
-catalog.listHSNCodes(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12204,22 +11394,19 @@ catalog.listHSNCodes(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
 Allows you to list all hsn Codes
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[HSNCodesResponse](#HSNCodesResponse)
 
 List of all HSN Codes. See example below or refer `HSNCodesResponse` for details
-
-
-Schema: `HSNCodesResponse`
 
 
 
@@ -12232,8 +11419,10 @@ Schema: `HSNCodesResponse`
 #### listProductTemplateExportDetails
 Allows you to list all product templates export list details
 
+
+
 ```kotlin
-catalog.listProductTemplateExportDetails(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12245,22 +11434,19 @@ catalog.listProductTemplateExportDetails(companyId: companyId).safeAwait{ respon
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
 Can view details including trigger data, task id , etc.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductDownloadsResponse](#ProductDownloadsResponse)
 
 List of Product Downloads Data. See example below or refer `ProductDownloadsResponse` for details
-
-
-Schema: `ProductDownloadsResponse`
 
 
 
@@ -12273,8 +11459,10 @@ Schema: `ProductDownloadsResponse`
 #### listTemplateBrandTypeValues
 Allows you to list all values for Templates, Brands or Type
 
+
+
 ```kotlin
-catalog.listTemplateBrandTypeValues(companyId: companyId, filter: filter).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12286,23 +11474,19 @@ catalog.listTemplateBrandTypeValues(companyId: companyId, filter: filter).safeAw
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| filter | String? | A `filter` is the unique identifier of the type of value required. |  
 
 
 
 The filter type query parameter defines what type of data to return. The type of query returns the valid values for the same
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductConfigurationDownloads](#ProductConfigurationDownloads)
 
 See example below or refer `ProductConfigurationDownloadsSchema` for details
-
-
-Schema: `ProductConfigurationDownloads`
 
 
 
@@ -12315,8 +11499,10 @@ Schema: `ProductConfigurationDownloads`
 #### listCategories
 Get product categories list
 
+
+
 ```kotlin
-catalog.listCategories(companyId: companyId, level: level, departments: departments, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12328,27 +11514,19 @@ catalog.listCategories(companyId: companyId, level: level, departments: departme
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| level | String? | Get category for multiple levels |   
-| departments | String? | Get category for multiple departments filtered |   
-| q | String? | Get multiple categories filtered by search string |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
 
 
 
 This API gets meta associated to product categories.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CategoryResponse](#CategoryResponse)
 
 Category Meta. See example below or refer `CategoryResponse` for details
-
-
-Schema: `CategoryResponse`
 
 
 
@@ -12361,8 +11539,10 @@ Schema: `CategoryResponse`
 #### createCategories
 Create product categories
 
+
+
 ```kotlin
-catalog.createCategories(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12374,64 +11554,19 @@ catalog.createCategories(companyId: companyId, body: body).safeAwait{ response,e
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
 This API lets user create product categories
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CategoryCreateResponse](#CategoryCreateResponse)
 
 Category Meta. See example below or refer `CategoryCreateResponse` for details
-
-
-Schema: `CategoryCreateResponse`
-
-
-
-
-
-
----
-
-
-#### updateCategory
-Update product categories
-
-```kotlin
-catalog.updateCategory(companyId: companyId, uid: uid, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| uid | String? | Category unique id |  
-
-
-
-Update a product category using this apu
-
-*Success Response*
-
-
-
-Category Meta. See example below or refer `CategoryUpdateResponse` for details
-
-
-Schema: `CategoryUpdateResponse`
 
 
 
@@ -12444,8 +11579,10 @@ Schema: `CategoryUpdateResponse`
 #### getCategoryData
 Get product category by uid
 
+
+
 ```kotlin
-catalog.getCategoryData(companyId: companyId, uid: uid).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12457,23 +11594,59 @@ catalog.getCategoryData(companyId: companyId, uid: uid).safeAwait{ response,erro
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| uid | String? | Category unique id |  
 
 
 
 This API gets meta associated to product categories.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SingleCategoryResponse](#SingleCategoryResponse)
 
 Get Data for one category. See example below or refer `CategoryResponse` for details
 
 
-Schema: `SingleCategoryResponse`
+
+
+
+
+---
+
+
+#### updateCategory
+Update product categories
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Update a product category using this apu
+
+*Returned Response*
+
+
+
+
+[CategoryUpdateResponse](#CategoryUpdateResponse)
+
+Category Meta. See example below or refer `CategoryUpdateResponse` for details
 
 
 
@@ -12486,8 +11659,10 @@ Schema: `SingleCategoryResponse`
 #### getProducts
 Get product list
 
+
+
 ```kotlin
-catalog.getProducts(companyId: companyId, brandIds: brandIds, categoryIds: categoryIds, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12499,27 +11674,19 @@ catalog.getProducts(companyId: companyId, brandIds: brandIds, categoryIds: categ
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Double? | Get list of products filtered by company Id |   
-| brandIds | Double? | Get multiple products filtered by brand Ids |   
-| categoryIds | Double? | Get multiple products filtered by category Ids |   
-| q | String? | Get multiple products filtered by q string |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
 
 
 
 This API gets meta associated to products.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductListingResponse](#ProductListingResponse)
 
 Product Meta. See example below for details
-
-
-Schema: `ProductListingResponse`
 
 
 
@@ -12532,8 +11699,10 @@ Schema: `ProductListingResponse`
 #### createProduct
 Create a product.
 
+
+
 ```kotlin
-catalog.createProduct(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12545,106 +11714,19 @@ catalog.createProduct(companyId: companyId, body: body).safeAwait{ response,erro
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to product that is to be viewed. |  
 
 
 
 This API allows to create product.
 
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
+*Returned Response*
 
 
 
 
-
-
----
-
-
-#### deleteProduct
-Delete a product.
-
-```kotlin
-catalog.deleteProduct(companyId: companyId, itemId: itemId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id of the company associated to product that is to be deleted. |   
-| itemId | Int? | Id of the product to be updated. |  
-
-
-
-This API allows to delete product.
-
-*Success Response*
-
-
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
-
-
-
-
-
-
----
-
-
-#### editProduct
-Edit a product.
-
-```kotlin
-catalog.editProduct(companyId: companyId, itemId: itemId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to product that is to be viewed. |   
-| itemId | Int? | Id of the product to be updated. |  
-
-
-
-This API allows to edit product.
-
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -12657,8 +11739,10 @@ Schema: `SuccessResponse`
 #### getProduct
 Get a single product.
 
+
+
 ```kotlin
-catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12670,26 +11754,99 @@ catalog.getProduct(itemCode: itemCode, companyId: companyId, itemId: itemId, bra
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| itemCode | String? | Item code of the product. |   
-| companyId | Int? | Company Id of the product. |   
-| itemId | Int? | Item Id of the product. |   
-| brandUid | Int? | Brand Id of the product. |   
-| uid | Int? | Id of the product. |  
 
 
 
 This API helps to get data associated to a particular product.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Product](#Product)
 
 Product object. See example below or refer `product.utils.format_product_response` for details
 
 
-Schema: `Product`
+
+
+
+
+---
+
+
+#### deleteProduct
+Delete a product.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API allows to delete product.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
+
+
+
+
+
+
+---
+
+
+#### editProduct
+Edit a product.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API allows to edit product.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
 
 
 
@@ -12702,8 +11859,10 @@ Schema: `Product`
 #### getProductValidation
 Validate product/size data
 
+
+
 ```kotlin
-catalog.getProductValidation(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12715,22 +11874,19 @@ catalog.getProductValidation(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Double? | Validates data against given company |  
 
 
 
 This API validates product data.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ValidateProduct](#ValidateProduct)
 
 Validate Meta. See example below for details
-
-
-Schema: `ValidateProduct`
 
 
 
@@ -12743,8 +11899,10 @@ Schema: `ValidateProduct`
 #### getProductSize
 Get a single product size.
 
+
+
 ```kotlin
-catalog.getProductSize(itemCode: itemCode, companyId: companyId, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12756,26 +11914,19 @@ catalog.getProductSize(itemCode: itemCode, companyId: companyId, itemId: itemId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| itemCode | String? | Item code of the product size. |   
-| companyId | Int? | Company Id of the product size. |   
-| itemId | Int? | Item Id of the product size. |   
-| brandUid | Int? | Brand Id of the product size. |   
-| uid | Int? | Id of the product size. |  
 
 
 
 This API helps to get data associated to a particular product size.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductListingResponse](#ProductListingResponse)
 
 Product object. See example below for details
-
-
-Schema: `ProductListingResponse`
 
 
 
@@ -12788,8 +11939,10 @@ Schema: `ProductListingResponse`
 #### getProductBulkUploadHistory
 Get a list of all bulk product upload jobs.
 
+
+
 ```kotlin
-catalog.getProductBulkUploadHistory(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12801,24 +11954,19 @@ catalog.getProductBulkUploadHistory(companyId: companyId, pageNo: pageNo, pageSi
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id of of which Product Bulk Upload History to be obtained. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
 
 
 
 This API helps to get bulk product upload jobs data.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductBulkRequestList](#ProductBulkRequestList)
 
 List of bulk product upload jobs. See `BulkRequestGetSchema` for details
-
-
-Schema: `ProductBulkRequestList`
 
 
 
@@ -12831,8 +11979,10 @@ Schema: `ProductBulkRequestList`
 #### updateProductAssetsInBulk
 Create a Bulk asset upload Job.
 
+
+
 ```kotlin
-catalog.updateProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12844,64 +11994,19 @@ catalog.updateProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ r
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id in which assets to be uploaded. |  
 
 
 
 This API helps to create a bulk asset upload job.
 
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `SuccessResponse`
+*Returned Response*
 
 
 
 
-
-
----
-
-
-#### createProductsInBulk
-Create products in bulk associated with given batch Id.
-
-```kotlin
-catalog.createProductsInBulk(companyId: companyId, batchId: batchId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id in which assets to be uploaded. |   
-| batchId | String? | Batch Id in which assets to be uploaded. |  
-
-
-
-This API helps to create products in bulk push to kafka for approval/creation.
-
-*Success Response*
-
-
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -12914,8 +12019,10 @@ Schema: `SuccessResponse`
 #### deleteProductBulkJob
 Delete Bulk product job.
 
+
+
 ```kotlin
-catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12927,23 +12034,59 @@ catalog.deleteProductBulkJob(companyId: companyId, batchId: batchId).safeAwait{ 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id of the company associated to size that is to be deleted. |   
-| batchId | Int? | Batch Id of the bulk product job to be deleted. |  
 
 
 
 This API allows to delete bulk product job associated with company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
 
 
-Schema: `SuccessResponse`
+
+
+
+
+---
+
+
+#### createProductsInBulk
+Create products in bulk associated with given batch Id.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API helps to create products in bulk push to kafka for approval/creation.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
 
 
 
@@ -12956,8 +12099,10 @@ Schema: `SuccessResponse`
 #### getCompanyTags
 Get a list of all tags associated with company.
 
+
+
 ```kotlin
-catalog.getCompanyTags(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12969,22 +12114,19 @@ catalog.getCompanyTags(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id of the product size. |  
 
 
 
 This API helps to get tags data associated to a particular copmpany.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductTagsViewResponse](#ProductTagsViewResponse)
 
 Tag List. See example below for details
-
-
-Schema: `ProductTagsViewResponse`
 
 
 
@@ -12997,8 +12139,10 @@ Schema: `ProductTagsViewResponse`
 #### getProductAssetsInBulk
 Get a list of all bulk asset jobs.
 
+
+
 ```kotlin
-catalog.getProductAssetsInBulk(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13010,24 +12154,19 @@ catalog.getProductAssetsInBulk(companyId: companyId, pageNo: pageNo, pageSize: p
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id of the product size. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
 
 
 
 This API helps to get bulk asset jobs data associated to a particular company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BulkAssetResponse](#BulkAssetResponse)
 
 List of bulk asset jobs List. See `BulkUtil.modify_batch_response` for details
-
-
-Schema: `BulkAssetResponse`
 
 
 
@@ -13040,8 +12179,10 @@ Schema: `BulkAssetResponse`
 #### createProductAssetsInBulk
 Create a Bulk asset upload Job.
 
+
+
 ```kotlin
-catalog.createProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13053,22 +12194,19 @@ catalog.createProductAssetsInBulk(companyId: companyId, body: body).safeAwait{ r
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id in which assets to be uploaded. |  
 
 
 
 This API helps to create a bulk asset upload job.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -13081,8 +12219,10 @@ Schema: `SuccessResponse`
 #### deleteSize
 Delete a Size associated with product.
 
+
+
 ```kotlin
-catalog.deleteSize(companyId: companyId, itemId: itemId, size: size).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13094,24 +12234,19 @@ catalog.deleteSize(companyId: companyId, itemId: itemId, size: size).safeAwait{ 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id of the company associated to size that is to be deleted. |   
-| itemId | Int? | Item Id of the product associated with size to be deleted. |   
-| size | Int? | size to be deleted. |  
 
 
 
 This API allows to delete size associated with product.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductSizeDeleteResponse](#ProductSizeDeleteResponse)
 
 Returns a success response
-
-
-Schema: `ProductSizeDeleteResponse`
 
 
 
@@ -13124,8 +12259,10 @@ Schema: `ProductSizeDeleteResponse`
 #### getInventory
 Get Inventory for company
 
+
+
 ```kotlin
-catalog.getInventory(companyId: companyId, itemId: itemId, size: size, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13137,26 +12274,19 @@ catalog.getInventory(companyId: companyId, itemId: itemId, size: size, pageNo: p
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to product that is to be viewed. |   
-| itemId | String? | Item code of the product of which size is to be get. |   
-| size | String? | Size of which inventory is to get. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
 
 
 
 This API allows get Inventory data for particular company grouped by size and store.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[InventoryResponse](#InventoryResponse)
 
 returns a list of all inventory grouped by size and store
-
-
-Schema: `InventoryResponse`
 
 
 
@@ -13169,8 +12299,10 @@ Schema: `InventoryResponse`
 #### addInventory
 Add Inventory for particular size and store.
 
+
+
 ```kotlin
-catalog.addInventory(companyId: companyId, itemId: itemId, size: size, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13182,24 +12314,19 @@ catalog.addInventory(companyId: companyId, itemId: itemId, size: size, body: bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to product that is to be viewed. |   
-| itemId | Double? | Item code of the product of which size is to be get. |   
-| size | String? | Size in which inventory is to be added. |  
 
 
 
 This API allows add Inventory for particular size and store.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -13212,8 +12339,10 @@ Schema: `SuccessResponse`
 #### deleteInventory
 Delete a Inventory.
 
+
+
 ```kotlin
-catalog.deleteInventory(companyId: companyId, itemId: itemId, locationId: locationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13225,24 +12354,19 @@ catalog.deleteInventory(companyId: companyId, itemId: itemId, locationId: locati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id of the company associated with Inventory that is to be deleted. |   
-| itemId | Int? | Id of the product associated with Inventory to be deleted. |   
-| locationId | Double? | Location ID of store of which inventory is to be deleted. |  
 
 
 
 This API allows to delete inventory of a particular product for particular company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[InventoryDelete](#InventoryDelete)
 
 Returns a success response
-
-
-Schema: `InventoryDelete`
 
 
 
@@ -13255,8 +12379,10 @@ Schema: `InventoryDelete`
 #### getInventoryBulkUploadHistory
 Get a list of all bulk Inventory upload jobs.
 
+
+
 ```kotlin
-catalog.getInventoryBulkUploadHistory(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13268,24 +12394,19 @@ catalog.getInventoryBulkUploadHistory(companyId: companyId, pageNo: pageNo, page
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id of of which Inventory Bulk Upload History to be obtained. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
 
 
 
 This API helps to get bulk Inventory upload jobs data.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BulkInventoryGet](#BulkInventoryGet)
 
 List of bulk Inventory upload jobs. See `BulkInventoryGetSchema` for details
-
-
-Schema: `BulkInventoryGet`
 
 
 
@@ -13298,8 +12419,10 @@ Schema: `BulkInventoryGet`
 #### createBulkInventoryJob
 Create a Bulk Inventory upload Job.
 
+
+
 ```kotlin
-catalog.createBulkInventoryJob(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13311,63 +12434,19 @@ catalog.createBulkInventoryJob(companyId: companyId, body: body).safeAwait{ resp
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id in which Inventory to be uploaded. |  
 
 
 
 This API helps to create a bulk Inventory upload job.
 
-*Success Response*
-
-
-
-Returns a success response
-
-
-Schema: `CommonResponse`
+*Returned Response*
 
 
 
 
-
-
----
-
-
-#### createBulkInventory
-Create products in bulk associated with given batch Id.
-
-```kotlin
-catalog.createBulkInventory(companyId: companyId, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id in which Inventory is to be uploaded. |  
-
-
-
-This API helps to create products in bulk push to kafka for approval/creation.
-
-*Success Response*
-
-
+[CommonResponse](#CommonResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -13380,8 +12459,10 @@ Schema: `SuccessResponse`
 #### deleteBulkInventoryJob
 Delete Bulk Inventory job.
 
+
+
 ```kotlin
-catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13393,22 +12474,59 @@ catalog.deleteBulkInventoryJob(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id of the company of which bulk Inventory job is to be deleted. |  
 
 
 
 This API allows to delete bulk Inventory job associated with company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
 
 
-Schema: `SuccessResponse`
+
+
+
+
+---
+
+
+#### createBulkInventory
+Create products in bulk associated with given batch Id.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API helps to create products in bulk push to kafka for approval/creation.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
 
 
 
@@ -13421,8 +12539,10 @@ Schema: `SuccessResponse`
 #### getInventoryExport
 Get Inventory export history.
 
+
+
 ```kotlin
-catalog.getInventoryExport(companyId: companyId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13434,22 +12554,19 @@ catalog.getInventoryExport(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id in which assets to be uploaded. |  
 
 
 
 This API helps to get Inventory export history.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[InventoryExportJob](#InventoryExportJob)
 
 Returns a list of inventory export jobs
-
-
-Schema: `InventoryExportJob`
 
 
 
@@ -13462,8 +12579,10 @@ Schema: `InventoryExportJob`
 #### createInventoryExportJob
 Create a Inventory export Job.
 
+
+
 ```kotlin
-catalog.createInventoryExportJob(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13475,22 +12594,19 @@ catalog.createInventoryExportJob(companyId: companyId, body: body).safeAwait{ re
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id in which assets to be uploaded. |  
 
 
 
 This API helps to create a Inventory export job.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -13503,8 +12619,10 @@ Schema: `SuccessResponse`
 #### exportInventoryConfig
 Get List of different filters for inventory export
 
+
+
 ```kotlin
-catalog.exportInventoryConfig(companyId: companyId, filterType: filterType).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13516,23 +12634,19 @@ catalog.exportInventoryConfig(companyId: companyId, filterType: filterType).safe
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to product that is to be viewed. |   
-| filterType | String? | filter type from any one of ['brand', 'store', 'type'] |  
 
 
 
 This API allows get List of different filters like brand, store, and type for inventory export.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[InventoryConfig](#InventoryConfig)
 
 returns filters configuration for inventory export
-
-
-Schema: `InventoryConfig`
 
 
 
@@ -13545,8 +12659,10 @@ Schema: `InventoryConfig`
 #### getAllHsnCodes
 Hsn Code List.
 
+
+
 ```kotlin
-catalog.getAllHsnCodes(companyId: companyId, pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13558,25 +12674,19 @@ catalog.getAllHsnCodes(companyId: companyId, pageNo: pageNo, pageSize: pageSize,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| pageNo | Int? | page no |   
-| pageSize | Int? | page size |   
-| q | String? | search using hsn code. |  
 
 
 
 Hsn Code List.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[HsnCodesListingResponse](#HsnCodesListingResponse)
 
 List of all HSN Codes. See example below or refer `HsnCodesListingResponseSchema` for details
-
-
-Schema: `HsnCodesListingResponse`
 
 
 
@@ -13589,8 +12699,10 @@ Schema: `HsnCodesListingResponse`
 #### createHsnCode
 Create Hsn Code.
 
+
+
 ```kotlin
-catalog.createHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13602,64 +12714,19 @@ catalog.createHsnCode(companyId: companyId, body: body).safeAwait{ response,erro
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |  
 
 
 
 Create Hsn Code.
 
-*Success Response*
-
-
-
-See example below for details
-
-
-Schema: `HsnCode`
+*Returned Response*
 
 
 
 
-
-
----
-
-
-#### updateHsnCode
-Update Hsn Code.
-
-```kotlin
-catalog.updateHsnCode(companyId: companyId, id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| id | String? | Unique id |  
-
-
-
-Update Hsn Code.
-
-*Success Response*
-
-
+[HsnCode](#HsnCode)
 
 See example below for details
-
-
-Schema: `HsnCode`
 
 
 
@@ -13672,8 +12739,10 @@ Schema: `HsnCode`
 #### getHsnCode
 Fetch Hsn Code.
 
+
+
 ```kotlin
-catalog.getHsnCode(companyId: companyId, id: id).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13685,23 +12754,59 @@ catalog.getHsnCode(companyId: companyId, id: id).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| id | String? | Unique id |  
 
 
 
 Fetch Hsn Code.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[HsnCode](#HsnCode)
 
 See example below details
 
 
-Schema: `HsnCode`
+
+
+
+
+---
+
+
+#### updateHsnCode
+Update Hsn Code.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Update Hsn Code.
+
+*Returned Response*
+
+
+
+
+[HsnCode](#HsnCode)
+
+See example below for details
 
 
 
@@ -13714,8 +12819,10 @@ Schema: `HsnCode`
 #### bulkHsnCode
 Bulk Create or Update Hsn Code.
 
+
+
 ```kotlin
-catalog.bulkHsnCode(companyId: companyId, body: body).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13727,22 +12834,19 @@ catalog.bulkHsnCode(companyId: companyId, body: body).safeAwait{ response,error-
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |  
 
 
 
 Bulk Create or Update Hsn Code.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BulkHsnResponse](#BulkHsnResponse)
 
 See example below for details
-
-
-Schema: `BulkHsnResponse`
 
 
 
@@ -13755,8 +12859,10 @@ Schema: `BulkHsnResponse`
 #### getApplicationBrands
 List all the brands
 
+
+
 ```kotlin
-catalog.getApplicationBrands(companyId: companyId, applicationId: applicationId, department: department, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13768,26 +12874,19 @@ catalog.getApplicationBrands(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| department | String? | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |  
 
 
 
 A brand is the name under which a product is being sold. Use this API to list all the brands. You can pass optionally filter the brands by the department. If successful, returns a paginated list of brands specified in `BrandListingResponse`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BrandListingResponse](#BrandListingResponse)
 
 List of Brands. See example below or refer `BrandListingResponse` for details
-
-
-Schema: `BrandListingResponse`
 
 
 
@@ -13800,8 +12899,10 @@ Schema: `BrandListingResponse`
 #### getDepartments
 List all the departments
 
+
+
 ```kotlin
-catalog.getDepartments(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13813,23 +12914,19 @@ catalog.getDepartments(companyId: companyId, applicationId: applicationId).safeA
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
 Departments are a way to categorise similar products. A product can lie in multiple departments. For example, a skirt can below to the 'Women's Fashion' Department while a handbag can lie in 'Women's Accessories' Department. Use this API to list all the departments. If successful, returns the list of departments specified in `DepartmentResponse`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DepartmentResponse](#DepartmentResponse)
 
 List of Departments. See example below or refer `DepartmentResponse` for details.
-
-
-Schema: `DepartmentResponse`
 
 
 
@@ -13842,8 +12939,10 @@ Schema: `DepartmentResponse`
 #### getCategories
 List all the categories
 
+
+
 ```kotlin
-catalog.getCategories(companyId: companyId, applicationId: applicationId, department: department).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13855,24 +12954,19 @@ catalog.getCategories(companyId: companyId, applicationId: applicationId, depart
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| department | String? | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API |  
 
 
 
 List all the categories. You can optionally pass filter the brands by the department. If successful, returns a paginated list of brands specified in `CategoryListingResponse`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CategoryListingResponse](#CategoryListingResponse)
 
 List of Categories. See example below or refer `CategoryListingResponse` for details.
-
-
-Schema: `CategoryListingResponse`
 
 
 
@@ -13885,8 +12979,10 @@ Schema: `CategoryListingResponse`
 #### getAppicationProducts
 List the products
 
+
+
 ```kotlin
-catalog.getAppicationProducts(companyId: companyId, applicationId: applicationId, q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize, pageNo: pageNo, pageType: pageType).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13898,31 +12994,19 @@ catalog.getAppicationProducts(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| q | String? | The search query. This can be a partial or complete name of a either a product, brand or category |   
-| f | String? | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::category:t-shirts||shirts** |   
-| filters | Boolean? | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters |   
-| sortOn | String? | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. |   
-| pageId | String? | Each response will contain **page_id** param, which should be sent back to make pagination work. |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 12. |   
-| pageNo | Int? | If page_type is number then pass it to fetch page items. Default is 1. |   
-| pageType | String? | For pagination type should be cursor or number. Default is cursor. |  
 
 
 
 List all the products associated with a brand, collection or category in a requested sort order. The API additionally supports arbitrary search queries that may refer the name of any product, brand, category or collection. If successful, returns a paginated list of products specified in `ApplicationProductListingResponse`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationProductListingResponse](#ApplicationProductListingResponse)
 
 List of Products. See example below or refer `ApplicationProductListingResponse` for details
-
-
-Schema: `ApplicationProductListingResponse`
 
 
 
@@ -13935,8 +13019,10 @@ Schema: `ApplicationProductListingResponse`
 #### getProductDetailBySlug
 Get a product
 
+
+
 ```kotlin
-catalog.getProductDetailBySlug(companyId: companyId, applicationId: applicationId, slug: slug).safeAwait{ response,error->
+catalog.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13948,26 +13034,21 @@ catalog.getProductDetailBySlug(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |   
-| applicationId | String? | A `application_id` is a unique identifier for a particular sale channel. |   
-| slug | String? | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** |  
 
 
 
 Products are the core resource of an application. Products can be associated by categories, collections, brands and more. This API retrieves the product specified by the given **slug**. If successful, returns a Product resource in the response body specified in `ProductDetail`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ProductDetail](#ProductDetail)
 
 The Product object. See example below or refer `ProductDetail` for details.
 
 
-Schema: `ProductDetail`
-
-
 
 
 
@@ -13975,9 +13056,6 @@ Schema: `ProductDetail`
 ---
 
 
-
----
----
 
 
 ## CompanyProfile
@@ -13986,8 +13064,10 @@ Schema: `ProductDetail`
 #### cbsOnboardGet
 Get company profile
 
+
+
 ```kotlin
-companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13999,22 +13079,19 @@ companyprofile.cbsOnboardGet(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
 This API allows to view the company profile of the seller account.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetCompanyProfileSerializerResponse](#GetCompanyProfileSerializerResponse)
 
 Company profile object. See example below or refer `GetCompanyProfileSerializerResponse` for details
-
-
-Schema: `GetCompanyProfileSerializerResponse`
 
 
 
@@ -14027,8 +13104,10 @@ Schema: `GetCompanyProfileSerializerResponse`
 #### updateCompany
 Edit company profile
 
+
+
 ```kotlin
-companyprofile.updateCompany(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14040,22 +13119,19 @@ companyprofile.updateCompany(companyId: companyId, body: body).safeAwait{ respon
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
 This API allows to edit the company profile of the seller account.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success message
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -14068,8 +13144,10 @@ Schema: `SuccessResponse`
 #### getCompanyMetrics
 Get company metrics
 
+
+
 ```kotlin
-companyprofile.getCompanyMetrics(companyId: companyId).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14081,22 +13159,19 @@ companyprofile.getCompanyMetrics(companyId: companyId).safeAwait{ response,error
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
 This API allows to view the company metrics, i.e. the status of its brand and stores. Also its allows to view the number of products, company documents & store documents which are verified and unverified.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[MetricsSerializer](#MetricsSerializer)
 
 Metrics response object. See example below or refer `MetricsSerializer` for details
-
-
-Schema: `MetricsSerializer`
 
 
 
@@ -14109,8 +13184,10 @@ Schema: `MetricsSerializer`
 #### getBrand
 Get a single brand.
 
+
+
 ```kotlin
-companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14122,23 +13199,19 @@ companyprofile.getBrand(companyId: companyId, brandId: brandId).safeAwait{ respo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to brand that is to be viewed. |   
-| brandId | String? | Id of the brand to be viewed. |  
 
 
 
 This API helps to get data associated to a particular brand.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetBrandResponseSerializer](#GetBrandResponseSerializer)
 
 Brand object. See example below or refer `GetBrandResponseSerializer` for details
-
-
-Schema: `GetBrandResponseSerializer`
 
 
 
@@ -14151,8 +13224,10 @@ Schema: `GetBrandResponseSerializer`
 #### editBrand
 Edit a brand.
 
+
+
 ```kotlin
-companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14164,23 +13239,19 @@ companyprofile.editBrand(companyId: companyId, brandId: brandId, body: body).saf
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company associated to brand that is to be viewed. |   
-| brandId | String? | Id of the brand to be viewed. |  
 
 
 
 This API allows to edit meta of a brand.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -14193,8 +13264,10 @@ Schema: `SuccessResponse`
 #### createBrand
 Create a Brand.
 
+
+
 ```kotlin
-companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14206,22 +13279,19 @@ companyprofile.createBrand(companyId: companyId, body: body).safeAwait{ response
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company. |  
 
 
 
 This API allows to create a brand associated to a company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -14234,8 +13304,10 @@ Schema: `SuccessResponse`
 #### createCompanyBrandMapping
 Create a company brand mapping.
 
+
+
 ```kotlin
-companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14247,22 +13319,19 @@ companyprofile.createCompanyBrandMapping(companyId: companyId, body: body).safeA
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the brand is to be mapped. |  
 
 
 
 This API allows to create a company brand mapping, for a already existing brand in the system.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -14275,8 +13344,10 @@ Schema: `SuccessResponse`
 #### getBrands
 Get brands associated to a company
 
+
+
 ```kotlin
-companyprofile.getBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14288,24 +13359,19 @@ companyprofile.getBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSiz
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
 
 
 
 This API helps to get view brands associated to a particular company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CompanyBrandListSerializer](#CompanyBrandListSerializer)
 
 Brand object. See example below or refer `CompanyBrandListSerializer` for details
-
-
-Schema: `CompanyBrandListSerializer`
 
 
 
@@ -14318,8 +13384,10 @@ Schema: `CompanyBrandListSerializer`
 #### createLocation
 Create a location asscoiated to a company.
 
+
+
 ```kotlin
-companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14331,22 +13399,19 @@ companyprofile.createLocation(companyId: companyId, body: body).safeAwait{ respo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |  
 
 
 
 This API allows to create a location associated to a company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -14359,8 +13424,10 @@ Schema: `SuccessResponse`
 #### getLocations
 Get list of locations
 
+
+
 ```kotlin
-companyprofile.getLocations(companyId: companyId, storeType: storeType, q: q, stage: stage, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14372,27 +13439,19 @@ companyprofile.getLocations(companyId: companyId, storeType: storeType, q: q, st
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company whose locations are to fetched |   
-| storeType | String? | Helps to sort the location list on the basis of location type. |   
-| q | String? | Query that is to be searched. |   
-| stage | String? | to filter companies on basis of verified or unverified companies. |   
-| pageNo | Int? | The page number to navigate through the given set of results |   
-| pageSize | Int? | Number of items to retrieve in each page. Default is 10. |  
 
 
 
 This API allows to view all the locations asscoiated to a company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[LocationListSerializer](#LocationListSerializer)
 
 Company profile object. See example below or refer `LocationListSerializer` for details
-
-
-Schema: `LocationListSerializer`
 
 
 
@@ -14405,8 +13464,10 @@ Schema: `LocationListSerializer`
 #### getLocationDetail
 Get details of a specific location.
 
+
+
 ```kotlin
-companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14418,23 +13479,19 @@ companyprofile.getLocationDetail(companyId: companyId, locationId: locationId).s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location lies. |   
-| locationId | String? | Id of the location which you want to view. |  
 
 
 
 This API helps to get data associated to a specific location.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetLocationSerializer](#GetLocationSerializer)
 
 Brand object. See example below or refer `GetLocationSerializer` for details
-
-
-Schema: `GetLocationSerializer`
 
 
 
@@ -14447,8 +13504,10 @@ Schema: `GetLocationSerializer`
 #### updateLocation
 Edit a location asscoiated to a company.
 
+
+
 ```kotlin
-companyprofile.updateLocation(companyId: companyId, locationId: locationId, body: body).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14460,23 +13519,19 @@ companyprofile.updateLocation(companyId: companyId, locationId: locationId, body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |   
-| locationId | String? | Id of the location which you want to edit. |  
 
 
 
 This API allows to edit a location associated to a company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
-
-
-Schema: `SuccessResponse`
 
 
 
@@ -14489,8 +13544,10 @@ Schema: `SuccessResponse`
 #### createLocationBulk
 Create a location asscoiated to a company in bulk.
 
+
+
 ```kotlin
-companyprofile.createLocationBulk(companyId: companyId, body: body).safeAwait{ response,error->
+companyprofile.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14502,24 +13559,21 @@ companyprofile.createLocationBulk(companyId: companyId, body: body).safeAwait{ r
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Id of the company inside which the location is to be created. |  
 
 
 
 This API allows to create a location associated to a company.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessResponse](#SuccessResponse)
 
 Returns a success response
 
 
-Schema: `SuccessResponse`
-
-
 
 
 
@@ -14527,9 +13581,6 @@ Schema: `SuccessResponse`
 ---
 
 
-
----
----
 
 
 ## FileStorage
@@ -14538,8 +13589,10 @@ Schema: `SuccessResponse`
 #### startUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
+
+
 ```kotlin
-filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14551,10 +13604,6 @@ filestorage.startUpload(namespace: namespace, companyId: companyId, body: body).
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| namespace | String? | bucket name |   
-| companyId | Int? | company_id |  
 
 
 
@@ -14578,14 +13627,14 @@ After successfully upload, call `completeUpload` api to complete the upload proc
 This operation will return the url for the uploaded file.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StartResponse](#StartResponse)
 
 Success
-
-
-Schema: `StartResponse`
 
 
 
@@ -14598,8 +13647,10 @@ Schema: `StartResponse`
 #### completeUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
+
+
 ```kotlin
-filestorage.completeUpload(namespace: namespace, companyId: companyId, body: body).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14611,10 +13662,6 @@ filestorage.completeUpload(namespace: namespace, companyId: companyId, body: bod
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| namespace | String? | bucket name |   
-| companyId | Int? | company_id |  
 
 
 
@@ -14638,14 +13685,14 @@ After successfully upload, call `completeUpload` api to complete the upload proc
 This operation will return the url for the uploaded file.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CompleteResponse](#CompleteResponse)
 
 Success
-
-
-Schema: `CompleteResponse`
 
 
 
@@ -14658,8 +13705,10 @@ Schema: `CompleteResponse`
 #### appStartUpload
 This operation initiates upload and returns storage link which is valid for 30 Minutes. You can use that storage link to make subsequent upload request with file buffer or blob.
 
+
+
 ```kotlin
-filestorage.appStartUpload(namespace: namespace, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14671,11 +13720,6 @@ filestorage.appStartUpload(namespace: namespace, companyId: companyId, applicati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| namespace | String? | bucket name |   
-| companyId | Int? | company_id |   
-| applicationId | String? | application id |  
 
 
 
@@ -14699,14 +13743,14 @@ After successfully upload, call `appCompleteUpload` api to complete the upload p
 This operation will return the url for the uploaded file.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StartResponse](#StartResponse)
 
 Success
-
-
-Schema: `StartResponse`
 
 
 
@@ -14719,8 +13763,10 @@ Schema: `StartResponse`
 #### appCompleteUpload
 This will complete the upload process. After successfully uploading file, you can call this operation to complete the upload process.
 
+
+
 ```kotlin
-filestorage.appCompleteUpload(namespace: namespace, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14732,11 +13778,6 @@ filestorage.appCompleteUpload(namespace: namespace, companyId: companyId, applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| namespace | String? | bucket name |   
-| companyId | Int? | company_id |   
-| applicationId | String? | application id |  
 
 
 
@@ -14760,14 +13801,14 @@ After successfully upload, call `appCompleteUpload` api to complete the upload p
 This operation will return the url for the uploaded file.
 
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CompleteResponse](#CompleteResponse)
 
 Success
-
-
-Schema: `CompleteResponse`
 
 
 
@@ -14780,8 +13821,10 @@ Schema: `CompleteResponse`
 #### getSignUrls
 Explain here
 
+
+
 ```kotlin
-filestorage.getSignUrls(companyId: companyId, body: body).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14793,22 +13836,19 @@ filestorage.getSignUrls(companyId: companyId, body: body).safeAwait{ response,er
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |  
 
 
 
 Describe here
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SignUrlResponse](#SignUrlResponse)
 
 Success
-
-
-Schema: `SignUrlResponse`
 
 
 
@@ -14821,8 +13861,10 @@ Schema: `SignUrlResponse`
 #### copyFiles
 Copy Files
 
+
+
 ```kotlin
-filestorage.copyFiles(sync: sync, companyId: companyId, body: body).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14834,23 +13876,19 @@ filestorage.copyFiles(sync: sync, companyId: companyId, body: body).safeAwait{ r
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| sync | Boolean? | sync |   
-| companyId | Int? | company_id |  
 
 
 
 Copy Files
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BulkResponse](#BulkResponse)
 
 Success
-
-
-Schema: `BulkResponse`
 
 
 
@@ -14863,8 +13901,10 @@ Schema: `BulkResponse`
 #### appCopyFiles
 Copy Files
 
+
+
 ```kotlin
-filestorage.appCopyFiles(sync: sync, companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14876,24 +13916,19 @@ filestorage.appCopyFiles(sync: sync, companyId: companyId, applicationId: applic
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| sync | Boolean? | sync |   
-| companyId | Int? | company_id |   
-| applicationId | Int? | application_id |  
 
 
 
 Copy Files
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BulkResponse](#BulkResponse)
 
 Success
-
-
-Schema: `BulkResponse`
 
 
 
@@ -14906,8 +13941,10 @@ Schema: `BulkResponse`
 #### browse
 Browse Files
 
+
+
 ```kotlin
-filestorage.browse(namespace: namespace, companyId: companyId, pageNo: pageNo).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14919,24 +13956,19 @@ filestorage.browse(namespace: namespace, companyId: companyId, pageNo: pageNo).s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| namespace | String? | bucket name |   
-| companyId | Int? | company_id |   
-| pageNo | Int? | page no |  
 
 
 
 Browse Files
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BrowseResponse](#BrowseResponse)
 
 Success
-
-
-Schema: `BrowseResponse`
 
 
 
@@ -14949,8 +13981,10 @@ Schema: `BrowseResponse`
 #### browse
 Browse Files
 
+
+
 ```kotlin
-filestorage.browse(namespace: namespace, companyId: companyId, applicationId: applicationId, pageNo: pageNo).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14962,25 +13996,19 @@ filestorage.browse(namespace: namespace, companyId: companyId, applicationId: ap
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| namespace | String? | bucket name |   
-| companyId | Int? | company_id |   
-| applicationId | Int? | application_id |   
-| pageNo | Int? | page no |  
 
 
 
 Browse Files
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BrowseResponse](#BrowseResponse)
 
 Success
-
-
-Schema: `BrowseResponse`
 
 
 
@@ -14993,8 +14021,10 @@ Schema: `BrowseResponse`
 #### proxy
 Proxy
 
+
+
 ```kotlin
-filestorage.proxy(companyId: companyId, url: url).safeAwait{ response,error->
+filestorage.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15006,25 +14036,21 @@ filestorage.proxy(companyId: companyId, url: url).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| url | String? | url |  
 
 
 
 Proxy
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[String](#String)
 
 Success
 
 
-Schema: `String`
-
-
 
 
 
@@ -15032,9 +14058,6 @@ Schema: `String`
 ---
 
 
-
----
----
 
 
 ## Share
@@ -15043,8 +14066,10 @@ Schema: `String`
 #### createShortLink
 Create short link
 
+
+
 ```kotlin
-share.createShortLink(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+share.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15056,23 +14081,19 @@ share.createShortLink(companyId: companyId, applicationId: applicationId, body: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
 Create short link
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShortLinkRes](#ShortLinkRes)
 
 Success
-
-
-Schema: `ShortLinkRes`
 
 
 
@@ -15085,8 +14106,10 @@ Schema: `ShortLinkRes`
 #### getShortLinks
 Get short links
 
+
+
 ```kotlin
-share.getShortLinks(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response,error->
+share.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15098,28 +14121,19 @@ share.getShortLinks(companyId: companyId, applicationId: applicationId, pageNo: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| pageNo | Int? | Current page number |   
-| pageSize | Int? | Current page size |   
-| createdBy | String? | Short link creator |   
-| active | String? | Short link active status |   
-| q | String? | Search text for original and short url |  
 
 
 
 Get short links
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShortLinkList](#ShortLinkList)
 
 Success
-
-
-Schema: `ShortLinkList`
 
 
 
@@ -15132,8 +14146,10 @@ Schema: `ShortLinkList`
 #### getShortLinkByHash
 Get short link by hash
 
+
+
 ```kotlin
-share.getShortLinkByHash(companyId: companyId, applicationId: applicationId, hash: hash).safeAwait{ response,error->
+share.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15145,24 +14161,19 @@ share.getShortLinkByHash(companyId: companyId, applicationId: applicationId, has
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| hash | String? | Hash of short url |  
 
 
 
 Get short link by hash
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShortLinkRes](#ShortLinkRes)
 
 Success
-
-
-Schema: `ShortLinkRes`
 
 
 
@@ -15175,8 +14186,10 @@ Schema: `ShortLinkRes`
 #### updateShortLinkById
 Update short link by id
 
+
+
 ```kotlin
-share.updateShortLinkById(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+share.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15188,26 +14201,21 @@ share.updateShortLinkById(companyId: companyId, applicationId: applicationId, id
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| id | String? | Short link document identifier |  
 
 
 
 Update short link by id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ShortLinkRes](#ShortLinkRes)
 
 Success
 
 
-Schema: `ShortLinkRes`
-
-
 
 
 
@@ -15215,9 +14223,6 @@ Schema: `ShortLinkRes`
 ---
 
 
-
----
----
 
 
 ## Inventory
@@ -15226,8 +14231,10 @@ Schema: `ShortLinkRes`
 #### getJobsByCompany
 Get Job Configs For A Company
 
+
+
 ```kotlin
-inventory.getJobsByCompany(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15239,24 +14246,19 @@ inventory.getJobsByCompany(companyId: companyId, pageNo: pageNo, pageSize: pageS
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| pageNo | Int? | Page Number |   
-| pageSize | Int? | Page Size |  
 
 
 
 REST Endpoint that returns all job configs for a company
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ResponseEnvelopeListJobConfigRawDTO](#ResponseEnvelopeListJobConfigRawDTO)
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeListJobConfigRawDTO`
 
 
 
@@ -15269,8 +14271,10 @@ Schema: `ResponseEnvelopeListJobConfigRawDTO`
 #### updateJob
 Updates An Existing Job Config
 
+
+
 ```kotlin
-inventory.updateJob(companyId: companyId, body: body).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15282,15 +14286,12 @@ inventory.updateJob(companyId: companyId, body: body).safeAwait{ response,error-
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |  
 
 
 
 REST Endpoint that updates a job config
 
-*Success Response*
+*Returned Response*
 
 
 
@@ -15301,8 +14302,10 @@ REST Endpoint that updates a job config
 #### createJob
 Creates A New Job Config
 
+
+
 ```kotlin
-inventory.createJob(companyId: companyId, body: body).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15314,22 +14317,19 @@ inventory.createJob(companyId: companyId, body: body).safeAwait{ response,error-
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |  
 
 
 
 REST Endpoint that creates a new job config
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ResponseEnvelopeString](#ResponseEnvelopeString)
 
 Job Config Created Successfully
-
-
-Schema: `ResponseEnvelopeString`
 
 
 
@@ -15342,8 +14342,10 @@ Schema: `ResponseEnvelopeString`
 #### getJobByCompanyAndIntegration
 Get Job Configs By Company And Integration
 
+
+
 ```kotlin
-inventory.getJobByCompanyAndIntegration(companyId: companyId, integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15355,25 +14357,19 @@ inventory.getJobByCompanyAndIntegration(companyId: companyId, integrationId: int
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| integrationId | String? | Integration Id |   
-| pageNo | Int? | Page Number |   
-| pageSize | Int? | Page Size |  
 
 
 
 REST Endpoint that returns all job configs by company And integration
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ResponseEnvelopeListJobConfigDTO](#ResponseEnvelopeListJobConfigDTO)
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeListJobConfigDTO`
 
 
 
@@ -15386,8 +14382,10 @@ Schema: `ResponseEnvelopeListJobConfigDTO`
 #### getJobConfigDefaults
 Get Job Configs Defaults
 
+
+
 ```kotlin
-inventory.getJobConfigDefaults(companyId: companyId).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15399,22 +14397,19 @@ inventory.getJobConfigDefaults(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |  
 
 
 
 REST Endpoint that returns default fields job configs by company And integration
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ResponseEnvelopeJobConfigDTO](#ResponseEnvelopeJobConfigDTO)
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeJobConfigDTO`
 
 
 
@@ -15427,8 +14422,10 @@ Schema: `ResponseEnvelopeJobConfigDTO`
 #### getJobByCode
 Get Job Config By Code
 
+
+
 ```kotlin
-inventory.getJobByCode(companyId: companyId, code: code).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15440,23 +14437,19 @@ inventory.getJobByCode(companyId: companyId, code: code).safeAwait{ response,err
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| code | String? | Job Code |  
 
 
 
 REST Endpoint that returns job config by code
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ResponseEnvelopeJobConfigDTO](#ResponseEnvelopeJobConfigDTO)
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeJobConfigDTO`
 
 
 
@@ -15469,8 +14462,10 @@ Schema: `ResponseEnvelopeJobConfigDTO`
 #### getJobCodeMetrics
 Get Job Metrics
 
+
+
 ```kotlin
-inventory.getJobCodeMetrics(companyId: companyId, code: code, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15482,25 +14477,19 @@ inventory.getJobCodeMetrics(companyId: companyId, code: code, pageNo: pageNo, pa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| code | String? | Code |   
-| pageNo | Int? | Page Number |   
-| pageSize | Int? | Page Size |  
 
 
 
 REST Endpoint that returns Inventory Run History For A Job Code
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ResponseEnvelopeJobMetricsDto](#ResponseEnvelopeJobMetricsDto)
 
 Successful operation
-
-
-Schema: `ResponseEnvelopeJobMetricsDto`
 
 
 
@@ -15513,8 +14502,10 @@ Schema: `ResponseEnvelopeJobMetricsDto`
 #### getJobCodesByCompanyAndIntegration
 Get Job Codes By Company And Integration
 
+
+
 ```kotlin
-inventory.getJobCodesByCompanyAndIntegration(companyId: companyId, integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+inventory.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15526,27 +14517,21 @@ inventory.getJobCodesByCompanyAndIntegration(companyId: companyId, integrationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | Company Id |   
-| integrationId | String? | Integration Id |   
-| pageNo | Int? | Page Number |   
-| pageSize | Int? | Page Size |  
 
 
 
 REST Endpoint that returns all job codes by company And integration
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ResponseEnvelopeListJobConfigListDTO](#ResponseEnvelopeListJobConfigListDTO)
 
 Successful operation
 
 
-Schema: `ResponseEnvelopeListJobConfigListDTO`
-
-
 
 
 
@@ -15554,9 +14539,6 @@ Schema: `ResponseEnvelopeListJobConfigListDTO`
 ---
 
 
-
----
----
 
 
 ## Configuration
@@ -15565,8 +14547,10 @@ Schema: `ResponseEnvelopeListJobConfigListDTO`
 #### getBuildConfig
 Get latest build config
 
+
+
 ```kotlin
-configuration.getBuildConfig(companyId: companyId, applicationId: applicationId, platformType: platformType).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15578,24 +14562,19 @@ configuration.getBuildConfig(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| platformType | String? | Current platform name |  
 
 
 
 Get latest build config
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[MobileAppConfiguration](#MobileAppConfiguration)
 
 Success
-
-
-Schema: `MobileAppConfiguration`
 
 
 
@@ -15608,8 +14587,10 @@ Schema: `MobileAppConfiguration`
 #### updateBuildConfig
 Update build config for next build
 
+
+
 ```kotlin
-configuration.updateBuildConfig(companyId: companyId, applicationId: applicationId, platformType: platformType, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15621,24 +14602,19 @@ configuration.updateBuildConfig(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| platformType | String? | Current platform name |  
 
 
 
 Update build config for next build
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[MobileAppConfiguration](#MobileAppConfiguration)
 
 Success
-
-
-Schema: `MobileAppConfiguration`
 
 
 
@@ -15651,8 +14627,10 @@ Schema: `MobileAppConfiguration`
 #### getPreviousVersions
 Get previous build versions
 
+
+
 ```kotlin
-configuration.getPreviousVersions(companyId: companyId, applicationId: applicationId, platformType: platformType).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15664,24 +14642,19 @@ configuration.getPreviousVersions(companyId: companyId, applicationId: applicati
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| platformType | String? | Current platform name |  
 
 
 
 Get previous build versions
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BuildVersionHistory](#BuildVersionHistory)
 
 Success
-
-
-Schema: `BuildVersionHistory`
 
 
 
@@ -15694,8 +14667,10 @@ Schema: `BuildVersionHistory`
 #### getAppFeatures
 Get features of application
 
+
+
 ```kotlin
-configuration.getAppFeatures(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15707,23 +14682,19 @@ configuration.getAppFeatures(companyId: companyId, applicationId: applicationId)
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get features of application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AppFeatureResponse](#AppFeatureResponse)
 
 Success
-
-
-Schema: `AppFeatureResponse`
 
 
 
@@ -15736,8 +14707,10 @@ Schema: `AppFeatureResponse`
 #### updateAppFeatures
 Update features of application
 
+
+
 ```kotlin
-configuration.updateAppFeatures(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15749,23 +14722,19 @@ configuration.updateAppFeatures(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Update features of application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AppFeature](#AppFeature)
 
 Success
-
-
-Schema: `AppFeature`
 
 
 
@@ -15778,8 +14747,10 @@ Schema: `AppFeature`
 #### getAppBasicDetails
 Get basic application details
 
+
+
 ```kotlin
-configuration.getAppBasicDetails(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15791,23 +14762,19 @@ configuration.getAppBasicDetails(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get basic application details like name
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationDetail](#ApplicationDetail)
 
 Success
-
-
-Schema: `ApplicationDetail`
 
 
 
@@ -15820,8 +14787,10 @@ Schema: `ApplicationDetail`
 #### updateAppBasicDetails
 Add or update application's basic details
 
+
+
 ```kotlin
-configuration.updateAppBasicDetails(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15833,23 +14802,19 @@ configuration.updateAppBasicDetails(companyId: companyId, applicationId: applica
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Add or update application's basic details
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationDetail](#ApplicationDetail)
 
 Success
-
-
-Schema: `ApplicationDetail`
 
 
 
@@ -15862,8 +14827,10 @@ Schema: `ApplicationDetail`
 #### getAppContactInfo
 Get application information
 
+
+
 ```kotlin
-configuration.getAppContactInfo(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15875,23 +14842,19 @@ configuration.getAppContactInfo(companyId: companyId, applicationId: application
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationInformation](#ApplicationInformation)
 
 Success
-
-
-Schema: `ApplicationInformation`
 
 
 
@@ -15904,8 +14867,10 @@ Schema: `ApplicationInformation`
 #### updateAppContactInfo
 Get application information
 
+
+
 ```kotlin
-configuration.updateAppContactInfo(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15917,23 +14882,19 @@ configuration.updateAppContactInfo(companyId: companyId, applicationId: applicat
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Save Application Current Information. This includes information about social links, address and contact information of an application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationInformation](#ApplicationInformation)
 
 Success
-
-
-Schema: `ApplicationInformation`
 
 
 
@@ -15946,8 +14907,10 @@ Schema: `ApplicationInformation`
 #### getAppApiTokens
 Get social tokens
 
+
+
 ```kotlin
-configuration.getAppApiTokens(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15959,23 +14922,19 @@ configuration.getAppApiTokens(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get social tokens.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TokenResponse](#TokenResponse)
 
 Success
-
-
-Schema: `TokenResponse`
 
 
 
@@ -15988,8 +14947,10 @@ Schema: `TokenResponse`
 #### updateAppApiTokens
 Add social tokens
 
+
+
 ```kotlin
-configuration.updateAppApiTokens(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16001,23 +14962,19 @@ configuration.updateAppApiTokens(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Add social tokens.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[TokenResponse](#TokenResponse)
 
 Success
-
-
-Schema: `TokenResponse`
 
 
 
@@ -16030,8 +14987,10 @@ Schema: `TokenResponse`
 #### getAppCompanies
 Application inventory enabled companies
 
+
+
 ```kotlin
-configuration.getAppCompanies(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16043,25 +15002,19 @@ configuration.getAppCompanies(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Application inventory enabled companies.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CompaniesResponse](#CompaniesResponse)
 
 Success
-
-
-Schema: `CompaniesResponse`
 
 
 
@@ -16074,8 +15027,10 @@ Schema: `CompaniesResponse`
 #### getAppStores
 Application inventory enabled stores
 
+
+
 ```kotlin
-configuration.getAppStores(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16087,25 +15042,19 @@ configuration.getAppStores(companyId: companyId, applicationId: applicationId, p
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Application inventory enabled stores.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StoresResponse](#StoresResponse)
 
 Success
-
-
-Schema: `StoresResponse`
 
 
 
@@ -16118,8 +15067,10 @@ Schema: `StoresResponse`
 #### getInventoryConfig
 Get application configuration
 
+
+
 ```kotlin
-configuration.getInventoryConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16131,23 +15082,19 @@ configuration.getInventoryConfig(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get application configuration for various features and data
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationInventory](#ApplicationInventory)
 
 Success
-
-
-Schema: `ApplicationInventory`
 
 
 
@@ -16160,8 +15107,10 @@ Schema: `ApplicationInventory`
 #### updateInventoryConfig
 Update application configuration
 
+
+
 ```kotlin
-configuration.updateInventoryConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16173,23 +15122,19 @@ configuration.updateInventoryConfig(companyId: companyId, applicationId: applica
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Update application configuration for various features and data
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationInventory](#ApplicationInventory)
 
 Success
-
-
-Schema: `ApplicationInventory`
 
 
 
@@ -16202,8 +15147,10 @@ Schema: `ApplicationInventory`
 #### partiallyUpdateInventoryConfig
 Partially update application configuration
 
+
+
 ```kotlin
-configuration.partiallyUpdateInventoryConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16215,23 +15162,19 @@ configuration.partiallyUpdateInventoryConfig(companyId: companyId, applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Partially update application configuration for various features and data
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationInventory](#ApplicationInventory)
 
 Success
-
-
-Schema: `ApplicationInventory`
 
 
 
@@ -16244,8 +15187,10 @@ Schema: `ApplicationInventory`
 #### getAppCurrencyConfig
 Get application enabled currency list
 
+
+
 ```kotlin
-configuration.getAppCurrencyConfig(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16257,23 +15202,19 @@ configuration.getAppCurrencyConfig(companyId: companyId, applicationId: applicat
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get application enabled currency list
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AppSupportedCurrency](#AppSupportedCurrency)
 
 Success
-
-
-Schema: `AppSupportedCurrency`
 
 
 
@@ -16286,8 +15227,10 @@ Schema: `AppSupportedCurrency`
 #### updateAppCurrencyConfig
 Add initial application supported currency
 
+
+
 ```kotlin
-configuration.updateAppCurrencyConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16299,23 +15242,19 @@ configuration.updateAppCurrencyConfig(companyId: companyId, applicationId: appli
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Add initial application supported currency for various features and data. Default INR will be enabled.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AppSupportedCurrency](#AppSupportedCurrency)
 
 Success
-
-
-Schema: `AppSupportedCurrency`
 
 
 
@@ -16328,8 +15267,10 @@ Schema: `AppSupportedCurrency`
 #### getOrderingStoresByFilter
 Get ordering store by filter
 
+
+
 ```kotlin
-configuration.getOrderingStoresByFilter(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16341,25 +15282,19 @@ configuration.getOrderingStoresByFilter(companyId: companyId, applicationId: app
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Get ordering store by filter
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OrderingStores](#OrderingStores)
 
 Success
-
-
-Schema: `OrderingStores`
 
 
 
@@ -16372,8 +15307,10 @@ Schema: `OrderingStores`
 #### updateOrderingStoreConfig
 Add/Update ordering store config
 
+
+
 ```kotlin
-configuration.updateOrderingStoreConfig(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16385,23 +15322,19 @@ configuration.updateOrderingStoreConfig(companyId: companyId, applicationId: app
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Add/Update ordering store config.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DeploymentMeta](#DeploymentMeta)
 
 Success
-
-
-Schema: `DeploymentMeta`
 
 
 
@@ -16414,8 +15347,10 @@ Schema: `DeploymentMeta`
 #### getDomains
 Get attached domain list
 
+
+
 ```kotlin
-configuration.getDomains(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16427,23 +15362,19 @@ configuration.getDomains(companyId: companyId, applicationId: applicationId).saf
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get attached domain list.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DomainsResponse](#DomainsResponse)
 
 Success
-
-
-Schema: `DomainsResponse`
 
 
 
@@ -16456,8 +15387,10 @@ Schema: `DomainsResponse`
 #### addDomain
 Add new domain to application
 
+
+
 ```kotlin
-configuration.addDomain(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16469,23 +15402,19 @@ configuration.addDomain(companyId: companyId, applicationId: applicationId, body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Add new domain to application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Domain](#Domain)
 
 Success
-
-
-Schema: `Domain`
 
 
 
@@ -16498,8 +15427,10 @@ Schema: `Domain`
 #### removeDomainById
 Remove attached domain
 
+
+
 ```kotlin
-configuration.removeDomainById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16511,24 +15442,19 @@ configuration.removeDomainById(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| id | String? | Domain _id |  
 
 
 
 Remove attached domain.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessMessageResponse](#SuccessMessageResponse)
 
 Success
-
-
-Schema: `SuccessMessageResponse`
 
 
 
@@ -16541,8 +15467,10 @@ Schema: `SuccessMessageResponse`
 #### changeDomainType
 Change domain type
 
+
+
 ```kotlin
-configuration.changeDomainType(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16554,23 +15482,19 @@ configuration.changeDomainType(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Change a domain to Primary or Shortlink domain
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DomainsResponse](#DomainsResponse)
 
 Success
-
-
-Schema: `DomainsResponse`
 
 
 
@@ -16583,8 +15507,10 @@ Schema: `DomainsResponse`
 #### getDomainStatus
 Get domain connected status.
 
+
+
 ```kotlin
-configuration.getDomainStatus(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16596,23 +15522,19 @@ configuration.getDomainStatus(companyId: companyId, applicationId: applicationId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get domain connected status. Check if domain is live and mapped to appropriate IP to fynd servers.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DomainStatusResponse](#DomainStatusResponse)
 
 Success
-
-
-Schema: `DomainStatusResponse`
 
 
 
@@ -16625,8 +15547,10 @@ Schema: `DomainStatusResponse`
 #### createApplication
 Create application
 
+
+
 ```kotlin
-configuration.createApplication(companyId: companyId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16638,22 +15562,19 @@ configuration.createApplication(companyId: companyId, body: body).safeAwait{ res
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |  
 
 
 
 Create new application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CreateAppResponse](#CreateAppResponse)
 
 Success
-
-
-Schema: `CreateAppResponse`
 
 
 
@@ -16666,8 +15587,10 @@ Schema: `CreateAppResponse`
 #### getApplications
 Get list of application under company
 
+
+
 ```kotlin
-configuration.getApplications(companyId: companyId, pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16679,25 +15602,19 @@ configuration.getApplications(companyId: companyId, pageNo: pageNo, pageSize: pa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| pageNo | Int? |  |   
-| pageSize | Int? |  |   
-| q | String? | Url encoded object used as mongodb query |  
 
 
 
 Get list of application under company
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ApplicationsResponse](#ApplicationsResponse)
 
 Success
-
-
-Schema: `ApplicationsResponse`
 
 
 
@@ -16710,8 +15627,10 @@ Schema: `ApplicationsResponse`
 #### getApplicationById
 Get application data from id
 
+
+
 ```kotlin
-configuration.getApplicationById(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16723,23 +15642,19 @@ configuration.getApplicationById(companyId: companyId, applicationId: applicatio
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |  
 
 
 
 Get application data from id
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Application](#Application)
 
 Success
-
-
-Schema: `Application`
 
 
 
@@ -16752,8 +15667,10 @@ Schema: `Application`
 #### getCurrencies
 Get all currencies
 
+
+
 ```kotlin
-configuration.getCurrencies(companyId: companyId).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16765,22 +15682,19 @@ configuration.getCurrencies(companyId: companyId).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |  
 
 
 
 Get all currencies
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CurrenciesResponse](#CurrenciesResponse)
 
 Currencies Success response
-
-
-Schema: `CurrenciesResponse`
 
 
 
@@ -16793,8 +15707,10 @@ Schema: `CurrenciesResponse`
 #### getDomainAvailibility
 Check domain availibility before linking to application
 
+
+
 ```kotlin
-configuration.getDomainAvailibility(companyId: companyId, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16806,22 +15722,19 @@ configuration.getDomainAvailibility(companyId: companyId, body: body).safeAwait{
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |  
 
 
 
 Check domain availibility before linking to application. Also sends domain suggestions with similar to queried domain. \ Custom domain search is currently powered by GoDaddy provider.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DomainSuggestionsResponse](#DomainSuggestionsResponse)
 
 Success
-
-
-Schema: `DomainSuggestionsResponse`
 
 
 
@@ -16834,8 +15747,10 @@ Schema: `DomainSuggestionsResponse`
 #### getIntegrationById
 Get integration data
 
+
+
 ```kotlin
-configuration.getIntegrationById(companyId: companyId, id: id).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16847,23 +15762,19 @@ configuration.getIntegrationById(companyId: companyId, id: id).safeAwait{ respon
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| id | Int? | Integration id |  
 
 
 
 Get integration data
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Integration](#Integration)
 
 Success
-
-
-Schema: `Integration`
 
 
 
@@ -16876,8 +15787,10 @@ Schema: `Integration`
 #### getAvailableOptIns
 Get all available integration opt-ins
 
+
+
 ```kotlin
-configuration.getAvailableOptIns(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16889,24 +15802,19 @@ configuration.getAvailableOptIns(companyId: companyId, pageNo: pageNo, pageSize:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Get all available integration opt-ins
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetIntegrationsOptInsResponse](#GetIntegrationsOptInsResponse)
 
 Success
-
-
-Schema: `GetIntegrationsOptInsResponse`
 
 
 
@@ -16919,8 +15827,10 @@ Schema: `GetIntegrationsOptInsResponse`
 #### getSelectedOptIns
 Get company/store level integration opt-ins
 
+
+
 ```kotlin
-configuration.getSelectedOptIns(companyId: companyId, level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16932,26 +15842,19 @@ configuration.getSelectedOptIns(companyId: companyId, level: level, uid: uid, pa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| level | String? | Integration level |   
-| uid | Int? | Integration level uid |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Get company/store level integration opt-ins
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetIntegrationsOptInsResponse](#GetIntegrationsOptInsResponse)
 
 Success
-
-
-Schema: `GetIntegrationsOptInsResponse`
 
 
 
@@ -16964,8 +15867,10 @@ Schema: `GetIntegrationsOptInsResponse`
 #### getIntegrationLevelConfig
 Get integration level config
 
+
+
 ```kotlin
-configuration.getIntegrationLevelConfig(companyId: companyId, id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16977,26 +15882,19 @@ configuration.getIntegrationLevelConfig(companyId: companyId, id: id, level: lev
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| id | String? | Integration id |   
-| level | String? | Integration level |   
-| opted | Boolean? | Filter on opted stores |   
-| checkPermission | Boolean? | Filter on if permissions are present |  
 
 
 
 Get integration level config
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[IntegrationConfigResponse](#IntegrationConfigResponse)
 
 Success
-
-
-Schema: `IntegrationConfigResponse`
 
 
 
@@ -17009,8 +15907,10 @@ Schema: `IntegrationConfigResponse`
 #### getIntegrationByLevelId
 Get level data for integration
 
+
+
 ```kotlin
-configuration.getIntegrationByLevelId(companyId: companyId, id: id, level: level, uid: uid).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17022,25 +15922,19 @@ configuration.getIntegrationByLevelId(companyId: companyId, id: id, level: level
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| id | String? | Integration id |   
-| level | String? | Integration level |   
-| uid | Int? | Integration level uid |  
 
 
 
 Get level data for integration
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[IntegrationLevel](#IntegrationLevel)
 
 Success
-
-
-Schema: `IntegrationLevel`
 
 
 
@@ -17053,8 +15947,10 @@ Schema: `IntegrationLevel`
 #### getLevelActiveIntegrations
 Check store has active integration
 
+
+
 ```kotlin
-configuration.getLevelActiveIntegrations(companyId: companyId, id: id, level: level, uid: uid).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17066,25 +15962,19 @@ configuration.getLevelActiveIntegrations(companyId: companyId, id: id, level: le
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| id | String? | Integration id |   
-| level | String? | Integration level |   
-| uid | Int? | Integration level uid |  
 
 
 
 API checks if a store is already opted in any other integrations
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OptedStoreIntegration](#OptedStoreIntegration)
 
 Success
-
-
-Schema: `OptedStoreIntegration`
 
 
 
@@ -17097,8 +15987,10 @@ Schema: `OptedStoreIntegration`
 #### getBrandsByCompany
 Get brands by company
 
+
+
 ```kotlin
-configuration.getBrandsByCompany(companyId: companyId, q: q).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17110,23 +16002,19 @@ configuration.getBrandsByCompany(companyId: companyId, q: q).safeAwait{ response
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| q | String? | Search text for brand name |  
 
 
 
 Get brands by company
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[BrandsByCompanyResponse](#BrandsByCompanyResponse)
 
 Success
-
-
-Schema: `BrandsByCompanyResponse`
 
 
 
@@ -17139,8 +16027,10 @@ Schema: `BrandsByCompanyResponse`
 #### getCompanyByBrands
 Get company by brand uids
 
+
+
 ```kotlin
-configuration.getCompanyByBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17152,24 +16042,19 @@ configuration.getCompanyByBrands(companyId: companyId, pageNo: pageNo, pageSize:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Get company by brand uids
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CompanyByBrandsResponse](#CompanyByBrandsResponse)
 
 Success
-
-
-Schema: `CompanyByBrandsResponse`
 
 
 
@@ -17182,8 +16067,10 @@ Schema: `CompanyByBrandsResponse`
 #### getStoreByBrands
 Get stores by brand uids
 
+
+
 ```kotlin
-configuration.getStoreByBrands(companyId: companyId, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17195,24 +16082,19 @@ configuration.getStoreByBrands(companyId: companyId, pageNo: pageNo, pageSize: p
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Get stores by brand uids
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StoreByBrandsResponse](#StoreByBrandsResponse)
 
 Success
-
-
-Schema: `StoreByBrandsResponse`
 
 
 
@@ -17225,8 +16107,10 @@ Schema: `StoreByBrandsResponse`
 #### getOtherSellerApplications
 Get other seller applications
 
+
+
 ```kotlin
-configuration.getOtherSellerApplications(companyId: companyId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17238,24 +16122,19 @@ configuration.getOtherSellerApplications(companyId: companyId, pageNo: pageNo, p
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| pageNo | Int? | Current page no |   
-| pageSize | Int? | Current request items count |  
 
 
 
 Get other seller applications who has opted current company as inventory
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OtherSellerApplications](#OtherSellerApplications)
 
 Success
-
-
-Schema: `OtherSellerApplications`
 
 
 
@@ -17268,8 +16147,10 @@ Schema: `OtherSellerApplications`
 #### getOtherSellerApplicationById
 Get other seller applications
 
+
+
 ```kotlin
-configuration.getOtherSellerApplicationById(companyId: companyId, id: id).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17281,23 +16162,19 @@ configuration.getOtherSellerApplicationById(companyId: companyId, id: id).safeAw
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| id | String? | Application Id |  
 
 
 
 Get other seller application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[OptedApplicationResponse](#OptedApplicationResponse)
 
 Success
-
-
-Schema: `OptedApplicationResponse`
 
 
 
@@ -17310,8 +16187,10 @@ Schema: `OptedApplicationResponse`
 #### optOutFromApplication
 Opt out company or store from other seller application
 
+
+
 ```kotlin
-configuration.optOutFromApplication(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+configuration.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17323,25 +16202,21 @@ configuration.optOutFromApplication(companyId: companyId, id: id, body: body).sa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| id | String? | Application Id |  
 
 
 
 Opt out company or store from other seller application
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessMessageResponse](#SuccessMessageResponse)
 
 Success
 
 
-Schema: `SuccessMessageResponse`
-
-
 
 
 
@@ -17349,9 +16224,6 @@ Schema: `SuccessMessageResponse`
 ---
 
 
-
----
----
 
 
 ## Cart
@@ -17360,8 +16232,10 @@ Schema: `SuccessMessageResponse`
 #### getCoupons
 Get with single coupon details or coupon list
 
+
+
 ```kotlin
-cart.getCoupons(companyId: companyId, applicationId: applicationId, pageNo: pageNo, pageSize: pageSize, isArchived: isArchived, title: title, isPublic: isPublic, isDisplay: isDisplay, typeSlug: typeSlug, code: code).safeAwait{ response,error->
+cart.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17373,31 +16247,19 @@ cart.getCoupons(companyId: companyId, applicationId: applicationId, pageNo: page
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current Application _id |   
-| pageNo | Int? |  |   
-| pageSize | Int? |  |   
-| isArchived | Boolean? |  |   
-| title | String? |  |   
-| isPublic | Boolean? |  |   
-| isDisplay | Boolean? |  |   
-| typeSlug | String? |  |   
-| code | String? |  |  
 
 
 
 Get coupon list with pagination
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CouponsResponse](#CouponsResponse)
 
 Coupon List for sent page_size and page_no
-
-
-Schema: `CouponsResponse`
 
 
 
@@ -17410,8 +16272,10 @@ Schema: `CouponsResponse`
 #### createCoupon
 Create new coupon
 
+
+
 ```kotlin
-cart.createCoupon(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+cart.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17423,16 +16287,12 @@ cart.createCoupon(companyId: companyId, applicationId: applicationId, body: body
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current Application _id |  
 
 
 
 Create new coupon
 
-*Success Response*
+*Returned Response*
 
 
 
@@ -17443,8 +16303,10 @@ Create new coupon
 #### getCouponById
 Get with single coupon details or coupon list
 
+
+
 ```kotlin
-cart.getCouponById(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+cart.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17456,24 +16318,19 @@ cart.getCouponById(companyId: companyId, applicationId: applicationId, id: id).s
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current Application _id |   
-| id | String? |  |  
 
 
 
 Get single coupon details with `id` in path param
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CouponUpdate](#CouponUpdate)
 
 Coupon object for sent `id`
-
-
-Schema: `CouponUpdate`
 
 
 
@@ -17486,8 +16343,10 @@ Schema: `CouponUpdate`
 #### updateCoupon
 Update existing coupon configuration
 
+
+
 ```kotlin
-cart.updateCoupon(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+cart.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17499,24 +16358,19 @@ cart.updateCoupon(companyId: companyId, applicationId: applicationId, id: id, bo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current Application _id |   
-| id | String? |  |  
 
 
 
 Update coupon with id sent in `id`
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessMessage](#SuccessMessage)
 
 Coupon updated successfully
-
-
-Schema: `SuccessMessage`
 
 
 
@@ -17529,8 +16383,10 @@ Schema: `SuccessMessage`
 #### updateCouponPartially
 Update coupon archive state and schedule
 
+
+
 ```kotlin
-cart.updateCouponPartially(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+cart.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17542,26 +16398,21 @@ cart.updateCouponPartially(companyId: companyId, applicationId: applicationId, i
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current Application _id |   
-| id | String? |  |  
 
 
 
 Update archive/unarchive and change schedule for coupon
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SuccessMessage](#SuccessMessage)
 
 Coupon updated successfully
 
 
-Schema: `SuccessMessage`
-
-
 
 
 
@@ -17569,9 +16420,6 @@ Schema: `SuccessMessage`
 ---
 
 
-
----
----
 
 
 ## Rewards
@@ -17580,8 +16428,10 @@ Schema: `SuccessMessage`
 #### getGiveaways
 List of giveaways of the current application.
 
+
+
 ```kotlin
-rewards.getGiveaways(companyId: companyId, applicationId: applicationId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17593,25 +16443,19 @@ rewards.getGiveaways(companyId: companyId, applicationId: applicationId, pageId:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| pageId | String? | pagination page id |   
-| pageSize | Int? | pagination page size |  
 
 
 
 List of giveaways of the current application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GiveawayResponse](#GiveawayResponse)
 
 ok
-
-
-Schema: `GiveawayResponse`
 
 
 
@@ -17624,8 +16468,10 @@ Schema: `GiveawayResponse`
 #### createGiveaway
 Adds a new giveaway.
 
+
+
 ```kotlin
-rewards.createGiveaway(companyId: companyId, applicationId: applicationId, body: body).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17637,23 +16483,19 @@ rewards.createGiveaway(companyId: companyId, applicationId: applicationId, body:
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |  
 
 
 
 Adds a new giveaway.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Giveaway](#Giveaway)
 
 ok
-
-
-Schema: `Giveaway`
 
 
 
@@ -17666,8 +16508,10 @@ Schema: `Giveaway`
 #### getGiveawayByID
 Get giveaway by ID.
 
+
+
 ```kotlin
-rewards.getGiveawayByID(companyId: companyId, applicationId: applicationId, id: id).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17679,24 +16523,19 @@ rewards.getGiveawayByID(companyId: companyId, applicationId: applicationId, id: 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| id | String? | Giveaway ID |  
 
 
 
 Get giveaway by ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Giveaway](#Giveaway)
 
 ok
-
-
-Schema: `Giveaway`
 
 
 
@@ -17709,8 +16548,10 @@ Schema: `Giveaway`
 #### updateGiveaway
 Updates the giveaway by it's ID.
 
+
+
 ```kotlin
-rewards.updateGiveaway(companyId: companyId, applicationId: applicationId, id: id, body: body).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17722,24 +16563,19 @@ rewards.updateGiveaway(companyId: companyId, applicationId: applicationId, id: i
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| id | String? | Giveaway ID |  
 
 
 
 Updates the giveaway by it's ID.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Giveaway](#Giveaway)
 
 ok
-
-
-Schema: `Giveaway`
 
 
 
@@ -17752,8 +16588,10 @@ Schema: `Giveaway`
 #### getOffers
 List of offer of the current application.
 
+
+
 ```kotlin
-rewards.getOffers(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17765,23 +16603,19 @@ rewards.getOffers(companyId: companyId, applicationId: applicationId).safeAwait{
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |  
 
 
 
 List of offer of the current application.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ArrayList<Offer>](#ArrayList<Offer>)
 
 ok
-
-
-Schema: `ArrayList<Offer>`
 
 
 
@@ -17794,8 +16628,10 @@ Schema: `ArrayList<Offer>`
 #### getOfferByName
 Get offer by name.
 
+
+
 ```kotlin
-rewards.getOfferByName(companyId: companyId, applicationId: applicationId, cookie: cookie, name: name).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17807,25 +16643,19 @@ rewards.getOfferByName(companyId: companyId, applicationId: applicationId, cooki
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| cookie | String? | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |   
-| name | String? | Offer name |  
 
 
 
 Get offer by name.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Offer](#Offer)
 
 ok
-
-
-Schema: `Offer`
 
 
 
@@ -17838,8 +16668,10 @@ Schema: `Offer`
 #### updateOfferByName
 Updates the offer by name.
 
+
+
 ```kotlin
-rewards.updateOfferByName(companyId: companyId, applicationId: applicationId, name: name, body: body).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17851,24 +16683,19 @@ rewards.updateOfferByName(companyId: companyId, applicationId: applicationId, na
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| name | String? | Offer name |  
 
 
 
 Updates the offer by name.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[Offer](#Offer)
 
 ok
-
-
-Schema: `Offer`
 
 
 
@@ -17881,8 +16708,10 @@ Schema: `Offer`
 #### getUserAvailablePoints
 User's reward details.
 
+
+
 ```kotlin
-rewards.getUserAvailablePoints(companyId: companyId, applicationId: applicationId, userId: userId).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17894,24 +16723,19 @@ rewards.getUserAvailablePoints(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| userId | String? | user id |  
 
 
 
 User's reward details.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[UserRes](#UserRes)
 
 ok
-
-
-Schema: `UserRes`
 
 
 
@@ -17924,8 +16748,10 @@ Schema: `UserRes`
 #### updateUserStatus
 Update User status
 
+
+
 ```kotlin
-rewards.updateUserStatus(companyId: companyId, applicationId: applicationId, userId: userId, body: body).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17937,24 +16763,19 @@ rewards.updateUserStatus(companyId: companyId, applicationId: applicationId, use
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| userId | String? | user id |  
 
 
 
 Update user status, active/archive
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AppUser](#AppUser)
 
 Success
-
-
-Schema: `AppUser`
 
 
 
@@ -17967,8 +16788,10 @@ Schema: `AppUser`
 #### getUserPointsHistory
 Get list of points transactions.
 
+
+
 ```kotlin
-rewards.getUserPointsHistory(companyId: companyId, applicationId: applicationId, userId: userId, pageId: pageId, pageLimit: pageLimit, pageSize: pageSize).safeAwait{ response,error->
+rewards.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17980,30 +16803,22 @@ rewards.getUserPointsHistory(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | company id |   
-| applicationId | String? | application id |   
-| userId | String? | user id |   
-| pageId | String? | PageID is the ID of the requested page. For first request it should be kept empty. |   
-| pageLimit | Int? | PageLimit is the number of requested items in response. |   
-| pageSize | Int? | PageSize is the number of requested items in response. |  
 
 
 
 Get list of points transactions.
 The list of points history is paginated.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[HistoryRes](#HistoryRes)
 
 ok
 
 
-Schema: `HistoryRes`
-
-
 
 
 
@@ -18011,9 +16826,6 @@ Schema: `HistoryRes`
 ---
 
 
-
----
----
 
 
 ## Analytics
@@ -18022,8 +16834,10 @@ Schema: `HistoryRes`
 #### getStatiscticsGroups
 Get statistics groups
 
+
+
 ```kotlin
-analytics.getStatiscticsGroups(companyId: companyId, applicationId: applicationId).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18035,23 +16849,19 @@ analytics.getStatiscticsGroups(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |  
 
 
 
 Get statistics groups
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StatsGroups](#StatsGroups)
 
 Success
-
-
-Schema: `StatsGroups`
 
 
 
@@ -18064,8 +16874,10 @@ Schema: `StatsGroups`
 #### getStatiscticsGroupComponents
 Get statistics group components
 
+
+
 ```kotlin
-analytics.getStatiscticsGroupComponents(companyId: companyId, applicationId: applicationId, groupName: groupName).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18077,24 +16889,19 @@ analytics.getStatiscticsGroupComponents(companyId: companyId, applicationId: app
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| groupName | String? | Group name |  
 
 
 
 Get statistics group components
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StatsGroupComponents](#StatsGroupComponents)
 
 Success
-
-
-Schema: `StatsGroupComponents`
 
 
 
@@ -18107,8 +16914,10 @@ Schema: `StatsGroupComponents`
 #### getComponentStatsCSV
 Get component statistics csv
 
+
+
 ```kotlin
-analytics.getComponentStatsCSV(companyId: companyId, applicationId: applicationId, componentName: componentName).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18120,24 +16929,19 @@ analytics.getComponentStatsCSV(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| componentName | String? | Component name |  
 
 
 
 Get component statistics csv
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[String](#String)
 
 Success
-
-
-Schema: `String`
 
 
 
@@ -18150,8 +16954,10 @@ Schema: `String`
 #### getComponentStatsPDF
 Get component statistics pdf
 
+
+
 ```kotlin
-analytics.getComponentStatsPDF(companyId: companyId, applicationId: applicationId, componentName: componentName).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18163,24 +16969,19 @@ analytics.getComponentStatsPDF(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| componentName | String? | Component name |  
 
 
 
 Get component statistics pdf
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[String](#String)
 
 Success
-
-
-Schema: `String`
 
 
 
@@ -18193,8 +16994,10 @@ Schema: `String`
 #### getComponentStats
 Get component statistics
 
+
+
 ```kotlin
-analytics.getComponentStats(companyId: companyId, applicationId: applicationId, componentName: componentName).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18206,24 +17009,19 @@ analytics.getComponentStats(companyId: companyId, applicationId: applicationId, 
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| componentName | String? | Component name |  
 
 
 
 Get component statistics
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[StatsRes](#StatsRes)
 
 Success
-
-
-Schema: `StatsRes`
 
 
 
@@ -18236,8 +17034,10 @@ Schema: `StatsRes`
 #### getAbandonCartList
 Get abandon carts list
 
+
+
 ```kotlin
-analytics.getAbandonCartList(companyId: companyId, applicationId: applicationId, fromDate: fromDate, toDate: toDate, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18249,27 +17049,19 @@ analytics.getAbandonCartList(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| fromDate | String? | From date |   
-| toDate | String? | To date |   
-| pageNo | Int? | Current page number |   
-| pageSize | Int? | Current page size |  
 
 
 
 Get abandon carts list
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AbandonCartsList](#AbandonCartsList)
 
 Success
-
-
-Schema: `AbandonCartsList`
 
 
 
@@ -18282,8 +17074,10 @@ Schema: `AbandonCartsList`
 #### getAbandonCartsCSV
 Get abandon carts csv
 
+
+
 ```kotlin
-analytics.getAbandonCartsCSV(companyId: companyId, applicationId: applicationId, fromDate: fromDate, toDate: toDate).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18295,25 +17089,19 @@ analytics.getAbandonCartsCSV(companyId: companyId, applicationId: applicationId,
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| fromDate | String? | From date |   
-| toDate | String? | To date |  
 
 
 
 Get abandon carts csv
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[String](#String)
 
 Success
-
-
-Schema: `String`
 
 
 
@@ -18326,8 +17114,10 @@ Schema: `String`
 #### getAbandonCartDetail
 Get abandon carts details
 
+
+
 ```kotlin
-analytics.getAbandonCartDetail(companyId: companyId, applicationId: applicationId, cartId: cartId).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18339,24 +17129,19 @@ analytics.getAbandonCartDetail(companyId: companyId, applicationId: applicationI
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| applicationId | String? | Application Id |   
-| cartId | String? | Cart Id |  
 
 
 
 Get abandon cart details
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AbandonCartDetail](#AbandonCartDetail)
 
 Success
-
-
-Schema: `AbandonCartDetail`
 
 
 
@@ -18369,8 +17154,10 @@ Schema: `AbandonCartDetail`
 #### createExportJob
 Create data export job in required format
 
+
+
 ```kotlin
-analytics.createExportJob(companyId: companyId, exportType: exportType, body: body).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18382,23 +17169,19 @@ analytics.createExportJob(companyId: companyId, exportType: exportType, body: bo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| exportType | String? | Export type / format |  
 
 
 
 Create data export job in required format
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ExportJobRes](#ExportJobRes)
 
 Success
-
-
-Schema: `ExportJobRes`
 
 
 
@@ -18411,8 +17194,10 @@ Schema: `ExportJobRes`
 #### getExportJobStatus
 Get data export job status
 
+
+
 ```kotlin
-analytics.getExportJobStatus(companyId: companyId, exportType: exportType, jobId: jobId).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18424,24 +17209,19 @@ analytics.getExportJobStatus(companyId: companyId, exportType: exportType, jobId
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| exportType | String? | Export type / format |   
-| jobId | String? | Export job id |  
 
 
 
 Get data export job status
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ExportJobStatusRes](#ExportJobStatusRes)
 
 Success
-
-
-Schema: `ExportJobStatusRes`
 
 
 
@@ -18454,8 +17234,10 @@ Schema: `ExportJobStatusRes`
 #### getLogsList
 Get logs list
 
+
+
 ```kotlin
-analytics.getLogsList(companyId: companyId, logType: logType, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18467,25 +17249,19 @@ analytics.getLogsList(companyId: companyId, logType: logType, pageNo: pageNo, pa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| logType | String? | Log type |   
-| pageNo | Int? | Current page number |   
-| pageSize | Int? | Current page size |  
 
 
 
 Get logs list
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[GetLogsListRes](#GetLogsListRes)
 
 Success
-
-
-Schema: `GetLogsListRes`
 
 
 
@@ -18498,8 +17274,10 @@ Schema: `GetLogsListRes`
 #### searchLogs
 Search logs
 
+
+
 ```kotlin
-analytics.searchLogs(companyId: companyId, pageNo: pageNo, pageSize: pageSize, logType: logType, body: body).safeAwait{ response,error->
+analytics.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18511,27 +17289,21 @@ analytics.searchLogs(companyId: companyId, pageNo: pageNo, pageSize: pageSize, l
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id |   
-| pageNo | Int? | Current page number |   
-| pageSize | Int? | Current page size |   
-| logType | String? | Log type |  
 
 
 
 Search logs
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SearchLogRes](#SearchLogRes)
 
 Success
 
 
-Schema: `SearchLogRes`
-
-
 
 
 
@@ -18539,9 +17311,6 @@ Schema: `SearchLogRes`
 ---
 
 
-
----
----
 
 
 ## Discount
@@ -18550,8 +17319,10 @@ Schema: `SearchLogRes`
 #### getDiscounts
 Fetch discount list.
 
+
+
 ```kotlin
-discount.getDiscounts(companyId: companyId, view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18563,31 +17334,19 @@ discount.getDiscounts(companyId: companyId, view: view, q: q, pageNo: pageNo, pa
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| view | String? | listing or calender.  Default is listing. |   
-| q | String? | The search query. This can be a partial or complete name of a discount. |   
-| pageNo | Int? | page number. Default is 1. |   
-| pageSize | Int? | page size. Default is 12. |   
-| archived | Boolean? | archived. Default is false. |   
-| month | Int? | month. Default is current month. |   
-| year | Int? | year. Default is current year. |   
-| type | String? | basic or custom. |   
-| appIds | ArrayList<String>? | application ids. |  
 
 
 
 Fetch discount list.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[ListOrCalender](#ListOrCalender)
 
 Success
-
-
-Schema: `ListOrCalender`
 
 
 
@@ -18600,8 +17359,10 @@ Schema: `ListOrCalender`
 #### createDiscount
 Create Discount.
 
+
+
 ```kotlin
-discount.createDiscount(companyId: companyId, body: body).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18613,22 +17374,19 @@ discount.createDiscount(companyId: companyId, body: body).safeAwait{ response,er
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |  
 
 
 
 Create Discount.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DiscountJob](#DiscountJob)
 
 Success
-
-
-Schema: `DiscountJob`
 
 
 
@@ -18641,8 +17399,10 @@ Schema: `DiscountJob`
 #### getDiscount
 Fetch discount.
 
+
+
 ```kotlin
-discount.getDiscount(companyId: companyId, id: id).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18654,23 +17414,19 @@ discount.getDiscount(companyId: companyId, id: id).safeAwait{ response,error->
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| id | String? | unique id. |  
 
 
 
 Fetch discount.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DiscountJob](#DiscountJob)
 
 Success
-
-
-Schema: `DiscountJob`
 
 
 
@@ -18683,8 +17439,10 @@ Schema: `DiscountJob`
 #### updateDiscount
 Create Discount.
 
+
+
 ```kotlin
-discount.updateDiscount(companyId: companyId, id: id, body: body).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18696,23 +17454,19 @@ discount.updateDiscount(companyId: companyId, id: id, body: body).safeAwait{ res
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| id | String? | id |  
 
 
 
 Create Discount.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[DiscountJob](#DiscountJob)
 
 Success
-
-
-Schema: `DiscountJob`
 
 
 
@@ -18725,8 +17479,10 @@ Schema: `DiscountJob`
 #### validateDiscountFile
 Validate File.
 
+
+
 ```kotlin
-discount.validateDiscountFile(companyId: companyId, discount: discount, body: body).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18738,23 +17494,19 @@ discount.validateDiscountFile(companyId: companyId, discount: discount, body: bo
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| discount | String? | discount |  
 
 
 
 Validate File.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FileJobResponse](#FileJobResponse)
 
 Success
-
-
-Schema: `FileJobResponse`
 
 
 
@@ -18767,8 +17519,10 @@ Schema: `FileJobResponse`
 #### downloadDiscountFile
 Validate File.
 
+
+
 ```kotlin
-discount.downloadDiscountFile(companyId: companyId, type: type, body: body).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18780,23 +17534,19 @@ discount.downloadDiscountFile(companyId: companyId, type: type, body: body).safe
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| type | String? | type |  
 
 
 
 Validate File.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FileJobResponse](#FileJobResponse)
 
 Success
-
-
-Schema: `FileJobResponse`
 
 
 
@@ -18809,8 +17559,10 @@ Schema: `FileJobResponse`
 #### getValidationJob
 Validate File Job.
 
+
+
 ```kotlin
-discount.getValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18822,23 +17574,19 @@ discount.getValidationJob(companyId: companyId, id: id).safeAwait{ response,erro
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| id | String? | id |  
 
 
 
 Validate File Job.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FileJobResponse](#FileJobResponse)
 
 Success
-
-
-Schema: `FileJobResponse`
 
 
 
@@ -18851,8 +17599,10 @@ Schema: `FileJobResponse`
 #### cancelValidationJob
 Cancel Validation Job.
 
+
+
 ```kotlin
-discount.cancelValidationJob(companyId: companyId, id: id).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18864,23 +17614,19 @@ discount.cancelValidationJob(companyId: companyId, id: id).safeAwait{ response,e
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| id | String? | id |  
 
 
 
 Cancel Validation Job.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CancelJobResponse](#CancelJobResponse)
 
 Success
-
-
-Schema: `CancelJobResponse`
 
 
 
@@ -18893,8 +17639,10 @@ Schema: `CancelJobResponse`
 #### getDownloadJob
 Download File Job.
 
+
+
 ```kotlin
-discount.getDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18906,23 +17654,19 @@ discount.getDownloadJob(companyId: companyId, id: id).safeAwait{ response,error-
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| id | String? | id |  
 
 
 
 Download File Job.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[FileJobResponse](#FileJobResponse)
 
 Success
-
-
-Schema: `FileJobResponse`
 
 
 
@@ -18935,8 +17679,10 @@ Schema: `FileJobResponse`
 #### cancelDownloadJob
 Cancel Download Job.
 
+
+
 ```kotlin
-discount.cancelDownloadJob(companyId: companyId, id: id).safeAwait{ response,error->
+discount.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18948,25 +17694,21 @@ discount.cancelDownloadJob(companyId: companyId, id: id).safeAwait{ response,err
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | Int? | company_id |   
-| id | String? | id |  
 
 
 
 Cancel Download Job.
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[CancelJobResponse](#CancelJobResponse)
 
 Success
 
 
-Schema: `CancelJobResponse`
-
-
 
 
 
@@ -18974,9 +17716,6 @@ Schema: `CancelJobResponse`
 ---
 
 
-
----
----
 
 
 ## Partner
@@ -18985,8 +17724,10 @@ Schema: `CancelJobResponse`
 #### addProxyPath
 Add proxy path for external url
 
+
+
 ```kotlin
-partner.addProxyPath(companyId: companyId, applicationId: applicationId, extensionId: extensionId, body: body).safeAwait{ response,error->
+partner.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18998,24 +17739,19 @@ partner.addProxyPath(companyId: companyId, applicationId: applicationId, extensi
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| extensionId | String? | Extension id |  
 
 
 
 Add proxy path for external url
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[AddProxyResponse](#AddProxyResponse)
 
 Success
-
-
-Schema: `AddProxyResponse`
 
 
 
@@ -19028,8 +17764,10 @@ Schema: `AddProxyResponse`
 #### removeProxyPath
 Remove proxy path for external url
 
+
+
 ```kotlin
-partner.removeProxyPath(companyId: companyId, applicationId: applicationId, extensionId: extensionId, attachedPath: attachedPath).safeAwait{ response,error->
+partner.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19041,18 +17779,12 @@ partner.removeProxyPath(companyId: companyId, applicationId: applicationId, exte
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Current company id |   
-| applicationId | String? | Current application id |   
-| extensionId | String? | Extension id |   
-| attachedPath | String? | Attachaed path slug |  
 
 
 
 Remove proxy path for external url
 
-*Success Response*
+*Returned Response*
 
 
 
@@ -19060,9 +17792,6 @@ Remove proxy path for external url
 ---
 
 
-
----
----
 
 
 ## Webhook
@@ -19071,8 +17800,10 @@ Remove proxy path for external url
 #### getSubscribersByCompanyAndEventId
 Get Subscribers By Company And Event
 
+
+
 ```kotlin
-webhook.getSubscribersByCompanyAndEventId(pageNo: pageNo, pageSize: pageSize, companyId: companyId, eventId: eventId).safeAwait{ response,error->
+webhook.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19084,25 +17815,19 @@ webhook.getSubscribersByCompanyAndEventId(pageNo: pageNo, pageSize: pageSize, co
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| pageNo | Int? | Page Number |   
-| pageSize | Int? | Page Size |   
-| companyId | String? | Company ID of the application |   
-| eventId | Int? | Event Id of the application |  
 
 
 
 Get Subscribers By Company And Event
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriberConfigList](#SubscriberConfigList)
 
 Success
-
-
-Schema: `SubscriberConfigList`
 
 
 
@@ -19115,8 +17840,10 @@ Schema: `SubscriberConfigList`
 #### registerSubscriberToEvent
 Register Subscriber
 
+
+
 ```kotlin
-webhook.registerSubscriberToEvent(companyId: companyId, body: body).safeAwait{ response,error->
+webhook.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19128,22 +17855,19 @@ webhook.registerSubscriberToEvent(companyId: companyId, body: body).safeAwait{ r
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company Id of the application |  
 
 
 
 Register Subscriber
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriberConfig](#SubscriberConfig)
 
 Success
-
-
-Schema: `SubscriberConfig`
 
 
 
@@ -19156,8 +17880,10 @@ Schema: `SubscriberConfig`
 #### updateSubscriberConfig
 Update Subscriber
 
+
+
 ```kotlin
-webhook.updateSubscriberConfig(companyId: companyId, body: body).safeAwait{ response,error->
+webhook.().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19169,24 +17895,21 @@ webhook.updateSubscriberConfig(companyId: companyId, body: body).safeAwait{ resp
 }
 ```
 
-| Argument  |  Type  | Description |
-| --------- | ----  | --- | 
-| companyId | String? | Company ID of the application |  
 
 
 
 Update Subscriber
 
-*Success Response*
+*Returned Response*
 
 
+
+
+[SubscriberConfig](#SubscriberConfig)
 
 Success
 
 
-Schema: `SubscriberConfig`
-
-
 
 
 
@@ -19195,5 +17918,18022 @@ Schema: `SubscriberConfig`
 
 
 
+
+
+### Schemas
+
+
+ 
+ 
+ #### [LocationDefaultLanguage](#LocationDefaultLanguage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | code | String |  no  |  |
+
 ---
+
+
+ 
+ 
+ #### [LocationDefaultCurrency](#LocationDefaultCurrency)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | symbol | String |  no  |  |
+ | code | String |  no  |  |
+
 ---
+
+
+ 
+ 
+ #### [LocationCountry](#LocationCountry)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | capital | String |  no  |  |
+ | currency | String |  no  |  |
+ | iso2 | String |  no  |  |
+ | iso3 | String |  no  |  |
+ | name | String |  no  |  |
+ | parent | String |  no  |  |
+ | phone_code | String |  no  |  |
+ | type | String |  no  |  |
+ | uid | Int |  no  |  |
+ | __v | Int |  no  |  |
+ | _id | String |  no  |  |
+ | default_currency | [LocationDefaultCurrency](#LocationDefaultCurrency) |  no  |  |
+ | default_language | [LocationDefaultLanguage](#LocationDefaultLanguage) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Locations](#Locations)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[LocationCountry](#LocationCountry)> |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [TicketList](#TicketList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Ticket](#Ticket)> |  no  | List of tickets |
+ | filters | [Filter](#Filter) |  no  | All the filters available for tickets |
+ | page | [Page](#Page) |  no  | Describes the pagination state |
+
+---
+
+
+ 
+ 
+ #### [Page](#Page)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | item_total | Int |  no  |  |
+ | next_id | String |  no  |  |
+ | has_previous | Boolean |  no  |  |
+ | has_next | Boolean |  no  |  |
+ | current | Int |  no  |  |
+ | type | String? |  yes  |  |
+ | size | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TicketHistoryList](#TicketHistoryList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[TicketHistory](#TicketHistory)> |  no  | List of ticket history |
+ | page | [Page](#Page) |  no  | Describes the pagination state |
+
+---
+
+
+ 
+ 
+ #### [CustomFormList](#CustomFormList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[CustomForm](#CustomForm)> |  no  | List of forms |
+ | page | [Page](#Page) |  no  | Describes the pagination state |
+
+---
+
+
+ 
+ 
+ #### [CreateCustomFormPayload](#CreateCustomFormPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String? |  yes  | Slug for the form |
+ | title | String? |  yes  | Title for the form |
+ | inputs | ArrayList<HashMap<String,Any>>? |  yes  | List of all the form components |
+ | description | String |  no  | Description of the form |
+ | header_image | String |  no  | Header image that is to be shown for the form |
+ | priority | Any? |  yes  | Describes the priority of the tickets created by the form |
+ | should_notify | Boolean |  no  | Indicates if staff should be notified when a response is received |
+ | success_message | String |  no  | Success message that will be shown on submission |
+ | poll_for_assignment | [PollForAssignment](#PollForAssignment) |  no  | Describes how polling will be done for the tickets createds |
+
+---
+
+
+ 
+ 
+ #### [EditCustomFormPayload](#EditCustomFormPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  | Title for the form |
+ | inputs | ArrayList<HashMap<String,Any>>? |  yes  | List of all the form components |
+ | description | String |  no  | Description of the form |
+ | priority | Any? |  yes  | Describes the priority of the tickets created by the form |
+ | header_image | String |  no  | Header image that is to be shown for the form |
+ | should_notify | Boolean |  no  | Indicates if staff should be notified when a response is received |
+ | login_required | Boolean |  no  | Denotes if login is required to make a form response submission |
+ | success_message | String |  no  | Success message that will be shown on submission |
+ | poll_for_assignment | [PollForAssignment](#PollForAssignment) |  no  | Describes how polling will be done for the tickets createds |
+
+---
+
+
+ 
+ 
+ #### [EditTicketPayload](#EditTicketPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | content | [TicketContent](#TicketContent) |  no  | Ticket conetent details |
+ | category | String |  no  | Category assigned to the ticket |
+ | sub_category | String |  no  | Sub-category assigned to the ticket |
+ | source | String |  no  | Denotes if the ticket was created at company or application level |
+ | status | String |  no  | Denotes in what state is the ticket |
+ | priority | Any |  no  | Denotes the priority of ticket |
+ | assigned_to | [AgentChangePayload](#AgentChangePayload) |  no  | Details of support staff to whom ticket is assigned |
+ | tags | ArrayList<String> |  no  | Tags relevant to ticket |
+
+---
+
+
+ 
+ 
+ #### [AgentChangePayload](#AgentChangePayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | agent_id | String? |  yes  | Agent's unique ID |
+
+---
+
+
+ 
+ 
+ #### [CreateVideoRoomResponse](#CreateVideoRoomResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | unique_name | String? |  yes  | Video Room's unique name |
+
+---
+
+
+ 
+ 
+ #### [CloseVideoRoomResponse](#CloseVideoRoomResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  | Denotes if operation was successfully |
+
+---
+
+
+ 
+ 
+ #### [CreateVideoRoomPayload](#CreateVideoRoomPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | unique_name | String? |  yes  | Ticket id |
+ | notify | ArrayList<[NotifyUser](#NotifyUser)> |  no  | List of people to be notified |
+
+---
+
+
+ 
+ 
+ #### [NotifyUser](#NotifyUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country_code | String? |  yes  | Country code |
+ | phone_number | String? |  yes  | Phone number |
+
+---
+
+
+ 
+ 
+ #### [Filter](#Filter)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | priorities | ArrayList<[Priority](#Priority)>? |  yes  | List of possible priorities for tickets |
+ | categories | ArrayList<[TicketCategory](#TicketCategory)> |  no  | List of possible categories for tickets |
+ | statuses | ArrayList<[Status](#Status)>? |  yes  | List of possible statuses for tickets |
+ | assignees | ArrayList<HashMap<String,Any>>? |  yes  | List of support staff availble for tickets assignment |
+
+---
+
+
+ 
+ 
+ #### [TicketHistoryPayload](#TicketHistoryPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | HashMap<String,Any>? |  yes  | Details of history event |
+ | type | Any? |  yes  | Type of history event |
+
+---
+
+
+ 
+ 
+ #### [CustomFormSubmissionPayload](#CustomFormSubmissionPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | response | ArrayList<[KeyValue](#KeyValue)>? |  yes  | Form response |
+ | attachments | ArrayList<[TicketAsset](#TicketAsset)> |  no  | List of all attachments related to the form |
+
+---
+
+
+ 
+ 
+ #### [KeyValue](#KeyValue)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  | Parameter for evaluating |
+ | value | HashMap<String,Any>? |  yes  | Response for the parameter |
+
+---
+
+
+ 
+ 
+ #### [GetTokenForVideoRoomResponse](#GetTokenForVideoRoomResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | access_token | String? |  yes  | Access token to be used for video room |
+
+---
+
+
+ 
+ 
+ #### [GetParticipantsInsideVideoRoomResponse](#GetParticipantsInsideVideoRoomResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | participants | ArrayList<[Participant](#Participant)>? |  yes  | List of participants of the video room |
+
+---
+
+
+ 
+ 
+ #### [Participant](#Participant)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  | Details of participant |
+ | identity | String |  no  | Unique identifier of participant |
+ | status | String |  no  | Status of participant |
+
+---
+
+
+ 
+ 
+ #### [PhoneNumber](#PhoneNumber)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  | Denotes if the phone number is active |
+ | primary | Boolean |  no  | Denotes it's the primary phone number for the account |
+ | verified | Boolean |  no  | Denotes it's a verified phone number |
+ | phone | String |  no  | Phone number |
+ | country_code | Int |  no  | Country code |
+
+---
+
+
+ 
+ 
+ #### [Email](#Email)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | primary | Boolean |  no  | Denotes it's the primary email for the account |
+ | verified | Boolean |  no  | Denotes it's a verified email |
+ | email | String |  no  | Email Address |
+ | active | Boolean |  no  | Denotes if the email is active |
+
+---
+
+
+ 
+ 
+ #### [Debug](#Debug)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | source | String |  no  | Source of user |
+ | platform | String |  no  | Platform of user |
+
+---
+
+
+ 
+ 
+ #### [SubmitCustomFormResponse](#SubmitCustomFormResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ticket | [Ticket](#Ticket)? |  yes  | Ticket created on form submission |
+
+---
+
+
+ 
+ 
+ #### [TicketContext](#TicketContext)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application_id | String |  no  | Application ID related to the ticket |
+ | company_id | String? |  yes  | Company ID related to the ticket |
+
+---
+
+
+ 
+ 
+ #### [CreatedOn](#CreatedOn)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user_agent | String? |  yes  | Useragent details |
+
+---
+
+
+ 
+ 
+ #### [TicketAsset](#TicketAsset)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  | Display text for asset |
+ | value | String? |  yes  | To be used for details |
+ | type | Any? |  yes  | Type of asset |
+
+---
+
+
+ 
+ 
+ #### [TicketContent](#TicketContent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  | Title for ticket |
+ | description | String |  no  | Long description of issue |
+ | attachments | ArrayList<[TicketAsset](#TicketAsset)> |  no  | List of all attachments related to the ticket |
+
+---
+
+
+ 
+ 
+ #### [AddTicketPayload](#AddTicketPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created_by | HashMap<String,Any> |  no  | Creator of the ticket |
+ | status | String |  no  | Status of the ticket |
+ | priority | Any |  no  | Priority of the ticket |
+ | category | String? |  yes  | Category of the ticket |
+ | content | [TicketContent](#TicketContent)? |  yes  | Content for the ticket |
+
+---
+
+
+ 
+ 
+ #### [Priority](#Priority)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | [PriorityEnum](#PriorityEnum)? |  yes  | Key for priority |
+ | display | String? |  yes  | Display text for priority |
+ | color | String? |  yes  | Color for priority |
+
+---
+
+
+ 
+ 
+ #### [Status](#Status)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  | Key for status |
+ | display | String? |  yes  | Display text for status |
+ | color | String? |  yes  | Color for status |
+
+---
+
+
+ 
+ 
+ #### [TicketCategory](#TicketCategory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  | Key for category |
+ | display | String? |  yes  | Display text for category |
+ | form | [CustomForm](#CustomForm) |  no  | Form related to the category |
+ | sub_categories | ArrayList<[TicketSubCategory](#TicketSubCategory)> |  no  | Sub-category related to the category |
+ | feedback_form | [TicketFeedbackForm](#TicketFeedbackForm) |  no  | Feedback form of category used to submit ticket feedback |
+
+---
+
+
+ 
+ 
+ #### [TicketSubCategory](#TicketSubCategory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  | Key for sub-category |
+ | display | String? |  yes  | Display text for sub-category |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedbackForm](#TicketFeedbackForm)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  | Feedback form title that will be shown to the user |
+ | display | ArrayList<HashMap<String,Any>> |  no  | List of all the form fields |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedbackList](#TicketFeedbackList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[TicketFeedback](#TicketFeedback)> |  no  | List of all ticket feedback for the ticket |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedbackPayload](#TicketFeedbackPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | form_response | HashMap<String,Any> |  no  | Key-value pairs of all the form fields and their response |
+
+---
+
+
+ 
+ 
+ #### [SubmitButton](#SubmitButton)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  | Title for submit button |
+ | title_color | String? |  yes  | Title color submit button |
+ | background_color | String? |  yes  | Color for submit button |
+
+---
+
+
+ 
+ 
+ #### [PollForAssignment](#PollForAssignment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | duration | Double? |  yes  | Duration for polling of staff |
+ | message | String? |  yes  | Message for polling |
+ | success_message | String? |  yes  | Message for successful polling |
+ | failure_message | String? |  yes  | Message if polling failed |
+
+---
+
+
+ 
+ 
+ #### [CustomForm](#CustomForm)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application_id | String? |  yes  | Application ID for form |
+ | slug | String? |  yes  | Slug for the form, which is to be used for accessing the form |
+ | header_image | String |  no  | Form header image that will be shown to the user |
+ | title | String? |  yes  | Form title that will be shown to the user |
+ | description | String |  no  | Form description that will be shown to the user |
+ | priority | [Priority](#Priority)? |  yes  | Sets priority of tickets created by form response |
+ | login_required | Boolean? |  yes  | Denotes if login is required to make a form response submission |
+ | should_notify | Boolean? |  yes  | Denotes if new response submission for the form should be notified to the assignees |
+ | success_message | String |  no  | Message that is to be shown on succesfull form response submission |
+ | submit_button | [SubmitButton](#SubmitButton) |  no  | Details for submit button |
+ | inputs | ArrayList<HashMap<String,Any>>? |  yes  | List of all the form fields |
+ | created_on | [CreatedOn](#CreatedOn) |  no  | Gives details of when the form was created |
+ | created_by | HashMap<String,Any> |  no  | Gives details of user who created the form |
+ | poll_for_assignment | [PollForAssignment](#PollForAssignment) |  no  | Details of how polling should be done for support |
+ | _id | String? |  yes  | Unique identifier for the form |
+
+---
+
+
+ 
+ 
+ #### [FeedbackResponseItem](#FeedbackResponseItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  | Question/Title of the form field |
+ | key | String? |  yes  | Key of the form field |
+ | value | String? |  yes  | User response value for the form field |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedback](#TicketFeedback)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String? |  yes  | Unique identifier for the feedback |
+ | ticket_id | String? |  yes  | Readable ticket number |
+ | company_id | String? |  yes  | Company id for which ticket was raised |
+ | response | ArrayList<[FeedbackResponseItem](#FeedbackResponseItem)>? |  yes  |  |
+ | category | String |  no  | Category of the ticket |
+ | user | HashMap<String,Any> |  no  | User who submitted the feedback |
+ | updated_at | String |  no  | Time when the feedback was last updated |
+ | created_at | String |  no  | Time when the feedback was created |
+
+---
+
+
+ 
+ 
+ #### [TicketHistory](#TicketHistory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  | Type of the history event |
+ | value | HashMap<String,Any>? |  yes  | Data of the history event |
+ | ticket_id | String? |  yes  | Readable ticket number |
+ | created_on | [CreatedOn](#CreatedOn) |  no  | Time of creation of the history event |
+ | created_by | HashMap<String,Any> |  no  | User who created the history event |
+ | _id | String? |  yes  | Unique identifier of the history event |
+ | updated_at | String |  no  | Time of last update of the history event |
+ | created_at | String |  no  | Time of creation of the history event |
+
+---
+
+
+ 
+ 
+ #### [Ticket](#Ticket)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | context | [TicketContext](#TicketContext) |  no  | Details of company and application realated to the ticket |
+ | created_on | [CreatedOn](#CreatedOn) |  no  | Details of company and application realated to the ticket |
+ | response_id | String |  no  | Details of company and application realated to the ticket |
+ | content | [TicketContent](#TicketContent) |  no  | Ticket conetent details |
+ | ticket_id | String? |  yes  | Readable ticket number |
+ | category | [TicketCategory](#TicketCategory)? |  yes  | Category assigned to the ticket |
+ | sub_category | [TicketSubCategory](#TicketSubCategory) |  no  | Sub-category assigned to the ticket |
+ | source | Any? |  yes  | Denotes if the ticket was created at company or application level |
+ | status | [Status](#Status)? |  yes  | Denotes in what state is the ticket |
+ | priority | [Priority](#Priority)? |  yes  | Denotes the priority of ticket |
+ | created_by | HashMap<String,Any> |  no  | User details of ticket creator |
+ | assigned_to | HashMap<String,Any> |  no  | Details of support staff to whom ticket is assigned |
+ | tags | ArrayList<String> |  no  | Tags relevant to ticket |
+ | _custom_json | HashMap<String,Any> |  no  | custom json relevant to the ticket |
+ | is_feedback_pending | Boolean |  no  | Denotes if feedback submission is pending for the ticket |
+ | _id | String? |  yes  | Unique identifier for the ticket |
+ | updated_at | String |  no  | Time when the ticket was last updated |
+ | created_at | String |  no  | Time when the ticket was created |
+
+---
+
+
+
+
+ 
+ 
+ #### [Activity](#Activity)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | current_state | HashMap<String,Any> |  no  |  |
+ | document_id | String |  no  |  |
+ | previous_state | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ActivityDump](#ActivityDump)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | activity | [Activity](#Activity) |  no  |  |
+ | created_by | [CreatedBy](#CreatedBy) |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | id | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AddMediaListRequest](#AddMediaListRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | entity_id | String |  no  |  |
+ | entity_type | String |  no  |  |
+ | media_list | ArrayList<[AddMediaRequest](#AddMediaRequest)> |  no  |  |
+ | ref_id | String |  no  |  |
+ | ref_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AddMediaRequest](#AddMediaRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cloud_id | String |  no  |  |
+ | cloud_name | String |  no  |  |
+ | cloud_provider | String |  no  |  |
+ | entity_id | String |  no  |  |
+ | entity_type | String |  no  |  |
+ | media_url | String |  no  |  |
+ | ref_id | String |  no  |  |
+ | ref_type | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | thumbnail_url | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApproveRequest](#ApproveRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | approve | Boolean |  no  |  |
+ | entity_type | String |  no  |  |
+ | id | String? |  yes  |  |
+ | reason | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Attribute](#Attribute)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | description | String |  no  |  |
+ | id | String |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | tags | ArrayList<[TagMeta](#TagMeta)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeObject](#AttributeObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | name | String? |  yes  |  |
+ | slug | String |  no  |  |
+ | title | String |  no  |  |
+ | type | String? |  yes  |  |
+ | value | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CreatedBy](#CreatedBy)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  |  |
+ | name | String |  no  |  |
+ | tags | ArrayList<[TagMeta](#TagMeta)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CursorGetResponse](#CursorGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<HashMap<String,Any>> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DateMeta](#DateMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created_on | String |  no  |  |
+ | modified_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DeviceMeta](#DeviceMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_version | String |  no  |  |
+ | platform | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Entity](#Entity)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EntityRequest](#EntityRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | entity_id | String |  no  |  |
+ | entity_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FeedbackAttributes](#FeedbackAttributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Attribute](#Attribute)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FeedbackError](#FeedbackError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | HashMap<String,Any> |  no  |  |
+ | exception | String |  no  |  |
+ | info | String |  no  |  |
+ | message | String |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | request_id | String |  no  |  |
+ | stack_trace | String |  no  |  |
+ | status | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FeedbackState](#FeedbackState)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  |  |
+ | archive | Boolean |  no  |  |
+ | media | String |  no  | image, video, any |
+ | qna | Boolean |  no  |  |
+ | rating | Boolean |  no  |  |
+ | review | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetResponse](#GetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | HashMap<String,Any> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetReviewResponse](#GetReviewResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | facets | ArrayList<[ReviewFacet](#ReviewFacet)> |  no  |  |
+ | items | ArrayList<HashMap<String,Any>> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+ | sort | ArrayList<[SortMethod](#SortMethod)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InsertResponse](#InsertResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MediaMeta](#MediaMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max_count | Int |  no  |  |
+ | size | Int |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MediaMetaRequest](#MediaMetaRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max_count | Int? |  yes  |  |
+ | size | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [NumberGetResponse](#NumberGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<HashMap<String,Any>> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageCursor](#PageCursor)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | current | Int |  no  |  |
+ | has_next | Boolean |  no  |  |
+ | has_previous | Boolean |  no  |  |
+ | item_total | Int |  no  |  |
+ | next_id | String |  no  |  |
+ | size | Int? |  yes  |  |
+ | type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PageNumber](#PageNumber)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | current | Int |  no  |  |
+ | has_next | Boolean |  no  |  |
+ | item_total | Int |  no  |  |
+ | size | Int |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Rating](#Rating)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attributes | ArrayList<[Attribute](#Attribute)> |  no  |  |
+ | attributes_slugs | ArrayList<String> |  no  |  |
+ | ui | [UI](#UI) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RatingRequest](#RatingRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attributes | ArrayList<String>? |  yes  |  |
+ | ui | [UI](#UI) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ReportAbuseRequest](#ReportAbuseRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | entity_id | String? |  yes  |  |
+ | entity_type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Review](#Review)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | header | String |  no  |  |
+ | image_meta | [MediaMeta](#MediaMeta) |  no  |  |
+ | title | String |  no  |  |
+ | video_meta | [MediaMeta](#MediaMeta) |  no  |  |
+ | vote_allowed | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ReviewFacet](#ReviewFacet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  |  |
+ | name | String |  no  |  |
+ | selected | Boolean |  no  |  |
+ | slug | String |  no  |  |
+ | type | String |  no  | rating, attributerating |
+
+---
+
+
+ 
+ 
+ #### [ReviewRequest](#ReviewRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String? |  yes  |  |
+ | header | String? |  yes  |  |
+ | image_meta | [MediaMetaRequest](#MediaMetaRequest)? |  yes  |  |
+ | is_vote_allowed | Boolean? |  yes  |  |
+ | title | String? |  yes  |  |
+ | video_meta | [MediaMetaRequest](#MediaMetaRequest)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SaveAttributeRequest](#SaveAttributeRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | name | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SortMethod](#SortMethod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | selected | Boolean |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TagMeta](#TagMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | media | ArrayList<[MediaMeta](#MediaMeta)> |  no  |  |
+ | name | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Template](#Template)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | entity | [Entity](#Entity) |  no  |  |
+ | id | String |  no  |  |
+ | name | String |  no  |  |
+ | rating | [Rating](#Rating) |  no  |  |
+ | review | [Review](#Review) |  no  |  |
+ | state | [FeedbackState](#FeedbackState) |  no  |  |
+ | tags | ArrayList<[TagMeta](#TagMeta)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplateGetResponse](#TemplateGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Template](#Template)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplateRequest](#TemplateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | enable_media_type | String |  no  | image | video | any |
+ | enable_qna | Boolean |  no  |  |
+ | enable_rating | Boolean? |  yes  |  |
+ | enable_review | Boolean? |  yes  |  |
+ | entity | [EntityRequest](#EntityRequest)? |  yes  |  |
+ | rating | [RatingRequest](#RatingRequest)? |  yes  |  |
+ | review | [ReviewRequest](#ReviewRequest)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplateRequestList](#TemplateRequestList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template_list | ArrayList<[TemplateRequest](#TemplateRequest)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UI](#UI)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | feedback_question | ArrayList<String> |  no  |  |
+ | icon | [UIIcon](#UIIcon) |  no  |  |
+ | text | ArrayList<String> |  no  |  |
+ | type | String |  no  | star | images | gifs | smileys |
+
+---
+
+
+ 
+ 
+ #### [UIIcon](#UIIcon)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | String |  no  |  |
+ | inactive | String |  no  |  |
+ | selected | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateAttributeRequest](#UpdateAttributeRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | name | String? |  yes  |  |
+ | slug | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateResponse](#UpdateResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateReviewRequest](#UpdateReviewRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  |  |
+ | application | String |  no  |  |
+ | approve | Boolean |  no  |  |
+ | archive | Boolean |  no  |  |
+ | attributes_rating | ArrayList<[AttributeObject](#AttributeObject)> |  no  |  |
+ | description | String |  no  |  |
+ | device_meta | [DeviceMeta](#DeviceMeta) |  no  |  |
+ | entity_id | String |  no  |  |
+ | entity_type | String |  no  |  |
+ | media_resource | ArrayList<[MediaMeta](#MediaMeta)> |  no  |  |
+ | rating | Double |  no  |  |
+ | review_id | String |  no  |  |
+ | template_id | String |  no  |  |
+ | title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateTemplateRequest](#UpdateTemplateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | enable_media_type | String |  no  | image | video | any |
+ | enable_qna | Boolean |  no  |  |
+ | enable_rating | Boolean? |  yes  |  |
+ | enable_review | Boolean? |  yes  |  |
+ | entity | [EntityRequest](#EntityRequest)? |  yes  |  |
+ | rating | [RatingRequest](#RatingRequest)? |  yes  |  |
+ | review | [ReviewRequest](#ReviewRequest)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateTemplateStatusRequest](#UpdateTemplateStatusRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  |  |
+ | archive | Boolean |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [AvailablePageSchema](#AvailablePageSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | String |  no  |  |
+ | text | String |  no  |  |
+ | path | String |  no  |  |
+ | type | String |  no  |  |
+ | sections | ArrayList<[AvailablePageSchemaSections](#AvailablePageSchemaSections)> |  no  |  |
+ | sections_meta | ArrayList<[AvailablePageSectionMetaAttributes](#AvailablePageSectionMetaAttributes)> |  no  |  |
+ | theme | String |  no  |  |
+ | seo | [AvailablePageSeo](#AvailablePageSeo) |  no  |  |
+ | props | ArrayList<HashMap<String,Any>> |  no  |  |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AvailablePageSectionMetaAttributes](#AvailablePageSectionMetaAttributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attributes | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AvailablePageSeo](#AvailablePageSeo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | description | String |  no  |  |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AvailablePageSchemaSections](#AvailablePageSchemaSections)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | label | String |  no  |  |
+ | props | HashMap<String,Any> |  no  |  |
+ | blocks | ArrayList<HashMap<String,Any>> |  no  |  |
+ | preset | HashMap<String,Any> |  no  |  |
+ | predicate | [AvailablePagePredicate](#AvailablePagePredicate) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AvailablePageScreenPredicate](#AvailablePageScreenPredicate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mobile | Boolean |  no  |  |
+ | desktop | Boolean |  no  |  |
+ | tablet | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AvailablePageUserPredicate](#AvailablePageUserPredicate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | authenticated | Boolean |  no  |  |
+ | anonymous | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AvailablePageRoutePredicate](#AvailablePageRoutePredicate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | selected | String |  no  |  |
+ | exact_url | String |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AvailablePagePredicate](#AvailablePagePredicate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | screen | [AvailablePageScreenPredicate](#AvailablePageScreenPredicate) |  no  |  |
+ | user | [AvailablePageUserPredicate](#AvailablePageUserPredicate) |  no  |  |
+ | route | [AvailablePageRoutePredicate](#AvailablePageRoutePredicate) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AllAvailablePageSchema](#AllAvailablePageSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pages | ArrayList<[AvailablePageSchema](#AvailablePageSchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PaginationSchema](#PaginationSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | size | Int |  no  |  |
+ | item_total | Int |  no  |  |
+ | has_next | Boolean |  no  |  |
+ | type | String |  no  |  |
+ | current | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ThemesListingResponseSchema](#ThemesListingResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ThemesSchema](#ThemesSchema)> |  no  |  |
+ | page | [PaginationSchema](#PaginationSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AddThemeRequestSchema](#AddThemeRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | theme_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpgradableThemeSchema](#UpgradableThemeSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | parent_theme | String |  no  |  |
+ | applied_theme | String |  no  |  |
+ | upgrade | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FontsSchema](#FontsSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [FontsSchemaItems](#FontsSchemaItems) |  no  |  |
+ | kind | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlitzkriegApiErrorSchema](#BlitzkriegApiErrorSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlitzkriegNotFoundSchema](#BlitzkriegNotFoundSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlitzkriegInternalServerErrorSchema](#BlitzkriegInternalServerErrorSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FontsSchemaItems](#FontsSchemaItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | family | String |  no  |  |
+ | variants | ArrayList<String> |  no  |  |
+ | subsets | ArrayList<String> |  no  |  |
+ | version | String |  no  |  |
+ | last_modified | String |  no  |  |
+ | files | [FontsSchemaItemsFiles](#FontsSchemaItemsFiles) |  no  |  |
+ | category | String |  no  |  |
+ | kind | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FontsSchemaItemsFiles](#FontsSchemaItemsFiles)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | regular | String |  no  |  |
+ | italic | String |  no  |  |
+ | bold | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ThemesSchema](#ThemesSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String |  no  |  |
+ | applied | Boolean |  no  |  |
+ | customized | Boolean |  no  |  |
+ | published | Boolean |  no  |  |
+ | archived | Boolean |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | version | String |  no  |  |
+ | parent_theme_version | String |  no  |  |
+ | parent_theme | String |  no  |  |
+ | information | [Information](#Information) |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | src | [Src](#Src) |  no  |  |
+ | assets | [AssetsSchema](#AssetsSchema) |  no  |  |
+ | available_sections | ArrayList<[availableSectionSchema](#availableSectionSchema)> |  no  |  |
+ | constants | HashMap<String,Any> |  no  |  |
+ | styles | HashMap<String,Any> |  no  |  |
+ | config | [Config](#Config) |  no  |  |
+ | settings | HashMap<String,Any> |  no  |  |
+ | font | [Font](#Font) |  no  |  |
+ | _id | String |  no  |  |
+ | __v | Int |  no  |  |
+ | colors | [Colors](#Colors) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [availableSectionSchema](#availableSectionSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | blocks | ArrayList<[Blocks](#Blocks)> |  no  |  |
+ | name | String |  no  |  |
+ | label | String |  no  |  |
+ | props | ArrayList<[BlocksProps](#BlocksProps)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Information](#Information)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | images | [Images](#Images) |  no  |  |
+ | features | ArrayList<String> |  no  |  |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Images](#Images)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | desktop | ArrayList<String> |  no  |  |
+ | android | ArrayList<String> |  no  |  |
+ | ios | ArrayList<String> |  no  |  |
+ | thumbnail | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Src](#Src)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AssetsSchema](#AssetsSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | umd_js | [UmdJs](#UmdJs) |  no  |  |
+ | common_js | [CommonJs](#CommonJs) |  no  |  |
+ | css | [Css](#Css) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UmdJs](#UmdJs)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CommonJs](#CommonJs)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Css](#Css)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Seo](#Seo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | description | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Sections](#Sections)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attributes | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Config](#Config)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | preset | [Preset](#Preset) |  no  |  |
+ | global_schema | [GlobalSchema](#GlobalSchema) |  no  |  |
+ | current | String |  no  |  |
+ | list | ArrayList<[ListSchemaItem](#ListSchemaItem)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Preset](#Preset)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pages | ArrayList<[AvailablePageSchema](#AvailablePageSchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalSchema](#GlobalSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | props | ArrayList<[GlobalSchemaProps](#GlobalSchemaProps)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ListSchemaItem](#ListSchemaItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | global | HashMap<String,Any> |  no  |  |
+ | page | ArrayList<[ConfigPage](#ConfigPage)> |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Colors](#Colors)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bg_color | String |  no  |  |
+ | primary_color | String |  no  |  |
+ | secondary_color | String |  no  |  |
+ | accent_color | String |  no  |  |
+ | link_color | String |  no  |  |
+ | button_secondary_color | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Custom](#Custom)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | props | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigPage](#ConfigPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | settings | HashMap<String,Any> |  no  |  |
+ | page | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Font](#Font)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | family | String |  no  |  |
+ | variants | [Variants](#Variants) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Variants](#Variants)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | medium | [Medium](#Medium) |  no  |  |
+ | semi_bold | [SemiBold](#SemiBold) |  no  |  |
+ | bold | [Bold](#Bold) |  no  |  |
+ | light | [Light](#Light) |  no  |  |
+ | regular | [Regular](#Regular) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Medium](#Medium)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | file | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SemiBold](#SemiBold)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | file | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Bold](#Bold)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | file | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Light](#Light)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | file | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Regular](#Regular)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | file | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Blocks](#Blocks)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | name | String |  no  |  |
+ | props | ArrayList<[BlocksProps](#BlocksProps)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalSchemaProps](#GlobalSchemaProps)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  |  |
+ | label | String |  no  |  |
+ | type | String |  no  |  |
+ | category | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlocksProps](#BlocksProps)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  |  |
+ | label | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [EditEmailRequestSchema](#EditEmailRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verified | Boolean |  no  |  |
+ | active | Boolean |  no  |  |
+ | country_code | String |  no  |  |
+ | phone | String |  no  |  |
+ | primary | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EditMobileRequestSchema](#EditMobileRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country_code | String |  no  |  |
+ | phone | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EditProfileRequestSchema](#EditProfileRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | first_name | String |  no  |  |
+ | last_name | String |  no  |  |
+ | mobile | [EditProfileMobileSchema](#EditProfileMobileSchema) |  no  |  |
+ | country_code | String |  no  |  |
+ | email | String |  no  |  |
+ | gender | String |  no  |  |
+ | dob | String |  no  |  |
+ | profile_pic_url | String |  no  |  |
+ | android_hash | String |  no  |  |
+ | sender | String |  no  |  |
+ | register_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EditProfileMobileSchema](#EditProfileMobileSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone | String |  no  |  |
+ | country_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendEmailOtpRequestSchema](#SendEmailOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | action | String |  no  |  |
+ | token | String |  no  |  |
+ | register_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyEmailOtpRequestSchema](#VerifyEmailOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | action | String |  no  |  |
+ | register_token | String |  no  |  |
+ | otp | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyOtpRequestSchema](#VerifyOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | request_id | String |  no  |  |
+ | register_token | String |  no  |  |
+ | otp | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendMobileOtpRequestSchema](#SendMobileOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mobile | String |  no  |  |
+ | country_code | String |  no  |  |
+ | action | String |  no  |  |
+ | token | String |  no  |  |
+ | android_hash | String |  no  |  |
+ | force | String |  no  |  |
+ | captcha_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdatePasswordRequestSchema](#UpdatePasswordRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | old_password | String |  no  |  |
+ | new_password | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FormRegisterRequestSchema](#FormRegisterRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | first_name | String |  no  |  |
+ | last_name | String |  no  |  |
+ | gender | String |  no  |  |
+ | email | String |  no  |  |
+ | password | String |  no  |  |
+ | phone | [FormRegisterRequestSchemaPhone](#FormRegisterRequestSchemaPhone) |  no  |  |
+ | register_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TokenRequestBodySchema](#TokenRequestBodySchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ForgotPasswordRequestSchema](#ForgotPasswordRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+ | password | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CodeRequestBodySchema](#CodeRequestBodySchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendResetPasswordEmailRequestSchema](#SendResetPasswordEmailRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | captcha_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PasswordLoginRequestSchema](#PasswordLoginRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | captcha_code | String |  no  |  |
+ | password | String |  no  |  |
+ | username | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpRequestSchema](#SendOtpRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country_code | String |  no  |  |
+ | captcha_code | String |  no  |  |
+ | mobile | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthRequestSchema](#OAuthRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_signed_in | Boolean |  no  |  |
+ | oauth2 | [OAuthRequestSchemaOauth2](#OAuthRequestSchemaOauth2) |  no  |  |
+ | profile | [OAuthRequestSchemaProfile](#OAuthRequestSchemaProfile) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserObjectSchema](#UserObjectSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthSuccess](#AuthSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | register_token | String |  no  |  |
+ | user_exists | Boolean |  no  |  |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpResponse](#SendOtpResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | resend_timer | Int |  no  |  |
+ | resend_token | String |  no  |  |
+ | success | Boolean |  no  |  |
+ | request_id | String |  no  |  |
+ | message | String |  no  |  |
+ | mobile | String |  no  |  |
+ | country_code | String |  no  |  |
+ | email | String |  no  |  |
+ | resend_email_token | String |  no  |  |
+ | register_token | String |  no  |  |
+ | verify_email_otp | Boolean |  no  |  |
+ | verify_mobile_otp | Boolean |  no  |  |
+ | user_exists | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProfileEditSuccess](#ProfileEditSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+ | register_token | String |  no  |  |
+ | user_exists | Boolean |  no  |  |
+ | verify_email_link | Boolean |  no  |  |
+ | verify_email_otp | Boolean |  no  |  |
+ | verify_mobile_otp | Boolean |  no  |  |
+ | email | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LoginSuccess](#LoginSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+ | request_id | String |  no  |  |
+ | register_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyOtpSuccess](#VerifyOtpSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+ | user_exists | Boolean |  no  |  |
+ | register_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResetPasswordSuccess](#ResetPasswordSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RegisterFormSuccess](#RegisterFormSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | resend_timer | Int |  no  |  |
+ | resend_token | String |  no  |  |
+ | resend_email_token | String |  no  |  |
+ | register_token | String |  no  |  |
+ | success | Boolean |  no  |  |
+ | request_id | String |  no  |  |
+ | message | String |  no  |  |
+ | mobile | String |  no  |  |
+ | country_code | String |  no  |  |
+ | verify_email_otp | Boolean |  no  |  |
+ | verify_mobile_otp | Boolean |  no  |  |
+ | user_exists | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyEmailSuccess](#VerifyEmailSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HasPasswordSuccess](#HasPasswordSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | result | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LogoutSuccess](#LogoutSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | logout | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OtpSuccess](#OtpSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | resend_timer | Int |  no  |  |
+ | resend_token | String |  no  |  |
+ | register_token | String |  no  |  |
+ | success | Boolean |  no  |  |
+ | request_id | String |  no  |  |
+ | message | String |  no  |  |
+ | mobile | String |  no  |  |
+ | country_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailOtpSuccess](#EmailOtpSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SessionListSuccess](#SessionListSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sessions | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyMobileOTPSuccess](#VerifyMobileOTPSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+ | verify_mobile_link | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyEmailOTPSuccess](#VerifyEmailOTPSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+ | verify_email_link | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendMobileVerifyLinkSuccess](#SendMobileVerifyLinkSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verify_mobile_link | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SendEmailVerifyLinkSuccess](#SendEmailVerifyLinkSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verify_email_link | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserSearchResponseSchema](#UserSearchResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | users | ArrayList<[UserSchema](#UserSchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CustomerListResponseSchema](#CustomerListResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[UserSchema](#UserSchema)> |  no  |  |
+ | page | [PaginationSchema](#PaginationSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UnauthorizedSchema](#UnauthorizedSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UnauthenticatedSchema](#UnauthenticatedSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | authenticated | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NotFoundSchema](#NotFoundSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthenticationInternalServerErrorSchema](#AuthenticationInternalServerErrorSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthenticationApiErrorSchema](#AuthenticationApiErrorSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProfileEditSuccessSchema](#ProfileEditSuccessSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | verify_email_otp | Boolean |  no  |  |
+ | verify_email_link | Boolean |  no  |  |
+ | verify_mobile_otp | Boolean |  no  |  |
+ | user | String |  no  |  |
+ | register_token | String |  no  |  |
+ | user_exists | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FormRegisterRequestSchemaPhone](#FormRegisterRequestSchemaPhone)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country_code | String |  no  |  |
+ | mobile | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthRequestSchemaOauth2](#OAuthRequestSchemaOauth2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | access_token | String |  no  |  |
+ | expiry | Int |  no  |  |
+ | refresh_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthRequestSchemaProfile](#OAuthRequestSchemaProfile)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | last_name | String |  no  |  |
+ | image | String |  no  |  |
+ | id | String |  no  |  |
+ | email | String |  no  |  |
+ | full_name | String |  no  |  |
+ | first_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthSuccessUser](#AuthSuccessUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | first_name | String |  no  |  |
+ | last_name | String |  no  |  |
+ | debug | [AuthSuccessUserDebug](#AuthSuccessUserDebug) |  no  |  |
+ | active | Boolean |  no  |  |
+ | emails | [AuthSuccessUserEmails](#AuthSuccessUserEmails) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthSuccessUserDebug](#AuthSuccessUserDebug)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | platform | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthSuccessUserEmails](#AuthSuccessUserEmails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | verified | Boolean |  no  |  |
+ | primary | Boolean |  no  |  |
+ | active | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUserRequestSchema](#CreateUserRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone_number | String? |  yes  |  |
+ | email | String |  no  |  |
+ | first_name | String |  no  |  |
+ | last_name | String |  no  |  |
+ | gender | String |  no  |  |
+ | username | String? |  yes  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUserResponseSchema](#CreateUserResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [UserSchema](#UserSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUserSessionRequestSchema](#CreateUserSessionRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domain | String |  no  |  |
+ | max_age | Double |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUserSessionResponseSchema](#CreateUserSessionResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domain | String |  no  |  |
+ | max_age | Double |  no  |  |
+ | secure | Boolean |  no  |  |
+ | http_only | Boolean |  no  |  |
+ | cookie | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformSchema](#PlatformSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  |  |
+ | look_and_feel | [LookAndFeel](#LookAndFeel) |  no  |  |
+ | updated_at | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | forgot_password | Boolean |  no  |  |
+ | login | [Login](#Login) |  no  |  |
+ | skip_captcha | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | meta | [MetaSchema](#MetaSchema) |  no  |  |
+ | _id | String |  no  |  |
+ | social | [Social](#Social) |  no  |  |
+ | required_fields | [RequiredFields](#RequiredFields) |  no  |  |
+ | register_required_fields | [RegisterRequiredFields](#RegisterRequiredFields) |  no  |  |
+ | skip_login | Boolean |  no  |  |
+ | flash_card | [FlashCard](#FlashCard) |  no  |  |
+ | subtext | String |  no  |  |
+ | social_tokens | [SocialTokens](#SocialTokens) |  no  |  |
+ | created_at | String |  no  |  |
+ | register | Boolean |  no  |  |
+ | mobile_image | String |  no  |  |
+ | desktop_image | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LookAndFeel](#LookAndFeel)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | card_position | String |  no  |  |
+ | background_color | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Login](#Login)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | password | Boolean |  no  |  |
+ | otp | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MetaSchema](#MetaSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | fynd_default | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Social](#Social)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | account_kit | Boolean |  no  |  |
+ | facebook | Boolean |  no  |  |
+ | google | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RequiredFields](#RequiredFields)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [PlatformEmail](#PlatformEmail) |  no  |  |
+ | mobile | [PlatformMobile](#PlatformMobile) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformEmail](#PlatformEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_required | Boolean |  no  |  |
+ | level | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformMobile](#PlatformMobile)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_required | Boolean |  no  |  |
+ | level | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RegisterRequiredFields](#RegisterRequiredFields)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [RegisterRequiredFieldsEmail](#RegisterRequiredFieldsEmail) |  no  |  |
+ | mobile | [RegisterRequiredFieldsMobile](#RegisterRequiredFieldsMobile) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RegisterRequiredFieldsEmail](#RegisterRequiredFieldsEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_required | Boolean |  no  |  |
+ | level | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RegisterRequiredFieldsMobile](#RegisterRequiredFieldsMobile)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_required | Boolean |  no  |  |
+ | level | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FlashCard](#FlashCard)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | text | String |  no  |  |
+ | text_color | String |  no  |  |
+ | background_color | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SocialTokens](#SocialTokens)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | facebook | [Facebook](#Facebook) |  no  |  |
+ | account_kit | [Accountkit](#Accountkit) |  no  |  |
+ | google | [Google](#Google) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Facebook](#Facebook)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Accountkit](#Accountkit)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Google](#Google)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateUserRequestSchema](#UpdateUserRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | first_name | String |  no  |  |
+ | last_name | String |  no  |  |
+ | gender | String |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserSchema](#UserSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | first_name | String |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | last_name | String |  no  |  |
+ | phone_numbers | ArrayList<[PhoneNumber](#PhoneNumber)> |  no  |  |
+ | emails | ArrayList<[Email](#Email)> |  no  |  |
+ | gender | String |  no  |  |
+ | dob | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | profile_pic_url | String |  no  |  |
+ | username | String |  no  |  |
+ | account_type | String |  no  |  |
+ | uid | String |  no  |  |
+ | debug | [Debug](#Debug) |  no  |  |
+ | has_old_password_hash | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [ApplicationLegal](#ApplicationLegal)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String |  no  |  |
+ | tnc | String |  no  |  |
+ | policy | String |  no  |  |
+ | shipping | String |  no  |  |
+ | faq | ArrayList<[ApplicationLegalFAQ](#ApplicationLegalFAQ)> |  no  |  |
+ | _id | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | created_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationLegalFAQ](#ApplicationLegalFAQ)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | question | String |  no  |  |
+ | answer | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SeoComponent](#SeoComponent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | seo | [SeoSchema](#SeoSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SeoSchema](#SeoSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app | String |  no  |  |
+ | _id | String |  no  |  |
+ | robots_txt | String |  no  |  |
+ | sitemap_enabled | Boolean |  no  |  |
+ | custom_meta_tags | ArrayList<HashMap<String,Any>> |  no  |  |
+ | details | [Detail](#Detail) |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CustomMetaTag](#CustomMetaTag)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | content | String |  no  |  |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Detail](#Detail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | description | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AnnouncementPageSchema](#AnnouncementPageSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page_slug | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EditorMeta](#EditorMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | foreground_color | String |  no  |  |
+ | background_color | String |  no  |  |
+ | content_type | String |  no  |  |
+ | content | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AnnouncementAuthorSchema](#AnnouncementAuthorSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created_by | String |  no  |  |
+ | modified_by | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AdminAnnouncementSchema](#AdminAnnouncementSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | platforms | ArrayList<String> |  no  |  |
+ | title | String |  no  |  |
+ | announcement | String |  no  |  |
+ | pages | ArrayList<[AnnouncementPageSchema](#AnnouncementPageSchema)> |  no  |  |
+ | editor_meta | [EditorMeta](#EditorMeta) |  no  |  |
+ | author | [AnnouncementAuthorSchema](#AnnouncementAuthorSchema) |  no  |  |
+ | created_at | String |  no  |  |
+ | app | String |  no  |  |
+ | modified_at | String |  no  |  |
+ | _schedule | [ScheduleSchema](#ScheduleSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ScheduleSchema](#ScheduleSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cron | String |  no  |  |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+ | duration | Double |  no  |  |
+ | next_schedule | ArrayList<HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NextSchedule](#NextSchedule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AnnouncementSchema](#AnnouncementSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | announcement | String |  no  |  |
+ | schedule | [ScheduleStartSchema](#ScheduleStartSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ScheduleStartSchema](#ScheduleStartSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlogGetResponse](#BlogGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[BlogSchema](#BlogSchema)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResourceContent](#ResourceContent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Asset](#Asset)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio | String |  no  |  |
+ | id | String |  no  |  |
+ | secure_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Author](#Author)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | designation | String |  no  |  |
+ | id | String |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlogSchema](#BlogSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | application | String |  no  |  |
+ | archived | Boolean |  no  |  |
+ | author | [Author](#Author) |  no  |  |
+ | content | ArrayList<[ResourceContent](#ResourceContent)> |  no  |  |
+ | feature_image | [Asset](#Asset) |  no  |  |
+ | published | Boolean |  no  |  |
+ | reading_time | String |  no  |  |
+ | slug | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | seo | [SEO](#SEO) |  no  |  |
+ | _schedule | [CronSchedule](#CronSchedule) |  no  |  |
+ | title | String |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SEO](#SEO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | image | [SEOImage](#SEOImage) |  no  |  |
+ | title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SEOImage](#SEOImage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlogRequest](#BlogRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | author | [Author](#Author) |  no  |  |
+ | content | ArrayList<[ResourceContent](#ResourceContent)> |  no  |  |
+ | feature_image | [Asset](#Asset) |  no  |  |
+ | published | Boolean |  no  |  |
+ | reading_time | String |  no  |  |
+ | slug | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | title | String |  no  |  |
+ | seo | [SEO](#SEO) |  no  |  |
+ | _schedule | [CronSchedule](#CronSchedule) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAnnouncementListSchema](#GetAnnouncementListSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[AdminAnnouncementSchema](#AdminAnnouncementSchema)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateAnnouncementSchema](#CreateAnnouncementSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+ | data | [AdminAnnouncementSchema](#AdminAnnouncementSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Navigation](#Navigation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | orientation | String |  no  |  |
+ | created_by | [CreatedBySchema](#CreatedBySchema) |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | _id | String |  no  |  |
+ | position | String |  no  |  |
+ | application | String |  no  |  |
+ | platform | String |  no  |  |
+ | navigation | [NavigationReference](#NavigationReference) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LocaleLanguage](#LocaleLanguage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hi | [Language](#Language) |  no  |  |
+ | ar | [Language](#Language) |  no  |  |
+ | en_us | [Language](#Language) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Language](#Language)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Action](#Action)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page | [ActionPage](#ActionPage) |  no  |  |
+ | popup | [ActionPage](#ActionPage) |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ActionPage](#ActionPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | params | HashMap<String,ArrayList<String>> |  no  |  |
+ | query | HashMap<String,ArrayList<String>> |  no  |  |
+ | url | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NavigationReference](#NavigationReference)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | acl | ArrayList<String> |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | _locale_language | [LocaleLanguage](#LocaleLanguage) |  no  |  |
+ | image | String |  no  |  |
+ | type | String |  no  |  |
+ | action | [Action](#Action) |  no  |  |
+ | active | Boolean |  no  |  |
+ | display | String |  no  |  |
+ | sort_order | Int |  no  |  |
+ | sub_navigation | ArrayList<[NavigationReference](#NavigationReference)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LandingPage](#LandingPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [LandingPageSchema](#LandingPageSchema) |  no  |  |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationSchema](#ConfigurationSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sleep_time | Int |  no  |  |
+ | start_on_launch | Boolean |  no  |  |
+ | duration | Int |  no  |  |
+ | slide_direction | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SlideshowMedia](#SlideshowMedia)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | url | String |  no  |  |
+ | bg_color | String |  no  |  |
+ | duration | Int |  no  |  |
+ | auto_decide_duration | Boolean |  no  |  |
+ | action | [Action](#Action) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Slideshow](#Slideshow)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [SlideshowSchema](#SlideshowSchema) |  no  |  |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AnnouncementsResponseSchema](#AnnouncementsResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | announcements | HashMap<String,ArrayList<[AnnouncementSchema](#AnnouncementSchema)>> |  no  |  |
+ | refresh_rate | Int |  no  | number of seconds after which api should hit again to fetch new announcements |
+ | refresh_pages | ArrayList<String> |  no  | list of page slugs on which announcement should be fetched as soon as they are loaded |
+
+---
+
+
+ 
+ 
+ #### [FaqResponseSchema](#FaqResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | faqs | ArrayList<[FaqSchema](#FaqSchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateHandpickedSchema](#UpdateHandpickedSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tag | [HandpickedTagSchema](#HandpickedTagSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HandpickedTagSchema](#HandpickedTagSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | position | String |  no  |  |
+ | attributes | HashMap<String,Any> |  no  |  |
+ | name | String |  no  |  |
+ | url | String |  no  |  |
+ | type | String |  no  |  |
+ | sub_type | String |  no  |  |
+ | content | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RemoveHandpickedSchema](#RemoveHandpickedSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tags | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateTagSchema](#CreateTagSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | sub_type | String |  no  |  |
+ | _id | String |  no  |  |
+ | type | String |  no  |  |
+ | url | String |  no  |  |
+ | position | String |  no  |  |
+ | attributes | HashMap<String,Any> |  no  |  |
+ | content | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateTagRequestSchema](#CreateTagRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tags | ArrayList<[CreateTagSchema](#CreateTagSchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [APIError](#APIError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+ | status | Double |  no  |  |
+ | code | String |  no  |  |
+ | exception | String |  no  |  |
+ | info | String |  no  |  |
+ | request_id | String |  no  |  |
+ | stack_trace | String |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategorySchema](#CategorySchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | index | Int |  no  |  |
+ | title | String |  no  |  |
+ | description | String |  no  |  |
+ | children | ArrayList<String> |  no  |  |
+ | _id | String |  no  |  |
+ | slug | String |  no  |  |
+ | application | String |  no  |  |
+ | icon_url | String |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ChildrenSchema](#ChildrenSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | question | String |  no  |  |
+ | answer | String |  no  |  |
+ | slug | String |  no  |  |
+ | application | String |  no  |  |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryRequestSchema](#CategoryRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String |  no  |  |
+ | title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FAQCategorySchema](#FAQCategorySchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | index | Int |  no  |  |
+ | title | String |  no  |  |
+ | description | String |  no  |  |
+ | children | ArrayList<[ChildrenSchema](#ChildrenSchema)> |  no  |  |
+ | _id | String |  no  |  |
+ | slug | String |  no  |  |
+ | application | String |  no  |  |
+ | icon_url | String |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FaqSchema](#FaqSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String |  no  |  |
+ | application | String |  no  |  |
+ | _id | String |  no  |  |
+ | question | String |  no  |  |
+ | answer | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FAQ](#FAQ)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String |  no  |  |
+ | question | String |  no  |  |
+ | answer | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateFaqResponseSchema](#CreateFaqResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | faq | [FaqSchema](#FaqSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateFaqSchema](#CreateFaqSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | faq | [FAQ](#FAQ) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetFaqSchema](#GetFaqSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | faqs | ArrayList<HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateFaqCategoryRequestSchema](#UpdateFaqCategoryRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | category | [CategorySchema](#CategorySchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateFaqCategoryRequestSchema](#CreateFaqCategoryRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | category | [CategoryRequestSchema](#CategoryRequestSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateFaqCategorySchema](#CreateFaqCategorySchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | category | [CategorySchema](#CategorySchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetFaqCategoriesSchema](#GetFaqCategoriesSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | categories | ArrayList<[CategorySchema](#CategorySchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetFaqCategoryBySlugSchema](#GetFaqCategoryBySlugSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | category | [FAQCategorySchema](#FAQCategorySchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LandingPageGetResponse](#LandingPageGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[LandingPageSchema](#LandingPageSchema)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LandingPageSchema](#LandingPageSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String |  no  |  |
+ | action | [Action](#Action) |  no  |  |
+ | platform | ArrayList<String> |  no  |  |
+ | created_by | [CreatedBySchema](#CreatedBySchema) |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | _id | String |  no  |  |
+ | application | String |  no  |  |
+ | archived | Boolean |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DefaultNavigationResponse](#DefaultNavigationResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[NavigationSchema](#NavigationSchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NavigationGetResponse](#NavigationGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[NavigationSchema](#NavigationSchema)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Orientation](#Orientation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | portrait | ArrayList<String> |  no  |  |
+ | landscape | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NavigationSchema](#NavigationSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | application | String |  no  |  |
+ | archived | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | platform | ArrayList<String> |  no  |  |
+ | created_by | [CreatedBySchema](#CreatedBySchema) |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | orientation | [Orientation](#Orientation) |  no  |  |
+ | version | Double |  no  |  |
+ | navigation | ArrayList<[NavigationReference](#NavigationReference)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NavigationRequest](#NavigationRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | platform | ArrayList<String> |  no  |  |
+ | orientation | [Orientation](#Orientation) |  no  |  |
+ | navigation | ArrayList<[NavigationReference](#NavigationReference)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CustomPageSchema](#CustomPageSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | platform | String |  no  |  |
+ | title | String |  no  |  |
+ | slug | String |  no  |  |
+ | type | String |  no  |  |
+ | orientation | String |  no  |  |
+ | application | String |  no  |  |
+ | description | String |  no  |  |
+ | published | Boolean |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | content | ArrayList<HashMap<String,Any>> |  no  |  |
+ | created_by | [CreatedBySchema](#CreatedBySchema) |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | _schedule | [ScheduleSchema](#ScheduleSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ContentSchema](#ContentSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | value | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CustomPage](#CustomPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [CustomPageSchema](#CustomPageSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FeatureImage](#FeatureImage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | secure_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageGetResponse](#PageGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[PageSchema](#PageSchema)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageSpec](#PageSpec)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | specifications | ArrayList<HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageSpecParam](#PageSpecParam)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | required | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageSpecItem](#PageSpecItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page_type | String |  no  |  |
+ | display_name | String |  no  |  |
+ | params | ArrayList<[PageSpecParam](#PageSpecParam)> |  no  |  |
+ | query | ArrayList<[PageSpecParam](#PageSpecParam)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageSchema](#PageSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | application | String |  no  |  |
+ | component_ids | ArrayList<String> |  no  | Components can be used to store multiple components |
+ | content | ArrayList<[PageContent](#PageContent)> |  no  |  |
+ | created_by | [CreatedBySchema](#CreatedBySchema) |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | description | String |  no  |  |
+ | feature_image | [Asset](#Asset) |  no  |  |
+ | page_meta | ArrayList<[PageMeta](#PageMeta)> |  no  |  |
+ | _schedule | [ScheduleSchema](#ScheduleSchema) |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | orientation | String |  no  |  |
+ | platform | String |  no  |  |
+ | published | Boolean |  no  |  |
+ | slug | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | title | String |  no  |  |
+ | type | String |  no  |  |
+ | seo | [SEO](#SEO) |  no  |  |
+ | visibility | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreatedBySchema](#CreatedBySchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageContent](#PageContent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | value | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageMeta](#PageMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | value | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageRequest](#PageRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _schedule | [CronSchedule](#CronSchedule) |  no  |  |
+ | application | String |  no  |  |
+ | author | [Author](#Author) |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | orientation | String |  no  |  |
+ | content | ArrayList<HashMap<String,Any>> |  no  |  |
+ | feature_image | [Asset](#Asset) |  no  |  |
+ | published | Boolean |  no  |  |
+ | reading_time | String |  no  |  |
+ | slug | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | seo | [SEO](#SEO) |  no  |  |
+ | title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CronSchedule](#CronSchedule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cron | String |  no  |  |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+ | duration | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PagePublishRequest](#PagePublishRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | publish | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageMetaSchema](#PageMetaSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | system_pages | ArrayList<[NavigationSchema](#NavigationSchema)> |  no  |  |
+ | custom_pages | ArrayList<[PageSchema](#PageSchema)> |  no  |  |
+ | application_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SlideshowGetResponse](#SlideshowGetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[SlideshowSchema](#SlideshowSchema)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SlideshowSchema](#SlideshowSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | slug | String |  no  |  |
+ | date_meta | [DateMeta](#DateMeta) |  no  |  |
+ | application | String |  no  |  |
+ | platform | String |  no  |  |
+ | configuration | [ConfigurationSchema](#ConfigurationSchema) |  no  |  |
+ | media | ArrayList<[SlideshowMedia](#SlideshowMedia)> |  no  |  |
+ | active | Boolean |  no  |  |
+ | archived | Boolean |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SlideshowRequest](#SlideshowRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String |  no  |  |
+ | platform | String |  no  |  |
+ | configuration | [ConfigurationSchema](#ConfigurationSchema) |  no  |  |
+ | media | [SlideshowMedia](#SlideshowMedia) |  no  |  |
+ | active | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Support](#Support)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | config_type | String |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | contact | [ContactSchema](#ContactSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PhoneProperties](#PhoneProperties)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | code | String |  no  |  |
+ | number | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PhoneSchema](#PhoneSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  |  |
+ | phone | ArrayList<[PhoneProperties](#PhoneProperties)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailProperties](#EmailProperties)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailSchema](#EmailSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  |  |
+ | email | ArrayList<[EmailProperties](#EmailProperties)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ContactSchema](#ContactSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone | [PhoneSchema](#PhoneSchema) |  no  |  |
+ | email | [EmailSchema](#EmailSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TagsSchema](#TagsSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String |  no  |  |
+ | _id | String |  no  |  |
+ | tags | ArrayList<[TagSchema](#TagSchema)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TagSchema](#TagSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | url | String |  no  |  |
+ | type | String |  no  |  |
+ | sub_type | String |  no  |  |
+ | _id | String |  no  |  |
+ | position | String |  no  |  |
+ | attributes | HashMap<String,Any> |  no  |  |
+ | content | String |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [ErrorResponseSchema](#ErrorResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Reason for failure |
+ | code | Double |  no  | error code |
+
+---
+
+
+ 
+ 
+ #### [Success](#Success)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreatedModifiedByObject](#CreatedModifiedByObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | username | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PickupPointResponse](#PickupPointResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ItemProperties](#ItemProperties)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PickupPointSchema](#PickupPointSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | notification_emails | ArrayList<String> |  no  |  |
+ | name | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | code | String |  no  |  |
+ | address | [AddressObject](#AddressObject) |  no  |  |
+ | additional_contacts | [AdditionalContactsObject](#AdditionalContactsObject) |  no  |  |
+ | timing | ArrayList<[AdditionalContactsObject](#AdditionalContactsObject)> |  no  |  |
+ | created_by | [CreatedModifiedByObject](#CreatedModifiedByObject) |  no  |  |
+ | modified_by | [TimingObject](#TimingObject) |  no  |  |
+ | created_on | String |  no  |  |
+ | modified_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ItemProperties](#ItemProperties)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | notification_emails | ArrayList<String> |  no  |  |
+ | name | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | code | String |  no  |  |
+ | address | [AddressObject](#AddressObject) |  no  |  |
+ | additional_contacts | [AdditionalContactsObject](#AdditionalContactsObject) |  no  |  |
+ | timing | ArrayList<[AdditionalContactsObject](#AdditionalContactsObject)> |  no  |  |
+ | created_by | [CreatedModifiedByObject](#CreatedModifiedByObject) |  no  |  |
+ | modified_by | [TimingObject](#TimingObject) |  no  |  |
+ | created_on | String |  no  |  |
+ | modified_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AddressObject](#AddressObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address1 | String |  no  |  |
+ | city | String |  no  |  |
+ | state | String |  no  |  |
+ | pincode | Double |  no  |  |
+ | country | String |  no  |  |
+ | country_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AdditionalContactsObject](#AdditionalContactsObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | number | Double |  no  |  |
+ | country_code | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TimingObject](#TimingObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | opening | [OpeningClosingObject](#OpeningClosingObject) |  no  |  |
+ | closing | [OpeningClosingObject](#OpeningClosingObject) |  no  |  |
+ | open | Boolean |  no  |  |
+ | weekday | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OpeningClosingObject](#OpeningClosingObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hour | String |  no  |  |
+ | minute | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PickupResponse](#PickupResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[PickupResponseItems](#PickupResponseItems)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PickupConfiguration](#PickupConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | datetime_check | Boolean |  no  |  |
+ | header | String |  no  |  |
+ | instruction_for_customer | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PickupResponseItems](#PickupResponseItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | datetime_check | Boolean |  no  |  |
+ | header | String |  no  |  |
+ | instruction_for_customer | String |  no  |  |
+ | app_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShippingSchema](#ShippingSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | assignment | [AssignmentSchema](#AssignmentSchema) |  no  |  |
+ | _id | String |  no  |  |
+ | app_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShippingResponse](#ShippingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [ShippingSchema](#ShippingSchema) |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AssignmentSchema](#AssignmentSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | fulfillment_priority | [FulfillmentPriorityObject](#FulfillmentPriorityObject) |  no  |  |
+ | default_sort_strategy | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FulfillmentPriorityObject](#FulfillmentPriorityObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | priorities | String |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreSchema](#StoreSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | assignment | [StoreAssignmentObject](#StoreAssignmentObject) |  no  |  |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreResponse](#StoreResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [StoreSchema](#StoreSchema) |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreAssignmentObject](#StoreAssignmentObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | strategy | [StrategyObject](#StrategyObject) |  no  |  |
+ | assignment_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StrategyObject](#StrategyObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | rules | ArrayList<[StrategyItems](#StrategyItems)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StrategyItems](#StrategyItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | product_tags | ArrayList<String> |  no  |  |
+ | zone | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreListResponse](#StoreListResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<HashMap<String,Any>> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneSchema](#ZoneSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | zone_detail | [ZoneDetailsObject](#ZoneDetailsObject) |  no  |  |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneListResponse](#ZoneListResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ZoneSchema](#ZoneSchema)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RegionObject](#RegionObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country | String |  no  |  |
+ | state | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PincodeObject](#PincodeObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pincode_list | ArrayList<Double> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RadiusObject](#RadiusObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneDetailsObject](#ZoneDetailsObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | radius | [RadiusObject](#RadiusObject) |  no  |  |
+ | pincode | [PincodeObject](#PincodeObject) |  no  |  |
+ | region | [RegionObject](#RegionObject) |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [UnauthenticatedUser](#UnauthenticatedUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Failure message. |
+
+---
+
+
+ 
+ 
+ #### [UnauthenticatedApplication](#UnauthenticatedApplication)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Failure message. |
+
+---
+
+
+ 
+ 
+ #### [BadRequest](#BadRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Failure message. |
+
+---
+
+
+ 
+ 
+ #### [ResourceNotFound](#ResourceNotFound)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Resource not found with {id} |
+
+---
+
+
+ 
+ 
+ #### [InternalServerError](#InternalServerError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Internal server Server error |
+ | code | String |  no  | Error code |
+
+---
+
+
+ 
+ 
+ #### [PlanRecurring](#PlanRecurring)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | interval | String |  no  |  |
+ | interval_count | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Plan](#Plan)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | recurring | [PlanRecurring](#PlanRecurring) |  no  |  |
+ | is_trial_plan | Boolean |  no  |  |
+ | plan_group | String |  no  |  |
+ | tag_lines | ArrayList<String> |  no  |  |
+ | currency | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | is_visible | Boolean |  no  |  |
+ | trial_period | Double |  no  |  |
+ | addons | ArrayList<String> |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | type | String |  no  |  |
+ | country | String |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | amount | Double |  no  |  |
+ | product_suite_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DetailedPlanComponents](#DetailedPlanComponents)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | description | String |  no  |  |
+ | group | String |  no  |  |
+ | icon | String |  no  |  |
+ | links | HashMap<String,Any> |  no  |  |
+ | enabled | Boolean |  no  |  |
+ | display_text | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DetailedPlan](#DetailedPlan)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | recurring | [PlanRecurring](#PlanRecurring) |  no  |  |
+ | is_trial_plan | Boolean |  no  |  |
+ | plan_group | String |  no  |  |
+ | tag_lines | ArrayList<String> |  no  |  |
+ | currency | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | is_visible | Boolean |  no  |  |
+ | trial_period | Double |  no  |  |
+ | addons | ArrayList<String> |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | type | String |  no  |  |
+ | country | String |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | amount | Double |  no  |  |
+ | product_suite_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+ | components | ArrayList<[DetailedPlanComponents](#DetailedPlanComponents)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionTrialPeriod](#SubscriptionTrialPeriod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start_date | String |  no  |  |
+ | end_date | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EntityChargePrice](#EntityChargePrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | Double? |  yes  |  |
+ | currency_code | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EntityChargeRecurring](#EntityChargeRecurring)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | interval | String? |  yes  |  |
+ | interval_time | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ChargeLineItem](#ChargeLineItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | term | String? |  yes  |  |
+ | pricing_type | String? |  yes  |  |
+ | price | [EntityChargePrice](#EntityChargePrice)? |  yes  |  |
+ | recurring | [EntityChargeRecurring](#EntityChargeRecurring) |  no  |  |
+ | capped_amount | Double |  no  |  |
+ | trial_days | Int |  no  |  |
+ | is_test | Boolean |  no  |  |
+ | metadata | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateSubscriptionCharge](#CreateSubscriptionCharge)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | trial_days | Int |  no  |  |
+ | line_items | ArrayList<[ChargeLineItem](#ChargeLineItem)>? |  yes  |  |
+ | is_test | Boolean |  no  |  |
+ | return_url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CurrentPeriod](#CurrentPeriod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start_date | String |  no  |  |
+ | end_date | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionCharge](#SubscriptionCharge)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | term | String |  no  |  |
+ | pricing_type | String |  no  |  |
+ | price | [EntityChargePrice](#EntityChargePrice) |  no  |  |
+ | recurring | [EntityChargeRecurring](#EntityChargeRecurring) |  no  |  |
+ | capped_amount | Double |  no  |  |
+ | activated_on | String |  no  |  |
+ | cancelled_on | String |  no  |  |
+ | billing_date | String |  no  |  |
+ | current_period | [CurrentPeriod](#CurrentPeriod) |  no  |  |
+ | status | String |  no  |  |
+ | is_test | Boolean |  no  |  |
+ | metadata | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EntitySubscription](#EntitySubscription)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | status | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | activated_on | String |  no  |  |
+ | cancelled_on | String |  no  |  |
+ | trial_days | Int |  no  |  |
+ | trial_period | [SubscriptionTrialPeriod](#SubscriptionTrialPeriod) |  no  |  |
+ | metadata | HashMap<String,Any> |  no  |  |
+ | line_items | ArrayList<[SubscriptionCharge](#SubscriptionCharge)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateSubscriptionResponse](#CreateSubscriptionResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subscription | [EntitySubscription](#EntitySubscription) |  no  |  |
+ | confirm_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsPeriod](#InvoiceDetailsPeriod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsClient](#InvoiceDetailsClient)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address_lines | ArrayList<String> |  no  |  |
+ | name | String |  no  |  |
+ | email | String |  no  |  |
+ | phone | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsStatusTrail](#InvoiceDetailsStatusTrail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | value | String |  no  |  |
+ | timestamp | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsPaymentMethodsDataChecks](#InvoiceDetailsPaymentMethodsDataChecks)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cvc_check | String |  no  |  |
+ | address_line1_check | String |  no  |  |
+ | address_postal_code_check | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsPaymentMethodsDataNetworks](#InvoiceDetailsPaymentMethodsDataNetworks)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | available | ArrayList<String> |  no  |  |
+ | preferred | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsPaymentMethodsDataThreeDSecureUsage](#InvoiceDetailsPaymentMethodsDataThreeDSecureUsage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | supported | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsPaymentMethodsData](#InvoiceDetailsPaymentMethodsData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand | String |  no  |  |
+ | last4 | String |  no  |  |
+ | checks | [InvoiceDetailsPaymentMethodsDataChecks](#InvoiceDetailsPaymentMethodsDataChecks) |  no  |  |
+ | wallet | String |  no  |  |
+ | country | String |  no  |  |
+ | funding | String |  no  |  |
+ | exp_year | Int |  no  |  |
+ | networks | [InvoiceDetailsPaymentMethodsDataNetworks](#InvoiceDetailsPaymentMethodsDataNetworks) |  no  |  |
+ | exp_month | Int |  no  |  |
+ | fingerprint | String |  no  |  |
+ | generated_from | String |  no  |  |
+ | three_d_secure_usage | [InvoiceDetailsPaymentMethodsDataThreeDSecureUsage](#InvoiceDetailsPaymentMethodsDataThreeDSecureUsage) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsPaymentMethods](#InvoiceDetailsPaymentMethods)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | type | String |  no  |  |
+ | pg_payment_method_id | String |  no  |  |
+ | data | [InvoiceDetailsPaymentMethodsData](#InvoiceDetailsPaymentMethodsData) |  no  |  |
+ | is_default | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoicePaymentMethod](#InvoicePaymentMethod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pg_payment_method_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetails](#InvoiceDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | period | [InvoiceDetailsPeriod](#InvoiceDetailsPeriod) |  no  |  |
+ | client | [InvoiceDetailsClient](#InvoiceDetailsClient) |  no  |  |
+ | auto_advance | Boolean |  no  |  |
+ | currency | String |  no  |  |
+ | paid | Boolean |  no  |  |
+ | attemp | Int |  no  |  |
+ | _id | String |  no  |  |
+ | collection_method | String |  no  |  |
+ | subscriber_id | String |  no  |  |
+ | invoice_url | String |  no  |  |
+ | number | String |  no  |  |
+ | pg_data | HashMap<String,Any> |  no  |  |
+ | receipt_number | String |  no  |  |
+ | statement_descriptor | String |  no  |  |
+ | current_status | String |  no  |  |
+ | status_trail | ArrayList<[InvoiceDetailsStatusTrail](#InvoiceDetailsStatusTrail)> |  no  |  |
+ | subtotal | Double |  no  |  |
+ | total | Double |  no  |  |
+ | subscription | String |  no  |  |
+ | next_action_time | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+ | hash_identifier | String |  no  |  |
+ | payment_method | [InvoicePaymentMethod](#InvoicePaymentMethod) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceItemsPlanRecurring](#InvoiceItemsPlanRecurring)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | interval | String |  no  |  |
+ | interval_count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceItemsPlan](#InvoiceItemsPlan)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | recurring | [InvoiceItemsPlanRecurring](#InvoiceItemsPlanRecurring) |  no  |  |
+ | is_trial_plan | Boolean |  no  |  |
+ | plan_group | String |  no  |  |
+ | tag_lines | ArrayList<String> |  no  |  |
+ | currency | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | is_visible | Boolean |  no  |  |
+ | trial_period | Int |  no  |  |
+ | addons | ArrayList<String> |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | type | String |  no  |  |
+ | country | String |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | amount | Int |  no  |  |
+ | product_suite_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceItemsPeriod](#InvoiceItemsPeriod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceItems](#InvoiceItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | currency | String |  no  |  |
+ | plan | [InvoiceItemsPlan](#InvoiceItemsPlan) |  no  |  |
+ | name | String |  no  |  |
+ | quantity | Int |  no  |  |
+ | description | String |  no  |  |
+ | period | [InvoiceItemsPeriod](#InvoiceItemsPeriod) |  no  |  |
+ | unit_amount | Double |  no  |  |
+ | amount | Double |  no  |  |
+ | type | String |  no  |  |
+ | invoice_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Invoice](#Invoice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | invoice | [InvoiceDetails](#InvoiceDetails) |  no  |  |
+ | invoice_items | ArrayList<[InvoiceItems](#InvoiceItems)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoicesDataClient](#InvoicesDataClient)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | email | String |  no  |  |
+ | phone | String |  no  |  |
+ | address_lines | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoicesDataPeriod](#InvoicesDataPeriod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoicesDataPaymentMethod](#InvoicesDataPaymentMethod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pg_payment_method_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoicesData](#InvoicesData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | client | [InvoicesDataClient](#InvoicesDataClient) |  no  |  |
+ | auto_advance | Boolean |  no  |  |
+ | currency | String |  no  |  |
+ | paid | Boolean |  no  |  |
+ | attemp | Int |  no  |  |
+ | collection_method | String |  no  |  |
+ | subscriber_id | String |  no  |  |
+ | invoice_url | String |  no  |  |
+ | number | String |  no  |  |
+ | pg_data | HashMap<String,Any> |  no  |  |
+ | period | [InvoicesDataPeriod](#InvoicesDataPeriod) |  no  |  |
+ | receipt_number | String |  no  |  |
+ | statement_descriptor | String |  no  |  |
+ | current_status | String |  no  |  |
+ | status_trail | ArrayList<[InvoiceDetailsStatusTrail](#InvoiceDetailsStatusTrail)> |  no  |  |
+ | subtotal | Double |  no  |  |
+ | total | Double |  no  |  |
+ | subscription | String |  no  |  |
+ | next_action_time | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+ | hash_identifier | String |  no  |  |
+ | payment_method | [InvoicesDataPaymentMethod](#InvoicesDataPaymentMethod) |  no  |  |
+ | invoice_items | ArrayList<[InvoiceItems](#InvoiceItems)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Invoices](#Invoices)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<[InvoicesData](#InvoicesData)> |  no  |  |
+ | start | Int |  no  |  |
+ | end | Int |  no  |  |
+ | limit | Int |  no  |  |
+ | page | Int |  no  |  |
+ | total | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Phone](#Phone)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone_number | String |  no  |  |
+ | phone_country_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionBillingAddress](#SubscriptionBillingAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country | String |  no  |  |
+ | state | String |  no  |  |
+ | city | String |  no  |  |
+ | line1 | String |  no  |  |
+ | line2 | String |  no  |  |
+ | postal_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionCustomer](#SubscriptionCustomer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone | [Phone](#Phone) |  no  |  |
+ | billing_address | [SubscriptionBillingAddress](#SubscriptionBillingAddress) |  no  |  |
+ | _id | String |  no  |  |
+ | unique_id | String |  no  |  |
+ | type | String |  no  |  |
+ | name | String |  no  |  |
+ | email | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+ | data | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionCustomerCreate](#SubscriptionCustomerCreate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone | [Phone](#Phone) |  no  |  |
+ | billing_address | [SubscriptionBillingAddress](#SubscriptionBillingAddress) |  no  |  |
+ | unique_id | String |  no  |  |
+ | type | String |  no  |  |
+ | name | String |  no  |  |
+ | email | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionCurrentPeriod](#SubscriptionCurrentPeriod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionPauseCollection](#SubscriptionPauseCollection)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | behavior | String |  no  |  |
+ | resume_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionTrial](#SubscriptionTrial)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String |  no  |  |
+ | end | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionInvoiceSettings](#SubscriptionInvoiceSettings)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | generation | Boolean |  no  |  |
+ | charging | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Subscription](#Subscription)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | current_period | [SubscriptionCurrentPeriod](#SubscriptionCurrentPeriod) |  no  |  |
+ | pause_collection | [SubscriptionPauseCollection](#SubscriptionPauseCollection) |  no  |  |
+ | trial | [SubscriptionTrial](#SubscriptionTrial) |  no  |  |
+ | invoice_settings | [SubscriptionInvoiceSettings](#SubscriptionInvoiceSettings) |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | cancel_at_period_end | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | subscriber_id | String |  no  |  |
+ | plan_id | String |  no  |  |
+ | product_suite_id | String |  no  |  |
+ | plan_data | [Plan](#Plan) |  no  |  |
+ | current_status | String |  no  |  |
+ | collection_method | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+ | latest_invoice | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionStatus](#SubscriptionStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_enabled | Boolean |  no  |  |
+ | subscription | [Subscription](#Subscription) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimitApplication](#SubscriptionLimitApplication)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | hard_limit | Int |  no  |  |
+ | soft_limit | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimitMarketplace](#SubscriptionLimitMarketplace)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimitOtherPlatform](#SubscriptionLimitOtherPlatform)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimitTeam](#SubscriptionLimitTeam)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | limit | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimitProducts](#SubscriptionLimitProducts)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bulk | Boolean |  no  |  |
+ | limit | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimitExtensions](#SubscriptionLimitExtensions)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | limit | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimitIntegrations](#SubscriptionLimitIntegrations)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | limit | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionLimit](#SubscriptionLimit)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | [SubscriptionLimitApplication](#SubscriptionLimitApplication) |  no  |  |
+ | marketplace | [SubscriptionLimitMarketplace](#SubscriptionLimitMarketplace) |  no  |  |
+ | other_platform | [SubscriptionLimitOtherPlatform](#SubscriptionLimitOtherPlatform) |  no  |  |
+ | team | [SubscriptionLimitTeam](#SubscriptionLimitTeam) |  no  |  |
+ | products | [SubscriptionLimitProducts](#SubscriptionLimitProducts) |  no  |  |
+ | extensions | [SubscriptionLimitExtensions](#SubscriptionLimitExtensions) |  no  |  |
+ | integrations | [SubscriptionLimitIntegrations](#SubscriptionLimitIntegrations) |  no  |  |
+ | is_trial_plan | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionActivateReq](#SubscriptionActivateReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | unique_id | String |  no  |  |
+ | type | String |  no  |  |
+ | product_suite | String |  no  |  |
+ | plan_id | String |  no  |  |
+ | payment_method | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionActivateRes](#SubscriptionActivateRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | data | [Subscription](#Subscription) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CancelSubscriptionReq](#CancelSubscriptionReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | unique_id | String |  no  |  |
+ | type | String |  no  |  |
+ | product_suite | String |  no  |  |
+ | subscription_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CancelSubscriptionRes](#CancelSubscriptionRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | data | [Subscription](#Subscription) |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [StatsImported](#StatsImported)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StatsProcessedEmail](#StatsProcessedEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Int |  no  |  |
+ | failed | Int |  no  |  |
+ | suppressed | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StatsProcessedSms](#StatsProcessedSms)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Int |  no  |  |
+ | failed | Int |  no  |  |
+ | suppressed | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StatsProcessed](#StatsProcessed)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [StatsProcessedEmail](#StatsProcessedEmail) |  no  |  |
+ | sms | [StatsProcessedSms](#StatsProcessedSms) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Stats](#Stats)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | imported | Any |  no  |  |
+ | processed | Any |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetStats](#GetStats)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Stats](#Stats)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CampaignReq](#CampaignReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | headers | ArrayList<String> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | file_url | String |  no  |  |
+ | type | String |  no  |  |
+ | records_count | Int |  no  |  |
+ | application | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RecipientHeaders](#RecipientHeaders)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CampaignEmailTemplate](#CampaignEmailTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CampignEmailProvider](#CampignEmailProvider)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | from_name | String |  no  |  |
+ | from_email | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CampaignEmail](#CampaignEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template | [CampaignEmailTemplate](#CampaignEmailTemplate) |  no  |  |
+ | provider | [CampignEmailProvider](#CampignEmailProvider) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Campaign](#Campaign)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | recipient_headers | [RecipientHeaders](#RecipientHeaders) |  no  |  |
+ | email | [CampaignEmail](#CampaignEmail) |  no  |  |
+ | description | String |  no  |  |
+ | tags | ArrayList<Any> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | datasource | String |  no  |  |
+ | type | String |  no  |  |
+ | name | String |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | slug | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Campaigns](#Campaigns)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Campaign](#Campaign)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BigqueryHeadersReq](#BigqueryHeadersReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | query | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BigqueryHeadersResHeaders](#BigqueryHeadersResHeaders)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BigqueryHeadersRes](#BigqueryHeadersRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | headers | ArrayList<[BigqueryHeadersResHeaders](#BigqueryHeadersResHeaders)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetNRecordsCsvReq](#GetNRecordsCsvReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | url | String |  no  |  |
+ | header | Boolean |  no  |  |
+ | count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetNRecordsCsvResItems](#GetNRecordsCsvResItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone_number | String |  no  |  |
+ | email | String |  no  |  |
+ | firstname | String |  no  |  |
+ | lastname | String |  no  |  |
+ | orderid | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetNRecordsCsvRes](#GetNRecordsCsvRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[GetNRecordsCsvResItems](#GetNRecordsCsvResItems)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AudienceReq](#AudienceReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | headers | ArrayList<String> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | file_url | String |  no  |  |
+ | type | String |  no  |  |
+ | records_count | Int |  no  |  |
+ | application | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Audience](#Audience)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | headers | ArrayList<String> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | file_url | String |  no  |  |
+ | type | String |  no  |  |
+ | records_count | Int |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | slug | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Audiences](#Audiences)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Audience](#Audience)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailProviderReqFrom](#EmailProviderReqFrom)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | email | String |  no  |  |
+ | is_default | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailProviderReq](#EmailProviderReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | api_key | String |  no  |  |
+ | type | String |  no  |  |
+ | provider | String |  no  |  |
+ | from | ArrayList<[EmailProviderReqFrom](#EmailProviderReqFrom)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailProvider](#EmailProvider)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | provider | String |  no  |  |
+ | from | ArrayList<[EmailProviderReqFrom](#EmailProviderReqFrom)> |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | api_key | String |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | slug | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailProviders](#EmailProviders)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[EmailProvider](#EmailProvider)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplateDeleteSuccessRes](#EmailTemplateDeleteSuccessRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplateDeleteFailureRes](#EmailTemplateDeleteFailureRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplateKeys](#EmailTemplateKeys)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | to | String |  no  |  |
+ | cc | String |  no  |  |
+ | bcc | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplateHeaders](#EmailTemplateHeaders)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplateReq](#EmailTemplateReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | keys | [EmailTemplateKeys](#EmailTemplateKeys) |  no  |  |
+ | from | String |  no  |  |
+ | static_to | ArrayList<String> |  no  |  |
+ | static_cc | ArrayList<String> |  no  |  |
+ | static_bcc | ArrayList<String> |  no  |  |
+ | reply_to | String |  no  |  |
+ | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)> |  no  |  |
+ | subject | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | html | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | text | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | attachments | ArrayList<Any> |  no  |  |
+ | priority | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplateAndType](#TemplateAndType)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template_type | String |  no  |  |
+ | template | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplateRes](#EmailTemplateRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_system | Boolean |  no  |  |
+ | is_internal | Boolean |  no  |  |
+ | description | String |  no  |  |
+ | static_to | ArrayList<String> |  no  |  |
+ | static_cc | ArrayList<String> |  no  |  |
+ | static_bcc | ArrayList<String> |  no  |  |
+ | tags | ArrayList<Any> |  no  |  |
+ | priority | String |  no  |  |
+ | published | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | keys | [EmailTemplateKeys](#EmailTemplateKeys) |  no  |  |
+ | from | String |  no  |  |
+ | reply_to | String |  no  |  |
+ | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)> |  no  |  |
+ | subject | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | html | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | text | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | attachments | ArrayList<Any> |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | slug | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplate](#EmailTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_system | Boolean |  no  |  |
+ | is_internal | Boolean |  no  |  |
+ | description | String |  no  |  |
+ | static_to | ArrayList<Any> |  no  |  |
+ | static_cc | ArrayList<Any> |  no  |  |
+ | static_bcc | ArrayList<Any> |  no  |  |
+ | tags | ArrayList<Any> |  no  |  |
+ | priority | String |  no  |  |
+ | published | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | slug | String |  no  |  |
+ | name | String |  no  |  |
+ | from | String |  no  |  |
+ | from_name | String |  no  |  |
+ | subject | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | html | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | text | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | headers | ArrayList<Any> |  no  |  |
+ | attachments | ArrayList<Any> |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemEmailTemplate](#SystemEmailTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_system | Boolean |  no  |  |
+ | is_internal | Boolean |  no  |  |
+ | description | String |  no  |  |
+ | static_to | ArrayList<Any> |  no  |  |
+ | static_cc | ArrayList<Any> |  no  |  |
+ | static_bcc | ArrayList<Any> |  no  |  |
+ | tags | ArrayList<Any> |  no  |  |
+ | priority | String |  no  |  |
+ | published | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | slug | String |  no  |  |
+ | name | String |  no  |  |
+ | from | String |  no  |  |
+ | from_name | String |  no  |  |
+ | subject | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | html | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | text | [TemplateAndType](#TemplateAndType) |  no  |  |
+ | headers | ArrayList<Any> |  no  |  |
+ | attachments | ArrayList<Any> |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailTemplates](#EmailTemplates)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[EmailTemplate](#EmailTemplate)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemEmailTemplates](#SystemEmailTemplates)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[SystemEmailTemplate](#SystemEmailTemplate)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventSubscriptionTemplateSms](#EventSubscriptionTemplateSms)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subscribed | Boolean |  no  |  |
+ | template | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventSubscriptionTemplateEmail](#EventSubscriptionTemplateEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subscribed | Boolean |  no  |  |
+ | template | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventSubscriptionTemplate](#EventSubscriptionTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sms | [EventSubscriptionTemplateSms](#EventSubscriptionTemplateSms) |  no  |  |
+ | email | [EventSubscriptionTemplateEmail](#EventSubscriptionTemplateEmail) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventSubscription](#EventSubscription)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template | [EventSubscriptionTemplate](#EventSubscriptionTemplate) |  no  |  |
+ | is_default | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | application | String |  no  |  |
+ | event | String |  no  |  |
+ | slug | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventSubscriptions](#EventSubscriptions)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[EventSubscription](#EventSubscription)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TriggerJobResponse](#TriggerJobResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TriggerJobRequest](#TriggerJobRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | job_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Job](#Job)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | completed | Boolean |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | campaign | String |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Jobs](#Jobs)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Job](#Job)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobLog](#JobLog)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | imported | Any |  no  |  |
+ | processed | Any |  no  |  |
+ | _id | String |  no  |  |
+ | job | String |  no  |  |
+ | campaign | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobLogs](#JobLogs)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[JobLog](#JobLog)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LogEmail](#LogEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LogPushnotification](#LogPushnotification)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pushtokens | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LogMeta](#LogMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | identifier | String |  no  |  |
+ | key | String |  no  |  |
+ | offset | String |  no  |  |
+ | partition | String |  no  |  |
+ | topic | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Log](#Log)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [LogEmail](#LogEmail) |  no  |  |
+ | pushnotification | [LogPushnotification](#LogPushnotification) |  no  |  |
+ | meta | [LogMeta](#LogMeta) |  no  |  |
+ | _id | String |  no  |  |
+ | application | String |  no  |  |
+ | service | String |  no  |  |
+ | step | String |  no  |  |
+ | status | String |  no  |  |
+ | data | Any |  no  |  |
+ | expire_at | String |  no  |  |
+ | created_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Logs](#Logs)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Log](#Log)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PushtokenReq](#PushtokenReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | action | String |  no  |  |
+ | bundle_identifier | String |  no  |  |
+ | push_token | String |  no  |  |
+ | unique_device_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PushtokenRes](#PushtokenRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | bundle_identifier | String |  no  |  |
+ | push_token | String |  no  |  |
+ | unique_device_id | String |  no  |  |
+ | type | String |  no  |  |
+ | platform | String |  no  |  |
+ | application_id | String |  no  |  |
+ | user_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | expired_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsProviderReq](#SmsProviderReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | sender | String |  no  |  |
+ | username | String |  no  |  |
+ | authkey | String |  no  |  |
+ | type | String |  no  |  |
+ | provider | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsProvider](#SmsProvider)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | rpt | Int |  no  |  |
+ | type | String |  no  |  |
+ | provider | String |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | sender | String |  no  |  |
+ | username | String |  no  |  |
+ | authkey | String |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | slug | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsProviders](#SmsProviders)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[SmsProvider](#SmsProvider)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplateDeleteSuccessRes](#SmsTemplateDeleteSuccessRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplateDeleteFailureRes](#SmsTemplateDeleteFailureRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplateMessage](#SmsTemplateMessage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template_type | String |  no  |  |
+ | template | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplateReq](#SmsTemplateReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | message | [SmsTemplateMessage](#SmsTemplateMessage) |  no  |  |
+ | template_variables | Any |  no  |  |
+ | attachments | ArrayList<Any> |  no  |  |
+ | priority | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplateRes](#SmsTemplateRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_system | Boolean |  no  |  |
+ | is_internal | Boolean |  no  |  |
+ | description | String |  no  |  |
+ | tags | ArrayList<Any> |  no  |  |
+ | priority | String |  no  |  |
+ | published | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | message | [SmsTemplateMessage](#SmsTemplateMessage) |  no  |  |
+ | template_variables | Any |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | slug | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplate](#SmsTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_system | Boolean |  no  |  |
+ | is_internal | Boolean |  no  |  |
+ | description | String |  no  |  |
+ | priority | String |  no  |  |
+ | tags | ArrayList<Any> |  no  |  |
+ | published | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | slug | String |  no  |  |
+ | name | String |  no  |  |
+ | message | [SmsTemplateMessage](#SmsTemplateMessage) |  no  |  |
+ | template_variables | Any |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemSmsTemplate](#SystemSmsTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_system | Boolean |  no  |  |
+ | is_internal | Boolean |  no  |  |
+ | description | String |  no  |  |
+ | tags | ArrayList<Any> |  no  |  |
+ | priority | String |  no  |  |
+ | published | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | slug | String |  no  |  |
+ | name | String |  no  |  |
+ | message | [SmsTemplateMessage](#SmsTemplateMessage) |  no  |  |
+ | template_variables | Any |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SmsTemplates](#SmsTemplates)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[SmsTemplate](#SmsTemplate)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemSmsTemplates](#SystemSmsTemplates)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[SystemSmsTemplate](#SystemSmsTemplate)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Notification](#Notification)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | body | String |  no  |  |
+ | subtitle | String |  no  |  |
+ | icon | String |  no  |  |
+ | deeplink | String |  no  |  |
+ | click_action | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemNotificationUser](#SystemNotificationUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemNotificationSettings](#SystemNotificationSettings)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sound | Boolean |  no  |  |
+ | priority | String |  no  |  |
+ | time_to_live | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemNotification](#SystemNotification)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | notification | [Notification](#Notification) |  no  |  |
+ | user | [SystemNotificationUser](#SystemNotificationUser) |  no  |  |
+ | settings | [SystemNotificationUser](#SystemNotificationUser) |  no  |  |
+ | _id | String |  no  |  |
+ | group | String |  no  |  |
+ | created_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemNotificationsPage](#SystemNotificationsPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | current | Int |  no  |  |
+ | size | Int |  no  |  |
+ | item_total | Int |  no  |  |
+ | has_next | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SystemNotifications](#SystemNotifications)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[SystemNotification](#SystemNotification)> |  no  |  |
+ | last_read_anchor | Int |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [PaymentGatewayConfigResponse](#PaymentGatewayConfigResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_id | String? |  yes  | Application Id to which Payment config Mapped |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | excluded_fields | ArrayList<String>? |  yes  | List of all excluded  options with their Details. |
+ | aggregators | ArrayList<HashMap<String,Any>> |  no  | List of all speceific Payment options with their Details. |
+ | created | Boolean? |  yes  | Response is created or not |
+ | display_fields | ArrayList<String>? |  yes  | List of all included  options with their Details. |
+
+---
+
+
+ 
+ 
+ #### [ErrorCodeDescription](#ErrorCodeDescription)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String? |  yes  | Error human understandable description. |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | code | String? |  yes  | Error descrption code. |
+
+---
+
+
+ 
+ 
+ #### [PaymentGatewayConfig](#PaymentGatewayConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | merchant_salt | String? |  yes  | Merchant key of the payment aggregator |
+ | secret | String? |  yes  | Secret Key of the payment aggregator |
+ | config_type | String? |  yes  | Config Type of the aggregator |
+ | key | String? |  yes  | Api key of the payment aggregator |
+ | is_active | Boolean |  no  | Enable/ Disable Flag |
+
+---
+
+
+ 
+ 
+ #### [PaymentGatewayConfigRequest](#PaymentGatewayConfigRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aggregator_name | [PaymentGatewayConfig](#PaymentGatewayConfig) |  no  |  |
+ | app_id | String? |  yes  | Application Id to which Payment config Mapped |
+ | is_active | Boolean |  no  | Enable/ Disable Flag |
+
+---
+
+
+ 
+ 
+ #### [PaymentGatewayToBeReviewed](#PaymentGatewayToBeReviewed)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aggregator | ArrayList<String>? |  yes  | List of added payment gateway |
+ | success | Boolean? |  yes  | Response is successful or not |
+
+---
+
+
+ 
+ 
+ #### [ErrorCodeAndDescription](#ErrorCodeAndDescription)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String? |  yes  | Error human understandable description. |
+ | code | String? |  yes  | Error descrption code. |
+
+---
+
+
+ 
+ 
+ #### [HttpErrorCodeAndResponse](#HttpErrorCodeAndResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | error | [ErrorCodeAndDescription](#ErrorCodeAndDescription)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentModeLogo](#PaymentModeLogo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | large | String? |  yes  | large |
+ | small | String? |  yes  | smalll |
+
+---
+
+
+ 
+ 
+ #### [PaymentModeList](#PaymentModeList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | card_name | String |  no  | card_name |
+ | name | String |  no  | name |
+ | card_brand_image | String |  no  | card_brand_image |
+ | fynd_vpa | String |  no  | fynd_vpa |
+ | card_isin | String |  no  | card_isin |
+ | card_fingerprint | String |  no  | card_fingerprint |
+ | card_id | String |  no  | card_id |
+ | card_token | String |  no  | card_token |
+ | exp_month | Int |  no  | exp_month |
+ | code | String |  no  | code |
+ | display_name | String |  no  | display name |
+ | card_type | String |  no  | card_type |
+ | aggregator_name | String? |  yes  | aggregator_name |
+ | card_number | String |  no  | card_number |
+ | card_brand | String |  no  | card_brand |
+ | card_reference | String |  no  | card_reference |
+ | expired | Boolean |  no  | expired |
+ | card_issuer | String |  no  | card_issuer |
+ | intent_flow | String |  no  | intent_flow |
+ | timeout | Int |  no  | timeout |
+ | logo_url | [PaymentModeLogo](#PaymentModeLogo) |  no  | Logo |
+ | nickname | String |  no  | nickname |
+ | merchant_code | String |  no  | merchant code |
+ | display_priority | Int |  no  | Dispaly Priority |
+ | exp_year | Int |  no  | exp_year |
+ | retry_count | Int |  no  | retry_count |
+ | intent_app_error_list | ArrayList<String> |  no  | intent_app_error_list |
+
+---
+
+
+ 
+ 
+ #### [RootPaymentMode](#RootPaymentMode)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  | Payment mode name |
+ | display_priority | Int? |  yes  | Dispaly Priority |
+ | anonymous_enable | Boolean |  no  | Annonymous card flag |
+ | display_name | String? |  yes  | Payment mode display name |
+ | list | ArrayList<[PaymentModeList](#PaymentModeList)> |  no  | Payment mode |
+ | aggregator_name | String |  no  | Dispaly Priority |
+ | add_card_enabled | Boolean |  no  | Annonymous card flag |
+
+---
+
+
+ 
+ 
+ #### [PaymentOptions](#PaymentOptions)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | payment_option | ArrayList<[RootPaymentMode](#RootPaymentMode)>? |  yes  | Payment options |
+
+---
+
+
+ 
+ 
+ #### [PaymentOptionsResponse](#PaymentOptionsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | payment_options | [PaymentOptions](#PaymentOptions)? |  yes  | Payment options |
+ | success | Boolean? |  yes  | Response is successful or not |
+
+---
+
+
+ 
+ 
+ #### [PayoutsResponse](#PayoutsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | customers | HashMap<String,Any>? |  yes  | customers details object |
+ | transfer_type | String? |  yes  | transafer type |
+ | unique_transfer_no | HashMap<String,Any>? |  yes  | display priority of the payment mode |
+ | is_active | Boolean? |  yes  | Enable/DIsable Flag Payout |
+ | more_attributes | HashMap<String,Any>? |  yes  | bank details object |
+ | payouts_aggregators | ArrayList<HashMap<String,Any>>? |  yes  | payout aggregator object |
+ | is_default | Boolean? |  yes  | default or not  |
+
+---
+
+
+ 
+ 
+ #### [PayoutBankDetails](#PayoutBankDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | state | String |  no  |  |
+ | account_no | String |  no  |  |
+ | account_type | String? |  yes  |  |
+ | ifsc_code | String? |  yes  |  |
+ | city | String |  no  |  |
+ | branch_name | String |  no  |  |
+ | bank_name | String |  no  |  |
+ | country | String |  no  |  |
+ | pincode | Int |  no  |  |
+ | account_holder | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PayoutRequest](#PayoutRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | users | HashMap<String,Any>? |  yes  | payout users object |
+ | transfer_type | String? |  yes  | transafer type |
+ | aggregator | String? |  yes  | Aggregator Name |
+ | is_active | Boolean? |  yes  | Enable/Disable Flag Payout |
+ | unique_external_id | String? |  yes  | Unique Id of Payout |
+ | bank_details | [PayoutBankDetails](#PayoutBankDetails)? |  yes  | payout bank details object |
+
+---
+
+
+ 
+ 
+ #### [PayoutResponse](#PayoutResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | users | HashMap<String,Any>? |  yes  | users details object |
+ | payouts | HashMap<String,Any>? |  yes  | payout  object |
+ | transfer_type | String? |  yes  | transfer type |
+ | aggregator | String? |  yes  | Aggregator Name |
+ | created | Boolean? |  yes  | created flag |
+ | unique_transfer_no | String? |  yes  | unique transfer no |
+ | is_active | Boolean? |  yes  | Enable/DIsable Flag Payout |
+ | bank_details | HashMap<String,Any>? |  yes  | payout bank_details object |
+ | payment_status | String? |  yes  | status of payment |
+
+---
+
+
+ 
+ 
+ #### [UpdatePayoutResponse](#UpdatePayoutResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_default | Boolean? |  yes  | Enable/Disable Default Payout |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | is_active | Boolean? |  yes  | Enable/DIsable Flag Payout |
+
+---
+
+
+ 
+ 
+ #### [UpdatePayoutRequest](#UpdatePayoutRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_default | Boolean? |  yes  | Enable/Disable Default Payout |
+ | is_active | Boolean? |  yes  | Enable/Disable Flag Payout |
+ | unique_external_id | String? |  yes  | Unique Id of Payout |
+
+---
+
+
+ 
+ 
+ #### [DeletePayoutResponse](#DeletePayoutResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  | Response is successful or not |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionPaymentMethodResponse](#SubscriptionPaymentMethodResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<HashMap<String,Any>>? |  yes  | Subscription Payment Method Object |
+ | success | Boolean? |  yes  | Response is successful or not |
+
+---
+
+
+ 
+ 
+ #### [DeleteSubscriptionPaymentMethodResponse](#DeleteSubscriptionPaymentMethodResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  | Success or failure. |
+
+---
+
+
+ 
+ 
+ #### [SubscriptionConfigResponse](#SubscriptionConfigResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aggregator | String? |  yes  | Aggregator Name |
+ | config | HashMap<String,Any>? |  yes  | Aggregator Config |
+ | success | Boolean? |  yes  | Response is successful or not |
+
+---
+
+
+ 
+ 
+ #### [SaveSubscriptionSetupIntentRequest](#SaveSubscriptionSetupIntentRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | unique_external_id | String? |  yes  | Unique id i.e company:id |
+
+---
+
+
+ 
+ 
+ #### [SaveSubscriptionSetupIntentResponse](#SaveSubscriptionSetupIntentResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | HashMap<String,Any>? |  yes  | Subscription Payment Method Object |
+ | success | Boolean? |  yes  | Response is successful or not |
+
+---
+
+
+ 
+ 
+ #### [BeneficiaryModeDetails](#BeneficiaryModeDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String? |  yes  | Email of the Account Holder |
+ | address | String |  no  | Address of the User |
+ | account_no | String? |  yes  | Account NUmber of the Account Holder |
+ | comment | String |  no  | Remarks added by The user |
+ | ifsc_code | String? |  yes  | Ifsc Code of the Account |
+ | mobile | String? |  yes  | Moblie Number of the User |
+ | branch_name | String? |  yes  | Branch Name of the Account |
+ | bank_name | String? |  yes  | Bank Name of the Account |
+ | vpa | String |  no  |  |
+ | wallet | String |  no  |  |
+ | account_holder | String? |  yes  | Name of the Account Holder |
+
+---
+
+
+ 
+ 
+ #### [AddBeneficiaryDetailsRequest](#AddBeneficiaryDetailsRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | order_id | String? |  yes  | Merchant Order Id |
+ | transfer_mode | String? |  yes  | Transfer Mode of the Beneficiary to be added |
+ | delights | Boolean? |  yes  | True if  beneficiary to be added by delights or False if by User |
+ | otp | String |  no  |  |
+ | request_id | String |  no  |  |
+ | shipment_id | String? |  yes  | Shipment Id of the respective Merchant Order Id |
+ | details | [BeneficiaryModeDetails](#BeneficiaryModeDetails)? |  yes  | Beneficiary bank details |
+
+---
+
+
+ 
+ 
+ #### [RefundAccountResponse](#RefundAccountResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  | Response message |
+ | data | HashMap<String,Any> |  no  | Refund account data. |
+ | success | Boolean? |  yes  | Success or failure flag. |
+
+---
+
+
+ 
+ 
+ #### [NotFoundResourceError](#NotFoundResourceError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String? |  yes  | Not Found |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | code | String? |  yes  | Bad Request Data |
+
+---
+
+
+ 
+ 
+ #### [IfscCodeResponse](#IfscCodeResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bank_name | String? |  yes  | Bank Name Of Account |
+ | success | Boolean |  no  | Response is successful or not |
+ | branch_name | String? |  yes  | Branch Name Of Account |
+
+---
+
+
+ 
+ 
+ #### [OrderBeneficiaryDetails](#OrderBeneficiaryDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String? |  yes  | EMail of User |
+ | address | String? |  yes  | Address of User |
+ | id | Int? |  yes  |   |
+ | transfer_mode | String? |  yes  | Transfer Mode Of Account |
+ | title | String? |  yes  | Title Of Account |
+ | created_on | String? |  yes  | Creation Date of Beneficiary |
+ | ifsc_code | String? |  yes  | Ifsc Code Of Account |
+ | display_name | String? |  yes  | Display Name Of Account |
+ | is_active | Boolean? |  yes  | Boolean Flag whether Beneficiary set or not |
+ | bank_name | String? |  yes  | Bank Name Of Account |
+ | delights_user_name | String? |  yes  | User Id Who filled the Beneficiary  |
+ | beneficiary_id | String? |  yes  | Benenficiary Id |
+ | subtitle | String? |  yes  | SHort Title Of Account |
+ | account_no | String? |  yes  | Account Number |
+ | comment | Boolean |  no  | Remarks |
+ | mobile | Boolean |  no  | MObile no of User |
+ | branch_name | Boolean |  no  | Branch Name Of Account |
+ | modified_on | String? |  yes  | MOdification Date of Beneficiary |
+ | account_holder | String? |  yes  | Account Holder Name |
+
+---
+
+
+ 
+ 
+ #### [OrderBeneficiaryResponse](#OrderBeneficiaryResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)>? |  yes  | All Beneficiaries Of An Order |
+ | show_beneficiary_details | Boolean |  no  | Show beneficiary details or not. |
+
+---
+
+
+
+
+ 
+ 
+ #### [GetActivityStatus](#GetActivityStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | activity_history | [ActivityHistory](#ActivityHistory)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ActivityHistory](#ActivityHistory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | createdat | String |  no  |  |
+ | message | String |  no  |  |
+ | type | String |  no  |  |
+ | user | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FailedOrders](#FailedOrders)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | orders | [FailOrder](#FailOrder)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [FailOrder](#FailOrder)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | updated_at | String |  no  |  |
+ | _id | String |  no  |  |
+ | reason | String |  no  |  |
+ | marketplace_order | [MarketplaceOrder](#MarketplaceOrder) |  no  |  |
+ | marketplace_order_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | app_id | String |  no  |  |
+ | marketplace | String |  no  |  |
+ | company_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MarketplaceOrder](#MarketplaceOrder)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | order_status_url | String |  no  |  |
+ | admin_graphql_api_id | String |  no  |  |
+ | email | String |  no  |  |
+ | test | Boolean |  no  |  |
+ | note | String |  no  |  |
+ | total_price | String |  no  |  |
+ | app_id | Int |  no  |  |
+ | total_discounts_set | [TotalDiscountsSet](#TotalDiscountsSet) |  no  |  |
+ | total_price_set | [TotalPriceSet](#TotalPriceSet) |  no  |  |
+ | total_tax_set | [TotalTaxSet](#TotalTaxSet) |  no  |  |
+ | gateway | String |  no  |  |
+ | name | String |  no  |  |
+ | subtotal_price_set | [SubtotalPriceSet](#SubtotalPriceSet) |  no  |  |
+ | number | Int |  no  |  |
+ | buyer_accepts_marketing | Boolean |  no  |  |
+ | contact_email | String |  no  |  |
+ | token | String |  no  |  |
+ | source_name | String |  no  |  |
+ | payment_gateway_names | ArrayList<Any> |  no  |  |
+ | presentment_currency | String |  no  |  |
+ | subtotal_price | String |  no  |  |
+ | processed_at | String |  no  |  |
+ | order_number | Int |  no  |  |
+ | total_tip_received | String |  no  |  |
+ | id | Int |  no  |  |
+ | confirmed | Boolean |  no  |  |
+ | currency | String |  no  |  |
+ | total_line_items_price | String |  no  |  |
+ | line_items | [LineItems](#LineItems) |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | total_weight | Int |  no  |  |
+ | billing_address | [BillingAddress](#BillingAddress) |  no  |  |
+ | total_shipping_price_set | [TotalShippingPriceSet](#TotalShippingPriceSet) |  no  |  |
+ | customer | [Customer](#Customer) |  no  |  |
+ | total_discounts | String |  no  |  |
+ | total_line_items_price_set | [TotalLineItemsPriceSet](#TotalLineItemsPriceSet) |  no  |  |
+ | tags | String |  no  |  |
+ | total_price_usd | String |  no  |  |
+ | user_id | Int |  no  |  |
+ | total_tax | String |  no  |  |
+ | processing_method | String |  no  |  |
+ | shipping_address | [ShippingAddress](#ShippingAddress) |  no  |  |
+ | taxes_included | Boolean |  no  |  |
+ | financial_status | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalDiscountsSet](#TotalDiscountsSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | presentment_money | [PresentmentMoney](#PresentmentMoney) |  no  |  |
+ | shop_money | [ShopMoney](#ShopMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PresentmentMoney](#PresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShopMoney](#ShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalPriceSet](#TotalPriceSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shop_money | [TotalPriceSetShopMoney](#TotalPriceSetShopMoney) |  no  |  |
+ | presentment_money | [TotalPriceSetPresentmentMoney](#TotalPriceSetPresentmentMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalPriceSetShopMoney](#TotalPriceSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalPriceSetPresentmentMoney](#TotalPriceSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalTaxSet](#TotalTaxSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shop_money | [TotalTaxSetShopMoney](#TotalTaxSetShopMoney) |  no  |  |
+ | presentment_money | [TotalTaxSetPresentmentMoney](#TotalTaxSetPresentmentMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalTaxSetShopMoney](#TotalTaxSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalTaxSetPresentmentMoney](#TotalTaxSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubtotalPriceSet](#SubtotalPriceSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shop_money | [SubtotalPriceSetShopMoney](#SubtotalPriceSetShopMoney) |  no  |  |
+ | presentment_money | [SubtotalPriceSetPresentmentMoney](#SubtotalPriceSetPresentmentMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubtotalPriceSetShopMoney](#SubtotalPriceSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubtotalPriceSetPresentmentMoney](#SubtotalPriceSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LineItems](#LineItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sku | String |  no  |  |
+ | fulfillable_quantity | Int |  no  |  |
+ | grams | Int |  no  |  |
+ | total_discount | String |  no  |  |
+ | article | [LineItemsArticle](#LineItemsArticle) |  no  |  |
+ | title | String |  no  |  |
+ | variant_inventory_management | String |  no  |  |
+ | id | Int |  no  |  |
+ | variant_id | Int |  no  |  |
+ | variant_title | String |  no  |  |
+ | product_exists | Boolean |  no  |  |
+ | price | String |  no  |  |
+ | admin_graphql_api_id | String |  no  |  |
+ | quantity | Int |  no  |  |
+ | vendor | String |  no  |  |
+ | fulfillment_service | String |  no  |  |
+ | taxable | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | product_id | Int |  no  |  |
+ | price_set | [PriceSet](#PriceSet) |  no  |  |
+ | tax_lines | [TaxLines](#TaxLines) |  no  |  |
+ | requires_shipping | Boolean |  no  |  |
+ | gift_card | Boolean |  no  |  |
+ | total_discount_set | [TotalDiscountSet](#TotalDiscountSet) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LineItemsArticle](#LineItemsArticle)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | quantities | [Quantities](#Quantities) |  no  |  |
+ | old_article_uid | String |  no  |  |
+ | total_quantity | Int |  no  |  |
+ | manufacturer | [Manufacturer](#Manufacturer) |  no  |  |
+ | price | [ArticlePrice](#ArticlePrice) |  no  |  |
+ | track_inventory | Boolean |  no  |  |
+ | company | [Company](#Company) |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | date_meta | [FailOrderDateMeta](#FailOrderDateMeta) |  no  |  |
+ | fragile | Boolean |  no  |  |
+ | marketplace_identifiers | [MarketplaceIdentifiers](#MarketplaceIdentifiers) |  no  |  |
+ | size | String |  no  |  |
+ | is_set | Boolean |  no  |  |
+ | dimension | [Dimension](#Dimension) |  no  |  |
+ | weight | [Weight](#Weight) |  no  |  |
+ | store | [Store](#Store) |  no  |  |
+ | meta | [ArticleMeta](#ArticleMeta) |  no  |  |
+ | uid | String |  no  |  |
+ | brand | [ArticleBrand](#ArticleBrand) |  no  |  |
+ | item_id | Int |  no  |  |
+ | fynd_article_code | String |  no  |  |
+ | _id | String |  no  |  |
+ | identifier | [LineItemsArticleIdentifier](#LineItemsArticleIdentifier) |  no  |  |
+ | seller_identifier | String |  no  |  |
+ | fynd_item_code | String |  no  |  |
+ | country_of_origin | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Quantities](#Quantities)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | not_available | [NotAvailable](#NotAvailable) |  no  |  |
+ | sellable | [Sellable](#Sellable) |  no  |  |
+ | order_committed | [OrderCommitted](#OrderCommitted) |  no  |  |
+ | damaged | [Damaged](#Damaged) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NotAvailable](#NotAvailable)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+ | updated_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Sellable](#Sellable)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+ | updated_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderCommitted](#OrderCommitted)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+ | updated_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Damaged](#Damaged)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | updated_at | String |  no  |  |
+ | count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Manufacturer](#Manufacturer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_default | Boolean |  no  |  |
+ | address | String |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticlePrice](#ArticlePrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | marked | Int |  no  |  |
+ | currency | String |  no  |  |
+ | effective | Int |  no  |  |
+ | transfer | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Company](#Company)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | company_type | String |  no  |  |
+ | business_type | String |  no  |  |
+ | company_name | String |  no  |  |
+ | created_on | String |  no  |  |
+ | pan_no | String |  no  |  |
+ | return_allowed | Boolean |  no  |  |
+ | meta | String |  no  |  |
+ | exchange_allowed | Boolean |  no  |  |
+ | agreement_start_date | String |  no  |  |
+ | exchange_within_days | Int |  no  |  |
+ | payment_procesing_charge | Int |  no  |  |
+ | fynd_a_fit_available | Boolean |  no  |  |
+ | modified_on | String |  no  |  |
+ | return_within_days | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FailOrderDateMeta](#FailOrderDateMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | added_on_store | String |  no  |  |
+ | inventory_updated_on | String |  no  |  |
+ | created_on | String |  no  |  |
+ | modified_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MarketplaceIdentifiers](#MarketplaceIdentifiers)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tatacliq_luxury | [TatacliqLuxury](#TatacliqLuxury) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TatacliqLuxury](#TatacliqLuxury)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sku | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Dimension](#Dimension)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | height | Int |  no  |  |
+ | width | Int |  no  |  |
+ | unit | String |  no  |  |
+ | length | Int |  no  |  |
+ | is_default | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Weight](#Weight)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_default | Boolean |  no  |  |
+ | unit | String |  no  |  |
+ | shipping | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Store](#Store)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleMeta](#ArticleMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | service | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleBrand](#ArticleBrand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LineItemsArticleIdentifier](#LineItemsArticleIdentifier)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sku_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PriceSet](#PriceSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shop_money | [PriceSetShopMoney](#PriceSetShopMoney) |  no  |  |
+ | presentment_money | [PriceSetPresentmentMoney](#PriceSetPresentmentMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PriceSetShopMoney](#PriceSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PriceSetPresentmentMoney](#PriceSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaxLines](#TaxLines)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | price | String |  no  |  |
+ | rate | Int |  no  |  |
+ | price_set | [TaxLinesPriceSet](#TaxLinesPriceSet) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaxLinesPriceSet](#TaxLinesPriceSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shop_money | [TaxLinesPriceSetShopMoney](#TaxLinesPriceSetShopMoney) |  no  |  |
+ | presentment_money | [TaxLinesPriceSetPresentmentMoney](#TaxLinesPriceSetPresentmentMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaxLinesPriceSetShopMoney](#TaxLinesPriceSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaxLinesPriceSetPresentmentMoney](#TaxLinesPriceSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | currency_code | String |  no  |  |
+ | amount | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalDiscountSet](#TotalDiscountSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | presentment_money | [TotalDiscountSetPresentmentMoney](#TotalDiscountSetPresentmentMoney) |  no  |  |
+ | shop_money | [TotalDiscountSetShopMoney](#TotalDiscountSetShopMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalDiscountSetPresentmentMoney](#TotalDiscountSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalDiscountSetShopMoney](#TotalDiscountSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BillingAddress](#BillingAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address1 | String |  no  |  |
+ | city | String |  no  |  |
+ | zip | String |  no  |  |
+ | last_name | String |  no  |  |
+ | address2 | String |  no  |  |
+ | longitude | Double |  no  |  |
+ | province_code | String |  no  |  |
+ | phone | String |  no  |  |
+ | company | String |  no  |  |
+ | latitude | Double |  no  |  |
+ | name | String |  no  |  |
+ | country | String |  no  |  |
+ | country_code | String |  no  |  |
+ | first_name | String |  no  |  |
+ | province | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalShippingPriceSet](#TotalShippingPriceSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shop_money | [TotalShippingPriceSetShopMoney](#TotalShippingPriceSetShopMoney) |  no  |  |
+ | presentment_money | [TotalShippingPriceSetPresentmentMoney](#TotalShippingPriceSetPresentmentMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalShippingPriceSetShopMoney](#TotalShippingPriceSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalShippingPriceSetPresentmentMoney](#TotalShippingPriceSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Customer](#Customer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created_at | String |  no  |  |
+ | id | Int |  no  |  |
+ | last_name | String |  no  |  |
+ | state | String |  no  |  |
+ | last_order_id | Int |  no  |  |
+ | note | String |  no  |  |
+ | verified_email | Boolean |  no  |  |
+ | phone | String |  no  |  |
+ | accepts_marketing | Boolean |  no  |  |
+ | first_name | String |  no  |  |
+ | tags | String |  no  |  |
+ | last_order_name | String |  no  |  |
+ | orders_count | Int |  no  |  |
+ | total_spent | String |  no  |  |
+ | tax_exempt | Boolean |  no  |  |
+ | currency | String |  no  |  |
+ | accepts_marketing_updated_at | String |  no  |  |
+ | email | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | admin_graphql_api_id | String |  no  |  |
+ | default_address | [DefaultAddress](#DefaultAddress) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DefaultAddress](#DefaultAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | last_name | String |  no  |  |
+ | name | String |  no  |  |
+ | province_code | String |  no  |  |
+ | country_code | String |  no  |  |
+ | is_default | Boolean |  no  |  |
+ | id | Int |  no  |  |
+ | customer_id | Int |  no  |  |
+ | first_name | String |  no  |  |
+ | address1 | String |  no  |  |
+ | phone | String |  no  |  |
+ | country_name | String |  no  |  |
+ | company | String |  no  |  |
+ | address2 | String |  no  |  |
+ | city | String |  no  |  |
+ | province | String |  no  |  |
+ | country | String |  no  |  |
+ | zip | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalLineItemsPriceSet](#TotalLineItemsPriceSet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shop_money | [TotalLineItemsPriceSetShopMoney](#TotalLineItemsPriceSetShopMoney) |  no  |  |
+ | presentment_money | [TotalLineItemsPriceSetPresentmentMoney](#TotalLineItemsPriceSetPresentmentMoney) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalLineItemsPriceSetShopMoney](#TotalLineItemsPriceSetShopMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TotalLineItemsPriceSetPresentmentMoney](#TotalLineItemsPriceSetPresentmentMoney)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | String |  no  |  |
+ | currency_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShippingAddress](#ShippingAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address1 | String |  no  |  |
+ | zip | String |  no  |  |
+ | address2 | String |  no  |  |
+ | country_code | String |  no  |  |
+ | country | String |  no  |  |
+ | last_name | String |  no  |  |
+ | latitude | Double |  no  |  |
+ | province_code | String |  no  |  |
+ | first_name | String |  no  |  |
+ | phone | String |  no  |  |
+ | province | String |  no  |  |
+ | longitude | Double |  no  |  |
+ | city | String |  no  |  |
+ | company | String |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderListing](#OrderListing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[OrderItems](#OrderItems)>? |  yes  |  |
+ | filters | [Filters](#Filters)? |  yes  |  |
+ | next_order_status | HashMap<String,Any>? |  yes  |  |
+ | page | [PlatformOrderPage](#PlatformOrderPage)? |  yes  |  |
+ | applied_filters | [AppliedFilters](#AppliedFilters)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderItems](#OrderItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [PlatformOrderUserInfo](#PlatformOrderUserInfo) |  no  |  |
+ | delivery_address | [PlatformDeliveryAddress](#PlatformDeliveryAddress) |  no  |  |
+ | channel | [Channel](#Channel) |  no  |  |
+ | id | String |  no  |  |
+ | application | [PlatformApplication](#PlatformApplication) |  no  |  |
+ | shipments | [PlatformShipment](#PlatformShipment) |  no  |  |
+ | created_at | String |  no  |  |
+ | total_shipments_in_order | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformOrderUserInfo](#PlatformOrderUserInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mobile | String |  no  |  |
+ | first_name | String |  no  |  |
+ | gender | String |  no  |  |
+ | email | String |  no  |  |
+ | last_name | String |  no  |  |
+ | is_anonymous_user | Boolean |  no  |  |
+ | uid | Int |  no  |  |
+ | avis_user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformDeliveryAddress](#PlatformDeliveryAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | area | String |  no  |  |
+ | state | String |  no  |  |
+ | country | String |  no  |  |
+ | version | String |  no  |  |
+ | address1 | String |  no  |  |
+ | latitude | Double |  no  |  |
+ | updated_at | String |  no  |  |
+ | city | String |  no  |  |
+ | landmark | String |  no  |  |
+ | created_at | String |  no  |  |
+ | name | String |  no  |  |
+ | address | String |  no  |  |
+ | phone | String |  no  |  |
+ | longitude | Double |  no  |  |
+ | address_type | String |  no  |  |
+ | email | String |  no  |  |
+ | pincode | String |  no  |  |
+ | address2 | String |  no  |  |
+ | contact_person | String |  no  |  |
+ | address_category | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Channel](#Channel)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | logo | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformApplication](#PlatformApplication)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformShipment](#PlatformShipment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | [PlatformShipmentStatus](#PlatformShipmentStatus) |  no  |  |
+ | bags | [Bags](#Bags) |  no  |  |
+ | prices | [ShipmentPrices](#ShipmentPrices) |  no  |  |
+ | id | String |  no  |  |
+ | gst | [ShipmentGst](#ShipmentGst) |  no  |  |
+ | total_shipment_bags | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformShipmentStatus](#PlatformShipmentStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | bag_list | ArrayList<Int> |  no  |  |
+ | created_at | String |  no  |  |
+ | status | String |  no  |  |
+ | name | String |  no  |  |
+ | progress | Int |  no  |  |
+ | shipment_id | String |  no  |  |
+ | current_shipment_status | String |  no  |  |
+ | color_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Bags](#Bags)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | item | [BagItem](#BagItem) |  no  |  |
+ | id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagItem](#BagItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | size | String |  no  |  |
+ | slug_key | String |  no  |  |
+ | can_return | Boolean |  no  |  |
+ | brand_id | Int |  no  |  |
+ | l2_category | ArrayList<String> |  no  |  |
+ | name | String |  no  |  |
+ | code | String |  no  |  |
+ | can_cancel | Boolean |  no  |  |
+ | attributes | [BagItemAttributes](#BagItemAttributes) |  no  |  |
+ | l3_category_name | String |  no  |  |
+ | l3_category | Int |  no  |  |
+ | l1_category | ArrayList<String> |  no  |  |
+ | image | ArrayList<String> |  no  |  |
+ | brand | String |  no  |  |
+ | last_updated_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagItemAttributes](#BagItemAttributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | item_code | String |  no  |  |
+ | brand_name | String |  no  |  |
+ | country_of_origin | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentPrices](#ShipmentPrices)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | refund_amount | Double |  no  |  |
+ | cashback_applied | Double |  no  |  |
+ | transfer_price | Double |  no  |  |
+ | coupon_value | Double |  no  |  |
+ | amount_paid | Double |  no  |  |
+ | delivery_charge | Double |  no  |  |
+ | coupon_effective_discount | Double |  no  |  |
+ | cod_charges | Double |  no  |  |
+ | refund_credit | Double |  no  |  |
+ | added_to_fynd_cash | Boolean |  no  |  |
+ | gst_tax_percentage | Double |  no  |  |
+ | price_marked | Double |  no  |  |
+ | price_effective | Double |  no  |  |
+ | discount | Double |  no  |  |
+ | promotion_effective_discount | Double |  no  |  |
+ | amount_paid_roundoff | Double |  no  |  |
+ | fynd_credits | Double |  no  |  |
+ | brand_calculated_amount | Double |  no  |  |
+ | cashback | Double |  no  |  |
+ | value_of_good | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Payments](#Payments)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_active | Boolean |  no  |  |
+ | display_name | String |  no  |  |
+ | logo | String |  no  |  |
+ | source | String |  no  |  |
+ | source_nickname | String |  no  |  |
+ | display_priority | Int |  no  |  |
+ | id | Int |  no  |  |
+ | mode | String |  no  |  |
+ | payment_identifier | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Filters](#Filters)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | stages | [Stages](#Stages) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Stages](#Stages)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | text | String |  no  |  |
+ | value | String |  no  |  |
+ | is_default | Boolean |  no  |  |
+ | filters | [StagesFilters](#StagesFilters) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StagesFilters](#StagesFilters)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | text | String |  no  |  |
+ | value | String |  no  |  |
+ | type | String |  no  |  |
+ | options | [Options](#Options) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Options](#Options)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | text | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformOrderPage](#PlatformOrderPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | next | String |  no  |  |
+ | previous | String |  no  |  |
+ | type | String |  no  |  |
+ | size | Int |  no  |  |
+ | current | Int |  no  |  |
+ | has_next | Boolean |  no  |  |
+ | item_total | [ItemTotal](#ItemTotal) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ItemTotal](#ItemTotal)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | new | Int |  no  |  |
+ | processing | Int |  no  |  |
+ | returns | Int |  no  |  |
+ | all | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppliedFilters](#AppliedFilters)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | stage | String |  no  |  |
+ | stores | ArrayList<String> |  no  |  |
+ | from_date | String |  no  |  |
+ | to_date | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderDetails](#OrderDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[OrderPicklistListing](#OrderPicklistListing)>? |  yes  |  |
+ | page | [PlatformOrderPage](#PlatformOrderPage)? |  yes  |  |
+ | filters | [Filters](#Filters)? |  yes  |  |
+ | next_order_status | HashMap<String,Any>? |  yes  |  |
+ | applied_filters | [AppliedFilters](#AppliedFilters)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderDetailsItem](#OrderDetailsItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [PlatformOrderUserInfo](#PlatformOrderUserInfo) |  no  |  |
+ | delivery_address | [PlatformDeliveryAddress](#PlatformDeliveryAddress) |  no  |  |
+ | channel | [Channel](#Channel) |  no  |  |
+ | breakup_values | [PlatformBreakupValues](#PlatformBreakupValues) |  no  |  |
+ | id | String |  no  |  |
+ | application | [PlatformApplication](#PlatformApplication) |  no  |  |
+ | shipments | [PlatformShipmentDetails](#PlatformShipmentDetails) |  no  |  |
+ | created_at | String |  no  |  |
+ | total_shipments_in_order | Int |  no  |  |
+ | payments | [ItemsPayments](#ItemsPayments) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformBreakupValues](#PlatformBreakupValues)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  |  |
+ | value | Double |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleAssignment](#ArticleAssignment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | strategy | String |  no  |  |
+ | level | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformShipmentDetails](#PlatformShipmentDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | [PlatformShipmentDetailsStatus](#PlatformShipmentDetailsStatus) |  no  |  |
+ | bags | [BagsDetails](#BagsDetails) |  no  |  |
+ | prices | [ShipmentPrices](#ShipmentPrices) |  no  |  |
+ | breakup_values | [ShipmentBreakupValues](#ShipmentBreakupValues) |  no  |  |
+ | id | String |  no  |  |
+ | dp_details | [DpDetails](#DpDetails) |  no  |  |
+ | invoice | [ShipmentInvoice](#ShipmentInvoice) |  no  |  |
+ | fulfilling_store | [PlatformFulfillingStore](#PlatformFulfillingStore) |  no  |  |
+ | payments | [Payments](#Payments) |  no  |  |
+ | gst | [ShipmentGst](#ShipmentGst) |  no  |  |
+ | company | [Company](#Company) |  no  |  |
+ | brand | [PlatformShipmentDetailsBrand](#PlatformShipmentDetailsBrand) |  no  |  |
+ | coupon | HashMap<String,Any> |  no  |  |
+ | order_source | String |  no  |  |
+ | is_not_fynd_source | Boolean |  no  |  |
+ | comment | String |  no  |  |
+ | promise | [Promise](#Promise) |  no  |  |
+ | tracking_details | [ShipmentTrackingDetails](#ShipmentTrackingDetails) |  no  |  |
+ | is_fynd_coupon | Boolean |  no  |  |
+ | order_type | String |  no  |  |
+ | total_shipment_bags | Int |  no  |  |
+ | pod | HashMap<String,Any> |  no  |  |
+ | lock_status | Boolean |  no  |  |
+ | ordering_channel | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformShipmentDetailsStatus](#PlatformShipmentDetailsStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | bag_list | ArrayList<Int> |  no  |  |
+ | created_at | String |  no  |  |
+ | status | String |  no  |  |
+ | name | String |  no  |  |
+ | progress | Int |  no  |  |
+ | shipment_id | String |  no  |  |
+ | current_shipment_status | String |  no  |  |
+ | color_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagsDetails](#BagsDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | financial_breakup | ArrayList<[BagFinancialBreakup](#BagFinancialBreakup)> |  no  |  |
+ | status | [BagCurrStatus](#BagCurrStatus) |  no  |  |
+ | item | [BagItem](#BagItem) |  no  |  |
+ | article | [BagArticle](#BagArticle) |  no  |  |
+ | id | Int |  no  |  |
+ | prices | [BagPrices](#BagPrices) |  no  |  |
+ | gst_details | [GstDetails](#GstDetails) |  no  |  |
+ | breakup_values | [BagBreakupValues](#BagBreakupValues) |  no  |  |
+ | update_time | Int |  no  |  |
+ | current_status | [BagCurrentStatus](#BagCurrentStatus) |  no  |  |
+ | bag_status | [BagStatus](#BagStatus) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagFinancialBreakup](#BagFinancialBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value_of_good | Double |  no  |  |
+ | hsn_code | String |  no  |  |
+ | price_effective | Double |  no  |  |
+ | cod_charges | Double |  no  |  |
+ | gst_fee | String |  no  |  |
+ | fynd_credits | Double |  no  |  |
+ | refund_amount | Double |  no  |  |
+ | cashback_applied | Double |  no  |  |
+ | transfer_price | Double |  no  |  |
+ | amount_paid_roundoff | Double |  no  |  |
+ | coupon_value | Double |  no  |  |
+ | amount_paid | Double |  no  |  |
+ | gst_tax_percentage | Double |  no  |  |
+ | size | String |  no  |  |
+ | total_units | Int |  no  |  |
+ | discount | Double |  no  |  |
+ | coupon_effective_discount | Double |  no  |  |
+ | cashback | Double |  no  |  |
+ | promotion_effective_discount | Double |  no  |  |
+ | gst_tag | String |  no  |  |
+ | delivery_charge | Double |  no  |  |
+ | refund_credit | Double |  no  |  |
+ | price_marked | Double |  no  |  |
+ | identifiers | [Identifiers](#Identifiers) |  no  |  |
+ | item_name | String |  no  |  |
+ | added_to_fynd_cash | Boolean |  no  |  |
+ | brand_calculated_amount | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Identifiers](#Identifiers)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ean | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagCurrStatus](#BagCurrStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enable_tracking | Boolean |  no  |  |
+ | is_customer_return_allowed | Boolean |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | is_returnable | Boolean |  no  |  |
+ | can_be_cancelled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagArticle](#BagArticle)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | identifiers | [ArticleIdentifiers](#ArticleIdentifiers) |  no  |  |
+ | esp_modified | Boolean |  no  |  |
+ | is_set | Boolean |  no  |  |
+ | size | String |  no  |  |
+ | code | String |  no  |  |
+ | set | [Set](#Set) |  no  |  |
+ | seller_identifier | String |  no  |  |
+ | return_config | [BagArticleReturnConfig](#BagArticleReturnConfig) |  no  |  |
+ | _id | String |  no  |  |
+ | uid | String |  no  |  |
+ | child_details | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleIdentifiers](#ArticleIdentifiers)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ean | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Set](#Set)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | quantity | Int |  no  |  |
+ | size_distribution | [SetSizeDistribution](#SetSizeDistribution) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SetSizeDistribution](#SetSizeDistribution)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sizes | [Sizes](#Sizes) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Sizes](#Sizes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | size | String |  no  |  |
+ | pieces | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagArticleReturnConfig](#BagArticleReturnConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | time | Int |  no  |  |
+ | unit | String |  no  |  |
+ | returnable | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GstDetails](#GstDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand_calculated_amount | Double |  no  |  |
+ | gst_fee | String |  no  |  |
+ | gst_tag | String |  no  |  |
+ | hsn_code | String |  no  |  |
+ | value_of_good | Double |  no  |  |
+ | gst_tax_percentage | Double |  no  |  |
+ | is_default_hsn_code | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagBreakupValues](#BagBreakupValues)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | display | String |  no  |  |
+ | value | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagCurrentStatus](#BagCurrentStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | updated_at | String |  no  |  |
+ | bag_state_mapper | [BagStateMapper](#BagStateMapper) |  no  |  |
+ | status | String |  no  |  |
+ | state_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagStateMapper](#BagStateMapper)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_state_name | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | display_name | String |  no  |  |
+ | name | String |  no  |  |
+ | app_display_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagStatus](#BagStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  |  |
+ | state_type | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | bag_state_mapper | [BagStatusBagStateMapper](#BagStatusBagStateMapper) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagStatusBagStateMapper](#BagStatusBagStateMapper)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_active | Boolean |  no  |  |
+ | display_name | String |  no  |  |
+ | name | String |  no  |  |
+ | app_display_name | String |  no  |  |
+ | app_state_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagPrices](#BagPrices)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cashback | Double |  no  |  |
+ | refund_credit | Double |  no  |  |
+ | coupon_value | Double |  no  |  |
+ | delivery_charge | Double |  no  |  |
+ | fynd_credits | Double |  no  |  |
+ | price_marked | Double |  no  |  |
+ | cashback_applied | Double |  no  |  |
+ | value_of_good | Double |  no  |  |
+ | amount_paid_roundoff | Double |  no  |  |
+ | amount_paid | Double |  no  |  |
+ | cod_charges | Double |  no  |  |
+ | price_effective | Double |  no  |  |
+ | refund_amount | Double |  no  |  |
+ | discount | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentBreakupValues](#ShipmentBreakupValues)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | display | String |  no  |  |
+ | value | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DpDetails](#DpDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | gst_tag | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentInvoice](#ShipmentInvoice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | payment_type | String |  no  |  |
+ | updated_date | String |  no  |  |
+ | invoice_url | String |  no  |  |
+ | label_url | String |  no  |  |
+ | payment_mode | String |  no  |  |
+ | amount_to_collect | Double |  no  |  |
+ | rto_address | [RtoAddress](#RtoAddress) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RtoAddress](#RtoAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | id | Int |  no  |  |
+ | phone | String |  no  |  |
+ | location_type | String |  no  |  |
+ | store_address_json | [StoreAddressJson](#StoreAddressJson) |  no  |  |
+ | code | String |  no  |  |
+ | address1 | String |  no  |  |
+ | city | String |  no  |  |
+ | country | String |  no  |  |
+ | pincode | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | contact_person | String |  no  |  |
+ | state | String |  no  |  |
+ | store_email | String |  no  |  |
+ | address2 | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreAddressJson](#StoreAddressJson)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country | String |  no  |  |
+ | latitude | Double |  no  |  |
+ | updated_at | String |  no  |  |
+ | area | String |  no  |  |
+ | state | String |  no  |  |
+ | address_type | String |  no  |  |
+ | city | String |  no  |  |
+ | pincode | String |  no  |  |
+ | address1 | String |  no  |  |
+ | address2 | String |  no  |  |
+ | longitude | Double |  no  |  |
+ | email | String |  no  |  |
+ | phone | String |  no  |  |
+ | created_at | String |  no  |  |
+ | contact_person | String |  no  |  |
+ | address_category | String |  no  |  |
+ | version | String |  no  |  |
+ | landmark | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformFulfillingStore](#PlatformFulfillingStore)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | packaging_material_count | Int |  no  |  |
+ | location_type | String |  no  |  |
+ | code | String |  no  |  |
+ | city | String |  no  |  |
+ | meta | [FulfillingStoreMeta](#FulfillingStoreMeta) |  no  |  |
+ | name | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | address1 | String |  no  |  |
+ | store_email | String |  no  |  |
+ | is_archived | Boolean |  no  |  |
+ | state | String |  no  |  |
+ | address2 | String |  no  |  |
+ | contact_person | String |  no  |  |
+ | phone | String |  no  |  |
+ | is_enabled_for_recon | Boolean |  no  |  |
+ | fulfillment_channel | String |  no  |  |
+ | created_at | String |  no  |  |
+ | id | Int |  no  |  |
+ | pincode | String |  no  |  |
+ | brand_store_tags | ArrayList<String> |  no  |  |
+ | company_id | Int |  no  |  |
+ | store_address_json | [FulfillingStoreStoreAddressJson](#FulfillingStoreStoreAddressJson) |  no  |  |
+ | updated_at | String |  no  |  |
+ | login_username | String |  no  |  |
+ | country | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FulfillingStoreMeta](#FulfillingStoreMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | additional_contact_details | [AdditionalContactDetails](#AdditionalContactDetails) |  no  |  |
+ | documents | [Documents](#Documents) |  no  |  |
+ | gst_number | String |  no  |  |
+ | display_name | String |  no  |  |
+ | product_return_config | [ProductReturnConfig](#ProductReturnConfig) |  no  |  |
+ | allow_dp_assignment_from_fynd | Boolean |  no  |  |
+ | stage | String |  no  |  |
+ | timing | [Timing](#Timing) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AdditionalContactDetails](#AdditionalContactDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | number | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Documents](#Documents)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | gst | [Gst](#Gst) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Gst](#Gst)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | legal_name | String |  no  |  |
+ | type | String |  no  |  |
+ | value | String |  no  |  |
+ | verified | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductReturnConfig](#ProductReturnConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | on_same_store | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Timing](#Timing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | opening | [Opening](#Opening) |  no  |  |
+ | weekday | String |  no  |  |
+ | open | Boolean |  no  |  |
+ | closing | [Closing](#Closing) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Opening](#Opening)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | minute | Int |  no  |  |
+ | hour | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Closing](#Closing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hour | Int |  no  |  |
+ | minute | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FulfillingStoreStoreAddressJson](#FulfillingStoreStoreAddressJson)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address2 | String |  no  |  |
+ | area | String |  no  |  |
+ | email | String |  no  |  |
+ | phone | String |  no  |  |
+ | state | String |  no  |  |
+ | contact_person | String |  no  |  |
+ | country | String |  no  |  |
+ | pincode | String |  no  |  |
+ | version | String |  no  |  |
+ | created_at | String |  no  |  |
+ | address_type | String |  no  |  |
+ | city | String |  no  |  |
+ | address1 | String |  no  |  |
+ | landmark | String |  no  |  |
+ | latitude | Double |  no  |  |
+ | longitude | Double |  no  |  |
+ | updated_at | String |  no  |  |
+ | address_category | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentGst](#ShipmentGst)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand_calculated_amount | Double |  no  |  |
+ | value_of_good | Double |  no  |  |
+ | gst_fee | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformShipmentDetailsBrand](#PlatformShipmentDetailsBrand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credit_note_allowed | Boolean |  no  |  |
+ | brand_name | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | id | Int |  no  |  |
+ | is_virtual_invoice | Boolean |  no  |  |
+ | created_on | String |  no  |  |
+ | logo | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Promise](#Promise)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | [Timestamp](#Timestamp) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Timestamp](#Timestamp)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | String |  no  |  |
+ | max | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackingDetails](#ShipmentTrackingDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  |  |
+ | time | String |  no  |  |
+ | is_passed | Boolean |  no  |  |
+ | is_current | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ItemsPayments](#ItemsPayments)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display_priority | Int |  no  |  |
+ | id | Int |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | display_name | String |  no  |  |
+ | logo | String |  no  |  |
+ | payment_identifier | String |  no  |  |
+ | source_nickname | String |  no  |  |
+ | mode | String |  no  |  |
+ | source | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformOrderDetailsPage](#PlatformOrderDetailsPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | next | String |  no  |  |
+ | previous | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateOrderReprocessResponse](#UpdateOrderReprocessResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformOrderTrack](#PlatformOrderTrack)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | request_id | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | mobile | String? |  yes  |  |
+ | country_code | String? |  yes  |  |
+ | resend_timer | Int? |  yes  |  |
+ | resend_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderPicklistListing](#OrderPicklistListing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | [PlatformOrderUserInfo](#PlatformOrderUserInfo) |  no  |  |
+ | delivery_address | [PlatformDeliveryAddress](#PlatformDeliveryAddress) |  no  |  |
+ | channel | [Channel](#Channel) |  no  |  |
+ | breakup_values | [PlatformBreakupValues](#PlatformBreakupValues) |  no  |  |
+ | id | String |  no  |  |
+ | application | [PlatformApplication](#PlatformApplication) |  no  |  |
+ | shipments | [PlatformShipmentDetails](#PlatformShipmentDetails) |  no  |  |
+ | created_at | String |  no  |  |
+ | total_shipments_in_order | Int |  no  |  |
+ | payments | [ItemsPayments](#ItemsPayments) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetPingResponse](#GetPingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ping | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetShipmentAddressResponse](#GetShipmentAddressResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | data | [DataShipmentAddress](#DataShipmentAddress)? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DataShipmentAddress](#DataShipmentAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | city | String |  no  |  |
+ | country | String |  no  |  |
+ | pincode | String |  no  |  |
+ | phone | String |  no  |  |
+ | area | String |  no  |  |
+ | address | String |  no  |  |
+ | landmark | String |  no  |  |
+ | state | String |  no  |  |
+ | address_type | String |  no  |  |
+ | address_category | String |  no  |  |
+ | email | String |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateShipmentAddressRequest](#UpdateShipmentAddressRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String? |  yes  |  |
+ | address | String? |  yes  |  |
+ | pincode | String? |  yes  |  |
+ | state | String? |  yes  |  |
+ | address_type | String? |  yes  |  |
+ | country | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | phone | String? |  yes  |  |
+ | area | String? |  yes  |  |
+ | landmark | String? |  yes  |  |
+ | city | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateShipmentAddressResponse](#UpdateShipmentAddressResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponse](#ShipmentTrackResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bag_list | ArrayList<[ShipmentTrackResponseBagListItem](#ShipmentTrackResponseBagListItem)>? |  yes  |  |
+ | message | String? |  yes  |  |
+ | order_value | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponseBagListItem](#ShipmentTrackResponseBagListItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enable_tracking | Boolean |  no  |  |
+ | price | String |  no  |  |
+ | time_slot | String |  no  |  |
+ | product_name | String |  no  |  |
+ | can_return | Boolean |  no  |  |
+ | order_date | String |  no  |  |
+ | is_try_at_home | Boolean |  no  |  |
+ | breakup_values | ArrayList<[ShipmentTrackResponseBagListItemBreakValues](#ShipmentTrackResponseBagListItemBreakValues)> |  no  |  |
+ | statuses | ArrayList<[ShipmentTrackResponseBagListItemStatuses](#ShipmentTrackResponseBagListItemStatuses)> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | bag_id | String |  no  |  |
+ | order_id | String |  no  |  |
+ | size | String |  no  |  |
+ | payment_mode_source | String |  no  |  |
+ | dp_details | [ShipmentTrackResponseBagListItemDpDetails](#ShipmentTrackResponseBagListItemDpDetails) |  no  |  |
+ | product_id | Int |  no  |  |
+ | product_image | [ShipmentTrackResponseBagListItemsProductImage](#ShipmentTrackResponseBagListItemsProductImage) |  no  |  |
+ | brand_name | String |  no  |  |
+ | price_marked | String |  no  |  |
+ | status | String |  no  |  |
+ | can_cancel | Boolean |  no  |  |
+ | payment_mode | String |  no  |  |
+ | fynd_cash_msg | String |  no  |  |
+ | delivery_address | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponseBagListItemBreakValues](#ShipmentTrackResponseBagListItemBreakValues)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | display | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponseBagListItemStatuses](#ShipmentTrackResponseBagListItemStatuses)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | nps_rating | Int |  no  |  |
+ | nps_string | String |  no  |  |
+ | progress_status | ArrayList<[ShipmentTrackResponseBagListItemStatusesProgress](#ShipmentTrackResponseBagListItemStatusesProgress)> |  no  |  |
+ | flow_type | String |  no  |  |
+ | status_progress | Int |  no  |  |
+ | is_nps_done | Boolean |  no  |  |
+ | header_message | String |  no  |  |
+ | is_delayed | String |  no  |  |
+ | tracking_list | ArrayList<[ShipmentTrackResponseBagListItemStatusesTrack](#ShipmentTrackResponseBagListItemStatusesTrack)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponseBagListItemStatusesProgress](#ShipmentTrackResponseBagListItemStatusesProgress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | type | String |  no  |  |
+ | state | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponseBagListItemStatusesTrack](#ShipmentTrackResponseBagListItemStatusesTrack)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  |  |
+ | time | String |  no  |  |
+ | is_passed | Boolean |  no  |  |
+ | is_current | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponseBagListItemDpDetails](#ShipmentTrackResponseBagListItemDpDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tracking_no | String |  no  |  |
+ | courier | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentTrackResponseBagListItemsProductImage](#ShipmentTrackResponseBagListItemsProductImage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio | String |  no  |  |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateShipmentStatusResponse](#UpdateShipmentStatusResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shipments | HashMap<String,Any>? |  yes  |  |
+ | error_shipments | ArrayList<Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateShipmentStatusBody](#UpdateShipmentStatusBody)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shipments | HashMap<String,Any>? |  yes  |  |
+ | force_transition | Boolean? |  yes  |  |
+ | task | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentReasonsResponse](#ShipmentReasonsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
+ | reasons | ArrayList<[ShipmentResponseReasons](#ShipmentResponseReasons)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentResponseReasons](#ShipmentResponseReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | reason_id | Double |  no  |  |
+ | reason | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PlatformShipmentTrack](#PlatformShipmentTrack)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | results | [Results](#Results)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Results](#Results)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | awb | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | last_location_recieved_at | String |  no  |  |
+ | reason | String |  no  |  |
+ | shipment_type | String |  no  |  |
+ | status | String |  no  |  |
+ | updated_time | String |  no  |  |
+ | account_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentUpdateRequest](#ShipmentUpdateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bags | ArrayList<String>? |  yes  |  |
+ | reason | HashMap<String,Any>? |  yes  |  |
+ | comments | String? |  yes  |  |
+ | action | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentUpdateResponse](#ShipmentUpdateResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateProcessShipmenstRequestBody](#UpdateProcessShipmenstRequestBody)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shipment_ids | ArrayList<String>? |  yes  |  |
+ | expected_status | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateProcessShipmenstRequestResponse](#UpdateProcessShipmenstRequestResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetVoiceCallbackResponse](#GetVoiceCallbackResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetClickToCallResponse](#GetClickToCallResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ApefaceApiError](#ApefaceApiError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [GetSearchWordsData](#GetSearchWordsData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | uid | String |  no  |  |
+ | result | HashMap<String,Any> |  no  |  |
+ | app_id | String |  no  |  |
+ | words | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetSearchWordsDetailResponse](#GetSearchWordsDetailResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [GetSearchWordsData](#GetSearchWordsData) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ErrorResponse](#ErrorResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+ | message | String |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | status | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DeleteResponse](#DeleteResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SearchKeywordResult](#SearchKeywordResult)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort_on | String? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateSearchKeyword](#CreateSearchKeyword)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | result | [SearchKeywordResult](#SearchKeywordResult)? |  yes  |  |
+ | app_id | String |  no  |  |
+ | words | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetSearchWordsResponse](#GetSearchWordsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[GetSearchWordsData](#GetSearchWordsData)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAutocompleteWordsData](#GetAutocompleteWordsData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | results | ArrayList<HashMap<String,Any>> |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | uid | String |  no  |  |
+ | app_id | String |  no  |  |
+ | words | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[GetAutocompleteWordsData](#GetAutocompleteWordsData)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Media](#Media)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AutocompletePageAction](#AutocompletePageAction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | params | HashMap<String,Any> |  no  |  |
+ | type | String? |  yes  |  |
+ | url | String |  no  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AutocompleteAction](#AutocompleteAction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page | [AutocompletePageAction](#AutocompletePageAction) |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AutocompleteResult](#AutocompleteResult)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | logo | [Media](#Media) |  no  |  |
+ | action | [AutocompleteAction](#AutocompleteAction) |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateAutocompleteKeyword](#CreateAutocompleteKeyword)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | results | ArrayList<[AutocompleteResult](#AutocompleteResult)> |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | app_id | String |  no  |  |
+ | words | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateAutocompleteWordsResponse](#CreateAutocompleteWordsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_id | String |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | results | ArrayList<HashMap<String,Any>> |  no  |  |
+ | words | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductBundleItem](#ProductBundleItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | auto_select | Boolean |  no  |  |
+ | max_quantity | Int? |  yes  |  |
+ | allow_remove | Boolean |  no  |  |
+ | product_uid | Int? |  yes  |  |
+ | min_quantity | Int? |  yes  |  |
+ | auto_add_to_cart | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetProductBundleCreateResponse](#GetProductBundleCreateResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | same_store_assignment | Boolean |  no  |  |
+ | is_active | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | id | String |  no  |  |
+ | products | ArrayList<[ProductBundleItem](#ProductBundleItem)>? |  yes  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | created_on | String |  no  |  |
+ | choice | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | page_visibility | ArrayList<String> |  no  |  |
+ | logo | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetProductBundleListingResponse](#GetProductBundleListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[GetProductBundleCreateResponse](#GetProductBundleCreateResponse)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductBundleRequest](#ProductBundleRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | same_store_assignment | Boolean |  no  |  |
+ | is_active | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | products | ArrayList<[ProductBundleItem](#ProductBundleItem)>? |  yes  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | created_on | String |  no  |  |
+ | choice | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | page_visibility | ArrayList<String> |  no  |  |
+ | logo | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Price](#Price)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min_effective | Double |  no  |  |
+ | min_marked | Double |  no  |  |
+ | max_marked | Double |  no  |  |
+ | max_effective | Double |  no  |  |
+ | currency | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LimitedProductData](#LimitedProductData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | price | HashMap<String,Any> |  no  |  |
+ | attributes | HashMap<String,Any> |  no  |  |
+ | item_code | String |  no  |  |
+ | name | String |  no  |  |
+ | country_of_origin | String |  no  |  |
+ | slug | String |  no  |  |
+ | images | ArrayList<String> |  no  |  |
+ | quantity | Int |  no  |  |
+ | short_description | String |  no  |  |
+ | identifier | HashMap<String,Any> |  no  |  |
+ | sizes | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Size](#Size)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | String |  no  |  |
+ | quantity | Int |  no  |  |
+ | is_available | Boolean |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetProducts](#GetProducts)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | auto_select | Boolean |  no  |  |
+ | price | [Price](#Price) |  no  |  |
+ | max_quantity | Int |  no  |  |
+ | allow_remove | Boolean |  no  |  |
+ | product_uid | Int |  no  |  |
+ | min_quantity | Int |  no  |  |
+ | product_details | [LimitedProductData](#LimitedProductData) |  no  |  |
+ | sizes | ArrayList<[Size](#Size)> |  no  |  |
+ | auto_add_to_cart | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetProductBundleResponse](#GetProductBundleResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | same_store_assignment | Boolean |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | products | ArrayList<[GetProducts](#GetProducts)> |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | slug | String |  no  |  |
+ | choice | String |  no  |  |
+ | page_visibility | ArrayList<String> |  no  |  |
+ | logo | String |  no  |  |
+ | company_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductBundleUpdateRequest](#ProductBundleUpdateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | same_store_assignment | Boolean |  no  |  |
+ | is_active | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | products | ArrayList<[ProductBundleItem](#ProductBundleItem)>? |  yes  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | choice | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | page_visibility | ArrayList<String> |  no  |  |
+ | logo | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ListSizeGuide](#ListSizeGuide)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<HashMap<String,Any>> |  no  |  |
+ | page | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Meta](#Meta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | headers | HashMap<String,Any> |  no  |  |
+ | unit | String |  no  |  |
+ | values | ArrayList<HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Guide](#Guide)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | meta | [Meta](#Meta) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ValidateSizeGuide](#ValidateSizeGuide)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tag | String |  no  |  |
+ | subtitle | String |  no  |  |
+ | image | String |  no  |  |
+ | name | String? |  yes  |  |
+ | id | String |  no  |  |
+ | brand_id | Int |  no  |  |
+ | created_on | String |  no  |  |
+ | title | String? |  yes  |  |
+ | company_id | Int |  no  |  |
+ | description | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+ | guide | [Guide](#Guide) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SuccessResponse](#SuccessResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SizeGuideResponse](#SizeGuideResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tag | String |  no  |  |
+ | subtitle | String |  no  |  |
+ | name | String |  no  |  |
+ | id | String |  no  |  |
+ | brand_id | Int |  no  |  |
+ | created_on | String |  no  |  |
+ | title | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | modified_on | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+ | guide | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCatalogConfigurationDetailsProduct](#GetCatalogConfigurationDetailsProduct)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | compare | HashMap<String,Any> |  no  |  |
+ | detail | HashMap<String,Any> |  no  |  |
+ | variant | HashMap<String,Any> |  no  |  |
+ | similar | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MetaDataListingSortMetaResponse](#MetaDataListingSortMetaResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MetaDataListingSortResponse](#MetaDataListingSortResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<[MetaDataListingSortMetaResponse](#MetaDataListingSortMetaResponse)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MetaDataListingFilterMetaResponse](#MetaDataListingFilterMetaResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | units | ArrayList<HashMap<String,Any>> |  no  |  |
+ | filter_types | ArrayList<String> |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MetaDataListingFilterResponse](#MetaDataListingFilterResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<[MetaDataListingFilterMetaResponse](#MetaDataListingFilterMetaResponse)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MetaDataListingResponse](#MetaDataListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort | [MetaDataListingSortResponse](#MetaDataListingSortResponse)? |  yes  |  |
+ | filter | [MetaDataListingFilterResponse](#MetaDataListingFilterResponse)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCatalogConfigurationMetaData](#GetCatalogConfigurationMetaData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | product | [GetCatalogConfigurationDetailsProduct](#GetCatalogConfigurationDetailsProduct) |  no  |  |
+ | listing | [MetaDataListingResponse](#MetaDataListingResponse) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSize](#ProductSize)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Int? |  yes  |  |
+ | max | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductVariantConfig](#ConfigurationProductVariantConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display_type | String? |  yes  |  |
+ | is_active | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | size | [ProductSize](#ProductSize)? |  yes  |  |
+ | priority | Int? |  yes  |  |
+ | logo | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductVariant](#ConfigurationProductVariant)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | config | ArrayList<[ConfigurationProductVariantConfig](#ConfigurationProductVariantConfig)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductConfig](#ConfigurationProductConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subtitle | String |  no  |  |
+ | is_active | Boolean? |  yes  |  |
+ | key | String? |  yes  |  |
+ | size | [ProductSize](#ProductSize) |  no  |  |
+ | priority | Int? |  yes  |  |
+ | title | String |  no  |  |
+ | logo | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductSimilar](#ConfigurationProductSimilar)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | config | ArrayList<[ConfigurationProductConfig](#ConfigurationProductConfig)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProduct](#ConfigurationProduct)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | variant | [ConfigurationProductVariant](#ConfigurationProductVariant)? |  yes  |  |
+ | similar | [ConfigurationProductSimilar](#ConfigurationProductSimilar)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationListingSortConfig](#ConfigurationListingSortConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_active | Boolean? |  yes  |  |
+ | name | String |  no  |  |
+ | key | String? |  yes  |  |
+ | priority | Int? |  yes  |  |
+ | logo | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationListingSort](#ConfigurationListingSort)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | default_key | String? |  yes  |  |
+ | config | ArrayList<[ConfigurationListingSortConfig](#ConfigurationListingSortConfig)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationBucketPoints](#ConfigurationBucketPoints)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | end | Double |  no  |  |
+ | start | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationListingFilterValue](#ConfigurationListingFilterValue)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort | String |  no  |  |
+ | value | String |  no  |  |
+ | condition | String |  no  |  |
+ | bucket_points | ArrayList<[ConfigurationBucketPoints](#ConfigurationBucketPoints)> |  no  |  |
+ | map | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationListingFilterConfig](#ConfigurationListingFilterConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_active | Boolean? |  yes  |  |
+ | name | String |  no  |  |
+ | value_config | [ConfigurationListingFilterValue](#ConfigurationListingFilterValue) |  no  |  |
+ | key | String? |  yes  |  |
+ | priority | Int? |  yes  |  |
+ | type | String? |  yes  |  |
+ | logo | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationListingFilter](#ConfigurationListingFilter)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | allow_single | Boolean? |  yes  |  |
+ | attribute_config | ArrayList<[ConfigurationListingFilterConfig](#ConfigurationListingFilterConfig)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationListing](#ConfigurationListing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort | [ConfigurationListingSort](#ConfigurationListingSort)? |  yes  |  |
+ | filter | [ConfigurationListingFilter](#ConfigurationListingFilter)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AppCatalogConfiguration](#AppCatalogConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | config_type | String? |  yes  |  |
+ | id | String |  no  |  |
+ | product | [ConfigurationProduct](#ConfigurationProduct) |  no  |  |
+ | config_id | String |  no  |  |
+ | app_id | String? |  yes  |  |
+ | listing | [ConfigurationListing](#ConfigurationListing) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAppCatalogConfiguration](#GetAppCatalogConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [AppCatalogConfiguration](#AppCatalogConfiguration) |  no  |  |
+ | is_default | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppConfiguration](#AppConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | config_type | String? |  yes  |  |
+ | product | [ConfigurationProduct](#ConfigurationProduct) |  no  |  |
+ | config_id | String |  no  |  |
+ | app_id | String? |  yes  |  |
+ | listing | [ConfigurationListing](#ConfigurationListing) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCatalogConfigurationDetailsSchemaListing](#GetCatalogConfigurationDetailsSchemaListing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort | HashMap<String,Any> |  no  |  |
+ | filter | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EntityConfiguration](#EntityConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | config_type | String? |  yes  |  |
+ | id | String |  no  |  |
+ | product | [GetCatalogConfigurationDetailsProduct](#GetCatalogConfigurationDetailsProduct) |  no  |  |
+ | config_id | String |  no  |  |
+ | app_id | String? |  yes  |  |
+ | listing | [GetCatalogConfigurationDetailsSchemaListing](#GetCatalogConfigurationDetailsSchemaListing) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAppCatalogEntityConfiguration](#GetAppCatalogEntityConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [EntityConfiguration](#EntityConfiguration) |  no  |  |
+ | is_default | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSortOn](#ProductSortOn)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_selected | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductFiltersKey](#ProductFiltersKey)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | logo | String |  no  |  |
+ | name | String? |  yes  |  |
+ | kind | String |  no  |  |
+ | display | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductFiltersValue](#ProductFiltersValue)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+ | display_format | String |  no  |  |
+ | min | Int |  no  |  |
+ | currency_code | String |  no  |  |
+ | selected_min | Int |  no  |  |
+ | value | String? |  yes  |  |
+ | max | Int |  no  |  |
+ | query_format | String |  no  |  |
+ | currency_symbol | String |  no  |  |
+ | selected_max | Int |  no  |  |
+ | is_selected | Boolean? |  yes  |  |
+ | display | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductFilters](#ProductFilters)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | [ProductFiltersKey](#ProductFiltersKey)? |  yes  |  |
+ | values | ArrayList<[ProductFiltersValue](#ProductFiltersValue)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCollectionQueryOptionResponse](#GetCollectionQueryOptionResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort_on | ArrayList<[ProductSortOn](#ProductSortOn)> |  no  |  |
+ | filters | ArrayList<[ProductFilters](#ProductFilters)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilterTag](#CollectionListingFilterTag)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_selected | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilterType](#CollectionListingFilterType)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_selected | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilter](#CollectionListingFilter)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)> |  no  |  |
+ | type | ArrayList<[CollectionListingFilterType](#CollectionListingFilterType)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BannerImage](#BannerImage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio | String |  no  |  |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ImageUrls](#ImageUrls)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | portrait | [BannerImage](#BannerImage) |  no  |  |
+ | landscape | [BannerImage](#BannerImage) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Media1](#Media1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | url | String? |  yes  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductListingActionPage](#ProductListingActionPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductListingAction](#ProductListingAction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page | [ProductListingActionPage](#ProductListingActionPage) |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCollectionDetailNest](#GetCollectionDetailNest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | String |  no  |  |
+ | visible_facets_keys | ArrayList<String> |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+ | slug | String |  no  |  |
+ | type | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+ | logo | [Media1](#Media1) |  no  |  |
+ | cron | HashMap<String,Any> |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | allow_facets | Boolean |  no  |  |
+ | allow_sort | Boolean |  no  |  |
+ | tag | ArrayList<String> |  no  |  |
+ | badge | HashMap<String,Any> |  no  |  |
+ | app_id | String |  no  |  |
+ | description | String |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction) |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | _schedule | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCollectionListingResponse](#GetCollectionListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | filters | [CollectionListingFilter](#CollectionListingFilter) |  no  |  |
+ | items | ArrayList<[GetCollectionDetailNest](#GetCollectionDetailNest)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SeoDetail](#SeoDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String |  no  |  |
+ | title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionImage](#CollectionImage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio | String? |  yes  |  |
+ | url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionBanner](#CollectionBanner)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | portrait | [CollectionImage](#CollectionImage)? |  yes  |  |
+ | landscape | [CollectionImage](#CollectionImage)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserInfo](#UserInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | uid | String |  no  |  |
+ | username | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionBadge](#CollectionBadge)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | text | String |  no  |  |
+ | color | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Schedule](#Schedule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cron | String |  no  |  |
+ | duration | Int |  no  |  |
+ | end | String |  no  |  |
+ | start | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateCollection](#CreateCollection)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | visible_facets_keys | ArrayList<String> |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+ | sort_on | String |  no  |  |
+ | slug | String? |  yes  |  |
+ | seo | [SeoDetail](#SeoDetail) |  no  |  |
+ | type | String? |  yes  |  |
+ | banners | [CollectionBanner](#CollectionBanner)? |  yes  |  |
+ | logo | [CollectionImage](#CollectionImage)? |  yes  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | _locale_language | HashMap<String,Any> |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | allow_facets | Boolean |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | created_by | [UserInfo](#UserInfo) |  no  |  |
+ | allow_sort | Boolean |  no  |  |
+ | badge | [CollectionBadge](#CollectionBadge) |  no  |  |
+ | published | Boolean |  no  |  |
+ | app_id | String? |  yes  |  |
+ | description | String |  no  |  |
+ | modified_by | [UserInfo](#UserInfo) |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String? |  yes  |  |
+ | _schedule | [Schedule](#Schedule) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionCreateResponse](#CollectionCreateResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | allow_sort | Boolean |  no  |  |
+ | visible_facets_keys | ArrayList<String> |  no  |  |
+ | tag | ArrayList<String> |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | cron | HashMap<String,Any> |  no  |  |
+ | name | String |  no  |  |
+ | _schedule | HashMap<String,Any> |  no  |  |
+ | badge | HashMap<String,Any> |  no  |  |
+ | logo | [BannerImage](#BannerImage) |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | slug | String |  no  |  |
+ | type | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+ | app_id | String |  no  |  |
+ | description | String |  no  |  |
+ | allow_facets | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionDetailResponse](#CollectionDetailResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | allow_sort | Boolean |  no  |  |
+ | visible_facets_keys | ArrayList<String> |  no  |  |
+ | tag | ArrayList<String> |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | cron | HashMap<String,Any> |  no  |  |
+ | name | String |  no  |  |
+ | _schedule | HashMap<String,Any> |  no  |  |
+ | badge | HashMap<String,Any> |  no  |  |
+ | logo | [Media1](#Media1) |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | slug | String |  no  |  |
+ | type | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+ | app_id | String |  no  |  |
+ | description | String |  no  |  |
+ | allow_facets | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateCollection](#UpdateCollection)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | visible_facets_keys | ArrayList<String> |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+ | sort_on | String |  no  |  |
+ | slug | String |  no  |  |
+ | seo | [SeoDetail](#SeoDetail) |  no  |  |
+ | banners | [CollectionBanner](#CollectionBanner) |  no  |  |
+ | logo | [CollectionImage](#CollectionImage) |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | _locale_language | HashMap<String,Any> |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | allow_facets | Boolean |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | allow_sort | Boolean |  no  |  |
+ | badge | [CollectionBadge](#CollectionBadge) |  no  |  |
+ | published | Boolean |  no  |  |
+ | description | String |  no  |  |
+ | modified_by | [UserInfo](#UserInfo) |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | _schedule | [Schedule](#Schedule) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDetailAttribute](#ProductDetailAttribute)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | value | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | details | ArrayList<[ProductDetailAttribute](#ProductDetailAttribute)> |  no  |  |
+ | title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductBrand](#ProductBrand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | logo | [Media1](#Media1) |  no  |  |
+ | name | String |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Price1](#Price1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Double |  no  |  |
+ | max | Double |  no  |  |
+ | currency_code | String |  no  |  |
+ | currency_symbol | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductListingPrice](#ProductListingPrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | marked | [Price1](#Price1) |  no  |  |
+ | effective | [Price1](#Price1) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductListingDetail](#ProductListingDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | item_type | String |  no  |  |
+ | attributes | HashMap<String,Any> |  no  |  |
+ | has_variant | Boolean |  no  |  |
+ | color | String |  no  |  |
+ | slug | String? |  yes  |  |
+ | type | String |  no  |  |
+ | teaser_tag | HashMap<String,Any> |  no  |  |
+ | product_online_date | String |  no  |  |
+ | highlights | ArrayList<String> |  no  |  |
+ | short_description | String |  no  |  |
+ | rating | Double |  no  |  |
+ | image_nature | String |  no  |  |
+ | rating_count | Int |  no  |  |
+ | grouped_attributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)> |  no  |  |
+ | brand | [ProductBrand](#ProductBrand) |  no  |  |
+ | similars | ArrayList<String> |  no  |  |
+ | promo_meta | HashMap<String,Any> |  no  |  |
+ | discount | String |  no  |  |
+ | description | String |  no  |  |
+ | sellable | Boolean |  no  |  |
+ | price | [ProductListingPrice](#ProductListingPrice) |  no  |  |
+ | name | String |  no  |  |
+ | item_code | String |  no  |  |
+ | medias | ArrayList<[Media1](#Media1)> |  no  |  |
+ | tryouts | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCollectionItemsResponse](#GetCollectionItemsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort_on | ArrayList<[ProductSortOn](#ProductSortOn)> |  no  |  |
+ | filters | ArrayList<[ProductFilters](#ProductFilters)> |  no  |  |
+ | items | ArrayList<[ProductListingDetail](#ProductListingDetail)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionItemRequest](#CollectionItemRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page_no | Int? |  yes  |  |
+ | page_size | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdatedResponse](#UpdatedResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CatalogInsightItem](#CatalogInsightItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int |  no  |  |
+ | out_of_stock_count | Int |  no  |  |
+ | sellable_count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CatalogInsightBrand](#CatalogInsightBrand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | total_articles | Int |  no  |  |
+ | available_articles | Int |  no  |  |
+ | name | String |  no  |  |
+ | article_freshness | Int |  no  |  |
+ | available_sizes | Int |  no  |  |
+ | total_sizes | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CatalogInsightResponse](#CatalogInsightResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | item | [CatalogInsightItem](#CatalogInsightItem) |  no  |  |
+ | brand_distribution | [CatalogInsightBrand](#CatalogInsightBrand) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CrossSellingData](#CrossSellingData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | articles | Int |  no  |  |
+ | products | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CrossSellingResponse](#CrossSellingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand_distribution | [CatalogInsightBrand](#CatalogInsightBrand) |  no  |  |
+ | data | [CrossSellingData](#CrossSellingData) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptInPostRequest](#OptInPostRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store_ids | ArrayList<Int> |  no  |  |
+ | opt_level | String? |  yes  |  |
+ | brand_ids | ArrayList<Int> |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyOptIn](#CompanyOptIn)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store_ids | ArrayList<Int>? |  yes  |  |
+ | created_on | Int? |  yes  |  |
+ | opt_level | String? |  yes  |  |
+ | brand_ids | ArrayList<Int>? |  yes  |  |
+ | modified_on | Int? |  yes  |  |
+ | platform | String? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+ | enabled | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetOptInPlatform](#GetOptInPlatform)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[CompanyOptIn](#CompanyOptIn)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OptinCompanyDetail](#OptinCompanyDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | business_type | String |  no  |  |
+ | name | String |  no  |  |
+ | company_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyBrandDetail](#CompanyBrandDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand_name | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | total_article | Int |  no  |  |
+ | brand_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptinCompanyBrandDetailsView](#OptinCompanyBrandDetailsView)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[CompanyBrandDetail](#CompanyBrandDetail)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptinCompanyMetrics](#OptinCompanyMetrics)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store | Int |  no  |  |
+ | company | String |  no  |  |
+ | brand | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreDetail](#StoreDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | store_type | String |  no  |  |
+ | name | String |  no  |  |
+ | additional_contacts | ArrayList<HashMap<String,Any>> |  no  |  |
+ | created_on | String |  no  |  |
+ | documents | ArrayList<HashMap<String,Any>> |  no  |  |
+ | store_code | String |  no  |  |
+ | display_name | String |  no  |  |
+ | timing | HashMap<String,Any> |  no  |  |
+ | modified_on | String |  no  |  |
+ | company_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptinStoreDetails](#OptinStoreDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[StoreDetail](#StoreDetail)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeMasterMandatoryDetails](#AttributeMasterMandatoryDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | l3_keys | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeMasterMeta](#AttributeMasterMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mandatory_details | [AttributeMasterMandatoryDetails](#AttributeMasterMandatoryDetails)? |  yes  |  |
+ | enriched | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeMasterFilter](#AttributeMasterFilter)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | depends_on | ArrayList<String> |  no  |  |
+ | priority | Int |  no  |  |
+ | indexing | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeMasterDetails](#AttributeMasterDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display_type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeSchemaRange](#AttributeSchemaRange)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Int |  no  |  |
+ | max | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeMaster](#AttributeMaster)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | allowed_values | ArrayList<String> |  no  |  |
+ | range | [AttributeSchemaRange](#AttributeSchemaRange) |  no  |  |
+ | mandatory | Boolean |  no  |  |
+ | multi | Boolean |  no  |  |
+ | type | String? |  yes  |  |
+ | format | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GenderDetail](#GenderDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | departments | ArrayList<String> |  no  |  |
+ | meta | [AttributeMasterMeta](#AttributeMasterMeta) |  no  |  |
+ | is_nested | Boolean |  no  |  |
+ | logo | String |  no  |  |
+ | slug | String |  no  |  |
+ | enabled_for_end_consumer | Boolean |  no  |  |
+ | filters | [AttributeMasterFilter](#AttributeMasterFilter) |  no  |  |
+ | details | [AttributeMasterDetails](#AttributeMasterDetails) |  no  |  |
+ | schema | [AttributeMaster](#AttributeMaster) |  no  |  |
+ | description | String |  no  |  |
+ | id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProdcutTemplateCategoriesResponse](#ProdcutTemplateCategoriesResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<HashMap<String,Any>> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PTErrorResponse](#PTErrorResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+ | errors | HashMap<String,Any> |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | message | String |  no  |  |
+ | status | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserSerializer](#UserSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | contact | String |  no  |  |
+ | username | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetDepartment](#GetDepartment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | search | String |  no  |  |
+ | item_type | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | priority_order | Int |  no  |  |
+ | modified_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | name | String |  no  |  |
+ | created_on | String |  no  |  |
+ | slug | String |  no  |  |
+ | synonyms | ArrayList<String> |  no  |  |
+ | page_no | Int |  no  |  |
+ | logo | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | created_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | page_size | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DepartmentsResponse](#DepartmentsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[GetDepartment](#GetDepartment)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DepartmentErrorResponse](#DepartmentErrorResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+ | errors | HashMap<String,Any> |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | message | String |  no  |  |
+ | status | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductTemplate](#ProductTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tag | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | attributes | ArrayList<String> |  no  |  |
+ | name | String |  no  |  |
+ | departments | ArrayList<String> |  no  |  |
+ | is_physical | Boolean? |  yes  |  |
+ | logo | String |  no  |  |
+ | created_on | String |  no  |  |
+ | slug | String? |  yes  |  |
+ | is_archived | Boolean |  no  |  |
+ | categories | ArrayList<String> |  no  |  |
+ | description | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplatesResponse](#TemplatesResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [ProductTemplate](#ProductTemplate) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplateDetails](#TemplateDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tag | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | attributes | ArrayList<String> |  no  |  |
+ | name | String |  no  |  |
+ | departments | ArrayList<String> |  no  |  |
+ | is_physical | Boolean? |  yes  |  |
+ | logo | String |  no  |  |
+ | slug | String? |  yes  |  |
+ | is_archived | Boolean |  no  |  |
+ | categories | ArrayList<String> |  no  |  |
+ | description | String |  no  |  |
+ | id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Properties](#Properties)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | multi_size | HashMap<String,Any> |  no  |  |
+ | variants | HashMap<String,Any> |  no  |  |
+ | item_type | HashMap<String,Any> |  no  |  |
+ | hsn_code | HashMap<String,Any> |  no  |  |
+ | command | HashMap<String,Any> |  no  |  |
+ | slug | HashMap<String,Any> |  no  |  |
+ | trader_type | HashMap<String,Any> |  no  |  |
+ | sizes | HashMap<String,Any> |  no  |  |
+ | trader | HashMap<String,Any> |  no  |  |
+ | moq | HashMap<String,Any> |  no  |  |
+ | teaser_tag | HashMap<String,Any> |  no  |  |
+ | no_of_boxes | HashMap<String,Any> |  no  |  |
+ | category_slug | HashMap<String,Any> |  no  |  |
+ | highlights | HashMap<String,Any> |  no  |  |
+ | return_config | HashMap<String,Any> |  no  |  |
+ | short_description | HashMap<String,Any> |  no  |  |
+ | size_guide | HashMap<String,Any> |  no  |  |
+ | currency | HashMap<String,Any> |  no  |  |
+ | tags | HashMap<String,Any> |  no  |  |
+ | product_group_tag | HashMap<String,Any> |  no  |  |
+ | is_dependent | HashMap<String,Any> |  no  |  |
+ | product_publish | HashMap<String,Any> |  no  |  |
+ | brand_uid | HashMap<String,Any> |  no  |  |
+ | custom_order | HashMap<String,Any> |  no  |  |
+ | description | HashMap<String,Any> |  no  |  |
+ | is_active | HashMap<String,Any> |  no  |  |
+ | item_code | HashMap<String,Any> |  no  |  |
+ | name | HashMap<String,Any> |  no  |  |
+ | country_of_origin | HashMap<String,Any> |  no  |  |
+ | media | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalValidation](#GlobalValidation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | definitions | HashMap<String,Any> |  no  |  |
+ | title | String |  no  |  |
+ | type | String |  no  |  |
+ | required | ArrayList<String> |  no  |  |
+ | description | String |  no  |  |
+ | properties | [Properties](#Properties) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplateValidationData](#TemplateValidationData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | global_validation | [GlobalValidation](#GlobalValidation) |  no  |  |
+ | template_validation | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplatesValidationResponse](#TemplatesValidationResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template_details | [TemplateDetails](#TemplateDetails) |  no  |  |
+ | data | [TemplateValidationData](#TemplateValidationData) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryValidationResponse](#InventoryValidationResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+ | data | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HSNData](#HSNData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hsn_code | ArrayList<String> |  no  |  |
+ | country_of_origin | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HSNCodesResponse](#HSNCodesResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+ | data | [HSNData](#HSNData) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDownloadItemsData](#ProductDownloadItemsData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | templates | ArrayList<String> |  no  |  |
+ | brand | ArrayList<String> |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifiedBy](#VerifiedBy)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | username | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDownloadsItems](#ProductDownloadsItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template_tags | HashMap<String,Any> |  no  |  |
+ | url | String |  no  |  |
+ | completed_on | String |  no  |  |
+ | seller_id | Double |  no  |  |
+ | id | String |  no  |  |
+ | data | [ProductDownloadItemsData](#ProductDownloadItemsData) |  no  |  |
+ | task_id | String |  no  |  |
+ | trigger_on | String |  no  |  |
+ | created_by | [VerifiedBy](#VerifiedBy) |  no  |  |
+ | status | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDownloadsResponse](#ProductDownloadsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [ProductDownloadsItems](#ProductDownloadsItems) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductConfigurationDownloads](#ProductConfigurationDownloads)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | multivalue | Boolean |  no  |  |
+ | data | ArrayList<HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryMappingValues](#CategoryMappingValues)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | catalog_id | Int |  no  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryMapping](#CategoryMapping)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | facebook | [CategoryMappingValues](#CategoryMappingValues) |  no  |  |
+ | google | [CategoryMappingValues](#CategoryMappingValues) |  no  |  |
+ | ajio | [CategoryMappingValues](#CategoryMappingValues) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Media2](#Media2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | logo | String? |  yes  |  |
+ | portrait | String? |  yes  |  |
+ | landscape | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Hierarchy](#Hierarchy)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | l1 | Int? |  yes  |  |
+ | l2 | Int? |  yes  |  |
+ | department | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Category](#Category)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | synonyms | ArrayList<String> |  no  |  |
+ | marketplaces | [CategoryMapping](#CategoryMapping) |  no  |  |
+ | is_active | Boolean? |  yes  |  |
+ | departments | ArrayList<Int>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | media | [Media2](#Media2) |  no  |  |
+ | created_on | String |  no  |  |
+ | level | Int? |  yes  |  |
+ | slug | String |  no  |  |
+ | _id | String |  no  |  |
+ | hierarchy | ArrayList<[Hierarchy](#Hierarchy)> |  no  |  |
+ | priority | Int |  no  |  |
+ | tryouts | ArrayList<String> |  no  |  |
+ | modified_on | String |  no  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryResponse](#CategoryResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Category](#Category)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryRequestBody](#CategoryRequestBody)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | synonyms | ArrayList<String> |  no  |  |
+ | marketplaces | [CategoryMapping](#CategoryMapping) |  no  |  |
+ | is_active | Boolean? |  yes  |  |
+ | departments | ArrayList<Int>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | media | [Media2](#Media2) |  no  |  |
+ | level | Int? |  yes  |  |
+ | slug | String |  no  |  |
+ | hierarchy | ArrayList<[Hierarchy](#Hierarchy)> |  no  |  |
+ | priority | Int |  no  |  |
+ | tryouts | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryCreateResponse](#CategoryCreateResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SingleCategoryResponse](#SingleCategoryResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [Category](#Category) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryUpdateResponse](#CategoryUpdateResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserCommon](#UserCommon)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company_id | Int |  no  |  |
+ | username | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Attributes](#Attributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | stage | String |  no  |  |
+ | color | String |  no  |  |
+ | is_image_less_product | Boolean |  no  |  |
+ | essential | String |  no  |  |
+ | neck_type | String |  no  |  |
+ | product_fit | String |  no  |  |
+ | l3_mapping | ArrayList<String> |  no  |  |
+ | created_on | String |  no  |  |
+ | sleeve_length | String |  no  |  |
+ | material | String |  no  |  |
+ | pattern | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | image_nature | String |  no  |  |
+ | created_by | [UserCommon](#UserCommon) |  no  |  |
+ | verified_by | [VerifiedBy](#VerifiedBy) |  no  |  |
+ | modified_by | [UserCommon](#UserCommon) |  no  |  |
+ | verified_on | String |  no  |  |
+ | meta_nature | String |  no  |  |
+ | gender | ArrayList<String> |  no  |  |
+ | primary_color | String |  no  |  |
+ | primary_material | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Logo](#Logo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio_f | Int |  no  |  |
+ | aspect_ratio | String |  no  |  |
+ | secure_url | String |  no  |  |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Brand](#Brand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | logo | [Logo](#Logo) |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductPublished](#ProductPublished)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_set | Boolean |  no  |  |
+ | product_online_date | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Image](#Image)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio_f | Double |  no  |  |
+ | aspect_ratio | String |  no  |  |
+ | secure_url | String |  no  |  |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Product](#Product)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | multi_size | Boolean |  no  |  |
+ | item_type | String |  no  |  |
+ | hsn_code | String |  no  |  |
+ | attributes | [Attributes](#Attributes) |  no  |  |
+ | slug | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | sizes | ArrayList<HashMap<String,Any>> |  no  |  |
+ | category_slug | String |  no  |  |
+ | highlights | String |  no  |  |
+ | all_sizes | ArrayList<String> |  no  |  |
+ | size_guide | String |  no  |  |
+ | currency | String |  no  |  |
+ | brand | [Brand](#Brand) |  no  |  |
+ | departments | ArrayList<Int> |  no  |  |
+ | is_dependent | Boolean |  no  |  |
+ | product_publish | [ProductPublished](#ProductPublished) |  no  |  |
+ | description | String |  no  |  |
+ | id | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | country_of_origin | String |  no  |  |
+ | item_code | String |  no  |  |
+ | name | String |  no  |  |
+ | media | ArrayList<[Media1](#Media1)> |  no  |  |
+ | is_set | Boolean |  no  |  |
+ | template_tag | String |  no  |  |
+ | images | ArrayList<[Image](#Image)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductListingResponse](#ProductListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Product](#Product)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Trader](#Trader)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address | String? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TeaserTag](#TeaserTag)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tag | String |  no  |  |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderQuantity](#OrderQuantity)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | minimum | Int |  no  |  |
+ | is_set | Boolean |  no  |  |
+ | maximum | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ReturnConfig](#ReturnConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | returnable | Boolean |  no  |  |
+ | unit | String |  no  |  |
+ | time | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductPublish](#ProductPublish)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_set | Boolean |  no  |  |
+ | product_online_date | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CustomOrder](#CustomOrder)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | manufacturing_time | Int |  no  |  |
+ | is_custom_order | Boolean |  no  |  |
+ | manufacturing_time_unit | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductCreateUpdate](#ProductCreateUpdate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | multi_size | Boolean |  no  |  |
+ | variants | HashMap<String,Any> |  no  |  |
+ | item_type | String? |  yes  |  |
+ | hsn_code | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | trader_type | String |  no  |  |
+ | company_id | Int? |  yes  |  |
+ | is_image_less_product | Boolean |  no  |  |
+ | trader | [Trader](#Trader) |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | requester | String |  no  |  |
+ | teaser_tag | [TeaserTag](#TeaserTag) |  no  |  |
+ | no_of_boxes | Int |  no  |  |
+ | moq | [OrderQuantity](#OrderQuantity) |  no  |  |
+ | category_slug | String? |  yes  |  |
+ | highlights | ArrayList<String> |  no  |  |
+ | return_config | [ReturnConfig](#ReturnConfig) |  no  |  |
+ | short_description | String |  no  |  |
+ | size_guide | String |  no  |  |
+ | currency | String? |  yes  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | change_request_id | String |  no  |  |
+ | departments | ArrayList<Int>? |  yes  |  |
+ | product_group_tag | ArrayList<String> |  no  |  |
+ | is_dependent | Boolean |  no  |  |
+ | product_publish | [ProductPublish](#ProductPublish) |  no  |  |
+ | brand_uid | Int? |  yes  |  |
+ | description | String |  no  |  |
+ | custom_order | [CustomOrder](#CustomOrder) |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | item_code | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | country_of_origin | String? |  yes  |  |
+ | media | ArrayList<[Media1](#Media1)> |  no  |  |
+ | is_set | Boolean |  no  |  |
+ | template_tag | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ValidateProduct](#ValidateProduct)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | valid | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserDetail](#UserDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | username | String |  no  |  |
+ | user_id | String |  no  |  |
+ | full_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductBulkRequest](#ProductBulkRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | total | Int |  no  |  |
+ | failed | Int |  no  |  |
+ | cancelled | Int |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | modified_by | [UserDetail](#UserDetail) |  no  |  |
+ | stage | String |  no  |  |
+ | template | [ProductTemplate](#ProductTemplate) |  no  |  |
+ | created_on | String |  no  |  |
+ | failed_records | ArrayList<String> |  no  |  |
+ | template_tag | String |  no  |  |
+ | cancelled_records | ArrayList<String> |  no  |  |
+ | file_path | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | created_by | [UserDetail](#UserDetail) |  no  |  |
+ | succeed | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductBulkRequestList](#ProductBulkRequestList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [ProductBulkRequest](#ProductBulkRequest) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserInfo1](#UserInfo1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | uid | String |  no  |  |
+ | username | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkJob](#BulkJob)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | total | Int? |  yes  |  |
+ | cancelled | Int |  no  |  |
+ | succeed | Int |  no  |  |
+ | failed | Int |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | custom_template_tag | String |  no  |  |
+ | stage | String |  no  |  |
+ | created_on | String? |  yes  |  |
+ | failed_records | ArrayList<HashMap<String,Any>> |  no  |  |
+ | tracking_url | String |  no  |  |
+ | template_tag | String |  no  |  |
+ | cancelled_records | ArrayList<HashMap<String,Any>> |  no  |  |
+ | file_path | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | company_id | Int? |  yes  |  |
+ | created_by | [UserInfo1](#UserInfo1) |  no  |  |
+ | modified_by | [UserInfo1](#UserInfo1) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkProductRequest](#BulkProductRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template_tag | String? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+ | data | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | batch_id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [NestedTags](#NestedTags)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tags | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductTagsViewResponse](#ProductTagsViewResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [NestedTags](#NestedTags) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Items](#Items)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | total | Int |  no  |  |
+ | failed | Int |  no  |  |
+ | succeed | Int |  no  |  |
+ | cancelled | Int |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | stage | String |  no  |  |
+ | id | String |  no  |  |
+ | created_on | String |  no  |  |
+ | failed_records | ArrayList<String> |  no  |  |
+ | tracking_url | String |  no  |  |
+ | retry | Int |  no  |  |
+ | file_path | String |  no  |  |
+ | cancelled_records | ArrayList<String> |  no  |  |
+ | modified_on | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | created_by | [UserCommon](#UserCommon) |  no  |  |
+ | modified_by | [UserCommon](#UserCommon) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkAssetResponse](#BulkAssetResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Items](#Items)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductBulkAssets](#ProductBulkAssets)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | HashMap<String,Any>? |  yes  |  |
+ | company_id | Int |  no  |  |
+ | url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSizeDeleteDataResponse](#ProductSizeDeleteDataResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | size | String |  no  |  |
+ | item_id | Int |  no  |  |
+ | company_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSizeDeleteResponse](#ProductSizeDeleteResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | data | [ProductSizeDeleteDataResponse](#ProductSizeDeleteDataResponse) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryResponse](#InventoryResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store | HashMap<String,Any> |  no  |  |
+ | uid | String |  no  |  |
+ | item_id | Int |  no  |  |
+ | price | Int |  no  |  |
+ | inventory_updated_on | String |  no  |  |
+ | seller_identifier | Int |  no  |  |
+ | size | String |  no  |  |
+ | quantity | Int |  no  |  |
+ | price_effective | Int |  no  |  |
+ | price_transfer | Int |  no  |  |
+ | identifiers | HashMap<String,Any> |  no  |  |
+ | sellable_quantity | Int |  no  |  |
+ | currency | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ItemQuery](#ItemQuery)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | item_code | String |  no  |  |
+ | brand_uid | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SetSize](#SetSize)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | size | String? |  yes  |  |
+ | pieces | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SizeDistribution](#SizeDistribution)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sizes | ArrayList<[SetSize](#SetSize)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InventorySet](#InventorySet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | size_distribution | [SizeDistribution](#SizeDistribution)? |  yes  |  |
+ | quantity | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GTIN](#GTIN)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | primary | Boolean |  no  |  |
+ | gtin_value | String? |  yes  |  |
+ | gtin_type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvSize](#InvSize)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | item_width | Double |  no  |  |
+ | price | Double? |  yes  |  |
+ | set | [InventorySet](#InventorySet) |  no  |  |
+ | currency | String? |  yes  |  |
+ | item_weight_unit_of_measure | String |  no  |  |
+ | item_dimensions_unit_of_measure | String |  no  |  |
+ | size | String? |  yes  |  |
+ | is_set | Boolean |  no  |  |
+ | item_length | Double |  no  |  |
+ | quantity | Int? |  yes  |  |
+ | price_effective | Double? |  yes  |  |
+ | price_transfer | Double |  no  |  |
+ | item_height | Double |  no  |  |
+ | store_code | String? |  yes  |  |
+ | item_weight | Double |  no  |  |
+ | identifiers | ArrayList<[GTIN](#GTIN)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryRequest](#InventoryRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | item | [ItemQuery](#ItemQuery)? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+ | sizes | ArrayList<[InvSize](#InvSize)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryDeleteData](#InventoryDeleteData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | size | String |  no  |  |
+ | item_id | Int |  no  |  |
+ | location_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryDelete](#InventoryDelete)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | data | [InventoryDeleteData](#InventoryDeleteData) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkInventoryGetItems](#BulkInventoryGetItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | total | Int |  no  |  |
+ | cancelled | Int |  no  |  |
+ | failed | Int |  no  |  |
+ | succeed | Int |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | stage | String |  no  |  |
+ | id | String |  no  |  |
+ | created_on | String |  no  |  |
+ | failed_records | ArrayList<String> |  no  |  |
+ | cancelled_records | ArrayList<String> |  no  |  |
+ | file_path | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | created_by | HashMap<String,Any> |  no  |  |
+ | modified_by | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkInventoryGet](#BulkInventoryGet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[BulkInventoryGetItems](#BulkInventoryGetItems)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CommonResponse](#CommonResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Size1](#Size1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | item_width | Double |  no  |  |
+ | price | Double? |  yes  |  |
+ | set | [InventorySet](#InventorySet) |  no  |  |
+ | seller_identifier | String? |  yes  |  |
+ | currency | String? |  yes  |  |
+ | item_weight_unit_of_measure | String |  no  |  |
+ | item_dimensions_unit_of_measure | String |  no  |  |
+ | size | String |  no  |  |
+ | is_set | Boolean |  no  |  |
+ | item_length | Double |  no  |  |
+ | quantity | Int? |  yes  |  |
+ | price_effective | Double? |  yes  |  |
+ | price_transfer | Double |  no  |  |
+ | item_height | Double |  no  |  |
+ | store_code | String? |  yes  |  |
+ | item_weight | Double |  no  |  |
+ | identifiers | ArrayList<HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryBulkRequest](#InventoryBulkRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | HashMap<String,Any> |  no  |  |
+ | company_id | Int? |  yes  |  |
+ | sizes | ArrayList<[Size1](#Size1)>? |  yes  |  |
+ | batch_id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryExportJob](#InventoryExportJob)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | url | String |  no  |  |
+ | completed_on | String |  no  |  |
+ | trigger_on | String |  no  |  |
+ | task_id | String? |  yes  |  |
+ | seller_id | Int? |  yes  |  |
+ | request_params | HashMap<String,Any> |  no  |  |
+ | status | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryExportRequest](#InventoryExportRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store | ArrayList<Int> |  no  |  |
+ | brand | ArrayList<Int> |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FilerList](#FilerList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | String |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryConfig](#InventoryConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | multivalues | Boolean |  no  |  |
+ | data | ArrayList<[FilerList](#FilerList)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HsnCodesObject](#HsnCodesObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hs2_code | String |  no  |  |
+ | threshold1 | Double |  no  |  |
+ | tax2 | Double |  no  |  |
+ | hsn_code | String |  no  |  |
+ | tax_on_esp | Boolean |  no  |  |
+ | threshold2 | Double |  no  |  |
+ | tax1 | Double |  no  |  |
+ | tax_on_mrp | Boolean |  no  |  |
+ | modified_on | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PageResponse](#PageResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | has_previous | Boolean |  no  |  |
+ | item_total | Int |  no  |  |
+ | current | String |  no  |  |
+ | size | Int |  no  |  |
+ | has_next | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HsnCodesListingResponse](#HsnCodesListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[HsnCodesObject](#HsnCodesObject)> |  no  |  |
+ | page | [PageResponse](#PageResponse) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HsnUpsert](#HsnUpsert)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hs2_code | String? |  yes  |  |
+ | uid | Int |  no  |  |
+ | threshold1 | Double? |  yes  |  |
+ | tax2 | Double |  no  |  |
+ | hsn_code | String? |  yes  |  |
+ | tax_on_esp | Boolean |  no  |  |
+ | threshold2 | Double |  no  |  |
+ | tax1 | Double? |  yes  |  |
+ | tax_on_mrp | Boolean? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [HsnCode](#HsnCode)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [HsnCodesObject](#HsnCodesObject) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkHsnUpsert](#BulkHsnUpsert)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<[HsnUpsert](#HsnUpsert)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkHsnResponse](#BulkHsnResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BrandItem](#BrandItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction) |  no  |  |
+ | name | String |  no  |  |
+ | departments | ArrayList<String> |  no  |  |
+ | slug | String |  no  |  |
+ | discount | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+ | logo | [Media](#Media) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BrandListingResponse](#BrandListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[BrandItem](#BrandItem)> |  no  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Department](#Department)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | priority_order | Int |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | logo | [Media](#Media) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DepartmentResponse](#DepartmentResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Department](#Department)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DepartmentIdentifier](#DepartmentIdentifier)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | slug | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ThirdLevelChild](#ThirdLevelChild)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction) |  no  |  |
+ | childs | ArrayList<HashMap<String,Any>> |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SecondLevelChild](#SecondLevelChild)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction) |  no  |  |
+ | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)> |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Child](#Child)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction) |  no  |  |
+ | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)> |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryItems](#CategoryItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction) |  no  |  |
+ | childs | ArrayList<[Child](#Child)> |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | banners | [ImageUrls](#ImageUrls) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DepartmentCategoryTree](#DepartmentCategoryTree)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[CategoryItems](#CategoryItems)> |  no  |  |
+ | department | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryListingResponse](#CategoryListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | departments | ArrayList<[DepartmentIdentifier](#DepartmentIdentifier)> |  no  |  |
+ | data | ArrayList<[DepartmentCategoryTree](#DepartmentCategoryTree)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationProductListingResponse](#ApplicationProductListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort_on | ArrayList<[ProductSortOn](#ProductSortOn)> |  no  |  |
+ | filters | ArrayList<[ProductFilters](#ProductFilters)> |  no  |  |
+ | items | ArrayList<[ProductListingDetail](#ProductListingDetail)> |  no  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDetail](#ProductDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | item_type | String |  no  |  |
+ | attributes | HashMap<String,Any> |  no  |  |
+ | has_variant | Boolean |  no  |  |
+ | color | String |  no  |  |
+ | slug | String? |  yes  |  |
+ | type | String |  no  |  |
+ | teaser_tag | HashMap<String,Any> |  no  |  |
+ | product_online_date | String |  no  |  |
+ | highlights | ArrayList<String> |  no  |  |
+ | short_description | String |  no  |  |
+ | rating | Double |  no  |  |
+ | image_nature | String |  no  |  |
+ | rating_count | Int |  no  |  |
+ | grouped_attributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)> |  no  |  |
+ | brand | [ProductBrand](#ProductBrand) |  no  |  |
+ | similars | ArrayList<String> |  no  |  |
+ | promo_meta | HashMap<String,Any> |  no  |  |
+ | description | String |  no  |  |
+ | name | String |  no  |  |
+ | item_code | String |  no  |  |
+ | medias | ArrayList<[Media1](#Media1)> |  no  |  |
+ | tryouts | ArrayList<String> |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [BusinessCountryInfo](#BusinessCountryInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country | String |  no  |  |
+ | country_code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Website](#Website)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BusinessDetails](#BusinessDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | website | [Website](#Website) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAddressSerializer](#GetAddressSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address2 | String |  no  |  |
+ | latitude | Double |  no  |  |
+ | longitude | Double |  no  |  |
+ | city | String |  no  |  |
+ | state | String |  no  |  |
+ | landmark | String |  no  |  |
+ | pincode | Int |  no  |  |
+ | country_code | String |  no  |  |
+ | address_type | String |  no  |  |
+ | address1 | String |  no  |  |
+ | country | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Document](#Document)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | legal_name | String |  no  |  |
+ | verified | Boolean |  no  |  |
+ | type | String? |  yes  |  |
+ | url | String |  no  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SellerPhoneNumber](#SellerPhoneNumber)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | number | String? |  yes  |  |
+ | country_code | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ContactDetails](#ContactDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | emails | ArrayList<String> |  no  |  |
+ | phone | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCompanyProfileSerializerResponse](#GetCompanyProfileSerializerResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | business_info | String |  no  |  |
+ | verified_on | String |  no  |  |
+ | franchise_enabled | Boolean |  no  |  |
+ | business_type | String? |  yes  |  |
+ | notification_emails | ArrayList<String> |  no  |  |
+ | created_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | company_type | String? |  yes  |  |
+ | stage | String |  no  |  |
+ | business_country_info | [BusinessCountryInfo](#BusinessCountryInfo) |  no  |  |
+ | business_details | [BusinessDetails](#BusinessDetails) |  no  |  |
+ | modified_on | String |  no  |  |
+ | name | String |  no  |  |
+ | verified_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | warnings | HashMap<String,Any> |  no  |  |
+ | addresses | ArrayList<[GetAddressSerializer](#GetAddressSerializer)> |  no  |  |
+ | modified_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | documents | ArrayList<[Document](#Document)> |  no  |  |
+ | uid | Int? |  yes  |  |
+ | contact_details | [ContactDetails](#ContactDetails) |  no  |  |
+ | mode | String |  no  |  |
+ | created_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUpdateAddressSerializer](#CreateUpdateAddressSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address2 | String |  no  |  |
+ | latitude | Double? |  yes  |  |
+ | longitude | Double? |  yes  |  |
+ | city | String? |  yes  |  |
+ | state | String? |  yes  |  |
+ | landmark | String |  no  |  |
+ | pincode | Int? |  yes  |  |
+ | country_code | String |  no  |  |
+ | address_type | String? |  yes  |  |
+ | address1 | String? |  yes  |  |
+ | country | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateCompany](#UpdateCompany)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | business_info | String |  no  |  |
+ | business_type | String |  no  |  |
+ | documents | ArrayList<[Document](#Document)> |  no  |  |
+ | warnings | HashMap<String,Any> |  no  |  |
+ | business_details | [BusinessDetails](#BusinessDetails) |  no  |  |
+ | notification_emails | ArrayList<String> |  no  |  |
+ | contact_details | [ContactDetails](#ContactDetails) |  no  |  |
+ | reject_reason | String |  no  |  |
+ | franchise_enabled | Boolean |  no  |  |
+ | company_type | String |  no  |  |
+ | addresses | ArrayList<[CreateUpdateAddressSerializer](#CreateUpdateAddressSerializer)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DocumentsObj](#DocumentsObj)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verified | Int |  no  |  |
+ | pending | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MetricsSerializer](#MetricsSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | stage | String |  no  |  |
+ | uid | Int |  no  |  |
+ | store | [DocumentsObj](#DocumentsObj) |  no  |  |
+ | product | [DocumentsObj](#DocumentsObj) |  no  |  |
+ | store_documents | [DocumentsObj](#DocumentsObj) |  no  |  |
+ | brand | [DocumentsObj](#DocumentsObj) |  no  |  |
+ | company_documents | [DocumentsObj](#DocumentsObj) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserSerializer1](#UserSerializer1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | username | String |  no  |  |
+ | contact | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BrandBannerSerializer](#BrandBannerSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | landscape | String |  no  |  |
+ | portrait | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetBrandResponseSerializer](#GetBrandResponseSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verified_on | String |  no  |  |
+ | modified_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | logo | String |  no  |  |
+ | slug_key | String |  no  |  |
+ | stage | String |  no  |  |
+ | description | String |  no  |  |
+ | uid | Int |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | _locale_language | HashMap<String,Any> |  no  |  |
+ | modified_on | String |  no  |  |
+ | synonyms | ArrayList<String> |  no  |  |
+ | created_on | String |  no  |  |
+ | reject_reason | String |  no  |  |
+ | banner | [BrandBannerSerializer](#BrandBannerSerializer) |  no  |  |
+ | name | String? |  yes  |  |
+ | verified_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | created_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | warnings | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUpdateBrandRequestSerializer](#CreateUpdateBrandRequestSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company_id | Int |  no  |  |
+ | description | String |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | logo | String? |  yes  |  |
+ | _locale_language | HashMap<String,Any> |  no  |  |
+ | uid | Int |  no  |  |
+ | brand_tier | String |  no  |  |
+ | banner | [BrandBannerSerializer](#BrandBannerSerializer) |  no  |  |
+ | name | String? |  yes  |  |
+ | synonyms | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyBrandPostRequestSerializer](#CompanyBrandPostRequestSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company | Int? |  yes  |  |
+ | uid | Int |  no  |  |
+ | brands | ArrayList<Int>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCompanySerializer](#GetCompanySerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | business_type | String |  no  |  |
+ | verified_on | String |  no  |  |
+ | modified_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | stage | String |  no  |  |
+ | uid | Int |  no  |  |
+ | modified_on | String |  no  |  |
+ | created_on | String |  no  |  |
+ | reject_reason | String |  no  |  |
+ | name | String |  no  |  |
+ | verified_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | created_by | [UserSerializer](#UserSerializer) |  no  |  |
+ | company_type | String |  no  |  |
+ | addresses | ArrayList<[GetAddressSerializer](#GetAddressSerializer)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyBrandSerializer](#CompanyBrandSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verified_on | String |  no  |  |
+ | modified_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | stage | String |  no  |  |
+ | company | [GetCompanySerializer](#GetCompanySerializer) |  no  |  |
+ | warnings | HashMap<String,Any> |  no  |  |
+ | uid | Int |  no  |  |
+ | modified_on | String |  no  |  |
+ | created_on | String |  no  |  |
+ | reject_reason | String |  no  |  |
+ | verified_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | created_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | brand | [GetBrandResponseSerializer](#GetBrandResponseSerializer) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyBrandListSerializer](#CompanyBrandListSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page | [Page](#Page) |  no  |  |
+ | items | ArrayList<[CompanyBrandSerializer](#CompanyBrandSerializer)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LocationTimingSerializer](#LocationTimingSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | minute | Int |  no  |  |
+ | hour | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LocationDayWiseSerializer](#LocationDayWiseSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | closing | [LocationTimingSerializer](#LocationTimingSerializer) |  no  |  |
+ | opening | [LocationTimingSerializer](#LocationTimingSerializer) |  no  |  |
+ | open | Boolean? |  yes  |  |
+ | weekday | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductReturnConfigSerializer](#ProductReturnConfigSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | on_same_store | Boolean |  no  |  |
+ | store_uid | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceCredSerializer](#InvoiceCredSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | username | String |  no  |  |
+ | enabled | Boolean |  no  |  |
+ | password | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceDetailsSerializer](#InvoiceDetailsSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | e_invoice | [InvoiceCredSerializer](#InvoiceCredSerializer) |  no  |  |
+ | e_waybill | [InvoiceCredSerializer](#InvoiceCredSerializer) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LocationManagerSerializer](#LocationManagerSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | email | String |  no  |  |
+ | mobile_no | [SellerPhoneNumber](#SellerPhoneNumber)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAddressSerializer1](#GetAddressSerializer1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address2 | String |  no  |  |
+ | latitude | Double |  no  |  |
+ | longitude | Double |  no  |  |
+ | city | String |  no  |  |
+ | state | String |  no  |  |
+ | landmark | String |  no  |  |
+ | pincode | Int |  no  |  |
+ | country_code | String |  no  |  |
+ | address_type | String |  no  |  |
+ | address1 | String |  no  |  |
+ | country | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LocationSerializer](#LocationSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timing | ArrayList<[LocationDayWiseSerializer](#LocationDayWiseSerializer)> |  no  |  |
+ | stage | String |  no  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | documents | ArrayList<[Document](#Document)> |  no  |  |
+ | company | Int? |  yes  |  |
+ | product_return_config | [ProductReturnConfigSerializer](#ProductReturnConfigSerializer) |  no  |  |
+ | uid | Int |  no  |  |
+ | notification_emails | ArrayList<String> |  no  |  |
+ | display_name | String? |  yes  |  |
+ | gst_credentials | [InvoiceDetailsSerializer](#InvoiceDetailsSerializer) |  no  |  |
+ | store_type | String |  no  |  |
+ | contact_numbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)> |  no  |  |
+ | code | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | manager | [LocationManagerSerializer](#LocationManagerSerializer) |  no  |  |
+ | warnings | HashMap<String,Any> |  no  |  |
+ | address | [GetAddressSerializer1](#GetAddressSerializer1)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [LocationIntegrationType](#LocationIntegrationType)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | inventory | String |  no  |  |
+ | order | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetLocationSerializer](#GetLocationSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verified_on | String |  no  |  |
+ | company | [GetCompanySerializer](#GetCompanySerializer) |  no  |  |
+ | display_name | String? |  yes  |  |
+ | contact_numbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)> |  no  |  |
+ | code | String? |  yes  |  |
+ | phone_number | String? |  yes  |  |
+ | _custom_json | HashMap<String,Any> |  no  |  |
+ | notification_emails | ArrayList<String> |  no  |  |
+ | gst_credentials | [InvoiceDetailsSerializer](#InvoiceDetailsSerializer) |  no  |  |
+ | integration_type | [LocationIntegrationType](#LocationIntegrationType) |  no  |  |
+ | created_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | stage | String |  no  |  |
+ | product_return_config | [ProductReturnConfigSerializer](#ProductReturnConfigSerializer) |  no  |  |
+ | modified_on | String |  no  |  |
+ | store_type | String |  no  |  |
+ | name | String? |  yes  |  |
+ | verified_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | manager | [LocationManagerSerializer](#LocationManagerSerializer) |  no  |  |
+ | warnings | HashMap<String,Any> |  no  |  |
+ | timing | ArrayList<[LocationDayWiseSerializer](#LocationDayWiseSerializer)> |  no  |  |
+ | modified_by | [UserSerializer1](#UserSerializer1) |  no  |  |
+ | documents | ArrayList<[Document](#Document)> |  no  |  |
+ | uid | Int |  no  |  |
+ | created_on | String |  no  |  |
+ | address | [GetAddressSerializer](#GetAddressSerializer)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [LocationListSerializer](#LocationListSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page | [Page](#Page) |  no  |  |
+ | items | ArrayList<[GetLocationSerializer](#GetLocationSerializer)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkLocationSerializer](#BulkLocationSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<[LocationSerializer](#LocationSerializer)> |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [FailedResponse](#FailedResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CDN](#CDN)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Upload](#Upload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | expiry | Int? |  yes  |  |
+ | url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StartResponse](#StartResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | file_name | String? |  yes  |  |
+ | file_path | String? |  yes  |  |
+ | content_type | String? |  yes  |  |
+ | method | String? |  yes  |  |
+ | namespace | String? |  yes  |  |
+ | operation | String? |  yes  |  |
+ | size | Int? |  yes  |  |
+ | upload | [Upload](#Upload)? |  yes  |  |
+ | cdn | [CDN](#CDN)? |  yes  |  |
+ | tags | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StartRequest](#StartRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | file_name | String? |  yes  |  |
+ | content_type | String? |  yes  |  |
+ | size | Int? |  yes  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | params | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompleteResponse](#CompleteResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String? |  yes  |  |
+ | file_name | String? |  yes  |  |
+ | file_path | String? |  yes  |  |
+ | content_type | String? |  yes  |  |
+ | method | String? |  yes  |  |
+ | namespace | String? |  yes  |  |
+ | operation | String? |  yes  |  |
+ | size | Int? |  yes  |  |
+ | upload | [Upload](#Upload)? |  yes  |  |
+ | cdn | [CDN](#CDN)? |  yes  |  |
+ | success | String? |  yes  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | created_on | String? |  yes  |  |
+ | modified_on | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Opts](#Opts)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attempts | Int |  no  |  |
+ | timestamp | Int |  no  |  |
+ | delay | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CopyFileTask](#CopyFileTask)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | data | [BulkRequest](#BulkRequest)? |  yes  |  |
+ | opts | [Opts](#Opts)? |  yes  |  |
+ | progress | Int? |  yes  |  |
+ | delay | Int? |  yes  |  |
+ | timestamp | Int? |  yes  |  |
+ | attempts_made | Int? |  yes  |  |
+ | stacktrace | ArrayList<String> |  no  |  |
+ | finished_on | Int? |  yes  |  |
+ | processed_on | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkResponse](#BulkResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tracking_url | String? |  yes  |  |
+ | task | [CopyFileTask](#CopyFileTask)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ReqConfiguration](#ReqConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | concurrency | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Destination](#Destination)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | namespace | String? |  yes  |  |
+ | rewrite | String? |  yes  |  |
+ | basepath | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkRequest](#BulkRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | urls | ArrayList<String>? |  yes  |  |
+ | destination | [Destination](#Destination)? |  yes  |  |
+ | configuration | [ReqConfiguration](#ReqConfiguration) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Urls](#Urls)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | url | String? |  yes  |  |
+ | signed_url | String? |  yes  |  |
+ | expiry | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SignUrlResponse](#SignUrlResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | urls | ArrayList<[Urls](#Urls)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SignUrlRequest](#SignUrlRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | expiry | Int? |  yes  |  |
+ | urls | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DbRecord](#DbRecord)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | _id | String? |  yes  |  |
+ | file_name | String? |  yes  |  |
+ | operation | String |  no  |  |
+ | namespace | String? |  yes  |  |
+ | content_type | String? |  yes  |  |
+ | file_path | String? |  yes  |  |
+ | upload | [Upload](#Upload)? |  yes  |  |
+ | cdn | [CDN](#CDN)? |  yes  |  |
+ | created_on | String? |  yes  |  |
+ | modified_on | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BrowseResponse](#BrowseResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[DbRecord](#DbRecord)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [RedirectDevice](#RedirectDevice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | link | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [WebRedirect](#WebRedirect)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | link | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Redirects](#Redirects)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ios | [RedirectDevice](#RedirectDevice) |  no  |  |
+ | android | [RedirectDevice](#RedirectDevice) |  no  |  |
+ | web | [WebRedirect](#WebRedirect) |  no  |  |
+ | force_web | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CampaignShortLink](#CampaignShortLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | source | String |  no  |  |
+ | medium | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Attribution](#Attribution)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | campaign_cookie_expiry | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SocialMediaTags](#SocialMediaTags)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | description | String |  no  |  |
+ | image | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShortLinkReq](#ShortLinkReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  | Give a name to the link. |
+ | url | String? |  yes  | The web address to shorten. |
+ | hash | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | expire_at | String |  no  |  |
+ | enable_tracking | Boolean |  no  |  |
+ | personalized | Boolean |  no  | To create personalized short links. |
+ | campaign | [CampaignShortLink](#CampaignShortLink) |  no  |  |
+ | redirects | [Redirects](#Redirects) |  no  |  |
+ | attribution | [Attribution](#Attribution) |  no  |  |
+ | social_media_tags | [SocialMediaTags](#SocialMediaTags) |  no  |  |
+ | count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UrlInfo](#UrlInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | original | String |  no  |  |
+ | short | String |  no  |  |
+ | hash | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShortLinkRes](#ShortLinkRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | url | [UrlInfo](#UrlInfo) |  no  |  |
+ | created_by | String |  no  |  |
+ | app_redirect | Boolean |  no  |  |
+ | fallback | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | enable_tracking | Boolean |  no  |  |
+ | expire_at | String |  no  |  |
+ | application | String |  no  |  |
+ | user_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+ | updated_at | String |  no  |  |
+ | personalized | Boolean |  no  | To create personalized short links |
+ | campaign | [CampaignShortLink](#CampaignShortLink) |  no  |  |
+ | redirects | [Redirects](#Redirects) |  no  |  |
+ | attribution | [Attribution](#Attribution) |  no  |  |
+ | social_media_tags | [SocialMediaTags](#SocialMediaTags) |  no  |  |
+ | count | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShortLinkList](#ShortLinkList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ShortLinkRes](#ShortLinkRes)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ErrorRes](#ErrorRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [DataTresholdDTO](#DataTresholdDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min_price | Double |  no  |  |
+ | safe_stock | Int |  no  |  |
+ | period_threshold | Int |  no  |  |
+ | period_threshold_type | String |  no  |  |
+ | period_type_list | ArrayList<[GenericDTO](#GenericDTO)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GenericDTO](#GenericDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | text | String |  no  |  |
+ | value | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobConfigDTO](#JobConfigDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | integration | String? |  yes  |  |
+ | integration_data | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | company_name | String |  no  |  |
+ | company_id | Int? |  yes  |  |
+ | task_details | [TaskDTO](#TaskDTO) |  no  |  |
+ | threshold_details | [DataTresholdDTO](#DataTresholdDTO) |  no  |  |
+ | job_code | String |  no  |  |
+ | alias | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaskDTO](#TaskDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | Int |  no  |  |
+ | group_list | ArrayList<[GenericDTO](#GenericDTO)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeString](#ResponseEnvelopeString)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String |  no  |  |
+ | status | Int |  no  |  |
+ | error | String |  no  |  |
+ | exception | String |  no  |  |
+ | message | String |  no  |  |
+ | total_time_taken_in_millis | Int |  no  |  |
+ | http_status | String |  no  |  |
+ | items | String |  no  |  |
+ | payload | String |  no  |  |
+ | trace_id | String |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AWSS3config](#AWSS3config)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bucket | String |  no  |  |
+ | region | String |  no  |  |
+ | dir | String |  no  |  |
+ | access_key | String |  no  |  |
+ | secret_key | String |  no  |  |
+ | local_file_path | String |  no  |  |
+ | archive_path | String |  no  |  |
+ | archive | Boolean |  no  |  |
+ | delete | Boolean |  no  |  |
+ | unzip | Boolean |  no  |  |
+ | zip_format | String |  no  |  |
+ | file_regex | String |  no  |  |
+ | archive_config | [ArchiveConfig](#ArchiveConfig) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArchiveConfig](#ArchiveConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | delete | Boolean |  no  |  |
+ | archive | Boolean |  no  |  |
+ | archive_dir | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Audit](#Audit)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created_by | String |  no  |  |
+ | modified_by | String |  no  |  |
+ | created_on | String |  no  |  |
+ | modified_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CatalogMasterConfig](#CatalogMasterConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | source_slug | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyConfig](#CompanyConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company_id | Int |  no  |  |
+ | exclude_steps | ArrayList<Int> |  no  |  |
+ | hidden_closet_keys | ArrayList<String> |  no  |  |
+ | open_tags | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | tax_identifiers | ArrayList<String> |  no  |  |
+ | delete_quantity_threshold | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DBConfig](#DBConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | vendor | String |  no  |  |
+ | host | String |  no  |  |
+ | port | Int |  no  |  |
+ | username | String |  no  |  |
+ | password | String |  no  |  |
+ | dbname | String |  no  |  |
+ | query | String |  no  |  |
+ | procedure | Boolean |  no  |  |
+ | driver_class | String |  no  |  |
+ | jdbc_url | String |  no  |  |
+ | optional_properties | HashMap<String,String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DBConnectionProfile](#DBConnectionProfile)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | inventory | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DBParamConfig](#DBParamConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | params | HashMap<String,HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DefaultHeadersDTO](#DefaultHeadersDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store | [PropBeanDTO](#PropBeanDTO) |  no  |  |
+ | intf_article_id | [PropBeanDTO](#PropBeanDTO) |  no  |  |
+ | price_effective | [PropBeanDTO](#PropBeanDTO) |  no  |  |
+ | quantity | [PropBeanDTO](#PropBeanDTO) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DocMappingConfig](#DocMappingConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | properties | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | junk_data_threshold_count | Int |  no  |  |
+ | prop_bean_configs | ArrayList<[PropBeanConfig](#PropBeanConfig)> |  no  |  |
+ | unwind_field | String |  no  |  |
+ | default_headers | [DefaultHeadersDTO](#DefaultHeadersDTO) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailConfig](#EmailConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | recepient | String |  no  |  |
+ | host | String |  no  |  |
+ | username | String |  no  |  |
+ | password | String |  no  |  |
+ | unzip | Boolean |  no  |  |
+ | read_from_content | Boolean |  no  |  |
+ | filter_based_on_recepients | Boolean |  no  |  |
+ | pcol | String |  no  |  |
+ | subject_line_regex | String |  no  |  |
+ | sender_address | String |  no  |  |
+ | local_dir | String |  no  |  |
+ | folder_name_hierarchies | ArrayList<String> |  no  |  |
+ | attachment_regex | String |  no  |  |
+ | body_content_regex | String |  no  |  |
+ | password_protected | Boolean |  no  |  |
+ | zip_format | String |  no  |  |
+ | attachment_mandate | Boolean |  no  |  |
+ | filter_files_after_extraction | Boolean |  no  |  |
+ | archive_config | [ArchiveConfig](#ArchiveConfig) |  no  |  |
+ | read_all_unread_mails | Boolean |  no  |  |
+ | content_type | String |  no  |  |
+ | downloadable_link | Boolean |  no  |  |
+ | properties | HashMap<String,String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FTPConfig](#FTPConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | host | String |  no  |  |
+ | port | Int |  no  |  |
+ | username | String |  no  |  |
+ | password | String |  no  |  |
+ | unzip | Boolean |  no  |  |
+ | retries | Int |  no  |  |
+ | interval | Int |  no  |  |
+ | local_dir | String |  no  |  |
+ | remote_dir | String |  no  |  |
+ | zip_file_regex | String |  no  |  |
+ | archive_config | [ArchiveConfig](#ArchiveConfig) |  no  |  |
+ | file_regex | String |  no  |  |
+ | zip_format | String |  no  |  |
+ | read_all_files | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FileConfig](#FileConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | delimiter | String |  no  |  |
+ | charset | String |  no  |  |
+ | properties | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | file_has_header | Boolean |  no  |  |
+ | header_index | Int |  no  |  |
+ | header_array | ArrayList<String> |  no  |  |
+ | data_start_index | Int |  no  |  |
+ | prop_bean_configs | ArrayList<[PropBeanConfig](#PropBeanConfig)> |  no  |  |
+ | junk_data_threshold_count | Int |  no  |  |
+ | file_type | String |  no  |  |
+ | line_validity_check | Boolean |  no  |  |
+ | sheet_names | ArrayList<String> |  no  |  |
+ | read_all_sheets | Boolean |  no  |  |
+ | quote_char | String |  no  |  |
+ | escape_char | String |  no  |  |
+ | default_headers | [DefaultHeadersDTO](#DefaultHeadersDTO) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GoogleSpreadSheetConfig](#GoogleSpreadSheetConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | range | String |  no  |  |
+ | sheet_id | String |  no  |  |
+ | client_secret_location | String |  no  |  |
+ | cred_storage_directory | String |  no  |  |
+ | local_dir | String |  no  |  |
+ | archive_config | [ArchiveConfig](#ArchiveConfig) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HttpConfig](#HttpConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hosturl | String |  no  |  |
+ | username | String |  no  |  |
+ | password | String |  no  |  |
+ | request_params | HashMap<String,String> |  no  |  |
+ | http_method | String |  no  |  |
+ | request_payload | String |  no  |  |
+ | local_path | String |  no  |  |
+ | archive_config | [ArchiveConfig](#ArchiveConfig) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobConfig](#JobConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | Int |  no  |  |
+ | job_code | String |  no  |  |
+ | task_type | String |  no  |  |
+ | sync_delay | Int |  no  |  |
+ | cron_expression | String |  no  |  |
+ | store_filter | [StoreFilter](#StoreFilter) |  no  |  |
+ | process_config | [ProcessConfig](#ProcessConfig) |  no  |  |
+ | store_config | ArrayList<[StoreConfig](#StoreConfig)> |  no  |  |
+ | properties | HashMap<String,String> |  no  |  |
+ | immediate_first_run | Boolean |  no  |  |
+ | disable | Boolean |  no  |  |
+ | dependent_job_codes | ArrayList<String> |  no  |  |
+ | company_config | ArrayList<[CompanyConfig](#CompanyConfig)> |  no  |  |
+ | company_ids | ArrayList<Int> |  no  |  |
+ | tax_identifiers | ArrayList<String> |  no  |  |
+ | priority | String |  no  |  |
+ | period_threshold | Int |  no  |  |
+ | period_threshold_type | String |  no  |  |
+ | db_connection_profile | [DBConnectionProfile](#DBConnectionProfile) |  no  |  |
+ | params | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | open_tags | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | delete_quantity_threshold | Int |  no  |  |
+ | catalog_master_config | [CatalogMasterConfig](#CatalogMasterConfig) |  no  |  |
+ | aggregator_types | ArrayList<String> |  no  |  |
+ | integration_type | String |  no  |  |
+ | min_price | Double |  no  |  |
+ | audit | [Audit](#Audit) |  no  |  |
+ | version | Int |  no  |  |
+ | alias | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobConfigRawDTO](#JobConfigRawDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | integration | String? |  yes  |  |
+ | company_name | String? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+ | data | [JobConfig](#JobConfig) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JsonDocConfig](#JsonDocConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | prop_bean_configs | ArrayList<[PropBeanConfig](#PropBeanConfig)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LocalFileConfig](#LocalFileConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | retries | Int |  no  |  |
+ | interval | Int |  no  |  |
+ | local_dir | String |  no  |  |
+ | working_dir | String |  no  |  |
+ | unzip | Boolean |  no  |  |
+ | zip_file_regex | String |  no  |  |
+ | file_regex | String |  no  |  |
+ | zip_format | String |  no  |  |
+ | archive_config | [ArchiveConfig](#ArchiveConfig) |  no  |  |
+ | read_all_files | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MongoDocConfig](#MongoDocConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | collection_name | String |  no  |  |
+ | find_query | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | projection_query | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | prop_bean_configs | ArrayList<[PropBeanConfig](#PropBeanConfig)> |  no  |  |
+ | aggregate_pipeline | ArrayList<HashMap<String,HashMap<String,Any>>> |  no  |  |
+ | skip_save | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthConfig](#OAuthConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | limit | Int |  no  |  |
+ | pages | Int |  no  |  |
+ | interval | Int |  no  |  |
+ | consumer_key | String |  no  |  |
+ | consumer_secret | String |  no  |  |
+ | token | String |  no  |  |
+ | token_secret | String |  no  |  |
+ | rest_url | String |  no  |  |
+ | rest_base_url | String |  no  |  |
+ | function_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProcessConfig](#ProcessConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | db_config | [DBConfig](#DBConfig) |  no  |  |
+ | db_param_config | [DBParamConfig](#DBParamConfig) |  no  |  |
+ | sftp_config | [SFTPConfig](#SFTPConfig) |  no  |  |
+ | aws_s3_config | [AWSS3config](#AWSS3config) |  no  |  |
+ | mongo_doc_config | [MongoDocConfig](#MongoDocConfig) |  no  |  |
+ | ftp_config | [FTPConfig](#FTPConfig) |  no  |  |
+ | email_config | [EmailConfig](#EmailConfig) |  no  |  |
+ | file_config | [FileConfig](#FileConfig) |  no  |  |
+ | json_doc_config | [JsonDocConfig](#JsonDocConfig) |  no  |  |
+ | doc_mapping_config | [DocMappingConfig](#DocMappingConfig) |  no  |  |
+ | task_step_config | [TaskStepConfig](#TaskStepConfig) |  no  |  |
+ | http_config | [HttpConfig](#HttpConfig) |  no  |  |
+ | local_file_config | [LocalFileConfig](#LocalFileConfig) |  no  |  |
+ | oauth_config | [OAuthConfig](#OAuthConfig) |  no  |  |
+ | google_spreadsheet_config | [GoogleSpreadSheetConfig](#GoogleSpreadSheetConfig) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PropBeanConfig](#PropBeanConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | required | Boolean |  no  |  |
+ | mapping | HashMap<String,[PropBeanConfig](#PropBeanConfig)> |  no  |  |
+ | optional | Boolean |  no  |  |
+ | send | [Send](#Send) |  no  |  |
+ | validations | ArrayList<HashMap<String,HashMap<String,Any>>> |  no  |  |
+ | values | ArrayList<String> |  no  |  |
+ | include | Boolean |  no  |  |
+ | source_field | String |  no  |  |
+ | source_fields | ArrayList<String> |  no  |  |
+ | destination_field | String |  no  |  |
+ | data_type | String |  no  |  |
+ | default_value | HashMap<String,Any> |  no  |  |
+ | const_value | HashMap<String,Any> |  no  |  |
+ | concat_str | String |  no  |  |
+ | function_name | String |  no  |  |
+ | transformer_name | String |  no  |  |
+ | all_param_function_name | String |  no  |  |
+ | sub_separator | String |  no  |  |
+ | index_field | String |  no  |  |
+ | ignore_if_not_exists | Boolean |  no  |  |
+ | identifier_type | String |  no  |  |
+ | projection_query | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | enrich_from_master | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PropBeanDTO](#PropBeanDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | required | Boolean |  no  |  |
+ | optional | Boolean |  no  |  |
+ | include | Boolean |  no  |  |
+ | source_field | String |  no  |  |
+ | source_fields | ArrayList<String> |  no  |  |
+ | destination_field | String |  no  |  |
+ | data_type | String |  no  |  |
+ | default_value | HashMap<String,Any> |  no  |  |
+ | const_value | HashMap<String,Any> |  no  |  |
+ | concat_str | String |  no  |  |
+ | function_name | String |  no  |  |
+ | transformer_name | String |  no  |  |
+ | all_param_function_name | String |  no  |  |
+ | sub_separator | String |  no  |  |
+ | index_field | String |  no  |  |
+ | ignore_if_not_exists | Boolean |  no  |  |
+ | identifier_type | String |  no  |  |
+ | projection_query | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | enrich_from_master | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeListJobConfigRawDTO](#ResponseEnvelopeListJobConfigRawDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String |  no  |  |
+ | status | Int |  no  |  |
+ | error | String |  no  |  |
+ | exception | String |  no  |  |
+ | message | String |  no  |  |
+ | total_time_taken_in_millis | Int |  no  |  |
+ | http_status | String |  no  |  |
+ | items | ArrayList<[JobConfigRawDTO](#JobConfigRawDTO)> |  no  |  |
+ | payload | ArrayList<[JobConfigRawDTO](#JobConfigRawDTO)> |  no  |  |
+ | trace_id | String |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SFTPConfig](#SFTPConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | host | String |  no  |  |
+ | port | Int |  no  |  |
+ | username | String |  no  |  |
+ | password | String |  no  |  |
+ | unzip | Boolean |  no  |  |
+ | retries | Int |  no  |  |
+ | interval | Int |  no  |  |
+ | private_key_path | String |  no  |  |
+ | strict_host_key_checking | Boolean |  no  |  |
+ | local_dir | String |  no  |  |
+ | remote_dir | String |  no  |  |
+ | password_protected | Boolean |  no  |  |
+ | zip_file_regex | String |  no  |  |
+ | file_regex | String |  no  |  |
+ | zip_format | String |  no  |  |
+ | archive_config | [ArchiveConfig](#ArchiveConfig) |  no  |  |
+ | read_all_files | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Send](#Send)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | raw | Boolean |  no  |  |
+ | processed | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreConfig](#StoreConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | job_code | String |  no  |  |
+ | storeid | String |  no  |  |
+ | store_alias | String |  no  |  |
+ | store_file_regex | String |  no  |  |
+ | store_file_name | String |  no  |  |
+ | process_config | [ProcessConfig](#ProcessConfig) |  no  |  |
+ | properties | HashMap<String,String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreFilter](#StoreFilter)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | include_tags | ArrayList<String> |  no  |  |
+ | exclude_tags | ArrayList<String> |  no  |  |
+ | query | HashMap<String,HashMap<String,Any>> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaskConfig](#TaskConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | task_config_id | Int |  no  |  |
+ | task_params | ArrayList<[TaskParam](#TaskParam)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaskParam](#TaskParam)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | value | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TaskStepConfig](#TaskStepConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | task_configs | ArrayList<[TaskConfig](#TaskConfig)> |  no  |  |
+ | task_config_ids | ArrayList<Int> |  no  |  |
+ | task_config_group_ids | ArrayList<Int> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeListJobConfigDTO](#ResponseEnvelopeListJobConfigDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String |  no  |  |
+ | status | Int |  no  |  |
+ | error | String |  no  |  |
+ | exception | String |  no  |  |
+ | message | String |  no  |  |
+ | total_time_taken_in_millis | Int |  no  |  |
+ | http_status | String |  no  |  |
+ | items | ArrayList<[JobConfigDTO](#JobConfigDTO)> |  no  |  |
+ | payload | ArrayList<[JobConfigDTO](#JobConfigDTO)> |  no  |  |
+ | trace_id | String |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeJobConfigDTO](#ResponseEnvelopeJobConfigDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String |  no  |  |
+ | status | Int |  no  |  |
+ | error | String |  no  |  |
+ | exception | String |  no  |  |
+ | message | String |  no  |  |
+ | total_time_taken_in_millis | Int |  no  |  |
+ | http_status | String |  no  |  |
+ | items | [JobConfigDTO](#JobConfigDTO) |  no  |  |
+ | payload | [JobConfigDTO](#JobConfigDTO) |  no  |  |
+ | trace_id | String |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobHistoryDto](#JobHistoryDto)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | total_added_count | Int |  no  |  |
+ | total_updated_count | Int |  no  |  |
+ | total_suppressed_count | Int |  no  |  |
+ | job_id | Int |  no  |  |
+ | status | String |  no  |  |
+ | job_code | String |  no  |  |
+ | processed_on | String |  no  |  |
+ | filename | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobMetricsDto](#JobMetricsDto)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | job_code | String |  no  |  |
+ | is_run_more_than_usual | String |  no  |  |
+ | job_history | ArrayList<[JobHistoryDto](#JobHistoryDto)> |  no  |  |
+ | total_success_count | Int |  no  |  |
+ | total_failure_count | Int |  no  |  |
+ | total_warning_count | Int |  no  |  |
+ | total_suppressed_count | Int |  no  |  |
+ | total_job_runs | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeJobMetricsDto](#ResponseEnvelopeJobMetricsDto)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String |  no  |  |
+ | status | Int |  no  |  |
+ | error | String |  no  |  |
+ | exception | String |  no  |  |
+ | message | String |  no  |  |
+ | total_time_taken_in_millis | Int |  no  |  |
+ | http_status | String |  no  |  |
+ | items | [JobMetricsDto](#JobMetricsDto) |  no  |  |
+ | payload | [JobMetricsDto](#JobMetricsDto) |  no  |  |
+ | trace_id | String |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JobConfigListDTO](#JobConfigListDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+ | alias | String |  no  |  |
+ | modified_by | String |  no  |  |
+ | created_by | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | created_on | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeListJobConfigListDTO](#ResponseEnvelopeListJobConfigListDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String |  no  |  |
+ | status | Int |  no  |  |
+ | error | String |  no  |  |
+ | exception | String |  no  |  |
+ | message | String |  no  |  |
+ | total_time_taken_in_millis | Int |  no  |  |
+ | http_status | String |  no  |  |
+ | items | ArrayList<[JobConfigListDTO](#JobConfigListDTO)> |  no  |  |
+ | payload | ArrayList<[JobConfigListDTO](#JobConfigListDTO)> |  no  |  |
+ | trace_id | String |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [ApplicationInventory](#ApplicationInventory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | inventory | [AppInventoryConfig](#AppInventoryConfig) |  no  |  |
+ | authentication | [AuthenticationConfig](#AuthenticationConfig) |  no  |  |
+ | article_assignment | [ArticleAssignmentConfig](#ArticleAssignmentConfig) |  no  |  |
+ | reward_points | [RewardPointsConfig](#RewardPointsConfig) |  no  |  |
+ | cart | [AppCartConfig](#AppCartConfig) |  no  |  |
+ | payment | [AppPaymentConfig](#AppPaymentConfig) |  no  |  |
+ | order | [AppOrderConfig](#AppOrderConfig) |  no  |  |
+ | logistics | [AppLogisticsConfig](#AppLogisticsConfig) |  no  |  |
+ | business | String |  no  |  |
+ | comms_enabled | Boolean |  no  |  |
+ | platforms | ArrayList<String> |  no  |  |
+ | _id | String |  no  |  |
+ | loyalty_points | [LoyaltyPointsConfig](#LoyaltyPointsConfig) |  no  |  |
+ | app | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | modified_by | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppInventoryConfig](#AppInventoryConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand | [InventoryBrand](#InventoryBrand) |  no  |  |
+ | store | [InventoryStore](#InventoryStore) |  no  |  |
+ | category | [InventoryCategory](#InventoryCategory) |  no  |  |
+ | price | [InventoryPrice](#InventoryPrice) |  no  |  |
+ | discount | [InventoryDiscount](#InventoryDiscount) |  no  |  |
+ | out_of_stock | Boolean |  no  |  |
+ | franchise_enabled | Boolean |  no  |  |
+ | exclude_category | ArrayList<Any> |  no  |  |
+ | image | ArrayList<String> |  no  |  |
+ | company_store | ArrayList<Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryBrand](#InventoryBrand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | criteria | String |  no  |  |
+ | brands | ArrayList<Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryStore](#InventoryStore)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | criteria | String |  no  |  |
+ | stores | ArrayList<Any> |  no  |  |
+ | rules | [AppStoreRules](#AppStoreRules) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppStoreRules](#AppStoreRules)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | companies | ArrayList<Int> |  no  |  |
+ | brands | ArrayList<Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryCategory](#InventoryCategory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | criteria | String |  no  |  |
+ | categories | ArrayList<Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryPrice](#InventoryPrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Double |  no  |  |
+ | max | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryDiscount](#InventoryDiscount)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Double |  no  |  |
+ | max | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthenticationConfig](#AuthenticationConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | required | Boolean |  no  |  |
+ | provider | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleAssignmentConfig](#ArticleAssignmentConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | rules | [ArticleAssignmentRules](#ArticleAssignmentRules) |  no  |  |
+ | post_order_reassignment | Boolean |  no  |  |
+ | enforced_stores | ArrayList<Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleAssignmentRules](#ArticleAssignmentRules)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store_priority | [StorePriority](#StorePriority) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StorePriority](#StorePriority)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | storetype_order | ArrayList<Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RewardPointsConfig](#RewardPointsConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credit | [Credit](#Credit) |  no  |  |
+ | debit | [Debit](#Debit) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Credit](#Credit)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Debit](#Debit)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | auto_apply | Boolean |  no  |  |
+ | strategy_channel | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppCartConfig](#AppCartConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | delivery_charges | [DeliveryCharges](#DeliveryCharges) |  no  |  |
+ | enabled | Boolean |  no  |  |
+ | max_cart_items | Int |  no  |  |
+ | min_cart_value | Double |  no  |  |
+ | bulk_coupons | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DeliveryCharges](#DeliveryCharges)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | charges | [Charges](#Charges) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Charges](#Charges)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | threshold | Double |  no  |  |
+ | charges | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppPaymentConfig](#AppPaymentConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | callback_url | [CallbackUrl](#CallbackUrl) |  no  |  |
+ | methods | [Methods](#Methods) |  no  |  |
+ | payment_selection_lock | [PaymentSelectionLock](#PaymentSelectionLock) |  no  |  |
+ | mode_of_payment | String |  no  |  |
+ | source | String |  no  |  |
+ | enabled | Boolean |  no  |  |
+ | cod_amount_limit | Double |  no  |  |
+ | cod_charges | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CallbackUrl](#CallbackUrl)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app | String |  no  |  |
+ | web | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Methods](#Methods)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pl | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | card | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | nb | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | wl | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | ps | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | upi | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | qr | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | cod | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | pp | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | jp | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | pac | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | fc | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | jiopp | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | stripepg | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | juspaypg | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | payubizpg | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | payumoneypg | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | rupifipg | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+ | simpl | [PaymentModeConfig](#PaymentModeConfig) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentModeConfig](#PaymentModeConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentSelectionLock](#PaymentSelectionLock)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | default_options | String |  no  |  |
+ | payment_identifier | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppOrderConfig](#AppOrderConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | force_reassignment | Boolean |  no  |  |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppLogisticsConfig](#AppLogisticsConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | logistics_by_seller | Boolean |  no  |  |
+ | serviceability_check | Boolean |  no  |  |
+ | same_day_delivery | Boolean |  no  |  |
+ | dp_assignment | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LoyaltyPointsConfig](#LoyaltyPointsConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | auto_apply | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppInventoryPartialUpdate](#AppInventoryPartialUpdate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | reward_points | [RewardPointsConfig](#RewardPointsConfig) |  no  |  |
+ | cart | [AppCartConfig](#AppCartConfig) |  no  |  |
+ | payment | [AppPaymentConfig](#AppPaymentConfig) |  no  |  |
+ | loyalty_points | [LoyaltyPointsConfig](#LoyaltyPointsConfig) |  no  |  |
+ | comms_enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BrandCompanyInfo](#BrandCompanyInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company_name | String |  no  |  |
+ | company_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyByBrandsRequest](#CompanyByBrandsRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brands | Int? |  yes  | Brand uids |
+ | search_text | String |  no  | Search company by name |
+
+---
+
+
+ 
+ 
+ #### [CompanyByBrandsResponse](#CompanyByBrandsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[BrandCompanyInfo](#BrandCompanyInfo)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreByBrandsRequest](#StoreByBrandsRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company_id | Int |  no  | Current company id for current company stores only. Don't send in case of cross selling enabled |
+ | brands | Int? |  yes  | Brand uids |
+ | search_text | String |  no  | Search store by name or store code |
+
+---
+
+
+ 
+ 
+ #### [StoreByBrandsResponse](#StoreByBrandsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[BrandStoreInfo](#BrandStoreInfo)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BrandStoreInfo](#BrandStoreInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store_name | String |  no  |  |
+ | store_id | Int |  no  |  |
+ | store_type | String |  no  |  |
+ | store_code | String |  no  |  |
+ | store_address | [OptedStoreAddress](#OptedStoreAddress) |  no  |  |
+ | company | [OptedCompany](#OptedCompany) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyBrandInfo](#CompanyBrandInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | value | Int |  no  |  |
+ | brand_logo_url | String |  no  |  |
+ | brand_banner_url | String |  no  |  |
+ | brand_banner_portrait_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BrandsByCompanyResponse](#BrandsByCompanyResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brands | [CompanyBrandInfo](#CompanyBrandInfo) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateApplicationRequest](#CreateApplicationRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app | [App](#App) |  no  |  |
+ | configuration | [AppInventory](#AppInventory) |  no  |  |
+ | domain | [AppDomain](#AppDomain) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateAppResponse](#CreateAppResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app | [Application](#Application) |  no  |  |
+ | configuration | [ApplicationInventory](#ApplicationInventory) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationsResponse](#ApplicationsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Application](#Application)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MobileAppConfiguration](#MobileAppConfiguration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_active | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | app_name | String |  no  |  |
+ | landing_image | [LandingImage](#LandingImage) |  no  |  |
+ | splash_image | [SplashImage](#SplashImage) |  no  |  |
+ | application | String |  no  |  |
+ | platform_type | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+ | package_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LandingImage](#LandingImage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio | String |  no  |  |
+ | secure_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SplashImage](#SplashImage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspect_ratio | String |  no  |  |
+ | secure_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MobileAppConfigRequest](#MobileAppConfigRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_name | String |  no  |  |
+ | landing_image | [LandingImage](#LandingImage) |  no  |  |
+ | splash_image | [SplashImage](#SplashImage) |  no  |  |
+ | is_active | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BuildVersionHistory](#BuildVersionHistory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | versions | [BuildVersion](#BuildVersion) |  no  |  |
+ | latest_available_version_name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BuildVersion](#BuildVersion)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | application | String |  no  |  |
+ | platform_type | String |  no  |  |
+ | build_status | String |  no  |  |
+ | version_name | String |  no  |  |
+ | version_code | Int |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppSupportedCurrency](#AppSupportedCurrency)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | supported_currency | ArrayList<String> |  no  |  |
+ | application | String |  no  |  |
+ | default_currency | [DefaultCurrency](#DefaultCurrency) |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DefaultCurrency](#DefaultCurrency)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ref | String |  no  |  |
+ | code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CurrencyConfig](#CurrencyConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | code | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | decimal_digits | Int |  no  |  |
+ | symbol | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DomainAdd](#DomainAdd)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  | Full domain name |
+
+---
+
+
+ 
+ 
+ #### [DomainAddRequest](#DomainAddRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domain | [DomainAdd](#DomainAdd) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DomainsResponse](#DomainsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domains | ArrayList<[Domain](#Domain)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateDomain](#UpdateDomain)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateDomainTypeRequest](#UpdateDomainTypeRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domain | [UpdateDomain](#UpdateDomain) |  no  |  |
+ | action | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DomainStatusRequest](#DomainStatusRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domain_url | String |  no  | Domain url |
+
+---
+
+
+ 
+ 
+ #### [DomainStatus](#DomainStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  |  |
+ | status | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DomainStatusResponse](#DomainStatusResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | connected | Boolean |  no  |  |
+ | status | ArrayList<[DomainStatus](#DomainStatus)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DomainSuggestionsRequest](#DomainSuggestionsRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domain_url | String |  no  | Domain url |
+ | custom | Boolean |  no  | Get suggestion for custom domains or fynd domains |
+
+---
+
+
+ 
+ 
+ #### [DomainSuggestion](#DomainSuggestion)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | unsupported | Boolean |  no  | Whether TLD domain is supported or not |
+ | is_available | Boolean? |  yes  |  |
+ | price | Double |  no  | Price for purchasing a custom domain. Not present for fynd domain |
+ | currency | String |  no  | Custom domain price currency. Not present for fynd domain |
+
+---
+
+
+ 
+ 
+ #### [DomainSuggestionsResponse](#DomainSuggestionsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domains | ArrayList<[DomainSuggestion](#DomainSuggestion)> |  no  | Domain url |
+
+---
+
+
+ 
+ 
+ #### [GetIntegrationsOptInsResponse](#GetIntegrationsOptInsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [IntegrationOptIn](#IntegrationOptIn) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [IntegrationOptIn](#IntegrationOptIn)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | validators | [Validators](#Validators) |  no  |  |
+ | description | String |  no  |  |
+ | description_html | String |  no  |  |
+ | constants | String |  no  |  |
+ | companies | ArrayList<HashMap<String,Any>> |  no  |  |
+ | support | ArrayList<String> |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | meta | [IntegrationMeta](#IntegrationMeta) |  no  |  |
+ | icon | String |  no  |  |
+ | owner | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | token | String |  no  |  |
+ | secret | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Validators](#Validators)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company | [CompanyValidator](#CompanyValidator) |  no  |  |
+ | store | [StoreValidator](#StoreValidator) |  no  |  |
+ | inventory | [InventoryValidator](#InventoryValidator) |  no  |  |
+ | order | [OrderValidator](#OrderValidator) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyValidator](#CompanyValidator)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | json_schema | [JsonSchema](#JsonSchema) |  no  |  |
+ | browser_script | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [JsonSchema](#JsonSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  |  |
+ | key | String |  no  |  |
+ | type | String |  no  |  |
+ | tooltip | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreValidator](#StoreValidator)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | json_schema | ArrayList<[JsonSchema](#JsonSchema)> |  no  |  |
+ | browser_script | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryValidator](#InventoryValidator)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | json_schema | ArrayList<[JsonSchema](#JsonSchema)> |  no  |  |
+ | browser_script | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderValidator](#OrderValidator)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | json_schema | ArrayList<[JsonSchema](#JsonSchema)> |  no  |  |
+ | browser_script | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [IntegrationMeta](#IntegrationMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_public | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Integration](#Integration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | validators | [Validators](#Validators) |  no  |  |
+ | description | String |  no  |  |
+ | description_html | String |  no  |  |
+ | constants | HashMap<String,Any> |  no  |  |
+ | companies | ArrayList<HashMap<String,Any>> |  no  |  |
+ | support | ArrayList<String> |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | meta | [IntegrationMeta](#IntegrationMeta) |  no  |  |
+ | icon | String |  no  |  |
+ | owner | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | token | String |  no  |  |
+ | secret | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [IntegrationConfigResponse](#IntegrationConfigResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [IntegrationLevel](#IntegrationLevel) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [IntegrationLevel](#IntegrationLevel)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | opted | Boolean |  no  |  |
+ | permissions | ArrayList<HashMap<String,Any>> |  no  |  |
+ | last_patch | ArrayList<HashMap<String,Any>> |  no  |  |
+ | _id | String |  no  |  |
+ | integration | String |  no  |  |
+ | level | String |  no  |  |
+ | uid | Int |  no  |  |
+ | meta | ArrayList<Any> |  no  |  |
+ | token | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+ | data | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptedStoreIntegration](#OptedStoreIntegration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | other_opted | Boolean |  no  |  |
+ | other_integration | [IntegrationOptIn](#IntegrationOptIn) |  no  |  |
+ | other_entity | [OtherEntity](#OtherEntity) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OtherEntity](#OtherEntity)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | opted | Boolean |  no  |  |
+ | permissions | ArrayList<String> |  no  |  |
+ | last_patch | [LastPatch](#LastPatch) |  no  |  |
+ | _id | String |  no  |  |
+ | integration | String |  no  |  |
+ | level | String |  no  |  |
+ | uid | Int |  no  |  |
+ | data | [OtherEntityData](#OtherEntityData) |  no  |  |
+ | meta | ArrayList<HashMap<String,Any>> |  no  |  |
+ | token | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LastPatch](#LastPatch)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | op | String |  no  |  |
+ | path | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OtherEntityData](#OtherEntityData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | article_identifier | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [App](#App)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | company_id | String |  no  | Current company id |
+ | channel_type | String |  no  |  |
+ | auth | [ApplicationAuth](#ApplicationAuth) |  no  |  |
+ | name | String |  no  | User friendly name for application |
+ | desc | String |  no  | Basic description of application |
+
+---
+
+
+ 
+ 
+ #### [AppInventory](#AppInventory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand | [InventoryBrandRule](#InventoryBrandRule) |  no  |  |
+ | store | [InventoryStoreRule](#InventoryStoreRule) |  no  |  |
+ | image | ArrayList<String> |  no  |  |
+ | franchise_enabled | Boolean |  no  |  |
+ | out_of_stock | Boolean |  no  |  |
+ | payment | [InventoryPaymentConfig](#InventoryPaymentConfig) |  no  |  |
+ | article_assignment | [InventoryArticleAssignment](#InventoryArticleAssignment) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppDomain](#AppDomain)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompaniesResponse](#CompaniesResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [AppInventoryCompanies](#AppInventoryCompanies) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppInventoryCompanies](#AppInventoryCompanies)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | name | String |  no  |  |
+ | company_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoresResponse](#StoresResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [AppInventoryStores](#AppInventoryStores) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppInventoryStores](#AppInventoryStores)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | uid | Int |  no  |  |
+ | name | String |  no  |  |
+ | display_name | String |  no  |  |
+ | store_type | String |  no  |  |
+ | store_code | String |  no  |  |
+ | company_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FilterOrderingStoreRequest](#FilterOrderingStoreRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | all_stores | Boolean |  no  |  |
+ | deployed_stores | ArrayList<Int> |  no  |  |
+ | q | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DeploymentMeta](#DeploymentMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | deployed_stores | ArrayList<Int> |  no  |  |
+ | all_stores | Boolean |  no  |  |
+ | enabled | Boolean |  no  |  |
+ | type | String |  no  |  |
+ | _id | String |  no  |  |
+ | app | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderingStoreConfig](#OrderingStoreConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | deployment_meta | [DeploymentMeta](#DeploymentMeta) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OtherSellerCompany](#OtherSellerCompany)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OtherSellerApplication](#OtherSellerApplication)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | _id | String |  no  |  |
+ | domain | String |  no  |  |
+ | company | [OtherSellerCompany](#OtherSellerCompany) |  no  |  |
+ | opt_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OtherSellerApplications](#OtherSellerApplications)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[OtherSellerApplication](#OtherSellerApplication)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptedApplicationResponse](#OptedApplicationResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | _id | String |  no  |  |
+ | domain | String |  no  |  |
+ | company | [OptedCompany](#OptedCompany) |  no  |  |
+ | opted_inventory | [OptedInventory](#OptedInventory) |  no  |  |
+ | opt_out_inventory | [OptOutInventory](#OptOutInventory) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptedCompany](#OptedCompany)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptedInventory](#OptedInventory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | opt_type | [OptType](#OptType) |  no  |  |
+ | items | Any |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptType](#OptType)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | display | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptedStore](#OptedStore)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | store_code | String |  no  |  |
+ | _id | String |  no  |  |
+ | modified_on | String |  no  |  |
+ | uid | Int |  no  |  |
+ | address | [OptedStoreAddress](#OptedStoreAddress) |  no  |  |
+ | display_name | String |  no  |  |
+ | store_type | String |  no  |  |
+ | company_id | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptOutInventory](#OptOutInventory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store | ArrayList<Int>? |  yes  |  |
+ | company | ArrayList<Int>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TokenResponse](#TokenResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tokens | [Tokens](#Tokens) |  no  |  |
+ | _id | String |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Tokens](#Tokens)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | firebase | [Firebase](#Firebase) |  no  |  |
+ | moengage | [Moengage](#Moengage) |  no  |  |
+ | segment | [Segment](#Segment) |  no  |  |
+ | gtm | [Gtm](#Gtm) |  no  |  |
+ | freshchat | [Freshchat](#Freshchat) |  no  |  |
+ | safetynet | [Safetynet](#Safetynet) |  no  |  |
+ | fynd_rewards | [FyndRewards](#FyndRewards) |  no  |  |
+ | google_map | [GoogleMap](#GoogleMap) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Firebase](#Firebase)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [Credentials](#Credentials) |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Credentials](#Credentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ios | [Ios](#Ios) |  no  |  |
+ | android | [Android](#Android) |  no  |  |
+ | project_id | String |  no  |  |
+ | gcm_sender_id | String |  no  |  |
+ | application_id | String |  no  |  |
+ | api_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Ios](#Ios)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application_id | String |  no  |  |
+ | api_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Android](#Android)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application_id | String |  no  |  |
+ | api_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Moengage](#Moengage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [MoengageCredentials](#MoengageCredentials) |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MoengageCredentials](#MoengageCredentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Segment](#Segment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [SegmentCredentials](#SegmentCredentials) |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SegmentCredentials](#SegmentCredentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | write_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Gtm](#Gtm)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [GtmCredentials](#GtmCredentials) |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GtmCredentials](#GtmCredentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | api_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Freshchat](#Freshchat)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [FreshchatCredentials](#FreshchatCredentials) |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FreshchatCredentials](#FreshchatCredentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app_id | String |  no  |  |
+ | app_key | String |  no  |  |
+ | web_token | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Safetynet](#Safetynet)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [SafetynetCredentials](#SafetynetCredentials) |  no  |  |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SafetynetCredentials](#SafetynetCredentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | api_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FyndRewards](#FyndRewards)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [FyndRewardsCredentials](#FyndRewardsCredentials) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FyndRewardsCredentials](#FyndRewardsCredentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | public_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GoogleMap](#GoogleMap)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | credentials | [GoogleMapCredentials](#GoogleMapCredentials) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GoogleMapCredentials](#GoogleMapCredentials)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | api_key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDetailFeature](#ProductDetailFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | similar | ArrayList<String> |  no  |  |
+ | seller_selection | Boolean |  no  |  |
+ | update_product_meta | Boolean |  no  |  |
+ | request_product | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LaunchPage](#LaunchPage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page_type | String |  no  |  |
+ | params | HashMap<String,Any> |  no  |  |
+ | query | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LandingPageFeature](#LandingPageFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | launch_page | [LaunchPage](#LaunchPage) |  no  |  |
+ | continue_as_guest | Boolean |  no  |  |
+ | login_btn_text | String |  no  |  |
+ | show_domain_textbox | Boolean |  no  |  |
+ | show_register_btn | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RegistrationPageFeature](#RegistrationPageFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ask_store_address | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppFeature](#AppFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | product_detail | [ProductDetailFeature](#ProductDetailFeature) |  no  |  |
+ | landing_page | [LandingPageFeature](#LandingPageFeature) |  no  |  |
+ | registration_page | [RegistrationPageFeature](#RegistrationPageFeature) |  no  |  |
+ | home_page | [HomePageFeature](#HomePageFeature) |  no  |  |
+ | common | [CommonFeature](#CommonFeature) |  no  |  |
+ | cart | [CartFeature](#CartFeature) |  no  |  |
+ | qr | [QrFeature](#QrFeature) |  no  |  |
+ | pcr | [PcrFeature](#PcrFeature) |  no  |  |
+ | order | [OrderFeature](#OrderFeature) |  no  |  |
+ | _id | String |  no  |  |
+ | app | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HomePageFeature](#HomePageFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | order_processing | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CommonFeature](#CommonFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | communication_optin_dialog | [CommunicationOptinDialogFeature](#CommunicationOptinDialogFeature) |  no  |  |
+ | deployment_store_selection | [DeploymentStoreSelectionFeature](#DeploymentStoreSelectionFeature) |  no  |  |
+ | listing_price | [ListingPriceFeature](#ListingPriceFeature) |  no  |  |
+ | listing_page | [ListingPageFeature](#ListingPageFeature) |  no  |  |
+ | currency | [CurrencyFeature](#CurrencyFeature) |  no  |  |
+ | revenue_engine | [RevenueEngineFeature](#RevenueEngineFeature) |  no  |  |
+ | feedback | [FeedbackFeature](#FeedbackFeature) |  no  |  |
+ | compare_products | [CompareProductsFeature](#CompareProductsFeature) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CommunicationOptinDialogFeature](#CommunicationOptinDialogFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | visibility | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DeploymentStoreSelectionFeature](#DeploymentStoreSelectionFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ListingPriceFeature](#ListingPriceFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | String |  no  |  |
+ | sort | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ListingPageFeature](#ListingPageFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sort_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CurrencyFeature](#CurrencyFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | ArrayList<String> |  no  |  |
+ | type | String |  no  |  |
+ | default_currency | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RevenueEngineFeature](#RevenueEngineFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FeedbackFeature](#FeedbackFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompareProductsFeature](#CompareProductsFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CartFeature](#CartFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | gst_input | Boolean |  no  |  |
+ | staff_selection | Boolean |  no  |  |
+ | placing_for_customer | Boolean |  no  |  |
+ | google_map | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [QrFeature](#QrFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | Boolean |  no  |  |
+ | products | Boolean |  no  |  |
+ | collections | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PcrFeature](#PcrFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | staff_selection | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderFeature](#OrderFeature)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | buy_again | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppFeatureRequest](#AppFeatureRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | feature | [AppFeature](#AppFeature) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AppFeatureResponse](#AppFeatureResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | feature | [AppFeature](#AppFeature) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Currency](#Currency)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | name | String |  no  |  |
+ | code | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | decimal_digits | Int |  no  |  |
+ | symbol | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Domain](#Domain)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verified | Boolean |  no  |  |
+ | is_primary | Boolean |  no  |  |
+ | is_default | Boolean |  no  |  |
+ | is_shortlink | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationWebsite](#ApplicationWebsite)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | basepath | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationCors](#ApplicationCors)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | domains | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationAuth](#ApplicationAuth)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationRedirections](#ApplicationRedirections)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | from | String |  no  |  |
+ | redirect_to | String |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationMeta](#ApplicationMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SecureUrl](#SecureUrl)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | secure_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Application](#Application)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | website | [ApplicationWebsite](#ApplicationWebsite) |  no  |  |
+ | cors | [ApplicationCors](#ApplicationCors) |  no  |  |
+ | auth | [ApplicationAuth](#ApplicationAuth) |  no  |  |
+ | description | String |  no  |  |
+ | channel_type | String |  no  |  |
+ | cache_ttl | Int |  no  |  |
+ | is_internal | Boolean |  no  |  |
+ | is_active | Boolean |  no  |  |
+ | _id | String |  no  |  |
+ | name | String |  no  |  |
+ | owner | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | token | String |  no  |  |
+ | redirections | ArrayList<[ApplicationRedirections](#ApplicationRedirections)> |  no  |  |
+ | meta | ArrayList<[ApplicationMeta](#ApplicationMeta)> |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+ | banner | [SecureUrl](#SecureUrl) |  no  |  |
+ | logo | [SecureUrl](#SecureUrl) |  no  |  |
+ | favicon | [SecureUrl](#SecureUrl) |  no  |  |
+ | domains | ArrayList<[Domain](#Domain)> |  no  |  |
+ | app_type | String |  no  |  |
+ | mobile_logo | [SecureUrl](#SecureUrl) |  no  |  |
+ | domain | [Domain](#Domain) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [NotFound](#NotFound)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UnhandledError](#UnhandledError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InvalidPayloadRequest](#InvalidPayloadRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SuccessMessageResponse](#SuccessMessageResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryBrandRule](#InventoryBrandRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | criteria | String |  no  | Whether enable all or explicitly few brands as inventory |
+ | brands | ArrayList<Int> |  no  | Brand uids in case of explicit criteria |
+
+---
+
+
+ 
+ 
+ #### [StoreCriteriaRule](#StoreCriteriaRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | companies | ArrayList<Int> |  no  | list of company uids |
+ | brands | ArrayList<Int> |  no  | list of brand uids |
+
+---
+
+
+ 
+ 
+ #### [InventoryStoreRule](#InventoryStoreRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | criteria | String |  no  | Whether enable all or explicitly few stores or use filter of brands and company as inventory stores |
+ | rules | ArrayList<[StoreCriteriaRule](#StoreCriteriaRule)> |  no  | List of rules with company and brands uids. Used when critera is `filter` |
+ | stores | ArrayList<Int> |  no  | List of store uids. Used when critera is `explicit` |
+
+---
+
+
+ 
+ 
+ #### [InventoryPaymentConfig](#InventoryPaymentConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mode_of_payment | String |  no  |  |
+ | source | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StorePriorityRule](#StorePriorityRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean |  no  |  |
+ | storetype_order | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleAssignmentRule](#ArticleAssignmentRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | store_priority | [StorePriorityRule](#StorePriorityRule) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InventoryArticleAssignment](#InventoryArticleAssignment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | post_order_reassignment | Boolean |  no  |  |
+ | enforced_stores | ArrayList<Int> |  no  |  |
+ | rules | [ArticleAssignmentRule](#ArticleAssignmentRule) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyAboutAddress](#CompanyAboutAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pincode | Int |  no  |  |
+ | address1 | String |  no  |  |
+ | address2 | String |  no  |  |
+ | city | String |  no  |  |
+ | state | String |  no  |  |
+ | country | String |  no  |  |
+ | address_type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserEmail](#UserEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  |  |
+ | primary | Boolean |  no  |  |
+ | verified | Boolean |  no  |  |
+ | email | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserPhoneNumber](#UserPhoneNumber)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  |  |
+ | primary | Boolean |  no  |  |
+ | verified | Boolean |  no  |  |
+ | country_code | Int |  no  |  |
+ | phone | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationInformation](#ApplicationInformation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address | [InformationAddress](#InformationAddress) |  no  |  |
+ | support | [InformationSupport](#InformationSupport) |  no  |  |
+ | social_links | [SocialLinks](#SocialLinks) |  no  |  |
+ | links | [Links](#Links) |  no  |  |
+ | copyright_text | String |  no  |  |
+ | _id | String |  no  |  |
+ | business_highlights | [BusinessHighlights](#BusinessHighlights) |  no  |  |
+ | application | String |  no  |  |
+ | created_at | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InformationAddress](#InformationAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | loc | String |  no  |  |
+ | address_line | ArrayList<String> |  no  |  |
+ | phone | [InformationPhone](#InformationPhone) |  no  |  |
+ | city | String |  no  |  |
+ | country | String |  no  |  |
+ | pincode | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InformationPhone](#InformationPhone)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+ | number | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InformationSupport](#InformationSupport)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | phone | ArrayList<String> |  no  |  |
+ | email | ArrayList<String> |  no  |  |
+ | timing | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SocialLinks](#SocialLinks)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | facebook | [FacebookLink](#FacebookLink) |  no  |  |
+ | instagram | [InstagramLink](#InstagramLink) |  no  |  |
+ | twitter | [TwitterLink](#TwitterLink) |  no  |  |
+ | pinterest | [PinterestLink](#PinterestLink) |  no  |  |
+ | google_plus | [GooglePlusLink](#GooglePlusLink) |  no  |  |
+ | youtube | [YoutubeLink](#YoutubeLink) |  no  |  |
+ | linked_in | [LinkedInLink](#LinkedInLink) |  no  |  |
+ | vimeo | [VimeoLink](#VimeoLink) |  no  |  |
+ | blog_link | [BlogLink](#BlogLink) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [FacebookLink](#FacebookLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [InstagramLink](#InstagramLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [TwitterLink](#TwitterLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PinterestLink](#PinterestLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GooglePlusLink](#GooglePlusLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [YoutubeLink](#YoutubeLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LinkedInLink](#LinkedInLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [VimeoLink](#VimeoLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BlogLink](#BlogLink)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Links](#Links)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | link | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BusinessHighlights](#BusinessHighlights)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | title | String |  no  |  |
+ | icon | String |  no  |  |
+ | sub_title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationDetail](#ApplicationDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | logo | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | mobile_logo | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | favicon | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | banner | [SecureUrl](#SecureUrl)? |  yes  |  |
+ | domain | [Domain](#Domain) |  no  |  |
+ | domains | ArrayList<[Domain](#Domain)> |  no  |  |
+ | _id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CurrenciesResponse](#CurrenciesResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Currency](#Currency)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreLatLong](#StoreLatLong)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | coordinates | ArrayList<Double> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OptedStoreAddress](#OptedStoreAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | state | String |  no  |  |
+ | address1 | String |  no  |  |
+ | lat_long | [StoreLatLong](#StoreLatLong) |  no  |  |
+ | address2 | String |  no  |  |
+ | pincode | Int |  no  |  |
+ | country | String |  no  |  |
+ | city | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderingStore](#OrderingStore)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address | [OptedStoreAddress](#OptedStoreAddress) |  no  |  |
+ | _id | String |  no  |  |
+ | uid | Int |  no  |  |
+ | name | String |  no  |  |
+ | display_name | String |  no  |  |
+ | store_type | String |  no  |  |
+ | store_code | String |  no  |  |
+ | pincode | Int |  no  |  |
+ | code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OrderingStores](#OrderingStores)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page | [Page](#Page) |  no  |  |
+ | items | ArrayList<[OrderingStore](#OrderingStore)> |  no  |  |
+ | deployed_stores | ArrayList<Int> |  no  |  |
+ | all_stores | Boolean |  no  |  |
+ | enabled | Boolean |  no  |  |
+ | type | String |  no  |  |
+ | _id | String |  no  |  |
+ | app | String |  no  |  |
+ | __v | Int |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [Rule](#Rule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | Double |  no  |  |
+ | max | Double |  no  |  |
+ | discount_qty | Double |  no  |  |
+ | value | Double |  no  |  |
+ | min | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkBundleRestriction](#BulkBundleRestriction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | multi_store_allowed | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UsesRemaining](#UsesRemaining)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | app | Int |  no  |  |
+ | total | Int |  no  |  |
+ | user | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UsesRestriction](#UsesRestriction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | remaining | [UsesRemaining](#UsesRemaining) |  no  |  |
+ | maximum | [UsesRemaining](#UsesRemaining) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentAllowValue](#PaymentAllowValue)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentModes](#PaymentModes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | types | ArrayList<String> |  no  |  |
+ | networks | ArrayList<String> |  no  |  |
+ | codes | ArrayList<String> |  no  |  |
+ | uses | [PaymentAllowValue](#PaymentAllowValue) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentCodes](#PaymentCodes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | pl | [PaymentModes](#PaymentModes) |  no  |  |
+ | ps | [PaymentModes](#PaymentModes) |  no  |  |
+ | upi | [PaymentModes](#PaymentModes) |  no  |  |
+ | wl | [PaymentModes](#PaymentModes) |  no  |  |
+ | qr | [PaymentModes](#PaymentModes) |  no  |  |
+ | card | [PaymentModes](#PaymentModes) |  no  |  |
+ | nb | [PaymentModes](#PaymentModes) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PostOrder](#PostOrder)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cancellation_allowed | Boolean |  no  |  |
+ | return_allowed | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PriceRange](#PriceRange)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Int |  no  |  |
+ | max | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Restrictions](#Restrictions)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | coupon_allowed | Boolean |  no  |  |
+ | bulk_bundle | [BulkBundleRestriction](#BulkBundleRestriction) |  no  |  |
+ | uses | [UsesRestriction](#UsesRestriction) |  no  |  |
+ | platforms | ArrayList<String> |  no  |  |
+ | payments | [PaymentCodes](#PaymentCodes) |  no  |  |
+ | post_order | [PostOrder](#PostOrder) |  no  |  |
+ | ordering_stores | ArrayList<Int> |  no  |  |
+ | price_range | [PriceRange](#PriceRange) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Ownership](#Ownership)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | payable_category | String? |  yes  |  |
+ | payable_by | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [State](#State)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | is_archived | Boolean |  no  |  |
+ | is_public | Boolean |  no  |  |
+ | is_display | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponAction](#CouponAction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | txn_mode | String |  no  |  |
+ | action_date | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Validation](#Validation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user_registered_after | String |  no  |  |
+ | anonymous | Boolean |  no  |  |
+ | app_id | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RuleDefinition](#RuleDefinition)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value_type | String? |  yes  |  |
+ | auto_apply | Boolean |  no  |  |
+ | scope | ArrayList<String> |  no  |  |
+ | currency_code | String |  no  |  |
+ | calculate_on | String? |  yes  |  |
+ | is_exact | Boolean |  no  |  |
+ | applicable_on | String? |  yes  |  |
+ | type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Identifier](#Identifier)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | category_id | ArrayList<Int> |  no  |  |
+ | collection_id | ArrayList<String> |  no  |  |
+ | company_id | ArrayList<Int> |  no  |  |
+ | item_id | ArrayList<Int> |  no  |  |
+ | brand_id | ArrayList<Int> |  no  |  |
+ | user_id | ArrayList<String> |  no  |  |
+ | article_id | ArrayList<String> |  no  |  |
+ | store_id | ArrayList<Int> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponSchedule](#CouponSchedule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | next_schedule | ArrayList<HashMap<String,Any>> |  no  |  |
+ | start | String |  no  |  |
+ | duration | Int |  no  |  |
+ | end | String |  no  |  |
+ | cron | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DisplayMetaDict](#DisplayMetaDict)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | subtitle | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DisplayMeta](#DisplayMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | auto | [DisplayMetaDict](#DisplayMetaDict) |  no  |  |
+ | title | String |  no  |  |
+ | remove | [DisplayMetaDict](#DisplayMetaDict) |  no  |  |
+ | apply | [DisplayMetaDict](#DisplayMetaDict) |  no  |  |
+ | description | String |  no  |  |
+ | subtitle | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponAuthor](#CouponAuthor)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created_by | String |  no  |  |
+ | modified_by | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Validity](#Validity)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | priority | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponDateMeta](#CouponDateMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | created_on | String |  no  |  |
+ | modified_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponAdd](#CouponAdd)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | rule | ArrayList<[Rule](#Rule)>? |  yes  |  |
+ | restrictions | [Restrictions](#Restrictions) |  no  |  |
+ | ownership | [Ownership](#Ownership)? |  yes  |  |
+ | state | [State](#State) |  no  |  |
+ | action | [CouponAction](#CouponAction) |  no  |  |
+ | validation | [Validation](#Validation) |  no  |  |
+ | rule_definition | [RuleDefinition](#RuleDefinition)? |  yes  |  |
+ | identifiers | [Identifier](#Identifier)? |  yes  |  |
+ | _schedule | [CouponSchedule](#CouponSchedule) |  no  |  |
+ | type_slug | String? |  yes  |  |
+ | display_meta | [DisplayMeta](#DisplayMeta)? |  yes  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | author | [CouponAuthor](#CouponAuthor) |  no  |  |
+ | validity | [Validity](#Validity)? |  yes  |  |
+ | code | String? |  yes  |  |
+ | date_meta | [CouponDateMeta](#CouponDateMeta) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponsResponse](#CouponsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [CouponAdd](#CouponAdd) |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SuccessMessage](#SuccessMessage)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [OperationErrorResponse](#OperationErrorResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponUpdate](#CouponUpdate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | rule | ArrayList<[Rule](#Rule)>? |  yes  |  |
+ | restrictions | [Restrictions](#Restrictions) |  no  |  |
+ | ownership | [Ownership](#Ownership)? |  yes  |  |
+ | state | [State](#State) |  no  |  |
+ | action | [CouponAction](#CouponAction) |  no  |  |
+ | validation | [Validation](#Validation) |  no  |  |
+ | rule_definition | [RuleDefinition](#RuleDefinition)? |  yes  |  |
+ | identifiers | [Identifier](#Identifier)? |  yes  |  |
+ | _schedule | [CouponSchedule](#CouponSchedule) |  no  |  |
+ | type_slug | String? |  yes  |  |
+ | display_meta | [DisplayMeta](#DisplayMeta)? |  yes  |  |
+ | tags | ArrayList<String> |  no  |  |
+ | author | [CouponAuthor](#CouponAuthor) |  no  |  |
+ | validity | [Validity](#Validity)? |  yes  |  |
+ | code | String? |  yes  |  |
+ | date_meta | [CouponDateMeta](#CouponDateMeta) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponPartialUpdate](#CouponPartialUpdate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | schedule | [CouponSchedule](#CouponSchedule) |  no  |  |
+ | archive | Boolean |  no  | Send true to unpublish coupon |
+
+---
+
+
+
+
+ 
+ 
+ #### [AppUser](#AppUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | application_id | String |  no  |  |
+ | block_reason | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | updated_by | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [E](#E)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | HashMap<String,Any> |  no  |  |
+ | exception | String |  no  |  |
+ | info | String |  no  |  |
+ | message | String |  no  |  |
+ | request_id | String |  no  |  |
+ | stack_trace | String |  no  |  |
+ | status | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Giveaway](#Giveaway)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | _schedule | [Schedule](#Schedule) |  no  |  |
+ | active | Boolean |  no  |  |
+ | application_id | String |  no  |  |
+ | audience | [RewardsAudience](#RewardsAudience) |  no  |  |
+ | banner_image | [Asset](#Asset) |  no  |  |
+ | created_at | String |  no  |  |
+ | description | String |  no  |  |
+ | name | String |  no  |  |
+ | rule | [RewardsRule](#RewardsRule) |  no  |  |
+ | title | String |  no  |  |
+ | updated_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GiveawayResponse](#GiveawayResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Giveaway](#Giveaway)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HistoryPretty](#HistoryPretty)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | application_id | String |  no  |  |
+ | claimed | Boolean |  no  |  |
+ | created_at | String |  no  |  |
+ | expires_on | String |  no  |  |
+ | points | Double |  no  |  |
+ | remaining_points | Double |  no  |  |
+ | text_1 | String |  no  |  |
+ | text_2 | String |  no  |  |
+ | text_3 | String |  no  |  |
+ | txn_name | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [HistoryRes](#HistoryRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[HistoryPretty](#HistoryPretty)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+ | points | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Offer](#Offer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _schedule | [Schedule](#Schedule) |  no  |  |
+ | active | Boolean |  no  |  |
+ | application_id | String |  no  |  |
+ | banner_image | [Asset](#Asset) |  no  |  |
+ | created_at | String |  no  |  |
+ | name | String |  no  |  |
+ | rule | HashMap<String,Any> |  no  |  |
+ | share | [ShareMessages](#ShareMessages) |  no  |  |
+ | sub_text | String |  no  |  |
+ | text | String |  no  |  |
+ | type | String |  no  |  |
+ | updated_at | String |  no  |  |
+ | updated_by | String |  no  |  |
+ | url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Points](#Points)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | available | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Referral](#Referral)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RewardUser](#RewardUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | active | Boolean |  no  |  |
+ | created_at | String |  no  |  |
+ | referral | [Referral](#Referral) |  no  |  |
+ | uid | Int |  no  |  |
+ | updated_at | String |  no  |  |
+ | user_block_reason | String |  no  |  |
+ | user_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RewardsAudience](#RewardsAudience)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | header_user_id | String |  no  |  |
+ | id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RewardsRule](#RewardsRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShareMessages](#ShareMessages)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String |  no  |  |
+ | facebook | String |  no  |  |
+ | fallback | String |  no  |  |
+ | message | String |  no  |  |
+ | messenger | String |  no  |  |
+ | sms | String |  no  |  |
+ | text | String |  no  |  |
+ | twitter | String |  no  |  |
+ | whatsapp | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [UserRes](#UserRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | points | [Points](#Points) |  no  |  |
+ | user | [RewardUser](#RewardUser) |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [StatGroup](#StatGroup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | url | String |  no  |  |
+ | title | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StatsGroups](#StatsGroups)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | groups | ArrayList<[StatGroup](#StatGroup)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StatsGroupComponent](#StatsGroupComponent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | url | String |  no  |  |
+ | title | String |  no  |  |
+ | type | String |  no  |  |
+ | filters | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StatsGroupComponents](#StatsGroupComponents)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  |  |
+ | components | ArrayList<[StatsGroupComponent](#StatsGroupComponent)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StatsRes](#StatsRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | title | String |  no  |  |
+ | type | String |  no  |  |
+ | data | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ReceivedAt](#ReceivedAt)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AbandonCartsDetail](#AbandonCartsDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | properties_cart_id | String |  no  |  |
+ | context_traits_first_name | String |  no  |  |
+ | context_traits_last_name | String |  no  |  |
+ | context_traits_phone_number | String |  no  |  |
+ | context_traits_email | String |  no  |  |
+ | context_app_application_id | String |  no  |  |
+ | properties_breakup_values_raw_total | String |  no  |  |
+ | received_at | [ReceivedAt](#ReceivedAt) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AbandonCartsList](#AbandonCartsList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[AbandonCartsDetail](#AbandonCartsDetail)> |  no  |  |
+ | cart_total | String |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AbandonCartDetail](#AbandonCartDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | user_id | String |  no  |  |
+ | cart_value | String |  no  |  |
+ | articles | ArrayList<HashMap<String,Any>> |  no  |  |
+ | breakup | HashMap<String,Any> |  no  |  |
+ | address | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ExportJobReq](#ExportJobReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | marketplace_name | String |  no  |  |
+ | start_time | String |  no  |  |
+ | end_time | String |  no  |  |
+ | event_type | String |  no  |  |
+ | trace_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ExportJobRes](#ExportJobRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  |  |
+ | job_id | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ExportJobStatusRes](#ExportJobStatusRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  |  |
+ | job_id | String |  no  |  |
+ | download_url | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetLogsListReq](#GetLogsListReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | marketplace_name | String |  no  |  |
+ | start_date | String |  no  |  |
+ | company_id | String |  no  |  |
+ | end_date | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [MkpLogsResp](#MkpLogsResp)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start_time_iso | String |  no  |  |
+ | end_time_iso | String |  no  |  |
+ | event_type | String |  no  |  |
+ | trace_id | String |  no  |  |
+ | count | String |  no  |  |
+ | status | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetLogsListRes](#GetLogsListRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[MkpLogsResp](#MkpLogsResp)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SearchLogReq](#SearchLogReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | marketplace_name | String |  no  |  |
+ | start_date | String |  no  |  |
+ | company_id | String |  no  |  |
+ | end_date | String |  no  |  |
+ | identifier | String |  no  |  |
+ | identifier_value | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [LogInfo](#LogInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | status | String |  no  |  |
+ | event_type | String |  no  |  |
+ | marketplace_name | String |  no  |  |
+ | event | String |  no  |  |
+ | trace_id | String |  no  |  |
+ | company_id | Double |  no  |  |
+ | brand_id | Double |  no  |  |
+ | store_code | String |  no  |  |
+ | store_id | Double |  no  |  |
+ | item_id | Double |  no  |  |
+ | article_id | String |  no  |  |
+ | seller_identifier | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SearchLogRes](#SearchLogRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[LogInfo](#LogInfo)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [ValidityObject](#ValidityObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | start | String? |  yes  |  |
+ | end | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUpdateDiscount](#CreateUpdateDiscount)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+ | is_active | Boolean? |  yes  |  |
+ | app_ids | ArrayList<String>? |  yes  |  |
+ | job_type | String? |  yes  |  |
+ | discount_type | String? |  yes  |  |
+ | discount_level | String? |  yes  |  |
+ | value | Int |  no  |  |
+ | file_path | String |  no  |  |
+ | brand_ids | ArrayList<Int> |  no  |  |
+ | store_ids | ArrayList<Int> |  no  |  |
+ | validity | [ValidityObject](#ValidityObject)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DiscountJob](#DiscountJob)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+ | is_active | Boolean? |  yes  |  |
+ | app_ids | ArrayList<String> |  no  |  |
+ | job_type | String |  no  |  |
+ | discount_type | String |  no  |  |
+ | discount_level | String |  no  |  |
+ | value | Int |  no  |  |
+ | file_path | String |  no  |  |
+ | brand_ids | ArrayList<Int> |  no  |  |
+ | store_ids | ArrayList<Int> |  no  |  |
+ | validity | [ValidityObject](#ValidityObject)? |  yes  |  |
+ | created_on | String? |  yes  |  |
+ | modified_on | String? |  yes  |  |
+ | created_by | [UserDetails](#UserDetails)? |  yes  |  |
+ | modified_by | [UserDetails](#UserDetails)? |  yes  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ListOrCalender](#ListOrCalender)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[DiscountJob](#DiscountJob)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [FileJobResponse](#FileJobResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | stage | String? |  yes  |  |
+ | total | Int? |  yes  |  |
+ | failed | Int? |  yes  |  |
+ | company_id | Int? |  yes  |  |
+ | body | HashMap<String,Any> |  no  |  |
+ | type | String? |  yes  |  |
+ | file_type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DownloadFileJob](#DownloadFileJob)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | brand_ids | ArrayList<Int> |  no  |  |
+ | store_ids | ArrayList<Int> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CancelJobResponse](#CancelJobResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserDetails](#UserDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | username | String? |  yes  |  |
+ | user_id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BadRequestObject](#BadRequestObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [AddProxyReq](#AddProxyReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | attached_path | String |  no  | Proxy path slug |
+ | proxy_url | String |  no  | Proxied url |
+
+---
+
+
+ 
+ 
+ #### [AddProxyResponse](#AddProxyResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | _id | String |  no  |  |
+ | attached_path | String |  no  |  |
+ | proxy_url | String |  no  |  |
+ | company_id | String |  no  |  |
+ | application_id | String |  no  |  |
+ | extension_id | String |  no  |  |
+ | created_at | String |  no  |  |
+ | modified_at | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ApiError](#ApiError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String |  no  |  |
+ | message | String |  no  |  |
+ | meta | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [RemoveProxyResponse](#RemoveProxyResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  |  |
+ | data | HashMap<String,Any> |  no  |  |
+
+---
+
+
+
+
+ 
+ 
+ #### [EventConfig](#EventConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | event_name | String |  no  |  |
+ | event_type | String |  no  |  |
+ | version | String |  no  |  |
+ | display_name | String |  no  |  |
+ | description | String |  no  |  |
+ | created_on | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventConfigList](#EventConfigList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[EventConfig](#EventConfig)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberConfigList](#SubscriberConfigList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | subscribers | ArrayList<[SubscriberConfig](#SubscriberConfig)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventProcessedStatus](#EventProcessedStatus)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | subscriber_id | String |  no  |  |
+ | attempt | Int |  no  |  |
+ | response_code | String |  no  |  |
+ | response_message | String |  no  |  |
+ | created_on | String |  no  |  |
+ | processed_on | String |  no  |  |
+ | status | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [EventPayload](#EventPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | event_trace_id | String |  no  |  |
+ | event_company_id | Int |  no  |  |
+ | event_application_id | String |  no  |  |
+ | event_extension_id | String |  no  |  |
+ | event_name | String |  no  |  |
+ | status | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberConfig](#SubscriberConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | webhook_url | String |  no  |  |
+ | company_id | Int |  no  |  |
+ | application_id | String |  no  |  |
+ | extension_id | String |  no  |  |
+ | status | String |  no  |  |
+ | auth_meta | [AuthMeta](#AuthMeta) |  no  |  |
+ | created_on | String |  no  |  |
+ | updated_on | String |  no  |  |
+ | subscriber_event_mapping | [SubscriberEvent](#SubscriberEvent) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SubscriberEvent](#SubscriberEvent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int |  no  |  |
+ | subscriber_id | Int |  no  |  |
+ | event_id | Int |  no  |  |
+ | created_date | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AuthMeta](#AuthMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | username | String |  no  |  |
+ | password | String |  no  |  |
+
+---
+
+
