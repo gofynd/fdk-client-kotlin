@@ -184,7 +184,7 @@ interface CartApiList {
     
     @POST ("/service/application/cart/v1.0/coupon")
     fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Body body: ApplyCouponRequest)
-    : Deferred<Response<Any>>
+    : Deferred<Response<CartDetailResponse>>
     
     
     @DELETE ("/service/application/cart/v1.0/coupon")
@@ -219,17 +219,17 @@ interface CartApiList {
     
     @PUT ("/service/application/cart/v1.0/address/{id}")
     fun updateAddress(@Path("id") id: String, @Body body: Address)
-    : Deferred<Response<Any>>
+    : Deferred<Response<UpdateAddressResponse>>
     
     
     @DELETE ("/service/application/cart/v1.0/address/{id}")
     fun removeAddress(@Path("id") id: String)
-    : Deferred<Response<Any>>
+    : Deferred<Response<DeleteAddressResponse>>
     
     
     @POST ("/service/application/cart/v1.0/select-address")
     fun selectAddress(@Query("cart_id") cartId: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
-    : Deferred<Response<Any>>
+    : Deferred<Response<CartDetailResponse>>
     
     
     @PUT ("/service/application/cart/v1.0/payment")
@@ -349,22 +349,22 @@ interface UserApiList {
     
     
     @POST ("/service/application/user/authentication/v1.0/login/facebook-token")
-    fun loginWithFacebook(@Body body: OAuthRequestSchema)
+    fun loginWithFacebook(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
     @POST ("/service/application/user/authentication/v1.0/login/google-token")
-    fun loginWithGoogle(@Body body: OAuthRequestSchema)
+    fun loginWithGoogle(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
     @POST ("/service/application/user/authentication/v1.0/login/google-android")
-    fun loginWithGoogleAndroid(@Body body: OAuthRequestSchema)
+    fun loginWithGoogleAndroid(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
     @POST ("/service/application/user/authentication/v1.0/login/google-ios")
-    fun loginWithGoogleIOS(@Body body: OAuthRequestSchema)
+    fun loginWithGoogleIOS(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
@@ -569,7 +569,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/pages/{slug}")
     fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
-    : Deferred<Response<CustomPageSchema>>
+    : Deferred<Response<PageSchema>>
     
     
     @GET ("/service/application/content/v1.0/pages/")
@@ -1100,7 +1100,7 @@ interface PosCartApiList {
     
     @POST ("/service/application/pos/cart/v1.0/coupon")
     fun applyCoupon(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Body body: ApplyCouponRequest)
-    : Deferred<Response<Any>>
+    : Deferred<Response<CartDetailResponse>>
     
     
     @DELETE ("/service/application/pos/cart/v1.0/coupon")
@@ -1135,17 +1135,17 @@ interface PosCartApiList {
     
     @PUT ("/service/application/pos/cart/v1.0/address/{id}")
     fun updateAddress(@Path("id") id: String, @Body body: Address)
-    : Deferred<Response<Any>>
+    : Deferred<Response<UpdateAddressResponse>>
     
     
     @DELETE ("/service/application/pos/cart/v1.0/address/{id}")
     fun removeAddress(@Path("id") id: String)
-    : Deferred<Response<Any>>
+    : Deferred<Response<DeleteAddressResponse>>
     
     
     @POST ("/service/application/pos/cart/v1.0/select-address")
     fun selectAddress(@Query("cart_id") cartId: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
-    : Deferred<Response<Any>>
+    : Deferred<Response<CartDetailResponse>>
     
     
     @PUT ("/service/application/pos/cart/v1.0/payment")
