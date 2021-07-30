@@ -23416,7 +23416,7 @@ data class PointsHistory(
     var expiresOn: String?=null,
     
     @SerializedName("meta")
-    var meta: String?=null,
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("points")
     var points: Double?=null,
@@ -23485,8 +23485,8 @@ data class PointsHistoryResponse(
     
     
     
-    @SerializedName("history")
-    var history: ArrayList<PointsHistory>?=null,
+    @SerializedName("items")
+    var items: ArrayList<PointsHistory>?=null,
     
     @SerializedName("page")
     var page: Page?=null

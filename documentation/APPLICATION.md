@@ -27228,7 +27228,7 @@ Success. Returns a JSON object containing the city name, state and country ident
  | claimed | Boolean? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | expiresOn | String? |  yes  |  |
- | meta | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
  | points | Double? |  yes  |  |
  | remainingPoints | Double? |  yes  |  |
  | text1 | String? |  yes  |  |
@@ -27247,7 +27247,7 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | history | ArrayList<[PointsHistory](#PointsHistory)>? |  yes  | History is the list of points transaction. |
+ | items | ArrayList<[PointsHistory](#PointsHistory)>? |  yes  | History is the list of points transaction. |
  | page | [Page](#Page)? |  yes  |  |
 
 ---
