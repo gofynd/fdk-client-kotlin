@@ -18,8 +18,6 @@ class ApplicationHeaderInterceptor(
             val languageCode = applicationConfig?.languageCode ?: "en-IN"
             val currencyCode = applicationConfig?.currencyCode ?: "INR"
 
-            header("x-application-id", applicationId)
-            header("x-application-token", applicationToken)
             header("Accept-Language", languageCode)
             header("x-currency-code", currencyCode)
             
