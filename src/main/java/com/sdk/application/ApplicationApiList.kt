@@ -890,6 +890,21 @@ interface OrderApiList {
     fun getPosOrderById(@Path("order_id") orderId: String)
     : Deferred<Response<PosOrderById>>
     
+    
+    @GET ("/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details")
+    fun getCustomerDetailsByShipmentId(@Path("order_id") orderId: String, @Path("shipment_id") shipmentId: String)
+    : Deferred<Response<CustomerDetailsByShipmentId>>
+    
+    
+    @POST ("/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send/")
+    fun sendOtpToShipmentCustomer(@Path("order_id") orderId: String, @Path("shipment_id") shipmentId: String)
+    : Deferred<Response<sendOTPApplicationResponse>>
+    
+    
+    @POST ("/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify")
+    fun verifyOtpShipmentCustomer(@Path("order_id") orderId: String, @Path("shipment_id") shipmentId: String, @Body body: ReqBodyVerifyOTPShipment)
+    : Deferred<Response<ResponseVerifyOTPShipment>>
+    
 }
 
 interface RewardsApiList {

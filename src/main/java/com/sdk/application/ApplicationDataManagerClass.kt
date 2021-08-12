@@ -1925,6 +1925,21 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
+    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsByShipmentId>>? {
+        return orderApiList?.getCustomerDetailsByShipmentId(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<sendOTPApplicationResponse>>? {
+        return orderApiList?.sendOtpToShipmentCustomer(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: ReqBodyVerifyOTPShipment): Deferred<Response<ResponseVerifyOTPShipment>>? {
+        return orderApiList?.verifyOtpShipmentCustomer(orderId = orderId, shipmentId = shipmentId, body = body)}
+
+    
+    
 }
 
 
