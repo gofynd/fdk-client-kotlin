@@ -1,5 +1,7 @@
 
 
+
+
 # FDK Platform Front API Documentaion
 
 
@@ -301,14 +303,14 @@
 
 * ## [Catalog](#Catalog)
   * Methods
+    * [deleteSearchKeywords](#deletesearchkeywords)
     * [getSearchKeywords](#getsearchkeywords)
     * [updateSearchKeywords](#updatesearchkeywords)
-    * [deleteSearchKeywords](#deletesearchkeywords)
     * [createCustomKeyword](#createcustomkeyword)
     * [getAllSearchKeyword](#getallsearchkeyword)
+    * [deleteAutocompleteKeyword](#deleteautocompletekeyword)
     * [getAutocompleteKeywordDetail](#getautocompletekeyworddetail)
     * [updateAutocompleteKeyword](#updateautocompletekeyword)
-    * [deleteAutocompleteKeyword](#deleteautocompletekeyword)
     * [createCustomAutocompleteRule](#createcustomautocompleterule)
     * [getAutocompleteConfig](#getautocompleteconfig)
     * [createProductBundle](#createproductbundle)
@@ -328,8 +330,8 @@
     * [createCollection](#createcollection)
     * [getAllCollections](#getallcollections)
     * [getCollectionDetail](#getcollectiondetail)
-    * [updateCollection](#updatecollection)
     * [deleteCollection](#deletecollection)
+    * [updateCollection](#updatecollection)
     * [addCollectionItems](#addcollectionitems)
     * [getCollectionItems](#getcollectionitems)
     * [getCatalogInsights](#getcataloginsights)
@@ -358,15 +360,15 @@
     * [updateCategory](#updatecategory)
     * [createProduct](#createproduct)
     * [getProducts](#getproducts)
+    * [deleteProduct](#deleteproduct)
     * [getProduct](#getproduct)
     * [editProduct](#editproduct)
-    * [deleteProduct](#deleteproduct)
     * [getProductValidation](#getproductvalidation)
     * [getProductSize](#getproductsize)
     * [updateProductAssetsInBulk](#updateproductassetsinbulk)
     * [getProductBulkUploadHistory](#getproductbulkuploadhistory)
-    * [createProductsInBulk](#createproductsinbulk)
     * [deleteProductBulkJob](#deleteproductbulkjob)
+    * [createProductsInBulk](#createproductsinbulk)
     * [getCompanyTags](#getcompanytags)
     * [createProductAssetsInBulk](#createproductassetsinbulk)
     * [getProductAssetsInBulk](#getproductassetsinbulk)
@@ -377,8 +379,8 @@
     * [deleteInventory](#deleteinventory)
     * [createBulkInventoryJob](#createbulkinventoryjob)
     * [getInventoryBulkUploadHistory](#getinventorybulkuploadhistory)
-    * [createBulkInventory](#createbulkinventory)
     * [deleteBulkInventoryJob](#deletebulkinventoryjob)
+    * [createBulkInventory](#createbulkinventory)
     * [createInventoryExportJob](#createinventoryexportjob)
     * [getInventoryExport](#getinventoryexport)
     * [exportInventoryConfig](#exportinventoryconfig)
@@ -397,8 +399,8 @@
 
 * ## [CompanyProfile](#CompanyProfile)
   * Methods
-    * [cbsOnboardGet](#cbsonboardget)
     * [updateCompany](#updatecompany)
+    * [cbsOnboardGet](#cbsonboardget)
     * [getCompanyMetrics](#getcompanymetrics)
     * [editBrand](#editbrand)
     * [getBrand](#getbrand)
@@ -607,6 +609,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -652,6 +668,394 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Without items</i></summary>
+
+```json
+{
+  "value": {
+    "filters": {
+      "statuses": [
+        {
+          "display": "Pending",
+          "color": "#eae22b",
+          "key": "pending"
+        },
+        {
+          "display": "In Progress",
+          "color": "#ffa951",
+          "key": "in_progress"
+        },
+        {
+          "display": "Resolved",
+          "color": "#20c3a6",
+          "key": "resolved"
+        },
+        {
+          "display": "Closed",
+          "color": "#41434c",
+          "key": "closed"
+        }
+      ],
+      "priorities": [
+        {
+          "display": "Low",
+          "color": "#fed766",
+          "key": "low"
+        },
+        {
+          "display": "Medium",
+          "color": "#f37736",
+          "key": "medium"
+        },
+        {
+          "display": "High",
+          "color": "#fe4a49",
+          "key": "high"
+        }
+      ],
+      "assignees": [],
+      "categories": [
+        {
+          "form": {
+            "login_required": false,
+            "should_notify": false,
+            "inputs": [
+              {
+                "type": "email",
+                "showRegexInput": false,
+                "enum": [],
+                "regex": "\\S+@\\S+\\.\\S+",
+                "display": "email",
+                "required": true,
+                "key": "email"
+              }
+            ],
+            "available_assignees": [],
+            "_id": "602e900a2042255c03cadaf0",
+            "title": "service-test-satyen",
+            "description": "testing form from service",
+            "slug": "service-test-satyen",
+            "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
+            "application_id": "000000000000000000000001",
+            "created_on": {
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+              "platform": "web",
+              "meta": {
+                "browser": {
+                  "name": "Chrome",
+                  "version": "88.0.4324.150"
+                },
+                "os": {
+                  "name": "macOS",
+                  "version": "11.2.0"
+                },
+                "platform": {
+                  "type": "desktop",
+                  "vendor": "Apple"
+                },
+                "engine": {
+                  "name": "Blink"
+                }
+              }
+            },
+            "created_by": "5f8147abbd1a0a870f61f1a6",
+            "createdAt": "2021-02-18T16:04:26.495Z",
+            "updatedAt": "2021-02-18T16:04:26.495Z",
+            "__v": 0
+          },
+          "key": "service-test-satyen",
+          "display": "service-test-satyen"
+        }
+      ]
+    }
+  }
+}
+```
+</details>
+
+<details>
+<summary><i>&nbsp; With items</i></summary>
+
+```json
+{
+  "value": {
+    "docs": [
+      {
+        "_id": "602d2652ce284d0b008d5c97",
+        "status": {
+          "display": "Pending",
+          "color": "#eae22b",
+          "key": "pending"
+        },
+        "priority": {
+          "display": "Medium",
+          "color": "#f37736",
+          "key": "medium"
+        },
+        "assigned_to": {
+          "agent_id": "5e79e721768c6bf54b783146",
+          "gender": "male",
+          "accountType": "user",
+          "active": true,
+          "profilePicUrl": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+          "hasOldPasswordHash": false,
+          "_id": "5e79e721768c6bf54b783146",
+          "emails": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "email": "nikhilmshchs@gmail.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@gofynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@fynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@uniket.store"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "countryCode": 91,
+              "phone": "9890425946"
+            }
+          ],
+          "firstName": "Nikhil",
+          "lastName": "Manapure",
+          "username": "nikhilmanapure_gofynd_com_29298",
+          "createdAt": "2020-03-24T10:55:29.298Z",
+          "updatedAt": "2020-05-12T07:46:41.816Z",
+          "uid": "5567",
+          "__v": 2
+        },
+        "tags": [
+          "asdf444"
+        ],
+        "context": {
+          "application_id": "000000000000000000000001",
+          "company_id": "1"
+        },
+        "created_on": {
+          "user_agent": "Fynd Platform/0.0.1 (com.fynd.platform; build:3; iOS 14.2.0) Alamofire/5.0.2",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Fynd Platform",
+              "version": "0.0.1"
+            }
+          }
+        },
+        "source": "sales_channel",
+        "content": {
+          "title": "asdf444 Response",
+          "description": "",
+          "attachments": []
+        },
+        "response_id": "602d2652ce284dee3c8d5c96",
+        "category": {
+          "form": {
+            "login_required": false,
+            "should_notify": true,
+            "inputs": [
+              {
+                "type": "text",
+                "showRegexInput": false,
+                "enum": [],
+                "display": "asdf",
+                "key": "asdf"
+              },
+              {
+                "type": "mobile",
+                "showRegexInput": false,
+                "enum": [],
+                "display": "mob num",
+                "regex": "[0-9]{10}$",
+                "key": "mob-num"
+              }
+            ],
+            "available_assignees": [
+              "5e79e721768c6bf54b783146"
+            ],
+            "_id": "60124e4a4d2bc363625e1bf4",
+            "title": "asdf444",
+            "description": "adf",
+            "slug": "asdf444",
+            "application_id": "000000000000000000000001",
+            "created_on": {
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+              "platform": "web",
+              "meta": {
+                "browser": {
+                  "name": "Chrome",
+                  "version": "88.0.4324.96"
+                },
+                "os": {
+                  "name": "macOS",
+                  "version": "10.15.7",
+                  "versionName": "Catalina"
+                },
+                "platform": {
+                  "type": "desktop",
+                  "vendor": "Apple"
+                },
+                "engine": {
+                  "name": "Blink"
+                }
+              }
+            },
+            "created_by": "5e79e721768c6bf54b783146",
+            "createdAt": "2021-01-28T05:40:26.271Z",
+            "updatedAt": "2021-02-18T16:02:32.086Z",
+            "__v": 0,
+            "poll_for_assignment": {
+              "duration": 20,
+              "message": "We are looking for executive to connect you",
+              "success_message": "Executive found",
+              "failure_message": "All our executives are busy at the moment, We have accepted your request and someone will connect with you soon!"
+            }
+          },
+          "key": "asdf444",
+          "display": "asdf444"
+        },
+        "ticket_id": "472",
+        "createdAt": "2021-02-17T14:21:06.774Z",
+        "updatedAt": "2021-02-17T14:21:06.774Z",
+        "__v": 0,
+        "id": "602d2652ce284d0b008d5c97"
+      }
+    ],
+    "total": 472,
+    "limit": 10,
+    "page": 1,
+    "pages": 48,
+    "filters": {
+      "statuses": [
+        {
+          "display": "Pending",
+          "color": "#eae22b",
+          "key": "pending"
+        },
+        {
+          "display": "In Progress",
+          "color": "#ffa951",
+          "key": "in_progress"
+        },
+        {
+          "display": "Resolved",
+          "color": "#20c3a6",
+          "key": "resolved"
+        },
+        {
+          "display": "Closed",
+          "color": "#41434c",
+          "key": "closed"
+        }
+      ],
+      "priorities": [
+        {
+          "display": "Low",
+          "color": "#fed766",
+          "key": "low"
+        },
+        {
+          "display": "Medium",
+          "color": "#f37736",
+          "key": "medium"
+        },
+        {
+          "display": "High",
+          "color": "#fe4a49",
+          "key": "high"
+        }
+      ],
+      "assignees": [],
+      "categories": [
+        {
+          "form": {
+            "login_required": false,
+            "should_notify": false,
+            "inputs": [
+              {
+                "type": "email",
+                "showRegexInput": false,
+                "enum": [],
+                "regex": "\\S+@\\S+\\.\\S+",
+                "display": "email",
+                "required": true,
+                "key": "email"
+              }
+            ],
+            "available_assignees": [],
+            "_id": "602e900a2042255c03cadaf0",
+            "title": "service-test-satyen",
+            "description": "testing form from service",
+            "slug": "service-test-satyen",
+            "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
+            "application_id": "000000000000000000000001",
+            "created_on": {
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+              "platform": "web",
+              "meta": {
+                "browser": {
+                  "name": "Chrome",
+                  "version": "88.0.4324.150"
+                },
+                "os": {
+                  "name": "macOS",
+                  "version": "11.2.0"
+                },
+                "platform": {
+                  "type": "desktop",
+                  "vendor": "Apple"
+                },
+                "engine": {
+                  "name": "Blink"
+                }
+              }
+            },
+            "created_by": "5f8147abbd1a0a870f61f1a6",
+            "createdAt": "2021-02-18T16:04:26.495Z",
+            "updatedAt": "2021-02-18T16:04:26.495Z",
+            "__v": 0
+          },
+          "key": "service-test-satyen",
+          "display": "service-test-satyen"
+        }
+      ]
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -688,6 +1092,218 @@ Creates a company level ticket
 [Ticket](#Ticket)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "context": {
+      "company_id": "884"
+    },
+    "content": {
+      "title": "SOme title Response",
+      "description": "<b>Single lineeee</b>: asdf<br><b>Email</b>: asdf@asdf.com<br><b>dfsdf</b>: asdf<br>",
+      "attachments": []
+    },
+    "status": {
+      "display": "In Progress",
+      "color": "#ffa951",
+      "key": "in_progress"
+    },
+    "priority": {
+      "display": "Medium",
+      "color": "#f37736",
+      "key": "medium"
+    },
+    "assigned_to": {
+      "agent_id": "5d1363adf599d850df93175e",
+      "gender": "male",
+      "accountType": "user",
+      "active": true,
+      "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+      "hasOldPasswordHash": false,
+      "_id": "5d1363adf599d850df93175e",
+      "phoneNumbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "countryCode": 91,
+          "phone": "9890425946"
+        }
+      ],
+      "firstName": "Nikhil",
+      "lastName": "Manapure",
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "nikhilmshchs@gmail.com"
+        }
+      ],
+      "username": "nikhilmshchs_gmail_com_38425_20500281",
+      "createdAt": "2019-01-01T17:22:38.528Z",
+      "updatedAt": "2021-01-22T10:02:42.258Z",
+      "uid": "20500281",
+      "__v": 56
+    },
+    "tags": [
+      "some-title"
+    ],
+    "_id": "6012f38557751ee8fc162cf7",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.96"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.7",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "source": "sales_channel",
+    "created_by": {
+      "id": "5d1363adf599d850df93175e",
+      "user": {
+        "gender": "male",
+        "accountType": "user",
+        "active": true,
+        "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+        "hasOldPasswordHash": false,
+        "_id": "5d1363adf599d850df93175e",
+        "phoneNumbers": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "countryCode": 91,
+            "phone": "9890425946"
+          }
+        ],
+        "firstName": "Nikhil",
+        "lastName": "Manapure",
+        "emails": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "email": "nikhilmshchs@gmail.com"
+          }
+        ],
+        "username": "nikhilmshchs_gmail_com_38425_20500281",
+        "createdAt": "2019-01-01T17:22:38.528Z",
+        "updatedAt": "2021-01-22T10:02:42.258Z",
+        "uid": "20500281",
+        "__v": 56
+      }
+    },
+    "response_id": "6012f38457751e0fb8162cf6",
+    "category": {
+      "form": {
+        "login_required": false,
+        "should_notify": false,
+        "inputs": [
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "Single lineeee",
+            "key": "single-lineeee",
+            "showRegexInput": false
+          },
+          {
+            "required": false,
+            "type": "email",
+            "enum": [],
+            "display": "Email",
+            "regex": "\\S+@\\S+\\.\\S+",
+            "key": "email",
+            "showRegexInput": true
+          },
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "dfsdf",
+            "key": "dfsdf",
+            "showRegexInput": false
+          }
+        ],
+        "available_assignees": [
+          "5b9b98150df588546aaea6d2",
+          "5c45d78395d7504f76c2cb37"
+        ],
+        "_id": "5fd72db3dc250f8decfc61b2",
+        "title": "SOme title",
+        "description": "SOme big description",
+        "slug": "some-title",
+        "application_id": "000000000000000000000003",
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "87.0.4280.88"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "10.15.6",
+              "versionName": "Catalina"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": "5d1363adf599d850df93175e",
+        "createdAt": "2020-12-14T09:17:39.953Z",
+        "updatedAt": "2021-01-28T18:48:07.717Z",
+        "__v": 0
+      },
+      "key": "some-title",
+      "display": "SOme title"
+    },
+    "ticket_id": "43",
+    "createdAt": "2021-01-28T17:25:25.013Z",
+    "updatedAt": "2021-01-28T17:25:33.396Z",
+    "__v": 0,
+    "video_room_id": "6012f38557751ee8fc162cf7"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -732,6 +1348,394 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Without items</i></summary>
+
+```json
+{
+  "value": {
+    "filters": {
+      "statuses": [
+        {
+          "display": "Pending",
+          "color": "#eae22b",
+          "key": "pending"
+        },
+        {
+          "display": "In Progress",
+          "color": "#ffa951",
+          "key": "in_progress"
+        },
+        {
+          "display": "Resolved",
+          "color": "#20c3a6",
+          "key": "resolved"
+        },
+        {
+          "display": "Closed",
+          "color": "#41434c",
+          "key": "closed"
+        }
+      ],
+      "priorities": [
+        {
+          "display": "Low",
+          "color": "#fed766",
+          "key": "low"
+        },
+        {
+          "display": "Medium",
+          "color": "#f37736",
+          "key": "medium"
+        },
+        {
+          "display": "High",
+          "color": "#fe4a49",
+          "key": "high"
+        }
+      ],
+      "assignees": [],
+      "categories": [
+        {
+          "form": {
+            "login_required": false,
+            "should_notify": false,
+            "inputs": [
+              {
+                "type": "email",
+                "showRegexInput": false,
+                "enum": [],
+                "regex": "\\S+@\\S+\\.\\S+",
+                "display": "email",
+                "required": true,
+                "key": "email"
+              }
+            ],
+            "available_assignees": [],
+            "_id": "602e900a2042255c03cadaf0",
+            "title": "service-test-satyen",
+            "description": "testing form from service",
+            "slug": "service-test-satyen",
+            "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
+            "application_id": "000000000000000000000001",
+            "created_on": {
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+              "platform": "web",
+              "meta": {
+                "browser": {
+                  "name": "Chrome",
+                  "version": "88.0.4324.150"
+                },
+                "os": {
+                  "name": "macOS",
+                  "version": "11.2.0"
+                },
+                "platform": {
+                  "type": "desktop",
+                  "vendor": "Apple"
+                },
+                "engine": {
+                  "name": "Blink"
+                }
+              }
+            },
+            "created_by": "5f8147abbd1a0a870f61f1a6",
+            "createdAt": "2021-02-18T16:04:26.495Z",
+            "updatedAt": "2021-02-18T16:04:26.495Z",
+            "__v": 0
+          },
+          "key": "service-test-satyen",
+          "display": "service-test-satyen"
+        }
+      ]
+    }
+  }
+}
+```
+</details>
+
+<details>
+<summary><i>&nbsp; With items</i></summary>
+
+```json
+{
+  "value": {
+    "docs": [
+      {
+        "_id": "602d2652ce284d0b008d5c97",
+        "status": {
+          "display": "Pending",
+          "color": "#eae22b",
+          "key": "pending"
+        },
+        "priority": {
+          "display": "Medium",
+          "color": "#f37736",
+          "key": "medium"
+        },
+        "assigned_to": {
+          "agent_id": "5e79e721768c6bf54b783146",
+          "gender": "male",
+          "accountType": "user",
+          "active": true,
+          "profilePicUrl": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+          "hasOldPasswordHash": false,
+          "_id": "5e79e721768c6bf54b783146",
+          "emails": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "email": "nikhilmshchs@gmail.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@gofynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@fynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@uniket.store"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "countryCode": 91,
+              "phone": "9890425946"
+            }
+          ],
+          "firstName": "Nikhil",
+          "lastName": "Manapure",
+          "username": "nikhilmanapure_gofynd_com_29298",
+          "createdAt": "2020-03-24T10:55:29.298Z",
+          "updatedAt": "2020-05-12T07:46:41.816Z",
+          "uid": "5567",
+          "__v": 2
+        },
+        "tags": [
+          "asdf444"
+        ],
+        "context": {
+          "application_id": "000000000000000000000001",
+          "company_id": "1"
+        },
+        "created_on": {
+          "user_agent": "Fynd Platform/0.0.1 (com.fynd.platform; build:3; iOS 14.2.0) Alamofire/5.0.2",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Fynd Platform",
+              "version": "0.0.1"
+            }
+          }
+        },
+        "source": "sales_channel",
+        "content": {
+          "title": "asdf444 Response",
+          "description": "",
+          "attachments": []
+        },
+        "response_id": "602d2652ce284dee3c8d5c96",
+        "category": {
+          "form": {
+            "login_required": false,
+            "should_notify": true,
+            "inputs": [
+              {
+                "type": "text",
+                "showRegexInput": false,
+                "enum": [],
+                "display": "asdf",
+                "key": "asdf"
+              },
+              {
+                "type": "mobile",
+                "showRegexInput": false,
+                "enum": [],
+                "display": "mob num",
+                "regex": "[0-9]{10}$",
+                "key": "mob-num"
+              }
+            ],
+            "available_assignees": [
+              "5e79e721768c6bf54b783146"
+            ],
+            "_id": "60124e4a4d2bc363625e1bf4",
+            "title": "asdf444",
+            "description": "adf",
+            "slug": "asdf444",
+            "application_id": "000000000000000000000001",
+            "created_on": {
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+              "platform": "web",
+              "meta": {
+                "browser": {
+                  "name": "Chrome",
+                  "version": "88.0.4324.96"
+                },
+                "os": {
+                  "name": "macOS",
+                  "version": "10.15.7",
+                  "versionName": "Catalina"
+                },
+                "platform": {
+                  "type": "desktop",
+                  "vendor": "Apple"
+                },
+                "engine": {
+                  "name": "Blink"
+                }
+              }
+            },
+            "created_by": "5e79e721768c6bf54b783146",
+            "createdAt": "2021-01-28T05:40:26.271Z",
+            "updatedAt": "2021-02-18T16:02:32.086Z",
+            "__v": 0,
+            "poll_for_assignment": {
+              "duration": 20,
+              "message": "We are looking for executive to connect you",
+              "success_message": "Executive found",
+              "failure_message": "All our executives are busy at the moment, We have accepted your request and someone will connect with you soon!"
+            }
+          },
+          "key": "asdf444",
+          "display": "asdf444"
+        },
+        "ticket_id": "472",
+        "createdAt": "2021-02-17T14:21:06.774Z",
+        "updatedAt": "2021-02-17T14:21:06.774Z",
+        "__v": 0,
+        "id": "602d2652ce284d0b008d5c97"
+      }
+    ],
+    "total": 472,
+    "limit": 10,
+    "page": 1,
+    "pages": 48,
+    "filters": {
+      "statuses": [
+        {
+          "display": "Pending",
+          "color": "#eae22b",
+          "key": "pending"
+        },
+        {
+          "display": "In Progress",
+          "color": "#ffa951",
+          "key": "in_progress"
+        },
+        {
+          "display": "Resolved",
+          "color": "#20c3a6",
+          "key": "resolved"
+        },
+        {
+          "display": "Closed",
+          "color": "#41434c",
+          "key": "closed"
+        }
+      ],
+      "priorities": [
+        {
+          "display": "Low",
+          "color": "#fed766",
+          "key": "low"
+        },
+        {
+          "display": "Medium",
+          "color": "#f37736",
+          "key": "medium"
+        },
+        {
+          "display": "High",
+          "color": "#fe4a49",
+          "key": "high"
+        }
+      ],
+      "assignees": [],
+      "categories": [
+        {
+          "form": {
+            "login_required": false,
+            "should_notify": false,
+            "inputs": [
+              {
+                "type": "email",
+                "showRegexInput": false,
+                "enum": [],
+                "regex": "\\S+@\\S+\\.\\S+",
+                "display": "email",
+                "required": true,
+                "key": "email"
+              }
+            ],
+            "available_assignees": [],
+            "_id": "602e900a2042255c03cadaf0",
+            "title": "service-test-satyen",
+            "description": "testing form from service",
+            "slug": "service-test-satyen",
+            "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
+            "application_id": "000000000000000000000001",
+            "created_on": {
+              "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+              "platform": "web",
+              "meta": {
+                "browser": {
+                  "name": "Chrome",
+                  "version": "88.0.4324.150"
+                },
+                "os": {
+                  "name": "macOS",
+                  "version": "11.2.0"
+                },
+                "platform": {
+                  "type": "desktop",
+                  "vendor": "Apple"
+                },
+                "engine": {
+                  "name": "Blink"
+                }
+              }
+            },
+            "created_by": "5f8147abbd1a0a870f61f1a6",
+            "createdAt": "2021-02-18T16:04:26.495Z",
+            "updatedAt": "2021-02-18T16:04:26.495Z",
+            "__v": 0
+          },
+          "key": "service-test-satyen",
+          "display": "service-test-satyen"
+        }
+      ]
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -768,6 +1772,218 @@ Retreives ticket details of a company level ticket
 [Ticket](#Ticket)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "context": {
+      "company_id": "1"
+    },
+    "content": {
+      "title": "SOme title Response",
+      "description": "<b>Single lineeee</b>: asdf<br><b>Email</b>: asdf@asdf.com<br><b>dfsdf</b>: asdf<br>",
+      "attachments": []
+    },
+    "status": {
+      "display": "In Progress",
+      "color": "#ffa951",
+      "key": "in_progress"
+    },
+    "priority": {
+      "display": "Medium",
+      "color": "#f37736",
+      "key": "medium"
+    },
+    "assigned_to": {
+      "agent_id": "5d1363adf599d850df93175e",
+      "gender": "male",
+      "accountType": "user",
+      "active": true,
+      "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+      "hasOldPasswordHash": false,
+      "_id": "5d1363adf599d850df93175e",
+      "phoneNumbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "countryCode": 91,
+          "phone": "9890425946"
+        }
+      ],
+      "firstName": "Nikhil",
+      "lastName": "Manapure",
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "nikhilmshchs@gmail.com"
+        }
+      ],
+      "username": "nikhilmshchs_gmail_com_38425_20500281",
+      "createdAt": "2019-01-01T17:22:38.528Z",
+      "updatedAt": "2021-01-22T10:02:42.258Z",
+      "uid": "20500281",
+      "__v": 56
+    },
+    "tags": [
+      "some-title"
+    ],
+    "_id": "6012f38557751ee8fc162cf7",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.96"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.7",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "source": "sales_channel",
+    "created_by": {
+      "id": "5d1363adf599d850df93175e",
+      "user": {
+        "gender": "male",
+        "accountType": "user",
+        "active": true,
+        "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+        "hasOldPasswordHash": false,
+        "_id": "5d1363adf599d850df93175e",
+        "phoneNumbers": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "countryCode": 91,
+            "phone": "9890425946"
+          }
+        ],
+        "firstName": "Nikhil",
+        "lastName": "Manapure",
+        "emails": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "email": "nikhilmshchs@gmail.com"
+          }
+        ],
+        "username": "nikhilmshchs_gmail_com_38425_20500281",
+        "createdAt": "2019-01-01T17:22:38.528Z",
+        "updatedAt": "2021-01-22T10:02:42.258Z",
+        "uid": "20500281",
+        "__v": 56
+      }
+    },
+    "response_id": "6012f38457751e0fb8162cf6",
+    "category": {
+      "form": {
+        "login_required": false,
+        "should_notify": false,
+        "inputs": [
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "Single lineeee",
+            "key": "single-lineeee",
+            "showRegexInput": false
+          },
+          {
+            "required": false,
+            "type": "email",
+            "enum": [],
+            "display": "Email",
+            "regex": "\\S+@\\S+\\.\\S+",
+            "key": "email",
+            "showRegexInput": true
+          },
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "dfsdf",
+            "key": "dfsdf",
+            "showRegexInput": false
+          }
+        ],
+        "available_assignees": [
+          "5b9b98150df588546aaea6d2",
+          "5c45d78395d7504f76c2cb37"
+        ],
+        "_id": "5fd72db3dc250f8decfc61b2",
+        "title": "SOme title",
+        "description": "SOme big description",
+        "slug": "some-title",
+        "application_id": "000000000000000000000003",
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "87.0.4280.88"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "10.15.6",
+              "versionName": "Catalina"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": "5d1363adf599d850df93175e",
+        "createdAt": "2020-12-14T09:17:39.953Z",
+        "updatedAt": "2021-01-28T18:48:07.717Z",
+        "__v": 0
+      },
+      "key": "some-title",
+      "display": "SOme title"
+    },
+    "ticket_id": "43",
+    "createdAt": "2021-01-28T17:25:25.013Z",
+    "updatedAt": "2021-01-28T17:25:33.396Z",
+    "__v": 0,
+    "video_room_id": "6012f38557751ee8fc162cf7"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -812,6 +2028,218 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "context": {
+      "company_id": "1"
+    },
+    "content": {
+      "title": "SOme title Response",
+      "description": "<b>Single lineeee</b>: asdf<br><b>Email</b>: asdf@asdf.com<br><b>dfsdf</b>: asdf<br>",
+      "attachments": []
+    },
+    "status": {
+      "display": "In Progress",
+      "color": "#ffa951",
+      "key": "in_progress"
+    },
+    "priority": {
+      "display": "Medium",
+      "color": "#f37736",
+      "key": "medium"
+    },
+    "assigned_to": {
+      "agent_id": "5d1363adf599d850df93175e",
+      "gender": "male",
+      "accountType": "user",
+      "active": true,
+      "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+      "hasOldPasswordHash": false,
+      "_id": "5d1363adf599d850df93175e",
+      "phoneNumbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "countryCode": 91,
+          "phone": "9890425946"
+        }
+      ],
+      "firstName": "Nikhil",
+      "lastName": "Manapure",
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "nikhilmshchs@gmail.com"
+        }
+      ],
+      "username": "nikhilmshchs_gmail_com_38425_20500281",
+      "createdAt": "2019-01-01T17:22:38.528Z",
+      "updatedAt": "2021-01-22T10:02:42.258Z",
+      "uid": "20500281",
+      "__v": 56
+    },
+    "tags": [
+      "some-title"
+    ],
+    "_id": "6012f38557751ee8fc162cf7",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.96"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.7",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "source": "sales_channel",
+    "created_by": {
+      "id": "5d1363adf599d850df93175e",
+      "user": {
+        "gender": "male",
+        "accountType": "user",
+        "active": true,
+        "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+        "hasOldPasswordHash": false,
+        "_id": "5d1363adf599d850df93175e",
+        "phoneNumbers": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "countryCode": 91,
+            "phone": "9890425946"
+          }
+        ],
+        "firstName": "Nikhil",
+        "lastName": "Manapure",
+        "emails": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "email": "nikhilmshchs@gmail.com"
+          }
+        ],
+        "username": "nikhilmshchs_gmail_com_38425_20500281",
+        "createdAt": "2019-01-01T17:22:38.528Z",
+        "updatedAt": "2021-01-22T10:02:42.258Z",
+        "uid": "20500281",
+        "__v": 56
+      }
+    },
+    "response_id": "6012f38457751e0fb8162cf6",
+    "category": {
+      "form": {
+        "login_required": false,
+        "should_notify": false,
+        "inputs": [
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "Single lineeee",
+            "key": "single-lineeee",
+            "showRegexInput": false
+          },
+          {
+            "required": false,
+            "type": "email",
+            "enum": [],
+            "display": "Email",
+            "regex": "\\S+@\\S+\\.\\S+",
+            "key": "email",
+            "showRegexInput": true
+          },
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "dfsdf",
+            "key": "dfsdf",
+            "showRegexInput": false
+          }
+        ],
+        "available_assignees": [
+          "5b9b98150df588546aaea6d2",
+          "5c45d78395d7504f76c2cb37"
+        ],
+        "_id": "5fd72db3dc250f8decfc61b2",
+        "title": "SOme title",
+        "description": "SOme big description",
+        "slug": "some-title",
+        "application_id": "000000000000000000000003",
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "87.0.4280.88"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "10.15.6",
+              "versionName": "Catalina"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": "5d1363adf599d850df93175e",
+        "createdAt": "2020-12-14T09:17:39.953Z",
+        "updatedAt": "2021-01-28T18:48:07.717Z",
+        "__v": 0
+      },
+      "key": "some-title",
+      "display": "SOme title"
+    },
+    "ticket_id": "43",
+    "createdAt": "2021-01-28T17:25:25.013Z",
+    "updatedAt": "2021-01-28T17:25:33.396Z",
+    "__v": 0,
+    "video_room_id": "6012f38557751ee8fc162cf7"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -848,6 +2276,219 @@ Retreives ticket details of a application level ticket with ticket ID
 [Ticket](#Ticket)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "context": {
+      "application_id": "000000000000000000000003",
+      "company_id": "884"
+    },
+    "content": {
+      "title": "SOme title Response",
+      "description": "<b>Single lineeee</b>: asdf<br><b>Email</b>: asdf@asdf.com<br><b>dfsdf</b>: asdf<br>",
+      "attachments": []
+    },
+    "status": {
+      "display": "In Progress",
+      "color": "#ffa951",
+      "key": "in_progress"
+    },
+    "priority": {
+      "display": "Medium",
+      "color": "#f37736",
+      "key": "medium"
+    },
+    "assigned_to": {
+      "agent_id": "5d1363adf599d850df93175e",
+      "gender": "male",
+      "accountType": "user",
+      "active": true,
+      "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+      "hasOldPasswordHash": false,
+      "_id": "5d1363adf599d850df93175e",
+      "phoneNumbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "countryCode": 91,
+          "phone": "9890425946"
+        }
+      ],
+      "firstName": "Nikhil",
+      "lastName": "Manapure",
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "nikhilmshchs@gmail.com"
+        }
+      ],
+      "username": "nikhilmshchs_gmail_com_38425_20500281",
+      "createdAt": "2019-01-01T17:22:38.528Z",
+      "updatedAt": "2021-01-22T10:02:42.258Z",
+      "uid": "20500281",
+      "__v": 56
+    },
+    "tags": [
+      "some-title"
+    ],
+    "_id": "6012f38557751ee8fc162cf7",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.96"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.7",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "source": "sales_channel",
+    "created_by": {
+      "id": "5d1363adf599d850df93175e",
+      "user": {
+        "gender": "male",
+        "accountType": "user",
+        "active": true,
+        "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+        "hasOldPasswordHash": false,
+        "_id": "5d1363adf599d850df93175e",
+        "phoneNumbers": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "countryCode": 91,
+            "phone": "9890425946"
+          }
+        ],
+        "firstName": "Nikhil",
+        "lastName": "Manapure",
+        "emails": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "email": "nikhilmshchs@gmail.com"
+          }
+        ],
+        "username": "nikhilmshchs_gmail_com_38425_20500281",
+        "createdAt": "2019-01-01T17:22:38.528Z",
+        "updatedAt": "2021-01-22T10:02:42.258Z",
+        "uid": "20500281",
+        "__v": 56
+      }
+    },
+    "response_id": "6012f38457751e0fb8162cf6",
+    "category": {
+      "form": {
+        "login_required": false,
+        "should_notify": false,
+        "inputs": [
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "Single lineeee",
+            "key": "single-lineeee",
+            "showRegexInput": false
+          },
+          {
+            "required": false,
+            "type": "email",
+            "enum": [],
+            "display": "Email",
+            "regex": "\\S+@\\S+\\.\\S+",
+            "key": "email",
+            "showRegexInput": true
+          },
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "dfsdf",
+            "key": "dfsdf",
+            "showRegexInput": false
+          }
+        ],
+        "available_assignees": [
+          "5b9b98150df588546aaea6d2",
+          "5c45d78395d7504f76c2cb37"
+        ],
+        "_id": "5fd72db3dc250f8decfc61b2",
+        "title": "SOme title",
+        "description": "SOme big description",
+        "slug": "some-title",
+        "application_id": "000000000000000000000003",
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "87.0.4280.88"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "10.15.6",
+              "versionName": "Catalina"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": "5d1363adf599d850df93175e",
+        "createdAt": "2020-12-14T09:17:39.953Z",
+        "updatedAt": "2021-01-28T18:48:07.717Z",
+        "__v": 0
+      },
+      "key": "some-title",
+      "display": "SOme title"
+    },
+    "ticket_id": "43",
+    "createdAt": "2021-01-28T17:25:25.013Z",
+    "updatedAt": "2021-01-28T17:25:33.396Z",
+    "__v": 0,
+    "video_room_id": "6012f38557751ee8fc162cf7"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -892,6 +2533,219 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "context": {
+      "application_id": "000000000000000000000003",
+      "company_id": "884"
+    },
+    "content": {
+      "title": "SOme title Response",
+      "description": "<b>Single lineeee</b>: asdf<br><b>Email</b>: asdf@asdf.com<br><b>dfsdf</b>: asdf<br>",
+      "attachments": []
+    },
+    "status": {
+      "display": "In Progress",
+      "color": "#ffa951",
+      "key": "in_progress"
+    },
+    "priority": {
+      "display": "Medium",
+      "color": "#f37736",
+      "key": "medium"
+    },
+    "assigned_to": {
+      "agent_id": "5d1363adf599d850df93175e",
+      "gender": "male",
+      "accountType": "user",
+      "active": true,
+      "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+      "hasOldPasswordHash": false,
+      "_id": "5d1363adf599d850df93175e",
+      "phoneNumbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "countryCode": 91,
+          "phone": "9890425946"
+        }
+      ],
+      "firstName": "Nikhil",
+      "lastName": "Manapure",
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "nikhilmshchs@gmail.com"
+        }
+      ],
+      "username": "nikhilmshchs_gmail_com_38425_20500281",
+      "createdAt": "2019-01-01T17:22:38.528Z",
+      "updatedAt": "2021-01-22T10:02:42.258Z",
+      "uid": "20500281",
+      "__v": 56
+    },
+    "tags": [
+      "some-title"
+    ],
+    "_id": "6012f38557751ee8fc162cf7",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.96"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.7",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "source": "sales_channel",
+    "created_by": {
+      "id": "5d1363adf599d850df93175e",
+      "user": {
+        "gender": "male",
+        "accountType": "user",
+        "active": true,
+        "profilePicUrl": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2136700473091190&height=400&width=400&ext=1554542761&hash=AeS6cuWIdjDdJJ-b",
+        "hasOldPasswordHash": false,
+        "_id": "5d1363adf599d850df93175e",
+        "phoneNumbers": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "countryCode": 91,
+            "phone": "9890425946"
+          }
+        ],
+        "firstName": "Nikhil",
+        "lastName": "Manapure",
+        "emails": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "email": "nikhilmshchs@gmail.com"
+          }
+        ],
+        "username": "nikhilmshchs_gmail_com_38425_20500281",
+        "createdAt": "2019-01-01T17:22:38.528Z",
+        "updatedAt": "2021-01-22T10:02:42.258Z",
+        "uid": "20500281",
+        "__v": 56
+      }
+    },
+    "response_id": "6012f38457751e0fb8162cf6",
+    "category": {
+      "form": {
+        "login_required": false,
+        "should_notify": false,
+        "inputs": [
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "Single lineeee",
+            "key": "single-lineeee",
+            "showRegexInput": false
+          },
+          {
+            "required": false,
+            "type": "email",
+            "enum": [],
+            "display": "Email",
+            "regex": "\\S+@\\S+\\.\\S+",
+            "key": "email",
+            "showRegexInput": true
+          },
+          {
+            "required": false,
+            "type": "text",
+            "enum": [],
+            "display": "dfsdf",
+            "key": "dfsdf",
+            "showRegexInput": false
+          }
+        ],
+        "available_assignees": [
+          "5b9b98150df588546aaea6d2",
+          "5c45d78395d7504f76c2cb37"
+        ],
+        "_id": "5fd72db3dc250f8decfc61b2",
+        "title": "SOme title",
+        "description": "SOme big description",
+        "slug": "some-title",
+        "application_id": "000000000000000000000003",
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "87.0.4280.88"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "10.15.6",
+              "versionName": "Catalina"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": "5d1363adf599d850df93175e",
+        "createdAt": "2020-12-14T09:17:39.953Z",
+        "updatedAt": "2021-01-28T18:48:07.717Z",
+        "__v": 0
+      },
+      "key": "some-title",
+      "display": "SOme title"
+    },
+    "ticket_id": "43",
+    "createdAt": "2021-01-28T17:25:25.013Z",
+    "updatedAt": "2021-01-28T17:25:33.396Z",
+    "__v": 0,
+    "video_room_id": "6012f38557751ee8fc162cf7"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -928,6 +2782,62 @@ Create history for specific company level ticket, this history is seen on ticket
 [TicketHistory](#TicketHistory)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "601a9d52c26687d086c499ef",
+    "ticket_id": "43",
+    "type": "comment",
+    "value": {
+      "text": "d",
+      "media": []
+    },
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.96"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.7",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "created_by": "5d1363adf599d850df93175e",
+    "createdAt": "2021-02-03T12:55:46.808Z",
+    "updatedAt": "2021-02-03T12:55:46.808Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -972,6 +2882,166 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "docs": [
+      {
+        "_id": "602e5384204225eed5cadae7",
+        "ticket_id": "41",
+        "type": "comment",
+        "value": {
+          "text": "hello service",
+          "media": []
+        },
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "88.0.4324.150"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "11.2.0"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": {
+          "gender": "male",
+          "accountType": "user",
+          "active": true,
+          "profilePicUrl": "https://hdn-1.fynd.com/company/884/applications/000000000000000000000001/theme/pictures/free/original/default-profile_nxhzui.png",
+          "hasOldPasswordHash": false,
+          "_id": "5f8147abbd1a0a870f61f1a6",
+          "phoneNumbers": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "phone": "8412805281",
+              "countryCode": 91
+            }
+          ],
+          "firstName": "Satyen",
+          "lastName": "Maurya",
+          "emails": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "email": "satyenmaurya95@gmail.com"
+            }
+          ],
+          "username": "satyenmaurya95_gmail_com_11118",
+          "createdAt": "2020-10-10T05:33:31.119Z",
+          "updatedAt": "2020-10-10T05:33:31.119Z",
+          "uid": "5678",
+          "__v": 0
+        },
+        "createdAt": "2021-02-18T11:46:12.522Z",
+        "updatedAt": "2021-02-18T11:46:12.522Z",
+        "__v": 0,
+        "id": "602e5384204225eed5cadae7"
+      },
+      {
+        "_id": "60372aa78a046d4d79c46e15",
+        "ticket_id": "41",
+        "type": "diff",
+        "value": {
+          "status": [
+            "pending",
+            "in_progress"
+          ]
+        },
+        "created_by": {
+          "gender": "male",
+          "accountType": "user",
+          "active": true,
+          "profilePicUrl": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+          "hasOldPasswordHash": false,
+          "_id": "5e79e721768c6bf54b783146",
+          "emails": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "email": "nikhilmshchs@gmail.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@gofynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@fynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@uniket.store"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "countryCode": 91,
+              "phone": "9890425946"
+            }
+          ],
+          "firstName": "Nikhil",
+          "lastName": "Manapure",
+          "username": "nikhilmanapure_gofynd_com_29298",
+          "createdAt": "2020-03-24T10:55:29.298Z",
+          "updatedAt": "2020-05-12T07:46:41.816Z",
+          "uid": "5567",
+          "__v": 2
+        },
+        "createdAt": "2021-02-25T04:42:15.225Z",
+        "updatedAt": "2021-02-25T04:42:15.225Z",
+        "__v": 0,
+        "id": "60372aa78a046d4d79c46e15"
+      }
+    ],
+    "total": 2,
+    "limit": 100,
+    "page": 1,
+    "pages": 1
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1008,6 +3078,49 @@ Gets a list of feedback submitted against that ticket
 [TicketFeedbackList](#TicketFeedbackList)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "_id": "60c255bf00ecabfad19e9601",
+        "company_id": "1",
+        "ticket_id": "6095812876d2bf17143cb3b3",
+        "user": {
+          "_id": "5f8147abbd1a0a870f61f1a6",
+          "authenticated": true,
+          "user_id": "5f8147abbd1a0a870f61f1a6"
+        },
+        "category": "customers",
+        "response": {
+          "audio": 2,
+          "video": 6
+        },
+        "createdAt": "2021-06-10T18:11:11.349Z",
+        "updatedAt": "2021-06-10T18:11:11.349Z",
+        "__v": 0
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -1052,6 +3165,45 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "60c255bf00ecabfad19e9601",
+    "company_id": "1",
+    "ticket_id": "6095812876d2bf17143cb3b3",
+    "user": {
+      "_id": "5f8147abbd1a0a870f61f1a6",
+      "authenticated": true,
+      "user_id": "5f8147abbd1a0a870f61f1a6"
+    },
+    "category": "customers",
+    "response": {
+      "audio": 2,
+      "video": 6
+    },
+    "createdAt": "2021-06-10T18:11:11.349Z",
+    "updatedAt": "2021-06-10T18:11:11.349Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1088,6 +3240,62 @@ Create history for specific application level ticket, this history is seen on ti
 [TicketHistory](#TicketHistory)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "601a9d52c26687d086c499ef",
+    "ticket_id": "41",
+    "type": "comment",
+    "value": {
+      "text": "d",
+      "media": []
+    },
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.96"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.7",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "created_by": "5d1363adf599d850df93175e",
+    "createdAt": "2021-02-03T12:55:46.808Z",
+    "updatedAt": "2021-02-03T12:55:46.808Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -1132,6 +3340,166 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "docs": [
+      {
+        "_id": "602e5384204225eed5cadae7",
+        "ticket_id": "41",
+        "type": "comment",
+        "value": {
+          "text": "hello service",
+          "media": []
+        },
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "88.0.4324.150"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "11.2.0"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": {
+          "gender": "male",
+          "accountType": "user",
+          "active": true,
+          "profilePicUrl": "https://hdn-1.fynd.com/company/884/applications/000000000000000000000001/theme/pictures/free/original/default-profile_nxhzui.png",
+          "hasOldPasswordHash": false,
+          "_id": "5f8147abbd1a0a870f61f1a6",
+          "phoneNumbers": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "phone": "8412805281",
+              "countryCode": 91
+            }
+          ],
+          "firstName": "Satyen",
+          "lastName": "Maurya",
+          "emails": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "email": "satyenmaurya95@gmail.com"
+            }
+          ],
+          "username": "satyenmaurya95_gmail_com_11118",
+          "createdAt": "2020-10-10T05:33:31.119Z",
+          "updatedAt": "2020-10-10T05:33:31.119Z",
+          "uid": "5678",
+          "__v": 0
+        },
+        "createdAt": "2021-02-18T11:46:12.522Z",
+        "updatedAt": "2021-02-18T11:46:12.522Z",
+        "__v": 0,
+        "id": "602e5384204225eed5cadae7"
+      },
+      {
+        "_id": "60372aa78a046d4d79c46e15",
+        "ticket_id": "41",
+        "type": "diff",
+        "value": {
+          "status": [
+            "pending",
+            "in_progress"
+          ]
+        },
+        "created_by": {
+          "gender": "male",
+          "accountType": "user",
+          "active": true,
+          "profilePicUrl": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+          "hasOldPasswordHash": false,
+          "_id": "5e79e721768c6bf54b783146",
+          "emails": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "email": "nikhilmshchs@gmail.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@gofynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@fynd.com"
+            },
+            {
+              "active": true,
+              "primary": false,
+              "verified": true,
+              "email": "nikhilmanapure@uniket.store"
+            }
+          ],
+          "phoneNumbers": [
+            {
+              "active": true,
+              "primary": true,
+              "verified": true,
+              "countryCode": 91,
+              "phone": "9890425946"
+            }
+          ],
+          "firstName": "Nikhil",
+          "lastName": "Manapure",
+          "username": "nikhilmanapure_gofynd_com_29298",
+          "createdAt": "2020-03-24T10:55:29.298Z",
+          "updatedAt": "2020-05-12T07:46:41.816Z",
+          "uid": "5567",
+          "__v": 2
+        },
+        "createdAt": "2021-02-25T04:42:15.225Z",
+        "updatedAt": "2021-02-25T04:42:15.225Z",
+        "__v": 0,
+        "id": "60372aa78a046d4d79c46e15"
+      }
+    ],
+    "total": 2,
+    "limit": 100,
+    "page": 1,
+    "pages": 1
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1168,6 +3536,72 @@ Get specific custom form using it's slug, this is used to view the form.
 [CustomForm](#CustomForm)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "login_required": false,
+    "should_notify": false,
+    "inputs": [
+      {
+        "required": false,
+        "type": "text",
+        "display": "Name",
+        "placeholder": "Please enter your name",
+        "key": "name"
+      }
+    ],
+    "available_assignees": [],
+    "_id": "5fd258a9088f957f34c288fc",
+    "title": "trail form",
+    "description": "Trail form description",
+    "slug": "trail-form",
+    "application_id": "000000000000000000000003",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "87.0.4280.88"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "10.15.6",
+          "versionName": "Catalina"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "created_by": "5d1363adf599d850df93175e",
+    "createdAt": "2020-12-10T17:19:37.515Z",
+    "updatedAt": "2020-12-10T17:19:43.214Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -1212,6 +3646,82 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "login_required": false,
+    "should_notify": false,
+    "inputs": [
+      {
+        "type": "email",
+        "showRegexInput": true,
+        "enum": [],
+        "regex": "\\S+@\\S+\\.\\S+",
+        "display": "email",
+        "required": true,
+        "key": "email"
+      },
+      {
+        "type": "number",
+        "showRegexInput": false,
+        "enum": [],
+        "display": "Enter your fav number",
+        "placeholder": "123",
+        "key": "enter-your-fav-number"
+      }
+    ],
+    "available_assignees": [],
+    "_id": "602e900a2042255c03cadaf0",
+    "title": "service-test-satyen",
+    "description": "testing form from service",
+    "slug": "service-test-satyen",
+    "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
+    "application_id": "000000000000000000000001",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.150"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "11.2.0"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "created_by": "5f8147abbd1a0a870f61f1a6",
+    "createdAt": "2021-02-18T16:04:26.495Z",
+    "updatedAt": "2021-02-26T10:16:49.272Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1248,6 +3758,161 @@ Get list of custom form for given application
 [CustomFormList](#CustomFormList)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "docs": [
+      {
+        "_id": "602e900a2042255c03cadaf0",
+        "login_required": false,
+        "should_notify": false,
+        "inputs": [
+          {
+            "type": "email",
+            "showRegexInput": true,
+            "enum": [],
+            "regex": "\\S+@\\S+\\.\\S+",
+            "display": "email",
+            "required": true,
+            "key": "email"
+          },
+          {
+            "type": "number",
+            "showRegexInput": false,
+            "enum": [],
+            "display": "Enter your fav number",
+            "placeholder": "123",
+            "key": "enter-your-fav-number"
+          },
+          {
+            "type": "textarea",
+            "showRegexInput": false,
+            "enum": [],
+            "display": "kjhgjhvjb",
+            "required": true,
+            "key": "kjhgjhvjb"
+          }
+        ],
+        "available_assignees": [],
+        "title": "service-test-satyen",
+        "description": "testing form from service",
+        "slug": "service-test-satyen",
+        "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
+        "application_id": "000000000000000000000001",
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "88.0.4324.150"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "11.2.0"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": "5f8147abbd1a0a870f61f1a6",
+        "createdAt": "2021-02-18T16:04:26.495Z",
+        "updatedAt": "2021-02-24T15:49:56.256Z",
+        "__v": 0,
+        "id": "602e900a2042255c03cadaf0"
+      },
+      {
+        "_id": "60124e4a4d2bc363625e1bf4",
+        "login_required": false,
+        "should_notify": true,
+        "inputs": [
+          {
+            "type": "text",
+            "showRegexInput": false,
+            "enum": [],
+            "display": "asdf",
+            "key": "asdf"
+          },
+          {
+            "type": "mobile",
+            "showRegexInput": false,
+            "enum": [],
+            "display": "mob num",
+            "regex": "[0-9]{10}$",
+            "key": "mob-num"
+          }
+        ],
+        "available_assignees": [
+          "5e79e721768c6bf54b783146"
+        ],
+        "title": "asdf444",
+        "description": "adf",
+        "slug": "asdf444",
+        "application_id": "000000000000000000000001",
+        "created_on": {
+          "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36",
+          "platform": "web",
+          "meta": {
+            "browser": {
+              "name": "Chrome",
+              "version": "88.0.4324.96"
+            },
+            "os": {
+              "name": "macOS",
+              "version": "10.15.7",
+              "versionName": "Catalina"
+            },
+            "platform": {
+              "type": "desktop",
+              "vendor": "Apple"
+            },
+            "engine": {
+              "name": "Blink"
+            }
+          }
+        },
+        "created_by": "5e79e721768c6bf54b783146",
+        "createdAt": "2021-01-28T05:40:26.271Z",
+        "updatedAt": "2021-02-18T16:02:32.086Z",
+        "__v": 0,
+        "poll_for_assignment": {
+          "duration": 20,
+          "message": "We are looking for executive to connect you",
+          "success_message": "Executive found",
+          "failure_message": "All our executives are busy at the moment, We have accepted your request and someone will connect with you soon!"
+        },
+        "id": "60124e4a4d2bc363625e1bf4"
+      }
+    ],
+    "total": 2,
+    "limit": 10,
+    "page": 1,
+    "pages": 1
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -1292,6 +3957,82 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "login_required": false,
+    "should_notify": false,
+    "inputs": [
+      {
+        "type": "email",
+        "showRegexInput": true,
+        "enum": [],
+        "regex": "\\S+@\\S+\\.\\S+",
+        "display": "email",
+        "required": true,
+        "key": "email"
+      },
+      {
+        "type": "number",
+        "showRegexInput": false,
+        "enum": [],
+        "display": "Enter your fav number",
+        "placeholder": "123",
+        "key": "enter-your-fav-number"
+      }
+    ],
+    "available_assignees": [],
+    "_id": "602e900a2042255c03cadaf0",
+    "title": "service-test-satyen",
+    "description": "testing form from service",
+    "slug": "service-test-satyen",
+    "header_image": "https://hdn-1.addsale.com/x0/support-ticket/files/free/original/KZL86aN5l-service-test-satyen.jpeg",
+    "application_id": "000000000000000000000001",
+    "created_on": {
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36",
+      "platform": "web",
+      "meta": {
+        "browser": {
+          "name": "Chrome",
+          "version": "88.0.4324.150"
+        },
+        "os": {
+          "name": "macOS",
+          "version": "11.2.0"
+        },
+        "platform": {
+          "type": "desktop",
+          "vendor": "Apple"
+        },
+        "engine": {
+          "name": "Blink"
+        }
+      }
+    },
+    "created_by": "5f8147abbd1a0a870f61f1a6",
+    "createdAt": "2021-02-18T16:04:26.495Z",
+    "updatedAt": "2021-02-26T10:16:49.272Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1332,6 +4073,30 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "access_token": "your_token_to_the_room"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1368,6 +4133,30 @@ Get Token to join a specific Video Room using it's unqiue name, this Token is yo
 [GetTokenForVideoRoomResponse](#GetTokenForVideoRoomResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "access_token": "your_token_to_the_room"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -1412,6 +4201,30 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "participants": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1448,6 +4261,30 @@ Get participants of a specific Video Room using it's unique name, this can be us
 [GetParticipantsInsideVideoRoomResponse](#GetParticipantsInsideVideoRoomResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "participants": []
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -1492,6 +4329,30 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "unique_name": "alphanumeric123"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1528,6 +4389,30 @@ Close the video room and force all participants to leave.
 [CloseVideoRoomResponse](#CloseVideoRoomResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -1577,6 +4462,20 @@ ok
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1613,6 +4512,20 @@ The endpoint provides a list of customer reviews based on entity and provided fi
 [GetReviewResponse](#GetReviewResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -1657,6 +4570,20 @@ ok
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1697,6 +4624,20 @@ ok
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1733,6 +4674,20 @@ Get all templates of application
 [TemplateGetResponse](#TemplateGetResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -1780,6 +4735,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1816,6 +4785,20 @@ Get the template for product or l3 type by ID
 [Template](#Template)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -1860,6 +4843,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1896,6 +4893,20 @@ Update existing template status, active/archive
 [UpdateResponse](#UpdateResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -1945,6 +4956,28 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; All pages</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AllAvailablePagesExample"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -1981,6 +5014,28 @@ Use this API to create a page for a theme by its ID.
 [AvailablePageSchema](#AvailablePageSchema)
 
 Success. Returns the page of the theme. Refer `AvailablePageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; page</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AvailablePageExample"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2025,6 +5080,28 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; All pages</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AllAvailablePagesExample"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2061,6 +5138,28 @@ Use this API to retrieve a page of a theme.
 [AvailablePageSchema](#AvailablePageSchema)
 
 Success. Returns an object of the page.  Refer `AvailablePageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Home page</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AvailablePageExample"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2105,6 +5204,28 @@ Success. Returns a the page of the theme. Refer `AvailablePageSchema` for more d
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; page</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AvailablePageExample"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2141,6 +5262,28 @@ Use this API to delete a page for a theme by its ID and page_value.
 [AvailablePageSchema](#AvailablePageSchema)
 
 Success. Returns a the page of the theme. Refer `AvailablePageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; page</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AvailablePageExample"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2185,6 +5328,28 @@ Success. Refer `ThemesListingResponseSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/ThemesListingResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2221,6 +5386,28 @@ Theme library is a personalized collection of themes that are chosen and added f
 [ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2265,6 +5452,28 @@ Success. Refer `ThemesSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2301,6 +5510,28 @@ There's always a possibility that new features get added to a theme. Use this AP
 [UpgradableThemeSchema](#UpgradableThemeSchema)
 
 Success. If the boolean value of `upgrade` returns **true**, the theme can be upgraded. Refer `UpgradableThemeSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/UpgradableTheme"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2345,6 +5576,28 @@ Success. Upgrades the theme and shares the details of the new version in the res
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2381,6 +5634,28 @@ Use this API to get a list of free themes that you can apply to your website.
 [ThemesListingResponseSchema](#ThemesListingResponseSchema)
 
 Success. Refer `ThemesListingResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/ThemesListingResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2425,6 +5700,28 @@ Theme
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2461,6 +5758,28 @@ Use this API to retrieve the theme that is currently applied to the website alon
 [ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2505,6 +5824,28 @@ Success. Refer `FontsSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/FontsResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2541,6 +5882,28 @@ Use this API to retrieve the details of a specific theme by using its ID.
 [ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2585,6 +5948,28 @@ Success. Refer `ThemesSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2621,6 +6006,28 @@ Use this API to delete a theme from the theme library.
 [ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2665,6 +6072,28 @@ Success. Refer `ThemesSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2701,6 +6130,28 @@ Use this API to publish a theme that is either newly created or edited.
 [ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2745,6 +6196,28 @@ Success. Refer `ThemesSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2785,6 +6258,28 @@ Success. Refer `ThemesSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2821,6 +6316,28 @@ Use this API to restore an archived theme and bring it back for editing or publi
 [ThemesSchema](#ThemesSchema)
 
 Success. Refer `ThemesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Themes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -2870,6 +6387,28 @@ Success. Refer `CustomerListResponseSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/CustomersListResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2906,6 +6445,63 @@ Use this API to retrieve an existing user from a list.
 [UserSearchResponseSchema](#UserSearchResponseSchema)
 
 Success. Returns first name, last name, emails, phone number and gender of the user. Refer `UserSearchResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "users": [
+    {
+      "_id": "5e68af49cfa09bf7233022f1",
+      "gender": "male",
+      "active": true,
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "uid": "61",
+      "account_type": "user",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2020-03-11T09:28:41.982Z"
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -2950,6 +6546,62 @@ User create
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "user": {
+    "_id": "5e68af49cfa09bf7233022f1",
+    "gender": "male",
+    "active": true,
+    "emails": [
+      {
+        "active": true,
+        "primary": true,
+        "verified": true,
+        "email": "akashmane@gofynd.com"
+      },
+      {
+        "active": true,
+        "primary": false,
+        "verified": true,
+        "email": "akashmane@fynd.com"
+      },
+      {
+        "active": true,
+        "primary": false,
+        "verified": true,
+        "email": "akashmane@uniket.store"
+      }
+    ],
+    "uid": "61",
+    "account_type": "user",
+    "first_name": "Akash",
+    "last_name": "Mane",
+    "phone_numbers": [
+      {
+        "active": true,
+        "primary": true,
+        "verified": true,
+        "phone": "8652523958",
+        "country_code": 91
+      }
+    ],
+    "meta": {},
+    "created_at": "2020-03-11T09:28:41.982Z",
+    "updated_at": "2020-03-11T09:28:41.982Z"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -2986,6 +6638,62 @@ Update user
 [CreateUserResponseSchema](#CreateUserResponseSchema)
 
 User update
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "user": {
+    "_id": "5e68af49cfa09bf7233022f1",
+    "gender": "male",
+    "active": true,
+    "emails": [
+      {
+        "active": true,
+        "primary": true,
+        "verified": true,
+        "email": "akashmane@gofynd.com"
+      },
+      {
+        "active": true,
+        "primary": false,
+        "verified": true,
+        "email": "akashmane@fynd.com"
+      },
+      {
+        "active": true,
+        "primary": false,
+        "verified": true,
+        "email": "akashmane@uniket.store"
+      }
+    ],
+    "uid": "61",
+    "account_type": "user",
+    "first_name": "Akash",
+    "last_name": "Mane",
+    "phone_numbers": [
+      {
+        "active": true,
+        "primary": true,
+        "verified": true,
+        "phone": "8652523958",
+        "country_code": 91
+      }
+    ],
+    "meta": {},
+    "created_at": "2020-03-11T09:28:41.982Z",
+    "updated_at": "2020-03-11T09:28:41.982Z"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -3030,6 +6738,28 @@ Create user session
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "domain": "vinit.com",
+  "max_age": 4555555,
+  "secure": true,
+  "http_only": true,
+  "cookie": {
+    "f.session": "s%3A-LrEF5FVR8jrT5DCtCHSbAy7JFyX-f9T.uXOQwzje8nOfx4ODANrLi4yNX5fW2W5kLQ2rkBdO2xE"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3070,6 +6800,85 @@ Success. Returns a JSON object containing the all the platform configurations. R
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "active": true,
+  "mobile_image": "",
+  "desktop_image": "",
+  "social": {
+    "facebook": true,
+    "google": true,
+    "account_kit": true
+  },
+  "flash_card": {
+    "text": "",
+    "text_color": "#FFFFFF",
+    "background_color": "#EF5350"
+  },
+  "register": true,
+  "forgot_password": true,
+  "login": {
+    "password": true,
+    "otp": true
+  },
+  "skip_captcha": false,
+  "display": "Fynd",
+  "subtext": "Login to Fynd",
+  "name": "Fynd",
+  "meta": {},
+  "required_fields": {
+    "email": {
+      "is_required": false,
+      "level": "hard"
+    },
+    "mobile": {
+      "is_required": true,
+      "level": "hard"
+    }
+  },
+  "register_required_fields": {
+    "email": {
+      "is_required": false,
+      "level": "hard"
+    },
+    "mobile": {
+      "is_required": true,
+      "level": "hard"
+    }
+  },
+  "skip_login": false,
+  "look_and_feel": {
+    "background_color": "#F5F5F5",
+    "card_position": "center"
+  },
+  "social_tokens": {
+    "google": {
+      "appId": "token_123"
+    },
+    "facebook": {
+      "appId": "token_123"
+    },
+    "account_kit": {
+      "appId": "token_123"
+    }
+  },
+  "_id": "5e04a5e5220bc15839ad9bc0",
+  "created_at": "2019-12-26T12:21:57.878Z",
+  "updated_at": "2020-08-13T14:31:09.878Z",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3106,6 +6915,85 @@ Use this API to edit the existing platform configurations such as mobile image, 
 [PlatformSchema](#PlatformSchema)
 
 Success. Returns a JSON object with the updated platform configurations. Refer `PlatformSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "active": true,
+  "mobile_image": "",
+  "desktop_image": "",
+  "social": {
+    "facebook": true,
+    "google": true,
+    "account_kit": true
+  },
+  "flash_card": {
+    "text": "",
+    "text_color": "#FFFFFF",
+    "background_color": "#EF5350"
+  },
+  "register": true,
+  "forgot_password": true,
+  "login": {
+    "password": true,
+    "otp": true
+  },
+  "skip_captcha": false,
+  "display": "Fynd",
+  "subtext": "Login to Fynd",
+  "name": "Fynd",
+  "meta": {},
+  "required_fields": {
+    "email": {
+      "is_required": false,
+      "level": "hard"
+    },
+    "mobile": {
+      "is_required": true,
+      "level": "hard"
+    }
+  },
+  "register_required_fields": {
+    "email": {
+      "is_required": false,
+      "level": "hard"
+    },
+    "mobile": {
+      "is_required": true,
+      "level": "hard"
+    }
+  },
+  "skip_login": false,
+  "look_and_feel": {
+    "background_color": "#F5F5F5",
+    "card_position": "center"
+  },
+  "social_tokens": {
+    "google": {
+      "appId": "token_123"
+    },
+    "facebook": {
+      "appId": "token_123"
+    },
+    "account_kit": {
+      "appId": "token_123"
+    }
+  },
+  "_id": "5e04a5e5220bc15839ad9bc0",
+  "created_at": "2019-12-26T12:21:57.878Z",
+  "updated_at": "2020-08-13T14:31:09.878Z",
+  "__v": 0
+}
+```
+</details>
+
+
+
 
 
 
@@ -3155,6 +7043,28 @@ Success. Refer `GetAnnouncementListSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/GetAnnouncementList"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3191,6 +7101,28 @@ Announcements are useful to highlight a message or information on top of a webpa
 [CreateAnnouncementSchema](#CreateAnnouncementSchema)
 
 Success. Refer `CreateAnnouncementSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/CreateAnnouncement"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -3235,6 +7167,28 @@ Success. Refer `AdminAnnouncementSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Announcement"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3271,6 +7225,28 @@ Use this API to edit an existing announcement and its details such as the target
 [CreateAnnouncementSchema](#CreateAnnouncementSchema)
 
 Success. Refer `CreateAnnouncementSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/UpdateAnnouncement"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -3315,6 +7291,28 @@ Success. Refer `CreateAnnouncementSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PatchAnnouncement"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3351,6 +7349,28 @@ Use this API to delete an existing announcement.
 [CreateAnnouncementSchema](#CreateAnnouncementSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/DeleteAnnouncement"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -3395,6 +7415,28 @@ Success. Refer `BlogSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/BlogResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3431,6 +7473,28 @@ Use this API to get a list of blogs along with their details, such as the title,
 [BlogGetResponse](#BlogGetResponse)
 
 Success. Refer `BlogGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/BlogGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -3475,6 +7539,28 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/BlogResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3511,6 +7597,28 @@ Use this API to delete a blog.
 [BlogSchema](#BlogSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/BlogResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -3555,6 +7663,28 @@ Success. Returns a a JSON object with components. Refer `BlogSchema` for more de
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/BlogResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3591,6 +7721,33 @@ FAQs can be divided into categories. Use this API to get a list of FAQ categorie
 [GetFaqCategoriesSchema](#GetFaqCategoriesSchema)
 
 Success. Refer `GetFaqCategoriesSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "categories": [
+    {
+      "index": 0,
+      "children": [
+        "6026426ae507768b168dee4b"
+      ],
+      "title": "Test",
+      "_id": "60263f80c83c1f89f2863a8a",
+      "slug": "test",
+      "application": "000000000000000000000001"
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -3635,6 +7792,37 @@ Success. Refer `GetFaqCategoryBySlugSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [
+      {
+        "_id": "6026426ae507768b168dee4b",
+        "question": "question 1",
+        "answer": "answer 1",
+        "slug": "question-1",
+        "application": "000000000000000000000001"
+      }
+    ],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "slug": "test",
+    "title": "Test",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3671,6 +7859,29 @@ FAQs help users to solve an issue or know more about a process. FAQs can be cate
 [CreateFaqCategorySchema](#CreateFaqCategorySchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "slug": "test",
+    "application": "000000000000000000000001",
+    "title": "Test"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -3715,6 +7926,29 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "title": "Test Updated",
+    "slug": "test",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3751,6 +7985,30 @@ Use this API to delete an FAQ category.
 [FaqSchema](#FaqSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "category": {
+    "index": 0,
+    "children": [],
+    "_id": "60263f80c83c1f89f2863a8a",
+    "slug": "test",
+    "title": "Test",
+    "application": "000000000000000000000001",
+    "__v": 2
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -3795,6 +8053,30 @@ Success. Refer `GetFaqSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faqs": [
+    {
+      "_id": "60265b64e507768b168dee4d",
+      "question": "question 1",
+      "answer": "answer 1",
+      "slug": "question-1",
+      "application": "000000000000000000000001"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3831,6 +8113,28 @@ FAQs help users to solve an issue or know more about a process. Use this API to 
 [CreateFaqResponseSchema](#CreateFaqResponseSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -3875,6 +8179,28 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1 updated",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3911,6 +8237,28 @@ Use this API to delete an existing FAQ.
 [CreateFaqResponseSchema](#CreateFaqResponseSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1 updated",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -3955,6 +8303,28 @@ Success. Refer `CreateFaqResponseSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "faq": {
+    "_id": "60265b64e507768b168dee4d",
+    "question": "question 1",
+    "answer": "answer 1",
+    "slug": "question-1",
+    "application": "000000000000000000000001"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -3991,6 +8361,28 @@ Landing page is the first page that a prospect lands upon while visiting a websi
 [LandingPageGetResponse](#LandingPageGetResponse)
 
 Success. Refer `LandingPageGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/LandingPageGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4035,6 +8427,28 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/LandingPageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4071,6 +8485,28 @@ Use this API to edit the details of an existing landing page.
 [LandingPageSchema](#LandingPageSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/LandingPageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4115,6 +8551,51 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5eaa451a21a4dd75f0fd96c5",
+    "application": "5d3ebd89f540e7506b8b3548",
+    "_custom_json": null,
+    "slug": "pnc-landing",
+    "action": {
+      "page": {
+        "type": "home"
+      },
+      "popup": {},
+      "type": "page"
+    },
+    "platform": [
+      "web"
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2020-04-30T03:25:14.549Z",
+      "modified_on": "2020-04-30T03:25:14.549Z"
+    },
+    "archived": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4151,6 +8632,28 @@ Use this API to get the legal information of an application, which includes Poli
 [ApplicationLegal](#ApplicationLegal)
 
 Success. Refer `ApplicationLegal` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Legal"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4195,6 +8698,29 @@ Success. Refer `ApplicationLegal` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "tnc": "This is terms and condition",
+  "policy": "This is policy",
+  "faq": [
+    {
+      "question": "This is question",
+      "answer": "This is answer"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4231,6 +8757,28 @@ Use this API to fetch the navigations details which includes the items of the na
 [NavigationGetResponse](#NavigationGetResponse)
 
 Success. Refer `NavigationGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/NavigationGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4275,6 +8823,28 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/NavigationResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4311,6 +8881,28 @@ On any website (application), there are navigations that are present by default.
 [DefaultNavigationResponse](#DefaultNavigationResponse)
 
 Success. Refer `DefaultNavigationResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/DefaultNavigationResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4355,6 +8947,28 @@ Success. Refer `NavigationSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/NavigationResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4391,6 +9005,28 @@ Use this API to edit the details of an existing navigation.
 [NavigationSchema](#NavigationSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/NavigationResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4435,6 +9071,208 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "_id": "5ffbd9b90ac98678ae0458d7",
+    "application": "000000000000000000000001",
+    "_custom_json": null,
+    "name": "temp",
+    "slug": "temp",
+    "platform": "[web]",
+    "orientation": {
+      "portrait": [
+        "left"
+      ]
+    },
+    "navigation": [
+      {
+        "display": "Home",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/mystore-tab_y0dqzt.png",
+        "sort_order": 1,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/",
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Brands",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/brands/",
+                "type": "brands"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Collections",
+        "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/collections-tab_a0tg9c.png",
+        "sort_order": 2,
+        "type": "",
+        "action": {
+          "page": {
+            "url": "/collections/",
+            "type": "collections"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        },
+        "sub_navigation": [
+          {
+            "display": "Categories",
+            "image": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148154/production/system/icons/categories-tab_ss8e0q.png",
+            "sort_order": 1,
+            "type": "",
+            "action": {
+              "page": {
+                "url": "/categories/",
+                "type": "categories"
+              },
+              "popup": {},
+              "type": "page"
+            },
+            "active": true,
+            "tags": null,
+            "acl": [
+              "all"
+            ],
+            "_locale_language": {
+              "hi": {
+                "display": ""
+              },
+              "ar": {
+                "display": ""
+              },
+              "en_us": {
+                "display": ""
+              }
+            }
+          }
+        ]
+      },
+      {
+        "display": "Primary Menu",
+        "image": "",
+        "sort_order": 3,
+        "type": "",
+        "action": {
+          "page": {
+            "type": "home"
+          },
+          "popup": {},
+          "type": "page"
+        },
+        "active": true,
+        "tags": null,
+        "acl": [
+          "all"
+        ],
+        "_locale_language": {
+          "hi": {
+            "display": ""
+          },
+          "ar": {
+            "display": ""
+          },
+          "en_us": {
+            "display": ""
+          }
+        }
+      }
+    ],
+    "created_by": {
+      "id": "000000000000000000000000"
+    },
+    "date_meta": {
+      "created_on": "2021-01-11T04:53:13.585Z",
+      "modified_on": "2021-01-14T10:24:34.485Z"
+    },
+    "archived": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4471,6 +9309,28 @@ Use this API to get the meta of custom pages (blog, page) and default system pag
 [PageMetaSchema](#PageMetaSchema)
 
 Success. Refer `PageMetaSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageMeta"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4515,6 +9375,54 @@ Success. Refer `PageSpec` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "specifications": [
+      {
+        "page_type": "home",
+        "display_name": "Home",
+        "params": [],
+        "query": []
+      },
+      {
+        "page_type": "collections",
+        "display_name": "Collections",
+        "params": [],
+        "query": []
+      },
+      {
+        "page_type": "collection",
+        "display_name": "Collection",
+        "params": [
+          {
+            "key": "slug",
+            "required": true
+          }
+        ],
+        "query": []
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4551,6 +9459,28 @@ Use this API to create a custom page using a title, seo, publish status, feature
 [PageSchema](#PageSchema)
 
 Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4595,6 +9525,28 @@ Success. Refer `PageGetResponse` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4631,6 +9583,28 @@ Use this API to create a page preview to check the appearance of a custom page.
 [PageSchema](#PageSchema)
 
 Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4675,6 +9649,28 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4711,6 +9707,28 @@ Use this API to edit the details of an existing page, such as its title, seo, pu
 [PageSchema](#PageSchema)
 
 Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4755,6 +9773,28 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4791,6 +9831,28 @@ Use this API to retrieve the components of a page, such as its title, seo, publi
 [PageSchema](#PageSchema)
 
 Success. Returns a JSON object of components. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4835,6 +9897,28 @@ Success. Refer `SeoComponent` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Seo"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4871,6 +9955,51 @@ Use this API to edit the SEO details of an application. This includes the sitema
 [SeoSchema](#SeoSchema)
 
 Success. Refer `SeoSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "details": {
+      "title": "Zyosa Zyosa"
+    },
+    "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
+    "sitemap_enabled": false,
+    "_id": "6009819ee463ad40de397eb2",
+    "app": "000000000000000000000001",
+    "created_at": "2021-01-21T13:29:02.543Z",
+    "updated_at": "2021-02-05T06:36:16.048Z",
+    "__v": 11,
+    "custom_meta_tags": [
+      {
+        "name": "test 0000",
+        "content": "<meta name=\"test\" content=\"0000 cn dcje dcj rejre cjrenurenc \">",
+        "_id": "6017c301bde3c21dbb13b284"
+      },
+      {
+        "name": "cwdcdc",
+        "content": "<meta content=\"wdcewdewc\">",
+        "_id": "6017c675bde3c22cfb13b290"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4915,6 +10044,28 @@ Success. Refer `SlideshowGetResponse` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SlideshowGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -4951,6 +10102,28 @@ A slideshow is a group of images, videos or a combination of both that are shown
 [SlideshowSchema](#SlideshowSchema)
 
 Success. Refer `SlideshowSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SlideshowResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -4995,6 +10168,28 @@ Success. Refer `SlideshowSchema` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SlideshowResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5031,6 +10226,28 @@ Use this API to edit the details of an existing slideshow.
 [SlideshowSchema](#SlideshowSchema)
 
 Success. Refer `SlideshowSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SlideshowResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -5075,6 +10292,67 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "date_meta": {
+      "created_on": "2021-03-14T05:27:12.319Z",
+      "modified_on": "2021-03-14T05:27:12.319Z"
+    },
+    "archived": true,
+    "_id": "604d9eb975e9d136bb1b8b83",
+    "configuration": {
+      "start_on_launch": false,
+      "duration": 50,
+      "sleep_time": 100,
+      "slide_direction": "horizontal"
+    },
+    "slug": "ss-sfsd-updated",
+    "platform": "ios",
+    "media": [
+      {
+        "auto_decide_duration": false,
+        "type": "image",
+        "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1567148153/production/system/icons/brands-tab_sfinpk.png",
+        "bg_color": "#ffffff",
+        "duration": 10,
+        "action": {
+          "type": ""
+        }
+      },
+      {
+        "auto_decide_duration": true,
+        "type": "youtube",
+        "url": "https://www.youtube.com/embed/9vJRopau0g0",
+        "bg_color": "#ffffff",
+        "duration": 909,
+        "action": {
+          "type": ""
+        }
+      }
+    ],
+    "application": "5cd3db5e9d692cfe5302a7bb",
+    "active": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5111,6 +10389,28 @@ Use this API to get the contact details for customer support, including emails a
 [Support](#Support)
 
 Success. Refer `Support` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Support"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -5155,6 +10455,28 @@ Success. Refer `Support` for more details.
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Support"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5191,6 +10513,42 @@ Use this API to edit the details of an existing tag. This includes the tag name,
 [TagsSchema](#TagsSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    },
+    {
+      "name": "Test 2",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44489",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
 
 
 
@@ -5235,6 +10593,42 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    },
+    {
+      "name": "Test 2",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44489",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5271,6 +10665,42 @@ Use this API to get all the CSS and JS injected in the application in the form o
 [TagsSchema](#TagsSchema)
 
 Success. Refer `TagsSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    },
+    {
+      "name": "Test 2",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44489",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
 
 
 
@@ -5315,6 +10745,34 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5355,6 +10813,34 @@ Success.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "tags": [
+    {
+      "name": "Test",
+      "sub_type": "external",
+      "_id": "601f77e7aa61066feda44488",
+      "type": "js",
+      "url": "youtube.com/watch?v=AaxFIY-cWH0&list=PL3O3jhFJEElBHFbs6XsOqZAWZLtlEkZTw&index=31",
+      "position": "head"
+    }
+  ],
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5391,6 +10877,34 @@ Use this API to edit the details of an existing tag by its ID.
 [TagsSchema](#TagsSchema)
 
 Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "602671b3c0bac99158b10874",
+  "application": "000000000000000000000001",
+  "tags": [
+    {
+      "_id": "601f77e7aa61066feda44488",
+      "name": "floating whatsapp",
+      "sub_type": "inline",
+      "type": "css",
+      "position": "head",
+      "content": ".float{\n\tposition:fixed;\n\twidth:60px;\n\theight:60px;\n\tbottom:40px;\n\tright:40px;\n\tbackground-color:#25d366;\n\tcolor:#FFF;\n\tborder-radius:50px;\n\ttext-align:center;\n  font-size:30px;\n\tbox-shadow: 2px 2px 3px #999;\n  z-index:100;\n}\n\n.my-float{\n\tmargin-top:16px;\n}"
+    }
+  ],
+  "__v": 1
+}
+```
+</details>
+
+
+
 
 
 
@@ -5441,6 +10955,22 @@ Success Response - Store Updated
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5478,6 +11008,269 @@ Update list of pickup points for an application.
 [PickupPointResponse](#PickupPointResponse)
 
 Success Response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "_id": "60627a658e21bf0cd64d3e4e",
+      "notification_emails": [],
+      "name": "hello",
+      "is_active": true,
+      "code": "ehelool",
+      "address": {
+        "address1": "A/204, SAI VANDAN, NARAYAN NAGAR, TULINJ ROAD",
+        "city": "Mumbai",
+        "state": "Maharashtra",
+        "pincode": 401209,
+        "country": "India",
+        "country_code": "IN"
+      },
+      "additional_contacts": [
+        {
+          "number": "123456790",
+          "country_code": 91
+        }
+      ],
+      "timing": [
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "monday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "tuesday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "wednesday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "thursday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "friday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "saturday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "sunday"
+        }
+      ],
+      "created_by": {
+        "username": "Sixspeed",
+        "user_id": "0"
+      },
+      "modified_by": {
+        "username": "Sixspeed",
+        "user_id": "0"
+      },
+      "created_on": "2021-03-30T01:09:57.030Z",
+      "modified_on": "2021-03-30T01:09:57.030Z",
+      "app_id": "6006c3ae53b64fab55a4ef4b",
+      "__v": 0
+    },
+    {
+      "_id": "60349b30243b6d4e879f747c",
+      "notification_emails": [],
+      "name": "SP-109",
+      "is_active": true,
+      "code": "SP10",
+      "address": {
+        "address1": "MPS SCHOOL",
+        "city": "Jaipur",
+        "state": "Rajasthan",
+        "pincode": 302004,
+        "country": "India",
+        "country_code": "IN"
+      },
+      "additional_contacts": [
+        {
+          "number": "7208229698",
+          "country_code": 91
+        }
+      ],
+      "timing": [
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "monday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "tuesday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "wednesday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "thursday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "friday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "saturday"
+        },
+        {
+          "opening": {
+            "hour": "11",
+            "minute": "0"
+          },
+          "closing": {
+            "hour": "22",
+            "minute": "0"
+          },
+          "open": true,
+          "weekday": "sunday"
+        }
+      ],
+      "created_by": {
+        "username": "Sixspeed",
+        "user_id": "0"
+      },
+      "modified_by": {
+        "username": "Sixspeed",
+        "user_id": "0"
+      },
+      "created_on": "2021-02-23T06:05:36.687Z",
+      "modified_on": "2021-02-23T06:05:36.687Z",
+      "app_id": "6006c3ae53b64fab55a4ef4b",
+      "__v": 0
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 1,
+    "has_previous": true,
+    "has_next": false,
+    "item_total": 2
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -5525,6 +11318,22 @@ Success Response - Store Updated
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5563,6 +11372,138 @@ store id passed.
 [PickupPointSchema](#PickupPointSchema)
 
 Success Response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "address": {
+    "address1": "ASSAM 783384, INDIA",
+    "city": "Bongaigaon",
+    "state": "Assam",
+    "pincode": 783384,
+    "country": "India",
+    "country_code": "IN"
+  },
+  "notification_emails": [],
+  "_id": "60657afe2931af7aaee5fbf9",
+  "name": "2nd Store",
+  "is_active": true,
+  "code": "check",
+  "additional_contacts": [
+    {
+      "number": "8793638893",
+      "country_code": 91
+    }
+  ],
+  "timing": [
+    {
+      "opening": {
+        "hour": "11",
+        "minute": "0"
+      },
+      "closing": {
+        "hour": "22",
+        "minute": "0"
+      },
+      "open": true,
+      "weekday": "monday"
+    },
+    {
+      "opening": {
+        "hour": "11",
+        "minute": "0"
+      },
+      "closing": {
+        "hour": "22",
+        "minute": "0"
+      },
+      "open": true,
+      "weekday": "tuesday"
+    },
+    {
+      "opening": {
+        "hour": "11",
+        "minute": "0"
+      },
+      "closing": {
+        "hour": "22",
+        "minute": "0"
+      },
+      "open": true,
+      "weekday": "wednesday"
+    },
+    {
+      "opening": {
+        "hour": "11",
+        "minute": "0"
+      },
+      "closing": {
+        "hour": "22",
+        "minute": "0"
+      },
+      "open": true,
+      "weekday": "thursday"
+    },
+    {
+      "opening": {
+        "hour": "11",
+        "minute": "0"
+      },
+      "closing": {
+        "hour": "22",
+        "minute": "0"
+      },
+      "open": true,
+      "weekday": "friday"
+    },
+    {
+      "opening": {
+        "hour": "11",
+        "minute": "0"
+      },
+      "closing": {
+        "hour": "22",
+        "minute": "0"
+      },
+      "open": true,
+      "weekday": "saturday"
+    },
+    {
+      "opening": {
+        "hour": "11",
+        "minute": "0"
+      },
+      "closing": {
+        "hour": "22",
+        "minute": "0"
+      },
+      "open": true,
+      "weekday": "sunday"
+    }
+  ],
+  "created_by": {
+    "username": "Sixspeed",
+    "user_id": "0"
+  },
+  "modified_by": {
+    "username": "Sixspeed",
+    "user_id": "0"
+  },
+  "created_on": "2021-04-01T07:49:18.639Z",
+  "modified_on": "2021-04-01T07:49:18.639Z",
+  "app_id": "6006c3ae53b64fab55a4ef4b",
+  "__v": 0
+}
+```
+</details>
+
+
+
 
 
 
@@ -5609,6 +11550,22 @@ Success Response - Store Updated
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5647,6 +11604,27 @@ the header to fetch the data.
 [PickupResponse](#PickupResponse)
 
 Success Response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "datetime_check": false,
+  "_id": "604f0445abed556c04ca83eb",
+  "header": "test",
+  "instruction_for_customer": "test",
+  "app_id": "6006c3ae53b64fab55a4ef4b",
+  "__v": 0
+}
+```
+</details>
+
+
+
 
 
 
@@ -5694,6 +11672,44 @@ Success Response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success",
+  "data": {
+    "assignment": {
+      "fulfillment_priority": {
+        "proirities": [],
+        "enabled": false
+      },
+      "default_sort_strategy": "optimal"
+    },
+    "_id": "6065aa862931aff76de5fbfa",
+    "app_id": "6006c3ae53b64fab55a4ef4b",
+    "created_by": {
+      "username": "Sixspeed",
+      "user_id": "0"
+    },
+    "modified_by": {
+      "username": "Sixspeed",
+      "user_id": "0"
+    },
+    "created_on": "2021-04-01T11:12:06.150Z",
+    "modified_on": "2021-04-01T11:34:47.323Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5733,6 +11749,25 @@ application i.e, for an application configuration can be created only once.
 [Success](#Success)
 
 Success Response - Store Updated
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success",
+  "data": {
+    "id": "6065aa862931aff76de5fbfa"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -5780,6 +11815,22 @@ Success Response - Store Updated
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5819,6 +11870,30 @@ API has support for pagination, filter by type and search by name.
 [StoreListResponse](#StoreListResponse)
 
 Success Response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 2,
+    "has_previous": true,
+    "has_next": true,
+    "item_total": 15
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -5866,6 +11941,57 @@ Success Response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success",
+  "data": {
+    "assignment": {
+      "strategy": {
+        "rules": [
+          {
+            "product_tags": [
+              "Digital Product"
+            ],
+            "_id": "6065b5c32931af5085e5fbfb",
+            "default": false,
+            "zone": "605f566497843adbf96544b7"
+          }
+        ]
+      },
+      "assignment_type": "advanced",
+      "default_zone": "605f566497843adbf96544b7"
+    },
+    "application_store_status": true,
+    "_id": "605c22429a24c1e198225026",
+    "uid": 11920,
+    "code": "ehelool",
+    "name": "hello",
+    "app_id": "6006c3ae53b64fab55a4ef4b",
+    "created_by": {
+      "username": "Sixspeed",
+      "user_id": "0"
+    },
+    "modified_by": {
+      "username": "Sixspeed",
+      "user_id": "0"
+    },
+    "created_on": "2021-03-25T05:40:18.064Z",
+    "modified_on": "2021-04-01T12:00:03.574Z",
+    "__v": 0
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5904,6 +12030,22 @@ and udpated request body are required to successfully update the store data.
 [Success](#Success)
 
 Success Response - Store Updated
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
 
 
 
@@ -5952,6 +12094,22 @@ Success Response - Store Updated
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -5990,6 +12148,62 @@ of three different types, radius, pincode and country.
 [ZoneListResponse](#ZoneListResponse)
 
 Success Response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "_id": "605f566497843adbf96544b7",
+      "zone_detail": {
+        "radius": {
+          "value": 3240
+        },
+        "pincode": {
+          "pincode_list": [],
+          "state": "",
+          "country": ""
+        },
+        "region": {
+          "state": [],
+          "country": ""
+        }
+      },
+      "name": "Test",
+      "zone_type": "radius",
+      "created_by": {
+        "username": "Sixspeed",
+        "user_id": "0"
+      },
+      "modified_by": {
+        "username": "Sixspeed",
+        "user_id": "0"
+      },
+      "created_on": "2021-03-27T15:59:32.063Z",
+      "modified_on": "2021-03-27T15:59:32.063Z",
+      "app_id": "6006c3ae53b64fab55a4ef4b",
+      "__v": 0
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 1,
+    "has_previous": true,
+    "has_next": false,
+    "item_total": 1
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -6037,6 +12251,22 @@ Success Response - Zone Created
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6079,6 +12309,50 @@ Success Response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "zone_detail": {
+    "radius": {
+      "value": 3240
+    },
+    "pincode": {
+      "pincode_list": [],
+      "state": "",
+      "country": ""
+    },
+    "region": {
+      "state": [],
+      "country": ""
+    }
+  },
+  "_id": "605f566497843adbf96544b7",
+  "name": "Test",
+  "zone_type": "radius",
+  "created_by": {
+    "username": "Sixspeed",
+    "user_id": "0"
+  },
+  "modified_by": {
+    "username": "Sixspeed",
+    "user_id": "0"
+  },
+  "created_on": "2021-03-27T15:59:32.063Z",
+  "modified_on": "2021-03-27T15:59:32.063Z",
+  "app_id": "6006c3ae53b64fab55a4ef4b",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6117,6 +12391,22 @@ data to update a zone.
 [Success](#Success)
 
 Success Response - Zone Updated
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success"
+}
+```
+</details>
+
+
+
 
 
 
@@ -6166,6 +12456,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6202,6 +12506,20 @@ Get created subscription charge details
 [EntitySubscription](#EntitySubscription)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -6246,6 +12564,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6282,6 +12614,28 @@ Get invoices.
 [Invoices](#Invoices)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Invoices"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6326,6 +12680,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Invoice"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6366,6 +12742,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SubscriptionCustomerRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6402,6 +12800,28 @@ Upsert subscription customer detail.
 [SubscriptionCustomer](#SubscriptionCustomer)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SubscriptionCustomerRes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6447,6 +12867,38 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Active subscription</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SubscriptionActiveRes"
+}
+```
+</details>
+
+<details>
+<summary><i>&nbsp; Inactive subscription</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SubscriptionInavtiveRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6483,6 +12935,28 @@ Get subscription subscription limits.
 [SubscriptionLimit](#SubscriptionLimit)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/CurrentLimitRes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6527,6 +13001,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SubscriptionActivateRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6563,6 +13059,28 @@ It will cancel current active subscription.
 [CancelSubscriptionRes](#CancelSubscriptionRes)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/CancelSubscriptionRes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6612,6 +13130,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Campaigns"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6648,6 +13188,28 @@ Create campaign
 [Campaign](#Campaign)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Campaign"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6692,6 +13254,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Campaign"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6728,6 +13312,28 @@ Update campaign by id
 [Campaign](#Campaign)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Campaign"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6772,6 +13378,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/GetStats"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6808,6 +13436,28 @@ Get audiences
 [Audiences](#Audiences)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Audiences"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6852,6 +13502,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Audience"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6888,6 +13560,28 @@ Get bigquery headers
 [BigqueryHeadersRes](#BigqueryHeadersRes)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/BigqueryHeadersRes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -6932,6 +13626,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Audience"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -6968,6 +13684,28 @@ Update audience by id
 [Audience](#Audience)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Audience"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7012,6 +13750,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/GetNRecordsCsvRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7048,6 +13808,28 @@ Get email providers
 [EmailProviders](#EmailProviders)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailProviders"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7092,6 +13874,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailProvider"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7128,6 +13932,28 @@ Get email provider by id
 [EmailProvider](#EmailProvider)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailProvider"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7172,6 +13998,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailProvider"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7208,6 +14056,28 @@ Get email templates
 [EmailTemplates](#EmailTemplates)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailTemplates"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7252,6 +14122,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailTemplateRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7288,6 +14180,28 @@ Get system email templates
 [SystemEmailTemplates](#SystemEmailTemplates)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SystemEmailTemplates"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7332,6 +14246,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailTemplate"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7368,6 +14304,28 @@ Update email template by id
 [EmailTemplateRes](#EmailTemplateRes)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailTemplateRes"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7412,6 +14370,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EmailTemplateDeleteSuccessRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7448,6 +14428,28 @@ Get event subscriptions
 [EventSubscriptions](#EventSubscriptions)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/EventSubscriptions"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7492,6 +14494,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Jobs"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7528,6 +14552,28 @@ Trigger campaign job
 [TriggerJobResponse](#TriggerJobResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/TriggerJobResponse"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7572,6 +14618,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/JobLogs"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7608,6 +14676,28 @@ Get communication logs
 [Logs](#Logs)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/Logs"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7652,6 +14742,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SystemNotifications"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7688,6 +14800,28 @@ Get sms providers
 [SmsProviders](#SmsProviders)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsProviders"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7732,6 +14866,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsProvider"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7768,6 +14924,28 @@ Get sms provider by id
 [SmsProvider](#SmsProvider)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsProvider"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7812,6 +14990,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsProvider"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7848,6 +15048,28 @@ Get sms templates
 [SmsTemplates](#SmsTemplates)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsTemplates"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7892,6 +15114,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsTemplateRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -7928,6 +15172,28 @@ Get sms template by id
 [SmsTemplate](#SmsTemplate)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsTemplate"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -7972,6 +15238,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsTemplateRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8012,6 +15300,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SmsTemplateDeleteSuccessRes"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8048,6 +15358,28 @@ Get system sms templates
 [SystemSmsTemplates](#SystemSmsTemplates)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/SystemSmsTemplates"
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -8097,6 +15429,137 @@ Refund Transfer Mode
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "created": true,
+  "app_id": "000000000000000000000004",
+  "excluded_fields": [
+    "config_type",
+    "aggregator"
+  ],
+  "display_fields": [
+    "logo",
+    "display"
+  ],
+  "aggregators": [
+    {
+      "key": "rrroooouuurrrrdddd",
+      "secret": "yyyyooo",
+      "is_active": false,
+      "config_type": "",
+      "merchant_key": "vvvvvvvvddd",
+      "aggregator": "juspay",
+      "display": {
+        "link": "",
+        "text": "Review in under process. Please  wait while process completed or contact us for any further query.",
+        "description": "Juspay is not a Payment Gateway (like Citrus, CCAvenue, PayU) but it works with any gateway or aggregator with zero interference in the Merchant-PG relations.",
+        "reviewed": false
+      },
+      "logo": "https://hdn-1.fynd.com/payment/juspay-pg-logo.jpg"
+    },
+    {
+      "key": "",
+      "pin": "",
+      "secret": "",
+      "user_id": "",
+      "is_active": false,
+      "config_type": "",
+      "merchant_id": "",
+      "aggregator": "mswipe",
+      "display": {
+        "link": "",
+        "text": "Submitted request to be reviewed before going live. Please contact us for any further query.",
+        "description": "Mswipe card swipe machines are safe and secure and accepts all debit & credit cards."
+      },
+      "logo": "https://hdn-1.fynd.com/payment/mswipe-pg-logo.png"
+    },
+    {
+      "key": "tttyyyyyy",
+      "secret": "rerrrrrrrr",
+      "is_active": false,
+      "config_type": "",
+      "merchant_salt": "qqqqq",
+      "aggregator": "payumoney",
+      "display": {
+        "link": "",
+        "text": "Review in under process. Please  wait while process completed or contact us for any further query.",
+        "description": "PayUmoney supports wide range of options for making online payments via wallets, UPI, cards, and netbanking.",
+        "reviewed": false
+      },
+      "logo": "https://hdn-1.fynd.com/payment/payu_logo_large.png"
+    },
+    {
+      "key": "test",
+      "secret": "test",
+      "is_active": true,
+      "config_type": "self",
+      "webhook_secret": "test",
+      "aggregator": "razorpay",
+      "display": {
+        "link": "",
+        "text": "Well done, You payment gateway successfully lived. Collect your payment at your end.",
+        "description": "Razorpay is a payments platform which accept online payments via Credit Card, Debit Card, Net banking, UPI, BharatQR and Wallets.",
+        "reviewed": true
+      },
+      "logo": "https://hdn-1.fynd.com/payment/razorpay-pg-logo.jpg"
+    },
+    {
+      "key": "",
+      "secret": "",
+      "is_active": false,
+      "config_type": "",
+      "aggregator": "rupifi",
+      "display": {
+        "link": "",
+        "text": "Submitted request to be reviewed before going live. Please contact us for any further query.",
+        "description": "Rupifi enables businesses to avail credits and allows a 'Buy now, Pay later' system for making transactions and purchases."
+      },
+      "logo": "https://hdn-1.fynd.com/payment/Rupifi.png"
+    },
+    {
+      "key": "12345",
+      "secret": "12345",
+      "is_active": false,
+      "config_type": "",
+      "aggregator": "simpl",
+      "display": {
+        "link": "",
+        "text": "Review in under process. Please  wait while process completed or contact us for any further query.",
+        "description": "Simpl is a Pay Later payment method.",
+        "reviewed": false
+      },
+      "logo": "https://hdn-1.fynd.com/payment/simpl-pg-logo.jpg"
+    },
+    {
+      "key": "",
+      "secret": "",
+      "is_active": false,
+      "product_id": "",
+      "config_type": "",
+      "webhook_secret": "",
+      "aggregator": "stripe",
+      "display": {
+        "link": "",
+        "text": "Submitted request to be reviewed before going live. Please contact us for any further query.",
+        "description": "Stripe is a payment processor that supports online payments, credit cards, recurring subscriptions and direct payouts to bank accounts."
+      },
+      "logo": "https://hdn-1.fynd.com/payment/Stripe.png"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8133,6 +15596,25 @@ Save Config Secret For Brand Payment Gateway
 [PaymentGatewayToBeReviewed](#PaymentGatewayToBeReviewed)
 
 Save Config Secret For Brand Payment Gateway Success Response.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "aggregators": [
+    "razorpay"
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -8177,6 +15659,25 @@ Save Config Secret For Brand Payment Gateway Success Response.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "aggregators": [
+    "razorpay"
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8213,6 +15714,1147 @@ Use this API to get Get All Valid Payment Options for making payment
 [PaymentOptionsResponse](#PaymentOptionsResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "payment_options": {
+    "payment_option": [
+      {
+        "name": "CARD",
+        "display_priority": 2,
+        "payment_mode_id": 2,
+        "display_name": "Card",
+        "list": [],
+        "anonymous_enable": true,
+        "aggregator_name": "Razorpay",
+        "add_card_enabled": false,
+        "types": [],
+        "networks": [],
+        "banks": []
+      },
+      {
+        "name": "NB",
+        "display_priority": 3,
+        "payment_mode_id": 3,
+        "display_name": "Net Banking",
+        "list": [
+          {
+            "aggregator_name": "Razorpay",
+            "name": "ICICI Bank",
+            "code": "ICIC",
+            "bank_name": "ICICI Bank",
+            "bank_code": "ICIC",
+            "url": "https://hdn-1.fynd.com/payment/NB_ICICI.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_ICICI.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_ICICI.png"
+            },
+            "merchant_code": "NB_ICICI",
+            "display_priority": 1,
+            "display_name": "ICICI Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "HDFC Bank",
+            "code": "HDFC",
+            "bank_name": "HDFC Bank",
+            "bank_code": "HDFC",
+            "url": "https://hdn-1.fynd.com/payment/NB_HDFC.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_HDFC.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_HDFC.png"
+            },
+            "merchant_code": "NB_HDFC",
+            "display_priority": 2,
+            "display_name": "HDFC Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Axis Bank",
+            "code": "UTIB",
+            "bank_name": "Axis Bank",
+            "bank_code": "UTIB",
+            "url": "https://hdn-1.fynd.com/payment/NB_AXIS.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_AXIS.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_AXIS.png"
+            },
+            "merchant_code": "NB_AXIS",
+            "display_priority": 3,
+            "display_name": "Axis Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of India",
+            "code": "SBIN",
+            "bank_name": "State Bank of India",
+            "bank_code": "SBIN",
+            "url": "https://hdn-1.fynd.com/payment/NB_SBI.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_SBI.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_SBI.png"
+            },
+            "merchant_code": "NB_SBI",
+            "display_priority": 4,
+            "display_name": "State Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Kotak Mahindra Bank",
+            "code": "KKBK",
+            "bank_name": "Kotak Mahindra Bank",
+            "bank_code": "KKBK",
+            "url": "https://hdn-1.fynd.com/payment/NB_KOTAK.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_KOTAK.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_KOTAK.png"
+            },
+            "merchant_code": "NB_KOTAK",
+            "display_priority": 5,
+            "display_name": "Kotak Mahindra Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Indusind Bank",
+            "code": "INDB",
+            "bank_name": "Indusind Bank",
+            "bank_code": "INDB",
+            "url": "https://hdn-1.fynd.com/payment/NB_INDUS.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_INDUS.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_INDUS.png"
+            },
+            "merchant_code": "INDB",
+            "display_priority": 6,
+            "display_name": "Indusind Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "City Union Bank",
+            "code": "CIUB",
+            "bank_name": "City Union Bank",
+            "bank_code": "CIUB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_CUB",
+            "display_priority": 9,
+            "display_name": "City Union Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Catholic Syrian Bank",
+            "code": "CSBK",
+            "bank_name": "Catholic Syrian Bank",
+            "bank_code": "CSBK",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "CSBK",
+            "display_priority": 11,
+            "display_name": "Catholic Syrian Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Hyderabad",
+            "code": "SBHY",
+            "bank_name": "State Bank of Hyderabad",
+            "bank_code": "SBHY",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBH",
+            "display_priority": 12,
+            "display_name": "State Bank of Hyderabad"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Allahabad Bank",
+            "code": "ALLA",
+            "bank_name": "Allahabad Bank",
+            "bank_code": "ALLA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "ALLA",
+            "display_priority": 15,
+            "display_name": "Allahabad Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Syndicate Bank",
+            "code": "SYNB",
+            "bank_name": "Syndicate Bank",
+            "bank_code": "SYNB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SYNB",
+            "display_priority": 17,
+            "display_name": "Syndicate Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Corporation Bank",
+            "code": "CORP",
+            "bank_name": "Corporation Bank",
+            "bank_code": "CORP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_CORP",
+            "display_priority": 18,
+            "display_name": "Corporation Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab National Bank - Corporate Banking",
+            "code": "PUNB_C",
+            "bank_name": "Punjab National Bank - Corporate Banking",
+            "bank_code": "PUNB_C",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PUNB_C",
+            "display_priority": 19,
+            "display_name": "Punjab National Bank - Corporate Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Canara Bank",
+            "code": "CNRB",
+            "bank_name": "Canara Bank",
+            "bank_code": "CNRB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_CANR",
+            "display_priority": 20,
+            "display_name": "Canara Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Saraswat Co-operative Bank",
+            "code": "SRCB",
+            "bank_name": "Saraswat Co-operative Bank",
+            "bank_code": "SRCB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SRCB",
+            "display_priority": 21,
+            "display_name": "Saraswat Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Deutsche Bank",
+            "code": "DEUT",
+            "bank_name": "Deutsche Bank",
+            "bank_code": "DEUT",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_DEUT",
+            "display_priority": 22,
+            "display_name": "Deutsche Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Dhanlaxmi Bank",
+            "code": "DLXB",
+            "bank_name": "Dhanlaxmi Bank",
+            "bank_code": "DLXB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "DLXB",
+            "display_priority": 24,
+            "display_name": "Dhanlaxmi Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Oriental Bank of Commerce",
+            "code": "ORBC",
+            "bank_name": "Oriental Bank of Commerce",
+            "bank_code": "ORBC",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "ORBC",
+            "display_priority": 25,
+            "display_name": "Oriental Bank of Commerce"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab National Bank - Retail Banking",
+            "code": "PUNB_R",
+            "bank_name": "Punjab National Bank - Retail Banking",
+            "bank_code": "PUNB_R",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PUNB_R",
+            "display_priority": 26,
+            "display_name": "Punjab National Bank - Retail Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Bikaner and Jaipur",
+            "code": "SBBJ",
+            "bank_name": "State Bank of Bikaner and Jaipur",
+            "bank_code": "SBBJ",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBBJ",
+            "display_priority": 27,
+            "display_name": "State Bank of Bikaner and Jaipur"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Indian Overseas Bank",
+            "code": "IOBA",
+            "bank_name": "Indian Overseas Bank",
+            "bank_code": "IOBA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_IOB",
+            "display_priority": 28,
+            "display_name": "Indian Overseas Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Travancore",
+            "code": "SBTR",
+            "bank_name": "State Bank of Travancore",
+            "bank_code": "SBTR",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBT",
+            "display_priority": 29,
+            "display_name": "State Bank of Travancore"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Airtel Payments Bank",
+            "code": "AIRP",
+            "bank_name": "Airtel Payments Bank",
+            "bank_code": "AIRP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "AIRP",
+            "display_priority": 30,
+            "display_name": "Airtel Payments Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Development Bank of Singapore",
+            "code": "DBSS",
+            "bank_name": "Development Bank of Singapore",
+            "bank_code": "DBSS",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "DBSS",
+            "display_priority": 31,
+            "display_name": "Development Bank of Singapore"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Vijaya Bank",
+            "code": "VIJB",
+            "bank_name": "Vijaya Bank",
+            "bank_code": "VIJB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_VJYB",
+            "display_priority": 32,
+            "display_name": "Vijaya Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "NKGSB Co-operative Bank",
+            "code": "NKGS",
+            "bank_name": "NKGSB Co-operative Bank",
+            "bank_code": "NKGS",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NKGS",
+            "display_priority": 33,
+            "display_name": "NKGSB Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "RBL Bank",
+            "code": "RATN",
+            "bank_name": "RBL Bank",
+            "bank_code": "RATN",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "RATN",
+            "display_priority": 35,
+            "display_name": "RBL Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of Baroda - Retail Banking",
+            "code": "BARB_R",
+            "bank_name": "Bank of Baroda - Retail Banking",
+            "bank_code": "BARB_R",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "BARB_R",
+            "display_priority": 36,
+            "display_name": "Bank of Baroda - Retail Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Karnataka Bank",
+            "code": "KARB",
+            "bank_name": "Karnataka Bank",
+            "bank_code": "KARB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_KARN",
+            "display_priority": 37,
+            "display_name": "Karnataka Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Tamilnadu State Apex Co-operative Bank",
+            "code": "TNSC",
+            "bank_name": "Tamilnadu State Apex Co-operative Bank",
+            "bank_code": "TNSC",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "TNSC",
+            "display_priority": 38,
+            "display_name": "Tamilnadu State Apex Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Tamilnadu Mercantile Bank",
+            "code": "TMBL",
+            "bank_name": "Tamilnadu Mercantile Bank",
+            "bank_code": "TMBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "TMBL",
+            "display_priority": 40,
+            "display_name": "Tamilnadu Mercantile Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Lakshmi Vilas Bank - Retail Banking",
+            "code": "LAVB_R",
+            "bank_name": "Lakshmi Vilas Bank - Retail Banking",
+            "bank_code": "LAVB_R",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "LAVB_R",
+            "display_priority": 42,
+            "display_name": "Lakshmi Vilas Bank - Retail Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Dena Bank",
+            "code": "BKDN",
+            "bank_name": "Dena Bank",
+            "bank_code": "BKDN",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "BKDN",
+            "display_priority": 43,
+            "display_name": "Dena Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Federal Bank",
+            "code": "FDRL",
+            "bank_name": "Federal Bank",
+            "bank_code": "FDRL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_FED",
+            "display_priority": 44,
+            "display_name": "Federal Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Indian Bank",
+            "code": "IDIB",
+            "bank_name": "Indian Bank",
+            "bank_code": "IDIB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_INDB",
+            "display_priority": 45,
+            "display_name": "Indian Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "South Indian Bank",
+            "code": "SIBL",
+            "bank_name": "South Indian Bank",
+            "bank_code": "SIBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SOIB",
+            "display_priority": 46,
+            "display_name": "South Indian Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "IDBI",
+            "code": "IBKL",
+            "bank_name": "IDBI",
+            "bank_code": "IBKL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "IBKL",
+            "display_priority": 49,
+            "display_name": "IDBI"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Karur Vysya Bank",
+            "code": "KVBL",
+            "bank_name": "Karur Vysya Bank",
+            "bank_code": "KVBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_KVB",
+            "display_priority": 50,
+            "display_name": "Karur Vysya Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab & Sind Bank",
+            "code": "PSIB",
+            "bank_name": "Punjab & Sind Bank",
+            "bank_code": "PSIB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PSIB",
+            "display_priority": 52,
+            "display_name": "Punjab & Sind Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "UCO Bank",
+            "code": "UCBA",
+            "bank_name": "UCO Bank",
+            "bank_code": "UCBA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "UCBA",
+            "display_priority": 53,
+            "display_name": "UCO Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of Bahrein and Kuwait",
+            "code": "BBKM",
+            "bank_name": "Bank of Bahrein and Kuwait",
+            "bank_code": "BBKM",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "BBKM",
+            "display_priority": 54,
+            "display_name": "Bank of Bahrein and Kuwait"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Yes Bank",
+            "code": "YESB",
+            "bank_name": "Yes Bank",
+            "bank_code": "YESB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_YESB",
+            "display_priority": 55,
+            "display_name": "Yes Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab & Maharashtra Co-operative Bank",
+            "code": "PMCB",
+            "bank_name": "Punjab & Maharashtra Co-operative Bank",
+            "bank_code": "PMCB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PMCB",
+            "display_priority": 56,
+            "display_name": "Punjab & Maharashtra Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of India",
+            "code": "BKID",
+            "bank_name": "Bank of India",
+            "bank_code": "BKID",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_BOI",
+            "display_priority": 57,
+            "display_name": "Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of Maharashtra",
+            "code": "MAHB",
+            "bank_name": "Bank of Maharashtra",
+            "bank_code": "MAHB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_BOM",
+            "display_priority": 58,
+            "display_name": "Bank of Maharashtra"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "IDFC Bank",
+            "code": "IDFB",
+            "bank_name": "IDFC Bank",
+            "bank_code": "IDFB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "IDFB",
+            "display_priority": 59,
+            "display_name": "IDFC Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Janata Sahakari Bank (Pune)",
+            "code": "JSBP",
+            "bank_name": "Janata Sahakari Bank (Pune)",
+            "bank_code": "JSBP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "JSBP",
+            "display_priority": 60,
+            "display_name": "Janata Sahakari Bank (Pune)"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Shamrao Vithal Co-operative Bank",
+            "code": "SVCB",
+            "bank_name": "Shamrao Vithal Co-operative Bank",
+            "bank_code": "SVCB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SVCB",
+            "display_priority": 61,
+            "display_name": "Shamrao Vithal Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Cosmos Co-operative Bank",
+            "code": "COSB",
+            "bank_name": "Cosmos Co-operative Bank",
+            "bank_code": "COSB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "COSB",
+            "display_priority": 62,
+            "display_name": "Cosmos Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Mysore",
+            "code": "SBMY",
+            "bank_name": "State Bank of Mysore",
+            "bank_code": "SBMY",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBM",
+            "display_priority": 63,
+            "display_name": "State Bank of Mysore"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Andhra Bank",
+            "code": "ANDB",
+            "bank_name": "Andhra Bank",
+            "bank_code": "ANDB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "ANDB",
+            "display_priority": 65,
+            "display_name": "Andhra Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Jammu and Kashmir Bank",
+            "code": "JAKA",
+            "bank_name": "Jammu and Kashmir Bank",
+            "bank_code": "JAKA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_JNK",
+            "display_priority": 66,
+            "display_name": "Jammu and Kashmir Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "United Bank of India",
+            "code": "UTBI",
+            "bank_name": "United Bank of India",
+            "bank_code": "UTBI",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "UTBI",
+            "display_priority": 67,
+            "display_name": "United Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Lakshmi Vilas Bank - Corporate Banking",
+            "code": "LAVB_C",
+            "bank_name": "Lakshmi Vilas Bank - Corporate Banking",
+            "bank_code": "LAVB_C",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "LAVB_C",
+            "display_priority": 69,
+            "display_name": "Lakshmi Vilas Bank - Corporate Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Patiala",
+            "code": "STBP",
+            "bank_name": "State Bank of Patiala",
+            "bank_code": "STBP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBP",
+            "display_priority": 70,
+            "display_name": "State Bank of Patiala"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "DCB Bank",
+            "code": "DCBL",
+            "bank_name": "DCB Bank",
+            "bank_code": "DCBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "DCBL",
+            "display_priority": 71,
+            "display_name": "DCB Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Union Bank of India",
+            "code": "UBIN",
+            "bank_name": "Union Bank of India",
+            "bank_code": "UBIN",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_UBI",
+            "display_priority": 73,
+            "display_name": "Union Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Standard Chartered Bank",
+            "code": "SCBL",
+            "bank_name": "Standard Chartered Bank",
+            "bank_code": "SCBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SCBL",
+            "display_priority": 74,
+            "display_name": "Standard Chartered Bank"
+          }
+        ]
+      },
+      {
+        "name": "WL",
+        "display_priority": 4,
+        "payment_mode_id": 4,
+        "display_name": "Wallet",
+        "list": [
+          {
+            "wallet_name": "Paytm",
+            "wallet_code": "paytm",
+            "name": "Paytm",
+            "display_name": "Paytm",
+            "code": "PAYTM",
+            "wallet_id": 4,
+            "merchant_code": "PAYTM",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/paytm_logo_small.png",
+              "large": "https://hdn-1.fynd.com/payment/paytm_logo_large.png"
+            },
+            "aggregator_name": "Juspay",
+            "display_priority": 1
+          },
+          {
+            "wallet_name": "Mobikwik",
+            "wallet_code": "mobikwik",
+            "name": "Mobikwik",
+            "display_name": "Mobikwik",
+            "code": "MOBIKWIK",
+            "wallet_id": 5,
+            "merchant_code": "MOBIKWIK",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/mobikwik_logo_small.png",
+              "large": "https://hdn-1.fynd.com/payment/mobikwik_logo_small.png"
+            },
+            "aggregator_name": "Juspay",
+            "display_priority": 3
+          },
+          {
+            "wallet_name": "Ola Money",
+            "wallet_code": "olamoney",
+            "name": "Ola Money",
+            "display_name": "Ola Money",
+            "code": "OLAMONEY",
+            "wallet_id": 6,
+            "merchant_code": "OLAMONEY",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/olamoney.png",
+              "large": "https://hdn-1.fynd.com/payment/olamoney.png"
+            },
+            "aggregator_name": "Razorpay",
+            "display_priority": 4
+          },
+          {
+            "wallet_name": "Amazon Pay",
+            "wallet_code": "amazonpay",
+            "name": "Amazon Pay",
+            "display_name": "Amazon Pay",
+            "code": "AMAZONPAY",
+            "wallet_id": 10,
+            "merchant_code": "AMAZONPAY",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/amazon-pay.png",
+              "large": "https://hdn-1.fynd.com/payment/amazon-pay.png"
+            },
+            "aggregator_name": "Razorpay",
+            "display_priority": 9
+          },
+          {
+            "wallet_name": "PayPal",
+            "wallet_code": "paypal",
+            "name": "PayPal",
+            "display_name": "PayPal",
+            "code": "PAYPAL",
+            "wallet_id": 11,
+            "merchant_code": "PAYPAL",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/paypal.jpg",
+              "large": "https://hdn-1.fynd.com/payment/paypal.jpg "
+            },
+            "aggregator_name": "Razorpay",
+            "display_priority": 10
+          }
+        ]
+      },
+      {
+        "name": "UPI",
+        "display_priority": 9,
+        "payment_mode_id": 7,
+        "display_name": "UPI",
+        "list": [
+          {
+            "aggregator_name": "Razorpay",
+            "name": "UPI",
+            "display_name": "BHIM UPI",
+            "code": "UPI",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/upi_150x100.png",
+              "small": "https://hdn-1.fynd.com/payment/upi_100x78.png"
+            },
+            "merchant_code": "UPI",
+            "timeout": 240,
+            "retry_count": 0,
+            "fynd_vpa": "shopsense.rzp@hdfcbank",
+            "intent_flow": true,
+            "intent_app_error_list": [
+              "com.csam.icici.bank.imobile",
+              "in.org.npci.upiapp",
+              "com.whatsapp"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "EMI",
+        "display_priority": 18,
+        "payment_mode_id": 19,
+        "display_name": "Easy EMI",
+        "list": [
+          {
+            "aggregator_name": "Razorpay",
+            "name": "EMI",
+            "display_name": "Easy EMI",
+            "code": "EMI",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Pos+Logo.png",
+              "small": "https://hdn-1.fynd.com/payment/Pos+Logo.png"
+            },
+            "merchant_code": "EMI"
+          }
+        ]
+      },
+      {
+        "name": "JUSPAYPG",
+        "display_priority": 18,
+        "payment_mode_id": 23,
+        "display_name": "Pay Using Juspay",
+        "list": [
+          {
+            "aggregator_name": "Juspay",
+            "name": "JUSPAYPG",
+            "display_name": "Pay Using Juspay",
+            "code": "JUSPAYPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/netbanking.png",
+              "small": "https://hdn-1.fynd.com/payment/netbanking.png"
+            },
+            "merchant_code": "JUSPAYPG"
+          }
+        ]
+      },
+      {
+        "name": "PG_PAYMENT",
+        "display_priority": 20,
+        "display_name": "Other payment gateway",
+        "list": [
+          {
+            "aggregator_name": "Stripe",
+            "name": "STRIPEPG",
+            "display_name": "Pay using Stripe",
+            "code": "STRIPEPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Pos+Logo.png",
+              "small": "https://hdn-1.fynd.com/payment/Pos+Logo.png"
+            },
+            "merchant_code": "STRIPEPG"
+          },
+          {
+            "aggregator_name": "Ccavenue",
+            "name": "CCAVENUEPG",
+            "display_name": "Pay using Ccavenue",
+            "code": "CCAVENUEPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Pos+Logo.png",
+              "small": "https://hdn-1.fynd.com/payment/Pos+Logo.png"
+            },
+            "merchant_code": "CCAVENUEPG"
+          },
+          {
+            "aggregator_name": "Payumoney",
+            "name": "PAYUMONEYPG",
+            "display_name": "Pay using Payumoney",
+            "code": "PAYUMONEYPG",
+            "logo_url": {
+              "large": "https://fynd-obscuro-media-new.s3.amazonaws.com/payment/payu_logo_large.png",
+              "small": "https://fynd-obscuro-media-new.s3.amazonaws.com/payment/payu_logo_small.png"
+            },
+            "merchant_code": "PAYUMONEYPG"
+          },
+          {
+            "aggregator_name": "Payubiz",
+            "name": "PAYUBIZPG",
+            "display_name": "Pay using Payubiz",
+            "code": "PAYUBIZPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/payu.png",
+              "small": "https://hdn-1.fynd.com/payment/payu.png"
+            },
+            "merchant_code": "PAYUBIZPG"
+          }
+        ]
+      },
+      {
+        "name": "PL",
+        "display_priority": 21,
+        "display_name": "Pay Later",
+        "list": [
+          {
+            "aggregator_name": "Simpl",
+            "name": "Simpl",
+            "display_name": "Simpl",
+            "code": "SIMPL",
+            "merchant_code": "SIMPL",
+            "logo": "https://hdn-1.fynd.com/payment/simpl_logo.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/simpl_logo.png",
+              "large": "https://hdn-1.fynd.com/payment/simpl_logo.png"
+            }
+          },
+          {
+            "aggregator_name": "Rupifi",
+            "name": "RUPIFIPG",
+            "display_name": "Pay using Rupifi",
+            "code": "RUPIFIPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Rupifi.png",
+              "small": "https://hdn-1.fynd.com/payment/Rupifi.png"
+            },
+            "merchant_code": "RUPIFIPG"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -8257,6 +16899,83 @@ payouts response object
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+[
+  {
+    "unique_transfer_no": "d2ff79fcd3459831864824da8c9d7e5f",
+    "more_attributes": {
+      "city": "",
+      "state": "",
+      "country": "",
+      "bank_name": "YES",
+      "ifsc_code": "IFSCYES101",
+      "account_no": "9876541234",
+      "branch_name": "Mumbai",
+      "account_type": "current",
+      "account_holder": "Vikas Kumar"
+    },
+    "transfer_type": "bank",
+    "is_default": true,
+    "is_active": true,
+    "customers": {
+      "id": 2,
+      "name": "reliance retail",
+      "mobile": "1234567890",
+      "email": "reliance@gmail.com",
+      "unique_external_id": "company:1"
+    },
+    "payouts_aggregators": [
+      {
+        "payout_details_id": 888,
+        "aggregator_id": 3,
+        "aggregator_fund_id": null
+      }
+    ]
+  },
+  {
+    "unique_transfer_no": "e388c1c5df4933fa01f6da9f92595589",
+    "more_attributes": {
+      "city": "",
+      "state": "",
+      "country": "",
+      "bank_name": "SBI",
+      "ifsc_code": "SBIN0011513",
+      "account_no": "9876543210",
+      "branch_name": "Mumbai",
+      "account_type": "saving",
+      "account_holder": "Vikas Kumar"
+    },
+    "transfer_type": "bank",
+    "is_default": false,
+    "is_active": true,
+    "customers": {
+      "id": 2,
+      "name": "reliance retail",
+      "mobile": "1234567890",
+      "email": "reliance@gmail.com",
+      "unique_external_id": "company:1"
+    },
+    "payouts_aggregators": [
+      {
+        "payout_details_id": 891,
+        "aggregator_id": 3,
+        "aggregator_fund_id": null
+      }
+    ]
+  }
+]
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8293,6 +17012,48 @@ Save Payout
 [PayoutResponse](#PayoutResponse)
 
 save payout response object
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "is_active": true,
+  "bank_details": {
+    "account_type": "saving",
+    "account_holder": "Vikas Kumar",
+    "branch_name": "Mumbai",
+    "country": "",
+    "ifsc_code": "SBIN0011513",
+    "account_no": "9876543210",
+    "city": "",
+    "state": "",
+    "bank_name": "SBI"
+  },
+  "unique_transfer_no": "e388c1c5df4933fa01f6da9f92595589",
+  "users": {
+    "name": "reliance retail",
+    "unique_external_id": "company:1",
+    "mobile": "1234567890",
+    "email": "reliance@gmail.com"
+  },
+  "aggregator": "Razorpay",
+  "transfer_type": "bank",
+  "created": true,
+  "payouts": {
+    "aggregator_fund_id": null
+  },
+  "payment_status": "payout_initiated"
+}
+```
+</details>
+
+
+
 
 
 
@@ -8337,6 +17098,24 @@ save payout response object
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "is_default": true,
+  "is_active": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8373,6 +17152,24 @@ Partial Update Payout
 [UpdatePayoutResponse](#UpdatePayoutResponse)
 
 save payout response object
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "is_default": true,
+  "is_active": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -8417,6 +17214,22 @@ delete payout response object
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8453,6 +17266,148 @@ Get all  Subscription  Payment Method
 [SubscriptionPaymentMethodResponse](#SubscriptionPaymentMethodResponse)
 
 List Subscription Payment Method Response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 68,
+      "type": "card",
+      "pg_payment_method_id": "pm_1H8HyIJ1ZTFIN1aD5eDOL4nU",
+      "data": {
+        "brand": "visa",
+        "last4": "4242",
+        "checks": {
+          "cvc_check": "pass",
+          "address_line1_check": null,
+          "address_postal_code_check": null
+        },
+        "wallet": null,
+        "country": "US",
+        "funding": "credit",
+        "exp_year": 2044,
+        "networks": {
+          "available": [
+            "visa"
+          ],
+          "preferred": null
+        },
+        "exp_month": 12,
+        "fingerprint": "0aror24meTf8iYfw",
+        "generated_from": null,
+        "three_d_secure_usage": {
+          "supported": true
+        }
+      },
+      "is_default": false
+    },
+    {
+      "id": 81,
+      "type": "card",
+      "pg_payment_method_id": "pm_1Hc7tMJ1ZTFIN1aDCvMIIBeT",
+      "data": {
+        "brand": "visa",
+        "last4": "4242",
+        "checks": {
+          "cvc_check": "pass",
+          "address_line1_check": null,
+          "address_postal_code_check": null
+        },
+        "wallet": null,
+        "country": "US",
+        "funding": "credit",
+        "exp_year": 2020,
+        "networks": {
+          "available": [
+            "visa"
+          ],
+          "preferred": null
+        },
+        "exp_month": 11,
+        "fingerprint": "0aror24meTf8iYfw",
+        "generated_from": null,
+        "three_d_secure_usage": {
+          "supported": true
+        }
+      },
+      "is_default": true
+    },
+    {
+      "id": 93,
+      "type": "card",
+      "pg_payment_method_id": "pm_1HvddjJ1ZTFIN1aDgebQvuyi",
+      "data": {
+        "brand": "visa",
+        "last4": "4242",
+        "checks": {
+          "cvc_check": "pass",
+          "address_line1_check": "pass",
+          "address_postal_code_check": "pass"
+        },
+        "wallet": null,
+        "country": "US",
+        "funding": "credit",
+        "exp_year": 2022,
+        "networks": {
+          "available": [
+            "visa"
+          ],
+          "preferred": null
+        },
+        "exp_month": 11,
+        "fingerprint": "0aror24meTf8iYfw",
+        "generated_from": null,
+        "three_d_secure_usage": {
+          "supported": true
+        }
+      },
+      "is_default": false
+    },
+    {
+      "id": 98,
+      "type": "card",
+      "pg_payment_method_id": "pm_1IJDF0J1ZTFIN1aDnJFi4i2v",
+      "data": {
+        "brand": "visa",
+        "last4": "1111",
+        "checks": {
+          "cvc_check": "pass",
+          "address_line1_check": "pass",
+          "address_postal_code_check": "pass"
+        },
+        "wallet": null,
+        "country": "US",
+        "funding": "credit",
+        "exp_year": 2025,
+        "networks": {
+          "available": [
+            "visa"
+          ],
+          "preferred": null
+        },
+        "exp_month": 11,
+        "fingerprint": "ZtDTGycouUEup4Q4",
+        "generated_from": null,
+        "three_d_secure_usage": {
+          "supported": true
+        }
+      },
+      "is_default": false
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -8497,6 +17452,22 @@ Delete Subscription Payment Method Response.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8533,6 +17504,26 @@ Get all  Subscription Config details
 [SubscriptionConfigResponse](#SubscriptionConfigResponse)
 
 List Subscription Config Response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "aggregator": "stripe",
+  "config": {
+    "public_key": "pk_test_lHBf12TZLa5"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -8577,6 +17568,29 @@ Save Subscription Setup Intent Response.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "test",
+    "object": "test",
+    "client_secret": "test",
+    "customer": "test",
+    "status": "requires_payment_method"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8613,6 +17627,24 @@ Use this API to save bank details for returned/cancelled order to refund amount 
 [RefundAccountResponse](#RefundAccountResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "message": "Account successfully created",
+  "data": {}
+}
+```
+</details>
+
+
+
 
 
 
@@ -8657,6 +17689,40 @@ Bank details on correct Ifsc Code
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "branch_name": "MANPUR",
+  "bank_name": "GAYA",
+  "BRANCH": "MANPUR",
+  "CENTRE": "GAYA",
+  "DISTRICT": "GAYA",
+  "STATE": "BIHAR",
+  "ADDRESS": "POBUNIYADGANJBIHAR",
+  "CONTACT": "00",
+  "MICR": "816002103",
+  "UPI": true,
+  "RTGS": true,
+  "CITY": "GAYA",
+  "NEFT": true,
+  "IMPS": true,
+  "SWIFT": "",
+  "BANK": "State Bank of India",
+  "BANKCODE": "SBIN",
+  "IFSC": "SBIN0005611",
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8693,6 +17759,44 @@ Get all active  beneficiary details added by the user for refund
 [OrderBeneficiaryResponse](#OrderBeneficiaryResponse)
 
 List Order Beneficiary
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "beneficiaries": [
+    {
+      "id": 3695,
+      "beneficiary_id": "4c86dd56e634a4c6a8fb51d195bc7b83",
+      "bank_name": "State Bank of India",
+      "branch_name": "BHOGAT",
+      "account_holder": "PRAKASH TEST",
+      "account_no": "3566342455454",
+      "ifsc_code": "SBIN0014982",
+      "mobile": "7819064010",
+      "email": "prakashtest@gmail.com",
+      "address": "49A, Dabhi seri, jodhpur, kalyanpur",
+      "comment": "COD Refund",
+      "is_active": null,
+      "created_on": "2021-01-22 11:31:02",
+      "modified_on": "2021-01-22 11:31:02",
+      "display_name": "BANK",
+      "transfer_mode": "bank",
+      "title": "Bank Account",
+      "subtitle": "35663423659",
+      "delights_user_name": "shreeniwas_24x7_gmail_com_45978_16624463"
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -8737,6 +17841,45 @@ List User Beneficiary
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "beneficiaries": [
+    {
+      "id": 221,
+      "beneficiary_id": "0f7e44a922df352c05c5f73cb40ba115",
+      "bank_name": "State Bank of India",
+      "branch_name": "State Bank of India",
+      "account_holder": "SHASHI TEST",
+      "account_no": "1234567891",
+      "ifsc_code": "SBIN0005611",
+      "mobile": "9112042174",
+      "email": "payment@gofynd.com",
+      "address": "204A",
+      "comment": "",
+      "is_active": null,
+      "created_on": "2020-06-29 12:38:39",
+      "modified_on": "2020-06-29 12:38:39",
+      "display_name": "BANK",
+      "transfer_mode": "bank",
+      "title": "Bank Account",
+      "subtitle": "1234567891",
+      "delights_user_name": null
+    }
+  ],
+  "show_beneficiary_details": false
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8773,6 +17916,24 @@ Use this API to confirm payment after payment gateway accepted payment.
 [PaymentConfirmationResponse](#PaymentConfirmationResponse)
 
 Success. Returns the status of payment. Check the example shown below or refer `PaymentConfirmationResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "message": "Payment Successful",
+  "order_id": "FY60F90AEF01FF43E878"
+}
+```
+</details>
+
+
+
 
 
 
@@ -8822,6 +17983,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8858,6 +18033,20 @@ Get Activity Status
 [GetActivityStatus](#GetActivityStatus)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -8902,6 +18091,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -8938,6 +18141,20 @@ Check Refund is available or not
 [HashMap<String,Any>](#HashMap<String,Any>)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -8982,6 +18199,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9018,6 +18249,20 @@ Get Orders Seperate Lane Count
 [OrderLanesCount](#OrderLanesCount)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9062,6 +18307,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9098,6 +18357,20 @@ Get Orders
 [OrderPicklistListing](#OrderPicklistListing)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9142,6 +18415,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9178,6 +18465,20 @@ Order Track
 [PlatformOrderTrack](#PlatformOrderTrack)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9222,6 +18523,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9258,6 +18573,20 @@ Order Reprocess
 [UpdateOrderReprocessResponse](#UpdateOrderReprocessResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9302,6 +18631,20 @@ Success. Check the example shown below or refer `ShipmentUpdateRequest` for more
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9338,6 +18681,20 @@ Get reasons behind full or partial cancellation of a shipment
 [ShipmentReasonsResponse](#ShipmentReasonsResponse)
 
 Success. Check the example shown below or refer `ShipmentReasonsResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9382,6 +18739,20 @@ Success. Check the example shown below or refer `ShipmentTrackResponse` for more
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9418,6 +18789,20 @@ Get Shipment Address
 [GetShipmentAddressResponse](#GetShipmentAddressResponse)
 
 Success. Check the example shown below or refer `GetShipmentAddressResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9462,6 +18847,20 @@ Success. Check the example shown below or refer `UpdateShipmentAddressResponse` 
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9498,6 +18897,20 @@ Get Ping
 [GetPingResponse](#GetPingResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9542,6 +18955,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9582,6 +19009,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9590,6 +19031,62 @@ Success
 
 
 ## Catalog
+
+
+#### deleteSearchKeywords
+Delete a Search Keywords
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
+
+*Returned Response*
+
+
+
+
+[DeleteResponse](#DeleteResponse)
+
+Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Words Deleted"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
 
 
 #### getSearchKeywords
@@ -9623,6 +19120,36 @@ Get the details of a words by its `id`. If successful, returns a Collection reso
 [GetSearchWordsDetailResponse](#GetSearchWordsDetailResponse)
 
 The Collection object. See example below or refer `GetSearchWordsDetailResponseSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": "602fa1e9a596ce349563f6b9",
+  "words": [
+    "sds"
+  ],
+  "app_id": "000000000000000000000001",
+  "is_active": true,
+  "result": {
+    "query": {
+      "department": [
+        "men"
+      ]
+    },
+    "sort_on": "popular"
+  },
+  "_custom_json": {}
+}
+```
+</details>
+
+
+
 
 
 
@@ -9667,42 +19194,16 @@ The Collection object. See example below or refer `GetSearchWordsDataSchema` for
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
 
+```json
 
----
-
-
-#### deleteSearchKeywords
-Delete a Search Keywords
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
 ```
+</details>
 
 
 
-
-Delete a keywords by it's id. Returns an object that tells whether the keywords was deleted successfully
-
-*Returned Response*
-
-
-
-
-[DeleteResponse](#DeleteResponse)
-
-Status object. Tells whether the operation was successful. See example below or refer `DeleteResponse`
 
 
 
@@ -9747,6 +19248,36 @@ Get keyword object with id that is added. See example below or refer `GetSearchW
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": "602fa1e9a596ce349563f6b9",
+  "words": [
+    "sds"
+  ],
+  "app_id": "000000000000000000000001",
+  "is_active": true,
+  "result": {
+    "query": {
+      "department": [
+        "men"
+      ]
+    },
+    "sort_on": "popular"
+  },
+  "_custom_json": {}
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9787,82 +19318,43 @@ List of custom search keywords. See example below or refer `GetSearchWordsRespon
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
 
-
----
-
-
-#### getAutocompleteKeywordDetail
-Get a Autocomplete Keywords Details
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
+```json
+{
+  "page": {
+    "current": 1,
+    "size": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_count": 1
+  },
+  "items": [
+    {
+      "uid": "602fa1e9a596ce349563f6b9",
+      "words": [
+        "sds"
+      ],
+      "app_id": "000000000000000000000001",
+      "is_active": true,
+      "result": {
+        "query": {
+          "department": [
+            "men"
+          ]
+        },
+        "sort_on": "popular"
+      },
+      "_custom_json": {}
+    }
+  ]
 }
 ```
+</details>
 
 
 
-
-Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
-
-*Returned Response*
-
-
-
-
-[GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
-
-The mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details
-
-
-
-
-
-
----
-
-
-#### updateAutocompleteKeyword
-Create & Update Autocomplete Keyword
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-Update a mapping by it's id. On successful request, returns the updated Keyword mapping
-
-*Returned Response*
-
-
-
-
-[GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
-
-The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
 
 
 
@@ -9907,6 +19399,158 @@ Status object. Tells whether the operation was successful. See example below or 
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Words Deleted"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getAutocompleteKeywordDetail
+Get a Autocomplete Keywords Details
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Get the details of a words by its `id`. If successful, returns a keywords resource in the response body specified in `GetAutocompleteWordsResponseSchema`
+
+*Returned Response*
+
+
+
+
+[GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
+
+The mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": "602fa1eaa596ce349563f6c6",
+  "app_id": "000000000000000000000001",
+  "words": [
+    "dasd"
+  ],
+  "is_active": true,
+  "results": [
+    {
+      "_custom_json": {},
+      "display": "Helllow",
+      "logo": {
+        "url": "https://hdn-1.addsale.com/addsale/company/61/applications/600a5b3fe0991a4718cdb448/company/1/application/000000000000000000000001/search/pictures/square-logo/original/n_8bvEaBw-Helllow.png"
+      },
+      "action": {
+        "type": "page",
+        "page": {
+          "query": {
+            "brand": [
+              "nike"
+            ]
+          },
+          "type": "products",
+          "url": "/products/?brand=nike"
+        }
+      }
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateAutocompleteKeyword
+Create & Update Autocomplete Keyword
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Update a mapping by it's id. On successful request, returns the updated Keyword mapping
+
+*Returned Response*
+
+
+
+
+[GetAutocompleteWordsResponse](#GetAutocompleteWordsResponse)
+
+The Mapping object. See example below or refer `GetAutocompleteWordsResponseSchema` for details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -9943,6 +19587,20 @@ Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for
 [CreateAutocompleteWordsResponse](#CreateAutocompleteWordsResponse)
 
 List of all the collections including the one you added. See example below or refer `CreateAutocompleteWordsResponseSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -9987,6 +19645,59 @@ List of custom autocomplete keywords. See example below or refer `GetAutocomplet
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "current": 1,
+    "size": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_count": 1
+  },
+  "items": [
+    {
+      "uid": "602fa1eaa596ce349563f6c6",
+      "app_id": "000000000000000000000001",
+      "words": [
+        "dasd"
+      ],
+      "is_active": true,
+      "results": [
+        {
+          "_custom_json": {},
+          "display": "Helllow",
+          "logo": {
+            "url": "https://hdn-1.addsale.com/addsale/company/61/applications/600a5b3fe0991a4718cdb448/company/1/application/000000000000000000000001/search/pictures/square-logo/original/n_8bvEaBw-Helllow.png"
+          },
+          "action": {
+            "type": "page",
+            "page": {
+              "query": {
+                "brand": [
+                  "nike"
+                ]
+              },
+              "type": "products",
+              "url": "/products/?brand=nike"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10023,6 +19734,53 @@ Create Product Bundle. See `ProductBundleRequest` for the request body parameter
 [GetProductBundleCreateResponse](#GetProductBundleCreateResponse)
 
 Get bundle with id that is added. See example below or refer `GetProductBundleCreateResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "slug": "bag",
+  "logo": "http://g.com/poo.png/",
+  "name": "Bag",
+  "choice": "multi",
+  "products": [
+    {
+      "product_uid": 7500001,
+      "max_quantity": 1,
+      "min_quantity": 1,
+      "auto_add_to_cart": false,
+      "auto_select": false,
+      "allow_remove": true
+    }
+  ],
+  "meta": {},
+  "same_store_assignment": true,
+  "is_active": true,
+  "page_visibility": [
+    "pdp"
+  ],
+  "created_by": {
+    "username": "917827311650_22960",
+    "uid": "123"
+  },
+  "company_id": 1,
+  "created_on": "2021-02-19 16:40:26.310007",
+  "modified_by": {
+    "username": "917827311650_22960",
+    "uid": "123"
+  },
+  "modified_on": "2021-02-19 16:40:26.310027",
+  "id": "602f9ca2a596ce312f5956f9"
+}
+```
+</details>
+
+
+
 
 
 
@@ -10067,6 +19825,166 @@ List of bundle configured for a company. See example below or refer `GetProductB
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "current": 1,
+    "total": 1,
+    "has_previous": false,
+    "has_next": false,
+    "total_item_count": 4
+  },
+  "items": [
+    {
+      "slug": "bag",
+      "logo": "http://g.com/poo.png/",
+      "name": "Bag",
+      "choice": "multi",
+      "products": [
+        {
+          "product_uid": 7500001,
+          "max_quantity": 1,
+          "min_quantity": 1,
+          "auto_add_to_cart": false,
+          "auto_select": false,
+          "allow_remove": true
+        }
+      ],
+      "meta": {},
+      "same_store_assignment": true,
+      "is_active": true,
+      "page_visibility": [
+        "pdp"
+      ],
+      "created_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "company_id": 1,
+      "created_on": "2021-02-19 16:40:26.310007",
+      "modified_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "modified_on": "2021-02-19 16:40:26.310027",
+      "id": "602f9ca2a596ce312f5956f9"
+    },
+    {
+      "choice": "multi",
+      "same_store_assignment": true,
+      "products": [
+        {
+          "auto_select": false,
+          "allow_remove": true,
+          "auto_add_to_cart": false,
+          "max_quantity": 1,
+          "product_uid": 7500001,
+          "min_quantity": 1
+        }
+      ],
+      "is_active": true,
+      "slug": "bag",
+      "meta": {},
+      "logo": "http://g.com/poo.png/",
+      "page_visibility": [
+        "pdp"
+      ],
+      "name": "Bag",
+      "created_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "company_id": 1,
+      "created_on": "2021-02-19 16:21:35.091512",
+      "modified_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "modified_on": "2021-02-19 16:21:35.091540",
+      "id": "602f9837a596ce2edf9868e2"
+    },
+    {
+      "slug": "bag",
+      "is_active": true,
+      "same_store_assignment": true,
+      "meta": {},
+      "choice": "multi",
+      "logo": "http://g.com/poo.png/",
+      "page_visibility": [
+        "pdp"
+      ],
+      "name": "Bag",
+      "products": [
+        {
+          "auto_select": false,
+          "min_quantity": 1,
+          "allow_remove": true,
+          "auto_add_to_cart": false,
+          "max_quantity": 1,
+          "product_uid": 7500001
+        }
+      ],
+      "created_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "company_id": 1,
+      "created_on": "2021-02-19 16:20:24.605207",
+      "modified_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "modified_on": "2021-02-19 16:20:24.605230",
+      "id": "602f97f0a596ce2ead47cd0b"
+    },
+    {
+      "products": [
+        {
+          "auto_select": false,
+          "auto_add_to_cart": false,
+          "min_quantity": 1,
+          "allow_remove": true,
+          "max_quantity": 1,
+          "product_uid": 7500001
+        }
+      ],
+      "is_active": true,
+      "logo": "http://g.com/poo.png/",
+      "name": "Bag",
+      "choice": "multi",
+      "slug": "bag",
+      "same_store_assignment": true,
+      "page_visibility": [
+        "pdp"
+      ],
+      "meta": {},
+      "created_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "company_id": 1,
+      "created_on": "2021-02-19 16:16:46.196449",
+      "modified_by": {
+        "username": "917827311650_22960",
+        "uid": "123"
+      },
+      "modified_on": "2021-02-19 16:16:46.196467",
+      "id": "602f9716a596ce2e415196df"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10103,6 +20021,54 @@ Get a particular Bundle details by its `id`. If successful, returns a Product bu
 [GetProductBundleResponse](#GetProductBundleResponse)
 
 The Collection object. See example below or refer `GetProductBundleResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "slug": "bag",
+  "company_id": 1,
+  "logo": "http://g.com/poo.png/",
+  "name": "Bag",
+  "choice": "multi",
+  "products": [
+    {
+      "product_uid": 7500001,
+      "product_details": {
+        "country_of_origin": "India",
+        "slug": "slug-1",
+        "item_code": "760B3BFF-4905-44B8-A50E-082829E7107F",
+        "attributes": {
+          "brand_name": "brand 2"
+        },
+        "name": "Some Phone",
+        "images": [
+          "https://hdn-1.addsale.com/x0/media/pictures/tagged_items/original/random_code_4/FE6DUR_000000.png"
+        ],
+        "uid": 7500001
+      },
+      "max_quantity": 1,
+      "min_quantity": 1,
+      "auto_add_to_cart": false,
+      "auto_select": false,
+      "allow_remove": true
+    }
+  ],
+  "meta": {},
+  "same_store_assignment": true,
+  "page_visibility": [
+    "pdp"
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -10147,6 +20113,53 @@ The Collection object. See example below or refer `GetProductBundleCreateRespons
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "slug": "bag",
+  "logo": "http://g.com/poo.png/",
+  "name": "Bag",
+  "choice": "multi",
+  "products": [
+    {
+      "product_uid": 7500001,
+      "max_quantity": 1,
+      "min_quantity": 1,
+      "auto_add_to_cart": false,
+      "auto_select": false,
+      "allow_remove": true
+    }
+  ],
+  "meta": {},
+  "same_store_assignment": true,
+  "is_active": true,
+  "page_visibility": [
+    "pdp"
+  ],
+  "created_by": {
+    "username": "917827311650_22960",
+    "uid": "123"
+  },
+  "company_id": 1,
+  "created_on": "2021-02-19 16:40:26.310007",
+  "modified_by": {
+    "username": "917827311650_22960",
+    "uid": "123"
+  },
+  "modified_on": "2021-02-19 16:40:26.310027",
+  "id": "602f9ca2a596ce312f5956f9"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10183,6 +20196,22 @@ This API allows to create a size guide associated to a brand.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -10227,6 +20256,79 @@ Size guide object. See example below or refer `ListSizeGuide` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "modified_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "active": true,
+      "id": "60364384f08385bee776f83d",
+      "title": "Demo SG",
+      "modified_on": "2021-02-24T17:46:04.146000Z",
+      "brand_id": 2,
+      "created_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "subtitle": "I am demo",
+      "company_id": 12,
+      "created_on": "2021-02-24T17:46:04.146000Z",
+      "guide": {
+        "meta": {
+          "values": [
+            {
+              "col_1": "10",
+              "col_2": "20"
+            },
+            {
+              "col_1": "12",
+              "col_2": "22"
+            },
+            {
+              "col_1": "14",
+              "col_2": "24"
+            }
+          ],
+          "unit": "cm",
+          "headers": {
+            "col_1": {
+              "value": "Head",
+              "convertable": false
+            },
+            "col_2": {
+              "value": "Shoulder",
+              "convertable": true
+            }
+          }
+        }
+      },
+      "tag": "demo",
+      "name": "Demo"
+    }
+  ],
+  "page": {
+    "current": 1,
+    "size": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_count": 1
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10263,6 +20365,68 @@ This API helps to get data associated to a size guide.
 [SizeGuideResponse](#SizeGuideResponse)
 
 Brand object. See example below or refer `SizeGuideResponseSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "active": true,
+  "brand_id": 1,
+  "created_on": "2021-02-24T17:46:04.146000Z",
+  "modified_on": "2021-02-25T15:19:30.822000Z",
+  "created_by": {
+    "username": "silverbolt",
+    "user_id": "-1"
+  },
+  "modified_by": {
+    "username": "917827311650_22960",
+    "user_id": "123"
+  },
+  "name": "edited size guide",
+  "company_id": 1,
+  "guide": {
+    "meta": {
+      "headers": {
+        "col_1": {
+          "value": "Head",
+          "convertable": false
+        },
+        "col_2": {
+          "value": "Shoulder",
+          "convertable": true
+        }
+      },
+      "values": [
+        {
+          "col_1": "10",
+          "col_2": "20"
+        },
+        {
+          "col_1": "12",
+          "col_2": "22"
+        },
+        {
+          "col_1": "14",
+          "col_2": "24"
+        }
+      ],
+      "unit": "cm"
+    }
+  },
+  "tag": "demo",
+  "title": "Demo SG",
+  "subtitle": "I am demo",
+  "id": "60364384f08385bee776f83d"
+}
+```
+</details>
+
+
+
 
 
 
@@ -10307,6 +20471,22 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10343,6 +20523,20 @@ configuration meta  details for catalog.
 [GetCatalogConfigurationMetaData](#GetCatalogConfigurationMetaData)
 
 configuration details for catalog. See example below or refer `GetCatalogConfigurationMetaDataSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -10387,6 +20581,20 @@ success flag will tell whether the operation was successful.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10423,6 +20631,332 @@ configured details for catalog.
 [GetAppCatalogConfiguration](#GetAppCatalogConfiguration)
 
 Get application level configured catalog details. See example below or refer `GetAppCatalogConfigurationSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "app_id": "000000000000000000000001",
+    "listing": {
+      "filter": {
+        "attribute_config": [
+          {
+            "key": "gender",
+            "priority": 1,
+            "type": "multivalued",
+            "name": "Gender",
+            "value_config": {
+              "condition": "OR",
+              "sort": "count",
+              "value": "",
+              "bucket_points": [],
+              "map": {}
+            },
+            "is_active": true
+          },
+          {
+            "key": "min_price_effective",
+            "priority": 2,
+            "type": "range",
+            "name": "Price",
+            "value_config": {
+              "condition": "OR",
+              "sort": "count",
+              "value": "",
+              "bucket_points": [],
+              "map": {
+                "< 500": "Below Rs. 500",
+                ">= 6000": "Above Rs. 6000"
+              }
+            },
+            "is_active": true
+          },
+          {
+            "key": "departments",
+            "priority": 3,
+            "type": "multivalued",
+            "name": "Department",
+            "value_config": {
+              "condition": "OR",
+              "sort": "count",
+              "value": "metadata",
+              "bucket_points": [],
+              "map": {}
+            },
+            "is_active": true
+          },
+          {
+            "key": "brand_id",
+            "priority": 4,
+            "type": "multivalued",
+            "name": "Brand",
+            "value_config": {
+              "condition": "OR",
+              "sort": "ascending",
+              "value": "metadata",
+              "bucket_points": [],
+              "map": {
+                "5th Avenue": "A {{value}}"
+              }
+            },
+            "is_active": true
+          },
+          {
+            "key": "season",
+            "priority": 5,
+            "type": "multivalued",
+            "name": "Season",
+            "value_config": {
+              "condition": "OR",
+              "sort": "count",
+              "value": "",
+              "bucket_points": [],
+              "map": {
+                "": ""
+              }
+            },
+            "is_active": false
+          },
+          {
+            "key": "is_set",
+            "priority": 6,
+            "type": "multivalued",
+            "name": "Set",
+            "value_config": {
+              "condition": "OR",
+              "sort": "descending",
+              "value": "",
+              "bucket_points": [],
+              "map": {
+                "true": "Yes",
+                "false": "No"
+              }
+            },
+            "is_active": true
+          },
+          {
+            "key": "rating",
+            "priority": 7,
+            "type": "multivalued",
+            "name": "Rating",
+            "value_config": {
+              "condition": "OR",
+              "sort": "count",
+              "value": "",
+              "bucket_points": [],
+              "map": {
+                "": ""
+              }
+            },
+            "is_active": true
+          },
+          {
+            "key": "size_depth",
+            "priority": 8,
+            "type": "range",
+            "name": "Size Depth",
+            "value_config": {
+              "condition": "OR",
+              "sort": "count",
+              "value": "",
+              "bucket_points": [],
+              "map": {
+                "{} - {}": "{} - {}"
+              }
+            },
+            "is_active": true
+          }
+        ],
+        "allow_single": false
+      },
+      "sort": {
+        "default": "",
+        "config": [
+          {
+            "key": "price_dsc",
+            "logo": "https://hdn-1.fynd.com/global/menu-icons/Price%20High%20to%20Low.png",
+            "priority": 1,
+            "name": "Price High to Low",
+            "is_active": false
+          },
+          {
+            "key": "rating_dsc",
+            "logo": "https://hdn-1.fynd.com/global/menu-icons/Rating.png",
+            "priority": 2,
+            "name": "Rating",
+            "is_active": true
+          },
+          {
+            "key": "depth_desc",
+            "priority": 3,
+            "name": "Size Depth (High to Low)",
+            "is_active": true
+          },
+          {
+            "key": "discount_dsc",
+            "logo": "https://hdn-1.fynd.com/global/menu-icons/Discount%20Low%20to%20High.png",
+            "priority": 4,
+            "name": "Discount High to Low",
+            "is_active": true
+          },
+          {
+            "key": "popular",
+            "logo": "https://hdn-1.fynd.com/global/menu-icons/Popularity.png",
+            "priority": 5,
+            "name": "Popularity",
+            "is_active": true
+          },
+          {
+            "key": "relevance",
+            "priority": 6,
+            "name": "Relevance",
+            "is_active": true
+          },
+          {
+            "key": "price_asc",
+            "logo": "https://hdn-1.fynd.com/global/menu-icons/Price%20Low%20to%20High.png",
+            "priority": 7,
+            "name": "Price Low to High",
+            "is_active": true
+          }
+        ]
+      }
+    },
+    "product": {
+      "similar": {
+        "config": [
+          {
+            "key": "seller",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 1,
+            "title": "Seller",
+            "is_active": true,
+            "subtitle": ""
+          },
+          {
+            "key": "visual",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 2,
+            "title": "Visual",
+            "is_active": true,
+            "subtitle": ""
+          },
+          {
+            "key": "brand",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 3,
+            "title": "Brand",
+            "is_active": true,
+            "subtitle": ""
+          },
+          {
+            "key": "specs",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 4,
+            "title": "Specs",
+            "is_active": true,
+            "subtitle": ""
+          }
+        ]
+      },
+      "variant": {
+        "config": [
+          {
+            "key": "color",
+            "display_type": "image",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 1,
+            "name": "Additional Colors12",
+            "is_active": true
+          },
+          {
+            "key": "storage",
+            "display_type": "text",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 2,
+            "name": "Memory",
+            "is_active": true
+          },
+          {
+            "key": "visual",
+            "display_type": "image",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 3,
+            "name": "Additional Colors",
+            "is_active": true
+          },
+          {
+            "key": "ram_storage",
+            "display_type": "text",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 4,
+            "name": "Ram_Storage",
+            "is_active": true
+          },
+          {
+            "key": "shade",
+            "display_type": "color",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 5,
+            "name": "Additional Shades",
+            "is_active": true
+          },
+          {
+            "key": "water_resistant",
+            "display_type": "text",
+            "size": {
+              "max": 10,
+              "min": 2
+            },
+            "priority": 6,
+            "name": "Water_Resistant",
+            "is_active": true
+          }
+        ]
+      }
+    },
+    "config_id": "000000000000000000000001",
+    "config_type": "app"
+  },
+  "is_default": false
+}
+```
+</details>
+
+
+
 
 
 
@@ -10467,6 +21001,20 @@ success flag will tell whether the operation was successful.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10503,6 +21051,20 @@ configured details for catalog.
 [GetAppCatalogEntityConfiguration](#GetAppCatalogEntityConfiguration)
 
 Get application level configured catalog details. See example below or refer `GetAppCatalogEntityConfigurationSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -10547,6 +21109,370 @@ The attached items of an collection. See example below or refer `GetCollectionQu
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "filters": [
+    {
+      "key": {
+        "display": "Department",
+        "name": "department",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Department.png"
+      },
+      "values": [
+        {
+          "display": "Men's Fashion",
+          "count": 2113,
+          "is_selected": false,
+          "value": "men",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/category_tab_icons/department/Men.png"
+          }
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Category",
+        "name": "category",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Category.png"
+      },
+      "values": [
+        {
+          "display": "T-Shirts",
+          "count": 968,
+          "is_selected": false,
+          "value": "192",
+          "logo": "https://hdn-1.fynd.com/media/logo/category/original/15442_57fdc97abfd248aaaf8841f097a4ed67.jpg"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Size",
+        "name": "sizes",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Sizes.png"
+      },
+      "values": [
+        {
+          "display": "S",
+          "count": 1438,
+          "is_selected": false,
+          "value": "S"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Brand",
+        "name": "brand",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Brand%20ID.png"
+      },
+      "values": [
+        {
+          "display": "Superdry",
+          "count": 4263,
+          "is_selected": false,
+          "value": "235",
+          "logo": "https://hdn-1.fynd.com/media/logo/brand/original/1008_238113b8e11448f792e9bf860aac30f2.jpg"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Rating",
+        "name": "rating",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Rating.png"
+      },
+      "values": [
+        {
+          "count": 3,
+          "display": "5 ★",
+          "value": "[4 TO *}",
+          "is_selected": false
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Company",
+        "name": "company_id_list",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Store%20ID%20List.png"
+      },
+      "values": [
+        {
+          "display": "RELIANCE BRANDS LIMITED",
+          "count": 4262,
+          "is_selected": false,
+          "value": "46"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Store Ids",
+        "name": "store_id_list",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Store%20ID%20List.png"
+      },
+      "values": [
+        {
+          "display": "PHOENIX, ,PALLADIUM,  LOWER PAREL - 5410",
+          "count": 1385,
+          "is_selected": false,
+          "value": "2201"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Image",
+        "name": "image_nature",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/image%20Nature.png"
+      },
+      "values": [
+        {
+          "display": "Good Quality",
+          "count": 3111,
+          "is_selected": false,
+          "value": "standard"
+        },
+        {
+          "display": "No Image",
+          "count": 1152,
+          "is_selected": false,
+          "value": "default"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Set",
+        "name": "is_set",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "No",
+          "count": 4263,
+          "is_selected": false,
+          "value": false
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Product Fit",
+        "name": "product_fit",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "Regular",
+          "count": 14,
+          "is_selected": false,
+          "value": "Regular"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Primary Material",
+        "name": "primary_material",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "Cotton",
+          "count": 1246,
+          "is_selected": false,
+          "value": "Cotton"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Gender",
+        "name": "gender",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "Men",
+          "count": 2125,
+          "is_selected": false,
+          "value": "Men"
+        },
+        {
+          "display": "Women",
+          "count": 1492,
+          "is_selected": false,
+          "value": "Women"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Primary Colour",
+        "name": "primary_color",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "Multi",
+          "count": 1403,
+          "is_selected": false,
+          "value": "Multi"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Size Depth",
+        "name": "size_depth",
+        "kind": "range",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Size%20Depth.png"
+      },
+      "values": [
+        {
+          "count": 4263,
+          "min": 0,
+          "max": 9,
+          "is_selected": false,
+          "selected_min": 0,
+          "selected_max": 9,
+          "query_format": "[{} TO {}]",
+          "display_format": "{} - {}",
+          "display": "0 - 9"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Price",
+        "name": "min_price_effective",
+        "kind": "range",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Min%20price%20effective.png"
+      },
+      "values": [
+        {
+          "count": 4263,
+          "min": 398,
+          "max": 24999,
+          "is_selected": false,
+          "selected_min": 398.8,
+          "selected_max": 24998.77,
+          "currency_code": "INR",
+          "currency_symbol": "₹",
+          "query_format": "[{},INR TO {},INR]"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Discount",
+        "name": "platform_discount",
+        "kind": "range",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Platform%20Discount.png"
+      },
+      "values": [
+        {
+          "count": 4263,
+          "min": 0,
+          "max": 50,
+          "is_selected": false,
+          "selected_min": 0,
+          "selected_max": 50,
+          "query_format": "[{} TO {}]",
+          "display_format": "{} - {}",
+          "display": "0 - 50"
+        }
+      ]
+    }
+  ],
+  "sort_on": [
+    {
+      "display": "Latest Products",
+      "name": "Latest Products",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Latest%20Products.png",
+      "value": "latest",
+      "is_selected": true
+    },
+    {
+      "display": "Popularity",
+      "name": "Popularity",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Popularity.png",
+      "value": "popular",
+      "is_selected": false
+    },
+    {
+      "display": "Price Low to High",
+      "name": "Price Low to High",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Price%20High%20to%20Low.png",
+      "value": "price_asc",
+      "is_selected": false
+    },
+    {
+      "display": "Price High to Low",
+      "name": "Price High to Low",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Price%20High%20to%20Low.png",
+      "value": "price_dsc",
+      "is_selected": false
+    },
+    {
+      "display": "Discount Low to High",
+      "name": "Discount Low to High",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Discount%20Low%20to%20High.png",
+      "value": "discount_asc",
+      "is_selected": false
+    },
+    {
+      "display": "Discount High to Low",
+      "name": "Discount High to Low",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Discount%20Low%20to%20High.png",
+      "value": "discount_dsc",
+      "is_selected": false
+    },
+    {
+      "display": "Rating",
+      "name": "Rating",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Rating.png",
+      "value": "rating_dsc",
+      "is_selected": false
+    },
+    {
+      "display": "Size Depth (High to Low)",
+      "name": "Size Depth (High to Low)",
+      "logo": "https://hdn-1.fynd.com/global/menu-icons/Size%20Depth.png",
+      "value": "depth_desc",
+      "is_selected": false
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10583,6 +21509,80 @@ Create a collection. See `CreateCollectionRequestSchema` for the list of attribu
 [CollectionCreateResponse](#CollectionCreateResponse)
 
 List of all the collections including the one you added. See example below or refer `CollectionCreateResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": "604f585a7051e30001173ac1",
+  "type": "query",
+  "query": {},
+  "name": "New",
+  "banners": {
+    "portrait": {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588858137/production/applications/app_000000000000000000000001/media/collection/portrait/xzuftshmmw4yuwzb12pm.png"
+    },
+    "landscape": {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857999/production/applications/app_000000000000000000000001/media/collection/landscape/avm7xibo2jgk8glc4bwl.png"
+    }
+  },
+  "logo": {
+    "type": "image",
+    "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857854/production/applications/app_000000000000000000000001/media/collection/logo/w9ns7nfgv7fk45xqrpoh.png"
+  },
+  "published": true,
+  "description": "",
+  "is_active": true,
+  "tags": [],
+  "slug": "new",
+  "action": {
+    "page": {
+      "type": "collection",
+      "query": {
+        "collection": [
+          "new"
+        ]
+      }
+    },
+    "type": "page"
+  },
+  "allow_facets": true,
+  "allow_sort": true,
+  "visible_facets_keys": [],
+  "meta": {},
+  "badge": {
+    "color": "#ffffff",
+    "text": ""
+  },
+  "sort_on": "depth_desc",
+  "_custom_json": {},
+  "_locale_language": {},
+  "_schedule": {
+    "start": "2021-03-15T12:51:21.333000+00:00Z",
+    "next_schedule": [
+      {
+        "start": "2021-03-15T12:51:21.333000+00:00Z",
+        "end": null
+      }
+    ],
+    "end": null
+  },
+  "seo": {
+    "title": "Test",
+    "description": "Test description"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -10627,6 +21627,275 @@ List of collections. See example below or refer `GetCollectionListingResponse` f
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "current": 1,
+    "size": 19,
+    "has_previous": false,
+    "has_next": true,
+    "item_total": 190
+  },
+  "items": [
+    {
+      "uid": "6040fed076d8a500011ef829",
+      "type": "query",
+      "query": {
+        "brand": [
+          "6",
+          "3",
+          "4",
+          "2"
+        ],
+        "min_price_effective": "[6319,INR TO 11805,INR]",
+        "platform_discount": "[15 TO 39]",
+        "sort_on": "price_asc"
+      },
+      "name": "test1",
+      "banners": {
+        "portrait": {
+          "type": "image",
+          "url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000001/collections/pictures/portrait-banner/original/mP6OnINGR-1601466767814.jpeg"
+        },
+        "landscape": {
+          "type": "image",
+          "url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000001/collections/pictures/landscape-banner/original/3jSEzw9CN-1601465376892.jpeg"
+        }
+      },
+      "logo": {
+        "type": "image",
+        "url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000001/collections/pictures/square-logo/original/y_-XUYXwx-1602326103322.jpeg"
+      },
+      "published": true,
+      "description": "this is description",
+      "is_active": true,
+      "tags": [],
+      "slug": "test1",
+      "action": {
+        "page": {
+          "type": "collection",
+          "query": {
+            "collection": [
+              "test1"
+            ]
+          }
+        },
+        "type": "page"
+      },
+      "allow_facets": true,
+      "allow_sort": true,
+      "visible_facets_keys": [],
+      "meta": {},
+      "badge": {
+        "text": "",
+        "color": "#ffffff"
+      },
+      "sort_on": "price_asc",
+      "_custom_json": {},
+      "_locale_language": {},
+      "_schedule": {
+        "start": "2021-03-04T15:35:13.640000Z",
+        "next_schedule": [
+          {
+            "start": "2021-03-04T15:35:13.640000Z",
+            "end": null
+          }
+        ],
+        "end": null
+      }
+    },
+    {
+      "uid": "6040a9b250f97e0001886294",
+      "type": "items",
+      "query": {},
+      "name": "newapiplaform",
+      "banners": {
+        "portrait": {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588858137/production/applications/app_000000000000000000000001/media/collection/portrait/xzuftshmmw4yuwzb12pm.png"
+        },
+        "landscape": {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857999/production/applications/app_000000000000000000000001/media/collection/landscape/avm7xibo2jgk8glc4bwl.png"
+        }
+      },
+      "logo": {
+        "type": "image",
+        "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857854/production/applications/app_000000000000000000000001/media/collection/logo/w9ns7nfgv7fk45xqrpoh.png"
+      },
+      "published": true,
+      "description": "sadasd",
+      "is_active": true,
+      "tags": [
+        "sdsadas",
+        "asd"
+      ],
+      "slug": "newapiplaform",
+      "action": {
+        "page": {
+          "type": "collection",
+          "query": {
+            "collection": [
+              "newapiplaform"
+            ]
+          }
+        },
+        "type": "page"
+      },
+      "allow_facets": true,
+      "allow_sort": true,
+      "visible_facets_keys": [],
+      "meta": {},
+      "badge": {
+        "text": "",
+        "color": "#aa2727"
+      },
+      "sort_on": "popular",
+      "_custom_json": {},
+      "_locale_language": {},
+      "_schedule": {
+        "start": "2021-03-04T09:33:53.686000Z",
+        "next_schedule": [
+          {
+            "start": "2021-03-04T09:33:53.686000Z",
+            "end": null
+          }
+        ],
+        "end": null
+      }
+    },
+    {
+      "uid": "603f68fd953a69000145dc92",
+      "type": "query",
+      "query": {},
+      "name": "new",
+      "banners": {
+        "portrait": {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588858137/production/applications/app_000000000000000000000001/media/collection/portrait/xzuftshmmw4yuwzb12pm.png"
+        },
+        "landscape": {
+          "type": "image",
+          "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857999/production/applications/app_000000000000000000000001/media/collection/landscape/avm7xibo2jgk8glc4bwl.png"
+        }
+      },
+      "logo": {
+        "type": "image",
+        "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857854/production/applications/app_000000000000000000000001/media/collection/logo/w9ns7nfgv7fk45xqrpoh.png"
+      },
+      "published": true,
+      "description": "",
+      "is_active": true,
+      "tags": [],
+      "slug": "old",
+      "action": {
+        "page": {
+          "type": "collection",
+          "query": {
+            "collection": [
+              "old"
+            ]
+          }
+        },
+        "type": "page"
+      },
+      "allow_facets": true,
+      "allow_sort": true,
+      "visible_facets_keys": [],
+      "meta": {},
+      "badge": {
+        "color": "#ffffff",
+        "text": ""
+      },
+      "sort_on": "popular",
+      "_custom_json": {},
+      "_locale_language": {},
+      "_schedule": {
+        "start": "2021-03-03T10:45:40.544000Z",
+        "next_schedule": [
+          {
+            "start": "2021-03-03T10:45:40.544000Z",
+            "end": null
+          }
+        ],
+        "end": null
+      }
+    }
+  ],
+  "filters": {
+    "tags": [
+      {
+        "name": "1+",
+        "is_selected": false,
+        "display": "1+"
+      },
+      {
+        "name": "aa",
+        "is_selected": false,
+        "display": "aa"
+      },
+      {
+        "name": "asd",
+        "is_selected": false,
+        "display": "asd"
+      },
+      {
+        "name": "dda",
+        "is_selected": false,
+        "display": "dda"
+      },
+      {
+        "name": "fahim",
+        "is_selected": false,
+        "display": "fahim"
+      },
+      {
+        "name": "gfg",
+        "is_selected": false,
+        "display": "gfg"
+      },
+      {
+        "name": "sakri",
+        "is_selected": false,
+        "display": "sakri"
+      },
+      {
+        "name": "sdsadas",
+        "is_selected": false,
+        "display": "sdsadas"
+      },
+      {
+        "name": "uuy",
+        "is_selected": false,
+        "display": "uuy"
+      }
+    ],
+    "type": [
+      {
+        "name": "items",
+        "is_selected": false,
+        "display": "items"
+      },
+      {
+        "name": "query",
+        "is_selected": false,
+        "display": "query"
+      }
+    ]
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10667,42 +21936,77 @@ The Collection object. See example below or refer `CollectionDetailResponse` for
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
 
-
----
-
-
-#### updateCollection
-Update a collection
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
+```json
+{
+  "uid": "5ec5fc757cb1e4740a17da23",
+  "type": "query",
+  "query": {
+    "l3_categories": [
+      "12"
+    ],
+    "sort_on": "discount_asc"
+  },
+  "name": "new",
+  "banners": {
+    "portrait": {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588858137/production/applications/app_000000000000000000000001/media/collection/portrait/xzuftshmmw4yuwzb12pm.png"
+    },
+    "landscape": {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857999/production/applications/app_000000000000000000000001/media/collection/landscape/avm7xibo2jgk8glc4bwl.png"
+    }
+  },
+  "logo": {
+    "type": "image",
+    "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857854/production/applications/app_000000000000000000000001/media/collection/logo/w9ns7nfgv7fk45xqrpoh.png"
+  },
+  "published": true,
+  "description": "",
+  "is_active": true,
+  "tags": [],
+  "slug": "new",
+  "action": {
+    "page": {
+      "type": "collection",
+      "query": {
+        "collection": [
+          "new"
+        ]
+      }
+    },
+    "type": "page"
+  },
+  "allow_facets": true,
+  "allow_sort": true,
+  "visible_facets_keys": [],
+  "meta": {},
+  "badge": {
+    "color": "#ffffff",
+    "text": ""
+  },
+  "sort_on": "popular",
+  "_custom_json": {},
+  "_locale_language": {},
+  "_schedule": {
+    "start": "2020-05-21T03:58:41.237000Z",
+    "next_schedule": [
+      {
+        "start": "2020-05-21T03:58:41.237000Z",
+        "end": null
+      }
+    ],
+    "end": null
+  }
 }
 ```
+</details>
 
 
 
-
-Update a collection by it's id. On successful request, returns the updated collection
-
-*Returned Response*
-
-
-
-
-[UpdateCollection](#UpdateCollection)
-
-The Collection object. See example below or refer `UpdateCollectionSchema` for details.
 
 
 
@@ -10747,6 +22051,136 @@ Status object. Tells whether the operation was successful. See example below or 
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Collection Deleted"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+#### updateCollection
+Update a collection
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+Update a collection by it's id. On successful request, returns the updated collection
+
+*Returned Response*
+
+
+
+
+[UpdateCollection](#UpdateCollection)
+
+The Collection object. See example below or refer `UpdateCollectionSchema` for details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": "604f585a7051e30001173ac1",
+  "type": "query",
+  "query": {},
+  "name": "New",
+  "banners": {
+    "portrait": {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588858137/production/applications/app_000000000000000000000001/media/collection/portrait/xzuftshmmw4yuwzb12pm.png"
+    },
+    "landscape": {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857999/production/applications/app_000000000000000000000001/media/collection/landscape/avm7xibo2jgk8glc4bwl.png"
+    }
+  },
+  "logo": {
+    "type": "image",
+    "url": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1588857854/production/applications/app_000000000000000000000001/media/collection/logo/w9ns7nfgv7fk45xqrpoh.png"
+  },
+  "published": true,
+  "description": "",
+  "is_active": true,
+  "tags": [],
+  "slug": "new",
+  "action": {
+    "page": {
+      "type": "collection",
+      "query": {
+        "collection": [
+          "new"
+        ]
+      }
+    },
+    "type": "page"
+  },
+  "allow_facets": true,
+  "allow_sort": true,
+  "visible_facets_keys": [],
+  "meta": {},
+  "badge": {
+    "color": "#ffffff",
+    "text": ""
+  },
+  "sort_on": "depth_desc",
+  "_custom_json": {},
+  "_locale_language": {},
+  "_schedule": {
+    "start": "2021-03-15T12:51:21.333000+00:00Z",
+    "next_schedule": [
+      {
+        "start": "2021-03-15T12:51:21.333000+00:00Z",
+        "end": null
+      }
+    ],
+    "end": null
+  },
+  "seo": {
+    "title": "Test",
+    "description": "Test description"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10783,6 +22217,22 @@ Adds items to a collection specified by its `id`. See `CollectionItemRequest` fo
 [UpdatedResponse](#UpdatedResponse)
 
 Status object. Tells whether the operation was successful.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "items updated"
+}
+```
+</details>
+
+
+
 
 
 
@@ -10827,6 +22277,20 @@ The attached items of an collection. See example below or refer `GetCollectionIt
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10863,6 +22327,26 @@ Catalog Insights api returns the count of catalog related data like products, br
 [CatalogInsightResponse](#CatalogInsightResponse)
 
 Response Data
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "item": {
+    "count": 637707,
+    "out_of_stock_count": 452806,
+    "sellable_count": 184901
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -10907,6 +22391,23 @@ Response Data
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "products": 18,
+  "articles": 18
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -10943,6 +22444,20 @@ Use this API to create/update opt-in information for given platform. If successf
 [UpdatedResponse](#UpdatedResponse)
 
 See example below or refer `UpdatedResponse` for details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -10987,6 +22502,20 @@ See example below or refer `GetOptInPlatformSchema` for details.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11023,6 +22552,20 @@ Get the details of the company associated with the given company_id passed.
 [OptinCompanyDetail](#OptinCompanyDetail)
 
 See example below or refer `OptinCompanyDetailSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -11067,6 +22610,20 @@ See example below or refer `OptinCompanyBrandDetailsView` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11103,6 +22660,20 @@ Get the Company metrics associated with the company ID passed.
 [OptinCompanyMetrics](#OptinCompanyMetrics)
 
 See example below or refer `OptinCompanyMetrics` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -11147,6 +22718,20 @@ See example below or refer `OptinStoreDetailsSchema` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11183,6 +22768,61 @@ This API allows to view the gender attribute details.
 [GenderDetail](#GenderDetail)
 
 Size guide object. See example below or refer `GenderDetailSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "description": "Clothing department needs gener attribute",
+  "schema": {
+    "format": "",
+    "mandatory": false,
+    "multi": true,
+    "enum": [
+      "Men",
+      "Women",
+      "Boy",
+      "Girl",
+      "more",
+      "men"
+    ],
+    "type": "str"
+  },
+  "meta": {
+    "enriched": false,
+    "mandatory_details": {
+      "l3_keys": []
+    }
+  },
+  "slug": "gender",
+  "name": "Gender",
+  "enabled_for_end_consumer": true,
+  "details": {
+    "display_type": "text"
+  },
+  "is_nested": true,
+  "filters": {
+    "indexing": true,
+    "priority": 2
+  },
+  "departments": [
+    "men-s-fashion",
+    "kids",
+    "women-s-fashion",
+    "beauty-personal-care"
+  ],
+  "logo": "https://hdn-1.addsale.com/x0/products/pictures/attribute/logo/original/Rhv89tqRo-brand-website-logo.png",
+  "id": "5ed11eb0be8d5e00016f0335"
+}
+```
+</details>
+
+
+
 
 
 
@@ -11227,6 +22867,23 @@ List of all categories attached to departments specified. See example below or r
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {},
+  "items": []
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11263,6 +22920,338 @@ Allows you to list all departments, also can search using name and filter active
 [DepartmentsResponse](#DepartmentsResponse)
 
 List of departments data. See example below or refer `DepartmentsResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "current": 1,
+    "size": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_total": 12
+  },
+  "items": [
+    {
+      "uid": 5,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "created_on": "2020-07-01T05:33:39.325000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/BSQ9Gk_123522-best-starry-sky-wallpaper-1920x1200-ipad-pro.jpgc7d0c15c-c1ff-47eb-8423-6e2df51f2ddf/BSQ9Gk_123522-best-starry-sky-wallpaper-1920x1200-ipad-pro.jpg",
+      "modified_by": {
+        "username": "917753852478_51632",
+        "user_id": "5677"
+      },
+      "modified_on": "2021-03-03T15:55:25.118000Z",
+      "name": "Sample Dept",
+      "platforms": {},
+      "priority_order": 111,
+      "slug": "sample-dept",
+      "synonyms": [
+        "test",
+        "sampe"
+      ],
+      "tags": [],
+      "id": "5efc2033623d390001782238"
+    },
+    {
+      "uid": 2,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "app@fynd.com",
+        "user_id": "0"
+      },
+      "created_on": "2020-05-19T06:53:37.629000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/addsale/media/logo/department/original/15974_381e2236c2a348cc851c29a5d05c66a9.png",
+      "modified_by": {
+        "user_id": "10",
+        "username": "fahimsakri_gofynd_com_44938"
+      },
+      "modified_on": "2021-03-04T14:01:02.556000Z",
+      "name": "Men's Fashion",
+      "platforms": {
+        "fynd": true,
+        "fynd_store": true,
+        "marketplace": true,
+        "openapi": true,
+        "uniket_store": true,
+        "uniket_wholesale": true
+      },
+      "priority_order": 111,
+      "slug": "men-s-fashion",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ec3827156a7200001c9aeea"
+    },
+    {
+      "uid": 4,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "fahimsakri_gofynd_com_44938",
+        "user_id": "10"
+      },
+      "created_on": "2020-06-29T10:59:33.620000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpgc73cc22f-b5ee-4fd4-a585-8ada35762d68/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:08:02.675000Z",
+      "name": "Groceries",
+      "platforms": {},
+      "priority_order": 10,
+      "slug": "groceries",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ef9c9959b04f00001e40dba"
+    },
+    {
+      "uid": 1,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "app@fynd.com",
+        "user_id": "0"
+      },
+      "created_on": "2020-05-18T16:14:41.689000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/platform/pictures/free-logo/original/_G1Z2Fg1L-http:d3p8ifzkmzds37.cloudfront.netmedialogodepartmentoriginal15870_c287d3c2431a432bb0e49363ef6b82bc.png.png",
+      "modified_by": {
+        "user_id": "5677",
+        "username": "917753852478_51632"
+      },
+      "modified_on": "2021-03-04T15:39:38.528000Z",
+      "name": "Electronics",
+      "platforms": {
+        "fynd": true,
+        "fynd_store": true,
+        "marketplace": true,
+        "openapi": true,
+        "uniket_store": true,
+        "uniket_wholesale": true
+      },
+      "priority_order": 100,
+      "slug": "electronics",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ec2b471661a4100019fca0d"
+    },
+    {
+      "uid": 3,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "created_on": "2020-05-27T12:04:19.111000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/landscape-banner/original/g2plam_logo_Jio.pngeeb392ca-3958-46a0-9f13-23c205b596f7/g2plam_logo_Jio.png",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:07:46.060000Z",
+      "name": "Industrial Supplies",
+      "platforms": {},
+      "priority_order": 111,
+      "slug": "industrial-supplies",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ece5743cd1bae0001440427"
+    },
+    {
+      "uid": 6,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "abhinavsrivastava_gofynd_com_05674",
+        "user_id": "13"
+      },
+      "created_on": "2020-07-06T07:56:01.508000Z",
+      "is_active": false,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/wTcfEi_crysis_-_1.jpg14580947-a659-486d-b2d3-d2ca025b1cac/wTcfEi_crysis_-_1.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:08:12.576000Z",
+      "name": "Clothing",
+      "platforms": {},
+      "priority_order": 1,
+      "slug": "clothing",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f02d9116b0ae500018923dd"
+    },
+    {
+      "uid": 8,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:04:33.604000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/RxTsd8_0DEFAULT-LOGO.jpg000ccfc1-2f79-4426-9ac3-de2468c2fcb9/RxTsd8_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "modified_on": "2020-08-05T09:44:01.234000Z",
+      "name": "Kids",
+      "platforms": {},
+      "priority_order": 3,
+      "slug": "kids",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a762131c66700018cdc47"
+    },
+    {
+      "uid": 9,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:44:46.632000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/tKkDB8_0DEFAULT-LOGO.jpg1c324d4d-f667-4af8-8d98-37205d34e3b5/tKkDB8_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:07:35.231000Z",
+      "name": "Women's Fashion",
+      "platforms": {},
+      "priority_order": 2,
+      "slug": "women-s-fashion",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a7f8e31c66700018cdc49"
+    },
+    {
+      "uid": 10,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:45:12.075000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/oLoxiL_0DEFAULT-LOGO.jpgbd050200-700a-4a3e-9da6-e6b78fbee943/oLoxiL_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "modified_on": "2020-08-05T09:48:01.660000Z",
+      "name": "Beauty & Personal Care",
+      "platforms": {},
+      "priority_order": 4,
+      "slug": "beauty-personal-care",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a7fa831c66700018cdc4a"
+    },
+    {
+      "uid": 11,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:45:39.797000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/vQv4ot_0DEFAULT-LOGO.jpg701cb5af-2024-4abf-ae5d-b68bc1a3cd43/vQv4ot_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T11:38:57.599000Z",
+      "name": "Home & Living",
+      "platforms": {},
+      "priority_order": 5,
+      "slug": "home-living",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a7fc331c66700018cdc4b"
+    },
+    {
+      "uid": 14,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:48:42.347000Z",
+      "is_active": false,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/hTobjV_0DEFAULT-LOGO.jpga020159c-7fe7-4c1c-a11a-4be61a60da9f/hTobjV_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "modified_on": "2020-08-05T09:48:42.347000Z",
+      "name": "Baby Care & Kids Essentials",
+      "platforms": {},
+      "priority_order": 7,
+      "slug": "baby-care-kids-essentials",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a807a31c66700018cdc4e"
+    },
+    {
+      "_cls": "Department",
+      "created_on": "2021-01-13T10:12:33.002000Z",
+      "modified_on": "2021-01-13T13:50:55.415000Z",
+      "created_by": {
+        "username": "919821012599_75351",
+        "user_id": "5721"
+      },
+      "modified_by": {
+        "username": "919821012599_75351",
+        "user_id": "5721"
+      },
+      "uid": 21,
+      "name": "Skin care products",
+      "slug": "skin-care-produts",
+      "logo": "https://hdn-1.addsale.com/x0/department/pictures/square-logo/original/rNz8grLys-.png",
+      "tags": [],
+      "is_active": true,
+      "priority_order": 10235,
+      "platforms": {},
+      "synonyms": [
+        "skin",
+        "care"
+      ],
+      "_custom_json": {},
+      "id": "5ffec79192813f0001eb6560"
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -11307,6 +23296,332 @@ Departments Data. See example below or refer `DepartmentsResponse` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {},
+  "items": [
+    {
+      "uid": 5,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "created_on": "2020-07-01T05:33:39.325000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/BSQ9Gk_123522-best-starry-sky-wallpaper-1920x1200-ipad-pro.jpgc7d0c15c-c1ff-47eb-8423-6e2df51f2ddf/BSQ9Gk_123522-best-starry-sky-wallpaper-1920x1200-ipad-pro.jpg",
+      "modified_by": {
+        "username": "917753852478_51632",
+        "user_id": "5677"
+      },
+      "modified_on": "2021-03-03T15:55:25.118000Z",
+      "name": "Sample Dept",
+      "platforms": {},
+      "priority_order": 111,
+      "slug": "sample-dept",
+      "synonyms": [
+        "test",
+        "sampe"
+      ],
+      "tags": [],
+      "id": "5efc2033623d390001782238"
+    },
+    {
+      "uid": 2,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "app@fynd.com",
+        "user_id": "0"
+      },
+      "created_on": "2020-05-19T06:53:37.629000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/addsale/media/logo/department/original/15974_381e2236c2a348cc851c29a5d05c66a9.png",
+      "modified_by": {
+        "user_id": "10",
+        "username": "fahimsakri_gofynd_com_44938"
+      },
+      "modified_on": "2021-03-04T14:01:02.556000Z",
+      "name": "Men's Fashion",
+      "platforms": {
+        "fynd": true,
+        "fynd_store": true,
+        "marketplace": true,
+        "openapi": true,
+        "uniket_store": true,
+        "uniket_wholesale": true
+      },
+      "priority_order": 111,
+      "slug": "men-s-fashion",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ec3827156a7200001c9aeea"
+    },
+    {
+      "uid": 4,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "fahimsakri_gofynd_com_44938",
+        "user_id": "10"
+      },
+      "created_on": "2020-06-29T10:59:33.620000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpgc73cc22f-b5ee-4fd4-a585-8ada35762d68/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:08:02.675000Z",
+      "name": "Groceries",
+      "platforms": {},
+      "priority_order": 10,
+      "slug": "groceries",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ef9c9959b04f00001e40dba"
+    },
+    {
+      "uid": 1,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "app@fynd.com",
+        "user_id": "0"
+      },
+      "created_on": "2020-05-18T16:14:41.689000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/platform/pictures/free-logo/original/_G1Z2Fg1L-http:d3p8ifzkmzds37.cloudfront.netmedialogodepartmentoriginal15870_c287d3c2431a432bb0e49363ef6b82bc.png.png",
+      "modified_by": {
+        "user_id": "5677",
+        "username": "917753852478_51632"
+      },
+      "modified_on": "2021-03-04T15:39:38.528000Z",
+      "name": "Electronics",
+      "platforms": {
+        "fynd": true,
+        "fynd_store": true,
+        "marketplace": true,
+        "openapi": true,
+        "uniket_store": true,
+        "uniket_wholesale": true
+      },
+      "priority_order": 100,
+      "slug": "electronics",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ec2b471661a4100019fca0d"
+    },
+    {
+      "uid": 3,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "created_on": "2020-05-27T12:04:19.111000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/landscape-banner/original/g2plam_logo_Jio.pngeeb392ca-3958-46a0-9f13-23c205b596f7/g2plam_logo_Jio.png",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:07:46.060000Z",
+      "name": "Industrial Supplies",
+      "platforms": {},
+      "priority_order": 111,
+      "slug": "industrial-supplies",
+      "synonyms": [],
+      "tags": [],
+      "id": "5ece5743cd1bae0001440427"
+    },
+    {
+      "uid": 6,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "abhinavsrivastava_gofynd_com_05674",
+        "user_id": "13"
+      },
+      "created_on": "2020-07-06T07:56:01.508000Z",
+      "is_active": false,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/wTcfEi_crysis_-_1.jpg14580947-a659-486d-b2d3-d2ca025b1cac/wTcfEi_crysis_-_1.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:08:12.576000Z",
+      "name": "Clothing",
+      "platforms": {},
+      "priority_order": 1,
+      "slug": "clothing",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f02d9116b0ae500018923dd"
+    },
+    {
+      "uid": 8,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:04:33.604000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/RxTsd8_0DEFAULT-LOGO.jpg000ccfc1-2f79-4426-9ac3-de2468c2fcb9/RxTsd8_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "modified_on": "2020-08-05T09:44:01.234000Z",
+      "name": "Kids",
+      "platforms": {},
+      "priority_order": 3,
+      "slug": "kids",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a762131c66700018cdc47"
+    },
+    {
+      "uid": 9,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:44:46.632000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/tKkDB8_0DEFAULT-LOGO.jpg1c324d4d-f667-4af8-8d98-37205d34e3b5/tKkDB8_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T18:07:35.231000Z",
+      "name": "Women's Fashion",
+      "platforms": {},
+      "priority_order": 2,
+      "slug": "women-s-fashion",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a7f8e31c66700018cdc49"
+    },
+    {
+      "uid": 10,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:45:12.075000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/oLoxiL_0DEFAULT-LOGO.jpgbd050200-700a-4a3e-9da6-e6b78fbee943/oLoxiL_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "modified_on": "2020-08-05T09:48:01.660000Z",
+      "name": "Beauty & Personal Care",
+      "platforms": {},
+      "priority_order": 4,
+      "slug": "beauty-personal-care",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a7fa831c66700018cdc4a"
+    },
+    {
+      "uid": 11,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:45:39.797000Z",
+      "is_active": true,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/vQv4ot_0DEFAULT-LOGO.jpg701cb5af-2024-4abf-ae5d-b68bc1a3cd43/vQv4ot_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "918793638893_86554",
+        "user_id": "3"
+      },
+      "modified_on": "2020-08-06T11:38:57.599000Z",
+      "name": "Home & Living",
+      "platforms": {},
+      "priority_order": 5,
+      "slug": "home-living",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a7fc331c66700018cdc4b"
+    },
+    {
+      "uid": 14,
+      "_cls": "Department",
+      "_custom_json": {},
+      "created_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "created_on": "2020-08-05T09:48:42.347000Z",
+      "is_active": false,
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/hTobjV_0DEFAULT-LOGO.jpga020159c-7fe7-4c1c-a11a-4be61a60da9f/hTobjV_0DEFAULT-LOGO.jpg",
+      "modified_by": {
+        "username": "asavarijadhav_gofynd_com_99880",
+        "user_id": "5634"
+      },
+      "modified_on": "2020-08-05T09:48:42.347000Z",
+      "name": "Baby Care & Kids Essentials",
+      "platforms": {},
+      "priority_order": 7,
+      "slug": "baby-care-kids-essentials",
+      "synonyms": [],
+      "tags": [],
+      "id": "5f2a807a31c66700018cdc4e"
+    },
+    {
+      "_cls": "Department",
+      "created_on": "2021-01-13T10:12:33.002000Z",
+      "modified_on": "2021-01-13T13:50:55.415000Z",
+      "created_by": {
+        "username": "919821012599_75351",
+        "user_id": "5721"
+      },
+      "modified_by": {
+        "username": "919821012599_75351",
+        "user_id": "5721"
+      },
+      "uid": 21,
+      "name": "Skin care products",
+      "slug": "skin-care-produts",
+      "logo": "https://hdn-1.addsale.com/x0/department/pictures/square-logo/original/rNz8grLys-.png",
+      "tags": [],
+      "is_active": true,
+      "priority_order": 10235,
+      "platforms": {},
+      "synonyms": [
+        "skin",
+        "care"
+      ],
+      "_custom_json": {},
+      "id": "5ffec79192813f0001eb6560"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11343,6 +23658,1871 @@ Allows you to list all product templates, also can filter by department
 [TemplatesResponse](#TemplatesResponse)
 
 List of product templates. See example below or refer `TemplatesResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "current": 1,
+    "size": 3,
+    "has_previous": false,
+    "has_next": true,
+    "item_total": 36
+  },
+  "items": [
+    {
+      "name": "Accessories",
+      "categories": [
+        "accessories-adornments",
+        "messenger-bags",
+        "wallets",
+        "satchels",
+        "backpacks",
+        "laptop-bags",
+        "briefcases",
+        "suitcases",
+        "duffles",
+        "analog-watches",
+        "chronograph-watches",
+        "digital-watches",
+        "aviators",
+        "wayfarers",
+        "round-sunglasses",
+        "cateye-sunglasses",
+        "rectangle-sunglasses",
+        "oversized-sunglasses",
+        "browline-sunglasses",
+        "square-sunglasses",
+        "sports-sunglasses",
+        "belts",
+        "ties",
+        "cufflinks",
+        "pocket-squares",
+        "tie-pins",
+        "brooches",
+        "baseball-caps",
+        "hats",
+        "shawls",
+        "mufflers",
+        "stoles",
+        "socks",
+        "dupattas",
+        "handbags",
+        "clutches",
+        "totes",
+        "sling-bags",
+        "hobos",
+        "scarves",
+        "stockings",
+        "hairbands",
+        "hair-clips",
+        "pouches",
+        "oval-sunglasses",
+        "gloves",
+        "frames",
+        "maang-tikka",
+        "bags",
+        "sunglasses",
+        "mittens",
+        "money-clips",
+        "card-cases",
+        "brushes",
+        "horns",
+        "spray",
+        "cleaner",
+        "cream",
+        "polishes",
+        "decoration-charms",
+        "care-kits",
+        "trees",
+        "shoe-bag",
+        "laces",
+        "insoles",
+        "handkerchief",
+        "toy-box",
+        "play-gym",
+        "camera-bag",
+        "fanny-pack",
+        "usb-cable",
+        "rca-cable",
+        "usb-c-to-multiport-adapter",
+        "batteries",
+        "power-banks",
+        "lightning-cable",
+        "tos-cable",
+        "aux-cable",
+        "hdmi-cable",
+        "charging-cable",
+        "mini-display-port-hdmi-cable",
+        "thunderbolt-cable",
+        "bluetooth-headphones",
+        "headphone",
+        "bluetooth-earphones",
+        "earphones",
+        "hard-disk-drive",
+        "photo-frame",
+        "notebook",
+        "pen",
+        "luggage-tag",
+        "stationery-combo",
+        "jewellery-case",
+        "folder",
+        "key-chain",
+        "suspender",
+        "cummerbund",
+        "cravet",
+        "toiletry-bag",
+        "cosmetic-bag",
+        "gift-bag",
+        "packaging-material",
+        "spectacle-case",
+        "cuff-bands",
+        "playing-cards",
+        "kalangi",
+        "kataar",
+        "safa",
+        "watch-case",
+        "paper-weight",
+        "caps",
+        "visor-caps",
+        "bucket-hats",
+        "beanie-caps",
+        "cowboy-hats",
+        "gatsby-caps",
+        "fedora-hats",
+        "rain-cover",
+        "round-glasses",
+        "rectangle-glasses",
+        "cateye-glasses",
+        "aviator-glasses",
+        "square-glasses",
+        "oval-glasses",
+        "almond-glasses",
+        "wayfarer-glasses",
+        "toric-contact-lenses",
+        "daily-disposable",
+        "monthly-reusable",
+        "multifocal-varifocal",
+        "solutions-accessories",
+        "coloured-lenses"
+      ],
+      "description": "This is the file validation template for the fashion department and accessories category.",
+      "departments": [
+        "electronics",
+        "men",
+        "women",
+        "kids",
+        "toys"
+      ],
+      "attributes": [
+        "gender",
+        "age-group",
+        "occasion",
+        "collection",
+        "season",
+        "color",
+        "material",
+        "product_type",
+        "pattern",
+        "closure_type",
+        "product_length",
+        "feature",
+        "care_instructions",
+        "package_contents",
+        "essential",
+        "gst-inclusive",
+        "gst-if-exclusive",
+        "fragile",
+        "manufacturer-packer-importer-name",
+        "manufacturer-packer-importer-address"
+      ],
+      "slug": "accessories",
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/F4W6Pd_DEFAULT-BANNER_LANDSCAPE.jpgd54cb24d-dd2c-441c-bca0-8f65ea3b101c/F4W6Pd_DEFAULT-BANNER_LANDSCAPE.jpg",
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/hkE1dC_0DEFAULT-LOGO.jpgfb5b1b31-9449-43db-9049-435fec88ee77/hkE1dC_0DEFAULT-LOGO.jpg",
+      "is_physical": true,
+      "id": "5f04a23544a2e5404274bc07"
+    },
+    {
+      "slug": "all-attributes-template",
+      "categories": [
+        "hd-television"
+      ],
+      "banner": "https://hdn-1.addsale.com/x0/seller/pictures/landscape-banner/original/tBqIbw_dj.jpg0b8e229f-45bd-4a96-97a5-3e5b193828d2/tBqIbw_dj.jpg",
+      "name": "All attributes Template",
+      "attributes": [
+        "test-attribute-3",
+        "test-attribute",
+        "test-attribute-1",
+        "test-attribute-4",
+        "gender",
+        "neck-type",
+        "qwertyu",
+        "testtt-attribute-5",
+        "storage_humidity",
+        "operating_humidity",
+        "certifications",
+        "aspect_ratio",
+        "storage_temperature",
+        "memory_details",
+        "cache_memory",
+        "operating_temperature",
+        "expansion_slots",
+        "included_software",
+        "web_camera",
+        "video_memory",
+        "optical_drive",
+        "hard_drive_speed",
+        "hard_drive_type",
+        "hard_drive",
+        "speaker_type",
+        "core_type",
+        "processor_core",
+        "processor_model_number",
+        "processor_speed",
+        "processor_brand",
+        "processor_sub_brand",
+        "battery_cell",
+        "laptop_type",
+        "graphics_card_model",
+        "accessories",
+        "services",
+        "promotion_freebie",
+        "action",
+        "home_delivery",
+        "colour_reproduction",
+        "brightness",
+        "data_transfer_on_cloud",
+        "card_reader",
+        "battery_filter",
+        "volumetric_weight_in_kg",
+        "price_filter",
+        "brands_filter",
+        "number_of_usb_ports_filter",
+        "number_of_hdmi_ports_filter",
+        "smart_tv_filter",
+        "resolution_filter",
+        "display_technology",
+        "panel_type",
+        "record_as_you_watch",
+        "schedule_recording",
+        "no_of_channels",
+        "additional_side_panel_ports",
+        "response_time",
+        "contrast_ratio",
+        "hdmi_arc",
+        "tv_operating_system",
+        "refresh_rate",
+        "connect_to_router_via",
+        "connect_to_home_theatre_via",
+        "no_of_hdmi_ports",
+        "no_of_usb_ports",
+        "standby_power_consumption",
+        "connect_to_set_top_box_via",
+        "stream_content_from_devices",
+        "surround_sound_technology",
+        "tv_speaker_type",
+        "graphics_card_sub_brand",
+        "hdr",
+        "power_supply",
+        "power_consumption",
+        "connect_to_dvd_players_via",
+        "graphics_card_brand",
+        "rated_speaker_output_power_rms",
+        "3d_technology",
+        "optimized_heat_dissipation",
+        "backlit_keyboard_support",
+        "ethernet_lan_support",
+        "hdmi_support",
+        "anti_glare_screen",
+        "phone_network_and_connectivity",
+        "storage_filter",
+        "ram_filter",
+        "pallet",
+        "waterproof",
+        "selfie_camera_filter",
+        "primary_camera_filter",
+        "screen_size_filter",
+        "battery_power_features",
+        "in_the_box_warranty",
+        "features",
+        "screen_display_camera",
+        "phone_battery_charge_time",
+        "network_inter_device_connectivity",
+        "phone_os",
+        "phone_build_convenience",
+        "phone_hardware_storage",
+        "testcomparsion",
+        "country_of_origin",
+        "manufacturer_packer_importer_address",
+        "manufacturer_packer_importer_name",
+        "warranty_type",
+        "dlna_compliant",
+        "user_guides_attachment",
+        "resq_support_guide_attachment",
+        "water_resistant",
+        "speaker_support",
+        "fm_radio",
+        "nfc_support",
+        "package_content",
+        "talk_time",
+        "standby_time",
+        "quick_charge",
+        "preloaded_apps",
+        "metal_frame",
+        "touch_screen",
+        "glass_type",
+        "meta_description",
+        "short_description",
+        "is_flammable",
+        "transfer_price_tp",
+        "screen_size",
+        "bluetooth",
+        "wi_fi",
+        "3g",
+        "internal_storage",
+        "in_the_box",
+        "memory_ram",
+        "4g",
+        "usb",
+        "otg_support",
+        "edge",
+        "nfc",
+        "microphone",
+        "dummy_int",
+        "product_details",
+        "subtitle",
+        "general_information",
+        "expandable",
+        "style_note",
+        "is_waterproof",
+        "brand_name",
+        "color",
+        "model",
+        "product_type",
+        "series",
+        "product_identifiers",
+        "style",
+        "sub_brand",
+        "socks_length",
+        "heel_height",
+        "occasion",
+        "storage",
+        "season",
+        "processor",
+        "collection",
+        "storage_type",
+        "topwear_length",
+        "bottomwear_length",
+        "denim_type",
+        "boot_length",
+        "dial_shape",
+        "thickness",
+        "lens_colour",
+        "sensors",
+        "dial_colour",
+        "material",
+        "usb_support",
+        "fingerprint_recognition",
+        "strap_type",
+        "operating_system",
+        "frame_style",
+        "brand_rating",
+        "operating_system_type",
+        "4g_bands",
+        "strap_colour",
+        "4g_support",
+        "2g_bands",
+        "frame_colour",
+        "video_formats",
+        "3g_bands",
+        "feature",
+        "3g_support",
+        "movement_type",
+        "bluetooth_version",
+        "pattern",
+        "wi_fi_support",
+        "bluetooth_support",
+        "inner_material",
+        "selfie_camera",
+        "closure_type",
+        "screen_resolution",
+        "product_fit",
+        "screen_size_diagonal",
+        "dimensions",
+        "display_type",
+        "plating",
+        "primary_camera",
+        "toe_type",
+        "dual_camera_rear",
+        "clasp_type",
+        "ram",
+        "padding",
+        "microphone_support",
+        "sim_type",
+        "capacity",
+        "arch_type",
+        "stone_type",
+        "warranty_description",
+        "additional_connectivity",
+        "compartments",
+        "audio_formats",
+        "sleeve_type",
+        "audio_jack",
+        "diameter",
+        "battery_capacity",
+        "sleeve_length",
+        "battery_operated",
+        "product_length",
+        "battery_run_time",
+        "neck_type",
+        "battery_type",
+        "collar_type",
+        "battery_voltage",
+        "cellular_technology",
+        "waist_rise",
+        "edge_support",
+        "coverage",
+        "expandable_memory",
+        "package_contents",
+        "gprs_support",
+        "care_instructions",
+        "hybrid_sim_slot",
+        "model_info",
+        "variant",
+        "warranty",
+        "complexion",
+        "skin_type",
+        "spf",
+        "speciality",
+        "finish",
+        "lasting_power",
+        "benefits",
+        "hair_type",
+        "fragrance_family",
+        "fragrance_type",
+        "product_format",
+        "active_ingredients",
+        "ingredients",
+        "how_to_use",
+        "shelf_life",
+        "safety_warning",
+        "testtt-attribute-6"
+      ],
+      "departments": [
+        "electronics"
+      ],
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/7V0z2B_dj.jpg21ac07ea-9f83-403e-ad37-69076c6c5c46/7V0z2B_dj.jpg",
+      "description": "Blah Blah",
+      "is_physical": true,
+      "id": "5ed5f84d2abe0f0001174d73"
+    },
+    {
+      "name": "Baby Care & Toys",
+      "categories": [
+        "kids-puzzles",
+        "kids-shirts"
+      ],
+      "description": "This is the file validation template for the Baby Care & Toys department.",
+      "departments": [
+        "baby-care-kids-essentials",
+        "toys",
+        "kids"
+      ],
+      "attributes": [
+        "gender",
+        "age-group",
+        "occasion",
+        "collection",
+        "season",
+        "color",
+        "material",
+        "product_type",
+        "no-of-pieces",
+        "battery_operated",
+        "is-portable",
+        "is_flammable",
+        "capacity",
+        "carrying-capacity",
+        "inner-dimension",
+        "seat-dimension",
+        "package_contents",
+        "additional-features",
+        "certification",
+        "essential",
+        "gst-inclusive",
+        "gst-if-exclusive",
+        "fragile",
+        "manufacturer-packer-importer-name",
+        "manufacturer-packer-importer-address"
+      ],
+      "slug": "baby-care-toys",
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/Ikt1sK_DEFAULT-BANNER_LANDSCAPE.jpg7f923d3d-abc9-4a2e-9a49-204a36e1073c/Ikt1sK_DEFAULT-BANNER_LANDSCAPE.jpg",
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/saEu9Z_0DEFAULT-LOGO.jpg4cd36f29-a15b-4ec1-ab33-1162ede2c61f/saEu9Z_0DEFAULT-LOGO.jpg",
+      "is_physical": true,
+      "id": "5f04a24944a2e5404274bc09"
+    },
+    {
+      "name": "Bags",
+      "categories": [
+        "seal-bags",
+        "reusable-bag",
+        "poly-bag",
+        "shoe-bag",
+        "sling-bags",
+        "bags"
+      ],
+      "description": "This is the file validation template for the fashion department and bags category.",
+      "departments": [
+        "kids",
+        "women",
+        "men"
+      ],
+      "attributes": [
+        "gender",
+        "age-group",
+        "color",
+        "outer-material",
+        "inner_material",
+        "product_type",
+        "collection",
+        "occasion",
+        "season",
+        "pattern",
+        "closure_type",
+        "care_instructions",
+        "compartments",
+        "expandable",
+        "water-resistence",
+        "water-resistence-details",
+        "water-proof",
+        "water-proof-details",
+        "warranty_type",
+        "warranty_description",
+        "package_contents",
+        "essential",
+        "gst-inclusive",
+        "gst-if-exclusive",
+        "fragile",
+        "manufacturer-packer-importer-name",
+        "manufacturer-packer-importer-address"
+      ],
+      "slug": "bags",
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/ejcGMm_DEFAULT-BANNER_LANDSCAPE.jpg658c38fd-d6de-4fcf-9f0e-3a886b2e2225/ejcGMm_DEFAULT-BANNER_LANDSCAPE.jpg",
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/GIysAV_0DEFAULT-LOGO.jpgf1942433-2bcb-4939-9128-675f66cd6d70/GIysAV_0DEFAULT-LOGO.jpg",
+      "is_physical": true,
+      "id": "5f04a24a44a2e5404274bc0b"
+    },
+    {
+      "modified_on": "2020-08-19T04:04:30.421000Z",
+      "logo": "https://hdn-1.addsale.com/x0/products/pictures/template/logo/original/fW2zqHspe-q1.png",
+      "created_on": "2020-08-19T04:04:30.421000Z",
+      "banner": "https://hdn-1.addsale.com/x0/products/pictures/template/banner/original/_YRvLuMDn-q1.jpeg",
+      "attributes": [
+        "base-material"
+      ],
+      "modified_by": {
+        "username": "fahimsakri_gofynd_com_44938",
+        "user_id": "10"
+      },
+      "departments": [
+        "men-s-fashion",
+        "kids",
+        "women-s-fashion",
+        "beauty-personal-care"
+      ],
+      "slug": "base-template",
+      "description": "ad",
+      "name": "Base Template",
+      "categories": [
+        "adcdas"
+      ],
+      "created_by": {
+        "username": "fahimsakri_gofynd_com_44938",
+        "user_id": "10"
+      },
+      "is_physical": true,
+      "id": "5f3ca4ce3f7e74000111925f"
+    },
+    {
+      "description": "This is the file validation template for the Beauty & Personal Care department. ",
+      "name": "Beauty & Personal Care",
+      "slug": "beauty-personal-care",
+      "departments": [
+        "beauty-personal-care"
+      ],
+      "attributes": [
+        "gender",
+        "age-group",
+        "occasion",
+        "collection",
+        "season",
+        "color",
+        "product_type",
+        "complexion",
+        "skin_type",
+        "spf",
+        "speciality",
+        "finish",
+        "lasting_power",
+        "coverage",
+        "hair_type",
+        "fragrance_family",
+        "fragrance_type",
+        "closure_type",
+        "capacity",
+        "product_format",
+        "active_ingredients",
+        "benefits",
+        "how-to-use",
+        "shelf_life",
+        "safety_warning",
+        "mask_type",
+        "material",
+        "adjustable",
+        "reusable",
+        "foldable",
+        "filtration",
+        "compatible_filter",
+        "package_contents",
+        "warranty_type",
+        "warranty_description",
+        "essential",
+        "gst-inclusive",
+        "gst-if-exclusive",
+        "fragile",
+        "manufacturer-packer-importer-name",
+        "manufacturer-packer-importer-address"
+      ],
+      "categories": [
+        "foundation",
+        "concealer",
+        "mascara",
+        "kajal",
+        "eyeshadow",
+        "false-eyelashes",
+        "eyebrow-enhancer",
+        "eyeliner",
+        "personal-care-gift-sets",
+        "primer",
+        "compact",
+        "hair-removal-cream",
+        "lip-liner",
+        "nail-polish-remover",
+        "liquid-lipstick",
+        "lipstick",
+        "nail-polish",
+        "moisturizing-socks",
+        "hand-cream",
+        "sindoor",
+        "crayon-lipstick",
+        "eye-brushes",
+        "manicure-kits",
+        "lip-gloss",
+        "makeup-remover",
+        "nail-art-kit",
+        "foot-cream",
+        "bb-cream",
+        "brush-sets",
+        "pedicure-kits",
+        "face-brushes",
+        "highlighters",
+        "lip-balm",
+        "lip-brushes",
+        "sunscreen",
+        "trimmer",
+        "facial-kits",
+        "colour-contact-lens",
+        "body-wash",
+        "toners",
+        "cleanser",
+        "epilator",
+        "eye-gels",
+        "face-wash",
+        "eye-masks",
+        "eye-creams",
+        "facial-wipes",
+        "masks",
+        "perfume",
+        "moisturizer",
+        "serum",
+        "night-cream",
+        "shoe-deodorant",
+        "razor",
+        "soaps",
+        "body-scrubs",
+        "day-cream",
+        "deodorants",
+        "eye-roll-on",
+        "eye-serums",
+        "attar",
+        "bath-sets",
+        "bathing-accessories",
+        "scrubs",
+        "sets",
+        "underarm-roll-on",
+        "wax-strips",
+        "body-creams",
+        "body-lotions",
+        "talcum-powders",
+        "body-butters",
+        "body-mousse",
+        "hair-brushes",
+        "combs",
+        "hair-spa",
+        "hair-colour",
+        "hair-spa-kits",
+        "hair-cream",
+        "hair-extensions",
+        "anti-stretch-mark-cream",
+        "body-oils",
+        "body-souffles",
+        "conditioner",
+        "hair-accessories",
+        "hair-oil",
+        "hair-serum",
+        "hair-spray",
+        "shampoo",
+        "body-mists",
+        "body-sprays",
+        "liquid-soap",
+        "beard-oil",
+        "beard-colour",
+        "beard-wash",
+        "beard-balm",
+        "nail-cutter",
+        "home-fragrance",
+        "gift-set",
+        "hand-soap",
+        "hand-sanitizer",
+        "face-oil",
+        "body-massage-balm",
+        "face-gel",
+        "face-mist",
+        "bath-oil",
+        "insect-repellent",
+        "anti-ageing-cream",
+        "bath-salt",
+        "anti-acne-cream",
+        "face-massage-cream",
+        "whitening-cream",
+        "anti-wrinkle-cream",
+        "foot-spray",
+        "anti-blemish-cream",
+        "blush",
+        "makeup-fixer",
+        "makeup-kit",
+        "sponge",
+        "foot-scrub",
+        "eyeshadow-palette",
+        "cc-cream",
+        "eye-wipes",
+        "head-wrap",
+        "patches",
+        "nipple-butter",
+        "pillow-spray",
+        "pillow-roll-on",
+        "fragrance-plug",
+        "pain-relief-balm",
+        "headache-roll-on",
+        "mirror",
+        "toilet-seat-spray",
+        "intimate-wash",
+        "massager",
+        "makeup-accessories",
+        "pillow",
+        "nail-accessories",
+        "sanitary-napkins",
+        "protective-mask",
+        "kohl-kajal",
+        "natural-lipstick",
+        "pearl-lipstick",
+        "creme-lipstick",
+        "matte-lipstick",
+        "glossy-lipstick",
+        "compact-spray",
+        "compact-stick",
+        "compact-powder",
+        "highlighter-cake",
+        "blush-highlighter",
+        "kajal-stick",
+        "compact-cake",
+        "roll-on-kajal-pencil",
+        "liquid-compact",
+        "stick-highlighter",
+        "kajal-pencil",
+        "gel-kajal",
+        "liquid-glossy-lipstick",
+        "liquid-matte-lipstick",
+        "crayon-matte-lipstick",
+        "liquid-creme-lipstick",
+        "crayon-glossy-lipstick",
+        "natural-lip-gloss",
+        "liquid-natural-lipstick",
+        "crayon-creme-lipstick",
+        "pearl-lip-gloss",
+        "liquid-pearl-lipstick",
+        "crayon-natural-lipstick",
+        "liquid-highlighter",
+        "crayon-pearl-lipstick",
+        "glossy-lip-gloss",
+        "matte-lip-gloss",
+        "creme-lip-gloss",
+        "eye-concealer",
+        "object-disinfectant",
+        "face-disinfectant",
+        "vegetable-fruit-wash",
+        "infrared-thermometer",
+        "safety-goggle",
+        "personal-protective-equipment-kit",
+        "examination-gloves",
+        "face-shield"
+      ],
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/ZxNlYp_DEFAULT-BANNER_LANDSCAPE.jpg66a71bf3-c1a7-4aa0-98e6-f2a837caa59a/ZxNlYp_DEFAULT-BANNER_LANDSCAPE.jpg",
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/OInLCX_0DEFAULT-LOGO.jpg03aeaeb8-2d04-4694-b641-f60fbdea5c4d/OInLCX_0DEFAULT-LOGO.jpg",
+      "is_physical": true,
+      "id": "5f05b34844a2e571575f3047"
+    },
+    {
+      "name": "Clothing",
+      "categories": [
+        "casual-shirts",
+        "formal-shirts",
+        "sweaters",
+        "sweatshirts",
+        "hoodies",
+        "cardigans",
+        "suits",
+        "front-open-jackets",
+        "blazers",
+        "waistcoats",
+        "jeans",
+        "chinos",
+        "cargos",
+        "corduroys",
+        "formal-trousers",
+        "3-4ths",
+        "trunks",
+        "boardshorts",
+        "rashguard",
+        "briefs",
+        "trackpants",
+        "tracksuits",
+        "joggers",
+        "t-shirts",
+        "shorts",
+        "gowns",
+        "blouson-top",
+        "tunics",
+        "corsets",
+        "kaftan-top",
+        "shift-dress",
+        "jumpsuits",
+        "jeggings",
+        "skirts",
+        "palazzos",
+        "culottes",
+        "leggings",
+        "shrugs",
+        "sports-bra",
+        "bikinis",
+        "swimsuit",
+        "sarong",
+        "kaftan",
+        "shapewear",
+        "camisole",
+        "activewear-tops",
+        "tights",
+        "yoga-pants",
+        "capris",
+        "harem",
+        "bomber-jackets",
+        "gilet",
+        "leather-jackets",
+        "polos",
+        "bodycon-dress",
+        "off-shoulder-dress",
+        "skater-dress",
+        "maxi-dress",
+        "sheath-dress",
+        "sweater-dress",
+        "tube-dress",
+        "slip-dress",
+        "asymmetric-dress",
+        "bodysuit",
+        "peplum-top",
+        "crop-top",
+        "tiered-dress",
+        "maxi-top",
+        "tank-top",
+        "tube-top",
+        "strappy-top",
+        "activewear-jackets",
+        "denim-jackets",
+        "windcheater",
+        "peplum-dress",
+        "off-shoulder-top",
+        "shirt-dress",
+        "kids-shirts",
+        "twin-sets",
+        "dungarees",
+        "trousers",
+        "western-jackets",
+        "frocks",
+        "dresses",
+        "tops",
+        "casual-pants",
+        "beachwear-bottoms",
+        "coat",
+        "fusion-set",
+        "indowestern-kurta",
+        "tapered-jeans",
+        "joggers-jeans",
+        "straight-chinos",
+        "tapered-chinos",
+        "double-breasted-suits",
+        "activewear-crop-tops",
+        "flat-front-formal-trousers",
+        "pleated-formal-trousers",
+        "straight-formal-trousers",
+        "straight-jeans",
+        "flared-jeans",
+        "tapered-formal-trousers",
+        "straight-skirt",
+        "flared-skirt",
+        "asymmetric-skirt",
+        "pleated-corduroys",
+        "tapered-corduroys",
+        "straight-corduroys",
+        "cropped-chinos",
+        "cropped-corduroys",
+        "bootcut-jeans",
+        "drop-crotch-jeans",
+        "cropped-jeans",
+        "bootcut-formal-trousers",
+        "cropped-formal-trousers",
+        "five-buttoned-suits",
+        "tuxedo-suits",
+        "one-buttoned-suits",
+        "two-buttoned-suits",
+        "four-buttoned-suits",
+        "three-buttoned-suits",
+        "pleated-chinos",
+        "pleated-jeans",
+        "beachwear-bikini-tops",
+        "pleated-skirt",
+        "flared-formal-trousers",
+        "activewear-tank-tops",
+        "beachwear-bikini-bottoms",
+        "pencil-skirt",
+        "activewear-blouse",
+        "casual-joggers"
+      ],
+      "description": "This is the file validation template for the fashion department and clothing category.",
+      "departments": [
+        "men",
+        "women",
+        "kids",
+        "clothing"
+      ],
+      "attributes": [
+        "gender",
+        "age-group",
+        "color",
+        "material",
+        "occasion",
+        "collection",
+        "season",
+        "product_fit",
+        "product_type",
+        "product_length",
+        "pattern",
+        "sleeve_type",
+        "sleeve_length",
+        "closure_type",
+        "neck_type",
+        "waist_rise",
+        "denim-fade",
+        "care_instructions",
+        "package_contents",
+        "number-of-pockets",
+        "model_info",
+        "essential",
+        "gst-inclusive",
+        "gst-if-exclusive",
+        "fragile",
+        "manufacturer-packer-importer-name",
+        "manufacturer-packer-importer-address"
+      ],
+      "slug": "clothing",
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/720R34_DEFAULT-BANNER_LANDSCAPE.jpga765babe-cfaa-4cc5-9da7-f4e1402fa97e/720R34_DEFAULT-BANNER_LANDSCAPE.jpg",
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/jKZEs7_0DEFAULT-LOGO.jpg78413c0a-11a8-43f8-88ad-1442e9fdb898/jKZEs7_0DEFAULT-LOGO.jpg",
+      "is_physical": true,
+      "id": "5f04a25044a2e5404274bc0e"
+    },
+    {
+      "description": "asdd",
+      "attributes": [
+        "color",
+        "warranty_type",
+        "care_instructions"
+      ],
+      "modified_on": "2020-08-20T16:15:33.598000Z",
+      "modified_by": {
+        "username": "fahimsakri_gofynd_com_44938",
+        "user_id": "10"
+      },
+      "name": "FA-Template",
+      "categories": [
+        "vision-qa-f9447f89-d2da-41fc-ac33-b9f286308c14"
+      ],
+      "logo": "https://hdn-1.addsale.com/x0/products/pictures/template/logo/original/fW2zqHspe-q1.png",
+      "departments": [
+        "electronics"
+      ],
+      "banner": "https://hdn-1.addsale.com/x0/products/pictures/template/banner/original/L_u77Mz4T-FA-Template.png",
+      "slug": "fa-template",
+      "created_on": "2020-08-19T09:51:08.215000Z",
+      "created_by": {
+        "username": "fahimsakri_gofynd_com_44938",
+        "user_id": "10"
+      },
+      "is_physical": true,
+      "id": "5f3cf60c9788cc00018ab276"
+    },
+    {
+      "name": "Footwear",
+      "categories": [
+        "sneakers",
+        "running-shoes",
+        "hiking-shoes",
+        "football-shoes",
+        "indoor-sports-shoes",
+        "trainers",
+        "outdoor-sports-shoes",
+        "moccasins",
+        "loafers",
+        "boat-shoes",
+        "brogues",
+        "derby-shoes",
+        "oxfords",
+        "monk-strap-shoes",
+        "lace-ups",
+        "formal-slip-ons",
+        "boots",
+        "sandals",
+        "flip-flops",
+        "floaters",
+        "d-orsay",
+        "espadrilles",
+        "pointed-toe",
+        "flat-slip-ons",
+        "gladiators",
+        "flat-sandals",
+        "stilettos",
+        "wedges",
+        "block-heels",
+        "kitten-heels",
+        "louis-heels",
+        "cone-heels",
+        "heel-sandals",
+        "ballerinas",
+        "casual-slip-ons",
+        "casual-lace-ups",
+        "ethnic-sandals",
+        "clogs",
+        "slippers",
+        "school-shoes",
+        "high-heels",
+        "flats",
+        "mules",
+        "crocs",
+        "heels-pumps",
+        "mojaris",
+        "jutties",
+        "labour-shoes"
+      ],
+      "description": "This is the file validation template for the fashion department and footwear category.",
+      "departments": [
+        "men",
+        "women",
+        "kids"
+      ],
+      "attributes": [
+        "gender",
+        "age-group",
+        "color",
+        "outer-material",
+        "inner_material",
+        "sole-material",
+        "occasion",
+        "collection",
+        "season",
+        "product_type",
+        "pattern",
+        "closure_type",
+        "toe_type",
+        "arch_type",
+        "heel_height",
+        "heel-height-unit-of-measure",
+        "care_instructions",
+        "package_contents",
+        "water-resistence",
+        "water-resistence-details",
+        "water-proof",
+        "water-proof-details",
+        "warranty_type",
+        "warranty_description",
+        "essential",
+        "gst-inclusive",
+        "gst-if-exclusive",
+        "fragile",
+        "manufacturer-packer-importer-name",
+        "manufacturer-packer-importer-address"
+      ],
+      "slug": "footwear",
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/phMzNh_DEFAULT-BANNER_LANDSCAPE.jpgf06e7d2f-15a0-405a-b37b-1333c618abdb/phMzNh_DEFAULT-BANNER_LANDSCAPE.jpg",
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/PkIwbo_0DEFAULT-LOGO.jpgbb9acb1b-5e2c-44d4-918a-9429367ccb7d/PkIwbo_0DEFAULT-LOGO.jpg",
+      "is_physical": true,
+      "id": "5f04a25344a2e5404274bc10"
+    },
+    {
+      "slug": "groceries",
+      "name": "Groceries",
+      "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/EtkWQm_fruit___vegetable_logo.jpgc541c78c-dabc-4823-bb72-c4bd3e5db449/EtkWQm_fruit___vegetable_logo.jpg",
+      "departments": [
+        "groceries"
+      ],
+      "description": "Groceries",
+      "banner": "https://hdn-1.addsale.com/x0/seller/pictures/landscape-banner/original/BPjEl6_fruit___vegetable_logo.jpg577eb6bb-de4e-444c-a86a-bc23e0d97178/BPjEl6_fruit___vegetable_logo.jpg",
+      "attributes": [
+        "ingredient-type",
+        "manufacturer_packer_importer_address"
+      ],
+      "categories": [
+        "buns",
+        "non-veg-pickle",
+        "condensed-milk",
+        "shoe-shiners",
+        "bath-stool-tub-basin-sets",
+        "soda-cocktail-mix",
+        "tofu",
+        "buckets-mugs",
+        "fresh-mutton",
+        "games-calculators",
+        "kolam",
+        "namkeen-savoury-snacks",
+        "gift-bags",
+        "honey",
+        "cutlery-spoons-fork",
+        "pita",
+        "potato-onion-tomato",
+        "apples-pomegranate",
+        "dishwash-powder",
+        "country-eggs",
+        "fish-tuna",
+        "coconut-milk",
+        "sugarfree-sweeteners",
+        "cups-mugs-tumblers",
+        "turkey",
+        "breakfast-snack-mixes",
+        "diabetic-drinks",
+        "other-dal",
+        "herbs-seasoning",
+        "incense-sticks",
+        "scissor",
+        "slice-cakes",
+        "dips-dressings",
+        "files",
+        "lavash",
+        "flakes",
+        "tawa-sauce-pan",
+        "breads",
+        "jaggery",
+        "soya-chunks",
+        "exotic-vegetables",
+        "wine-rise-vinegar",
+        "recipe-packs",
+        "pen",
+        "cookware-sets",
+        "jam-conserve-marmalade",
+        "holi-pichkari",
+        "knives-peelers",
+        "chicken-sausages",
+        "poha",
+        "jowar-flour",
+        "cook-serve",
+        "unsweetened-cold-press",
+        "decorations",
+        "dust-cloth-wipes",
+        "jelly",
+        "gift-boxes",
+        "organic-cold-press-oil",
+        "glucose-powder-tablets",
+        "frozen-non-veg-snacks",
+        "leafy-vegetables",
+        "salted-biscuits",
+        "cooking-chocolates-cocoa",
+        "marinated-meat",
+        "berries",
+        "basmati-rice",
+        "ground-coffee",
+        "cut-vegetables",
+        "moong-dal",
+        "glue",
+        "fabric-pre-post-wash",
+        "canola-rapeseed-oil",
+        "water-fridge-bottle",
+        "frozen-fish-seafood",
+        "choppers-graters",
+        "soya",
+        "kiwi-melon-citrus-fruits",
+        "buttermilk",
+        "focaccia",
+        "healthy-baked-snacks",
+        "bowls",
+        "car-freshener",
+        "nachos",
+        "powdered-spices",
+        "rawa",
+        "pressure-cookers",
+        "chips",
+        "cream-rolls",
+        "tape",
+        "bajra",
+        "jowar",
+        "ice-cream",
+        "wicks",
+        "cooking-pastes",
+        "erasers-sharpeners",
+        "imported-fruits",
+        "notebooks",
+        "masoor-dal",
+        "canned-seafood",
+        "regular-white-vinegar",
+        "croissants-bread",
+        "pasta",
+        "root-vegetables",
+        "whole-spices",
+        "chana-dal",
+        "glassware",
+        "cucumber-gourds-capsicum",
+        "papads-ready-to-fry",
+        "lamp",
+        "hakka-noodles",
+        "balsamic-cider-vinegar",
+        "garbage-bags",
+        "pumpkin-drumstick",
+        "other-plastic-ware",
+        "frozen-indian-breads",
+        "glucose-milk-biscuits",
+        "non-alcoholic-drinks",
+        "paneer",
+        "toor-dal",
+        "fresh-salads-sprouts",
+        "fresh-chicken",
+        "wheat-flour",
+        "fruits-pulps",
+        "cheese-spread",
+        "camphor",
+        "cabbage-broccoli-cauliflower",
+        "sugar",
+        "candles",
+        "plates",
+        "mangoes",
+        "aerated-drinks",
+        "toffee-candy-lollypop",
+        "pizza-base",
+        "thai-asian-sauce",
+        "shoe-brushes",
+        "gas-stove",
+        "sports-energy-drinks",
+        "shrikhand",
+        "hangers-clips-ropes",
+        "croutons",
+        "floor-other-cleaners",
+        "toilet-cleaners",
+        "macaroni",
+        "folders",
+        "choco-nut-spread",
+        "salts",
+        "butter",
+        "pavs",
+        "hangers",
+        "khari",
+        "frozen-veg-snacks",
+        "tea-cakes",
+        "seasonal-fruits",
+        "olive",
+        "seasonal-accessories",
+        "cream",
+        "heat-eat-ready-meals",
+        "dishwash-liquid-paste",
+        "rubs",
+        "beans-pulses",
+        "seasonal-vegetables",
+        "besan",
+        "shoe-polish",
+        "packaged-water",
+        "kids-cereal",
+        "instant-coffee",
+        "powdered-milk",
+        "dishwash-bar",
+        "home-baking",
+        "laundry-storage-baskets",
+        "detergent-liquid",
+        "instant-noodles",
+        "canned-food",
+        "disposable-cups-plates",
+        "brinjals",
+        "imported-cleaners",
+        "tinned-packed-sweets",
+        "container-set",
+        "lamp-oil",
+        "mayonnaise",
+        "wall-hooks",
+        "spreads",
+        "juices",
+        "quinoa-grains",
+        "pooja-thali",
+        "milk",
+        "syrups-concentrates",
+        "cut-fruit-tender-coconut",
+        "kitchen-rolls",
+        "cold-drinks",
+        "vessels",
+        "premium-cookies",
+        "pooja-bells",
+        "other-pooja-needs",
+        "rise-flour",
+        "breadcrumbs",
+        "cup-cakes",
+        "berry",
+        "regional-rice",
+        "regional-grains",
+        "chilli-soya-sauce",
+        "gourmet-popcorn",
+        "beans-okra",
+        "wafers",
+        "sparkling-drinks",
+        "muffins",
+        "daliya",
+        "match-box",
+        "bagels-bread",
+        "rice-products",
+        "dry-fruits",
+        "dal-mix",
+        "flavoured-water",
+        "roasted-seeds-nuts",
+        "marshmallow",
+        "toilet-paper",
+        "wet-wipes",
+        "fruit-baskets",
+        "leaf-dust-tea",
+        "rakhi",
+        "insect-repellent",
+        "bajra-flour",
+        "ghee",
+        "lunch-boxes",
+        "cup-noodles",
+        "chocolates",
+        "candle-holder",
+        "frozen-mutton",
+        "marie-health-digestive",
+        "pencils",
+        "turkey-duck",
+        "vermicelli",
+        "exotic-flavoured-tea",
+        "powdered-mixes",
+        "urad-dal",
+        "toilet-other-brushes",
+        "jalapeno",
+        "maida",
+        "chutney",
+        "fresh-sweets",
+        "dessert-mixes",
+        "instant-pasta",
+        "kitchen-tools-other-accessories",
+        "mushrooms",
+        "chilli-lemon-garlic-ginger",
+        "gherkin",
+        "cooking-oil",
+        "curry-paste",
+        "tumblers",
+        "lamb",
+        "cheese",
+        "other-seafood",
+        "other-meat",
+        "frozen-chicken",
+        "banana-sapota-papaya",
+        "granola-cereal-bars",
+        "sabudana",
+        "cream-biscuits",
+        "bread-sticks",
+        "chia-seeds",
+        "utensil-scrub-pad-glove",
+        "soya-granules",
+        "soups",
+        "spring-water",
+        "rusks",
+        "olive-oil",
+        "organic-eggs",
+        "aluminium-foil-cling-wrap",
+        "colours-crayons",
+        "corn-snacks",
+        "pulses",
+        "protein-eggs",
+        "tomatoes-vegetables",
+        "cookies",
+        "still-drinks",
+        "mustard-cheese-sauce",
+        "regional-flour",
+        "detergent-powder",
+        "flavoured-other-oils",
+        "chikki-gajak",
+        "curd",
+        "strainers-ladle-spatula",
+        "holi-colours",
+        "trail-cocktail-mixes",
+        "baking-cake-decoration",
+        "biscuits",
+        "pencil-box",
+        "muesli",
+        "air-freshener",
+        "quinoa",
+        "metal-furniture-cleaners",
+        "green-tea",
+        "paper-napkin",
+        "flavoured-milk",
+        "mints-chewing-gum",
+        "lighters",
+        "lassi",
+        "edamame-beans",
+        "dry-fish",
+        "blended-masalas",
+        "tomato-ketchup",
+        "kadai-fry-pans",
+        "dustbins",
+        "syrups",
+        "wheat",
+        "kitchen-glass-drains",
+        "pork-ham",
+        "panini",
+        "flours-pre-mixes",
+        "cfl-led-bulbs",
+        "baguette-bread",
+        "brooms-dust-pans",
+        "prawns-shrimps",
+        "soap-cases-dispensers",
+        "oats-porridge",
+        "mops-wipers",
+        "exam-pads",
+        "tea-bags",
+        "pastries",
+        "mosquito-repellent",
+        "cut-peeled-veggies",
+        "pickle",
+        "brownies",
+        "margarine",
+        "soya-milk",
+        "fresh-fish",
+        "cloth-dryer-iron-table",
+        "gift-wrap",
+        "farm-eggs",
+        "detergent-bar",
+        "battery-electricals"
+      ],
+      "is_physical": true,
+      "id": "5efc43b13b4ca00001328666"
+    },
+    {
+      "description": "This is the file validation template for the Home & Living Department",
+      "name": "Home & Living",
+      "slug": "home-living",
+      "departments": [
+        "home-living"
+      ],
+      "categories": [
+        "slippers",
+        "chairs",
+        "table",
+        "beds",
+        "vases",
+        "bed-sheets",
+        "dining-table",
+        "blankets",
+        "bath-robe",
+        "bathing-accessories",
+        "napkins",
+        "hanger",
+        "lunch-box",
+        "photo-frame",
+        "toiletry-bag",
+        "pillow",
+        "cup-saucer",
+        "pet-collar-charm",
+        "alarm-clocks",
+        "dessert-plates",
+        "vintage-clocks",
+        "tissue-holder",
+        "flush-mount-lights",
+        "jewellery-box-stands",
+        "desk-accessories",
+        "serving-sets",
+        "cake-stands",
+        "bath-towel",
+        "cutlery",
+        "knives",
+        "knives-holder",
+        "pillow-covers",
+        "placemats",
+        "saucer",
+        "coasters",
+        "tea-sets",
+        "forks",
+        "shower-curtains",
+        "serving-bowls",
+        "soap-dispensers",
+        "spoons",
+        "bath-mats",
+        "table-runner",
+        "bed-covers",
+        "tea-coffee-accessories",
+        "coverlets",
+        "soap-dishes",
+        "duvet",
+        "bed-sheets-sets",
+        "duvet-cover",
+        "bolster-pillows",
+        "quilts-rajais",
+        "mattress",
+        "bed-linen-set",
+        "candles",
+        "clothes-storage",
+        "shoe-racks",
+        "cushion-fillers",
+        "scented-candles",
+        "art-pieces",
+        "key-holder",
+        "planters",
+        "showpieces",
+        "decals-stickers",
+        "mirrors",
+        "clocks",
+        "coffee-tables",
+        "dining-benches",
+        "ottoman",
+        "artificial-flowers",
+        "dining-chair",
+        "dining-table-set",
+        "drapery",
+        "console-table",
+        "baking-mould",
+        "cup",
+        "dohars",
+        "cushion-covers",
+        "fountains",
+        "comforters",
+        "mugs",
+        "flowerpot",
+        "cushions",
+        "decorative-objects",
+        "napkin-holder",
+        "trays",
+        "table-cloth",
+        "tea-cosy",
+        "shower-caps",
+        "shower-mats",
+        "bed-skirts",
+        "wardrobe-organisers",
+        "mattress-protectors",
+        "pillow-protectors",
+        "tea-light-candles",
+        "sculptures",
+        "faux-plants",
+        "vintage-finds",
+        "wall-art",
+        "dressing-tables",
+        "benches",
+        "sofas",
+        "storage-trunks",
+        "curtains",
+        "side-table",
+        "pillow-shams",
+        "wind-chimes",
+        "candle-holders",
+        "cheese-boards",
+        "serving-platters",
+        "pitchers",
+        "drinking-glasses",
+        "pet-collar",
+        "bathroom-faucets",
+        "lamp-bases",
+        "wreath",
+        "pendant-lamps",
+        "hearth-fireplace",
+        "sconces",
+        "succulents-plants",
+        "fireplace-screens",
+        "garlands",
+        "electric-fireplaces",
+        "storage-boxes",
+        "elecrtonics-tech-accessories",
+        "diffusers",
+        "potpourri",
+        "throws",
+        "ceiling-lights",
+        "pet-feeding-bowl",
+        "chandeliers",
+        "carpets",
+        "salad-plates",
+        "room-partitions",
+        "bar-accessories",
+        "decorative-lights",
+        "hand-towel",
+        "lamp-shades",
+        "face-towel",
+        "study-table-lamps",
+        "floor-runner",
+        "wall-lamps",
+        "frying-pan",
+        "door-mats",
+        "carafe",
+        "dinner-plates",
+        "snifter",
+        "dinner-set",
+        "peg-measure",
+        "platters",
+        "shot-bottles",
+        "bathroom-caddy",
+        "vinegar-dispenser",
+        "toilet-brush-holder",
+        "cutlery-holder",
+        "toothbrush-holder",
+        "kitchen-trolly",
+        "stemware",
+        "measuring-cup",
+        "baking-tray",
+        "strainer",
+        "stew-pan",
+        "whisk",
+        "cocktail-shaker",
+        "flask",
+        "food-container",
+        "string-lights",
+        "bottle-holder",
+        "poufs",
+        "chopping-board",
+        "fireplace-tools",
+        "dish-rack",
+        "log-racks-holders",
+        "ladle",
+        "aroma-oils",
+        "peeler",
+        "incense-sticks-holders",
+        "tongs",
+        "incense-sticks",
+        "kettle",
+        "kulladhs",
+        "table-linen-set",
+        "handbag-organiser",
+        "upholstery",
+        "laundry-bag",
+        "floor-lamps",
+        "magazine-organiser",
+        "lighting-accessories",
+        "makeup-organiser",
+        "table-lamps",
+        "shelf-liner",
+        "rugs-dhurries",
+        "shoes-organiser",
+        "sweater-bag",
+        "bowls",
+        "decanters",
+        "garbage-bag",
+        "beach-towel",
+        "bookcase",
+        "towel-set",
+        "pool-table",
+        "bath-rug",
+        "poker-table",
+        "shower-holder",
+        "table-tennis",
+        "towel-holder",
+        "bar-counter-stools",
+        "bath-mirror",
+        "bar-carts",
+        "towel-rod",
+        "bar-furniture",
+        "floor-mats",
+        "bedside-table",
+        "kadhai",
+        "foundations",
+        "sauce-pan",
+        "pillow-inserts",
+        "tawa",
+        "bathroom-vanities",
+        "cocktail-set",
+        "lounging-relaxing-furniture",
+        "canister",
+        "oil-dispenser",
+        "salt-pepper-shakers",
+        "spatula",
+        "casserole",
+        "handi",
+        "glasses",
+        "kitchen-linen-set",
+        "wardrobe-organiser",
+        "jewellery-organiser",
+        "separators",
+        "closet-storage",
+        "garbage-bag-holder",
+        "hooks",
+        "foosball-table",
+        "board-game",
+        "wall-shelves",
+        "media-furniture",
+        "file-cabinets",
+        "leather-furniture",
+        "buffets-sidebars",
+        "mattress-pads",
+        "wastebaskets",
+        "hampers-baskets",
+        "outdoor-dining-furniture",
+        "entry-furniture",
+        "water-jugs",
+        "table-covers",
+        "lanterns",
+        "desk-organiser",
+        "drawer-organiser",
+        "suit-organiser",
+        "swab-storage",
+        "tote-basket",
+        "hanger-holder",
+        "cabinet",
+        "hockey-table",
+        "shuffleboard",
+        "game-accessories",
+        "desk",
+        "office-chairs",
+        "dining-storage",
+        "kitchen-island",
+        "nightstands",
+        "duvet-inserts",
+        "mattress-toppers",
+        "medicine-cabinets",
+        "bathroom-hardware-accessories",
+        "salt-pepper-grinders",
+        "water-bottle"
+      ],
+      "attributes": [
+        "occasion",
+        "collection",
+        "color",
+        "material",
+        "product_type",
+        "bed_size",
+        "utility",
+        "quality",
+        "pattern",
+        "filling",
+        "shape",
+        "sheet-type",
+        "sheet_size",
+        "thread_count",
+        "product-dimensions",
+        "pocket_depth",
+        "group-id",
+        "variation-type",
+        "variation-based-on",
+        "capacity",
+        "dishwasher_safe",
+        "microwave_safe",
+        "oven_safe",
+        "additional-features",
+        "care_instructions",
+        "package_contents",
+        "sales_package",
+        "warranty_type",
+        "warranty_description",
+        "gst-inclusive",
+        "gst-if-exclusive",
+        "fragile",
+        "manufacturer-packer-importer-name",
+        "manufacturer-packer-importer-address"
+      ],
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/EHRCqs_DEFAULT-BANNER_LANDSCAPE.jpgc596e149-f6e1-4695-9446-9a8b88797d4c/EHRCqs_DEFAULT-BANNER_LANDSCAPE.jpg",
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/UAiJlq_0DEFAULT-LOGO.jpg25c9816d-2376-4eaf-b4ab-accb37e9a564/UAiJlq_0DEFAULT-LOGO.jpg",
+      "is_physical": true,
+      "id": "5f05acfa44a2e55081728be2"
+    },
+    {
+      "categories": [
+        "3-ply-box",
+        "5-ply-box",
+        "7-ply-box",
+        "9-ply-box",
+        "bubble-roll",
+        "card-board-roll",
+        "courier-bag",
+        "courier-pouch",
+        "die-cut-box",
+        "double-side-tape",
+        "drawer-box",
+        "duct-tape",
+        "filament-tape",
+        "laminated-box",
+        "packaging-tape",
+        "poly-bag",
+        "printed-tape",
+        "reusable-bag",
+        "seal-bags",
+        "stretch-wrap",
+        "suit-box",
+        "zip-lock-bags",
+        "box"
+      ],
+      "name": "Industrial Supplies",
+      "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/9DpMn3_Beauty_&_Personal_Care_L.jpg80d89967-9c2c-498b-a79c-d176b3e71ea5/9DpMn3_Beauty_and_Personal_Care_L.jpg",
+      "slug": "industrial-supplies",
+      "attributes": [
+        "color",
+        "primary_color",
+        "style",
+        "features",
+        "safety_warning",
+        "is_flammable",
+        "water_resistant",
+        "product_details",
+        "package_contents",
+        "essential",
+        "pallet"
+      ],
+      "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/I2NV2c_indi.jpg2eaf85b5-8076-4b0b-8f01-f119d6d8b559/I2NV2c_indi.jpg",
+      "departments": [
+        "industrial-supplies"
+      ],
+      "description": "Products used for business and industrial manufacturing process comes under this category. Example: Packaging Material",
+      "modified_by": {
+        "username": "meghagolecha_fynd_com_89167",
+        "user_id": "23244269"
+      },
+      "modified_on": "2020-08-20T19:12:26.040000Z",
+      "is_active": true,
+      "is_physical": true,
+      "id": "5f11eced5ca7f90001685a70"
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -11387,6 +25567,20 @@ List of fields and validation values fro each. See example below or refer `Templ
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+null
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11423,6 +25617,20 @@ Allows you to download product template data
 [String](#String)
 
 CSV File of product template data. See example below or refer `TemplatesResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -11467,6 +25675,20 @@ CSV File of product template data.
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11503,6 +25725,120 @@ Allows you to list all product templates validation values for all the fields pr
 [InventoryValidationResponse](#InventoryValidationResponse)
 
 List of fields and validation values fro each. See example below or refer `InventoryValidationResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "title": "InventoryValidationResponse",
+    "type": "object",
+    "properties": {
+      "item": {
+        "$ref": ""
+      },
+      "sizes": {
+        "title": "Sizes",
+        "type": "array",
+        "items": {
+          "$ref": ""
+        }
+      }
+    },
+    "required": [
+      "item",
+      "sizes"
+    ],
+    "definitions": {
+      "ItemQuery": {
+        "title": "ItemQuery",
+        "type": "object",
+        "properties": {
+          "uid": {
+            "title": "Uid",
+            "type": "integer"
+          },
+          "brand_uid": {
+            "title": "Brand Uid",
+            "type": "integer"
+          },
+          "item_code": {
+            "title": "Item Code",
+            "type": "integer"
+          }
+        }
+      },
+      "InventoryBaseSchema": {
+        "title": "InventoryBaseSchema",
+        "type": "object",
+        "properties": {
+          "price": {
+            "title": "Actual Price",
+            "exclusiveMinimum": 1,
+            "type": "number"
+          },
+          "price_effective": {
+            "title": "Selling Price",
+            "exclusiveMinimum": 1,
+            "type": "number"
+          },
+          "seller_identifier": {
+            "title": "Gtin Value",
+            "pattern": "^[A-Za-z0-9]*$",
+            "type": "string"
+          },
+          "quantity": {
+            "title": "Quantity",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "store_code": {
+            "title": "Store Code",
+            "type": "string",
+            "enum": [
+              "RUOSH43",
+              "S106",
+              "S108",
+              "TIO9",
+              "talha"
+            ]
+          },
+          "currency": {
+            "title": "Currency",
+            "enum": [
+              "INR",
+              "QAR"
+            ],
+            "type": "string"
+          },
+          "size": {
+            "title": "Size",
+            "type": "string"
+          }
+        },
+        "required": [
+          "price",
+          "price_effective",
+          "seller_identifier",
+          "quantity",
+          "store_code",
+          "currency",
+          "size"
+        ]
+      }
+    }
+  },
+  "message": "Success"
+}
+```
+</details>
+
+
+
 
 
 
@@ -11547,6 +25883,30 @@ List of all HSN Codes. See example below or refer `HSNCodesResponse` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "country_of_origin": [
+      "India"
+    ],
+    "hsn_code": [
+      "11111111"
+    ]
+  },
+  "message": "Success"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11583,6 +25943,52 @@ Can view details including trigger data, task id , etc.
 [ProductDownloadsResponse](#ProductDownloadsResponse)
 
 List of Product Downloads Data. See example below or refer `ProductDownloadsResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {},
+  "items": [
+    {
+      "created_by": {
+        "username": "917972410891_48194",
+        "user_id": "5646"
+      },
+      "data": {
+        "type": "csv",
+        "brand": [
+          "ruosh"
+        ],
+        "templates": [
+          "mobile-phones-and-tablet"
+        ]
+      },
+      "status": "success",
+      "task_id": "c4b54ace-44ef-11eb-9806-1ef9bc4a2da1",
+      "template_tags": {
+        "mobile-phones-and-tablet": {
+          "display": "Mobile Phones & Tablet",
+          "logo": "https://hdn-1.jiox0.de/jiox0/seller/pictures/logo/original/Oda39B_99946594-portable-devices-with-tablet-and-mobile-phone-vector-icon-for-apps-and-websites.jpgcc2dff44-7fae-4002-9ebe-d2b59c8bee91/Oda39B_99946594-portable-devices-with-tablet-and-mobile-phone-vector-icon-for-apps-and-websites.jpg"
+        }
+      },
+      "trigger_on": "2020-12-23T07:23:35.302000Z",
+      "seller_id": 3,
+      "completed_on": "2020-12-23T07:23:41.031000Z",
+      "url": "https://regrowth.s3.amazonaws.com/slingshot-catalogues/seller-catalog/3/c4b54ace-44ef-11eb-9806-1ef9bc4a2da1/c4b54ace-44ef-11eb-9806-1ef9bc4a2da1.zip",
+      "id": "5fe2f077516d980001880943"
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -11627,6 +26033,32 @@ See example below or refer `ProductConfigurationDownloadsSchema` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": [
+    {
+      "display": "csv",
+      "value": "csv"
+    },
+    {
+      "display": "excel",
+      "value": "excel"
+    }
+  ],
+  "multivalue": false
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11663,6 +26095,23 @@ This API lets user create product categories
 [CategoryCreateResponse](#CategoryCreateResponse)
 
 Category Meta. See example below or refer `CategoryCreateResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Success",
+  "uid": 0
+}
+```
+</details>
+
+
+
 
 
 
@@ -11707,6 +26156,418 @@ Category Meta. See example below or refer `CategoryResponse` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "current": 1,
+    "size": 58,
+    "has_previous": false,
+    "has_next": true,
+    "item_total": 574
+  },
+  "items": [
+    {
+      "name": "Air Conditioners",
+      "media": {
+        "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/zTgh1zslj-.png",
+        "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/VKqwRngFh-.png",
+        "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/_7GDi3tyi-.png"
+      },
+      "marketplaces": {},
+      "tryouts": [],
+      "is_active": true,
+      "created_by": {
+        "username": "917972410891_48194",
+        "user_id": "5646"
+      },
+      "uid": 22330,
+      "slug": "air-conditioners",
+      "priority": 1,
+      "synonyms": [],
+      "modified_by": {
+        "username": "917972410891_48194",
+        "user_id": "5646"
+      },
+      "level": 3,
+      "hierarchy": [
+        {
+          "l1": 1,
+          "department": 1,
+          "l2": 22329
+        }
+      ],
+      "created_on": "2021-04-02T15:43:59.410000Z",
+      "departments": [
+        1
+      ],
+      "modified_on": "2021-04-02T15:43:59.410000Z",
+      "id": "60673bbf7896da00017885ad"
+    },
+    {
+      "name": "Home Appliances",
+      "media": {
+        "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/zTgh1zslj-.png",
+        "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/VKqwRngFh-.png",
+        "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/_7GDi3tyi-.png"
+      },
+      "is_active": true,
+      "created_by": {
+        "username": "917972410891_48194",
+        "user_id": "5646"
+      },
+      "uid": 22329,
+      "slug": "home-appliances",
+      "priority": 1,
+      "synonyms": [],
+      "modified_by": {
+        "username": "917972410891_48194",
+        "user_id": "5646"
+      },
+      "level": 2,
+      "hierarchy": [],
+      "created_on": "2021-04-02T15:42:55.405000Z",
+      "departments": [
+        1
+      ],
+      "modified_on": "2021-04-02T15:42:55.405000Z",
+      "id": "60673b7f7896da00017885ac"
+    },
+    {
+      "created_by": {
+        "username": "919821012599_75351",
+        "user_id": "5721"
+      },
+      "slug": "dummy-category-level-2",
+      "level": 2,
+      "uid": 22323,
+      "is_active": true,
+      "media": {
+        "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/VKqwRngFh-.png",
+        "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/0wCdjxWpI-.png",
+        "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/zTgh1zslj-.png"
+      },
+      "name": "Dummy category level 2 by fahim",
+      "modified_on": "2021-03-04T15:43:50.495000Z",
+      "modified_by": {
+        "username": "917753852478_51632",
+        "user_id": "5677"
+      },
+      "synonyms": [
+        "skin",
+        "care",
+        "asdasd"
+      ],
+      "created_on": "2021-01-14T05:28:02.148000Z",
+      "priority": 123456,
+      "hierarchy": [],
+      "departments": [
+        21
+      ],
+      "id": "5fffd662e64eb40001fc8a42"
+    },
+    {
+      "synonyms": [],
+      "marketplaces": {},
+      "created_on": "2021-02-25T00:00:47.589000Z",
+      "modified_by": {
+        "username": "917753852478_51632",
+        "user_id": "5677"
+      },
+      "media": {
+        "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/0wCdjxWpI-.png",
+        "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/EfCt9iXx8-http/d3p8ifzkmzds37.cloudfront.net/media/logo/department/original/15870_c287d3c2431a432bb0e49363ef6b82bc.png.jpeg",
+        "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/S1axCMOJ4-.png"
+      },
+      "modified_on": "2021-03-04T15:39:52.108000Z",
+      "hierarchy": [
+        {
+          "l2": 22323,
+          "l1": 22322,
+          "department": 21
+        }
+      ],
+      "name": "Dummy level 4",
+      "is_active": true,
+      "slug": "dummy-level-4",
+      "departments": [
+        21
+      ],
+      "level": 3,
+      "tryouts": [],
+      "uid": 22325,
+      "priority": 986532,
+      "created_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "id": "60369b57d23031d14be92c18"
+    },
+    {
+      "created_by": {
+        "username": "919821012599_75351",
+        "user_id": "5721"
+      },
+      "slug": "dummy-level-3",
+      "level": 3,
+      "uid": 22324,
+      "is_active": true,
+      "media": {
+        "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/0wCdjxWpI-.png",
+        "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/EfCt9iXx8-http/d3p8ifzkmzds37.cloudfront.net/media/logo/department/original/15870_c287d3c2431a432bb0e49363ef6b82bc.png.jpeg",
+        "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/S1axCMOJ4-.png"
+      },
+      "name": "Dummy level 3 by fahim",
+      "tryouts": [
+        "Lipstick",
+        "Eyeliner"
+      ],
+      "modified_on": "2021-03-04T15:39:46.246000Z",
+      "modified_by": {
+        "username": "917753852478_51632",
+        "user_id": "5677"
+      },
+      "synonyms": [],
+      "marketplaces": {},
+      "created_on": "2021-01-14T05:28:59.852000Z",
+      "priority": 986532,
+      "hierarchy": [
+        {
+          "l2": 22323,
+          "l1": 22322,
+          "department": 21
+        },
+        {
+          "l2": 3732,
+          "l1": 3672,
+          "department": 4
+        },
+        {
+          "l2": 730,
+          "l1": 595,
+          "department": 2
+        }
+      ],
+      "departments": [
+        2,
+        4,
+        21
+      ],
+      "id": "5fffd69be64eb40001fc8a65"
+    },
+    {
+      "uid": 3151,
+      "departments": [
+        4
+      ],
+      "is_active": true,
+      "level": 1,
+      "media": {
+        "logo": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/YHIeoQ_fruit___vegetable_logo.jpg16aab608-a78a-458f-b60b-524525f27dec/YHIeoQ_fruit___vegetable_logo.jpg",
+        "portrait": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpgc73cc22f-b5ee-4fd4-a585-8ada35762d68/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpg",
+        "landscape": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpgc73cc22f-b5ee-4fd4-a585-8ada35762d68/ywPVrU_preview_a637ca6e4da6e38f03eb0d650ac5d6ba.jpg"
+      },
+      "name": "Gourmet & World Food",
+      "priority": 123,
+      "slug": "gourmet-world-food",
+      "synonyms": [
+        "gourmet & world food",
+        "food",
+        "gourmet"
+      ],
+      "created_on": "2016-04-09T06:44:35Z",
+      "hierarchy": [],
+      "modified_by": {
+        "username": "917753852478_51632",
+        "uid": "5677"
+      },
+      "modified_on": "2021-03-03T09:35:50.415000Z",
+      "id": "5fabab8ea18a1284b97ff6c4"
+    },
+    {
+      "modified_by": {
+        "username": "917753852478_51632",
+        "uid": "5677"
+      },
+      "marketplaces": {},
+      "hierarchy": [
+        {
+          "l1": 595,
+          "l2": 714,
+          "department": 2
+        },
+        {
+          "l1": 2,
+          "l2": 4,
+          "department": 1
+        }
+      ],
+      "created_on": "2021-03-03T06:30:08.342000Z",
+      "created_by": {
+        "username": "917753852478_51632",
+        "uid": "5677"
+      },
+      "level": 3,
+      "name": "Test Category kaf",
+      "media": {
+        "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/0wCdjxWpI-.png",
+        "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/EfCt9iXx8-http/d3p8ifzkmzds37.cloudfront.net/media/logo/department/original/15870_c287d3c2431a432bb0e49363ef6b82bc.png.jpeg",
+        "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/VKqwRngFh-.png"
+      },
+      "tryouts": [
+        "Lipstick",
+        "Blush"
+      ],
+      "is_active": true,
+      "slug": "test-category-kaf",
+      "uid": 22328,
+      "synonyms": [
+        "test",
+        "category"
+      ],
+      "priority": 23,
+      "departments": [
+        1,
+        2
+      ],
+      "modified_on": "2021-03-03T08:34:47.999000Z",
+      "id": "603f2cf0aac0360001c00731"
+    },
+    {
+      "level": 3,
+      "departments": [
+        1
+      ],
+      "is_active": false,
+      "created_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "created_on": "2021-02-25T09:26:53.123000Z",
+      "tryouts": [],
+      "slug": "smart-cell",
+      "marketplaces": {},
+      "priority": 5,
+      "media": {
+        "portrait": "http://cdn4.gofynd.com/media/logo/department/original/13239_660c6f5b2b8d458789de4552d241ea1b.jpg",
+        "landscape": "https://hdn-1.fynd.com/media/banner/category/original/16128_380bed8bff064a0b981041df65e0d8b3.jpg",
+        "logo": "http://d3p8ifzkmzds37.cloudfront.net/media/logo/department/original/15870_c287d3c2431a432bb0e49363ef6b82bc.png"
+      },
+      "modified_on": "2021-02-25T09:26:53.123000Z",
+      "synonyms": [],
+      "uid": 22327,
+      "hierarchy": [
+        {
+          "l1": 2,
+          "l2": 3,
+          "department": 1
+        }
+      ],
+      "name": "Smart Cell",
+      "modified_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "id": "60372005d230311fe9e51f0b"
+    },
+    {
+      "is_active": true,
+      "hierarchy": [
+        {
+          "department": 21,
+          "l1": 22322,
+          "l2": 22323
+        }
+      ],
+      "slug": "dummy-level-98",
+      "priority": 986532,
+      "uid": 22326,
+      "departments": [
+        21
+      ],
+      "created_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "modified_on": "2021-02-25T00:09:35.026000Z",
+      "marketplaces": {},
+      "tryouts": [],
+      "synonyms": [],
+      "media": {
+        "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/0wCdjxWpI-.png",
+        "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/S1axCMOJ4-.png",
+        "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/EfCt9iXx8-http/d3p8ifzkmzds37.cloudfront.net/media/logo/department/original/15870_c287d3c2431a432bb0e49363ef6b82bc.png.jpeg"
+      },
+      "level": 3,
+      "name": "Dummy level 98",
+      "created_on": "2021-02-25T00:09:35.026000Z",
+      "modified_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "id": "60369d67d2303111b8924dcf"
+    },
+    {
+      "uid": 315,
+      "created_on": "2016-04-09T06:44:35Z",
+      "departments": [
+        2,
+        3
+      ],
+      "hierarchy": [
+        {
+          "l1": 65,
+          "l2": 66,
+          "department": 2
+        },
+        {
+          "l1": 442,
+          "l2": 26,
+          "department": 2
+        },
+        {
+          "l1": 442,
+          "l2": 26,
+          "department": 3
+        }
+      ],
+      "is_active": true,
+      "level": 3,
+      "marketplaces": {},
+      "media": {
+        "landscape": "https://hdn-1.fynd.com/media/banner/category/original/19961_f042f1f4a90f4e828b6d77d6dbea264d.jpg",
+        "logo": "https://hdn-1.fynd.com/media/logo/category/original/81ef023d375044e9b9daa66b81ec411f.jpg",
+        "portrait": "https://hdn-1.fynd.com/media/banner_portrait/category/original/19960_c679d51cb1bd4ca99f00f9050aa647a4.jpg"
+      },
+      "modified_by": {
+        "username": "917753852478_51632",
+        "user_id": "5677"
+      },
+      "modified_on": "2021-02-15T15:48:05.329000Z",
+      "name": "Sports Bra",
+      "priority": 281,
+      "slug": "sports-bra",
+      "synonyms": [
+        "Sports Bra",
+        "activewear bra",
+        "gym bra"
+      ],
+      "tryouts": [],
+      "id": "5fdba984642de8d93efb0d71"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11743,6 +26604,58 @@ This API gets meta associated to product categories.
 [SingleCategoryResponse](#SingleCategoryResponse)
 
 Get Data for one category. See example below or refer `CategoryResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "name": "Air Conditioners",
+    "media": {
+      "portrait": "https://hdn-1.addsale.com/x0/category/pictures/portrait-banner/original/_4p7Kz9Yp-banner.png",
+      "landscape": "https://hdn-1.addsale.com/x0/category/pictures/landscape-banner/original/nsi0nJ6gX-landscape.png",
+      "logo": "https://hdn-1.addsale.com/x0/category/pictures/square-logo/original/zTgh1zslj-.png"
+    },
+    "marketplaces": {},
+    "tryouts": [],
+    "is_active": true,
+    "created_by": {
+      "username": "917972410891_48194",
+      "user_id": "5646"
+    },
+    "uid": 22330,
+    "slug": "air-conditioners",
+    "priority": 1,
+    "synonyms": [],
+    "modified_by": {
+      "username": "nikhilmhatre_gofynd_com_97636",
+      "user_id": "16"
+    },
+    "level": 3,
+    "hierarchy": [
+      {
+        "l1": 1,
+        "department": 1,
+        "l2": 22329
+      }
+    ],
+    "created_on": "2021-04-02T15:43:59.410000Z",
+    "departments": [
+      1
+    ],
+    "modified_on": "2021-04-13T13:57:56.443000Z",
+    "id": "60673bbf7896da00017885ad"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -11787,6 +26700,20 @@ Category Meta. See example below or refer `CategoryUpdateResponse` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -11823,6 +26750,22 @@ This API allows to create product.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -11867,82 +26810,182 @@ Product Meta. See example below for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
 
-
----
-
-
-#### getProduct
-Get a single product.
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
+```json
+{
+  "items": [
+    {
+      "name": "TV Set",
+      "description": "Tv",
+      "country_of_origin": "India",
+      "currency": "INR",
+      "short_description": "",
+      "is_set": true,
+      "item_code": "TVSET111",
+      "brand_uid": 1,
+      "template_tag": "television",
+      "highlights": [
+        "42 Inch"
+      ],
+      "slug": "tv-set",
+      "_custom_json": {},
+      "l3_mapping": [
+        "electronics>qled_television"
+      ],
+      "image_nature": "standard",
+      "departments": [
+        1
+      ],
+      "created_on": 1599024995,
+      "created_by": {
+        "username": "919049753052_37528",
+        "user_id": "5"
+      },
+      "modified_on": 1627642010,
+      "modified_by": {
+        "username": "xxxxxxxxxx",
+        "user_id": "xxxxxxxxxxx"
+      },
+      "stage": "verified",
+      "uid": 7501547,
+      "verified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "verified_on": 1626965521,
+      "all_sizes": [
+        {
+          "item_code": "TVSET111",
+          "brand_uid": 1,
+          "seller_identifier": "HGS272727272",
+          "identifiers": [
+            {
+              "gtin_type": "ean",
+              "gtin_value": "HGS272727272",
+              "primary": true
+            }
+          ],
+          "company_id": 1,
+          "size": "XXLX23, MX11, LX67, XLX45 (146 PCS)",
+          "marked_price": 35000
+        }
+      ],
+      "category_slug": "qled-television",
+      "is_image_less_product": false,
+      "media": [
+        {
+          "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/135x0/dcizgsG_Y-Tv-Set.png",
+          "type": "image"
+        }
+      ],
+      "variants": {},
+      "product_publish": {
+        "is_set": false,
+        "product_online_date": 1627642009
+      },
+      "is_dependent": false,
+      "is_physical": true,
+      "item_type": "set",
+      "category_uid": 1,
+      "custom_order": {
+        "manufacturing_time": 2,
+        "is_custom_order": true,
+        "manufacturing_time_unit": "days"
+      },
+      "moq": {
+        "minimum": 1,
+        "is_set": false
+      },
+      "multi_size": true,
+      "no_of_boxes": 1,
+      "product_group_tag": [],
+      "size_guide": "slim-fit-shirts-for-men",
+      "tags": [],
+      "teaser_tag": {},
+      "synonyms": [],
+      "hsn_code": "11111111",
+      "return_config": {
+        "unit": "days",
+        "returnable": false,
+        "time": 0
+      },
+      "all_company_ids": [
+        1
+      ],
+      "all_identifiers": [
+        "19WE100"
+      ],
+      "trader": {
+        "address": "sdfdsfsdf",
+        "name": "asdasd"
+      },
+      "trader_type": "Packer",
+      "verification_status": "pending",
+      "sizes": [
+        {
+          "size": "FGX33, GHX33 (66 PCS)",
+          "store_count": 1
+        },
+        {
+          "size": "XSE WE23X100 (100 PCS)",
+          "store_count": 2
+        },
+        {
+          "size": "XSEX100 (100 PCS)",
+          "store_count": 3
+        },
+        {
+          "size": "XXLX23, MX11, LX67, XLX45 (146 PCS)",
+          "store_count": 3
+        }
+      ],
+      "id": "5f4f2f6371a5970001f13655",
+      "brand": {
+        "name": "Apple",
+        "logo": {
+          "aspect_ratio": "1:1",
+          "aspect_ratio_f": 1,
+          "url": "https://hdn-1.jiox0.de/jioecomm/seller/pictures/logo/50x0/apple-7f951c/logo_apple.png",
+          "secure_url": "https://hdn-1.jiox0.de/jioecomm/seller/pictures/logo/50x0/apple-7f951c/logo_apple.png"
+        },
+        "uid": 13
+      },
+      "images": [
+        {
+          "aspect_ratio": "16:25",
+          "aspect_ratio_f": 0.64,
+          "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/135x0/dcizgsG_Y-Tv-Set.png",
+          "secure_url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/135x0/dcizgsG_Y-Tv-Set.png"
+        }
+      ],
+      "price": {
+        "marked": {
+          "min": 35000,
+          "max": 35000
+        },
+        "effective": {
+          "min": 25000,
+          "max": 25000
+        }
+      }
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 1,
+    "item_total": 1,
+    "has_previous": false,
+    "has_next": false
+  }
 }
 ```
+</details>
 
 
 
-
-This API helps to get data associated to a particular product.
-
-*Returned Response*
-
-
-
-
-[Product](#Product)
-
-Product object. See example below or refer `product.utils.format_product_response` for details
-
-
-
-
-
-
----
-
-
-#### editProduct
-Edit a product.
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-This API allows to edit product.
-
-*Returned Response*
-
-
-
-
-[SuccessResponse](#SuccessResponse)
-
-Returns a success response
 
 
 
@@ -11987,6 +27030,254 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+#### getProduct
+Get a single product.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API helps to get data associated to a particular product.
+
+*Returned Response*
+
+
+
+
+[Product](#Product)
+
+Product object. See example below or refer `product.utils.format_product_response` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "template_tag": "industrial-supplies",
+    "brand_uid": 1486,
+    "currency": "INR",
+    "item_code": "TP_FS_01",
+    "slug": "printed-fyndstore-packaging-tape-4inch-x-6-meter-length-pack-of-2-49d7343fc677",
+    "name": "Printed Fyndstore Packaging Tape (4inch X 6 Meter length) - Pack of 2",
+    "hsn_code": "48190000",
+    "country_of_origin": "India",
+    "description": "FyndStore 4 inch Printed BOPP Tapes ",
+    "is_set": true,
+    "is_active": true,
+    "departments": [
+      11
+    ],
+    "uid": 1282497,
+    "category_slug": "printed-tape",
+    "company_id": 884,
+    "media": [
+      {
+        "url": "https://hdn-1.fynd.com/media/pictures/tagged_items/original/TPFS01/IMG20200624130956.jpg",
+        "type": "image"
+      }
+    ],
+    "variants": {},
+    "is_dependent": false,
+    "item_type": "set",
+    "multi_size": true,
+    "product_publish": {
+      "is_set": false,
+      "product_online_date": "2020-09-10T15:16:12.322000Z"
+    },
+    "id": "5f5a433c74f3f400017cdaa0",
+    "brand": {
+      "name": "RollUp",
+      "logo": {
+        "aspect_ratio": "1:1",
+        "aspect_ratio_f": 1,
+        "url": "https://hdn-1.fynd.com/brands/pictures/square-logo/50x0/mPBaWqGRnjR-RMOnlpdMPKm-yjn5mua63gfmzdpombb1.png",
+        "secure_url": "https://hdn-1.fynd.com/brands/pictures/square-logo/50x0/mPBaWqGRnjR-RMOnlpdMPKm-yjn5mua63gfmzdpombb1.png"
+      },
+      "uid": 1486
+    },
+    "return_config": {
+      "returnable": true,
+      "time": 30,
+      "unit": "days"
+    },
+    "sizes": [
+      {
+        "item_dimensions_unit_of_measure": "cm",
+        "item_weight": 0.15,
+        "set": {
+          "quantity": 1,
+          "size_distribution": {
+            "sizes": [
+              {
+                "pieces": 1,
+                "size": "OS"
+              }
+            ]
+          }
+        },
+        "item_height": 10.16,
+        "item_width": 10.16,
+        "price_effective": 999,
+        "size": "OS",
+        "seller_identifier": "TP_FS_01",
+        "brand_uid": 1486,
+        "price": 1000,
+        "item_weight_unit_of_measure": "gram",
+        "currency": "INR",
+        "item_length": 10.16,
+        "item_code": "TP_FS_01",
+        "company_id": 884,
+        "is_set": true,
+        "track_inventory": true,
+        "identifiers": [
+          {
+            "gtin_value": "TP_FS_01",
+            "primary": true,
+            "gtin_type": "sku_code"
+          }
+        ],
+        "price_transfer": 0,
+        "id": "5f5a433c74f3f400017cdaa1",
+        "store_count": 1
+      }
+    ],
+    "attributes": {
+      "style": "TPFS01",
+      "color": "White",
+      "pallet": 1,
+      "l3_mapping": [
+        "industrial_supplies>printed_tape"
+      ],
+      "image_nature": "standard",
+      "created_on": "2020-09-10T15:16:12.322000Z",
+      "created_by": {
+        "username": "sumitdafda_gofynd_com_68387",
+        "user_id": "23108029",
+        "company_id": 884
+      },
+      "modified_on": "2020-09-24T04:51:00.229000Z",
+      "modified_by": {
+        "username": "sumitdafda_gofynd_com_68387",
+        "user_id": "23108029",
+        "company_id": 884
+      },
+      "stage": "verified",
+      "verified_by": {
+        "username": "sumitdafda_gofynd_com_68387",
+        "user_id": "23108029",
+        "company_id": 884
+      },
+      "verified_on": 1600923060,
+      "is_image_less_product": false,
+      "other_available_sizes": []
+    }
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+#### editProduct
+Edit a product.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API allows to edit product.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12023,6 +27314,22 @@ This API validates product data.
 [ValidateProduct](#ValidateProduct)
 
 Validate Meta. See example below for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "valid": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -12067,6 +27374,120 @@ Product object. See example below for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "name": "SQUADMTGIVESPACE",
+  "country_of_origin": "India",
+  "highlights": null,
+  "hsn_code": "61099090",
+  "item_code": "ACTESTCREATELISTING1",
+  "is_set": false,
+  "description": "",
+  "currency": "INR",
+  "slug": "play-clan-squadmtgivespace-857587-e928b0",
+  "template_tag": "topwear",
+  "is_active": false,
+  "departments": [
+    1
+  ],
+  "uid": 857587,
+  "all_sizes": [
+    "3XL"
+  ],
+  "category_slug": "t-shirts",
+  "company_id": 61,
+  "media": [],
+  "size_guide": "play-clan-men-casual-tees",
+  "is_dependent": false,
+  "item_type": "standard",
+  "multi_size": true,
+  "product_publish": {
+    "is_set": false,
+    "product_online_date": 1595478043
+  },
+  "id": "5f19101b99ee0500011dc896",
+  "brand": {
+    "name": "play clan",
+    "logo": {
+      "aspect_ratio": "1:1",
+      "aspect_ratio_f": 1,
+      "url": "https://hdn-1.fynd.com/brands/pictures/square-logo/50x0/zjt4-wU8Lk-VQYu0pcokb-r6yteuannoorjkq9f4tk.jpg",
+      "secure_url": "https://hdn-1.fynd.com/brands/pictures/square-logo/50x0/zjt4-wU8Lk-VQYu0pcokb-r6yteuannoorjkq9f4tk.jpg"
+    },
+    "uid": 85
+  },
+  "images": [],
+  "sizes": [
+    {
+      "price_transfer": 0,
+      "price_effective": 10000,
+      "price": 10000,
+      "currency": "INR",
+      "is_set": false,
+      "size": "3XL",
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "ACTESTCREATELISTING1_3XL",
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "attributes": {
+    "essential": "Yes",
+    "color": "Red",
+    "gender": [
+      "Men"
+    ],
+    "material": "cotton",
+    "pattern": "Printed",
+    "product_fit": "Regular",
+    "sleeve_length": "Short",
+    "neck_type": "Round Neck",
+    "primary_color": "Red",
+    "primary_material": "Others",
+    "l3_mapping": [
+      "men>casual_tees",
+      "women>casual_tees",
+      "girls>casual_tees",
+      "more>casual_tees"
+    ],
+    "image_nature": "standard",
+    "meta_nature": "standard",
+    "created_on": "2020-07-23T04:20:43.810000Z",
+    "created_by": {
+      "username": "silverbolt",
+      "user_id": "-1",
+      "company_id": 1181
+    },
+    "modified_on": "2020-07-23T04:20:44.185000Z",
+    "modified_by": {
+      "username": "silverbolt",
+      "user_id": "-1",
+      "company_id": 61
+    },
+    "stage": "verified",
+    "verified_by": {
+      "username": "Silverbolt",
+      "user_id": "0"
+    },
+    "verified_on": 1595478044,
+    "is_image_less_product": false
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12103,6 +27524,22 @@ This API helps to create a bulk asset upload job.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -12147,42 +27584,64 @@ List of bulk product upload jobs. See `BulkRequestGetSchema` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
 
-
----
-
-
-#### createProductsInBulk
-Create products in bulk associated with given batch Id.
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
+```json
+{
+  "items": [
+    {
+      "stage": "completed",
+      "company_id": 61,
+      "is_active": true,
+      "cancelled_records": [],
+      "failed": 0,
+      "template_tag": "footwear",
+      "modified_on": "2021-03-12T08:11:08.646000Z",
+      "created_on": "2021-03-12T08:11:06.848000Z",
+      "failed_records": [],
+      "created_by": {
+        "username": "yadavanuja039_gmail_com_82948",
+        "user_id": "23218433",
+        "full_name": "Anuja Yadav"
+      },
+      "total": 1,
+      "file_path": "https://hdn-1.fynd.com/company/61/self/documents/product-import/free/original/mkX5ApRmw-sample_bulk_products_footwear.xlsx",
+      "succeed": 1,
+      "modified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "cancelled": 0,
+      "template": {
+        "name": "Footwear",
+        "banner": "https://hdn-1.fynd.com/seller/pictures/landscape-banner/original/nFPtXR_Beauty_&_Personal_Care_L.jpgf30455a5-d265-4382-b513-65afb9240320/nFPtXR_Beauty_and_Personal_Care_L.jpg",
+        "slug": "footwear",
+        "logo": "https://hdn-1.fynd.com/seller/pictures/logo/original/9Y2UEp_ssssss.jpg7359e4c6-4c53-4dbe-a920-ef8ac658afb1/9Y2UEp_ssssss.jpg",
+        "departments": [
+          "men",
+          "women",
+          "kids",
+          "fashion"
+        ],
+        "description": "Footwear is a garment worn on the feet to protect against environmental adversities like heat or ground textures. Example: Sports Shoes"
+      },
+      "id": "604b221a73bfa20001cb00e8"
+    }
+  ],
+  "page": {
+    "current": 1,
+    "size": 26,
+    "has_previous": false,
+    "has_next": true,
+    "item_total": 251
+  }
 }
 ```
+</details>
 
 
 
-
-This API helps to create products in bulk push to kafka for approval/creation.
-
-*Returned Response*
-
-
-
-
-[SuccessResponse](#SuccessResponse)
-
-Returns a success response
 
 
 
@@ -12227,6 +27686,78 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createProductsInBulk
+Create products in bulk associated with given batch Id.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API helps to create products in bulk push to kafka for approval/creation.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12263,6 +27794,27 @@ This API helps to get tags data associated to a particular copmpany.
 [ProductTagsViewResponse](#ProductTagsViewResponse)
 
 Tag List. See example below for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": {
+    "tags": [
+      "demo",
+      "custom"
+    ]
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -12307,6 +27859,22 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12343,6 +27911,56 @@ This API helps to get bulk asset jobs data associated to a particular company.
 [BulkAssetResponse](#BulkAssetResponse)
 
 List of bulk asset jobs List. See `BulkUtil.modify_batch_response` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "created_on": "2021-02-25T16:45:22.425000Z",
+      "file_path": "https://hdn-1.fynd.com/company/61/self/documents/product-import/free/original/ZUSmmXHmZ-U8mTYx3KR-Nike-hoddie.zip",
+      "succeed": 1,
+      "cancelled_records": [],
+      "failed": 0,
+      "failed_records": [],
+      "stage": "completed",
+      "is_active": true,
+      "modified_by": {
+        "user_id": "23175373",
+        "username": "nikhilmhatre_gofynd_com_28085_23175373"
+      },
+      "modified_on": "2021-02-25T16:47:24.551000Z",
+      "retry": 1,
+      "total": 1,
+      "company_id": 61,
+      "created_by": {
+        "user_id": "23175373",
+        "username": "nikhilmhatre_gofynd_com_28085_23175373",
+        "full_name": "nikhil mhatre"
+      },
+      "cancelled": 0,
+      "tracking_url": "https://api.fynd.com/common/assets/v1/asset/status/extract-zips/3296",
+      "id": "6037d422aa879600015c6d1d"
+    }
+  ],
+  "page": {
+    "current": 1,
+    "size": 3,
+    "has_previous": false,
+    "has_next": false,
+    "item_total": 1
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -12387,6 +28005,22 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12423,6 +28057,22 @@ This API allows add Inventory for particular size and store.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -12467,6 +28117,302 @@ returns a list of all inventory grouped by size and store
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "store": {
+        "name": "yosss sdd dsdyo",
+        "store_code": "sanic6sdfsf7",
+        "uid": 59,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "A/204, SAI VANDAN, NARAYAN NAGAR, TULINJ ROAD",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              72.8231511,
+              19.4232024
+            ]
+          },
+          "address2": "",
+          "pincode": 401209,
+          "country": "INDIA",
+          "city": "MUMBAI",
+          "landmark": ""
+        },
+        "manager": {
+          "name": "abc",
+          "email": "a@b.com",
+          "mobile_no": {
+            "number": "2382634324",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "59_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-04-06T03:30:01.487000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 10,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 10,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "Saran Ledonne",
+        "store_code": "af6198fe-2c23-4441-bbf4-e694c96e255c",
+        "uid": 10,
+        "address": {
+          "state": "MAHA",
+          "address1": "NO",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              1,
+              1
+            ]
+          },
+          "address2": "",
+          "pincode": 400072,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "abc",
+          "email": "rehman@cashkart.com",
+          "mobile_no": {
+            "number": "9167943983",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "10_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-04-06T03:29:35.291000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 10,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 10,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "ABC-1-17",
+        "store_code": "ABC-1-17",
+        "uid": 11061,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "14/1, VINOBHA BHAVE NAGAR",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              1,
+              1
+            ]
+          },
+          "address2": "VINOBHA BHAVE NAGAR, KURLA WEST, KURLA, ",
+          "pincode": 400070,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "Fahim",
+          "email": "fahimsakri@gofynd.com",
+          "mobile_no": {
+            "number": "9594495254",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "11061_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-03-17T12:35:29.992000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 10000000,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 10000000,
+      "order_committed_quantity": 0,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "RRL01",
+        "store_code": "WH_8513",
+        "uid": 1,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              72.8691788,
+              19.1174114
+            ]
+          },
+          "address2": "KONDIVITA, ANDHERI EAST, MUMBAI, MAHARASHTRA 400069",
+          "pincode": 400059,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "ASHISH CHANDORKAR",
+          "email": "ASHISHCHANDORKAR@FYND.COM",
+          "mobile_no": {
+            "number": "8369782851",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "1_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-03-31T19:00:10.943000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 39,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 18,
+      "order_committed_quantity": 7,
+      "not_available_quantity": 0,
+      "damaged_quantity": 0,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "RRL01",
+        "store_code": "WH_8513",
+        "uid": 1,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              72.8691788,
+              19.1174114
+            ]
+          },
+          "address2": "KONDIVITA, ANDHERI EAST, MUMBAI, MAHARASHTRA 400069",
+          "pincode": 400059,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "ASHISH CHANDORKAR",
+          "email": "ASHISHCHANDORKAR@FYND.COM",
+          "mobile_no": {
+            "number": "8369782851",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "1_rtyuidsdfv",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2020-07-07T10:37:06.146000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 39,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 0,
+      "order_committed_quantity": 39,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 1,
+    "item_total": 5,
+    "has_previous": false,
+    "has_next": false
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12503,6 +28449,302 @@ This API allows get Inventory data for particular company grouped by size and st
 [InventoryResponse](#InventoryResponse)
 
 returns a list of all inventory grouped by size and store
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "store": {
+        "name": "yosss sdd dsdyo",
+        "store_code": "sanic6sdfsf7",
+        "uid": 59,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "A/204, SAI VANDAN, NARAYAN NAGAR, TULINJ ROAD",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              72.8231511,
+              19.4232024
+            ]
+          },
+          "address2": "",
+          "pincode": 401209,
+          "country": "INDIA",
+          "city": "MUMBAI",
+          "landmark": ""
+        },
+        "manager": {
+          "name": "abc",
+          "email": "a@b.com",
+          "mobile_no": {
+            "number": "2382634324",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "59_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-04-06T03:30:01.487000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 10,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 10,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "Saran Ledonne",
+        "store_code": "af6198fe-2c23-4441-bbf4-e694c96e255c",
+        "uid": 10,
+        "address": {
+          "state": "MAHA",
+          "address1": "NO",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              1,
+              1
+            ]
+          },
+          "address2": "",
+          "pincode": 400072,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "abc",
+          "email": "rehman@cashkart.com",
+          "mobile_no": {
+            "number": "9167943983",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "10_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-04-06T03:29:35.291000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 10,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 10,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "ABC-1-17",
+        "store_code": "ABC-1-17",
+        "uid": 11061,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "14/1, VINOBHA BHAVE NAGAR",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              1,
+              1
+            ]
+          },
+          "address2": "VINOBHA BHAVE NAGAR, KURLA WEST, KURLA, ",
+          "pincode": 400070,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "Fahim",
+          "email": "fahimsakri@gofynd.com",
+          "mobile_no": {
+            "number": "9594495254",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "11061_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-03-17T12:35:29.992000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 10000000,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 10000000,
+      "order_committed_quantity": 0,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "RRL01",
+        "store_code": "WH_8513",
+        "uid": 1,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              72.8691788,
+              19.1174114
+            ]
+          },
+          "address2": "KONDIVITA, ANDHERI EAST, MUMBAI, MAHARASHTRA 400069",
+          "pincode": 400059,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "ASHISH CHANDORKAR",
+          "email": "ASHISHCHANDORKAR@FYND.COM",
+          "mobile_no": {
+            "number": "8369782851",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "1_RTYUIDSDFV",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2021-03-31T19:00:10.943000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 39,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 18,
+      "order_committed_quantity": 7,
+      "not_available_quantity": 0,
+      "damaged_quantity": 0,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    },
+    {
+      "store": {
+        "name": "RRL01",
+        "store_code": "WH_8513",
+        "uid": 1,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              72.8691788,
+              19.1174114
+            ]
+          },
+          "address2": "KONDIVITA, ANDHERI EAST, MUMBAI, MAHARASHTRA 400069",
+          "pincode": 400059,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "manager": {
+          "name": "ASHISH CHANDORKAR",
+          "email": "ASHISHCHANDORKAR@FYND.COM",
+          "mobile_no": {
+            "number": "8369782851",
+            "country_code": 91
+          }
+        },
+        "integration_type": {
+          "order": "browntape",
+          "inventory": "browntape"
+        },
+        "_custom_json": {}
+      },
+      "uid": "1_rtyuidsdfv",
+      "size": "AAX1 (1 PCS)",
+      "inventory_updated_on": "2020-07-07T10:37:06.146000",
+      "seller_identifier": "RTYUIDSDFV",
+      "item_id": 7500651,
+      "quantity": 39,
+      "price": 1234,
+      "price_effective": 1234,
+      "price_transfer": 0,
+      "currency": "INR",
+      "sellable_quantity": 0,
+      "order_committed_quantity": 39,
+      "identifiers": [
+        {
+          "gtin_type": "sku_code",
+          "gtin_value": "RTYUIDSDFV",
+          "primary": true
+        }
+      ]
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 1,
+    "item_total": 5,
+    "has_previous": false,
+    "has_next": false
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -12547,6 +28789,22 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12583,6 +28841,22 @@ This API helps to create a bulk Inventory upload job.
 [CommonResponse](#CommonResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -12627,42 +28901,321 @@ List of bulk Inventory upload jobs. See `BulkInventoryGetSchema` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
 
-
----
-
-
-#### createBulkInventory
-Create products in bulk associated with given batch Id.
-
-
-
-```kotlin
-catalog.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
+```json
+{
+  "items": [
+    {
+      "succeed": 1,
+      "stage": "completed",
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/50DbgKLND-NtnL_EAVb-REicn1sDv-V8ZrKdnLt-product_inventory.csv",
+      "created_on": "2021-03-11T10:54:44.998000Z",
+      "cancelled_records": [],
+      "created_by": {
+        "username": "nikhilmhatre_gofynd_com_97636",
+        "user_id": "16",
+        "full_name": "Nikhil Mhatre"
+      },
+      "modified_on": "2021-03-11T10:54:45.296000Z",
+      "cancelled": 0,
+      "failed": 0,
+      "modified_by": {
+        "user_id": "0",
+        "username": "Silverbolt"
+      },
+      "company_id": 1,
+      "total": 1,
+      "is_active": true,
+      "failed_records": [],
+      "id": "6049f6f5723043000125a9ea"
+    },
+    {
+      "created_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "cancelled": 0,
+      "modified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "created_on": "2021-03-04T09:46:51.714000Z",
+      "company_id": 1,
+      "failed": 0,
+      "failed_records": [],
+      "succeed": 1,
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/NtnL_EAVb-REicn1sDv-V8ZrKdnLt-product_inventory.csv",
+      "cancelled_records": [],
+      "total": 1,
+      "is_active": true,
+      "modified_on": "2021-03-04T09:46:55.349000Z",
+      "stage": "completed",
+      "id": "6040ac8b1803830001fcc1ed"
+    },
+    {
+      "company_id": 1,
+      "failed": 0,
+      "modified_by": {
+        "user_id": "-1",
+        "username": "silverbolt"
+      },
+      "cancelled": 0,
+      "is_active": true,
+      "cancelled_records": [],
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/bmBZY9iAX-REicn1sDv-V8ZrKdnLt-product_inventory.csv",
+      "created_by": {
+        "user_id": "-1",
+        "username": "silverbolt"
+      },
+      "modified_on": "2021-03-04T09:22:32.222000Z",
+      "succeed": 0,
+      "failed_records": [],
+      "stage": "terminated",
+      "created_on": "2021-03-04T09:22:32.222000Z",
+      "total": 1,
+      "id": "6040a6d8104f110001a85061"
+    },
+    {
+      "company_id": 1,
+      "failed": 0,
+      "modified_by": {
+        "user_id": "-1",
+        "username": "silverbolt"
+      },
+      "cancelled": 0,
+      "is_active": true,
+      "cancelled_records": [],
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/m73yWRT3v-REicn1sDv-V8ZrKdnLt-product_inventory.csv",
+      "created_by": {
+        "user_id": "-1",
+        "username": "silverbolt"
+      },
+      "modified_on": "2021-03-04T09:20:29.719000Z",
+      "succeed": 0,
+      "failed_records": [],
+      "stage": "terminated",
+      "created_on": "2021-03-04T09:20:29.719000Z",
+      "total": 1,
+      "id": "6040a65d104f110001a85060"
+    },
+    {
+      "created_on": "2021-03-04T08:50:49.367000Z",
+      "cancelled_records": [],
+      "failed_records": [],
+      "succeed": 0,
+      "cancelled": 0,
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/W9lxe19Uu-REicn1sDv-V8ZrKdnLt-product_inventory.csv",
+      "total": 1,
+      "created_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "is_active": true,
+      "modified_by": {
+        "username": "silverbolt",
+        "user_id": "-1"
+      },
+      "company_id": 1,
+      "failed": 0,
+      "modified_on": "2021-03-04T08:50:49.367000Z",
+      "stage": "terminated",
+      "id": "60409f699b21e30001c1e6b5"
+    },
+    {
+      "total": 1,
+      "succeed": 1,
+      "created_on": "2021-02-10T10:57:57.236000Z",
+      "failed": 0,
+      "modified_by": {
+        "user_id": "0",
+        "username": "Silverbolt"
+      },
+      "created_by": {
+        "username": "917972410891_48194",
+        "user_id": "5646",
+        "full_name": "Sourabh Nilakhe"
+      },
+      "is_active": true,
+      "cancelled_records": [],
+      "failed_records": [],
+      "company_id": 1,
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/REicn1sDv-V8ZrKdnLt-product_inventory.csv",
+      "modified_on": "2021-02-10T10:57:57.571000Z",
+      "stage": "completed",
+      "cancelled": 0,
+      "id": "6023bc35c85ca1000171e08a"
+    },
+    {
+      "total": 1,
+      "succeed": 1,
+      "created_on": "2021-02-10T10:57:22.535000Z",
+      "failed": 0,
+      "modified_by": {
+        "user_id": "0",
+        "username": "Silverbolt"
+      },
+      "created_by": {
+        "username": "917972410891_48194",
+        "user_id": "5646",
+        "full_name": "Sourabh Nilakhe"
+      },
+      "is_active": true,
+      "cancelled_records": [],
+      "failed_records": [],
+      "company_id": 1,
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/Oth_LaVyI-V8ZrKdnLt-product_inventory.csv",
+      "modified_on": "2021-02-10T10:57:23.311000Z",
+      "stage": "completed",
+      "cancelled": 0,
+      "id": "6023bc12c85ca1000171e089"
+    },
+    {
+      "created_by": {
+        "user_id": "16",
+        "username": "nikhilmhatre_gofynd_com_97636",
+        "full_name": "Nikhil Mhatre"
+      },
+      "succeed": 1,
+      "failed": 0,
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/V8ZrKdnLt-product_inventory.csv",
+      "company_id": 1,
+      "created_on": "2021-01-13T13:58:06.155000Z",
+      "stage": "completed",
+      "modified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "is_active": true,
+      "total": 1,
+      "failed_records": [],
+      "modified_on": "2021-01-13T13:58:06.369000Z",
+      "cancelled_records": [],
+      "cancelled": 0,
+      "id": "5ffefc6ee2db8f000183fab8"
+    },
+    {
+      "succeed": 0,
+      "is_active": true,
+      "cancelled": 0,
+      "failed_records": [
+        {
+          "identifiers": "1.91887E+11",
+          "message": "Invalid identifier: 1.91887E+11. Product not found."
+        }
+      ],
+      "total": 1,
+      "stage": "failed",
+      "modified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/t3T6X2Riy-product_inventory.csv",
+      "cancelled_records": [],
+      "created_by": {
+        "username": "nikhilmhatre_gofynd_com_97636",
+        "user_id": "16",
+        "full_name": "Nikhil Mhatre"
+      },
+      "created_on": "2021-01-13T13:57:38.598000Z",
+      "company_id": 1,
+      "failed": 1,
+      "modified_on": "2021-01-13T13:57:38.832000Z",
+      "id": "5ffefc5252f31100012ea981"
+    },
+    {
+      "total": 1,
+      "company_id": 1,
+      "created_by": {
+        "user_id": "16",
+        "username": "nikhilmhatre_gofynd_com_97636",
+        "full_name": "Nikhil Mhatre"
+      },
+      "failed": 1,
+      "modified_on": "2021-01-13T13:57:13.847000Z",
+      "succeed": 0,
+      "stage": "failed",
+      "cancelled_records": [],
+      "failed_records": [
+        {
+          "identifiers": "1.91887E+11",
+          "message": "Invalid identifier: 1.91887E+11. Product not found."
+        }
+      ],
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/NSTuhgsgq-product_inventory.csv",
+      "is_active": true,
+      "created_on": "2021-01-13T13:57:13.639000Z",
+      "cancelled": 0,
+      "modified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "id": "5ffefc39a0d1e20001ae118c"
+    },
+    {
+      "succeed": 1,
+      "failed": 0,
+      "failed_records": [],
+      "cancelled": 0,
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/cwQV-Z6gT-product_inventory.xlsx",
+      "created_on": "2021-01-12T06:37:06.167000Z",
+      "is_active": true,
+      "cancelled_records": [],
+      "created_by": {
+        "user_id": "16",
+        "username": "nikhilmhatre_gofynd_com_97636",
+        "full_name": "Nikhil Mhatre"
+      },
+      "company_id": 1,
+      "stage": "completed",
+      "modified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "modified_on": "2021-01-12T06:37:06.307000Z",
+      "total": 1,
+      "id": "5ffd4392b4c34d000170697b"
+    },
+    {
+      "succeed": 1,
+      "failed": 0,
+      "failed_records": [],
+      "cancelled": 0,
+      "file_path": "https://hdn-1.addsale.com/x0/company/1/self/documents/inventory-import/free/original/gccehef2f-product_inventory.xlsx",
+      "created_on": "2021-01-12T06:36:24.292000Z",
+      "is_active": true,
+      "cancelled_records": [],
+      "created_by": {
+        "user_id": "16",
+        "username": "nikhilmhatre_gofynd_com_97636",
+        "full_name": "Nikhil Mhatre"
+      },
+      "company_id": 1,
+      "stage": "completed",
+      "modified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "modified_on": "2021-01-12T06:36:24.535000Z",
+      "total": 1,
+      "id": "5ffd4368b4c34d0001706960"
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 4,
+    "item_total": 39,
+    "has_previous": false,
+    "has_next": true
+  }
 }
 ```
+</details>
 
 
 
-
-This API helps to create products in bulk push to kafka for approval/creation.
-
-*Returned Response*
-
-
-
-
-[SuccessResponse](#SuccessResponse)
-
-Returns a success response
 
 
 
@@ -12707,6 +29260,78 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+#### createBulkInventory
+Create products in bulk associated with given batch Id.
+
+
+
+```kotlin
+catalog.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API helps to create products in bulk push to kafka for approval/creation.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12743,6 +29368,22 @@ This API helps to create a Inventory export job.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -12787,6 +29428,20 @@ Returns a list of inventory export jobs
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12823,6 +29478,29 @@ This API allows get List of different filters like brand, store, and type for in
 [InventoryConfig](#InventoryConfig)
 
 returns filters configuration for inventory export
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+[
+  {
+    "display": "csv",
+    "value": "csv"
+  },
+  {
+    "display": "excel",
+    "value": "excel"
+  }
+]
+```
+</details>
+
+
+
 
 
 
@@ -12867,6 +29545,42 @@ See example below for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "company_id": 1,
+    "hs2_code": "xx",
+    "modified_by": {
+      "username": "narutouzumaki",
+      "user_id": "0"
+    },
+    "id": "xxxxxxxxxxxx",
+    "tax_on": "esp",
+    "slabs": [
+      {
+        "tax": 0,
+        "threshold": 999999
+      },
+      {
+        "tax": 0,
+        "threshold": 0
+      }
+    ],
+    "hsn_code": "xxxxxxxx"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12903,6 +29617,42 @@ Hsn Code List.
 [HsnCodesListingResponse](#HsnCodesListingResponse)
 
 List of all HSN Codes. See example below or refer `HsnCodesListingResponseSchema` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "company_id": 1,
+      "hs2_code": "xx",
+      "hsn_code": "xxxxxxxx",
+      "tax1": 0,
+      "tax2": 0,
+      "threshold1": 999999,
+      "threshold2": 0,
+      "tax_on_esp": true,
+      "tax_on_mrp": false,
+      "id": "xxxxxxxxxxxx"
+    }
+  ],
+  "page": {
+    "current": 1,
+    "size": 2,
+    "has_previous": false,
+    "has_next": true,
+    "item_total": 20
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -12947,6 +29697,42 @@ See example below details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "company_id": 1,
+    "hs2_code": "xx",
+    "modified_by": {
+      "username": "narutouzumaki",
+      "user_id": "0"
+    },
+    "id": "xxxxxxxxxxxx",
+    "tax_on": "esp",
+    "slabs": [
+      {
+        "tax": 0,
+        "threshold": 999999
+      },
+      {
+        "tax": 0,
+        "threshold": 0
+      }
+    ],
+    "hsn_code": "xxxxxxxx"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -12983,6 +29769,42 @@ Update Hsn Code.
 [HsnCode](#HsnCode)
 
 See example below for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "company_id": 1,
+    "hs2_code": "xx",
+    "modified_by": {
+      "username": "narutouzumaki",
+      "user_id": "0"
+    },
+    "id": "xxxxxxxxxxxx",
+    "tax_on": "esp",
+    "slabs": [
+      {
+        "tax": 0,
+        "threshold": 999999
+      },
+      {
+        "tax": 0,
+        "threshold": 0
+      }
+    ],
+    "hsn_code": "xxxxxxxx"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -13027,6 +29849,22 @@ See example below for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13063,6 +29901,58 @@ A brand is the name under which a product is being sold. Use this API to list al
 [BrandListingResponse](#BrandListingResponse)
 
 List of Brands. See example below or refer `BrandListingResponse` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "uid": 1,
+      "name": "Barry, Jennings and Larson",
+      "slug": "Hess-Inc",
+      "action": {
+        "page": {
+          "type": "products",
+          "query": {
+            "brand": [
+              "Hess-Inc"
+            ]
+          }
+        },
+        "type": "page"
+      },
+      "logo": {
+        "type": "image",
+        "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+      },
+      "banners": {
+        "portrait": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/12537_9cdfc6835e814b0986ee1643d38cf6cd.png"
+        }
+      },
+      "en_name": "Barry, Jennings and Larson"
+    }
+  ],
+  "page": {
+    "current": 1,
+    "total": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_total": 1,
+    "type": "number"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -13107,6 +29997,123 @@ List of Departments. See example below or refer `DepartmentResponse` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "uid": 1,
+      "name": "Zachary Harris",
+      "slug": "Zachary-Harris",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 2,
+      "name": "Aaron Reilly",
+      "slug": "Aaron-Reilly",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 3,
+      "name": "Bobby Sandoval",
+      "slug": "Bobby-Sandoval",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 4,
+      "name": "Seth Hughes",
+      "slug": "Seth-Hughes",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 5,
+      "name": "Michelle Moore",
+      "slug": "Michelle-Moore",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 6,
+      "name": "Annette Baldwin",
+      "slug": "Annette-Baldwin",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 7,
+      "name": "Chris Mata",
+      "slug": "Chris-Mata",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 8,
+      "name": "Nicole Jacobs",
+      "slug": "Nicole-Jacobs",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 9,
+      "name": "Pamela Smith",
+      "slug": "Pamela-Smith",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    },
+    {
+      "uid": 10,
+      "name": "Nicole Simon",
+      "slug": "Nicole-Simon",
+      "priority_order": 7,
+      "logo": {
+        "type": "image",
+        "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+      }
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13143,6 +30150,108 @@ List all the categories. You can optionally pass filter the brands by the depart
 [CategoryListingResponse](#CategoryListingResponse)
 
 List of Categories. See example below or refer `CategoryListingResponse` for details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "departments": [
+    {
+      "slug": "Cody-Doyle",
+      "uid": 1
+    }
+  ],
+  "data": [
+    {
+      "department": "Cody-Doyle",
+      "items": [
+        {
+          "name": "Janet Parker",
+          "image": {
+            "aspect_ratio": "13:20",
+            "aspect_ratio_f": 0.65,
+            "url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/banner_portrait/category/resize-w:130,h:200/12064_e69e1d8b5e934d3488f0dc8663d8a158.jpg"
+          },
+          "uid": 1,
+          "slug": "Janet-Parker",
+          "_custom_json": {},
+          "action": {
+            "type": "category",
+            "url": "https://api.addsale.com/platform/content/v1/products/?l1_category=Janet-Parker&department=Jaime-Chambers",
+            "query": {
+              "l1_category": [
+                "Janet-Parker"
+              ],
+              "department": [
+                "Jaime-Chambers"
+              ]
+            }
+          },
+          "childs": [
+            {
+              "name": "Hannah Lawson",
+              "image": {
+                "aspect_ratio": "13:20",
+                "aspect_ratio_f": 0.65,
+                "url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/banner_portrait/category/resize-w:130,h:200/12064_e69e1d8b5e934d3488f0dc8663d8a158.jpg"
+              },
+              "uid": 2,
+              "slug": "Hannah-Lawson",
+              "_custom_json": {},
+              "action": {
+                "type": "category",
+                "url": "https://api.addsale.com/platform/content/v1/products/?l2_category=Hannah-Lawson&department=Jaime-Chambers",
+                "query": {
+                  "l2_category": [
+                    "Hannah-Lawson"
+                  ],
+                  "department": [
+                    "Jaime-Chambers"
+                  ]
+                }
+              },
+              "childs": [
+                {
+                  "name": "Logan Black",
+                  "image": {
+                    "aspect_ratio": "13:20",
+                    "aspect_ratio_f": 0.65,
+                    "url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/banner_portrait/category/resize-w:130,h:200/12064_e69e1d8b5e934d3488f0dc8663d8a158.jpg"
+                  },
+                  "uid": 3,
+                  "slug": "Logan-Black",
+                  "_custom_json": {},
+                  "action": {
+                    "type": "category",
+                    "url": "https://api.addsale.com/platform/content/v1/products/?category=Logan-Black&department=Jaime-Chambers",
+                    "query": {
+                      "category": [
+                        "Logan-Black"
+                      ],
+                      "department": [
+                        "Jaime-Chambers"
+                      ]
+                    }
+                  },
+                  "childs": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -13187,6 +30296,635 @@ List of Products. See example below or refer `ApplicationProductListingResponse`
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "filters": [
+    {
+      "key": {
+        "display": "Department",
+        "name": "department",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Department.svg"
+      },
+      "values": [
+        {
+          "display": "Debra Villarreal",
+          "count": 15,
+          "is_selected": false,
+          "value": "Debra-Villarreal",
+          "logo": {
+            "type": "image",
+            "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+          }
+        },
+        {
+          "display": "Tracey Miller",
+          "count": 15,
+          "is_selected": false,
+          "value": "Tracey-Miller",
+          "logo": {
+            "type": "image",
+            "url": "http://cdn4.gofynd.com/media/category_tab_icons/department/Men.png"
+          }
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Category",
+        "name": "category",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Category.svg"
+      },
+      "values": [
+        {
+          "display": "Amy Kim DDS",
+          "count": 15,
+          "is_selected": false,
+          "value": "3",
+          "logo": "http://cdn4.gofynd.com/media/banner/category/original/12063_a5bb91bd5cb44c3c9db98c2a0e6b3d99.jpg"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Gender",
+        "name": "gender",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Gender.svg"
+      },
+      "values": [
+        {
+          "display": "Men",
+          "count": 15,
+          "is_selected": false,
+          "value": "men"
+        },
+        {
+          "display": "Women",
+          "count": 15,
+          "is_selected": false,
+          "value": "women"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Size",
+        "name": "sizes",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Sizes.svg"
+      },
+      "values": [
+        {
+          "display": "13",
+          "count": 15,
+          "is_selected": false,
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Brand",
+        "name": "brand",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Brand%20ID.svg"
+      },
+      "values": [
+        {
+          "display": "Barry, Jennings and Larson",
+          "count": 15,
+          "is_selected": false,
+          "value": "1",
+          "logo": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Rating",
+        "name": "rating",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/Rating.svg"
+      },
+      "values": [
+        {
+          "count": 15,
+          "display": "2 - 3",
+          "value": "[2 TO 3}",
+          "is_selected": false
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Image",
+        "name": "image_nature",
+        "kind": "multivalued",
+        "logo": "https://hdn-1.fynd.com/global/menu-icons/image%20Nature.svg"
+      },
+      "values": [
+        {
+          "display": "GoodQuality",
+          "count": 15,
+          "is_selected": false,
+          "value": "standard"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Monica Hampton",
+        "name": "material",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "Neoprene",
+          "count": 15,
+          "is_selected": false,
+          "value": "Neoprene"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "John Mendoza",
+        "name": "weight",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "100",
+          "count": 15,
+          "is_selected": false,
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Kimberly Mcdaniel",
+        "name": "gender",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "['Men', 'Women']",
+          "count": 15,
+          "is_selected": false,
+          "value": "['Men', 'Women']"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Kimberly Davidson",
+        "name": "color",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "Grey",
+          "count": 15,
+          "is_selected": false,
+          "value": "808080"
+        }
+      ]
+    },
+    {
+      "key": {
+        "display": "Availability",
+        "name": "exclude_out_of_stock",
+        "kind": "multivalued",
+        "logo": ""
+      },
+      "values": [
+        {
+          "display": "Exclude out of Stock",
+          "is_selected": false,
+          "value": true
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "type": "product",
+      "attributes": {
+        "primary_color_hex": "808080",
+        "weight": "100",
+        "gender": "women",
+        "material": "Neoprene",
+        "primary_color": "DarkGrey"
+      },
+      "categories": [
+        {
+          "id": 3,
+          "uid": 3,
+          "name": "Amy Kim DDS",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+          },
+          "action": {
+            "page": {
+              "type": "category",
+              "query": {
+                "category": [
+                  "Amy-Kim-DDS"
+                ]
+              }
+            },
+            "type": "page"
+          },
+          "_custom_json": {}
+        }
+      ],
+      "sellable": true,
+      "name": "benchmark collaborative paradigms",
+      "slug": "benchmark-collaborative-paradigms",
+      "uid": 1,
+      "item_type": "set",
+      "brand": {
+        "type": "brand",
+        "name": "Hess Inc",
+        "logo": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        },
+        "action": {
+          "page": {
+            "type": "products",
+            "query": {
+              "brand": [
+                "Hess-Inc"
+              ]
+            }
+          },
+          "type": "page"
+        },
+        "_custom_json": {}
+      },
+      "action": {
+        "page": {
+          "type": "product",
+          "query": {
+            "slug": "benchmark-collaborative-paradigms"
+          }
+        },
+        "type": "page"
+      },
+      "medias": [
+        {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/fynd_store_items/l2_category/original/2830_c5bb5fc02f414307a828c4c56483c30a.jpg"
+        }
+      ],
+      "discount": "14% OFF",
+      "price": {
+        "marked": {
+          "min": 1399,
+          "max": 1499,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        },
+        "effective": {
+          "min": 1199,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        }
+      },
+      "is_tryout": false,
+      "promo_meta": {
+        "title": "",
+        "subtitle": ""
+      },
+      "item_code": "ITEM_CODE_1",
+      "rating": 2.7
+    },
+    {
+      "type": "product",
+      "attributes": {
+        "primary_color_hex": "808080",
+        "weight": "100",
+        "gender": "women",
+        "material": "Neoprene",
+        "primary_color": "DarkGrey"
+      },
+      "categories": [
+        {
+          "id": 3,
+          "uid": 3,
+          "name": "Amy Kim DDS",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+          },
+          "action": {
+            "page": {
+              "type": "category",
+              "query": {
+                "category": [
+                  "Amy-Kim-DDS"
+                ]
+              }
+            },
+            "type": "page"
+          },
+          "_custom_json": {}
+        }
+      ],
+      "sellable": true,
+      "name": "architect granular e-business",
+      "slug": "architect-granular-e-business",
+      "uid": 10,
+      "item_type": "set",
+      "brand": {
+        "type": "brand",
+        "name": "Hess Inc",
+        "logo": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        },
+        "action": {
+          "page": {
+            "type": "products",
+            "query": {
+              "brand": [
+                "Hess-Inc"
+              ]
+            }
+          },
+          "type": "page"
+        },
+        "_custom_json": {}
+      },
+      "action": {
+        "page": {
+          "type": "product",
+          "query": {
+            "slug": "architect-granular-e-business"
+          }
+        },
+        "type": "page"
+      },
+      "medias": [
+        {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/fynd_store_items/l2_category/original/2830_c5bb5fc02f414307a828c4c56483c30a.jpg"
+        }
+      ],
+      "discount": "14% OFF",
+      "price": {
+        "marked": {
+          "min": 1399,
+          "max": 1499,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        },
+        "effective": {
+          "min": 1199,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        }
+      },
+      "is_tryout": false,
+      "promo_meta": {
+        "title": "",
+        "subtitle": ""
+      },
+      "item_code": "ITEM_CODE_2",
+      "rating": 2.7
+    },
+    {
+      "type": "product",
+      "attributes": {
+        "primary_color_hex": "808080",
+        "weight": "100",
+        "gender": "women",
+        "material": "Neoprene",
+        "primary_color": "DarkGrey"
+      },
+      "categories": [
+        {
+          "id": 3,
+          "uid": 3,
+          "name": "Amy Kim DDS",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+          },
+          "action": {
+            "page": {
+              "type": "category",
+              "query": {
+                "category": [
+                  "Amy-Kim-DDS"
+                ]
+              }
+            },
+            "type": "page"
+          },
+          "_custom_json": {}
+        }
+      ],
+      "sellable": true,
+      "name": "facilitate enterprise supply-chains",
+      "slug": "facilitate-enterprise-supply-chains",
+      "uid": 11,
+      "item_type": "set",
+      "brand": {
+        "type": "brand",
+        "name": "Hess Inc",
+        "logo": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        },
+        "action": {
+          "page": {
+            "type": "products",
+            "query": {
+              "brand": [
+                "Hess-Inc"
+              ]
+            }
+          },
+          "type": "page"
+        },
+        "_custom_json": {}
+      },
+      "action": {
+        "page": {
+          "type": "product",
+          "query": {
+            "slug": "facilitate-enterprise-supply-chains"
+          }
+        },
+        "type": "page"
+      },
+      "medias": [
+        {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/fynd_store_items/l2_category/original/2830_c5bb5fc02f414307a828c4c56483c30a.jpg"
+        }
+      ],
+      "discount": "14% OFF",
+      "price": {
+        "marked": {
+          "min": 1399,
+          "max": 1499,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        },
+        "effective": {
+          "min": 1199,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        }
+      },
+      "is_tryout": false,
+      "promo_meta": {
+        "title": "",
+        "subtitle": ""
+      },
+      "item_code": "ITEM_CODE_3",
+      "rating": 2.7
+    },
+    {
+      "type": "product",
+      "attributes": {
+        "primary_color_hex": "808080",
+        "weight": "100",
+        "gender": "women",
+        "material": "Neoprene",
+        "primary_color": "DarkGrey"
+      },
+      "categories": [
+        {
+          "id": 3,
+          "uid": 3,
+          "name": "Amy Kim DDS",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+          },
+          "action": {
+            "page": {
+              "type": "category",
+              "query": {
+                "category": [
+                  "Amy-Kim-DDS"
+                ]
+              }
+            },
+            "type": "page"
+          },
+          "_custom_json": {}
+        }
+      ],
+      "sellable": true,
+      "name": "optimize web-enabled e-tailers",
+      "slug": "optimize-web-enabled-e-tailers",
+      "uid": 12,
+      "item_type": "set",
+      "brand": {
+        "type": "brand",
+        "name": "Hess Inc",
+        "logo": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        },
+        "action": {
+          "page": {
+            "type": "products",
+            "query": {
+              "brand": [
+                "Hess-Inc"
+              ]
+            }
+          },
+          "type": "page"
+        },
+        "_custom_json": {}
+      },
+      "action": {
+        "page": {
+          "type": "product",
+          "query": {
+            "slug": "optimize-web-enabled-e-tailers"
+          }
+        },
+        "type": "page"
+      },
+      "medias": [
+        {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/fynd_store_items/l2_category/original/2830_c5bb5fc02f414307a828c4c56483c30a.jpg"
+        }
+      ],
+      "discount": "14% OFF",
+      "price": {
+        "marked": {
+          "min": 1399,
+          "max": 1499,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        },
+        "effective": {
+          "min": 1199,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        }
+      },
+      "is_tryout": false,
+      "promo_meta": {
+        "title": "",
+        "subtitle": ""
+      },
+      "item_code": "ITEM_CODE_4",
+      "rating": 2.7
+    }
+  ],
+  "sort_on": [
+    {
+      "display": "Latest Products.",
+      "name": "Latest Products.",
+      "logo": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/360x0/56_MKT02AI060CORAL/1_1567590349681.jpg",
+      "value": "latest",
+      "is_selected": true
+    }
+  ],
+  "page": {
+    "current": 1,
+    "total": 2,
+    "has_previous": false,
+    "has_next": true,
+    "item_total": 15,
+    "type": "number"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13223,6 +30961,137 @@ Products are the core resource of an application. Products can be associated by 
 [ProductDetail](#ProductDetail)
 
 The Product object. See example below or refer `ProductDetail` for details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "type": "product",
+  "grouped_attributes": [
+    {
+      "title": "Alexander Sawyer",
+      "details": [
+        {
+          "key": "Kimberly Davidson",
+          "type": "text",
+          "value": "DarkGrey"
+        },
+        {
+          "key": "Kimberly Mcdaniel",
+          "type": "text",
+          "value": "Men,Women"
+        },
+        {
+          "key": "Monica Hampton",
+          "type": "text",
+          "value": "Neoprene"
+        },
+        {
+          "key": "John Mendoza",
+          "type": "text",
+          "value": "100 g"
+        }
+      ]
+    }
+  ],
+  "medias": [
+    {
+      "type": "image",
+      "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1309_LGLAPTOPSLEEVE5/1_1564735832806.jpg"
+    }
+  ],
+  "brand": {
+    "name": "Barry, Jennings and Larson",
+    "uid": 1,
+    "logo": {
+      "type": "image",
+      "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+    },
+    "action": {
+      "page": {
+        "type": "products",
+        "query": {
+          "brand": [
+            "Hess-Inc"
+          ]
+        }
+      },
+      "type": "page"
+    },
+    "_custom_json": {}
+  },
+  "uid": 1,
+  "slug": "benchmark-collaborative-paradigms",
+  "attributes": {
+    "color_hex": "808080",
+    "weight": 100,
+    "product_type": "LaptopBags",
+    "gender": [
+      "Men",
+      "Women"
+    ],
+    "material": "Neoprene",
+    "style_note": "Shape up your overall appeal with this stunning laptop bag. The amazing storage and great design will let you carry your laptop in style!",
+    "item_code": "LGLAPTOPSLEEVE5",
+    "occasion": "Casual",
+    "primary_color": "Grey",
+    "primary_material": "Others",
+    "variant": "LGLAPTOPSLEEVE5",
+    "color": "DarkGrey",
+    "product_details": "This is a Unisex Product.",
+    "primary_color_hex": "808080",
+    "brand": "Barry, Jennings and Larson"
+  },
+  "name": "benchmark collaborative paradigms",
+  "has_variant": true,
+  "categories": [
+    {
+      "id": 3,
+      "uid": 3,
+      "name": "Amy Kim DDS",
+      "logo": {
+        "type": "image",
+        "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+      },
+      "action": {
+        "page": {
+          "type": "category",
+          "query": {
+            "category": [
+              "Amy-Kim-DDS"
+            ]
+          }
+        },
+        "type": "page"
+      },
+      "_custom_json": {}
+    }
+  ],
+  "tryouts": [],
+  "rating": 2.7,
+  "rating_count": 2,
+  "image_nature": "standard",
+  "tags": [
+    "Digital"
+  ],
+  "teaser_tag": {},
+  "no_of_boxes": 1,
+  "product_online_date": "2021-02-03T07:22:29Z",
+  "custom_order": {},
+  "color": "808080",
+  "similars": [
+    "brand"
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -13267,6 +31136,186 @@ The Product object. See example below or refer `ApplicationProductListingRespons
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "name": "TV Set",
+      "description": "Tv",
+      "country_of_origin": "India",
+      "currency": "INR",
+      "short_description": "",
+      "is_set": true,
+      "item_code": "TVSET111",
+      "brand_uid": 1,
+      "template_tag": "television",
+      "highlights": [
+        "42 Inch"
+      ],
+      "slug": "tv-set",
+      "_custom_json": {},
+      "l3_mapping": [
+        "electronics>qled_television"
+      ],
+      "image_nature": "standard",
+      "departments": [
+        1
+      ],
+      "created_on": 1599024995,
+      "created_by": {
+        "username": "919049753052_37528",
+        "user_id": "5"
+      },
+      "modified_on": 1627642010,
+      "modified_by": {
+        "username": "xxxxxxxxxx",
+        "user_id": "xxxxxxxxxxx"
+      },
+      "stage": "verified",
+      "uid": 7501547,
+      "verified_by": {
+        "username": "Silverbolt",
+        "user_id": "0"
+      },
+      "verified_on": 1626965521,
+      "all_sizes": [
+        {
+          "item_code": "TVSET111",
+          "brand_uid": 1,
+          "seller_identifier": "HGS272727272",
+          "identifiers": [
+            {
+              "gtin_type": "ean",
+              "gtin_value": "HGS272727272",
+              "primary": true
+            }
+          ],
+          "company_id": 1,
+          "size": "XXLX23, MX11, LX67, XLX45 (146 PCS)",
+          "marked_price": 35000
+        }
+      ],
+      "category_slug": "qled-television",
+      "is_image_less_product": false,
+      "media": [
+        {
+          "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/135x0/dcizgsG_Y-Tv-Set.png",
+          "type": "image"
+        }
+      ],
+      "variants": {},
+      "product_publish": {
+        "is_set": false,
+        "product_online_date": 1627642009
+      },
+      "is_dependent": false,
+      "is_physical": true,
+      "item_type": "set",
+      "category_uid": 1,
+      "custom_order": {
+        "manufacturing_time": 2,
+        "is_custom_order": true,
+        "manufacturing_time_unit": "days"
+      },
+      "moq": {
+        "minimum": 1,
+        "is_set": false
+      },
+      "multi_size": true,
+      "no_of_boxes": 1,
+      "product_group_tag": [],
+      "size_guide": "slim-fit-shirts-for-men",
+      "tags": [],
+      "teaser_tag": {},
+      "synonyms": [],
+      "hsn_code": "11111111",
+      "return_config": {
+        "unit": "days",
+        "returnable": false,
+        "time": 0
+      },
+      "all_company_ids": [
+        1
+      ],
+      "all_identifiers": [
+        "19WE100"
+      ],
+      "trader": {
+        "address": "sdfdsfsdf",
+        "name": "asdasd"
+      },
+      "trader_type": "Packer",
+      "verification_status": "pending",
+      "sizes": [
+        {
+          "size": "FGX33, GHX33 (66 PCS)",
+          "store_count": 1
+        },
+        {
+          "size": "XSE WE23X100 (100 PCS)",
+          "store_count": 2
+        },
+        {
+          "size": "XSEX100 (100 PCS)",
+          "store_count": 3
+        },
+        {
+          "size": "XXLX23, MX11, LX67, XLX45 (146 PCS)",
+          "store_count": 3
+        }
+      ],
+      "id": "5f4f2f6371a5970001f13655",
+      "brand": {
+        "name": "Apple",
+        "logo": {
+          "aspect_ratio": "1:1",
+          "aspect_ratio_f": 1,
+          "url": "https://hdn-1.jiox0.de/jioecomm/seller/pictures/logo/50x0/apple-7f951c/logo_apple.png",
+          "secure_url": "https://hdn-1.jiox0.de/jioecomm/seller/pictures/logo/50x0/apple-7f951c/logo_apple.png"
+        },
+        "uid": 13
+      },
+      "images": [
+        {
+          "aspect_ratio": "16:25",
+          "aspect_ratio_f": 0.64,
+          "url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/135x0/dcizgsG_Y-Tv-Set.png",
+          "secure_url": "https://hdn-1.addsale.com/x0/products/pictures/item/free/135x0/dcizgsG_Y-Tv-Set.png"
+        }
+      ],
+      "price": {
+        "marked": {
+          "min": 35000,
+          "max": 35000
+        },
+        "effective": {
+          "min": 25000,
+          "max": 25000
+        }
+      }
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 1,
+    "item_total": 1,
+    "has_previous": false,
+    "has_next": false
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13275,6 +31324,63 @@ The Product object. See example below or refer `ApplicationProductListingRespons
 
 
 ## CompanyProfile
+
+
+#### updateCompany
+Edit company profile
+
+
+
+```kotlin
+companyprofile.().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+This API allows to edit the company profile of the seller account.
+
+*Returned Response*
+
+
+
+
+[SuccessResponse](#SuccessResponse)
+
+Returns a success message
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
 
 
 #### cbsOnboardGet
@@ -13312,42 +31418,77 @@ Company profile object. See example below or refer `GetCompanyProfileSerializerR
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
 
-
----
-
-
-#### updateCompany
-Edit company profile
-
-
-
-```kotlin
-companyprofile.().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
+```json
+{
+  "documents": [
+    {
+      "verified": true,
+      "legal_name": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED",
+      "value": "AALCA0442L",
+      "type": "pan"
+    }
+  ],
+  "created_by": {
+    "user_id": "123",
+    "username": "917827311650_22960"
+  },
+  "business_info": "I sell",
+  "franchise_enabled": true,
+  "company_type": "mbo",
+  "warnings": {},
+  "business_details": {
+    "website": {
+      "url": "https://www.google.com"
+    }
+  },
+  "addresses": [
+    {
+      "country": "India",
+      "longitude": 72.8231511,
+      "state": "Maharashtra",
+      "address1": "A/204, Sai Vandan, Tulinj Road. Nallasopara East, ",
+      "country_code": "IN",
+      "latitude": 19.4232024,
+      "pincode": 401209,
+      "address_type": "office",
+      "city": "Mumbai"
+    },
+    {
+      "country": "India",
+      "longitude": 72.8231511,
+      "state": "Maharashtra",
+      "address1": "A/204, Sai Vandan, Tulinj Road. Nallasopara East, ",
+      "country_code": "IN",
+      "latitude": 19.4232024,
+      "pincode": 401209,
+      "address_type": "registered",
+      "city": "Mumbai"
+    }
+  ],
+  "modified_by": {
+    "user_id": "123",
+    "username": "917827311650_22960"
+  },
+  "notification_emails": [
+    "gaurangpatel@gofynd.com"
+  ],
+  "business_type": "huf",
+  "name": "Cache Company",
+  "stage": "verified",
+  "uid": 1,
+  "business_country_info": {
+    "country": "India",
+    "country_code": "IN"
+  }
 }
 ```
+</details>
 
 
 
-
-This API allows to edit the company profile of the seller account.
-
-*Returned Response*
-
-
-
-
-[SuccessResponse](#SuccessResponse)
-
-Returns a success message
 
 
 
@@ -13392,6 +31533,43 @@ Metrics response object. See example below or refer `MetricsSerializer` for deta
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "stage": "complete",
+  "store": {
+    "verified": 1,
+    "pending": 1
+  },
+  "brand": {
+    "verified": 1,
+    "pending": 1
+  },
+  "product": {
+    "verified": 0,
+    "pending": 0
+  },
+  "company_documents": {
+    "verified": 1,
+    "pending": 0
+  },
+  "store_documents": {
+    "verified": 0,
+    "pending": 2
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13428,6 +31606,23 @@ This API allows to edit meta of a brand.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -13472,6 +31667,48 @@ Brand object. See example below or refer `GetBrandResponseSerializer` for detail
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "stage": "verified",
+  "_custom_json": {},
+  "uid": 1,
+  "logo": "http://cdn4.gofynd.com/media/logo/brand/original/4597_40d1ce44d61940d4829a3c54951bd9ee.jpg",
+  "warnings": {},
+  "_locale_language": {},
+  "name": "edited brand",
+  "slug_key": "brand-2",
+  "banner": {
+    "portrait": "http://cdn4.gofynd.com/media/banner_portrait/brand/original/7021_16fc50205c40477daf419b64ec64c64c.jpg",
+    "landscape": "http://cdn4.gofynd.com/media/banner/brand/original/7020_f9e91f7d501c4f2985c09bd196ed304d.jpg"
+  },
+  "created_by": {
+    "username": "silverbolt",
+    "user_id": "0"
+  },
+  "modified_by": {
+    "username": "917827311650_22960",
+    "user_id": "123"
+  },
+  "verified_by": {
+    "username": "917827311650_22960",
+    "user_id": "123"
+  },
+  "synonyms": [
+    "xyz"
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13508,6 +31745,23 @@ This API allows to create a brand associated to a company.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -13552,6 +31806,22 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13588,6 +31858,107 @@ This API helps to get view brands associated to a particular company.
 [CompanyBrandListSerializer](#CompanyBrandListSerializer)
 
 Brand object. See example below or refer `CompanyBrandListSerializer` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "brand": {
+        "stage": "complete",
+        "uid": 2,
+        "banner": {
+          "portrait": "http://cdn4.gofynd.com/media/banner_portrait/brand/original/7021_16fc50205c40477daf419b64ec64c64c.jpg",
+          "landscape": "http://cdn4.gofynd.com/media/banner/brand/original/7020_f9e91f7d501c4f2985c09bd196ed304d.jpg"
+        },
+        "modified_by": {
+          "user_id": "123",
+          "username": "917827311650_22960"
+        },
+        "slug_key": "test-post",
+        "synonyms": [
+          "xyz"
+        ],
+        "created_on": "2021-02-25T15:21:57.666000+00:00",
+        "created_by": {
+          "user_id": "123",
+          "username": "917827311650_22960"
+        },
+        "modified_on": "2021-02-25T15:21:57.666000+00:00",
+        "name": "test_post",
+        "logo": "http://cdn4.gofynd.com/media/logo/brand/original/4597_40d1ce44d61940d4829a3c54951bd9ee.jpg"
+      },
+      "stage": "complete",
+      "uid": 2,
+      "modified_by": {
+        "user_id": "123",
+        "username": "917827311650_22960"
+      },
+      "company": {
+        "business_type": "huf",
+        "stage": "complete",
+        "uid": 1,
+        "addresses": [
+          {
+            "city": "Mumbai Suburban",
+            "latitude": 19.058461,
+            "longitude": 72.871395,
+            "address1": "Chunabhatti Phatak, Maharashtra Nagar, Maharashtra Nagar, ",
+            "country_code": "IN",
+            "state": "Maharashtra",
+            "country": "India",
+            "pincode": 400070,
+            "address_type": "office"
+          },
+          {
+            "city": "Mumbai Suburban",
+            "latitude": 19.058461,
+            "longitude": 72.871395,
+            "address1": "Chunabhatti Phatak, Maharashtra Nagar, Maharashtra Nagar, ",
+            "country_code": "IN",
+            "state": "Maharashtra",
+            "country": "India",
+            "pincode": 400070,
+            "address_type": "registered"
+          }
+        ],
+        "modified_by": {
+          "user_id": "-1",
+          "username": "silverbolt"
+        },
+        "company_type": "mbo",
+        "created_on": "2021-02-25T15:21:51.526000+00:00",
+        "created_by": {
+          "user_id": "123",
+          "username": "917827311650_22960"
+        },
+        "modified_on": "2021-02-25T17:44:55.722000+00:00",
+        "name": "Cache Company"
+      },
+      "created_by": {
+        "user_id": "123",
+        "username": "917827311650_22960"
+      }
+    }
+  ],
+  "page": {
+    "current": 1,
+    "size": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_count": 1
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -13632,6 +32003,23 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13668,6 +32056,203 @@ This API allows to view all the locations asscoiated to a company.
 [LocationListSerializer](#LocationListSerializer)
 
 Company profile object. See example below or refer `LocationListSerializer` for details
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "company": {
+        "business_type": "huf",
+        "stage": "complete",
+        "uid": 1,
+        "addresses": [
+          {
+            "city": "Mumbai Suburban",
+            "latitude": 19.058461,
+            "longitude": 72.871395,
+            "address1": "Chunabhatti Phatak, Maharashtra Nagar, Maharashtra Nagar, ",
+            "country_code": "IN",
+            "state": "Maharashtra",
+            "country": "India",
+            "pincode": 400070,
+            "address_type": "office"
+          },
+          {
+            "city": "Mumbai Suburban",
+            "latitude": 19.058461,
+            "longitude": 72.871395,
+            "address1": "Chunabhatti Phatak, Maharashtra Nagar, Maharashtra Nagar, ",
+            "country_code": "IN",
+            "state": "Maharashtra",
+            "country": "India",
+            "pincode": 400070,
+            "address_type": "registered"
+          }
+        ],
+        "modified_by": {
+          "user_id": "-1",
+          "username": "silverbolt"
+        },
+        "company_type": "mbo",
+        "created_on": "2021-02-25T15:21:51.526000+00:00",
+        "created_by": {
+          "user_id": "123",
+          "username": "917827311650_22960"
+        },
+        "modified_on": "2021-02-25T17:44:55.722000+00:00",
+        "name": "Cache Company"
+      },
+      "address": {
+        "city": "MUMBAI",
+        "latitude": 19.4232024,
+        "longitude": 72.8231511,
+        "address1": "A/204, SAI VANDAN, NARAYAN NAGAR, TULINJ ROAD",
+        "state": "MAHARASHTRA",
+        "country": "INDIA",
+        "pincode": 401209
+      },
+      "timing": [
+        {
+          "closing": {
+            "minute": 0,
+            "hour": 22
+          },
+          "opening": {
+            "minute": 0,
+            "hour": 11
+          },
+          "open": true,
+          "weekday": "monday"
+        },
+        {
+          "closing": {
+            "minute": 0,
+            "hour": 22
+          },
+          "opening": {
+            "minute": 0,
+            "hour": 11
+          },
+          "open": true,
+          "weekday": "tuesday"
+        },
+        {
+          "closing": {
+            "minute": 0,
+            "hour": 22
+          },
+          "opening": {
+            "minute": 0,
+            "hour": 11
+          },
+          "open": true,
+          "weekday": "wednesday"
+        },
+        {
+          "closing": {
+            "minute": 0,
+            "hour": 22
+          },
+          "opening": {
+            "minute": 0,
+            "hour": 11
+          },
+          "open": true,
+          "weekday": "thursday"
+        },
+        {
+          "closing": {
+            "minute": 0,
+            "hour": 22
+          },
+          "opening": {
+            "minute": 0,
+            "hour": 11
+          },
+          "open": true,
+          "weekday": "friday"
+        },
+        {
+          "closing": {
+            "minute": 0,
+            "hour": 22
+          },
+          "opening": {
+            "minute": 0,
+            "hour": 11
+          },
+          "open": true,
+          "weekday": "saturday"
+        },
+        {
+          "closing": {
+            "minute": 0,
+            "hour": 22
+          },
+          "opening": {
+            "minute": 0,
+            "hour": 11
+          },
+          "open": true,
+          "weekday": "sunday"
+        }
+      ],
+      "documents": [],
+      "display_name": "new store",
+      "manager": {
+        "name": "Yrf",
+        "mobile_no": {
+          "country_code": 91,
+          "number": "83456774567"
+        },
+        "email": "gbp@jkl.com"
+      },
+      "code": "code2",
+      "product_return_config": {
+        "on_same_store": true
+      },
+      "created_on": "2021-02-25T15:22:04.913000+00:00",
+      "created_by": {
+        "user_id": "123",
+        "username": "917827311650_22960"
+      },
+      "name": "location2",
+      "gst_credentials": {
+        "e_invoice": {
+          "enabled": false
+        }
+      },
+      "store_type": "high_street",
+      "contact_numbers": [
+        {
+          "country_code": 91,
+          "number": "7208229698"
+        }
+      ],
+      "stage": "complete",
+      "uid": 2,
+      "notification_emails": []
+    }
+  ],
+  "page": {
+    "current": 1,
+    "size": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_count": 1
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -13712,6 +32297,23 @@ Returns a success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13752,6 +32354,205 @@ Brand object. See example below or refer `GetLocationSerializer` for details
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "verified_on": "2021-02-25T15:22:07.140000+00:00",
+  "company": {
+    "business_type": "huf",
+    "stage": "complete",
+    "uid": 1,
+    "addresses": [
+      {
+        "city": "Mumbai Suburban",
+        "latitude": 19.058461,
+        "longitude": 72.871395,
+        "address1": "Chunabhatti Phatak, Maharashtra Nagar, Maharashtra Nagar, ",
+        "country_code": "IN",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": 400070,
+        "address_type": "office"
+      },
+      {
+        "city": "Mumbai Suburban",
+        "latitude": 19.058461,
+        "longitude": 72.871395,
+        "address1": "Chunabhatti Phatak, Maharashtra Nagar, Maharashtra Nagar, ",
+        "country_code": "IN",
+        "state": "Maharashtra",
+        "country": "India",
+        "pincode": 400070,
+        "address_type": "registered"
+      }
+    ],
+    "modified_by": {
+      "user_id": "-1",
+      "username": "silverbolt"
+    },
+    "company_type": "mbo",
+    "created_by": {
+      "user_id": "123",
+      "username": "917827311650_22960"
+    },
+    "name": "Cache Company"
+  },
+  "address": {
+    "city": "MUMBAI",
+    "landmark": "",
+    "latitude": 19.4232024,
+    "longitude": 72.8231511,
+    "address2": "",
+    "address1": "A/204, SAI VANDAN, NARAYAN NAGAR, TULINJ ROAD",
+    "state": "MAHARASHTRA",
+    "country": "INDIA",
+    "pincode": 401209
+  },
+  "timing": [
+    {
+      "closing": {
+        "minute": 0,
+        "hour": 22
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      },
+      "open": true,
+      "weekday": "monday"
+    },
+    {
+      "closing": {
+        "minute": 0,
+        "hour": 22
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      },
+      "open": true,
+      "weekday": "tuesday"
+    },
+    {
+      "closing": {
+        "minute": 0,
+        "hour": 22
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      },
+      "open": true,
+      "weekday": "wednesday"
+    },
+    {
+      "closing": {
+        "minute": 0,
+        "hour": 22
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      },
+      "open": true,
+      "weekday": "thursday"
+    },
+    {
+      "closing": {
+        "minute": 0,
+        "hour": 22
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      },
+      "open": true,
+      "weekday": "friday"
+    },
+    {
+      "closing": {
+        "minute": 0,
+        "hour": 22
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      },
+      "open": true,
+      "weekday": "saturday"
+    },
+    {
+      "closing": {
+        "minute": 0,
+        "hour": 22
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      },
+      "open": true,
+      "weekday": "sunday"
+    }
+  ],
+  "documents": [],
+  "warnings": {},
+  "display_name": "new store",
+  "manager": {
+    "name": "Yrf",
+    "mobile_no": {
+      "country_code": 91,
+      "number": "83456774567"
+    },
+    "email": "gbp@jkl.com"
+  },
+  "code": "store1",
+  "product_return_config": {
+    "on_same_store": true
+  },
+  "modified_by": {
+    "user_id": "-1",
+    "username": "silverbolt"
+  },
+  "created_by": {
+    "user_id": "123",
+    "username": "917827311650_22960"
+  },
+  "name": "edited_store",
+  "gst_credentials": {
+    "e_invoice": {
+      "enabled": false
+    }
+  },
+  "verified_by": {
+    "user_id": "-1",
+    "username": "silverbolt"
+  },
+  "store_type": "high_street",
+  "contact_numbers": [
+    {
+      "country_code": 91,
+      "number": "7208229698"
+    }
+  ],
+  "stage": "verified",
+  "uid": 1,
+  "integration_type": {
+    "inventory": "pulse",
+    "order": "pulse"
+  },
+  "notification_emails": []
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13788,6 +32589,23 @@ This API allows to create a location associated to a company.
 [SuccessResponse](#SuccessResponse)
 
 Returns a success response
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "10 stores inserted",
+  "success": true
+}
+```
+</details>
+
+
+
 
 
 
@@ -13855,6 +32673,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -13909,6 +32741,20 @@ This operation will return the url for the uploaded file.
 [CompleteResponse](#CompleteResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -13971,6 +32817,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14029,6 +32889,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14065,6 +32939,20 @@ Describe here
 [SignUrlResponse](#SignUrlResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14109,6 +32997,47 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "tracking_url": "https://xxx.xxx.xxx/2",
+  "task": {
+    "id": "2",
+    "name": "__default__",
+    "data": {
+      "urls": [
+        "https://xxx.xxx.xxx/files.csv"
+      ],
+      "destination": {
+        "namespace": "/domaine/path",
+        "rewrite": "{{namespace}}/bar/{{dest.path}}"
+      }
+    },
+    "opts": {
+      "attempts": 1,
+      "delay": 0,
+      "timestamp": 1613534206645
+    },
+    "progress": 0,
+    "delay": 0,
+    "timestamp": 1613534206645,
+    "attempts_made": 0,
+    "stacktrace": [],
+    "finished_on": 1613534206645,
+    "processed_on": 1613534206645
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14149,6 +33078,47 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "tracking_url": "https://xxx.xxx.xxx/2",
+  "task": {
+    "id": "2",
+    "name": "__default__",
+    "data": {
+      "urls": [
+        "https://xxx.xxx.xxx/files.csv"
+      ],
+      "destination": {
+        "namespace": "/domaine/path",
+        "rewrite": "{{namespace}}/bar/{{dest.path}}"
+      }
+    },
+    "opts": {
+      "attempts": 1,
+      "delay": 0,
+      "timestamp": 1613534206645
+    },
+    "progress": 0,
+    "delay": 0,
+    "timestamp": 1613534206645,
+    "attempts_made": 0,
+    "stacktrace": [],
+    "finished_on": 1613534206645,
+    "processed_on": 1613534206645
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14189,6 +33159,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14225,6 +33209,20 @@ Browse Files
 [BrowseResponse](#BrowseResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14265,6 +33263,20 @@ Proxy
 [String](#String)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14314,6 +33326,58 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "url": {
+    "original": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh",
+    "short": "https://0icof6vvsf.hostx0.de/l/3qKlnsq-x",
+    "hash": "3qKlnsq-x"
+  },
+  "redirects": {
+    "ios": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "android": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "web": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "force_web": false
+  },
+  "created_by": "team",
+  "personalized": false,
+  "app_redirect": false,
+  "fallback": "web",
+  "enable_tracking": false,
+  "active": true,
+  "count": 0,
+  "_id": "601a54054c0349592e76c8f3",
+  "title": "new ",
+  "meta": {
+    "type": "brand"
+  },
+  "expire_at": null,
+  "application": "5eda528b97457fe43a733ace",
+  "user_id": "5e4d01e2c39837ab66144f6d",
+  "created_at": "2021-02-03T07:43:01.342Z",
+  "updated_at": "2021-02-03T07:43:01.342Z"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14350,6 +33414,69 @@ Get short links
 [ShortLinkList](#ShortLinkList)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "url": {
+        "original": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh",
+        "short": "https://0icof6vvsf.hostx0.de/l/3qKlnsq-x",
+        "hash": "3qKlnsq-x"
+      },
+      "redirects": {
+        "ios": {
+          "type": "web",
+          "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+        },
+        "android": {
+          "type": "web",
+          "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+        },
+        "web": {
+          "type": "web",
+          "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+        },
+        "force_web": false
+      },
+      "created_by": "team",
+      "personalized": false,
+      "app_redirect": false,
+      "fallback": "web",
+      "enable_tracking": false,
+      "active": true,
+      "count": 0,
+      "_id": "601a54054c0349592e76c8f3",
+      "title": "new ",
+      "meta": {
+        "type": "brand"
+      },
+      "expire_at": null,
+      "application": "5eda528b97457fe43a733ace",
+      "user_id": "5e4d01e2c39837ab66144f6d",
+      "created_at": "2021-02-03T07:43:01.342Z",
+      "updated_at": "2021-02-03T07:43:01.342Z"
+    }
+  ],
+  "page": {
+    "size": 10,
+    "type": "number",
+    "page": 1,
+    "item_total": 30,
+    "has_next": true
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -14394,6 +33521,58 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "url": {
+    "original": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh",
+    "short": "https://0icof6vvsf.hostx0.de/l/3qKlnsq-x",
+    "hash": "3qKlnsq-x"
+  },
+  "redirects": {
+    "ios": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "android": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "web": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "force_web": false
+  },
+  "created_by": "team",
+  "personalized": false,
+  "app_redirect": false,
+  "fallback": "web",
+  "enable_tracking": false,
+  "active": true,
+  "count": 0,
+  "_id": "601a54054c0349592e76c8f3",
+  "title": "new ",
+  "meta": {
+    "type": "brand"
+  },
+  "expire_at": null,
+  "application": "5eda528b97457fe43a733ace",
+  "user_id": "5e4d01e2c39837ab66144f6d",
+  "created_at": "2021-02-03T07:43:01.342Z",
+  "updated_at": "2021-02-03T07:43:01.342Z"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14430,6 +33609,58 @@ Update short link by id
 [ShortLinkRes](#ShortLinkRes)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "url": {
+    "original": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh",
+    "short": "https://0icof6vvsf.hostx0.de/l/3qKlnsq-x",
+    "hash": "3qKlnsq-x"
+  },
+  "redirects": {
+    "ios": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "android": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "web": {
+      "type": "web",
+      "link": "https://0icof6vvsf.hostx0.de/products/?brand=ruosh"
+    },
+    "force_web": false
+  },
+  "created_by": "team",
+  "personalized": false,
+  "app_redirect": false,
+  "fallback": "web",
+  "enable_tracking": false,
+  "active": true,
+  "count": 0,
+  "_id": "601a54054c0349592e76c8f3",
+  "title": "new ",
+  "meta": {
+    "type": "brand"
+  },
+  "expire_at": null,
+  "application": "5eda528b97457fe43a733ace",
+  "user_id": "5e4d01e2c39837ab66144f6d",
+  "created_at": "2021-02-03T07:43:01.342Z",
+  "updated_at": "2021-02-03T07:43:01.342Z"
+}
+```
+</details>
+
+
+
 
 
 
@@ -14479,6 +33710,20 @@ Successful operation
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14515,6 +33760,20 @@ REST Endpoint that updates a job config
 [ResponseEnvelopeString](#ResponseEnvelopeString)
 
 Job Config Updated Successfully
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14559,6 +33818,20 @@ Job Config Created Successfully
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14595,6 +33868,20 @@ REST Endpoint that returns Inventory Job Steps
 [ResponseEnvelopeListJobStepsDTO](#ResponseEnvelopeListJobStepsDTO)
 
 Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14639,6 +33926,20 @@ Successful operation
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14675,6 +33976,20 @@ REST Endpoint that disables Inventory Job Config
 [ResponseEnvelopeString](#ResponseEnvelopeString)
 
 Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14719,6 +34034,20 @@ Successful operation
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14755,6 +34084,20 @@ REST Endpoint that returns job config by code
 [ResponseEnvelopeJobConfigDTO](#ResponseEnvelopeJobConfigDTO)
 
 Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14799,6 +34142,20 @@ Successful operation
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14835,6 +34192,20 @@ REST Endpoint that returns all job codes by company And integration
 [ResponseEnvelopeListJobConfigListDTO](#ResponseEnvelopeListJobConfigListDTO)
 
 Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -14884,6 +34255,38 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "is_active": true,
+  "_id": "5ea9b318bc23a343ab6d442f",
+  "app_name": "TestUniket",
+  "landing_image": {
+    "aspect_ratio": "57/51",
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/mobile-build/pictures/free-landing/original/yKnXY1ATx-store-landing-image.png"
+  },
+  "splash_image": {
+    "aspect_ratio": "1/1",
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/mobile-build/pictures/free-splash/original/s6d7oYfY6-store-splash-image.png"
+  },
+  "application": "000000000000000000000004",
+  "platform_type": "android",
+  "created_at": "2020-04-29T17:02:16.976Z",
+  "modified_at": "2021-02-23T17:10:26.872Z",
+  "__v": 0,
+  "package_name": "com.fynd.store.x000000000000000000000004"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -14920,6 +34323,38 @@ Update build config for next build
 [MobileAppConfiguration](#MobileAppConfiguration)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "is_active": true,
+  "_id": "5ea9b318bc23a343ab6d442f",
+  "app_name": "TestUniket",
+  "landing_image": {
+    "aspect_ratio": "57/51",
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/mobile-build/pictures/free-landing/original/yKnXY1ATx-store-landing-image.png"
+  },
+  "splash_image": {
+    "aspect_ratio": "1/1",
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/mobile-build/pictures/free-splash/original/s6d7oYfY6-store-splash-image.png"
+  },
+  "application": "000000000000000000000004",
+  "platform_type": "android",
+  "created_at": "2020-04-29T17:02:16.976Z",
+  "modified_at": "2021-02-23T17:10:26.872Z",
+  "__v": 0,
+  "package_name": "com.fynd.store.x000000000000000000000004"
+}
+```
+</details>
+
+
+
 
 
 
@@ -14964,6 +34399,35 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "versions": [
+    {
+      "_id": "6035376ab937c5f7c5462888",
+      "application": "000000000000000000000004",
+      "platform_type": "android",
+      "build_status": "pending",
+      "version_name": "0.5.6",
+      "version_code": 1,
+      "created_at": "2021-02-23T17:12:10.977Z",
+      "modified_at": "2021-02-23T17:12:10.977Z",
+      "__v": 0
+    }
+  ],
+  "latest_available_version_name": "0.5.7"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15000,6 +34464,115 @@ Get features of application
 [AppFeatureResponse](#AppFeatureResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "feature": {
+    "product_detail": {
+      "similar": [
+        "basic",
+        "visual",
+        "brand",
+        "category",
+        "seller",
+        "price",
+        "specs"
+      ],
+      "seller_selection": true,
+      "update_product_meta": true,
+      "request_product": true
+    },
+    "landing_page": {
+      "launch_page": {
+        "page_type": "home",
+        "params": null,
+        "query": null
+      },
+      "continue_as_guest": true,
+      "login_btn_text": "Click here to sign-in",
+      "show_domain_textbox": true,
+      "show_register_btn": true
+    },
+    "registration_page": {
+      "ask_store_address": false
+    },
+    "home_page": {
+      "order_processing": true
+    },
+    "common": {
+      "communication_optin_dialog": {
+        "visibility": true
+      },
+      "deployment_store_selection": {
+        "enabled": true,
+        "type": "hard"
+      },
+      "listing_price": {
+        "value": "min",
+        "sort": "min"
+      },
+      "currency": {
+        "value": [
+          "INR"
+        ],
+        "type": "explicit",
+        "default_currency": "INR"
+      },
+      "revenue_engine": {
+        "enabled": false
+      },
+      "feedback": {
+        "enabled": true
+      },
+      "compare_products": {
+        "enabled": true
+      },
+      "reward_points": {
+        "credit": {
+          "enabled": true
+        },
+        "debit": {
+          "enabled": true,
+          "auto_apply": false,
+          "strategy_channel": "REWARDS"
+        }
+      }
+    },
+    "cart": {
+      "gst_input": true,
+      "staff_selection": true,
+      "placing_for_customer": true,
+      "google_map": true
+    },
+    "qr": {
+      "application": true,
+      "products": true,
+      "collections": true
+    },
+    "pcr": {
+      "staff_selection": true
+    },
+    "order": {
+      "buy_again": true
+    },
+    "_id": "5e57643c986e4119c973df7d",
+    "app": "000000000000000000000004",
+    "created_at": "2020-02-27T06:39:56.088Z",
+    "modified_at": "2021-02-02T11:04:14.289Z",
+    "__v": 1
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -15044,6 +34617,103 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "product_detail": {
+    "similar": [
+      "basic",
+      "visual",
+      "brand",
+      "category",
+      "seller",
+      "price",
+      "specs"
+    ],
+    "seller_selection": true,
+    "update_product_meta": true,
+    "request_product": true
+  },
+  "landing_page": {
+    "launch_page": {
+      "page_type": "home",
+      "params": null,
+      "query": null
+    },
+    "continue_as_guest": true,
+    "login_btn_text": "Click here to sign-in",
+    "show_domain_textbox": true,
+    "show_register_btn": true
+  },
+  "registration_page": {
+    "ask_store_address": false
+  },
+  "home_page": {
+    "order_processing": true
+  },
+  "common": {
+    "communication_optin_dialog": {
+      "visibility": true
+    },
+    "deployment_store_selection": {
+      "enabled": true,
+      "type": "hard"
+    },
+    "listing_price": {
+      "value": "min",
+      "sort": "min"
+    },
+    "currency": {
+      "value": [
+        "INR"
+      ],
+      "type": "explicit",
+      "default_currency": "INR"
+    },
+    "revenue_engine": {
+      "enabled": false
+    },
+    "feedback": {
+      "enabled": true
+    },
+    "compare_products": {
+      "enabled": true
+    }
+  },
+  "cart": {
+    "gst_input": true,
+    "staff_selection": true,
+    "placing_for_customer": true,
+    "google_map": true
+  },
+  "qr": {
+    "application": true,
+    "products": true,
+    "collections": true
+  },
+  "pcr": {
+    "staff_selection": true
+  },
+  "order": {
+    "buy_again": true
+  },
+  "_id": "5e57643c986e4119c973df7d",
+  "app": "000000000000000000000004",
+  "created_at": "2020-02-27T06:39:56.088Z",
+  "modified_at": "2021-03-09T15:40:29.188Z",
+  "__v": 1
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15080,6 +34750,63 @@ Get basic application details like name
 [ApplicationDetail](#ApplicationDetail)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "name": "Uniket B2B",
+  "description": "Uniket B2B - India's Fastest Growing Retail Store - Aapki Badhti Dukaan",
+  "logo": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/free-logo/original/oEf3SQjda-Uniket-B2B.png"
+  },
+  "mobile_logo": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/free-logo/original/oEf3SQjda-Uniket-B2B.png"
+  },
+  "favicon": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/favicon/original/y3h6SSlY5-Uniket-B2B.png"
+  },
+  "banner": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/landscape-banner/original/uSwlNpygq-Uniket-B2B.png"
+  },
+  "domain": {
+    "verified": true,
+    "is_primary": true,
+    "is_default": true,
+    "is_shortlink": false,
+    "_id": "5eb1177748312a3bd55d0f1e",
+    "name": "uniket.hostx0.de"
+  },
+  "domains": [
+    {
+      "verified": true,
+      "is_primary": true,
+      "is_default": true,
+      "is_shortlink": false,
+      "_id": "5eb1177748312a3bd55d0f1e",
+      "name": "uniket.hostx0.de"
+    },
+    {
+      "verified": true,
+      "is_primary": false,
+      "is_default": false,
+      "is_shortlink": true,
+      "_id": "5f0858c5f86e00cd42dccc8d",
+      "name": "jd.hostx0.de"
+    }
+  ],
+  "company_id": 1,
+  "_id": "000000000000000000000004"
+}
+```
+</details>
+
+
+
 
 
 
@@ -15124,6 +34851,61 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "name": "Uniket B2B",
+  "description": "Uniket B2B - India's Fastest Growing Retail Store - Aapki Badhti Dukaan",
+  "logo": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/free-logo/original/oEf3SQjda-Uniket-B2B.png"
+  },
+  "mobile_logo": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/free-logo/original/oEf3SQjda-Uniket-B2B.png"
+  },
+  "favicon": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/favicon/original/y3h6SSlY5-Uniket-B2B.png"
+  },
+  "banner": {
+    "secure_url": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/application/pictures/landscape-banner/original/uSwlNpygq-Uniket-B2B.png"
+  },
+  "domain": {
+    "verified": true,
+    "is_primary": true,
+    "is_default": true,
+    "is_shortlink": false,
+    "_id": "5eb1177748312a3bd55d0f1e",
+    "name": "uniket.hostx0.de"
+  },
+  "domains": [
+    {
+      "verified": true,
+      "is_primary": true,
+      "is_default": true,
+      "is_shortlink": false,
+      "_id": "5eb1177748312a3bd55d0f1e",
+      "name": "uniket.hostx0.de"
+    },
+    {
+      "verified": true,
+      "is_primary": false,
+      "is_default": false,
+      "is_shortlink": true,
+      "_id": "5f0858c5f86e00cd42dccc8d",
+      "name": "jd.hostx0.de"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15160,6 +34942,135 @@ Get Application Current Information. This includes information about social link
 [ApplicationInformation](#ApplicationInformation)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "value": {
+    "address": {
+      "loc": null,
+      "address_line": [
+        "Warehouse 5, Near Industrial Complex",
+        "2nd Lane, Andheri"
+      ],
+      "phone": [
+        {
+          "code": "+91",
+          "number": "9988776654"
+        }
+      ],
+      "city": "Mumbai , Maharashtra , India",
+      "country": "India",
+      "pincode": 400059
+    },
+    "support": {
+      "phone": [],
+      "email": [],
+      "timing": "9 AM to 9 PM"
+    },
+    "social_links": {
+      "facebook": {
+        "title": "Facebook",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/hQAbAKdvHK-facebookfooteraopcjq.svg",
+        "link": ""
+      },
+      "instagram": {
+        "title": "Instagram",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/UZYsGWOqXp-instagramfooterl3utrr.svg",
+        "link": ""
+      },
+      "twitter": {
+        "title": "Twitter",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/oT2hW-BJjq-twitterfooternajsyr.svg",
+        "link": ""
+      },
+      "pinterest": {
+        "title": "Pinterest",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/v0erlcMk8p-pinterestfooternzmq4b.svg",
+        "link": ""
+      },
+      "google_plus": {
+        "title": "Google+",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/lw3Y5S58h4-googleplusysukr1.png",
+        "link": ""
+      },
+      "youtube": {
+        "title": "Youtube",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/EYV03PDST_-youtubefootermqhcr7.svg",
+        "link": ""
+      },
+      "linked_in": {
+        "title": "LinkedIn",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/qa7gx_bW9O-linkedinfooterrcr0yq.svg",
+        "link": ""
+      },
+      "vimeo": {
+        "title": "Vimeo",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/Ttc80b3U78-vimeofooternho4br.svg",
+        "link": ""
+      },
+      "blog_link": {
+        "title": "Blog",
+        "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/LKpxTk1I3s-mediumfooterdtvrva.svg",
+        "link": ""
+      }
+    },
+    "links": [
+      {
+        "title": "Shipping",
+        "link": "www.uniket.store/shipping-details"
+      },
+      {
+        "title": "Returns",
+        "link": "www.uniket.store/policy/return-policy"
+      },
+      {
+        "title": "Privacy",
+        "link": "www.uniket.store/policy/privacy-policy"
+      },
+      {
+        "title": "Terms",
+        "link": "www.uniket.store/policy/terms-conditions"
+      }
+    ],
+    "copyright_text": "#MadeInIndia © 2020 Shopsense Retail Technologies",
+    "_id": "5e6627bd0732616083e83750",
+    "business_highlights": [
+      {
+        "_id": "5fc901611dfba6c2e87d1ca9",
+        "title": "100% Genuine Products",
+        "icon": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/business-highlights/pictures/square-logo/original/bVlx43F2a-H6pvZ9tzp-business-logo-icon.png",
+        "sub_title": "Directly from brands"
+      },
+      {
+        "_id": "5fc901611dfba64ce57d1caa",
+        "title": "Credit Facility Available",
+        "icon": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/business-highlights/pictures/square-logo/original/VMnltS1m3-QuUnEjOsA-business-logo-icon.png",
+        "sub_title": "Free 30 Days Credit"
+      },
+      {
+        "_id": "5fc901611dfba64b2e7d1cab",
+        "title": "Assured Returns",
+        "icon": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/business-highlights/pictures/square-logo/original/cTHzgHJXK-sROtLMalN-business-logo-icon.png",
+        "sub_title": "For all damaged/wrong items"
+      }
+    ],
+    "application": "000000000000000000000004",
+    "created_at": "2020-03-09T11:25:49.921Z",
+    "modified_at": "2020-12-03T15:16:49.087Z",
+    "__v": 99
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -15204,6 +35115,128 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "5e6627bd0732616083e83750",
+  "address": {
+    "address_line": [
+      "Warehouse 5, Near Industrial Complex",
+      "2nd Lane, Andheri"
+    ],
+    "phone": [
+      {
+        "code": "+91",
+        "number": "9988776654"
+      }
+    ],
+    "city": "Mumbai , Maharashtra , India",
+    "country": "India",
+    "pincode": 400059,
+    "loc": null
+  },
+  "social_links": {
+    "facebook": {
+      "title": "Facebook",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/hQAbAKdvHK-facebookfooteraopcjq.svg",
+      "link": ""
+    },
+    "instagram": {
+      "title": "Instagram",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/UZYsGWOqXp-instagramfooterl3utrr.svg",
+      "link": ""
+    },
+    "twitter": {
+      "title": "Twitter",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/oT2hW-BJjq-twitterfooternajsyr.svg",
+      "link": ""
+    },
+    "pinterest": {
+      "title": "Pinterest",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/v0erlcMk8p-pinterestfooternzmq4b.svg",
+      "link": ""
+    },
+    "google_plus": {
+      "title": "Google+",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/lw3Y5S58h4-googleplusysukr1.png",
+      "link": ""
+    },
+    "youtube": {
+      "title": "Youtube",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/EYV03PDST_-youtubefootermqhcr7.svg",
+      "link": ""
+    },
+    "linked_in": {
+      "title": "LinkedIn",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/qa7gx_bW9O-linkedinfooterrcr0yq.svg",
+      "link": ""
+    },
+    "blog_link": {
+      "title": "Blog",
+      "icon": "https://hdn-1.fynd.com/system/svg/social-media/icon/original/LKpxTk1I3s-mediumfooterdtvrva.svg",
+      "link": ""
+    }
+  },
+  "links": [
+    {
+      "title": "Shipping",
+      "link": "www.uniket.store/shipping-details"
+    },
+    {
+      "title": "Returns",
+      "link": "www.uniket.store/policy/return-policy"
+    },
+    {
+      "title": "Privacy",
+      "link": "www.uniket.store/policy/privacy-policy"
+    },
+    {
+      "title": "Terms",
+      "link": "www.uniket.store/policy/terms-conditions"
+    }
+  ],
+  "copyright_text": "#MadeInIndia © 2020 Shopsense Retail Technologies",
+  "support": {
+    "timing": "9 AM to 9 PM",
+    "phone": [],
+    "email": []
+  },
+  "business_highlights": [
+    {
+      "_id": "60479413a32f774d754b00ef",
+      "title": "100% Genuine Products",
+      "icon": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/business-highlights/pictures/square-logo/original/bVlx43F2a-H6pvZ9tzp-business-logo-icon.png",
+      "sub_title": "Directly from brands"
+    },
+    {
+      "_id": "60479413a32f7717df4b00f0",
+      "title": "Credit Facility Available",
+      "icon": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/business-highlights/pictures/square-logo/original/VMnltS1m3-QuUnEjOsA-business-logo-icon.png",
+      "sub_title": "Free 30 Days Credit"
+    },
+    {
+      "_id": "60479413a32f77e70b4b00f1",
+      "title": "Assured Returns",
+      "icon": "https://hdn-1.addsale.com/x0/company/1/applications/000000000000000000000004/business-highlights/pictures/square-logo/original/cTHzgHJXK-sROtLMalN-business-logo-icon.png",
+      "sub_title": "For all damaged/wrong items"
+    }
+  ],
+  "application": "000000000000000000000004",
+  "created_at": "2020-03-09T11:25:49.921Z",
+  "modified_at": "2021-03-09T15:28:19.598Z",
+  "__v": 101
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15240,6 +35273,98 @@ Get social tokens.
 [TokenResponse](#TokenResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "tokens": {
+    "firebase": {
+      "credentials": {
+        "ios": {
+          "application_id": "test",
+          "api_key": "test"
+        },
+        "android": {
+          "application_id": "test",
+          "api_key": "test"
+        },
+        "project_id": "uniket-d8cdc",
+        "gcm_sender_id": "test",
+        "application_id": "test",
+        "api_key": "test"
+      },
+      "enabled": true
+    },
+    "moengage": {
+      "credentials": {
+        "app_id": "test"
+      },
+      "enabled": true
+    },
+    "segment": {
+      "credentials": {
+        "write_key": "test"
+      },
+      "enabled": true
+    },
+    "gtm": {
+      "credentials": {
+        "api_key": "test"
+      },
+      "enabled": false
+    },
+    "freshchat": {
+      "credentials": {
+        "app_id": "123456",
+        "app_key": "123456789",
+        "web_token": ""
+      },
+      "enabled": false
+    },
+    "safetynet": {
+      "credentials": {
+        "api_key": "test"
+      },
+      "enabled": true
+    },
+    "fynd_rewards": {
+      "credentials": {
+        "public_key": "test"
+      }
+    },
+    "auth": {
+      "google": {
+        "appId": "test"
+      },
+      "facebook": {
+        "appId": "test"
+      },
+      "accountkit": {
+        "appId": ""
+      }
+    },
+    "google_map": {
+      "credentials": {
+        "api_key": "test"
+      }
+    }
+  },
+  "_id": "5e66282a073261060ee83751",
+  "application": "000000000000000000000004",
+  "created_at": "2020-03-09T11:27:38.894Z",
+  "modified_at": "2020-12-24T05:39:17.054Z",
+  "__v": 0
+}
+```
+</details>
+
+
+
 
 
 
@@ -15284,6 +35409,98 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "tokens": {
+    "firebase": {
+      "credentials": {
+        "ios": {
+          "application_id": "test",
+          "api_key": "test"
+        },
+        "android": {
+          "application_id": "test",
+          "api_key": "test"
+        },
+        "project_id": "uniket-d8cdc",
+        "gcm_sender_id": "test",
+        "application_id": "test",
+        "api_key": "test"
+      },
+      "enabled": true
+    },
+    "moengage": {
+      "credentials": {
+        "app_id": "test"
+      },
+      "enabled": true
+    },
+    "segment": {
+      "credentials": {
+        "write_key": "test"
+      },
+      "enabled": true
+    },
+    "gtm": {
+      "credentials": {
+        "api_key": "1234567890"
+      },
+      "enabled": false
+    },
+    "freshchat": {
+      "credentials": {
+        "app_id": "123456",
+        "app_key": "123456789",
+        "web_token": ""
+      },
+      "enabled": false
+    },
+    "safetynet": {
+      "credentials": {
+        "api_key": "test"
+      },
+      "enabled": true
+    },
+    "fynd_rewards": {
+      "credentials": {
+        "public_key": "test"
+      }
+    },
+    "auth": {
+      "google": {
+        "appId": "test"
+      },
+      "facebook": {
+        "appId": "test"
+      },
+      "accountkit": {
+        "appId": ""
+      }
+    },
+    "google_map": {
+      "credentials": {
+        "api_key": "test"
+      }
+    }
+  },
+  "_id": "5e66282a073261060ee83751",
+  "application": "000000000000000000000004",
+  "created_at": "2020-03-09T11:27:38.894Z",
+  "modified_at": "2020-12-24T05:39:17.054Z",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15320,6 +35537,45 @@ Application inventory enabled companies.
 [CompaniesResponse](#CompaniesResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "uid": 108,
+      "name": "Sample2 Company",
+      "company_type": "mbo"
+    },
+    {
+      "uid": 13,
+      "name": "Isabel Mazanec",
+      "company_type": "franchisee"
+    },
+    {
+      "uid": 7,
+      "name": "Zack Burgdorf",
+      "company_type": "distributor"
+    }
+  ],
+  "page": {
+    "type": "number",
+    "size": 200,
+    "current": 1,
+    "has_next": false,
+    "item_total": 3
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -15364,6 +35620,58 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "_id": "5ec2c0b168fc2800017112f5",
+      "uid": 1,
+      "name": "RRL01",
+      "display_name": "RRL01",
+      "store_type": "warehouse",
+      "store_code": "WH_8513",
+      "company_id": 1
+    },
+    {
+      "_id": "5ec3b09a68fc28000171137c",
+      "modified_on": "2020-06-30T10:02:41.208Z",
+      "uid": 10,
+      "name": "Saran Ledonne",
+      "display_name": "",
+      "store_type": "high_street",
+      "store_code": "af6198fe-2c23-4441-bbf4-e694c96e255c",
+      "company_id": 1
+    },
+    {
+      "_id": "5f099b2c931b1c0001e7ccb2",
+      "display_name": "cbs 2",
+      "store_code": "HS-c9bac",
+      "name": "cbs 2",
+      "company_id": 80,
+      "store_type": "high_street",
+      "uid": 11014
+    }
+  ],
+  "page": {
+    "type": "number",
+    "size": 200,
+    "current": 1,
+    "has_next": true,
+    "item_total": 3
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15400,6 +35708,204 @@ Get application configuration for various features and data
 [ApplicationInventory](#ApplicationInventory)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "inventory": {
+    "brand": {
+      "criteria": "all",
+      "brands": []
+    },
+    "store": {
+      "criteria": "filter",
+      "stores": [],
+      "rules": [
+        {
+          "companies": [
+            1,
+            3,
+            4
+          ],
+          "brands": []
+        }
+      ]
+    },
+    "category": {
+      "criteria": "all",
+      "categories": []
+    },
+    "price": {
+      "min": 1,
+      "max": 10000
+    },
+    "discount": {
+      "min": 0,
+      "max": 100
+    },
+    "out_of_stock": true,
+    "franchise_enabled": true,
+    "exclude_category": [],
+    "image": [
+      "standard",
+      "substandard",
+      "default"
+    ],
+    "company_store": []
+  },
+  "authentication": {
+    "required": true,
+    "provider": "fynd"
+  },
+  "article_assignment": {
+    "rules": {
+      "store_priority": {
+        "enabled": false,
+        "storetype_order": []
+      }
+    },
+    "post_order_reassignment": true
+  },
+  "reward_points": {
+    "credit": {
+      "enabled": true
+    },
+    "debit": {
+      "enabled": true,
+      "auto_apply": false,
+      "strategy_channel": "rewards"
+    }
+  },
+  "cart": {
+    "delivery_charges": {
+      "enabled": true,
+      "charges": [
+        {
+          "threshold": 1000,
+          "charges": 49
+        },
+        {
+          "threshold": 200000,
+          "charges": 79
+        }
+      ]
+    },
+    "enabled": true,
+    "max_cart_items": 0,
+    "min_cart_value": 120,
+    "bulk_coupons": true
+  },
+  "payment": {
+    "callback_url": {
+      "app": "",
+      "web": ""
+    },
+    "methods": {
+      "pl": {
+        "enabled": true
+      },
+      "card": {
+        "enabled": true
+      },
+      "nb": {
+        "enabled": true
+      },
+      "wl": {
+        "enabled": true
+      },
+      "ps": {
+        "enabled": true
+      },
+      "upi": {
+        "enabled": true
+      },
+      "qr": {
+        "enabled": true
+      },
+      "cod": {
+        "enabled": true
+      },
+      "pp": {
+        "enabled": true
+      },
+      "jp": {
+        "enabled": false
+      },
+      "pac": {
+        "enabled": false
+      },
+      "fc": {
+        "enabled": false
+      },
+      "jiopp": {
+        "enabled": false
+      },
+      "stripepg": {
+        "enabled": true
+      },
+      "juspaypg": {
+        "enabled": false
+      },
+      "payubizpg": {
+        "enabled": true
+      },
+      "payumoneypg": {
+        "enabled": true
+      },
+      "rupifipg": {
+        "enabled": false
+      },
+      "simpl": {
+        "enabled": true
+      }
+    },
+    "payment_selection_lock": {
+      "enabled": false,
+      "default_options": "",
+      "payment_identifier": ""
+    },
+    "mode_of_payment": "uniket_b2b",
+    "source": "uniket",
+    "enabled": true,
+    "cod_amount_limit": 100000,
+    "cod_charges": 1500
+  },
+  "order": {
+    "enabled": true,
+    "force_reassignment": false
+  },
+  "logistics": {
+    "logistics_by_seller": false,
+    "serviceability_check": true,
+    "same_day_delivery": true,
+    "dp_assignment": true
+  },
+  "business": "retail",
+  "comms_enabled": true,
+  "platforms": [
+    "uniket_wholesale"
+  ],
+  "_id": "5e04c76b8dd8c003577fdd0a",
+  "loyalty_points": {
+    "enabled": true,
+    "auto_apply": false
+  },
+  "app": "000000000000000000000004",
+  "created_at": "2019-12-26t14:44:59.835z",
+  "modified_at": "2021-03-09t15:40:29.208z",
+  "__v": 3,
+  "modified_by": "5e199eed98cfe16dc61385de"
+}
+```
+</details>
+
+
+
 
 
 
@@ -15444,6 +35950,204 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "inventory": {
+    "brand": {
+      "criteria": "all",
+      "brands": []
+    },
+    "store": {
+      "criteria": "filter",
+      "stores": [],
+      "rules": [
+        {
+          "companies": [
+            1,
+            3,
+            4
+          ],
+          "brands": []
+        }
+      ]
+    },
+    "category": {
+      "criteria": "all",
+      "categories": []
+    },
+    "price": {
+      "min": 1,
+      "max": 10000
+    },
+    "discount": {
+      "min": 0,
+      "max": 100
+    },
+    "out_of_stock": true,
+    "franchise_enabled": true,
+    "exclude_category": [],
+    "image": [
+      "standard",
+      "substandard",
+      "default"
+    ],
+    "company_store": []
+  },
+  "authentication": {
+    "required": true,
+    "provider": "fynd"
+  },
+  "article_assignment": {
+    "rules": {
+      "store_priority": {
+        "enabled": false,
+        "storetype_order": []
+      }
+    },
+    "post_order_reassignment": true
+  },
+  "reward_points": {
+    "credit": {
+      "enabled": true
+    },
+    "debit": {
+      "enabled": true,
+      "auto_apply": false,
+      "strategy_channel": "REWARDS"
+    }
+  },
+  "cart": {
+    "delivery_charges": {
+      "enabled": true,
+      "charges": [
+        {
+          "threshold": 1000,
+          "charges": 49
+        },
+        {
+          "threshold": 200000,
+          "charges": 79
+        }
+      ]
+    },
+    "enabled": true,
+    "max_cart_items": 0,
+    "min_cart_value": 120,
+    "bulk_coupons": true
+  },
+  "payment": {
+    "callback_url": {
+      "app": "",
+      "web": ""
+    },
+    "methods": {
+      "PL": {
+        "enabled": true
+      },
+      "CARD": {
+        "enabled": true
+      },
+      "NB": {
+        "enabled": true
+      },
+      "WL": {
+        "enabled": true
+      },
+      "PS": {
+        "enabled": true
+      },
+      "UPI": {
+        "enabled": true
+      },
+      "QR": {
+        "enabled": true
+      },
+      "COD": {
+        "enabled": true
+      },
+      "PP": {
+        "enabled": true
+      },
+      "JP": {
+        "enabled": false
+      },
+      "PAC": {
+        "enabled": false
+      },
+      "FC": {
+        "enabled": false
+      },
+      "JIOPP": {
+        "enabled": false
+      },
+      "STRIPEPG": {
+        "enabled": true
+      },
+      "JUSPAYPG": {
+        "enabled": false
+      },
+      "PAYUBIZPG": {
+        "enabled": true
+      },
+      "PAYUMONEYPG": {
+        "enabled": true
+      },
+      "RUPIFIPG": {
+        "enabled": false
+      },
+      "SIMPL": {
+        "enabled": true
+      }
+    },
+    "payment_selection_lock": {
+      "enabled": false,
+      "default_options": "",
+      "payment_identifier": ""
+    },
+    "mode_of_payment": "UNIKET_B2B",
+    "source": "UNIKET",
+    "enabled": true,
+    "cod_amount_limit": 100000,
+    "cod_charges": 1500
+  },
+  "order": {
+    "enabled": true,
+    "force_reassignment": false
+  },
+  "logistics": {
+    "logistics_by_seller": false,
+    "serviceability_check": true,
+    "same_day_delivery": true,
+    "dp_assignment": true
+  },
+  "business": "retail",
+  "comms_enabled": true,
+  "platforms": [
+    "uniket_wholesale"
+  ],
+  "_id": "5e04c76b8dd8c003577fdd0a",
+  "loyalty_points": {
+    "enabled": true,
+    "auto_apply": false
+  },
+  "app": "000000000000000000000004",
+  "created_at": "2019-12-26T14:44:59.835Z",
+  "modified_at": "2021-03-09T15:40:29.208Z",
+  "__v": 3,
+  "modified_by": "5e199eed98cfe16dc61385de"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15480,6 +36184,204 @@ Partially update application configuration for various features and data
 [ApplicationInventory](#ApplicationInventory)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "inventory": {
+    "brand": {
+      "criteria": "all",
+      "brands": []
+    },
+    "store": {
+      "criteria": "filter",
+      "stores": [],
+      "rules": [
+        {
+          "companies": [
+            1,
+            3,
+            4
+          ],
+          "brands": []
+        }
+      ]
+    },
+    "category": {
+      "criteria": "all",
+      "categories": []
+    },
+    "price": {
+      "min": 1,
+      "max": 10000
+    },
+    "discount": {
+      "min": 0,
+      "max": 100
+    },
+    "out_of_stock": true,
+    "franchise_enabled": true,
+    "exclude_category": [],
+    "image": [
+      "standard",
+      "substandard",
+      "default"
+    ],
+    "company_store": []
+  },
+  "authentication": {
+    "required": true,
+    "provider": "fynd"
+  },
+  "article_assignment": {
+    "rules": {
+      "store_priority": {
+        "enabled": false,
+        "storetype_order": []
+      }
+    },
+    "post_order_reassignment": true
+  },
+  "reward_points": {
+    "credit": {
+      "enabled": true
+    },
+    "debit": {
+      "enabled": true,
+      "auto_apply": false,
+      "strategy_channel": "REWARDS"
+    }
+  },
+  "cart": {
+    "delivery_charges": {
+      "enabled": true,
+      "charges": [
+        {
+          "threshold": 1000,
+          "charges": 49
+        },
+        {
+          "threshold": 200000,
+          "charges": 79
+        }
+      ]
+    },
+    "enabled": true,
+    "max_cart_items": 0,
+    "min_cart_value": 120,
+    "bulk_coupons": true
+  },
+  "payment": {
+    "callback_url": {
+      "app": "",
+      "web": ""
+    },
+    "methods": {
+      "PL": {
+        "enabled": true
+      },
+      "CARD": {
+        "enabled": true
+      },
+      "NB": {
+        "enabled": true
+      },
+      "WL": {
+        "enabled": true
+      },
+      "PS": {
+        "enabled": true
+      },
+      "UPI": {
+        "enabled": true
+      },
+      "QR": {
+        "enabled": true
+      },
+      "COD": {
+        "enabled": true
+      },
+      "PP": {
+        "enabled": true
+      },
+      "JP": {
+        "enabled": false
+      },
+      "PAC": {
+        "enabled": false
+      },
+      "FC": {
+        "enabled": false
+      },
+      "JIOPP": {
+        "enabled": false
+      },
+      "STRIPEPG": {
+        "enabled": true
+      },
+      "JUSPAYPG": {
+        "enabled": false
+      },
+      "PAYUBIZPG": {
+        "enabled": true
+      },
+      "PAYUMONEYPG": {
+        "enabled": true
+      },
+      "RUPIFIPG": {
+        "enabled": false
+      },
+      "SIMPL": {
+        "enabled": true
+      }
+    },
+    "payment_selection_lock": {
+      "enabled": false,
+      "default_options": "",
+      "payment_identifier": ""
+    },
+    "mode_of_payment": "UNIKET_B2B",
+    "source": "UNIKET",
+    "enabled": true,
+    "cod_amount_limit": 100000,
+    "cod_charges": 1500
+  },
+  "order": {
+    "enabled": true,
+    "force_reassignment": false
+  },
+  "logistics": {
+    "logistics_by_seller": false,
+    "serviceability_check": true,
+    "same_day_delivery": true,
+    "dp_assignment": true
+  },
+  "business": "retail",
+  "comms_enabled": true,
+  "platforms": [
+    "uniket_wholesale"
+  ],
+  "_id": "5e04c76b8dd8c003577fdd0a",
+  "loyalty_points": {
+    "enabled": true,
+    "auto_apply": false
+  },
+  "app": "000000000000000000000004",
+  "created_at": "2019-12-26T14:44:59.835Z",
+  "modified_at": "2021-03-09T15:40:29.208Z",
+  "__v": 3,
+  "modified_by": "5e199eed98cfe16dc61385de"
+}
+```
+</details>
+
+
+
 
 
 
@@ -15524,6 +36426,36 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "5ec7a85965c3893857538d93",
+  "supported_currency": [
+    "5ec75d11f7bfb5a7d38f3524",
+    "5ec75d11f7bfb54d798f3516",
+    "5ec75d11f7bfb553b88f355f",
+    "5ec75d11f7bfb559d08f34d5",
+    "5ec75d11f7bfb5d1e98f34da"
+  ],
+  "application": "000000000000000000000004",
+  "default_currency": {
+    "ref": "5ec75d11f7bfb54d798f3516",
+    "code": "USD"
+  },
+  "created_at": "2020-05-22T10:24:25.984Z",
+  "modified_at": "2021-03-09T10:47:32.664Z"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15560,6 +36492,36 @@ Add initial application supported currency for various features and data. Defaul
 [AppSupportedCurrency](#AppSupportedCurrency)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "5ec7a85965c3893857538d93",
+  "supported_currency": [
+    "5ec75d11f7bfb5a7d38f3524",
+    "5ec75d11f7bfb54d798f3516",
+    "5ec75d11f7bfb553b88f355f",
+    "5ec75d11f7bfb559d08f34d5",
+    "5ec75d11f7bfb5d1e98f34da"
+  ],
+  "application": "000000000000000000000004",
+  "default_currency": {
+    "ref": "5ec75d11f7bfb54d798f3516",
+    "code": "USD"
+  },
+  "created_at": "2020-05-22T10:24:25.984Z",
+  "modified_at": "2021-03-09T10:47:32.664Z"
+}
+```
+</details>
+
+
+
 
 
 
@@ -15604,6 +36566,104 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "type": "number",
+    "size": 10,
+    "current": 1,
+    "has_next": true,
+    "item_total": 583
+  },
+  "items": [
+    {
+      "address": {
+        "state": "MAHARASHTRA",
+        "address1": "SAGAR TECH PLAZA, SAKINAKA",
+        "lat_long": {
+          "type": "Point",
+          "coordinates": [
+            1,
+            1
+          ]
+        },
+        "pincode": 400070,
+        "country": "INDIA",
+        "city": "MUMBAI"
+      },
+      "_id": "5f586563f509dd000145c02d",
+      "store_type": "high_street",
+      "uid": 11016,
+      "store_code": "HS-0c532",
+      "display_name": " Brand Company Store 11",
+      "name": " Brand Company Store 11",
+      "pincode": 400070,
+      "code": "HS-0c532"
+    },
+    {
+      "address": {
+        "state": "MAHARASHTRA",
+        "address1": "UNNAMED ROAD, VASAI EAST SALT PLANT",
+        "lat_long": {
+          "type": "Point",
+          "coordinates": [
+            72.84293219999999,
+            19.3805675
+          ]
+        },
+        "address2": "VASAI EAST SALT PLANT, VASAI EAST, ",
+        "pincode": 401208,
+        "country": "INDIA",
+        "city": "VIRAR",
+        "landmark": ""
+      },
+      "_id": "5f585934f509dd000145c025",
+      "store_type": "high_street",
+      "uid": 11567,
+      "store_code": "123456",
+      "display_name": "2nd Store",
+      "name": "2nd Store",
+      "pincode": 401208,
+      "code": "123456"
+    },
+    {
+      "address": {
+        "state": "GUJARAT",
+        "address1": "32, AANAND SHOPPING CENTRE ",
+        "lat_long": {
+          "type": "Point",
+          "coordinates": [
+            1,
+            1
+          ]
+        },
+        "pincode": 380001,
+        "country": "INDIA",
+        "city": "AHMEDABAD"
+      },
+      "_id": "5f587b5ef509dd000145c02f",
+      "store_type": "high_street",
+      "uid": 11568,
+      "store_code": "12345",
+      "display_name": "3rd ",
+      "name": "3rd ",
+      "pincode": 380001,
+      "code": "12345"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15640,6 +36700,31 @@ Add/Update ordering store config.
 [DeploymentMeta](#DeploymentMeta)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "deployed_stores": [
+    1,
+    10
+  ],
+  "all_stores": false,
+  "enabled": true,
+  "type": "hard",
+  "_id": "5e7e5e4d6b5f3b4b54c95f9c",
+  "app": "000000000000000000000004",
+  "__v": 6
+}
+```
+</details>
+
+
+
 
 
 
@@ -15684,6 +36769,47 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "domains": [
+    {
+      "_id": "5eb1177748312a3bd55d0f1e",
+      "verified": true,
+      "name": "uniket.hostx0.de",
+      "is_primary": true,
+      "is_default": true,
+      "is_shortlink": false
+    },
+    {
+      "verified": true,
+      "is_primary": false,
+      "is_default": false,
+      "is_shortlink": true,
+      "_id": "5f0858c5f86e00cd42dccc8d",
+      "name": "jd.hostx0.de"
+    },
+    {
+      "verified": true,
+      "is_primary": false,
+      "is_default": false,
+      "is_shortlink": false,
+      "_id": "6048497e87f5730423149190",
+      "name": "testdm.hostx0.de"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15720,6 +36846,29 @@ Add new domain to application.
 [Domain](#Domain)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "name": "testdm.hostx0.de",
+  "verified": true,
+  "txtRecords": [],
+  "message": "New domain added successfully",
+  "is_primary": false,
+  "is_default": false,
+  "is_shortlink": false,
+  "_id": "6048497e87f5730423149190"
+}
+```
+</details>
+
+
+
 
 
 
@@ -15764,6 +36913,22 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Domain removed successfully"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15800,6 +36965,47 @@ Change a domain to Primary or Shortlink domain
 [DomainsResponse](#DomainsResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "domains": [
+    {
+      "_id": "5eb1177748312a3bd55d0f1e",
+      "verified": true,
+      "name": "uniket.hostx0.de",
+      "is_primary": true,
+      "is_default": true,
+      "is_shortlink": false
+    },
+    {
+      "verified": true,
+      "is_primary": false,
+      "is_default": false,
+      "is_shortlink": true,
+      "_id": "5f0858c5f86e00cd42dccc8d",
+      "name": "jd.hostx0.de"
+    },
+    {
+      "verified": true,
+      "is_primary": false,
+      "is_default": false,
+      "is_shortlink": false,
+      "_id": "6048497e87f5730423149190",
+      "name": "testdm.hostx0.de"
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -15844,6 +37050,36 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "connected": true,
+  "status": [
+    {
+      "display": "Domain TXT record entry 5d65089e031f9029f8e8dc2f",
+      "status": true
+    },
+    {
+      "display": "Domain pointing to 18.217.232.69 A record",
+      "status": true
+    },
+    {
+      "display": "Domain pointing to 18.188.115.251 A record",
+      "status": true
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15880,6 +37116,20 @@ Create new application
 [CreateAppResponse](#CreateAppResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -15924,6 +37174,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -15960,6 +37224,20 @@ Get application data from id
 [Application](#Application)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -16004,6 +37282,33 @@ Currencies Success response
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "_id": "5ec75d11f7bfb54d798f3516",
+      "is_active": true,
+      "name": "United States Dollar",
+      "code": "USD",
+      "created_at": "2020-05-22T05:03:13.354Z",
+      "modified_at": "2020-06-05T09:12:04.248Z",
+      "decimal_digits": 2,
+      "symbol": "$"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16040,6 +37345,64 @@ Check domain availibility before linking to application. Also sends domain sugge
 [DomainSuggestionsResponse](#DomainSuggestionsResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Suggestions for fynd domains</i></summary>
+
+```json
+{
+  "value": {
+    "domains": [
+      {
+        "name": "test.hostx1.de",
+        "is_available": false
+      },
+      {
+        "name": "testhive.hostx1.de",
+        "is_available": true
+      }
+    ]
+  }
+}
+```
+</details>
+
+<details>
+<summary><i>&nbsp; Suggestions for custom domains</i></summary>
+
+```json
+{
+  "value": {
+    "domains": [
+      {
+        "name": "test25.in",
+        "unsupported": false,
+        "is_available": false
+      },
+      {
+        "name": "try25.in",
+        "unsupported": false,
+        "is_available": true,
+        "price": 14.99,
+        "currency": "USD"
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
 
 
 
@@ -16084,6 +37447,107 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "5ec376ce848a005189acb312",
+  "validators": {
+    "company": {
+      "browser_script": "",
+      "json_schema": {
+        "type": "object",
+        "required": [
+          "ip_address",
+          "icode",
+          "gds_entity_id",
+          "auth_key"
+        ],
+        "properties": {
+          "gds_entity_id": {
+            "type": "string",
+            "title": "GDS Entity ID",
+            "minLength": 3,
+            "maxLength": 10,
+            "pattern": "^[a-zA-Z0-9]+$",
+            "description": "GDS Entity ID is a unique identifier provided by Ginesys to you."
+          },
+          "ip_address": {
+            "type": "string",
+            "title": "IP Address",
+            "pattern": "(\\d{1,3}\\.){3}\\d{1,3}",
+            "description": "Enter IP address provided by Ginesys for your POS server"
+          },
+          "auth_key": {
+            "title": "Auth Key",
+            "type": "string",
+            "maxLength": 500,
+            "description": "Provide authentication token provided by Ginesys to you."
+          },
+          "icode": {
+            "title": "ICODE",
+            "type": "string",
+            "enum": [
+              "ean",
+              "upc",
+              "alu",
+              "sku_code"
+            ],
+            "description": "Please select the correct SKU identifier that you use to provide inventory to Fynd."
+          }
+        }
+      }
+    },
+    "store": {
+      "browser_script": "",
+      "json_schema": {
+        "type": "object",
+        "properties": {
+          "location_id": {
+            "type": "string",
+            "title": "Location ID",
+            "description": "Provide site code as per POS/SAP."
+          },
+          "ip_address": {
+            "type": "string",
+            "title": "IP Address",
+            "pattern": "(\\d{1,3}\\.){3}\\d{1,3}",
+            "description": "Enter IP address provided by Ginesys for your POS server"
+          }
+        }
+      }
+    }
+  },
+  "description": "Sap Integration west ELM brands",
+  "constants": {},
+  "name": "SAP RBL Integration",
+  "meta": [
+    {
+      "public": true,
+      "_id": "5ee3e246129be17ce0b59ef4",
+      "name": "price_level",
+      "value": "store"
+    }
+  ],
+  "icon": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1589868232/addsale/platform/integrations/icon/z3kj9p8nidx4zzmdutdu.svg",
+  "owner": "5e60e43dcd08cf01069eb23e",
+  "created_at": "2020-05-19T06:03:58.757Z",
+  "modified_at": "2020-06-15T12:00:42.598Z",
+  "token": "qk60vXqk-",
+  "secret": "Gp0dYInpUV",
+  "__v": 13,
+  "description_html": ""
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16120,6 +37584,127 @@ Get all available integration opt-ins
 [GetIntegrationsOptInsResponse](#GetIntegrationsOptInsResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "validators": {
+        "company": {
+          "json_schema": [
+            {
+              "display": "Host",
+              "key": "host",
+              "type": "text",
+              "tooltip": "Enter host address"
+            }
+          ],
+          "browser_script": ""
+        },
+        "store": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "inventory": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "order": {
+          "json_schema": [],
+          "browser_script": ""
+        }
+      },
+      "description": "awesome integration",
+      "description_html": "",
+      "constants": "{\"mop_mapping\":{\"FYND\":\"FYND\"}}",
+      "companies": [],
+      "support": [
+        "inventory",
+        "order"
+      ],
+      "_id": "5e56089f4265cf2846d1e58c",
+      "name": "x0-1",
+      "meta": [
+        {
+          "public": true,
+          "_id": "5e56089f4265cf81e1d1e58e",
+          "name": "wow",
+          "value": "1"
+        }
+      ],
+      "icon": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1582696589/addsale/platform/integrations/icon/jihgcoibfmdttgiukwg0.png",
+      "owner": "5e55fe074bda3c392ed9eab2",
+      "created_at": "2020-02-26T05:56:47.214Z",
+      "modified_at": "2021-03-02T12:29:03.554Z",
+      "token": "fKoHRW5H",
+      "secret": "d1E85CTmf",
+      "__v": 12
+    },
+    {
+      "validators": {
+        "company": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "store": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "inventory": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "order": {
+          "json_schema": [],
+          "browser_script": ""
+        }
+      },
+      "description": "jabardast",
+      "description_html": "",
+      "constants": "{\"mop_mapping\":{\"FYND\":\"FYND\"}}",
+      "companies": [],
+      "support": [
+        "inventory",
+        "order"
+      ],
+      "_id": "5e5608bf4265cf7198d1e58f",
+      "name": "x0-2",
+      "meta": [
+        {
+          "public": false,
+          "_id": "5e5608bf4265cf813fd1e590",
+          "name": "wow",
+          "value": "1"
+        }
+      ],
+      "icon": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1582696633/addsale/platform/integrations/icon/cstvvkgjgip1ja56gq4x.png",
+      "owner": "5e55fe074bda3c392ed9eab2",
+      "created_at": "2020-02-26T05:57:19.875Z",
+      "modified_at": "2021-02-15T05:23:55.962Z",
+      "token": "3h3_mnzp",
+      "secret": "dgGHrIlFG",
+      "__v": 7
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 50,
+    "item_total": 24,
+    "has_next": false
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -16164,6 +37749,127 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "validators": {
+        "company": {
+          "json_schema": [
+            {
+              "display": "Host",
+              "key": "host",
+              "type": "text",
+              "tooltip": "Enter host address"
+            }
+          ],
+          "browser_script": ""
+        },
+        "store": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "inventory": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "order": {
+          "json_schema": [],
+          "browser_script": ""
+        }
+      },
+      "description": "awesome integration",
+      "description_html": "",
+      "constants": "{\"mop_mapping\":{\"FYND\":\"FYND\"}}",
+      "companies": [],
+      "support": [
+        "inventory",
+        "order"
+      ],
+      "_id": "5e56089f4265cf2846d1e58c",
+      "name": "x0-1",
+      "meta": [
+        {
+          "public": true,
+          "_id": "5e56089f4265cf81e1d1e58e",
+          "name": "wow",
+          "value": "1"
+        }
+      ],
+      "icon": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1582696589/addsale/platform/integrations/icon/jihgcoibfmdttgiukwg0.png",
+      "owner": "5e55fe074bda3c392ed9eab2",
+      "created_at": "2020-02-26T05:56:47.214Z",
+      "modified_at": "2021-03-02T12:29:03.554Z",
+      "token": "fKoHRW5H",
+      "secret": "d1E85CTmf",
+      "__v": 12
+    },
+    {
+      "validators": {
+        "company": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "store": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "inventory": {
+          "json_schema": [],
+          "browser_script": ""
+        },
+        "order": {
+          "json_schema": [],
+          "browser_script": ""
+        }
+      },
+      "description": "jabardast",
+      "description_html": "",
+      "constants": "{\"mop_mapping\":{\"FYND\":\"FYND\"}}",
+      "companies": [],
+      "support": [
+        "inventory",
+        "order"
+      ],
+      "_id": "5e5608bf4265cf7198d1e58f",
+      "name": "x0-2",
+      "meta": [
+        {
+          "public": false,
+          "_id": "5e5608bf4265cf813fd1e590",
+          "name": "wow",
+          "value": "1"
+        }
+      ],
+      "icon": "https://res.cloudinary.com/dwzm9bysq/image/upload/v1582696633/addsale/platform/integrations/icon/cstvvkgjgip1ja56gq4x.png",
+      "owner": "5e55fe074bda3c392ed9eab2",
+      "created_at": "2020-02-26T05:57:19.875Z",
+      "modified_at": "2021-02-15T05:23:55.962Z",
+      "token": "3h3_mnzp",
+      "secret": "dgGHrIlFG",
+      "__v": 7
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 50,
+    "item_total": 24,
+    "has_next": false
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16200,6 +37906,41 @@ Get integration/integration-opt-in level config
 [IntegrationConfigResponse](#IntegrationConfigResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "opted": false,
+      "permissions": [],
+      "last_patch": [],
+      "_id": "5ec377f2848a0073feacb31b",
+      "integration": "5ec376ce848a005189acb312",
+      "level": "store",
+      "uid": 1,
+      "meta": [],
+      "token": "1RuGX0Fyp",
+      "created_at": "2020-05-19T06:08:50.199Z",
+      "modified_at": "2020-08-17T07:54:01.809Z",
+      "__v": 14,
+      "data": {
+        "location_id": "09876",
+        "ip_address": "1.2.3.4"
+      }
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -16244,6 +37985,37 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "opted": false,
+  "permissions": [],
+  "last_patch": [],
+  "_id": "5ec377f2848a0073feacb31b",
+  "integration": "5ec376ce848a005189acb312",
+  "level": "store",
+  "uid": 1,
+  "meta": [],
+  "token": "1RuGX0Fyp",
+  "created_at": "2020-05-19T06:08:50.199Z",
+  "modified_at": "2020-08-17T07:54:01.809Z",
+  "__v": 14,
+  "data": {
+    "location_id": "09876",
+    "ip_address": "1.2.3.4"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16280,6 +38052,37 @@ API checks if a store is already opted in any other integrations
 [OptedStoreIntegration](#OptedStoreIntegration)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "opted": false,
+  "permissions": [],
+  "last_patch": [],
+  "_id": "5ec377f2848a0073feacb31b",
+  "integration": "5ec376ce848a005189acb312",
+  "level": "store",
+  "uid": 1,
+  "meta": [],
+  "token": "1RuGX0Fyp",
+  "created_at": "2020-05-19T06:08:50.199Z",
+  "modified_at": "2020-08-17T07:54:01.809Z",
+  "__v": 14,
+  "data": {
+    "location_id": "09876",
+    "ip_address": "1.2.3.4"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -16324,6 +38127,37 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "brands": [
+    {
+      "name": "5th Avenue",
+      "value": 476,
+      "brand_logo_url": "https://hdn-1.addsale.com/x0/seller/pictures/logo/original/--unnamed--/1595615012186.jpeg",
+      "brand_banner_url": "https://hdn-1.addsale.com/x0/seller/pictures/landscape-banner/original/--unnamed--/1595615012724.jpeg",
+      "brand_banner_portrait_url": "https://hdn-1.addsale.com/x0/seller/pictures/portrait-banner/original/--unnamed--/1595615013203.jpeg"
+    },
+    {
+      "name": "Abhay",
+      "value": 47,
+      "brand_logo_url": "https://hdn-1.fynd.com/brands/pictures/square-logo/resize-h:200,w:0/9fG6jZUJV-brand-Slamay.png",
+      "brand_banner_url": "https://hdn-1.addsale.com/x0/seller/pictures/landscape-banner/original/cpApcg_insta_01.jpg034422ca-b739-4a30-ba9c-87ca32e8c2ef/cpApcg_insta_01.jpg",
+      "brand_banner_portrait_url": "https://hdn-1.addsale.com/x0/seller/pictures/portrait-banner/original/mtaSMv_insta_01.jpga088b881-886d-4b5a-b82f-139bd2aa3f35/mtaSMv_insta_01.jpg"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16360,6 +38194,42 @@ Get company by brand uids
 [CompanyByBrandsResponse](#CompanyByBrandsResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "company_name": "RELIANCE RETAIL LTD",
+      "company_id": 1
+    },
+    {
+      "company_name": "SARASUOLE PRIVATE LIMITED",
+      "company_id": 3
+    },
+    {
+      "company_name": "Lloyd Palek",
+      "company_id": 4
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 200,
+    "item_total": 171,
+    "has_next": false
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -16404,6 +38274,81 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "store_name": "RRL01",
+      "store_id": 1,
+      "store_type": "warehouse",
+      "store_code": "WH_8513",
+      "store_address": {
+        "state": "MAHARASHTRA",
+        "address1": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
+        "lat_long": {
+          "type": "Point",
+          "coordinates": [
+            72.8691788,
+            19.1174114
+          ]
+        },
+        "address2": "KONDIVITA, ANDHERI EAST, MUMBAI, MAHARASHTRA 400069",
+        "pincode": 400059,
+        "country": "INDIA",
+        "city": "MUMBAI"
+      },
+      "company": {
+        "uid": 1,
+        "name": "RELIANCE RETAIL LTD"
+      }
+    },
+    {
+      "store_name": "RUOSH WAREHOUSE",
+      "store_id": 2,
+      "store_type": "warehouse",
+      "store_code": "RUOSH43",
+      "store_address": {
+        "state": "MAHARASHTRA",
+        "address1": "RAUNAK CITY SECTOR 4 D10, SAPAD GAON",
+        "lat_long": {
+          "type": "Point",
+          "coordinates": [
+            73.121952,
+            19.2645048
+          ]
+        },
+        "address2": "SAPAD GAON, KHADAKPADA, ",
+        "pincode": 421301,
+        "country": "INDIA",
+        "city": "THANE",
+        "landmark": "near taj"
+      },
+      "company": {
+        "uid": 3,
+        "name": "SARASUOLE PRIVATE LIMITED"
+      }
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 200,
+    "item_total": 762,
+    "has_next": true
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16440,6 +38385,63 @@ Get other seller applications who has opted current company as inventory
 [OtherSellerApplications](#OtherSellerApplications)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "name": "intent 2",
+      "description": "",
+      "_id": "5f030880f019afd636889afc",
+      "domain": "intent.hostx0.de",
+      "company": {
+        "uid": 94,
+        "name": "DummyImran"
+      },
+      "opt_type": "store"
+    },
+    {
+      "name": "new application imran",
+      "description": "",
+      "_id": "5f03f5d17692029e2d1a50a5",
+      "domain": "imranstore.hostx0.de",
+      "company": {
+        "uid": 94,
+        "name": "DummyImran"
+      },
+      "opt_type": "store"
+    },
+    {
+      "name": "helo",
+      "description": "",
+      "_id": "5f03f63b769202170c1a50a9",
+      "domain": "helo.hostx0.de",
+      "company": {
+        "uid": 7,
+        "name": "Zack Burgdorf"
+      },
+      "opt_type": "store"
+    }
+  ],
+  "page": {
+    "type": "number",
+    "current": 1,
+    "size": 10,
+    "item_total": 20,
+    "has_next": true
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -16484,6 +38486,67 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "name": "intent 2",
+  "description": "",
+  "_id": "5f030880f019afd636889afc",
+  "domain": "intent.hostx0.de",
+  "company": {
+    "uid": 94,
+    "name": "DummyImran"
+  },
+  "opted_inventory": {
+    "opt_type": {
+      "key": "store",
+      "display": "Store"
+    },
+    "items": [
+      {
+        "name": "RRL01",
+        "id": 1,
+        "store_code": "WH_8513",
+        "_id": "5ec2c0b168fc2800017112f5",
+        "modified_on": "2020-09-09T04:25:55.843Z",
+        "uid": 1,
+        "address": {
+          "state": "MAHARASHTRA",
+          "address1": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
+          "lat_long": {
+            "type": "Point",
+            "coordinates": [
+              72.8691788,
+              19.1174114
+            ]
+          },
+          "address2": "KONDIVITA, ANDHERI EAST, MUMBAI, MAHARASHTRA 400069",
+          "pincode": 400059,
+          "country": "INDIA",
+          "city": "MUMBAI"
+        },
+        "display_name": "RRL01",
+        "store_type": "warehouse",
+        "company_id": 1
+      }
+    ]
+  },
+  "opt_out_inventory": {
+    "store": [],
+    "company": []
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16520,6 +38583,22 @@ Opt out company or store from other seller application
 [SuccessMessageResponse](#SuccessMessageResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Updated opt out data"
+}
+```
+</details>
+
+
+
 
 
 
@@ -16569,6 +38648,72 @@ Coupon List for sent page_size and page_no
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Coupon list for sent filter and page size</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "_id": "5e1d9bec6d6b7e000146c840",
+        "display_meta": {
+          "title": "percent50 title"
+        },
+        "_schedule": {
+          "next_schedule": [
+            {
+              "start": "2020-01-14T10:45:03.600000+00:00",
+              "end": "2020-01-16T10:45:03+00:00"
+            }
+          ],
+          "duration": null,
+          "start": "2020-01-14T10:45:03.600000+00:00",
+          "end": "2020-01-16T10:45:03+00:00",
+          "cron": ""
+        },
+        "state": {
+          "is_public": true,
+          "is_display": true,
+          "is_archived": false
+        },
+        "ownership": {
+          "payable_category": "seller",
+          "payable_by": ""
+        },
+        "code": "percent50",
+        "rule_definition": {
+          "type": "percentage",
+          "scope": [
+            "category_id"
+          ],
+          "applicable_on": "quantity"
+        }
+      }
+    ],
+    "page": {
+      "has_next": true,
+      "size": 10,
+      "current": 1,
+      "item_total": 30
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16605,6 +38750,23 @@ Create new coupon
 [SuccessMessage](#SuccessMessage)
 
 Coupon Created successfully
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "message": "Coupon Created"
+}
+```
+</details>
+
+
+
 
 
 
@@ -16649,6 +38811,160 @@ Coupon object for sent `id`
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "5e1d9bec6d6b7e000146c840",
+  "validation": {
+    "anonymous": true,
+    "app_id": [
+      "5cd3db5e9d692cfe5302a7ba"
+    ],
+    "user_registered_after": null
+  },
+  "rule": [
+    {
+      "key": 1,
+      "max": 1500,
+      "min": 3000,
+      "value": 50
+    }
+  ],
+  "display_meta": {
+    "title": "percent50 title",
+    "description": "percent50 description",
+    "auto": {
+      "title": "",
+      "subtitle": ""
+    },
+    "subtitle": "percent50 subtitle",
+    "remove": {
+      "title": "",
+      "subtitle": ""
+    },
+    "apply": {
+      "title": "percen50 mt",
+      "subtitle": "percen50 ms"
+    }
+  },
+  "date_meta": {
+    "modified_on": "2020-02-04T14:27:00.577000+00:00",
+    "created_on": "2020-01-14T10:46:04.474000+00:00"
+  },
+  "action": {
+    "action_date": null,
+    "txn_mode": "coupon"
+  },
+  "identifiers": {
+    "category_id": [
+      465,
+      192,
+      133,
+      134,
+      150,
+      151,
+      155,
+      193,
+      157,
+      191,
+      154,
+      152,
+      417,
+      168,
+      416,
+      167,
+      166,
+      162,
+      161,
+      163,
+      165,
+      160
+    ],
+    "user_id": [],
+    "store_id": [],
+    "company_id": []
+  },
+  "author": {
+    "modified_by": "23109086",
+    "created_by": "23206328"
+  },
+  "_schedule": {
+    "next_schedule": [
+      {
+        "start": "2020-01-14T10:45:03.600000+00:00",
+        "end": "2020-01-16T10:45:03+00:00"
+      }
+    ],
+    "duration": null,
+    "start": "2020-01-14T10:45:03.600000+00:00",
+    "end": "2020-01-16T10:45:03+00:00",
+    "cron": ""
+  },
+  "state": {
+    "is_public": true,
+    "is_display": true,
+    "is_archived": false
+  },
+  "ownership": {
+    "payable_category": "seller",
+    "payable_by": ""
+  },
+  "validity": {
+    "priority": 0
+  },
+  "code": "percent50",
+  "rule_definition": {
+    "calculate_on": "esp",
+    "value_type": "percentage",
+    "is_exact": false,
+    "type": "percentage",
+    "scope": [
+      "category_id"
+    ],
+    "auto_apply": false,
+    "applicable_on": "quantity",
+    "currency_code": "INR"
+  },
+  "restrictions": {
+    "price_range": {
+      "max": -1,
+      "min": -1
+    },
+    "uses": {
+      "remaining": {
+        "app": -1,
+        "user": -1,
+        "total": -1
+      },
+      "maximum": {
+        "app": -1,
+        "user": -1,
+        "total": -1
+      }
+    },
+    "post_order": {
+      "cancellation_allowed": true,
+      "return_allowed": true
+    },
+    "platforms": [
+      "web",
+      "android",
+      "ios"
+    ]
+  },
+  "type_slug": "percentage_quantity_percentage"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16685,6 +39001,23 @@ Update coupon with id sent in `id`
 [SuccessMessage](#SuccessMessage)
 
 Coupon updated successfully
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "message": "Coupon Updated"
+}
+```
+</details>
+
+
+
 
 
 
@@ -16729,6 +39062,44 @@ Coupon updated successfully
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Archive or Unarchive coupon</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "message": "Coupon Updated"
+  }
+}
+```
+</details>
+
+<details>
+<summary><i>&nbsp; Coupon schedule updated successfully</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "message": "Coupon schedule updated"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16765,6 +39136,294 @@ Get all the details of cart for a list of provided `cart_items`
 [OpenapiCartDetailsResponse](#OpenapiCartDetailsResponse)
 
 Cart details with breakup
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "quantity": 1,
+      "message": "",
+      "coupon_message": "",
+      "product": {
+        "type": "product",
+        "uid": 803140,
+        "name": "Green Solid T-Shirt",
+        "slug": "celio-green-solid-t-shirt-803140-dd9e2c",
+        "brand": {
+          "uid": 44,
+          "name": "celio"
+        },
+        "categories": [
+          {
+            "uid": 192,
+            "name": "T-Shirts"
+          }
+        ],
+        "images": [
+          {
+            "aspect_ratio": "16:25",
+            "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg",
+            "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg"
+          }
+        ],
+        "action": {
+          "type": "product",
+          "url": "https://api.addsale.com/platform/content/v1/products/celio-green-solid-t-shirt-803140-dd9e2c/",
+          "query": {
+            "product_slug": [
+              "celio-green-solid-t-shirt-803140-dd9e2c"
+            ]
+          }
+        }
+      },
+      "article": {
+        "type": "article",
+        "uid": "25_44_A7050_NEMIEL@GREENBRITISH_S",
+        "size": "S",
+        "seller": {
+          "uid": 25,
+          "name": "CELIO FUTURE FASHION PRIVATE LIMITED"
+        },
+        "store": {
+          "uid": 1486,
+          "name": "Forum Mall"
+        },
+        "quantity": 1,
+        "price": {
+          "base": {
+            "marked": 1299,
+            "effective": 649.5,
+            "currency_code": "INR"
+          },
+          "converted": {
+            "marked": 1299,
+            "effective": 649.5,
+            "currency_code": "INR"
+          }
+        }
+      },
+      "key": "803140_S",
+      "discount": "50% OFF",
+      "price": {
+        "base": {
+          "add_on": 0,
+          "marked": 1299,
+          "effective": 649.5,
+          "selling": 649.5,
+          "currency_code": "INR"
+        },
+        "converted": {
+          "add_on": 0,
+          "marked": 1299,
+          "effective": 649.5,
+          "selling": 649.5,
+          "currency_code": "INR"
+        }
+      },
+      "availability": {
+        "sizes": [
+          "L",
+          "XL",
+          "M",
+          "S"
+        ],
+        "other_store_quantity": 0,
+        "out_of_stock": false,
+        "deliverable": true,
+        "is_valid": true,
+        "available_sizes": [
+          {
+            "is_available": true,
+            "display": "L",
+            "value": "L"
+          },
+          {
+            "is_available": true,
+            "display": "XXL",
+            "value": "XXL"
+          },
+          {
+            "is_available": true,
+            "display": "XL",
+            "value": "XL"
+          },
+          {
+            "is_available": true,
+            "display": "M",
+            "value": "M"
+          },
+          {
+            "is_available": true,
+            "display": "S",
+            "value": "S"
+          },
+          {
+            "is_available": false,
+            "display": "30",
+            "value": "30"
+          }
+        ]
+      },
+      "bulk_offer": {}
+    },
+    {
+      "quantity": 1,
+      "message": "Out of stock. Please remove item",
+      "coupon_message": "",
+      "product": {
+        "type": "product",
+        "uid": 803140,
+        "name": "Green Solid T-Shirt",
+        "slug": "celio-green-solid-t-shirt-803140-dd9e2c",
+        "brand": {
+          "uid": 44,
+          "name": "celio"
+        },
+        "categories": [
+          {
+            "uid": 192,
+            "name": "T-Shirts"
+          }
+        ],
+        "images": [
+          {
+            "aspect_ratio": "16:25",
+            "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg",
+            "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg"
+          }
+        ],
+        "action": {
+          "type": "product",
+          "url": "https://api.addsale.com/platform/content/v1/products/celio-green-solid-t-shirt-803140-dd9e2c/",
+          "query": {
+            "product_slug": [
+              "celio-green-solid-t-shirt-803140-dd9e2c"
+            ]
+          }
+        }
+      },
+      "article": {},
+      "key": "803140_S",
+      "discount": "",
+      "price": {
+        "base": {
+          "add_on": 0,
+          "marked": 1299,
+          "effective": 1299,
+          "selling": 1299,
+          "currency_code": "INR"
+        },
+        "converted": {
+          "add_on": 0,
+          "marked": 1299,
+          "effective": 1299,
+          "selling": 1299,
+          "currency_code": "INR"
+        }
+      },
+      "availability": {
+        "sizes": [
+          "L",
+          "XXL",
+          "XL",
+          "M",
+          "S"
+        ],
+        "other_store_quantity": 0,
+        "out_of_stock": true,
+        "deliverable": false,
+        "is_valid": false,
+        "available_sizes": [
+          {
+            "is_available": true,
+            "display": "L",
+            "value": "L"
+          },
+          {
+            "is_available": true,
+            "display": "XXL",
+            "value": "XXL"
+          },
+          {
+            "is_available": true,
+            "display": "XL",
+            "value": "XL"
+          },
+          {
+            "is_available": true,
+            "display": "M",
+            "value": "M"
+          },
+          {
+            "is_available": true,
+            "display": "S",
+            "value": "S"
+          },
+          {
+            "is_available": false,
+            "display": "30",
+            "value": "30"
+          }
+        ]
+      },
+      "bulk_offer": {}
+    }
+  ],
+  "is_valid": false,
+  "breakup_values": {
+    "display": [
+      {
+        "display": "MRP Total",
+        "key": "mrp_total",
+        "value": 2598,
+        "currency_code": "INR"
+      },
+      {
+        "display": "Discount",
+        "key": "discount",
+        "value": -649,
+        "currency_code": "INR"
+      },
+      {
+        "display": "Subtotal",
+        "key": "subtotal",
+        "value": 1949,
+        "currency_code": "INR"
+      },
+      {
+        "display": "Total",
+        "key": "total",
+        "value": 1949,
+        "currency_code": "INR"
+      }
+    ],
+    "raw": {
+      "cod_charge": 0,
+      "convenience_fee": 0,
+      "coupon": 0,
+      "delivery_charge": 0,
+      "discount": -649.5,
+      "fynd_cash": 0,
+      "gst_charges": 170.11,
+      "mrp_total": 2598,
+      "subtotal": 1948.5,
+      "total": 1948.5,
+      "vog": 1778.39,
+      "you_saved": 0
+    }
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -16809,6 +39468,550 @@ Cart details with pincode validity information at item level
 
 
 
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Valid pincode</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      {
+        "quantity": 1,
+        "message": "",
+        "coupon_message": "",
+        "product": {
+          "type": "product",
+          "uid": 803140,
+          "name": "Green Solid T-Shirt",
+          "slug": "celio-green-solid-t-shirt-803140-dd9e2c",
+          "brand": {
+            "uid": 44,
+            "name": "celio"
+          },
+          "categories": [
+            {
+              "uid": 192,
+              "name": "T-Shirts"
+            }
+          ],
+          "images": [
+            {
+              "aspect_ratio": "16:25",
+              "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg",
+              "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg"
+            }
+          ],
+          "action": {
+            "type": "product",
+            "url": "https://api.addsale.com/platform/content/v1/products/celio-green-solid-t-shirt-803140-dd9e2c/",
+            "query": {
+              "product_slug": [
+                "celio-green-solid-t-shirt-803140-dd9e2c"
+              ]
+            }
+          }
+        },
+        "article": {
+          "type": "article",
+          "uid": "25_44_A7050_NEMIEL@GREENBRITISH_S",
+          "size": "S",
+          "seller": {
+            "uid": 25,
+            "name": "CELIO FUTURE FASHION PRIVATE LIMITED"
+          },
+          "store": {
+            "uid": 1486,
+            "name": "Forum Mall"
+          },
+          "quantity": 1,
+          "price": {
+            "base": {
+              "marked": 1299,
+              "effective": 649.5,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "marked": 1299,
+              "effective": 649.5,
+              "currency_code": "INR"
+            }
+          }
+        },
+        "key": "803140_S",
+        "discount": "50% OFF",
+        "price": {
+          "base": {
+            "add_on": 0,
+            "marked": 1299,
+            "effective": 649.5,
+            "selling": 649.5,
+            "currency_code": "INR"
+          },
+          "converted": {
+            "add_on": 0,
+            "marked": 1299,
+            "effective": 649.5,
+            "selling": 649.5,
+            "currency_code": "INR"
+          }
+        },
+        "availability": {
+          "sizes": [
+            "L",
+            "XL",
+            "M",
+            "S"
+          ],
+          "other_store_quantity": 0,
+          "out_of_stock": false,
+          "deliverable": true,
+          "is_valid": true,
+          "delivery_promise": {
+            "timestamp": {
+              "min": 1605306343,
+              "max": 1605468343
+            },
+            "formatted": {
+              "min": "Sat, 14 Nov",
+              "max": "Mon, 16 Nov"
+            }
+          },
+          "available_sizes": [
+            {
+              "is_available": true,
+              "display": "L",
+              "value": "L"
+            },
+            {
+              "is_available": true,
+              "display": "XXL",
+              "value": "XXL"
+            },
+            {
+              "is_available": true,
+              "display": "XL",
+              "value": "XL"
+            },
+            {
+              "is_available": true,
+              "display": "M",
+              "value": "M"
+            },
+            {
+              "is_available": true,
+              "display": "S",
+              "value": "S"
+            },
+            {
+              "is_available": false,
+              "display": "30",
+              "value": "30"
+            }
+          ]
+        },
+        "bulk_offer": {}
+      },
+      {
+        "quantity": 1,
+        "message": "Out of stock. Please remove item",
+        "coupon_message": "",
+        "product": {
+          "type": "product",
+          "uid": 803140,
+          "name": "Green Solid T-Shirt",
+          "slug": "celio-green-solid-t-shirt-803140-dd9e2c",
+          "brand": {
+            "uid": 44,
+            "name": "celio"
+          },
+          "categories": [
+            {
+              "uid": 192,
+              "name": "T-Shirts"
+            }
+          ],
+          "images": [
+            {
+              "aspect_ratio": "16:25",
+              "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg",
+              "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/44_NEMIEL@GREENBRITISH/1_1548161273344.jpg"
+            }
+          ],
+          "action": {
+            "type": "product",
+            "url": "https://api.addsale.com/platform/content/v1/products/celio-green-solid-t-shirt-803140-dd9e2c/",
+            "query": {
+              "product_slug": [
+                "celio-green-solid-t-shirt-803140-dd9e2c"
+              ]
+            }
+          }
+        },
+        "article": {},
+        "key": "803140_S",
+        "discount": "",
+        "price": {
+          "base": {
+            "add_on": 0,
+            "marked": 1299,
+            "effective": 1299,
+            "selling": 1299,
+            "currency_code": "INR"
+          },
+          "converted": {
+            "add_on": 0,
+            "marked": 1299,
+            "effective": 1299,
+            "selling": 1299,
+            "currency_code": "INR"
+          }
+        },
+        "availability": {
+          "sizes": [
+            "L",
+            "XXL",
+            "XL",
+            "M",
+            "S"
+          ],
+          "other_store_quantity": 0,
+          "out_of_stock": true,
+          "deliverable": false,
+          "is_valid": false,
+          "delivery_promise": {
+            "timestamp": {
+              "min": 1605306343,
+              "max": 1605468343
+            },
+            "formatted": {
+              "min": "Sat, 14 Nov",
+              "max": "Mon, 16 Nov"
+            }
+          },
+          "available_sizes": [
+            {
+              "is_available": true,
+              "display": "L",
+              "value": "L"
+            },
+            {
+              "is_available": true,
+              "display": "XXL",
+              "value": "XXL"
+            },
+            {
+              "is_available": true,
+              "display": "XL",
+              "value": "XL"
+            },
+            {
+              "is_available": true,
+              "display": "M",
+              "value": "M"
+            },
+            {
+              "is_available": true,
+              "display": "S",
+              "value": "S"
+            },
+            {
+              "is_available": false,
+              "display": "30",
+              "value": "30"
+            }
+          ]
+        },
+        "bulk_offer": {}
+      }
+    ],
+    "delivery_promise": {
+      "timestamp": {
+        "min": 1605306343,
+        "max": 1605468343
+      },
+      "formatted": {
+        "min": "Sat, 14 Nov",
+        "max": "Mon, 16 Nov"
+      }
+    },
+    "is_valid": true
+  }
+}
+```
+</details>
+
+<details>
+<summary><i>&nbsp; Invalid pincode</i></summary>
+
+```json
+{
+  "value": {
+    "message": "All of the items in your cart are not deliverable to 800108",
+    "is_valid": false,
+    "items": [
+      {
+        "discount": "15% OFF",
+        "price": {
+          "base": {
+            "add_on": 0,
+            "marked": 2195,
+            "effective": 1866,
+            "selling": 1866,
+            "currency_code": "INR"
+          },
+          "converted": {
+            "add_on": 0,
+            "marked": 2195,
+            "effective": 1866,
+            "selling": 1866,
+            "currency_code": "INR"
+          }
+        },
+        "product": {
+          "type": "product",
+          "uid": 876245,
+          "name": "Brown Sandals",
+          "slug": "red-chief-brown-sandals-876245-c92507",
+          "brand": {
+            "uid": 433,
+            "name": ""
+          },
+          "categories": [
+            {
+              "uid": 176,
+              "name": ""
+            }
+          ],
+          "images": [
+            {
+              "aspect_ratio": "16:25",
+              "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/433_RC330004/1_1564147181287.jpg",
+              "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/433_RC330004/1_1564147181287.jpg"
+            }
+          ],
+          "action": {
+            "type": "product",
+            "url": "https://api.addsale.com/platform/content/v1/products/red-chief-brown-sandals-876245-c92507/",
+            "query": {
+              "product_slug": [
+                "red-chief-brown-sandals-876245-c92507"
+              ]
+            }
+          },
+          "item_code": "RC330004"
+        },
+        "bulk_offer": {},
+        "key": "876245_6",
+        "message": "We are not delivering to 800108",
+        "delivery_promise": null,
+        "coupon_message": "",
+        "availability": {
+          "sizes": [
+            "7",
+            "6",
+            "10",
+            "8"
+          ],
+          "other_store_quantity": 21,
+          "out_of_stock": false,
+          "deliverable": false,
+          "is_valid": true,
+          "available_sizes": [
+            {
+              "is_available": false,
+              "display": "9",
+              "value": "9"
+            },
+            {
+              "is_available": true,
+              "display": "10",
+              "value": "10"
+            },
+            {
+              "is_available": true,
+              "display": "6",
+              "value": "6"
+            },
+            {
+              "is_available": true,
+              "display": "7",
+              "value": "7"
+            },
+            {
+              "is_available": true,
+              "display": "8",
+              "value": "8"
+            }
+          ]
+        },
+        "quantity": 1,
+        "article": {
+          "type": "article",
+          "uid": "304_433_LGPL30402_RC330004_6",
+          "size": "6",
+          "seller": {
+            "uid": 304,
+            "name": "LEAYAN GLOBAL PVT. LTD."
+          },
+          "store": {
+            "uid": 9767,
+            "name": "Udyog Kunj, Kanpur"
+          },
+          "quantity": 3,
+          "price": {
+            "base": {
+              "marked": 2195,
+              "effective": 1866,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "marked": 2195,
+              "effective": 1866,
+              "currency_code": "INR"
+            }
+          }
+        }
+      },
+      {
+        "discount": "15% OFF",
+        "price": {
+          "base": {
+            "add_on": 0,
+            "marked": 2195,
+            "effective": 1866,
+            "selling": 1866,
+            "currency_code": "INR"
+          },
+          "converted": {
+            "add_on": 0,
+            "marked": 2195,
+            "effective": 1866,
+            "selling": 1866,
+            "currency_code": "INR"
+          }
+        },
+        "product": {
+          "type": "product",
+          "uid": 876245,
+          "name": "Brown Sandals",
+          "slug": "red-chief-brown-sandals-876245-c92507",
+          "brand": {
+            "uid": 433,
+            "name": ""
+          },
+          "categories": [
+            {
+              "uid": 176,
+              "name": ""
+            }
+          ],
+          "images": [
+            {
+              "aspect_ratio": "16:25",
+              "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/433_RC330004/1_1564147181287.jpg",
+              "secure_url": "https://d2zv4gzhlr4ud6.cloudfront.net/media/pictures/tagged_items/original/433_RC330004/1_1564147181287.jpg"
+            }
+          ],
+          "action": {
+            "type": "product",
+            "url": "https://api.addsale.com/platform/content/v1/products/red-chief-brown-sandals-876245-c92507/",
+            "query": {
+              "product_slug": [
+                "red-chief-brown-sandals-876245-c92507"
+              ]
+            }
+          },
+          "item_code": "RC330004"
+        },
+        "bulk_offer": {},
+        "key": "876245_6",
+        "message": "We are not delivering to 800108",
+        "coupon_message": "",
+        "availability": {
+          "sizes": [
+            "7",
+            "6",
+            "10",
+            "8"
+          ],
+          "other_store_quantity": 21,
+          "out_of_stock": false,
+          "deliverable": false,
+          "is_valid": true,
+          "available_sizes": [
+            {
+              "is_available": false,
+              "display": "9",
+              "value": "9"
+            },
+            {
+              "is_available": true,
+              "display": "10",
+              "value": "10"
+            },
+            {
+              "is_available": true,
+              "display": "6",
+              "value": "6"
+            },
+            {
+              "is_available": true,
+              "display": "7",
+              "value": "7"
+            },
+            {
+              "is_available": true,
+              "display": "8",
+              "value": "8"
+            }
+          ]
+        },
+        "quantity": 1,
+        "article": {
+          "type": "article",
+          "uid": "304_433_LGPL30402_RC330004_6",
+          "size": "6",
+          "seller": {
+            "uid": 304,
+            "name": "LEAYAN GLOBAL PVT. LTD."
+          },
+          "store": {
+            "uid": 9767,
+            "name": "Udyog Kunj, Kanpur"
+          },
+          "quantity": 3,
+          "price": {
+            "base": {
+              "marked": 2195,
+              "effective": 1866,
+              "currency_code": "INR"
+            },
+            "converted": {
+              "marked": 2195,
+              "effective": 1866,
+              "currency_code": "INR"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16845,6 +40048,25 @@ Generate Fynd order for cart details send with provided `cart_items`
 [OpenApiCheckoutResponse](#OpenApiCheckoutResponse)
 
 Checkout cart and create Fynd order id
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "order_id": "FY5E182A9D0A5E405446",
+  "message": "Order initiation completed",
+  "order_ref_id": null
+}
+```
+</details>
+
+
+
 
 
 
@@ -16894,6 +40116,20 @@ ok
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -16930,6 +40166,20 @@ Adds a new giveaway.
 [Giveaway](#Giveaway)
 
 ok
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -16974,6 +40224,20 @@ ok
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17010,6 +40274,20 @@ Updates the giveaway by it's ID.
 [Giveaway](#Giveaway)
 
 ok
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17054,6 +40332,20 @@ ok
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17090,6 +40382,20 @@ Get offer by name.
 [Offer](#Offer)
 
 ok
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17134,6 +40440,20 @@ ok
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17170,6 +40490,20 @@ User's reward details.
 [UserRes](#UserRes)
 
 ok
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17214,6 +40548,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17251,6 +40599,20 @@ The list of points history is paginated.
 [HistoryRes](#HistoryRes)
 
 ok
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17300,6 +40662,28 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "groups": [
+    {
+      "key": "general",
+      "url": "/v1/group/general",
+      "title": "General"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17336,6 +40720,31 @@ Get statistics group components
 [StatsGroupComponents](#StatsGroupComponents)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "title": "Catalogue & Inventory",
+  "components": [
+    {
+      "key": "catalogue-basic",
+      "title": "Catalogue Basic",
+      "type": "text-blocks",
+      "url": "/stats/component/catalogue-basic",
+      "filters": {}
+    }
+  ]
+}
+```
+</details>
+
+
+
 
 
 
@@ -17380,6 +40789,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17416,6 +40839,20 @@ Get component statistics pdf
 [String](#String)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17460,6 +40897,67 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "key": "article-distribution",
+  "title": "Inventory Distribution",
+  "type": "chart.pie",
+  "data": {
+    "raw": [
+      {
+        "name": "Fatimah Logero",
+        "available_articles": 8,
+        "total_articles": 9,
+        "available_sizes": 3,
+        "total_sizes": 3,
+        "article_freshness": 9,
+        "count": 0,
+        "percent": "NaN"
+      }
+    ],
+    "type": "pie",
+    "data": {
+      "datasets": [
+        {
+          "label": "# of products",
+          "backgroundColor": [
+            "#7986CB",
+            "#3F51B5"
+          ],
+          "data": [
+            8,
+            1
+          ],
+          "percent": [
+            "88.89",
+            "11.11"
+          ]
+        }
+      ],
+      "labels": [
+        "Available Articles",
+        "Articles Out Of Stock"
+      ]
+    },
+    "options": {
+      "responsive": true,
+      "display": false
+    },
+    "cache_hit": false
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17496,6 +40994,40 @@ Get abandon carts list
 [AbandonCartsList](#AbandonCartsList)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": {
+    "properties_cart_id": 11517,
+    "context_traits_first_name": "Ahmed",
+    "context_traits_last_name": "Sakri",
+    "context_traits_phone_number": "8433859662",
+    "context_traits_email": "ahmedsakri@gofynd.com",
+    "context_app_application_id": "000000000000000000000001",
+    "properties_breakup_values_raw_total": 4020,
+    "received_at": {
+      "value": "2021-03-09T05:09:06.840Z"
+    }
+  },
+  "page": {
+    "type": "number",
+    "size": 10,
+    "current": 1,
+    "has_next": true,
+    "item_total": 15
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -17540,6 +41072,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17576,6 +41122,20 @@ Get abandon cart details
 [AbandonCartDetail](#AbandonCartDetail)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17620,6 +41180,23 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "status": "queued",
+  "job_id": "6047c67060ad8241a948ee42"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17656,6 +41233,24 @@ Get data export job status
 [ExportJobStatusRes](#ExportJobStatusRes)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "download_url": "https://marketplace-sync-logs-production.s3.ap-south-1.amazonaws.com/inv-log-37-flipkartAssured-Full_Inventory_Update.csv",
+  "status": "success",
+  "job_id": "6047c67060ad8241a948ee42"
+}
+```
+</details>
+
+
+
 
 
 
@@ -17700,6 +41295,38 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "start_time_iso": "2021-04-06T19:00:17.013Z",
+      "end_time_iso": "2021-04-06T19:00:17.015Z",
+      "event_type": "FULL_PRICE_UPDATE",
+      "trace_id": "marketplaces.aa18fa48-b3e8-4e1e-8396-69488e254ace",
+      "count": 17,
+      "status": "failed"
+    }
+  ],
+  "page": {
+    "type": "number",
+    "size": 10,
+    "current": 1,
+    "has_next": true,
+    "item_total": 88
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17736,6 +41363,44 @@ Search logs
 [SearchLogRes](#SearchLogRes)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "_id": "606cafc19c2c466b24098437",
+      "status": "failed",
+      "event_type": "FULL_PRICE_UPDATE",
+      "marketplace_name": "myntra",
+      "event": "APPLICATION_FULL_INVENTORY",
+      "trace_id": "marketplaces.aa18fa48-b3e8-4e1e-8396-69488e254ace",
+      "company_id": 28,
+      "brand_id": 44,
+      "store_id": 57,
+      "item_id": 882857,
+      "article_id": "57_sku_102831159-TBUCKBEIGE_301066XL",
+      "seller_identifier": "SKU_102831159-TBUCKBEIGE_392826XL"
+    }
+  ],
+  "page": {
+    "type": "number",
+    "size": 10,
+    "current": 1,
+    "has_next": true,
+    "item_total": 88
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -17785,6 +41450,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17821,6 +41500,20 @@ Create Discount.
 [DiscountJob](#DiscountJob)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17865,6 +41558,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17901,6 +41608,20 @@ Create Discount.
 [DiscountJob](#DiscountJob)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -17945,6 +41666,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -17981,6 +41716,20 @@ Validate File.
 [FileJobResponse](#FileJobResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -18025,6 +41774,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -18061,6 +41824,20 @@ Cancel Validation Job.
 [CancelJobResponse](#CancelJobResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -18105,6 +41882,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -18141,6 +41932,20 @@ Cancel Download Job.
 [CancelJobResponse](#CancelJobResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -18190,6 +41995,29 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "607406b8a472cd527303692f",
+  "attached_path": "test",
+  "proxy_url": "https://www.abc.com",
+  "company_id": "1",
+  "application_id": "000000000000000000000004",
+  "extension_id": "6073280be899ea5b1150fd9d",
+  "created_at": "2021-04-12T08:37:12.077Z",
+  "modified_at": "2021-04-12T08:37:12.077Z"
+}
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -18226,6 +42054,32 @@ Remove proxy path for external url
 [RemoveProxyResponse](#RemoveProxyResponse)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Proxy URL deleted",
+  "data": {
+    "_id": "607406b8a472cd527303692f",
+    "attached_path": "test",
+    "proxy_url": "https://www.abc.com",
+    "company_id": "1",
+    "application_id": "000000000000000000000004",
+    "extension_id": "6073280be899ea5b1150fd9d",
+    "created_at": "2021-04-12T08:37:12.077Z",
+    "modified_at": "2021-04-12T08:37:12.077Z"
+  }
+}
+```
+</details>
+
+
+
 
 
 
@@ -18275,6 +42129,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -18311,6 +42179,20 @@ Register Subscriber
 [SubscriberConfig](#SubscriberConfig)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -18355,6 +42237,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -18395,6 +42291,20 @@ Success
 
 
 
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
 
 
 ---
@@ -18431,6 +42341,20 @@ Get All Webhook Events
 [EventConfigList](#EventConfigList)
 
 Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
 
 
 
@@ -24997,12 +48921,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | appId | String |  no  | Application Id to which Payment config Mapped |
- | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
  | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
+ | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
+ | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
+ | appId | String |  no  | Application Id to which Payment config Mapped |
  | success | Boolean |  no  | Response is successful or not |
  | created | Boolean |  no  | Response is created or not |
- | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
 
 ---
 
@@ -25014,8 +48938,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | code | String |  no  | Error descrption code. |
- | success | Boolean |  no  | Response is successful or not |
  | description | String |  no  | Error human understandable description. |
+ | success | Boolean |  no  | Response is successful or not |
 
 ---
 
@@ -25027,10 +48951,10 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | configType | String |  no  | Config Type of the aggregator |
- | secret | String |  no  | Secret Key of the payment aggregator |
  | key | String |  no  | Api key of the payment aggregator |
- | merchantSalt | String |  no  | Merchant key of the payment aggregator |
  | isActive | Boolean? |  yes  | Enable/ Disable Flag |
+ | secret | String |  no  | Secret Key of the payment aggregator |
+ | merchantSalt | String |  no  | Merchant key of the payment aggregator |
 
 ---
 
@@ -25078,8 +49002,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
  | error | [ErrorCodeAndDescription](#ErrorCodeAndDescription) |  no  |  |
+ | success | Boolean |  no  | Response is successful or not |
 
 ---
 
@@ -25090,8 +49014,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | small | String |  no  | smalll |
  | large | String |  no  | large |
+ | small | String |  no  | smalll |
 
 ---
 
@@ -25102,33 +49026,33 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | cardId | String? |  yes  | card_id |
- | expYear | Int? |  yes  | exp_year |
- | displayName | String? |  yes  | display name |
- | timeout | Int? |  yes  | timeout |
- | cardFingerprint | String? |  yes  | card_fingerprint |
- | cardName | String? |  yes  | card_name |
- | aggregatorName | String |  no  | aggregator_name |
- | cardIssuer | String? |  yes  | card_issuer |
- | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
- | retryCount | Int? |  yes  | retry_count |
- | cardToken | String? |  yes  | card_token |
- | cardReference | String? |  yes  | card_reference |
- | cardNumber | String? |  yes  | card_number |
- | cardBrandImage | String? |  yes  | card_brand_image |
- | nickname | String? |  yes  | nickname |
- | displayPriority | Int? |  yes  | Dispaly Priority |
- | cardIsin | String? |  yes  | card_isin |
- | expMonth | Int? |  yes  | exp_month |
- | name | String? |  yes  | name |
- | cardBrand | String? |  yes  | card_brand |
  | merchantCode | String? |  yes  | merchant code |
- | fyndVpa | String? |  yes  | fynd_vpa |
- | cardType | String? |  yes  | card_type |
- | code | String? |  yes  | code |
+ | name | String? |  yes  | name |
+ | expYear | Int? |  yes  | exp_year |
+ | cardId | String? |  yes  | card_id |
+ | cardBrand | String? |  yes  | card_brand |
+ | displayName | String? |  yes  | display name |
+ | cardName | String? |  yes  | card_name |
  | intentFlow | String? |  yes  | intent_flow |
+ | timeout | Int? |  yes  | timeout |
+ | cardNumber | String? |  yes  | card_number |
+ | cardReference | String? |  yes  | card_reference |
+ | displayPriority | Int? |  yes  | Dispaly Priority |
+ | cardType | String? |  yes  | card_type |
+ | cardBrandImage | String? |  yes  | card_brand_image |
+ | cardIsin | String? |  yes  | card_isin |
+ | cardFingerprint | String? |  yes  | card_fingerprint |
  | expired | Boolean? |  yes  | expired |
+ | retryCount | Int? |  yes  | retry_count |
+ | nickname | String? |  yes  | nickname |
+ | code | String? |  yes  | code |
  | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
+ | cardIssuer | String? |  yes  | card_issuer |
+ | fyndVpa | String? |  yes  | fynd_vpa |
+ | cardToken | String? |  yes  | card_token |
+ | expMonth | Int? |  yes  | exp_month |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
+ | aggregatorName | String |  no  | aggregator_name |
 
 ---
 
@@ -25139,13 +49063,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String |  no  | Payment mode name |
  | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
+ | name | String |  no  | Payment mode name |
+ | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
+ | displayPriority | Int |  no  | Dispaly Priority |
  | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
  | displayName | String |  no  | Payment mode display name |
  | aggregatorName | String? |  yes  | Dispaly Priority |
- | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
- | displayPriority | Int |  no  | Dispaly Priority |
 
 ---
 
@@ -25179,13 +49103,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
  | isDefault | Boolean |  no  | default or not  |
+ | customers | HashMap<String,Any> |  no  | customers details object |
+ | moreAttributes | HashMap<String,Any> |  no  | bank details object |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
  | transferType | String |  no  | transafer type |
  | uniqueTransferNo | HashMap<String,Any> |  no  | display priority of the payment mode |
- | moreAttributes | HashMap<String,Any> |  no  | bank details object |
- | customers | HashMap<String,Any> |  no  | customers details object |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
 
 ---
 
@@ -25196,16 +49120,16 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | accountHolder | String? |  yes  |  |
- | bankName | String? |  yes  |  |
- | country | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
  | city | String? |  yes  |  |
- | branchName | String? |  yes  |  |
- | accountNo | String? |  yes  |  |
+ | pincode | Int? |  yes  |  |
  | ifscCode | String |  no  |  |
+ | accountNo | String? |  yes  |  |
  | state | String? |  yes  |  |
+ | country | String? |  yes  |  |
  | accountType | String |  no  |  |
+ | accountHolder | String? |  yes  |  |
+ | branchName | String? |  yes  |  |
+ | bankName | String? |  yes  |  |
 
 ---
 
@@ -25216,12 +49140,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
- | users | HashMap<String,Any> |  no  | payout users object |
- | transferType | String |  no  | transafer type |
  | aggregator | String |  no  | Aggregator Name |
  | uniqueExternalId | String |  no  | Unique Id of Payout |
+ | users | HashMap<String,Any> |  no  | payout users object |
+ | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
+ | transferType | String |  no  | transafer type |
 
 ---
 
@@ -25232,16 +49156,16 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paymentStatus | String |  no  | status of payment |
- | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
  | aggregator | String |  no  | Aggregator Name |
- | transferType | String |  no  | transfer type |
- | uniqueTransferNo | String |  no  | unique transfer no |
- | success | Boolean |  no  | Response is successful or not |
- | payouts | HashMap<String,Any> |  no  | payout  object |
  | users | HashMap<String,Any> |  no  | users details object |
- | created | Boolean |  no  | created flag |
+ | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
  | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | success | Boolean |  no  | Response is successful or not |
+ | paymentStatus | String |  no  | status of payment |
+ | payouts | HashMap<String,Any> |  no  | payout  object |
+ | transferType | String |  no  | transfer type |
+ | created | Boolean |  no  | created flag |
+ | uniqueTransferNo | String |  no  | unique transfer no |
 
 ---
 
@@ -25253,8 +49177,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | success | Boolean |  no  | Response is successful or not |
  | isDefault | Boolean |  no  | Enable/Disable Default Payout |
+ | success | Boolean |  no  | Response is successful or not |
 
 ---
 
@@ -25265,9 +49189,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uniqueExternalId | String |  no  | Unique Id of Payout |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
  | isDefault | Boolean |  no  | Enable/Disable Default Payout |
+ | uniqueExternalId | String |  no  | Unique Id of Payout |
 
 ---
 
@@ -25312,8 +49236,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | String |  no  | Aggregator Name |
  | config | HashMap<String,Any> |  no  | Aggregator Config |
+ | aggregator | String |  no  | Aggregator Name |
  | success | Boolean |  no  | Response is successful or not |
 
 ---
@@ -25348,17 +49272,17 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ifscCode | String |  no  | Ifsc Code of the Account |
- | accountHolder | String |  no  | Name of the Account Holder |
- | bankName | String |  no  | Bank Name of the Account |
- | comment | String? |  yes  | Remarks added by The user |
- | wallet | String? |  yes  |  |
- | address | String? |  yes  | Address of the User |
  | vpa | String? |  yes  |  |
- | branchName | String |  no  | Branch Name of the Account |
- | mobile | String |  no  | Moblie Number of the User |
- | accountNo | String |  no  | Account NUmber of the Account Holder |
  | email | String |  no  | Email of the Account Holder |
+ | wallet | String? |  yes  |  |
+ | ifscCode | String |  no  | Ifsc Code of the Account |
+ | comment | String? |  yes  | Remarks added by The user |
+ | accountNo | String |  no  | Account NUmber of the Account Holder |
+ | mobile | String |  no  | Moblie Number of the User |
+ | address | String? |  yes  | Address of the User |
+ | accountHolder | String |  no  | Name of the Account Holder |
+ | branchName | String |  no  | Branch Name of the Account |
+ | bankName | String |  no  | Bank Name of the Account |
 
 ---
 
@@ -25370,12 +49294,12 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | orderId | String |  no  | Merchant Order Id |
- | delights | Boolean |  no  | True if  beneficiary to be added by delights or False if by User |
- | transferMode | String |  no  | Transfer Mode of the Beneficiary to be added |
- | shipmentId | String |  no  | Shipment Id of the respective Merchant Order Id |
  | details | [BeneficiaryModeDetails](#BeneficiaryModeDetails) |  no  | Beneficiary bank details |
- | requestId | String? |  yes  |  |
  | otp | String? |  yes  |  |
+ | delights | Boolean |  no  | True if  beneficiary to be added by delights or False if by User |
+ | shipmentId | String |  no  | Shipment Id of the respective Merchant Order Id |
+ | requestId | String? |  yes  |  |
+ | transferMode | String |  no  | Transfer Mode of the Beneficiary to be added |
 
 ---
 
@@ -25386,8 +49310,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Success or failure flag. |
  | data | HashMap<String,Any>? |  yes  | Refund account data. |
+ | success | Boolean |  no  | Success or failure flag. |
  | message | String |  no  | Response message |
 
 ---
@@ -25400,8 +49324,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | code | String |  no  | Bad Request Data |
- | success | Boolean |  no  | Response is successful or not |
  | description | String |  no  | Not Found |
+ | success | Boolean |  no  | Response is successful or not |
 
 ---
 
@@ -25412,8 +49336,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | branchName | String |  no  | Branch Name Of Account |
  | success | Boolean? |  yes  | Response is successful or not |
+ | branchName | String |  no  | Branch Name Of Account |
  | bankName | String |  no  | Bank Name Of Account |
 
 ---
@@ -25425,25 +49349,25 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | MOdification Date of Beneficiary |
- | displayName | String |  no  | Display Name Of Account |
- | address | String |  no  | Address of User |
  | email | String |  no  | EMail of User |
- | beneficiaryId | String |  no  | Benenficiary Id |
- | createdOn | String |  no  | Creation Date of Beneficiary |
- | bankName | String |  no  | Bank Name Of Account |
- | comment | Boolean? |  yes  | Remarks |
+ | displayName | String |  no  | Display Name Of Account |
  | id | Int |  no  |   |
- | ifscCode | String |  no  | Ifsc Code Of Account |
- | accountHolder | String |  no  | Account Holder Name |
  | title | String |  no  | Title Of Account |
- | transferMode | String |  no  | Transfer Mode Of Account |
- | mobile | Boolean? |  yes  | MObile no of User |
- | delightsUserName | String |  no  | User Id Who filled the Beneficiary  |
- | subtitle | String |  no  | SHort Title Of Account |
- | branchName | Boolean? |  yes  | Branch Name Of Account |
+ | comment | Boolean? |  yes  | Remarks |
  | accountNo | String |  no  | Account Number |
  | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | createdOn | String |  no  | Creation Date of Beneficiary |
+ | modifiedOn | String |  no  | MOdification Date of Beneficiary |
+ | address | String |  no  | Address of User |
+ | accountHolder | String |  no  | Account Holder Name |
+ | transferMode | String |  no  | Transfer Mode Of Account |
+ | bankName | String |  no  | Bank Name Of Account |
+ | subtitle | String |  no  | SHort Title Of Account |
+ | beneficiaryId | String |  no  | Benenficiary Id |
+ | ifscCode | String |  no  | Ifsc Code Of Account |
+ | mobile | Boolean? |  yes  | MObile no of User |
+ | delightsUserName | String |  no  | User Id Who filled the Beneficiary  |
+ | branchName | Boolean? |  yes  | Branch Name Of Account |
 
 ---
 
@@ -25454,8 +49378,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)> |  no  | All Beneficiaries Of An Order |
  | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
+ | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)> |  no  | All Beneficiaries Of An Order |
 
 ---
 
@@ -25466,11 +49390,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | orderId | String? |  yes  |  |
  | currentStatus | String? |  yes  |  |
  | paymentGateway | String? |  yes  |  |
- | paymentId | String? |  yes  |  |
- | orderId | String? |  yes  |  |
  | extraMeta | HashMap<String,Any>? |  yes  |  |
+ | paymentId | String? |  yes  |  |
 
 ---
 
@@ -25481,10 +49405,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | amount | Double |  no  | Payment amount |
  | name | String? |  yes  | Payment mode name |
  | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
  | mode | String |  no  |  |
- | amount | Double |  no  | Payment amount |
 
 ---
 
@@ -25495,8 +49419,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
  | orderId | String |  no  | Unique order id |
+ | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
 
 ---
 
@@ -27910,27 +51834,11 @@ Success
 
  
  
- #### [GetSearchWordsData](#GetSearchWordsData)
+ #### [DeleteResponse](#DeleteResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | words | ArrayList<String>? |  yes  |  |
- | result | HashMap<String,Any>? |  yes  |  |
- | appId | String? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | uid | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetSearchWordsDetailResponse](#GetSearchWordsDetailResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
- | items | [GetSearchWordsData](#GetSearchWordsData)? |  yes  |  |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -27941,10 +51849,37 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | meta | HashMap<String,Any>? |  yes  |  |
- | code | String? |  yes  |  |
  | status | Int? |  yes  |  |
+ | code | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
  | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetSearchWordsData](#GetSearchWordsData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | String? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | result | HashMap<String,Any>? |  yes  |  |
+ | words | ArrayList<String>? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetSearchWordsDetailResponse](#GetSearchWordsDetailResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | [GetSearchWordsData](#GetSearchWordsData)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -27967,22 +51902,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | isActive | Boolean? |  yes  |  |
+ | appId | String? |  yes  |  |
  | words | ArrayList<String>? |  yes  |  |
  | result | [SearchKeywordResult](#SearchKeywordResult) |  no  |  |
- | appId | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [DeleteResponse](#DeleteResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
 
 ---
 
@@ -27993,8 +51917,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[GetSearchWordsData](#GetSearchWordsData)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -28005,11 +51929,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | words | ArrayList<String>? |  yes  |  |
- | results | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | appId | String? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | uid | String? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | results | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | words | ArrayList<String>? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -28020,8 +51944,34 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[GetAutocompleteWordsData](#GetAutocompleteWordsData)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AutocompletePageAction](#AutocompletePageAction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | params | HashMap<String,Any>? |  yes  |  |
+ | url | String? |  yes  |  |
+ | query | HashMap<String,Any> |  no  |  |
+ | type | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [AutocompleteAction](#AutocompleteAction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | page | [AutocompletePageAction](#AutocompletePageAction)? |  yes  |  |
 
 ---
 
@@ -28040,40 +51990,14 @@ Success
 
  
  
- #### [AutocompletePageAction](#AutocompletePageAction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | query | HashMap<String,Any> |  no  |  |
- | params | HashMap<String,Any>? |  yes  |  |
- | url | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [AutocompleteAction](#AutocompleteAction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [AutocompletePageAction](#AutocompletePageAction)? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [AutocompleteResult](#AutocompleteResult)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [Media](#Media)? |  yes  |  |
- | action | [AutocompleteAction](#AutocompleteAction)? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | display | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | action | [AutocompleteAction](#AutocompleteAction)? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
 
 ---
 
@@ -28084,10 +52008,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | words | ArrayList<String>? |  yes  |  |
- | results | ArrayList<[AutocompleteResult](#AutocompleteResult)>? |  yes  |  |
- | appId | String? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | results | ArrayList<[AutocompleteResult](#AutocompleteResult)>? |  yes  |  |
+ | words | ArrayList<String>? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -28100,8 +52024,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | results | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | words | ArrayList<String>? |  yes  |  |
  | appId | String? |  yes  |  |
+ | words | ArrayList<String>? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -28114,11 +52038,11 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | allowRemove | Boolean? |  yes  |  |
- | autoAddToCart | Boolean? |  yes  |  |
  | autoSelect | Boolean? |  yes  |  |
  | maxQuantity | Int |  no  |  |
- | minQuantity | Int |  no  |  |
  | productUid | Int |  no  |  |
+ | autoAddToCart | Boolean? |  yes  |  |
+ | minQuantity | Int |  no  |  |
 
 ---
 
@@ -28129,18 +52053,18 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | isActive | Boolean |  no  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
  | logo | String? |  yes  |  |
+ | choice | String |  no  |  |
  | products | ArrayList<[ProductBundleItem](#ProductBundleItem)> |  no  |  |
  | name | String |  no  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | slug | String |  no  |  |
- | createdOn | String? |  yes  |  |
  | sameStoreAssignment | Boolean? |  yes  |  |
- | choice | String |  no  |  |
- | isActive | Boolean |  no  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
  | modifiedOn | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | slug | String |  no  |  |
  | pageVisibility | ArrayList<String>? |  yes  |  |
 
 ---
@@ -28152,21 +52076,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | String? |  yes  |  |
- | products | ArrayList<[ProductBundleItem](#ProductBundleItem)> |  no  |  |
- | companyId | Int? |  yes  |  |
- | name | String |  no  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | slug | String |  no  |  |
- | createdOn | String? |  yes  |  |
- | sameStoreAssignment | Boolean? |  yes  |  |
- | choice | String |  no  |  |
  | isActive | Boolean |  no  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | logo | String? |  yes  |  |
  | id | String? |  yes  |  |
+ | choice | String |  no  |  |
+ | products | ArrayList<[ProductBundleItem](#ProductBundleItem)> |  no  |  |
+ | name | String |  no  |  |
+ | sameStoreAssignment | Boolean? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | slug | String |  no  |  |
  | pageVisibility | ArrayList<String>? |  yes  |  |
+ | companyId | Int? |  yes  |  |
 
 ---
 
@@ -28177,37 +52101,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[GetProductBundleCreateResponse](#GetProductBundleCreateResponse)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Price](#Price)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | maxEffective | Double? |  yes  |  |
- | minMarked | Double? |  yes  |  |
- | minEffective | Double? |  yes  |  |
- | maxMarked | Double? |  yes  |  |
- | currency | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Size](#Size)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | isAvailable | Boolean? |  yes  |  |
- | display | String? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -28218,18 +52113,47 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | price | HashMap<String,Any>? |  yes  |  |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | quantity | Int? |  yes  |  |
  | images | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
  | sizes | ArrayList<String>? |  yes  |  |
  | countryOfOrigin | String? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | quantity | Int? |  yes  |  |
  | identifier | HashMap<String,Any>? |  yes  |  |
- | uid | Int? |  yes  |  |
- | itemCode | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | price | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Size](#Size)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  |  |
+ | isAvailable | Boolean? |  yes  |  |
+ | value | String? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Price](#Price)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | minMarked | Double? |  yes  |  |
+ | maxMarked | Double? |  yes  |  |
+ | minEffective | Double? |  yes  |  |
+ | maxEffective | Double? |  yes  |  |
+ | currency | String? |  yes  |  |
 
 ---
 
@@ -28240,15 +52164,15 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | price | [Price](#Price)? |  yes  |  |
- | allowRemove | Boolean? |  yes  |  |
- | sizes | ArrayList<[Size](#Size)>? |  yes  |  |
  | productDetails | [LimitedProductData](#LimitedProductData)? |  yes  |  |
- | autoAddToCart | Boolean? |  yes  |  |
  | autoSelect | Boolean? |  yes  |  |
  | maxQuantity | Int? |  yes  |  |
- | minQuantity | Int? |  yes  |  |
+ | sizes | ArrayList<[Size](#Size)>? |  yes  |  |
  | productUid | Int? |  yes  |  |
+ | price | [Price](#Price)? |  yes  |  |
+ | minQuantity | Int? |  yes  |  |
+ | autoAddToCart | Boolean? |  yes  |  |
+ | allowRemove | Boolean? |  yes  |  |
 
 ---
 
@@ -28259,15 +52183,15 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | String? |  yes  |  |
- | products | ArrayList<[GetProducts](#GetProducts)>? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | sameStoreAssignment | Boolean? |  yes  |  |
- | choice | String? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | choice | String? |  yes  |  |
+ | products | ArrayList<[GetProducts](#GetProducts)>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | sameStoreAssignment | Boolean? |  yes  |  |
+ | companyId | Int? |  yes  |  |
+ | slug | String? |  yes  |  |
  | pageVisibility | ArrayList<String>? |  yes  |  |
 
 ---
@@ -28279,16 +52203,16 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | isActive | Boolean |  no  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
  | logo | String? |  yes  |  |
+ | choice | String |  no  |  |
  | products | ArrayList<[ProductBundleItem](#ProductBundleItem)> |  no  |  |
  | name | String |  no  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | slug | String |  no  |  |
  | sameStoreAssignment | Boolean? |  yes  |  |
- | choice | String |  no  |  |
- | isActive | Boolean |  no  |  |
  | modifiedOn | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
+ | slug | String |  no  |  |
  | pageVisibility | ArrayList<String>? |  yes  |  |
 
 ---
@@ -28300,9 +52224,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | values | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | headers | HashMap<String,Any>? |  yes  |  |
  | unit | String? |  yes  |  |
+ | headers | HashMap<String,Any>? |  yes  |  |
+ | values | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -28324,21 +52248,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companyId | Int? |  yes  |  |
- | name | String |  no  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | image | String? |  yes  |  |
+ | subtitle | String? |  yes  |  |
  | guide | [Guide](#Guide)? |  yes  |  |
  | title | String |  no  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
  | active | Boolean? |  yes  |  |
- | brandId | Int? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
  | tag | String? |  yes  |  |
+ | description | String? |  yes  |  |
  | id | String? |  yes  |  |
- | subtitle | String? |  yes  |  |
+ | name | String |  no  |  |
+ | brandId | Int? |  yes  |  |
+ | companyId | Int? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | image | String? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
 
 ---
 
@@ -28361,8 +52285,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | HashMap<String,Any>? |  yes  |  |
  | items | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | page | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -28373,19 +52297,19 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companyId | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | subtitle | String? |  yes  |  |
  | guide | HashMap<String,Any>? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
  | title | String? |  yes  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
  | active | Boolean? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | brandId | Int? |  yes  |  |
  | tag | String? |  yes  |  |
  | id | String? |  yes  |  |
- | subtitle | String? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | brandId | Int? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | companyId | Int? |  yes  |  |
 
 ---
 
@@ -28396,10 +52320,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | similar | HashMap<String,Any>? |  yes  |  |
  | compare | HashMap<String,Any>? |  yes  |  |
  | variant | HashMap<String,Any>? |  yes  |  |
  | detail | HashMap<String,Any>? |  yes  |  |
- | similar | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -28410,8 +52334,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String? |  yes  |  |
  | display | String? |  yes  |  |
+ | key | String? |  yes  |  |
 
 ---
 
@@ -28433,10 +52357,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  |  |
  | key | String? |  yes  |  |
  | units | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | filterTypes | ArrayList<String>? |  yes  |  |
- | display | String? |  yes  |  |
 
 ---
 
@@ -28478,15 +52402,95 @@ Success
 
  
  
+ #### [ProductSize](#ProductSize)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Int |  no  |  |
+ | max | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductConfig](#ConfigurationProductConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isActive | Boolean |  no  |  |
+ | subtitle | String? |  yes  |  |
+ | title | String? |  yes  |  |
+ | size | [ProductSize](#ProductSize)? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | priority | Int |  no  |  |
+ | key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductSimilar](#ConfigurationProductSimilar)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | config | ArrayList<[ConfigurationProductConfig](#ConfigurationProductConfig)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductVariantConfig](#ConfigurationProductVariantConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isActive | Boolean |  no  |  |
+ | size | [ProductSize](#ProductSize) |  no  |  |
+ | logo | String? |  yes  |  |
+ | displayType | String |  no  |  |
+ | priority | Int |  no  |  |
+ | name | String |  no  |  |
+ | key | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProductVariant](#ConfigurationProductVariant)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | config | ArrayList<[ConfigurationProductVariantConfig](#ConfigurationProductVariantConfig)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationProduct](#ConfigurationProduct)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | similar | [ConfigurationProductSimilar](#ConfigurationProductSimilar) |  no  |  |
+ | variant | [ConfigurationProductVariant](#ConfigurationProductVariant) |  no  |  |
+
+---
+
+
+ 
+ 
  #### [ConfigurationListingSortConfig](#ConfigurationListingSortConfig)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | logo | String? |  yes  |  |
- | name | String? |  yes  |  |
  | isActive | Boolean |  no  |  |
+ | logo | String? |  yes  |  |
  | priority | Int |  no  |  |
+ | name | String? |  yes  |  |
+ | key | String |  no  |  |
 
 ---
 
@@ -28497,8 +52501,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | defaultKey | String |  no  |  |
  | config | ArrayList<[ConfigurationListingSortConfig](#ConfigurationListingSortConfig)>? |  yes  |  |
+ | defaultKey | String |  no  |  |
 
 ---
 
@@ -28509,8 +52513,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | start | Double? |  yes  |  |
  | end | Double? |  yes  |  |
+ | start | Double? |  yes  |  |
 
 ---
 
@@ -28521,10 +52525,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
  | sort | String? |  yes  |  |
- | bucketPoints | ArrayList<[ConfigurationBucketPoints](#ConfigurationBucketPoints)>? |  yes  |  |
  | condition | String? |  yes  |  |
+ | value | String? |  yes  |  |
+ | bucketPoints | ArrayList<[ConfigurationBucketPoints](#ConfigurationBucketPoints)>? |  yes  |  |
  | map | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -28536,13 +52540,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | logo | String? |  yes  |  |
- | type | String |  no  |  |
- | name | String? |  yes  |  |
  | isActive | Boolean |  no  |  |
- | priority | Int |  no  |  |
  | valueConfig | [ConfigurationListingFilterValue](#ConfigurationListingFilterValue)? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | priority | Int |  no  |  |
+ | name | String? |  yes  |  |
+ | type | String |  no  |  |
+ | key | String |  no  |  |
 
 ---
 
@@ -28573,95 +52577,15 @@ Success
 
  
  
- #### [ProductSize](#ProductSize)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | max | Int |  no  |  |
- | min | Int |  no  |  |
-
----
-
-
- 
- 
- #### [ConfigurationProductVariantConfig](#ConfigurationProductVariantConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | logo | String? |  yes  |  |
- | name | String |  no  |  |
- | isActive | Boolean |  no  |  |
- | priority | Int |  no  |  |
- | size | [ProductSize](#ProductSize) |  no  |  |
- | displayType | String |  no  |  |
-
----
-
-
- 
- 
- #### [ConfigurationProductVariant](#ConfigurationProductVariant)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | config | ArrayList<[ConfigurationProductVariantConfig](#ConfigurationProductVariantConfig)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ConfigurationProductConfig](#ConfigurationProductConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | logo | String? |  yes  |  |
- | title | String? |  yes  |  |
- | isActive | Boolean |  no  |  |
- | priority | Int |  no  |  |
- | size | [ProductSize](#ProductSize)? |  yes  |  |
- | subtitle | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ConfigurationProductSimilar](#ConfigurationProductSimilar)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | config | ArrayList<[ConfigurationProductConfig](#ConfigurationProductConfig)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ConfigurationProduct](#ConfigurationProduct)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | variant | [ConfigurationProductVariant](#ConfigurationProductVariant) |  no  |  |
- | similar | [ConfigurationProductSimilar](#ConfigurationProductSimilar) |  no  |  |
-
----
-
-
- 
- 
  #### [AppConfiguration](#AppConfiguration)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | configId | String? |  yes  |  |
  | configType | String |  no  |  |
- | appId | String |  no  |  |
- | listing | [ConfigurationListing](#ConfigurationListing)? |  yes  |  |
  | product | [ConfigurationProduct](#ConfigurationProduct)? |  yes  |  |
+ | appId | String |  no  |  |
+ | configId | String? |  yes  |  |
+ | listing | [ConfigurationListing](#ConfigurationListing)? |  yes  |  |
 
 ---
 
@@ -28672,12 +52596,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | configType | String |  no  |  |
+ | product | [ConfigurationProduct](#ConfigurationProduct)? |  yes  |  |
+ | appId | String |  no  |  |
  | id | String? |  yes  |  |
  | configId | String? |  yes  |  |
- | configType | String |  no  |  |
- | appId | String |  no  |  |
  | listing | [ConfigurationListing](#ConfigurationListing)? |  yes  |  |
- | product | [ConfigurationProduct](#ConfigurationProduct)? |  yes  |  |
 
 ---
 
@@ -28712,12 +52636,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | configType | String |  no  |  |
+ | product | [GetCatalogConfigurationDetailsProduct](#GetCatalogConfigurationDetailsProduct)? |  yes  |  |
+ | appId | String |  no  |  |
  | id | String? |  yes  |  |
  | configId | String? |  yes  |  |
- | configType | String |  no  |  |
- | appId | String |  no  |  |
  | listing | [GetCatalogConfigurationDetailsSchemaListing](#GetCatalogConfigurationDetailsSchemaListing)? |  yes  |  |
- | product | [GetCatalogConfigurationDetailsProduct](#GetCatalogConfigurationDetailsProduct)? |  yes  |  |
 
 ---
 
@@ -28753,10 +52677,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | String? |  yes  |  |
+ | display | String |  no  |  |
  | kind | String? |  yes  |  |
  | name | String |  no  |  |
- | display | String |  no  |  |
+ | logo | String? |  yes  |  |
 
 ---
 
@@ -28767,18 +52691,18 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | max | Int? |  yes  |  |
- | currencyCode | String? |  yes  |  |
- | displayFormat | String? |  yes  |  |
- | value | String |  no  |  |
- | min | Int? |  yes  |  |
- | selectedMax | Int? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
  | queryFormat | String? |  yes  |  |
+ | selectedMin | Int? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | min | Int? |  yes  |  |
+ | display | String |  no  |  |
+ | displayFormat | String? |  yes  |  |
+ | selectedMax | Int? |  yes  |  |
+ | value | String |  no  |  |
+ | max | Int? |  yes  |  |
  | count | Int? |  yes  |  |
  | isSelected | Boolean |  no  |  |
- | display | String |  no  |  |
- | selectedMin | Int? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
 
 ---
 
@@ -28809,6 +52733,20 @@ Success
 
  
  
+ #### [UserInfo](#UserInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | String? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | userId | String? |  yes  |  |
+ | username | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [CollectionImage](#CollectionImage)
 
  | Properties | Type | Nullable | Description |
@@ -28821,38 +52759,12 @@ Success
 
  
  
- #### [SeoDetail](#SeoDetail)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | description | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [CollectionBanner](#CollectionBanner)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | portrait | [CollectionImage](#CollectionImage) |  no  |  |
  | landscape | [CollectionImage](#CollectionImage) |  no  |  |
-
----
-
-
- 
- 
- #### [UserInfo](#UserInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | uid | String? |  yes  |  |
- | username | String? |  yes  |  |
- | userId | String? |  yes  |  |
- | email | String? |  yes  |  |
+ | portrait | [CollectionImage](#CollectionImage) |  no  |  |
 
 ---
 
@@ -28864,9 +52776,9 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | cron | String? |  yes  |  |
- | duration | Int? |  yes  |  |
  | start | String? |  yes  |  |
  | end | String? |  yes  |  |
+ | duration | Int? |  yes  |  |
 
 ---
 
@@ -28885,33 +52797,45 @@ Success
 
  
  
+ #### [SeoDetail](#SeoDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  |  |
+ | description | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [CreateCollection](#CreateCollection)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | logo | [CollectionImage](#CollectionImage) |  no  |  |
- | name | String |  no  |  |
- | description | String? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | seo | [SeoDetail](#SeoDetail)? |  yes  |  |
- | localeLanguage | HashMap<String,Any>? |  yes  |  |
- | appId | String |  no  |  |
- | isActive | Boolean? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | slug | String |  no  |  |
- | banners | [CollectionBanner](#CollectionBanner) |  no  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | createdBy | [UserInfo](#UserInfo)? |  yes  |  |
- | schedule | [Schedule](#Schedule)? |  yes  |  |
  | allowFacets | Boolean? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | localeLanguage | HashMap<String,Any>? |  yes  |  |
  | sortOn | String? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
- | modifiedBy | [UserInfo](#UserInfo)? |  yes  |  |
- | allowSort | Boolean? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
+ | createdBy | [UserInfo](#UserInfo)? |  yes  |  |
+ | type | String |  no  |  |
+ | isActive | Boolean? |  yes  |  |
+ | banners | [CollectionBanner](#CollectionBanner) |  no  |  |
+ | appId | String |  no  |  |
+ | description | String? |  yes  |  |
+ | schedule | [Schedule](#Schedule)? |  yes  |  |
  | badge | [CollectionBadge](#CollectionBadge)? |  yes  |  |
+ | slug | String |  no  |  |
+ | allowSort | Boolean? |  yes  |  |
+ | published | Boolean? |  yes  |  |
+ | modifiedBy | [UserInfo](#UserInfo)? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | logo | [CollectionImage](#CollectionImage) |  no  |  |
+ | seo | [SeoDetail](#SeoDetail)? |  yes  |  |
+ | name | String |  no  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -28934,8 +52858,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | portrait | [BannerImage](#BannerImage)? |  yes  |  |
  | landscape | [BannerImage](#BannerImage)? |  yes  |  |
+ | portrait | [BannerImage](#BannerImage)? |  yes  |  |
 
 ---
 
@@ -28946,61 +52870,23 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [BannerImage](#BannerImage)? |  yes  |  |
- | type | String? |  yes  |  |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | allowFacets | Boolean? |  yes  |  |
+ | type | String? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | logo | [BannerImage](#BannerImage)? |  yes  |  |
+ | tag | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
  | cron | HashMap<String,Any>? |  yes  |  |
  | allowSort | Boolean? |  yes  |  |
- | appId | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | description | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | tag | ArrayList<String>? |  yes  |  |
- | allowFacets | Boolean? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
+ | slug | String? |  yes  |  |
  | query | HashMap<String,Any>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CollectionListingFilterType](#CollectionListingFilterType)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | isSelected | Boolean? |  yes  |  |
- | display | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CollectionListingFilterTag](#CollectionListingFilterTag)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | isSelected | Boolean? |  yes  |  |
- | display | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CollectionListingFilter](#CollectionListingFilter)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | ArrayList<[CollectionListingFilterType](#CollectionListingFilterType)>? |  yes  |  |
- | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
 
 ---
 
@@ -29011,9 +52897,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | url | String |  no  |  |
+ | type | String? |  yes  |  |
 
 ---
 
@@ -29036,8 +52922,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [ProductListingActionPage](#ProductListingActionPage)? |  yes  |  |
  | type | String? |  yes  |  |
+ | page | [ProductListingActionPage](#ProductListingActionPage)? |  yes  |  |
 
 ---
 
@@ -29048,25 +52934,63 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [Media1](#Media1)? |  yes  |  |
- | type | String? |  yes  |  |
- | name | String? |  yes  |  |
- | cron | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | uid | String? |  yes  |  |
- | appId | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | slug | String? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
  | allowFacets | Boolean? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | tag | ArrayList<String>? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
+ | slug | String? |  yes  |  |
  | allowSort | Boolean? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
- | tag | ArrayList<String>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
+ | logo | [Media1](#Media1)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | cron | HashMap<String,Any>? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilterType](#CollectionListingFilterType)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | isSelected | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilterTag](#CollectionListingFilterTag)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | isSelected | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilter](#CollectionListingFilter)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | ArrayList<[CollectionListingFilterType](#CollectionListingFilterType)>? |  yes  |  |
+ | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
 
 ---
 
@@ -29077,9 +53001,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
- | filters | [CollectionListingFilter](#CollectionListingFilter)? |  yes  |  |
  | items | ArrayList<[GetCollectionDetailNest](#GetCollectionDetailNest)>? |  yes  |  |
+ | filters | [CollectionListingFilter](#CollectionListingFilter)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29090,23 +53014,23 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [Media1](#Media1)? |  yes  |  |
- | type | String? |  yes  |  |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | allowFacets | Boolean? |  yes  |  |
+ | type | String? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | logo | [Media1](#Media1)? |  yes  |  |
+ | tag | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
  | cron | HashMap<String,Any>? |  yes  |  |
  | allowSort | Boolean? |  yes  |  |
- | appId | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | description | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | tag | ArrayList<String>? |  yes  |  |
- | allowFacets | Boolean? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
+ | slug | String? |  yes  |  |
  | query | HashMap<String,Any>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -29117,26 +53041,26 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [CollectionImage](#CollectionImage)? |  yes  |  |
- | name | String? |  yes  |  |
- | description | String? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | seo | [SeoDetail](#SeoDetail)? |  yes  |  |
- | localeLanguage | HashMap<String,Any>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | published | Boolean? |  yes  |  |
- | slug | String? |  yes  |  |
- | banners | [CollectionBanner](#CollectionBanner)? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | schedule | [Schedule](#Schedule)? |  yes  |  |
  | allowFacets | Boolean? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | localeLanguage | HashMap<String,Any>? |  yes  |  |
  | sortOn | String? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
- | modifiedBy | [UserInfo](#UserInfo)? |  yes  |  |
- | allowSort | Boolean? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | banners | [CollectionBanner](#CollectionBanner)? |  yes  |  |
+ | description | String? |  yes  |  |
+ | schedule | [Schedule](#Schedule)? |  yes  |  |
  | badge | [CollectionBadge](#CollectionBadge)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | allowSort | Boolean? |  yes  |  |
+ | published | Boolean? |  yes  |  |
+ | modifiedBy | [UserInfo](#UserInfo)? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | logo | [CollectionImage](#CollectionImage)? |  yes  |  |
+ | seo | [SeoDetail](#SeoDetail)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -29170,10 +53094,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | currencyCode | String? |  yes  |  |
  | currencySymbol | String? |  yes  |  |
- | max | Double? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
  | min | Double? |  yes  |  |
+ | max | Double? |  yes  |  |
 
 ---
 
@@ -29184,8 +53108,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | marked | [Price1](#Price1)? |  yes  |  |
  | effective | [Price1](#Price1)? |  yes  |  |
+ | marked | [Price1](#Price1)? |  yes  |  |
 
 ---
 
@@ -29196,9 +53120,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
  | key | String? |  yes  |  |
  | value | String? |  yes  |  |
- | type | String? |  yes  |  |
 
 ---
 
@@ -29221,10 +53145,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [Media1](#Media1)? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | uid | Int? |  yes  |  |
  | name | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | logo | [Media1](#Media1)? |  yes  |  |
 
 ---
 
@@ -29235,32 +53159,32 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | name | String? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | promoMeta | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
- | similars | ArrayList<String>? |  yes  |  |
- | teaserTag | HashMap<String,Any>? |  yes  |  |
- | uid | Int? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | ratingCount | Int? |  yes  |  |
- | color | String? |  yes  |  |
- | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
- | productOnlineDate | String? |  yes  |  |
- | slug | String |  no  |  |
- | discount | String? |  yes  |  |
- | sellable | Boolean? |  yes  |  |
- | rating | Double? |  yes  |  |
  | shortDescription | String? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
- | tryouts | ArrayList<String>? |  yes  |  |
- | imageNature | String? |  yes  |  |
+ | discount | String? |  yes  |  |
  | medias | ArrayList<[Media1](#Media1)>? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | rating | Double? |  yes  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
+ | color | String? |  yes  |  |
+ | teaserTag | HashMap<String,Any>? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
+ | slug | String |  no  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
+ | sellable | Boolean? |  yes  |  |
  | itemType | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | productOnlineDate | String? |  yes  |  |
+ | promoMeta | HashMap<String,Any>? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | similars | ArrayList<String>? |  yes  |  |
  | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | imageNature | String? |  yes  |  |
 
 ---
 
@@ -29271,26 +53195,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
+ | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
  | sortOn | ArrayList<[ProductSortOn](#ProductSortOn)>? |  yes  |  |
  | filters | ArrayList<[ProductFilters](#ProductFilters)>? |  yes  |  |
- | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CatalogInsightBrand](#CatalogInsightBrand)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | totalArticles | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | availableArticles | Int? |  yes  |  |
- | availableSizes | Int? |  yes  |  |
- | articleFreshness | Int? |  yes  |  |
- | totalSizes | Int? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29302,8 +53210,24 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | outOfStockCount | Int? |  yes  |  |
- | count | Int? |  yes  |  |
  | sellableCount | Int? |  yes  |  |
+ | count | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CatalogInsightBrand](#CatalogInsightBrand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | totalArticles | Int? |  yes  |  |
+ | availableArticles | Int? |  yes  |  |
+ | availableSizes | Int? |  yes  |  |
+ | articleFreshness | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | totalSizes | Int? |  yes  |  |
 
 ---
 
@@ -29314,8 +53238,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | brandDistribution | [CatalogInsightBrand](#CatalogInsightBrand)? |  yes  |  |
  | item | [CatalogInsightItem](#CatalogInsightItem)? |  yes  |  |
+ | brandDistribution | [CatalogInsightBrand](#CatalogInsightBrand)? |  yes  |  |
 
 ---
 
@@ -29338,8 +53262,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | [CrossSellingData](#CrossSellingData)? |  yes  |  |
  | brandDistribution | [CatalogInsightBrand](#CatalogInsightBrand)? |  yes  |  |
+ | data | [CrossSellingData](#CrossSellingData)? |  yes  |  |
 
 ---
 
@@ -29350,10 +53274,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | storeIds | ArrayList<Int>? |  yes  |  |
  | enabled | Boolean? |  yes  |  |
- | brandIds | ArrayList<Int>? |  yes  |  |
  | optLevel | String |  no  |  |
+ | storeIds | ArrayList<Int>? |  yes  |  |
+ | brandIds | ArrayList<Int>? |  yes  |  |
 
 ---
 
@@ -29364,16 +53288,16 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companyId | Int |  no  |  |
- | storeIds | ArrayList<Int> |  no  |  |
- | createdOn | Int |  no  |  |
  | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | storeIds | ArrayList<Int> |  no  |  |
+ | platform | String |  no  |  |
+ | enabled | Boolean |  no  |  |
+ | createdOn | Int |  no  |  |
+ | companyId | Int |  no  |  |
+ | modifiedOn | Int |  no  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
  | optLevel | String |  no  |  |
  | brandIds | ArrayList<Int> |  no  |  |
- | enabled | Boolean |  no  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | modifiedOn | Int |  no  |  |
- | platform | String |  no  |  |
 
 ---
 
@@ -29384,8 +53308,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[CompanyOptIn](#CompanyOptIn)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
 
 ---
 
@@ -29396,10 +53320,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | businessType | String? |  yes  |  |
  | uid | Int? |  yes  |  |
  | name | String? |  yes  |  |
  | companyType | String? |  yes  |  |
+ | businessType | String? |  yes  |  |
 
 ---
 
@@ -29410,10 +53334,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | brandId | Int? |  yes  |  |
  | brandName | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
  | totalArticle | Int? |  yes  |  |
+ | brandId | Int? |  yes  |  |
+ | companyId | Int? |  yes  |  |
 
 ---
 
@@ -29424,8 +53348,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[CompanyBrandDetail](#CompanyBrandDetail)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29449,17 +53373,17 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companyId | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | storeCode | String? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
  | timing | HashMap<String,Any>? |  yes  |  |
- | storeType | String? |  yes  |  |
- | additionalContacts | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | storeCode | String? |  yes  |  |
  | uid | Int? |  yes  |  |
- | documents | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | additionalContacts | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | displayName | String? |  yes  |  |
+ | storeType | String? |  yes  |  |
+ | name | String? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | companyId | Int? |  yes  |  |
+ | documents | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -29470,47 +53394,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[StoreDetail](#StoreDetail)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [AttributeMasterDetails](#AttributeMasterDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | displayType | String |  no  |  |
-
----
-
-
- 
- 
- #### [AttributeSchemaRange](#AttributeSchemaRange)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | max | Int? |  yes  |  |
- | min | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [AttributeMaster](#AttributeMaster)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | range | [AttributeSchemaRange](#AttributeSchemaRange)? |  yes  |  |
- | format | String? |  yes  |  |
- | allowedValues | ArrayList<String>? |  yes  |  |
- | mandatory | Boolean? |  yes  |  |
- | multi | Boolean? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29544,9 +53429,48 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | dependsOn | ArrayList<String>? |  yes  |  |
- | indexing | Boolean |  no  |  |
  | priority | Int? |  yes  |  |
+ | indexing | Boolean |  no  |  |
+ | dependsOn | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeSchemaRange](#AttributeSchemaRange)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Int? |  yes  |  |
+ | max | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeMaster](#AttributeMaster)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mandatory | Boolean? |  yes  |  |
+ | range | [AttributeSchemaRange](#AttributeSchemaRange)? |  yes  |  |
+ | multi | Boolean? |  yes  |  |
+ | format | String? |  yes  |  |
+ | type | String |  no  |  |
+ | allowedValues | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AttributeMasterDetails](#AttributeMasterDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | displayType | String |  no  |  |
 
 ---
 
@@ -29557,18 +53481,18 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | departments | ArrayList<String>? |  yes  |  |
+ | meta | [AttributeMasterMeta](#AttributeMasterMeta)? |  yes  |  |
+ | filters | [AttributeMasterFilter](#AttributeMasterFilter)? |  yes  |  |
+ | schema | [AttributeMaster](#AttributeMaster)? |  yes  |  |
  | logo | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | enabledForEndConsumer | Boolean? |  yes  |  |
+ | isNested | Boolean? |  yes  |  |
  | name | String? |  yes  |  |
  | slug | String? |  yes  |  |
- | departments | ArrayList<String>? |  yes  |  |
  | details | [AttributeMasterDetails](#AttributeMasterDetails)? |  yes  |  |
- | description | String? |  yes  |  |
- | enabledForEndConsumer | Boolean? |  yes  |  |
- | schema | [AttributeMaster](#AttributeMaster)? |  yes  |  |
- | meta | [AttributeMasterMeta](#AttributeMasterMeta)? |  yes  |  |
- | id | String? |  yes  |  |
- | isNested | Boolean? |  yes  |  |
- | filters | [AttributeMasterFilter](#AttributeMasterFilter)? |  yes  |  |
 
 ---
 
@@ -29579,8 +53503,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29591,11 +53515,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | errors | HashMap<String,Any>? |  yes  |  |
- | code | String? |  yes  |  |
  | status | Int? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | message | String? |  yes  |  |
+ | code | String? |  yes  |  |
+ | errors | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -29606,9 +53530,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | username | String? |  yes  |  |
  | contact | String? |  yes  |  |
  | userId | String? |  yes  |  |
+ | username | String? |  yes  |  |
 
 ---
 
@@ -29619,21 +53543,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | String? |  yes  |  |
- | name | String? |  yes  |  |
- | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | slug | String? |  yes  |  |
- | priorityOrder | Int? |  yes  |  |
- | pageNo | Int? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
- | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | search | String? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
+ | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
  | synonyms | ArrayList<String>? |  yes  |  |
- | pageSize | Int? |  yes  |  |
- | itemType | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | search | String? |  yes  |  |
+ | name | String? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | pageSize | Int? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | pageNo | Int? |  yes  |  |
+ | priorityOrder | Int? |  yes  |  |
 
 ---
 
@@ -29644,8 +53568,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[GetDepartment](#GetDepartment)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29656,11 +53580,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | errors | HashMap<String,Any>? |  yes  |  |
- | code | String? |  yes  |  |
  | status | Int? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | message | String? |  yes  |  |
+ | code | String? |  yes  |  |
+ | errors | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -29671,21 +53595,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | String? |  yes  |  |
- | name | String? |  yes  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | slug | String |  no  |  |
- | categories | ArrayList<String>? |  yes  |  |
  | departments | ArrayList<String>? |  yes  |  |
- | createdOn | String? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | isArchived | Boolean? |  yes  |  |
  | attributes | ArrayList<String>? |  yes  |  |
  | tag | String? |  yes  |  |
- | isArchived | Boolean? |  yes  |  |
+ | description | String? |  yes  |  |
+ | logo | String? |  yes  |  |
  | isPhysical | Boolean |  no  |  |
+ | categories | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | slug | String |  no  |  |
 
 ---
 
@@ -29696,76 +53620,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | [ProductTemplate](#ProductTemplate)? |  yes  |  |
-
----
-
-
- 
- 
- #### [Properties](#Properties)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | HashMap<String,Any>? |  yes  |  |
- | returnConfig | HashMap<String,Any>? |  yes  |  |
- | customOrder | HashMap<String,Any>? |  yes  |  |
- | description | HashMap<String,Any>? |  yes  |  |
- | teaserTag | HashMap<String,Any>? |  yes  |  |
- | brandUid | HashMap<String,Any>? |  yes  |  |
- | variants | HashMap<String,Any>? |  yes  |  |
- | trader | HashMap<String,Any>? |  yes  |  |
- | productGroupTag | HashMap<String,Any>? |  yes  |  |
- | highlights | HashMap<String,Any>? |  yes  |  |
- | sizes | HashMap<String,Any>? |  yes  |  |
- | isActive | HashMap<String,Any>? |  yes  |  |
- | moq | HashMap<String,Any>? |  yes  |  |
- | noOfBoxes | HashMap<String,Any>? |  yes  |  |
- | command | HashMap<String,Any>? |  yes  |  |
- | isDependent | HashMap<String,Any>? |  yes  |  |
- | slug | HashMap<String,Any>? |  yes  |  |
- | tags | HashMap<String,Any>? |  yes  |  |
- | categorySlug | HashMap<String,Any>? |  yes  |  |
- | currency | HashMap<String,Any>? |  yes  |  |
- | sizeGuide | HashMap<String,Any>? |  yes  |  |
- | itemCode | HashMap<String,Any>? |  yes  |  |
- | productPublish | HashMap<String,Any>? |  yes  |  |
- | shortDescription | HashMap<String,Any>? |  yes  |  |
- | multiSize | HashMap<String,Any>? |  yes  |  |
- | countryOfOrigin | HashMap<String,Any>? |  yes  |  |
- | itemType | HashMap<String,Any>? |  yes  |  |
- | traderType | HashMap<String,Any>? |  yes  |  |
- | media | HashMap<String,Any>? |  yes  |  |
- | hsnCode | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [GlobalValidation](#GlobalValidation)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | required | ArrayList<String>? |  yes  |  |
- | properties | [Properties](#Properties)? |  yes  |  |
- | title | String? |  yes  |  |
- | description | String? |  yes  |  |
- | definitions | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [TemplateValidationData](#TemplateValidationData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | templateValidation | HashMap<String,Any>? |  yes  |  |
- | globalValidation | [GlobalValidation](#GlobalValidation)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29776,18 +53632,86 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | String? |  yes  |  |
- | name | String? |  yes  |  |
- | slug | String |  no  |  |
- | categories | ArrayList<String>? |  yes  |  |
  | departments | ArrayList<String>? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
- | description | String? |  yes  |  |
+ | isArchived | Boolean? |  yes  |  |
  | attributes | ArrayList<String>? |  yes  |  |
  | tag | String? |  yes  |  |
- | id | String? |  yes  |  |
- | isArchived | Boolean? |  yes  |  |
+ | description | String? |  yes  |  |
+ | logo | String? |  yes  |  |
  | isPhysical | Boolean |  no  |  |
+ | id | String? |  yes  |  |
+ | categories | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | slug | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Properties](#Properties)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shortDescription | HashMap<String,Any>? |  yes  |  |
+ | currency | HashMap<String,Any>? |  yes  |  |
+ | multiSize | HashMap<String,Any>? |  yes  |  |
+ | media | HashMap<String,Any>? |  yes  |  |
+ | isActive | HashMap<String,Any>? |  yes  |  |
+ | highlights | HashMap<String,Any>? |  yes  |  |
+ | teaserTag | HashMap<String,Any>? |  yes  |  |
+ | customOrder | HashMap<String,Any>? |  yes  |  |
+ | itemCode | HashMap<String,Any>? |  yes  |  |
+ | description | HashMap<String,Any>? |  yes  |  |
+ | productPublish | HashMap<String,Any>? |  yes  |  |
+ | trader | HashMap<String,Any>? |  yes  |  |
+ | sizes | HashMap<String,Any>? |  yes  |  |
+ | productGroupTag | HashMap<String,Any>? |  yes  |  |
+ | slug | HashMap<String,Any>? |  yes  |  |
+ | brandUid | HashMap<String,Any>? |  yes  |  |
+ | moq | HashMap<String,Any>? |  yes  |  |
+ | returnConfig | HashMap<String,Any>? |  yes  |  |
+ | categorySlug | HashMap<String,Any>? |  yes  |  |
+ | itemType | HashMap<String,Any>? |  yes  |  |
+ | sizeGuide | HashMap<String,Any>? |  yes  |  |
+ | name | HashMap<String,Any>? |  yes  |  |
+ | countryOfOrigin | HashMap<String,Any>? |  yes  |  |
+ | hsnCode | HashMap<String,Any>? |  yes  |  |
+ | variants | HashMap<String,Any>? |  yes  |  |
+ | command | HashMap<String,Any>? |  yes  |  |
+ | tags | HashMap<String,Any>? |  yes  |  |
+ | traderType | HashMap<String,Any>? |  yes  |  |
+ | noOfBoxes | HashMap<String,Any>? |  yes  |  |
+ | isDependent | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GlobalValidation](#GlobalValidation)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  |  |
+ | required | ArrayList<String>? |  yes  |  |
+ | properties | [Properties](#Properties)? |  yes  |  |
+ | description | String? |  yes  |  |
+ | definitions | HashMap<String,Any>? |  yes  |  |
+ | type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TemplateValidationData](#TemplateValidationData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | globalValidation | [GlobalValidation](#GlobalValidation)? |  yes  |  |
+ | templateValidation | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -29798,8 +53722,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | [TemplateValidationData](#TemplateValidationData)? |  yes  |  |
  | templateDetails | [TemplateDetails](#TemplateDetails)? |  yes  |  |
+ | data | [TemplateValidationData](#TemplateValidationData)? |  yes  |  |
 
 ---
 
@@ -29810,8 +53734,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | HashMap<String,Any>? |  yes  |  |
  | message | String? |  yes  |  |
+ | data | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -29834,8 +53758,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | [HSNData](#HSNData)? |  yes  |  |
  | message | String? |  yes  |  |
+ | data | [HSNData](#HSNData)? |  yes  |  |
 
 ---
 
@@ -29846,8 +53770,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | username | String? |  yes  |  |
  | userId | String? |  yes  |  |
+ | username | String? |  yes  |  |
 
 ---
 
@@ -29871,15 +53795,15 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | templateTags | HashMap<String,Any>? |  yes  |  |
  | taskId | String? |  yes  |  |
  | triggerOn | String? |  yes  |  |
- | url | String? |  yes  |  |
  | status | String? |  yes  |  |
- | createdBy | [VerifiedBy](#VerifiedBy)? |  yes  |  |
  | sellerId | Double? |  yes  |  |
+ | url | String? |  yes  |  |
  | completedOn | String? |  yes  |  |
- | templateTags | HashMap<String,Any>? |  yes  |  |
  | id | String? |  yes  |  |
+ | createdBy | [VerifiedBy](#VerifiedBy)? |  yes  |  |
  | data | [ProductDownloadItemsData](#ProductDownloadItemsData)? |  yes  |  |
 
 ---
@@ -29891,8 +53815,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | [ProductDownloadsItems](#ProductDownloadsItems)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -29903,21 +53827,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | multivalue | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [Hierarchy](#Hierarchy)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | l1 | Int |  no  |  |
- | department | Int |  no  |  |
- | l2 | Int |  no  |  |
+ | data | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -29940,9 +53851,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | google | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
  | facebook | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
  | ajio | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
+ | google | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
 
 ---
 
@@ -29953,9 +53864,22 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | String |  no  |  |
- | portrait | String |  no  |  |
  | landscape | String |  no  |  |
+ | portrait | String |  no  |  |
+ | logo | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Hierarchy](#Hierarchy)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | department | Int |  no  |  |
+ | l2 | Int |  no  |  |
+ | l1 | Int |  no  |  |
 
 ---
 
@@ -29966,17 +53890,17 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | tryouts | ArrayList<String>? |  yes  |  |
- | name | String |  no  |  |
- | slug | String? |  yes  |  |
  | departments | ArrayList<Int> |  no  |  |
- | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
  | isActive | Boolean |  no  |  |
- | priority | Int? |  yes  |  |
  | synonyms | ArrayList<String>? |  yes  |  |
  | marketplaces | [CategoryMapping](#CategoryMapping)? |  yes  |  |
- | media | [Media2](#Media2)? |  yes  |  |
+ | priority | Int? |  yes  |  |
  | level | Int |  no  |  |
+ | name | String |  no  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+ | media | [Media2](#Media2)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
 
 ---
 
@@ -29999,23 +53923,23 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | tryouts | ArrayList<String>? |  yes  |  |
- | name | String |  no  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | slug | String? |  yes  |  |
  | departments | ArrayList<Int> |  no  |  |
- | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
  | isActive | Boolean |  no  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | priority | Int? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
  | synonyms | ArrayList<String>? |  yes  |  |
  | marketplaces | [CategoryMapping](#CategoryMapping)? |  yes  |  |
- | id | String? |  yes  |  |
- | media | [Media2](#Media2)? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | priority | Int? |  yes  |  |
+ | id | String? |  yes  |  |
  | level | Int |  no  |  |
+ | name | String |  no  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | media | [Media2](#Media2)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
 
 ---
 
@@ -30026,8 +53950,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[Category](#Category)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -30049,34 +53973,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ReturnConfig](#ReturnConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | returnable | Boolean? |  yes  |  |
- | time | Int? |  yes  |  |
- | unit | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CustomOrder](#CustomOrder)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | manufacturingTimeUnit | String? |  yes  |  |
- | isCustomOrder | Boolean? |  yes  |  |
- | manufacturingTime | Int? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -30087,8 +53985,33 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | tag | String? |  yes  |  |
  | url | String? |  yes  |  |
+ | tag | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CustomOrder](#CustomOrder)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isCustomOrder | Boolean? |  yes  |  |
+ | manufacturingTimeUnit | String? |  yes  |  |
+ | manufacturingTime | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductPublish](#ProductPublish)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isSet | Boolean? |  yes  |  |
+ | productOnlineDate | String? |  yes  |  |
 
 ---
 
@@ -30112,20 +54035,21 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | isSet | Boolean? |  yes  |  |
- | maximum | Int? |  yes  |  |
  | minimum | Int? |  yes  |  |
+ | maximum | Int? |  yes  |  |
 
 ---
 
 
  
  
- #### [ProductPublish](#ProductPublish)
+ #### [ReturnConfig](#ReturnConfig)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isSet | Boolean? |  yes  |  |
- | productOnlineDate | String? |  yes  |  |
+ | unit | String? |  yes  |  |
+ | returnable | Boolean? |  yes  |  |
+ | time | Int? |  yes  |  |
 
 ---
 
@@ -30136,70 +54060,43 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companyId | Int |  no  |  |
- | name | String |  no  |  |
- | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
- | customOrder | [CustomOrder](#CustomOrder)? |  yes  |  |
- | description | String? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | teaserTag | [TeaserTag](#TeaserTag)? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
  | uid | Int? |  yes  |  |
- | brandUid | Int |  no  |  |
- | variants | HashMap<String,Any>? |  yes  |  |
- | trader | [Trader](#Trader)? |  yes  |  |
+ | currency | String |  no  |  |
  | templateTag | String |  no  |  |
- | productGroupTag | ArrayList<String>? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
+ | multiSize | Boolean? |  yes  |  |
+ | media | ArrayList<[Media1](#Media1)>? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
- | moq | [OrderQuantity](#OrderQuantity)? |  yes  |  |
- | isSet | Boolean? |  yes  |  |
- | noOfBoxes | Int? |  yes  |  |
- | isDependent | Boolean? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | teaserTag | [TeaserTag](#TeaserTag)? |  yes  |  |
+ | customOrder | [CustomOrder](#CustomOrder)? |  yes  |  |
+ | itemCode | String |  no  |  |
+ | description | String? |  yes  |  |
+ | productPublish | [ProductPublish](#ProductPublish)? |  yes  |  |
+ | trader | [Trader](#Trader)? |  yes  |  |
+ | companyId | Int |  no  |  |
+ | productGroupTag | ArrayList<String>? |  yes  |  |
  | slug | String |  no  |  |
+ | isImageLessProduct | Boolean? |  yes  |  |
+ | brandUid | Int |  no  |  |
  | requester | String? |  yes  |  |
+ | moq | [OrderQuantity](#OrderQuantity)? |  yes  |  |
+ | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
+ | categorySlug | String |  no  |  |
+ | changeRequestId | String? |  yes  |  |
+ | itemType | String |  no  |  |
+ | sizeGuide | String? |  yes  |  |
+ | name | String |  no  |  |
+ | countryOfOrigin | String |  no  |  |
+ | hsnCode | String |  no  |  |
+ | variants | HashMap<String,Any>? |  yes  |  |
  | departments | ArrayList<Int> |  no  |  |
  | tags | ArrayList<String>? |  yes  |  |
- | categorySlug | String |  no  |  |
- | currency | String |  no  |  |
- | sizeGuide | String? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | itemCode | String |  no  |  |
- | productPublish | [ProductPublish](#ProductPublish)? |  yes  |  |
- | multiSize | Boolean? |  yes  |  |
- | countryOfOrigin | String |  no  |  |
- | isImageLessProduct | Boolean? |  yes  |  |
- | itemType | String |  no  |  |
+ | isSet | Boolean? |  yes  |  |
  | traderType | String? |  yes  |  |
- | media | ArrayList<[Media1](#Media1)>? |  yes  |  |
- | changeRequestId | String? |  yes  |  |
- | hsnCode | String |  no  |  |
-
----
-
-
- 
- 
- #### [Logo](#Logo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | aspectRatio | String? |  yes  |  |
- | secureUrl | String? |  yes  |  |
- | aspectRatioF | Int? |  yes  |  |
- | url | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Brand](#Brand)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | logo | [Logo](#Logo)? |  yes  |  |
- | uid | Int? |  yes  |  |
- | name | String? |  yes  |  |
+ | noOfBoxes | Int? |  yes  |  |
+ | isDependent | Boolean? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -30218,14 +54115,41 @@ Success
 
  
  
+ #### [Logo](#Logo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspectRatio | String? |  yes  |  |
+ | aspectRatioF | Int? |  yes  |  |
+ | url | String? |  yes  |  |
+ | secureUrl | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Brand](#Brand)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | logo | [Logo](#Logo)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [Image](#Image)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | aspectRatio | String? |  yes  |  |
- | secureUrl | String? |  yes  |  |
  | aspectRatioF | Double? |  yes  |  |
  | url | String? |  yes  |  |
+ | secureUrl | String? |  yes  |  |
 
 ---
 
@@ -30236,43 +54160,43 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | customOrder | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
- | allSizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | id | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | brandUid | Int? |  yes  |  |
- | variants | HashMap<String,Any>? |  yes  |  |
- | primaryColor | String? |  yes  |  |
- | l3Mapping | ArrayList<String>? |  yes  |  |
- | templateTag | String? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | sizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | moq | HashMap<String,Any>? |  yes  |  |
- | isSet | Boolean? |  yes  |  |
- | color | String? |  yes  |  |
- | categoryUid | Int? |  yes  |  |
- | isPhysical | Boolean? |  yes  |  |
- | isDependent | Boolean? |  yes  |  |
- | slug | String? |  yes  |  |
- | departments | ArrayList<Int>? |  yes  |  |
- | brand | [Brand](#Brand)? |  yes  |  |
- | categorySlug | String? |  yes  |  |
- | currency | String? |  yes  |  |
- | sizeGuide | String? |  yes  |  |
- | itemCode | String? |  yes  |  |
  | shortDescription | String? |  yes  |  |
- | productPublish | [ProductPublished](#ProductPublished)? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | categoryUid | Int? |  yes  |  |
+ | currency | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | templateTag | String? |  yes  |  |
  | multiSize | Boolean? |  yes  |  |
- | imageNature | String? |  yes  |  |
- | countryOfOrigin | String? |  yes  |  |
- | images | ArrayList<[Image](#Image)>? |  yes  |  |
- | itemType | String? |  yes  |  |
+ | l3Mapping | ArrayList<String>? |  yes  |  |
  | media | ArrayList<[Media1](#Media1)>? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | color | String? |  yes  |  |
+ | customOrder | HashMap<String,Any>? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | productPublish | [ProductPublished](#ProductPublished)? |  yes  |  |
+ | sizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | brandUid | Int? |  yes  |  |
+ | moq | HashMap<String,Any>? |  yes  |  |
+ | primaryColor | String? |  yes  |  |
+ | categorySlug | String? |  yes  |  |
+ | isPhysical | Boolean? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | sizeGuide | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | countryOfOrigin | String? |  yes  |  |
  | hsnCode | String? |  yes  |  |
+ | departments | ArrayList<Int>? |  yes  |  |
+ | variants | HashMap<String,Any>? |  yes  |  |
+ | isSet | Boolean? |  yes  |  |
+ | allSizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | brand | [Brand](#Brand)? |  yes  |  |
+ | isDependent | Boolean? |  yes  |  |
+ | imageNature | String? |  yes  |  |
+ | images | ArrayList<[Image](#Image)>? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -30283,8 +54207,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[Product](#Product)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -30306,10 +54230,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uid | String? |  yes  |  |
- | username | String? |  yes  |  |
- | userId | String? |  yes  |  |
  | email | String? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | userId | String? |  yes  |  |
+ | username | String? |  yes  |  |
 
 ---
 
@@ -30320,23 +54244,23 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | templateTag | String? |  yes  |  |
- | failedRecords | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | companyId | Int |  no  |  |
+ | isActive | Boolean? |  yes  |  |
  | modifiedBy | [UserInfo1](#UserInfo1)? |  yes  |  |
+ | cancelled | Int? |  yes  |  |
+ | customTemplateTag | String? |  yes  |  |
+ | failedRecords | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | stage | String? |  yes  |  |
  | cancelledRecords | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | filePath | String? |  yes  |  |
- | customTemplateTag | String? |  yes  |  |
- | stage | String? |  yes  |  |
- | createdBy | [UserInfo1](#UserInfo1)? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | failed | Int? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | succeed | Int? |  yes  |  |
  | total | Int |  no  |  |
- | trackingUrl | String? |  yes  |  |
- | cancelled | Int? |  yes  |  |
  | createdOn | String |  no  |  |
+ | templateTag | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdBy | [UserInfo1](#UserInfo1)? |  yes  |  |
+ | companyId | Int |  no  |  |
+ | failed | Int? |  yes  |  |
+ | trackingUrl | String? |  yes  |  |
+ | succeed | Int? |  yes  |  |
 
 ---
 
@@ -30348,8 +54272,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | fullName | String? |  yes  |  |
- | username | String? |  yes  |  |
  | userId | String? |  yes  |  |
+ | username | String? |  yes  |  |
 
 ---
 
@@ -30360,22 +54284,22 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | templateTag | String? |  yes  |  |
- | failedRecords | ArrayList<String>? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | cancelledRecords | ArrayList<String>? |  yes  |  |
- | filePath | String? |  yes  |  |
- | modifiedBy | [UserDetail](#UserDetail)? |  yes  |  |
- | template | [ProductTemplate](#ProductTemplate)? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
- | failed | Int? |  yes  |  |
- | createdBy | [UserDetail](#UserDetail)? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | succeed | Int? |  yes  |  |
- | total | Int? |  yes  |  |
- | stage | String? |  yes  |  |
+ | template | [ProductTemplate](#ProductTemplate)? |  yes  |  |
+ | modifiedBy | [UserDetail](#UserDetail)? |  yes  |  |
  | cancelled | Int? |  yes  |  |
+ | failedRecords | ArrayList<String>? |  yes  |  |
+ | stage | String? |  yes  |  |
+ | cancelledRecords | ArrayList<String>? |  yes  |  |
+ | templateTag | String? |  yes  |  |
+ | total | Int? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | filePath | String? |  yes  |  |
+ | companyId | Int? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdBy | [UserDetail](#UserDetail)? |  yes  |  |
+ | failed | Int? |  yes  |  |
+ | succeed | Int? |  yes  |  |
 
 ---
 
@@ -30386,8 +54310,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | [ProductBulkRequest](#ProductBulkRequest)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -30399,9 +54323,9 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | templateTag | String |  no  |  |
- | companyId | Int |  no  |  |
- | data | ArrayList<HashMap<String,Any>> |  no  |  |
  | batchId | String |  no  |  |
+ | data | ArrayList<HashMap<String,Any>> |  no  |  |
+ | companyId | Int |  no  |  |
 
 ---
 
@@ -30435,8 +54359,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | user | HashMap<String,Any> |  no  |  |
- | companyId | Int? |  yes  |  |
  | url | String |  no  |  |
+ | companyId | Int? |  yes  |  |
 
 ---
 
@@ -30447,9 +54371,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | userId | String? |  yes  |  |
  | companyId | Int? |  yes  |  |
  | username | String? |  yes  |  |
- | userId | String? |  yes  |  |
 
 ---
 
@@ -30460,23 +54384,23 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | failedRecords | ArrayList<String>? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | filePath | String? |  yes  |  |
- | modifiedBy | [UserCommon](#UserCommon)? |  yes  |  |
- | cancelledRecords | ArrayList<String>? |  yes  |  |
- | retry | Int? |  yes  |  |
- | createdBy | [UserCommon](#UserCommon)? |  yes  |  |
- | failed | Int? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | succeed | Int? |  yes  |  |
- | total | Int? |  yes  |  |
- | trackingUrl | String? |  yes  |  |
- | id | String? |  yes  |  |
- | stage | String? |  yes  |  |
+ | modifiedBy | [UserCommon](#UserCommon)? |  yes  |  |
  | cancelled | Int? |  yes  |  |
+ | failedRecords | ArrayList<String>? |  yes  |  |
+ | stage | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | cancelledRecords | ArrayList<String>? |  yes  |  |
+ | filePath | String? |  yes  |  |
+ | retry | Int? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | total | Int? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdBy | [UserCommon](#UserCommon)? |  yes  |  |
+ | companyId | Int? |  yes  |  |
+ | failed | Int? |  yes  |  |
+ | trackingUrl | String? |  yes  |  |
+ | succeed | Int? |  yes  |  |
 
 ---
 
@@ -30487,8 +54411,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[Items](#Items)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -30533,25 +54457,12 @@ Success
 
  
  
- #### [GTIN](#GTIN)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | primary | Boolean? |  yes  |  |
- | gtinValue | String |  no  |  |
- | gtinType | String |  no  |  |
-
----
-
-
- 
- 
  #### [SetSize](#SetSize)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | size | String |  no  |  |
  | pieces | Int |  no  |  |
+ | size | String |  no  |  |
 
 ---
 
@@ -30581,26 +54492,39 @@ Success
 
  
  
+ #### [GTIN](#GTIN)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | gtinValue | String |  no  |  |
+ | primary | Boolean? |  yes  |  |
+ | gtinType | String |  no  |  |
+
+---
+
+
+ 
+ 
  #### [InvSize](#InvSize)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | itemWeight | Double? |  yes  |  |
- | price | Double |  no  |  |
- | itemHeight | Double? |  yes  |  |
- | itemWidth | Double? |  yes  |  |
- | identifiers | ArrayList<[GTIN](#GTIN)> |  no  |  |
- | priceEffective | Double |  no  |  |
  | priceTransfer | Double? |  yes  |  |
- | itemDimensionsUnitOfMeasure | String? |  yes  |  |
+ | priceEffective | Double |  no  |  |
+ | size | String |  no  |  |
  | storeCode | String |  no  |  |
  | isSet | Boolean? |  yes  |  |
- | size | String |  no  |  |
- | itemWeightUnitOfMeasure | String? |  yes  |  |
+ | itemWeight | Double? |  yes  |  |
  | quantity | Int |  no  |  |
- | currency | String |  no  |  |
- | set | [InventorySet](#InventorySet)? |  yes  |  |
+ | itemDimensionsUnitOfMeasure | String? |  yes  |  |
  | itemLength | Double? |  yes  |  |
+ | currency | String |  no  |  |
+ | itemHeight | Double? |  yes  |  |
+ | set | [InventorySet](#InventorySet)? |  yes  |  |
+ | itemWeightUnitOfMeasure | String? |  yes  |  |
+ | itemWidth | Double? |  yes  |  |
+ | price | Double |  no  |  |
+ | identifiers | ArrayList<[GTIN](#GTIN)> |  no  |  |
 
 ---
 
@@ -30612,8 +54536,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | item | [ItemQuery](#ItemQuery) |  no  |  |
- | companyId | Int |  no  |  |
  | sizes | ArrayList<[InvSize](#InvSize)> |  no  |  |
+ | companyId | Int |  no  |  |
 
 ---
 
@@ -30624,19 +54548,19 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | store | HashMap<String,Any>? |  yes  |  |
- | price | Int? |  yes  |  |
- | sellableQuantity | Int? |  yes  |  |
- | itemId | Int? |  yes  |  |
- | uid | String? |  yes  |  |
- | priceEffective | Int? |  yes  |  |
  | priceTransfer | Int? |  yes  |  |
- | sellerIdentifier | Int? |  yes  |  |
- | quantity | Int? |  yes  |  |
+ | priceEffective | Int? |  yes  |  |
  | size | String? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | sellableQuantity | Int? |  yes  |  |
  | currency | String? |  yes  |  |
- | identifiers | HashMap<String,Any>? |  yes  |  |
+ | store | HashMap<String,Any>? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | itemId | Int? |  yes  |  |
  | inventoryUpdatedOn | String? |  yes  |  |
+ | price | Int? |  yes  |  |
+ | sellerIdentifier | Int? |  yes  |  |
+ | identifiers | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -30648,8 +54572,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | itemId | Int? |  yes  |  |
- | locationId | Int? |  yes  |  |
  | size | String? |  yes  |  |
+ | locationId | Int? |  yes  |  |
 
 ---
 
@@ -30683,21 +54607,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | isActive | Boolean? |  yes  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | cancelled | Int? |  yes  |  |
  | failedRecords | ArrayList<String>? |  yes  |  |
- | companyId | Int? |  yes  |  |
+ | stage | String? |  yes  |  |
+ | id | String? |  yes  |  |
  | cancelledRecords | ArrayList<String>? |  yes  |  |
  | filePath | String? |  yes  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | stage | String? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | failed | Int? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | succeed | Int? |  yes  |  |
  | total | Int? |  yes  |  |
- | id | String? |  yes  |  |
- | cancelled | Int? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | companyId | Int? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | failed | Int? |  yes  |  |
+ | succeed | Int? |  yes  |  |
 
 ---
 
@@ -30708,8 +54632,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[BulkInventoryGetItems](#BulkInventoryGetItems)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -30720,23 +54644,23 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | itemWeight | Double? |  yes  |  |
- | price | Double |  no  |  |
- | itemHeight | Double? |  yes  |  |
- | itemWidth | Double? |  yes  |  |
- | identifiers | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | priceEffective | Double |  no  |  |
  | priceTransfer | Double? |  yes  |  |
- | itemDimensionsUnitOfMeasure | String? |  yes  |  |
- | storeCode | String |  no  |  |
- | sellerIdentifier | String |  no  |  |
- | isSet | Boolean? |  yes  |  |
+ | priceEffective | Double |  no  |  |
  | size | String? |  yes  |  |
- | itemWeightUnitOfMeasure | String? |  yes  |  |
+ | storeCode | String |  no  |  |
+ | isSet | Boolean? |  yes  |  |
+ | itemWeight | Double? |  yes  |  |
  | quantity | Int |  no  |  |
- | currency | String |  no  |  |
- | set | [InventorySet](#InventorySet)? |  yes  |  |
+ | itemDimensionsUnitOfMeasure | String? |  yes  |  |
  | itemLength | Double? |  yes  |  |
+ | currency | String |  no  |  |
+ | itemHeight | Double? |  yes  |  |
+ | set | [InventorySet](#InventorySet)? |  yes  |  |
+ | itemWeightUnitOfMeasure | String? |  yes  |  |
+ | itemWidth | Double? |  yes  |  |
+ | price | Double |  no  |  |
+ | sellerIdentifier | String |  no  |  |
+ | identifiers | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -30748,9 +54672,9 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | user | HashMap<String,Any>? |  yes  |  |
- | companyId | Int |  no  |  |
  | batchId | String |  no  |  |
  | sizes | ArrayList<[Size1](#Size1)> |  no  |  |
+ | companyId | Int |  no  |  |
 
 ---
 
@@ -30762,8 +54686,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | type | String? |  yes  |  |
- | store | ArrayList<Int>? |  yes  |  |
  | brand | ArrayList<Int>? |  yes  |  |
+ | store | ArrayList<Int>? |  yes  |  |
 
 ---
 
@@ -30775,12 +54699,12 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | taskId | String |  no  |  |
- | url | String? |  yes  |  |
- | triggerOn | String? |  yes  |  |
- | status | String? |  yes  |  |
- | requestParams | HashMap<String,Any>? |  yes  |  |
  | sellerId | Int |  no  |  |
+ | requestParams | HashMap<String,Any>? |  yes  |  |
+ | url | String? |  yes  |  |
+ | status | String? |  yes  |  |
  | completedOn | String? |  yes  |  |
+ | triggerOn | String? |  yes  |  |
 
 ---
 
@@ -30791,8 +54715,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
  | display | String? |  yes  |  |
+ | value | String? |  yes  |  |
 
 ---
 
@@ -30803,8 +54727,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | ArrayList<[FilerList](#FilerList)>? |  yes  |  |
  | multivalues | Boolean? |  yes  |  |
+ | data | ArrayList<[FilerList](#FilerList)>? |  yes  |  |
 
 ---
 
@@ -30815,16 +54739,16 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companyId | Int |  no  |  |
- | threshold1 | Double |  no  |  |
- | tax2 | Double? |  yes  |  |
- | threshold2 | Double? |  yes  |  |
- | tax1 | Double |  no  |  |
+ | hs2Code | String |  no  |  |
  | taxOnEsp | Boolean? |  yes  |  |
+ | hsnCode | String |  no  |  |
  | taxOnMrp | Boolean |  no  |  |
  | uid | Int? |  yes  |  |
- | hs2Code | String |  no  |  |
- | hsnCode | String |  no  |  |
+ | threshold2 | Double? |  yes  |  |
+ | companyId | Int |  no  |  |
+ | tax1 | Double |  no  |  |
+ | tax2 | Double? |  yes  |  |
+ | threshold1 | Double |  no  |  |
 
 ---
 
@@ -30835,17 +54759,17 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | threshold1 | Double? |  yes  |  |
- | tax2 | Double? |  yes  |  |
- | threshold2 | Double? |  yes  |  |
- | tax1 | Double? |  yes  |  |
- | taxOnEsp | Boolean? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | taxOnMrp | Boolean? |  yes  |  |
  | hs2Code | String? |  yes  |  |
+ | taxOnEsp | Boolean? |  yes  |  |
  | hsnCode | String? |  yes  |  |
+ | taxOnMrp | Boolean? |  yes  |  |
+ | id | String? |  yes  |  |
+ | threshold2 | Double? |  yes  |  |
+ | companyId | Int? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | tax1 | Double? |  yes  |  |
+ | tax2 | Double? |  yes  |  |
+ | threshold1 | Double? |  yes  |  |
 
 ---
 
@@ -30867,11 +54791,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | size | Int? |  yes  |  |
  | current | String? |  yes  |  |
+ | itemTotal | Int? |  yes  |  |
  | hasNext | Boolean? |  yes  |  |
  | hasPrevious | Boolean? |  yes  |  |
- | size | Int? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
 
 ---
 
@@ -30882,8 +54806,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [PageResponse](#PageResponse)? |  yes  |  |
  | items | ArrayList<[HsnCodesObject](#HsnCodesObject)>? |  yes  |  |
+ | page | [PageResponse](#PageResponse)? |  yes  |  |
 
 ---
 
@@ -30916,14 +54840,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | discount | String? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | departments | ArrayList<String>? |  yes  |  |
+ | uid | Int? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
- | discount | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | departments | ArrayList<String>? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
  | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | uid | Int? |  yes  |  |
+ | slug | String? |  yes  |  |
 
 ---
 
@@ -30934,8 +54858,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[BrandItem](#BrandItem)>? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
 
 ---
 
@@ -30946,11 +54870,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | uid | Int? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
  | slug | String? |  yes  |  |
  | priorityOrder | Int? |  yes  |  |
- | uid | Int? |  yes  |  |
 
 ---
 
@@ -30968,17 +54892,29 @@ Success
 
  
  
+ #### [DepartmentIdentifier](#DepartmentIdentifier)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [ThirdLevelChild](#ThirdLevelChild)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -30989,13 +54925,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
 
 ---
 
@@ -31006,13 +54942,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
 
 ---
 
@@ -31023,12 +54959,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | uid | Int? |  yes  |  |
  | name | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | slug | String? |  yes  |  |
  | childs | ArrayList<[Child](#Child)>? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | uid | Int? |  yes  |  |
 
 ---
 
@@ -31047,24 +54983,12 @@ Success
 
  
  
- #### [DepartmentIdentifier](#DepartmentIdentifier)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | uid | Int? |  yes  |  |
- | slug | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [CategoryListingResponse](#CategoryListingResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | ArrayList<[DepartmentCategoryTree](#DepartmentCategoryTree)>? |  yes  |  |
  | departments | ArrayList<[DepartmentIdentifier](#DepartmentIdentifier)>? |  yes  |  |
+ | data | ArrayList<[DepartmentCategoryTree](#DepartmentCategoryTree)>? |  yes  |  |
 
 ---
 
@@ -31089,29 +55013,29 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | name | String? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | promoMeta | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
- | similars | ArrayList<String>? |  yes  |  |
- | teaserTag | HashMap<String,Any>? |  yes  |  |
- | uid | Int? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | ratingCount | Int? |  yes  |  |
- | color | String? |  yes  |  |
- | productOnlineDate | String? |  yes  |  |
- | slug | String |  no  |  |
- | rating | Double? |  yes  |  |
  | shortDescription | String? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
- | tryouts | ArrayList<String>? |  yes  |  |
- | imageNature | String? |  yes  |  |
  | medias | ArrayList<[Media1](#Media1)>? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | rating | Double? |  yes  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | color | String? |  yes  |  |
+ | teaserTag | HashMap<String,Any>? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
+ | slug | String |  no  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
  | itemType | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | productOnlineDate | String? |  yes  |  |
+ | promoMeta | HashMap<String,Any>? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | similars | ArrayList<String>? |  yes  |  |
  | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | imageNature | String? |  yes  |  |
 
 ---
 
@@ -31120,12 +55044,22 @@ Success
 
  
  
- #### [BusinessCountryInfo](#BusinessCountryInfo)
+ #### [Website](#Website)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | countryCode | String? |  yes  |  |
- | country | String? |  yes  |  |
+ | url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BusinessDetails](#BusinessDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | website | [Website](#Website)? |  yes  |  |
 
 ---
 
@@ -31136,32 +55070,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | url | String? |  yes  |  |
+ | verified | Boolean? |  yes  |  |
  | type | String |  no  |  |
  | legalName | String? |  yes  |  |
- | verified | Boolean? |  yes  |  |
  | value | String |  no  |  |
- | url | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetAddressSerializer](#GetAddressSerializer)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | countryCode | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | address1 | String? |  yes  |  |
- | address2 | String? |  yes  |  |
- | longitude | Double? |  yes  |  |
- | landmark | String? |  yes  |  |
- | country | String? |  yes  |  |
- | addressType | String? |  yes  |  |
- | state | String? |  yes  |  |
- | latitude | Double? |  yes  |  |
- | city | String? |  yes  |  |
 
 ---
 
@@ -31192,74 +55105,21 @@ Success
 
  
  
- #### [Website](#Website)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | url | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [BusinessDetails](#BusinessDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | website | [Website](#Website)? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetCompanyProfileSerializerResponse](#GetCompanyProfileSerializerResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | uid | Int |  no  |  |
- | businessType | String |  no  |  |
- | franchiseEnabled | Boolean? |  yes  |  |
- | businessCountryInfo | [BusinessCountryInfo](#BusinessCountryInfo)? |  yes  |  |
- | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | verifiedOn | String? |  yes  |  |
- | documents | ArrayList<[Document](#Document)>? |  yes  |  |
- | notificationEmails | ArrayList<String>? |  yes  |  |
- | mode | String? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | companyType | String |  no  |  |
- | verifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | addresses | ArrayList<[GetAddressSerializer](#GetAddressSerializer)>? |  yes  |  |
- | name | String? |  yes  |  |
- | contactDetails | [ContactDetails](#ContactDetails)? |  yes  |  |
- | stage | String? |  yes  |  |
- | businessInfo | String? |  yes  |  |
- | businessDetails | [BusinessDetails](#BusinessDetails)? |  yes  |  |
- | createdOn | String? |  yes  |  |
- | warnings | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
  #### [CreateUpdateAddressSerializer](#CreateUpdateAddressSerializer)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | countryCode | String? |  yes  |  |
- | address1 | String |  no  |  |
+ | latitude | Double |  no  |  |
  | pincode | Int |  no  |  |
+ | state | String |  no  |  |
  | address2 | String? |  yes  |  |
  | longitude | Double |  no  |  |
- | landmark | String? |  yes  |  |
+ | address1 | String |  no  |  |
  | country | String |  no  |  |
- | addressType | String |  no  |  |
- | state | String |  no  |  |
- | latitude | Double |  no  |  |
  | city | String |  no  |  |
+ | addressType | String |  no  |  |
+ | landmark | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
 
 ---
 
@@ -31270,17 +55130,81 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | documents | ArrayList<[Document](#Document)>? |  yes  |  |
- | businessType | String? |  yes  |  |
- | franchiseEnabled | Boolean? |  yes  |  |
- | addresses | ArrayList<[CreateUpdateAddressSerializer](#CreateUpdateAddressSerializer)>? |  yes  |  |
  | businessDetails | [BusinessDetails](#BusinessDetails)? |  yes  |  |
+ | documents | ArrayList<[Document](#Document)>? |  yes  |  |
  | notificationEmails | ArrayList<String>? |  yes  |  |
- | contactDetails | [ContactDetails](#ContactDetails)? |  yes  |  |
  | companyType | String? |  yes  |  |
- | businessInfo | String? |  yes  |  |
- | rejectReason | String? |  yes  |  |
  | warnings | HashMap<String,Any>? |  yes  |  |
+ | rejectReason | String? |  yes  |  |
+ | businessInfo | String? |  yes  |  |
+ | franchiseEnabled | Boolean? |  yes  |  |
+ | businessType | String? |  yes  |  |
+ | contactDetails | [ContactDetails](#ContactDetails)? |  yes  |  |
+ | addresses | ArrayList<[CreateUpdateAddressSerializer](#CreateUpdateAddressSerializer)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BusinessCountryInfo](#BusinessCountryInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAddressSerializer](#GetAddressSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | latitude | Double? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | state | String? |  yes  |  |
+ | address2 | String? |  yes  |  |
+ | longitude | Double? |  yes  |  |
+ | address1 | String? |  yes  |  |
+ | country | String? |  yes  |  |
+ | city | String? |  yes  |  |
+ | landmark | String? |  yes  |  |
+ | addressType | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCompanyProfileSerializerResponse](#GetCompanyProfileSerializerResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mode | String? |  yes  |  |
+ | businessDetails | [BusinessDetails](#BusinessDetails)? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | notificationEmails | ArrayList<String>? |  yes  |  |
+ | stage | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | franchiseEnabled | Boolean? |  yes  |  |
+ | contactDetails | [ContactDetails](#ContactDetails)? |  yes  |  |
+ | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | warnings | HashMap<String,Any>? |  yes  |  |
+ | verifiedOn | String? |  yes  |  |
+ | uid | Int |  no  |  |
+ | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | businessCountryInfo | [BusinessCountryInfo](#BusinessCountryInfo)? |  yes  |  |
+ | verifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | addresses | ArrayList<[GetAddressSerializer](#GetAddressSerializer)>? |  yes  |  |
+ | documents | ArrayList<[Document](#Document)>? |  yes  |  |
+ | companyType | String |  no  |  |
+ | businessInfo | String? |  yes  |  |
+ | businessType | String |  no  |  |
 
 ---
 
@@ -31291,8 +55215,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | pending | Int? |  yes  |  |
  | verified | Int? |  yes  |  |
+ | pending | Int? |  yes  |  |
 
 ---
 
@@ -31304,12 +55228,12 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | uid | Int? |  yes  |  |
+ | stage | String? |  yes  |  |
  | brand | [DocumentsObj](#DocumentsObj)? |  yes  |  |
  | product | [DocumentsObj](#DocumentsObj)? |  yes  |  |
  | storeDocuments | [DocumentsObj](#DocumentsObj)? |  yes  |  |
- | companyDocuments | [DocumentsObj](#DocumentsObj)? |  yes  |  |
- | stage | String? |  yes  |  |
  | store | [DocumentsObj](#DocumentsObj)? |  yes  |  |
+ | companyDocuments | [DocumentsObj](#DocumentsObj)? |  yes  |  |
 
 ---
 
@@ -31332,15 +55256,15 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String? |  yes  |  |
  | uid | Int? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | synonyms | ArrayList<String>? |  yes  |  |
- | name | String |  no  |  |
- | localeLanguage | HashMap<String,Any>? |  yes  |  |
+ | logo | String |  no  |  |
+ | description | String? |  yes  |  |
  | companyId | Int? |  yes  |  |
  | brandTier | String? |  yes  |  |
- | logo | String |  no  |  |
+ | name | String |  no  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | localeLanguage | HashMap<String,Any>? |  yes  |  |
+ | synonyms | ArrayList<String>? |  yes  |  |
  | banner | [BrandBannerSerializer](#BrandBannerSerializer)? |  yes  |  |
 
 ---
@@ -31352,9 +55276,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userId | String? |  yes  |  |
- | username | String? |  yes  |  |
  | contact | String? |  yes  |  |
+ | username | String? |  yes  |  |
+ | userId | String? |  yes  |  |
 
 ---
 
@@ -31365,24 +55289,24 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String? |  yes  |  |
  | uid | Int? |  yes  |  |
- | banner | [BrandBannerSerializer](#BrandBannerSerializer)? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
+ | localeLanguage | HashMap<String,Any>? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
  | createdBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | stage | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | modifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | name | String |  no  |  |
+ | warnings | HashMap<String,Any>? |  yes  |  |
  | slugKey | String? |  yes  |  |
  | rejectReason | String? |  yes  |  |
- | name | String |  no  |  |
  | synonyms | ArrayList<String>? |  yes  |  |
- | warnings | HashMap<String,Any>? |  yes  |  |
- | localeLanguage | HashMap<String,Any>? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | modifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
- | createdOn | String? |  yes  |  |
- | stage | String? |  yes  |  |
- | logo | String? |  yes  |  |
- | verifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
  | verifiedOn | String? |  yes  |  |
+ | verifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | banner | [BrandBannerSerializer](#BrandBannerSerializer)? |  yes  |  |
 
 ---
 
@@ -31407,18 +55331,18 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | uid | Int? |  yes  |  |
- | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | businessType | String? |  yes  |  |
- | addresses | ArrayList<[GetAddressSerializer](#GetAddressSerializer)>? |  yes  |  |
- | name | String? |  yes  |  |
  | modifiedOn | String? |  yes  |  |
- | companyType | String? |  yes  |  |
- | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
  | createdOn | String? |  yes  |  |
  | stage | String? |  yes  |  |
+ | companyType | String? |  yes  |  |
+ | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | name | String? |  yes  |  |
  | rejectReason | String? |  yes  |  |
- | verifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | businessType | String? |  yes  |  |
  | verifiedOn | String? |  yes  |  |
+ | verifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | addresses | ArrayList<[GetAddressSerializer](#GetAddressSerializer)>? |  yes  |  |
 
 ---
 
@@ -31430,17 +55354,17 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | uid | Int? |  yes  |  |
- | brand | [GetBrandResponseSerializer](#GetBrandResponseSerializer)? |  yes  |  |
- | createdBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
- | warnings | HashMap<String,Any>? |  yes  |  |
  | company | [GetCompanySerializer](#GetCompanySerializer)? |  yes  |  |
  | modifiedOn | String? |  yes  |  |
- | modifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | createdBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
  | createdOn | String? |  yes  |  |
  | stage | String? |  yes  |  |
+ | brand | [GetBrandResponseSerializer](#GetBrandResponseSerializer)? |  yes  |  |
+ | modifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | warnings | HashMap<String,Any>? |  yes  |  |
  | rejectReason | String? |  yes  |  |
- | verifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
  | verifiedOn | String? |  yes  |  |
+ | verifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
 
 ---
 
@@ -31451,42 +55375,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[CompanyBrandSerializer](#CompanyBrandSerializer)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetAddressSerializer1](#GetAddressSerializer1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | countryCode | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | address1 | String? |  yes  |  |
- | address2 | String? |  yes  |  |
- | longitude | Double? |  yes  |  |
- | landmark | String? |  yes  |  |
- | country | String? |  yes  |  |
- | addressType | String? |  yes  |  |
- | state | String? |  yes  |  |
- | latitude | Double? |  yes  |  |
- | city | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [LocationManagerSerializer](#LocationManagerSerializer)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | email | String? |  yes  |  |
- | mobileNo | [SellerPhoneNumber](#SellerPhoneNumber) |  no  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -31497,8 +55387,29 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | storeUid | Int? |  yes  |  |
  | onSameStore | Boolean? |  yes  |  |
+ | storeUid | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetAddressSerializer1](#GetAddressSerializer1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | latitude | Double? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | state | String? |  yes  |  |
+ | address2 | String? |  yes  |  |
+ | longitude | Double? |  yes  |  |
+ | address1 | String? |  yes  |  |
+ | country | String? |  yes  |  |
+ | city | String? |  yes  |  |
+ | landmark | String? |  yes  |  |
+ | addressType | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
 
 ---
 
@@ -31509,8 +55420,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | minute | Int? |  yes  |  |
  | hour | Int? |  yes  |  |
+ | minute | Int? |  yes  |  |
 
 ---
 
@@ -31522,9 +55433,9 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | opening | [LocationTimingSerializer](#LocationTimingSerializer)? |  yes  |  |
- | open | Boolean |  no  |  |
- | closing | [LocationTimingSerializer](#LocationTimingSerializer)? |  yes  |  |
  | weekday | String |  no  |  |
+ | closing | [LocationTimingSerializer](#LocationTimingSerializer)? |  yes  |  |
+ | open | Boolean |  no  |  |
 
 ---
 
@@ -31536,8 +55447,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | password | String? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
  | username | String? |  yes  |  |
+ | enabled | Boolean? |  yes  |  |
 
 ---
 
@@ -31548,8 +55459,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | eWaybill | [InvoiceCredSerializer](#InvoiceCredSerializer)? |  yes  |  |
  | eInvoice | [InvoiceCredSerializer](#InvoiceCredSerializer)? |  yes  |  |
+ | eWaybill | [InvoiceCredSerializer](#InvoiceCredSerializer)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [LocationManagerSerializer](#LocationManagerSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mobileNo | [SellerPhoneNumber](#SellerPhoneNumber) |  no  |  |
+ | email | String? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -31561,22 +55485,22 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | uid | Int? |  yes  |  |
- | documents | ArrayList<[Document](#Document)>? |  yes  |  |
- | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | name | String |  no  |  |
- | notificationEmails | ArrayList<String>? |  yes  |  |
- | storeType | String? |  yes  |  |
  | code | String |  no  |  |
  | company | Int |  no  |  |
- | address | [GetAddressSerializer1](#GetAddressSerializer1) |  no  |  |
- | manager | [LocationManagerSerializer](#LocationManagerSerializer)? |  yes  |  |
  | productReturnConfig | [ProductReturnConfigSerializer](#ProductReturnConfigSerializer)? |  yes  |  |
+ | documents | ArrayList<[Document](#Document)>? |  yes  |  |
+ | notificationEmails | ArrayList<String>? |  yes  |  |
+ | displayName | String |  no  |  |
  | stage | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | warnings | HashMap<String,Any>? |  yes  |  |
+ | name | String |  no  |  |
+ | address | [GetAddressSerializer1](#GetAddressSerializer1) |  no  |  |
  | timing | ArrayList<[LocationDayWiseSerializer](#LocationDayWiseSerializer)>? |  yes  |  |
  | gstCredentials | [InvoiceDetailsSerializer](#InvoiceDetailsSerializer)? |  yes  |  |
- | displayName | String |  no  |  |
- | warnings | HashMap<String,Any>? |  yes  |  |
+ | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
+ | storeType | String? |  yes  |  |
+ | manager | [LocationManagerSerializer](#LocationManagerSerializer)? |  yes  |  |
 
 ---
 
@@ -31587,8 +55511,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | order | String? |  yes  |  |
  | inventory | String? |  yes  |  |
+ | order | String? |  yes  |  |
 
 ---
 
@@ -31599,31 +55523,31 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uid | Int? |  yes  |  |
- | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
- | modifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
- | verifiedOn | String? |  yes  |  |
- | documents | ArrayList<[Document](#Document)>? |  yes  |  |
+ | company | [GetCompanySerializer](#GetCompanySerializer)? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
  | notificationEmails | ArrayList<String>? |  yes  |  |
+ | stage | String? |  yes  |  |
+ | name | String |  no  |  |
+ | phoneNumber | String |  no  |  |
+ | gstCredentials | [InvoiceDetailsSerializer](#InvoiceDetailsSerializer)? |  yes  |  |
+ | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
  | storeType | String? |  yes  |  |
  | manager | [LocationManagerSerializer](#LocationManagerSerializer)? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | verifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | code | String |  no  |  |
+ | modifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | warnings | HashMap<String,Any>? |  yes  |  |
+ | verifiedOn | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
  | createdBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
- | name | String |  no  |  |
- | company | [GetCompanySerializer](#GetCompanySerializer)? |  yes  |  |
- | stage | String? |  yes  |  |
+ | displayName | String |  no  |  |
+ | address | [GetAddressSerializer](#GetAddressSerializer) |  no  |  |
+ | timing | ArrayList<[LocationDayWiseSerializer](#LocationDayWiseSerializer)>? |  yes  |  |
+ | verifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | productReturnConfig | [ProductReturnConfigSerializer](#ProductReturnConfigSerializer)? |  yes  |  |
+ | documents | ArrayList<[Document](#Document)>? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
  | integrationType | [LocationIntegrationType](#LocationIntegrationType)? |  yes  |  |
- | phoneNumber | String |  no  |  |
- | productReturnConfig | [ProductReturnConfigSerializer](#ProductReturnConfigSerializer)? |  yes  |  |
- | code | String |  no  |  |
- | address | [GetAddressSerializer](#GetAddressSerializer) |  no  |  |
- | createdOn | String? |  yes  |  |
- | timing | ArrayList<[LocationDayWiseSerializer](#LocationDayWiseSerializer)>? |  yes  |  |
- | gstCredentials | [InvoiceDetailsSerializer](#InvoiceDetailsSerializer)? |  yes  |  |
- | displayName | String |  no  |  |
- | warnings | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -31634,8 +55558,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[GetLocationSerializer](#GetLocationSerializer)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -35363,64 +59287,95 @@ Success
 
  
  
- #### [RuleDefinition](#RuleDefinition)
+ #### [Identifier](#Identifier)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | currencyCode | String? |  yes  |  |
- | autoApply | Boolean? |  yes  |  |
- | calculateOn | String |  no  |  |
- | scope | ArrayList<String>? |  yes  |  |
- | type | String |  no  |  |
- | valueType | String |  no  |  |
- | isExact | Boolean? |  yes  |  |
- | applicableOn | String |  no  |  |
+ | categoryId | ArrayList<Int>? |  yes  |  |
+ | itemId | ArrayList<Int>? |  yes  |  |
+ | brandId | ArrayList<Int>? |  yes  |  |
+ | storeId | ArrayList<Int>? |  yes  |  |
+ | articleId | ArrayList<String>? |  yes  |  |
+ | userId | ArrayList<String>? |  yes  |  |
+ | companyId | ArrayList<Int>? |  yes  |  |
+ | collectionId | ArrayList<String>? |  yes  |  |
 
 ---
 
 
  
  
- #### [Validity](#Validity)
+ #### [Ownership](#Ownership)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | priority | Int? |  yes  |  |
+ | payableCategory | String |  no  |  |
+ | payableBy | String |  no  |  |
 
 ---
 
 
  
  
- #### [CouponAction](#CouponAction)
+ #### [Rule](#Rule)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | txnMode | String? |  yes  |  |
- | actionDate | String? |  yes  |  |
+ | key | Double? |  yes  |  |
+ | max | Double? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | discountQty | Double? |  yes  |  |
+ | min | Double? |  yes  |  |
 
 ---
 
 
  
  
- #### [BulkBundleRestriction](#BulkBundleRestriction)
+ #### [State](#State)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | multiStoreAllowed | Boolean |  no  |  |
+ | isDisplay | Boolean? |  yes  |  |
+ | isPublic | Boolean? |  yes  |  |
+ | isArchived | Boolean? |  yes  |  |
 
 ---
 
 
  
  
- #### [PostOrder](#PostOrder)
+ #### [UsesRemaining](#UsesRemaining)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | returnAllowed | Boolean? |  yes  |  |
- | cancellationAllowed | Boolean? |  yes  |  |
+ | total | Int? |  yes  |  |
+ | app | Int? |  yes  |  |
+ | user | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UsesRestriction](#UsesRestriction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | maximum | [UsesRemaining](#UsesRemaining)? |  yes  |  |
+ | remaining | [UsesRemaining](#UsesRemaining)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PriceRange](#PriceRange)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Int? |  yes  |  |
+ | max | Int? |  yes  |  |
 
 ---
 
@@ -35442,9 +59397,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | types | ArrayList<String>? |  yes  |  |
  | codes | ArrayList<String>? |  yes  |  |
  | networks | ArrayList<String>? |  yes  |  |
+ | types | ArrayList<String>? |  yes  |  |
  | uses | [PaymentAllowValue](#PaymentAllowValue)? |  yes  |  |
 
 ---
@@ -35456,53 +59411,39 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ps | [PaymentModes](#PaymentModes)? |  yes  |  |
  | wl | [PaymentModes](#PaymentModes)? |  yes  |  |
- | simpl | [PaymentModes](#PaymentModes)? |  yes  |  |
- | stripepg | [PaymentModes](#PaymentModes)? |  yes  |  |
- | qr | [PaymentModes](#PaymentModes)? |  yes  |  |
- | rupifipg | [PaymentModes](#PaymentModes)? |  yes  |  |
- | upi | [PaymentModes](#PaymentModes)? |  yes  |  |
  | pl | [PaymentModes](#PaymentModes)? |  yes  |  |
- | nb | [PaymentModes](#PaymentModes)? |  yes  |  |
+ | ps | [PaymentModes](#PaymentModes)? |  yes  |  |
+ | simpl | [PaymentModes](#PaymentModes)? |  yes  |  |
+ | upi | [PaymentModes](#PaymentModes)? |  yes  |  |
+ | rupifipg | [PaymentModes](#PaymentModes)? |  yes  |  |
  | card | [PaymentModes](#PaymentModes)? |  yes  |  |
+ | qr | [PaymentModes](#PaymentModes)? |  yes  |  |
+ | nb | [PaymentModes](#PaymentModes)? |  yes  |  |
+ | stripepg | [PaymentModes](#PaymentModes)? |  yes  |  |
 
 ---
 
 
  
  
- #### [PriceRange](#PriceRange)
+ #### [PostOrder](#PostOrder)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | min | Int? |  yes  |  |
- | max | Int? |  yes  |  |
+ | cancellationAllowed | Boolean? |  yes  |  |
+ | returnAllowed | Boolean? |  yes  |  |
 
 ---
 
 
  
  
- #### [UsesRemaining](#UsesRemaining)
+ #### [BulkBundleRestriction](#BulkBundleRestriction)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | app | Int? |  yes  |  |
- | total | Int? |  yes  |  |
- | user | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [UsesRestriction](#UsesRestriction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | remaining | [UsesRemaining](#UsesRemaining)? |  yes  |  |
- | maximum | [UsesRemaining](#UsesRemaining)? |  yes  |  |
+ | multiStoreAllowed | Boolean |  no  |  |
 
 ---
 
@@ -35513,42 +59454,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | platforms | ArrayList<String>? |  yes  |  |
+ | uses | [UsesRestriction](#UsesRestriction)? |  yes  |  |
+ | priceRange | [PriceRange](#PriceRange)? |  yes  |  |
+ | payments | [PaymentCodes](#PaymentCodes)? |  yes  |  |
+ | couponAllowed | Boolean? |  yes  |  |
+ | postOrder | [PostOrder](#PostOrder)? |  yes  |  |
  | orderingStores | ArrayList<Int>? |  yes  |  |
  | bulkBundle | [BulkBundleRestriction](#BulkBundleRestriction)? |  yes  |  |
- | postOrder | [PostOrder](#PostOrder)? |  yes  |  |
- | platforms | ArrayList<String>? |  yes  |  |
- | couponAllowed | Boolean? |  yes  |  |
- | payments | [PaymentCodes](#PaymentCodes)? |  yes  |  |
- | priceRange | [PriceRange](#PriceRange)? |  yes  |  |
- | uses | [UsesRestriction](#UsesRestriction)? |  yes  |  |
-
----
-
-
- 
- 
- #### [State](#State)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isDisplay | Boolean? |  yes  |  |
- | isArchived | Boolean? |  yes  |  |
- | isPublic | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [Rule](#Rule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | min | Double? |  yes  |  |
- | value | Double? |  yes  |  |
- | discountQty | Double? |  yes  |  |
- | max | Double? |  yes  |  |
- | key | Double? |  yes  |  |
 
 ---
 
@@ -35571,8 +59484,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
  | subtitle | String? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -35583,40 +59496,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | apply | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
- | auto | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
- | subtitle | String? |  yes  |  |
- | remove | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
- | title | String? |  yes  |  |
  | description | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Validation](#Validation)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | anonymous | Boolean? |  yes  |  |
- | userRegisteredAfter | String? |  yes  |  |
- | appId | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CouponSchedule](#CouponSchedule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | nextSchedule | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | duration | Int? |  yes  |  |
- | start | String? |  yes  |  |
- | cron | String? |  yes  |  |
- | end | String? |  yes  |  |
+ | apply | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
+ | remove | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
+ | subtitle | String? |  yes  |  |
+ | title | String? |  yes  |  |
+ | auto | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
 
 ---
 
@@ -35635,30 +59520,69 @@ Success
 
  
  
- #### [Ownership](#Ownership)
+ #### [CouponAction](#CouponAction)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | payableCategory | String |  no  |  |
- | payableBy | String |  no  |  |
+ | actionDate | String? |  yes  |  |
+ | txnMode | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [Identifier](#Identifier)
+ #### [Validation](#Validation)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | collectionId | ArrayList<String>? |  yes  |  |
- | storeId | ArrayList<Int>? |  yes  |  |
- | articleId | ArrayList<String>? |  yes  |  |
- | itemId | ArrayList<Int>? |  yes  |  |
- | userId | ArrayList<String>? |  yes  |  |
- | categoryId | ArrayList<Int>? |  yes  |  |
- | companyId | ArrayList<Int>? |  yes  |  |
- | brandId | ArrayList<Int>? |  yes  |  |
+ | userRegisteredAfter | String? |  yes  |  |
+ | anonymous | Boolean? |  yes  |  |
+ | appId | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RuleDefinition](#RuleDefinition)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | currencyCode | String? |  yes  |  |
+ | autoApply | Boolean? |  yes  |  |
+ | scope | ArrayList<String>? |  yes  |  |
+ | calculateOn | String |  no  |  |
+ | type | String |  no  |  |
+ | valueType | String |  no  |  |
+ | isExact | Boolean? |  yes  |  |
+ | applicableOn | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Validity](#Validity)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | priority | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponSchedule](#CouponSchedule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | end | String? |  yes  |  |
+ | start | String? |  yes  |  |
+ | duration | Int? |  yes  |  |
+ | cron | String? |  yes  |  |
+ | nextSchedule | ArrayList<HashMap<String,Any>>? |  yes  |  |
 
 ---
 
@@ -35669,22 +59593,22 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
- | validity | [Validity](#Validity) |  no  |  |
- | action | [CouponAction](#CouponAction)? |  yes  |  |
- | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
- | state | [State](#State)? |  yes  |  |
+ | identifiers | [Identifier](#Identifier) |  no  |  |
+ | typeSlug | String |  no  |  |
+ | ownership | [Ownership](#Ownership) |  no  |  |
+ | tags | ArrayList<String>? |  yes  |  |
  | rule | ArrayList<[Rule](#Rule)> |  no  |  |
+ | state | [State](#State)? |  yes  |  |
+ | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
  | author | [CouponAuthor](#CouponAuthor)? |  yes  |  |
  | displayMeta | [DisplayMeta](#DisplayMeta) |  no  |  |
  | code | String |  no  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | validation | [Validation](#Validation)? |  yes  |  |
- | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
  | dateMeta | [CouponDateMeta](#CouponDateMeta)? |  yes  |  |
- | ownership | [Ownership](#Ownership) |  no  |  |
- | typeSlug | String |  no  |  |
- | identifiers | [Identifier](#Identifier) |  no  |  |
+ | action | [CouponAction](#CouponAction)? |  yes  |  |
+ | validation | [Validation](#Validation)? |  yes  |  |
+ | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
+ | validity | [Validity](#Validity) |  no  |  |
+ | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
 
 ---
 
@@ -35695,8 +59619,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | [CouponAdd](#CouponAdd)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -35707,8 +59631,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -35719,8 +59643,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -35731,22 +59655,22 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
- | validity | [Validity](#Validity) |  no  |  |
- | action | [CouponAction](#CouponAction)? |  yes  |  |
- | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
- | state | [State](#State)? |  yes  |  |
+ | identifiers | [Identifier](#Identifier) |  no  |  |
+ | typeSlug | String |  no  |  |
+ | ownership | [Ownership](#Ownership) |  no  |  |
+ | tags | ArrayList<String>? |  yes  |  |
  | rule | ArrayList<[Rule](#Rule)> |  no  |  |
+ | state | [State](#State)? |  yes  |  |
+ | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
  | author | [CouponAuthor](#CouponAuthor)? |  yes  |  |
  | displayMeta | [DisplayMeta](#DisplayMeta) |  no  |  |
  | code | String |  no  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | validation | [Validation](#Validation)? |  yes  |  |
- | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
  | dateMeta | [CouponDateMeta](#CouponDateMeta)? |  yes  |  |
- | ownership | [Ownership](#Ownership) |  no  |  |
- | typeSlug | String |  no  |  |
- | identifiers | [Identifier](#Identifier) |  no  |  |
+ | action | [CouponAction](#CouponAction)? |  yes  |  |
+ | validation | [Validation](#Validation)? |  yes  |  |
+ | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
+ | validity | [Validity](#Validity) |  no  |  |
+ | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
 
 ---
 
@@ -35757,8 +59681,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
  | archive | Boolean? |  yes  | Send true to unpublish coupon |
+ | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
 
 ---
 
@@ -35769,9 +59693,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | productId | String |  no  |  |
  | quantity | Int? |  yes  |  |
  | size | String |  no  |  |
+ | productId | String |  no  |  |
 
 ---
 
@@ -35789,82 +59713,122 @@ Success
 
  
  
- #### [RawBreakup](#RawBreakup)
+ #### [CartProductIdentifer](#CartProductIdentifer)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | total | Double? |  yes  |  |
- | fyndCash | Double? |  yes  |  |
- | discount | Double? |  yes  |  |
- | deliveryCharge | Double? |  yes  |  |
- | mrpTotal | String? |  yes  |  |
- | convenienceFee | Double? |  yes  |  |
- | vog | Double? |  yes  |  |
- | gstCharges | Double? |  yes  |  |
- | youSaved | Double? |  yes  |  |
- | subtotal | Double? |  yes  |  |
- | coupon | Double? |  yes  |  |
- | codCharge | Double? |  yes  |  |
+ | identifier | String? |  yes  | Article idenfier generated by cart |
 
 ---
 
 
  
  
- #### [CouponBreakup](#CouponBreakup)
+ #### [ProductPrice](#ProductPrice)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | Double? |  yes  |  |
- | code | String? |  yes  |  |
- | uid | String? |  yes  |  |
- | type | String? |  yes  |  |
- | message | String? |  yes  |  |
- | isApplied | Boolean? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+ | marked | Double? |  yes  |  |
+ | selling | Double? |  yes  |  |
+ | effective | Double? |  yes  |  |
+ | addOn | Double? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [DisplayBreakup](#DisplayBreakup)
+ #### [ProductPriceInfo](#ProductPriceInfo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | converted | [ProductPrice](#ProductPrice)? |  yes  |  |
+ | base | [ProductPrice](#ProductPrice)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductAvailability](#ProductAvailability)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | otherStoreQuantity | Int? |  yes  |  |
+ | sizes | ArrayList<String>? |  yes  |  |
+ | outOfStock | Boolean? |  yes  |  |
+ | deliverable | Boolean? |  yes  |  |
+ | isValid | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BasePrice](#BasePrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | effective | Double? |  yes  |  |
+ | marked | Double? |  yes  |  |
  | currencyCode | String? |  yes  |  |
  | currencySymbol | String? |  yes  |  |
- | display | String? |  yes  |  |
- | value | Double? |  yes  |  |
- | message | ArrayList<String>? |  yes  |  |
- | key | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [LoyaltyPoints](#LoyaltyPoints)
+ #### [ArticlePriceInfo](#ArticlePriceInfo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | total | Double? |  yes  |  |
- | description | String? |  yes  |  |
- | applicable | Double? |  yes  |  |
- | isApplied | Boolean? |  yes  |  |
+ | converted | [BasePrice](#BasePrice)? |  yes  |  |
+ | base | [BasePrice](#BasePrice)? |  yes  |  |
 
 ---
 
 
  
  
- #### [CartBreakup](#CartBreakup)
+ #### [BaseInfo](#BaseInfo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | raw | [RawBreakup](#RawBreakup)? |  yes  |  |
- | coupon | [CouponBreakup](#CouponBreakup)? |  yes  |  |
- | display | ArrayList<[DisplayBreakup](#DisplayBreakup)>? |  yes  |  |
- | loyaltyPoints | [LoyaltyPoints](#LoyaltyPoints)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductArticle](#ProductArticle)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | price | [ArticlePriceInfo](#ArticlePriceInfo)? |  yes  |  |
+ | store | [BaseInfo](#BaseInfo)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | extraMeta | HashMap<String,Any>? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | size | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | seller | [BaseInfo](#BaseInfo)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryInfo](#CategoryInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | uid | Int? |  yes  | Product Category Id |
 
 ---
 
@@ -35886,33 +59850,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | query | [ActionQuery](#ActionQuery)? |  yes  |  |
  | url | String? |  yes  |  |
+ | query | [ActionQuery](#ActionQuery)? |  yes  |  |
  | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CategoryInfo](#CategoryInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | uid | Int? |  yes  | Product Category Id |
- | name | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [BaseInfo](#BaseInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | uid | Int? |  yes  |  |
- | name | String? |  yes  |  |
 
 ---
 
@@ -35923,9 +59863,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | url | String? |  yes  |  |
- | aspectRatio | String? |  yes  |  |
  | secureUrl | String? |  yes  |  |
+ | aspectRatio | String? |  yes  |  |
+ | url | String? |  yes  |  |
 
 ---
 
@@ -35936,13 +59876,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | action | [ProductAction](#ProductAction)? |  yes  |  |
+ | name | String? |  yes  |  |
  | categories | ArrayList<[CategoryInfo](#CategoryInfo)>? |  yes  |  |
  | brand | [BaseInfo](#BaseInfo)? |  yes  |  |
- | uid | Int? |  yes  |  |
  | slug | String? |  yes  | Unique product url name generated via product name and other meta data |
+ | uid | Int? |  yes  |  |
+ | action | [ProductAction](#ProductAction)? |  yes  |  |
  | type | String? |  yes  |  |
- | name | String? |  yes  |  |
  | images | ArrayList<[ProductImage](#ProductImage)>? |  yes  |  |
 
 ---
@@ -35961,122 +59901,106 @@ Success
 
  
  
- #### [ProductPrice](#ProductPrice)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | currencyCode | String? |  yes  |  |
- | addOn | Double? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | marked | Double? |  yes  |  |
- | effective | Double? |  yes  |  |
- | selling | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductPriceInfo](#ProductPriceInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | base | [ProductPrice](#ProductPrice)? |  yes  |  |
- | converted | [ProductPrice](#ProductPrice)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductAvailability](#ProductAvailability)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | sizes | ArrayList<String>? |  yes  |  |
- | isValid | Boolean? |  yes  |  |
- | deliverable | Boolean? |  yes  |  |
- | otherStoreQuantity | Int? |  yes  |  |
- | outOfStock | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [BasePrice](#BasePrice)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | currencyCode | String? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | effective | Double? |  yes  |  |
- | marked | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [ArticlePriceInfo](#ArticlePriceInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | base | [BasePrice](#BasePrice)? |  yes  |  |
- | converted | [BasePrice](#BasePrice)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductArticle](#ProductArticle)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | size | String? |  yes  |  |
- | extraMeta | HashMap<String,Any>? |  yes  |  |
- | price | [ArticlePriceInfo](#ArticlePriceInfo)? |  yes  |  |
- | uid | String? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | type | String? |  yes  |  |
- | seller | [BaseInfo](#BaseInfo)? |  yes  |  |
- | store | [BaseInfo](#BaseInfo)? |  yes  |  |
-
----
-
-
- 
- 
- #### [CartProductIdentifer](#CartProductIdentifer)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | identifier | String? |  yes  | Article idenfier generated by cart |
-
----
-
-
- 
- 
  #### [CartProductInfo](#CartProductInfo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | product | [CartProduct](#CartProduct)? |  yes  |  |
- | discount | String? |  yes  |  |
- | promoMeta | [PromoMeta](#PromoMeta)? |  yes  |  |
+ | identifiers | [CartProductIdentifer](#CartProductIdentifer) |  no  |  |
  | price | [ProductPriceInfo](#ProductPriceInfo)? |  yes  |  |
  | availability | [ProductAvailability](#ProductAvailability)? |  yes  |  |
- | article | [ProductArticle](#ProductArticle)? |  yes  |  |
  | quantity | Int? |  yes  |  |
- | bulkOffer | HashMap<String,Any>? |  yes  |  |
- | couponMessage | String? |  yes  |  |
  | pricePerUnit | [ProductPriceInfo](#ProductPriceInfo)? |  yes  |  |
- | message | String? |  yes  |  |
- | isSet | Boolean? |  yes  |  |
+ | article | [ProductArticle](#ProductArticle)? |  yes  |  |
  | key | String? |  yes  |  |
- | identifiers | [CartProductIdentifer](#CartProductIdentifer) |  no  |  |
+ | couponMessage | String? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | bulkOffer | HashMap<String,Any>? |  yes  |  |
+ | product | [CartProduct](#CartProduct)? |  yes  |  |
+ | promoMeta | [PromoMeta](#PromoMeta)? |  yes  |  |
+ | isSet | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DisplayBreakup](#DisplayBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | currencySymbol | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | message | ArrayList<String>? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | display | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponBreakup](#CouponBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | type | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | isApplied | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RawBreakup](#RawBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | vog | Double? |  yes  |  |
+ | deliveryCharge | Double? |  yes  |  |
+ | subtotal | Double? |  yes  |  |
+ | codCharge | Double? |  yes  |  |
+ | fyndCash | Double? |  yes  |  |
+ | total | Double? |  yes  |  |
+ | discount | Double? |  yes  |  |
+ | coupon | Double? |  yes  |  |
+ | youSaved | Double? |  yes  |  |
+ | convenienceFee | Double? |  yes  |  |
+ | gstCharges | Double? |  yes  |  |
+ | mrpTotal | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [LoyaltyPoints](#LoyaltyPoints)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | total | Double? |  yes  |  |
+ | isApplied | Boolean? |  yes  |  |
+ | description | String? |  yes  |  |
+ | applicable | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CartBreakup](#CartBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | ArrayList<[DisplayBreakup](#DisplayBreakup)>? |  yes  |  |
+ | coupon | [CouponBreakup](#CouponBreakup)? |  yes  |  |
+ | raw | [RawBreakup](#RawBreakup)? |  yes  |  |
+ | loyaltyPoints | [LoyaltyPoints](#LoyaltyPoints)? |  yes  |  |
 
 ---
 
@@ -36087,10 +60011,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isValid | Boolean? |  yes  |  |
- | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
- | items | ArrayList<[CartProductInfo](#CartProductInfo)>? |  yes  |  |
  | message | String? |  yes  |  |
+ | items | ArrayList<[CartProductInfo](#CartProductInfo)>? |  yes  |  |
+ | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
+ | isValid | Boolean? |  yes  |  |
 
 ---
 
@@ -36101,9 +60025,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | errors | HashMap<String,Any>? |  yes  | Contains field name which has error as key and error message as value |
- | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+ | errors | HashMap<String,Any>? |  yes  | Contains field name which has error as key and error message as value |
 
 ---
 
@@ -36114,20 +60038,20 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | addressType | String? |  yes  |  |
- | country | String |  no  |  |
- | countryCode | String? |  yes  |  |
- | areaCode | String |  no  |  |
- | phone | Int? |  yes  |  |
- | address | String? |  yes  |  |
- | state | String |  no  |  |
- | areaCodeSlug | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
  | landmark | String? |  yes  |  |
- | city | String |  no  |  |
+ | pincode | Int? |  yes  |  |
  | name | String? |  yes  |  |
+ | phone | Int? |  yes  |  |
+ | state | String |  no  |  |
  | email | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | addressType | String? |  yes  |  |
+ | areaCodeSlug | String? |  yes  |  |
+ | areaCode | String |  no  |  |
+ | address | String? |  yes  |  |
+ | city | String |  no  |  |
+ | country | String |  no  |  |
  | area | String? |  yes  |  |
 
 ---
@@ -36139,8 +60063,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | cartItems | [CartItem](#CartItem)? |  yes  |  |
  | shippingAddress | [ShippingAddress](#ShippingAddress) |  no  |  |
+ | cartItems | [CartItem](#CartItem)? |  yes  |  |
 
 ---
 
@@ -36187,11 +60111,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[CartProductInfo](#CartProductInfo)>? |  yes  |  |
- | isValid | Boolean? |  yes  |  |
  | deliveryPromise | [ShipmentPromise](#ShipmentPromise)? |  yes  |  |
- | message | String? |  yes  |  |
  | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
+ | isValid | Boolean? |  yes  |  |
+ | items | ArrayList<[CartProductInfo](#CartProductInfo)>? |  yes  |  |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -36202,8 +60126,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
  | values | ArrayList<String> |  no  |  |
+ | key | String |  no  |  |
 
 ---
 
@@ -36226,23 +60150,23 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | priceMarked | Double |  no  |  |
- | deliveryCharges | Double |  no  |  |
- | size | String |  no  |  |
- | discount | Double |  no  |  |
- | extraMeta | HashMap<String,Any>? |  yes  |  |
- | productId | Int |  no  |  |
- | couponEffectiveDiscount | Double |  no  |  |
- | loyaltyDiscount | Double? |  yes  |  |
- | employeeDiscount | Double? |  yes  |  |
- | priceEffective | Double |  no  |  |
  | quantity | Int? |  yes  |  |
- | amountPaid | Double |  no  |  |
- | cashbackApplied | Double |  no  |  |
+ | extraMeta | HashMap<String,Any>? |  yes  |  |
  | files | ArrayList<[OpenApiFiles](#OpenApiFiles)>? |  yes  |  |
- | meta | [CartItemMeta](#CartItemMeta)? |  yes  |  |
+ | couponEffectiveDiscount | Double |  no  |  |
+ | cashbackApplied | Double |  no  |  |
  | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
+ | productId | Int |  no  |  |
+ | discount | Double |  no  |  |
+ | employeeDiscount | Double? |  yes  |  |
+ | deliveryCharges | Double |  no  |  |
+ | priceEffective | Double |  no  |  |
+ | meta | [CartItemMeta](#CartItemMeta)? |  yes  |  |
+ | priceMarked | Double |  no  |  |
  | codCharges | Double |  no  |  |
+ | size | String |  no  |  |
+ | loyaltyDiscount | Double? |  yes  |  |
+ | amountPaid | Double |  no  |  |
 
 ---
 
@@ -36253,24 +60177,24 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | cartItems | ArrayList<[OpenApiOrderItem](#OpenApiOrderItem)> |  no  |  |
- | cashbackApplied | Double |  no  |  |
- | deliveryCharges | Double |  no  |  |
- | orderId | String? |  yes  |  |
- | paymentMode | String? |  yes  |  |
- | employeeDiscount | HashMap<String,Any>? |  yes  |  |
- | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
- | shippingAddress | [ShippingAddress](#ShippingAddress)? |  yes  |  |
- | billingAddress | [ShippingAddress](#ShippingAddress) |  no  |  |
- | couponValue | Double |  no  |  |
- | loyaltyDiscount | Double? |  yes  |  |
- | files | ArrayList<[OpenApiFiles](#OpenApiFiles)>? |  yes  |  |
- | cartValue | Double |  no  |  |
- | coupon | String? |  yes  |  |
- | currencyCode | String? |  yes  |  |
- | affiliateOrderId | String? |  yes  |  |
  | couponCode | String |  no  |  |
+ | couponValue | Double |  no  |  |
+ | paymentMode | String? |  yes  |  |
+ | cashbackApplied | Double |  no  |  |
+ | coupon | String? |  yes  |  |
+ | orderId | String? |  yes  |  |
  | codCharges | Double |  no  |  |
+ | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
+ | cartValue | Double |  no  |  |
+ | files | ArrayList<[OpenApiFiles](#OpenApiFiles)>? |  yes  |  |
+ | affiliateOrderId | String? |  yes  |  |
+ | deliveryCharges | Double |  no  |  |
+ | cartItems | ArrayList<[OpenApiOrderItem](#OpenApiOrderItem)> |  no  |  |
+ | employeeDiscount | HashMap<String,Any>? |  yes  |  |
+ | shippingAddress | [ShippingAddress](#ShippingAddress)? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | loyaltyDiscount | Double? |  yes  |  |
+ | billingAddress | [ShippingAddress](#ShippingAddress) |  no  |  |
 
 ---
 
@@ -36281,10 +60205,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
  | success | Boolean? |  yes  |  |
  | orderId | String |  no  | Fynd order id |
  | orderRefId | String? |  yes  | Order id sent in request |
- | message | String? |  yes  |  |
 
 ---
 
@@ -37111,5 +61035,116 @@ Success
  | password | String? |  yes  |  |
 
 ---
+
+
+
+
+### Enums
+
+
+
+
+
+
+
+ #### [PriorityEnum](#PriorityEnum)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | low | low | This means ticket is low priority |
+ | medium | medium | This means ticket is medium priority |
+ | high | high | This means ticket is high priority |
+ | urgent | urgent | This means ticket is of urgent priority |
+
+---
+
+
+
+ #### [HistoryTypeEnum](#HistoryTypeEnum)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | rating | rating | This means history event is a rating |
+ | log | log | This means history event is a changelog |
+ | comment | comment | This means history event is a comment |
+
+---
+
+
+
+ #### [TicketAssetType](#TicketAssetType)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | image | image | Denotes asset is of image type |
+ | video | video | Denotes asset is of video type |
+ | file | file | Denotes asset is of file type |
+ | youtube | youtube | Denotes asset is an youtube link |
+ | product | product | Denotes asset is of product type |
+ | collection | collection | Denotes asset is of collection type |
+ | brand | brand | Denotes asset is of brand type |
+ | shipment | shipment | Denotes asset is of shipment type |
+ | order | order | Denotes asset is of order type |
+
+---
+
+
+
+ #### [TicketSourceEnum](#TicketSourceEnum)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | platformPanel | platform_panel | This means it is company level ticket |
+ | salesChannel | sales_channel | This means it is a application/sales channel level ticket |
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
