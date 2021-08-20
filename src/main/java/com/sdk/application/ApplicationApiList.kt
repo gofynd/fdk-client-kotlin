@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -703,6 +703,11 @@ interface ConfigurationApiList {
     : Deferred<Response<OrderingStores>>
     
     
+    @GET ("/service/application/configuration/v1.0/ordering-store/stores/{store_id}")
+    fun getStoreDetailById(@Path("store_id") storeId: Int)
+    : Deferred<Response<OrderingStore>>
+    
+    
     @GET ("/service/application/configuration/v1.0/feature")
     fun getFeatures()
     : Deferred<Response<AppFeatureResponse>>
@@ -721,6 +726,11 @@ interface ConfigurationApiList {
     @GET ("/service/application/configuration/v1.0/currency/{id}")
     fun getCurrencyById(@Path("id") id: String)
     : Deferred<Response<Currency>>
+    
+    
+    @GET ("/service/application/configuration/v1.0/currency")
+    fun getAppCurrencies()
+    : Deferred<Response<AppCurrencyResponse>>
     
     
     @GET ("/service/application/configuration/v1.0/languages")
