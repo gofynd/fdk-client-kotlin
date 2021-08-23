@@ -1001,23 +1001,23 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
     
-    fun loginWithFacebook(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithFacebook(platform = platform, body = body)}
+    fun loginWithFacebook(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithFacebook(body = body)}
 
     
     
-    fun loginWithGoogle(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithGoogle(platform = platform, body = body)}
+    fun loginWithGoogle(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogle(body = body)}
 
     
     
-    fun loginWithGoogleAndroid(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithGoogleAndroid(platform = platform, body = body)}
+    fun loginWithGoogleAndroid(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleAndroid(body = body)}
 
     
     
-    fun loginWithGoogleIOS(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithGoogleIOS(platform = platform, body = body)}
+    fun loginWithGoogleIOS(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleIOS(body = body)}
 
     
     
@@ -1691,6 +1691,11 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
     return paginator
     }
     
+    fun getStoreDetailById(storeId: Int): Deferred<Response<OrderingStore>>? {
+        return configurationApiList?.getStoreDetailById(storeId = storeId)}
+
+    
+    
     fun getFeatures(): Deferred<Response<AppFeatureResponse>>? {
         return configurationApiList?.getFeatures()}
 
@@ -1708,6 +1713,11 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
     
     fun getCurrencyById(id: String): Deferred<Response<Currency>>? {
         return configurationApiList?.getCurrencyById(id = id)}
+
+    
+    
+    fun getAppCurrencies(): Deferred<Response<AppCurrencyResponse>>? {
+        return configurationApiList?.getAppCurrencies()}
 
     
     
@@ -1853,6 +1863,11 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Deferred<Response<RefundAccountResponse>>? {
+        return paymentApiList?.addRefundBankAccountUsingOTP(body = body)}
+
+    
+    
     fun verifyOtpAndAddBeneficiaryForWallet(body: WalletOtpRequest): Deferred<Response<WalletOtpResponse>>? {
         return paymentApiList?.verifyOtpAndAddBeneficiaryForWallet(body = body)}
 
@@ -1922,6 +1937,21 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun getPosOrderById(orderId: String): Deferred<Response<PosOrderById>>? {
         return orderApiList?.getPosOrderById(orderId = orderId)}
+
+    
+    
+    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsByShipmentId>>? {
+        return orderApiList?.getCustomerDetailsByShipmentId(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<sendOTPApplicationResponse>>? {
+        return orderApiList?.sendOtpToShipmentCustomer(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: ReqBodyVerifyOTPShipment): Deferred<Response<ResponseVerifyOTPShipment>>? {
+        return orderApiList?.verifyOtpShipmentCustomer(orderId = orderId, shipmentId = shipmentId, body = body)}
 
     
     
