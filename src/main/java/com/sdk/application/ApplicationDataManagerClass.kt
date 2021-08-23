@@ -1691,6 +1691,11 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
     return paginator
     }
     
+    fun getStoreDetailById(storeId: Int): Deferred<Response<OrderingStore>>? {
+        return configurationApiList?.getStoreDetailById(storeId = storeId)}
+
+    
+    
     fun getFeatures(): Deferred<Response<AppFeatureResponse>>? {
         return configurationApiList?.getFeatures()}
 
@@ -1708,6 +1713,11 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
     
     fun getCurrencyById(id: String): Deferred<Response<Currency>>? {
         return configurationApiList?.getCurrencyById(id = id)}
+
+    
+    
+    fun getAppCurrencies(): Deferred<Response<AppCurrencyResponse>>? {
+        return configurationApiList?.getAppCurrencies()}
 
     
     

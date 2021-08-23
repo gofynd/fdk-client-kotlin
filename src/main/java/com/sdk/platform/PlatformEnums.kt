@@ -99,3 +99,16 @@ package com.sdk.platform
 
 
 
+
+    /*
+        Enum: SubscriberStatus
+        Used By: Webhook
+    */
+    enum class SubscriberStatus(val value:String){
+        
+        active("active"),
+        
+        inactive("inactive"),
+        
+    }
+

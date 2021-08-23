@@ -703,6 +703,11 @@ interface ConfigurationApiList {
     : Deferred<Response<OrderingStores>>
     
     
+    @GET ("/service/application/configuration/v1.0/ordering-store/stores/{store_id}")
+    fun getStoreDetailById(@Path("store_id") storeId: Int)
+    : Deferred<Response<OrderingStore>>
+    
+    
     @GET ("/service/application/configuration/v1.0/feature")
     fun getFeatures()
     : Deferred<Response<AppFeatureResponse>>
@@ -721,6 +726,11 @@ interface ConfigurationApiList {
     @GET ("/service/application/configuration/v1.0/currency/{id}")
     fun getCurrencyById(@Path("id") id: String)
     : Deferred<Response<Currency>>
+    
+    
+    @GET ("/service/application/configuration/v1.0/currency")
+    fun getAppCurrencies()
+    : Deferred<Response<AppCurrencyResponse>>
     
     
     @GET ("/service/application/configuration/v1.0/languages")

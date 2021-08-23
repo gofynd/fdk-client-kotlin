@@ -20,6 +20,7 @@ class ApplicationHeaderInterceptor(
 
             header("Accept-Language", languageCode)
             header("x-currency-code", currencyCode)
+            header("fp-sdk-version", "0.0.10")
             
             val bearerToken =
                 Base64.encodeToString(
