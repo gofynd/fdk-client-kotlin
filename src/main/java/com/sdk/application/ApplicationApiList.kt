@@ -148,8 +148,8 @@ interface CatalogApiList {
     : Deferred<Response<StoreListingResponse>>
     
     
-    @GET ("/service/application/catalog/v1.0/app-locations/")
-    fun getAppStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
+    @GET ("/service/application/catalog/v1.0/in-stock-locations/")
+    fun getInStockLocations(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
     : Deferred<Response<ApplicationStoreListing>>
     
 }
