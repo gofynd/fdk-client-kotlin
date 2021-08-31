@@ -1863,6 +1863,11 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Deferred<Response<RefundAccountResponse>>? {
+        return paymentApiList?.addRefundBankAccountUsingOTP(body = body)}
+
+    
+    
     fun verifyOtpAndAddBeneficiaryForWallet(body: WalletOtpRequest): Deferred<Response<WalletOtpResponse>>? {
         return paymentApiList?.verifyOtpAndAddBeneficiaryForWallet(body = body)}
 
@@ -1932,6 +1937,21 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun getPosOrderById(orderId: String): Deferred<Response<PosOrderById>>? {
         return orderApiList?.getPosOrderById(orderId = orderId)}
+
+    
+    
+    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsByShipmentId>>? {
+        return orderApiList?.getCustomerDetailsByShipmentId(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<sendOTPApplicationResponse>>? {
+        return orderApiList?.sendOtpToShipmentCustomer(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: ReqBodyVerifyOTPShipment): Deferred<Response<ResponseVerifyOTPShipment>>? {
+        return orderApiList?.verifyOtpShipmentCustomer(orderId = orderId, shipmentId = shipmentId, body = body)}
 
     
     
