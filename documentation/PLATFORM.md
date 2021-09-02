@@ -558,8 +558,9 @@ Get countries, states, cities
 
 
 
+
 ```kotlin
-common.().safeAwait{ response,error->
+common.getLocations(locationType: locationType, id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -571,6 +572,12 @@ common.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| locationType | String? | no | Provide location type to query on. Possible values : country, state, city |   
+| id | String? | no | Field is optional when location_type is country. If querying for state, provide id of country. If querying for city, provide id of state. |  
 
 
 
@@ -617,8 +624,9 @@ Gets the list of company level tickets and/or ticket filters depending on query 
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -630,6 +638,19 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for which the data will be returned |   
+| items | Boolean? | no | Decides that the reponse will contain the list of tickets |   
+| filters | Boolean? | no | Decides that the reponse will contain the ticket filters |   
+| q | String? | no | Search through ticket titles and description |   
+| status | String? | no | Filter tickets on status |   
+| priority | Any? | no | Filter tickets on priority |   
+| category | String? | no | Filter tickets on category |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |  
 
 
 
@@ -1045,8 +1066,9 @@ Creates a company level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.createTicket(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1059,6 +1081,11 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for which the data will be returned |  
+| body | [AddTicketPayload](#AddTicketPayload) | yes | Request body |
 
 
 Creates a company level ticket
@@ -1297,8 +1324,9 @@ Gets the list of Application level Tickets and/or ticket filters depending on qu
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1310,6 +1338,18 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for which the data will be returned |   
+| items | Boolean? | no | Decides that the reponse will contain the list of tickets |   
+| filters | Boolean? | no | Decides that the reponse will contain the ticket filters |   
+| q | String? | no | Search through ticket titles and description |   
+| status | String? | no | Filter tickets on status |   
+| priority | Any? | no | Filter tickets on priority |   
+| category | String? | no | Filter tickets on category |  
 
 
 
@@ -1725,8 +1765,9 @@ Retreives ticket details of a company level ticket with ticket ID
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.getTicket(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1738,6 +1779,12 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for which the data will be returned |   
+| id | String | yes | Tiket ID of the ticket to be fetched |  
 
 
 
@@ -1977,8 +2024,9 @@ Edits ticket details of a company level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.editTicket(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1991,6 +2039,12 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for ticket |   
+| id | String | yes | Ticket ID of ticket to be edited |  
+| body | [EditTicketPayload](#EditTicketPayload) | yes | Request body |
 
 
 Edits ticket details of a company level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
@@ -2229,8 +2283,9 @@ Retreives ticket details of a application level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.getTicket(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2242,6 +2297,13 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for which the data will be returned |   
+| id | String | yes | Tiket ID of the ticket to be fetched |  
 
 
 
@@ -2482,8 +2544,9 @@ Edits ticket details of a application level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.editTicket(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2496,6 +2559,13 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for ticket |   
+| id | String | yes | Ticket ID of ticket to be edited |  
+| body | [EditTicketPayload](#EditTicketPayload) | yes | Request body |
 
 
 Edits ticket details of a application level ticket such as status, priority, category, tags, attachments, assigne & ticket content changes
@@ -2735,8 +2805,9 @@ Create history for specific company level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.createHistory(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2749,6 +2820,12 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for ticket |   
+| id | String | yes | Ticket ID for which history is created |  
+| body | [TicketHistoryPayload](#TicketHistoryPayload) | yes | Request body |
 
 
 Create history for specific company level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
@@ -2831,8 +2908,9 @@ Gets history list for specific company level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.getTicketHistory(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2844,6 +2922,12 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for ticket |   
+| id | String | yes | Ticket ID for which history is to be fetched |  
 
 
 
@@ -3031,8 +3115,9 @@ Gets a list of feedback submitted against that ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.getFeedbacks(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3044,6 +3129,12 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for ticket |   
+| id | String | yes | Ticket ID for which feedbacks are to be fetched |  
 
 
 
@@ -3114,8 +3205,9 @@ Submit a response for feeback form against that ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.submitFeedback(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3128,6 +3220,12 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID for ticket |   
+| id | String | yes | Ticket ID for which feedback is to be submitted |  
+| body | [TicketFeedbackPayload](#TicketFeedbackPayload) | yes | Request body |
 
 
 Submit a response for feeback form against that ticket
@@ -3193,8 +3291,9 @@ Create history for specific application level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.createHistory(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3207,6 +3306,13 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for ticket |   
+| id | String | yes | Ticket ID for which history is created |  
+| body | [TicketHistoryPayload](#TicketHistoryPayload) | yes | Request body |
 
 
 Create history for specific application level ticket, this history is seen on ticket detail page, this can be comment, log or rating.
@@ -3289,8 +3395,9 @@ Gets history list for specific application level ticket
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.getTicketHistory(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3302,6 +3409,13 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of application |   
+| applicationId | String | yes | Application ID for ticket |   
+| id | String | yes | Ticket ID for which history is to be fetched |  
 
 
 
@@ -3489,8 +3603,9 @@ Get specific custom form using it's slug
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.getCustomForm(slug: slug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3502,6 +3617,13 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for the form |   
+| slug | String | yes | Slug of form whose response is getting submitted |  
 
 
 
@@ -3595,8 +3717,9 @@ Edit the given custom form
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.editCustomForm(slug: slug, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3609,6 +3732,13 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for the form |   
+| slug | String | yes | Slug of form whose response is getting submitted |  
+| body | [EditCustomFormPayload](#EditCustomFormPayload) | yes | Request body |
 
 
 Edit the given custom form field such as adding or deleting input, assignee, title, decription, notification and polling information.
@@ -3711,8 +3841,9 @@ Get list of custom form
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.getCustomForms().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3724,6 +3855,12 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for the form |  
 
 
 
@@ -3906,8 +4043,9 @@ Creates a new custom form
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.createCustomForm(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3920,6 +4058,12 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for the form |  
+| body | [CreateCustomFormPayload](#CreateCustomFormPayload) | yes | Request body |
 
 
 Creates a new custom form for given application
@@ -4022,8 +4166,9 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4035,6 +4180,12 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id for video room |   
+| uniqueName | String | yes | Unique name of video room |  
 
 
 
@@ -4086,8 +4237,9 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4099,6 +4251,13 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for video room |   
+| uniqueName | String | yes | Unique name of video room |  
 
 
 
@@ -4150,8 +4309,9 @@ Get participants of a specific Video Room using it's unique name
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4163,6 +4323,12 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id for video room |   
+| uniqueName | String | yes | Unique name of Video Room |  
 
 
 
@@ -4214,8 +4380,9 @@ Get participants of a specific Video Room using it's unique name
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4227,6 +4394,13 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for video room |   
+| uniqueName | String | yes | Unique name of Video Room |  
 
 
 
@@ -4278,8 +4452,9 @@ Open a video room.
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.openVideoRoom(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4292,6 +4467,12 @@ lead.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for video room |  
+| body | [CreateVideoRoomPayload](#CreateVideoRoomPayload) | yes | Request body |
 
 
 Open a video room.
@@ -4342,8 +4523,9 @@ Close the video room and force all participants to leave.
 
 
 
+
 ```kotlin
-lead.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").lead.closeVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4355,6 +4537,13 @@ lead.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID of the application |   
+| applicationId | String | yes | Application ID for video room |   
+| uniqueName | String | yes | Unique name of Video Room |  
 
 
 
@@ -4411,8 +4600,9 @@ Get list of attribute data
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4424,6 +4614,14 @@ feedback.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| pageNo | Int? | no | pagination page no |   
+| pageSize | Int? | no | pagination page size |  
 
 
 
@@ -4465,8 +4663,9 @@ Get list of customer reviews [admin]
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.getCustomerReviews(id: id, entityId: entityId, entityType: entityType, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, next: next, start: start, limit: limit, count: count, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4478,6 +4677,27 @@ feedback.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| id | String? | no | review id |   
+| entityId | String? | no | entity id |   
+| entityType | String? | no | entity type |   
+| userId | String? | no | user id |   
+| media | String? | no | media type e.g. image | video | video_file | video_link |   
+| rating | ArrayList<Double>? | no | rating filter, 1-5 |   
+| attributeRating | ArrayList<String>? | no | attribute rating filter with ma,e of attribute |   
+| facets | Boolean? | no | facets (true|false) |   
+| sort | String? | no | sort by : default | top | recent |   
+| next | String? | no | pagination next |   
+| start | String? | no | pagination start |   
+| limit | String? | no | pagination limit |   
+| count | String? | no | pagination count |   
+| pageId | String? | no | pagination page id |   
+| pageSize | Int? | no | pagination page size |  
 
 
 
@@ -4519,8 +4739,9 @@ update approve details
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.updateApprove(reviewId: reviewId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4533,6 +4754,13 @@ feedback.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| reviewId | String | yes | review id |  
+| body | [ApproveRequest](#ApproveRequest) | yes | Request body |
 
 
 The is used to update approve details like status and description text
@@ -4573,8 +4801,9 @@ get history details
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.getHistory(reviewId: reviewId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4586,6 +4815,13 @@ feedback.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| reviewId | String | yes | review id |  
 
 
 
@@ -4627,8 +4863,9 @@ Get list of templates
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.getApplicationTemplates(pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4640,6 +4877,14 @@ feedback.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| pageId | String? | no | pagination page id |   
+| pageSize | Int? | no | pagination page size |  
 
 
 
@@ -4681,8 +4926,9 @@ Create a new template
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.createTemplate(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4695,6 +4941,12 @@ feedback.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |  
+| body | [TemplateRequestList](#TemplateRequestList) | yes | Request body |
 
 
 Create a new template for review with following data:
@@ -4738,8 +4990,9 @@ Get a template by ID
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.getTemplateById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4751,6 +5004,13 @@ feedback.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| id | String | yes | template id |  
 
 
 
@@ -4792,8 +5052,9 @@ Update a template's status
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.updateTemplate(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4806,6 +5067,13 @@ feedback.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| id | String | yes | template id |  
+| body | [UpdateTemplateRequest](#UpdateTemplateRequest) | yes | Request body |
 
 
 Update existing template status, active/archive
@@ -4846,8 +5114,9 @@ Update a template's status
 
 
 
+
 ```kotlin
-feedback.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").feedback.updateTemplateStatus(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4860,6 +5129,13 @@ feedback.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| id | String | yes | template id |  
+| body | [UpdateTemplateStatusRequest](#UpdateTemplateStatusRequest) | yes | Request body |
 
 
 Update existing template status, active/archive
@@ -4905,8 +5181,9 @@ Get all pages of a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getAllPages(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4918,6 +5195,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |   
+| themeId | String | yes | ID of the theme to be retrieved |  
 
 
 
@@ -4967,8 +5251,9 @@ Create a page
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.createPage(themeId: themeId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -4981,6 +5266,13 @@ theme.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |   
+| themeId | String | yes | ID of the theme |  
+| body | [AvailablePageSchema](#AvailablePageSchema) | yes | Request body |
 
 
 Use this API to create a page for a theme by its ID.
@@ -5029,8 +5321,9 @@ Update multiple pages of a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.updateMultiplePages(themeId: themeId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5043,6 +5336,13 @@ theme.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |   
+| themeId | String | yes | ID of the theme to be retrieved |  
+| body | [AllAvailablePageSchema](#AllAvailablePageSchema) | yes | Request body |
 
 
 Use this API to update multiple pages of a theme by its ID.
@@ -5091,8 +5391,9 @@ Get page of a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5104,6 +5405,14 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |   
+| themeId | String | yes | ID of the theme to be retrieved |   
+| pageValue | String | yes | Value of the page to be retrieved |  
 
 
 
@@ -5153,8 +5462,9 @@ Updates a page
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.updatePage(themeId: themeId, pageValue: pageValue, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5167,6 +5477,14 @@ theme.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |   
+| themeId | String | yes | ID of the theme |   
+| pageValue | String | yes | Value of the page to be updated |  
+| body | [AvailablePageSchema](#AvailablePageSchema) | yes | Request body |
 
 
 Use this API to update a page for a theme by its ID.
@@ -5215,8 +5533,9 @@ Deletes a page
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.deletePage(themeId: themeId, pageValue: pageValue).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5228,6 +5547,14 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |   
+| themeId | String | yes | ID of the theme |   
+| pageValue | String | yes | Value of the page to be updated |  
 
 
 
@@ -5277,8 +5604,9 @@ Get a list of themes from the theme library
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getThemeLibrary(pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5290,6 +5618,14 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10.  |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |  
 
 
 
@@ -5339,8 +5675,9 @@ Add a theme to the theme library
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.addToThemeLibrary(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5353,6 +5690,12 @@ theme.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [AddThemeRequestSchema](#AddThemeRequestSchema) | yes | Request body |
 
 
 Theme library is a personalized collection of themes that are chosen and added from the available themes. Use this API to choose a theme and add it to the theme library.
@@ -5401,8 +5744,9 @@ Apply a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.applyTheme(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5415,6 +5759,12 @@ theme.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [AddThemeRequestSchema](#AddThemeRequestSchema) | yes | Request body |
 
 
 Use this API to apply a theme to the website.
@@ -5463,8 +5813,9 @@ Checks if theme is upgradable
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.isUpgradable(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5476,6 +5827,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | Theme ID |  
 
 
 
@@ -5525,8 +5883,9 @@ Upgrade a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.upgradeTheme(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5538,6 +5897,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -5587,8 +5953,9 @@ Get all public themes
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getPublicThemes(pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5600,6 +5967,14 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10.  |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1.  |  
 
 
 
@@ -5649,8 +6024,9 @@ Create a new theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.createTheme(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5663,6 +6039,12 @@ theme.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [ThemesSchema](#ThemesSchema) | yes | Request body |
 
 
 Themes improve the look and appearance of a website. Use this API to create a theme.
@@ -5711,8 +6093,9 @@ Get the applied theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getAppliedTheme().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5724,6 +6107,12 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
@@ -5773,8 +6162,9 @@ Get all the supported fonts in a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getFonts().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5786,6 +6176,12 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
@@ -5835,8 +6231,9 @@ Gets theme by id
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getThemeById(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5848,6 +6245,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -5897,8 +6301,9 @@ Update a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.updateTheme(themeId: themeId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5911,6 +6316,13 @@ theme.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
+| body | [ThemesSchema](#ThemesSchema) | yes | Request body |
 
 
 Use this API to edit an existing theme. You can customize the website font, sections, images, styles, and many more.
@@ -5959,8 +6371,9 @@ Delete a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.deleteTheme(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -5972,6 +6385,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -6021,8 +6441,9 @@ Get a theme preview
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.getThemeForPreview(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6034,6 +6455,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -6083,8 +6511,9 @@ Publish a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.publishTheme(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6096,6 +6525,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -6145,8 +6581,9 @@ Unpublish a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.unpublishTheme(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6158,6 +6595,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -6207,8 +6651,9 @@ Archive a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.archiveTheme(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6220,6 +6665,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -6269,8 +6721,9 @@ Unarchive a theme
 
 
 
+
 ```kotlin
-theme.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").theme.unarchiveTheme(themeId: themeId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6282,6 +6735,13 @@ theme.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| themeId | String | yes | ID allotted to the theme. |  
 
 
 
@@ -6336,8 +6796,9 @@ Get a list of customers
 
 
 
+
 ```kotlin
-user.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").user.getCustomers(q: q, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6349,6 +6810,15 @@ user.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| q | String? | no | The search query. Mobile number or email ID of a customer. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1.  |  
 
 
 
@@ -6398,8 +6868,9 @@ Search an existing user.
 
 
 
+
 ```kotlin
-user.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6411,6 +6882,13 @@ user.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| q | String? | no | The search query. Mobile number or email ID of a customer. |  
 
 
 
@@ -6495,8 +6973,9 @@ Create user
 
 
 
+
 ```kotlin
-user.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").user.createUser(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6509,6 +6988,12 @@ user.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |  
+| body | [CreateUserRequestSchema](#CreateUserRequestSchema) | yes | Request body |
 
 
 Create user
@@ -6591,8 +7076,9 @@ Update user
 
 
 
+
 ```kotlin
-user.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").user.updateUser(userId: userId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6605,6 +7091,13 @@ user.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |   
+| userId | String | yes | User ID |  
+| body | [UpdateUserRequestSchema](#UpdateUserRequestSchema) | yes | Request body |
 
 
 Update user
@@ -6687,8 +7180,9 @@ Create user session
 
 
 
+
 ```kotlin
-user.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").user.createUserSession(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6701,6 +7195,12 @@ user.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company ID |   
+| applicationId | String | yes | Application ID |  
+| body | [CreateUserSessionRequestSchema](#CreateUserSessionRequestSchema) | yes | Request body |
 
 
 Create user session
@@ -6749,8 +7249,9 @@ Get platform configurations
 
 
 
+
 ```kotlin
-user.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").user.getPlatformConfig().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6762,6 +7263,12 @@ user.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
@@ -6868,8 +7375,9 @@ Update platform configurations
 
 
 
+
 ```kotlin
-user.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").user.updatePlatformConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -6882,6 +7390,12 @@ user.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [PlatformSchema](#PlatformSchema) | yes | Request body |
 
 
 Use this API to edit the existing platform configurations such as mobile image, desktop image, social logins, and all other text.
@@ -6992,8 +7506,9 @@ Get a list of announcements
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getAnnouncementsList(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7005,6 +7520,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
@@ -7054,8 +7577,9 @@ Create an announcement
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createAnnouncement(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7068,6 +7592,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [AdminAnnouncementSchema](#AdminAnnouncementSchema) | yes | Request body |
 
 
 Announcements are useful to highlight a message or information on top of a webpage. Use this API to create an announcement.
@@ -7116,8 +7646,9 @@ Get announcement by ID
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getAnnouncementById(announcementId: announcementId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7129,6 +7660,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| announcementId | String | yes | ID allotted to the announcement. |  
 
 
 
@@ -7178,8 +7716,9 @@ Update an announcement
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateAnnouncement(announcementId: announcementId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7192,6 +7731,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| announcementId | String | yes | ID allotted to the announcement. |  
+| body | [AdminAnnouncementSchema](#AdminAnnouncementSchema) | yes | Request body |
 
 
 Use this API to edit an existing announcement and its details such as the target platform and pages on which it's applicable
@@ -7240,8 +7786,9 @@ Update the schedule and the publish status of an announcement
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateAnnouncementSchedule(announcementId: announcementId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7254,6 +7801,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| announcementId | String | yes | ID allotted to the announcement. |  
+| body | [ScheduleSchema](#ScheduleSchema) | yes | Request body |
 
 
 Use this API to edit the duration, i.e. start date-time and end date-time of an announcement. Moreover, you can enable/disable an announcement using this API.
@@ -7302,8 +7856,9 @@ Delete announcement by id
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteAnnouncement(announcementId: announcementId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7315,6 +7870,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| announcementId | String | yes | ID allotted to the announcement. |  
 
 
 
@@ -7364,8 +7926,9 @@ Create a blog
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createBlog(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7378,6 +7941,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [BlogRequest](#BlogRequest) | yes | Request body |
 
 
 Use this API to create a blog.
@@ -7426,8 +7995,9 @@ Get blogs
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7439,6 +8009,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
@@ -7488,8 +8066,9 @@ Update a blog
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateBlog(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7502,6 +8081,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the blog. |  
+| body | [BlogRequest](#BlogRequest) | yes | Request body |
 
 
 Use this API to update the details of an existing blog which includes title, feature image, content, SEO details, expiry, etc.
@@ -7550,8 +8136,9 @@ Delete blogs
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteBlog(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7563,6 +8150,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the blog. |  
 
 
 
@@ -7612,8 +8206,9 @@ Get components of a blog
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getComponentById(slug: slug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7625,6 +8220,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a blog page. You can get slug value of a blog from `getBlogs` API. |  
 
 
 
@@ -7674,8 +8276,9 @@ Get a list of FAQ categories
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getFaqCategories().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7687,6 +8290,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
 
 
 
@@ -7741,8 +8350,9 @@ Get an FAQ category by slug or id
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7754,6 +8364,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
 
 
 
@@ -7812,8 +8429,9 @@ Create an FAQ category
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createFaqCategory(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7826,6 +8444,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [CreateFaqCategoryRequestSchema](#CreateFaqCategoryRequestSchema) | yes | Request body |
 
 
 FAQs help users to solve an issue or know more about a process. FAQs can be categorized separately, for e.g. some questions can be related to payment, some could be related to purchase, shipping, navigating, etc. Use this API to create an FAQ category.
@@ -7875,8 +8499,9 @@ Update an FAQ category
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateFaqCategory(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7889,6 +8514,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to an FAQ category. |  
+| body | [UpdateFaqCategoryRequestSchema](#UpdateFaqCategoryRequestSchema) | yes | Request body |
 
 
 Use this API to edit an existing FAQ category.
@@ -7938,8 +8570,9 @@ Delete an FAQ category
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteFaqCategory(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -7951,6 +8584,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to an FAQ category. |  
 
 
 
@@ -8002,8 +8642,9 @@ Get question and answers within an FAQ category
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8015,6 +8656,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
 
 
 
@@ -8066,8 +8714,9 @@ Create an FAQ
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.addFaq(categoryId: categoryId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8080,6 +8729,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| categoryId | String | yes | ID allotted to an FAQ category. |  
+| body | [CreateFaqSchema](#CreateFaqSchema) | yes | Request body |
 
 
 FAQs help users to solve an issue or know more about a process. Use this API to create an FAQ for a given FAQ category.
@@ -8128,8 +8784,9 @@ Update an FAQ
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateFaq(categoryId: categoryId, faqId: faqId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8142,6 +8799,14 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| categoryId | String | yes | ID allotted to an FAQ category. |   
+| faqId | String | yes | ID allotted to an FAQ. |  
+| body | [CreateFaqSchema](#CreateFaqSchema) | yes | Request body |
 
 
 Use this API to edit an existing FAQ.
@@ -8190,8 +8855,9 @@ Delete an FAQ
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteFaq(categoryId: categoryId, faqId: faqId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8203,6 +8869,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| categoryId | String | yes | ID allotted to an FAQ category. |   
+| faqId | String | yes | ID allotted to an FAQ. |  
 
 
 
@@ -8252,8 +8926,9 @@ Get an FAQ
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8265,6 +8940,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| idOrSlug | String | yes | ID or the slug allotted to an FAQ category. Slug is a short, human-readable, URL-friendly identifier of an object. You can get slug value of an FAQ category from `getFaqCategories` API. |  
 
 
 
@@ -8314,8 +8996,9 @@ Get landing pages
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getLandingPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8327,6 +9010,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
@@ -8376,8 +9067,9 @@ Create a landing page
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createLandingPage(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8390,6 +9082,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [LandingPageSchema](#LandingPageSchema) | yes | Request body |
 
 
 Landing page is the first page that a prospect lands upon while visiting a website. Use this API to create a landing page.
@@ -8438,8 +9136,9 @@ Update a landing page
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateLandingPage(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8452,6 +9151,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to a landing page. |  
+| body | [LandingPageSchema](#LandingPageSchema) | yes | Request body |
 
 
 Use this API to edit the details of an existing landing page.
@@ -8500,8 +9206,9 @@ Delete a landing page
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteLandingPage(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8513,6 +9220,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to a landing page. |  
 
 
 
@@ -8585,8 +9299,9 @@ Get legal information
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getLegalInformation().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8598,6 +9313,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
 
 
 
@@ -8647,8 +9368,9 @@ Save legal information
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateLegalInformation(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8661,6 +9383,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [ApplicationLegal](#ApplicationLegal) | yes | Request body |
 
 
 Use this API to edit, update and save the legal information of an application, which includes Policy, Terms and Conditions, Shipping Policy and FAQ regarding the application.
@@ -8710,8 +9438,9 @@ Get navigations
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getNavigations(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8723,6 +9452,15 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| devicePlatform | String | yes | Filter navigations by platform. Acceptable values are: web, android, ios, all |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
@@ -8772,8 +9510,9 @@ Create a navigation
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createNavigation(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8786,6 +9525,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [NavigationRequest](#NavigationRequest) | yes | Request body |
 
 
 Navigation is the arrangement of navigational items to ease the accessibility of resources for users on a website. Use this API to create a navigation.
@@ -8834,8 +9579,9 @@ Get default navigations
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getDefaultNavigations().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8847,6 +9593,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
 
 
 
@@ -8896,8 +9648,9 @@ Get a navigation by slug
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getNavigationBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8909,6 +9662,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a navigation. You can get slug value of a navigation from `getNavigations` API. |   
+| devicePlatform | String | yes | Filter navigations by platform. Acceptable values are: web, android, ios, all |  
 
 
 
@@ -8958,8 +9719,9 @@ Update a navigation
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateNavigation(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -8972,6 +9734,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the navigation. |  
+| body | [NavigationRequest](#NavigationRequest) | yes | Request body |
 
 
 Use this API to edit the details of an existing navigation.
@@ -9020,8 +9789,9 @@ Delete a navigation
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteNavigation(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9033,6 +9803,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the navigation. |  
 
 
 
@@ -9262,8 +10039,9 @@ Get page meta
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getPageMeta(pageType: pageType, cartPages: cartPages).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9275,6 +10053,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| pageType | String? | no | Fetch meta by page type. Acceptable values are: system, custom and all |   
+| cartPages | Boolean? | no | Pass this param value as `true` to fetch meta with cart pages |  
 
 
 
@@ -9324,8 +10110,9 @@ Get page spec
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getPageSpec().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9337,6 +10124,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
 
 
 
@@ -9412,8 +10205,9 @@ Create a page
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9426,6 +10220,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [PageRequest](#PageRequest) | yes | Request body |
 
 
 Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
@@ -9474,8 +10274,9 @@ Get a list of pages
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9487,6 +10288,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
@@ -9536,8 +10345,9 @@ Create a page preview
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createPagePreview(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9550,6 +10360,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [PageRequest](#PageRequest) | yes | Request body |
 
 
 Use this API to create a page preview to check the appearance of a custom page.
@@ -9598,8 +10414,9 @@ Change the publish status of a page
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updatePagePreview(slug: slug, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9612,6 +10429,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+| body | [PagePublishRequest](#PagePublishRequest) | yes | Request body |
 
 
 Use this API to change the publish status of an existing page. Allows you to publish and unpublish the page.
@@ -9660,8 +10484,9 @@ Update a page
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9674,6 +10499,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the page. |  
+| body | [PageSchema](#PageSchema) | yes | Request body |
 
 
 Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
@@ -9722,8 +10554,9 @@ Delete a page
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deletePage(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9735,6 +10568,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the page. |  
 
 
 
@@ -9784,8 +10624,9 @@ Get pages by component Id
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9797,6 +10638,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
 
 
 
@@ -9846,8 +10694,9 @@ Get SEO configuration of an application
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getSEOConfiguration().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9859,6 +10708,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
 
 
 
@@ -9908,8 +10763,9 @@ Update SEO of application
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateSEOConfiguration(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -9922,6 +10778,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [SeoComponent](#SeoComponent) | yes | Request body |
 
 
 Use this API to edit the SEO details of an application. This includes the sitemap, robot.txt, custom meta tags, etc.
@@ -9993,8 +10855,9 @@ Get slideshows
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getSlideshows(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10006,6 +10869,15 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| devicePlatform | String | yes | Filter slideshows by platform. Acceptable values are: web, android, ios and all |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
 
 
 
@@ -10055,8 +10927,9 @@ Create a slideshow
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.createSlideshow(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10069,6 +10942,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [SlideshowRequest](#SlideshowRequest) | yes | Request body |
 
 
 A slideshow is a group of images, videos or a combination of both that are shown on the website in the form of slides. Use this API to create a slideshow.
@@ -10117,8 +10996,9 @@ Get slideshow by slug
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getSlideshowBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10130,6 +11010,14 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a slideshow. You can get slug value of a page from `getSlideshows` API. |   
+| devicePlatform | String | yes | Filter slideshows by platform. Acceptable values are: web, android, ios and all |  
 
 
 
@@ -10179,8 +11067,9 @@ Update a slideshow
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateSlideshow(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10193,6 +11082,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the slideshow. |  
+| body | [SlideshowRequest](#SlideshowRequest) | yes | Request body |
 
 
 Use this API to edit the details of an existing slideshow.
@@ -10241,8 +11137,9 @@ Delete a slideshow
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteSlideshow(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10254,6 +11151,13 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
+| id | String | yes | ID allotted to the slideshow. |  
 
 
 
@@ -10342,8 +11246,9 @@ Get support information
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getSupportInformation().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10355,6 +11260,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
@@ -10404,8 +11315,9 @@ Update the support data of an application
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateSupportInformation(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10418,6 +11330,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [Support](#Support) | yes | Request body |
 
 
 Use this API to edit the existing contact details for customer support, including emails and phone numbers.
@@ -10466,8 +11384,9 @@ Update a tag
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updateInjectableTag(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10480,6 +11399,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [CreateTagRequestSchema](#CreateTagRequestSchema) | yes | Request body |
 
 
 Use this API to edit the details of an existing tag. This includes the tag name, tag type (css/js), url and position of the tag.
@@ -10542,8 +11467,9 @@ Delete tags in application
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.deleteAllInjectableTags().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10555,6 +11481,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
@@ -10618,8 +11550,9 @@ Get all the tags in an application
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getInjectableTags().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10631,6 +11564,12 @@ content.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
 
 
 
@@ -10694,8 +11633,9 @@ Add a tag
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.addInjectableTag(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10708,6 +11648,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [CreateTagRequestSchema](#CreateTagRequestSchema) | yes | Request body |
 
 
 CSS and JS can be injected in the application (website) with the help of tags. Use this API to create such tags by entering the tag name, tag type (css/js), url and position of the tag.
@@ -10762,8 +11708,9 @@ Remove a tag
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.removeInjectableTag(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10776,6 +11723,12 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |  
+| body | [RemoveHandpickedSchema](#RemoveHandpickedSchema) | yes | Request body |
 
 
 Use this API to delete an existing tag.
@@ -10818,8 +11771,9 @@ Edit a tag by id
 
 
 
+
 ```kotlin
-content.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.editInjectableTag(tagId: tagId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10832,6 +11786,13 @@ content.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform. |   
+| applicationId | String | yes | Alphanumeric ID allotted to an application created within a business account. |   
+| tagId | String | yes | ID allotted to the tag. |  
+| body | [UpdateHandpickedSchema](#UpdateHandpickedSchema) | yes | Request body |
 
 
 Use this API to edit the details of an existing tag by its ID.
@@ -10891,8 +11852,9 @@ Create subscription charge
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.createSubscriptionCharge(extensionId: extensionId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10905,6 +11867,12 @@ billing.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |   
+| extensionId | String | yes | Extension _id |  
+| body | [CreateSubscriptionCharge](#CreateSubscriptionCharge) | yes | Request body |
 
 
 Register subscription charge for a seller of your extension.
@@ -10945,8 +11913,9 @@ Get subscription charge details
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.getSubscriptionCharge(extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -10958,6 +11927,13 @@ billing.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |   
+| extensionId | String | yes | Extension _id |   
+| subscriptionId | String | yes | Subscription charge _id |  
 
 
 
@@ -10999,8 +11975,9 @@ Cancel subscription charge
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.cancelSubscriptionCharge(extensionId: extensionId, subscriptionId: subscriptionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11012,6 +11989,13 @@ billing.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |   
+| extensionId | String | yes | Extension _id |   
+| subscriptionId | String | yes | Subscription charge _id |  
 
 
 
@@ -11053,8 +12037,9 @@ Get invoices
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.getInvoices().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11066,6 +12051,11 @@ billing.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |  
 
 
 
@@ -11115,8 +12105,9 @@ Get invoice by id
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.getInvoiceById(invoiceId: invoiceId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11128,6 +12119,12 @@ billing.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |   
+| invoiceId | String | yes | Invoice id |  
 
 
 
@@ -11177,8 +12174,9 @@ Get subscription customer detail
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.getCustomerDetail().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11190,6 +12188,11 @@ billing.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |  
 
 
 
@@ -11239,8 +12242,9 @@ Upsert subscription customer detail
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.upsertCustomerDetail(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11253,6 +12257,11 @@ billing.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |  
+| body | [SubscriptionCustomerCreate](#SubscriptionCustomerCreate) | yes | Request body |
 
 
 Upsert subscription customer detail.
@@ -11301,8 +12310,9 @@ Get current subscription detail
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.getSubscription().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11314,6 +12324,11 @@ billing.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |  
 
 
 
@@ -11374,8 +12389,9 @@ Get subscription subscription limits
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.getFeatureLimitConfig().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11387,6 +12403,11 @@ billing.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |  
 
 
 
@@ -11436,8 +12457,9 @@ Activate subscription
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.activateSubscriptionPlan(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11450,6 +12472,11 @@ billing.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |  
+| body | [SubscriptionActivateReq](#SubscriptionActivateReq) | yes | Request body |
 
 
 It will activate subscription plan for customer
@@ -11498,8 +12525,9 @@ Cancel subscription
 
 
 
+
 ```kotlin
-billing.().safeAwait{ response,error->
+client.billing.cancelSubscriptionPlan(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11512,6 +12540,11 @@ billing.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Customer unique id. In case of company it will be company id. |  
+| body | [CancelSubscriptionReq](#CancelSubscriptionReq) | yes | Request body |
 
 
 It will cancel current active subscription.
@@ -11565,8 +12598,9 @@ Get campaigns
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getCampaigns(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11578,6 +12612,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -11627,8 +12670,9 @@ Create campaign
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.createCampaign(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11641,6 +12685,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [CampaignReq](#CampaignReq) | yes | Request body |
 
 
 Create campaign
@@ -11689,8 +12739,9 @@ Get campaign by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getCampaignById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11702,6 +12753,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Campaign id |  
 
 
 
@@ -11751,8 +12809,9 @@ Update campaign by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.updateCampaignById(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11765,6 +12824,13 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Campaign id |  
+| body | [CampaignReq](#CampaignReq) | yes | Request body |
 
 
 Update campaign by id
@@ -11813,8 +12879,9 @@ Get stats of campaign by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getStatsOfCampaignById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11826,6 +12893,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Campaign id |  
 
 
 
@@ -11875,8 +12949,9 @@ Get audiences
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getAudiences(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11888,6 +12963,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -11937,8 +13021,9 @@ Create audience
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.createAudience(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -11951,6 +13036,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [AudienceReq](#AudienceReq) | yes | Request body |
 
 
 Create audience
@@ -11999,8 +13090,9 @@ Get bigquery headers
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getBigqueryHeaders(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12013,6 +13105,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [BigqueryHeadersReq](#BigqueryHeadersReq) | yes | Request body |
 
 
 Get bigquery headers
@@ -12061,8 +13159,9 @@ Get audience by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getAudienceById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12074,6 +13173,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Audience id |  
 
 
 
@@ -12123,8 +13229,9 @@ Update audience by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.updateAudienceById(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12137,6 +13244,13 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Audience id |  
+| body | [AudienceReq](#AudienceReq) | yes | Request body |
 
 
 Update audience by id
@@ -12185,8 +13299,9 @@ Get n sample records from csv
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsv(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12199,6 +13314,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [GetNRecordsCsvReq](#GetNRecordsCsvReq) | yes | Request body |
 
 
 Get n sample records from csv
@@ -12247,8 +13368,9 @@ Get email providers
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getEmailProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12260,6 +13382,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -12309,8 +13440,9 @@ Create email provider
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.createEmailProvider(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12323,6 +13455,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [EmailProviderReq](#EmailProviderReq) | yes | Request body |
 
 
 Create email provider
@@ -12371,8 +13509,9 @@ Get email provider by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getEmailProviderById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12384,6 +13523,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Email provider id |  
 
 
 
@@ -12433,8 +13579,9 @@ Update email provider by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.updateEmailProviderById(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12447,6 +13594,13 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Email provider id |  
+| body | [EmailProviderReq](#EmailProviderReq) | yes | Request body |
 
 
 Update email provider by id
@@ -12495,8 +13649,9 @@ Get email templates
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getEmailTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12508,6 +13663,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -12557,8 +13721,9 @@ Create email template
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.createEmailTemplate(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12571,6 +13736,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [EmailTemplateReq](#EmailTemplateReq) | yes | Request body |
 
 
 Create email template
@@ -12619,8 +13790,9 @@ Get system email templates
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getSystemEmailTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12632,6 +13804,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -12681,8 +13862,9 @@ Get email template by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getEmailTemplateById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12694,6 +13876,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Email template id |  
 
 
 
@@ -12743,8 +13932,9 @@ Update email template by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.updateEmailTemplateById(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12757,6 +13947,13 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Email template id |  
+| body | [EmailTemplateReq](#EmailTemplateReq) | yes | Request body |
 
 
 Update email template by id
@@ -12805,8 +14002,9 @@ Delete email template by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.deleteEmailTemplateById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12818,6 +14016,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Email template id |  
 
 
 
@@ -12867,8 +14072,9 @@ Get event subscriptions
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getEventSubscriptions(pageNo: pageNo, pageSize: pageSize, populate: populate).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12880,6 +14086,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| populate | String? | no | populate fields |  
 
 
 
@@ -12929,8 +14144,9 @@ Get jobs
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getJobs(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -12942,6 +14158,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -12991,8 +14216,9 @@ Trigger campaign job
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.triggerCampaignJob(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13005,6 +14231,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [TriggerJobRequest](#TriggerJobRequest) | yes | Request body |
 
 
 Trigger campaign job
@@ -13053,8 +14285,9 @@ Get job logs
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getJobLogs(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13066,6 +14299,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -13115,8 +14357,9 @@ Get communication logs
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getCommunicationLogs(pageId: pageId, pageSize: pageSize, sort: sort, query: query).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13128,6 +14371,16 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageId | String? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on _id |   
+| query | HashMap<String,Any>? | no |  |  
 
 
 
@@ -13177,8 +14430,9 @@ Get system notifications
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.communication.getSystemNotifications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13190,6 +14444,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| pageNo | Int? | no |  |   
+| pageSize | Int? | no |  |  
 
 
 
@@ -13239,8 +14500,9 @@ Get sms providers
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getSmsProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13252,6 +14514,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -13301,8 +14572,9 @@ Create sms provider
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.createSmsProvider(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13315,6 +14587,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [SmsProviderReq](#SmsProviderReq) | yes | Request body |
 
 
 Create sms provider
@@ -13363,8 +14641,9 @@ Get sms provider by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getSmsProviderById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13376,6 +14655,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Sms provider id |  
 
 
 
@@ -13425,8 +14711,9 @@ Update sms provider by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.updateSmsProviderById(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13439,6 +14726,13 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Sms provider id |  
+| body | [SmsProviderReq](#SmsProviderReq) | yes | Request body |
 
 
 Update sms provider by id
@@ -13487,8 +14781,9 @@ Get sms templates
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getSmsTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13500,6 +14795,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -13549,8 +14853,9 @@ Create sms template
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.createSmsTemplate(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13563,6 +14868,12 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |  
+| body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
 
 
 Create sms template
@@ -13611,8 +14922,9 @@ Get sms template by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getSmsTemplateById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13624,6 +14936,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Sms template id |  
 
 
 
@@ -13673,8 +14992,9 @@ Update sms template by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.updateSmsTemplateById(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13687,6 +15007,13 @@ communication.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Sms template id |  
+| body | [SmsTemplateReq](#SmsTemplateReq) | yes | Request body |
 
 
 Update sms template by id
@@ -13735,8 +15062,9 @@ Delete sms template by id
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.deleteSmsTemplateById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13748,6 +15076,13 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| id | String | yes | Sms template id |  
 
 
 
@@ -13797,8 +15132,9 @@ Get system sms templates
 
 
 
+
 ```kotlin
-communication.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").communication.getSystemSystemTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13810,6 +15146,15 @@ communication.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company id |   
+| applicationId | String | yes | Application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |   
+| sort | HashMap<String,Any>? | no | To sort based on created_at |  
 
 
 
@@ -13864,8 +15209,9 @@ Get All Brand Payment Gateway Config Secret
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -13877,6 +15223,12 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |  
 
 
 
@@ -14035,8 +15387,9 @@ Save Config Secret For Brand Payment Gateway
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.saveBrandPaymentGatewayConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14049,6 +15402,12 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |  
+| body | [PaymentGatewayConfigRequest](#PaymentGatewayConfigRequest) | yes | Request body |
 
 
 Save Config Secret For Brand Payment Gateway
@@ -14094,8 +15453,9 @@ Save Config Secret For Brand Payment Gateway
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.updateBrandPaymentGatewayConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14108,6 +15468,12 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |  
+| body | [PaymentGatewayConfigRequest](#PaymentGatewayConfigRequest) | yes | Request body |
 
 
 Save Config Secret For Brand Payment Gateway
@@ -14153,8 +15519,9 @@ Get All Valid Payment Options
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.getPaymentModeRoutes(refresh: refresh, requestType: requestType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -14166,6 +15533,14 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |   
+| refresh | Boolean | yes |  |   
+| requestType | String | yes |  |  
 
 
 
@@ -15334,8 +16709,9 @@ Get All Payouts
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.getAllPayouts(uniqueExternalId: uniqueExternalId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15347,6 +16723,12 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| uniqueExternalId | String? | no | Fetch payouts using unique external id |  
 
 
 
@@ -15451,8 +16833,9 @@ Save Payout
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.savePayout(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15465,6 +16848,11 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |  
+| body | [PayoutRequest](#PayoutRequest) | yes | Request body |
 
 
 Save Payout
@@ -15533,8 +16921,9 @@ Update Payout
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.updatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15547,6 +16936,12 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| uniqueTransferNo | String | yes | Unique transfer id |  
+| body | [PayoutRequest](#PayoutRequest) | yes | Request body |
 
 
 Update Payout
@@ -15591,8 +16986,9 @@ Partial Update Payout
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.activateAndDectivatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15605,6 +17001,12 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| uniqueTransferNo | String | yes | Unique transfer id |  
+| body | [UpdatePayoutRequest](#UpdatePayoutRequest) | yes | Request body |
 
 
 Partial Update Payout
@@ -15649,8 +17051,9 @@ Delete Payout
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.deletePayout(uniqueTransferNo: uniqueTransferNo).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15662,6 +17065,12 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| uniqueTransferNo | String | yes | Unique transfer id |  
 
 
 
@@ -15705,8 +17114,9 @@ List Subscription Payment Method
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.getSubscriptionPaymentMethod().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15718,6 +17128,11 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |  
 
 
 
@@ -15887,8 +17302,9 @@ Delete Subscription Payment Method
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.deleteSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId, paymentMethodId: paymentMethodId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15900,6 +17316,13 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| uniqueExternalId | String | yes |  |   
+| paymentMethodId | String | yes |  |  
 
 
 
@@ -15943,8 +17366,9 @@ List Subscription Config
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.getSubscriptionConfig().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -15956,6 +17380,11 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |  
 
 
 
@@ -16003,8 +17432,9 @@ Save Subscription Setup Intent
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.saveSubscriptionSetupIntent(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16017,6 +17447,11 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |  
+| body | [SaveSubscriptionSetupIntentRequest](#SaveSubscriptionSetupIntentRequest) | yes | Request body |
 
 
 Uses this api to Save Subscription Setup Intent
@@ -16066,8 +17501,9 @@ Save bank details for cancelled/returned order
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.addBeneficiaryDetails(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16080,6 +17516,12 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |  
+| body | [AddBeneficiaryDetailsRequest](#AddBeneficiaryDetailsRequest) | yes | Request body |
 
 
 Use this API to save bank details for returned/cancelled order to refund amount in his account.
@@ -16124,8 +17566,9 @@ Ifsc Code Verification
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16137,6 +17580,12 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| ifscCode | String? | no |  |  
 
 
 
@@ -16198,8 +17647,9 @@ List Order Beneficiary
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.getUserOrderBeneficiaries(orderId: orderId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16211,6 +17661,13 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| orderId | String | yes |  |   
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |  
 
 
 
@@ -16276,8 +17733,9 @@ List User Beneficiary
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.getUserBeneficiaries(orderId: orderId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16289,6 +17747,13 @@ payment.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| orderId | String | yes |  |   
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |  
 
 
 
@@ -16355,8 +17820,9 @@ Confirm payment after successful payment from payment gateway
 
 
 
+
 ```kotlin
-payment.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").payment.confirmPayment(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16369,6 +17835,12 @@ payment.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| applicationId | String | yes | Application id |  
+| body | [PaymentConfirmationRequest](#PaymentConfirmationRequest) | yes | Request body |
 
 
 Use this API to confirm payment after payment gateway accepted payment.
@@ -16418,8 +17890,9 @@ Update status of Shipment
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.shipmentStatusUpdate(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16432,6 +17905,11 @@ order.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |  
+| body | [UpdateShipmentStatusBody](#UpdateShipmentStatusBody) | yes | Request body |
 
 
 Update Shipment Status
@@ -16472,8 +17950,9 @@ Get Activity Status
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.activityStatus(bagId: bagId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16485,6 +17964,12 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| bagId | String | yes | Bag Id |  
 
 
 
@@ -16526,8 +18011,9 @@ Update Store Process-Shipment
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.storeProcessShipmentUpdate(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16540,6 +18026,11 @@ order.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |  
+| body | [UpdateProcessShipmenstRequestBody](#UpdateProcessShipmenstRequestBody) | yes | Request body |
 
 
 Update Store Process-Shipment
@@ -16580,8 +18071,9 @@ Check Refund is available or not
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.checkRefund(shipmentId: shipmentId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16593,6 +18085,12 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| shipmentId | String | yes | Shipment Id |  
 
 
 
@@ -16634,8 +18132,9 @@ Get Orders for company based on Company Id
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16647,6 +18146,23 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| pageNo | String? | no | Current page number |   
+| pageSize | String? | no | Page limit |   
+| fromDate | String? | no | From Date |   
+| toDate | String? | no | To Date |   
+| q | String? | no | Keyword for Search |   
+| stage | String? | no | Specefic Order Stage |   
+| salesChannels | String? | no | Selected Sales Channel |   
+| orderId | String? | no | Order Id |   
+| stores | String? | no | Selected Stores |   
+| status | String? | no | Status of order |   
+| shortenUrls | Boolean? | no | Shorten URL option |   
+| filterType | String? | no | Filters |  
 
 
 
@@ -16688,8 +18204,9 @@ Get Order Lanes Count for company based on Company Id
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.getOrderLanesCountByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16701,6 +18218,23 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| pageNo | String? | no | Current page number |   
+| pageSize | String? | no | Page limit |   
+| fromDate | String? | no | From Date |   
+| toDate | String? | no | To Date |   
+| q | String? | no | Keyword for Search |   
+| stage | String? | no | Specefic Order Stage |   
+| salesChannels | String? | no | Selected Sales Channel |   
+| orderId | String? | no | Order Id |   
+| stores | String? | no | Selected Stores |   
+| status | String? | no | Status of order |   
+| shortenUrls | Boolean? | no | Shorten URL option |   
+| filterType | String? | no | Filters |  
 
 
 
@@ -16742,8 +18276,9 @@ Get Order Details for company based on Company Id and Order Id
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16755,6 +18290,14 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| orderId | String? | no | Order Id |   
+| next | String? | no | Next |   
+| previous | String? | no | Previous |  
 
 
 
@@ -16796,8 +18339,9 @@ Get Orders for company based on Company Id
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.getPicklistOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16809,6 +18353,23 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| pageNo | String? | no | Current page number |   
+| pageSize | String? | no | Page limit |   
+| fromDate | String? | no | From Date |   
+| toDate | String? | no | To Date |   
+| q | String? | no | Keyword for Search |   
+| stage | String? | no | Specefic Order Stage |   
+| salesChannels | String? | no | Selected Sales Channel |   
+| orderId | String? | no | Order Id |   
+| stores | String? | no | Selected Stores |   
+| status | String? | no | Status of order |   
+| shortenUrls | Boolean? | no | Shorten URL option |   
+| filterType | String? | no | Filters |  
 
 
 
@@ -16850,8 +18411,9 @@ Track Shipment by shipment id, for application based on application Id
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").order.trackShipmentPlatform(shipmentId: shipmentId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16863,6 +18425,13 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| shipmentId | String | yes | Shipment Id |  
 
 
 
@@ -16904,8 +18473,9 @@ Track Order by order id, for application based on application Id
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").order.trackOrder(orderId: orderId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16917,6 +18487,13 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| orderId | String | yes | Order Id |  
 
 
 
@@ -16958,8 +18535,9 @@ Get all failed orders application wise
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").order.failedOrders().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -16971,6 +18549,12 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |  
 
 
 
@@ -17012,8 +18596,9 @@ Reprocess order by order id
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").order.reprocessOrder(orderId: orderId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17025,6 +18610,13 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| orderId | String | yes | Order Id |  
 
 
 
@@ -17066,8 +18658,9 @@ Use this API to update the shipment using its shipment ID.
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").order.updateShipment(shipmentId: shipmentId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17080,6 +18673,13 @@ order.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
+| body | [ShipmentUpdateRequest](#ShipmentUpdateRequest) | yes | Request body |
 
 
 Update the shipment
@@ -17120,8 +18720,9 @@ Use this API to retrieve the issues that led to the cancellation of bags within 
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").order.getPlatformShipmentReasons(action: action).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17133,6 +18734,13 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| action | String | yes | Action |  
 
 
 
@@ -17174,8 +18782,9 @@ Use this API to track a shipment using its shipment ID.
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").order.getShipmentTrackDetails(orderId: orderId, shipmentId: shipmentId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17187,6 +18796,14 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| orderId | String | yes | ID of the order. |   
+| shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
 
 
@@ -17228,8 +18845,9 @@ Use this API to get address of a shipment using its shipment ID and Address Cate
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.getShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17241,6 +18859,13 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
+| addressCategory | String | yes | Category of the address it falls into(billing or delivery). |  
 
 
 
@@ -17282,8 +18907,9 @@ Use this API to update address of a shipment using its shipment ID and Address C
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.updateShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17296,6 +18922,13 @@ order.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
+| addressCategory | String | yes | Category of the address it falls into(billing or delivery). |  
+| body | [UpdateShipmentAddressRequest](#UpdateShipmentAddressRequest) | yes | Request body |
 
 
 Update Shipment Address
@@ -17336,8 +18969,9 @@ Get Ping
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.getPing().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17349,6 +18983,11 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |  
 
 
 
@@ -17390,8 +19029,9 @@ Get Voice Callback
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.voiceCallback().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17403,6 +19043,11 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |  
 
 
 
@@ -17444,8 +19089,9 @@ Get Voice Click to Call
 
 
 
+
 ```kotlin
-order.().safeAwait{ response,error->
+client.order.voiceClickToCall(caller: caller, receiver: receiver).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17457,6 +19103,13 @@ order.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| caller | String | yes | Caller contact number |   
+| receiver | String | yes | Receiver contact number |  
 
 
 
@@ -17503,8 +19156,9 @@ Update Search Keyword
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.updateSearchKeywords(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17517,6 +19171,13 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+| body | [CreateSearchKeyword](#CreateSearchKeyword) | yes | Request body |
 
 
 Update Search Keyword by its id. On successful request, returns the updated collection
@@ -17557,8 +19218,9 @@ Get a Search Keywords Details
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getSearchKeywords(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17570,6 +19232,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
 
 
 
@@ -17627,8 +19296,9 @@ Delete a Search Keywords
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.deleteSearchKeywords(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17640,6 +19310,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
 
 
 
@@ -17683,8 +19360,9 @@ List all Search Custom Keyword Listing
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getAllSearchKeyword().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17696,6 +19374,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
@@ -17764,8 +19448,9 @@ Add a Custom Search Keywords
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.createCustomKeyword(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17778,6 +19463,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
+| body | [CreateSearchKeyword](#CreateSearchKeyword) | yes | Request body |
 
 
 Create a Custom Search Keywords. See `CreateSearchKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateSearchKeywordSchema`
@@ -17834,8 +19525,9 @@ Create & Update Autocomplete Keyword
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.updateAutocompleteKeyword(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17848,6 +19540,13 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+| body | [CreateAutocompleteKeyword](#CreateAutocompleteKeyword) | yes | Request body |
 
 
 Update a mapping by it's id. On successful request, returns the updated Keyword mapping
@@ -17888,8 +19587,9 @@ Get a Autocomplete Keywords Details
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getAutocompleteKeywordDetail(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17901,6 +19601,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
 
 
 
@@ -17970,8 +19677,9 @@ Delete a Autocomplete Keywords
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.deleteAutocompleteKeyword(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -17983,6 +19691,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
 
 
 
@@ -18026,8 +19741,9 @@ List all Autocomplete Keyword Listing
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getAutocompleteConfig().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18039,6 +19755,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
@@ -18119,8 +19841,9 @@ Add a Custom Autocomplete Keywords
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.createCustomAutocompleteRule(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18133,6 +19856,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
+| body | [CreateAutocompleteKeyword](#CreateAutocompleteKeyword) | yes | Request body |
 
 
 Create a Custom Autocomplete Keywords. See `CreateAutocompleteKeywordSchema` for the list of attributes needed to create a mapping and /collections/query-options for the available options to create a rule. On successful request, returns a paginated list of collections specified in `CreateAutocompleteKeywordSchema`
@@ -18173,8 +19902,9 @@ List all Product Bundles
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProductBundle(q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18186,6 +19916,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| q | String? | no | A search string that is searched with product bundle name. |  
 
 
 
@@ -18373,8 +20109,9 @@ Create Product Bundle
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createProductBundle(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18387,6 +20124,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |  
+| body | [ProductBundleRequest](#ProductBundleRequest) | yes | Request body |
 
 
 Create Product Bundle. See `ProductBundleRequest` for the request body parameter need to create a product bundle. On successful request, returns in `ProductBundleRequest` with id
@@ -18460,8 +20202,9 @@ Update a Product Bundle
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.updateProductBundle(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18474,6 +20217,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to delete. |  
+| body | [ProductBundleUpdateRequest](#ProductBundleUpdateRequest) | yes | Request body |
 
 
 Update a Product Bundle by its id. On successful request, returns the updated product bundle
@@ -18547,8 +20296,9 @@ Get a particular Product Bundle details
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProductBundleDetail(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18560,6 +20310,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| id | String | yes | A `id` is a unique identifier for a particular detail. Pass the `id` of the keywords which you want to retrieve. |  
 
 
 
@@ -18635,8 +20391,9 @@ Get list of size guides
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getSizeGuides(active: active, q: q, tag: tag, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18648,6 +20405,16 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company for which the size guides are to be fetched. |   
+| active | Boolean? | no | filter size guide on basis of active, in-active |   
+| q | String? | no | Query that is to be searched. |   
+| tag | String? | no | to filter size guide on basis of tag. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 10. |  
 
 
 
@@ -18748,8 +20515,9 @@ Create a size guide.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createSizeGuide(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18762,6 +20530,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company inside which the size guide is to be created. |  
+| body | [ValidateSizeGuide](#ValidateSizeGuide) | yes | Request body |
 
 
 This API allows to create a size guide associated to a brand.
@@ -18804,8 +20577,9 @@ Edit a size guide.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.updateSizeGuide(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18818,6 +20592,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company. |   
+| id | String | yes | Mongo id of the size guide to be edited |  
+| body | [ValidateSizeGuide](#ValidateSizeGuide) | yes | Request body |
 
 
 This API allows to edit a size guide.
@@ -18860,8 +20640,9 @@ Get a single size guide.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getSizeGuide(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18873,6 +20654,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to size guide. |   
+| id | String | yes | Id of the size guide to be viewed. |  
 
 
 
@@ -18962,8 +20749,9 @@ Get configuration meta  details for catalog for admin panel
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getCatalogConfiguration().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -18975,6 +20763,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
@@ -19016,8 +20810,9 @@ Get configured details for catalog
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getConfigurations().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19029,6 +20824,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
@@ -19382,8 +21183,9 @@ Add configuration for products & listings
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.createConfigurationProductListing(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19396,6 +21198,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
+| body | [AppConfiguration](#AppConfiguration) | yes | Request body |
 
 
 Add configuration for products & listing.
@@ -19436,8 +21244,9 @@ Get configured details for catalog
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getConfigurationByType(type: type).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19449,6 +21258,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| type | String | yes | type can be brands, categories etc. |  
 
 
 
@@ -19490,8 +21306,9 @@ Add configuration for categories and brands
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.createConfigurationByType(type: type, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19504,6 +21321,13 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| type | String | yes | type can be brands, categories etc. |  
+| body | [AppConfiguration](#AppConfiguration) | yes | Request body |
 
 
 Add configuration for categories & brands.
@@ -19544,8 +21368,9 @@ Get query filters to configure a collection
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getQueryFilters().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19557,6 +21382,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
@@ -19948,8 +21779,9 @@ List all the collections
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getAllCollections().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -19961,6 +21793,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
@@ -20257,8 +22095,9 @@ Add a Collection
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.createCollection(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20271,6 +22110,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
+| body | [CreateCollection](#CreateCollection) | yes | Request body |
 
 
 Create a collection. See `CreateCollectionRequestSchema` for the list of attributes needed to create a collection and collections/query-options for the available options to create a collection. On successful request, returns a paginated list of collections specified in `CollectionCreateResponse`
@@ -20371,8 +22216,9 @@ Get a particular collection
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getCollectionDetail(slug: slug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20384,6 +22230,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| slug | String | yes | A `slug` is a human readable, URL friendly unique identifier of an object. Pass the `slug` of the collection which you want to retrieve. |  
 
 
 
@@ -20486,8 +22339,9 @@ Update a collection
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.updateCollection(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20500,6 +22354,13 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier of a collection. |  
+| body | [UpdateCollection](#UpdateCollection) | yes | Request body |
 
 
 Update a collection by it's id. On successful request, returns the updated collection
@@ -20600,8 +22461,9 @@ Delete a Collection
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.deleteCollection(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20613,6 +22475,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier of a collection. |  
 
 
 
@@ -20656,8 +22525,9 @@ Get the items for a collection
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getCollectionItems(id: id, sortOn: sortOn, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20669,6 +22539,16 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier of a collection. |   
+| sortOn | String? | no | Each response will contain sort_on param, which should be sent back to make pagination work. |   
+| pageId | String? | no | Each response will contain next_id param, which should be sent back to make pagination work. |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |  
 
 
 
@@ -20710,8 +22590,9 @@ Add items to a collection
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.addCollectionItems(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20724,6 +22605,13 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| id | String | yes | A `id` is a unique identifier of a collection. |  
+| body | [CollectionItemRequest](#CollectionItemRequest) | yes | Request body |
 
 
 Adds items to a collection specified by its `id`. See `CollectionItemRequest` for the list of attributes needed to add items to an collection.
@@ -20766,8 +22654,9 @@ Analytics data of catalog and inventory.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getCatalogInsights(brand: brand).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20779,6 +22668,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| brand | String? | no | Brand slug |  
 
 
 
@@ -20826,8 +22722,9 @@ Analytics data of catalog and inventory that are being cross-selled.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getSellerInsights(sellerAppId: sellerAppId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20839,6 +22736,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| sellerAppId | String | yes | Id of the seller application which is serving the invetory/catalog of the company |  
 
 
 
@@ -20883,8 +22786,9 @@ Create/Update opt-in infomation.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createMarketplaceOptin(marketplace: marketplace, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20897,6 +22801,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | The company id for which the detail needs to be retrieved. |   
+| marketplace | String | yes | The marketplace for which the detail needs to be retrieved. |  
+| body | [OptInPostRequest](#OptInPostRequest) | yes | Request body |
 
 
 Use this API to create/update opt-in information for given platform. If successful, returns data in the response body as specified in `OptInPostResponseSchema`
@@ -20937,8 +22847,9 @@ Get opt-in infomation.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getMarketplaceOptinDetail().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -20950,6 +22861,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes |  |  
 
 
 
@@ -20991,8 +22907,9 @@ Get the Company details.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getCompanyDetail().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21004,6 +22921,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | The company id for which the detail needs to be retrieved. |  
 
 
 
@@ -21045,8 +22967,9 @@ Get the Company Brand details of Optin.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getCompanyBrandDetail(isActive: isActive, q: q, pageNo: pageNo, pageSize: pageSize, marketplace: marketplace).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21058,6 +22981,16 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | The company id for which the detail needs to be retrieved. |   
+| isActive | Boolean? | no | The is_active status for the optin id. |   
+| q | Boolean? | no | The search value to filter the list. |   
+| pageNo | Int? | no | The number of page for the company id. |   
+| pageSize | Int? | no | Number of records that can be seen on the page for the company id. |   
+| marketplace | String? | no | The marketplace platform associated with the company id. |  
 
 
 
@@ -21099,8 +23032,9 @@ Get the Company metrics
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getCompanyMetrics().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21112,6 +23046,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | The company id for which the detail needs to be retrieved. |  
 
 
 
@@ -21153,8 +23092,9 @@ Get the Store details.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getStoreDetail(q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21166,6 +23106,14 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | The company id for which the detail needs to be retrieved. |   
+| q | String? | no | The search related the store for the company id. |   
+| pageNo | Int? | no | The number of page for the company id. |   
+| pageSize | Int? | no | Number of records that can be seen on the page for the company id. |  
 
 
 
@@ -21207,8 +23155,9 @@ Get gender attribute details
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getGenderAttribute(attributeSlug: attributeSlug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21220,6 +23169,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company for which you want to view the genders |   
+| attributeSlug | String | yes | slug of the attribute for which you want to view the genders |  
 
 
 
@@ -21302,8 +23257,9 @@ List Department specifiec product categories
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.listProductTemplateCategories(departments: departments, itemType: itemType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21315,6 +23271,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| departments | String | yes | A `department` is name of a departments whose category needs to be listed. Can specify multiple departments. |   
+| itemType | String | yes | An `item_type` is the type of item, it can be `set`, `standard`, `digital`, etc. |  
 
 
 
@@ -21359,8 +23322,9 @@ List all Departments
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.listDepartmentsData(pageNo: pageNo, pageSize: pageSize, name: name, search: search, isActive: isActive).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21372,6 +23336,16 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 10. |   
+| name | String? | no | Can search departments by passing name. |   
+| search | String? | no | Can search departments by passing name of the department in search parameter. |   
+| isActive | Boolean? | no | Can query for departments based on whether they are active or inactive. |  
 
 
 
@@ -21731,8 +23705,9 @@ Get specific departments details by passing in unique id of the department
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getDepartmentData(uid: uid).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -21744,6 +23719,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String | yes | A `uid` is a unique identifier of a department. |  
 
 
 
@@ -22097,8 +24078,9 @@ List all Templates
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.listProductTemplate(departments: departments).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -22110,6 +24092,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| departments | String | yes | A `departments` is the name of a particular department. |  
 
 
 
@@ -24002,8 +25990,9 @@ Validate Product Template Schema
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.validateProductTemplate(slug: slug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24015,6 +26004,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| slug | String | yes | A `slug` is a unique identifier for a particular template. |  
 
 
 
@@ -24056,8 +26051,9 @@ Download Product Template View
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.downloadProductTemplateViews(slug: slug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24069,6 +26065,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| slug | String | yes | A `slug` is a unique identifier for a particular template. |  
 
 
 
@@ -24110,8 +26112,9 @@ Download Product Template View
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.downloadProductTemplateView(itemType: itemType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24123,6 +26126,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| itemType | String | yes | An `item_type` defines the type of item. |  
 
 
 
@@ -24164,8 +26173,9 @@ Validate Product Template Schema
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.validateProductTemplateSchema(itemType: itemType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24177,6 +26187,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| itemType | String | yes | An `item_type` defines the type of item. The default value is standard. |  
 
 
 
@@ -24318,8 +26334,9 @@ List HSN Codes
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.listHSNCodes().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24331,6 +26348,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
@@ -24382,8 +26404,9 @@ Allows you to list all product templates export list details
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.listProductTemplateExportDetails().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24395,6 +26418,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
@@ -24468,8 +26496,9 @@ Allows you to list all values for Templates, Brands or Type
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.listTemplateBrandTypeValues(filter: filter).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24481,6 +26510,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| filter | String | yes | A `filter` is the unique identifier of the type of value required. |  
 
 
 
@@ -24534,8 +26569,9 @@ Get product categories list
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.listCategories(level: level, departments: departments, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -24547,6 +26583,16 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| level | String? | no | Get category for multiple levels |   
+| departments | String? | no | Get category for multiple departments filtered |   
+| q | String? | no | Get multiple categories filtered by search string |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 10. |  
 
 
 
@@ -24986,8 +27032,9 @@ Create product categories
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createCategories(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25000,6 +27047,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |  
+| body | [CategoryRequestBody](#CategoryRequestBody) | yes | Request body |
 
 
 This API lets user create product categories
@@ -25043,8 +27095,9 @@ Update product categories
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.updateCategory(uid: uid, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25057,6 +27110,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String | yes | Category unique id |  
+| body | [CategoryRequestBody](#CategoryRequestBody) | yes | Request body |
 
 
 Update a product category using this apu
@@ -25097,8 +27156,9 @@ Get product category by uid
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getCategoryData(uid: uid).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25110,6 +27170,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| uid | String | yes | Category unique id |  
 
 
 
@@ -25189,8 +27255,9 @@ Get product list
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProducts(brandIds: brandIds, categoryIds: categoryIds, itemIds: itemIds, departmentIds: departmentIds, itemCode: itemCode, q: q, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25202,6 +27269,19 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Get list of products filtered by company Id |   
+| brandIds | ArrayList<Int>? | no | Get multiple products filtered by Brand Ids |   
+| categoryIds | ArrayList<Int>? | no | Get multiple products filtered by Category Ids |   
+| itemIds | ArrayList<Int>? | no | Get multiple products filtered by Item Ids |   
+| departmentIds | ArrayList<Int>? | no | Get multiple products filtered by Department Ids |   
+| itemCode | ArrayList<Double>? | no | Get multiple products filtered by Item Code |   
+| q | String? | no | Get multiple products filtered by q string |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 10. |  
 
 
 
@@ -25409,8 +27489,9 @@ Create a product.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createProduct(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25423,6 +27504,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to product that is to be viewed. |  
+| body | [ProductCreateUpdate](#ProductCreateUpdate) | yes | Request body |
 
 
 This API allows to create product.
@@ -25465,8 +27551,9 @@ Edit a product.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.editProduct(itemId: itemId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25479,6 +27566,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to product that is to be viewed. |   
+| itemId | Int | yes | Id of the product to be updated. |  
+| body | [ProductCreateUpdate](#ProductCreateUpdate) | yes | Request body |
 
 
 This API allows to edit product.
@@ -25522,8 +27615,9 @@ Get a single product.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProduct(itemCode: itemCode, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25535,6 +27629,15 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| itemCode | String? | no | Item code of the product. |   
+| companyId | Int | yes | Company Id of the product. |   
+| itemId | Int | yes | Item Id of the product. |   
+| brandUid | Int? | no | Brand Id of the product. |   
+| uid | Int? | no | Id of the product. |  
 
 
 
@@ -25697,8 +27800,9 @@ Delete a product.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.deleteProduct(itemId: itemId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25710,6 +27814,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id of the company associated to product that is to be deleted. |   
+| itemId | Int | yes | Id of the product to be updated. |  
 
 
 
@@ -25753,8 +27863,9 @@ Validate product/size data
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProductValidation().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25766,6 +27877,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Validates data against given company |  
 
 
 
@@ -25809,8 +27925,9 @@ Get a single product size.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProductSize(itemCode: itemCode, itemId: itemId, brandUid: brandUid, uid: uid).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25822,6 +27939,15 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| itemCode | String? | no | Item code of the product size. |   
+| companyId | Int | yes | Company Id of the product size. |   
+| itemId | Int | yes | Item Id of the product size. |   
+| brandUid | Int? | no | Brand Id of the product size. |   
+| uid | Int? | no | Id of the product size. |  
 
 
 
@@ -25963,8 +28089,9 @@ Get a list of all bulk product upload jobs.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProductBulkUploadHistory(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -25976,6 +28103,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id of of which Product Bulk Upload History to be obtained. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |  
 
 
 
@@ -26065,8 +28199,9 @@ Create a Bulk asset upload Job.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.updateProductAssetsInBulk(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26079,6 +28214,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id in which assets to be uploaded. |  
+| body | [BulkJob](#BulkJob) | yes | Request body |
 
 
 This API helps to create a bulk asset upload job.
@@ -26121,8 +28261,9 @@ Delete Bulk product job.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.deleteProductBulkJob(batchId: batchId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26134,6 +28275,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id of the company associated to size that is to be deleted. |   
+| batchId | Int | yes | Batch Id of the bulk product job to be deleted. |  
 
 
 
@@ -26177,8 +28324,9 @@ Create products in bulk associated with given batch Id.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createProductsInBulk(batchId: batchId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26191,6 +28339,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id in which assets to be uploaded. |   
+| batchId | String | yes | Batch Id in which assets to be uploaded. |  
+| body | [BulkProductRequest](#BulkProductRequest) | yes | Request body |
 
 
 This API helps to create products in bulk push to kafka for approval/creation.
@@ -26233,8 +28387,9 @@ Get a list of all tags associated with company.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getCompanyTags().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26246,6 +28401,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id of the product size. |  
 
 
 
@@ -26294,8 +28454,9 @@ Get a list of all bulk asset jobs.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getProductAssetsInBulk(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26307,6 +28468,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id of the product size. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |  
 
 
 
@@ -26384,8 +28552,9 @@ Create a Bulk asset upload Job.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createProductAssetsInBulk(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26398,6 +28567,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id in which assets to be uploaded. |  
+| body | [ProductBulkAssets](#ProductBulkAssets) | yes | Request body |
 
 
 This API helps to create a bulk asset upload job.
@@ -26440,8 +28614,9 @@ Delete a Size associated with product.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.deleteSize(itemId: itemId, size: size).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26453,6 +28628,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id of the company associated to size that is to be deleted. |   
+| itemId | Int | yes | Item Id of the product associated with size to be deleted. |   
+| size | Int | yes | size to be deleted. |  
 
 
 
@@ -26496,8 +28678,9 @@ Get Inventory for company
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getInventoryBySize(itemId: itemId, size: size, pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26509,6 +28692,16 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to product that is to be viewed. |   
+| itemId | String | yes | Item code of the product of which size is to be get. |   
+| size | String | yes | Size of which inventory is to get. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |   
+| q | String? | no | Search with help of store code. |  
 
 
 
@@ -26832,8 +29025,9 @@ Add Inventory for particular size and store.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.addInventory(itemId: itemId, size: size, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26846,6 +29040,13 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to product that is to be viewed. |   
+| itemId | Double | yes | Item code of the product of which size is to be get. |   
+| size | String | yes | Size in which inventory is to be added. |  
+| body | [InventoryRequest](#InventoryRequest) | yes | Request body |
 
 
 This API allows add Inventory for particular size and store.
@@ -26888,8 +29089,9 @@ Get Inventory for company
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getInventoryBySizeIdentifier(itemId: itemId, sizeIdentifier: sizeIdentifier, pageNo: pageNo, pageSize: pageSize, q: q, locationIds: locationIds).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -26901,6 +29103,17 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to product that is to be viewed. |   
+| itemId | String | yes | Item code of the product of which size is to be get. |   
+| sizeIdentifier | String | yes | Size Identifier (Seller Identifier or Primary Identifier) of which inventory is to get. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |   
+| q | String? | no | Search with help of store code. |   
+| locationIds | ArrayList<Int>? | no | Search by store ids. |  
 
 
 
@@ -27224,8 +29437,9 @@ Delete a Inventory.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.deleteInventory(size: size, itemId: itemId, locationId: locationId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27237,6 +29451,14 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id of the company associated with Inventory that is to be deleted. |   
+| size | String | yes | size that is to be deleted. |   
+| itemId | Int | yes | Id of the product associated with Inventory to be deleted. |   
+| locationId | Double | yes | Location ID of store of which inventory is to be deleted. |  
 
 
 
@@ -27280,8 +29502,9 @@ Get a list of all bulk Inventory upload jobs.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getInventoryBulkUploadHistory(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27293,6 +29516,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id of of which Inventory Bulk Upload History to be obtained. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |  
 
 
 
@@ -27639,8 +29869,9 @@ Create a Bulk Inventory upload Job.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createBulkInventoryJob(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27653,6 +29884,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id in which Inventory to be uploaded. |  
+| body | [BulkJob](#BulkJob) | yes | Request body |
 
 
 This API helps to create a bulk Inventory upload job.
@@ -27695,8 +29931,9 @@ Delete Bulk Inventory job.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.deleteBulkInventoryJob(batchId: batchId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27708,6 +29945,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id of the company of which bulk Inventory job is to be deleted. |   
+| batchId | String | yes | Batch Id of the bulk delete job. |  
 
 
 
@@ -27751,8 +29994,9 @@ Create products in bulk associated with given batch Id.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createBulkInventory(batchId: batchId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27765,6 +30009,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id in which Inventory is to be uploaded. |   
+| batchId | String | yes | Batch Id of the bulk create job. |  
+| body | [InventoryBulkRequest](#InventoryBulkRequest) | yes | Request body |
 
 
 This API helps to create products in bulk push to kafka for approval/creation.
@@ -27807,8 +30057,9 @@ Get Inventory export history.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getInventoryExport().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27820,6 +30071,11 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id in which assets to be uploaded. |  
 
 
 
@@ -27861,8 +30117,9 @@ Create a Inventory export Job.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createInventoryExportJob(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27875,6 +30132,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id in which assets to be uploaded. |  
+| body | [InventoryExportRequest](#InventoryExportRequest) | yes | Request body |
 
 
 This API helps to create a Inventory export job.
@@ -27917,8 +30179,9 @@ Get List of different filters for inventory export
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.exportInventoryConfig(filterType: filterType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27930,6 +30193,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to product that is to be viewed. |   
+| filterType | String? | no | filter type from any one of ['brand', 'store', 'type'] |  
 
 
 
@@ -27980,8 +30249,9 @@ Hsn Code List.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getAllHsnCodes(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -27993,6 +30263,14 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| pageNo | Int? | no | page no |   
+| pageSize | Int? | no | page size |   
+| q | String? | no | search using hsn code. |  
 
 
 
@@ -28056,8 +30334,9 @@ Create Hsn Code.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.createHsnCode(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28070,6 +30349,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |  
+| body | [HsnUpsert](#HsnUpsert) | yes | Request body |
 
 
 Create Hsn Code.
@@ -28132,8 +30416,9 @@ Update Hsn Code.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.updateHsnCode(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28146,6 +30431,12 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| id | String | yes | Unique id |  
+| body | [HsnUpsert](#HsnUpsert) | yes | Request body |
 
 
 Update Hsn Code.
@@ -28208,8 +30499,9 @@ Fetch Hsn Code.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.getHsnCode(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28221,6 +30513,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| id | String | yes | Unique id |  
 
 
 
@@ -28284,8 +30582,9 @@ Bulk Create or Update Hsn Code.
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.catalog.bulkHsnCode(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28298,6 +30597,11 @@ catalog.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |  
+| body | [BulkHsnUpsert](#BulkHsnUpsert) | yes | Request body |
 
 
 Bulk Create or Update Hsn Code.
@@ -28340,8 +30644,9 @@ List all the brands
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getApplicationBrands(department: department, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28353,6 +30658,15 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| department | String? | no | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |  
 
 
 
@@ -28432,8 +30746,9 @@ List all the departments
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getDepartments().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28445,6 +30760,12 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |  
 
 
 
@@ -28589,8 +30910,9 @@ List all the categories
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getCategories(department: department).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28602,6 +30924,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| department | String? | no | The name of the department. Use this parameter to filter products by a particular department. See below the list of available departments. You can retrieve available departments from the **v1.0/departments/** API |  
 
 
 
@@ -28731,8 +31060,9 @@ List the products
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getAppicationProducts(q: q, f: f, filters: filters, sortOn: sortOn, pageId: pageId, pageSize: pageSize, pageNo: pageNo, pageType: pageType, itemIds: itemIds).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -28744,6 +31074,21 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| q | String? | no | The search query. This can be a partial or complete name of a either a product, brand or category |   
+| f | String? | no | The search filter parameters. All the parameter filtered from filter parameters will be passed in **f** parameter in this format. **?f=brand:voi-jeans||and:::category:t-shirts||shirts** |   
+| filters | Boolean? | no | Pass `filters` parameter to fetch the filter details. This flag is used to fetch all filters |   
+| sortOn | String? | no | The order to sort the list of products on. The supported sort parameters are popularity, price, redemption and discount in either ascending or descending order. See the supported values below. |   
+| pageId | String? | no | Each response will contain **page_id** param, which should be sent back to make pagination work. |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |   
+| pageNo | Int? | no | If page_type is number then pass it to fetch page items. Default is 1. |   
+| pageType | String? | no | For pagination type should be cursor or number. Default is cursor. |   
+| itemIds | ArrayList<String>? | no | Item Ids of product |  
 
 
 
@@ -29401,8 +31746,9 @@ Get a product
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getProductDetailBySlug(slug: slug).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -29414,6 +31760,13 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| slug | String | yes | The unique identifier of a product. i.e; `slug` of a product. You can retrieve these from the APIs that list products like **v1.0/products/** |  
 
 
 
@@ -29572,8 +31925,9 @@ Get applicationwise products
 
 
 
+
 ```kotlin
-catalog.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").catalog.getAppProducts(brandIds: brandIds, categoryIds: categoryIds, departmentIds: departmentIds, pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -29585,6 +31939,18 @@ catalog.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |   
+| applicationId | String | yes | A `application_id` is a unique identifier for a particular sale channel. |   
+| brandIds | ArrayList<Int>? | no | Get multiple products filtered by Brand Ids |   
+| categoryIds | ArrayList<Int>? | no | Get multiple products filtered by Category Ids |   
+| departmentIds | ArrayList<Int>? | no | Get multiple products filtered by Department Ids |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 10. |   
+| q | String? | no | Search with Item Code, Name, Slug or Identifier. |  
 
 
 
@@ -29797,8 +32163,9 @@ Edit company profile
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.updateCompany(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -29811,6 +32178,11 @@ companyprofile.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |  
+| body | [UpdateCompany](#UpdateCompany) | yes | Request body |
 
 
 This API allows to edit the company profile of the seller account.
@@ -29854,8 +32226,9 @@ Get company profile
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.cbsOnboardGet().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -29867,6 +32240,11 @@ companyprofile.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
@@ -29969,8 +32347,9 @@ Get company metrics
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.getCompanyMetrics().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -29982,6 +32361,11 @@ companyprofile.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | A `company_id` is a unique identifier for a particular seller account. |  
 
 
 
@@ -30046,8 +32430,9 @@ Edit a brand.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.editBrand(brandId: brandId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30060,6 +32445,12 @@ companyprofile.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to brand that is to be viewed. |   
+| brandId | String | yes | Id of the brand to be viewed. |  
+| body | [CreateUpdateBrandRequestSerializer](#CreateUpdateBrandRequestSerializer) | yes | Request body |
 
 
 This API allows to edit meta of a brand.
@@ -30103,8 +32494,9 @@ Get a single brand.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.getBrand(brandId: brandId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30116,6 +32508,12 @@ companyprofile.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company associated to brand that is to be viewed. |   
+| brandId | String | yes | Id of the brand to be viewed. |  
 
 
 
@@ -30185,8 +32583,9 @@ Create a Brand.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.createBrand(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30199,6 +32598,11 @@ companyprofile.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company. |  
+| body | [CreateUpdateBrandRequestSerializer](#CreateUpdateBrandRequestSerializer) | yes | Request body |
 
 
 This API allows to create a brand associated to a company.
@@ -30242,8 +32646,9 @@ Create a company brand mapping.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.createCompanyBrandMapping(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30256,6 +32661,11 @@ companyprofile.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company inside which the brand is to be mapped. |  
+| body | [CompanyBrandPostRequestSerializer](#CompanyBrandPostRequestSerializer) | yes | Request body |
 
 
 This API allows to create a company brand mapping, for a already existing brand in the system.
@@ -30298,8 +32708,9 @@ Get brands associated to a company
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.getBrands(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30311,6 +32722,14 @@ companyprofile.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 10. |   
+| q | String? | no | Search term for name. |  
 
 
 
@@ -30439,8 +32858,9 @@ Create a location asscoiated to a company.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.createLocation(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30453,6 +32873,11 @@ companyprofile.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company inside which the location is to be created. |  
+| body | [LocationSerializer](#LocationSerializer) | yes | Request body |
 
 
 This API allows to create a location associated to a company.
@@ -30496,8 +32921,9 @@ Get list of locations
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.getLocations(storeType: storeType, q: q, stage: stage, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30509,6 +32935,16 @@ companyprofile.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company whose locations are to fetched |   
+| storeType | String? | no | Helps to sort the location list on the basis of location type. |   
+| q | String? | no | Query that is to be searched. |   
+| stage | String? | no | to filter companies on basis of verified or unverified companies. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results |   
+| pageSize | Int? | no | Number of items to retrieve in each page. Default is 10. |  
 
 
 
@@ -30733,8 +33169,9 @@ Edit a location asscoiated to a company.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.updateLocation(locationId: locationId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30747,6 +33184,12 @@ companyprofile.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company inside which the location is to be created. |   
+| locationId | String | yes | Id of the location which you want to edit. |  
+| body | [LocationSerializer](#LocationSerializer) | yes | Request body |
 
 
 This API allows to edit a location associated to a company.
@@ -30790,8 +33233,9 @@ Get details of a specific location.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.getLocationDetail(locationId: locationId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -30803,6 +33247,12 @@ companyprofile.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company inside which the location lies. |   
+| locationId | String | yes | Id of the location which you want to view. |  
 
 
 
@@ -31029,8 +33479,9 @@ Create a location asscoiated to a company in bulk.
 
 
 
+
 ```kotlin
-companyprofile.().safeAwait{ response,error->
+client.companyprofile.createLocationBulk(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31043,6 +33494,11 @@ companyprofile.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Id of the company inside which the location is to be created. |  
+| body | [BulkLocationSerializer](#BulkLocationSerializer) | yes | Request body |
 
 
 This API allows to create a location associated to a company.
@@ -31091,8 +33547,9 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31105,6 +33562,12 @@ filestorage.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| namespace | String | yes | bucket name |   
+| companyId | Int | yes | company_id |  
+| body | [StartRequest](#StartRequest) | yes | Request body |
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -31163,8 +33626,9 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31177,6 +33641,12 @@ filestorage.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| namespace | String | yes | bucket name |   
+| companyId | Int | yes | company_id |  
+| body | [StartResponse](#StartResponse) | yes | Request body |
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -31235,8 +33705,9 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: namespace, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31249,6 +33720,13 @@ filestorage.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| namespace | String | yes | bucket name |   
+| companyId | Int | yes | company_id |   
+| applicationId | String | yes | application id |  
+| body | [StartRequest](#StartRequest) | yes | Request body |
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -31307,8 +33785,9 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: namespace, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31321,6 +33800,13 @@ filestorage.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| namespace | String | yes | bucket name |   
+| companyId | Int | yes | company_id |   
+| applicationId | String | yes | application id |  
+| body | [StartResponse](#StartResponse) | yes | Request body |
 
 
 Uploads an arbitrarily sized buffer or blob.
@@ -31379,8 +33865,9 @@ Explain here
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.filestorage.getSignUrls(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31393,6 +33880,11 @@ filestorage.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |  
+| body | [SignUrlRequest](#SignUrlRequest) | yes | Request body |
 
 
 Describe here
@@ -31433,8 +33925,9 @@ Copy Files
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31447,6 +33940,12 @@ filestorage.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| sync | Boolean? | no | sync |   
+| companyId | Int | yes | company_id |  
+| body | [BulkRequest](#BulkRequest) | yes | Request body |
 
 
 Copy Files
@@ -31514,8 +34013,9 @@ Copy Files
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31528,6 +34028,13 @@ filestorage.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| sync | Boolean? | no | sync |   
+| companyId | Int | yes | company_id |   
+| applicationId | Int | yes | application_id |  
+| body | [BulkRequest](#BulkRequest) | yes | Request body |
 
 
 Copy Files
@@ -31595,8 +34102,9 @@ Browse Files
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31608,6 +34116,13 @@ filestorage.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| namespace | String | yes | bucket name |   
+| companyId | Int | yes | company_id |   
+| pageNo | Int? | no | page no |  
 
 
 
@@ -31649,8 +34164,9 @@ Browse Files
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31662,6 +34178,14 @@ filestorage.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| namespace | String | yes | bucket name |   
+| companyId | Int | yes | company_id |   
+| applicationId | Int | yes | application_id |   
+| pageNo | Int? | no | page no |  
 
 
 
@@ -31703,8 +34227,9 @@ Proxy
 
 
 
+
 ```kotlin
-filestorage.().safeAwait{ response,error->
+client.filestorage.proxy(url: url).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31716,6 +34241,12 @@ filestorage.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| url | String | yes | url |  
 
 
 
@@ -31762,8 +34293,9 @@ Create short link
 
 
 
+
 ```kotlin
-share.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31776,6 +34308,12 @@ share.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |  
+| body | [ShortLinkReq](#ShortLinkReq) | yes | Request body |
 
 
 Create short link
@@ -31854,8 +34392,9 @@ Get short links
 
 
 
+
 ```kotlin
-share.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31867,6 +34406,17 @@ share.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| pageNo | Int? | no | Current page number |   
+| pageSize | Int? | no | Current page size |   
+| createdBy | String? | no | Short link creator |   
+| active | String? | no | Short link active status |   
+| q | String? | no | Search text for original and short url |  
 
 
 
@@ -31957,8 +34507,9 @@ Get short link by hash
 
 
 
+
 ```kotlin
-share.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -31970,6 +34521,13 @@ share.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| hash | String | yes | Hash of short url |  
 
 
 
@@ -32049,8 +34607,9 @@ Update short link by id
 
 
 
+
 ```kotlin
-share.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32063,6 +34622,13 @@ share.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| id | String | yes | Short link document identifier |  
+| body | [ShortLinkReq](#ShortLinkReq) | yes | Request body |
 
 
 Update short link by id
@@ -32146,8 +34712,9 @@ Get Job Configs For A Company
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.getJobsByCompany(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32159,6 +34726,13 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| pageNo | Int? | no | Page Number |   
+| pageSize | Int? | no | Page Size |  
 
 
 
@@ -32200,8 +34774,9 @@ Updates An Existing Job Config
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.updateJob(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32214,6 +34789,11 @@ inventory.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |  
+| body | [JobConfigDTO](#JobConfigDTO) | yes | Request body |
 
 
 REST Endpoint that updates a job config
@@ -32254,8 +34834,9 @@ Creates A New Job Config
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.createJob(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32268,6 +34849,11 @@ inventory.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |  
+| body | [JobConfigDTO](#JobConfigDTO) | yes | Request body |
 
 
 REST Endpoint that creates a new job config
@@ -32308,8 +34894,9 @@ Get Job Code Steps
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.getJobSteps(jobId: jobId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32321,6 +34908,12 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| jobId | Int | yes | Job Id |  
 
 
 
@@ -32362,8 +34955,9 @@ Get Job Configs By Company And Integration
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.getJobByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32375,6 +34969,14 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| integrationId | String | yes | Integration Id |   
+| pageNo | Int? | no | Page Number |   
+| pageSize | Int? | no | Page Size |  
 
 
 
@@ -32416,8 +35018,9 @@ Disable Job Config
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.disable(integrationId: integrationId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32429,6 +35032,12 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| integrationId | String | yes | IntegrationId |  
 
 
 
@@ -32470,8 +35079,9 @@ Get Job Configs Defaults
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.getJobConfigDefaults().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32483,6 +35093,11 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |  
 
 
 
@@ -32524,8 +35139,9 @@ Get Job Config By Code
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.getJobByCode(code: code).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32537,6 +35153,12 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| code | String | yes | Job Code |  
 
 
 
@@ -32578,8 +35200,9 @@ Get Job Metrics
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSize, status: status, date: date).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32591,6 +35214,16 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| code | String | yes | Code |   
+| pageNo | Int? | no | Page Number |   
+| pageSize | Int? | no | Page Size |   
+| status | String? | no | Status |   
+| date | String? | no | From Date |  
 
 
 
@@ -32632,8 +35265,9 @@ Get Job Codes By Company And Integration
 
 
 
+
 ```kotlin
-inventory.().safeAwait{ response,error->
+client.inventory.getJobCodesByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32645,6 +35279,14 @@ inventory.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id |   
+| integrationId | String | yes | Integration Id |   
+| pageNo | Int? | no | Page Number |   
+| pageSize | Int? | no | Page Size |  
 
 
 
@@ -32691,8 +35333,9 @@ Get latest build config
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType: platformType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32704,6 +35347,13 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| platformType | String | yes | Current platform name |  
 
 
 
@@ -32763,8 +35413,9 @@ Update build config for next build
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformType: platformType, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32777,6 +35428,13 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| platformType | String | yes | Current platform name |  
+| body | [MobileAppConfigRequest](#MobileAppConfigRequest) | yes | Request body |
 
 
 Update build config for next build
@@ -32835,8 +35493,9 @@ Get previous build versions
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getPreviousVersions(platformType: platformType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32848,6 +35507,13 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| platformType | String | yes | Current platform name |  
 
 
 
@@ -32904,8 +35570,9 @@ Get features of application
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -32917,6 +35584,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -33054,8 +35727,9 @@ Update features of application
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33068,6 +35742,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [AppFeatureRequest](#AppFeatureRequest) | yes | Request body |
 
 
 Update features of application
@@ -33192,8 +35872,9 @@ Get basic application details
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33205,6 +35886,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -33286,8 +35973,9 @@ Add or update application's basic details
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33300,6 +35988,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [ApplicationDetail](#ApplicationDetail) | yes | Request body |
 
 
 Add or update application's basic details
@@ -33378,8 +36072,9 @@ Get application information
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33391,6 +36086,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -33547,8 +36248,9 @@ Get application information
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33561,6 +36263,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [ApplicationInformation](#ApplicationInformation) | yes | Request body |
 
 
 Save Application Current Information. This includes information about social links, address and contact information of an application.
@@ -33709,8 +36417,9 @@ Get social tokens
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33722,6 +36431,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -33841,8 +36556,9 @@ Add social tokens
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33855,6 +36571,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [TokenResponse](#TokenResponse) | yes | Request body |
 
 
 Add social tokens.
@@ -33973,8 +36695,9 @@ Application inventory enabled companies
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getAppCompanies(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -33986,6 +36709,14 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
 
 
 
@@ -34052,8 +36783,9 @@ Application inventory enabled stores
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -34065,6 +36797,14 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
 
 
 
@@ -34144,8 +36884,9 @@ Get application configuration
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -34157,6 +36898,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -34382,8 +37129,9 @@ Update application configuration
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -34396,6 +37144,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [ApplicationInventory](#ApplicationInventory) | yes | Request body |
 
 
 Update application configuration for various features and data
@@ -34620,8 +37374,9 @@ Partially update application configuration
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -34634,6 +37389,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [AppInventoryPartialUpdate](#AppInventoryPartialUpdate) | yes | Request body |
 
 
 Partially update application configuration for various features and data
@@ -34858,8 +37619,9 @@ Get application enabled currency list
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -34871,6 +37633,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -34928,8 +37696,9 @@ Add initial application supported currency
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -34942,6 +37711,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [AppSupportedCurrency](#AppSupportedCurrency) | yes | Request body |
 
 
 Add initial application supported currency for various features and data. Default INR will be enabled.
@@ -34998,8 +37773,9 @@ Get ordering store by filter
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35012,6 +37788,14 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
+| body | [FilterOrderingStoreRequest](#FilterOrderingStoreRequest) | yes | Request body |
 
 
 Get ordering store by filter
@@ -35136,8 +37920,9 @@ Add/Update ordering store config
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35150,6 +37935,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [OrderingStoreConfig](#OrderingStoreConfig) | yes | Request body |
 
 
 Add/Update ordering store config.
@@ -35201,8 +37992,9 @@ Get attached domain list
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35214,6 +38006,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -35279,8 +38077,9 @@ Add new domain to application
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35293,6 +38092,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [DomainAddRequest](#DomainAddRequest) | yes | Request body |
 
 
 Add new domain to application.
@@ -35341,8 +38146,9 @@ Remove attached domain
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35354,6 +38160,13 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| id | String | yes | Domain _id |  
 
 
 
@@ -35397,8 +38210,9 @@ Change domain type
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.changeDomainType(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35411,6 +38225,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [UpdateDomainTypeRequest](#UpdateDomainTypeRequest) | yes | Request body |
 
 
 Change a domain to Primary or Shortlink domain
@@ -35475,8 +38295,9 @@ Get domain connected status.
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35489,6 +38310,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
+| body | [DomainStatusRequest](#DomainStatusRequest) | yes | Request body |
 
 
 Get domain connected status. Check if domain is live and mapped to appropriate IP to fynd servers.
@@ -35545,8 +38372,9 @@ Create application
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.createApplication(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35559,6 +38387,11 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |  
+| body | [CreateApplicationRequest](#CreateApplicationRequest) | yes | Request body |
 
 
 Create new application
@@ -35599,8 +38432,9 @@ Get list of application under company
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35612,6 +38446,14 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| pageNo | Int? | no |  |   
+| pageSize | Int? | no |  |   
+| q | String? | no | Url encoded object used as mongodb query |  
 
 
 
@@ -35653,8 +38495,9 @@ Get application data from id
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").configuration.getApplicationById().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35666,6 +38509,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |  
 
 
 
@@ -35707,8 +38556,9 @@ Get all currencies
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getCurrencies().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35720,6 +38570,11 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |  
 
 
 
@@ -35774,8 +38629,9 @@ Check domain availibility before linking to application
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getDomainAvailibility(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35788,6 +38644,11 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |  
+| body | [DomainSuggestionsRequest](#DomainSuggestionsRequest) | yes | Request body |
 
 
 Check domain availibility before linking to application. Also sends domain suggestions with similar to queried domain. \ Custom domain search is currently powered by GoDaddy provider.
@@ -35872,8 +38733,9 @@ Get integration data
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getIntegrationById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -35885,6 +38747,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| id | Int | yes | Integration id |  
 
 
 
@@ -36013,8 +38881,9 @@ Get all available integration opt-ins
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36026,6 +38895,13 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
 
 
 
@@ -36174,8 +39050,9 @@ Get company/store level integration opt-ins
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36187,6 +39064,15 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| level | String | yes | Integration level |   
+| uid | Int | yes | Integration level uid |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
 
 
 
@@ -36335,8 +39221,9 @@ Get integration level config
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36348,6 +39235,15 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| id | String | yes | Integration id |   
+| level | String | yes | Integration level |   
+| opted | Boolean? | no | Filter on opted stores |   
+| checkPermission | Boolean? | no | Filter on if permissions are present |  
 
 
 
@@ -36410,8 +39306,9 @@ Get level data for integration
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36423,6 +39320,14 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| id | String | yes | Integration id |   
+| level | String | yes | Integration level |   
+| uid | Int | yes | Integration level uid |  
 
 
 
@@ -36481,8 +39386,9 @@ Check store has active integration
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36494,6 +39400,14 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| id | String | yes | Integration id |   
+| level | String | yes | Integration level |   
+| uid | Int | yes | Integration level uid |  
 
 
 
@@ -36552,8 +39466,9 @@ Get brands by company
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getBrandsByCompany(q: q).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36565,6 +39480,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| q | String? | no | Search text for brand name |  
 
 
 
@@ -36623,8 +39544,9 @@ Get company by brand uids
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36637,6 +39559,13 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
+| body | [CompanyByBrandsRequest](#CompanyByBrandsRequest) | yes | Request body |
 
 
 Get company by brand uids
@@ -36699,8 +39628,9 @@ Get stores by brand uids
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36713,6 +39643,13 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
+| body | [StoreByBrandsRequest](#StoreByBrandsRequest) | yes | Request body |
 
 
 Get stores by brand uids
@@ -36814,8 +39751,9 @@ Get other seller applications
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36827,6 +39765,13 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| pageNo | Int? | no | Current page no |   
+| pageSize | Int? | no | Current request items count |  
 
 
 
@@ -36911,8 +39856,9 @@ Get other seller applications
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -36924,6 +39870,12 @@ configuration.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| id | String | yes | Application Id |  
 
 
 
@@ -37012,8 +39964,9 @@ Opt out company or store from other seller application
 
 
 
+
 ```kotlin
-configuration.().safeAwait{ response,error->
+client.configuration.optOutFromApplication(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37026,6 +39979,12 @@ configuration.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| id | String | yes | Application Id |  
+| body | [OptOutInventory](#OptOutInventory) | yes | Request body |
 
 
 Opt out company or store from other seller application
@@ -37073,8 +40032,9 @@ Get with single coupon details or coupon list
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.getCoupons(pageNo: pageNo, pageSize: pageSize, isArchived: isArchived, title: title, isPublic: isPublic, isDisplay: isDisplay, typeSlug: typeSlug, code: code).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37086,6 +40046,20 @@ cart.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |   
+| pageNo | Int? | no |  |   
+| pageSize | Int? | no |  |   
+| isArchived | Boolean? | no |  |   
+| title | String? | no |  |   
+| isPublic | Boolean? | no |  |   
+| isDisplay | Boolean? | no |  |   
+| typeSlug | String? | no |  |   
+| code | String? | no |  |  
 
 
 
@@ -37179,8 +40153,9 @@ Create new coupon
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.createCoupon(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37193,6 +40168,12 @@ cart.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |  
+| body | [CouponAdd](#CouponAdd) | yes | Request body |
 
 
 Create new coupon
@@ -37236,8 +40217,9 @@ Get with single coupon details or coupon list
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.getCouponById(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37249,6 +40231,13 @@ cart.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |   
+| id | String | yes |  |  
 
 
 
@@ -37430,8 +40419,9 @@ Update existing coupon configuration
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.updateCoupon(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37444,6 +40434,13 @@ cart.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |   
+| id | String | yes |  |  
+| body | [CouponUpdate](#CouponUpdate) | yes | Request body |
 
 
 Update coupon with id sent in `id`
@@ -37487,8 +40484,9 @@ Update coupon archive state and schedule
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.updateCouponPartially(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37501,6 +40499,13 @@ cart.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |   
+| id | String | yes |  |  
+| body | [CouponPartialUpdate](#CouponPartialUpdate) | yes | Request body |
 
 
 Update archive/unarchive and change schedule for coupon
@@ -37565,8 +40570,9 @@ Fetch Cart Details
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.fetchAndvalidateCartItems(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37579,6 +40585,12 @@ cart.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |  
+| body | [OpenapiCartDetailsRequest](#OpenapiCartDetailsRequest) | yes | Request body |
 
 
 Get all the details of cart for a list of provided `cart_items`
@@ -37893,8 +40905,9 @@ Check Pincode Serviceability
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.checkCartServiceability(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -37907,6 +40920,12 @@ cart.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |  
+| body | [OpenApiCartServiceabilityRequest](#OpenApiCartServiceabilityRequest) | yes | Request body |
 
 
 Check Pincode serviceability for cart items provided in `cart_items` and address pincode in `shipping_address`
@@ -38477,8 +41496,9 @@ Create Fynd order with cart details
 
 
 
+
 ```kotlin
-cart.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").cart.checkoutCart(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38491,6 +41511,12 @@ cart.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current Application _id |  
+| body | [OpenApiPlatformCheckoutReq](#OpenApiPlatformCheckoutReq) | yes | Request body |
 
 
 Generate Fynd order for cart details send with provided `cart_items`
@@ -38541,8 +41567,9 @@ List of giveaways of the current application.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.getGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38554,6 +41581,14 @@ rewards.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| pageId | String? | no | pagination page id |   
+| pageSize | Int? | no | pagination page size |  
 
 
 
@@ -38595,8 +41630,9 @@ Adds a new giveaway.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.createGiveaway(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38609,6 +41645,12 @@ rewards.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |  
+| body | [Giveaway](#Giveaway) | yes | Request body |
 
 
 Adds a new giveaway.
@@ -38649,8 +41691,9 @@ Get giveaway by ID.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.getGiveawayByID(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38662,6 +41705,13 @@ rewards.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| id | String | yes | Giveaway ID |  
 
 
 
@@ -38703,8 +41753,9 @@ Updates the giveaway by it's ID.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.updateGiveaway(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38717,6 +41768,13 @@ rewards.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| id | String | yes | Giveaway ID |  
+| body | [Giveaway](#Giveaway) | yes | Request body |
 
 
 Updates the giveaway by it's ID.
@@ -38757,8 +41815,9 @@ List of offer of the current application.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.getOffers().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38770,6 +41829,12 @@ rewards.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |  
 
 
 
@@ -38811,8 +41876,9 @@ Get offer by name.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.getOfferByName(cookie: cookie, name: name).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38824,6 +41890,14 @@ rewards.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| cookie | String | yes | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |   
+| name | String | yes | Offer name |  
 
 
 
@@ -38865,8 +41939,9 @@ Updates the offer by name.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38879,6 +41954,13 @@ rewards.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| name | String | yes | Offer name |  
+| body | [Offer](#Offer) | yes | Request body |
 
 
 Updates the offer by name.
@@ -38919,8 +42001,9 @@ User's reward details.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.getUserAvailablePoints(userId: userId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38932,6 +42015,13 @@ rewards.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| userId | String | yes | user id |  
 
 
 
@@ -38973,8 +42063,9 @@ Update User status
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -38987,6 +42078,13 @@ rewards.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| userId | String | yes | user id |  
+| body | [AppUser](#AppUser) | yes | Request body |
 
 
 Update user status, active/archive
@@ -39027,8 +42125,9 @@ Get list of points transactions.
 
 
 
+
 ```kotlin
-rewards.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageLimit: pageLimit, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39040,6 +42139,16 @@ rewards.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | company id |   
+| applicationId | String | yes | application id |   
+| userId | String | yes | user id |   
+| pageId | String? | no | PageID is the ID of the requested page. For first request it should be kept empty. |   
+| pageLimit | Int? | no | PageLimit is the number of requested items in response. |   
+| pageSize | Int? | no | PageSize is the number of requested items in response. |  
 
 
 
@@ -39087,8 +42196,9 @@ Get statistics groups
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getStatiscticsGroups().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39100,6 +42210,12 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |  
 
 
 
@@ -39149,8 +42265,9 @@ Get statistics group components
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getStatiscticsGroupComponents(groupName: groupName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39162,6 +42279,13 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| groupName | String | yes | Group name |  
 
 
 
@@ -39214,8 +42338,9 @@ Get component statistics csv
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getComponentStatsCSV(componentName: componentName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39227,6 +42352,13 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| componentName | String | yes | Component name |  
 
 
 
@@ -39268,8 +42400,9 @@ Get component statistics pdf
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getComponentStatsPDF(componentName: componentName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39281,6 +42414,13 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| componentName | String | yes | Component name |  
 
 
 
@@ -39322,8 +42462,9 @@ Get component statistics
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getComponentStats(componentName: componentName).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39335,6 +42476,13 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| componentName | String | yes | Component name |  
 
 
 
@@ -39423,8 +42571,9 @@ Get abandon carts list
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getAbandonCartList(fromDate: fromDate, toDate: toDate, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39436,6 +42585,16 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| fromDate | String | yes | From date |   
+| toDate | String | yes | To date |   
+| pageNo | Int? | no | Current page number |   
+| pageSize | Int? | no | Current page size |  
 
 
 
@@ -39497,8 +42656,9 @@ Get abandon carts csv
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getAbandonCartsCSV(fromDate: fromDate, toDate: toDate).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39510,6 +42670,14 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| fromDate | String | yes | From date |   
+| toDate | String | yes | To date |  
 
 
 
@@ -39551,8 +42719,9 @@ Get abandon carts details
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").analytics.getAbandonCartDetail(cartId: cartId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39564,6 +42733,13 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| applicationId | String | yes | Application Id |   
+| cartId | String | yes | Cart Id |  
 
 
 
@@ -39605,8 +42781,9 @@ Create data export job in required format
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.analytics.createExportJob(exportType: exportType, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39619,6 +42796,12 @@ analytics.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| exportType | String | yes | Export type / format |  
+| body | [ExportJobReq](#ExportJobReq) | yes | Request body |
 
 
 Create data export job in required format
@@ -39662,8 +42845,9 @@ Get data export job status
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.analytics.getExportJobStatus(exportType: exportType, jobId: jobId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39675,6 +42859,13 @@ analytics.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| exportType | String | yes | Export type / format |   
+| jobId | String | yes | Export job id |  
 
 
 
@@ -39720,8 +42911,9 @@ Get logs list
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.analytics.getLogsList(logType: logType, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39734,6 +42926,14 @@ analytics.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| logType | String | yes | Log type |   
+| pageNo | Int? | no | Current page number |   
+| pageSize | Int? | no | Current page size |  
+| body | [GetLogsListReq](#GetLogsListReq) | yes | Request body |
 
 
 Get logs list
@@ -39792,8 +42992,9 @@ Search logs
 
 
 
+
 ```kotlin
-analytics.().safeAwait{ response,error->
+client.analytics.searchLogs(pageNo: pageNo, pageSize: pageSize, logType: logType, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39806,6 +43007,14 @@ analytics.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |   
+| pageNo | Int? | no | Current page number |   
+| pageSize | Int? | no | Current page size |   
+| logType | String | yes | Log type |  
+| body | [SearchLogReq](#SearchLogReq) | yes | Request body |
 
 
 Search logs
@@ -39875,8 +43084,9 @@ Fetch discount list.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.getDiscounts(view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39888,6 +43098,20 @@ discount.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| view | String? | no | listing or calender.  Default is listing. |   
+| q | String? | no | The search query. This can be a partial or complete name of a discount. |   
+| pageNo | Int? | no | page number. Default is 1. |   
+| pageSize | Int? | no | page size. Default is 12. |   
+| archived | Boolean? | no | archived. Default is false. |   
+| month | Int? | no | month. Default is current month. |   
+| year | Int? | no | year. Default is current year. |   
+| type | String? | no | basic or custom. |   
+| appIds | ArrayList<String>? | no | application ids. |  
 
 
 
@@ -39929,8 +43153,9 @@ Create Discount.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.createDiscount(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39943,6 +43168,11 @@ discount.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |  
+| body | [CreateUpdateDiscount](#CreateUpdateDiscount) | yes | Request body |
 
 
 Create Discount.
@@ -39983,8 +43213,9 @@ Fetch discount.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.getDiscount(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -39996,6 +43227,12 @@ discount.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| id | String | yes | unique id. |  
 
 
 
@@ -40037,8 +43274,9 @@ Create Discount.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.updateDiscount(id: id, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40051,6 +43289,12 @@ discount.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| id | String | yes | id |  
+| body | [CreateUpdateDiscount](#CreateUpdateDiscount) | yes | Request body |
 
 
 Create Discount.
@@ -40091,8 +43335,9 @@ Validate File.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.validateDiscountFile(discount: discount, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40105,6 +43350,12 @@ discount.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| discount | String? | no | discount |  
+| body | [DiscountJob](#DiscountJob) | yes | Request body |
 
 
 Validate File.
@@ -40145,8 +43396,9 @@ Validate File.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.downloadDiscountFile(type: type, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40159,6 +43411,12 @@ discount.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| type | String | yes | type |  
+| body | [DownloadFileJob](#DownloadFileJob) | yes | Request body |
 
 
 Validate File.
@@ -40199,8 +43457,9 @@ Validate File Job.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.getValidationJob(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40212,6 +43471,12 @@ discount.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| id | String | yes | id |  
 
 
 
@@ -40253,8 +43518,9 @@ Cancel Validation Job.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.cancelValidationJob(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40266,6 +43532,12 @@ discount.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| id | String | yes | id |  
 
 
 
@@ -40307,8 +43579,9 @@ Download File Job.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.getDownloadJob(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40320,6 +43593,12 @@ discount.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| id | String | yes | id |  
 
 
 
@@ -40361,8 +43640,9 @@ Cancel Download Job.
 
 
 
+
 ```kotlin
-discount.().safeAwait{ response,error->
+client.discount.cancelDownloadJob(id: id).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40374,6 +43654,12 @@ discount.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | company_id |   
+| id | String | yes | id |  
 
 
 
@@ -40420,8 +43706,9 @@ Add proxy path for external url
 
 
 
+
 ```kotlin
-partner.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").partner.addProxyPath(extensionId: extensionId, body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40434,6 +43721,13 @@ partner.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| extensionId | String | yes | Extension id |  
+| body | [AddProxyReq](#AddProxyReq) | yes | Request body |
 
 
 Add proxy path for external url
@@ -40483,8 +43777,9 @@ Remove proxy path for external url
 
 
 
+
 ```kotlin
-partner.().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").partner.removeProxyPath(extensionId: extensionId, attachedPath: attachedPath).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40496,6 +43791,14 @@ partner.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Current company id |   
+| applicationId | String | yes | Current application id |   
+| extensionId | String | yes | Extension id |   
+| attachedPath | String | yes | Attachaed path slug |  
 
 
 
@@ -40554,8 +43857,9 @@ Get Subscribers By Company ID
 
 
 
+
 ```kotlin
-webhook.().safeAwait{ response,error->
+client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40567,6 +43871,14 @@ webhook.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | Page Number |   
+| pageSize | Int? | no | Page Size |   
+| companyId | Int | yes | Company ID of the application |   
+| extensionId | String? | no | Extension ID |  
 
 
 
@@ -40608,8 +43920,9 @@ Register Subscriber
 
 
 
+
 ```kotlin
-webhook.().safeAwait{ response,error->
+client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40622,6 +43935,11 @@ webhook.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company Id of the application |  
+| body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
 
 
 Register Subscriber
@@ -40662,8 +43980,9 @@ Update Subscriber
 
 
 
+
 ```kotlin
-webhook.().safeAwait{ response,error->
+client.webhook.updateSubscriberConfig(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40676,6 +43995,11 @@ webhook.().safeAwait{ response,error->
 ```
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company ID of the application |  
+| body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
 
 
 Update Subscriber
@@ -40716,8 +44040,9 @@ Get Subscribers By Extension ID
 
 
 
+
 ```kotlin
-webhook.().safeAwait{ response,error->
+client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40729,6 +44054,14 @@ webhook.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | Page Number |   
+| pageSize | Int? | no | Page Size |   
+| companyId | Int | yes | Company ID of the application |   
+| extensionId | String | yes | Extension ID |  
 
 
 
@@ -40770,8 +44103,9 @@ Get Subscriber By Subscriber ID
 
 
 
+
 ```kotlin
-webhook.().safeAwait{ response,error->
+client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40783,6 +44117,12 @@ webhook.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company ID of the application |   
+| subscriberId | Int | yes | Subscriber ID |  
 
 
 
@@ -40824,8 +44164,9 @@ Get All Webhook Events
 
 
 
+
 ```kotlin
-webhook.().safeAwait{ response,error->
+client.webhook.fetchAllEventConfigurations().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -40837,6 +44178,11 @@ webhook.().safeAwait{ response,error->
 }
 ```
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | Int | yes | Company ID of the application |  
 
 
 
