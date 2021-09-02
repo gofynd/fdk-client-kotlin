@@ -59,7 +59,7 @@ class RequestSigner(val request: Request) {
         if (nowDateTime == null) {
             val tz = TimeZone.getTimeZone("UTC")
             // Quoted "Z" to indicate UTC, no timezone offset
-            val df = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            val df = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.ENGLISH)
             df.timeZone = tz
             val nowAsISO: String = df.format(Date())
             nowDateTime = nowAsISO.replace("-", "")
@@ -72,14 +72,14 @@ class RequestSigner(val request: Request) {
     private fun signature(): String {
         val kCredentials = "1234567"
         val strToSign = stringToSign()
-        Log.e("ReqSignER", "signature...... ${hMac(kCredentials, strToSign)}")
+        Log.d("ReqSignER", "signature...... ${hMac(kCredentials, strToSign)}")
         return "v1:${hMac(kCredentials, strToSign)}";
     }
 
     private fun stringToSign(): String {
-        Log.e("ReqSignER", "hash(canonicalString())...... ${hash(canonicalString())}")
+        Log.d("ReqSignER", "hash(canonicalString())...... ${hash(canonicalString())}")
         val strToSign = "${getDateTime()}\n${hash(canonicalString())}"
-        Log.e("ReqSignER", "strToSign...... ${strToSign}")
+        Log.d("ReqSignER", "strToSign...... ${strToSign}")
         return strToSign
     }
 
@@ -126,7 +126,7 @@ class RequestSigner(val request: Request) {
             }
         }
         val canonicalQueryString = encodedQueryPieces.toString()
-        Log.e("ReqSignER", "canonicalQueryString...... $canonicalQueryString")
+        Log.d("ReqSignER", "canonicalQueryString...... $canonicalQueryString")
 
         val encodedPathPieces = StringBuilder()
         updatedReq.url().encodedPathSegments().forEach { path ->
@@ -138,7 +138,7 @@ class RequestSigner(val request: Request) {
             }
         }
         val canonicalPath = encodedPathPieces.toString()
-        Log.e("ReqSignER", "canonicalPath...... $canonicalPath")
+        Log.d("ReqSignER", "canonicalPath...... $canonicalPath")
 
         val canonicalRequest = StringBuilder()
 
@@ -154,8 +154,8 @@ class RequestSigner(val request: Request) {
 
         canonicalRequest.append(hash(body ?: ""))
 
-        Log.e("ReqSignER", " body()...... ${body?: ""}")
-        Log.e("ReqSignER", "hash(updatedReq.body())...... ${hash(body ?: "")}")
+        Log.d("ReqSignER", " body()...... ${body?: ""}")
+        Log.d("ReqSignER", "hash(updatedReq.body())...... ${hash(body ?: "")}")
 
 
         return canonicalRequest.toString()
@@ -186,7 +186,7 @@ class RequestSigner(val request: Request) {
             }
         }
 
-        Log.e("ReqSignER", "canonicalHeader...... $canonicalHeader")
+        Log.d("ReqSignER", "canonicalHeader...... $canonicalHeader")
 
         return canonicalHeader.toString()
     }
@@ -213,7 +213,7 @@ class RequestSigner(val request: Request) {
             }
             headerNames.append(headerName.trim())
         }
-        Log.e("ReqSignER", "signedHeaders...... ${headerNames.toString()}")
+        Log.d("ReqSignER", "signedHeaders...... ${headerNames.toString()}")
 
         return headerNames.toString()
     }

@@ -344,6 +344,7 @@ Get a product
 
 
 
+
 ```kotlin
 catalog.getProductDetailBySlug(slug: slug).safeAwait{ response,error->
     
@@ -520,6 +521,7 @@ Get the sizes of a product
 
 
 
+
 ```kotlin
 catalog.getProductSizesBySlug(slug: slug, storeId: storeId).safeAwait{ response,error->
     
@@ -609,6 +611,7 @@ Success. Returns a ProductSize object. Check the example shown below or refer `P
 
 #### getProductPriceBySlug
 Get the price of a product size at a PIN Code
+
 
 
 
@@ -747,6 +750,7 @@ Success. Returns a ProductSizePrice object. Check the example shown below or ref
 
 #### getProductSellersBySlug
 Get the sellers of a product size at a PIN Code
+
 
 
 
@@ -902,6 +906,7 @@ Success. Returns a ProductSizeSeller object. Check the example shown below or re
 
 #### getProductComparisonBySlugs
 Compare products
+
 
 
 
@@ -1196,6 +1201,7 @@ Get comparison between similar products
 
 
 
+
 ```kotlin
 catalog.getSimilarComparisonProductBySlug(slug: slug).safeAwait{ response,error->
     
@@ -1252,6 +1258,7 @@ Success. Returns an array of objects containing the attributes for comparision. 
 
 #### getComparedFrequentlyProductBySlug
 Get comparison between frequently compared products with the given product
+
 
 
 
@@ -1539,6 +1546,7 @@ Get similar products
 
 
 
+
 ```kotlin
 catalog.getProductSimilarByIdentifier(slug: slug, similarType: similarType).safeAwait{ response,error->
     
@@ -1713,6 +1721,7 @@ Get variant of a particular product
 
 
 
+
 ```kotlin
 catalog.getProductVariantsBySlug(slug: slug).safeAwait{ response,error->
     
@@ -1803,6 +1812,7 @@ Success. Returns all variants of a product. Check the example shown below or ref
 
 #### getProductStockByIds
 Get the stock of a product
+
 
 
 
@@ -2562,6 +2572,7 @@ Get the stock of a product
 
 
 
+
 ```kotlin
 catalog.getProductStockForTimeByIds(timestamp: timestamp, pageSize: pageSize, pageId: pageId).safeAwait{ response,error->
     
@@ -2620,6 +2631,7 @@ Success. Returns the status of the product stock.Check the example shown below o
 
 #### getProducts
 Get all the products
+
 
 
 
@@ -3304,6 +3316,7 @@ Get all the brands
 
 
 
+
 ```kotlin
 catalog.getBrands(department: department, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
@@ -3403,6 +3416,7 @@ Get metadata of a brand
 
 
 
+
 ```kotlin
 catalog.getBrandDetailBySlug(slug: slug).safeAwait{ response,error->
     
@@ -3476,6 +3490,7 @@ Success. Returns a metadata object. Check the example shown below or refer `Bran
 
 #### getCategories
 List all the categories
+
 
 
 
@@ -3626,6 +3641,7 @@ Get metadata of a category
 
 
 
+
 ```kotlin
 catalog.getCategoryDetailBySlug(slug: slug).safeAwait{ response,error->
     
@@ -3700,6 +3716,7 @@ Success. Returns metadata of a category. Check the example shown below or refer 
 
 #### getHomeProducts
 List the products
+
 
 
 
@@ -4903,6 +4920,7 @@ List all the departments
 
 
 
+
 ```kotlin
 catalog.getDepartments().safeAwait{ response,error->
     
@@ -5060,6 +5078,7 @@ Get relevant suggestions for a search query
 
 
 
+
 ```kotlin
 catalog.getSearchResults(q: q).safeAwait{ response,error->
     
@@ -5116,6 +5135,7 @@ Success. Returns a list autocomplete suggestions for the search query `q`. Check
 
 #### getCollections
 List all the collections
+
 
 
 
@@ -5300,6 +5320,7 @@ Success. Returns a list of collections. Check the example shown below or refer `
 
 #### getCollectionItemsBySlug
 Get the items in a collection
+
 
 
 
@@ -5696,6 +5717,7 @@ Get a particular collection
 
 
 
+
 ```kotlin
 catalog.getCollectionDetailBySlug(slug: slug).safeAwait{ response,error->
     
@@ -5799,6 +5821,7 @@ Success. Returns a Collection object. Check the example shown below or refer `Co
 
 #### getFollowedListing
 Get a list of followed Products, Brands, Collections
+
 
 
 
@@ -6179,6 +6202,7 @@ Follow an entity (product/brand/collection)
 
 
 
+
 ```kotlin
 catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
@@ -6239,6 +6263,7 @@ Success. Returns a response object. Check the example shown below or refer `Foll
 
 #### unfollowById
 Unfollow an entity (product/brand/collection)
+
 
 
 
@@ -6305,6 +6330,7 @@ Get Follow Count
 
 
 
+
 ```kotlin
 catalog.getFollowerCountById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
     
@@ -6364,6 +6390,7 @@ Success. Returns the number of followers for a given collection type. Check the 
 
 #### getFollowIds
 Get the IDs of followed products, brands and collections.
+
 
 
 
@@ -6447,6 +6474,7 @@ Success. Returns the IDs of all the Products, Brands and Collections which were 
 
 #### getStores
 Get store meta information.
+
 
 
 
@@ -6547,6 +6575,7 @@ Success. Returns a list of selling locations. Check the example shown below or r
 
 #### getCart
 Fetch all items added to the cart
+
 
 
 
@@ -6778,6 +6807,7 @@ Fetch last-modified timestamp
 
 
 
+
 ```kotlin
 cart.getCartLastModified(id: id).safeAwait{ response,error->
     
@@ -6818,6 +6848,7 @@ Add items to cart
 
 
 
+
 ```kotlin
 cart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -6837,7 +6868,7 @@ cart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
 | --------- | -----  | -------- | ----------- |  
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [AddCartRequest](#AddCartRequest) | no | Request body |
+| body | [AddCartRequest](#AddCartRequest) | yes | Request body |
 
 
 Use this API to add items to the cart.
@@ -7511,6 +7542,7 @@ Update items in the cart
 
 
 
+
 ```kotlin
 cart.updateCart(id: id, i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -7531,7 +7563,7 @@ cart.updateCart(id: id, i: i, b: b, body: body).safeAwait{ response,error->
 | id | String? | no |  |    
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [UpdateCartRequest](#UpdateCartRequest) | no | Request body |
+| body | [UpdateCartRequest](#UpdateCartRequest) | yes | Request body |
 
 
 Use this API to update items added to the cart with the help of a request object containing attributes like item_quantity and item_size. These attributes will be fetched from the following APIs</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
@@ -7934,6 +7966,7 @@ Count items in the cart
 
 
 
+
 ```kotlin
 cart.getItemCount(id: id).safeAwait{ response,error->
     
@@ -7992,6 +8025,7 @@ Success. Returns the total count of items in a user's cart.
 
 #### getCoupons
 Fetch Coupon
+
 
 
 
@@ -8090,6 +8124,7 @@ Apply Coupon
 
 
 
+
 ```kotlin
 cart.applyCoupon(i: i, b: b, p: p, id: id, body: body).safeAwait{ response,error->
     
@@ -8111,7 +8146,7 @@ cart.applyCoupon(i: i, b: b, p: p, id: id, body: body).safeAwait{ response,error
 | b | Boolean? | no |  |    
 | p | Boolean? | no |  |    
 | id | String? | no |  |  
-| body | [ApplyCouponRequest](#ApplyCouponRequest) | no | Request body |
+| body | [ApplyCouponRequest](#ApplyCouponRequest) | yes | Request body |
 
 
 Use this API to apply coupons on items in the cart.
@@ -8688,6 +8723,7 @@ Remove Coupon Applied
 
 
 
+
 ```kotlin
 cart.removeCoupon(id: id).safeAwait{ response,error->
     
@@ -8904,6 +8940,7 @@ Get discount offers based on quantity
 
 
 
+
 ```kotlin
 cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response,error->
     
@@ -9037,6 +9074,7 @@ Apply reward points at cart
 
 
 
+
 ```kotlin
 cart.applyRewardPoints(id: id, i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -9057,7 +9095,7 @@ cart.applyRewardPoints(id: id, i: i, b: b, body: body).safeAwait{ response,error
 | id | String? | no |  |    
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [RewardPointRequest](#RewardPointRequest) | no | Request body |
+| body | [RewardPointRequest](#RewardPointRequest) | yes | Request body |
 
 
 Use this API to redeem a fixed no. of reward points by applying it to the cart.
@@ -9264,6 +9302,7 @@ Fetch address
 
 
 
+
 ```kotlin
 cart.getAddresses(cartId: cartId, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
     
@@ -9357,6 +9396,7 @@ Add address to an account
 
 
 
+
 ```kotlin
 cart.addAddress(body: body).safeAwait{ response,error->
     
@@ -9374,7 +9414,7 @@ cart.addAddress(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [Address](#Address) | no | Request body |
+| body | [Address](#Address) | yes | Request body |
 
 
 Use this API to add an address to an account.
@@ -9416,6 +9456,7 @@ Success. Returns the address ID, a flag whether the address is set as default, a
 
 #### getAddressById
 Fetch a single address by its ID
+
 
 
 
@@ -9510,6 +9551,7 @@ Update address added to an account
 
 
 
+
 ```kotlin
 cart.updateAddress(id: id, body: body).safeAwait{ response,error->
     
@@ -9528,7 +9570,7 @@ cart.updateAddress(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | ID allotted to the selected address |  
-| body | [Address](#Address) | no | Request body |
+| body | [Address](#Address) | yes | Request body |
 
 
 Use this API to update an existing address in the account. Request object should contain attributes mentioned in  <font color="blue">Address </font> can be updated. These attributes are:</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
@@ -9571,6 +9613,7 @@ Success. Returns the address ID and a message indicating a successful address up
 
 #### removeAddress
 Remove address associated with an account
+
 
 
 
@@ -9636,6 +9679,7 @@ Select an address from available addresses
 
 
 
+
 ```kotlin
 cart.selectAddress(cartId: cartId, i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -9656,7 +9700,7 @@ cart.selectAddress(cartId: cartId, i: i, b: b, body: body).safeAwait{ response,e
 | cartId | String? | no |  |    
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [SelectCartAddressRequest](#SelectCartAddressRequest) | no | Request body |
+| body | [SelectCartAddressRequest](#SelectCartAddressRequest) | yes | Request body |
 
 
 <p>Select Address from all addresses associated with the account in order to ship the cart items to that address, otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, this API returns a Cart object. Below address attributes are required. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
@@ -9952,6 +9996,7 @@ Update cart payment
 
 
 
+
 ```kotlin
 cart.selectPaymentMode(id: id, body: body).safeAwait{ response,error->
     
@@ -9970,7 +10015,7 @@ cart.selectPaymentMode(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | id | String? | no |  |  
-| body | [UpdateCartPaymentRequest](#UpdateCartPaymentRequest) | no | Request body |
+| body | [UpdateCartPaymentRequest](#UpdateCartPaymentRequest) | yes | Request body |
 
 
 Use this API to update cart payment.
@@ -10278,6 +10323,7 @@ Verify the coupon eligibility against the payment mode
 
 
 
+
 ```kotlin
 cart.validateCouponForPayment(id: id, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response,error->
     
@@ -10349,6 +10395,7 @@ Success. Returns a success message and the coupon validity. Refer `PaymentCoupon
 
 #### getShipments
 Get delivery date and options before checkout
+
 
 
 
@@ -11054,6 +11101,7 @@ Checkout all items in the cart
 
 
 
+
 ```kotlin
 cart.checkoutCart(body: body).safeAwait{ response,error->
     
@@ -11071,7 +11119,7 @@ cart.checkoutCart(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [CartCheckoutDetailRequest](#CartCheckoutDetailRequest) | no | Request body |
+| body | [CartCheckoutDetailRequest](#CartCheckoutDetailRequest) | yes | Request body |
 
 
 Use this API to checkout all items in the cart for payment and order generation. For COD, order will be directly generated, whereas for other checkout modes, user will be redirected to a payment gateway.
@@ -11492,6 +11540,7 @@ Update the cart meta
 
 
 
+
 ```kotlin
 cart.updateCartMeta(id: id, body: body).safeAwait{ response,error->
     
@@ -11510,7 +11559,7 @@ cart.updateCartMeta(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | id | String? | no | The unique identifier of the cart |  
-| body | [CartMetaRequest](#CartMetaRequest) | no | Request body |
+| body | [CartMetaRequest](#CartMetaRequest) | yes | Request body |
 
 
 Use this API to update cart meta like checkout_mode and gstin.
@@ -11553,6 +11602,7 @@ Generate token for sharing the cart
 
 
 
+
 ```kotlin
 cart.getCartShareLink(body: body).safeAwait{ response,error->
     
@@ -11570,7 +11620,7 @@ cart.getCartShareLink(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [GetShareCartLinkRequest](#GetShareCartLinkRequest) | no | Request body |
+| body | [GetShareCartLinkRequest](#GetShareCartLinkRequest) | yes | Request body |
 
 
 Use this API to generate a shared cart snapshot and return a shortlink token. The link can be shared with other users for getting the same items in their cart.
@@ -11619,6 +11669,7 @@ Returns a URL to share and a token as shown below.
 
 #### getCartSharedItems
 Get details of a shared cart
+
 
 
 
@@ -11954,6 +12005,7 @@ Success. Returns a Cart object as per the valid token. Refer `SharedCartResponse
 
 #### updateCartWithSharedItems
 Merge or replace existing cart
+
 
 
 
@@ -12306,6 +12358,7 @@ Get countries, states, cities
 
 
 
+
 ```kotlin
 common.getLocations(locationType: locationType, id: id).safeAwait{ response,error->
     
@@ -12369,6 +12422,7 @@ Success
 
 #### getTicket
 Get Ticket with the specific id
+
 
 
 
@@ -12630,6 +12684,7 @@ Create history for specific Ticket
 
 
 
+
 ```kotlin
 lead.createHistory(id: id, body: body).safeAwait{ response,error->
     
@@ -12648,7 +12703,7 @@ lead.createHistory(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | Ticket ID for which history is created |  
-| body | [TicketHistoryPayload](#TicketHistoryPayload) | no | Request body |
+| body | [TicketHistoryPayload](#TicketHistoryPayload) | yes | Request body |
 
 
 Create history for specific Ticket, this history is seen on ticket detail page, this can be comment, log or rating.
@@ -12731,6 +12786,7 @@ Create Ticket
 
 
 
+
 ```kotlin
 lead.createTicket(body: body).safeAwait{ response,error->
     
@@ -12748,7 +12804,7 @@ lead.createTicket(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [AddTicketPayload](#AddTicketPayload) | no | Request body |
+| body | [AddTicketPayload](#AddTicketPayload) | yes | Request body |
 
 
 This is used to Create Ticket.
@@ -12988,6 +13044,7 @@ Get specific Custom Form using it's slug
 
 
 
+
 ```kotlin
 lead.getCustomForm(slug: slug).safeAwait{ response,error->
     
@@ -13099,6 +13156,7 @@ Submit Response for a specific Custom Form using it's slug
 
 
 
+
 ```kotlin
 lead.submitCustomForm(slug: slug, body: body).safeAwait{ response,error->
     
@@ -13117,7 +13175,7 @@ lead.submitCustomForm(slug: slug, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | Slug of form whose response is getting submitted |  
-| body | [CustomFormSubmissionPayload](#CustomFormSubmissionPayload) | no | Request body |
+| body | [CustomFormSubmissionPayload](#CustomFormSubmissionPayload) | yes | Request body |
 
 
 Submit Response for a specific Custom Form using it's slug, this response is then used to create a ticket on behalf of the user.
@@ -13359,6 +13417,7 @@ Get participants of a specific Video Room using it's unique name
 
 
 
+
 ```kotlin
 lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
     
@@ -13425,6 +13484,7 @@ Success
 
 #### getTokenForVideoRoom
 Get Token to join a specific Video Room using it's unqiue name
+
 
 
 
@@ -13503,6 +13563,7 @@ Get all pages of a theme
 
 
 
+
 ```kotlin
 theme.getAllPages(themeId: themeId).safeAwait{ response,error->
     
@@ -13567,6 +13628,7 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
 
 #### getPage
 Get page of a theme
+
 
 
 
@@ -13638,6 +13700,7 @@ Get the theme currently applied to an application
 
 
 
+
 ```kotlin
 theme.getAppliedTheme().safeAwait{ response,error->
     
@@ -13697,6 +13760,7 @@ Success. Returns a JSON object of the theme. Check the example shown below or   
 
 #### getThemeForPreview
 Get a theme for a preview
+
 
 
 
@@ -13773,6 +13837,7 @@ Login or Register using Facebook
 
 
 
+
 ```kotlin
 user.loginWithFacebook(platform: platform, body: body).safeAwait{ response,error->
     
@@ -13791,7 +13856,7 @@ user.loginWithFacebook(platform: platform, body: body).safeAwait{ response,error
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [OAuthRequestSchema](#OAuthRequestSchema) | no | Request body |
+| body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
 Use this API to login or register using Facebook credentials.
@@ -13840,6 +13905,7 @@ Login or Register using Google
 
 
 
+
 ```kotlin
 user.loginWithGoogle(platform: platform, body: body).safeAwait{ response,error->
     
@@ -13858,7 +13924,7 @@ user.loginWithGoogle(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [OAuthRequestSchema](#OAuthRequestSchema) | no | Request body |
+| body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
 Use this API to login or register using Google Account credentials.
@@ -13907,6 +13973,7 @@ Login or Register using Google on Android
 
 
 
+
 ```kotlin
 user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response,error->
     
@@ -13925,7 +13992,7 @@ user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response,
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [OAuthRequestSchema](#OAuthRequestSchema) | no | Request body |
+| body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
 Use this API to login or register in Android app using Google Account credentials.
@@ -13974,6 +14041,7 @@ Login or Register using Google on iOS
 
 
 
+
 ```kotlin
 user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response,error->
     
@@ -13992,7 +14060,7 @@ user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response,erro
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [OAuthRequestSchema](#OAuthRequestSchema) | no | Request body |
+| body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
 
 
 Use this API to login or register in iOS app using Google Account credentials.
@@ -14041,6 +14109,7 @@ Login or Register with OTP
 
 
 
+
 ```kotlin
 user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
     
@@ -14059,7 +14128,7 @@ user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [SendOtpRequestSchema](#SendOtpRequestSchema) | no | Request body |
+| body | [SendOtpRequestSchema](#SendOtpRequestSchema) | yes | Request body |
 
 
 Use this API to login or register with a One-time Password (OTP) sent via Email or SMS.
@@ -14108,6 +14177,7 @@ Login or Register with password
 
 
 
+
 ```kotlin
 user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
     
@@ -14125,7 +14195,7 @@ user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [PasswordLoginRequestSchema](#PasswordLoginRequestSchema) | no | Request body |
+| body | [PasswordLoginRequestSchema](#PasswordLoginRequestSchema) | yes | Request body |
 
 
 Use this API to login or register using an email address and password.
@@ -14174,6 +14244,7 @@ Reset Password
 
 
 
+
 ```kotlin
 user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response,error->
     
@@ -14192,7 +14263,7 @@ user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response,
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [SendResetPasswordEmailRequestSchema](#SendResetPasswordEmailRequestSchema) | no | Request body |
+| body | [SendResetPasswordEmailRequestSchema](#SendResetPasswordEmailRequestSchema) | yes | Request body |
 
 
 Use this API to reset a password using the link sent on email.
@@ -14235,6 +14306,7 @@ Forgot Password
 
 
 
+
 ```kotlin
 user.forgotPassword(body: body).safeAwait{ response,error->
     
@@ -14252,7 +14324,7 @@ user.forgotPassword(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [ForgotPasswordRequestSchema](#ForgotPasswordRequestSchema) | no | Request body |
+| body | [ForgotPasswordRequestSchema](#ForgotPasswordRequestSchema) | yes | Request body |
 
 
 Use this API to reset a password using the code sent on email or SMS.
@@ -14301,6 +14373,7 @@ Reset Password using token
 
 
 
+
 ```kotlin
 user.sendResetToken(body: body).safeAwait{ response,error->
     
@@ -14318,7 +14391,7 @@ user.sendResetToken(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | no | Request body |
+| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
 
 
 Use this API to send code to reset password.
@@ -14361,6 +14434,7 @@ Login or Register with token
 
 
 
+
 ```kotlin
 user.loginWithToken(body: body).safeAwait{ response,error->
     
@@ -14378,7 +14452,7 @@ user.loginWithToken(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [TokenRequestBodySchema](#TokenRequestBodySchema) | no | Request body |
+| body | [TokenRequestBodySchema](#TokenRequestBodySchema) | yes | Request body |
 
 
 Use this API to login or register using a token for authentication.
@@ -14427,6 +14501,7 @@ Registration using a form
 
 
 
+
 ```kotlin
 user.registerWithForm(platform: platform, body: body).safeAwait{ response,error->
     
@@ -14445,7 +14520,7 @@ user.registerWithForm(platform: platform, body: body).safeAwait{ response,error-
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [FormRegisterRequestSchema](#FormRegisterRequestSchema) | no | Request body |
+| body | [FormRegisterRequestSchema](#FormRegisterRequestSchema) | yes | Request body |
 
 
 Use this API to perform user registration by sending form data in the request body.
@@ -14497,6 +14572,7 @@ Verify email
 
 
 
+
 ```kotlin
 user.verifyEmail(body: body).safeAwait{ response,error->
     
@@ -14514,7 +14590,7 @@ user.verifyEmail(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | no | Request body |
+| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
 
 
 Use this API to send a verification code to verify an email.
@@ -14557,6 +14633,7 @@ Verify mobile
 
 
 
+
 ```kotlin
 user.verifyMobile(body: body).safeAwait{ response,error->
     
@@ -14574,7 +14651,7 @@ user.verifyMobile(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | no | Request body |
+| body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
 
 
 Use this API to send a verification code to verify a mobile number.
@@ -14614,6 +14691,7 @@ Success. Check the example shown below or refer `VerifyEmailSuccess` for more de
 
 #### hasPassword
 Check password
+
 
 
 
@@ -14671,6 +14749,7 @@ Update user password
 
 
 
+
 ```kotlin
 user.updatePassword(body: body).safeAwait{ response,error->
     
@@ -14688,7 +14767,7 @@ user.updatePassword(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [UpdatePasswordRequestSchema](#UpdatePasswordRequestSchema) | no | Request body |
+| body | [UpdatePasswordRequestSchema](#UpdatePasswordRequestSchema) | yes | Request body |
 
 
 Use this API to update the password.
@@ -14728,6 +14807,7 @@ Success. Returns a success message. Refer `VerifyEmailSuccess` for more details.
 
 #### logout
 Logs out currently logged in user
+
 
 
 
@@ -14785,6 +14865,7 @@ Send OTP on mobile
 
 
 
+
 ```kotlin
 user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response,error->
     
@@ -14803,7 +14884,7 @@ user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [SendMobileOtpRequestSchema](#SendMobileOtpRequestSchema) | no | Request body |
+| body | [SendMobileOtpRequestSchema](#SendMobileOtpRequestSchema) | yes | Request body |
 
 
 Use this API to send an OTP to a mobile number.
@@ -14852,6 +14933,7 @@ Verify OTP on mobile
 
 
 
+
 ```kotlin
 user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response,error->
     
@@ -14870,7 +14952,7 @@ user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [VerifyOtpRequestSchema](#VerifyOtpRequestSchema) | no | Request body |
+| body | [VerifyOtpRequestSchema](#VerifyOtpRequestSchema) | yes | Request body |
 
 
 Use this API to verify the OTP received on a mobile number.
@@ -14919,6 +15001,7 @@ Send OTP on email
 
 
 
+
 ```kotlin
 user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response,error->
     
@@ -14937,7 +15020,7 @@ user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [SendEmailOtpRequestSchema](#SendEmailOtpRequestSchema) | no | Request body |
+| body | [SendEmailOtpRequestSchema](#SendEmailOtpRequestSchema) | yes | Request body |
 
 
 Use this API to send an OTP to an email ID.
@@ -14980,6 +15063,7 @@ Verify OTP on email
 
 
 
+
 ```kotlin
 user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response,error->
     
@@ -14998,7 +15082,7 @@ user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [VerifyEmailOtpRequestSchema](#VerifyEmailOtpRequestSchema) | no | Request body |
+| body | [VerifyEmailOtpRequestSchema](#VerifyEmailOtpRequestSchema) | yes | Request body |
 
 
 Use this API to verify the OTP received on an email ID.
@@ -15044,6 +15128,7 @@ Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more
 
 #### getLoggedInUser
 Get logged in user
+
 
 
 
@@ -15109,6 +15194,7 @@ Get list of sessions
 
 
 
+
 ```kotlin
 user.getListOfActiveSessions().safeAwait{ response,error->
     
@@ -15165,6 +15251,7 @@ Success. Returns a JSON object containing an array of sessions. Refer `SessionLi
 
 #### getPlatformConfig
 Get platform configurations
+
 
 
 
@@ -15292,6 +15379,7 @@ Edit Profile Details
 
 
 
+
 ```kotlin
 user.updateProfile(platform: platform, body: body).safeAwait{ response,error->
     
@@ -15310,7 +15398,7 @@ user.updateProfile(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [EditProfileRequestSchema](#EditProfileRequestSchema) | no | Request body |
+| body | [EditProfileRequestSchema](#EditProfileRequestSchema) | yes | Request body |
 
 
 Use this API to update details in the user profile. Details can be first name, last name, gender, email, phone number, or profile picture.
@@ -15359,6 +15447,7 @@ Add mobile number to profile
 
 
 
+
 ```kotlin
 user.addMobileNumber(platform: platform, body: body).safeAwait{ response,error->
     
@@ -15377,7 +15466,7 @@ user.addMobileNumber(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [EditMobileRequestSchema](#EditMobileRequestSchema) | no | Request body |
+| body | [EditMobileRequestSchema](#EditMobileRequestSchema) | yes | Request body |
 
 
 Use this API to add a new mobile number to a profile.
@@ -15423,6 +15512,7 @@ Success. Check the example shown below or refer `VerifyMobileOTPSuccess` for mor
 
 #### deleteMobileNumber
 Delete mobile number from profile
+
 
 
 
@@ -15498,6 +15588,7 @@ Set mobile as primary
 
 
 
+
 ```kotlin
 user.setMobileNumberAsPrimary(body: body).safeAwait{ response,error->
     
@@ -15515,7 +15606,7 @@ user.setMobileNumberAsPrimary(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | no | Request body |
+| body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | yes | Request body |
 
 
 Use this API to set a mobile number as primary. Primary number is a verified number used for all future communications.
@@ -15564,6 +15655,7 @@ Send verification link to mobile
 
 
 
+
 ```kotlin
 user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response,error->
     
@@ -15582,7 +15674,7 @@ user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ res
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | no | Request body |
+| body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | yes | Request body |
 
 
 Use this API to send a verification link to a mobile number
@@ -15631,6 +15723,7 @@ Add email to profile
 
 
 
+
 ```kotlin
 user.addEmail(platform: platform, body: body).safeAwait{ response,error->
     
@@ -15649,7 +15742,7 @@ user.addEmail(platform: platform, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | no | Request body |
+| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
 
 
 Use this API to add a new email address to a profile
@@ -15695,6 +15788,7 @@ Success. Returns a JSON object with user details. Refer `VerifyEmailOTPSuccess` 
 
 #### deleteEmail
 Delete email from profile
+
 
 
 
@@ -15769,6 +15863,7 @@ Set email as primary
 
 
 
+
 ```kotlin
 user.setEmailAsPrimary(body: body).safeAwait{ response,error->
     
@@ -15786,7 +15881,7 @@ user.setEmailAsPrimary(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | no | Request body |
+| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
 
 
 Use this API to set an email address as primary. Primary email ID is a email address used for all future communications.
@@ -15835,6 +15930,7 @@ Send verification link to email
 
 
 
+
 ```kotlin
 user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response,error->
     
@@ -15853,7 +15949,7 @@ user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ resp
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | platform | String? | no | ID of the application |  
-| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | no | Request body |
+| body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
 
 
 Use this API to send verification link to an email address.
@@ -15897,6 +15993,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
 #### getAnnouncements
 Get live announcements
+
 
 
 
@@ -15976,6 +16073,7 @@ Get a blog
 
 
 
+
 ```kotlin
 content.getBlog(slug: slug, rootId: rootId).safeAwait{ response,error->
     
@@ -16041,6 +16139,7 @@ Success. Returns a JSON object with blog details. Check the example shown below 
 
 #### getBlogs
 Get a list of blogs
+
 
 
 
@@ -16112,6 +16211,7 @@ Get a list of FAQs
 
 
 
+
 ```kotlin
 content.getFaqs().safeAwait{ response,error->
     
@@ -16171,6 +16271,7 @@ Success. Returns a JSON object with question and answers. Check the example show
 
 #### getFaqCategories
 Get a list of FAQ categories
+
 
 
 
@@ -16241,6 +16342,7 @@ Get an FAQ
 
 
 
+
 ```kotlin
 content.getFaqBySlug(slug: slug).safeAwait{ response,error->
     
@@ -16303,6 +16405,7 @@ Success. Returns a question and answer by its slug. Check the example shown belo
 
 #### getFaqCategoryBySlug
 Get the FAQ category
+
 
 
 
@@ -16382,6 +16485,7 @@ Get FAQs using the slug of FAQ category
 
 
 
+
 ```kotlin
 content.getFaqsByCategorySlug(slug: slug).safeAwait{ response,error->
     
@@ -16451,6 +16555,7 @@ Get the landing page
 
 
 
+
 ```kotlin
 content.getLandingPage().safeAwait{ response,error->
     
@@ -16513,6 +16618,7 @@ Get legal information
 
 
 
+
 ```kotlin
 content.getLegalInformation().safeAwait{ response,error->
     
@@ -16572,6 +16678,7 @@ Success. Returns the T&C, Shipping Policy, Privacy Policy and Return Policy. Che
 
 #### getNavigations
 Get the navigation
+
 
 
 
@@ -16643,6 +16750,7 @@ Get a page
 
 
 
+
 ```kotlin
 content.getPage(slug: slug, rootId: rootId).safeAwait{ response,error->
     
@@ -16708,6 +16816,7 @@ Success. Returns a JSON object with page details. Check the example shown below 
 
 #### getPages
 Get all pages
+
 
 
 
@@ -16779,6 +16888,7 @@ Get the SEO of an application
 
 
 
+
 ```kotlin
 content.getSEOConfiguration().safeAwait{ response,error->
     
@@ -16838,6 +16948,7 @@ Success. Returns a JSON object SEO details such as robots.txt, meta-tags, and si
 
 #### getSlideshows
 Get the slideshows
+
 
 
 
@@ -16909,6 +17020,7 @@ Get a slideshow
 
 
 
+
 ```kotlin
 content.getSlideshow(slug: slug).safeAwait{ response,error->
     
@@ -16976,6 +17088,7 @@ Get the support information
 
 
 
+
 ```kotlin
 content.getSupportInformation().safeAwait{ response,error->
     
@@ -17035,6 +17148,7 @@ Success. Returns all support information including email and phone number. Check
 
 #### getTags
 Get the tags associated with an application
+
 
 
 
@@ -17114,6 +17228,7 @@ Get communication consent
 
 
 
+
 ```kotlin
 communication.getCommunicationConsent().safeAwait{ response,error->
     
@@ -17173,6 +17288,7 @@ Success. Returns all available communication opt-ins along with the consent deta
 
 #### upsertCommunicationConsent
 Upsert communication consent
+
 
 
 
@@ -17239,6 +17355,7 @@ Success. Updates the channels for which user has consented. Check the example sh
 
 #### upsertAppPushtoken
 Upsert push token of a user
+
 
 
 
@@ -17334,6 +17451,7 @@ Create QR Code of an app
 
 
 
+
 ```kotlin
 share.getApplicationQRCode().safeAwait{ response,error->
     
@@ -17388,6 +17506,7 @@ Success. Check the example shown below or refer `QRCodeResp` for more details.
 
 #### getProductQRCodeBySlug
 Create QR Code of a product
+
 
 
 
@@ -17453,6 +17572,7 @@ Create QR Code of a collection
 
 
 
+
 ```kotlin
 share.getCollectionQRCodeBySlug(slug: slug).safeAwait{ response,error->
     
@@ -17512,6 +17632,7 @@ Success. Check the example shown below or refer `QRCodeResp` for more details.
 
 #### getUrlQRCode
 Create QR Code of a URL
+
 
 
 
@@ -17577,6 +17698,7 @@ Create a short link
 
 
 
+
 ```kotlin
 share.createShortLink(body: body).safeAwait{ response,error->
     
@@ -17594,7 +17716,7 @@ share.createShortLink(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [ShortLinkReq](#ShortLinkReq) | no | Request body |
+| body | [ShortLinkReq](#ShortLinkReq) | yes | Request body |
 
 
 Use this API to create a short link that is easy to write/share/read as compared to long URLs.
@@ -17670,6 +17792,7 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
 
 #### getShortLinkByHash
 Get short link by hash
+
 
 
 
@@ -17767,6 +17890,7 @@ Success. Check the example shown below or refer `ShortLinkRes` for more details.
 
 #### getOriginalShortLinkByHash
 Get original link by hash
+
 
 
 
@@ -17873,6 +17997,7 @@ Initiates an upload and returns a storage link that is valid for 30 minutes. You
 
 
 
+
 ```kotlin
 filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,error->
     
@@ -17891,7 +18016,7 @@ filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,er
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | namespace | String | yes | Name of the bucket created for storing objects. |  
-| body | [StartRequest](#StartRequest) | no | Request body |
+| body | [StartRequest](#StartRequest) | yes | Request body |
 
 
 Use this API to perform the first step of uploading (i.e. **Start**) an arbitrarily sized buffer or blob.
@@ -17950,6 +18075,7 @@ Completes the upload process. After successfully uploading a file, call this API
 
 
 
+
 ```kotlin
 filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response,error->
     
@@ -17968,7 +18094,7 @@ filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | namespace | String | yes | Name of the bucket created for storing objects. |  
-| body | [StartResponse](#StartResponse) | no | Request body |
+| body | [StartResponse](#StartResponse) | yes | Request body |
 
 
 Use this API to perform the third step of uploading (i.e. **Complete**) an arbitrarily sized buffer or blob.
@@ -18030,6 +18156,7 @@ Success
 
 #### getApplication
 Get current application details
+
 
 
 
@@ -18106,7 +18233,6 @@ Success. Check the example shown below or refer `Application` for more details.
     {
       "verified": true,
       "is_primary": true,
-      "is_default": true,
       "is_shortlink": true,
       "_id": "5eb1177748312a3bd55d0f1e",
       "name": "uniket.hostx0.de"
@@ -18114,7 +18240,6 @@ Success. Check the example shown below or refer `Application` for more details.
     {
       "verified": true,
       "is_primary": false,
-      "is_default": false,
       "is_shortlink": false,
       "_id": "5f0858c5f86e00cd42dccc8d",
       "name": "jd.hostx0.de"
@@ -18127,7 +18252,6 @@ Success. Check the example shown below or refer `Application` for more details.
   "domain": {
     "verified": true,
     "is_primary": true,
-    "is_default": true,
     "is_shortlink": true,
     "_id": "5eb1177748312a3bd55d0f1e",
     "name": "uniket.hostx0.de"
@@ -18150,6 +18274,7 @@ Success. Check the example shown below or refer `Application` for more details.
 
 #### getOwnerInfo
 Get application, owner and seller information
+
 
 
 
@@ -18194,8 +18319,7 @@ Success. Check the example shown below or refer `ApplicationAboutResponse` for m
         "verified": true,
         "name": "uniket-testing.addsale.link",
         "custom": false,
-        "is_primary": true,
-        "is_default": true
+        "is_primary": true
       }
     ],
     "website": {
@@ -18309,6 +18433,7 @@ Get basic application details
 
 
 
+
 ```kotlin
 configuration.getBasicDetails().safeAwait{ response,error->
     
@@ -18361,7 +18486,6 @@ Success. Check the example shown below or refer `ApplicationDetail` for more det
   "domain": {
     "verified": true,
     "is_primary": true,
-    "is_default": true,
     "is_shortlink": false,
     "_id": "5eb1177748312a3bd55d0f1e",
     "name": "uniket.hostx0.de"
@@ -18370,7 +18494,6 @@ Success. Check the example shown below or refer `ApplicationDetail` for more det
     {
       "verified": true,
       "is_primary": true,
-      "is_default": true,
       "is_shortlink": false,
       "_id": "5eb1177748312a3bd55d0f1e",
       "name": "uniket.hostx0.de"
@@ -18378,7 +18501,6 @@ Success. Check the example shown below or refer `ApplicationDetail` for more det
     {
       "verified": true,
       "is_primary": false,
-      "is_default": false,
       "is_shortlink": true,
       "_id": "5f0858c5f86e00cd42dccc8d",
       "name": "jd.hostx0.de"
@@ -18403,6 +18525,7 @@ Success. Check the example shown below or refer `ApplicationDetail` for more det
 
 #### getIntegrationTokens
 Get integration tokens
+
 
 
 
@@ -18529,6 +18652,7 @@ Get deployment stores
 
 
 
+
 ```kotlin
 configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
     
@@ -18587,6 +18711,7 @@ Success. Check the example shown below or refer `OrderingStores` for more detail
 
 #### getStoreDetailById
 Get ordering store details
+
 
 
 
@@ -18654,6 +18779,7 @@ Success. Check the example shown below or refer `OrderingStore` for more details
 
 #### getFeatures
 Get features of application
+
 
 
 
@@ -18804,6 +18930,7 @@ Success. Check the example shown below or refer `AppFeatureResponse` for more de
 
 #### getContactInfo
 Get application information
+
 
 
 
@@ -18976,6 +19103,7 @@ Get all currencies list
 
 
 
+
 ```kotlin
 configuration.getCurrencies().safeAwait{ response,error->
     
@@ -19040,6 +19168,7 @@ Success. Check the example shown below or refer `CurrenciesResponse` for more de
 
 #### getCurrencyById
 Get currency by its ID
+
 
 
 
@@ -19108,6 +19237,7 @@ Success. Check the example shown below or refer `Currency` for more details.
 
 #### getAppCurrencies
 Get currencies enabled in the application
+
 
 
 
@@ -19183,6 +19313,7 @@ Get list of languages
 
 
 
+
 ```kotlin
 configuration.getLanguages().safeAwait{ response,error->
     
@@ -19252,6 +19383,7 @@ Get an Ordering Store signed cookie on selection of ordering store.
 
 
 
+
 ```kotlin
 configuration.getOrderingStoreCookie(body: body).safeAwait{ response,error->
     
@@ -19269,7 +19401,7 @@ configuration.getOrderingStoreCookie(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [OrderingStoreSelectRequest](#OrderingStoreSelectRequest) | no | Request body |
+| body | [OrderingStoreSelectRequest](#OrderingStoreSelectRequest) | yes | Request body |
 
 
 Use this API to get an Ordering Store signed cookie upon selecting an ordering store. This will be used by the cart service to verify a coupon against the selected ordering store in cart.
@@ -19307,6 +19439,7 @@ Success
 
 #### removeOrderingStoreCookie
 Unset the Ordering Store signed cookie.
+
 
 
 
@@ -19361,6 +19494,7 @@ Success
 
 #### getAppStaffs
 Get a list of staff.
+
 
 
 
@@ -19428,6 +19562,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
 #### getAggregatorsConfig
 Get payment gateway keys
+
 
 
 
@@ -19527,6 +19662,7 @@ Attach a saved card to customer.
 
 
 
+
 ```kotlin
 payment.attachCardToCustomer(body: body).safeAwait{ response,error->
     
@@ -19544,7 +19680,7 @@ payment.attachCardToCustomer(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [AttachCardRequest](#AttachCardRequest) | no | Request body |
+| body | [AttachCardRequest](#AttachCardRequest) | yes | Request body |
 
 
 Use this API to attach a customer's saved card at the payment gateway, such as Stripe, Juspay.
@@ -19614,6 +19750,7 @@ Fetch active payment gateway for card payments
 
 
 
+
 ```kotlin
 payment.getActiveCardAggregator(refresh: refresh).safeAwait{ response,error->
     
@@ -19678,6 +19815,7 @@ Success. Returns an active payment gateway. Check the example shown below or ref
 
 #### getActiveUserCards
 Fetch the list of cards saved by the user
+
 
 
 
@@ -19763,6 +19901,7 @@ Delete a card
 
 
 
+
 ```kotlin
 payment.deleteUserCard(body: body).safeAwait{ response,error->
     
@@ -19780,7 +19919,7 @@ payment.deleteUserCard(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [DeletehCardRequest](#DeletehCardRequest) | no | Request body |
+| body | [DeletehCardRequest](#DeletehCardRequest) | yes | Request body |
 
 
 Use this API to delete a card added by a user on the payment gateway and clear the cache.
@@ -19823,6 +19962,7 @@ Validate customer for payment
 
 
 
+
 ```kotlin
 payment.verifyCustomerForPayment(body: body).safeAwait{ response,error->
     
@@ -19840,7 +19980,7 @@ payment.verifyCustomerForPayment(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [ValidateCustomerRequest](#ValidateCustomerRequest) | no | Request body |
+| body | [ValidateCustomerRequest](#ValidateCustomerRequest) | yes | Request body |
 
 
 Use this API to check if the customer is eligible to use credit-line facilities such as Simpl Pay Later and Rupifi.
@@ -19893,6 +20033,7 @@ Verify and charge payment
 
 
 
+
 ```kotlin
 payment.verifyAndChargePayment(body: body).safeAwait{ response,error->
     
@@ -19910,7 +20051,7 @@ payment.verifyAndChargePayment(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [ChargeCustomerRequest](#ChargeCustomerRequest) | no | Request body |
+| body | [ChargeCustomerRequest](#ChargeCustomerRequest) | yes | Request body |
 
 
 Use this API to verify and check the status of a payment transaction (server-to-server) made through aggregators like Simpl and Mswipe.
@@ -19959,6 +20100,7 @@ Initialize a payment (server-to-server) for UPI and BharatQR
 
 
 
+
 ```kotlin
 payment.initialisePayment(body: body).safeAwait{ response,error->
     
@@ -19976,7 +20118,7 @@ payment.initialisePayment(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [PaymentInitializationRequest](#PaymentInitializationRequest) | no | Request body |
+| body | [PaymentInitializationRequest](#PaymentInitializationRequest) | yes | Request body |
 
 
 PUse this API to inititate payment using UPI, BharatQR, wherein the UPI requests are send to the app and QR code is displayed on the screen.
@@ -20029,6 +20171,7 @@ Performs continuous polling to check status of payment on the server
 
 
 
+
 ```kotlin
 payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response,error->
     
@@ -20046,7 +20189,7 @@ payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [PaymentStatusUpdateRequest](#PaymentStatusUpdateRequest) | no | Request body |
+| body | [PaymentStatusUpdateRequest](#PaymentStatusUpdateRequest) | yes | Request body |
 
 
 Use this API to perform continuous polling at intervals to check the status of payment until timeout.
@@ -20088,6 +20231,7 @@ Success. Returns the status of payment. Check the example shown below or refer `
 
 #### getPaymentModeRoutes
 Get applicable payment options
+
 
 
 
@@ -20526,6 +20670,7 @@ Get applicable payment options for Point-of-Sale (POS)
 
 
 
+
 ```kotlin
 payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, checkoutMode: checkoutMode, refresh: refresh, cardReference: cardReference, orderType: orderType, userDetails: userDetails).safeAwait{ response,error->
     
@@ -20747,6 +20892,7 @@ Get CreditLine Offer
 
 
 
+
 ```kotlin
 payment.getRupifiBannerDetails().safeAwait{ response,error->
     
@@ -20804,6 +20950,7 @@ Success. Return CreditLine Offer detail. Check the example shown below or refer 
 
 #### getActiveRefundTransferModes
 Lists the mode of refund
+
 
 
 
@@ -20876,6 +21023,7 @@ Enable/Disable a mode for transferring a refund
 
 
 
+
 ```kotlin
 payment.enableOrDisableRefundTransferMode(body: body).safeAwait{ response,error->
     
@@ -20893,7 +21041,7 @@ payment.enableOrDisableRefundTransferMode(body: body).safeAwait{ response,error-
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [UpdateRefundTransferModeRequest](#UpdateRefundTransferModeRequest) | no | Request body |
+| body | [UpdateRefundTransferModeRequest](#UpdateRefundTransferModeRequest) | yes | Request body |
 
 
 Activate or Deactivate Transfer Mode to collect Beneficiary Details for Refund
@@ -20933,6 +21081,7 @@ Success. Shows whether the refund mode was successfully enabled or disabled.
 
 #### getUserBeneficiariesDetail
 Lists the beneficiary of a refund
+
 
 
 
@@ -21020,6 +21169,7 @@ Verify IFSC Code
 
 
 
+
 ```kotlin
 payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
     
@@ -21096,6 +21246,7 @@ Success. Shows whether the IFSC code is valid, and returns the bank details. Che
 
 #### getOrderBeneficiariesDetail
 Lists the beneficiary of a refund
+
 
 
 
@@ -21182,6 +21333,7 @@ Verify the beneficiary details using OTP
 
 
 
+
 ```kotlin
 payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response,error->
     
@@ -21199,7 +21351,7 @@ payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response,error-
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [AddBeneficiaryViaOtpVerificationRequest](#AddBeneficiaryViaOtpVerificationRequest) | no | Request body |
+| body | [AddBeneficiaryViaOtpVerificationRequest](#AddBeneficiaryViaOtpVerificationRequest) | yes | Request body |
 
 
 Use this API to perform an OTP validation before saving the beneficiary details added for a refund.
@@ -21244,6 +21396,7 @@ Save bank details for cancelled/returned order
 
 
 
+
 ```kotlin
 payment.addBeneficiaryDetails(body: body).safeAwait{ response,error->
     
@@ -21261,7 +21414,7 @@ payment.addBeneficiaryDetails(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [AddBeneficiaryDetailsRequest](#AddBeneficiaryDetailsRequest) | no | Request body |
+| body | [AddBeneficiaryDetailsRequest](#AddBeneficiaryDetailsRequest) | yes | Request body |
 
 
 Use this API to save the bank details for a returned or cancelled order to refund the amount.
@@ -21306,6 +21459,7 @@ Save bank details for cancelled/returned order
 
 
 
+
 ```kotlin
 payment.addRefundBankAccountUsingOTP(body: body).safeAwait{ response,error->
     
@@ -21323,7 +21477,7 @@ payment.addRefundBankAccountUsingOTP(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [AddBeneficiaryDetailsOTPRequest](#AddBeneficiaryDetailsOTPRequest) | no | Request body |
+| body | [AddBeneficiaryDetailsOTPRequest](#AddBeneficiaryDetailsOTPRequest) | yes | Request body |
 
 
 Use this API to save bank details for returned/cancelled order to refund amount in his account.
@@ -21368,6 +21522,7 @@ Send OTP on adding a wallet beneficiary
 
 
 
+
 ```kotlin
 payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response,error->
     
@@ -21385,7 +21540,7 @@ payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response,erro
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [WalletOtpRequest](#WalletOtpRequest) | no | Request body |
+| body | [WalletOtpRequest](#WalletOtpRequest) | yes | Request body |
 
 
 Use this API to send an OTP while adding a wallet beneficiary by mobile no. verification.
@@ -21430,6 +21585,7 @@ Set a default beneficiary for a refund
 
 
 
+
 ```kotlin
 payment.updateDefaultBeneficiary(body: body).safeAwait{ response,error->
     
@@ -21447,7 +21603,7 @@ payment.updateDefaultBeneficiary(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [SetDefaultBeneficiaryRequest](#SetDefaultBeneficiaryRequest) | no | Request body |
+| body | [SetDefaultBeneficiaryRequest](#SetDefaultBeneficiaryRequest) | yes | Request body |
 
 
 Use this API to set a default beneficiary for getting a refund.
@@ -21494,6 +21650,7 @@ Success. Check the example shown below or refer `SetDefaultBeneficiaryResponse` 
 
 #### getOrders
 Get all orders
+
 
 
 
@@ -21560,6 +21717,7 @@ Get details of an order
 
 
 
+
 ```kotlin
 order.getOrderById(orderId: orderId).safeAwait{ response,error->
     
@@ -21616,6 +21774,7 @@ Success. Check the example shown below or refer `OrderById` for more details.
 
 #### getShipmentById
 Get details of a shipment
+
 
 
 
@@ -21678,6 +21837,7 @@ Get reasons behind full or partial cancellation of a shipment
 
 
 
+
 ```kotlin
 order.getShipmentReasons(shipmentId: shipmentId).safeAwait{ response,error->
     
@@ -21734,6 +21894,7 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
 #### updateShipmentStatus
 Update the shipment status
+
 
 
 
@@ -21796,6 +21957,7 @@ Track shipment
 
 
 
+
 ```kotlin
 order.trackShipment(shipmentId: shipmentId).safeAwait{ response,error->
     
@@ -21855,6 +22017,7 @@ Get POS Order
 
 
 
+
 ```kotlin
 order.getPosOrderById(orderId: orderId).safeAwait{ response,error->
     
@@ -21911,6 +22074,7 @@ Success. Check the example shown below or refer `PosOrderById` for more details.
 
 #### getCustomerDetailsByShipmentId
 Get Customer Details by Shipment Id
+
 
 
 
@@ -21974,6 +22138,7 @@ Send and Resend Otp code to Order-Shipment customer
 
 
 
+
 ```kotlin
 order.sendOtpToShipmentCustomer(orderId: orderId, shipmentId: shipmentId).safeAwait{ response,error->
     
@@ -22031,6 +22196,7 @@ Success to acknowledge the service was notified
 
 #### verifyOtpShipmentCustomer
 Verify Otp code
+
 
 
 
@@ -22100,6 +22266,7 @@ Get the eligibility of reward points on a product
 
 
 
+
 ```kotlin
 rewards.getPointsOnProduct(body: body).safeAwait{ response,error->
     
@@ -22155,6 +22322,7 @@ Success. Check example below or refer `CatalogueOrderRequest` for more details.
 
 #### getOfferByName
 Get offer by name
+
 
 
 
@@ -22217,6 +22385,7 @@ Calculates the discount on order-amount
 
 
 
+
 ```kotlin
 rewards.getOrderDiscount(body: body).safeAwait{ response,error->
     
@@ -22275,6 +22444,7 @@ Get reward points available with a user
 
 
 
+
 ```kotlin
 rewards.getUserPoints().safeAwait{ response,error->
     
@@ -22326,6 +22496,7 @@ Success. Check example below or refer `PointsResponse` for more details.
 
 #### getUserPointsHistory
 Get all transactions of reward points
+
 
 
 
@@ -22389,6 +22560,7 @@ Get referral details of a user
 
 
 
+
 ```kotlin
 rewards.getUserReferralDetails().safeAwait{ response,error->
     
@@ -22440,6 +22612,7 @@ Success. Check example below or refer `ReferralDetailsResponse` for more details
 
 #### redeemReferralCode
 Redeems a referral code and credits reward points to users
+
 
 
 
@@ -22507,6 +22680,7 @@ Post a new abuse request
 
 
 
+
 ```kotlin
 feedback.createAbuseReport(body: body).safeAwait{ response,error->
     
@@ -22565,6 +22739,7 @@ Update abuse details
 
 
 
+
 ```kotlin
 feedback.updateAbuseReport(body: body).safeAwait{ response,error->
     
@@ -22620,6 +22795,7 @@ Success.
 
 #### getAbuseReports
 Get a list of abuse data
+
 
 
 
@@ -22686,6 +22862,7 @@ Get a list of attribute data
 
 
 
+
 ```kotlin
 feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
@@ -22746,6 +22923,7 @@ Add a new attribute request
 
 
 
+
 ```kotlin
 feedback.createAttribute(body: body).safeAwait{ response,error->
     
@@ -22801,6 +22979,7 @@ Success. Returns an attribute ID.
 
 #### getAttribute
 Get data of a single attribute
+
 
 
 
@@ -22863,6 +23042,7 @@ Update details of an attribute
 
 
 
+
 ```kotlin
 feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
     
@@ -22919,6 +23099,7 @@ Success.
 
 #### createComment
 Post a new comment
+
 
 
 
@@ -22980,6 +23161,7 @@ Update the status of a comment
 
 
 
+
 ```kotlin
 feedback.updateComment(body: body).safeAwait{ response,error->
     
@@ -23035,6 +23217,7 @@ Success.
 
 #### getComments
 Get a list of comments
+
 
 
 
@@ -23102,6 +23285,7 @@ Checks eligibility to rate and review, and shows the cloud media configuration
 
 
 
+
 ```kotlin
 feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{ response,error->
     
@@ -23159,6 +23343,7 @@ Success. Returns a Product object. Check the example shown below or refer `Check
 
 #### deleteMedia
 Delete Media
+
 
 
 
@@ -23221,6 +23406,7 @@ Add Media
 
 
 
+
 ```kotlin
 feedback.createMedia(body: body).safeAwait{ response,error->
     
@@ -23279,6 +23465,7 @@ Update Media
 
 
 
+
 ```kotlin
 feedback.updateMedia(body: body).safeAwait{ response,error->
     
@@ -23334,6 +23521,7 @@ Success.
 
 #### getMedias
 Get Media
+
 
 
 
@@ -23401,6 +23589,7 @@ Get a review summary
 
 
 
+
 ```kotlin
 feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
     
@@ -23464,6 +23653,7 @@ Add customer reviews
 
 
 
+
 ```kotlin
 feedback.createReview(body: body).safeAwait{ response,error->
     
@@ -23522,6 +23712,7 @@ Update customer reviews
 
 
 
+
 ```kotlin
 feedback.updateReview(body: body).safeAwait{ response,error->
     
@@ -23577,6 +23768,7 @@ Success.
 
 #### getReviews
 Get list of customer reviews
+
 
 
 
@@ -23651,6 +23843,7 @@ Get the feedback templates for a product or l3
 
 
 
+
 ```kotlin
 feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait{ response,error->
     
@@ -23712,6 +23905,7 @@ Create a new question
 
 
 
+
 ```kotlin
 feedback.createQuestion(body: body).safeAwait{ response,error->
     
@@ -23770,6 +23964,7 @@ Update a question
 
 
 
+
 ```kotlin
 feedback.updateQuestion(body: body).safeAwait{ response,error->
     
@@ -23825,6 +24020,7 @@ Success.
 
 #### getQuestionAndAnswers
 Get a list of QnA
+
 
 
 
@@ -23893,6 +24089,7 @@ Get a list of votes
 
 
 
+
 ```kotlin
 feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
@@ -23955,6 +24152,7 @@ Create a new vote
 
 
 
+
 ```kotlin
 feedback.createVote(body: body).safeAwait{ response,error->
     
@@ -24010,6 +24208,7 @@ Success. Returns a vote ID.
 
 #### updateVote
 Update a vote
+
 
 
 
@@ -24074,6 +24273,7 @@ Success.
 
 #### getCart
 Fetch all items added to the cart
+
 
 
 
@@ -24305,6 +24505,7 @@ Fetch last-modified timestamp
 
 
 
+
 ```kotlin
 poscart.getCartLastModified(id: id).safeAwait{ response,error->
     
@@ -24345,6 +24546,7 @@ Add items to cart
 
 
 
+
 ```kotlin
 poscart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -24364,7 +24566,7 @@ poscart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
 | --------- | -----  | -------- | ----------- |  
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [AddCartRequest](#AddCartRequest) | no | Request body |
+| body | [AddCartRequest](#AddCartRequest) | yes | Request body |
 
 
 Use this API to add items to the cart.
@@ -25038,6 +25240,7 @@ Update items in the cart
 
 
 
+
 ```kotlin
 poscart.updateCart(id: id, i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -25058,7 +25261,7 @@ poscart.updateCart(id: id, i: i, b: b, body: body).safeAwait{ response,error->
 | id | String? | no |  |    
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [UpdateCartRequest](#UpdateCartRequest) | no | Request body |
+| body | [UpdateCartRequest](#UpdateCartRequest) | yes | Request body |
 
 
 Use this API to update items added to the cart with the help of a request object containing attributes like item_quantity and item_size. These attributes will be fetched from the following APIs</p> <ul> <li><font color="monochrome">operation</font> Operation for current api call. <b>update_item</b> for update items. <b>remove_item</b> for removing items.</li> <li> <font color="monochrome">item_id</font>  "/platform/content/v1/products/"</li> <li> <font color="monochrome">item_size</font>   "/platform/content/v1/products/{slug}/sizes/"</li> <li> <font color="monochrome">quantity</font>  item quantity (must be greater than or equal to 1)</li> <li> <font color="monochrome">article_id</font>   "/content​/v1​/products​/{identifier}​/sizes​/price​/"</li> <li> <font color="monochrome">item_index</font>  item position in the cart (must be greater than or equal to 0)</li> </ul>
@@ -25461,6 +25664,7 @@ Count items in the cart
 
 
 
+
 ```kotlin
 poscart.getItemCount(id: id).safeAwait{ response,error->
     
@@ -25519,6 +25723,7 @@ Success. Returns the total count of items in a user's cart.
 
 #### getCoupons
 Fetch Coupon
+
 
 
 
@@ -25617,6 +25822,7 @@ Apply Coupon
 
 
 
+
 ```kotlin
 poscart.applyCoupon(i: i, b: b, p: p, id: id, body: body).safeAwait{ response,error->
     
@@ -25638,7 +25844,7 @@ poscart.applyCoupon(i: i, b: b, p: p, id: id, body: body).safeAwait{ response,er
 | b | Boolean? | no |  |    
 | p | Boolean? | no |  |    
 | id | String? | no |  |  
-| body | [ApplyCouponRequest](#ApplyCouponRequest) | no | Request body |
+| body | [ApplyCouponRequest](#ApplyCouponRequest) | yes | Request body |
 
 
 Use this API to apply coupons on items in the cart.
@@ -26215,6 +26421,7 @@ Remove Coupon Applied
 
 
 
+
 ```kotlin
 poscart.removeCoupon(id: id).safeAwait{ response,error->
     
@@ -26431,6 +26638,7 @@ Get discount offers based on quantity
 
 
 
+
 ```kotlin
 poscart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug: slug).safeAwait{ response,error->
     
@@ -26564,6 +26772,7 @@ Apply reward points at cart
 
 
 
+
 ```kotlin
 poscart.applyRewardPoints(id: id, i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -26584,7 +26793,7 @@ poscart.applyRewardPoints(id: id, i: i, b: b, body: body).safeAwait{ response,er
 | id | String? | no |  |    
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [RewardPointRequest](#RewardPointRequest) | no | Request body |
+| body | [RewardPointRequest](#RewardPointRequest) | yes | Request body |
 
 
 Use this API to redeem a fixed no. of reward points by applying it to the cart.
@@ -26791,6 +27000,7 @@ Fetch address
 
 
 
+
 ```kotlin
 poscart.getAddresses(cartId: cartId, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault).safeAwait{ response,error->
     
@@ -26884,6 +27094,7 @@ Add address to an account
 
 
 
+
 ```kotlin
 poscart.addAddress(body: body).safeAwait{ response,error->
     
@@ -26901,7 +27112,7 @@ poscart.addAddress(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [Address](#Address) | no | Request body |
+| body | [Address](#Address) | yes | Request body |
 
 
 Use this API to add an address to an account.
@@ -26943,6 +27154,7 @@ Success. Returns the address ID, a flag whether the address is set as default, a
 
 #### getAddressById
 Fetch a single address by its ID
+
 
 
 
@@ -27037,6 +27249,7 @@ Update address added to an account
 
 
 
+
 ```kotlin
 poscart.updateAddress(id: id, body: body).safeAwait{ response,error->
     
@@ -27055,7 +27268,7 @@ poscart.updateAddress(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | ID allotted to the selected address |  
-| body | [Address](#Address) | no | Request body |
+| body | [Address](#Address) | yes | Request body |
 
 
 Use this API to update an existing address in the account. Request object should contain attributes mentioned in  <font color="blue">Address </font> can be updated. These attributes are:</p> <ul> <li> <font color="monochrome">is_default_address</font></li> <li> <font color="monochrome">landmark</font></li> <li> <font color="monochrome">area</font></li> <li> <font color="monochrome">pincode</font></li> <li> <font color="monochrome">email</font></li> <li> <font color="monochrome">address_type</font></li> <li> <font color="monochrome">name</font></li> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">address</font></li> </ul>
@@ -27098,6 +27311,7 @@ Success. Returns the address ID and a message indicating a successful address up
 
 #### removeAddress
 Remove address associated with an account
+
 
 
 
@@ -27163,6 +27377,7 @@ Select an address from available addresses
 
 
 
+
 ```kotlin
 poscart.selectAddress(cartId: cartId, i: i, b: b, body: body).safeAwait{ response,error->
     
@@ -27183,7 +27398,7 @@ poscart.selectAddress(cartId: cartId, i: i, b: b, body: body).safeAwait{ respons
 | cartId | String? | no |  |    
 | i | Boolean? | no |  |    
 | b | Boolean? | no |  |  
-| body | [SelectCartAddressRequest](#SelectCartAddressRequest) | no | Request body |
+| body | [SelectCartAddressRequest](#SelectCartAddressRequest) | yes | Request body |
 
 
 <p>Select Address from all addresses associated with the account in order to ship the cart items to that address, otherwise default address will be selected implicitly. See `SelectCartAddressRequest` in schema of request body for the list of attributes needed to select Address from account. On successful request, this API returns a Cart object. Below address attributes are required. <ul> <li> <font color="monochrome">address_id</font></li> <li> <font color="monochrome">billing_address_id</font></li> <li> <font color="monochrome">uid</font></li> </ul>
@@ -27479,6 +27694,7 @@ Update cart payment
 
 
 
+
 ```kotlin
 poscart.selectPaymentMode(id: id, body: body).safeAwait{ response,error->
     
@@ -27497,7 +27713,7 @@ poscart.selectPaymentMode(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | id | String? | no |  |  
-| body | [UpdateCartPaymentRequest](#UpdateCartPaymentRequest) | no | Request body |
+| body | [UpdateCartPaymentRequest](#UpdateCartPaymentRequest) | yes | Request body |
 
 
 Use this API to update cart payment.
@@ -27805,6 +28021,7 @@ Verify the coupon eligibility against the payment mode
 
 
 
+
 ```kotlin
 poscart.validateCouponForPayment(id: id, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response,error->
     
@@ -27876,6 +28093,7 @@ Success. Returns a success message and the coupon validity. Refer `PaymentCoupon
 
 #### getShipments
 Get delivery date and options before checkout
+
 
 
 
@@ -28584,6 +28802,7 @@ Update shipment delivery type and quantity before checkout
 
 
 
+
 ```kotlin
 poscart.updateShipments(i: i, p: p, id: id, addressId: addressId, orderType: orderType, body: body).safeAwait{ response,error->
     
@@ -28606,7 +28825,7 @@ poscart.updateShipments(i: i, p: p, id: id, addressId: addressId, orderType: ord
 | id | String? | no | The unique identifier of the cart |    
 | addressId | String? | no | ID allotted to an address |    
 | orderType | String? | no | The order type of shipment HomeDelivery - If the customer wants the order home-delivered PickAtStore - If the customer wants the handover of an order at the store itself. |  
-| body | [UpdateCartShipmentRequest](#UpdateCartShipmentRequest) | no | Request body |
+| body | [UpdateCartShipmentRequest](#UpdateCartShipmentRequest) | yes | Request body |
 
 
 Use this API to update the delivery type and quantity as per customer's preference for either store pick-up or home-delivery.
@@ -29288,6 +29507,7 @@ Checkout all items in the cart
 
 
 
+
 ```kotlin
 poscart.checkoutCart(id: id, body: body).safeAwait{ response,error->
     
@@ -29306,7 +29526,7 @@ poscart.checkoutCart(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | id | String? | no |  |  
-| body | [CartPosCheckoutDetailRequest](#CartPosCheckoutDetailRequest) | no | Request body |
+| body | [CartPosCheckoutDetailRequest](#CartPosCheckoutDetailRequest) | yes | Request body |
 
 
 Use this API to checkout all items in the cart for payment and order generation. For COD, order will be generated directly, whereas for other checkout modes, user will be redirected to a payment gateway.
@@ -29727,6 +29947,7 @@ Update the cart meta
 
 
 
+
 ```kotlin
 poscart.updateCartMeta(id: id, body: body).safeAwait{ response,error->
     
@@ -29745,7 +29966,7 @@ poscart.updateCartMeta(id: id, body: body).safeAwait{ response,error->
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |  
 | id | String? | no | The unique identifier of the cart |  
-| body | [CartMetaRequest](#CartMetaRequest) | no | Request body |
+| body | [CartMetaRequest](#CartMetaRequest) | yes | Request body |
 
 
 Use this API to update cart meta like checkout_mode and gstin.
@@ -29785,6 +30006,7 @@ Returns a message indicating the success of cart meta updation as shown below.
 
 #### getAvailableDeliveryModes
 Get available delivery modes for cart
+
 
 
 
@@ -29853,6 +30075,7 @@ Success. Returns the available delivery mode available for a given PIN Code, alo
 
 #### getStoreAddressByUid
 Get list of stores for give uids
+
 
 
 
@@ -29939,6 +30162,7 @@ Generate token for sharing the cart
 
 
 
+
 ```kotlin
 poscart.getCartShareLink(body: body).safeAwait{ response,error->
     
@@ -29956,7 +30180,7 @@ poscart.getCartShareLink(body: body).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [GetShareCartLinkRequest](#GetShareCartLinkRequest) | no | Request body |
+| body | [GetShareCartLinkRequest](#GetShareCartLinkRequest) | yes | Request body |
 
 
 Use this API to generate a shared cart snapshot and return a shortlink token. The link can be shared with other users for getting the same items in their cart.
@@ -30005,6 +30229,7 @@ Returns a URL to share and a token as shown below.
 
 #### getCartSharedItems
 Get details of a shared cart
+
 
 
 
@@ -30340,6 +30565,7 @@ Success. Returns a Cart object as per the valid token. Refer `SharedCartResponse
 
 #### updateCartWithSharedItems
 Merge or replace existing cart
+
 
 
 
@@ -30692,6 +30918,7 @@ Get TAT of a product
 
 
 
+
 ```kotlin
 logistic.getTatProduct(body: body).safeAwait{ response,error->
     
@@ -30747,6 +30974,7 @@ Success. Check the example shown below or refer `GetTatProductResponse` for more
 
 #### getPincodeCity
 Get city from PIN Code
+
 
 
 
@@ -30812,31 +31040,6 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  
  
- #### [ProductListingActionPage](#ProductListingActionPage)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | query | HashMap<String,Any>? |  yes  |  |
- | params | HashMap<String,Any>? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductListingAction](#ProductListingAction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [ProductListingActionPage](#ProductListingActionPage)? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [Meta](#Meta)
 
  | Properties | Type | Nullable | Description |
@@ -30853,34 +31056,33 @@ Success. Returns a JSON object containing the city name, state and country ident
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | meta | [Meta](#Meta)? |  yes  |  |
- | url | String? |  yes  |  |
  | type | String? |  yes  |  |
+ | url | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [Price](#Price)
+ #### [ProductListingActionPage](#ProductListingActionPage)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | max | Double? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | currencyCode | String? |  yes  |  |
- | min | Double? |  yes  |  |
+ | type | String? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+ | params | HashMap<String,Any>? |  yes  |  |
 
 ---
 
 
  
  
- #### [ProductListingPrice](#ProductListingPrice)
+ #### [ProductListingAction](#ProductListingAction)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | marked | [Price](#Price)? |  yes  |  |
- | effective | [Price](#Price)? |  yes  |  |
+ | type | String? |  yes  |  |
+ | page | [ProductListingActionPage](#ProductListingActionPage)? |  yes  |  |
 
 ---
 
@@ -30892,9 +31094,35 @@ Success. Returns a JSON object containing the city name, state and country ident
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | logo | [Media](#Media)? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Price](#Price)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | Double? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+ | max | Double? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductListingPrice](#ProductListingPrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | effective | [Price](#Price)? |  yes  |  |
+ | marked | [Price](#Price)? |  yes  |  |
 
 ---
 
@@ -30905,9 +31133,9 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
  | key | String? |  yes  |  |
  | value | String? |  yes  |  |
- | type | String? |  yes  |  |
 
 ---
 
@@ -30930,32 +31158,32 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ratingCount | Int? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | slug | String |  no  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | uid | Int? |  yes  |  |
- | discount | String? |  yes  |  |
- | rating | Double? |  yes  |  |
  | itemType | String? |  yes  |  |
- | name | String? |  yes  |  |
- | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | rating | Double? |  yes  |  |
+ | productOnlineDate | String? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
  | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | similars | ArrayList<String>? |  yes  |  |
- | color | String? |  yes  |  |
- | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | type | String? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | imageNature | String? |  yes  |  |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
- | tryouts | ArrayList<String>? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
  | teaserTag | String? |  yes  |  |
- | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
- | productOnlineDate | String? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | slug | String |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | color | String? |  yes  |  |
+ | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+ | imageNature | String? |  yes  |  |
 
 ---
 
@@ -30967,6 +31195,36 @@ Success. Returns a JSON object containing the city name, state and country ident
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | error | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSize](#ProductSize)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  |  |
+ | isAvailable | Boolean? |  yes  |  |
+ | value | String? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SizeChartValues](#SizeChartValues)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | col5 | String? |  yes  |  |
+ | col6 | String? |  yes  |  |
+ | col4 | String? |  yes  |  |
+ | col1 | String? |  yes  |  |
+ | col3 | String? |  yes  |  |
+ | col2 | String? |  yes  |  |
 
 ---
 
@@ -30989,28 +31247,12 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | col3 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col4 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col6 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col1 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col2 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
  | col5 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
-
----
-
-
- 
- 
- #### [SizeChartValues](#SizeChartValues)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | col3 | String? |  yes  |  |
- | col4 | String? |  yes  |  |
- | col6 | String? |  yes  |  |
- | col1 | String? |  yes  |  |
- | col2 | String? |  yes  |  |
- | col5 | String? |  yes  |  |
+ | col6 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col4 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col1 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col3 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col2 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
 
 ---
 
@@ -31021,27 +31263,13 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | image | String? |  yes  |  |
- | title | String? |  yes  |  |
- | headers | [ColumnHeaders](#ColumnHeaders)? |  yes  |  |
  | sizeTip | String? |  yes  |  |
- | description | String? |  yes  |  |
  | sizes | ArrayList<[SizeChartValues](#SizeChartValues)>? |  yes  |  |
+ | description | String? |  yes  |  |
  | unit | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSize](#ProductSize)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | value | String? |  yes  |  |
- | isAvailable | Boolean? |  yes  |  |
+ | image | String? |  yes  |  |
+ | headers | [ColumnHeaders](#ColumnHeaders)? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -31063,39 +31291,50 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | sizeChart | [SizeChart](#SizeChart)? |  yes  |  |
+ | sellable | Boolean? |  yes  |  |
  | sizes | ArrayList<[ProductSize](#ProductSize)>? |  yes  |  |
+ | sizeChart | [SizeChart](#SizeChart)? |  yes  |  |
+ | discount | String? |  yes  |  |
  | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | stores | [ProductSizeStores](#ProductSizeStores)? |  yes  |  |
- | sellable | Boolean? |  yes  |  |
- | discount | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [ProductStockPrice](#ProductStockPrice)
+ #### [Store](#Store)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | marked | Double? |  yes  |  |
- | currency | String? |  yes  |  |
- | effective | Double? |  yes  |  |
+ | name | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | count | Int? |  yes  |  |
 
 ---
 
 
  
  
- #### [StrategyWiseListing](#StrategyWiseListing)
+ #### [Details](#Details)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | distance | Int? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | tat | Int? |  yes  |  |
- | pincode | Int? |  yes  |  |
+ | type | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [MarketPlaceSttributes](#MarketPlaceSttributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  |  |
+ | details | ArrayList<[Details](#Details)>? |  yes  |  |
 
 ---
 
@@ -31106,22 +31345,9 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | count | Int? |  yes  |  |
  | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [ReturnConfig](#ReturnConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | returnable | Boolean? |  yes  |  |
- | time | Int? |  yes  |  |
- | unit | String? |  yes  |  |
+ | count | Int? |  yes  |  |
 
 ---
 
@@ -31155,8 +31381,48 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | quantity | Int? |  yes  |  |
  | sizeDistribution | [ProductSetDistribution](#ProductSetDistribution)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StrategyWiseListing](#StrategyWiseListing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tat | Int? |  yes  |  |
+ | distance | Int? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductStockPrice](#ProductStockPrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | effective | Double? |  yes  |  |
+ | marked | Double? |  yes  |  |
+ | currency | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ReturnConfig](#ReturnConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | time | Int? |  yes  |  |
+ | unit | String? |  yes  |  |
+ | returnable | Boolean? |  yes  |  |
 
 ---
 
@@ -31167,46 +31433,8 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | level | String? |  yes  |  |
  | strategy | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Store](#Store)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | count | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [Details](#Details)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | String? |  yes  |  |
- | value | String? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [MarketPlaceSttributes](#MarketPlaceSttributes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | details | ArrayList<[Details](#Details)>? |  yes  |  |
+ | level | String? |  yes  |  |
 
 ---
 
@@ -31217,23 +31445,23 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | pricePerPiece | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | strategyWiseListing | ArrayList<[StrategyWiseListing](#StrategyWiseListing)>? |  yes  |  |
- | itemType | String? |  yes  |  |
- | articleId | String? |  yes  |  |
- | seller | [Seller](#Seller)? |  yes  |  |
  | longLat | ArrayList<Double>? |  yes  |  |
- | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | specialBadge | String? |  yes  |  |
- | set | [ProductSet](#ProductSet)? |  yes  |  |
- | discount | String? |  yes  |  |
- | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | articleAssignment | [ArticleAssignment](#ArticleAssignment)? |  yes  |  |
- | store | [Store](#Store)? |  yes  |  |
- | quantity | Int? |  yes  |  |
  | sellerCount | Int? |  yes  |  |
+ | store | [Store](#Store)? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | pincode | Int? |  yes  |  |
  | marketplaceAttributes | ArrayList<[MarketPlaceSttributes](#MarketPlaceSttributes)>? |  yes  |  |
+ | seller | [Seller](#Seller)? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | set | [ProductSet](#ProductSet)? |  yes  |  |
+ | strategyWiseListing | ArrayList<[StrategyWiseListing](#StrategyWiseListing)>? |  yes  |  |
+ | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
+ | specialBadge | String? |  yes  |  |
+ | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | articleAssignment | [ArticleAssignment](#ArticleAssignment)? |  yes  |  |
+ | articleId | String? |  yes  |  |
+ | pricePerPiece | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
 
 ---
 
@@ -31244,9 +31472,9 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
  | value | String? |  yes  |  |
  | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
 
 ---
 
@@ -31258,8 +31486,8 @@ Success. Returns a JSON object containing the city name, state and country ident
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | page | [Page](#Page) |  no  |  |
- | sortOn | ArrayList<[ProductSizeSellerFilter](#ProductSizeSellerFilter)>? |  yes  |  |
  | items | ArrayList<[ProductSizePriceResponse](#ProductSizePriceResponse)>? |  yes  |  |
+ | sortOn | ArrayList<[ProductSizeSellerFilter](#ProductSizeSellerFilter)>? |  yes  |  |
 
 ---
 
@@ -31270,10 +31498,10 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | key | String? |  yes  |  |
  | logo | String? |  yes  |  |
  | description | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | display | String? |  yes  |  |
 
 ---
 
@@ -31308,10 +31536,10 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
- | title | String? |  yes  |  |
- | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
  | subtitle | String? |  yes  |  |
+ | title | String? |  yes  |  |
+ | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
+ | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
 
 ---
 
@@ -31333,9 +31561,9 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | subtitle | String? |  yes  |  |
  | title | String? |  yes  |  |
  | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
- | subtitle | String? |  yes  |  |
 
 ---
 
@@ -31357,15 +31585,15 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | color | String? |  yes  |  |
- | value | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | value | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | isAvailable | Boolean? |  yes  |  |
- | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | color | String? |  yes  |  |
  | colorName | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | slug | String? |  yes  |  |
 
 ---
 
@@ -31376,10 +31604,10 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | header | String? |  yes  |  |
+ | items | ArrayList<[ProductVariantItemResponse](#ProductVariantItemResponse)>? |  yes  |  |
  | key | String? |  yes  |  |
  | displayType | String? |  yes  |  |
- | items | ArrayList<[ProductVariantItemResponse](#ProductVariantItemResponse)>? |  yes  |  |
+ | header | String? |  yes  |  |
 
 ---
 
@@ -31397,26 +31625,26 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  
  
- #### [CompanyDetail](#CompanyDetail)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | id | Int? |  yes  |  |
-
----
-
-
- 
- 
  #### [StoreDetail](#StoreDetail)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | city | String? |  yes  |  |
  | code | String? |  yes  |  |
- | name | String? |  yes  |  |
  | id | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CompanyDetail](#CompanyDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -31427,14 +31655,14 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | store | [StoreDetail](#StoreDetail)? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | company | [CompanyDetail](#CompanyDetail)? |  yes  |  |
+ | seller | [Seller](#Seller)? |  yes  |  |
+ | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
+ | identifier | HashMap<String,Any>? |  yes  |  |
  | size | String? |  yes  |  |
  | itemId | Int? |  yes  |  |
- | seller | [Seller](#Seller)? |  yes  |  |
- | company | [CompanyDetail](#CompanyDetail)? |  yes  |  |
- | identifier | HashMap<String,Any>? |  yes  |  |
- | uid | String? |  yes  |  |
- | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | store | [StoreDetail](#StoreDetail)? |  yes  |  |
  | quantity | Int? |  yes  |  |
 
 ---
@@ -31465,36 +31693,36 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  
  
- #### [ProductFiltersValue](#ProductFiltersValue)
+ #### [ProductFiltersKey](#ProductFiltersKey)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | selectedMax | Int? |  yes  |  |
- | value | String? |  yes  |  |
- | min | Int? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | currencyCode | String? |  yes  |  |
- | selectedMin | Int? |  yes  |  |
- | displayFormat | String? |  yes  |  |
- | max | Int? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | name | String |  no  |  |
+ | kind | String? |  yes  |  |
  | display | String |  no  |  |
- | queryFormat | String? |  yes  |  |
- | count | Int? |  yes  |  |
- | isSelected | Boolean |  no  |  |
 
 ---
 
 
  
  
- #### [ProductFiltersKey](#ProductFiltersKey)
+ #### [ProductFiltersValue](#ProductFiltersValue)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | selectedMax | Int? |  yes  |  |
+ | count | Int? |  yes  |  |
+ | value | String? |  yes  |  |
+ | min | Int? |  yes  |  |
  | display | String |  no  |  |
- | logo | String? |  yes  |  |
- | kind | String? |  yes  |  |
- | name | String |  no  |  |
+ | isSelected | Boolean |  no  |  |
+ | max | Int? |  yes  |  |
+ | queryFormat | String? |  yes  |  |
+ | selectedMin | Int? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+ | displayFormat | String? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
 
 ---
 
@@ -31505,21 +31733,8 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | values | ArrayList<[ProductFiltersValue](#ProductFiltersValue)> |  no  |  |
  | key | [ProductFiltersKey](#ProductFiltersKey) |  no  |  |
-
----
-
-
- 
- 
- #### [ProductSortOn](#ProductSortOn)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
- | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
+ | values | ArrayList<[ProductFiltersValue](#ProductFiltersValue)> |  no  |  |
 
 ---
 
@@ -31530,33 +31745,46 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ratingCount | Int? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | slug | String |  no  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | uid | Int? |  yes  |  |
- | discount | String? |  yes  |  |
- | rating | Double? |  yes  |  |
+ | sellable | Boolean? |  yes  |  |
  | itemType | String? |  yes  |  |
- | name | String? |  yes  |  |
- | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | rating | Double? |  yes  |  |
+ | productOnlineDate | String? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
  | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | similars | ArrayList<String>? |  yes  |  |
- | color | String? |  yes  |  |
- | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | type | String? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | sellable | Boolean? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | imageNature | String? |  yes  |  |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
- | tryouts | ArrayList<String>? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
  | teaserTag | String? |  yes  |  |
- | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
- | productOnlineDate | String? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | slug | String |  no  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | color | String? |  yes  |  |
+ | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+ | imageNature | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSortOn](#ProductSortOn)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | value | String? |  yes  |  |
+ | isSelected | Boolean? |  yes  |  |
 
 ---
 
@@ -31567,10 +31795,10 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | filters | ArrayList<[ProductFilters](#ProductFilters)>? |  yes  |  |
  | page | [Page](#Page) |  no  |  |
- | sortOn | ArrayList<[ProductSortOn](#ProductSortOn)>? |  yes  |  |
+ | filters | ArrayList<[ProductFilters](#ProductFilters)>? |  yes  |  |
  | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
+ | sortOn | ArrayList<[ProductSortOn](#ProductSortOn)>? |  yes  |  |
 
 ---
 
@@ -31593,14 +31821,14 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | departments | ArrayList<String>? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
- | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
- | slug | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | discount | String? |  yes  |  |
+ | departments | ArrayList<String>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
+ | slug | String? |  yes  |  |
 
 ---
 
@@ -31623,10 +31851,89 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ThirdLevelChild](#ThirdLevelChild)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SecondLevelChild](#SecondLevelChild)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Child](#Child)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CategoryItems](#CategoryItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | childs | ArrayList<[Child](#Child)>? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | slug | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DepartmentCategoryTree](#DepartmentCategoryTree)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[CategoryItems](#CategoryItems)>? |  yes  |  |
+ | department | String? |  yes  |  |
 
 ---
 
@@ -31645,91 +31952,12 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  
  
- #### [ThirdLevelChild](#ThirdLevelChild)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
-
----
-
-
- 
- 
- #### [SecondLevelChild](#SecondLevelChild)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Child](#Child)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CategoryItems](#CategoryItems)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | childs | ArrayList<[Child](#Child)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [DepartmentCategoryTree](#DepartmentCategoryTree)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | department | String? |  yes  |  |
- | items | ArrayList<[CategoryItems](#CategoryItems)>? |  yes  |  |
-
----
-
-
- 
- 
  #### [CategoryListingResponse](#CategoryListingResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | departments | ArrayList<[DepartmentIdentifier](#DepartmentIdentifier)>? |  yes  |  |
  | data | ArrayList<[DepartmentCategoryTree](#DepartmentCategoryTree)>? |  yes  |  |
+ | departments | ArrayList<[DepartmentIdentifier](#DepartmentIdentifier)>? |  yes  |  |
 
 ---
 
@@ -31740,10 +31968,10 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
 
 ---
 
@@ -31767,11 +31995,11 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | slug | String? |  yes  |  |
- | priorityOrder | Int? |  yes  |  |
- | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | priorityOrder | Int? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
+ | slug | String? |  yes  |  |
 
 ---
 
@@ -31793,10 +32021,10 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
  | display | String? |  yes  |  |
  | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
- | type | String? |  yes  |  |
 
 ---
 
@@ -31814,26 +32042,26 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  
  
- #### [CollectionListingFilterTag](#CollectionListingFilterTag)
+ #### [CollectionListingFilterType](#CollectionListingFilterType)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
  | display | String? |  yes  |  |
  | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [CollectionListingFilterType](#CollectionListingFilterType)
+ #### [CollectionListingFilterTag](#CollectionListingFilterTag)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
  | display | String? |  yes  |  |
  | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
 
 ---
 
@@ -31844,8 +32072,8 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
  | type | ArrayList<[CollectionListingFilterType](#CollectionListingFilterType)>? |  yes  |  |
+ | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
 
 ---
 
@@ -31856,25 +32084,25 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | query | HashMap<String,Any>? |  yes  |  |
- | slug | String? |  yes  |  |
+ | cron | HashMap<String,Any>? |  yes  |  |
  | allowSort | Boolean? |  yes  |  |
+ | tag | ArrayList<String>? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
  | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | description | String? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
  | uid | String? |  yes  |  |
  | allowFacets | Boolean? |  yes  |  |
- | appId | String? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
  | name | String? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
- | tag | ArrayList<String>? |  yes  |  |
- | cron | HashMap<String,Any>? |  yes  |  |
- | type | String? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | description | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
+ | slug | String? |  yes  |  |
 
 ---
 
@@ -31885,8 +32113,8 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | filters | [CollectionListingFilter](#CollectionListingFilter)? |  yes  |  |
  | page | [Page](#Page) |  no  |  |
+ | filters | [CollectionListingFilter](#CollectionListingFilter)? |  yes  |  |
  | items | ArrayList<[GetCollectionDetailNest](#GetCollectionDetailNest)>? |  yes  |  |
 
 ---
@@ -31898,23 +32126,23 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | tag | ArrayList<String>? |  yes  |  |
  | schedule | HashMap<String,Any>? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | allowFacets | Boolean? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
- | slug | String? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
  | description | String? |  yes  |  |
- | name | String? |  yes  |  |
- | cron | HashMap<String,Any>? |  yes  |  |
+ | allowFacets | Boolean? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
  | type | String? |  yes  |  |
  | allowSort | Boolean? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
- | appId | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | cron | HashMap<String,Any>? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
  | isActive | Boolean? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | tag | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -31960,8 +32188,8 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | collections | ArrayList<Int>? |  yes  |  |
  | products | ArrayList<Int>? |  yes  |  |
+ | collections | ArrayList<Int>? |  yes  |  |
  | brands | ArrayList<Int>? |  yes  |  |
 
 ---
@@ -31984,8 +32212,8 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | coordinates | ArrayList<Double>? |  yes  |  |
  | type | String? |  yes  |  |
+ | coordinates | ArrayList<Double>? |  yes  |  |
 
 ---
 
@@ -31996,16 +32224,16 @@ Success. Returns a JSON object containing the city name, state and country ident
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | storeEmail | String? |  yes  |  |
- | city | String? |  yes  |  |
  | storeCode | String? |  yes  |  |
- | address | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | latLong | [LatLong](#LatLong)? |  yes  |  |
- | name | String? |  yes  |  |
+ | storeEmail | String? |  yes  |  |
  | uid | Int? |  yes  |  |
- | country | String? |  yes  |  |
  | state | String? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | country | String? |  yes  |  |
+ | city | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | address | String? |  yes  |  |
+ | latLong | [LatLong](#LatLong)? |  yes  |  |
 
 ---
 
@@ -33176,7 +33404,7 @@ Success. Returns a JSON object containing the city name, state and country ident
  | inputs | ArrayList<HashMap<String,Any>> |  no  | List of all the form components |
  | description | String? |  yes  | Description of the form |
  | headerImage | String? |  yes  | Header image that is to be shown for the form |
- | priority | Any |  no  | Describes the priority of the tickets created by the form |
+ | priority | [PriorityEnum](#PriorityEnum) |  no  | Describes the priority of the tickets created by the form |
  | shouldNotify | Boolean? |  yes  | Indicates if staff should be notified when a response is received |
  | successMessage | String? |  yes  | Success message that will be shown on submission |
  | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  | Describes how polling will be done for the tickets createds |
@@ -33193,7 +33421,7 @@ Success. Returns a JSON object containing the city name, state and country ident
  | title | String |  no  | Title for the form |
  | inputs | ArrayList<HashMap<String,Any>> |  no  | List of all the form components |
  | description | String? |  yes  | Description of the form |
- | priority | Any |  no  | Describes the priority of the tickets created by the form |
+ | priority | [PriorityEnum](#PriorityEnum) |  no  | Describes the priority of the tickets created by the form |
  | headerImage | String? |  yes  | Header image that is to be shown for the form |
  | shouldNotify | Boolean? |  yes  | Indicates if staff should be notified when a response is received |
  | loginRequired | Boolean? |  yes  | Denotes if login is required to make a form response submission |
@@ -33214,7 +33442,7 @@ Success. Returns a JSON object containing the city name, state and country ident
  | subCategory | String? |  yes  | Sub-category assigned to the ticket |
  | source | String? |  yes  | Denotes if the ticket was created at company or application level |
  | status | String? |  yes  | Denotes in what state is the ticket |
- | priority | Any? |  yes  | Denotes the priority of ticket |
+ | priority | [PriorityEnum](#PriorityEnum)? |  yes  | Denotes the priority of ticket |
  | assignedTo | [AgentChangePayload](#AgentChangePayload)? |  yes  | Details of support staff to whom ticket is assigned |
  | tags | ArrayList<String>? |  yes  | Tags relevant to ticket |
 
@@ -33299,7 +33527,7 @@ Success. Returns a JSON object containing the city name, state and country ident
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | value | HashMap<String,Any> |  no  | Details of history event |
- | type | Any |  no  | Type of history event |
+ | type | [HistoryTypeEnum](#HistoryTypeEnum) |  no  | Type of history event |
 
 ---
 
@@ -33472,7 +33700,7 @@ Success. Returns a JSON object containing the city name, state and country ident
  | ---------- | ---- | -------- | ----------- |
  | createdBy | HashMap<String,Any>? |  yes  | Creator of the ticket |
  | status | String? |  yes  | Status of the ticket |
- | priority | Any? |  yes  | Priority of the ticket |
+ | priority | [PriorityEnum](#PriorityEnum)? |  yes  | Priority of the ticket |
  | category | String |  no  | Category of the ticket |
  | content | [TicketContent](#TicketContent) |  no  | Content for the ticket |
 
@@ -33680,7 +33908,7 @@ Success. Returns a JSON object containing the city name, state and country ident
  | ticketId | String |  no  | Readable ticket number |
  | category | [TicketCategory](#TicketCategory) |  no  | Category assigned to the ticket |
  | subCategory | [TicketSubCategory](#TicketSubCategory)? |  yes  | Sub-category assigned to the ticket |
- | source | Any |  no  | Denotes if the ticket was created at company or application level |
+ | source | [TicketSourceEnum](#TicketSourceEnum) |  no  | Denotes if the ticket was created at company or application level |
  | status | [Status](#Status) |  no  | Denotes in what state is the ticket |
  | priority | [Priority](#Priority) |  no  | Denotes the priority of ticket |
  | createdBy | HashMap<String,Any>? |  yes  | User details of ticket creator |
@@ -37911,7 +38139,6 @@ Success. Returns a JSON object containing the city name, state and country ident
  | ---------- | ---- | -------- | ----------- |
  | verified | Boolean? |  yes  |  |
  | isPrimary | Boolean? |  yes  |  |
- | isDefault | Boolean? |  yes  |  |
  | isShortlink | Boolean? |  yes  |  |
  | id | String? |  yes  |  |
  | name | String? |  yes  |  |
