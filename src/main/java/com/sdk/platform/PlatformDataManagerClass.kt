@@ -7775,6 +7775,18 @@ class WebhookDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
+    suspend fun getSubscribersByExtensionId(pageNo: Int?=null, pageSize: Int?=null, extensionId: String)
+    : Deferred<Response<SubscriberResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            webhookApiList?.getSubscribersByExtensionId(
+        pageNo = pageNo, pageSize = pageSize, companyId = config.companyId, extensionId = extensionId )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getSubscriberById(subscriberId: String)
     : Deferred<Response<SubscriberResponse>>? {
         
@@ -7801,6 +7813,7 @@ class WebhookDataManagerClass(val config: PlatformConfig) : BaseRepository() {
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
