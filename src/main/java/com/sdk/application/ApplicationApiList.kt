@@ -147,6 +147,16 @@ interface CatalogApiList {
     fun getStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
     : Deferred<Response<StoreListingResponse>>
     
+    
+    @GET ("/service/application/catalog/v1.0/in-stock/locations/")
+    fun getInStockLocations(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
+    : Deferred<Response<ApplicationStoreListing>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/locations/{location_id}/")
+    fun getLocationDetailsById(@Path("location_id") locationId: Int)
+    : Deferred<Response<StoreDetails>>
+    
 }
 
 interface CartApiList {

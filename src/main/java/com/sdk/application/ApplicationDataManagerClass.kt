@@ -686,6 +686,84 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
+    fun getInStockLocations(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Deferred<Response<ApplicationStoreListing>>? {
+        return catalogApiList?.getInStockLocations(pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getInStockLocations
+    **/
+    fun getInStockLocationsPaginator(pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null) : Paginator<ApplicationStoreListing>{
+
+    val paginator = Paginator<ApplicationStoreListing>()
+
+    paginator.setCallBack(object : PaginatorCallback<ApplicationStoreListing> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ApplicationStoreListing>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getInStockLocations(pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getLocationDetailsById(locationId: Int): Deferred<Response<StoreDetails>>? {
+        return catalogApiList?.getLocationDetailsById(locationId = locationId)}
+
+    
+    
 }
 
 
