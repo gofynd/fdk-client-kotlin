@@ -153,7 +153,7 @@ interface CatalogApiList {
     : Deferred<Response<ApplicationStoreListing>>
     
     
-    @GET ("/service/application/catalog/v1.0/in-stock/locations/{location_id}/")
+    @GET ("/service/application/catalog/v1.0/locations/{location_id}/")
     fun getLocationDetailsById(@Path("location_id") locationId: Int)
     : Deferred<Response<StoreDetails>>
     
