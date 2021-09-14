@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -685,6 +685,84 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     return paginator
     }
+    
+    fun getInStockLocations(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Deferred<Response<ApplicationStoreListing>>? {
+        return catalogApiList?.getInStockLocations(pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getInStockLocations
+    **/
+    fun getInStockLocationsPaginator(pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null) : Paginator<ApplicationStoreListing>{
+
+    val paginator = Paginator<ApplicationStoreListing>()
+
+    paginator.setCallBack(object : PaginatorCallback<ApplicationStoreListing> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ApplicationStoreListing>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getInStockLocations(pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getLocationDetailsById(locationId: Int): Deferred<Response<StoreDetails>>? {
+        return catalogApiList?.getLocationDetailsById(locationId = locationId)}
+
+    
     
 }
 
@@ -1691,6 +1769,11 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
     return paginator
     }
     
+    fun getStoreDetailById(storeId: Int): Deferred<Response<OrderingStore>>? {
+        return configurationApiList?.getStoreDetailById(storeId = storeId)}
+
+    
+    
     fun getFeatures(): Deferred<Response<AppFeatureResponse>>? {
         return configurationApiList?.getFeatures()}
 
@@ -1708,6 +1791,11 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
     
     fun getCurrencyById(id: String): Deferred<Response<Currency>>? {
         return configurationApiList?.getCurrencyById(id = id)}
+
+    
+    
+    fun getAppCurrencies(): Deferred<Response<AppCurrencyResponse>>? {
+        return configurationApiList?.getAppCurrencies()}
 
     
     
@@ -1853,6 +1941,11 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Deferred<Response<RefundAccountResponse>>? {
+        return paymentApiList?.addRefundBankAccountUsingOTP(body = body)}
+
+    
+    
     fun verifyOtpAndAddBeneficiaryForWallet(body: WalletOtpRequest): Deferred<Response<WalletOtpResponse>>? {
         return paymentApiList?.verifyOtpAndAddBeneficiaryForWallet(body = body)}
 
@@ -1922,6 +2015,21 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun getPosOrderById(orderId: String): Deferred<Response<PosOrderById>>? {
         return orderApiList?.getPosOrderById(orderId = orderId)}
+
+    
+    
+    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsByShipmentId>>? {
+        return orderApiList?.getCustomerDetailsByShipmentId(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<sendOTPApplicationResponse>>? {
+        return orderApiList?.sendOtpToShipmentCustomer(orderId = orderId, shipmentId = shipmentId)}
+
+    
+    
+    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: ReqBodyVerifyOTPShipment): Deferred<Response<ResponseVerifyOTPShipment>>? {
+        return orderApiList?.verifyOtpShipmentCustomer(orderId = orderId, shipmentId = shipmentId, body = body)}
 
     
     

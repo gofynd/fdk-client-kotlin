@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -146,6 +146,16 @@ interface CatalogApiList {
     @GET ("/service/application/catalog/v1.0/locations/")
     fun getStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
     : Deferred<Response<StoreListingResponse>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/in-stock/locations/")
+    fun getInStockLocations(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
+    : Deferred<Response<ApplicationStoreListing>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/locations/{location_id}/")
+    fun getLocationDetailsById(@Path("location_id") locationId: Int)
+    : Deferred<Response<StoreDetails>>
     
 }
 
@@ -703,6 +713,11 @@ interface ConfigurationApiList {
     : Deferred<Response<OrderingStores>>
     
     
+    @GET ("/service/application/configuration/v1.0/ordering-store/stores/{store_id}")
+    fun getStoreDetailById(@Path("store_id") storeId: Int)
+    : Deferred<Response<OrderingStore>>
+    
+    
     @GET ("/service/application/configuration/v1.0/feature")
     fun getFeatures()
     : Deferred<Response<AppFeatureResponse>>
@@ -721,6 +736,11 @@ interface ConfigurationApiList {
     @GET ("/service/application/configuration/v1.0/currency/{id}")
     fun getCurrencyById(@Path("id") id: String)
     : Deferred<Response<Currency>>
+    
+    
+    @GET ("/service/application/configuration/v1.0/currency")
+    fun getAppCurrencies()
+    : Deferred<Response<AppCurrencyResponse>>
     
     
     @GET ("/service/application/configuration/v1.0/languages")
@@ -842,6 +862,11 @@ interface PaymentApiList {
     : Deferred<Response<RefundAccountResponse>>
     
     
+    @POST ("/service/application/payment/v1.0/refund/account/otp")
+    fun addRefundBankAccountUsingOTP(@Body body: AddBeneficiaryDetailsOTPRequest)
+    : Deferred<Response<RefundAccountResponse>>
+    
+    
     @POST ("/service/application/payment/v1.0/refund/verification/wallet")
     fun verifyOtpAndAddBeneficiaryForWallet(@Body body: WalletOtpRequest)
     : Deferred<Response<WalletOtpResponse>>
@@ -889,6 +914,21 @@ interface OrderApiList {
     @GET ("/service/application/order/v1.0/orders/pos-order/{order_id}")
     fun getPosOrderById(@Path("order_id") orderId: String)
     : Deferred<Response<PosOrderById>>
+    
+    
+    @GET ("/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details")
+    fun getCustomerDetailsByShipmentId(@Path("order_id") orderId: String, @Path("shipment_id") shipmentId: String)
+    : Deferred<Response<CustomerDetailsByShipmentId>>
+    
+    
+    @POST ("/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send/")
+    fun sendOtpToShipmentCustomer(@Path("order_id") orderId: String, @Path("shipment_id") shipmentId: String)
+    : Deferred<Response<sendOTPApplicationResponse>>
+    
+    
+    @POST ("/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify")
+    fun verifyOtpShipmentCustomer(@Path("order_id") orderId: String, @Path("shipment_id") shipmentId: String, @Body body: ReqBodyVerifyOTPShipment)
+    : Deferred<Response<ResponseVerifyOTPShipment>>
     
 }
 
