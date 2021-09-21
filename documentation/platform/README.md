@@ -1,6 +1,6 @@
 ##### [Back to home](../../README.md)
 
-# FDK Platform Front API Documentaion
+# FDK Platform Front API Documentation
 
 
 * [Common](COMMON.md) - Application configuration apis 

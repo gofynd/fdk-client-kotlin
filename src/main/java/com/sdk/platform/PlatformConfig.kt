@@ -9,7 +9,8 @@ class PlatformConfig(
     var userAgent: String? = null,
     var apiKey: String? = null,
     var apiSecret: String? = null,
-    val persistentCookieStore: CookieStore?=null
+    val persistentCookieStore: CookieStore?=null,
+    var debuggable: Boolean = false
 ) : BaseRepository() {
 
 

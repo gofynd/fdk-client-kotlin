@@ -1,6 +1,6 @@
 ##### [Back to home](../../README.md)
 
-# FDK Application Front API Documentaion
+# FDK Application Front API Documentation
 
 
 * [Catalog](CATALOG.md) - Catalog API's allows you to access list of products, prices, seller details, similar features, variants and many more useful features.  
