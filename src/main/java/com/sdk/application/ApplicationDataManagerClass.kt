@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -1814,10 +1814,73 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
 
     
     
-    fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffResponse>>? {
-        return configurationApiList?.getAppStaffs(orderIncent = orderIncent, orderingStore = orderingStore, user = user)}
+    fun getAppStaffs(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, permission: String?=null): Deferred<Response<AppStaffResponse>>? {
+        return configurationApiList?.getAppStaffs(pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, permission = permission)}
 
     
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAppStaffs
+    **/
+    fun getAppStaffsPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, permission: String?=null) : Paginator<AppStaffResponse>{
+
+    val paginator = Paginator<AppStaffResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<AppStaffResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<AppStaffResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                configurationApiList?.getAppStaffs(pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, permission = permission)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
     
 }
 
