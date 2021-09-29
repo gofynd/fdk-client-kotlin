@@ -129,8 +129,8 @@ class RequestSigner(val request: Request) {
         //Log.d("ReqSignER", "canonicalQueryString...... $canonicalQueryString")
 
         val encodedPathPieces = StringBuilder()
-        updatedReq.url().encodedPathSegments().forEach { path ->
-            //val path = "${Uri.encode(path)}"
+        updatedReq.url().pathSegments().forEach {
+            val path = Uri.encode(it)
             if (encodedPathPieces.isEmpty()) {
                 encodedPathPieces.append("/").append(path)
             } else {
