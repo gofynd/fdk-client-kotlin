@@ -10,6 +10,7 @@ Handles Platform websites OMS
 * [activityStatus](#activitystatus)
 * [storeProcessShipmentUpdate](#storeprocessshipmentupdate)
 * [checkRefund](#checkrefund)
+* [ShipmentBagsCanBreak](#shipmentbagscanbreak)
 * [getOrdersByCompanyId](#getordersbycompanyid)
 * [getOrderLanesCountByCompanyId](#getorderlanescountbycompanyid)
 * [getOrderDetails](#getorderdetails)
@@ -274,6 +275,66 @@ Success
 ---
 
 
+### ShipmentBagsCanBreak
+Decides if Shipment bags can break
+
+
+
+
+```kotlin
+client.order.ShipmentBagsCanBreak(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Company Id |  
+| body | [CanBreakRequestBody](#CanBreakRequestBody) | yes | Request body |
+
+
+Decides if Shipment bags can break
+
+*Returned Response:*
+
+
+
+
+[CanBreakResponse](#CanBreakResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getOrdersByCompanyId
 Get Orders for company based on Company Id
 
@@ -281,7 +342,7 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
+client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -308,6 +369,7 @@ client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: 
 | orderId | String? | no | Order Id |   
 | stores | String? | no | Selected Stores |   
 | status | String? | no | Status of order |   
+| dp | String? | no | Delivery Partners |   
 | shortenUrls | Boolean? | no | Shorten URL option |   
 | filterType | String? | no | Filters |  
 
@@ -1323,6 +1385,29 @@ Success
 
  
  
+ #### [CanBreakRequestBody](#CanBreakRequestBody)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shipmentIds | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CanBreakResponse](#CanBreakResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | Boolean |  no  |  |
+ | validActions | HashMap<String,Any> |  no  |  |
+
+---
+
+
+ 
+ 
  #### [FailedOrders](#FailedOrders)
 
  | Properties | Type | Nullable | Description |
@@ -1976,11 +2061,11 @@ Success
  | zip | String? |  yes  |  |
  | lastName | String? |  yes  |  |
  | address2 | String? |  yes  |  |
+ | latitude | Double? |  yes  |  |
  | longitude | Double? |  yes  |  |
  | provinceCode | String? |  yes  |  |
  | phone | String? |  yes  |  |
  | company | String? |  yes  |  |
- | latitude | Double? |  yes  |  |
  | name | String? |  yes  |  |
  | country | String? |  yes  |  |
  | countryCode | String? |  yes  |  |
@@ -2132,11 +2217,11 @@ Success
  | countryCode | String? |  yes  |  |
  | country | String? |  yes  |  |
  | lastName | String? |  yes  |  |
- | latitude | Double? |  yes  |  |
  | provinceCode | String? |  yes  |  |
  | firstName | String? |  yes  |  |
  | phone | String? |  yes  |  |
  | province | String? |  yes  |  |
+ | latitude | Double? |  yes  |  |
  | longitude | Double? |  yes  |  |
  | city | String? |  yes  |  |
  | company | String? |  yes  |  |
@@ -2207,7 +2292,6 @@ Success
  | country | String? |  yes  |  |
  | version | String? |  yes  |  |
  | address1 | String? |  yes  |  |
- | latitude | Double? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | city | String? |  yes  |  |
  | landmark | String? |  yes  |  |
@@ -2215,6 +2299,7 @@ Success
  | name | String? |  yes  |  |
  | address | String? |  yes  |  |
  | phone | String? |  yes  |  |
+ | latitude | Double? |  yes  |  |
  | longitude | Double? |  yes  |  |
  | addressType | String? |  yes  |  |
  | email | String? |  yes  |  |
@@ -2462,6 +2547,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | stage | String? |  yes  |  |
  | stores | ArrayList<String>? |  yes  |  |
+ | dp | ArrayList<Int>? |  yes  |  |
  | fromDate | String? |  yes  |  |
  | toDate | String? |  yes  |  |
 
@@ -2560,6 +2646,10 @@ Success
  | pod | HashMap<String,Any>? |  yes  |  |
  | lockStatus | Boolean? |  yes  |  |
  | orderingChannel | String? |  yes  |  |
+ | creditNoteId | String? |  yes  |  |
+ | autoTriggerDpAssignment | Boolean? |  yes  |  |
+ | packagingType | String? |  yes  |  |
+ | dates | [ShipmentDates](#ShipmentDates)? |  yes  |  |
 
 ---
 
@@ -2932,7 +3022,6 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | country | String? |  yes  |  |
- | latitude | Double? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | area | String? |  yes  |  |
  | state | String? |  yes  |  |
@@ -2941,6 +3030,7 @@ Success
  | pincode | String? |  yes  |  |
  | address1 | String? |  yes  |  |
  | address2 | String? |  yes  |  |
+ | latitude | Double? |  yes  |  |
  | longitude | Double? |  yes  |  |
  | email | String? |  yes  |  |
  | phone | String? |  yes  |  |
@@ -3213,6 +3303,17 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | next | String? |  yes  |  |
  | previous | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentDates](#ShipmentDates)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | dueDate | String? |  yes  |  |
 
 ---
 
