@@ -18454,8 +18454,8 @@ data class ApplicationRedirections(
     
     
     
-    @SerializedName("from")
-    var from: String?=null,
+    @SerializedName("redirect_from")
+    var redirectFrom: String?=null,
     
     @SerializedName("redirect_to")
     var redirectTo: String?=null,

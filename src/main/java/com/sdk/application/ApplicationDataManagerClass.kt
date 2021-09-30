@@ -1089,6 +1089,16 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
+    fun loginWithGoogleOauth(platform: String?=null): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleOauth(platform = platform)}
+
+    
+    
+    fun loginWithGoogleAndRedirect(platform: String?=null): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleAndRedirect(platform = platform)}
+
+    
+    
     fun loginWithGoogleAndroid(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
         return userApiList?.loginWithGoogleAndroid(platform = platform, body = body)}
 

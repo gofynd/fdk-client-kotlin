@@ -8,6 +8,8 @@
 Authentication Service
 * [loginWithFacebook](#loginwithfacebook)
 * [loginWithGoogle](#loginwithgoogle)
+* [loginWithGoogleOauth](#loginwithgoogleoauth)
+* [loginWithGoogleAndRedirect](#loginwithgoogleandredirect)
 * [loginWithGoogleAndroid](#loginwithgoogleandroid)
 * [loginWithGoogleIOS](#loginwithgoogleios)
 * [loginWithOTP](#loginwithotp)
@@ -137,6 +139,142 @@ user.loginWithGoogle(platform: platform, body: body).safeAwait{ response,error->
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
 | body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
+
+
+Use this API to login or register using Google Account credentials.
+
+*Returned Response:*
+
+
+
+
+[AuthSuccess](#AuthSuccess)
+
+Success. Returns a JSON object with the user details. Check the example shown below or refer `AuthSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AuthSuccess"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### loginWithGoogleOauth
+Login or Register using Google
+
+
+
+
+```kotlin
+user.loginWithGoogleOauth(platform: platform).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+
+
+
+Use this API to login or register using Google Account credentials.
+
+*Returned Response:*
+
+
+
+
+[AuthSuccess](#AuthSuccess)
+
+Success. Returns a google url and redirect to same
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AuthSuccess"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### loginWithGoogleAndRedirect
+Login or Register using Google
+
+
+
+
+```kotlin
+user.loginWithGoogleAndRedirect(platform: platform).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+
 
 
 Use this API to login or register using Google Account credentials.
