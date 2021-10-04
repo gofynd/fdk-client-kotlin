@@ -48,6 +48,8 @@ Content System
 * [updatePage](#updatepage)
 * [deletePage](#deletepage)
 * [getPageBySlug](#getpagebyslug)
+* [updatePathRedirectionRules](#updatepathredirectionrules)
+* [getPathRedirectionRules](#getpathredirectionrules)
 * [getSEOConfiguration](#getseoconfiguration)
 * [updateSEOConfiguration](#updateseoconfiguration)
 * [getSlideshows](#getslideshows)
@@ -2609,7 +2611,7 @@ Get page meta
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageMeta(pageType: pageType, cartPages: cartPages).safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2626,9 +2628,7 @@ client.application("<APPLICATION_ID>").content.getPageMeta(pageType: pageType, c
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
-| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |   
-| pageType | String? | no | Fetch meta by page type. Acceptable values are: system, custom and all |   
-| cartPages | Boolean? | no | Pass this param value as `true` to fetch meta with cart pages |  
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
 
 
 
@@ -3240,6 +3240,143 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 ```json
 {
   "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePathRedirectionRules
+Save path based redirection rules
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.updatePathRedirectionRules(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+| body | [PathMappingSchema](#PathMappingSchema) | yes | Request body |
+
+
+Use this API to add, update or delete path-based redirection rules
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "redirections": [
+    {
+      "redirect_from": "test.hostfynd.dev/redirect_from",
+      "redirect_to": "/redirect_to"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPathRedirectionRules
+Get path based redirection rules
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPathRedirectionRules().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| companyId | String | yes | Numeric ID allotted to a business account on Fynd Platform |   
+| applicationId | String | yes | Numeric ID allotted to an application created within a business account. |  
+
+
+
+Use this API to get path based redirection rules.
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PathMapping"
 }
 ```
 </details>
@@ -4439,6 +4576,33 @@ Success.
  | ---------- | ---- | -------- | ----------- |
  | question | String? |  yes  |  |
  | answer | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PathMappingSchema](#PathMappingSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String? |  yes  |  |
+ | redirections | ArrayList<[RedirectionSchema](#RedirectionSchema)>? |  yes  |  |
+ | id | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RedirectionSchema](#RedirectionSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | redirectFrom | String? |  yes  |  |
+ | redirectTo | String? |  yes  |  |
 
 ---
 
