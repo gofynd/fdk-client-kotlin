@@ -43,10 +43,10 @@ client.application("<APPLICATION_ID>").rewards.getGiveaways(pageId: pageId, page
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | pageId | String? | no | pagination page id |   
 | pageSize | Int? | no | pagination page size |  
 
@@ -106,10 +106,10 @@ client.application("<APPLICATION_ID>").rewards.createGiveaway(body: body).safeAw
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [Giveaway](#Giveaway) | yes | Request body |
 
 
@@ -167,10 +167,10 @@ client.application("<APPLICATION_ID>").rewards.getGiveawayByID(id: id).safeAwait
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | id | String | yes | Giveaway ID |  
 
 
@@ -229,10 +229,10 @@ client.application("<APPLICATION_ID>").rewards.updateGiveaway(id: id, body: body
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | id | String | yes | Giveaway ID |  
 | body | [Giveaway](#Giveaway) | yes | Request body |
 
@@ -291,10 +291,6 @@ client.application("<APPLICATION_ID>").rewards.getOffers().safeAwait{ response,e
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |  
 
 
 
@@ -352,10 +348,10 @@ client.application("<APPLICATION_ID>").rewards.getOfferByName(cookie: cookie, na
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | cookie | String | yes | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |   
 | name | String | yes | Offer name |  
 
@@ -415,10 +411,10 @@ client.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, bod
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | name | String | yes | Offer name |  
 | body | [Offer](#Offer) | yes | Request body |
 
@@ -477,10 +473,10 @@ client.application("<APPLICATION_ID>").rewards.getUserAvailablePoints(userId: us
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | userId | String | yes | user id |  
 
 
@@ -539,10 +535,10 @@ client.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | userId | String | yes | user id |  
 | body | [AppUser](#AppUser) | yes | Request body |
 
@@ -601,10 +597,10 @@ client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: user
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | company id |   
-| applicationId | String | yes | application id |   
 | userId | String | yes | user id |   
 | pageId | String? | no | PageID is the ID of the requested page. For first request it should be kept empty. |   
 | pageLimit | Int? | no | PageLimit is the number of requested items in response. |   

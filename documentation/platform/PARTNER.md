@@ -35,10 +35,10 @@ client.application("<APPLICATION_ID>").partner.addProxyPath(extensionId: extensi
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | extensionId | String | yes | Extension id |  
 | body | [AddProxyReq](#AddProxyReq) | yes | Request body |
 
@@ -106,10 +106,10 @@ client.application("<APPLICATION_ID>").partner.removeProxyPath(extensionId: exte
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | extensionId | String | yes | Extension id |   
 | attachedPath | String | yes | Attachaed path slug |  
 

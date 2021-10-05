@@ -35,6 +35,8 @@ filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,er
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | namespace | String | yes | Name of the bucket created for storing objects. |  
@@ -110,6 +112,8 @@ filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response
     } 
 }
 ```
+
+
 
 
 

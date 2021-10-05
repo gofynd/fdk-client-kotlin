@@ -59,6 +59,8 @@ feedback.createAbuseReport(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [ReportAbuseRequest](#ReportAbuseRequest) | yes | Request body |
@@ -118,6 +120,8 @@ feedback.updateAbuseReport(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [UpdateAbuseStatusRequest](#UpdateAbuseStatusRequest) | yes | Request body |
@@ -174,6 +178,8 @@ feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pag
     } 
 }
 ```
+
+
 
 
 
@@ -241,6 +247,8 @@ feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,e
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1.  |   
@@ -302,6 +310,8 @@ feedback.createAttribute(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [SaveAttributeRequest](#SaveAttributeRequest) | yes | Request body |
@@ -358,6 +368,8 @@ feedback.getAttribute(slug: slug).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -421,6 +433,8 @@ feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | A short, human-readable, URL-friendly identifier of an attribute. You can get slug value from the endpoint 'service/application/feedback/v1.0/attributes'. |  
@@ -478,6 +492,8 @@ feedback.createComment(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -540,6 +556,8 @@ feedback.updateComment(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [UpdateCommentRequest](#UpdateCommentRequest) | yes | Request body |
@@ -596,6 +614,8 @@ feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId:
     } 
 }
 ```
+
+
 
 
 
@@ -664,6 +684,8 @@ feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | entityType | String | yes | Type of entity, e.g. question, rate, review, answer, or comment. |   
@@ -722,6 +744,8 @@ feedback.deleteMedia(ids: ids).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -785,6 +809,8 @@ feedback.createMedia(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [AddMediaListRequest](#AddMediaListRequest) | yes | Request body |
@@ -844,6 +870,8 @@ feedback.updateMedia(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [UpdateMediaListRequest](#UpdateMediaListRequest) | yes | Request body |
@@ -900,6 +928,8 @@ feedback.getMedias(entityType: entityType, entityId: entityId, id: id, type: typ
     } 
 }
 ```
+
+
 
 
 
@@ -968,6 +998,8 @@ feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | entityType | String | yes | Type of entity, e.g. product, delivery, seller, order placed, order delivered, application, or template. |   
@@ -1032,6 +1064,8 @@ feedback.createReview(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [UpdateReviewRequest](#UpdateReviewRequest) | yes | Request body |
@@ -1091,6 +1125,8 @@ feedback.updateReview(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [UpdateReviewRequest](#UpdateReviewRequest) | yes | Request body |
@@ -1147,6 +1183,8 @@ feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: 
     } 
 }
 ```
+
+
 
 
 
@@ -1222,6 +1260,8 @@ feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: en
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | templateId | String? | no | ID of the feedback template. |   
@@ -1284,6 +1324,8 @@ feedback.createQuestion(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [CreateQNARequest](#CreateQNARequest) | yes | Request body |
@@ -1343,6 +1385,8 @@ feedback.updateQuestion(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [UpdateQNARequest](#UpdateQNARequest) | yes | Request body |
@@ -1399,6 +1443,8 @@ feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: i
     } 
 }
 ```
+
+
 
 
 
@@ -1468,6 +1514,8 @@ feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no | vote ID |   
@@ -1531,6 +1579,8 @@ feedback.createVote(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [VoteRequest](#VoteRequest) | yes | Request body |
@@ -1587,6 +1637,8 @@ feedback.updateVote(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 

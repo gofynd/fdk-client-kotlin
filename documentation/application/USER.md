@@ -9,7 +9,6 @@ Authentication Service
 * [loginWithFacebook](#loginwithfacebook)
 * [loginWithGoogle](#loginwithgoogle)
 * [loginWithGoogleOauth](#loginwithgoogleoauth)
-* [loginWithGoogleAndRedirect](#loginwithgoogleandredirect)
 * [loginWithGoogleAndroid](#loginwithgoogleandroid)
 * [loginWithGoogleIOS](#loginwithgoogleios)
 * [loginWithOTP](#loginwithotp)
@@ -64,6 +63,8 @@ user.loginWithFacebook(platform: platform, body: body).safeAwait{ response,error
     } 
 }
 ```
+
+
 
 
 
@@ -135,6 +136,8 @@ user.loginWithGoogle(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -203,6 +206,8 @@ user.loginWithGoogleOauth(platform: platform).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -219,74 +224,6 @@ Use this API to login or register using Google Account credentials.
 [AuthSuccess](#AuthSuccess)
 
 Success. Returns a google url and redirect to same
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; Success</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/AuthSuccess"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### loginWithGoogleAndRedirect
-Login or Register using Google
-
-
-
-
-```kotlin
-user.loginWithGoogleAndRedirect(platform: platform).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| platform | String? | no | ID of the application |  
-
-
-
-Use this API to login or register using Google Account credentials.
-
-*Returned Response:*
-
-
-
-
-[AuthSuccess](#AuthSuccess)
-
-Success. Returns a JSON object with the user details. Check the example shown below or refer `AuthSuccess` for more details.
 
 
 
@@ -336,6 +273,8 @@ user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response,
     } 
 }
 ```
+
+
 
 
 
@@ -407,6 +346,8 @@ user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response,erro
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -472,6 +413,8 @@ user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -543,6 +486,8 @@ user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [PasswordLoginRequestSchema](#PasswordLoginRequestSchema) | yes | Request body |
@@ -610,6 +555,8 @@ user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response,
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -669,6 +616,8 @@ user.forgotPassword(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -739,6 +688,8 @@ user.sendResetToken(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
@@ -797,6 +748,8 @@ user.loginWithToken(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -864,6 +817,8 @@ user.registerWithForm(platform: platform, body: body).safeAwait{ response,error-
     } 
 }
 ```
+
+
 
 
 
@@ -938,6 +893,8 @@ user.verifyEmail(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
@@ -996,6 +953,8 @@ user.verifyMobile(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1061,6 +1020,8 @@ user.hasPassword().safeAwait{ response,error->
 
 
 
+
+
 Use this API to check if user has created a password for login.
 
 *Returned Response:*
@@ -1112,6 +1073,8 @@ user.updatePassword(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1177,6 +1140,8 @@ user.logout().safeAwait{ response,error->
 
 
 
+
+
 Use this API to check to logout a user from the app.
 
 *Returned Response:*
@@ -1228,6 +1193,8 @@ user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1299,6 +1266,8 @@ user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1367,6 +1336,8 @@ user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1426,6 +1397,8 @@ user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1498,6 +1471,8 @@ user.getLoggedInUser().safeAwait{ response,error->
 
 
 
+
+
 Use this API  to get the details of a logged in user.
 
 *Returned Response:*
@@ -1561,6 +1536,8 @@ user.getListOfActiveSessions().safeAwait{ response,error->
 
 
 
+
+
 Use this API to retrieve all active sessions of a user.
 
 *Returned Response:*
@@ -1617,6 +1594,8 @@ user.getPlatformConfig(name: name).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1745,6 +1724,8 @@ user.updateProfile(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1813,6 +1794,8 @@ user.addMobileNumber(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1878,6 +1861,8 @@ user.deleteMobileNumber(platform: platform, active: active, primary: primary, ve
     } 
 }
 ```
+
+
 
 
 
@@ -1954,6 +1939,8 @@ user.setMobileNumberAsPrimary(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | yes | Request body |
@@ -2018,6 +2005,8 @@ user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ res
     } 
 }
 ```
+
+
 
 
 
@@ -2089,6 +2078,8 @@ user.addEmail(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -2154,6 +2145,8 @@ user.deleteEmail(platform: platform, active: active, primary: primary, verified:
     } 
 }
 ```
+
+
 
 
 
@@ -2229,6 +2222,8 @@ user.setEmailAsPrimary(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
@@ -2293,6 +2288,8 @@ user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ resp
     } 
 }
 ```
+
+
 
 
 

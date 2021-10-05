@@ -75,10 +75,10 @@ client.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | platformType | String | yes | Current platform name |  
 
 
@@ -155,10 +155,10 @@ client.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformT
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | platformType | String | yes | Current platform name |  
 | body | [MobileAppConfigRequest](#MobileAppConfigRequest) | yes | Request body |
 
@@ -235,10 +235,10 @@ client.application("<APPLICATION_ID>").configuration.getPreviousVersions(platfor
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | platformType | String | yes | Current platform name |  
 
 
@@ -312,10 +312,6 @@ client.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -469,10 +465,10 @@ client.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: bod
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [AppFeatureRequest](#AppFeatureRequest) | yes | Request body |
 
 
@@ -614,10 +610,6 @@ client.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAw
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -715,10 +707,10 @@ client.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body:
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [ApplicationDetail](#ApplicationDetail) | yes | Request body |
 
 
@@ -814,10 +806,6 @@ client.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwa
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -990,10 +978,10 @@ client.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [ApplicationInformation](#ApplicationInformation) | yes | Request body |
 
 
@@ -1159,10 +1147,6 @@ client.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -1298,10 +1282,10 @@ client.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: bo
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [TokenResponse](#TokenResponse) | yes | Request body |
 
 
@@ -1437,10 +1421,10 @@ client.application("<APPLICATION_ID>").configuration.getAppCompanies(pageNo: pag
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 
@@ -1525,10 +1509,10 @@ client.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 
@@ -1626,10 +1610,6 @@ client.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAw
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -1871,10 +1851,10 @@ client.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body:
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [ApplicationInventory](#ApplicationInventory) | yes | Request body |
 
 
@@ -2116,10 +2096,10 @@ client.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryCon
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [AppInventoryPartialUpdate](#AppInventoryPartialUpdate) | yes | Request body |
 
 
@@ -2361,10 +2341,6 @@ client.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safe
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -2438,10 +2414,10 @@ client.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(bod
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [AppSupportedCurrency](#AppSupportedCurrency) | yes | Request body |
 
 
@@ -2515,10 +2491,10 @@ client.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(p
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 | body | [FilterOrderingStoreRequest](#FilterOrderingStoreRequest) | yes | Request body |
@@ -2662,10 +2638,10 @@ client.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(b
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [OrderingStoreConfig](#OrderingStoreConfig) | yes | Request body |
 
 
@@ -2734,10 +2710,6 @@ client.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ res
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -2819,10 +2791,10 @@ client.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeA
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [DomainAddRequest](#DomainAddRequest) | yes | Request body |
 
 
@@ -2888,10 +2860,10 @@ client.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).sa
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |   
 | id | String | yes | Domain _id |  
 
 
@@ -2952,10 +2924,10 @@ client.application("<APPLICATION_ID>").configuration.changeDomainType(body: body
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [UpdateDomainTypeRequest](#UpdateDomainTypeRequest) | yes | Request body |
 
 
@@ -3037,10 +3009,10 @@ client.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body)
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [DomainStatusRequest](#DomainStatusRequest) | yes | Request body |
 
 
@@ -3114,9 +3086,10 @@ client.configuration.createApplication(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |  
+| --------- | -----  | -------- | ----------- |
 | body | [CreateApplicationRequest](#CreateApplicationRequest) | yes | Request body |
 
 
@@ -3174,9 +3147,10 @@ client.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).s
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | pageNo | Int? | no |  |   
 | pageSize | Int? | no |  |   
 | q | String? | no | Url encoded object used as mongodb query |  
@@ -3237,10 +3211,6 @@ client.application("<APPLICATION_ID>").configuration.getApplicationById().safeAw
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current application id |  
 
 
 
@@ -3298,9 +3268,6 @@ client.configuration.getCurrencies().safeAwait{ response,error->
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |  
 
 
 
@@ -3371,9 +3338,10 @@ client.configuration.getDomainAvailibility(body: body).safeAwait{ response,error
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |  
+| --------- | -----  | -------- | ----------- |
 | body | [DomainSuggestionsRequest](#DomainSuggestionsRequest) | yes | Request body |
 
 
@@ -3475,9 +3443,10 @@ client.configuration.getIntegrationById(id: id).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | id | Int | yes | Integration id |  
 
 
@@ -3623,9 +3592,10 @@ client.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safe
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 
@@ -3792,9 +3762,10 @@ client.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, p
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | level | String | yes | Integration level |   
 | uid | Int | yes | Integration level uid |   
 | pageNo | Int? | no | Current page no |   
@@ -3963,9 +3934,10 @@ client.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opte
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | id | String | yes | Integration id |   
 | level | String | yes | Integration level |   
 | opted | Boolean? | no | Filter on opted stores |   
@@ -4048,9 +4020,10 @@ client.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).saf
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | id | String | yes | Integration id |   
 | level | String | yes | Integration level |   
 | uid | Int | yes | Integration level uid |  
@@ -4128,9 +4101,10 @@ client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | id | String | yes | Integration id |   
 | level | String | yes | Integration level |   
 | uid | Int | yes | Integration level uid |  
@@ -4208,9 +4182,10 @@ client.configuration.getBrandsByCompany(q: q).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | q | String? | no | Search text for brand name |  
 
 
@@ -4286,9 +4261,10 @@ client.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 | body | [CompanyByBrandsRequest](#CompanyByBrandsRequest) | yes | Request body |
@@ -4370,9 +4346,10 @@ client.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 | body | [StoreByBrandsRequest](#StoreByBrandsRequest) | yes | Request body |
@@ -4493,9 +4470,10 @@ client.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSi
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 
@@ -4598,9 +4576,10 @@ client.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response,e
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | id | String | yes | Application Id |  
 
 
@@ -4706,9 +4685,10 @@ client.configuration.optOutFromApplication(id: id, body: body).safeAwait{ respon
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
 | id | String | yes | Application Id |  
 | body | [OptOutInventory](#OptOutInventory) | yes | Request body |
 

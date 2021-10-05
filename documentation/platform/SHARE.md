@@ -37,10 +37,10 @@ client.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwa
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [ShortLinkReq](#ShortLinkReq) | yes | Request body |
 
 
@@ -136,10 +136,10 @@ client.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageS
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | pageNo | Int? | no | Current page number |   
 | pageSize | Int? | no | Current page size |   
 | createdBy | String? | no | Short link creator |   
@@ -251,10 +251,10 @@ client.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safe
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | hash | String | yes | Hash of short url |  
 
 
@@ -351,10 +351,10 @@ client.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: b
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | id | String | yes | Short link document identifier |  
 | body | [ShortLinkReq](#ShortLinkReq) | yes | Request body |
 

@@ -52,6 +52,8 @@ content.getAnnouncements().safeAwait{ response,error->
 
 
 
+
+
 Announcements are useful to highlight a message or information on top of a webpage. Use this API to retrieve live announcements. Get announcements on individual pages or for all pages.
 
 *Returned Response:*
@@ -128,6 +130,8 @@ content.getBlog(slug: slug, rootId: rootId).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | A short, human-readable, URL-friendly identifier of a blog. You can get slug value from the endpoint /service/application/content/v1.0/blogs/. |   
@@ -194,6 +198,8 @@ content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -267,6 +273,8 @@ content.getFaqs().safeAwait{ response,error->
 
 
 
+
+
 Use this API to get a list of frequently asked questions. Users will benefit from it when facing any issue with the website.
 
 *Returned Response:*
@@ -326,6 +334,8 @@ content.getFaqCategories().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -397,6 +407,8 @@ content.getFaqBySlug(slug: slug).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | A short, human-readable, URL-friendly identifier of an FAQ. You can get slug value from the endpoint /service/application/content/v1.0/faq. |  
@@ -460,6 +472,8 @@ content.getFaqCategoryBySlug(slug: slug).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -540,6 +554,8 @@ content.getFaqsByCategorySlug(slug: slug).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | A short, human-readable, URL-friendly identifier of an FAQ category. You can get slug value from the endpoint /service/application/content/v1.0/faq/categories. |  
@@ -611,6 +627,8 @@ content.getLandingPage().safeAwait{ response,error->
 
 
 
+
+
 Landing page is the first page that a prospect lands upon while visiting a website. Use this API to fetch the details of a landing page.
 
 *Returned Response:*
@@ -674,6 +692,8 @@ content.getLegalInformation().safeAwait{ response,error->
 
 
 
+
+
 Use this API to get the legal information of an application, which includes Privacy Policy, Terms and Conditions, Shipping Policy and FAQs regarding the usage of the application.
 
 *Returned Response:*
@@ -733,6 +753,8 @@ content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,e
     } 
 }
 ```
+
+
 
 
 
@@ -805,6 +827,8 @@ content.getPage(slug: slug, rootId: rootId).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value from the endpoint /service/application/content/v1.0/pages/. |   
@@ -871,6 +895,8 @@ content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -944,6 +970,8 @@ content.getSEOConfiguration().safeAwait{ response,error->
 
 
 
+
+
 Use this API to get the SEO details of an application, which includes a robot.txt, meta-tags and sitemap.
 
 *Returned Response:*
@@ -1003,6 +1031,8 @@ content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,er
     } 
 }
 ```
+
+
 
 
 
@@ -1075,6 +1105,8 @@ content.getSlideshow(slug: slug).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | A short, human-readable, URL-friendly identifier of a slideshow. You can get slug value from the endpoint /service/application/content/v1.0/slideshow/. |  
@@ -1144,6 +1176,8 @@ content.getSupportInformation().safeAwait{ response,error->
 
 
 
+
+
 Use this API to get contact details for customer support including emails and phone numbers.
 
 *Returned Response:*
@@ -1203,6 +1237,8 @@ content.getTags().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 

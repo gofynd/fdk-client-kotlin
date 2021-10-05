@@ -45,10 +45,6 @@ client.application("<APPLICATION_ID>").analytics.getStatiscticsGroups().safeAwai
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |  
 
 
 
@@ -114,10 +110,10 @@ client.application("<APPLICATION_ID>").analytics.getStatiscticsGroupComponents(g
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | groupName | String | yes | Group name |  
 
 
@@ -187,10 +183,10 @@ client.application("<APPLICATION_ID>").analytics.getComponentStatsCSV(componentN
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | componentName | String | yes | Component name |  
 
 
@@ -249,10 +245,10 @@ client.application("<APPLICATION_ID>").analytics.getComponentStatsPDF(componentN
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | componentName | String | yes | Component name |  
 
 
@@ -311,10 +307,10 @@ client.application("<APPLICATION_ID>").analytics.getComponentStats(componentName
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | componentName | String | yes | Component name |  
 
 
@@ -420,10 +416,10 @@ client.application("<APPLICATION_ID>").analytics.getAbandonCartList(fromDate: fr
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | fromDate | String | yes | From date |   
 | toDate | String | yes | To date |   
 | pageNo | Int? | no | Current page number |   
@@ -505,10 +501,10 @@ client.application("<APPLICATION_ID>").analytics.getAbandonCartsCSV(fromDate: fr
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | fromDate | String | yes | From date |   
 | toDate | String | yes | To date |  
 
@@ -568,10 +564,10 @@ client.application("<APPLICATION_ID>").analytics.getAbandonCartDetail(cartId: ca
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | cartId | String | yes | Cart Id |  
 
 
@@ -630,9 +626,10 @@ client.analytics.createExportJob(exportType: exportType, body: body).safeAwait{ 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | exportType | String | yes | Export type / format |  
 | body | [ExportJobReq](#ExportJobReq) | yes | Request body |
 
@@ -694,9 +691,10 @@ client.analytics.getExportJobStatus(exportType: exportType, jobId: jobId).safeAw
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | exportType | String | yes | Export type / format |   
 | jobId | String | yes | Export job id |  
 
@@ -760,9 +758,10 @@ client.analytics.getLogsList(logType: logType, pageNo: pageNo, pageSize: pageSiz
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | logType | String | yes | Log type |   
 | pageNo | Int? | no | Current page number |   
 | pageSize | Int? | no | Current page size |  
@@ -841,9 +840,10 @@ client.analytics.searchLogs(pageNo: pageNo, pageSize: pageSize, logType: logType
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | pageNo | Int? | no | Current page number |   
 | pageSize | Int? | no | Current page size |   
 | logType | String | yes | Log type |  

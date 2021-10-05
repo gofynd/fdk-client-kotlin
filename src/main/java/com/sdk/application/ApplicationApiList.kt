@@ -373,11 +373,6 @@ interface UserApiList {
     : Deferred<Response<AuthSuccess>>
     
     
-    @GET ("/service/application/user/authentication/v1.0/login/google/callback")
-    fun loginWithGoogleAndRedirect(@Query("platform") platform: String?)
-    : Deferred<Response<AuthSuccess>>
-    
-    
     @POST ("/service/application/user/authentication/v1.0/login/google-android")
     fun loginWithGoogleAndroid(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>

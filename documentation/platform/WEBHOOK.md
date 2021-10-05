@@ -39,11 +39,12 @@ client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, exten
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no | Page Number |   
 | pageSize | Int? | no | Page Size |   
-| companyId | Int | yes | Company ID of the application |   
 | extensionId | String? | no | Extension ID |  
 
 
@@ -102,9 +103,10 @@ client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id of the application |  
+| --------- | -----  | -------- | ----------- |
 | body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
 
 
@@ -162,9 +164,10 @@ client.webhook.updateSubscriberConfig(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company ID of the application |  
+| --------- | -----  | -------- | ----------- |
 | body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
 
 
@@ -222,11 +225,12 @@ client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, e
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no | Page Number |   
 | pageSize | Int? | no | Page Size |   
-| companyId | Int | yes | Company ID of the application |   
 | extensionId | String | yes | Extension ID |  
 
 
@@ -285,9 +289,10 @@ client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company ID of the application |   
 | subscriberId | Int | yes | Subscriber ID |  
 
 
@@ -346,9 +351,6 @@ client.webhook.fetchAllEventConfigurations().safeAwait{ response,error->
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company ID of the application |  
 
 
 
@@ -554,6 +556,7 @@ Success
  | companyId | Int? |  yes  |  |
  | applicationId | ArrayList<String>? |  yes  |  |
  | extensionId | String? |  yes  |  |
+ | criteria | String? |  yes  |  |
 
 ---
 

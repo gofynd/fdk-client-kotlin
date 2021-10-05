@@ -37,6 +37,8 @@ theme.getAllPages(themeId: themeId).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | themeId | String | yes | ID of the theme to be retrieved |  
@@ -102,6 +104,8 @@ theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response,error-
     } 
 }
 ```
+
+
 
 
 
@@ -175,6 +179,8 @@ theme.getAppliedTheme().safeAwait{ response,error->
 
 
 
+
+
 An application has multiple themes, but only one theme can be applied at a time. Use this API to retrieve the theme currently applied to the application.
 
 *Returned Response:*
@@ -234,6 +240,8 @@ theme.getThemeForPreview(themeId: themeId).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 

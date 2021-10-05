@@ -35,6 +35,8 @@ logistic.getTatProduct(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [GetTatProductReqBody](#GetTatProductReqBody) | yes | Request body |
@@ -91,6 +93,8 @@ logistic.getPincodeCity(pincode: pincode).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 

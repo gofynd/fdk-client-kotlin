@@ -54,9 +54,10 @@ client.order.shipmentStatusUpdate(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [UpdateShipmentStatusBody](#UpdateShipmentStatusBody) | yes | Request body |
 
 
@@ -114,9 +115,10 @@ client.order.activityStatus(bagId: bagId).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | bagId | String | yes | Bag Id |  
 
 
@@ -175,9 +177,10 @@ client.order.storeProcessShipmentUpdate(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [UpdateProcessShipmenstRequestBody](#UpdateProcessShipmenstRequestBody) | yes | Request body |
 
 
@@ -235,9 +238,10 @@ client.order.checkRefund(shipmentId: shipmentId).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | shipmentId | String | yes | Shipment Id |  
 
 
@@ -296,9 +300,10 @@ client.order.ShipmentBagsCanBreak(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [CanBreakRequestBody](#CanBreakRequestBody) | yes | Request body |
 
 
@@ -356,9 +361,10 @@ client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | pageNo | String? | no | Current page number |   
 | pageSize | String? | no | Page limit |   
 | fromDate | String? | no | From Date |   
@@ -429,9 +435,10 @@ client.order.getOrderLanesCountByCompanyId(pageNo: pageNo, pageSize: pageSize, f
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | pageNo | String? | no | Current page number |   
 | pageSize | String? | no | Page limit |   
 | fromDate | String? | no | From Date |   
@@ -501,9 +508,10 @@ client.order.getOrderDetails(orderId: orderId, next: next, previous: previous).s
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | orderId | String? | no | Order Id |   
 | next | String? | no | Next |   
 | previous | String? | no | Previous |  
@@ -564,9 +572,10 @@ client.order.getPicklistOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fr
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | pageNo | String? | no | Current page number |   
 | pageSize | String? | no | Page limit |   
 | fromDate | String? | no | From Date |   
@@ -636,10 +645,10 @@ client.application("<APPLICATION_ID>").order.trackShipmentPlatform(shipmentId: s
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | shipmentId | String | yes | Shipment Id |  
 
 
@@ -698,10 +707,10 @@ client.application("<APPLICATION_ID>").order.trackOrder(orderId: orderId).safeAw
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | orderId | String | yes | Order Id |  
 
 
@@ -760,10 +769,6 @@ client.application("<APPLICATION_ID>").order.failedOrders().safeAwait{ response,
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |  
 
 
 
@@ -821,10 +826,10 @@ client.application("<APPLICATION_ID>").order.reprocessOrder(orderId: orderId).sa
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | orderId | String | yes | Order Id |  
 
 
@@ -883,10 +888,10 @@ client.application("<APPLICATION_ID>").order.updateShipment(shipmentId: shipment
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 | body | [ShipmentUpdateRequest](#ShipmentUpdateRequest) | yes | Request body |
 
@@ -945,10 +950,10 @@ client.application("<APPLICATION_ID>").order.getPlatformShipmentReasons(action: 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | action | String | yes | Action |  
 
 
@@ -1007,10 +1012,10 @@ client.application("<APPLICATION_ID>").order.getShipmentTrackDetails(orderId: or
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
-| applicationId | String | yes | Application Id |   
 | orderId | String | yes | ID of the order. |   
 | shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 
@@ -1070,9 +1075,10 @@ client.order.getShipmentAddress(shipmentId: shipmentId, addressCategory: address
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
 | addressCategory | String | yes | Category of the address it falls into(billing or delivery). |  
 
@@ -1132,9 +1138,10 @@ client.order.updateShipmentAddress(shipmentId: shipmentId, addressCategory: addr
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
 | addressCategory | String | yes | Category of the address it falls into(billing or delivery). |  
 | body | [UpdateShipmentAddressRequest](#UpdateShipmentAddressRequest) | yes | Request body |
@@ -1194,9 +1201,6 @@ client.order.getPing().safeAwait{ response,error->
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |  
 
 
 
@@ -1254,9 +1258,6 @@ client.order.voiceCallback().safeAwait{ response,error->
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |  
 
 
 
@@ -1314,9 +1315,10 @@ client.order.voiceClickToCall(caller: caller, receiver: receiver).safeAwait{ res
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Company Id |   
 | caller | String | yes | Caller contact number |   
 | receiver | String | yes | Receiver contact number |  
 

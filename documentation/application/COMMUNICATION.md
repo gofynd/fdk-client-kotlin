@@ -37,6 +37,8 @@ communication.getCommunicationConsent().safeAwait{ response,error->
 
 
 
+
+
 Use this API to retrieve the consent provided by the user for receiving communication messages over Email/SMS/WhatsApp.
 
 *Returned Response:*
@@ -96,6 +98,8 @@ communication.upsertCommunicationConsent(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -163,6 +167,8 @@ communication.upsertAppPushtoken(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
