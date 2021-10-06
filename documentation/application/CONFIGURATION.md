@@ -1400,7 +1400,7 @@ Get a list of staff.
 
 
 ```kotlin
-configuration.getAppStaffs(pageNo: pageNo, pageSize: pageSize, orderIncent: orderIncent, orderingStore: orderingStore, user: user, permission: permission).safeAwait{ response,error->
+configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1418,12 +1418,9 @@ configuration.getAppStaffs(pageNo: pageNo, pageSize: pageSize, orderIncent: orde
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Current page no |   
-| pageSize | Int? | no | Current request items count |   
 | orderIncent | Boolean? | no | This is a boolean value. Select `true` to retrieve the staff members eligible for getting incentives on orders. |   
 | orderingStore | Int? | no | ID of the ordering store. Helps in retrieving staff members working at a particular ordering store. |   
-| user | String? | no | Mongo ID of the staff. Helps in retrieving the details of a particular staff member. |   
-| permission | String? | no | Get Staff members with specific permissions |  
+| user | String? | no | Mongo ID of the staff. Helps in retrieving the details of a particular staff member. |  
 
 
 
@@ -1615,8 +1612,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[AppStaff](#AppStaff)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
+ | staffUsers | ArrayList<[AppStaff](#AppStaff)>? |  yes  |  |
 
 ---
 

@@ -369,7 +369,7 @@ interface UserApiList {
     
     
     @GET ("/service/application/user/authentication/v1.0/login/google")
-    fun loginWithGoogleOauth(@Query("platform") platform: String?)
+    fun loginWithGoogleOauth(@Query("platform") platform: String?, @Query("redirect_url") redirectUrl: String?)
     : Deferred<Response<AuthSuccess>>
     
     
@@ -764,7 +764,7 @@ interface ConfigurationApiList {
     
     
     @GET ("/service/application/configuration/v1.0/staff")
-    fun getAppStaffs(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?, @Query("permission") permission: String?)
+    fun getAppStaffs(@Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
     : Deferred<Response<AppStaffResponse>>
     
 }

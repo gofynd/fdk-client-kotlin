@@ -192,7 +192,7 @@ Login or Register using Google
 
 
 ```kotlin
-user.loginWithGoogleOauth(platform: platform).safeAwait{ response,error->
+user.loginWithGoogleOauth(platform: platform, redirectUrl: redirectUrl).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -210,7 +210,8 @@ user.loginWithGoogleOauth(platform: platform).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| platform | String? | no | ID of the application |  
+| platform | String? | no | ID of the application |   
+| redirectUrl | String? | no | Url to redirect after login |  
 
 
 
