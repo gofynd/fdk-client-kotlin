@@ -41,10 +41,10 @@ client.application("<APPLICATION_ID>").cart.getCoupons(pageNo: pageNo, pageSize:
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |   
 | pageNo | Int? | no |  |   
 | pageSize | Int? | no |  |   
 | isArchived | Boolean? | no |  |   
@@ -162,10 +162,10 @@ client.application("<APPLICATION_ID>").cart.createCoupon(body: body).safeAwait{ 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |  
+| --------- | -----  | -------- | ----------- |
 | body | [CouponAdd](#CouponAdd) | yes | Request body |
 
 
@@ -226,10 +226,10 @@ client.application("<APPLICATION_ID>").cart.getCouponById(id: id).safeAwait{ res
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |   
 | id | String | yes |  |  
 
 
@@ -428,10 +428,10 @@ client.application("<APPLICATION_ID>").cart.updateCoupon(id: id, body: body).saf
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |   
 | id | String | yes |  |  
 | body | [CouponUpdate](#CouponUpdate) | yes | Request body |
 
@@ -493,10 +493,10 @@ client.application("<APPLICATION_ID>").cart.updateCouponPartially(id: id, body: 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |   
 | id | String | yes |  |  
 | body | [CouponPartialUpdate](#CouponPartialUpdate) | yes | Request body |
 
@@ -579,10 +579,10 @@ client.application("<APPLICATION_ID>").cart.fetchAndvalidateCartItems(body: body
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |  
+| --------- | -----  | -------- | ----------- |
 | body | [OpenapiCartDetailsRequest](#OpenapiCartDetailsRequest) | yes | Request body |
 
 
@@ -914,10 +914,10 @@ client.application("<APPLICATION_ID>").cart.checkCartServiceability(body: body).
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |  
+| --------- | -----  | -------- | ----------- |
 | body | [OpenApiCartServiceabilityRequest](#OpenApiCartServiceabilityRequest) | yes | Request body |
 
 
@@ -1505,10 +1505,10 @@ client.application("<APPLICATION_ID>").cart.checkoutCart(body: body).safeAwait{ 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | String | yes | Current company id |   
-| applicationId | String | yes | Current Application _id |  
+| --------- | -----  | -------- | ----------- |
 | body | [OpenApiPlatformCheckoutReq](#OpenApiPlatformCheckoutReq) | yes | Request body |
 
 

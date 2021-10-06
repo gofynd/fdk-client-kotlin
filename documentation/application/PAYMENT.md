@@ -55,6 +55,8 @@ payment.getAggregatorsConfig(xApiToken: xApiToken, refresh: refresh).safeAwait{ 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | xApiToken | String? | no | Used for basic authentication. |   
@@ -152,6 +154,8 @@ payment.attachCardToCustomer(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [AttachCardRequest](#AttachCardRequest) | yes | Request body |
@@ -240,6 +244,8 @@ payment.getActiveCardAggregator(refresh: refresh).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | refresh | Boolean? | no |  |  
@@ -305,6 +311,8 @@ payment.getActiveUserCards(forceRefresh: forceRefresh).safeAwait{ response,error
     } 
 }
 ```
+
+
 
 
 
@@ -391,6 +399,8 @@ payment.deleteUserCard(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [DeletehCardRequest](#DeletehCardRequest) | yes | Request body |
@@ -449,6 +459,8 @@ payment.verifyCustomerForPayment(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -523,6 +535,8 @@ payment.verifyAndChargePayment(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [ChargeCustomerRequest](#ChargeCustomerRequest) | yes | Request body |
@@ -587,6 +601,8 @@ payment.initialisePayment(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -661,6 +677,8 @@ payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [PaymentStatusUpdateRequest](#PaymentStatusUpdateRequest) | yes | Request body |
@@ -721,6 +739,8 @@ payment.getPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode, c
     } 
 }
 ```
+
+
 
 
 
@@ -1160,6 +1180,8 @@ payment.getPosPaymentModeRoutes(amount: amount, cartId: cartId, pincode: pincode
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | amount | Int | yes | Payable amount. |   
@@ -1383,6 +1405,8 @@ payment.getRupifiBannerDetails().safeAwait{ response,error->
 
 
 
+
+
 Get CreditLine Offer if user is tentatively approved by rupifi
 
 *Returned Response:*
@@ -1440,6 +1464,8 @@ payment.getActiveRefundTransferModes().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1513,6 +1539,8 @@ payment.enableOrDisableRefundTransferMode(body: body).safeAwait{ response,error-
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [UpdateRefundTransferModeRequest](#UpdateRefundTransferModeRequest) | yes | Request body |
@@ -1571,6 +1599,8 @@ payment.getUserBeneficiariesDetail(orderId: orderId).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1659,6 +1689,8 @@ payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | ifscCode | String? | no | A 11-digit alphanumeric code that uniquely identifies a bank branch. |  
@@ -1736,6 +1768,8 @@ payment.getOrderBeneficiariesDetail(orderId: orderId).safeAwait{ response,error-
     } 
 }
 ```
+
+
 
 
 
@@ -1823,6 +1857,8 @@ payment.verifyOtpAndAddBeneficiaryForBank(body: body).safeAwait{ response,error-
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [AddBeneficiaryViaOtpVerificationRequest](#AddBeneficiaryViaOtpVerificationRequest) | yes | Request body |
@@ -1883,6 +1919,8 @@ payment.addBeneficiaryDetails(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1949,6 +1987,8 @@ payment.addRefundBankAccountUsingOTP(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [AddBeneficiaryDetailsOTPRequest](#AddBeneficiaryDetailsOTPRequest) | yes | Request body |
@@ -2012,6 +2052,8 @@ payment.verifyOtpAndAddBeneficiaryForWallet(body: body).safeAwait{ response,erro
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [WalletOtpRequest](#WalletOtpRequest) | yes | Request body |
@@ -2072,6 +2114,8 @@ payment.updateDefaultBeneficiary(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 

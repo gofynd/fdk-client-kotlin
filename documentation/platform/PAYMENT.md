@@ -51,10 +51,6 @@ client.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig().sa
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |  
 
 
 
@@ -229,10 +225,10 @@ client.application("<APPLICATION_ID>").payment.saveBrandPaymentGatewayConfig(bod
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [PaymentGatewayConfigRequest](#PaymentGatewayConfigRequest) | yes | Request body |
 
 
@@ -295,10 +291,10 @@ client.application("<APPLICATION_ID>").payment.updateBrandPaymentGatewayConfig(b
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [PaymentGatewayConfigRequest](#PaymentGatewayConfigRequest) | yes | Request body |
 
 
@@ -361,10 +357,10 @@ client.application("<APPLICATION_ID>").payment.getPaymentModeRoutes(refresh: ref
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |   
 | refresh | Boolean | yes |  |   
 | requestType | String | yes |  |  
 
@@ -1551,9 +1547,10 @@ client.payment.getAllPayouts(uniqueExternalId: uniqueExternalId).safeAwait{ resp
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | uniqueExternalId | String? | no | Fetch payouts using unique external id |  
 
 
@@ -1675,9 +1672,10 @@ client.payment.savePayout(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [PayoutRequest](#PayoutRequest) | yes | Request body |
 
 
@@ -1763,9 +1761,10 @@ client.payment.updatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safe
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | uniqueTransferNo | String | yes | Unique transfer id |  
 | body | [PayoutRequest](#PayoutRequest) | yes | Request body |
 
@@ -1828,9 +1827,10 @@ client.payment.activateAndDectivatePayout(uniqueTransferNo: uniqueTransferNo, bo
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | uniqueTransferNo | String | yes | Unique transfer id |  
 | body | [UpdatePayoutRequest](#UpdatePayoutRequest) | yes | Request body |
 
@@ -1893,9 +1893,10 @@ client.payment.deletePayout(uniqueTransferNo: uniqueTransferNo).safeAwait{ respo
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | uniqueTransferNo | String | yes | Unique transfer id |  
 
 
@@ -1956,9 +1957,6 @@ client.payment.getSubscriptionPaymentMethod().safeAwait{ response,error->
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |  
 
 
 
@@ -2144,9 +2142,10 @@ client.payment.deleteSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalI
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | uniqueExternalId | String | yes |  |   
 | paymentMethodId | String | yes |  |  
 
@@ -2208,9 +2207,6 @@ client.payment.getSubscriptionConfig().safeAwait{ response,error->
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |  
 
 
 
@@ -2274,9 +2270,10 @@ client.payment.saveSubscriptionSetupIntent(body: body).safeAwait{ response,error
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [SaveSubscriptionSetupIntentRequest](#SaveSubscriptionSetupIntentRequest) | yes | Request body |
 
 
@@ -2343,10 +2340,10 @@ client.application("<APPLICATION_ID>").payment.addBeneficiaryDetails(body: body)
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [AddBeneficiaryDetailsRequest](#AddBeneficiaryDetailsRequest) | yes | Request body |
 
 
@@ -2408,9 +2405,10 @@ client.payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | ifscCode | String? | no |  |  
 
 
@@ -2489,11 +2487,11 @@ client.application("<APPLICATION_ID>").payment.getUserOrderBeneficiaries(orderId
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| orderId | String | yes |  |   
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |  
+| orderId | String | yes |  |  
 
 
 
@@ -2575,11 +2573,11 @@ client.application("<APPLICATION_ID>").payment.getUserBeneficiaries(orderId: ord
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| orderId | String | yes |  |   
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |  
+| orderId | String | yes |  |  
 
 
 
@@ -2662,10 +2660,10 @@ client.application("<APPLICATION_ID>").payment.confirmPayment(body: body).safeAw
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
-| applicationId | String | yes | Application id |  
+| --------- | -----  | -------- | ----------- |
 | body | [PaymentConfirmationRequest](#PaymentConfirmationRequest) | yes | Request body |
 
 

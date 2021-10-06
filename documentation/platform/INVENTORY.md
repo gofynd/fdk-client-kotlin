@@ -41,9 +41,10 @@ client.inventory.getJobsByCompany(pageNo: pageNo, pageSize: pageSize).safeAwait{
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | pageNo | Int? | no | Page Number |   
 | pageSize | Int? | no | Page Size |  
 
@@ -103,9 +104,10 @@ client.inventory.updateJob(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [JobConfigDTO](#JobConfigDTO) | yes | Request body |
 
 
@@ -163,9 +165,10 @@ client.inventory.createJob(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |  
+| --------- | -----  | -------- | ----------- |
 | body | [JobConfigDTO](#JobConfigDTO) | yes | Request body |
 
 
@@ -223,9 +226,10 @@ client.inventory.getJobByCompanyAndIntegration(integrationId: integrationId, pag
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | integrationId | String | yes | Integration Id |   
 | pageNo | Int? | no | Page Number |   
 | pageSize | Int? | no | Page Size |  
@@ -286,9 +290,6 @@ client.inventory.getJobConfigDefaults().safeAwait{ response,error->
 
 
 
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |  
 
 
 
@@ -346,9 +347,10 @@ client.inventory.getJobByCode(code: code).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | code | String | yes | Job Code |  
 
 
@@ -407,9 +409,10 @@ client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSiz
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | code | String | yes | Code |   
 | pageNo | Int? | no | Page Number |   
 | pageSize | Int? | no | Page Size |  
@@ -470,9 +473,10 @@ client.inventory.getJobCodesByCompanyAndIntegration(integrationId: integrationId
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | Company Id |   
 | integrationId | String | yes | Integration Id |   
 | pageNo | Int? | no | Page Number |   
 | pageSize | Int? | no | Page Size |  

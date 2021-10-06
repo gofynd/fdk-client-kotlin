@@ -49,6 +49,8 @@ configuration.getApplication().safeAwait{ response,error->
 
 
 
+
+
 Use this API to get the current application details which includes configurations that indicate the status of the website, domain, ID, tokens, images, etc.
 
 *Returned Response:*
@@ -163,6 +165,8 @@ configuration.getOwnerInfo().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -323,6 +327,8 @@ configuration.getBasicDetails().safeAwait{ response,error->
 
 
 
+
+
 Use this API to retrieve only the basic details of the application which includes channel name, description, banner, logo, favicon, domain details, etc.
 
 *Returned Response:*
@@ -414,6 +420,8 @@ configuration.getIntegrationTokens().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -541,6 +549,8 @@ configuration.getOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAw
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
@@ -600,6 +610,8 @@ configuration.getStoreDetailById(storeId: storeId).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -668,6 +680,8 @@ configuration.getFeatures().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -819,6 +833,8 @@ configuration.getContactInfo().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -993,6 +1009,8 @@ configuration.getCurrencies().safeAwait{ response,error->
 
 
 
+
+
 Use this API to get a list of currencies available. Moreover, get the name, code, symbol, and the decimal digits of the currencies.
 
 *Returned Response:*
@@ -1057,6 +1075,8 @@ configuration.getCurrencyById(id: id).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1126,6 +1146,8 @@ configuration.getAppCurrencies().safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1203,6 +1225,8 @@ configuration.getLanguages().safeAwait{ response,error->
 
 
 
+
+
 Use this API to get a list of languages supported in the application.
 
 *Returned Response:*
@@ -1272,6 +1296,8 @@ configuration.getOrderingStoreCookie(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [OrderingStoreSelectRequest](#OrderingStoreSelectRequest) | yes | Request body |
@@ -1332,6 +1358,8 @@ configuration.removeOrderingStoreCookie().safeAwait{ response,error->
 
 
 
+
+
 Use this API to unset the Ordering Store cookie upon changing the sales channel, by its domain URL, in the Universal Fynd Store app.
 
 *Returned Response:*
@@ -1383,6 +1411,8 @@ configuration.getAppStaffs(orderIncent: orderIncent, orderingStore: orderingStor
     } 
 }
 ```
+
+
 
 
 

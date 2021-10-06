@@ -57,6 +57,8 @@ cart.getCart(id: id, i: i, b: b, assignCardId: assignCardId).safeAwait{ response
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no |  |   
@@ -286,6 +288,8 @@ cart.getCartLastModified(id: id).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no |  |  
@@ -324,6 +328,8 @@ cart.addItems(i: i, b: b, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1021,6 +1027,8 @@ cart.updateCart(id: id, i: i, b: b, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no |  |   
@@ -1445,6 +1453,8 @@ cart.getItemCount(id: id).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no | The unique identifier of the cart. |  
@@ -1504,6 +1514,8 @@ cart.getCoupons(id: id).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1600,6 +1612,8 @@ cart.applyCoupon(i: i, b: b, p: p, id: id, body: body).safeAwait{ response,error
     } 
 }
 ```
+
+
 
 
 
@@ -2202,6 +2216,8 @@ cart.removeCoupon(id: id).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no | The unique identifier of the cart |  
@@ -2419,6 +2435,8 @@ cart.getBulkDiscountOffers(itemId: itemId, articleId: articleId, uid: uid, slug:
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | itemId | Int? | no | The Item ID of the product |   
@@ -2550,6 +2568,8 @@ cart.applyRewardPoints(id: id, i: i, b: b, body: body).safeAwait{ response,error
     } 
 }
 ```
+
+
 
 
 
@@ -2781,6 +2801,8 @@ cart.getAddresses(cartId: cartId, mobileNo: mobileNo, checkoutMode: checkoutMode
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | cartId | String? | no |  |   
@@ -2875,6 +2897,8 @@ cart.addAddress(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [Address](#Address) | yes | Request body |
@@ -2935,6 +2959,8 @@ cart.getAddressById(id: id, cartId: cartId, mobileNo: mobileNo, checkoutMode: ch
     } 
 }
 ```
+
+
 
 
 
@@ -3030,6 +3056,8 @@ cart.updateAddress(id: id, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | ID allotted to the selected address |  
@@ -3095,6 +3123,8 @@ cart.removeAddress(id: id).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | ID allotted to the selected address |  
@@ -3155,6 +3185,8 @@ cart.selectAddress(cartId: cartId, i: i, b: b, body: body).safeAwait{ response,e
     } 
 }
 ```
+
+
 
 
 
@@ -3472,6 +3504,8 @@ cart.selectPaymentMode(id: id, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -3802,6 +3836,8 @@ cart.validateCouponForPayment(id: id, addressId: addressId, paymentMode: payment
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no |  |   
@@ -3874,6 +3910,8 @@ cart.getShipments(p: p, id: id, addressId: addressId, areaCode: areaCode).safeAw
     } 
 }
 ```
+
+
 
 
 
@@ -4580,6 +4618,8 @@ cart.checkoutCart(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [CartCheckoutDetailRequest](#CartCheckoutDetailRequest) | yes | Request body |
@@ -5019,6 +5059,8 @@ cart.updateCartMeta(id: id, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String? | no | The unique identifier of the cart |  
@@ -5078,6 +5120,8 @@ cart.getCartShareLink(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -5148,6 +5192,8 @@ cart.getCartSharedItems(token: token).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -5484,6 +5530,8 @@ cart.updateCartWithSharedItems(token: token, action: action).safeAwait{ response
     } 
 }
 ```
+
+
 
 
 

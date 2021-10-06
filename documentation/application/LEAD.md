@@ -40,6 +40,8 @@ lead.getTicket(id: id).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | ID of ticket to be retrieved |  
@@ -299,6 +301,8 @@ lead.createHistory(id: id, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | Ticket ID for which history is created |  
@@ -398,6 +402,8 @@ lead.createTicket(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -659,6 +665,8 @@ lead.getCustomForm(slug: slug).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | slug | String | yes | Slug of form whose response is getting submitted |  
@@ -768,6 +776,8 @@ lead.submitCustomForm(slug: slug, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1032,6 +1042,8 @@ lead.getParticipantsInsideVideoRoom(uniqueName: uniqueName).safeAwait{ response,
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | uniqueName | String | yes | Unique name of Video Room |  
@@ -1099,6 +1111,8 @@ lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 

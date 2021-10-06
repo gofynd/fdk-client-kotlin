@@ -65,6 +65,8 @@ user.loginWithFacebook(platform: platform, body: body).safeAwait{ response,error
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -130,6 +132,8 @@ user.loginWithGoogle(platform: platform, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -201,6 +205,8 @@ user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response,
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -266,6 +272,8 @@ user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response,erro
     } 
 }
 ```
+
+
 
 
 
@@ -337,6 +345,8 @@ user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -402,6 +412,8 @@ user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -472,6 +484,8 @@ user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response,
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -531,6 +545,8 @@ user.forgotPassword(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -601,6 +617,8 @@ user.sendResetToken(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
@@ -659,6 +677,8 @@ user.loginWithToken(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -726,6 +746,8 @@ user.registerWithForm(platform: platform, body: body).safeAwait{ response,error-
     } 
 }
 ```
+
+
 
 
 
@@ -800,6 +822,8 @@ user.verifyEmail(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [CodeRequestBodySchema](#CodeRequestBodySchema) | yes | Request body |
@@ -858,6 +882,8 @@ user.verifyMobile(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -923,6 +949,8 @@ user.hasPassword().safeAwait{ response,error->
 
 
 
+
+
 Use this API to check if user has created a password for login.
 
 *Returned Response:*
@@ -974,6 +1002,8 @@ user.updatePassword(body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1039,6 +1069,8 @@ user.logout().safeAwait{ response,error->
 
 
 
+
+
 Use this API to check to logout a user from the app.
 
 *Returned Response:*
@@ -1090,6 +1122,8 @@ user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1161,6 +1195,8 @@ user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1229,6 +1265,8 @@ user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1288,6 +1326,8 @@ user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1360,6 +1400,8 @@ user.getLoggedInUser().safeAwait{ response,error->
 
 
 
+
+
 Use this API  to get the details of a logged in user.
 
 *Returned Response:*
@@ -1423,6 +1465,8 @@ user.getListOfActiveSessions().safeAwait{ response,error->
 
 
 
+
+
 Use this API to retrieve all active sessions of a user.
 
 *Returned Response:*
@@ -1479,6 +1523,8 @@ user.getPlatformConfig(name: name).safeAwait{ response,error->
     } 
 }
 ```
+
+
 
 
 
@@ -1607,6 +1653,8 @@ user.updateProfile(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1675,6 +1723,8 @@ user.addMobileNumber(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -1740,6 +1790,8 @@ user.deleteMobileNumber(platform: platform, active: active, primary: primary, ve
     } 
 }
 ```
+
+
 
 
 
@@ -1816,6 +1868,8 @@ user.setMobileNumberAsPrimary(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [SendVerificationLinkMobileRequestSchema](#SendVerificationLinkMobileRequestSchema) | yes | Request body |
@@ -1880,6 +1934,8 @@ user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ res
     } 
 }
 ```
+
+
 
 
 
@@ -1951,6 +2007,8 @@ user.addEmail(platform: platform, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
@@ -2016,6 +2074,8 @@ user.deleteEmail(platform: platform, active: active, primary: primary, verified:
     } 
 }
 ```
+
+
 
 
 
@@ -2091,6 +2151,8 @@ user.setEmailAsPrimary(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
 | body | [EditEmailRequestSchema](#EditEmailRequestSchema) | yes | Request body |
@@ -2155,6 +2217,8 @@ user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ resp
     } 
 }
 ```
+
+
 
 
 

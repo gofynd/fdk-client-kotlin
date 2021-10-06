@@ -43,10 +43,11 @@ client.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ resp
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |   
-| companyId | Int | yes | company_id |  
+| namespace | String | yes | bucket name |  
 | body | [StartRequest](#StartRequest) | yes | Request body |
 
 
@@ -122,10 +123,11 @@ client.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ r
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |   
-| companyId | Int | yes | company_id |  
+| namespace | String | yes | bucket name |  
 | body | [StartResponse](#StartResponse) | yes | Request body |
 
 
@@ -201,11 +203,11 @@ client.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: nam
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |   
-| companyId | Int | yes | company_id |   
-| applicationId | String | yes | application id |  
+| namespace | String | yes | bucket name |  
 | body | [StartRequest](#StartRequest) | yes | Request body |
 
 
@@ -281,11 +283,11 @@ client.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| namespace | String | yes | bucket name |   
-| companyId | Int | yes | company_id |   
-| applicationId | String | yes | application id |  
+| namespace | String | yes | bucket name |  
 | body | [StartResponse](#StartResponse) | yes | Request body |
 
 
@@ -361,9 +363,10 @@ client.filestorage.getSignUrls(body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | company_id |  
+| --------- | -----  | -------- | ----------- |
 | body | [SignUrlRequest](#SignUrlRequest) | yes | Request body |
 
 
@@ -421,10 +424,11 @@ client.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| sync | Boolean? | no | sync |   
-| companyId | Int | yes | company_id |  
+| sync | Boolean? | no | sync |  
 | body | [BulkRequest](#BulkRequest) | yes | Request body |
 
 
@@ -509,11 +513,11 @@ client.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| sync | Boolean? | no | sync |   
-| companyId | Int | yes | company_id |   
-| applicationId | Int | yes | application_id |  
+| sync | Boolean? | no | sync |  
 | body | [BulkRequest](#BulkRequest) | yes | Request body |
 
 
@@ -598,10 +602,11 @@ client.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ respo
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | namespace | String | yes | bucket name |   
-| companyId | Int | yes | company_id |   
 | pageNo | Int? | no | page no |  
 
 
@@ -660,11 +665,11 @@ client.application("<APPLICATION_ID>").filestorage.browse(namespace: namespace, 
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | namespace | String | yes | bucket name |   
-| companyId | Int | yes | company_id |   
-| applicationId | Int | yes | application_id |   
 | pageNo | Int? | no | page no |  
 
 
@@ -723,9 +728,10 @@ client.filestorage.proxy(url: url).safeAwait{ response,error->
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| companyId | Int | yes | company_id |   
 | url | String | yes | url |  
 
 

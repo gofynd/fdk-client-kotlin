@@ -34,6 +34,8 @@ common.getLocations(locationType: locationType, id: id).safeAwait{ response,erro
 
 
 
+
+
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | locationType | String? | no | Provide location type to query on. Possible values : country, state, city |   
