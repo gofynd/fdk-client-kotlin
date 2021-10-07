@@ -2347,6 +2347,7 @@ Success
  | prices | [ShipmentPrices](#ShipmentPrices)? |  yes  |  |
  | id | String? |  yes  |  |
  | gst | [ShipmentGst](#ShipmentGst)? |  yes  |  |
+ | breakupValues | [ShipmentBreakupValues](#ShipmentBreakupValues)? |  yes  |  |
  | totalShipmentBags | Int? |  yes  |  |
 
 ---
@@ -2448,6 +2449,19 @@ Success
  | brandCalculatedAmount | Double? |  yes  |  |
  | cashback | Double? |  yes  |  |
  | valueOfGood | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentBreakupValues](#ShipmentBreakupValues)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -2947,19 +2961,6 @@ Success
  | priceEffective | Double? |  yes  |  |
  | refundAmount | Double? |  yes  |  |
  | discount | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [ShipmentBreakupValues](#ShipmentBreakupValues)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | display | String? |  yes  |  |
- | value | Double? |  yes  |  |
 
 ---
 
