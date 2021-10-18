@@ -556,6 +556,7 @@ Success
  | companyId | Int? |  yes  |  |
  | applicationId | ArrayList<String>? |  yes  |  |
  | extensionId | String? |  yes  |  |
+ | criteria | String? |  yes  |  |
 
 ---
 
