@@ -413,7 +413,7 @@ interface ContentApiList {
     : Deferred<Response<NavigationSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/meta")
-    fun getPageMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getPageMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_type") pageType: String?, @Query("cart_pages") cartPages: Boolean?)
     : Deferred<Response<PageMetaSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/spec")
@@ -992,13 +992,13 @@ interface CatalogApiList {
     fun getCollectionDetail(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
     : Deferred<Response<CollectionDetailResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
-    fun updateCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateCollection)
-    : Deferred<Response<UpdateCollection>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
     fun deleteCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<DeleteResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
+    fun updateCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateCollection)
+    : Deferred<Response<UpdateCollection>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/items/")
     fun getCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
@@ -1140,12 +1140,12 @@ interface CatalogApiList {
     fun updateProductAssetsInBulk(@Path("company_id") companyId: String,@Body body: BulkJob)
     : Deferred<Response<SuccessResponse>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
-    fun createProductsInBulk(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: BulkProductRequest)
-    : Deferred<Response<SuccessResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
     fun deleteProductBulkJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
+    : Deferred<Response<SuccessResponse>>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
+    fun createProductsInBulk(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: BulkProductRequest)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/tags")
@@ -1188,12 +1188,12 @@ interface CatalogApiList {
     fun createBulkInventoryJob(@Path("company_id") companyId: String,@Body body: BulkJob)
     : Deferred<Response<CommonResponse>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
-    fun createBulkInventory(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: InventoryBulkRequest)
-    : Deferred<Response<SuccessResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
     fun deleteBulkInventoryJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
+    : Deferred<Response<SuccessResponse>>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
+    fun createBulkInventory(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: InventoryBulkRequest)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/download/")
@@ -1500,6 +1500,10 @@ interface ConfigurationApiList {
     fun updateOrderingStoreConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OrderingStoreConfig)
     : Deferred<Response<DeploymentMeta>>
     
+    @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/ordering-store/staff-stores")
+    fun getStaffOrderingStores(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    : Deferred<Response<OrderingStoresResponse>>
+    
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/domain")
     fun getDomains(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<DomainsResponse>>
@@ -1552,7 +1556,7 @@ interface ConfigurationApiList {
     fun getSelectedOptIns(@Path("company_id") companyId: String, @Path("level") level: String, @Path("uid") uid: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetIntegrationsOptInsResponse>>
     
-    @GET ("/service/platform/configuration/v1.0/company/{company_id}/integration-opt-in/configuration/{id}/{level}")
+    @GET ("/service/platform/configuration/v1.0/company/{company_id}/integration-opt-in/configuration/new/{id}/{level}")
     fun getIntegrationLevelConfig(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String, @Query("opted") opted: Boolean?, @Query("check_permission") checkPermission: Boolean?)
     : Deferred<Response<IntegrationConfigResponse>>
     
@@ -1560,9 +1564,17 @@ interface ConfigurationApiList {
     fun getIntegrationByLevelId(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String, @Path("uid") uid: String)
     : Deferred<Response<IntegrationLevel>>
     
+    @PUT ("/service/platform/configuration/v1.0/company/{company_id}/integration-opt-in/configuration/{id}/{level}/{uid}")
+    fun updateLevelUidIntegration(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String, @Path("uid") uid: String,@Body body: IntegrationLevel)
+    : Deferred<Response<IntegrationLevel>>
+    
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/integration-opt-in/check/configuration/{id}/{level}/{uid}")
     fun getLevelActiveIntegrations(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String, @Path("uid") uid: String)
     : Deferred<Response<OptedStoreIntegration>>
+    
+    @PUT ("/service/platform/configuration/v1.0/company/{company_id}/integration-opt-in/configuration/{id}/{level}")
+    fun updateLevelIntegration(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String,@Body body: IntegrationLevel)
+    : Deferred<Response<IntegrationLevel>>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/inventory/brands-by-companies")
     fun getBrandsByCompany(@Path("company_id") companyId: String, @Query("q") q: String?)
@@ -1723,6 +1735,46 @@ interface AnalyticsApiList {
 }
 
 interface DiscountApiList {
+    
+    @GET ("/service/platform/discount/v1.0/company/{company_id}/job/")
+    fun getDiscounts(@Path("company_id") companyId: String, @Query("view") view: String?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("archived") archived: Boolean?, @Query("month") month: Int?, @Query("year") year: Int?, @Query("type") type: String?, @Query("app_ids") appIds: ArrayList<String>?)
+    : Deferred<Response<ListOrCalender>>
+    
+    @POST ("/service/platform/discount/v1.0/company/{company_id}/job/")
+    fun createDiscount(@Path("company_id") companyId: String,@Body body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>
+    
+    @GET ("/service/platform/discount/v1.0/company/{company_id}/job/{id}/")
+    fun getDiscount(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<DiscountJob>>
+    
+    @PUT ("/service/platform/discount/v1.0/company/{company_id}/job/{id}/")
+    fun updateDiscount(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>
+    
+    @POST ("/service/platform/discount/v1.0/company/{company_id}/file/validation/")
+    fun validateDiscountFile(@Path("company_id") companyId: String, @Query("discount") discount: String?,@Body body: DiscountJob)
+    : Deferred<Response<FileJobResponse>>
+    
+    @POST ("/service/platform/discount/v1.0/company/{company_id}/file/{type}/download/")
+    fun downloadDiscountFile(@Path("company_id") companyId: String, @Path("type") type: String,@Body body: DownloadFileJob)
+    : Deferred<Response<FileJobResponse>>
+    
+    @GET ("/service/platform/discount/v1.0/company/{company_id}/file/validation/{id}/")
+    fun getValidationJob(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<FileJobResponse>>
+    
+    @DELETE ("/service/platform/discount/v1.0/company/{company_id}/file/validation/{id}/")
+    fun cancelValidationJob(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<CancelJobResponse>>
+    
+    @GET ("/service/platform/discount/v1.0/company/{company_id}/file/download/{id}/")
+    fun getDownloadJob(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<FileJobResponse>>
+    
+    @DELETE ("/service/platform/discount/v1.0/company/{company_id}/file/download/{id}/")
+    fun cancelDownloadJob(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<CancelJobResponse>>
     
 }
 

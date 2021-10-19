@@ -2599,7 +2599,7 @@ Get page meta
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getPageMeta(pageType: pageType, cartPages: cartPages).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2613,6 +2613,12 @@ client.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response
 
 
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageType | String? | no | Fetch meta by page type. Acceptable values are: system, custom and all |   
+| cartPages | Boolean? | no | Pass this param value as `true` to fetch meta with cart pages |  
 
 
 

@@ -2653,6 +2653,7 @@ Success
  | coupon | HashMap<String,Any>? |  yes  |  |
  | orderSource | String? |  yes  |  |
  | isNotFyndSource | Boolean? |  yes  |  |
+ | canBreak | Boolean? |  yes  |  |
  | comment | String? |  yes  |  |
  | promise | [Promise](#Promise)? |  yes  |  |
  | trackingDetails | [ShipmentTrackingDetails](#ShipmentTrackingDetails)? |  yes  |  |
