@@ -23,7 +23,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -686,6 +686,84 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
+    fun getInStockLocations(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null): Deferred<Response<ApplicationStoreListing>>? {
+        return catalogApiList?.getInStockLocations(pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getInStockLocations
+    **/
+    fun getInStockLocationsPaginator(pageSize: Int?=null, q: String?=null, city: String?=null, range: Int?=null, latitude: Double?=null, longitude: Double?=null) : Paginator<ApplicationStoreListing>{
+
+    val paginator = Paginator<ApplicationStoreListing>()
+
+    paginator.setCallBack(object : PaginatorCallback<ApplicationStoreListing> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ApplicationStoreListing>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getInStockLocations(pageNo = pageNo, pageSize = pageSize, q = q, city = city, range = range, latitude = latitude, longitude = longitude)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
+    fun getLocationDetailsById(locationId: Int): Deferred<Response<StoreDetails>>? {
+        return catalogApiList?.getLocationDetailsById(locationId = locationId)}
+
+    
+    
 }
 
 
@@ -703,7 +781,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -850,7 +928,7 @@ class CommonDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -882,7 +960,7 @@ class LeadDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -944,7 +1022,7 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -991,7 +1069,7 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1001,23 +1079,23 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
     
-    fun loginWithFacebook(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithFacebook(body = body)}
+    fun loginWithFacebook(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithFacebook(platform = platform, body = body)}
 
     
     
-    fun loginWithGoogle(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithGoogle(body = body)}
+    fun loginWithGoogle(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogle(platform = platform, body = body)}
 
     
     
-    fun loginWithGoogleAndroid(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithGoogleAndroid(body = body)}
+    fun loginWithGoogleAndroid(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleAndroid(platform = platform, body = body)}
 
     
     
-    fun loginWithGoogleIOS(body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithGoogleIOS(body = body)}
+    fun loginWithGoogleIOS(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithGoogleIOS(platform = platform, body = body)}
 
     
     
@@ -1178,7 +1256,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1467,7 +1545,7 @@ class CommunicationDataManagerClass(val config: ApplicationConfig) : BaseReposit
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1509,7 +1587,7 @@ class ShareDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1571,7 +1649,7 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1608,7 +1686,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1758,7 +1836,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1895,7 +1973,7 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1972,7 +2050,7 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -2079,7 +2157,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -2752,7 +2830,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -2914,7 +2992,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig) : BaseRepository()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,

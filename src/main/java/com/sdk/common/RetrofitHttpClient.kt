@@ -108,7 +108,11 @@ class RetrofitHttpClient constructor(
                     )
                 ) builder.addNetworkInterceptor(interceptor) else builder.addInterceptor(interceptor)
             }
-            builder.addInterceptor(CurlInterceptor { message -> Log.v("Ok2Curl", message ?: "") })
+
+            if(logging.level != HttpLoggingInterceptor.Level.NONE) {
+                builder.addInterceptor(CurlInterceptor { message -> Log.v("Ok2Curl", message ?: "") })
+            }
+
             if (null != headerList) {
                 builder.addInterceptor { chain: Interceptor.Chain ->
                     val original = chain.request()

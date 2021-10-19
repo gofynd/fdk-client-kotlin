@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -146,6 +146,16 @@ interface CatalogApiList {
     @GET ("/service/application/catalog/v1.0/locations/")
     fun getStores(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
     : Deferred<Response<StoreListingResponse>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/in-stock/locations/")
+    fun getInStockLocations(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("city") city: String?, @Query("range") range: Int?, @Query("latitude") latitude: Double?, @Query("longitude") longitude: Double?)
+    : Deferred<Response<ApplicationStoreListing>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/locations/{location_id}/")
+    fun getLocationDetailsById(@Path("location_id") locationId: Int)
+    : Deferred<Response<StoreDetails>>
     
 }
 
@@ -349,22 +359,22 @@ interface UserApiList {
     
     
     @POST ("/service/application/user/authentication/v1.0/login/facebook-token")
-    fun loginWithFacebook(@Body body: OAuthRequestSchema)
+    fun loginWithFacebook(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
     @POST ("/service/application/user/authentication/v1.0/login/google-token")
-    fun loginWithGoogle(@Body body: OAuthRequestSchema)
+    fun loginWithGoogle(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
     @POST ("/service/application/user/authentication/v1.0/login/google-android")
-    fun loginWithGoogleAndroid(@Body body: OAuthRequestSchema)
+    fun loginWithGoogleAndroid(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
     @POST ("/service/application/user/authentication/v1.0/login/google-ios")
-    fun loginWithGoogleIOS(@Body body: OAuthRequestSchema)
+    fun loginWithGoogleIOS(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
     : Deferred<Response<AuthSuccess>>
     
     
