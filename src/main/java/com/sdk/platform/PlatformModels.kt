@@ -40466,6 +40466,26 @@ data class IntegrationLevel(
 
 
 /*
+    Model: UpdateIntegrationLevelRequest
+*/
+@Parcelize
+data class UpdateIntegrationLevelRequest(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<IntegrationLevel>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: OptedStoreIntegration
 */
 @Parcelize

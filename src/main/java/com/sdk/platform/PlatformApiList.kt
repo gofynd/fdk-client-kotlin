@@ -1573,7 +1573,7 @@ interface ConfigurationApiList {
     : Deferred<Response<OptedStoreIntegration>>
     
     @PUT ("/service/platform/configuration/v1.0/company/{company_id}/integration-opt-in/configuration/{id}/{level}")
-    fun updateLevelIntegration(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String,@Body body: IntegrationLevel)
+    fun updateLevelIntegration(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String,@Body body: UpdateIntegrationLevelRequest)
     : Deferred<Response<IntegrationLevel>>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/inventory/brands-by-companies")

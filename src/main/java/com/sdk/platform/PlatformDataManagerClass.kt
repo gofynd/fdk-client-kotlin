@@ -6337,7 +6337,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
-    suspend fun updateLevelIntegration(id: String, level: String,body: IntegrationLevel)
+    suspend fun updateLevelIntegration(id: String, level: String,body: UpdateIntegrationLevelRequest)
     : Deferred<Response<IntegrationLevel>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
