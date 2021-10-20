@@ -4336,7 +4336,7 @@ client.configuration.updateLevelIntegration(id: id, level: level, body: body).sa
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | Integration id |   
 | level | String | yes | Integration level |  
-| body | [IntegrationLevel](#IntegrationLevel) | yes | Request body |
+| body | [UpdateIntegrationLevelRequest](#UpdateIntegrationLevelRequest) | yes | Request body |
 
 
 Update a store level opt-in for integration
@@ -5891,6 +5891,17 @@ Success
  | updatedAt | String? |  yes  |  |
  | v | Int? |  yes  |  |
  | data | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateIntegrationLevelRequest](#UpdateIntegrationLevelRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[IntegrationLevel](#IntegrationLevel)>? |  yes  |  |
 
 ---
 
