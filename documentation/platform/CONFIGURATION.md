@@ -5733,7 +5733,7 @@ Success
  | support | ArrayList<String>? |  yes  |  |
  | id | String? |  yes  |  |
  | name | String? |  yes  |  |
- | meta | [IntegrationMeta](#IntegrationMeta)? |  yes  |  |
+ | meta | ArrayList<[IntegrationMeta](#IntegrationMeta)>? |  yes  |  |
  | icon | String? |  yes  |  |
  | owner | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
@@ -5765,7 +5765,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | jsonSchema | [JsonSchema](#JsonSchema)? |  yes  |  |
+ | jsonSchema | ArrayList<[JsonSchema](#JsonSchema)>? |  yes  |  |
  | browserScript | String? |  yes  |  |
 
 ---
@@ -5880,7 +5880,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | opted | Boolean? |  yes  |  |
  | permissions | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | lastPatch | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | lastPatch | ArrayList<[LastPatch](#LastPatch)>? |  yes  |  |
  | id | String? |  yes  |  |
  | integration | String? |  yes  |  |
  | level | String? |  yes  |  |
@@ -5927,7 +5927,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | opted | Boolean? |  yes  |  |
  | permissions | ArrayList<String>? |  yes  |  |
- | lastPatch | [LastPatch](#LastPatch)? |  yes  |  |
+ | lastPatch | ArrayList<[LastPatch](#LastPatch)>? |  yes  |  |
  | id | String? |  yes  |  |
  | integration | String? |  yes  |  |
  | level | String? |  yes  |  |
