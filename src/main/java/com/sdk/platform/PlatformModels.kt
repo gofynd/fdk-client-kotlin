@@ -40313,7 +40313,7 @@ data class Integration(
     var name: String?=null,
     
     @SerializedName("meta")
-    var meta: IntegrationMeta?=null,
+    var meta: ArrayList<IntegrationMeta>?=null,
     
     @SerializedName("icon")
     var icon: String?=null,
@@ -40425,7 +40425,7 @@ data class IntegrationLevel(
     var uid: Int?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue ArrayList<Any>?=null,
+    var meta: ArrayList<IntegrationMeta>?=null,
     
     @SerializedName("token")
     var token: String?=null,
