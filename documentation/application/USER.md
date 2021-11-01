@@ -423,7 +423,7 @@ user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response,error
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | platform | String? | no | ID of the application |  
-| body | [OAuthRequestSchema](#OAuthRequestSchema) | yes | Request body |
+| body | [OAuthRequestAppleSchema](#OAuthRequestAppleSchema) | yes | Request body |
 
 
 Use this API to login or register in iOS app using Apple Account credentials.
@@ -2652,6 +2652,19 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [OAuthRequestAppleSchema](#OAuthRequestAppleSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | userIdentifier | String? |  yes  |  |
+ | oauth | [OAuthRequestAppleSchemaOauth](#OAuthRequestAppleSchemaOauth)? |  yes  |  |
+ | profile | [OAuthRequestAppleSchemaProfile](#OAuthRequestAppleSchemaProfile)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [UserObjectSchema](#UserObjectSchema)
 
  | Properties | Type | Nullable | Description |
@@ -3038,6 +3051,30 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | image | String? |  yes  |  |
  | id | String? |  yes  |  |
  | email | String? |  yes  |  |
+ | fullName | String? |  yes  |  |
+ | firstName | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthRequestAppleSchemaOauth](#OAuthRequestAppleSchemaOauth)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | identityToken | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthRequestAppleSchemaProfile](#OAuthRequestAppleSchemaProfile)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | lastName | String? |  yes  |  |
  | fullName | String? |  yes  |  |
  | firstName | String? |  yes  |  |
 

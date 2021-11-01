@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -1104,7 +1104,7 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
+    fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestAppleSchema): Deferred<Response<AuthSuccess>>? {
         return userApiList?.loginWithAppleIOS(platform = platform, body = body)}
 
     
