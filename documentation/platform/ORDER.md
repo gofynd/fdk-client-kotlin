@@ -24,6 +24,7 @@ Handles Platform websites OMS
 * [getShipmentTrackDetails](#getshipmenttrackdetails)
 * [getShipmentAddress](#getshipmentaddress)
 * [updateShipmentAddress](#updateshipmentaddress)
+* [getOrdersByApplicationId](#getordersbyapplicationid)
 * [getPing](#getping)
 * [voiceCallback](#voicecallback)
 * [voiceClickToCall](#voiceclicktocall)
@@ -1157,6 +1158,80 @@ Update Shipment Address
 [UpdateShipmentAddressResponse](#UpdateShipmentAddressResponse)
 
 Success. Check the example shown below or refer `UpdateShipmentAddressResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getOrdersByApplicationId
+Get Orders for company based on Company Id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | String? | no | Current page number |   
+| pageSize | String? | no | Page limit |   
+| fromDate | String? | no | From Date |   
+| toDate | String? | no | To Date |   
+| q | String? | no | Keyword for Search |   
+| stage | String? | no | Specefic Order Stage |   
+| salesChannels | String? | no | Selected Sales Channel |   
+| orderId | String? | no | Order Id |   
+| stores | String? | no | Selected Stores |   
+| status | String? | no | Status of order |   
+| dp | String? | no | Delivery Partners |   
+| shortenUrls | Boolean? | no | Shorten URL option |   
+| filterType | String? | no | Filters |  
+
+
+
+Get Orders at Application Level
+
+*Returned Response:*
+
+
+
+
+[OrderListing](#OrderListing)
+
+Success
 
 
 

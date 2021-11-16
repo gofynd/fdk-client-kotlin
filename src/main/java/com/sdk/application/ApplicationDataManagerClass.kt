@@ -1538,6 +1538,59 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun getPageV2(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
+        return contentApiList?.getPageV2(slug = slug, rootId = rootId)}
+
+    
+    
+    fun getPagesV2(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
+        return contentApiList?.getPagesV2(pageNo = pageNo, pageSize = pageSize)}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPagesV2
+    **/
+    fun getPagesV2Paginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
+
+    val paginator = Paginator<PageGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getPagesV2(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
 }
 
 

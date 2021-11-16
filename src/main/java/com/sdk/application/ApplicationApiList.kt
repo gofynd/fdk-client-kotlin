@@ -621,6 +621,16 @@ interface ContentApiList {
     fun getTags()
     : Deferred<Response<TagsSchema>>
     
+    
+    @GET ("/service/application/content/v2.0/pages/{slug}")
+    fun getPageV2(@Path("slug") slug: String, @Query("root_id") rootId: String?)
+    : Deferred<Response<PageSchema>>
+    
+    
+    @GET ("/service/application/content/v2.0/pages/")
+    fun getPagesV2(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PageGetResponse>>
+    
 }
 
 interface CommunicationApiList {

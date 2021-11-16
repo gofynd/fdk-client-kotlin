@@ -1717,7 +1717,8 @@ Success
     "enabled": true,
     "max_cart_items": 0,
     "min_cart_value": 120,
-    "bulk_coupons": true
+    "bulk_coupons": true,
+    "revenue_engine_coupon": false
   },
   "payment": {
     "callback_url": {
@@ -1962,7 +1963,8 @@ Success
     "enabled": true,
     "max_cart_items": 0,
     "min_cart_value": 120,
-    "bulk_coupons": true
+    "bulk_coupons": true,
+    "revenue_engine_coupon": false
   },
   "payment": {
     "callback_url": {
@@ -2207,7 +2209,8 @@ Success
     "enabled": true,
     "max_cart_items": 0,
     "min_cart_value": 120,
-    "bulk_coupons": true
+    "bulk_coupons": true,
+    "revenue_engine_coupon": false
   },
   "payment": {
     "callback_url": {
@@ -5213,6 +5216,7 @@ Success
  | maxCartItems | Int? |  yes  |  |
  | minCartValue | Double? |  yes  |  |
  | bulkCoupons | Boolean? |  yes  |  |
+ | revenueEngineCoupon | Boolean? |  yes  |  |
 
 ---
 
@@ -5925,7 +5929,7 @@ Success
  | support | ArrayList<String>? |  yes  |  |
  | id | String? |  yes  |  |
  | name | String? |  yes  |  |
- | meta | [IntegrationMeta](#IntegrationMeta)? |  yes  |  |
+ | meta | ArrayList<[IntegrationMeta](#IntegrationMeta)>? |  yes  |  |
  | icon | String? |  yes  |  |
  | owner | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
@@ -5961,7 +5965,7 @@ Success
  | integration | String? |  yes  |  |
  | level | String? |  yes  |  |
  | uid | Int? |  yes  |  |
- | meta | ArrayList<Any>? |  yes  |  |
+ | meta | ArrayList<[IntegrationMeta](#IntegrationMeta)>? |  yes  |  |
  | token | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
@@ -6165,7 +6169,6 @@ Success
  | type | String? |  yes  |  |
  | id | String? |  yes  |  |
  | app | String? |  yes  |  |
- | v | Int? |  yes  |  |
 
 ---
 
