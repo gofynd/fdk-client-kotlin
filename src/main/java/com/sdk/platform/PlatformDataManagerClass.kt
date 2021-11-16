@@ -447,7 +447,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     feedbackApiList?.getAttributes(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -583,7 +583,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     feedbackApiList?.getCustomerReviews(companyId = config.companyId , applicationId = applicationId , id = id, entityId = entityId, entityType = entityType, userId = userId, media = media, rating = rating, attributeRating = attributeRating, facets = facets, sort = sort, next = next, start = start, limit = limit, count = count, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
                             onResponse.invoke(response,null)
                         }
                         
@@ -674,7 +674,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     feedbackApiList?.getApplicationTemplates(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
                             onResponse.invoke(response,null)
                         }
                         
@@ -1263,7 +1263,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     contentApiList?.getAnnouncementsList(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -1392,7 +1392,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     contentApiList?.getBlogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -1591,7 +1591,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     contentApiList?.getLandingPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -1715,7 +1715,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     contentApiList?.getNavigations(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -1864,7 +1864,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     contentApiList?.getPages(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -2008,7 +2008,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     contentApiList?.getSlideshows(companyId = config.companyId , applicationId = applicationId , devicePlatform = devicePlatform, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -2455,7 +2455,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getCampaigns(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -2569,7 +2569,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getAudiences(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -2693,7 +2693,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getEmailProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -2797,7 +2797,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -2881,7 +2881,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getSystemEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -2985,7 +2985,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getEventSubscriptions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, populate = populate)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -3059,7 +3059,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getJobs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -3143,7 +3143,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getJobLogs(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -3224,7 +3224,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getCommunicationLogs(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize, sort = sort, query = query)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
                             onResponse.invoke(response,null)
                         }
                         
@@ -3299,7 +3299,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getSmsProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -3403,7 +3403,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -3517,7 +3517,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     communicationApiList?.getSystemSystemTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -4521,24 +4521,12 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getProduct(itemCode: String?=null, itemId: String, brandUid: Int?=null, uid: Int?=null)
+    suspend fun getProduct(itemCode: String?=null, itemId: String, brandUid: Int?=null)
     : Deferred<Response<Product>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getProduct(
-        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun deleteProduct(itemId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProduct(
-        companyId = config.companyId, itemId = itemId )
+        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid )
         } else {
             null
         } 
@@ -4551,6 +4539,18 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.editProduct(
         companyId = config.companyId, itemId = itemId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteProduct(itemId: String)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.deleteProduct(
+        companyId = config.companyId, itemId = itemId )
         } else {
             null
         } 
@@ -4605,24 +4605,24 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun deleteProductBulkJob(batchId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteProductBulkJob(
-        companyId = config.companyId, batchId = batchId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun createProductsInBulk(batchId: String,body: BulkProductRequest)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createProductsInBulk(
         companyId = config.companyId, batchId = batchId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteProductBulkJob(batchId: String)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.deleteProductBulkJob(
+        companyId = config.companyId, batchId = batchId )
         } else {
             null
         } 
@@ -4677,12 +4677,12 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun getInventoryBySize(itemId: String, size: String, pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
+    suspend fun getInventoryBySize(itemId: String, size: String, pageNo: Int?=null, pageSize: Int?=null, q: String?=null, sellable: Boolean?=null)
     : Deferred<Response<InventoryResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryBySize(
-        companyId = config.companyId, itemId = itemId, size = size, pageNo = pageNo, pageSize = pageSize, q = q )
+        companyId = config.companyId, itemId = itemId, size = size, pageNo = pageNo, pageSize = pageSize, q = q, sellable = sellable )
         } else {
             null
         } 
@@ -4749,24 +4749,24 @@ class CatalogDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
-    suspend fun deleteBulkInventoryJob(batchId: String)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.deleteBulkInventoryJob(
-        companyId = config.companyId, batchId = batchId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun createBulkInventory(batchId: String,body: InventoryBulkRequest)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.createBulkInventory(
         companyId = config.companyId, batchId = batchId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteBulkInventoryJob(batchId: String)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.deleteBulkInventoryJob(
+        companyId = config.companyId, batchId = batchId )
         } else {
             null
         } 
@@ -4901,20 +4901,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteSearchKeywords(id: String)
-    : Deferred<Response<DeleteResponse>>? {
+    suspend fun updateSearchKeywords(id: String,body: CreateSearchKeyword)
+    : Deferred<Response<GetSearchWordsData>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
+                catalogApiList?.updateSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun updateSearchKeywords(id: String,body: CreateSearchKeyword)
-    : Deferred<Response<GetSearchWordsData>>? {
+    suspend fun deleteSearchKeywords(id: String)
+    : Deferred<Response<DeleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                catalogApiList?.deleteSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -4951,20 +4951,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteAutocompleteKeyword(id: String)
-    : Deferred<Response<DeleteResponse>>? {
+    suspend fun updateAutocompleteKeyword(id: String,body: CreateAutocompleteKeyword)
+    : Deferred<Response<GetAutocompleteWordsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id )
+                catalogApiList?.updateAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun updateAutocompleteKeyword(id: String,body: CreateAutocompleteKeyword)
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
+    suspend fun deleteAutocompleteKeyword(id: String)
+    : Deferred<Response<DeleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                catalogApiList?.deleteAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -5089,20 +5089,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteCollection(id: String)
-    : Deferred<Response<DeleteResponse>>? {
+    suspend fun updateCollection(id: String,body: UpdateCollection)
+    : Deferred<Response<UpdateCollection>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.deleteCollection(companyId = config.companyId , applicationId = applicationId , id = id )
+                catalogApiList?.updateCollection(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun updateCollection(id: String,body: UpdateCollection)
-    : Deferred<Response<UpdateCollection>>? {
+    suspend fun deleteCollection(id: String)
+    : Deferred<Response<DeleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateCollection(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                catalogApiList?.deleteCollection(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -5249,7 +5249,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     catalogApiList?.getApplicationBrands(companyId = config.companyId , applicationId = applicationId , department = department, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -5371,7 +5371,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     catalogApiList?.getAppicationProducts(companyId = config.companyId , applicationId = applicationId , q = q, f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize, pageNo = pageNo, pageType = pageType, itemIds = itemIds)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
                             onResponse.invoke(response,null)
                         }
                         
@@ -5473,24 +5473,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun getBrand(brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getBrand(
-        companyId = config.companyId, brandId = brandId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.editBrand(
         companyId = config.companyId, brandId = brandId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBrand(brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getBrand(
+        companyId = config.companyId, brandId = brandId )
         } else {
             null
         } 
@@ -5557,24 +5557,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun getLocationDetail(locationId: String)
-    : Deferred<Response<GetLocationSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getLocationDetail(
-        companyId = config.companyId, locationId = locationId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateLocation(locationId: String,body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.updateLocation(
         companyId = config.companyId, locationId = locationId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getLocationDetail(locationId: String)
+    : Deferred<Response<GetLocationSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getLocationDetail(
+        companyId = config.companyId, locationId = locationId )
         } else {
             null
         } 
@@ -5803,7 +5803,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     fileStorageApiList?.browse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -5933,7 +5933,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     shareApiList?.getShortLinks(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, createdBy = createdBy, active = active, q = q)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -6158,6 +6158,8 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     
     
     
+    
+    
     suspend fun createApplication(body: CreateApplicationRequest)
     : Deferred<Response<CreateAppResponse>>? {
         
@@ -6255,12 +6257,36 @@ class ConfigurationDataManagerClass(val config: PlatformConfig) : BaseRepository
     }
     
     
+    suspend fun updateLevelIntegration(id: String, level: String,body: UpdateIntegrationLevelRequest)
+    : Deferred<Response<IntegrationLevel>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            configurationApiList?.updateLevelIntegration(
+        companyId = config.companyId, id = id, level = level, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getIntegrationByLevelId(id: String, level: String, uid: String)
     : Deferred<Response<IntegrationLevel>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getIntegrationByLevelId(
         companyId = config.companyId, id = id, level = level, uid = uid )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateLevelUidIntegration(id: String, level: String, uid: String,body: IntegrationLevel)
+    : Deferred<Response<IntegrationLevel>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            configurationApiList?.updateLevelUidIntegration(
+        companyId = config.companyId, id = id, level = level, uid = uid, body = body)
         } else {
             null
         } 
@@ -6516,7 +6542,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -6585,7 +6611,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     configurationApiList?.getAppStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -6653,6 +6679,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getAppSupportedCurrency()
+    : Deferred<Response<AppCurrencyResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                configurationApiList?.getAppSupportedCurrency(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getOrderingStoresByFilter(pageNo: Int?=null, pageSize: Int?=null,body: FilterOrderingStoreRequest)
     : Deferred<Response<OrderingStores>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -6704,7 +6740,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     configurationApiList?.getOrderingStoresByFilter(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize,body = body )?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -6731,6 +6767,80 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    suspend fun getStaffOrderingStores(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
+    : Deferred<Response<OrderingStoresResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                configurationApiList?.getStaffOrderingStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getStaffOrderingStores
+    **/
+    fun getStaffOrderingStoresPaginator(
+    pageSize: Int?=null, q: String?=null
+    
+    ) : Paginator<OrderingStoresResponse>{
+        val paginator = Paginator<OrderingStoresResponse>()
+        paginator.setCallBack(object : PaginatorCallback<OrderingStoresResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<OrderingStoresResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    configurationApiList?.getStaffOrderingStores(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
     
     suspend fun getDomains()
     : Deferred<Response<DomainsResponse>>? {
@@ -6792,6 +6902,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     
@@ -6928,7 +7040,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     cartApiList?.getCoupons(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, isArchived = isArchived, title = title, isPublic = isPublic, isDisplay = isDisplay, typeSlug = typeSlug, code = code)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         
@@ -7110,7 +7222,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     rewardsApiList?.getGiveaways(companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
                             onResponse.invoke(response,null)
                         }
                         
@@ -7271,7 +7383,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     rewardsApiList?.getUserPointsHistory(companyId = config.companyId , applicationId = applicationId , userId = userId, pageId = pageId, pageLimit = pageLimit, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
                             onResponse.invoke(response,null)
                         }
                         
@@ -7487,7 +7599,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     analyticsApiList?.getAbandonCartList(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
-                            
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
                             onResponse.invoke(response,null)
                         }
                         

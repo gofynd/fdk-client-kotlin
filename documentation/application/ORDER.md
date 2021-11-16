@@ -1177,7 +1177,7 @@ Success, the code is valid and returns a session token
  | trackingDetails | ArrayList<[TrackingDetails](#TrackingDetails)>? |  yes  |  |
  | beneficiaryDetails | Boolean? |  yes  |  |
  | canReturn | Boolean? |  yes  |  |
- | canBreak | Boolean? |  yes  |  |
+ | canBreak | HashMap<String,Any>? |  yes  |  |
  | prices | [Prices](#Prices)? |  yes  |  |
  | needHelpUrl | String? |  yes  |  |
  | shipmentId | String? |  yes  |  |
