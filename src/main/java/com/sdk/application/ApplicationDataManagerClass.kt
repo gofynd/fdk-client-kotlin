@@ -23,7 +23,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -781,7 +781,7 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -928,7 +928,7 @@ class CommonDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -960,7 +960,7 @@ class LeadDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1022,7 +1022,7 @@ class ThemeDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1069,7 +1069,7 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1256,7 +1256,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1545,7 +1545,7 @@ class CommunicationDataManagerClass(val config: ApplicationConfig) : BaseReposit
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1587,7 +1587,7 @@ class ShareDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1649,7 +1649,7 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1686,7 +1686,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig) : BaseReposit
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1836,7 +1836,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -1973,7 +1973,7 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -2050,7 +2050,7 @@ class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -2157,7 +2157,7 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -2830,7 +2830,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
@@ -2992,7 +2992,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig) : BaseRepository()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
         interceptorMap["interceptor"] = interceptorList
-        HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+        HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,

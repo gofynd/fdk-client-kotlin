@@ -121,7 +121,7 @@ class PlatformOAuthClient(val config: PlatformConfig) : BaseRepository() {
             val interceptorList = ArrayList<Interceptor>()
             interceptorList.add(requestSignerInterceptor)
             interceptorMap["interceptor"] = interceptorList
-            HttpClient.setHttpLoggingInterceptor(HttpLoggingInterceptor.Level.BODY)
+            HttpClient.setDebuggable(config.debuggable)
             val retrofitHttpClient = HttpClient.initialize(
                 baseUrl = config.domain,
                 headers = headersMap,

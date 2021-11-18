@@ -42,4 +42,12 @@ object HttpClient {
         }
         return clientMap[namespace]
     }
+
+    fun setDebuggable(debuggable: Boolean) {
+        httpsLoggingInterceptor = if(debuggable){
+            HttpLoggingInterceptor.Level.BODY
+        }else{
+            HttpLoggingInterceptor.Level.NONE
+        }
+    }
 }
