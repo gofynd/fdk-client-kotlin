@@ -3252,6 +3252,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | accountKit | Boolean? |  yes  |  |
  | facebook | Boolean? |  yes  |  |
  | google | Boolean? |  yes  |  |
+ | apple | Boolean? |  yes  |  |
 
 ---
 
