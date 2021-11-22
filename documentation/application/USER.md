@@ -10,6 +10,7 @@ Authentication Service
 * [loginWithGoogle](#loginwithgoogle)
 * [loginWithGoogleAndroid](#loginwithgoogleandroid)
 * [loginWithGoogleIOS](#loginwithgoogleios)
+* [loginWithAppleIOS](#loginwithappleios)
 * [loginWithOTP](#loginwithotp)
 * [loginWithEmailAndPassword](#loginwithemailandpassword)
 * [sendResetPasswordEmail](#sendresetpasswordemail)
@@ -284,6 +285,76 @@ user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response,erro
 
 
 Use this API to login or register in iOS app using Google Account credentials.
+
+*Returned Response:*
+
+
+
+
+[AuthSuccess](#AuthSuccess)
+
+Success. Returns a JSON object with the user details. Check the example shown below or refer `AuthSuccess` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/AuthSuccess"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### loginWithAppleIOS
+Login or Register using Apple on iOS
+
+
+
+
+```kotlin
+user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| platform | String? | no | ID of the application |  
+| body | [OAuthRequestAppleSchema](#OAuthRequestAppleSchema) | yes | Request body |
+
+
+Use this API to login or register in iOS app using Apple Account credentials.
 
 *Returned Response:*
 
@@ -2509,6 +2580,19 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [OAuthRequestAppleSchema](#OAuthRequestAppleSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | userIdentifier | String? |  yes  |  |
+ | oauth | [OAuthRequestAppleSchemaOauth](#OAuthRequestAppleSchemaOauth)? |  yes  |  |
+ | profile | [OAuthRequestAppleSchemaProfile](#OAuthRequestAppleSchemaProfile)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [UserObjectSchema](#UserObjectSchema)
 
  | Properties | Type | Nullable | Description |
@@ -2903,6 +2987,30 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [OAuthRequestAppleSchemaOauth](#OAuthRequestAppleSchemaOauth)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | identityToken | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthRequestAppleSchemaProfile](#OAuthRequestAppleSchemaProfile)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | lastName | String? |  yes  |  |
+ | fullName | String? |  yes  |  |
+ | firstName | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [AuthSuccessUser](#AuthSuccessUser)
 
  | Properties | Type | Nullable | Description |
@@ -3072,6 +3180,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | accountKit | Boolean? |  yes  |  |
  | facebook | Boolean? |  yes  |  |
  | google | Boolean? |  yes  |  |
+ | apple | Boolean? |  yes  |  |
 
 ---
 
