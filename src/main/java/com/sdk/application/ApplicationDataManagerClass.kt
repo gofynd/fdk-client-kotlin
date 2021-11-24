@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -1086,11 +1086,6 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun loginWithGoogle(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
         return userApiList?.loginWithGoogle(platform = platform, body = body)}
-
-    
-    
-    fun loginWithGoogleOauth(platform: String?=null, redirectUrl: String?=null): Deferred<Response<AuthSuccess>>? {
-        return userApiList?.loginWithGoogleOauth(platform = platform, redirectUrl = redirectUrl)}
 
     
     

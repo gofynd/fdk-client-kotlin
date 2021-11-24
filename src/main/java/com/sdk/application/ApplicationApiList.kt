@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -365,11 +365,6 @@ interface UserApiList {
     
     @POST ("/service/application/user/authentication/v1.0/login/google-token")
     fun loginWithGoogle(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
-    : Deferred<Response<AuthSuccess>>
-    
-    
-    @GET ("/service/application/user/authentication/v1.0/login/google")
-    fun loginWithGoogleOauth(@Query("platform") platform: String?, @Query("redirect_url") redirectUrl: String?)
     : Deferred<Response<AuthSuccess>>
     
     
