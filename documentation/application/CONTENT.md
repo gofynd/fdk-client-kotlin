@@ -17,15 +17,13 @@ Content System
 * [getLandingPage](#getlandingpage)
 * [getLegalInformation](#getlegalinformation)
 * [getNavigations](#getnavigations)
-* [getPage](#getpage)
-* [getPages](#getpages)
 * [getSEOConfiguration](#getseoconfiguration)
 * [getSlideshows](#getslideshows)
 * [getSlideshow](#getslideshow)
 * [getSupportInformation](#getsupportinformation)
 * [getTags](#gettags)
-* [getPageV2](#getpagev2)
-* [getPagesV2](#getpagesv2)
+* [getPage](#getpage)
+* [getPages](#getpages)
 
 
 
@@ -808,148 +806,6 @@ Success. Returns a JSON object with navigation details. Check the example shown 
 ---
 
 
-### getPage
-Get a page
-
-
-
-
-```kotlin
-content.getPage(slug: slug, rootId: rootId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value from the endpoint /service/application/content/v1.0/pages/. |   
-| rootId | String? | no | ID given to the HTML element |  
-
-
-
-Use this API to get the details of a page using its slug. Details include the title, seo, publish status, feature image, tags, meta, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Returns a JSON object with page details. Check the example shown below or refer `CustomPageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPages
-Get all pages
-
-
-
-
-```kotlin
-content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1.  |   
-| pageSize | Int? | no | The number of items to retrieve in each page. |  
-
-
-
-Use this API to get a list of pages.
-
-*Returned Response:*
-
-
-
-
-[PageGetResponse](#PageGetResponse)
-
-Success. Returns a list of pages along with their details. Check the example shown below or refer `PageGetResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageGetResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### getSEOConfiguration
 Get the SEO of an application
 
@@ -1294,14 +1150,14 @@ Success. Returns a JSON object containing all the tags injected in the applicati
 ---
 
 
-### getPageV2
+### getPage
 Get a page
 
 
 
 
 ```kotlin
-content.getPageV2(slug: slug, rootId: rootId).safeAwait{ response,error->
+content.getPage(slug: slug, rootId: rootId).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1319,7 +1175,7 @@ content.getPageV2(slug: slug, rootId: rootId).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value from the endpoint /service/application/content/v1.0/pages/. |   
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value from the endpoint /service/application/content/v2.0/pages/. |   
 | rootId | String? | no | ID given to the HTML element |  
 
 
@@ -1347,7 +1203,7 @@ Success. Returns a JSON object with page details. Check the example shown below 
 
 ```json
 {
-  "$ref": "#/components/examples/PageResponse"
+  "$ref": "#/components/examples/PageStorefrontResponse"
 }
 ```
 </details>
@@ -1365,14 +1221,14 @@ Success. Returns a JSON object with page details. Check the example shown below 
 ---
 
 
-### getPagesV2
+### getPages
 Get all pages
 
 
 
 
 ```kotlin
-content.getPagesV2(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1404,7 +1260,7 @@ Use this API to get a list of pages.
 
 [PageGetResponse](#PageGetResponse)
 
-Success. Returns a list of pages along with their details. Check the example shown below or refer `PageGetResponse` for more details.
+Success. Returns a list of pages along with their details. Check the example shown below or refer `PageGetStorefrontResponse` for more details.
 
 
 
@@ -1418,7 +1274,7 @@ Success. Returns a list of pages along with their details. Check the example sho
 
 ```json
 {
-  "$ref": "#/components/examples/PageGetResponse"
+  "$ref": "#/components/examples/PageGetStorefrontResponse"
 }
 ```
 </details>

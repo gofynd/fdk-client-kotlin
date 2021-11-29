@@ -2086,7 +2086,7 @@ Success. Refer `ThemesSchema` for more details.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | global | HashMap<String,Any>? |  yes  |  |
+ | globalConfig | HashMap<String,Any>? |  yes  |  |
  | page | ArrayList<[ConfigPage](#ConfigPage)>? |  yes  |  |
  | name | String? |  yes  |  |
 

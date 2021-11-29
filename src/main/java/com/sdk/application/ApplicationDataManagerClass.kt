@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -1412,59 +1412,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
-        return contentApiList?.getPage(slug = slug, rootId = rootId)}
-
-    
-    
-    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
-        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)}
-
-    
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getPages
-    **/
-    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
-
-    val paginator = Paginator<PageGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
-    
     fun getSEOConfiguration(): Deferred<Response<SeoComponent>>? {
         return contentApiList?.getSEOConfiguration()}
 
@@ -1533,13 +1480,13 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun getPageV2(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
-        return contentApiList?.getPageV2(slug = slug, rootId = rootId)}
+    fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
+        return contentApiList?.getPage(slug = slug, rootId = rootId)}
 
     
     
-    fun getPagesV2(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
-        return contentApiList?.getPagesV2(pageNo = pageNo, pageSize = pageSize)}
+    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
+        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)}
 
     
     
@@ -1555,9 +1502,9 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         
     /**
     *
-    * Summary: Paginator for getPagesV2
+    * Summary: Paginator for getPages
     **/
-    fun getPagesV2Paginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
+    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
 
     val paginator = Paginator<PageGetResponse>()
 
@@ -1568,7 +1515,7 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                contentApiList?.getPagesV2(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

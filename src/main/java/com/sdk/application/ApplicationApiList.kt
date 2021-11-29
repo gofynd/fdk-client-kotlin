@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -582,16 +582,6 @@ interface ContentApiList {
     : Deferred<Response<NavigationGetResponse>>
     
     
-    @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
-    : Deferred<Response<PageSchema>>
-    
-    
-    @GET ("/service/application/content/v1.0/pages/")
-    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PageGetResponse>>
-    
-    
     @GET ("/service/application/content/v1.0/seo")
     fun getSEOConfiguration()
     : Deferred<Response<SeoComponent>>
@@ -618,12 +608,12 @@ interface ContentApiList {
     
     
     @GET ("/service/application/content/v2.0/pages/{slug}")
-    fun getPageV2(@Path("slug") slug: String, @Query("root_id") rootId: String?)
+    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
     : Deferred<Response<PageSchema>>
     
     
     @GET ("/service/application/content/v2.0/pages/")
-    fun getPagesV2(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<PageGetResponse>>
     
 }
