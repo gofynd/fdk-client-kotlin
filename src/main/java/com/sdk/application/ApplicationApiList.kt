@@ -688,6 +688,11 @@ interface FileStorageApiList {
     fun completeUpload(@Path("namespace") namespace: String, @Body body: StartResponse)
     : Deferred<Response<CompleteResponse>>
     
+    
+    @POST ("/service/application/assets/v1.0/company/{company_id}/sign-urls/")
+    fun signUrls(@Path("company_id") companyId: Int, @Body body: SignUrlRequest)
+    : Deferred<Response<SignUrlResponse>>
+    
 }
 
 interface ConfigurationApiList {

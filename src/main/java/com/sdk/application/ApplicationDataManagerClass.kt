@@ -1674,6 +1674,11 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
 
     
     
+    fun signUrls(companyId: Int, body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
+        return fileStorageApiList?.signUrls(companyId = companyId, body = body)}
+
+    
+    
 }
 
 
