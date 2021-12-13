@@ -892,13 +892,13 @@ interface CatalogApiList {
     fun getSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<GetSearchWordsDetailResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/{id}/")
-    fun updateSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CreateSearchKeyword)
-    : Deferred<Response<GetSearchWordsData>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/{id}/")
     fun deleteSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<DeleteResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/{id}/")
+    fun updateSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CreateSearchKeyword)
+    : Deferred<Response<GetSearchWordsData>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/")
     fun getAllSearchKeyword(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -912,13 +912,13 @@ interface CatalogApiList {
     fun getAutocompleteKeywordDetail(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<GetAutocompleteWordsResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/{id}/")
-    fun updateAutocompleteKeyword(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CreateAutocompleteKeyword)
-    : Deferred<Response<GetAutocompleteWordsResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/{id}/")
     fun deleteAutocompleteKeyword(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<DeleteResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/{id}/")
+    fun updateAutocompleteKeyword(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CreateAutocompleteKeyword)
+    : Deferred<Response<GetAutocompleteWordsResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/")
     fun getAutocompleteConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -996,13 +996,13 @@ interface CatalogApiList {
     fun getCollectionDetail(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("slug") slug: String)
     : Deferred<Response<CollectionDetailResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
-    fun updateCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateCollection)
-    : Deferred<Response<UpdateCollection>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
     fun deleteCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<DeleteResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/")
+    fun updateCollection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateCollection)
+    : Deferred<Response<UpdateCollection>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/items/")
     fun getCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
@@ -1120,12 +1120,12 @@ interface CatalogApiList {
     fun getProduct(@Query("item_code") itemCode: String?, @Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?)
     : Deferred<Response<Product>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
-    fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdate)
-    : Deferred<Response<SuccessResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
     fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String)
+    : Deferred<Response<SuccessResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
+    fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdate)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/validation/")
@@ -1264,13 +1264,13 @@ interface CatalogApiList {
 
 interface CompanyProfileApiList {
     
-    @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
-    fun updateCompany(@Path("company_id") companyId: String,@Body body: UpdateCompany)
-    : Deferred<Response<SuccessResponse>>
-    
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
     fun cbsOnboardGet(@Path("company_id") companyId: String)
     : Deferred<Response<GetCompanyProfileSerializerResponse>>
+    
+    @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
+    fun updateCompany(@Path("company_id") companyId: String,@Body body: UpdateCompany)
+    : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/metrics")
     fun getCompanyMetrics(@Path("company_id") companyId: String)

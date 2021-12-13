@@ -2023,18 +2023,6 @@ Success. Refer `ThemesSchema` for more details.
 
  
  
- #### [Seo](#Seo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | description | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [Sections](#Sections)
 
  | Properties | Type | Nullable | Description |
