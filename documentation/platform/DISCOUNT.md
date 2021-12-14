@@ -674,6 +674,7 @@ Success
  | companyId | Int |  no  |  |
  | isActive | Boolean |  no  |  |
  | appIds | ArrayList<String> |  no  |  |
+ | extensionIds | ArrayList<String> |  no  |  |
  | jobType | String |  no  |  |
  | discountType | String |  no  |  |
  | discountLevel | String |  no  |  |
