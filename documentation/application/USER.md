@@ -2651,6 +2651,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | verifyEmailOtp | Boolean? |  yes  |  |
  | verifyMobileOtp | Boolean? |  yes  |  |
  | email | String? |  yes  |  |
+ | requestId | String? |  yes  |  |
 
 ---
 
