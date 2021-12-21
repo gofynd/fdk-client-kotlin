@@ -20,8 +20,6 @@ class PlatformClient(val config:PlatformConfig) {
     
     val payment by lazy { PaymentDataManagerClass(config)}
     
-    val order by lazy { OrderDataManagerClass(config)}
-    
     val catalog by lazy { CatalogDataManagerClass(config)}
     
     val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
@@ -69,8 +67,6 @@ class PlatformClient(val config:PlatformConfig) {
     val communication by lazy { this@PlatformClient.communication.ApplicationClient(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
-    
-    val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
     val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
     
