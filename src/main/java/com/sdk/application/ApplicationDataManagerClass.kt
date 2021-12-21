@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -1328,6 +1328,11 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     return paginator
     }
+    
+    fun getDataLoaders(): Deferred<Response<DataLoaderSchema>>? {
+        return contentApiList?.getDataLoaders()}
+
+    
     
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
         return contentApiList?.getFaqs()}
