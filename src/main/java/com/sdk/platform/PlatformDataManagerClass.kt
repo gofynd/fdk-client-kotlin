@@ -5260,18 +5260,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun getBrand(brandId: String)
-    : Deferred<Response<GetBrandResponseSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getBrand(
-        companyId = config.companyId, brandId = brandId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun editBrand(brandId: String,body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
@@ -5284,11 +5272,35 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
+    suspend fun getBrand(brandId: String)
+    : Deferred<Response<GetBrandResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getBrand(
+        companyId = config.companyId, brandId = brandId )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun createBrand(body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.createBrand(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createCompanyBrandMapping(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -5308,11 +5320,11 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createCompanyBrandMapping(body: CompanyBrandPostRequestSerializer)
+    suspend fun createLocation(body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createCompanyBrandMapping(
+            companyProfileApiList?.createLocation(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -5332,12 +5344,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
     }
     
     
-    suspend fun createLocation(body: LocationSerializer)
+    suspend fun updateLocation(locationId: String,body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.createLocation(
-        companyId = config.companyId, body = body)
+            companyProfileApiList?.updateLocation(
+        companyId = config.companyId, locationId = locationId, body = body)
         } else {
             null
         } 
@@ -5350,18 +5362,6 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocationDetail(
         companyId = config.companyId, locationId = locationId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateLocation(locationId: String,body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateLocation(
-        companyId = config.companyId, locationId = locationId, body = body)
         } else {
             null
         } 
@@ -7480,9 +7480,161 @@ class DiscountDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         return retrofitHttpClient?.initializeRestClient(DiscountApiList::class.java) as? DiscountApiList
     }
     
+    
+    suspend fun getDiscounts(view: String?=null, q: String?=null, pageNo: Int?=null, pageSize: Int?=null, archived: Boolean?=null, month: Int?=null, year: Int?=null, type: String?=null, appIds: ArrayList<String>?=null)
+    : Deferred<Response<ListOrCalender>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDiscounts(
+        companyId = config.companyId, view = view, q = q, pageNo = pageNo, pageSize = pageSize, archived = archived, month = month, year = year, type = type, appIds = appIds )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createDiscount(body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.createDiscount(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDiscount(id: String)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDiscount(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateDiscount(id: String,body: CreateUpdateDiscount)
+    : Deferred<Response<DiscountJob>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.updateDiscount(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    
+    suspend fun validateDiscountFile(discount: String?=null,body: DiscountJob)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.validateDiscountFile(
+        companyId = config.companyId, discount = discount, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun downloadDiscountFile(type: String,body: DownloadFileJob)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.downloadDiscountFile(
+        companyId = config.companyId, type = type, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getValidationJob(id: String)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getValidationJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelValidationJob(id: String)
+    : Deferred<Response<CancelJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.cancelValidationJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDownloadJob(id: String)
+    : Deferred<Response<FileJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.getDownloadJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun cancelDownloadJob(id: String)
+    : Deferred<Response<CancelJobResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.cancelDownloadJob(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
+    
+    
+    suspend fun fetchDiscountJobs()
+    : Deferred<Response<ListOrCalender>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                discountApiList?.fetchDiscountJobs(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDiscountDetails(body: InternalDiscountQuery)
+    : Deferred<Response<DiscountList>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                discountApiList?.getDiscountDetails(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    
+    
     
 }
 }
