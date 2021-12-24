@@ -41,13 +41,9 @@ Content System
 * [deleteNavigation](#deletenavigation)
 * [getPageMeta](#getpagemeta)
 * [getPageSpec](#getpagespec)
-* [createPage](#createpage)
-* [getPages](#getpages)
 * [createPagePreview](#createpagepreview)
 * [updatePagePreview](#updatepagepreview)
-* [updatePage](#updatepage)
 * [deletePage](#deletepage)
-* [getPageBySlug](#getpagebyslug)
 * [updatePathRedirectionRules](#updatepathredirectionrules)
 * [getPathRedirectionRules](#getpathredirectionrules)
 * [getSEOConfiguration](#getseoconfiguration)
@@ -65,6 +61,10 @@ Content System
 * [addInjectableTag](#addinjectabletag)
 * [removeInjectableTag](#removeinjectabletag)
 * [editInjectableTag](#editinjectabletag)
+* [createPage](#createpage)
+* [getPages](#getpages)
+* [updatePage](#updatepage)
+* [getPageBySlug](#getpagebyslug)
 
 
 
@@ -2599,7 +2599,7 @@ Get page meta
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageMeta(pageType: pageType, cartPages: cartPages).safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -2613,12 +2613,6 @@ client.application("<APPLICATION_ID>").content.getPageMeta(pageType: pageType, c
 
 
 
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageType | String? | no | Fetch meta by page type. Acceptable values are: system, custom and all |   
-| cartPages | Boolean? | no | Pass this param value as `true` to fetch meta with cart pages |  
 
 
 
@@ -2737,146 +2731,6 @@ Success. Refer `PageSpec` for more details.
       }
     ]
   }
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### createPage
-Create a page
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [PageRequest](#PageRequest) | yes | Request body |
-
-
-Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPages
-Get a list of pages
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
-
-
-
-Use this API to retrieve a list of pages.
-
-*Returned Response:*
-
-
-
-
-[PageGetResponse](#PageGetResponse)
-
-Success. Refer `PageGetResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageGetResponse"
 }
 ```
 </details>
@@ -3033,76 +2887,6 @@ Success.
 ---
 
 
-### updatePage
-Update a page
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to the page. |  
-| body | [PageSchema](#PageSchema) | yes | Request body |
-
-
-Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### deletePage
 Delete a page
 
@@ -3142,76 +2926,6 @@ Use this API to delete an existing page.
 [PageSchema](#PageSchema)
 
 Success.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPageBySlug
-Get pages by component Id
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
-
-
-
-Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Returns a JSON object of components. Refer `PageSchema` for more details.
 
 
 
@@ -4513,6 +4227,286 @@ Success.
 ---
 
 
+### createPage
+Create a page
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PageRequest](#PageRequest) | yes | Request body |
+
+
+Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPages
+Get a list of pages
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
+
+
+
+Use this API to retrieve a list of pages.
+
+*Returned Response:*
+
+
+
+
+[PageGetResponse](#PageGetResponse)
+
+Success. Refer `PageGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePage
+Update a page
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to the page. |  
+| body | [PageSchema](#PageSchema) | yes | Request body |
+
+
+Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPageBySlug
+Get pages by component Id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+
+
+
+Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Returns a JSON object of components. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -5577,6 +5571,7 @@ Success.
  | application | String? |  yes  |  |
  | componentIds | ArrayList<String>? |  yes  | Components can be used to store multiple components |
  | content | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | contentPath | String? |  yes  |  |
  | createdBy | [CreatedBySchema](#CreatedBySchema)? |  yes  |  |
  | dateMeta | [DateMeta](#DateMeta)? |  yes  |  |
  | description | String? |  yes  |  |

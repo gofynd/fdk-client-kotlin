@@ -1099,6 +1099,11 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
+    fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestAppleSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithAppleIOS(platform = platform, body = body)}
+
+    
+    
     fun loginWithOTP(platform: String?=null, body: SendOtpRequestSchema): Deferred<Response<SendOtpResponse>>? {
         return userApiList?.loginWithOTP(platform = platform, body = body)}
 
@@ -1407,59 +1412,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
-        return contentApiList?.getPage(slug = slug, rootId = rootId)}
-
-    
-    
-    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
-        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)}
-
-    
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getPages
-    **/
-    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
-
-    val paginator = Paginator<PageGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
-    
     fun getSEOConfiguration(): Deferred<Response<SeoComponent>>? {
         return contentApiList?.getSEOConfiguration()}
 
@@ -1527,6 +1479,59 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         return contentApiList?.getTags()}
 
     
+    
+    fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
+        return contentApiList?.getPage(slug = slug, rootId = rootId)}
+
+    
+    
+    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
+        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPages
+    **/
+    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
+
+    val paginator = Paginator<PageGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
     
 }
 
@@ -1666,6 +1671,11 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
     
     fun completeUpload(namespace: String, body: StartResponse): Deferred<Response<CompleteResponse>>? {
         return fileStorageApiList?.completeUpload(namespace = namespace, body = body)}
+
+    
+    
+    fun signUrls(companyId: Int, body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
+        return fileStorageApiList?.signUrls(companyId = companyId, body = body)}
 
     
     

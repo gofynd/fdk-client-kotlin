@@ -20,7 +20,7 @@ Short link and QR Code
 
 
 ### getApplicationQRCode
-Create application QR Code
+Create QR Code of an app
 
 
 
@@ -43,7 +43,7 @@ share.getApplicationQRCode().safeAwait{ response,error->
 
 
 
-Create application QR Code
+Use this API to create a QR code of an app for sharing it with users who want to use the app.
 
 *Returned Response:*
 
@@ -52,7 +52,7 @@ Create application QR Code
 
 [QRCodeResp](#QRCodeResp)
 
-Success
+Success. Check the example shown below or refer `QRCodeResp` for more details.
 
 
 
@@ -80,7 +80,7 @@ Success
 
 
 ### getProductQRCodeBySlug
-Create product QR Code
+Create QR Code of a product
 
 
 
@@ -104,11 +104,11 @@ share.getProductQRCodeBySlug(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| slug | String | yes | The unique identifier of a product |  
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a product. You can get slug value from the endpoint. |  
 
 
 
-Create product QR Code
+Use this API to create a QR code of a product for sharing it with users who want to view/purchase the product.
 
 *Returned Response:*
 
@@ -117,7 +117,7 @@ Create product QR Code
 
 [QRCodeResp](#QRCodeResp)
 
-Success
+Success. Check the example shown below or refer `QRCodeResp` for more details.
 
 
 
@@ -145,7 +145,7 @@ Success
 
 
 ### getCollectionQRCodeBySlug
-Create collection QR Code
+Create QR Code of a collection
 
 
 
@@ -169,11 +169,11 @@ share.getCollectionQRCodeBySlug(slug: slug).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| slug | String | yes | The unique identifier of a collection |  
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a collection. You can get slug value from the endpoint. |  
 
 
 
-Create collection QR Code
+Use this API to create a QR code of a collection of products for sharing it with users who want to view/purchase the collection.
 
 *Returned Response:*
 
@@ -182,7 +182,7 @@ Create collection QR Code
 
 [QRCodeResp](#QRCodeResp)
 
-Success
+Success. Check the example shown below or refer `QRCodeResp` for more details.
 
 
 
@@ -210,7 +210,7 @@ Success
 
 
 ### getUrlQRCode
-Create url QR Code
+Create QR Code of a URL
 
 
 
@@ -234,11 +234,11 @@ share.getUrlQRCode(url: url).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| url | String | yes | Url |  
+| url | String | yes | A link or a web address |  
 
 
 
-Create url QR Code
+Use this API to create a QR code of a URL for sharing it with users who want to visit the link.
 
 *Returned Response:*
 
@@ -247,7 +247,7 @@ Create url QR Code
 
 [QRCodeResp](#QRCodeResp)
 
-Success
+Success. Check the example shown below or refer `QRCodeResp` for more details.
 
 
 
@@ -275,7 +275,7 @@ Success
 
 
 ### createShortLink
-Create short link
+Create a short link
 
 
 
@@ -302,7 +302,7 @@ share.createShortLink(body: body).safeAwait{ response,error->
 | body | [ShortLinkReq](#ShortLinkReq) | yes | Request body |
 
 
-Create short link
+Use this API to create a short link that is easy to write/share/read as compared to long URLs.
 
 *Returned Response:*
 
@@ -311,7 +311,7 @@ Create short link
 
 [ShortLinkRes](#ShortLinkRes)
 
-Success
+Success. Check the example shown below or refer `ShortLinkRes` for more details.
 
 
 
@@ -398,11 +398,11 @@ share.getShortLinkByHash(hash: hash).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| hash | String | yes | Hash of short link |  
+| hash | String | yes | A string value used for converting long URL to short URL and vice-versa. |  
 
 
 
-Get short link by hash
+Use this API to get a short link by using a hash value.
 
 *Returned Response:*
 
@@ -411,7 +411,7 @@ Get short link by hash
 
 [ShortLinkRes](#ShortLinkRes)
 
-Success
+Success. Check the example shown below or refer `ShortLinkRes` for more details.
 
 
 
@@ -498,11 +498,11 @@ share.getOriginalShortLinkByHash(hash: hash).safeAwait{ response,error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| hash | String | yes | Hash of short link |  
+| hash | String | yes | A string value used for converting long URL to short URL and vice-versa. |  
 
 
 
-Get original link by hash
+Use this API to retrieve the original link from a short-link by using a hash value.
 
 *Returned Response:*
 
@@ -511,7 +511,7 @@ Get original link by hash
 
 [ShortLinkRes](#ShortLinkRes)
 
-Success
+Success. Check the example shown below or refer `ShortLinkRes` for more details.
 
 
 
@@ -668,13 +668,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String |  no  |  |
- | url | String |  no  |  |
+ | title | String |  no  | Give a name to the link. |
+ | url | String |  no  | The web address to shorten. |
  | hash | String? |  yes  |  |
  | active | Boolean? |  yes  |  |
  | expireAt | String? |  yes  |  |
  | enableTracking | Boolean? |  yes  |  |
- | personalized | Boolean? |  yes  | To create personalized short links |
+ | personalized | Boolean? |  yes  | To create personalized short links. |
  | campaign | [CampaignShortLink](#CampaignShortLink)? |  yes  |  |
  | redirects | [Redirects](#Redirects)? |  yes  |  |
  | attribution | [Attribution](#Attribution)? |  yes  |  |
@@ -715,6 +715,7 @@ Success
  | application | String? |  yes  |  |
  | userId | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | personalized | Boolean? |  yes  | To create personalized short links |
  | campaign | [CampaignShortLink](#CampaignShortLink)? |  yes  |  |

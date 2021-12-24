@@ -942,7 +942,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double |  no  |  |
+ | amount | Double |  no  | Amount for price. Minimum value 1 |
  | currencyCode | String |  no  |  |
 
 ---

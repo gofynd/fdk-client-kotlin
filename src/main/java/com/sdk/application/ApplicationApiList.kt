@@ -378,6 +378,11 @@ interface UserApiList {
     : Deferred<Response<AuthSuccess>>
     
     
+    @POST ("/service/application/user/authentication/v1.0/login/apple-ios")
+    fun loginWithAppleIOS(@Query("platform") platform: String?, @Body body: OAuthRequestAppleSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    
     @POST ("/service/application/user/authentication/v1.0/login/otp")
     fun loginWithOTP(@Query("platform") platform: String?, @Body body: SendOtpRequestSchema)
     : Deferred<Response<SendOtpResponse>>
@@ -577,16 +582,6 @@ interface ContentApiList {
     : Deferred<Response<NavigationGetResponse>>
     
     
-    @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
-    : Deferred<Response<PageSchema>>
-    
-    
-    @GET ("/service/application/content/v1.0/pages/")
-    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PageGetResponse>>
-    
-    
     @GET ("/service/application/content/v1.0/seo")
     fun getSEOConfiguration()
     : Deferred<Response<SeoComponent>>
@@ -610,6 +605,16 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/tags")
     fun getTags()
     : Deferred<Response<TagsSchema>>
+    
+    
+    @GET ("/service/application/content/v2.0/pages/{slug}")
+    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
+    : Deferred<Response<PageSchema>>
+    
+    
+    @GET ("/service/application/content/v2.0/pages/")
+    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PageGetResponse>>
     
 }
 
@@ -682,6 +687,11 @@ interface FileStorageApiList {
     @POST ("/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/")
     fun completeUpload(@Path("namespace") namespace: String, @Body body: StartResponse)
     : Deferred<Response<CompleteResponse>>
+    
+    
+    @POST ("/service/application/assets/v1.0/company/{company_id}/sign-urls/")
+    fun signUrls(@Path("company_id") companyId: Int, @Body body: SignUrlRequest)
+    : Deferred<Response<SignUrlResponse>>
     
 }
 
