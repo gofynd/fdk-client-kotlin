@@ -41,10 +41,10 @@ package com.sdk.application
 
 
     /*
-        Enum: TicketAssetType
+        Enum: TicketAssetTypeEnum
         Used By: Lead
     */
-    enum class TicketAssetType(val value:String){
+    enum class TicketAssetTypeEnum(val value:String){
         
         image("image"),
         
