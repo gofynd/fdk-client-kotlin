@@ -30,15 +30,9 @@ class PlatformClient(val config:PlatformConfig) {
     
     val share by lazy { ShareDataManagerClass(config)}
     
-    val inventory by lazy { InventoryDataManagerClass(config)}
-    
     val configuration by lazy { ConfigurationDataManagerClass(config)}
     
     val cart by lazy { CartDataManagerClass(config)}
-    
-    val rewards by lazy { RewardsDataManagerClass(config)}
-    
-    val analytics by lazy { AnalyticsDataManagerClass(config)}
     
     val discount by lazy { DiscountDataManagerClass(config)}
     
@@ -80,15 +74,9 @@ class PlatformClient(val config:PlatformConfig) {
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     
-    val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
-    
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
-    
-    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
-    
-    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     

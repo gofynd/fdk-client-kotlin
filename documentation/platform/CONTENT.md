@@ -17,6 +17,11 @@ Content System
 * [updateBlog](#updateblog)
 * [deleteBlog](#deleteblog)
 * [getComponentById](#getcomponentbyid)
+* [addDataLoader](#adddataloader)
+* [getDataLoaders](#getdataloaders)
+* [deleteDataLoader](#deletedataloader)
+* [editDataLoader](#editdataloader)
+* [selectDataLoader](#selectdataloader)
 * [getFaqCategories](#getfaqcategories)
 * [getFaqCategoryBySlugOrId](#getfaqcategorybyslugorid)
 * [createFaqCategory](#createfaqcategory)
@@ -41,13 +46,11 @@ Content System
 * [deleteNavigation](#deletenavigation)
 * [getPageMeta](#getpagemeta)
 * [getPageSpec](#getpagespec)
-* [createPage](#createpage)
-* [getPages](#getpages)
 * [createPagePreview](#createpagepreview)
 * [updatePagePreview](#updatepagepreview)
-* [updatePage](#updatepage)
 * [deletePage](#deletepage)
-* [getPageBySlug](#getpagebyslug)
+* [updatePathRedirectionRules](#updatepathredirectionrules)
+* [getPathRedirectionRules](#getpathredirectionrules)
 * [getSEOConfiguration](#getseoconfiguration)
 * [updateSEOConfiguration](#updateseoconfiguration)
 * [getSlideshows](#getslideshows)
@@ -63,6 +66,10 @@ Content System
 * [addInjectableTag](#addinjectabletag)
 * [removeInjectableTag](#removeinjectabletag)
 * [editInjectableTag](#editinjectabletag)
+* [createPage](#createpage)
+* [getPages](#getpages)
+* [updatePage](#updatepage)
+* [getPageBySlug](#getpagebyslug)
 
 
 
@@ -826,6 +833,373 @@ Success. Returns a a JSON object with components. Refer `BlogSchema` for more de
 ```
 </details>
 
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### addDataLoader
+Adds a data loader
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.addDataLoader(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [DataLoaderSchema](#DataLoaderSchema) | yes | Request body |
+
+
+Use this API to add data loader. This includes the data loader name, operationId, service name and its type (url/function) with corresponding value.
+
+*Returned Response:*
+
+
+
+
+[DataLoaderResponseSchema](#DataLoaderResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "name": "Search API from Algolia",
+  "service": "catalog",
+  "operation_id": "fetchSuggestions",
+  "type": "url",
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getDataLoaders
+Get all the data loaders in an application
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getDataLoaders().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Use this to get all data loaders of an application
+
+*Returned Response:*
+
+
+
+
+[ArrayList<DataLoaderResponseSchema>](#ArrayList<DataLoaderResponseSchema>)
+
+Success. Refer `DataLoaderResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+[
+  {
+    "name": "Algolia",
+    "is_selected": false,
+    "type": "url",
+    "_id": "61bc4523a7ffc7504f4de4a5",
+    "service": "catalog",
+    "operation_id": "fetchSuggestions",
+    "url": "www.dddd.ddd",
+    "__source": {
+      "type": "extension",
+      "id": "000000000000000000000003"
+    },
+    "application": "100000000000000000000001",
+    "__v": 0
+  },
+  {
+    "name": "Algolia v3",
+    "is_selected": false,
+    "type": "url",
+    "_id": "61bc452da7ffc7504f4de4a7",
+    "service": "catalog",
+    "operation_id": "fetchSuggestions",
+    "url": "www.dddd.ddd",
+    "__source": {
+      "type": "extension",
+      "id": "000000000000000000000003"
+    },
+    "application": "100000000000000000000001",
+    "__v": 0
+  }
+]
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteDataLoader
+Delete data loader in application
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.deleteDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| dataLoaderId | String | yes | ID allotted to the data loader. |  
+
+
+
+Use this API to delete data loader.
+
+*Returned Response:*
+
+
+
+
+[DataLoaderResponseSchema](#DataLoaderResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "name": "Search API from Algolia",
+  "service": "catalog",
+  "operation_id": "fetchSuggestions",
+  "type": "url",
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### editDataLoader
+Edit a data loader by id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.editDataLoader(dataLoaderId: dataLoaderId, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| dataLoaderId | String | yes | ID allotted to the data loader. |  
+| body | [DataLoaderSchema](#DataLoaderSchema) | yes | Request body |
+
+
+Use this API to edit the details of an existing data loader by its ID.
+
+*Returned Response:*
+
+
+
+
+[DataLoaderResponseSchema](#DataLoaderResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "name": "Search API from Algolia",
+  "service": "catalog",
+  "operation_id": "fetchSuggestions",
+  "type": "url",
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### selectDataLoader
+Select a data loader by id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.selectDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| dataLoaderId | String | yes | ID allotted to the data loader. |  
+
+
+
+Use this API to select a data loader to be used in applications.
+
+*Returned Response:*
+
+
+
+
+[DataLoaderResponseSchema](#DataLoaderResponseSchema)
+
+Success.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "_id": "601f77e7aa61066feda44487",
+  "name": "Search API from Algolia",
+  "service": "catalog",
+  "operation_id": "fetchSuggestions",
+  "type": "url",
+  "application": "000000000000000000000001",
+  "__v": 0
+}
+```
 </details>
 
 
@@ -2746,146 +3120,6 @@ Success. Refer `PageSpec` for more details.
 ---
 
 
-### createPage
-Create a page
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [PageRequest](#PageRequest) | yes | Request body |
-
-
-Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPages
-Get a list of pages
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
-
-
-
-Use this API to retrieve a list of pages.
-
-*Returned Response:*
-
-
-
-
-[PageGetResponse](#PageGetResponse)
-
-Success. Refer `PageGetResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageGetResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### createPagePreview
 Create a page preview
 
@@ -3025,76 +3259,6 @@ Success.
 ---
 
 
-### updatePage
-Update a page
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to the page. |  
-| body | [PageSchema](#PageSchema) | yes | Request body |
-
-
-Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### deletePage
 Delete a page
 
@@ -3165,14 +3329,14 @@ Success.
 ---
 
 
-### getPageBySlug
-Get pages by component Id
+### updatePathRedirectionRules
+Save path based redirection rules
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updatePathRedirectionRules(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3189,21 +3353,84 @@ client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwa
 
 
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+| --------- | -----  | -------- | ----------- |
+| body | [PathMappingSchema](#PathMappingSchema) | yes | Request body |
 
 
-
-Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+Use this API to add, update or delete path-based redirection rules
 
 *Returned Response:*
 
 
 
 
-[PageSchema](#PageSchema)
+[PathMappingSchema](#PathMappingSchema)
 
-Success. Returns a JSON object of components. Refer `PageSchema` for more details.
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "redirections": [
+    {
+      "redirect_from": "test.hostfynd.dev/redirect_from",
+      "redirect_to": "/redirect_to"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPathRedirectionRules
+Get path based redirection rules
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPathRedirectionRules().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Use this API to get path based redirection rules.
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
 
 
 
@@ -3213,11 +3440,11 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; Success</i></summary>
 
 ```json
 {
-  "$ref": "#/components/examples/PageResponse"
+  "$ref": "#/components/examples/PathMapping"
 }
 ```
 </details>
@@ -4372,6 +4599,286 @@ Success.
 ---
 
 
+### createPage
+Create a page
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PageRequest](#PageRequest) | yes | Request body |
+
+
+Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPages
+Get a list of pages
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
+
+
+
+Use this API to retrieve a list of pages.
+
+*Returned Response:*
+
+
+
+
+[PageGetResponse](#PageGetResponse)
+
+Success. Refer `PageGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePage
+Update a page
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to the page. |  
+| body | [PageSchema](#PageSchema) | yes | Request body |
+
+
+Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPageBySlug
+Get pages by component Id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+
+
+
+Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Returns a JSON object of components. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -4401,6 +4908,33 @@ Success.
  | ---------- | ---- | -------- | ----------- |
  | question | String? |  yes  |  |
  | answer | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PathMappingSchema](#PathMappingSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String? |  yes  |  |
+ | redirections | ArrayList<[RedirectionSchema](#RedirectionSchema)>? |  yes  |  |
+ | id | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RedirectionSchema](#RedirectionSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | redirectFrom | String? |  yes  |  |
+ | redirectTo | String? |  yes  |  |
 
 ---
 
@@ -4728,6 +5262,25 @@ Success.
 
  
  
+ #### [DataLoaderResponseSchema](#DataLoaderResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | service | String? |  yes  |  |
+ | operationId | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | url | String? |  yes  |  |
+ | content | String? |  yes  |  |
+ | source | [DataLoaderSourceSchema](#DataLoaderSourceSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [Navigation](#Navigation)
 
  | Properties | Type | Nullable | Description |
@@ -4959,6 +5512,35 @@ Success.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | tags | ArrayList<[CreateTagSchema](#CreateTagSchema)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DataLoaderSchema](#DataLoaderSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | service | String? |  yes  |  |
+ | operationId | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | url | String? |  yes  |  |
+ | content | String? |  yes  |  |
+ | source | [DataLoaderSourceSchema](#DataLoaderSourceSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DataLoaderSourceSchema](#DataLoaderSourceSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | id | String? |  yes  |  |
 
 ---
 
@@ -5409,6 +5991,7 @@ Success.
  | application | String? |  yes  |  |
  | componentIds | ArrayList<String>? |  yes  | Components can be used to store multiple components |
  | content | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | contentPath | String? |  yes  |  |
  | createdBy | [CreatedBySchema](#CreatedBySchema)? |  yes  |  |
  | dateMeta | [DateMeta](#DateMeta)? |  yes  |  |
  | description | String? |  yes  |  |

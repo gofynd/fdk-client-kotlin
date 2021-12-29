@@ -733,7 +733,7 @@ Delete Media
 
 
 ```kotlin
-feedback.deleteMedia(ids: ids).safeAwait{ response,error->
+feedback.deleteMedia().safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -747,11 +747,6 @@ feedback.deleteMedia(ids: ids).safeAwait{ response,error->
 
 
 
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| ids | ArrayList<String> | yes | List of media ID |  
 
 
 

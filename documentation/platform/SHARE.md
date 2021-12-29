@@ -513,13 +513,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String |  no  | Give a name to the link. |
- | url | String |  no  | The web address to shorten. |
+ | title | String |  no  |  |
+ | url | String |  no  |  |
  | hash | String? |  yes  |  |
  | active | Boolean? |  yes  |  |
  | expireAt | String? |  yes  |  |
  | enableTracking | Boolean? |  yes  |  |
- | personalized | Boolean? |  yes  | To create personalized short links. |
+ | personalized | Boolean? |  yes  | To create personalized short links |
  | campaign | [CampaignShortLink](#CampaignShortLink)? |  yes  |  |
  | redirects | [Redirects](#Redirects)? |  yes  |  |
  | attribution | [Attribution](#Attribution)? |  yes  |  |
@@ -560,7 +560,6 @@ Success
  | application | String? |  yes  |  |
  | userId | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | personalized | Boolean? |  yes  | To create personalized short links |
  | campaign | [CampaignShortLink](#CampaignShortLink)? |  yes  |  |

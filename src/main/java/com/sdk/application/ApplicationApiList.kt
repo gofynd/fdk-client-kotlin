@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -300,8 +300,8 @@ interface LeadApiList {
     : Deferred<Response<Ticket>>
     
     
-    @POST ("/service/application/lead/v1.0/ticket/{id}/history")
-    fun createHistory(@Path("id") id: String, @Body body: TicketHistoryPayload)
+    @POST ("/service/application/lead/v1.0/ticket/{ticket_id}/history")
+    fun createHistory(@Path("ticket_id") ticketId: String, @Body body: TicketHistoryPayload)
     : Deferred<Response<TicketHistory>>
     
     
@@ -375,6 +375,11 @@ interface UserApiList {
     
     @POST ("/service/application/user/authentication/v1.0/login/google-ios")
     fun loginWithGoogleIOS(@Query("platform") platform: String?, @Body body: OAuthRequestSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    
+    @POST ("/service/application/user/authentication/v1.0/login/apple-ios")
+    fun loginWithAppleIOS(@Query("platform") platform: String?, @Body body: OAuthRequestAppleSchema)
     : Deferred<Response<AuthSuccess>>
     
     
@@ -537,6 +542,11 @@ interface ContentApiList {
     : Deferred<Response<BlogGetResponse>>
     
     
+    @GET ("/service/application/content/v1.0/data-loader")
+    fun getDataLoaders()
+    : Deferred<Response<DataLoaderSchema>>
+    
+    
     @GET ("/service/application/content/v1.0/faq")
     fun getFaqs()
     : Deferred<Response<FaqResponseSchema>>
@@ -577,16 +587,6 @@ interface ContentApiList {
     : Deferred<Response<NavigationGetResponse>>
     
     
-    @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
-    : Deferred<Response<PageSchema>>
-    
-    
-    @GET ("/service/application/content/v1.0/pages/")
-    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PageGetResponse>>
-    
-    
     @GET ("/service/application/content/v1.0/seo")
     fun getSEOConfiguration()
     : Deferred<Response<SeoComponent>>
@@ -610,6 +610,16 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/tags")
     fun getTags()
     : Deferred<Response<TagsSchema>>
+    
+    
+    @GET ("/service/application/content/v2.0/pages/{slug}")
+    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
+    : Deferred<Response<PageSchema>>
+    
+    
+    @GET ("/service/application/content/v2.0/pages/")
+    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PageGetResponse>>
     
 }
 
@@ -682,6 +692,11 @@ interface FileStorageApiList {
     @POST ("/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/")
     fun completeUpload(@Path("namespace") namespace: String, @Body body: StartResponse)
     : Deferred<Response<CompleteResponse>>
+    
+    
+    @POST ("/service/application/assets/v1.0/sign-urls/")
+    fun signUrls(@Body body: SignUrlRequest)
+    : Deferred<Response<SignUrlResponse>>
     
 }
 
@@ -932,54 +947,15 @@ interface OrderApiList {
     
 }
 
-interface RewardsApiList {
-    
-    
-    @POST ("/service/application/rewards/v1.0/catalogue/offer/order/")
-    fun getPointsOnProduct(@Body body: CatalogueOrderRequest)
-    : Deferred<Response<CatalogueOrderResponse>>
-    
-    
-    @GET ("/service/application/rewards/v1.0/offers/{name}/")
-    fun getOfferByName(@Path("name") name: String)
-    : Deferred<Response<Offer>>
-    
-    
-    @POST ("/service/application/rewards/v1.0/user/offers/order-discount/")
-    fun getOrderDiscount(@Body body: OrderDiscountRequest)
-    : Deferred<Response<OrderDiscountResponse>>
-    
-    
-    @GET ("/service/application/rewards/v1.0/user/points/")
-    fun getUserPoints()
-    : Deferred<Response<PointsResponse>>
-    
-    
-    @GET ("/service/application/rewards/v1.0/user/points/history/")
-    fun getUserPointsHistory(@Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PointsHistoryResponse>>
-    
-    
-    @GET ("/service/application/rewards/v1.0/user/referral/")
-    fun getUserReferralDetails()
-    : Deferred<Response<ReferralDetailsResponse>>
-    
-    
-    @POST ("/service/application/rewards/v1.0/user/referral/redeem/")
-    fun redeemReferralCode(@Body body: RedeemReferralCodeRequest)
-    : Deferred<Response<RedeemReferralCodeResponse>>
-    
-}
-
 interface FeedbackApiList {
     
     
-    @POST ("/service/application/feedback/v1.0/abuse/")
+    @POST ("/service/application/feedback/v1.0/abuse")
     fun createAbuseReport(@Body body: ReportAbuseRequest)
     : Deferred<Response<InsertResponse>>
     
     
-    @PUT ("/service/application/feedback/v1.0/abuse/")
+    @PUT ("/service/application/feedback/v1.0/abuse")
     fun updateAbuseReport(@Body body: UpdateAbuseStatusRequest)
     : Deferred<Response<UpdateResponse>>
     
@@ -989,12 +965,12 @@ interface FeedbackApiList {
     : Deferred<Response<ReportAbuseGetResponse>>
     
     
-    @GET ("/service/application/feedback/v1.0/attributes/")
+    @GET ("/service/application/feedback/v1.0/attributes")
     fun getAttributes(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<AttributeResponse>>
     
     
-    @POST ("/service/application/feedback/v1.0/attributes/")
+    @POST ("/service/application/feedback/v1.0/attributes")
     fun createAttribute(@Body body: SaveAttributeRequest)
     : Deferred<Response<InsertResponse>>
     
@@ -1009,12 +985,12 @@ interface FeedbackApiList {
     : Deferred<Response<UpdateResponse>>
     
     
-    @POST ("/service/application/feedback/v1.0/comment/")
+    @POST ("/service/application/feedback/v1.0/comment")
     fun createComment(@Body body: CommentRequest)
     : Deferred<Response<InsertResponse>>
     
     
-    @PUT ("/service/application/feedback/v1.0/comment/")
+    @PUT ("/service/application/feedback/v1.0/comment")
     fun updateComment(@Body body: UpdateCommentRequest)
     : Deferred<Response<UpdateResponse>>
     
@@ -1030,7 +1006,7 @@ interface FeedbackApiList {
     
     
     @DELETE ("/service/application/feedback/v1.0/media/")
-    fun deleteMedia(@Query("ids") ids: ArrayList<String>)
+    fun deleteMedia()
     : Deferred<Response<UpdateResponse>>
     
     

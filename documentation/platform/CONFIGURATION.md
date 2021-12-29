@@ -1717,7 +1717,8 @@ Success
     "enabled": true,
     "max_cart_items": 0,
     "min_cart_value": 120,
-    "bulk_coupons": true
+    "bulk_coupons": true,
+    "revenue_engine_coupon": false
   },
   "payment": {
     "callback_url": {
@@ -1962,7 +1963,8 @@ Success
     "enabled": true,
     "max_cart_items": 0,
     "min_cart_value": 120,
-    "bulk_coupons": true
+    "bulk_coupons": true,
+    "revenue_engine_coupon": false
   },
   "payment": {
     "callback_url": {
@@ -2207,7 +2209,8 @@ Success
     "enabled": true,
     "max_cart_items": 0,
     "min_cart_value": 120,
-    "bulk_coupons": true
+    "bulk_coupons": true,
+    "revenue_engine_coupon": false
   },
   "payment": {
     "callback_url": {
@@ -5213,6 +5216,7 @@ Success
  | maxCartItems | Int? |  yes  |  |
  | minCartValue | Double? |  yes  |  |
  | bulkCoupons | Boolean? |  yes  |  |
+ | revenueEngineCoupon | Boolean? |  yes  |  |
 
 ---
 
@@ -6165,7 +6169,6 @@ Success
  | type | String? |  yes  |  |
  | id | String? |  yes  |  |
  | app | String? |  yes  |  |
- | v | Int? |  yes  |  |
 
 ---
 
@@ -6919,7 +6922,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | from | String? |  yes  |  |
+ | redirectFrom | String? |  yes  |  |
  | redirectTo | String? |  yes  |  |
  | type | String? |  yes  |  |
 

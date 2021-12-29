@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -975,8 +975,8 @@ class LeadDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun createHistory(id: String, body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
-        return leadApiList?.createHistory(id = id, body = body)}
+    fun createHistory(ticketId: String, body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
+        return leadApiList?.createHistory(ticketId = ticketId, body = body)}
 
     
     
@@ -1096,6 +1096,11 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     fun loginWithGoogleIOS(platform: String?=null, body: OAuthRequestSchema): Deferred<Response<AuthSuccess>>? {
         return userApiList?.loginWithGoogleIOS(platform = platform, body = body)}
+
+    
+    
+    fun loginWithAppleIOS(platform: String?=null, body: OAuthRequestAppleSchema): Deferred<Response<AuthSuccess>>? {
+        return userApiList?.loginWithAppleIOS(platform = platform, body = body)}
 
     
     
@@ -1324,6 +1329,11 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
+    fun getDataLoaders(): Deferred<Response<DataLoaderSchema>>? {
+        return contentApiList?.getDataLoaders()}
+
+    
+    
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
         return contentApiList?.getFaqs()}
 
@@ -1390,59 +1400,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
                 val pageNo = paginator.pageNo
                 val pageType = "number"
                 contentApiList?.getNavigations(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
-    
-    fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
-        return contentApiList?.getPage(slug = slug, rootId = rootId)}
-
-    
-    
-    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
-        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)}
-
-    
-    
-    
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getPages
-    **/
-    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
-
-    val paginator = Paginator<PageGetResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -1527,6 +1484,59 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         return contentApiList?.getTags()}
 
     
+    
+    fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
+        return contentApiList?.getPage(slug = slug, rootId = rootId)}
+
+    
+    
+    fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
+        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPages
+    **/
+    fun getPagesPaginator(pageSize: Int?=null) : Paginator<PageGetResponse>{
+
+    val paginator = Paginator<PageGetResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<PageGetResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<PageGetResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
     
 }
 
@@ -1666,6 +1676,11 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
     
     fun completeUpload(namespace: String, body: StartResponse): Deferred<Response<CompleteResponse>>? {
         return fileStorageApiList?.completeUpload(namespace = namespace, body = body)}
+
+    
+    
+    fun signUrls(body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
+        return fileStorageApiList?.signUrls(body = body)}
 
     
     
@@ -2036,113 +2051,6 @@ class OrderDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 }
 
 
-class RewardsDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
-    
-    private val rewardsApiList by lazy {
-        generaterewardsApiList()
-    }
-
-    private fun generaterewardsApiList(): RewardsApiList? {
-        val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerInterceptor = ApplicationHeaderInterceptor(config)
-        val requestSignerInterceptor = RequestSignerInterceptor()
-        val interceptorList = ArrayList<Interceptor>()
-        interceptorList.add(headerInterceptor)
-        interceptorList.add(requestSignerInterceptor)
-        interceptorMap["interceptor"] = interceptorList
-        HttpClient.setDebuggable(config.debuggable)
-        val retrofitHttpClient = HttpClient.initialize(
-            baseUrl = config.domain,
-            interceptorList = interceptorMap,
-            namespace = "ApplicationRewards",
-            persistentCookieStore = config.persistentCookieStore
-        )
-        return retrofitHttpClient?.initializeRestClient(RewardsApiList::class.java) as? RewardsApiList
-    }
-    
-    fun getPointsOnProduct(body: CatalogueOrderRequest): Deferred<Response<CatalogueOrderResponse>>? {
-        return rewardsApiList?.getPointsOnProduct(body = body)}
-
-    
-    
-    fun getOfferByName(name: String): Deferred<Response<Offer>>? {
-        return rewardsApiList?.getOfferByName(name = name)}
-
-    
-    
-    fun getOrderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
-        return rewardsApiList?.getOrderDiscount(body = body)}
-
-    
-    
-    fun getUserPoints(): Deferred<Response<PointsResponse>>? {
-        return rewardsApiList?.getUserPoints()}
-
-    
-    
-    fun getUserPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
-        return rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)}
-
-    
-    
-    
-        
-            
-            
-                
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getUserPointsHistory
-    **/
-    fun getUserPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
-
-    val paginator = Paginator<PointsHistoryResponse>()
-
-    paginator.setCallBack(object : PaginatorCallback<PointsHistoryResponse> {
-
-            override suspend fun onNext(
-                onResponse: (Event<PointsHistoryResponse>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "cursor"
-                rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
-    
-    fun getUserReferralDetails(): Deferred<Response<ReferralDetailsResponse>>? {
-        return rewardsApiList?.getUserReferralDetails()}
-
-    
-    
-    fun redeemReferralCode(body: RedeemReferralCodeRequest): Deferred<Response<RedeemReferralCodeResponse>>? {
-        return rewardsApiList?.redeemReferralCode(body = body)}
-
-    
-    
-}
-
-
 class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     private val feedbackApiList by lazy {
@@ -2390,8 +2298,8 @@ class FeedbackDataManagerClass(val config: ApplicationConfig) : BaseRepository()
 
     
     
-    fun deleteMedia(ids: ArrayList<String>): Deferred<Response<UpdateResponse>>? {
-        return feedbackApiList?.deleteMedia(ids = ids)}
+    fun deleteMedia(): Deferred<Response<UpdateResponse>>? {
+        return feedbackApiList?.deleteMedia()}
 
     
     

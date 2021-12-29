@@ -116,7 +116,7 @@ client.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ respons
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| q | String? | no | The search query. Mobile number or email ID of a customer. |  
+| q | HashMap<String,Any>? | no | The search query. Mobile number or email ID of a customer. |  
 
 
 
@@ -968,6 +968,19 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
  
  
+ #### [OAuthRequestAppleSchema](#OAuthRequestAppleSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | userIdentifier | String? |  yes  |  |
+ | oauth | [OAuthRequestAppleSchemaOauth](#OAuthRequestAppleSchemaOauth)? |  yes  |  |
+ | profile | [OAuthRequestAppleSchemaProfile](#OAuthRequestAppleSchemaProfile)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [UserObjectSchema](#UserObjectSchema)
 
  | Properties | Type | Nullable | Description |
@@ -1026,6 +1039,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | verifyEmailOtp | Boolean? |  yes  |  |
  | verifyMobileOtp | Boolean? |  yes  |  |
  | email | String? |  yes  |  |
+ | requestId | String? |  yes  |  |
 
 ---
 
@@ -1362,6 +1376,30 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
  
  
+ #### [OAuthRequestAppleSchemaOauth](#OAuthRequestAppleSchemaOauth)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | identityToken | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [OAuthRequestAppleSchemaProfile](#OAuthRequestAppleSchemaProfile)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | lastName | String? |  yes  |  |
+ | fullName | String? |  yes  |  |
+ | firstName | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [AuthSuccessUser](#AuthSuccessUser)
 
  | Properties | Type | Nullable | Description |
@@ -1531,6 +1569,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | accountKit | Boolean? |  yes  |  |
  | facebook | Boolean? |  yes  |  |
  | google | Boolean? |  yes  |  |
+ | apple | Boolean? |  yes  |  |
 
 ---
 

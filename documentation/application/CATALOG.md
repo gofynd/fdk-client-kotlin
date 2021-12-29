@@ -29,8 +29,8 @@ Catalog API's allows you to access list of products, prices, seller details, sim
 * [getCollectionItemsBySlug](#getcollectionitemsbyslug)
 * [getCollectionDetailBySlug](#getcollectiondetailbyslug)
 * [getFollowedListing](#getfollowedlisting)
-* [followById](#followbyid)
 * [unfollowById](#unfollowbyid)
+* [followById](#followbyid)
 * [getFollowerCountById](#getfollowercountbyid)
 * [getFollowIds](#getfollowids)
 * [getStores](#getstores)
@@ -5946,72 +5946,6 @@ Success. Returns a Followed resource object. Check the example shown below or re
 ---
 
 
-### followById
-Follow an entity (product/brand/collection)
-
-
-
-
-```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
-| collectionId | String | yes | The ID of the collection type. |  
-
-
-
-Follow a particular entity such as product, brand, collection specified by its ID.
-
-*Returned Response:*
-
-
-
-
-[FollowPostResponse](#FollowPostResponse)
-
-Success. Returns a response object. Check the example shown below or refer `FollowPostResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "message": "Brands Added To Wishlist",
-  "id": "1"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### unfollowById
 Unfollow an entity (product/brand/collection)
 
@@ -6062,6 +5996,72 @@ Success. Returns a response object. Check the example shown below or refer `Foll
 ```json
 {
   "message": "Products Removed From Wishlist",
+  "id": "1"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### followById
+Follow an entity (product/brand/collection)
+
+
+
+
+```kotlin
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
+| collectionId | String | yes | The ID of the collection type. |  
+
+
+
+Follow a particular entity such as product, brand, collection specified by its ID.
+
+*Returned Response:*
+
+
+
+
+[FollowPostResponse](#FollowPostResponse)
+
+Success. Returns a response object. Check the example shown below or refer `FollowPostResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Brands Added To Wishlist",
   "id": "1"
 }
 ```
@@ -6704,25 +6704,26 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  
  
- #### [ProductDetailAttribute](#ProductDetailAttribute)
+ #### [Price](#Price)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
- | key | String? |  yes  |  |
- | type | String? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+ | min | Double? |  yes  |  |
+ | max | Double? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)
+ #### [ProductListingPrice](#ProductListingPrice)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | details | ArrayList<[ProductDetailAttribute](#ProductDetailAttribute)>? |  yes  |  |
+ | effective | [Price](#Price)? |  yes  |  |
+ | marked | [Price](#Price)? |  yes  |  |
 
 ---
 
@@ -6744,9 +6745,34 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | url | String? |  yes  |  |
- | type | String? |  yes  |  |
  | meta | [Meta](#Meta)? |  yes  |  |
+ | type | String? |  yes  |  |
+ | url | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDetailAttribute](#ProductDetailAttribute)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | details | ArrayList<[ProductDetailAttribute](#ProductDetailAttribute)>? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -6782,36 +6808,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [Price](#Price)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | max | Double? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | currencyCode | String? |  yes  |  |
- | min | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductListingPrice](#ProductListingPrice)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | marked | [Price](#Price)? |  yes  |  |
- | effective | [Price](#Price)? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -6822,32 +6822,32 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | medias | ArrayList<[Media](#Media)>? |  yes  |  |
- | similars | ArrayList<String>? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | rating | Double? |  yes  |  |
+ | itemType | String? |  yes  |  |
  | name | String? |  yes  |  |
- | tryouts | ArrayList<String>? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | color | String? |  yes  |  |
+ | teaserTag | String? |  yes  |  |
+ | similars | ArrayList<String>? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
+ | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
+ | slug | String |  no  |  |
  | imageNature | String? |  yes  |  |
  | productOnlineDate | String? |  yes  |  |
- | itemType | String? |  yes  |  |
- | type | String? |  yes  |  |
- | discount | String? |  yes  |  |
- | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | teaserTag | String? |  yes  |  |
- | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
- | color | String? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
  | uid | Int? |  yes  |  |
- | ratingCount | Int? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | description | String? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | slug | String |  no  |  |
- | rating | Double? |  yes  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -6859,17 +6859,6 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | error | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSizeStores](#ProductSizeStores)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | count | Int? |  yes  |  |
 
 ---
 
@@ -6892,12 +6881,12 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | col6 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
  | col2 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col1 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col6 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
  | col5 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col4 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
  | col3 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col4 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col1 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
 
 ---
 
@@ -6908,12 +6897,12 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | col6 | String? |  yes  |  |
  | col2 | String? |  yes  |  |
- | col1 | String? |  yes  |  |
+ | col6 | String? |  yes  |  |
  | col5 | String? |  yes  |  |
- | col4 | String? |  yes  |  |
  | col3 | String? |  yes  |  |
+ | col4 | String? |  yes  |  |
+ | col1 | String? |  yes  |  |
 
 ---
 
@@ -6925,12 +6914,23 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | unit | String? |  yes  |  |
- | sizeTip | String? |  yes  |  |
- | description | String? |  yes  |  |
- | title | String? |  yes  |  |
- | image | String? |  yes  |  |
  | headers | [ColumnHeaders](#ColumnHeaders)? |  yes  |  |
+ | title | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | image | String? |  yes  |  |
  | sizes | ArrayList<[SizeChartValues](#SizeChartValues)>? |  yes  |  |
+ | sizeTip | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSizeStores](#ProductSizeStores)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int? |  yes  |  |
 
 ---
 
@@ -6941,8 +6941,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
  | display | String? |  yes  |  |
+ | value | String? |  yes  |  |
  | isAvailable | Boolean? |  yes  |  |
  | quantity | Int? |  yes  |  |
 
@@ -6955,90 +6955,12 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | sizeChart | [SizeChart](#SizeChart)? |  yes  |  |
  | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | stores | [ProductSizeStores](#ProductSizeStores)? |  yes  |  |
  | sellable | Boolean? |  yes  |  |
- | sizeChart | [SizeChart](#SizeChart)? |  yes  |  |
- | discount | String? |  yes  |  |
  | sizes | ArrayList<[ProductSize](#ProductSize)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductStockPrice](#ProductStockPrice)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | currency | String? |  yes  |  |
- | marked | Double? |  yes  |  |
- | effective | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [ReturnConfig](#ReturnConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | time | Int? |  yes  |  |
- | unit | String? |  yes  |  |
- | returnable | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [Store](#Store)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | count | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [Details](#Details)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
- | key | String? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [MarketPlaceSttributes](#MarketPlaceSttributes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | details | ArrayList<[Details](#Details)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [StrategyWiseListing](#StrategyWiseListing)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | quantity | Int? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | distance | Int? |  yes  |  |
- | tat | Int? |  yes  |  |
+ | discount | String? |  yes  |  |
 
 ---
 
@@ -7072,8 +6994,21 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | quantity | Int? |  yes  |  |
  | sizeDistribution | [ProductSetDistribution](#ProductSetDistribution)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductStockPrice](#ProductStockPrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | currency | String? |  yes  |  |
+ | effective | Double? |  yes  |  |
+ | marked | Double? |  yes  |  |
 
 ---
 
@@ -7084,8 +7019,21 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | level | String? |  yes  |  |
  | strategy | String? |  yes  |  |
+ | level | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Store](#Store)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | count | Int? |  yes  |  |
 
 ---
 
@@ -7096,9 +7044,61 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | count | Int? |  yes  |  |
  | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | count | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StrategyWiseListing](#StrategyWiseListing)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tat | Int? |  yes  |  |
+ | distance | Int? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Details](#Details)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [MarketPlaceSttributes](#MarketPlaceSttributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | details | ArrayList<[Details](#Details)>? |  yes  |  |
+ | title | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ReturnConfig](#ReturnConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | unit | String? |  yes  |  |
+ | time | Int? |  yes  |  |
+ | returnable | Boolean? |  yes  |  |
 
 ---
 
@@ -7109,40 +7109,23 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | pricePerPiece | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | articleId | String? |  yes  |  |
- | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
- | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | store | [Store](#Store)? |  yes  |  |
- | marketplaceAttributes | ArrayList<[MarketPlaceSttributes](#MarketPlaceSttributes)>? |  yes  |  |
- | strategyWiseListing | ArrayList<[StrategyWiseListing](#StrategyWiseListing)>? |  yes  |  |
- | longLat | ArrayList<Double>? |  yes  |  |
- | set | [ProductSet](#ProductSet)? |  yes  |  |
  | discount | String? |  yes  |  |
- | specialBadge | String? |  yes  |  |
- | articleAssignment | [ArticleAssignment](#ArticleAssignment)? |  yes  |  |
- | seller | [Seller](#Seller)? |  yes  |  |
+ | set | [ProductSet](#ProductSet)? |  yes  |  |
+ | pricePerPiece | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
  | sellerCount | Int? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | pincode | Int? |  yes  |  |
+ | articleAssignment | [ArticleAssignment](#ArticleAssignment)? |  yes  |  |
+ | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
+ | longLat | ArrayList<Double>? |  yes  |  |
+ | specialBadge | String? |  yes  |  |
+ | store | [Store](#Store)? |  yes  |  |
  | itemType | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Page](#Page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | size | Int? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | current | Int? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
- | nextId | String? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
+ | articleId | String? |  yes  |  |
+ | seller | [Seller](#Seller)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | strategyWiseListing | ArrayList<[StrategyWiseListing](#StrategyWiseListing)>? |  yes  |  |
+ | marketplaceAttributes | ArrayList<[MarketPlaceSttributes](#MarketPlaceSttributes)>? |  yes  |  |
+ | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
+ | pincode | Int? |  yes  |  |
 
 ---
 
@@ -7153,9 +7136,26 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
  | value | String? |  yes  |  |
  | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Page](#Page)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hasNext | Boolean? |  yes  |  |
+ | type | String |  no  |  |
+ | size | Int? |  yes  |  |
+ | itemTotal | Int? |  yes  |  |
+ | current | Int? |  yes  |  |
+ | nextId | String? |  yes  |  |
+ | hasPrevious | Boolean? |  yes  |  |
 
 ---
 
@@ -7166,8 +7166,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | sortOn | ArrayList<[ProductSizeSellerFilter](#ProductSizeSellerFilter)>? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[ProductSizePriceResponse](#ProductSizePriceResponse)>? |  yes  |  |
 
 ---
@@ -7180,9 +7180,9 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | display | String? |  yes  |  |
+ | logo | String? |  yes  |  |
  | description | String? |  yes  |  |
  | key | String? |  yes  |  |
- | logo | String? |  yes  |  |
 
 ---
 
@@ -7193,8 +7193,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
  | details | ArrayList<[AttributeDetail](#AttributeDetail)>? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -7205,8 +7205,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
  | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
+ | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
 
 ---
 
@@ -7217,10 +7217,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
  | subtitle | String? |  yes  |  |
- | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
  | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
+ | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -7242,9 +7242,9 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
  | subtitle | String? |  yes  |  |
  | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -7266,15 +7266,15 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | slug | String? |  yes  |  |
  | value | String? |  yes  |  |
  | medias | ArrayList<[Media](#Media)>? |  yes  |  |
- | color | String? |  yes  |  |
- | name | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | slug | String? |  yes  |  |
  | colorName | String? |  yes  |  |
- | uid | Int? |  yes  |  |
+ | color | String? |  yes  |  |
  | isAvailable | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -7286,9 +7286,9 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | displayType | String? |  yes  |  |
- | key | String? |  yes  |  |
  | items | ArrayList<[ProductVariantItemResponse](#ProductVariantItemResponse)>? |  yes  |  |
  | header | String? |  yes  |  |
+ | key | String? |  yes  |  |
 
 ---
 
@@ -7310,9 +7310,9 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  |  |
- | id | Int? |  yes  |  |
  | name | String? |  yes  |  |
+ | id | Int? |  yes  |  |
+ | code | String? |  yes  |  |
  | city | String? |  yes  |  |
 
 ---
@@ -7324,8 +7324,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
  | name | String? |  yes  |  |
+ | id | Int? |  yes  |  |
 
 ---
 
@@ -7336,15 +7336,15 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | itemId | Int? |  yes  |  |
- | identifier | HashMap<String,Any>? |  yes  |  |
- | store | [StoreDetail](#StoreDetail)? |  yes  |  |
  | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | size | String? |  yes  |  |
- | company | [CompanyDetail](#CompanyDetail)? |  yes  |  |
- | seller | [Seller](#Seller)? |  yes  |  |
  | uid | String? |  yes  |  |
+ | size | String? |  yes  |  |
+ | itemId | Int? |  yes  |  |
+ | store | [StoreDetail](#StoreDetail)? |  yes  |  |
+ | seller | [Seller](#Seller)? |  yes  |  |
  | quantity | Int? |  yes  |  |
+ | company | [CompanyDetail](#CompanyDetail)? |  yes  |  |
+ | identifier | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7374,13 +7374,22 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  
  
- #### [ProductSortOn](#ProductSortOn)
+ #### [ProductFiltersValue](#ProductFiltersValue)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | currencySymbol | String? |  yes  |  |
+ | min | Int? |  yes  |  |
+ | isSelected | Boolean |  no  |  |
+ | display | String |  no  |  |
+ | selectedMax | Int? |  yes  |  |
  | value | String? |  yes  |  |
- | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
+ | displayFormat | String? |  yes  |  |
+ | count | Int? |  yes  |  |
+ | max | Int? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | selectedMin | Int? |  yes  |  |
+ | queryFormat | String? |  yes  |  |
 
 ---
 
@@ -7392,31 +7401,9 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | display | String |  no  |  |
- | kind | String? |  yes  |  |
  | name | String |  no  |  |
  | logo | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductFiltersValue](#ProductFiltersValue)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
- | count | Int? |  yes  |  |
- | isSelected | Boolean |  no  |  |
- | max | Int? |  yes  |  |
- | displayFormat | String? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | queryFormat | String? |  yes  |  |
- | selectedMin | Int? |  yes  |  |
- | selectedMax | Int? |  yes  |  |
- | currencyCode | String? |  yes  |  |
- | display | String |  no  |  |
- | min | Int? |  yes  |  |
+ | kind | String? |  yes  |  |
 
 ---
 
@@ -7427,8 +7414,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | [ProductFiltersKey](#ProductFiltersKey) |  no  |  |
  | values | ArrayList<[ProductFiltersValue](#ProductFiltersValue)> |  no  |  |
+ | key | [ProductFiltersKey](#ProductFiltersKey) |  no  |  |
 
 ---
 
@@ -7439,33 +7426,46 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | medias | ArrayList<[Media](#Media)>? |  yes  |  |
- | similars | ArrayList<String>? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | rating | Double? |  yes  |  |
+ | itemType | String? |  yes  |  |
  | name | String? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | color | String? |  yes  |  |
  | sellable | Boolean? |  yes  |  |
- | tryouts | ArrayList<String>? |  yes  |  |
+ | teaserTag | String? |  yes  |  |
+ | similars | ArrayList<String>? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
+ | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
+ | slug | String |  no  |  |
  | imageNature | String? |  yes  |  |
  | productOnlineDate | String? |  yes  |  |
- | itemType | String? |  yes  |  |
- | type | String? |  yes  |  |
- | discount | String? |  yes  |  |
- | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | teaserTag | String? |  yes  |  |
- | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
- | color | String? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
  | uid | Int? |  yes  |  |
- | ratingCount | Int? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | description | String? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | slug | String |  no  |  |
- | rating | Double? |  yes  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSortOn](#ProductSortOn)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | value | String? |  yes  |  |
+ | isSelected | Boolean? |  yes  |  |
 
 ---
 
@@ -7476,10 +7476,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
- | sortOn | ArrayList<[ProductSortOn](#ProductSortOn)>? |  yes  |  |
  | filters | ArrayList<[ProductFilters](#ProductFilters)>? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
+ | sortOn | ArrayList<[ProductSortOn](#ProductSortOn)>? |  yes  |  |
 
 ---
 
@@ -7504,12 +7504,12 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | ---------- | ---- | -------- | ----------- |
  | departments | ArrayList<String>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | name | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | slug | String? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
- | discount | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -7532,10 +7532,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | uid | Int? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
 
 ---
 
@@ -7558,13 +7558,13 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | name | String? |  yes  |  |
- | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
  | slug | String? |  yes  |  |
+ | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -7575,13 +7575,13 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | name | String? |  yes  |  |
- | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
  | slug | String? |  yes  |  |
+ | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -7592,13 +7592,13 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | customJson | HashMap<String,Any>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | name | String? |  yes  |  |
- | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
  | slug | String? |  yes  |  |
+ | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -7610,11 +7610,11 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | name | String? |  yes  |  |
- | childs | ArrayList<[Child](#Child)>? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | slug | String? |  yes  |  |
+ | childs | ArrayList<[Child](#Child)>? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -7649,10 +7649,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | uid | Int? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
 
 ---
 
@@ -7676,10 +7676,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
+ | slug | String? |  yes  |  |
  | priorityOrder | Int? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
 
 ---
@@ -7703,9 +7703,9 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | display | String? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | type | String? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
+ | type | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
 
 ---
 
@@ -7723,26 +7723,26 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  
  
- #### [CollectionListingFilterTag](#CollectionListingFilterTag)
+ #### [CollectionListingFilterType](#CollectionListingFilterType)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
  | display | String? |  yes  |  |
  | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [CollectionListingFilterType](#CollectionListingFilterType)
+ #### [CollectionListingFilterTag](#CollectionListingFilterTag)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
  | display | String? |  yes  |  |
  | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
 
 ---
 
@@ -7753,8 +7753,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
  | type | ArrayList<[CollectionListingFilterType](#CollectionListingFilterType)>? |  yes  |  |
+ | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
 
 ---
 
@@ -7765,25 +7765,25 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
  | cron | HashMap<String,Any>? |  yes  |  |
+ | allowSort | Boolean? |  yes  |  |
  | query | HashMap<String,Any>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
  | tag | ArrayList<String>? |  yes  |  |
  | type | String? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | appId | String? |  yes  |  |
- | uid | String? |  yes  |  |
- | allowSort | Boolean? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
  | description | String? |  yes  |  |
- | slug | String? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
  | allowFacets | Boolean? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
 
 ---
 
@@ -7794,8 +7794,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | filters | [CollectionListingFilter](#CollectionListingFilter)? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[GetCollectionDetailNest](#GetCollectionDetailNest)>? |  yes  |  |
 
 ---
@@ -7807,23 +7807,23 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | cron | HashMap<String,Any>? |  yes  |  |
- | name | String? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | tag | ArrayList<String>? |  yes  |  |
- | slug | String? |  yes  |  |
- | type | String? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
  | allowFacets | Boolean? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
+ | cron | HashMap<String,Any>? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
  | appId | String? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | tag | ArrayList<String>? |  yes  |  |
+ | type | String? |  yes  |  |
  | allowSort | Boolean? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
+ | description | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7869,9 +7869,9 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | products | ArrayList<Int>? |  yes  |  |
  | brands | ArrayList<Int>? |  yes  |  |
  | collections | ArrayList<Int>? |  yes  |  |
+ | products | ArrayList<Int>? |  yes  |  |
 
 ---
 
@@ -7905,16 +7905,16 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | address | String? |  yes  |  |
- | name | String? |  yes  |  |
- | state | String? |  yes  |  |
- | storeCode | String? |  yes  |  |
  | city | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | latLong | [LatLong](#LatLong)? |  yes  |  |
- | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | address | String? |  yes  |  |
+ | state | String? |  yes  |  |
  | country | String? |  yes  |  |
+ | latLong | [LatLong](#LatLong)? |  yes  |  |
  | storeEmail | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | storeCode | String? |  yes  |  |
+ | pincode | Int? |  yes  |  |
 
 ---
 
@@ -7937,10 +7937,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
  | logo | String? |  yes  |  |
+ | slug | String? |  yes  |  |
  | priorityOrder | Int? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
 
 ---
@@ -7952,40 +7952,15 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | address2 | String? |  yes  |  |
+ | city | String? |  yes  |  |
+ | longitude | Double? |  yes  |  |
  | latitude | Double? |  yes  |  |
  | state | String? |  yes  |  |
- | address1 | String? |  yes  |  |
  | country | String? |  yes  |  |
- | address2 | String? |  yes  |  |
- | landmark | String? |  yes  |  |
  | pincode | Int? |  yes  |  |
- | longitude | Double? |  yes  |  |
- | city | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SellerPhoneNumber](#SellerPhoneNumber)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | number | String |  no  |  |
- | countryCode | Int |  no  |  |
-
----
-
-
- 
- 
- #### [StoreManagerSerializer](#StoreManagerSerializer)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | mobileNo | [SellerPhoneNumber](#SellerPhoneNumber)? |  yes  |  |
- | email | String? |  yes  |  |
- | name | String? |  yes  |  |
+ | address1 | String? |  yes  |  |
+ | landmark | String? |  yes  |  |
 
 ---
 
@@ -7996,10 +7971,35 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | businessType | String? |  yes  |  |
- | companyType | String? |  yes  |  |
  | name | String? |  yes  |  |
+ | businessType | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | companyType | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SellerPhoneNumber](#SellerPhoneNumber)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | countryCode | Int |  no  |  |
+ | number | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreManagerSerializer](#StoreManagerSerializer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | mobileNo | [SellerPhoneNumber](#SellerPhoneNumber)? |  yes  |  |
+ | email | String? |  yes  |  |
 
 ---
 
@@ -8012,11 +8012,11 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
  | ---------- | ---- | -------- | ----------- |
  | departments | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
  | address | [StoreAddressSerializer](#StoreAddressSerializer)? |  yes  |  |
- | name | String? |  yes  |  |
- | manager | [StoreManagerSerializer](#StoreManagerSerializer)? |  yes  |  |
  | company | [CompanyStore](#CompanyStore)? |  yes  |  |
  | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | manager | [StoreManagerSerializer](#StoreManagerSerializer)? |  yes  |  |
 
 ---
 
@@ -8027,8 +8027,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | filters | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
  | items | ArrayList<[AppStore](#AppStore)>? |  yes  |  |
 
 ---
@@ -8040,8 +8040,8 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | hour | Int? |  yes  |  |
  | minute | Int? |  yes  |  |
+ | hour | Int? |  yes  |  |
 
 ---
 
@@ -8052,10 +8052,10 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | closing | [Time](#Time)? |  yes  |  |
  | opening | [Time](#Time)? |  yes  |  |
- | open | Boolean? |  yes  |  |
  | weekday | String? |  yes  |  |
+ | closing | [Time](#Time)? |  yes  |  |
+ | open | Boolean? |  yes  |  |
 
 ---
 
@@ -8066,15 +8066,15 @@ Success. Returns a metadata object. Check the example shown below or refer `Stor
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | timing | ArrayList<[StoreTiming](#StoreTiming)>? |  yes  |  |
  | departments | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
- | address | [StoreAddressSerializer](#StoreAddressSerializer)? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
- | name | String? |  yes  |  |
- | manager | [StoreManagerSerializer](#StoreManagerSerializer)? |  yes  |  |
+ | address | [StoreAddressSerializer](#StoreAddressSerializer)? |  yes  |  |
  | company | [CompanyStore](#CompanyStore)? |  yes  |  |
  | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
- | timing | ArrayList<[StoreTiming](#StoreTiming)>? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
+ | manager | [StoreManagerSerializer](#StoreManagerSerializer)? |  yes  |  |
 
 ---
 
