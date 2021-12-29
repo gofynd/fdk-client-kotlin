@@ -20944,6 +20944,9 @@ data class PlatformShipmentDetails(
     @SerializedName("dp_details")
     var dpDetails: DpDetails?=null,
     
+    @SerializedName("payment_methods")
+    var paymentMethods: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("invoice")
     var invoice: ShipmentInvoice?=null,
     
@@ -21020,6 +21023,8 @@ data class PlatformShipmentDetails(
     var dates: ShipmentDates?=null
     
 ): Parcelable {
+    
+    
     
     
     
