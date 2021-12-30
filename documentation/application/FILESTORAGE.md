@@ -182,7 +182,7 @@ Explain here
 
 
 ```kotlin
-client.filestorage.signUrls(body: body).safeAwait{ response,error->
+filestorage.signUrls(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response

@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -473,6 +473,16 @@ interface UserApiList {
     : Deferred<Response<SessionListSuccess>>
     
     
+    @POST ("/service/application/user/authentication/v1.0/user_store/freshchat-restore-id")
+    fun getFreshchatRestoreId(@Body body: FreshchatRestoreIdRequestSchema)
+    : Deferred<Response<UserStoreSchema>>
+    
+    
+    @GET ("/service/application/user/authentication/v1.0/user_store/store")
+    fun getUserStore()
+    : Deferred<Response<UserStoreSchema>>
+    
+    
     @GET ("/service/application/user/platform/v1.0/config")
     fun getPlatformConfig(@Query("name") name: String?)
     : Deferred<Response<PlatformSchema>>
@@ -540,11 +550,6 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/blogs/")
     fun getBlogs(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<BlogGetResponse>>
-    
-    
-    @GET ("/service/application/content/v1.0/data-loader")
-    fun getDataLoaders()
-    : Deferred<Response<DataLoaderSchema>>
     
     
     @GET ("/service/application/content/v1.0/faq")
@@ -694,8 +699,8 @@ interface FileStorageApiList {
     : Deferred<Response<CompleteResponse>>
     
     
-    @POST ("/service/application/assets/v1.0/company/{company_id}/sign-urls/")
-    fun signUrls(@Path("company_id") companyId: Int, @Body body: SignUrlRequest)
+    @POST ("/service/application/assets/v1.0/sign-urls/")
+    fun signUrls(@Body body: SignUrlRequest)
     : Deferred<Response<SignUrlResponse>>
     
 }

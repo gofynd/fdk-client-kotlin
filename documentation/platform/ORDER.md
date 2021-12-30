@@ -2751,6 +2751,7 @@ Success
  | createdAt | String? |  yes  |  |
  | totalShipmentsInOrder | Int? |  yes  |  |
  | payments | [ItemsPayments](#ItemsPayments)? |  yes  |  |
+ | paymentMethods | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -2860,6 +2861,7 @@ Success
  | bagStatus | [BagStatus](#BagStatus)? |  yes  |  |
  | canCancel | Boolean? |  yes  |  |
  | canReturn | Boolean? |  yes  |  |
+ | paymentMethods | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -3545,6 +3547,7 @@ Success
  | createdAt | String? |  yes  |  |
  | totalShipmentsInOrder | Int? |  yes  |  |
  | payments | [ItemsPayments](#ItemsPayments)? |  yes  |  |
+ | paymentMethods | HashMap<String,Any>? |  yes  |  |
 
 ---
 

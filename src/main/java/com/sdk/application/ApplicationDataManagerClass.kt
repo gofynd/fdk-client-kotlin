@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -1194,6 +1194,16 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
+    fun getFreshchatRestoreId(body: FreshchatRestoreIdRequestSchema): Deferred<Response<UserStoreSchema>>? {
+        return userApiList?.getFreshchatRestoreId(body = body)}
+
+    
+    
+    fun getUserStore(): Deferred<Response<UserStoreSchema>>? {
+        return userApiList?.getUserStore()}
+
+    
+    
     fun getPlatformConfig(name: String?=null): Deferred<Response<PlatformSchema>>? {
         return userApiList?.getPlatformConfig(name = name)}
 
@@ -1328,11 +1338,6 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     return paginator
     }
-    
-    fun getDataLoaders(): Deferred<Response<DataLoaderSchema>>? {
-        return contentApiList?.getDataLoaders()}
-
-    
     
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
         return contentApiList?.getFaqs()}
@@ -1679,8 +1684,8 @@ class FileStorageDataManagerClass(val config: ApplicationConfig) : BaseRepositor
 
     
     
-    fun signUrls(companyId: Int, body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
-        return fileStorageApiList?.signUrls(companyId = companyId, body = body)}
+    fun signUrls(body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
+        return fileStorageApiList?.signUrls(body = body)}
 
     
     
