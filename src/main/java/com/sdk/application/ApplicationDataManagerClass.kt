@@ -764,6 +764,79 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun getProductPriceBySlugV2(slug: String, size: String, storeId: Int?=null, pincode: String?=null): Deferred<Response<ProductSizePriceResponseV2>>? {
+        return catalogApiList?.getProductPriceBySlugV2(slug = slug, size = size, storeId = storeId, pincode = pincode)}
+
+    
+    
+    fun getProductSellersBySlugV2(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponseV2>>? {
+        return catalogApiList?.getProductSellersBySlugV2(slug = slug, size = size, pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)}
+
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getProductSellersBySlugV2
+    **/
+    fun getProductSellersBySlugV2Paginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV2>{
+
+    val paginator = Paginator<ProductSizeSellersResponseV2>()
+
+    paginator.setCallBack(object : PaginatorCallback<ProductSizeSellersResponseV2> {
+
+            override suspend fun onNext(
+                onResponse: (Event<ProductSizeSellersResponseV2>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                catalogApiList?.getProductSellersBySlugV2(slug = slug, size = size, pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
+    
 }
 
 
@@ -1194,8 +1267,8 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun getFreshchatRestoreId(body: FreshchatRestoreIdRequestSchema): Deferred<Response<UserStoreSchema>>? {
-        return userApiList?.getFreshchatRestoreId(body = body)}
+    fun setFreshchatRestoreId(body: FreshchatRestoreIdRequestSchema): Deferred<Response<UserStoreSchema>>? {
+        return userApiList?.setFreshchatRestoreId(body = body)}
 
     
     

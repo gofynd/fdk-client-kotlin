@@ -157,6 +157,16 @@ interface CatalogApiList {
     fun getLocationDetailsById(@Path("location_id") locationId: Int)
     : Deferred<Response<StoreDetails>>
     
+    
+    @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/")
+    fun getProductPriceBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
+    : Deferred<Response<ProductSizePriceResponseV2>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/")
+    fun getProductSellersBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductSizeSellersResponseV2>>
+    
 }
 
 interface CartApiList {
@@ -474,7 +484,7 @@ interface UserApiList {
     
     
     @POST ("/service/application/user/authentication/v1.0/user_store/freshchat-restore-id")
-    fun getFreshchatRestoreId(@Body body: FreshchatRestoreIdRequestSchema)
+    fun setFreshchatRestoreId(@Body body: FreshchatRestoreIdRequestSchema)
     : Deferred<Response<UserStoreSchema>>
     
     
