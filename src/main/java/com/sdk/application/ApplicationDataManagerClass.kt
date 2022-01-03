@@ -1412,6 +1412,11 @@ class ContentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
+    fun getDataLoaders(): Deferred<Response<DataLoaderSchema>>? {
+        return contentApiList?.getDataLoaders()}
+
+    
+    
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
         return contentApiList?.getFaqs()}
 

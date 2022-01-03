@@ -562,6 +562,11 @@ interface ContentApiList {
     : Deferred<Response<BlogGetResponse>>
     
     
+    @GET ("/service/application/content/v1.0/data-loader")
+    fun getDataLoaders()
+    : Deferred<Response<DataLoaderSchema>>
+    
+    
     @GET ("/service/application/content/v1.0/faq")
     fun getFaqs()
     : Deferred<Response<FaqResponseSchema>>
