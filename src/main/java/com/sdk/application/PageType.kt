@@ -1,143 +1,10 @@
-package com.sdk.platform
+package com.sdk.application
 
 import com.google.gson.annotations.SerializedName
+import android.net.Uri
 
 
-
-
-
-
-    /*
-        Enum: PriorityEnum
-        Used By: Lead
-    */
-    enum class PriorityEnum(val value:String){
-        
-        @SerializedName("low")
-        low("low"), 
-        
-        @SerializedName("medium")
-        medium("medium"), 
-        
-        @SerializedName("high")
-        high("high"), 
-        
-        @SerializedName("urgent")
-        urgent("urgent");
-        
-
-        companion object {
-            fun valueOfPriorityEnum(value : String): PriorityEnum? {
-                return PriorityEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-    /*
-        Enum: HistoryTypeEnum
-        Used By: Lead
-    */
-    enum class HistoryTypeEnum(val value:String){
-        
-        @SerializedName("rating")
-        rating("rating"), 
-        
-        @SerializedName("log")
-        log("log"), 
-        
-        @SerializedName("comment")
-        comment("comment");
-        
-
-        companion object {
-            fun valueOfHistoryTypeEnum(value : String): HistoryTypeEnum? {
-                return HistoryTypeEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-    /*
-        Enum: TicketAssetTypeEnum
-        Used By: Lead
-    */
-    enum class TicketAssetTypeEnum(val value:String){
-        
-        @SerializedName("image")
-        image("image"), 
-        
-        @SerializedName("video")
-        video("video"), 
-        
-        @SerializedName("file")
-        file("file"), 
-        
-        @SerializedName("youtube")
-        youtube("youtube"), 
-        
-        @SerializedName("product")
-        product("product"), 
-        
-        @SerializedName("collection")
-        collection("collection"), 
-        
-        @SerializedName("brand")
-        brand("brand"), 
-        
-        @SerializedName("shipment")
-        shipment("shipment"), 
-        
-        @SerializedName("order")
-        order("order");
-        
-
-        companion object {
-            fun valueOfTicketAssetTypeEnum(value : String): TicketAssetTypeEnum? {
-                return TicketAssetTypeEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-    /*
-        Enum: TicketSourceEnum
-        Used By: Lead
-    */
-    enum class TicketSourceEnum(val value:String){
-        
-        @SerializedName("platform_panel")
-        platformPanel("platform_panel"), 
-        
-        @SerializedName("sales_channel")
-        salesChannel("sales_channel");
-        
-
-        companion object {
-            fun valueOfTicketSourceEnum(value : String): TicketSourceEnum? {
-                return TicketSourceEnum.values().find {
-                    it.value == value
-                }
-            }
-        }
-    }
-
-
-
-
-
-
-
-    /*
+/*
         Enum: PageType
         Used By: Content
     */
@@ -276,46 +143,89 @@ import com.google.gson.annotations.SerializedName
                     it.value == value
                 }
             }
-        }
-    }
 
+            fun fromUrl(url: String) : PageType?{
 
+                val uri = Uri.parse(url)
 
+                var pageType: PageType? = null
 
+                val pathSegments: MutableList<String> = uri.pathSegments
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-        Enum: SubscriberStatus
-        Used By: Webhook
-    */
-    enum class SubscriberStatus(val value:String){
-        
-        @SerializedName("active")
-        active("active"), 
-        
-        @SerializedName("inactive")
-        inactive("inactive");
-        
-
-        companion object {
-            fun valueOfSubscriberStatus(value : String): SubscriberStatus? {
-                return SubscriberStatus.values().find {
-                    it.value == value
+                var uriPath = "/"
+                pathSegments.forEachIndexed { index, pathSegment ->
+                    uriPath = "$uriPath$pathSegment/"
                 }
+
+                val builder = StringBuilder(uriPath)
+                if (builder.isNotEmpty() && builder[0].toString() == "/") {
+                    builder.deleteCharAt(0)
+                }
+                if (builder.isNotEmpty() && builder[builder.length - 1].toString() == "/") {
+                    builder.deleteCharAt(builder.length - 1)
+                }
+
+                run loop@{
+                    Navigator.values().forEachIndexed { index, model ->
+                        val sb = StringBuilder(model.link)
+
+                        sb.deleteCharAt(0)
+
+                        if (sb.length > 1 && sb[sb.lastIndex] == '/') {
+                            sb.deleteCharAt(sb.lastIndex)
+                        }
+
+                        val splitStr: List<String> = sb.split("/")
+
+                        val b = arrayListOf<Boolean>()
+                        splitStr.forEach {
+                            when {
+                                it.startsWith(":") -> {
+
+                                }
+                                builder.split("/").any { deepLinkPath ->
+                                    deepLinkPath.equals(it, true)
+                                } -> {
+                                    b.add(true)
+                                }
+                                else -> {
+                                    b.add(false)
+                                }
+                            }
+                        }
+
+                        val sizeB = if (model.params?.get(0)?.required == true) {
+                            builder.split("/").size == splitStr.size
+                        } else {
+                            builder.split("/").size <= splitStr.size
+                        }
+
+                        if (sizeB && b.all { it }) {
+                            val regexStr = StringBuilder("")
+                            splitStr.forEachIndexed { i, a ->
+                                when {
+                                    a.startsWith(":") -> {
+                                        regexStr.append("/([^;]*)")
+                                    }
+                                    i == 0 -> {
+                                        regexStr.append(a)
+                                    }
+                                    else -> {
+                                        regexStr.append("/$a")
+                                    }
+                                }
+                            }
+                            if (sb == regexStr || sb.toString()
+                                    .matches(regex = Regex(regexStr.toString()))
+                            ) {
+                                pageType = model.pageType
+                                return@loop
+                            }
+                        }
+                    }
+                }
+
+                return pageType
             }
         }
     }
-
