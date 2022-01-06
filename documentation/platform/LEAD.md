@@ -64,7 +64,7 @@ client.lead.getTickets(items: items, filters: filters, q: q, status: status, pri
 | filters | Boolean? | no | Decides that the reponse will contain the ticket filters |   
 | q | String? | no | Search through ticket titles and description |   
 | status | String? | no | Filter tickets on status |   
-| priority | Any? | no | Filter tickets on priority |   
+| priority | PriorityEnum? | no | Filter tickets on priority |   
 | category | String? | no | Filter tickets on category |   
 | pageNo | Int? | no | The page number to navigate through the given set of results. |   
 | pageSize | Int? | no | Number of items to retrieve in each page. Default is 12. |  
@@ -766,7 +766,7 @@ client.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: fi
 | filters | Boolean? | no | Decides that the reponse will contain the ticket filters |   
 | q | String? | no | Search through ticket titles and description |   
 | status | String? | no | Filter tickets on status |   
-| priority | Any? | no | Filter tickets on priority |   
+| priority | PriorityEnum? | no | Filter tickets on priority |   
 | category | String? | no | Filter tickets on category |  
 
 
@@ -4375,7 +4375,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | display | String? |  yes  | Display text for asset |
  | value | String |  no  | To be used for details |
- | type | Any |  no  | Type of asset |
+ | type | [TicketAssetTypeEnum](#TicketAssetTypeEnum) |  no  | Type of asset |
 
 ---
 
@@ -4659,7 +4659,7 @@ Success
 
 
 
- #### [TicketAssetType](#TicketAssetType)
+ #### [TicketAssetTypeEnum](#TicketAssetTypeEnum)
  Type : string
 
  | Name | Value | Description |

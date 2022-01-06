@@ -41,13 +41,11 @@ Content System
 * [deleteNavigation](#deletenavigation)
 * [getPageMeta](#getpagemeta)
 * [getPageSpec](#getpagespec)
-* [createPage](#createpage)
-* [getPages](#getpages)
 * [createPagePreview](#createpagepreview)
 * [updatePagePreview](#updatepagepreview)
-* [updatePage](#updatepage)
 * [deletePage](#deletepage)
-* [getPageBySlug](#getpagebyslug)
+* [updatePathRedirectionRules](#updatepathredirectionrules)
+* [getPathRedirectionRules](#getpathredirectionrules)
 * [getSEOConfiguration](#getseoconfiguration)
 * [updateSEOConfiguration](#updateseoconfiguration)
 * [getSlideshows](#getslideshows)
@@ -63,6 +61,10 @@ Content System
 * [addInjectableTag](#addinjectabletag)
 * [removeInjectableTag](#removeinjectabletag)
 * [editInjectableTag](#editinjectabletag)
+* [createPage](#createpage)
+* [getPages](#getpages)
+* [updatePage](#updatepage)
+* [getPageBySlug](#getpagebyslug)
 
 
 
@@ -2746,146 +2748,6 @@ Success. Refer `PageSpec` for more details.
 ---
 
 
-### createPage
-Create a page
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [PageRequest](#PageRequest) | yes | Request body |
-
-
-Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getPages
-Get a list of pages
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
-| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
-
-
-
-Use this API to retrieve a list of pages.
-
-*Returned Response:*
-
-
-
-
-[PageGetResponse](#PageGetResponse)
-
-Success. Refer `PageGetResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageGetResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### createPagePreview
 Create a page preview
 
@@ -3025,76 +2887,6 @@ Success.
 ---
 
 
-### updatePage
-Update a page
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| id | String | yes | ID allotted to the page. |  
-| body | [PageSchema](#PageSchema) | yes | Request body |
-
-
-Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
-
-*Returned Response:*
-
-
-
-
-[PageSchema](#PageSchema)
-
-Success. Refer `PageSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Examples:</i></summary>
-
-
-<details>
-<summary><i>&nbsp; default</i></summary>
-
-```json
-{
-  "$ref": "#/components/examples/PageResponse"
-}
-```
-</details>
-
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### deletePage
 Delete a page
 
@@ -3165,14 +2957,14 @@ Success.
 ---
 
 
-### getPageBySlug
-Get pages by component Id
+### updatePathRedirectionRules
+Save path based redirection rules
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response,error->
+client.application("<APPLICATION_ID>").content.updatePathRedirectionRules(body: body).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -3189,21 +2981,84 @@ client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwa
 
 
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+| --------- | -----  | -------- | ----------- |
+| body | [PathMappingSchema](#PathMappingSchema) | yes | Request body |
 
 
-
-Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+Use this API to add, update or delete path-based redirection rules
 
 *Returned Response:*
 
 
 
 
-[PageSchema](#PageSchema)
+[PathMappingSchema](#PathMappingSchema)
 
-Success. Returns a JSON object of components. Refer `PageSchema` for more details.
+Success. Refer `PathMappingSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "redirections": [
+    {
+      "redirect_from": "test.hostfynd.dev/redirect_from",
+      "redirect_to": "/redirect_to"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPathRedirectionRules
+Get path based redirection rules
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPathRedirectionRules().safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Use this API to get path based redirection rules.
+
+*Returned Response:*
+
+
+
+
+[PathMappingSchema](#PathMappingSchema)
+
+Success. Refer `PathMappingSchema` for more details.
 
 
 
@@ -3213,11 +3068,11 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
 
 <details>
-<summary><i>&nbsp; default</i></summary>
+<summary><i>&nbsp; Success</i></summary>
 
 ```json
 {
-  "$ref": "#/components/examples/PageResponse"
+  "$ref": "#/components/examples/PathMapping"
 }
 ```
 </details>
@@ -4372,6 +4227,286 @@ Success.
 ---
 
 
+### createPage
+Create a page
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PageRequest](#PageRequest) | yes | Request body |
+
+
+Use this API to create a custom page using a title, seo, publish status, feature image, tags, meta, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPages
+Get a list of pages
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |  
+
+
+
+Use this API to retrieve a list of pages.
+
+*Returned Response:*
+
+
+
+
+[PageGetResponse](#PageGetResponse)
+
+Success. Refer `PageGetResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageGetResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updatePage
+Update a page
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID allotted to the page. |  
+| body | [PageSchema](#PageSchema) | yes | Request body |
+
+
+Use this API to edit the details of an existing page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPageBySlug
+Get pages by component Id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a page. You can get slug value of a page from `getPages` API. |  
+
+
+
+Use this API to retrieve the components of a page, such as its title, seo, publish status, feature image, tags, schedule, etc.
+
+*Returned Response:*
+
+
+
+
+[PageSchema](#PageSchema)
+
+Success. Returns a JSON object of components. Refer `PageSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "$ref": "#/components/examples/PageResponse"
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -4401,6 +4536,33 @@ Success.
  | ---------- | ---- | -------- | ----------- |
  | question | String? |  yes  |  |
  | answer | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PathMappingSchema](#PathMappingSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | application | String? |  yes  |  |
+ | redirections | ArrayList<[RedirectionSchema](#RedirectionSchema)>? |  yes  |  |
+ | id | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RedirectionSchema](#RedirectionSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | redirectFrom | String? |  yes  |  |
+ | redirectTo | String? |  yes  |  |
 
 ---
 
@@ -4976,7 +5138,7 @@ Success.
 
  
  
- #### [APIError](#APIError)
+ #### [ContentAPIError](#ContentAPIError)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
@@ -5409,6 +5571,7 @@ Success.
  | application | String? |  yes  |  |
  | componentIds | ArrayList<String>? |  yes  | Components can be used to store multiple components |
  | content | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | contentPath | String? |  yes  |  |
  | createdBy | [CreatedBySchema](#CreatedBySchema)? |  yes  |  |
  | dateMeta | [DateMeta](#DateMeta)? |  yes  |  |
  | description | String? |  yes  |  |
@@ -5678,6 +5841,19 @@ Success.
  | position | String? |  yes  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
  | content | String? |  yes  |  |
+ | source | [TagSourceSchema](#TagSourceSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TagSourceSchema](#TagSourceSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | id | String? |  yes  |  |
 
 ---
 

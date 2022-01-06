@@ -157,6 +157,16 @@ interface CatalogApiList {
     fun getLocationDetailsById(@Path("location_id") locationId: Int)
     : Deferred<Response<StoreDetails>>
     
+    
+    @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/")
+    fun getProductPriceBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
+    : Deferred<Response<ProductSizePriceResponseV2>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/")
+    fun getProductSellersBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductSizeSellersResponseV2>>
+    
 }
 
 interface CartApiList {
@@ -378,6 +388,11 @@ interface UserApiList {
     : Deferred<Response<AuthSuccess>>
     
     
+    @POST ("/service/application/user/authentication/v1.0/login/apple-ios")
+    fun loginWithAppleIOS(@Query("platform") platform: String?, @Body body: OAuthRequestAppleSchema)
+    : Deferred<Response<AuthSuccess>>
+    
+    
     @POST ("/service/application/user/authentication/v1.0/login/otp")
     fun loginWithOTP(@Query("platform") platform: String?, @Body body: SendOtpRequestSchema)
     : Deferred<Response<SendOtpResponse>>
@@ -577,16 +592,6 @@ interface ContentApiList {
     : Deferred<Response<NavigationGetResponse>>
     
     
-    @GET ("/service/application/content/v1.0/pages/{slug}")
-    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
-    : Deferred<Response<PageSchema>>
-    
-    
-    @GET ("/service/application/content/v1.0/pages/")
-    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PageGetResponse>>
-    
-    
     @GET ("/service/application/content/v1.0/seo")
     fun getSEOConfiguration()
     : Deferred<Response<SeoComponent>>
@@ -610,6 +615,16 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/tags")
     fun getTags()
     : Deferred<Response<TagsSchema>>
+    
+    
+    @GET ("/service/application/content/v2.0/pages/{slug}")
+    fun getPage(@Path("slug") slug: String, @Query("root_id") rootId: String?)
+    : Deferred<Response<PageSchema>>
+    
+    
+    @GET ("/service/application/content/v2.0/pages/")
+    fun getPages(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PageGetResponse>>
     
 }
 

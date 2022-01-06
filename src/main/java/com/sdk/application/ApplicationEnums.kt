@@ -1,5 +1,8 @@
 package com.sdk.application
 
+import com.google.gson.annotations.SerializedName
+
+
 
 
 
@@ -12,14 +15,26 @@ package com.sdk.application
     */
     enum class PriorityEnum(val value:String){
         
-        low("low"),
+        @SerializedName("low")
+        low("low"), 
         
-        medium("medium"),
+        @SerializedName("medium")
+        medium("medium"), 
         
-        high("high"),
+        @SerializedName("high")
+        high("high"), 
         
-        urgent("urgent"),
+        @SerializedName("urgent")
+        urgent("urgent");
         
+
+        companion object {
+            fun valueOfPriorityEnum(value : String): PriorityEnum? {
+                return PriorityEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
     }
 
 
@@ -30,40 +45,68 @@ package com.sdk.application
     */
     enum class HistoryTypeEnum(val value:String){
         
-        rating("rating"),
+        @SerializedName("rating")
+        rating("rating"), 
         
-        log("log"),
+        @SerializedName("log")
+        log("log"), 
         
-        comment("comment"),
+        @SerializedName("comment")
+        comment("comment");
         
+
+        companion object {
+            fun valueOfHistoryTypeEnum(value : String): HistoryTypeEnum? {
+                return HistoryTypeEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
     }
 
 
 
     /*
-        Enum: TicketAssetType
+        Enum: TicketAssetTypeEnum
         Used By: Lead
     */
-    enum class TicketAssetType(val value:String){
+    enum class TicketAssetTypeEnum(val value:String){
         
-        image("image"),
+        @SerializedName("image")
+        image("image"), 
         
-        video("video"),
+        @SerializedName("video")
+        video("video"), 
         
-        file("file"),
+        @SerializedName("file")
+        file("file"), 
         
-        youtube("youtube"),
+        @SerializedName("youtube")
+        youtube("youtube"), 
         
-        product("product"),
+        @SerializedName("product")
+        product("product"), 
         
-        collection("collection"),
+        @SerializedName("collection")
+        collection("collection"), 
         
-        brand("brand"),
+        @SerializedName("brand")
+        brand("brand"), 
         
-        shipment("shipment"),
+        @SerializedName("shipment")
+        shipment("shipment"), 
         
-        order("order"),
+        @SerializedName("order")
+        order("order");
         
+
+        companion object {
+            fun valueOfTicketAssetTypeEnum(value : String): TicketAssetTypeEnum? {
+                return TicketAssetTypeEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
     }
 
 
@@ -74,108 +117,26 @@ package com.sdk.application
     */
     enum class TicketSourceEnum(val value:String){
         
-        platformPanel("platform_panel"),
+        @SerializedName("platform_panel")
+        platformPanel("platform_panel"), 
         
-        salesChannel("sales_channel"),
+        @SerializedName("sales_channel")
+        salesChannel("sales_channel");
         
+
+        companion object {
+            fun valueOfTicketSourceEnum(value : String): TicketSourceEnum? {
+                return TicketSourceEnum.values().find {
+                    it.value == value
+                }
+            }
+        }
     }
 
 
 
 
 
-
-    /*
-        Enum: PageType
-        Used By: Content
-    */
-    enum class PageType(val value:String){
-        
-        aboutUs("about-us"),
-        
-        addresses("addresses"),
-        
-        blog("blog"),
-        
-        brands("brands"),
-        
-        cards("cards"),
-        
-        cart("cart"),
-        
-        categories("categories"),
-        
-        brand("brand"),
-        
-        category("category"),
-        
-        collection("collection"),
-        
-        collections("collections"),
-        
-        contactUs("contact-us"),
-        
-        externalLink("external"),
-        
-        faq("faq"),
-        
-        freshchat("freshchat"),
-        
-        home("home"),
-        
-        notificationSettings("notification-settings"),
-        
-        orders("orders"),
-        
-        page("page"),
-        
-        policy("policy"),
-        
-        product("product"),
-        
-        productReviews("product-reviews"),
-        
-        addProductReview("add-product-review"),
-        
-        productRequest("product-request"),
-        
-        products("products"),
-        
-        profile("profile"),
-        
-        profileBasic("profile-basic"),
-        
-        profileCompany("profile-company"),
-        
-        profileEmails("profile-emails"),
-        
-        profilePhones("profile-phones"),
-        
-        rateUs("rate-us"),
-        
-        referEarn("refer-earn"),
-        
-        settings("settings"),
-        
-        sharedCart("shared-cart"),
-        
-        tnc("tnc"),
-        
-        trackOrder("track-order"),
-        
-        wishlist("wishlist"),
-        
-        sections("sections"),
-        
-        form("form"),
-        
-        cartDelivery("cart-delivery"),
-        
-        cartPayment("cart-payment"),
-        
-        cartReview("cart-review"),
-        
-    }
 
 
 

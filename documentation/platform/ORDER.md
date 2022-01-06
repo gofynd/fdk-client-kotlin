@@ -14,6 +14,7 @@ Handles Platform websites OMS
 * [getOrdersByCompanyId](#getordersbycompanyid)
 * [getOrderLanesCountByCompanyId](#getorderlanescountbycompanyid)
 * [getOrderDetails](#getorderdetails)
+* [getOrderDetails](#getorderdetails)
 * [getPicklistOrdersByCompanyId](#getpicklistordersbycompanyid)
 * [trackShipmentPlatform](#trackshipmentplatform)
 * [trackOrder](#trackorder)
@@ -24,6 +25,7 @@ Handles Platform websites OMS
 * [getShipmentTrackDetails](#getshipmenttrackdetails)
 * [getShipmentAddress](#getshipmentaddress)
 * [updateShipmentAddress](#updateshipmentaddress)
+* [getOrdersByApplicationId](#getordersbyapplicationid)
 * [getPing](#getping)
 * [voiceCallback](#voicecallback)
 * [voiceClickToCall](#voiceclicktocall)
@@ -347,7 +349,7 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
+client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, isPrioritySort: isPrioritySort, lockStatus: lockStatus, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, deploymentStores: deploymentStores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -369,11 +371,14 @@ client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: 
 | pageSize | String? | no | Page limit |   
 | fromDate | String? | no | From Date |   
 | toDate | String? | no | To Date |   
+| isPrioritySort | Boolean? | no | Sorting Order |   
+| lockStatus | Boolean? | no | Hide Lock Status |   
 | q | String? | no | Keyword for Search |   
 | stage | String? | no | Specefic Order Stage |   
 | salesChannels | String? | no | Selected Sales Channel |   
 | orderId | String? | no | Order Id |   
 | stores | String? | no | Selected Stores |   
+| deploymentStores | String? | no | Selected Deployment Stores |   
 | status | String? | no | Status of order |   
 | dp | String? | no | Delivery Partners |   
 | shortenUrls | Boolean? | no | Shorten URL option |   
@@ -495,6 +500,70 @@ Get Order Details for company based on Company Id and Order Id
 
 ```kotlin
 client.order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| orderId | String? | no | Order Id |   
+| next | String? | no | Next |   
+| previous | String? | no | Previous |  
+
+
+
+Get Orders
+
+*Returned Response:*
+
+
+
+
+[OrderDetails](#OrderDetails)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getOrderDetails
+Get Order Details for company based on Company Id and Order Id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response,error->
     
     response?.let{
       // Use response
@@ -1157,6 +1226,80 @@ Update Shipment Address
 [UpdateShipmentAddressResponse](#UpdateShipmentAddressResponse)
 
 Success. Check the example shown below or refer `UpdateShipmentAddressResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getOrdersByApplicationId
+Get Orders for company based on Company Id
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
+    
+    response?.let{
+      // Use response
+    } ->
+     
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | String? | no | Current page number |   
+| pageSize | String? | no | Page limit |   
+| fromDate | String? | no | From Date |   
+| toDate | String? | no | To Date |   
+| q | String? | no | Keyword for Search |   
+| stage | String? | no | Specefic Order Stage |   
+| salesChannels | String? | no | Selected Sales Channel |   
+| orderId | String? | no | Order Id |   
+| stores | String? | no | Selected Stores |   
+| status | String? | no | Status of order |   
+| dp | String? | no | Delivery Partners |   
+| shortenUrls | Boolean? | no | Shorten URL option |   
+| filterType | String? | no | Filters |  
+
+
+
+Get Orders at Application Level
+
+*Returned Response:*
+
+
+
+
+[OrderListing](#OrderListing)
+
+Success
 
 
 
@@ -2347,6 +2490,10 @@ Success
  | prices | [ShipmentPrices](#ShipmentPrices)? |  yes  |  |
  | id | String? |  yes  |  |
  | gst | [ShipmentGst](#ShipmentGst)? |  yes  |  |
+ | priority | Double? |  yes  |  |
+ | priorityText | String? |  yes  |  |
+ | lockStatus | Boolean? |  yes  |  |
+ | orderingChannel | String? |  yes  |  |
  | totalShipmentBags | Int? |  yes  |  |
 
 ---
@@ -2549,6 +2696,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | stage | String? |  yes  |  |
  | stores | ArrayList<String>? |  yes  |  |
+ | deploymentStores | ArrayList<String>? |  yes  |  |
  | dp | ArrayList<Int>? |  yes  |  |
  | fromDate | String? |  yes  |  |
  | toDate | String? |  yes  |  |
@@ -2589,6 +2737,7 @@ Success
  | createdAt | String? |  yes  |  |
  | totalShipmentsInOrder | Int? |  yes  |  |
  | payments | [ItemsPayments](#ItemsPayments)? |  yes  |  |
+ | paymentMethods | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -2630,6 +2779,7 @@ Success
  | breakupValues | [ShipmentBreakupValues](#ShipmentBreakupValues)? |  yes  |  |
  | id | String? |  yes  |  |
  | dpDetails | [DpDetails](#DpDetails)? |  yes  |  |
+ | paymentMethods | HashMap<String,Any>? |  yes  |  |
  | invoice | [ShipmentInvoice](#ShipmentInvoice)? |  yes  |  |
  | fulfillingStore | [PlatformFulfillingStore](#PlatformFulfillingStore)? |  yes  |  |
  | payments | [Payments](#Payments)? |  yes  |  |
@@ -2648,6 +2798,8 @@ Success
  | totalShipmentBags | Int? |  yes  |  |
  | pod | HashMap<String,Any>? |  yes  |  |
  | lockStatus | Boolean? |  yes  |  |
+ | priority | Double? |  yes  |  |
+ | priorityText | String? |  yes  |  |
  | orderingChannel | String? |  yes  |  |
  | creditNoteId | String? |  yes  |  |
  | autoTriggerDpAssignment | Boolean? |  yes  |  |
@@ -2693,6 +2845,9 @@ Success
  | updateTime | Int? |  yes  |  |
  | currentStatus | [BagCurrentStatus](#BagCurrentStatus)? |  yes  |  |
  | bagStatus | [BagStatus](#BagStatus)? |  yes  |  |
+ | canCancel | Boolean? |  yes  |  |
+ | canReturn | Boolean? |  yes  |  |
+ | paymentMethods | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -3391,6 +3546,7 @@ Success
  | createdAt | String? |  yes  |  |
  | totalShipmentsInOrder | Int? |  yes  |  |
  | payments | [ItemsPayments](#ItemsPayments)? |  yes  |  |
+ | paymentMethods | HashMap<String,Any>? |  yes  |  |
 
 ---
 
