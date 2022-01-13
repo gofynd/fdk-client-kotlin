@@ -1,5 +1,7 @@
 package com.sdk.platform
 
+import com.sdk.platform.datamanager.*
+
 class PlatformClient(val config:PlatformConfig) {
     
     val common by lazy { CommonDataManagerClass(config)}

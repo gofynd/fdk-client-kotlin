@@ -1,5 +1,7 @@
 package com.sdk.application
 
+import com.sdk.application.datamanager.*
+
 class ApplicationClient(val config:ApplicationConfig) {
     
     val catalog by lazy { CatalogDataManagerClass(config)}
