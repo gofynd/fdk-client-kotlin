@@ -26,12 +26,10 @@ Create QR Code of an app
 
 
 ```kotlin
-share.getApplicationQRCode().safeAwait{ response,error->
-    
+share.getApplicationQRCode().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -86,12 +84,10 @@ Create QR Code of a product
 
 
 ```kotlin
-share.getProductQRCodeBySlug(slug: slug).safeAwait{ response,error->
-    
+share.getProductQRCodeBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -151,12 +147,10 @@ Create QR Code of a collection
 
 
 ```kotlin
-share.getCollectionQRCodeBySlug(slug: slug).safeAwait{ response,error->
-    
+share.getCollectionQRCodeBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -216,12 +210,10 @@ Create QR Code of a URL
 
 
 ```kotlin
-share.getUrlQRCode(url: url).safeAwait{ response,error->
-    
+share.getUrlQRCode(url: url).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -281,12 +273,10 @@ Create a short link
 
 
 ```kotlin
-share.createShortLink(body: body).safeAwait{ response,error->
-    
+share.createShortLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -380,12 +370,10 @@ Get short link by hash
 
 
 ```kotlin
-share.getShortLinkByHash(hash: hash).safeAwait{ response,error->
-    
+share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -480,12 +468,10 @@ Get original link by hash
 
 
 ```kotlin
-share.getOriginalShortLinkByHash(hash: hash).safeAwait{ response,error->
-    
+share.getOriginalShortLinkByHash(hash: hash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

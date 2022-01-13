@@ -29,12 +29,10 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 ```kotlin
-client.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response,error->
-    
+client.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -109,12 +107,10 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 ```kotlin
-client.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response,error->
-    
+client.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -189,12 +185,10 @@ This operation initiates upload and returns storage link which is valid for 30 M
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: namespace, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").filestorage.appStartUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -269,12 +263,10 @@ This will complete the upload process. After successfully uploading file, you ca
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: namespace, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").filestorage.appCompleteUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -349,12 +341,10 @@ Explain here
 
 
 ```kotlin
-client.filestorage.getSignUrls(body: body).safeAwait{ response,error->
-    
+client.filestorage.getSignUrls(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -410,12 +400,10 @@ Copy Files
 
 
 ```kotlin
-client.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response,error->
-    
+client.filestorage.copyFiles(sync: sync, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -499,12 +487,10 @@ Copy Files
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").filestorage.appCopyFiles(sync: sync, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -588,12 +574,10 @@ Browse Files
 
 
 ```kotlin
-client.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response,error->
-    
+client.filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -651,12 +635,10 @@ Browse Files
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").filestorage.browse(namespace: namespace, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -714,12 +696,10 @@ Proxy
 
 
 ```kotlin
-client.filestorage.proxy(url: url).safeAwait{ response,error->
-    
+client.filestorage.proxy(url: url).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

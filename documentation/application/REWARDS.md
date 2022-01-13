@@ -26,12 +26,10 @@ Get the eligibility of reward points on a product
 
 
 ```kotlin
-rewards.getPointsOnProduct(body: body).safeAwait{ response,error->
-    
+rewards.getPointsOnProduct(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -87,12 +85,10 @@ Get offer by name
 
 
 ```kotlin
-rewards.getOfferByName(name: name).safeAwait{ response,error->
-    
+rewards.getOfferByName(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -149,12 +145,10 @@ Calculates the discount on order-amount
 
 
 ```kotlin
-rewards.getOrderDiscount(body: body).safeAwait{ response,error->
-    
+rewards.getOrderDiscount(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -210,12 +204,10 @@ Get reward points available with a user
 
 
 ```kotlin
-rewards.getUserPoints().safeAwait{ response,error->
-    
+rewards.getUserPoints().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -267,12 +259,10 @@ Get all transactions of reward points
 
 
 ```kotlin
-rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -330,12 +320,10 @@ Get referral details of a user
 
 
 ```kotlin
-rewards.getUserReferralDetails().safeAwait{ response,error->
-    
+rewards.getUserReferralDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -387,12 +375,10 @@ Redeems a referral code and credits reward points to users
 
 
 ```kotlin
-rewards.redeemReferralCode(body: body).safeAwait{ response,error->
-    
+rewards.redeemReferralCode(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

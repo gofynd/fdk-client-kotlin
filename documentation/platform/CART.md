@@ -32,12 +32,10 @@ Get with single coupon details or coupon list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCoupons(pageNo: pageNo, pageSize: pageSize, isArchived: isArchived, title: title, isPublic: isPublic, isDisplay: isDisplay, typeSlug: typeSlug, code: code).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.getCoupons(pageNo: pageNo, pageSize: pageSize, isArchived: isArchived, title: title, isPublic: isPublic, isDisplay: isDisplay, typeSlug: typeSlug, code: code).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -153,12 +151,10 @@ Create new coupon
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.createCoupon(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.createCoupon(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -217,12 +213,10 @@ Get with single coupon details or coupon list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCouponById(id: id).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.getCouponById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -419,12 +413,10 @@ Update existing coupon configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCoupon(id: id, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.updateCoupon(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -484,12 +476,10 @@ Update coupon archive state and schedule
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCouponPartially(id: id, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.updateCouponPartially(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -570,12 +560,10 @@ Get promotion list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getPromotions(pageNo: pageNo, pageSize: pageSize, q: q, isActive: isActive, promoGroup: promoGroup, promotionType: promotionType).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.getPromotions(pageNo: pageNo, pageSize: pageSize, q: q, isActive: isActive, promoGroup: promoGroup, promotionType: promotionType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -682,12 +670,10 @@ Create new promotion
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.createPromotion(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.createPromotion(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -857,12 +843,10 @@ Get with single promotion details or promotion list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getPromotionById(id: id).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.getPromotionById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1033,12 +1017,10 @@ Update existing promotion configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updatePromotion(id: id, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.updatePromotion(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1209,12 +1191,10 @@ Update promotion publish state and schedule
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updatePromotionPartially(id: id, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.updatePromotionPartially(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1295,12 +1275,10 @@ Fetch Cart Details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.fetchAndvalidateCartItems(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.fetchAndvalidateCartItems(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1630,12 +1608,10 @@ Check Pincode Serviceability
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.checkCartServiceability(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.checkCartServiceability(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2221,12 +2197,10 @@ Create Fynd order with cart details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.checkoutCart(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").cart.checkoutCart(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

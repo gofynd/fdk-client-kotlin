@@ -37,12 +37,10 @@ Get All Brand Payment Gateway Config Secret
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -211,12 +209,10 @@ Save Config Secret For Brand Payment Gateway
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.saveBrandPaymentGatewayConfig(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.saveBrandPaymentGatewayConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -277,12 +273,10 @@ Save Config Secret For Brand Payment Gateway
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.updateBrandPaymentGatewayConfig(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.updateBrandPaymentGatewayConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -343,12 +337,10 @@ Get All Valid Payment Options
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getPaymentModeRoutes(refresh: refresh, requestType: requestType).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.getPaymentModeRoutes(refresh: refresh, requestType: requestType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1533,12 +1525,10 @@ Get All Payouts
 
 
 ```kotlin
-client.payment.getAllPayouts(uniqueExternalId: uniqueExternalId).safeAwait{ response,error->
-    
+client.payment.getAllPayouts(uniqueExternalId: uniqueExternalId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1658,12 +1648,10 @@ Save Payout
 
 
 ```kotlin
-client.payment.savePayout(body: body).safeAwait{ response,error->
-    
+client.payment.savePayout(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1747,12 +1735,10 @@ Update Payout
 
 
 ```kotlin
-client.payment.updatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
-    
+client.payment.updatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1813,12 +1799,10 @@ Partial Update Payout
 
 
 ```kotlin
-client.payment.activateAndDectivatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response,error->
-    
+client.payment.activateAndDectivatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1879,12 +1863,10 @@ Delete Payout
 
 
 ```kotlin
-client.payment.deletePayout(uniqueTransferNo: uniqueTransferNo).safeAwait{ response,error->
-    
+client.payment.deletePayout(uniqueTransferNo: uniqueTransferNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1943,12 +1925,10 @@ List Subscription Payment Method
 
 
 ```kotlin
-client.payment.getSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId).safeAwait{ response,error->
-    
+client.payment.getSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2133,12 +2113,10 @@ Delete Subscription Payment Method
 
 
 ```kotlin
-client.payment.deleteSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId, paymentMethodId: paymentMethodId).safeAwait{ response,error->
-    
+client.payment.deleteSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId, paymentMethodId: paymentMethodId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2198,12 +2176,10 @@ List Subscription Config
 
 
 ```kotlin
-client.payment.getSubscriptionConfig().safeAwait{ response,error->
-    
+client.payment.getSubscriptionConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2261,12 +2237,10 @@ Save Subscription Setup Intent
 
 
 ```kotlin
-client.payment.saveSubscriptionSetupIntent(body: body).safeAwait{ response,error->
-    
+client.payment.saveSubscriptionSetupIntent(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2331,12 +2305,10 @@ Save bank details for cancelled/returned order
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.addBeneficiaryDetails(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.addBeneficiaryDetails(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2397,12 +2369,10 @@ Ifsc Code Verification
 
 
 ```kotlin
-client.payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response,error->
-    
+client.payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2479,12 +2449,10 @@ List Order Beneficiary
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getUserOrderBeneficiaries(orderId: orderId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.getUserOrderBeneficiaries(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2565,12 +2533,10 @@ List User Beneficiary
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getUserBeneficiaries(orderId: orderId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.getUserBeneficiaries(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2652,12 +2618,10 @@ Confirm payment after successful payment from payment gateway
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.confirmPayment(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").payment.confirmPayment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
