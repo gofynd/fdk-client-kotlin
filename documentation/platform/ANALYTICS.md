@@ -31,12 +31,10 @@ Get statistics groups
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getStatiscticsGroups().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getStatiscticsGroups().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -96,12 +94,10 @@ Get statistics group components
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getStatiscticsGroupComponents(groupName: groupName).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getStatiscticsGroupComponents(groupName: groupName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -169,12 +165,10 @@ Get component statistics csv
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getComponentStatsCSV(componentName: componentName).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getComponentStatsCSV(componentName: componentName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -231,12 +225,10 @@ Get component statistics pdf
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getComponentStatsPDF(componentName: componentName).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getComponentStatsPDF(componentName: componentName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -293,12 +285,10 @@ Get component statistics
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getComponentStats(componentName: componentName).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getComponentStats(componentName: componentName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -402,12 +392,10 @@ Get abandon carts list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getAbandonCartList(fromDate: fromDate, toDate: toDate, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getAbandonCartList(fromDate: fromDate, toDate: toDate, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -487,12 +475,10 @@ Get abandon carts csv
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getAbandonCartsCSV(fromDate: fromDate, toDate: toDate).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getAbandonCartsCSV(fromDate: fromDate, toDate: toDate).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -550,12 +536,10 @@ Get abandon carts details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getAbandonCartDetail(cartId: cartId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").analytics.getAbandonCartDetail(cartId: cartId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -612,12 +596,10 @@ Create data export job in required format
 
 
 ```kotlin
-client.analytics.createExportJob(exportType: exportType, body: body).safeAwait{ response,error->
-    
+client.analytics.createExportJob(exportType: exportType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -677,12 +659,10 @@ Get data export job status
 
 
 ```kotlin
-client.analytics.getExportJobStatus(exportType: exportType, jobId: jobId).safeAwait{ response,error->
-    
+client.analytics.getExportJobStatus(exportType: exportType, jobId: jobId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -744,12 +724,10 @@ Get logs list
 
 
 ```kotlin
-client.analytics.getLogsList(logType: logType, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
-    
+client.analytics.getLogsList(logType: logType, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -826,12 +804,10 @@ Search logs
 
 
 ```kotlin
-client.analytics.searchLogs(pageNo: pageNo, pageSize: pageSize, logType: logType, body: body).safeAwait{ response,error->
-    
+client.analytics.searchLogs(pageNo: pageNo, pageSize: pageSize, logType: logType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

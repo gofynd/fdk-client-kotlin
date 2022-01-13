@@ -45,12 +45,10 @@ Post a new abuse request
 
 
 ```kotlin
-feedback.createAbuseReport(body: body).safeAwait{ response,error->
-    
+feedback.createAbuseReport(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -106,12 +104,10 @@ Update abuse details
 
 
 ```kotlin
-feedback.updateAbuseReport(body: body).safeAwait{ response,error->
-    
+feedback.updateAbuseReport(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -167,12 +163,10 @@ Get a list of abuse data
 
 
 ```kotlin
-feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getAbuseReports(entityId: entityId, entityType: entityType, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -233,12 +227,10 @@ Get a list of attribute data
 
 
 ```kotlin
-feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -296,12 +288,10 @@ Add a new attribute request
 
 
 ```kotlin
-feedback.createAttribute(body: body).safeAwait{ response,error->
-    
+feedback.createAttribute(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -357,12 +347,10 @@ Get data of a single attribute
 
 
 ```kotlin
-feedback.getAttribute(slug: slug).safeAwait{ response,error->
-    
+feedback.getAttribute(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -419,12 +407,10 @@ Update details of an attribute
 
 
 ```kotlin
-feedback.updateAttribute(slug: slug, body: body).safeAwait{ response,error->
-    
+feedback.updateAttribute(slug: slug, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -481,12 +467,10 @@ Post a new comment
 
 
 ```kotlin
-feedback.createComment(body: body).safeAwait{ response,error->
-    
+feedback.createComment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -542,12 +526,10 @@ Update the status of a comment
 
 
 ```kotlin
-feedback.updateComment(body: body).safeAwait{ response,error->
-    
+feedback.updateComment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -603,12 +585,10 @@ Get a list of comments
 
 
 ```kotlin
-feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getComments(entityType: entityType, id: id, entityId: entityId, userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -670,12 +650,10 @@ Checks eligibility to rate and review, and shows the cloud media configuration
 
 
 ```kotlin
-feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{ response,error->
-    
+feedback.checkEligibility(entityType: entityType, entityId: entityId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -733,12 +711,10 @@ Delete Media
 
 
 ```kotlin
-feedback.deleteMedia(ids: ids).safeAwait{ response,error->
-    
+feedback.deleteMedia(ids: ids).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -795,12 +771,10 @@ Add Media
 
 
 ```kotlin
-feedback.createMedia(body: body).safeAwait{ response,error->
-    
+feedback.createMedia(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -856,12 +830,10 @@ Update Media
 
 
 ```kotlin
-feedback.updateMedia(body: body).safeAwait{ response,error->
-    
+feedback.updateMedia(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -917,12 +889,10 @@ Get Media
 
 
 ```kotlin
-feedback.getMedias(entityType: entityType, entityId: entityId, id: id, type: type, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getMedias(entityType: entityType, entityId: entityId, id: id, type: type, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -984,12 +954,10 @@ Get a review summary
 
 
 ```kotlin
-feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getReviewSummaries(entityType: entityType, entityId: entityId, id: id, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1050,12 +1018,10 @@ Add customer reviews
 
 
 ```kotlin
-feedback.createReview(body: body).safeAwait{ response,error->
-    
+feedback.createReview(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1111,12 +1077,10 @@ Update customer reviews
 
 
 ```kotlin
-feedback.updateReview(body: body).safeAwait{ response,error->
-    
+feedback.updateReview(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1172,12 +1136,10 @@ Get list of customer reviews
 
 
 ```kotlin
-feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, active: active, approve: approve, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getReviews(entityType: entityType, entityId: entityId, id: id, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, active: active, approve: approve, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1246,12 +1208,10 @@ Get the feedback templates for a product or l3
 
 
 ```kotlin
-feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait{ response,error->
-    
+feedback.getTemplates(templateId: templateId, entityId: entityId, entityType: entityType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1310,12 +1270,10 @@ Create a new question
 
 
 ```kotlin
-feedback.createQuestion(body: body).safeAwait{ response,error->
-    
+feedback.createQuestion(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1371,12 +1329,10 @@ Update a question
 
 
 ```kotlin
-feedback.updateQuestion(body: body).safeAwait{ response,error->
-    
+feedback.updateQuestion(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1432,12 +1388,10 @@ Get a list of QnA
 
 
 ```kotlin
-feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, userId: userId, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getQuestionAndAnswers(entityType: entityType, entityId: entityId, id: id, userId: userId, showAnswer: showAnswer, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1500,12 +1454,10 @@ Get a list of votes
 
 
 ```kotlin
-feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+feedback.getVotes(id: id, refType: refType, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1565,12 +1517,10 @@ Create a new vote
 
 
 ```kotlin
-feedback.createVote(body: body).safeAwait{ response,error->
-    
+feedback.createVote(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1626,12 +1576,10 @@ Update a vote
 
 
 ```kotlin
-feedback.updateVote(body: body).safeAwait{ response,error->
-    
+feedback.updateVote(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

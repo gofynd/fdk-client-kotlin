@@ -21,12 +21,10 @@ Get TAT of a product
 
 
 ```kotlin
-logistic.getTatProduct(body: body).safeAwait{ response,error->
-    
+logistic.getTatProduct(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -82,12 +80,10 @@ Get city from PIN Code
 
 
 ```kotlin
-logistic.getPincodeCity(pincode: pincode).safeAwait{ response,error->
-    
+logistic.getPincodeCity(pincode: pincode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
