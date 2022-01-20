@@ -25,12 +25,10 @@ Get Subscribers By Company ID
 
 
 ```kotlin
-client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response,error->
-    
+client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -89,12 +87,10 @@ Register Subscriber
 
 
 ```kotlin
-client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response,error->
-    
+client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -150,12 +146,10 @@ Update Subscriber
 
 
 ```kotlin
-client.webhook.updateSubscriberConfig(body: body).safeAwait{ response,error->
-    
+client.webhook.updateSubscriberConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -211,12 +205,10 @@ Get Subscribers By Extension ID
 
 
 ```kotlin
-client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response,error->
-    
+client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -275,12 +267,10 @@ Get Subscriber By Subscriber ID
 
 
 ```kotlin
-client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response,error->
-    
+client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -337,12 +327,10 @@ Get All Webhook Events
 
 
 ```kotlin
-client.webhook.fetchAllEventConfigurations().safeAwait{ response,error->
-    
+client.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

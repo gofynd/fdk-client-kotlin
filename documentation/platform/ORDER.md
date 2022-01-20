@@ -42,12 +42,10 @@ Update status of Shipment
 
 
 ```kotlin
-client.order.shipmentStatusUpdate(body: body).safeAwait{ response,error->
-    
+client.order.shipmentStatusUpdate(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -103,12 +101,10 @@ Get Activity Status
 
 
 ```kotlin
-client.order.activityStatus(bagId: bagId).safeAwait{ response,error->
-    
+client.order.activityStatus(bagId: bagId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -165,12 +161,10 @@ Update Store Process-Shipment
 
 
 ```kotlin
-client.order.storeProcessShipmentUpdate(body: body).safeAwait{ response,error->
-    
+client.order.storeProcessShipmentUpdate(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -226,12 +220,10 @@ Check Refund is available or not
 
 
 ```kotlin
-client.order.checkRefund(shipmentId: shipmentId).safeAwait{ response,error->
-    
+client.order.checkRefund(shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -288,12 +280,10 @@ Decides if Shipment bags can break
 
 
 ```kotlin
-client.order.ShipmentBagsCanBreak(body: body).safeAwait{ response,error->
-    
+client.order.ShipmentBagsCanBreak(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -349,12 +339,10 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, isPrioritySort: isPrioritySort, lockStatus: lockStatus, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, deploymentStores: deploymentStores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
-    
+client.order.getOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, isPrioritySort: isPrioritySort, lockStatus: lockStatus, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, deploymentStores: deploymentStores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -426,12 +414,10 @@ Get Order Lanes Count for company based on Company Id
 
 
 ```kotlin
-client.order.getOrderLanesCountByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
-    
+client.order.getOrderLanesCountByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -499,12 +485,10 @@ Get Order Details for company based on Company Id and Order Id
 
 
 ```kotlin
-client.order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response,error->
-    
+client.order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -563,12 +547,10 @@ Get Order Details for company based on Company Id and Order Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -627,12 +609,10 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.order.getPicklistOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
-    
+client.order.getPicklistOrdersByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -700,12 +680,10 @@ Track Shipment by shipment id, for application based on application Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.trackShipmentPlatform(shipmentId: shipmentId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.trackShipmentPlatform(shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -762,12 +740,10 @@ Track Order by order id, for application based on application Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.trackOrder(orderId: orderId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.trackOrder(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -824,12 +800,10 @@ Get all failed orders application wise
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.failedOrders().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.failedOrders().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -881,12 +855,10 @@ Reprocess order by order id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.reprocessOrder(orderId: orderId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.reprocessOrder(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -943,12 +915,10 @@ Use this API to update the shipment using its shipment ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.updateShipment(shipmentId: shipmentId, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.updateShipment(shipmentId: shipmentId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1005,12 +975,10 @@ Use this API to retrieve the issues that led to the cancellation of bags within 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getPlatformShipmentReasons(action: action).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.getPlatformShipmentReasons(action: action).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1067,12 +1035,10 @@ Use this API to track a shipment using its shipment ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getShipmentTrackDetails(orderId: orderId, shipmentId: shipmentId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.getShipmentTrackDetails(orderId: orderId, shipmentId: shipmentId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1130,12 +1096,10 @@ Use this API to get address of a shipment using its shipment ID and Address Cate
 
 
 ```kotlin
-client.order.getShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory).safeAwait{ response,error->
-    
+client.order.getShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1193,12 +1157,10 @@ Use this API to update address of a shipment using its shipment ID and Address C
 
 
 ```kotlin
-client.order.updateShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory, body: body).safeAwait{ response,error->
-    
+client.order.updateShipmentAddress(shipmentId: shipmentId, addressCategory: addressCategory, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1256,12 +1218,10 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1330,12 +1290,10 @@ Get Ping
 
 
 ```kotlin
-client.order.getPing().safeAwait{ response,error->
-    
+client.order.getPing().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1387,12 +1345,10 @@ Get Voice Callback
 
 
 ```kotlin
-client.order.voiceCallback().safeAwait{ response,error->
-    
+client.order.voiceCallback().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1444,12 +1400,10 @@ Get Voice Click to Call
 
 
 ```kotlin
-client.order.voiceClickToCall(caller: caller, receiver: receiver).safeAwait{ response,error->
-    
+client.order.voiceClickToCall(caller: caller, receiver: receiver).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
