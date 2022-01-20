@@ -93,6 +93,11 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun getEpaylaterBannerDetails(): Deferred<Response<EpaylaterBannerResponse>>? {
+        return paymentApiList?.getEpaylaterBannerDetails()}
+
+    
+    
     fun getActiveRefundTransferModes(): Deferred<Response<TransferModeResponse>>? {
         return paymentApiList?.getActiveRefundTransferModes()}
 
@@ -140,6 +145,26 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     fun updateDefaultBeneficiary(body: SetDefaultBeneficiaryRequest): Deferred<Response<SetDefaultBeneficiaryResponse>>? {
         return paymentApiList?.updateDefaultBeneficiary(body = body)}
+
+    
+    
+    fun CustomerCreditSummary(aggregator: String?=null): Deferred<Response<CustomerCreditSummaryResponse>>? {
+        return paymentApiList?.CustomerCreditSummary(aggregator = aggregator)}
+
+    
+    
+    fun RedirectToAggregator(aggregator: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
+        return paymentApiList?.RedirectToAggregator(aggregator = aggregator)}
+
+    
+    
+    fun CheckCredit(aggregator: String?=null): Deferred<Response<CheckCreditResponse>>? {
+        return paymentApiList?.CheckCredit(aggregator = aggregator)}
+
+    
+    
+    fun CheckCredit(body: CustomerOnboardingRequest): Deferred<Response<CustomerOnboardingResponse>>? {
+        return paymentApiList?.CheckCredit(body = body)}
 
     
     

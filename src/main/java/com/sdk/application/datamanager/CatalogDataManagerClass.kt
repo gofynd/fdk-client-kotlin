@@ -593,13 +593,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -836,10 +836,5 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     return paginator
     }
-    
-    fun getProductBundlesBySlug(slug: String?=null, id: String?=null): Deferred<Response<ProductBundle>>? {
-        return catalogApiList?.getProductBundlesBySlug(slug = slug, id = id)}
-
-    
     
 }
