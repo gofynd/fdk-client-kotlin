@@ -40,8 +40,6 @@ class UserDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     
     
     
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -61,26 +59,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<UserSearchResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun createUser(body: CreateUserRequestSchema)
-    : Deferred<Response<CreateUserResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.createUser(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateUser(userId: String,body: UpdateUserRequestSchema)
-    : Deferred<Response<CreateUserResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.updateUser(companyId = config.companyId , applicationId = applicationId , userId = userId, body = body)
         } else {
             null
         }
