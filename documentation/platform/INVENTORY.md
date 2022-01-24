@@ -27,12 +27,10 @@ Get Job Configs For A Company
 
 
 ```kotlin
-client.inventory.getJobsByCompany(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.inventory.getJobsByCompany(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -90,12 +88,10 @@ Updates An Existing Job Config
 
 
 ```kotlin
-client.inventory.updateJob(body: body).safeAwait{ response,error->
-    
+client.inventory.updateJob(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -151,12 +147,10 @@ Creates A New Job Config
 
 
 ```kotlin
-client.inventory.createJob(body: body).safeAwait{ response,error->
-    
+client.inventory.createJob(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -212,12 +206,10 @@ Get Job Configs By Company And Integration
 
 
 ```kotlin
-client.inventory.getJobByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.inventory.getJobByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -276,12 +268,10 @@ Get Job Configs Defaults
 
 
 ```kotlin
-client.inventory.getJobConfigDefaults().safeAwait{ response,error->
-    
+client.inventory.getJobConfigDefaults().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -333,12 +323,10 @@ Get Job Config By Code
 
 
 ```kotlin
-client.inventory.getJobByCode(code: code).safeAwait{ response,error->
-    
+client.inventory.getJobByCode(code: code).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -395,12 +383,10 @@ Get Job Metrics
 
 
 ```kotlin
-client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -459,12 +445,10 @@ Get Job Codes By Company And Integration
 
 
 ```kotlin
-client.inventory.getJobCodesByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.inventory.getJobCodesByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

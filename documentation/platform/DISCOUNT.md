@@ -10,8 +10,6 @@ Discount
 * [createDiscount](#creatediscount)
 * [getDiscount](#getdiscount)
 * [updateDiscount](#updatediscount)
-* [fetchDiscountJobs](#fetchdiscountjobs)
-* [getDiscountDetails](#getdiscountdetails)
 * [validateDiscountFile](#validatediscountfile)
 * [downloadDiscountFile](#downloaddiscountfile)
 * [getValidationJob](#getvalidationjob)
@@ -31,12 +29,10 @@ Fetch discount list.
 
 
 ```kotlin
-client.discount.getDiscounts(view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response,error->
-    
+client.discount.getDiscounts(view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -101,12 +97,10 @@ Create Discount.
 
 
 ```kotlin
-client.discount.createDiscount(body: body).safeAwait{ response,error->
-    
+client.discount.createDiscount(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -162,12 +156,10 @@ Fetch discount.
 
 
 ```kotlin
-client.discount.getDiscount(id: id).safeAwait{ response,error->
-    
+client.discount.getDiscount(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -224,12 +216,10 @@ Create Discount.
 
 
 ```kotlin
-client.discount.updateDiscount(id: id, body: body).safeAwait{ response,error->
-    
+client.discount.updateDiscount(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -279,124 +269,6 @@ Success
 ---
 
 
-### fetchDiscountJobs
-Fetch Discount Jobs.
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").discount.fetchDiscountJobs().safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-
-Fetch Discount Jobs.
-
-*Returned Response:*
-
-
-
-
-[ListOrCalender](#ListOrCalender)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getDiscountDetails
-Get Discounts.
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").discount.getDiscountDetails(body: body).safeAwait{ response,error->
-    
-    response?.let{
-      // Use response
-    } ->
-     
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [InternalDiscountQuery](#InternalDiscountQuery) | yes | Request body |
-
-
-Get Discounts.
-
-*Returned Response:*
-
-
-
-
-[DiscountList](#DiscountList)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### validateDiscountFile
 Validate File.
 
@@ -404,12 +276,10 @@ Validate File.
 
 
 ```kotlin
-client.discount.validateDiscountFile(discount: discount, body: body).safeAwait{ response,error->
-    
+client.discount.validateDiscountFile(discount: discount, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -466,12 +336,10 @@ Validate File.
 
 
 ```kotlin
-client.discount.downloadDiscountFile(type: type, body: body).safeAwait{ response,error->
-    
+client.discount.downloadDiscountFile(type: type, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -528,12 +396,10 @@ Validate File Job.
 
 
 ```kotlin
-client.discount.getValidationJob(id: id).safeAwait{ response,error->
-    
+client.discount.getValidationJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -590,12 +456,10 @@ Cancel Validation Job.
 
 
 ```kotlin
-client.discount.cancelValidationJob(id: id).safeAwait{ response,error->
-    
+client.discount.cancelValidationJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -652,12 +516,10 @@ Download File Job.
 
 
 ```kotlin
-client.discount.getDownloadJob(id: id).safeAwait{ response,error->
-    
+client.discount.getDownloadJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -714,12 +576,10 @@ Cancel Download Job.
 
 
 ```kotlin
-client.discount.cancelDownloadJob(id: id).safeAwait{ response,error->
-    
+client.discount.cancelDownloadJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -842,67 +702,6 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | items | ArrayList<[DiscountJob](#DiscountJob)> |  no  |  |
- | page | [Page](#Page) |  no  |  |
-
----
-
-
- 
- 
- #### [InternalDiscountQuery](#InternalDiscountQuery)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | jobIds | ArrayList<String> |  no  |  |
- | itemIds | ArrayList<Int>? |  yes  |  |
- | sellerIdentifiers | ArrayList<String>? |  yes  |  |
- | brandIds | ArrayList<Int>? |  yes  |  |
- | storeIds | ArrayList<Int>? |  yes  |  |
-
----
-
-
- 
- 
- #### [DiscountValueObject](#DiscountValueObject)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | minItems | Int |  no  |  |
- | value | Int |  no  |  |
-
----
-
-
- 
- 
- #### [DiscountDetail](#DiscountDetail)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String |  no  |  |
- | jobId | String |  no  |  |
- | companyId | Int |  no  |  |
- | appIds | ArrayList<String>? |  yes  |  |
- | discountType | String? |  yes  |  |
- | discount | ArrayList<[DiscountValueObject](#DiscountValueObject)>? |  yes  |  |
- | brandIds | ArrayList<Int>? |  yes  |  |
- | storeIds | ArrayList<Int>? |  yes  |  |
- | itemId | Int? |  yes  |  |
- | sellerIdentifier | String? |  yes  |  |
- | createdOn | String |  no  |  |
- | modifiedOn | String |  no  |  |
-
----
-
-
- 
- 
- #### [DiscountList](#DiscountList)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[DiscountDetail](#DiscountDetail)> |  no  |  |
  | page | [Page](#Page) |  no  |  |
 
 ---

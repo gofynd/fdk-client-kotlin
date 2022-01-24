@@ -28,12 +28,10 @@ Get list of attribute data
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.getAttributes(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -91,12 +89,10 @@ Get list of customer reviews [admin]
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.getCustomerReviews(id: id, entityId: entityId, entityType: entityType, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, next: next, start: start, limit: limit, count: count, pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.getCustomerReviews(id: id, entityId: entityId, entityType: entityType, userId: userId, media: media, rating: rating, attributeRating: attributeRating, facets: facets, sort: sort, next: next, start: start, limit: limit, count: count, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -167,12 +163,10 @@ update approve details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.updateApprove(reviewId: reviewId, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.updateApprove(reviewId: reviewId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -229,12 +223,10 @@ get history details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.getHistory(reviewId: reviewId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.getHistory(reviewId: reviewId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -291,12 +283,10 @@ Get list of templates
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.getApplicationTemplates(pageId: pageId, pageSize: pageSize).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.getApplicationTemplates(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -354,12 +344,10 @@ Create a new template
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.createTemplate(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.createTemplate(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -418,12 +406,10 @@ Get a template by ID
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.getTemplateById(id: id).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.getTemplateById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -480,12 +466,10 @@ Update a template's status
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.updateTemplate(id: id, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.updateTemplate(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -542,12 +526,10 @@ Update a template's status
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").feedback.updateTemplateStatus(id: id, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").feedback.updateTemplateStatus(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

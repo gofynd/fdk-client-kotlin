@@ -52,12 +52,10 @@ Login or Register using Facebook
 
 
 ```kotlin
-user.loginWithFacebook(platform: platform, body: body).safeAwait{ response,error->
-    
+user.loginWithFacebook(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -97,7 +95,27 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 ```json
 {
-  "$ref": "#/components/examples/AuthSuccess"
+  "value": {
+    "user_exists": false,
+    "user": {
+      "emails": [
+        {
+          "email": "www.akash24@gmail.com",
+          "verified": true,
+          "primary": true,
+          "active": true
+        }
+      ],
+      "phone_numbers": [],
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "debug": {
+        "platform": "Fynd"
+      },
+      "active": true
+    },
+    "register_token": "d960c388-e286-43d9-b688-f6d1decc632d"
+  }
 }
 ```
 </details>
@@ -122,12 +140,10 @@ Login or Register using Google
 
 
 ```kotlin
-user.loginWithGoogle(platform: platform, body: body).safeAwait{ response,error->
-    
+user.loginWithGoogle(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -167,7 +183,27 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 ```json
 {
-  "$ref": "#/components/examples/AuthSuccess"
+  "value": {
+    "user_exists": false,
+    "user": {
+      "emails": [
+        {
+          "email": "www.akash24@gmail.com",
+          "verified": true,
+          "primary": true,
+          "active": true
+        }
+      ],
+      "phone_numbers": [],
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "debug": {
+        "platform": "Fynd"
+      },
+      "active": true
+    },
+    "register_token": "d960c388-e286-43d9-b688-f6d1decc632d"
+  }
 }
 ```
 </details>
@@ -192,12 +228,10 @@ Login or Register using Google on Android
 
 
 ```kotlin
-user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response,error->
-    
+user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -237,7 +271,27 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 ```json
 {
-  "$ref": "#/components/examples/AuthSuccess"
+  "value": {
+    "user_exists": false,
+    "user": {
+      "emails": [
+        {
+          "email": "www.akash24@gmail.com",
+          "verified": true,
+          "primary": true,
+          "active": true
+        }
+      ],
+      "phone_numbers": [],
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "debug": {
+        "platform": "Fynd"
+      },
+      "active": true
+    },
+    "register_token": "d960c388-e286-43d9-b688-f6d1decc632d"
+  }
 }
 ```
 </details>
@@ -262,12 +316,10 @@ Login or Register using Google on iOS
 
 
 ```kotlin
-user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response,error->
-    
+user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -307,7 +359,27 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 ```json
 {
-  "$ref": "#/components/examples/AuthSuccess"
+  "value": {
+    "user_exists": false,
+    "user": {
+      "emails": [
+        {
+          "email": "www.akash24@gmail.com",
+          "verified": true,
+          "primary": true,
+          "active": true
+        }
+      ],
+      "phone_numbers": [],
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "debug": {
+        "platform": "Fynd"
+      },
+      "active": true
+    },
+    "register_token": "d960c388-e286-43d9-b688-f6d1decc632d"
+  }
 }
 ```
 </details>
@@ -332,12 +404,10 @@ Login or Register using Apple on iOS
 
 
 ```kotlin
-user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response,error->
-    
+user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -377,7 +447,27 @@ Success. Returns a JSON object with the user details. Check the example shown be
 
 ```json
 {
-  "$ref": "#/components/examples/AuthSuccess"
+  "value": {
+    "user_exists": false,
+    "user": {
+      "emails": [
+        {
+          "email": "www.akash24@gmail.com",
+          "verified": true,
+          "primary": true,
+          "active": true
+        }
+      ],
+      "phone_numbers": [],
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "debug": {
+        "platform": "Fynd"
+      },
+      "active": true
+    },
+    "register_token": "d960c388-e286-43d9-b688-f6d1decc632d"
+  }
 }
 ```
 </details>
@@ -402,12 +492,10 @@ Login or Register with OTP
 
 
 ```kotlin
-user.loginWithOTP(platform: platform, body: body).safeAwait{ response,error->
-    
+user.loginWithOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -447,7 +535,15 @@ Success. Check the example shown below or refer `SendOtpResponse` for more detai
 
 ```json
 {
-  "$ref": "#/components/examples/SendOtpResponse"
+  "value": {
+    "success": true,
+    "request_id": "01503005aeab87cbed93d40f46cc2749",
+    "message": "OTP sent",
+    "mobile": "8652523958",
+    "country_code": "91",
+    "resend_timer": 30,
+    "resendToken": "58e72ca0-66ae-11eb-98b1-77d61363826e"
+  }
 }
 ```
 </details>
@@ -472,12 +568,10 @@ Login or Register with password
 
 
 ```kotlin
-user.loginWithEmailAndPassword(body: body).safeAwait{ response,error->
-    
+user.loginWithEmailAndPassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -516,7 +610,58 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -541,12 +686,10 @@ Reset Password
 
 
 ```kotlin
-user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response,error->
-    
+user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -605,12 +748,10 @@ Forgot Password
 
 
 ```kotlin
-user.forgotPassword(body: body).safeAwait{ response,error->
-    
+user.forgotPassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -649,7 +790,58 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -674,12 +866,10 @@ Reset Password using token
 
 
 ```kotlin
-user.sendResetToken(body: body).safeAwait{ response,error->
-    
+user.sendResetToken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -737,12 +927,10 @@ Login or Register with token
 
 
 ```kotlin
-user.loginWithToken(body: body).safeAwait{ response,error->
-    
+user.loginWithToken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -781,7 +969,58 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -806,12 +1045,10 @@ Registration using a form
 
 
 ```kotlin
-user.registerWithForm(platform: platform, body: body).safeAwait{ response,error->
-    
+user.registerWithForm(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -879,12 +1116,10 @@ Verify email
 
 
 ```kotlin
-user.verifyEmail(body: body).safeAwait{ response,error->
-    
+user.verifyEmail(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -942,12 +1177,10 @@ Verify mobile
 
 
 ```kotlin
-user.verifyMobile(body: body).safeAwait{ response,error->
-    
+user.verifyMobile(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1005,12 +1238,10 @@ Check password
 
 
 ```kotlin
-user.hasPassword().safeAwait{ response,error->
-    
+user.hasPassword().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1062,12 +1293,10 @@ Update user password
 
 
 ```kotlin
-user.updatePassword(body: body).safeAwait{ response,error->
-    
+user.updatePassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1125,12 +1354,10 @@ Logs out currently logged in user
 
 
 ```kotlin
-user.logout().safeAwait{ response,error->
-    
+user.logout().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1182,12 +1409,10 @@ Send OTP on mobile
 
 
 ```kotlin
-user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response,error->
-    
+user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1252,12 +1477,10 @@ Verify OTP on mobile
 
 
 ```kotlin
-user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response,error->
-    
+user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1297,7 +1520,59 @@ Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more
 
 ```json
 {
-  "$ref": "#/components/examples/VerifyMobileOTP"
+  "value": {
+    "verify_mobile_link": true,
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -1322,12 +1597,10 @@ Send OTP on email
 
 
 ```kotlin
-user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response,error->
-    
+user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1386,12 +1659,10 @@ Verify OTP on email
 
 
 ```kotlin
-user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response,error->
-    
+user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1431,7 +1702,59 @@ Success. Returns a JSON object as shown below. Refer `VerifyOtpSuccess` for more
 
 ```json
 {
-  "$ref": "#/components/examples/VerifyMobileOTP"
+  "value": {
+    "verify_mobile_link": true,
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -1456,12 +1779,10 @@ Get logged in user
 
 
 ```kotlin
-user.getLoggedInUser().safeAwait{ response,error->
-    
+user.getLoggedInUser().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1496,7 +1817,58 @@ Success. Returns a JSON object with user details. Refer `UserObjectSchema` for m
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -1521,12 +1893,10 @@ Get list of sessions
 
 
 ```kotlin
-user.getListOfActiveSessions().safeAwait{ response,error->
-    
+user.getListOfActiveSessions().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1583,12 +1953,10 @@ Get platform configurations
 
 
 ```kotlin
-user.getPlatformConfig(name: name).safeAwait{ response,error->
-    
+user.getPlatformConfig(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1710,12 +2078,10 @@ Edit Profile Details
 
 
 ```kotlin
-user.updateProfile(platform: platform, body: body).safeAwait{ response,error->
-    
+user.updateProfile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1755,7 +2121,58 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -1780,12 +2197,10 @@ Add mobile number to profile
 
 
 ```kotlin
-user.addMobileNumber(platform: platform, body: body).safeAwait{ response,error->
-    
+user.addMobileNumber(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1825,7 +2240,59 @@ Success. Check the example shown below or refer `VerifyMobileOTPSuccess` for mor
 
 ```json
 {
-  "$ref": "#/components/examples/VerifyMobileOTP"
+  "value": {
+    "verify_mobile_link": true,
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -1850,12 +2317,10 @@ Delete mobile number from profile
 
 
 ```kotlin
-user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait{ response,error->
-    
+user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1900,7 +2365,58 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -1925,12 +2441,10 @@ Set mobile as primary
 
 
 ```kotlin
-user.setMobileNumberAsPrimary(body: body).safeAwait{ response,error->
-    
+user.setMobileNumberAsPrimary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1969,7 +2483,58 @@ Success. Check the example shown below or refer `LoginSuccess` for more details.
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -1994,12 +2559,10 @@ Send verification link to mobile
 
 
 ```kotlin
-user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response,error->
-    
+user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2039,7 +2602,59 @@ Success. Check the example shown below or refer `SendMobileVerifyLinkSuccess` fo
 
 ```json
 {
-  "$ref": "#/components/examples/VerifyMobileOTP"
+  "value": {
+    "verify_mobile_link": true,
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -2064,12 +2679,10 @@ Add email to profile
 
 
 ```kotlin
-user.addEmail(platform: platform, body: body).safeAwait{ response,error->
-    
+user.addEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2109,7 +2722,59 @@ Success. Returns a JSON object with user details. Refer `VerifyEmailOTPSuccess` 
 
 ```json
 {
-  "$ref": "#/components/examples/VerifyEmailOTP"
+  "value": {
+    "verify_email_link": true,
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -2134,12 +2799,10 @@ Delete email from profile
 
 
 ```kotlin
-user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response,error->
-    
+user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2183,7 +2846,58 @@ Success. Returns a JSON object with user details. Refer `LoginSuccess` for more 
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -2208,12 +2922,10 @@ Set email as primary
 
 
 ```kotlin
-user.setEmailAsPrimary(body: body).safeAwait{ response,error->
-    
+user.setEmailAsPrimary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2252,7 +2964,58 @@ Success. Returns a JSON object with user details. Refer `LoginSuccess` for more 
 
 ```json
 {
-  "$ref": "#/components/examples/UserExampleObject"
+  "value": {
+    "user": {
+      "debug": {
+        "source": "grimlock",
+        "platform": "000000000000000000000001"
+      },
+      "gender": "male",
+      "account_type": "user",
+      "roles": [
+        "Test-Role"
+      ],
+      "active": true,
+      "profile_pic_url": "https://d2co8r51m5ca2d.cloudfront.net/inapp_banners/default_profile_img.png",
+      "has_old_password_hash": false,
+      "_id": "5e68af49cfa09bf7233022f1",
+      "first_name": "Akash",
+      "last_name": "Mane",
+      "username": "akashmane_gofynd_com_10039",
+      "phone_numbers": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "phone": "8652523958",
+          "country_code": 91
+        }
+      ],
+      "emails": [
+        {
+          "active": true,
+          "primary": true,
+          "verified": true,
+          "email": "akashmane@gofynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@fynd.com"
+        },
+        {
+          "active": true,
+          "primary": false,
+          "verified": true,
+          "email": "akashmane@uniket.store"
+        }
+      ],
+      "created_at": "2020-03-11T09:28:41.982Z",
+      "updated_at": "2021-02-04T10:10:44.981Z",
+      "uid": "61"
+    }
+  }
 }
 ```
 </details>
@@ -2277,12 +3040,10 @@ Send verification link to email
 
 
 ```kotlin
-user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response,error->
-    
+user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2651,6 +3412,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | verifyEmailOtp | Boolean? |  yes  |  |
  | verifyMobileOtp | Boolean? |  yes  |  |
  | email | String? |  yes  |  |
+ | requestId | String? |  yes  |  |
 
 ---
 

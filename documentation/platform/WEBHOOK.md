@@ -25,12 +25,10 @@ Get Subscribers By Company ID
 
 
 ```kotlin
-client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response,error->
-    
+client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -89,12 +87,10 @@ Register Subscriber
 
 
 ```kotlin
-client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response,error->
-    
+client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -150,12 +146,10 @@ Update Subscriber
 
 
 ```kotlin
-client.webhook.updateSubscriberConfig(body: body).safeAwait{ response,error->
-    
+client.webhook.updateSubscriberConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -211,12 +205,10 @@ Get Subscribers By Extension ID
 
 
 ```kotlin
-client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response,error->
-    
+client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -275,12 +267,10 @@ Get Subscriber By Subscriber ID
 
 
 ```kotlin
-client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response,error->
-    
+client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -337,12 +327,10 @@ Get All Webhook Events
 
 
 ```kotlin
-client.webhook.fetchAllEventConfigurations().safeAwait{ response,error->
-    
+client.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -361,7 +349,7 @@ Get All Webhook Events
 
 
 
-[EventConfigList](#EventConfigList)
+[EventConfigResponse](#EventConfigResponse)
 
 Success
 
@@ -416,6 +404,17 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | items | ArrayList<[EventConfig](#EventConfig)>? |  yes  |  |
  | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EventConfigResponse](#EventConfigResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | eventConfigs | ArrayList<[EventConfig](#EventConfig)>? |  yes  |  |
 
 ---
 
@@ -577,6 +576,7 @@ Success
  | ---- | ----- | ----------- |
  | active | active | Status is active |
  | inactive | inactive | Status is inactive |
+ | blocked | blocked | Subscriber is blocked by system due to multiple failed delivery attempts. |
 
 ---
 

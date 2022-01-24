@@ -1,7 +1,7 @@
 package com.sdk.common
 
 import com.sdk.application.CompleteResponse
-import com.sdk.application.FileStorageDataManagerClass
+import com.sdk.application.datamanager.*
 import com.sdk.application.StartRequest
 import kotlinx.coroutines.Deferred
 import okhttp3.MediaType
