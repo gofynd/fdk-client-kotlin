@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -166,6 +166,11 @@ interface CatalogApiList {
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/")
     fun getProductSellersBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponseV2>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/product-grouping/")
+    fun getProductBundlesBySlug(@Query("slug") slug: String?, @Query("id") id: String?)
+    : Deferred<Response<ProductBundle>>
     
 }
 
@@ -933,7 +938,7 @@ interface PaymentApiList {
     
     
     @POST ("/service/application/payment/v1.0/credit-onboard/")
-    fun CheckCredit(@Body body: CustomerOnboardingRequest)
+    fun CustomerOnboard(@Body body: CustomerOnboardingRequest)
     : Deferred<Response<CustomerOnboardingResponse>>
     
 }

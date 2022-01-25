@@ -163,8 +163,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
-    fun CheckCredit(body: CustomerOnboardingRequest): Deferred<Response<CustomerOnboardingResponse>>? {
-        return paymentApiList?.CheckCredit(body = body)}
+    fun CustomerOnboard(body: CustomerOnboardingRequest): Deferred<Response<CustomerOnboardingResponse>>? {
+        return paymentApiList?.CustomerOnboard(body = body)}
 
     
     
