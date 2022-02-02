@@ -153,4 +153,9 @@ class CartDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
+    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null): Deferred<Response<PromotionOffersResponse>>? {
+        return cartApiList?.getPromotionOffers(slug = slug, pageSize = pageSize)}
+
+    
+    
 }

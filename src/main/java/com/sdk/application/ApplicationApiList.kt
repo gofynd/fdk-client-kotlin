@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -295,6 +295,11 @@ interface CartApiList {
     @POST ("/service/application/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
+    
+    
+    @GET ("/service/application/cart/v1.0/available-promotions")
+    fun getPromotionOffers(@Query("slug") slug: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PromotionOffersResponse>>
     
 }
 
@@ -486,16 +491,6 @@ interface UserApiList {
     @GET ("/service/application/user/authentication/v1.0/sessions")
     fun getListOfActiveSessions()
     : Deferred<Response<SessionListSuccess>>
-    
-    
-    @POST ("/service/application/user/authentication/v1.0/user_store/freshchat-restore-id")
-    fun setFreshchatRestoreId(@Body body: FreshchatRestoreIdRequestSchema)
-    : Deferred<Response<UserStoreSchema>>
-    
-    
-    @GET ("/service/application/user/authentication/v1.0/user_store/store")
-    fun getUserStore()
-    : Deferred<Response<UserStoreSchema>>
     
     
     @GET ("/service/application/user/platform/v1.0/config")

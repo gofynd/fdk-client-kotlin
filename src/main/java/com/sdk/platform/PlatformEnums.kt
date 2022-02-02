@@ -307,7 +307,10 @@ import com.google.gson.annotations.SerializedName
         active("active"), 
         
         @SerializedName("inactive")
-        inactive("inactive");
+        inactive("inactive"), 
+        
+        @SerializedName("blocked")
+        blocked("blocked");
         
 
         companion object {

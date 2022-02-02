@@ -148,16 +148,6 @@ class UserDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
 
     
     
-    fun setFreshchatRestoreId(body: FreshchatRestoreIdRequestSchema): Deferred<Response<UserStoreSchema>>? {
-        return userApiList?.setFreshchatRestoreId(body = body)}
-
-    
-    
-    fun getUserStore(): Deferred<Response<UserStoreSchema>>? {
-        return userApiList?.getUserStore()}
-
-    
-    
     fun getPlatformConfig(name: String?=null): Deferred<Response<PlatformSchema>>? {
         return userApiList?.getPlatformConfig(name = name)}
 
