@@ -1113,7 +1113,7 @@ interface CatalogApiList {
     : Deferred<Response<CategoryUpdateResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/")
-    fun getProducts(@Path("company_id") companyId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("item_code") itemCode: ArrayList<Double>?, @Query("q") q: String?, @Query("tags") tags: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    fun getProducts(@Path("company_id") companyId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("item_code") itemCode: ArrayList<String>?, @Query("q") q: String?, @Query("tags") tags: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductListingResponse>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/")
@@ -1296,21 +1296,21 @@ interface CompanyProfileApiList {
     fun createBrand(@Path("company_id") companyId: String,@Body body: CreateUpdateBrandRequestSerializer)
     : Deferred<Response<SuccessResponse>>
     
+    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
+    fun createCompanyBrandMapping(@Path("company_id") companyId: String,@Body body: CompanyBrandPostRequestSerializer)
+    : Deferred<Response<SuccessResponse>>
+    
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
     fun getBrands(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Deferred<Response<CompanyBrandListSerializer>>
     
-    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/company-brand")
-    fun createCompanyBrandMapping(@Path("company_id") companyId: String,@Body body: CompanyBrandPostRequestSerializer)
+    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location")
+    fun createLocation(@Path("company_id") companyId: String,@Body body: LocationSerializer)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/location")
     fun getLocations(@Path("company_id") companyId: String, @Query("store_type") storeType: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LocationListSerializer>>
-    
-    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location")
-    fun createLocation(@Path("company_id") companyId: String,@Body body: LocationSerializer)
-    : Deferred<Response<SuccessResponse>>
     
     @PUT ("/service/platform/company-profile/v1.0/company/{company_id}/location/{location_id}")
     fun updateLocation(@Path("company_id") companyId: String, @Path("location_id") locationId: String,@Body body: LocationSerializer)

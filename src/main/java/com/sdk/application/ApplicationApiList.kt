@@ -158,6 +158,11 @@ interface CatalogApiList {
     : Deferred<Response<StoreDetails>>
     
     
+    @GET ("/service/application/catalog/v1.0/product-grouping/")
+    fun getProductBundlesBySlug(@Query("slug") slug: String?, @Query("id") id: String?)
+    : Deferred<Response<ProductBundle>>
+    
+    
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/")
     fun getProductPriceBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
     : Deferred<Response<ProductSizePriceResponseV2>>

@@ -764,6 +764,11 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
 
     
     
+    fun getProductBundlesBySlug(slug: String?=null, id: String?=null): Deferred<Response<ProductBundle>>? {
+        return catalogApiList?.getProductBundlesBySlug(slug = slug, id = id)}
+
+    
+    
     fun getProductPriceBySlugV2(slug: String, size: String, storeId: Int?=null, pincode: String?=null): Deferred<Response<ProductSizePriceResponseV2>>? {
         return catalogApiList?.getProductPriceBySlugV2(slug = slug, size = size, storeId = storeId, pincode = pincode)}
 
