@@ -36,6 +36,18 @@ class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {
     }
     
     
+    suspend fun checkCouponValidity(plan: String, couponCode: String)
+    : Deferred<Response<CheckValidityResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.checkCouponValidity(
+        companyId = config.companyId, plan = plan, couponCode = couponCode )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun createSubscriptionCharge(extensionId: String,body: CreateSubscriptionCharge)
     : Deferred<Response<CreateSubscriptionResponse>>? {
         
@@ -170,6 +182,7 @@ class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
