@@ -2,51 +2,51 @@ package com.sdk.platform
 
 import com.sdk.platform.datamanager.*
 
-class PlatformClient(val config:PlatformConfig) {
+class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
     
-    val common by lazy { CommonDataManagerClass(config)}
+    val common by lazy { CommonDataManagerClass(config, unauthorizedAction)}
     
-    val lead by lazy { LeadDataManagerClass(config)}
+    val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
-    val feedback by lazy { FeedbackDataManagerClass(config)}
+    val feedback by lazy { FeedbackDataManagerClass(config, unauthorizedAction)}
     
-    val theme by lazy { ThemeDataManagerClass(config)}
+    val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
     
-    val user by lazy { UserDataManagerClass(config)}
+    val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
     
-    val content by lazy { ContentDataManagerClass(config)}
+    val content by lazy { ContentDataManagerClass(config, unauthorizedAction)}
     
-    val billing by lazy { BillingDataManagerClass(config)}
+    val billing by lazy { BillingDataManagerClass(config, unauthorizedAction)}
     
-    val communication by lazy { CommunicationDataManagerClass(config)}
+    val communication by lazy { CommunicationDataManagerClass(config, unauthorizedAction)}
     
-    val payment by lazy { PaymentDataManagerClass(config)}
+    val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
-    val order by lazy { OrderDataManagerClass(config)}
+    val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
     
-    val catalog by lazy { CatalogDataManagerClass(config)}
+    val catalog by lazy { CatalogDataManagerClass(config, unauthorizedAction)}
     
-    val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
+    val companyProfile by lazy { CompanyProfileDataManagerClass(config, unauthorizedAction)}
     
-    val fileStorage by lazy { FileStorageDataManagerClass(config)}
+    val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
     
-    val share by lazy { ShareDataManagerClass(config)}
+    val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
-    val inventory by lazy { InventoryDataManagerClass(config)}
+    val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
     
-    val configuration by lazy { ConfigurationDataManagerClass(config)}
+    val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
     
-    val cart by lazy { CartDataManagerClass(config)}
+    val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
     
-    val rewards by lazy { RewardsDataManagerClass(config)}
+    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
-    val analytics by lazy { AnalyticsDataManagerClass(config)}
+    val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
     
-    val discount by lazy { DiscountDataManagerClass(config)}
+    val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
     
-    val partner by lazy { PartnerDataManagerClass(config)}
+    val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
     
-    val webhook by lazy { WebhookDataManagerClass(config)}
+    val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)

@@ -11,7 +11,7 @@ import com.sdk.platform.*
 
 
 
-class OrderDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
     private val orderApiList by lazy {
         generateorderApiList()
@@ -24,6 +24,10 @@ class OrderDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
+        if(unauthorizedAction != null){
+            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
+            interceptorList.add(accessUnauthorizedInterceptor)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(

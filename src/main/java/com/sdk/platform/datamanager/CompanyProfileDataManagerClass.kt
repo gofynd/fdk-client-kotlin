@@ -11,7 +11,7 @@ import com.sdk.platform.*
 
 
 
-class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
     private val companyProfileApiList by lazy {
         generatecompanyProfileApiList()
@@ -24,6 +24,10 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig) : BaseRepositor
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
+        if(unauthorizedAction != null){
+            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
+            interceptorList.add(accessUnauthorizedInterceptor)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
