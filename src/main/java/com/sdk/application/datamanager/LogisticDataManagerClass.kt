@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class LogisticDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
     
     private val logisticApiList by lazy {
         generatelogisticApiList()
@@ -22,10 +22,6 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
-        if(unauthorizedAction != null){
-            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
-            interceptorList.add(accessUnauthorizedInterceptor)
-        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(

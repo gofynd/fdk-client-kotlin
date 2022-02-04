@@ -2,40 +2,40 @@ package com.sdk.application
 
 import com.sdk.application.datamanager.*
 
-class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
+class ApplicationClient(val config:ApplicationConfig) {
     
-    val catalog by lazy { CatalogDataManagerClass(config, unauthorizedAction)}
+    val catalog by lazy { CatalogDataManagerClass(config)}
     
-    val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
+    val cart by lazy { CartDataManagerClass(config)}
     
-    val common by lazy { CommonDataManagerClass(config, unauthorizedAction)}
+    val common by lazy { CommonDataManagerClass(config)}
     
-    val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
+    val lead by lazy { LeadDataManagerClass(config)}
     
-    val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
+    val theme by lazy { ThemeDataManagerClass(config)}
     
-    val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
+    val user by lazy { UserDataManagerClass(config)}
     
-    val content by lazy { ContentDataManagerClass(config, unauthorizedAction)}
+    val content by lazy { ContentDataManagerClass(config)}
     
-    val communication by lazy { CommunicationDataManagerClass(config, unauthorizedAction)}
+    val communication by lazy { CommunicationDataManagerClass(config)}
     
-    val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
+    val share by lazy { ShareDataManagerClass(config)}
     
-    val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
+    val fileStorage by lazy { FileStorageDataManagerClass(config)}
     
-    val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
+    val configuration by lazy { ConfigurationDataManagerClass(config)}
     
-    val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
+    val payment by lazy { PaymentDataManagerClass(config)}
     
-    val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
+    val order by lazy { OrderDataManagerClass(config)}
     
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
+    val rewards by lazy { RewardsDataManagerClass(config)}
     
-    val feedback by lazy { FeedbackDataManagerClass(config, unauthorizedAction)}
+    val feedback by lazy { FeedbackDataManagerClass(config)}
     
-    val posCart by lazy { PosCartDataManagerClass(config, unauthorizedAction)}
+    val posCart by lazy { PosCartDataManagerClass(config)}
     
-    val logistic by lazy { LogisticDataManagerClass(config, unauthorizedAction)}
+    val logistic by lazy { LogisticDataManagerClass(config)}
     
 }

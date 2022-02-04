@@ -11,7 +11,7 @@ import com.sdk.platform.*
 
 
 
-class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
+class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val contentApiList by lazy {
         generatecontentApiList()
@@ -24,10 +24,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
-        if(unauthorizedAction != null){
-            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
-            interceptorList.add(accessUnauthorizedInterceptor)
-        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(

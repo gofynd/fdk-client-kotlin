@@ -11,7 +11,8 @@ class ApplicationConfig(
     var languageCode: String = "en-IN",
     var currencyCode: String = "INR",
     var debuggable: Boolean = false,
-    var extraHeaders: HashMap<String,String>? = null
+    var extraHeaders: HashMap<String,String>
+
 ) {
     init {
         val regex = "^[0-9a-fA-F]{24}$"

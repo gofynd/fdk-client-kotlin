@@ -11,7 +11,7 @@ import com.sdk.platform.*
 
 
 
-class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
+class FileStorageDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
        
     private val fileStorageApiList by lazy {
         generatefileStorageApiList()
@@ -24,10 +24,6 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
-        if(unauthorizedAction != null){
-            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
-            interceptorList.add(accessUnauthorizedInterceptor)
-        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
