@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() {
+class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
     
     private val catalogApiList by lazy {
         generatecatalogApiList()
@@ -22,6 +22,10 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
+        if(unauthorizedAction != null){
+            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
+            interceptorList.add(accessUnauthorizedInterceptor)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -593,13 +597,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
+    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
-    fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        return catalogApiList?.followById(collectionType = collectionType, collectionId = collectionId)}
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        return catalogApiList?.unfollowById(collectionType = collectionType, collectionId = collectionId)}
 
     
     
@@ -761,6 +765,11 @@ class CatalogDataManagerClass(val config: ApplicationConfig) : BaseRepository() 
     
     fun getLocationDetailsById(locationId: Int): Deferred<Response<StoreDetails>>? {
         return catalogApiList?.getLocationDetailsById(locationId = locationId)}
+
+    
+    
+    fun getProductBundlesBySlug(slug: String?=null, id: String?=null): Deferred<Response<ProductBundle>>? {
+        return catalogApiList?.getProductBundlesBySlug(slug = slug, id = id)}
 
     
     

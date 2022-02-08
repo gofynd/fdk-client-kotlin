@@ -123,13 +123,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -156,6 +156,11 @@ interface CatalogApiList {
     @GET ("/service/application/catalog/v1.0/locations/{location_id}/")
     fun getLocationDetailsById(@Path("location_id") locationId: Int)
     : Deferred<Response<StoreDetails>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/product-grouping/")
+    fun getProductBundlesBySlug(@Query("slug") slug: String?, @Query("id") id: String?)
+    : Deferred<Response<ProductBundle>>
     
     
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/")
