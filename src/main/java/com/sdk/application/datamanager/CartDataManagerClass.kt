@@ -162,7 +162,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getLadderOffers(slug: String?=null, pageSize: Int?=null): Deferred<Response<LadderPriceOffers>>? {
+    fun getLadderOffers(slug: String, pageSize: Int?=null): Deferred<Response<LadderPriceOffers>>? {
         return cartApiList?.getLadderOffers(slug = slug, pageSize = pageSize)}
 
     

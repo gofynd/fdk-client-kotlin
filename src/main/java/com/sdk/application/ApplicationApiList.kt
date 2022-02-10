@@ -293,7 +293,7 @@ interface CartApiList {
     
     
     @GET ("/service/application/cart/v1.0/available-ladder-prices")
-    fun getLadderOffers(@Query("slug") slug: String?, @Query("page_size") pageSize: Int?)
+    fun getLadderOffers(@Query("slug") slug: String, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LadderPriceOffers>>
     
 }
