@@ -93,33 +93,18 @@ interface CatalogApiList {
     : Deferred<Response<AutoCompleteResponse>>
     
     
-    @GET ("/service/application/catalog/v1.0/collections/")
-    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
-    : Deferred<Response<GetCollectionListingResponse>>
-    
-    
-    @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
-    fun getCollectionItemsBySlug(@Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductListingResponse>>
-    
-    
-    @GET ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun getCollectionDetailBySlug(@Path("slug") slug: String)
-    : Deferred<Response<CollectionDetailResponse>>
-    
-    
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -156,6 +141,21 @@ interface CatalogApiList {
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/")
     fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponseV2>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/collections/")
+    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
+    : Deferred<Response<GetCollectionListingResponse>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/collections/{slug}/items/")
+    fun getCollectionItemsBySlug(@Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductListingResponse>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/collections/{slug}/")
+    fun getCollectionDetailBySlug(@Path("slug") slug: String)
+    : Deferred<Response<CollectionDetailResponse>>
     
     
     @GET ("/service/application/catalog/v1.0/product-grouping/")
@@ -293,7 +293,7 @@ interface CartApiList {
     
     
     @GET ("/service/application/cart/v1.0/available-ladder-prices")
-    fun getLadderOffers(@Query("slug") slug: String, @Query("page_size") pageSize: Int?)
+    fun getLadderOffers(@Query("slug") slug: String, @Query("promotion_id") promotionId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LadderPriceOffers>>
     
 }

@@ -124,18 +124,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getOrderDetails(orderId: String?=null, next: String?=null, previous: String?=null)
-    : Deferred<Response<OrderDetails>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getOrderDetails(
-        companyId = config.companyId, orderId = orderId, next = next, previous = previous )
-        } else {
-            null
-        } 
-    }
-    
-    
     
     suspend fun getPicklistOrdersByCompanyId(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null, q: String?=null, stage: String?=null, salesChannels: String?=null, orderId: String?=null, stores: String?=null, status: String?=null, shortenUrls: Boolean?=null, filterType: String?=null)
     : Deferred<Response<OrderPicklistListing>>? {
@@ -219,7 +207,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
     
     
     

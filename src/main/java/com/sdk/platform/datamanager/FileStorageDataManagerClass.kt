@@ -91,18 +91,6 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     
-    suspend fun browse(namespace: String, pageNo: Int?=null)
-    : Deferred<Response<BrowseResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            fileStorageApiList?.browse(
-        namespace = namespace, companyId = config.companyId, pageNo = pageNo )
-        } else {
-            null
-        } 
-    }
-    
-    
     
     suspend fun proxy(url: String)
     : Deferred<Response<ResponseBody>>? {
@@ -152,7 +140,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     suspend fun browse(namespace: String, pageNo: Int?=null)
