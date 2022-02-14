@@ -40,6 +40,18 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     }
     
     
+    suspend fun getTickets(items: Boolean?=null, filters: Boolean?=null, q: String?=null, status: String?=null, priority: PriorityEnum?=null, category: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<TicketList>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getTickets(
+        companyId = config.companyId, items = items, filters = filters, q = q, status = status, priority = priority, category = category, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun createTicket(body: AddTicketPayload)
     : Deferred<Response<Ticket>>? {
         
@@ -53,6 +65,54 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    suspend fun getTicket(id: String)
+    : Deferred<Response<Ticket>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getTicket(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun editTicket(id: String,body: EditTicketPayload)
+    : Deferred<Response<Ticket>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.editTicket(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    
+    suspend fun createHistory(id: String,body: TicketHistoryPayload)
+    : Deferred<Response<TicketHistory>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.createHistory(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getTicketHistory(id: String)
+    : Deferred<Response<TicketHistoryList>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getTicketHistory(
+        companyId = config.companyId, id = id )
+        } else {
+            null
+        } 
+    }
     
     
     suspend fun getFeedbacks(id: String)
@@ -85,12 +145,37 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    suspend fun getTokenForVideoRoom(uniqueName: String)
+    : Deferred<Response<GetTokenForVideoRoomResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getTokenForVideoRoom(
+        companyId = config.companyId, uniqueName = uniqueName )
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    suspend fun getVideoParticipants(uniqueName: String)
+    : Deferred<Response<GetParticipantsInsideVideoRoomResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getVideoParticipants(
+        companyId = config.companyId, uniqueName = uniqueName )
+        } else {
+            null
+        } 
+    }
+    
     
     
     
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
@@ -102,6 +187,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     suspend fun getTicket(id: String)
@@ -122,6 +209,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     
@@ -186,6 +275,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    
     suspend fun getTokenForVideoRoom(uniqueName: String)
     : Deferred<Response<GetTokenForVideoRoomResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -194,6 +284,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     suspend fun getVideoParticipants(uniqueName: String)
