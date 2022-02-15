@@ -157,8 +157,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun RedirectToAggregator(aggregator: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
-        return paymentApiList?.RedirectToAggregator(aggregator = aggregator)}
+    fun RedirectToAggregator(source: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
+        return paymentApiList?.RedirectToAggregator(source = source)}
 
     
     
