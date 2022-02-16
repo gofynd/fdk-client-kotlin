@@ -398,10 +398,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAppCompanies(pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getAppCompanies(uid: Int?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<CompaniesResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
+                configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , uid = uid, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -409,6 +409,11 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+        
+            
+                
+            
+            
         
             
                 
@@ -433,7 +438,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getAppCompanies
     **/
     fun getAppCompaniesPaginator(
-    pageSize: Int?=null
+    uid: Int?=null, pageSize: Int?=null
     
     ) : Paginator<CompaniesResponse>{
         val paginator = Paginator<CompaniesResponse>()
@@ -446,7 +451,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                    configurationApiList?.getAppCompanies(companyId = config.companyId , applicationId = applicationId , uid = uid, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
