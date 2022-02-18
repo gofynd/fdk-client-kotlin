@@ -10,7 +10,8 @@ class ApplicationConfig(
     val persistentCookieStore: CookieStore?=null,
     var languageCode: String = "en-IN",
     var currencyCode: String = "INR",
-    var debuggable: Boolean = false
+    var debuggable: Boolean = false,
+    var extraHeaders: HashMap<String,String>? = null
 ) {
     init {
         val regex = "^[0-9a-fA-F]{24}$"

@@ -9,6 +9,7 @@ Authentication Service
 * [getCustomers](#getcustomers)
 * [searchUsers](#searchusers)
 * [createUser](#createuser)
+* [blockOrUnblockUsers](#blockorunblockusers)
 * [updateUser](#updateuser)
 * [createUserSession](#createusersession)
 * [getPlatformConfig](#getplatformconfig)
@@ -26,12 +27,10 @@ Get a list of customers
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").user.getCustomers(q: q, pageSize: pageSize, pageNo: pageNo).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").user.getCustomers(q: q, pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -73,7 +72,57 @@ Success. Refer `CustomerListResponseSchema` for more details.
 
 ```json
 {
-  "$ref": "#/components/examples/CustomersListResponse"
+  "value": {
+    "items": [
+      {
+        "_id": "000000000000000023106198",
+        "gender": "male",
+        "roles": [
+          "Ark-Qnatemplate-FullAccess"
+        ],
+        "active": true,
+        "emails": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "email": "raaz.crzy@gmail.com"
+          }
+        ],
+        "username": "raaz_crzy_gmail_com_63747_23106198",
+        "__v": 7,
+        "debug": {
+          "source": "deadlock",
+          "platform": "000000000000000000000003"
+        },
+        "dob": "1995-07-23T00:00:00.000Z",
+        "id": "000000000000000023106198",
+        "account_type": "user",
+        "profile_pic_url": "https://hdn-1.fynd.com/user/profile/original/000000000000000023106198/1586498418772.jpg",
+        "first_name": "Prince",
+        "last_name": "Raj",
+        "phone_numbers": [
+          {
+            "active": true,
+            "primary": true,
+            "verified": true,
+            "phone": "7008963113",
+            "country_code": 91
+          }
+        ],
+        "created_at": "2019-05-15T14:07:52.872Z",
+        "updated_at": "2020-09-21T06:38:41.388Z",
+        "has_old_password_hash": false
+      }
+    ],
+    "page": {
+      "type": "number",
+      "current": 1,
+      "size": 10,
+      "item_total": 0,
+      "has_next": false
+    }
+  }
 }
 ```
 </details>
@@ -98,12 +147,10 @@ Search an existing user.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -164,7 +211,6 @@ Success. Returns first name, last name, emails, phone number and gender of the u
           "email": "akashmane@uniket.store"
         }
       ],
-      "uid": "61",
       "account_type": "user",
       "first_name": "Akash",
       "last_name": "Mane",
@@ -203,12 +249,10 @@ Create user
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").user.createUser(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").user.createUser(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -267,7 +311,7 @@ User create
         "email": "akashmane@uniket.store"
       }
     ],
-    "uid": "61",
+    "external_id": "100002000036789",
     "account_type": "user",
     "first_name": "Akash",
     "last_name": "Mane",
@@ -299,6 +343,67 @@ User create
 ---
 
 
+### blockOrUnblockUsers
+Block/Unblock user
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").user.blockOrUnblockUsers(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [BlockUserRequestSchema](#BlockUserRequestSchema) | yes | Request body |
+
+
+Block/Unblock user
+
+*Returned Response:*
+
+
+
+
+[BlockUserSuccess](#BlockUserSuccess)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### updateUser
 Update user
 
@@ -306,12 +411,10 @@ Update user
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").user.updateUser(userId: userId, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").user.updateUser(userId: userId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -371,7 +474,7 @@ User update
         "email": "akashmane@uniket.store"
       }
     ],
-    "uid": "61",
+    "external_id": "100002000036789",
     "account_type": "user",
     "first_name": "Akash",
     "last_name": "Mane",
@@ -410,12 +513,10 @@ Create user session
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").user.createUserSession(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").user.createUserSession(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -479,12 +580,10 @@ Get platform configurations
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").user.getPlatformConfig().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").user.getPlatformConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -601,12 +700,10 @@ Update platform configurations
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").user.updatePlatformConfig(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").user.updatePlatformConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -722,6 +819,19 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
 
 ### Schemas
+
+ 
+ 
+ #### [BlockUserRequestSchema](#BlockUserRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | Boolean? |  yes  |  |
+ | userId | ArrayList<String>? |  yes  |  |
+ | reason | String? |  yes  |  |
+
+---
+
 
  
  
@@ -1133,6 +1243,17 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | logout | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BlockUserSuccess](#BlockUserSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -1714,6 +1835,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | firstName | String? |  yes  |  |
  | lastName | String? |  yes  |  |
  | gender | String? |  yes  |  |
+ | externalId | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -1736,7 +1858,6 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | profilePicUrl | String? |  yes  |  |
  | username | String? |  yes  |  |
  | accountType | String? |  yes  |  |
- | uid | String? |  yes  |  |
  | debug | [Debug](#Debug)? |  yes  |  |
  | hasOldPasswordHash | Boolean? |  yes  |  |
  | id | String? |  yes  |  |

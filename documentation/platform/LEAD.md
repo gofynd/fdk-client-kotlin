@@ -38,12 +38,10 @@ Gets the list of company level tickets and/or ticket filters depending on query 
 
 
 ```kotlin
-client.lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -481,12 +479,10 @@ Creates a company level ticket
 
 
 ```kotlin
-client.lead.createTicket(body: body).safeAwait{ response,error->
-    
+client.lead.createTicket(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -740,12 +736,10 @@ Gets the list of Application level Tickets and/or ticket filters depending on qu
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.getTickets(items: items, filters: filters, q: q, status: status, priority: priority, category: category).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1181,12 +1175,10 @@ Retreives ticket details of a company level ticket with ticket ID
 
 
 ```kotlin
-client.lead.getTicket(ticketId: ticketId).safeAwait{ response,error->
-    
+client.lead.getTicket(ticketId: ticketId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1441,12 +1433,10 @@ Edits ticket details of a company level ticket
 
 
 ```kotlin
-client.lead.editTicket(ticketId: ticketId, body: body).safeAwait{ response,error->
-    
+client.lead.editTicket(ticketId: ticketId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1701,12 +1691,10 @@ Retreives ticket details of a application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTicket(ticketId: ticketId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.getTicket(ticketId: ticketId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1962,12 +1950,10 @@ Edits ticket details of a application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.editTicket(ticketId: ticketId, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.editTicket(ticketId: ticketId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2223,12 +2209,10 @@ Create history for specific company level ticket
 
 
 ```kotlin
-client.lead.createHistory(ticketId: ticketId, body: body).safeAwait{ response,error->
-    
+client.lead.createHistory(ticketId: ticketId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2327,12 +2311,10 @@ Gets history list for specific company level ticket
 
 
 ```kotlin
-client.lead.getTicketHistory(ticketId: ticketId).safeAwait{ response,error->
-    
+client.lead.getTicketHistory(ticketId: ticketId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2535,12 +2517,10 @@ Create history for specific application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.createHistory(ticketId: ticketId, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.createHistory(ticketId: ticketId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2639,12 +2619,10 @@ Gets history list for specific application level ticket
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTicketHistory(ticketId: ticketId).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.getTicketHistory(ticketId: ticketId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2847,12 +2825,10 @@ Get specific custom form using it's slug
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getCustomForm(slug: slug).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.getCustomForm(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2961,12 +2937,10 @@ Edit the given custom form
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.editCustomForm(slug: slug, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.editCustomForm(slug: slug, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3085,12 +3059,10 @@ Get list of custom form
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getCustomForms().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.getCustomForms().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3283,12 +3255,10 @@ Creates a new custom form
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.createCustomForm(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.createCustomForm(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3406,12 +3376,10 @@ Get Token to join a specific Video Room using it's unqiue name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.getTokenForVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3478,12 +3446,10 @@ Get participants of a specific Video Room using it's unique name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.getVideoParticipants(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3550,12 +3516,10 @@ Open a video room.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.openVideoRoom(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.openVideoRoom(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3621,12 +3585,10 @@ Close the video room and force all participants to leave.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").lead.closeVideoRoom(uniqueName: uniqueName).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").lead.closeVideoRoom(uniqueName: uniqueName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

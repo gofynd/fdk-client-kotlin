@@ -65,12 +65,10 @@ Get latest build config
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType: platformType).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType: platformType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -145,12 +143,10 @@ Update build config for next build
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformType: platformType, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformType: platformType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -225,12 +221,10 @@ Get previous build versions
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getPreviousVersions(platformType: platformType).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getPreviousVersions(platformType: platformType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -302,12 +296,10 @@ Get features of application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -455,12 +447,10 @@ Update features of application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -600,12 +590,10 @@ Get basic application details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -697,12 +685,10 @@ Add or update application's basic details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -796,12 +782,10 @@ Get application information
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -968,12 +952,10 @@ Get application information
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1137,12 +1119,10 @@ Get social tokens
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1272,12 +1252,10 @@ Add social tokens
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1411,12 +1389,10 @@ Application inventory enabled companies
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppCompanies(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppCompanies(uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1429,6 +1405,7 @@ client.application("<APPLICATION_ID>").configuration.getAppCompanies(pageNo: pag
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
+| uid | Int? | no | uid of companies to be fetched |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 
@@ -1499,12 +1476,10 @@ Application inventory enabled stores
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1600,12 +1575,10 @@ Get application configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -1842,12 +1815,10 @@ Update application configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2088,12 +2059,10 @@ Partially update application configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryConfig(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2334,12 +2303,10 @@ Get application enabled currency list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2407,12 +2374,10 @@ Add initial application supported currency
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2484,12 +2449,10 @@ Get currencies enabled in the application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppSupportedCurrency().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getAppSupportedCurrency().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2559,12 +2522,10 @@ Get ordering store by filter
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2706,12 +2667,10 @@ Add/Update ordering store config
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2778,12 +2737,10 @@ Get deployment stores
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getStaffOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getStaffOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2842,12 +2799,10 @@ Get attached domain list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2923,12 +2878,10 @@ Add new domain to application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -2992,12 +2945,10 @@ Remove attached domain
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3056,12 +3007,10 @@ Change domain type
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.changeDomainType(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.changeDomainType(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3141,12 +3090,10 @@ Get domain connected status.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3218,12 +3165,10 @@ Create application
 
 
 ```kotlin
-client.configuration.createApplication(body: body).safeAwait{ response,error->
-    
+client.configuration.createApplication(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3279,12 +3224,10 @@ Get list of application under company
 
 
 ```kotlin
-client.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response,error->
-    
+client.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3343,12 +3286,10 @@ Get application data from id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getApplicationById().safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").configuration.getApplicationById().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3400,12 +3341,10 @@ Get all currencies
 
 
 ```kotlin
-client.configuration.getCurrencies().safeAwait{ response,error->
-    
+client.configuration.getCurrencies().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3470,12 +3409,10 @@ Check domain availibility before linking to application
 
 
 ```kotlin
-client.configuration.getDomainAvailibility(body: body).safeAwait{ response,error->
-    
+client.configuration.getDomainAvailibility(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3575,12 +3512,10 @@ Get integration data
 
 
 ```kotlin
-client.configuration.getIntegrationById(id: id).safeAwait{ response,error->
-    
+client.configuration.getIntegrationById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3724,12 +3659,10 @@ Get all available integration opt-ins
 
 
 ```kotlin
-client.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -3894,12 +3827,10 @@ Get company/store level integration opt-ins
 
 
 ```kotlin
-client.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4066,12 +3997,10 @@ Get integration level config
 
 
 ```kotlin
-client.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response,error->
-    
+client.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4152,12 +4081,10 @@ Update a store level opt-in for integration
 
 
 ```kotlin
-client.configuration.updateLevelIntegration(id: id, level: level, body: body).safeAwait{ response,error->
-    
+client.configuration.updateLevelIntegration(id: id, level: level, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4232,12 +4159,10 @@ Get level data for integration
 
 
 ```kotlin
-client.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).safeAwait{ response,error->
-    
+client.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4313,12 +4238,10 @@ Update a store level opt-in for integration
 
 
 ```kotlin
-client.configuration.updateLevelUidIntegration(id: id, level: level, uid: uid, body: body).safeAwait{ response,error->
-    
+client.configuration.updateLevelUidIntegration(id: id, level: level, uid: uid, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4394,12 +4317,10 @@ Check store has active integration
 
 
 ```kotlin
-client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response,error->
-    
+client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4475,12 +4396,10 @@ Get brands by company
 
 
 ```kotlin
-client.configuration.getBrandsByCompany(q: q).safeAwait{ response,error->
-    
+client.configuration.getBrandsByCompany(q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4554,12 +4473,10 @@ Get company by brand uids
 
 
 ```kotlin
-client.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
-    
+client.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4639,12 +4556,10 @@ Get stores by brand uids
 
 
 ```kotlin
-client.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response,error->
-    
+client.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4763,12 +4678,10 @@ Get other seller applications
 
 
 ```kotlin
-client.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response,error->
-    
+client.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4869,12 +4782,10 @@ Get other seller applications
 
 
 ```kotlin
-client.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response,error->
-    
+client.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -4978,12 +4889,10 @@ Opt out company or store from other seller application
 
 
 ```kotlin
-client.configuration.optOutFromApplication(id: id, body: body).safeAwait{ response,error->
-    
+client.configuration.optOutFromApplication(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

@@ -17,11 +17,14 @@ class ApplicationHeaderInterceptor(
             val applicationToken = applicationConfig?.applicationToken ?: ""
             val languageCode = applicationConfig?.languageCode ?: "en-IN"
             val currencyCode = applicationConfig?.currencyCode ?: "INR"
-
+            applicationConfig?.extraHeaders?.let {
+                for ((key, value) in it) {
+                    header(key,value)
+            	}
+            }
             header("Accept-Language", languageCode)
             header("x-currency-code", currencyCode)
-            header("x-fp-sdk-version", "0.1.12")
-            
+            header("x-fp-sdk-version", "0.1.14")
             val bearerToken =
                 Base64.encodeToString(
                     "$applicationId:$applicationToken".toByteArray(),

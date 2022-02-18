@@ -157,6 +157,21 @@ interface CatalogApiList {
     fun getLocationDetailsById(@Path("location_id") locationId: Int)
     : Deferred<Response<StoreDetails>>
     
+    
+    @GET ("/service/application/catalog/v1.0/product-grouping/")
+    fun getProductBundlesBySlug(@Query("slug") slug: String?, @Query("id") id: String?)
+    : Deferred<Response<ProductBundle>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/")
+    fun getProductPriceBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
+    : Deferred<Response<ProductSizePriceResponseV2>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/")
+    fun getProductSellersBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductSizeSellersResponseV2>>
+    
 }
 
 interface CartApiList {
@@ -280,6 +295,16 @@ interface CartApiList {
     @POST ("/service/application/cart/v1.0/share-cart/{token}/{action}")
     fun updateCartWithSharedItems(@Path("token") token: String, @Path("action") action: String)
     : Deferred<Response<SharedCartResponse>>
+    
+    
+    @GET ("/service/application/cart/v1.0/available-promotions")
+    fun getPromotionOffers(@Query("slug") slug: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PromotionOffersResponse>>
+    
+    
+    @GET ("/service/application/cart/v1.0/available-ladder-prices")
+    fun getLadderOffers(@Query("slug") slug: String, @Query("promotion_id") promotionId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<LadderPriceOffers>>
     
 }
 
@@ -842,6 +867,11 @@ interface PaymentApiList {
     : Deferred<Response<RupifiBannerResponse>>
     
     
+    @GET ("/service/application/payment/v1.0/epaylater/banner")
+    fun getEpaylaterBannerDetails()
+    : Deferred<Response<EpaylaterBannerResponse>>
+    
+    
     @GET ("/service/application/payment/v1.0/refund/transfer-mode")
     fun getActiveRefundTransferModes()
     : Deferred<Response<TransferModeResponse>>
@@ -890,6 +920,26 @@ interface PaymentApiList {
     @POST ("/service/application/payment/v1.0/refund/beneficiary/default")
     fun updateDefaultBeneficiary(@Body body: SetDefaultBeneficiaryRequest)
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+    
+    @GET ("/service/application/payment/v1.0/payment/credit-summary/")
+    fun CustomerCreditSummary(@Query("aggregator") aggregator: String?)
+    : Deferred<Response<CustomerCreditSummaryResponse>>
+    
+    
+    @GET ("/service/application/payment/v1.0/payment/redirect-to-aggregator/")
+    fun RedirectToAggregator(@Query("aggregator") aggregator: String?)
+    : Deferred<Response<RedirectToAggregatorResponse>>
+    
+    
+    @GET ("/service/application/payment/v1.0/check-credits/")
+    fun CheckCredit(@Query("aggregator") aggregator: String?)
+    : Deferred<Response<CheckCreditResponse>>
+    
+    
+    @POST ("/service/application/payment/v1.0/credit-onboard/")
+    fun CustomerOnboard(@Body body: CustomerOnboardingRequest)
+    : Deferred<Response<CustomerOnboardingResponse>>
     
 }
 
@@ -944,6 +994,45 @@ interface OrderApiList {
     @POST ("/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify")
     fun verifyOtpShipmentCustomer(@Path("order_id") orderId: String, @Path("shipment_id") shipmentId: String, @Body body: ReqBodyVerifyOTPShipment)
     : Deferred<Response<ResponseVerifyOTPShipment>>
+    
+}
+
+interface RewardsApiList {
+    
+    
+    @POST ("/service/application/rewards/v1.0/catalogue/offer/order/")
+    fun getPointsOnProduct(@Body body: CatalogueOrderRequest)
+    : Deferred<Response<CatalogueOrderResponse>>
+    
+    
+    @GET ("/service/application/rewards/v1.0/offers/{name}/")
+    fun getOfferByName(@Path("name") name: String)
+    : Deferred<Response<Offer>>
+    
+    
+    @POST ("/service/application/rewards/v1.0/user/offers/order-discount/")
+    fun getOrderDiscount(@Body body: OrderDiscountRequest)
+    : Deferred<Response<OrderDiscountResponse>>
+    
+    
+    @GET ("/service/application/rewards/v1.0/user/points/")
+    fun getUserPoints()
+    : Deferred<Response<PointsResponse>>
+    
+    
+    @GET ("/service/application/rewards/v1.0/user/points/history/")
+    fun getUserPointsHistory(@Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PointsHistoryResponse>>
+    
+    
+    @GET ("/service/application/rewards/v1.0/user/referral/")
+    fun getUserReferralDetails()
+    : Deferred<Response<ReferralDetailsResponse>>
+    
+    
+    @POST ("/service/application/rewards/v1.0/user/referral/redeem/")
+    fun redeemReferralCode(@Body body: RedeemReferralCodeRequest)
+    : Deferred<Response<RedeemReferralCodeResponse>>
     
 }
 

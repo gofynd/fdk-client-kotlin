@@ -1,5 +1,8 @@
 package com.sdk.platform
 
+import com.google.gson.annotations.SerializedName
+
+
 
 
 
@@ -14,91 +17,144 @@ package com.sdk.platform
     */
     enum class PageType(val value:String){
         
-        aboutUs("about-us"),
+        @SerializedName("about-us")
+        aboutUs("about-us"), 
         
-        addresses("addresses"),
+        @SerializedName("addresses")
+        addresses("addresses"), 
         
-        blog("blog"),
+        @SerializedName("blog")
+        blog("blog"), 
         
-        brands("brands"),
+        @SerializedName("brands")
+        brands("brands"), 
         
-        cards("cards"),
+        @SerializedName("cards")
+        cards("cards"), 
         
-        cart("cart"),
+        @SerializedName("cart")
+        cart("cart"), 
         
-        categories("categories"),
+        @SerializedName("categories")
+        categories("categories"), 
         
-        brand("brand"),
+        @SerializedName("brand")
+        brand("brand"), 
         
-        category("category"),
+        @SerializedName("category")
+        category("category"), 
         
-        collection("collection"),
+        @SerializedName("collection")
+        collection("collection"), 
         
-        collections("collections"),
+        @SerializedName("collections")
+        collections("collections"), 
         
-        contactUs("contact-us"),
+        @SerializedName("contact-us")
+        contactUs("contact-us"), 
         
-        externalLink("external"),
+        @SerializedName("external")
+        externalLink("external"), 
         
-        faq("faq"),
+        @SerializedName("faq")
+        faq("faq"), 
         
-        freshchat("freshchat"),
+        @SerializedName("freshchat")
+        freshchat("freshchat"), 
         
-        home("home"),
+        @SerializedName("home")
+        home("home"), 
         
-        notificationSettings("notification-settings"),
+        @SerializedName("notification-settings")
+        notificationSettings("notification-settings"), 
         
-        orders("orders"),
+        @SerializedName("orders")
+        orders("orders"), 
         
-        page("page"),
+        @SerializedName("page")
+        page("page"), 
         
-        policy("policy"),
+        @SerializedName("policy")
+        policy("policy"), 
         
-        product("product"),
+        @SerializedName("product")
+        product("product"), 
         
-        productReviews("product-reviews"),
+        @SerializedName("product-reviews")
+        productReviews("product-reviews"), 
         
-        addProductReview("add-product-review"),
+        @SerializedName("add-product-review")
+        addProductReview("add-product-review"), 
         
-        productRequest("product-request"),
+        @SerializedName("product-request")
+        productRequest("product-request"), 
         
-        products("products"),
+        @SerializedName("products")
+        products("products"), 
         
-        profile("profile"),
+        @SerializedName("profile")
+        profile("profile"), 
         
-        profileBasic("profile-basic"),
+        @SerializedName("profile-basic")
+        profileBasic("profile-basic"), 
         
-        profileCompany("profile-company"),
+        @SerializedName("profile-company")
+        profileCompany("profile-company"), 
         
-        profileEmails("profile-emails"),
+        @SerializedName("profile-emails")
+        profileEmails("profile-emails"), 
         
-        profilePhones("profile-phones"),
+        @SerializedName("profile-phones")
+        profilePhones("profile-phones"), 
         
-        rateUs("rate-us"),
+        @SerializedName("rate-us")
+        rateUs("rate-us"), 
         
-        referEarn("refer-earn"),
+        @SerializedName("refer-earn")
+        referEarn("refer-earn"), 
         
-        settings("settings"),
+        @SerializedName("settings")
+        settings("settings"), 
         
-        sharedCart("shared-cart"),
+        @SerializedName("shared-cart")
+        sharedCart("shared-cart"), 
         
-        tnc("tnc"),
+        @SerializedName("tnc")
+        tnc("tnc"), 
         
-        trackOrder("track-order"),
+        @SerializedName("track-order")
+        trackOrder("track-order"), 
         
-        wishlist("wishlist"),
+        @SerializedName("wishlist")
+        wishlist("wishlist"), 
         
-        sections("sections"),
+        @SerializedName("sections")
+        sections("sections"), 
         
-        form("form"),
+        @SerializedName("form")
+        form("form"), 
         
-        cartDelivery("cart-delivery"),
+        @SerializedName("cart-delivery")
+        cartDelivery("cart-delivery"), 
         
-        cartPayment("cart-payment"),
+        @SerializedName("cart-payment")
+        cartPayment("cart-payment"), 
         
-        cartReview("cart-review"),
+        @SerializedName("cart-review")
+        cartReview("cart-review");
         
+
+        companion object {
+            fun valueOfPageType(value : String): PageType? {
+                return PageType.values().find {
+                    it.value == value
+                }
+            }
+        }
     }
+
+
+
 
 
 
@@ -121,9 +177,22 @@ package com.sdk.platform
     */
     enum class SubscriberStatus(val value:String){
         
-        active("active"),
+        @SerializedName("active")
+        active("active"), 
         
-        inactive("inactive"),
+        @SerializedName("inactive")
+        inactive("inactive"), 
         
+        @SerializedName("blocked")
+        blocked("blocked");
+        
+
+        companion object {
+            fun valueOfSubscriberStatus(value : String): SubscriberStatus? {
+                return SubscriberStatus.values().find {
+                    it.value == value
+                }
+            }
+        }
     }
 

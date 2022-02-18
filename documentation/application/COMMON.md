@@ -20,12 +20,10 @@ Get countries, states, cities
 
 
 ```kotlin
-common.getLocations(locationType: locationType, id: id).safeAwait{ response,error->
-    
+common.getLocations(locationType: locationType, id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 

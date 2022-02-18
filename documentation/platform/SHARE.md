@@ -23,12 +23,10 @@ Create short link
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -122,12 +120,10 @@ Get short links
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -237,12 +233,10 @@ Get short link by hash
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -337,12 +331,10 @@ Update short link by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: body).safeAwait{ response,error->
-    
+client.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
-     
     error?.let{
       
     } 
@@ -513,13 +505,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String |  no  |  |
- | url | String |  no  |  |
+ | title | String |  no  | Give a name to the link. |
+ | url | String |  no  | The web address to shorten. |
  | hash | String? |  yes  |  |
  | active | Boolean? |  yes  |  |
  | expireAt | String? |  yes  |  |
  | enableTracking | Boolean? |  yes  |  |
- | personalized | Boolean? |  yes  | To create personalized short links |
+ | personalized | Boolean? |  yes  | To create personalized short links. |
  | campaign | [CampaignShortLink](#CampaignShortLink)? |  yes  |  |
  | redirects | [Redirects](#Redirects)? |  yes  |  |
  | attribution | [Attribution](#Attribution)? |  yes  |  |
@@ -560,6 +552,7 @@ Success
  | application | String? |  yes  |  |
  | userId | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | personalized | Boolean? |  yes  | To create personalized short links |
  | campaign | [CampaignShortLink](#CampaignShortLink)? |  yes  |  |
