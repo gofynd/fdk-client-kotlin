@@ -18,16 +18,6 @@ interface CatalogApiList {
     : Deferred<Response<ProductSizes>>
     
     
-    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/price/")
-    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("store_id") storeId: Int?)
-    : Deferred<Response<ProductSizePriceResponse>>
-    
-    
-    @GET ("/service/application/catalog/v1.0/products/{slug}/sizes/{size}/pincode/{pincode}/sellers/")
-    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Path("pincode") pincode: String, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductSizeSellersResponse>>
-    
-    
     @GET ("/service/application/catalog/v1.0/products/compare/")
     fun getProductComparisonBySlugs(@Query("slug") slug: ArrayList<String>)
     : Deferred<Response<ProductsComparisonResponse>>
@@ -123,13 +113,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
-    fun unfollowById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
+    @POST ("/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/")
+    fun followById(@Path("collection_type") collectionType: String, @Path("collection_id") collectionId: String)
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -158,13 +148,18 @@ interface CatalogApiList {
     : Deferred<Response<StoreDetails>>
     
     
+    @GET ("/service/application/catalog/v1.0/product-grouping/")
+    fun getProductBundlesBySlug(@Query("slug") slug: String?, @Query("id") id: String?)
+    : Deferred<Response<ProductBundle>>
+    
+    
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/")
-    fun getProductPriceBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
+    fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
     : Deferred<Response<ProductSizePriceResponseV2>>
     
     
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/")
-    fun getProductSellersBySlugV2(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponseV2>>
     
 }
@@ -294,6 +289,11 @@ interface CartApiList {
 }
 
 interface CommonApiList {
+    
+    
+    @GET ("/service/common/configuration/v1.0/application/search-application")
+    fun searchApplication(@Header("authorization") authorization: String?, @Query("query") query: String?)
+    : Deferred<Response<ApplicationResponse>>
     
     
     @GET ("/service/common/configuration/v1.0/location")
@@ -550,11 +550,6 @@ interface ContentApiList {
     @GET ("/service/application/content/v1.0/blogs/")
     fun getBlogs(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<BlogGetResponse>>
-    
-    
-    @GET ("/service/application/content/v1.0/data-loader")
-    fun getDataLoaders()
-    : Deferred<Response<DataLoaderSchema>>
     
     
     @GET ("/service/application/content/v1.0/faq")

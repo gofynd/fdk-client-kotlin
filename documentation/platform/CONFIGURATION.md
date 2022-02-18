@@ -1389,7 +1389,7 @@ Application inventory enabled companies
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppCompanies(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").configuration.getAppCompanies(uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1405,6 +1405,7 @@ client.application("<APPLICATION_ID>").configuration.getAppCompanies(pageNo: pag
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
+| uid | Int? | no | uid of companies to be fetched |   
 | pageNo | Int? | no | Current page no |   
 | pageSize | Int? | no | Current request items count |  
 
@@ -4985,6 +4986,7 @@ Success
  | price | [InventoryPrice](#InventoryPrice)? |  yes  |  |
  | discount | [InventoryDiscount](#InventoryDiscount)? |  yes  |  |
  | outOfStock | Boolean? |  yes  |  |
+ | onlyVerifiedProducts | Boolean? |  yes  |  |
  | franchiseEnabled | Boolean? |  yes  |  |
  | excludeCategory | ArrayList<Any>? |  yes  |  |
  | image | ArrayList<String>? |  yes  |  |

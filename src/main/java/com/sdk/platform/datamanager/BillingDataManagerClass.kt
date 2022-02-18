@@ -11,7 +11,7 @@ import com.sdk.platform.*
 
 
 
-class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
     private val billingApiList by lazy {
         generatebillingApiList()
@@ -24,6 +24,10 @@ class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
+        if(unauthorizedAction != null){
+            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
+            interceptorList.add(accessUnauthorizedInterceptor)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -33,6 +37,18 @@ class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {
             persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(BillingApiList::class.java) as? BillingApiList
+    }
+    
+    
+    suspend fun checkCouponValidity(plan: String, couponCode: String)
+    : Deferred<Response<CheckValidityResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.checkCouponValidity(
+        companyId = config.companyId, plan = plan, couponCode = couponCode )
+        } else {
+            null
+        } 
     }
     
     
@@ -170,6 +186,7 @@ class BillingDataManagerClass(val config: PlatformConfig) : BaseRepository() {
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

@@ -11,7 +11,7 @@ import com.sdk.platform.*
 
 
 
-class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {        
+class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
     private val contentApiList by lazy {
         generatecontentApiList()
@@ -24,6 +24,10 @@ class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
         interceptorList.add(requestSignerInterceptor)
+        if(unauthorizedAction != null){
+            val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
+            interceptorList.add(accessUnauthorizedInterceptor)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -34,12 +38,6 @@ class ContentDataManagerClass(val config: PlatformConfig) : BaseRepository() {
         )
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
-    
-    
-    
-    
-    
-    
     
     
     
@@ -327,66 +325,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<BlogSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getComponentById(companyId = config.companyId , applicationId = applicationId , slug = slug )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addDataLoader(body: DataLoaderSchema)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.addDataLoader(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getDataLoaders()
-    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getDataLoaders(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deleteDataLoader(dataLoaderId: String)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deleteDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun editDataLoader(dataLoaderId: String,body: DataLoaderSchema)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.editDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun selectDataLoader(dataLoaderId: String)
-    : Deferred<Response<DataLoaderResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.selectDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun resetDataLoader(service: String, operationId: String)
-    : Deferred<Response<DataLoaderResetResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.resetDataLoader(companyId = config.companyId , applicationId = applicationId , service = service, operationId = operationId )
         } else {
             null
         }
@@ -736,10 +674,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPageMeta(pageType: String?=null, cartPages: Boolean?=null)
+    suspend fun getPageMeta()
     : Deferred<Response<PageMetaSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId , pageType = pageType, cartPages = cartPages )
+                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

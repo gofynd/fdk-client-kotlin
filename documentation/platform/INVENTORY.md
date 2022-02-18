@@ -9,11 +9,16 @@
 * [getJobsByCompany](#getjobsbycompany)
 * [updateJob](#updatejob)
 * [createJob](#createjob)
+* [getJobSteps](#getjobsteps)
 * [getJobByCompanyAndIntegration](#getjobbycompanyandintegration)
+* [disable](#disable)
 * [getJobConfigDefaults](#getjobconfigdefaults)
 * [getJobByCode](#getjobbycode)
 * [getJobCodeMetrics](#getjobcodemetrics)
 * [getJobCodesByCompanyAndIntegration](#getjobcodesbycompanyandintegration)
+* [getJobConfigByIntegrationType](#getjobconfigbyintegrationtype)
+* [getJobCodesMetrics](#getjobcodesmetrics)
+* [saveJobCodesMetrics](#savejobcodesmetrics)
 
 
 
@@ -199,6 +204,66 @@ Job Config Created Successfully
 ---
 
 
+### getJobSteps
+Get Job Code Steps
+
+
+
+
+```kotlin
+client.inventory.getJobSteps(jobId: jobId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| jobId | Int | yes | Job Id |  
+
+
+
+REST Endpoint that returns Inventory Job Steps
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeListJobStepsDTO](#ResponseEnvelopeListJobStepsDTO)
+
+Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getJobByCompanyAndIntegration
 Get Job Configs By Company And Integration
 
@@ -236,6 +301,66 @@ REST Endpoint that returns all job configs by company And integration
 
 
 [ResponseEnvelopeListJobConfigDTO](#ResponseEnvelopeListJobConfigDTO)
+
+Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### disable
+Disable Job Config
+
+
+
+
+```kotlin
+client.inventory.disable(integrationId: integrationId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| integrationId | String | yes | IntegrationId |  
+
+
+
+REST Endpoint that disables Inventory Job Config
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeString](#ResponseEnvelopeString)
 
 Successful operation
 
@@ -383,7 +508,7 @@ Get Job Metrics
 
 
 ```kotlin
-client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSize, status: status, date: date).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -401,7 +526,9 @@ client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSiz
 | --------- | -----  | -------- | ----------- | 
 | code | String | yes | Code |   
 | pageNo | Int? | no | Page Number |   
-| pageSize | Int? | no | Page Size |  
+| pageSize | Int? | no | Page Size |   
+| status | String? | no |  |   
+| date | String? | no |  |  
 
 
 
@@ -477,6 +604,186 @@ REST Endpoint that returns all job codes by company And integration
 [ResponseEnvelopeListJobConfigListDTO](#ResponseEnvelopeListJobConfigListDTO)
 
 Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getJobConfigByIntegrationType
+Get Job Configs By Integration Type
+
+
+
+
+```kotlin
+client.inventory.getJobConfigByIntegrationType(integrationType: integrationType).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| integrationType | String | yes | Integration Type |  
+
+
+
+REST Endpoint that returns all job Configs by Integration Type
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeListJobConfigDTO](#ResponseEnvelopeListJobConfigDTO)
+
+Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getJobCodesMetrics
+Find all the JobCodes from Metrics Collection based on the field Values
+
+
+
+
+```kotlin
+client.inventory.getJobCodesMetrics(dailyJob: dailyJob, jobCode: jobCode).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| dailyJob | Boolean? | no | Daily Job Flag |   
+| jobCode | String? | no | Email Job Code |  
+
+
+
+Endpoint to return all JobCodes present in Metrics Collection
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeObject](#ResponseEnvelopeObject)
+
+Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### saveJobCodesMetrics
+Save JobCode Metrics
+
+
+
+
+```kotlin
+client.inventory.saveJobCodesMetrics(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EmailJobMetrics](#EmailJobMetrics) | yes | Request body |
+
+
+Endpoint to save JobCode Metrics
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
+
+JobCode Metrics entry Created Successfully
 
 
 
@@ -1201,6 +1508,45 @@ Successful operation
 
  
  
+ #### [JobStepsDTO](#JobStepsDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | stepName | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | stepExecutionTime | Int? |  yes  |  |
+ | startCount | Int? |  yes  |  |
+ | endCount | Int? |  yes  |  |
+ | deletedCount | Int? |  yes  |  |
+ | processedStartTime | String? |  yes  |  |
+ | processedAt | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeListJobStepsDTO](#ResponseEnvelopeListJobStepsDTO)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String? |  yes  |  |
+ | status | Int? |  yes  |  |
+ | error | String? |  yes  |  |
+ | exception | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | totalTimeTakenInMillis | Int? |  yes  |  |
+ | httpStatus | String? |  yes  |  |
+ | items | ArrayList<[JobStepsDTO](#JobStepsDTO)>? |  yes  |  |
+ | payload | ArrayList<[JobStepsDTO](#JobStepsDTO)>? |  yes  |  |
+ | traceId | String? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [ResponseEnvelopeListJobConfigDTO](#ResponseEnvelopeListJobConfigDTO)
 
  | Properties | Type | Nullable | Description |
@@ -1331,6 +1677,63 @@ Successful operation
  | httpStatus | String? |  yes  |  |
  | items | ArrayList<[JobConfigListDTO](#JobConfigListDTO)>? |  yes  |  |
  | payload | ArrayList<[JobConfigListDTO](#JobConfigListDTO)>? |  yes  |  |
+ | traceId | String? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailJobMetrics](#EmailJobMetrics)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | executed | Boolean? |  yes  |  |
+ | id | String? |  yes  |  |
+ | jobCode | String? |  yes  |  |
+ | dailyJob | Boolean? |  yes  |  |
+ | lastExecutedOn | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String? |  yes  |  |
+ | status | Int? |  yes  |  |
+ | error | String? |  yes  |  |
+ | exception | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | totalTimeTakenInMillis | Int? |  yes  |  |
+ | httpStatus | String? |  yes  |  |
+ | items | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
+ | payload | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
+ | traceId | String? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeObject](#ResponseEnvelopeObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String? |  yes  |  |
+ | status | Int? |  yes  |  |
+ | error | String? |  yes  |  |
+ | exception | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | totalTimeTakenInMillis | Int? |  yes  |  |
+ | httpStatus | String? |  yes  |  |
+ | items | HashMap<String,Any>? |  yes  |  |
+ | payload | HashMap<String,Any>? |  yes  |  |
  | traceId | String? |  yes  |  |
  | page | [Page](#Page)? |  yes  |  |
 
