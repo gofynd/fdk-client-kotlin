@@ -37,6 +37,11 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
     }
     
+    fun searchApplication(authorization: String?=null, query: String?=null): Deferred<Response<ApplicationResponse>>? {
+        return commonApiList?.searchApplication(authorization = authorization, query = query)}
+
+    
+    
     fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
         return commonApiList?.getLocations(locationType = locationType, id = id)}
 
