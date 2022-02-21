@@ -98,6 +98,13 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -325,6 +332,76 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<BlogSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getComponentById(companyId = config.companyId , applicationId = applicationId , slug = slug )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addDataLoader(body: DataLoaderSchema)
+    : Deferred<Response<DataLoaderResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.addDataLoader(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDataLoaders()
+    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getDataLoaders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteDataLoader(dataLoaderId: String)
+    : Deferred<Response<DataLoaderResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deleteDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun editDataLoader(dataLoaderId: String,body: DataLoaderSchema)
+    : Deferred<Response<DataLoaderResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.editDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDataLoadersByService(serviceName: String)
+    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getDataLoadersByService(companyId = config.companyId , applicationId = applicationId , serviceName = serviceName )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun selectDataLoader(dataLoaderId: String)
+    : Deferred<Response<DataLoaderResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.selectDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun resetDataLoader(service: String, operationId: String)
+    : Deferred<Response<DataLoaderResetResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.resetDataLoader(companyId = config.companyId , applicationId = applicationId , service = service, operationId = operationId )
         } else {
             null
         }
