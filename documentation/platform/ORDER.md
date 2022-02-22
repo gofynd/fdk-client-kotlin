@@ -10,7 +10,7 @@ Handles Platform websites OMS
 * [activityStatus](#activitystatus)
 * [storeProcessShipmentUpdate](#storeprocessshipmentupdate)
 * [checkRefund](#checkrefund)
-* [ShipmentBagsCanBreak](#shipmentbagscanbreak)
+* [shipmentBagsCanBreak](#shipmentbagscanbreak)
 * [getOrdersByCompanyId](#getordersbycompanyid)
 * [getOrderLanesCountByCompanyId](#getorderlanescountbycompanyid)
 * [getOrderDetails](#getorderdetails)
@@ -273,14 +273,14 @@ Success
 ---
 
 
-### ShipmentBagsCanBreak
+### shipmentBagsCanBreak
 Decides if Shipment bags can break
 
 
 
 
 ```kotlin
-client.order.ShipmentBagsCanBreak(body: body).safeAwait{ response, error->
+client.order.shipmentBagsCanBreak(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

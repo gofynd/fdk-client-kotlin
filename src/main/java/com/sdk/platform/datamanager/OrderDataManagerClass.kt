@@ -88,11 +88,11 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun ShipmentBagsCanBreak(body: CanBreakRequestBody)
+    suspend fun shipmentBagsCanBreak(body: CanBreakRequestBody)
     : Deferred<Response<CanBreakResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.ShipmentBagsCanBreak(
+            orderApiList?.shipmentBagsCanBreak(
         companyId = config.companyId, body = body)
         } else {
             null
