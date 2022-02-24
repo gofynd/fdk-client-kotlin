@@ -152,23 +152,23 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun CustomerCreditSummary(aggregator: String?=null): Deferred<Response<CustomerCreditSummaryResponse>>? {
-        return paymentApiList?.CustomerCreditSummary(aggregator = aggregator)}
+    fun customerCreditSummary(aggregator: String?=null): Deferred<Response<CustomerCreditSummaryResponse>>? {
+        return paymentApiList?.customerCreditSummary(aggregator = aggregator)}
 
     
     
-    fun RedirectToAggregator(aggregator: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
-        return paymentApiList?.RedirectToAggregator(aggregator = aggregator)}
+    fun redirectToAggregator(source: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
+        return paymentApiList?.redirectToAggregator(source = source)}
 
     
     
-    fun CheckCredit(aggregator: String?=null): Deferred<Response<CheckCreditResponse>>? {
-        return paymentApiList?.CheckCredit(aggregator = aggregator)}
+    fun checkCredit(aggregator: String?=null): Deferred<Response<CheckCreditResponse>>? {
+        return paymentApiList?.checkCredit(aggregator = aggregator)}
 
     
     
-    fun CustomerOnboard(body: CustomerOnboardingRequest): Deferred<Response<CustomerOnboardingResponse>>? {
-        return paymentApiList?.CustomerOnboard(body = body)}
+    fun customerOnboard(body: CustomerOnboardingRequest): Deferred<Response<CustomerOnboardingResponse>>? {
+        return paymentApiList?.customerOnboard(body = body)}
 
     
     
