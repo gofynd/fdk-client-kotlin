@@ -93,21 +93,6 @@ interface CatalogApiList {
     : Deferred<Response<AutoCompleteResponse>>
     
     
-    @GET ("/service/application/catalog/v1.0/collections/")
-    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
-    : Deferred<Response<GetCollectionListingResponse>>
-    
-    
-    @GET ("/service/application/catalog/v1.0/collections/{slug}/items/")
-    fun getCollectionItemsBySlug(@Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductListingResponse>>
-    
-    
-    @GET ("/service/application/catalog/v1.0/collections/{slug}/")
-    fun getCollectionDetailBySlug(@Path("slug") slug: String)
-    : Deferred<Response<CollectionDetailResponse>>
-    
-    
     @GET ("/service/application/catalog/v1.0/follow/{collection_type}/")
     fun getFollowedListing(@Path("collection_type") collectionType: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
@@ -148,11 +133,6 @@ interface CatalogApiList {
     : Deferred<Response<StoreDetails>>
     
     
-    @GET ("/service/application/catalog/v1.0/product-grouping/")
-    fun getProductBundlesBySlug(@Query("slug") slug: String?, @Query("id") id: String?)
-    : Deferred<Response<ProductBundle>>
-    
-    
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/")
     fun getProductPriceBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
     : Deferred<Response<ProductSizePriceResponse>>
@@ -161,6 +141,26 @@ interface CatalogApiList {
     @GET ("/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/")
     fun getProductSellersBySlug(@Path("slug") slug: String, @Path("size") size: String, @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponse>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/collections/")
+    fun getCollections(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
+    : Deferred<Response<GetCollectionListingResponse>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/collections/{slug}/items/")
+    fun getCollectionItemsBySlug(@Path("slug") slug: String, @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductListingResponse>>
+    
+    
+    @GET ("/service/application/catalog/v2.0/collections/{slug}/")
+    fun getCollectionDetailBySlug(@Path("slug") slug: String)
+    : Deferred<Response<CollectionDetailResponse>>
+    
+    
+    @GET ("/service/application/catalog/v1.0/product-grouping/")
+    fun getProductBundlesBySlug(@Query("slug") slug: String?, @Query("id") id: String?)
+    : Deferred<Response<ProductBundle>>
     
 }
 
@@ -791,6 +791,11 @@ interface ConfigurationApiList {
     @DELETE ("/service/application/configuration/v1.0/ordering-store/select")
     fun removeOrderingStoreCookie()
     : Deferred<Response<SuccessMessageResponse>>
+    
+    
+    @GET ("/service/application/configuration/v1.0/staff/list")
+    fun getAppStaffList(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
+    : Deferred<Response<AppStaffListResponse>>
     
     
     @GET ("/service/application/configuration/v1.0/staff")

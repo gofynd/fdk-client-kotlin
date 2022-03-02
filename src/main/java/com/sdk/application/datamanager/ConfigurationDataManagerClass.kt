@@ -155,6 +155,11 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
+    fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffListResponse>>? {
+        return configurationApiList?.getAppStaffList(pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user)}
+
+    
+    
     fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffResponse>>? {
         return configurationApiList?.getAppStaffs(orderIncent = orderIncent, orderingStore = orderingStore, user = user)}
 

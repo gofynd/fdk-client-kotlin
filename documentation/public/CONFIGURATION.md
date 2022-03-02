@@ -2,9 +2,9 @@
 
 
 
-##### [Back to Application docs](./README.md)
+##### [Back to Public docs](./README.md)
 
-## Common Methods
+## Configuration Methods
 Application configuration apis
 * [searchApplication](#searchapplication)
 * [getLocations](#getlocations)
@@ -21,7 +21,7 @@ Search Application
 
 
 ```kotlin
-common.searchApplication(authorization: authorization, query: query).safeAwait{ response, error->
+configuration.searchApplication(authorization: authorization, query: query).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -143,7 +143,7 @@ Get countries, states, cities
 
 
 ```kotlin
-common.getLocations(locationType: locationType, id: id).safeAwait{ response, error->
+configuration.getLocations(locationType: locationType, id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
