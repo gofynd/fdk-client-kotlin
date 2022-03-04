@@ -699,8 +699,8 @@ interface FileStorageApiList {
     : Deferred<Response<CompleteResponse>>
     
     
-    @POST ("/service/application/assets/v1.0/company/{company_id}/sign-urls/")
-    fun signUrls(@Path("company_id") companyId: Int, @Body body: SignUrlRequest)
+    @POST ("/service/application/assets/v1.0/sign-urls/")
+    fun signUrls(@Body body: SignUrlRequest)
     : Deferred<Response<SignUrlResponse>>
     
 }

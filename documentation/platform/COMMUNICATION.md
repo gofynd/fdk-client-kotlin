@@ -27,6 +27,8 @@ Manages email, sms, push notifications sent to users
 * [getEmailTemplateById](#getemailtemplatebyid)
 * [updateEmailTemplateById](#updateemailtemplatebyid)
 * [deleteEmailTemplateById](#deleteemailtemplatebyid)
+* [sendCommunicationSynchronously](#sendcommunicationsynchronously)
+* [sendCommunicationAsynchronously](#sendcommunicationasynchronously)
 * [getEventSubscriptions](#geteventsubscriptions)
 * [getJobs](#getjobs)
 * [triggerCampaignJob](#triggercampaignjob)
@@ -2065,6 +2067,144 @@ Success
   "value": {
     "success": true,
     "message": "Deleted successfully"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### sendCommunicationSynchronously
+Send email or sms synchronously
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").communication.sendCommunicationSynchronously(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EngineRequest](#EngineRequest) | yes | Request body |
+
+
+Send email or sms synchronously
+
+*Returned Response:*
+
+
+
+
+[EngineResponse](#EngineResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### sendCommunicationAsynchronously
+Send email or sms asynchronously
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").communication.sendCommunicationAsynchronously(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EngineRequest](#EngineRequest) | yes | Request body |
+
+
+Send email or sms asynchronously
+
+*Returned Response:*
+
+
+
+
+[EngineResponse](#EngineResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
   }
 }
 ```
@@ -4645,6 +4785,127 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | items | ArrayList<[SystemEmailTemplate](#SystemEmailTemplate)>? |  yes  |  |
  | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PayloadEmailTemplateStructure](#PayloadEmailTemplateStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PayloadEmailProviderStructure](#PayloadEmailProviderStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PayloadEmailStructure](#PayloadEmailStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template | [PayloadEmailTemplateStructure](#PayloadEmailTemplateStructure)? |  yes  |  |
+ | provider | [PayloadEmailProviderStructure](#PayloadEmailProviderStructure)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PayloadSmsTemplateStructure](#PayloadSmsTemplateStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PayloadSmsProviderStructure](#PayloadSmsProviderStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PayloadSmsStructure](#PayloadSmsStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | template | [PayloadSmsTemplateStructure](#PayloadSmsTemplateStructure)? |  yes  |  |
+ | provider | [PayloadSmsProviderStructure](#PayloadSmsProviderStructure)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PayloadStructure](#PayloadStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | email | [PayloadEmailStructure](#PayloadEmailStructure)? |  yes  |  |
+ | sms | [PayloadSmsStructure](#PayloadSmsStructure)? |  yes  |  |
+ | application | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [MetaStructure](#MetaStructure)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | jobType | String? |  yes  |  |
+ | action | String? |  yes  |  |
+ | trace | String? |  yes  |  |
+ | timestamp | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EngineRequest](#EngineRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | payload | [PayloadStructure](#PayloadStructure)? |  yes  |  |
+ | meta | [MetaStructure](#MetaStructure)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EngineResponse](#EngineResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
 
 ---
 

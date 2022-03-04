@@ -47,8 +47,8 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
 
     
     
-    fun signUrls(companyId: Int, body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
-        return fileStorageApiList?.signUrls(companyId = companyId, body = body)}
+    fun signUrls(body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
+        return fileStorageApiList?.signUrls(body = body)}
 
     
     
