@@ -32,15 +32,9 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
-    val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
-    
     val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
     
     val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
-    
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
-    
-    val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
     
     val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
     
@@ -82,15 +76,9 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     
-    val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
-    
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
-    
-    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
-    
-    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
