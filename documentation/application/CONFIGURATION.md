@@ -20,6 +20,7 @@ Application configuration apis
 * [getLanguages](#getlanguages)
 * [getOrderingStoreCookie](#getorderingstorecookie)
 * [removeOrderingStoreCookie](#removeorderingstorecookie)
+* [getAppStaffList](#getappstafflist)
 * [getAppStaffs](#getappstaffs)
 
 
@@ -1364,6 +1365,70 @@ Success
 ---
 
 
+### getAppStaffList
+Get a list of staff.
+
+
+
+
+```kotlin
+configuration.getAppStaffList(pageNo: pageNo, pageSize: pageSize, orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no |  |   
+| pageSize | Int? | no |  |   
+| orderIncent | Boolean? | no | This is a boolean value. Select `true` to retrieve the staff members eligible for getting incentives on orders. |   
+| orderingStore | Int? | no | ID of the ordering store. Helps in retrieving staff members working at a particular ordering store. |   
+| user | String? | no | Mongo ID of the staff. Helps in retrieving the details of a particular staff member. |  
+
+
+
+Use this API to get a list of staff including the names, employee code, incentive status, assigned ordering stores, and title of each staff added to the application.
+
+*Returned Response:*
+
+
+
+
+[AppStaffListResponse](#AppStaffListResponse)
+
+Success. Check the example shown below or refer `AppStaffListResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getAppStaffs
 Get a list of staff.
 
@@ -1588,6 +1653,18 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  
  
+ #### [AppStaffListResponse](#AppStaffListResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | page | [Page](#Page)? |  yes  |  |
+ | items | ArrayList<[AppStaff](#AppStaff)>? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [UpdateDialog](#UpdateDialog)
 
  | Properties | Type | Nullable | Description |
@@ -1616,6 +1693,23 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | uid | Int |  no  | store uid |
+
+---
+
+
+ 
+ 
+ #### [Page](#Page)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | size | Int? |  yes  |  |
+ | current | Int? |  yes  |  |
+ | hasNext | Boolean? |  yes  |  |
+ | itemTotal | Int? |  yes  |  |
+ | nextId | String? |  yes  |  |
+ | hasPrevious | Boolean? |  yes  |  |
 
 ---
 
@@ -2489,23 +2583,6 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | verified | Boolean? |  yes  |  |
  | countryCode | Int? |  yes  |  |
  | phone | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Page](#Page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | size | Int? |  yes  |  |
- | current | Int? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | nextId | String? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
 
 ---
 

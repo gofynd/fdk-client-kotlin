@@ -15,6 +15,23 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         generatelogisticApiList()
     }
 
+    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
+
+    init{
+            
+                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0"?.substring(1)
+            
+                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
+            
+    }
+
+    public fun update(updatedUrlMap : HashMap<String,String>){
+            for((key,value) in updatedUrlMap){
+                _relativeUrls[key] = value
+            }
+    }
+    
+
     private fun generatelogisticApiList(): LogisticApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -38,12 +55,18 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
     }
     
     fun getTatProduct(body: GetTatProductReqBody): Deferred<Response<GetTatProductResponse>>? {
-        return logisticApiList?.getTatProduct(body = body)}
+        var fullUrl : String? = _relativeUrls["getTatProduct"] 
+        
+        return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
 
     
     
     fun getPincodeCity(pincode: String): Deferred<Response<GetPincodeCityResponse>>? {
-        return logisticApiList?.getPincodeCity(pincode = pincode)}
+        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
+        
+        fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
+        
+        return logisticApiList?.getPincodeCity(fullUrl   )}
 
     
     
