@@ -15,6 +15,57 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         generatecontentApiList()
     }
 
+    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
+
+    init{
+            
+                    _relativeUrls["getAnnouncements"] = "/service/application/content/v1.0/announcements"?.substring(1)
+            
+                    _relativeUrls["getBlog"] = "/service/application/content/v1.0/blogs/{slug}"?.substring(1)
+            
+                    _relativeUrls["getBlogs"] = "/service/application/content/v1.0/blogs/"?.substring(1)
+            
+                    _relativeUrls["getDataLoaders"] = "/service/application/content/v1.0/data-loader"?.substring(1)
+            
+                    _relativeUrls["getFaqs"] = "/service/application/content/v1.0/faq"?.substring(1)
+            
+                    _relativeUrls["getFaqCategories"] = "/service/application/content/v1.0/faq/categories"?.substring(1)
+            
+                    _relativeUrls["getFaqBySlug"] = "/service/application/content/v1.0/faq/{slug}"?.substring(1)
+            
+                    _relativeUrls["getFaqCategoryBySlug"] = "/service/application/content/v1.0/faq/category/{slug}"?.substring(1)
+            
+                    _relativeUrls["getFaqsByCategorySlug"] = "/service/application/content/v1.0/faq/category/{slug}/faqs"?.substring(1)
+            
+                    _relativeUrls["getLandingPage"] = "/service/application/content/v1.0/landing-page"?.substring(1)
+            
+                    _relativeUrls["getLegalInformation"] = "/service/application/content/v1.0/legal"?.substring(1)
+            
+                    _relativeUrls["getNavigations"] = "/service/application/content/v1.0/navigations/"?.substring(1)
+            
+                    _relativeUrls["getSEOConfiguration"] = "/service/application/content/v1.0/seo"?.substring(1)
+            
+                    _relativeUrls["getSlideshows"] = "/service/application/content/v1.0/slideshow/"?.substring(1)
+            
+                    _relativeUrls["getSlideshow"] = "/service/application/content/v1.0/slideshow/{slug}"?.substring(1)
+            
+                    _relativeUrls["getSupportInformation"] = "/service/application/content/v1.0/support"?.substring(1)
+            
+                    _relativeUrls["getTags"] = "/service/application/content/v1.0/tags"?.substring(1)
+            
+                    _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}"?.substring(1)
+            
+                    _relativeUrls["getPages"] = "/service/application/content/v2.0/pages/"?.substring(1)
+            
+    }
+
+    public fun update(updatedUrlMap : HashMap<String,String>){
+            for((key,value) in updatedUrlMap){
+                _relativeUrls[key] = value
+            }
+    }
+    
+
     private fun generatecontentApiList(): ContentApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -38,17 +89,25 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
     
     fun getAnnouncements(): Deferred<Response<AnnouncementsResponseSchema>>? {
-        return contentApiList?.getAnnouncements()}
+        var fullUrl : String? = _relativeUrls["getAnnouncements"] 
+        
+        return contentApiList?.getAnnouncements(fullUrl  )}
 
     
     
     fun getBlog(slug: String, rootId: String?=null): Deferred<Response<BlogSchema>>? {
-        return contentApiList?.getBlog(slug = slug, rootId = rootId)}
+        var fullUrl : String? = _relativeUrls["getBlog"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getBlog(fullUrl     ,  rootId = rootId)}
 
     
     
     fun getBlogs(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<BlogGetResponse>>? {
-        return contentApiList?.getBlogs(pageNo = pageNo, pageSize = pageSize)}
+        var fullUrl : String? = _relativeUrls["getBlogs"] 
+        
+        return contentApiList?.getBlogs(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
 
     
     
@@ -77,7 +136,9 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                contentApiList?.getBlogs(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                var fullUrl : String? = _relativeUrls["getBlogs"] 
+                
+                contentApiList?.getBlogs(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -96,47 +157,71 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
     
     fun getDataLoaders(): Deferred<Response<DataLoaderSchema>>? {
-        return contentApiList?.getDataLoaders()}
+        var fullUrl : String? = _relativeUrls["getDataLoaders"] 
+        
+        return contentApiList?.getDataLoaders(fullUrl  )}
 
     
     
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
-        return contentApiList?.getFaqs()}
+        var fullUrl : String? = _relativeUrls["getFaqs"] 
+        
+        return contentApiList?.getFaqs(fullUrl  )}
 
     
     
     fun getFaqCategories(): Deferred<Response<GetFaqCategoriesSchema>>? {
-        return contentApiList?.getFaqCategories()}
+        var fullUrl : String? = _relativeUrls["getFaqCategories"] 
+        
+        return contentApiList?.getFaqCategories(fullUrl  )}
 
     
     
     fun getFaqBySlug(slug: String): Deferred<Response<FaqSchema>>? {
-        return contentApiList?.getFaqBySlug(slug = slug)}
+        var fullUrl : String? = _relativeUrls["getFaqBySlug"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getFaqBySlug(fullUrl   )}
 
     
     
     fun getFaqCategoryBySlug(slug: String): Deferred<Response<GetFaqCategoryBySlugSchema>>? {
-        return contentApiList?.getFaqCategoryBySlug(slug = slug)}
+        var fullUrl : String? = _relativeUrls["getFaqCategoryBySlug"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getFaqCategoryBySlug(fullUrl   )}
 
     
     
     fun getFaqsByCategorySlug(slug: String): Deferred<Response<GetFaqSchema>>? {
-        return contentApiList?.getFaqsByCategorySlug(slug = slug)}
+        var fullUrl : String? = _relativeUrls["getFaqsByCategorySlug"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getFaqsByCategorySlug(fullUrl   )}
 
     
     
     fun getLandingPage(): Deferred<Response<LandingPageSchema>>? {
-        return contentApiList?.getLandingPage()}
+        var fullUrl : String? = _relativeUrls["getLandingPage"] 
+        
+        return contentApiList?.getLandingPage(fullUrl  )}
 
     
     
     fun getLegalInformation(): Deferred<Response<ApplicationLegal>>? {
-        return contentApiList?.getLegalInformation()}
+        var fullUrl : String? = _relativeUrls["getLegalInformation"] 
+        
+        return contentApiList?.getLegalInformation(fullUrl  )}
 
     
     
     fun getNavigations(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<NavigationGetResponse>>? {
-        return contentApiList?.getNavigations(pageNo = pageNo, pageSize = pageSize)}
+        var fullUrl : String? = _relativeUrls["getNavigations"] 
+        
+        return contentApiList?.getNavigations(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
 
     
     
@@ -165,7 +250,9 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                contentApiList?.getNavigations(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                var fullUrl : String? = _relativeUrls["getNavigations"] 
+                
+                contentApiList?.getNavigations(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -184,12 +271,16 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
     
     fun getSEOConfiguration(): Deferred<Response<SeoComponent>>? {
-        return contentApiList?.getSEOConfiguration()}
+        var fullUrl : String? = _relativeUrls["getSEOConfiguration"] 
+        
+        return contentApiList?.getSEOConfiguration(fullUrl  )}
 
     
     
     fun getSlideshows(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<SlideshowGetResponse>>? {
-        return contentApiList?.getSlideshows(pageNo = pageNo, pageSize = pageSize)}
+        var fullUrl : String? = _relativeUrls["getSlideshows"] 
+        
+        return contentApiList?.getSlideshows(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
 
     
     
@@ -218,7 +309,9 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                contentApiList?.getSlideshows(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                var fullUrl : String? = _relativeUrls["getSlideshows"] 
+                
+                contentApiList?.getSlideshows(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -237,27 +330,41 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
     
     fun getSlideshow(slug: String): Deferred<Response<SlideshowSchema>>? {
-        return contentApiList?.getSlideshow(slug = slug)}
+        var fullUrl : String? = _relativeUrls["getSlideshow"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getSlideshow(fullUrl   )}
 
     
     
     fun getSupportInformation(): Deferred<Response<Support>>? {
-        return contentApiList?.getSupportInformation()}
+        var fullUrl : String? = _relativeUrls["getSupportInformation"] 
+        
+        return contentApiList?.getSupportInformation(fullUrl  )}
 
     
     
     fun getTags(): Deferred<Response<TagsSchema>>? {
-        return contentApiList?.getTags()}
+        var fullUrl : String? = _relativeUrls["getTags"] 
+        
+        return contentApiList?.getTags(fullUrl  )}
 
     
     
     fun getPage(slug: String, rootId: String?=null): Deferred<Response<PageSchema>>? {
-        return contentApiList?.getPage(slug = slug, rootId = rootId)}
+        var fullUrl : String? = _relativeUrls["getPage"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return contentApiList?.getPage(fullUrl     ,  rootId = rootId)}
 
     
     
     fun getPages(pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<PageGetResponse>>? {
-        return contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)}
+        var fullUrl : String? = _relativeUrls["getPages"] 
+        
+        return contentApiList?.getPages(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize)}
 
     
     
@@ -286,7 +393,9 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                contentApiList?.getPages(pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                var fullUrl : String? = _relativeUrls["getPages"] 
+                
+                contentApiList?.getPages(fullUrl , pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
