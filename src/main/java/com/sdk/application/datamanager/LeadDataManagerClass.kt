@@ -42,8 +42,8 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun createHistory(ticketId: String, body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
-        return leadApiList?.createHistory(ticketId = ticketId, body = body)}
+    fun createHistory(id: String, body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
+        return leadApiList?.createHistory(id = id, body = body)}
 
     
     

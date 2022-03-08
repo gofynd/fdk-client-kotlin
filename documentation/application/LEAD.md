@@ -285,7 +285,7 @@ Create history for specific Ticket
 
 
 ```kotlin
-lead.createHistory(ticketId: ticketId, body: body).safeAwait{ response, error->
+lead.createHistory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -301,7 +301,7 @@ lead.createHistory(ticketId: ticketId, body: body).safeAwait{ response, error->
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| ticketId | String | yes | Ticket ID for which history is created |  
+| id | String | yes | Ticket ID for which history is created |  
 | body | [TicketHistoryPayload](#TicketHistoryPayload) | yes | Request body |
 
 
@@ -330,7 +330,7 @@ Success
 {
   "value": {
     "_id": "601a9d52c26687d086c499ef",
-    "ticket_id": "6012f38557751ee8fc162cf7",
+    "ticket_id": "41",
     "type": "comment",
     "value": {
       "text": "d",
@@ -1160,9 +1160,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[Ticket](#Ticket)>? |  yes  |  |
- | filters | [Filter](#Filter)? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
+ | items | ArrayList<[Ticket](#Ticket)>? |  yes  | List of tickets |
+ | filters | [Filter](#Filter)? |  yes  | All the filters available for tickets |
+ | page | [Page](#Page)? |  yes  | Describes the pagination state |
 
 ---
 
@@ -1190,11 +1190,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | docs | ArrayList<[TicketHistory](#TicketHistory)>? |  yes  |  |
- | limit | Int? |  yes  |  |
- | page | Int? |  yes  |  |
- | pages | Int? |  yes  |  |
- | total | Int? |  yes  |  |
+ | items | ArrayList<[TicketHistory](#TicketHistory)>? |  yes  | List of ticket history |
+ | page | [Page](#Page)? |  yes  | Describes the pagination state |
 
 ---
 
@@ -1205,11 +1202,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | docs | ArrayList<[CustomForm](#CustomForm)>? |  yes  |  |
- | limit | Int? |  yes  |  |
- | page | Int? |  yes  |  |
- | pages | Int? |  yes  |  |
- | total | Int? |  yes  |  |
+ | items | ArrayList<[CustomForm](#CustomForm)>? |  yes  | List of forms |
+ | page | [Page](#Page)? |  yes  | Describes the pagination state |
 
 ---
 
@@ -1220,14 +1214,15 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | slug | String |  no  |  |
- | title | String |  no  |  |
- | inputs | ArrayList<HashMap<String,Any>> |  no  |  |
- | description | String? |  yes  |  |
- | headerImage | String? |  yes  |  |
- | shouldNotify | Boolean? |  yes  |  |
- | successMessage | String? |  yes  |  |
- | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  |  |
+ | slug | String |  no  | Slug for the form |
+ | title | String |  no  | Title for the form |
+ | inputs | ArrayList<HashMap<String,Any>> |  no  | List of all the form components |
+ | description | String? |  yes  | Description of the form |
+ | headerImage | String? |  yes  | Header image that is to be shown for the form |
+ | priority | [PriorityEnum](#PriorityEnum) |  no  | Describes the priority of the tickets created by the form |
+ | shouldNotify | Boolean? |  yes  | Indicates if staff should be notified when a response is received |
+ | successMessage | String? |  yes  | Success message that will be shown on submission |
+ | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  | Describes how polling will be done for the tickets createds |
 
 ---
 
@@ -1238,14 +1233,15 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String |  no  |  |
- | inputs | ArrayList<HashMap<String,Any>> |  no  |  |
- | description | String? |  yes  |  |
- | headerImage | String? |  yes  |  |
- | shouldNotify | Boolean? |  yes  |  |
- | loginRequired | Boolean? |  yes  |  |
- | successMessage | String? |  yes  |  |
- | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  |  |
+ | title | String |  no  | Title for the form |
+ | inputs | ArrayList<HashMap<String,Any>> |  no  | List of all the form components |
+ | description | String? |  yes  | Description of the form |
+ | priority | [PriorityEnum](#PriorityEnum) |  no  | Describes the priority of the tickets created by the form |
+ | headerImage | String? |  yes  | Header image that is to be shown for the form |
+ | shouldNotify | Boolean? |  yes  | Indicates if staff should be notified when a response is received |
+ | loginRequired | Boolean? |  yes  | Denotes if login is required to make a form response submission |
+ | successMessage | String? |  yes  | Success message that will be shown on submission |
+ | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  | Describes how polling will be done for the tickets createds |
 
 ---
 
@@ -1256,13 +1252,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | content | [TicketContent](#TicketContent)? |  yes  |  |
- | category | String? |  yes  |  |
- | source | String? |  yes  |  |
- | status | String? |  yes  |  |
- | priority | String? |  yes  |  |
- | assignedTo | [AgentChangePayload](#AgentChangePayload)? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
+ | content | [TicketContent](#TicketContent)? |  yes  | Ticket conetent details |
+ | category | String? |  yes  | Category assigned to the ticket |
+ | subCategory | String? |  yes  | Sub-category assigned to the ticket |
+ | source | String? |  yes  | Denotes if the ticket was created at company or application level |
+ | status | String? |  yes  | Denotes in what state is the ticket |
+ | priority | [PriorityEnum](#PriorityEnum)? |  yes  | Denotes the priority of ticket |
+ | assignedTo | [AgentChangePayload](#AgentChangePayload)? |  yes  | Details of support staff to whom ticket is assigned |
+ | tags | ArrayList<String>? |  yes  | Tags relevant to ticket |
 
 ---
 
@@ -1273,7 +1270,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | agentId | String |  no  |  |
+ | agentId | String |  no  | Agent's unique ID |
 
 ---
 
@@ -1284,7 +1281,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uniqueName | String |  no  |  |
+ | uniqueName | String |  no  | Video Room's unique name |
 
 ---
 
@@ -1295,7 +1292,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  |  |
+ | success | Boolean |  no  | Denotes if operation was successfully |
 
 ---
 
@@ -1306,8 +1303,20 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uniqueName | String |  no  |  |
- | notify | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | uniqueName | String |  no  | Ticket id |
+ | notify | ArrayList<[NotifyUser](#NotifyUser)>? |  yes  | List of people to be notified |
+
+---
+
+
+ 
+ 
+ #### [NotifyUser](#NotifyUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | countryCode | String |  no  | Country code |
+ | phoneNumber | String |  no  | Phone number |
 
 ---
 
@@ -1318,10 +1327,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | priorities | ArrayList<[Priority](#Priority)> |  no  |  |
- | categories | ArrayList<[TicketCategory](#TicketCategory)>? |  yes  |  |
- | statuses | ArrayList<[Status](#Status)> |  no  |  |
- | assignees | ArrayList<HashMap<String,Any>> |  no  |  |
+ | priorities | ArrayList<[Priority](#Priority)> |  no  | List of possible priorities for tickets |
+ | categories | ArrayList<[TicketCategory](#TicketCategory)>? |  yes  | List of possible categories for tickets |
+ | statuses | ArrayList<[Status](#Status)> |  no  | List of possible statuses for tickets |
+ | assignees | ArrayList<HashMap<String,Any>> |  no  | List of support staff availble for tickets assignment |
 
 ---
 
@@ -1332,8 +1341,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | HashMap<String,Any> |  no  |  |
- | type | String |  no  |  |
+ | value | HashMap<String,Any> |  no  | Details of history event |
+ | type | [HistoryTypeEnum](#HistoryTypeEnum) |  no  | Type of history event |
 
 ---
 
@@ -1344,7 +1353,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | response | ArrayList<[KeyValue](#KeyValue)> |  no  |  |
+ | response | ArrayList<[KeyValue](#KeyValue)> |  no  | Form response |
+ | attachments | ArrayList<[TicketAsset](#TicketAsset)>? |  yes  | List of all attachments related to the form |
 
 ---
 
@@ -1355,8 +1365,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | value | String |  no  |  |
+ | key | String |  no  | Parameter for evaluating |
+ | value | HashMap<String,Any> |  no  | Response for the parameter |
 
 ---
 
@@ -1367,7 +1377,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | accessToken | String |  no  |  |
+ | accessToken | String |  no  | Access token to be used for video room |
 
 ---
 
@@ -1378,7 +1388,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | participants | ArrayList<[Participant](#Participant)> |  no  |  |
+ | participants | ArrayList<[Participant](#Participant)> |  no  | List of participants of the video room |
 
 ---
 
@@ -1389,9 +1399,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | user | [UserSchema](#UserSchema)? |  yes  |  |
- | identity | String? |  yes  |  |
- | status | String? |  yes  |  |
+ | user | [UserSchema](#UserSchema)? |  yes  | Details of participant |
+ | identity | String? |  yes  | Unique identifier of participant |
+ | status | String? |  yes  | Status of participant |
 
 ---
 
@@ -1402,21 +1412,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | firstName | String? |  yes  |  |
- | lastName | String? |  yes  |  |
- | phoneNumbers | ArrayList<[PhoneNumber](#PhoneNumber)>? |  yes  |  |
- | emails | ArrayList<[Email](#Email)>? |  yes  |  |
- | gender | String? |  yes  |  |
- | active | Boolean? |  yes  |  |
- | profilePicUrl | String? |  yes  |  |
- | username | String? |  yes  |  |
- | accountType | String? |  yes  |  |
- | uid | String? |  yes  |  |
- | debug | [Debug](#Debug)? |  yes  |  |
- | hasOldPasswordHash | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
+ | firstName | String? |  yes  | First name |
+ | lastName | String? |  yes  | Last name |
+ | phoneNumbers | ArrayList<[PhoneNumber](#PhoneNumber)>? |  yes  | List of phone numbers |
+ | emails | ArrayList<[Email](#Email)>? |  yes  | List of email addresses |
+ | gender | String? |  yes  | Gender of user |
+ | active | Boolean? |  yes  | Is account active |
+ | profilePicUrl | String? |  yes  | URL for profile pic |
+ | username | String? |  yes  | username of user |
+ | accountType | String? |  yes  | Type of account |
+ | uid | String? |  yes  | Unique identifier of user |
+ | debug | [Debug](#Debug)? |  yes  | Used for debugging |
+ | hasOldPasswordHash | Boolean? |  yes  | Denotes if user has old password hash |
+ | id | String? |  yes  | Unique identifier of user |
+ | createdAt | String? |  yes  | Time of user creation |
+ | updatedAt | String? |  yes  | Last time of user details update |
 
 ---
 
@@ -1427,11 +1437,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | active | Boolean? |  yes  |  |
- | primary | Boolean? |  yes  |  |
- | verified | Boolean? |  yes  |  |
- | phone | String? |  yes  |  |
- | countryCode | Int? |  yes  |  |
+ | active | Boolean? |  yes  | Denotes if the phone number is active |
+ | primary | Boolean? |  yes  | Denotes it's the primary phone number for the account |
+ | verified | Boolean? |  yes  | Denotes it's a verified phone number |
+ | phone | String? |  yes  | Phone number |
+ | countryCode | Int? |  yes  | Country code |
 
 ---
 
@@ -1442,10 +1452,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | primary | Boolean? |  yes  |  |
- | verified | Boolean? |  yes  |  |
- | email | String? |  yes  |  |
- | active | Boolean? |  yes  |  |
+ | primary | Boolean? |  yes  | Denotes it's the primary email for the account |
+ | verified | Boolean? |  yes  | Denotes it's a verified email |
+ | email | String? |  yes  | Email Address |
+ | active | Boolean? |  yes  | Denotes if the email is active |
 
 ---
 
@@ -1456,8 +1466,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | source | String? |  yes  |  |
- | platform | String? |  yes  |  |
+ | source | String? |  yes  | Source of user |
+ | platform | String? |  yes  | Platform of user |
 
 ---
 
@@ -1468,7 +1478,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ticket | [Ticket](#Ticket) |  no  |  |
+ | ticket | [Ticket](#Ticket) |  no  | Ticket created on form submission |
 
 ---
 
@@ -1479,8 +1489,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applicationId | String? |  yes  |  |
- | companyId | String |  no  |  |
+ | applicationId | String? |  yes  | Application ID related to the ticket |
+ | companyId | String |  no  | Company ID related to the ticket |
 
 ---
 
@@ -1491,7 +1501,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userAgent | String |  no  |  |
+ | userAgent | String |  no  | Useragent details |
 
 ---
 
@@ -1502,9 +1512,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | value | String |  no  |  |
- | type | String |  no  |  |
+ | display | String? |  yes  | Display text for asset |
+ | value | String |  no  | To be used for details |
+ | type | [TicketAssetTypeEnum](#TicketAssetTypeEnum) |  no  | Type of asset |
 
 ---
 
@@ -1515,9 +1525,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String |  no  |  |
- | description | String? |  yes  |  |
- | attachments | ArrayList<[TicketAsset](#TicketAsset)>? |  yes  |  |
+ | title | String |  no  | Title for ticket |
+ | description | String? |  yes  | Long description of issue |
+ | attachments | ArrayList<[TicketAsset](#TicketAsset)>? |  yes  | List of all attachments related to the ticket |
 
 ---
 
@@ -1528,10 +1538,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | String |  no  |  |
- | priority | String |  no  |  |
- | category | String |  no  |  |
- | content | [TicketContent](#TicketContent) |  no  |  |
+ | createdBy | HashMap<String,Any>? |  yes  | Creator of the ticket |
+ | status | String? |  yes  | Status of the ticket |
+ | priority | [PriorityEnum](#PriorityEnum)? |  yes  | Priority of the ticket |
+ | category | String |  no  | Category of the ticket |
+ | content | [TicketContent](#TicketContent) |  no  | Content for the ticket |
 
 ---
 
@@ -1542,9 +1553,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | display | String |  no  |  |
- | color | String |  no  |  |
+ | key | [PriorityEnum](#PriorityEnum) |  no  | Key for priority |
+ | display | String |  no  | Display text for priority |
+ | color | String |  no  | Color for priority |
 
 ---
 
@@ -1555,9 +1566,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | display | String |  no  |  |
- | color | String |  no  |  |
+ | key | String |  no  | Key for status |
+ | display | String |  no  | Display text for status |
+ | color | String |  no  | Color for status |
 
 ---
 
@@ -1568,9 +1579,57 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | display | String |  no  |  |
- | form | [CustomForm](#CustomForm)? |  yes  |  |
+ | key | String |  no  | Key for category |
+ | display | String |  no  | Display text for category |
+ | form | [CustomForm](#CustomForm)? |  yes  | Form related to the category |
+ | subCategories | ArrayList<[TicketSubCategory](#TicketSubCategory)>? |  yes  | Sub-category related to the category |
+ | feedbackForm | [TicketFeedbackForm](#TicketFeedbackForm)? |  yes  | Feedback form of category used to submit ticket feedback |
+
+---
+
+
+ 
+ 
+ #### [TicketSubCategory](#TicketSubCategory)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  | Key for sub-category |
+ | display | String |  no  | Display text for sub-category |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedbackForm](#TicketFeedbackForm)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String |  no  | Feedback form title that will be shown to the user |
+ | display | ArrayList<HashMap<String,Any>>? |  yes  | List of all the form fields |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedbackList](#TicketFeedbackList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[TicketFeedback](#TicketFeedback)>? |  yes  | List of all ticket feedback for the ticket |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedbackPayload](#TicketFeedbackPayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | formResponse | HashMap<String,Any>? |  yes  | Key-value pairs of all the form fields and their response |
 
 ---
 
@@ -1581,9 +1640,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String |  no  |  |
- | titleColor | String |  no  |  |
- | backgroundColor | String |  no  |  |
+ | title | String |  no  | Title for submit button |
+ | titleColor | String |  no  | Title color submit button |
+ | backgroundColor | String |  no  | Color for submit button |
 
 ---
 
@@ -1594,10 +1653,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | duration | Double |  no  |  |
- | message | String |  no  |  |
- | successMessage | String |  no  |  |
- | failureMessage | String |  no  |  |
+ | duration | Double |  no  | Duration for polling of staff |
+ | message | String |  no  | Message for polling |
+ | successMessage | String |  no  | Message for successful polling |
+ | failureMessage | String |  no  | Message if polling failed |
 
 ---
 
@@ -1608,20 +1667,52 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applicationId | String |  no  |  |
- | slug | String |  no  |  |
- | headerImage | String? |  yes  |  |
- | title | String |  no  |  |
- | description | String? |  yes  |  |
- | loginRequired | Boolean |  no  |  |
- | shouldNotify | Boolean |  no  |  |
- | successMessage | String? |  yes  |  |
- | submitButton | [SubmitButton](#SubmitButton)? |  yes  |  |
- | inputs | ArrayList<HashMap<String,Any>> |  no  |  |
- | createdOn | [CreatedOn](#CreatedOn)? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  |  |
- | id | String |  no  |  |
+ | applicationId | String |  no  | Application ID for form |
+ | slug | String |  no  | Slug for the form, which is to be used for accessing the form |
+ | headerImage | String? |  yes  | Form header image that will be shown to the user |
+ | title | String |  no  | Form title that will be shown to the user |
+ | description | String? |  yes  | Form description that will be shown to the user |
+ | priority | [Priority](#Priority) |  no  | Sets priority of tickets created by form response |
+ | loginRequired | Boolean |  no  | Denotes if login is required to make a form response submission |
+ | shouldNotify | Boolean |  no  | Denotes if new response submission for the form should be notified to the assignees |
+ | successMessage | String? |  yes  | Message that is to be shown on succesfull form response submission |
+ | submitButton | [SubmitButton](#SubmitButton)? |  yes  | Details for submit button |
+ | inputs | ArrayList<HashMap<String,Any>> |  no  | List of all the form fields |
+ | createdOn | [CreatedOn](#CreatedOn)? |  yes  | Gives details of when the form was created |
+ | createdBy | HashMap<String,Any>? |  yes  | Gives details of user who created the form |
+ | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  | Details of how polling should be done for support |
+ | id | String |  no  | Unique identifier for the form |
+
+---
+
+
+ 
+ 
+ #### [FeedbackResponseItem](#FeedbackResponseItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String |  no  | Question/Title of the form field |
+ | key | String |  no  | Key of the form field |
+ | value | String |  no  | User response value for the form field |
+
+---
+
+
+ 
+ 
+ #### [TicketFeedback](#TicketFeedback)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  | Unique identifier for the feedback |
+ | ticketId | String |  no  | Readable ticket number |
+ | companyId | String |  no  | Company id for which ticket was raised |
+ | response | ArrayList<[FeedbackResponseItem](#FeedbackResponseItem)> |  no  |  |
+ | category | String? |  yes  | Category of the ticket |
+ | user | HashMap<String,Any>? |  yes  | User who submitted the feedback |
+ | updatedAt | String? |  yes  | Time when the feedback was last updated |
+ | createdAt | String? |  yes  | Time when the feedback was created |
 
 ---
 
@@ -1632,14 +1723,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | value | HashMap<String,Any> |  no  |  |
- | ticketId | String |  no  |  |
- | createdOn | [CreatedOn](#CreatedOn)? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | id | String |  no  |  |
- | updatedAt | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
+ | type | String |  no  | Type of the history event |
+ | value | HashMap<String,Any> |  no  | Data of the history event |
+ | ticketId | String |  no  | Readable ticket number |
+ | createdOn | [CreatedOn](#CreatedOn)? |  yes  | Time of creation of the history event |
+ | createdBy | HashMap<String,Any>? |  yes  | User who created the history event |
+ | id | String |  no  | Unique identifier of the history event |
+ | updatedAt | String? |  yes  | Time of last update of the history event |
+ | createdAt | String? |  yes  | Time of creation of the history event |
 
 ---
 
@@ -1650,24 +1741,93 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | context | [TicketContext](#TicketContext)? |  yes  |  |
- | createdOn | [CreatedOn](#CreatedOn)? |  yes  |  |
- | responseId | String? |  yes  |  |
- | content | [TicketContent](#TicketContent)? |  yes  |  |
- | ticketId | String |  no  |  |
- | category | [TicketCategory](#TicketCategory) |  no  |  |
- | source | String |  no  |  |
- | status | [Status](#Status) |  no  |  |
- | priority | [Priority](#Priority) |  no  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
- | assignedTo | HashMap<String,Any>? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | id | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
+ | context | [TicketContext](#TicketContext)? |  yes  | Details of company and application realated to the ticket |
+ | createdOn | [CreatedOn](#CreatedOn)? |  yes  | Details of company and application realated to the ticket |
+ | responseId | String? |  yes  | Details of company and application realated to the ticket |
+ | content | [TicketContent](#TicketContent)? |  yes  | Ticket conetent details |
+ | ticketId | String |  no  | Readable ticket number |
+ | category | [TicketCategory](#TicketCategory) |  no  | Category assigned to the ticket |
+ | subCategory | [TicketSubCategory](#TicketSubCategory)? |  yes  | Sub-category assigned to the ticket |
+ | source | [TicketSourceEnum](#TicketSourceEnum) |  no  | Denotes if the ticket was created at company or application level |
+ | status | [Status](#Status) |  no  | Denotes in what state is the ticket |
+ | priority | [Priority](#Priority) |  no  | Denotes the priority of ticket |
+ | createdBy | HashMap<String,Any>? |  yes  | User details of ticket creator |
+ | assignedTo | HashMap<String,Any>? |  yes  | Details of support staff to whom ticket is assigned |
+ | tags | ArrayList<String>? |  yes  | Tags relevant to ticket |
+ | customJson | HashMap<String,Any>? |  yes  | custom json relevant to the ticket |
+ | isFeedbackPending | Boolean? |  yes  | Denotes if feedback submission is pending for the ticket |
+ | id | String |  no  | Unique identifier for the ticket |
+ | updatedAt | String? |  yes  | Time when the ticket was last updated |
+ | createdAt | String? |  yes  | Time when the ticket was created |
 
 ---
+
+
+
+
+### Enums
+
+
+
+
+
+ #### [PriorityEnum](#PriorityEnum)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | low | low | This means ticket is low priority |
+ | medium | medium | This means ticket is medium priority |
+ | high | high | This means ticket is high priority |
+ | urgent | urgent | This means ticket is of urgent priority |
+
+---
+
+
+
+ #### [HistoryTypeEnum](#HistoryTypeEnum)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | rating | rating | This means history event is a rating |
+ | log | log | This means history event is a changelog |
+ | comment | comment | This means history event is a comment |
+
+---
+
+
+
+ #### [TicketAssetTypeEnum](#TicketAssetTypeEnum)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | image | image | Denotes asset is of image type |
+ | video | video | Denotes asset is of video type |
+ | file | file | Denotes asset is of file type |
+ | youtube | youtube | Denotes asset is an youtube link |
+ | product | product | Denotes asset is of product type |
+ | collection | collection | Denotes asset is of collection type |
+ | brand | brand | Denotes asset is of brand type |
+ | shipment | shipment | Denotes asset is of shipment type |
+ | order | order | Denotes asset is of order type |
+
+---
+
+
+
+ #### [TicketSourceEnum](#TicketSourceEnum)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | platformPanel | platform_panel | This means it is company level ticket |
+ | salesChannel | sales_channel | This means it is a application/sales channel level ticket |
+
+---
+
+
 
 
 
