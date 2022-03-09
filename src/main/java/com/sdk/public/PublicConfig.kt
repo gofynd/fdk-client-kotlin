@@ -9,5 +9,6 @@ class PublicConfig(
     var currency: String ?= "INR",
     var persistentCookieStore: CookieStore?=null,
     var applicationToken: String?,
-    var debuggable: Boolean = false
+    var debuggable: Boolean = false,
+    var extraHeaders: HashMap<String,String>
 )
