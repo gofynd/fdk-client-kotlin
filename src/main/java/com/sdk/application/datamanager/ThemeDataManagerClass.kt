@@ -15,27 +15,6 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         generatethemeApiList()
     }
 
-    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
-
-    init{
-            
-                    _relativeUrls["getAllPages"] = "/service/application/theme/v1.0/{theme_id}/page"?.substring(1)
-            
-                    _relativeUrls["getPage"] = "/service/application/theme/v1.0/{theme_id}/{page_value}"?.substring(1)
-            
-                    _relativeUrls["getAppliedTheme"] = "/service/application/theme/v1.0/applied-theme"?.substring(1)
-            
-                    _relativeUrls["getThemeForPreview"] = "/service/application/theme/v1.0/{theme_id}/preview"?.substring(1)
-            
-    }
-
-    public fun update(updatedUrlMap : HashMap<String,String>){
-            for((key,value) in updatedUrlMap){
-                _relativeUrls[key] = value
-            }
-    }
-    
-
     private fun generatethemeApiList(): ThemeApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -59,38 +38,22 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
     }
     
     fun getAllPages(themeId: String): Deferred<Response<AllAvailablePageSchema>>? {
-        var fullUrl : String? = _relativeUrls["getAllPages"] 
-        
-        fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
-        
-        return themeApiList?.getAllPages(fullUrl   )}
+        return themeApiList?.getAllPages(themeId = themeId)}
 
     
     
     fun getPage(themeId: String, pageValue: String): Deferred<Response<AvailablePageSchema>>? {
-        var fullUrl : String? = _relativeUrls["getPage"] 
-        
-        fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "page_value" +"}",pageValue.toString())
-        
-        return themeApiList?.getPage(fullUrl    )}
+        return themeApiList?.getPage(themeId = themeId, pageValue = pageValue)}
 
     
     
     fun getAppliedTheme(): Deferred<Response<ThemesSchema>>? {
-        var fullUrl : String? = _relativeUrls["getAppliedTheme"] 
-        
-        return themeApiList?.getAppliedTheme(fullUrl  )}
+        return themeApiList?.getAppliedTheme()}
 
     
     
     fun getThemeForPreview(themeId: String): Deferred<Response<ThemesSchema>>? {
-        var fullUrl : String? = _relativeUrls["getThemeForPreview"] 
-        
-        fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
-        
-        return themeApiList?.getThemeForPreview(fullUrl   )}
+        return themeApiList?.getThemeForPreview(themeId = themeId)}
 
     
     

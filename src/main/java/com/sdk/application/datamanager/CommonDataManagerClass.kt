@@ -15,23 +15,6 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         generatecommonApiList()
     }
 
-    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
-
-    init{
-            
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application"?.substring(1)
-            
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location"?.substring(1)
-            
-    }
-
-    public fun update(updatedUrlMap : HashMap<String,String>){
-            for((key,value) in updatedUrlMap){
-                _relativeUrls[key] = value
-            }
-    }
-    
-
     private fun generatecommonApiList(): CommonApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -55,16 +38,12 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
     }
     
     fun searchApplication(authorization: String?=null, query: String?=null): Deferred<Response<ApplicationResponse>>? {
-        var fullUrl : String? = _relativeUrls["searchApplication"] 
-        
-        return commonApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
+        return commonApiList?.searchApplication(authorization = authorization, query = query)}
 
     
     
     fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
-        var fullUrl : String? = _relativeUrls["getLocations"] 
-        
-        return commonApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
+        return commonApiList?.getLocations(locationType = locationType, id = id)}
 
     
     

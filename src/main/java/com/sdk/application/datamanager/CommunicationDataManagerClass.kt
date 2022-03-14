@@ -15,25 +15,6 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
         generatecommunicationApiList()
     }
 
-    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
-
-    init{
-            
-                    _relativeUrls["getCommunicationConsent"] = "/service/application/communication/v1.0/consent"?.substring(1)
-            
-                    _relativeUrls["upsertCommunicationConsent"] = "/service/application/communication/v1.0/consent"?.substring(1)
-            
-                    _relativeUrls["upsertAppPushtoken"] = "/service/application/communication/v1.0/pn-token"?.substring(1)
-            
-    }
-
-    public fun update(updatedUrlMap : HashMap<String,String>){
-            for((key,value) in updatedUrlMap){
-                _relativeUrls[key] = value
-            }
-    }
-    
-
     private fun generatecommunicationApiList(): CommunicationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -57,23 +38,17 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
     }
     
     fun getCommunicationConsent(): Deferred<Response<CommunicationConsent>>? {
-        var fullUrl : String? = _relativeUrls["getCommunicationConsent"] 
-        
-        return communicationApiList?.getCommunicationConsent(fullUrl  )}
+        return communicationApiList?.getCommunicationConsent()}
 
     
     
     fun upsertCommunicationConsent(body: CommunicationConsentReq): Deferred<Response<CommunicationConsentRes>>? {
-        var fullUrl : String? = _relativeUrls["upsertCommunicationConsent"] 
-        
-        return communicationApiList?.upsertCommunicationConsent(fullUrl  ,body = body)}
+        return communicationApiList?.upsertCommunicationConsent(body = body)}
 
     
     
     fun upsertAppPushtoken(body: PushtokenReq): Deferred<Response<PushtokenRes>>? {
-        var fullUrl : String? = _relativeUrls["upsertAppPushtoken"] 
-        
-        return communicationApiList?.upsertAppPushtoken(fullUrl  ,body = body)}
+        return communicationApiList?.upsertAppPushtoken(body = body)}
 
     
     
