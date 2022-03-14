@@ -349,7 +349,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoaders()
-    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>? {
+    : Deferred<Response<DataLoadersSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoaders(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -379,7 +379,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoadersByService(serviceName: String)
-    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>? {
+    : Deferred<Response<DataLoadersSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoadersByService(companyId = config.companyId , applicationId = applicationId , serviceName = serviceName )
         } else {
@@ -751,10 +751,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPageMeta()
+    suspend fun getPageMeta(pageType: String?=null, cartPages: Boolean?=null)
     : Deferred<Response<PageMetaSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId , pageType = pageType, cartPages = cartPages )
         } else {
             null
         }

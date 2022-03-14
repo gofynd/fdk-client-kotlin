@@ -14648,6 +14648,26 @@ data class DataLoaderSourceSchema(
 
 
 /*
+    Model: DataLoadersSchema
+*/
+@Parcelize
+data class DataLoadersSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<DataLoaderSchema>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: TagDeleteSuccessResponse
 */
 @Parcelize

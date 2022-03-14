@@ -95,7 +95,7 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getDataLoaders(): Deferred<Response<DataLoaderSchema>>? {
+    fun getDataLoaders(): Deferred<Response<DataLoadersSchema>>? {
         return contentApiList?.getDataLoaders()}
 
     

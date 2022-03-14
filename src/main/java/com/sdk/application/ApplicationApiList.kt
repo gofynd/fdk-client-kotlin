@@ -564,7 +564,7 @@ interface ContentApiList {
     
     @GET ("/service/application/content/v1.0/data-loader")
     fun getDataLoaders()
-    : Deferred<Response<DataLoaderSchema>>
+    : Deferred<Response<DataLoadersSchema>>
     
     
     @GET ("/service/application/content/v1.0/faq")
