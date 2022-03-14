@@ -4120,6 +4120,8 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | applicationId | String? |  yes  |  |
+ | userId | String? |  yes  |  |
  | firstName | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | lastName | String? |  yes  |  |
