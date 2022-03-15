@@ -37,8 +37,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartDetailResponse>>? {
-        return cartApiList?.getCart(id = id, i = i, b = b, assignCardId = assignCardId)}
+    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null): Deferred<Response<CartDetailResponse>>? {
+        return cartApiList?.getCart(id = id, i = i, b = b, assignCardId = assignCardId, areaCode = areaCode)}
 
     
     
@@ -47,13 +47,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
-        return cartApiList?.addItems(i = i, b = b, body = body)}
+    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+        return cartApiList?.addItems(i = i, b = b, areaCode = areaCode, body = body)}
 
     
     
-    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
-        return cartApiList?.updateCart(id = id, i = i, b = b, body = body)}
+    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
+        return cartApiList?.updateCart(id = id, i = i, b = b, areaCode = areaCode, body = body)}
 
     
     

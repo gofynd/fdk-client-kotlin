@@ -168,7 +168,7 @@ interface CartApiList {
     
     
     @GET ("/service/application/cart/v1.0/detail")
-    fun getCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
+    fun getCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -178,12 +178,12 @@ interface CartApiList {
     
     
     @POST ("/service/application/cart/v1.0/detail")
-    fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: AddCartRequest)
+    fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT ("/service/application/cart/v1.0/detail")
-    fun updateCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: UpdateCartRequest)
+    fun updateCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
@@ -1164,7 +1164,7 @@ interface PosCartApiList {
     
     
     @GET ("/service/application/pos/cart/v1.0/detail")
-    fun getCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
+    fun getCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -1174,12 +1174,12 @@ interface PosCartApiList {
     
     
     @POST ("/service/application/pos/cart/v1.0/detail")
-    fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: AddCartRequest)
+    fun addItems(@Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT ("/service/application/pos/cart/v1.0/detail")
-    fun updateCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: UpdateCartRequest)
+    fun updateCart(@Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
