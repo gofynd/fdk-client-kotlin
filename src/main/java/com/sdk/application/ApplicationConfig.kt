@@ -7,9 +7,11 @@ class ApplicationConfig(
     var applicationToken: String?,
     var domain: String = "https://api.fynd.com",
     var userAgent: String,
-    var auth_user_name: String = "slingshotapptoken",
-    var auth_user_password: String = "slingsh0t@ppt0ken#fynd",
-    val persistentCookieStore: CookieStore?=null
+    val persistentCookieStore: CookieStore?=null,
+    var languageCode: String = "en-IN",
+    var currencyCode: String = "INR",
+    var debuggable: Boolean = false,
+    var extraHeaders: HashMap<String,String>? = null
 ) {
     init {
         val regex = "^[0-9a-fA-F]{24}$"

@@ -1,26 +1,52 @@
 package com.sdk.platform
 
-class PlatformClient(val config:PlatformConfig) {
+import com.sdk.platform.datamanager.*
+
+class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
     
-    val lead by lazy { LeadDataManagerClass(config)}
+    val common by lazy { CommonDataManagerClass(config, unauthorizedAction)}
     
-    val user by lazy { UserDataManagerClass(config)}
+    val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
-    val payment by lazy { PaymentDataManagerClass(config)}
+    val feedback by lazy { FeedbackDataManagerClass(config, unauthorizedAction)}
     
-    val order by lazy { OrderDataManagerClass(config)}
+    val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
     
-    val catalog by lazy { CatalogDataManagerClass(config)}
+    val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
     
-    val companyProfile by lazy { CompanyProfileDataManagerClass(config)}
+    val content by lazy { ContentDataManagerClass(config, unauthorizedAction)}
     
-    val fileStorage by lazy { FileStorageDataManagerClass(config)}
+    val billing by lazy { BillingDataManagerClass(config, unauthorizedAction)}
     
-    val share by lazy { ShareDataManagerClass(config)}
+    val communication by lazy { CommunicationDataManagerClass(config, unauthorizedAction)}
     
-    val configuration by lazy { ConfigurationDataManagerClass(config)}
+    val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
-    val cart by lazy { CartDataManagerClass(config)}
+    val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
+    
+    val catalog by lazy { CatalogDataManagerClass(config, unauthorizedAction)}
+    
+    val companyProfile by lazy { CompanyProfileDataManagerClass(config, unauthorizedAction)}
+    
+    val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
+    
+    val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
+    
+    val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
+    
+    val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
+    
+    val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
+    
+    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
+    
+    val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
+    
+    val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
+    
+    val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
+    
+    val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -28,9 +54,21 @@ class PlatformClient(val config:PlatformConfig) {
 
     inner class ApplicationClient(val applicationId:String,val config: PlatformConfig) {     
     
+    val common by lazy { this@PlatformClient.common.ApplicationClient(applicationId,config)}
+    
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
     
+    val feedback by lazy { this@PlatformClient.feedback.ApplicationClient(applicationId,config)}
+    
+    val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
+    
     val user by lazy { this@PlatformClient.user.ApplicationClient(applicationId,config)}
+    
+    val content by lazy { this@PlatformClient.content.ApplicationClient(applicationId,config)}
+    
+    val billing by lazy { this@PlatformClient.billing.ApplicationClient(applicationId,config)}
+    
+    val communication by lazy { this@PlatformClient.communication.ApplicationClient(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
@@ -44,9 +82,21 @@ class PlatformClient(val config:PlatformConfig) {
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
     
+    val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
+    
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
+    
+    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
+    
+    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
+    
+    val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
+    
+    val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
+    
+    val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     }
 
