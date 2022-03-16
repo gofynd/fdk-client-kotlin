@@ -1292,6 +1292,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | ---------- | ---- | -------- | ----------- |
  | user | [UserSchema](#UserSchema)? |  yes  |  |
  | registerToken | String? |  yes  |  |
+ | resendEmailToken | String? |  yes  |  |
  | userExists | Boolean? |  yes  |  |
  | verifyEmailLink | Boolean? |  yes  |  |
  | verifyEmailOtp | Boolean? |  yes  |  |

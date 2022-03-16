@@ -1389,7 +1389,7 @@ Use this to get all data loaders of an application
 
 
 
-[ArrayList<DataLoaderResponseSchema>](#ArrayList<DataLoaderResponseSchema>)
+[DataLoadersSchema](#DataLoadersSchema)
 
 Success. Refer `DataLoaderResponseSchema` for more details.
 
@@ -1400,38 +1400,40 @@ Success. Refer `DataLoaderResponseSchema` for more details.
 <summary><i>&nbsp; Example:</i></summary>
 
 ```json
-[
-  {
-    "name": "Algolia",
-    "is_selected": false,
-    "type": "url",
-    "_id": "61bc4523a7ffc7504f4de4a5",
-    "service": "catalog",
-    "operation_id": "fetchSuggestions",
-    "url": "/ext/example/url",
-    "__source": {
-      "type": "extension",
-      "id": "000000000000000000000003"
+{
+  "items": [
+    {
+      "name": "Algolia",
+      "is_selected": false,
+      "type": "url",
+      "_id": "61bc4523a7ffc7504f4de4a5",
+      "service": "catalog",
+      "operation_id": "fetchSuggestions",
+      "url": "/ext/example/url",
+      "__source": {
+        "type": "extension",
+        "id": "000000000000000000000003"
+      },
+      "application": "100000000000000000000001",
+      "__v": 0
     },
-    "application": "100000000000000000000001",
-    "__v": 0
-  },
-  {
-    "name": "Algolia v3",
-    "is_selected": false,
-    "type": "url",
-    "_id": "61bc452da7ffc7504f4de4a7",
-    "service": "catalog",
-    "operation_id": "fetchSuggestions",
-    "url": "/ext/example/url",
-    "__source": {
-      "type": "extension",
-      "id": "000000000000000000000003"
-    },
-    "application": "100000000000000000000001",
-    "__v": 0
-  }
-]
+    {
+      "name": "Algolia v3",
+      "is_selected": false,
+      "type": "url",
+      "_id": "61bc452da7ffc7504f4de4a7",
+      "service": "catalog",
+      "operation_id": "fetchSuggestions",
+      "url": "/ext/example/url",
+      "__source": {
+        "type": "extension",
+        "id": "000000000000000000000003"
+      },
+      "application": "100000000000000000000001",
+      "__v": 0
+    }
+  ]
+}
 ```
 </details>
 
@@ -1616,7 +1618,7 @@ Use this to get all data loaders of an application by service name
 
 
 
-[ArrayList<DataLoaderResponseSchema>](#ArrayList<DataLoaderResponseSchema>)
+[DataLoadersSchema](#DataLoadersSchema)
 
 Success. Refer `DataLoaderResponseSchema` for more details.
 
@@ -1627,38 +1629,40 @@ Success. Refer `DataLoaderResponseSchema` for more details.
 <summary><i>&nbsp; Example:</i></summary>
 
 ```json
-[
-  {
-    "name": "Algolia",
-    "is_selected": false,
-    "type": "url",
-    "_id": "61bc4523a7ffc7504f4de4a5",
-    "service": "catalog",
-    "operation_id": "fetchSuggestions",
-    "url": "/ext/example/url",
-    "__source": {
-      "type": "extension",
-      "id": "000000000000000000000003"
+{
+  "items": [
+    {
+      "name": "Algolia",
+      "is_selected": false,
+      "type": "url",
+      "_id": "61bc4523a7ffc7504f4de4a5",
+      "service": "catalog",
+      "operation_id": "fetchSuggestions",
+      "url": "/ext/example/url",
+      "__source": {
+        "type": "extension",
+        "id": "000000000000000000000003"
+      },
+      "application": "100000000000000000000001",
+      "__v": 0
     },
-    "application": "100000000000000000000001",
-    "__v": 0
-  },
-  {
-    "name": "Algolia v3",
-    "is_selected": false,
-    "type": "url",
-    "_id": "61bc452da7ffc7504f4de4a7",
-    "service": "catalog",
-    "operation_id": "fetchSuggestions",
-    "url": "/ext/example/url",
-    "__source": {
-      "type": "extension",
-      "id": "000000000000000000000003"
-    },
-    "application": "100000000000000000000001",
-    "__v": 0
-  }
-]
+    {
+      "name": "Algolia v3",
+      "is_selected": false,
+      "type": "url",
+      "_id": "61bc452da7ffc7504f4de4a7",
+      "service": "catalog",
+      "operation_id": "fetchSuggestions",
+      "url": "/ext/example/url",
+      "__source": {
+        "type": "extension",
+        "id": "000000000000000000000003"
+      },
+      "application": "100000000000000000000001",
+      "__v": 0
+    }
+  ]
+}
 ```
 </details>
 
@@ -8229,6 +8233,17 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | ---------- | ---- | -------- | ----------- |
  | type | String? |  yes  |  |
  | id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DataLoadersSchema](#DataLoadersSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[DataLoaderSchema](#DataLoaderSchema)>? |  yes  |  |
 
 ---
 

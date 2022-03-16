@@ -342,7 +342,7 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader")
     fun getDataLoaders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>
+    : Deferred<Response<DataLoadersSchema>>
     
     @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/{data_loader_id}")
     fun deleteDataLoader(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("data_loader_id") dataLoaderId: String)
@@ -354,7 +354,7 @@ interface ContentApiList {
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/service/:service_name")
     fun getDataLoadersByService(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("service_name") serviceName: String)
-    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>
+    : Deferred<Response<DataLoadersSchema>>
     
     @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/data-loader/{data_loader_id}/select")
     fun selectDataLoader(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("data_loader_id") dataLoaderId: String)

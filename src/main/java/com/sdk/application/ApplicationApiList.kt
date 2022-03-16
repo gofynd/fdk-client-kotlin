@@ -170,7 +170,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
+    fun getCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -180,12 +180,12 @@ interface CartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,   @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT 
-    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
+    fun updateCart(@Url url1: String?    ,    @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
@@ -561,7 +561,7 @@ interface ContentApiList {
     
     @GET 
     fun getDataLoaders(@Url url1: String?   )
-    : Deferred<Response<DataLoaderSchema>>
+    : Deferred<Response<DataLoadersSchema>>
     
     
     @GET 
@@ -1166,7 +1166,7 @@ interface PosCartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
+    fun getCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -1176,12 +1176,12 @@ interface PosCartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,   @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT 
-    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
+    fun updateCart(@Url url1: String?    ,    @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
