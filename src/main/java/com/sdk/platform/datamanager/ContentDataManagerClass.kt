@@ -349,7 +349,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoaders()
-    : Deferred<Response<DataLoadersSchema>>? {
+    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoaders(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -379,7 +379,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getDataLoadersByService(serviceName: String)
-    : Deferred<Response<DataLoadersSchema>>? {
+    : Deferred<Response<ArrayList<DataLoaderResponseSchema>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getDataLoadersByService(companyId = config.companyId , applicationId = applicationId , serviceName = serviceName )
         } else {

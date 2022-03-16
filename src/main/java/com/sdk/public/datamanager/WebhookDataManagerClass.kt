@@ -1,7 +1,7 @@
-package com.sdk.application.datamanager
+package com.sdk.public.datamanager
 
 import com.sdk.common.*
-import com.sdk.application.*
+import com.sdk.public.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -9,19 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
     
-    private val logisticApiList by lazy {
-        generatelogisticApiList()
+    private val webhookApiList by lazy {
+        generatewebhookApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0"?.substring(1)
+                    _relativeUrls["fetchAllWebhookEvents"] = "/service/common/webhook/v1.0/events"?.substring(1)
             
-                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
+                    _relativeUrls["queryWebhookEventDetails"] = "/service/common/webhook/v1.0/events/query-event-details"?.substring(1)
             
     }
 
@@ -32,9 +32,9 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
     }
     
 
-    private fun generatelogisticApiList(): LogisticApiList? {
+    private fun generatewebhookApiList(): WebhookApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val headerInterceptor = PublicHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -48,25 +48,23 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "ApplicationLogistic",
+            namespace = "PublicWebhook",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
+        return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
-    fun getTatProduct(body: GetTatProductReqBody): Deferred<Response<GetTatProductResponse>>? {
-        var fullUrl : String? = _relativeUrls["getTatProduct"] 
+    fun fetchAllWebhookEvents(): Deferred<Response<EventConfigResponse>>? {
+        var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"] 
         
-        return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
+        return webhookApiList?.fetchAllWebhookEvents(fullUrl  )}
 
     
     
-    fun getPincodeCity(pincode: String): Deferred<Response<GetPincodeCityResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
+    fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>): Deferred<Response<EventConfigResponse>>? {
+        var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"] 
         
-        fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
-        
-        return logisticApiList?.getPincodeCity(fullUrl   )}
+        return webhookApiList?.queryWebhookEventDetails(fullUrl  ,body = body)}
 
     
     

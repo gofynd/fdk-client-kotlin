@@ -15,6 +15,33 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         generaterewardsApiList()
     }
 
+    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
+
+    init{
+            
+                    _relativeUrls["getPointsOnProduct"] = "/service/application/rewards/v1.0/catalogue/offer/order/"?.substring(1)
+            
+                    _relativeUrls["getOfferByName"] = "/service/application/rewards/v1.0/offers/{name}/"?.substring(1)
+            
+                    _relativeUrls["getOrderDiscount"] = "/service/application/rewards/v1.0/user/offers/order-discount/"?.substring(1)
+            
+                    _relativeUrls["getUserPoints"] = "/service/application/rewards/v1.0/user/points/"?.substring(1)
+            
+                    _relativeUrls["getUserPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/"?.substring(1)
+            
+                    _relativeUrls["getUserReferralDetails"] = "/service/application/rewards/v1.0/user/referral/"?.substring(1)
+            
+                    _relativeUrls["redeemReferralCode"] = "/service/application/rewards/v1.0/user/referral/redeem/"?.substring(1)
+            
+    }
+
+    public fun update(updatedUrlMap : HashMap<String,String>){
+            for((key,value) in updatedUrlMap){
+                _relativeUrls[key] = value
+            }
+    }
+    
+
     private fun generaterewardsApiList(): RewardsApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -38,27 +65,39 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
     
     fun getPointsOnProduct(body: CatalogueOrderRequest): Deferred<Response<CatalogueOrderResponse>>? {
-        return rewardsApiList?.getPointsOnProduct(body = body)}
+        var fullUrl : String? = _relativeUrls["getPointsOnProduct"] 
+        
+        return rewardsApiList?.getPointsOnProduct(fullUrl  ,body = body)}
 
     
     
     fun getOfferByName(name: String): Deferred<Response<Offer>>? {
-        return rewardsApiList?.getOfferByName(name = name)}
+        var fullUrl : String? = _relativeUrls["getOfferByName"] 
+        
+        fullUrl = fullUrl?.replace("{" + "name" +"}",name.toString())
+        
+        return rewardsApiList?.getOfferByName(fullUrl   )}
 
     
     
     fun getOrderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
-        return rewardsApiList?.getOrderDiscount(body = body)}
+        var fullUrl : String? = _relativeUrls["getOrderDiscount"] 
+        
+        return rewardsApiList?.getOrderDiscount(fullUrl  ,body = body)}
 
     
     
     fun getUserPoints(): Deferred<Response<PointsResponse>>? {
-        return rewardsApiList?.getUserPoints()}
+        var fullUrl : String? = _relativeUrls["getUserPoints"] 
+        
+        return rewardsApiList?.getUserPoints(fullUrl  )}
 
     
     
     fun getUserPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
-        return rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)}
+        var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
+        
+        return rewardsApiList?.getUserPointsHistory(fullUrl    ,  pageId = pageId,    pageSize = pageSize)}
 
     
     
@@ -89,7 +128,9 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                rewardsApiList?.getUserPointsHistory(pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
+                
+                rewardsApiList?.getUserPointsHistory(fullUrl , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
@@ -108,12 +149,16 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     }
     
     fun getUserReferralDetails(): Deferred<Response<ReferralDetailsResponse>>? {
-        return rewardsApiList?.getUserReferralDetails()}
+        var fullUrl : String? = _relativeUrls["getUserReferralDetails"] 
+        
+        return rewardsApiList?.getUserReferralDetails(fullUrl  )}
 
     
     
     fun redeemReferralCode(body: RedeemReferralCodeRequest): Deferred<Response<RedeemReferralCodeResponse>>? {
-        return rewardsApiList?.redeemReferralCode(body = body)}
+        var fullUrl : String? = _relativeUrls["redeemReferralCode"] 
+        
+        return rewardsApiList?.redeemReferralCode(fullUrl  ,body = body)}
 
     
     
