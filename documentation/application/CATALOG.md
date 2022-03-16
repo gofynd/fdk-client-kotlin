@@ -23,20 +23,20 @@ Catalog API's allows you to access list of products, prices, seller details, sim
 * [getHomeProducts](#gethomeproducts)
 * [getDepartments](#getdepartments)
 * [getSearchResults](#getsearchresults)
+* [getCollections](#getcollections)
+* [getCollectionItemsBySlug](#getcollectionitemsbyslug)
+* [getCollectionDetailBySlug](#getcollectiondetailbyslug)
 * [getFollowedListing](#getfollowedlisting)
-* [unfollowById](#unfollowbyid)
 * [followById](#followbyid)
+* [unfollowById](#unfollowbyid)
 * [getFollowerCountById](#getfollowercountbyid)
 * [getFollowIds](#getfollowids)
 * [getStores](#getstores)
 * [getInStockLocations](#getinstocklocations)
 * [getLocationDetailsById](#getlocationdetailsbyid)
+* [getProductBundlesBySlug](#getproductbundlesbyslug)
 * [getProductPriceBySlug](#getproductpricebyslug)
 * [getProductSellersBySlug](#getproductsellersbyslug)
-* [getCollections](#getcollections)
-* [getCollectionItemsBySlug](#getcollectionitemsbyslug)
-* [getCollectionDetailBySlug](#getcollectiondetailbyslug)
-* [getProductBundlesBySlug](#getproductbundlesbyslug)
 
 
 
@@ -4542,1418 +4542,6 @@ Success. Returns a list autocomplete suggestions for the search query `q`. Check
 ---
 
 
-### getFollowedListing
-Get a list of followed Products, Brands, Collections
-
-
-
-
-```kotlin
-catalog.getFollowedListing(collectionType: collectionType, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
-| pageId | String? | no | Page ID to retrieve next set of results. |   
-| pageSize | Int? | no | Page ID to retrieve next set of results. |  
-
-
-
-Users can follow a product they like. This API retrieves the products the user have followed.
-
-*Returned Response:*
-
-
-
-
-[GetFollowListingResponse](#GetFollowListingResponse)
-
-Success. Returns a Followed resource object. Check the example shown below or refer `GetFollowListingResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "items": [
-    {
-      "type": "product",
-      "name": "revolutionize end-to-end technologies",
-      "item_type": "set",
-      "slug": "revolutionize-end-to-end-technologies",
-      "uid": 1,
-      "brand": {
-        "type": "brand",
-        "name": "Chen PLC",
-        "logo": {
-          "type": "image",
-          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
-        },
-        "action": {
-          "page": {
-            "type": "products",
-            "query": {
-              "brand": [
-                "Chen-PLC"
-              ]
-            }
-          },
-          "type": "page"
-        },
-        "_custom_json": {}
-      },
-      "sellable": false,
-      "action": {
-        "page": {
-          "type": "product",
-          "query": {
-            "slug": "revolutionize-end-to-end-technologies"
-          }
-        },
-        "type": "page"
-      },
-      "attributes": {
-        "color_hex": "808080",
-        "weight": 100,
-        "product_type": "LaptopBags",
-        "gender": [
-          "Men",
-          "Women"
-        ],
-        "material": "Neoprene",
-        "style_note": "Shape up your overall appeal with this stunning laptop bag. The amazing storage and great design will let you carry your laptop in style!",
-        "item_code": "LGLAPTOPSLEEVE5",
-        "occasion": "Casual",
-        "primary_color": "Grey",
-        "primary_material": "Others",
-        "variant": "LGLAPTOPSLEEVE5",
-        "color": "DarkGrey",
-        "product_details": "This is a Unisex Product.",
-        "primary_color_hex": "808080"
-      },
-      "medias": [
-        {
-          "type": "image",
-          "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1309_LGLAPTOPSLEEVE5/1_1564735832806.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "id": 3,
-          "uid": 3,
-          "name": "Paul Palmer",
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
-          },
-          "action": {
-            "page": {
-              "type": "category",
-              "query": {
-                "category": [
-                  "Paul-Palmer"
-                ]
-              }
-            },
-            "type": "page"
-          },
-          "_custom_json": {}
-        }
-      ],
-      "discount": "14% OFF",
-      "price": {
-        "marked": {
-          "min": 1399,
-          "max": 1399,
-          "currency_code": "INR",
-          "currency_symbol": "₹"
-        },
-        "effective": {
-          "min": 1199,
-          "max": 1399,
-          "currency_code": "INR",
-          "currency_symbol": "₹"
-        }
-      },
-      "rating": 2.7,
-      "rating_count": 2
-    },
-    {
-      "type": "product",
-      "name": "grow B2B experiences",
-      "item_type": "set",
-      "slug": "grow-B2B-experiences",
-      "uid": 15,
-      "brand": {
-        "type": "brand",
-        "name": "Chen PLC",
-        "logo": {
-          "type": "image",
-          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
-        },
-        "action": {
-          "page": {
-            "type": "products",
-            "query": {
-              "brand": [
-                "Chen-PLC"
-              ]
-            }
-          },
-          "type": "page"
-        },
-        "_custom_json": {}
-      },
-      "sellable": false,
-      "action": {
-        "page": {
-          "type": "product",
-          "query": {
-            "slug": "grow-B2B-experiences"
-          }
-        },
-        "type": "page"
-      },
-      "attributes": {
-        "color_hex": "808080",
-        "weight": 100,
-        "product_type": "LaptopBags",
-        "gender": [
-          "Men",
-          "Women"
-        ],
-        "material": "Neoprene",
-        "style_note": "Shape up your overall appeal with this stunning laptop bag. The amazing storage and great design will let you carry your laptop in style!",
-        "item_code": "LGLAPTOPSLEEVE5",
-        "occasion": "Casual",
-        "primary_color": "Grey",
-        "primary_material": "Others",
-        "variant": "LGLAPTOPSLEEVE5",
-        "color": "DarkGrey",
-        "product_details": "This is a Unisex Product.",
-        "primary_color_hex": "808080"
-      },
-      "medias": [
-        {
-          "type": "image",
-          "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1309_LGLAPTOPSLEEVE5/1_1564735832806.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "id": 3,
-          "uid": 3,
-          "name": "Paul Palmer",
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
-          },
-          "action": {
-            "page": {
-              "type": "category",
-              "query": {
-                "category": [
-                  "Paul-Palmer"
-                ]
-              }
-            },
-            "type": "page"
-          },
-          "_custom_json": {}
-        }
-      ],
-      "discount": "14% OFF",
-      "price": {
-        "marked": {
-          "min": 1399,
-          "max": 1399,
-          "currency_code": "INR",
-          "currency_symbol": "₹"
-        },
-        "effective": {
-          "min": 1199,
-          "max": 1399,
-          "currency_code": "INR",
-          "currency_symbol": "₹"
-        }
-      },
-      "rating": 2.7,
-      "rating_count": 2
-    },
-    {
-      "type": "product",
-      "name": "target robust systems",
-      "item_type": "set",
-      "slug": "target-robust-systems",
-      "uid": 14,
-      "brand": {
-        "type": "brand",
-        "name": "Chen PLC",
-        "logo": {
-          "type": "image",
-          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
-        },
-        "action": {
-          "page": {
-            "type": "products",
-            "query": {
-              "brand": [
-                "Chen-PLC"
-              ]
-            }
-          },
-          "type": "page"
-        },
-        "_custom_json": {}
-      },
-      "sellable": false,
-      "action": {
-        "page": {
-          "type": "product",
-          "query": {
-            "slug": "target-robust-systems"
-          }
-        },
-        "type": "page"
-      },
-      "attributes": {
-        "color_hex": "808080",
-        "weight": 100,
-        "product_type": "LaptopBags",
-        "gender": [
-          "Men",
-          "Women"
-        ],
-        "material": "Neoprene",
-        "style_note": "Shape up your overall appeal with this stunning laptop bag. The amazing storage and great design will let you carry your laptop in style!",
-        "item_code": "LGLAPTOPSLEEVE5",
-        "occasion": "Casual",
-        "primary_color": "Grey",
-        "primary_material": "Others",
-        "variant": "LGLAPTOPSLEEVE5",
-        "color": "DarkGrey",
-        "product_details": "This is a Unisex Product.",
-        "primary_color_hex": "808080"
-      },
-      "medias": [
-        {
-          "type": "image",
-          "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1309_LGLAPTOPSLEEVE5/1_1564735832806.jpg"
-        }
-      ],
-      "categories": [
-        {
-          "id": 3,
-          "uid": 3,
-          "name": "Paul Palmer",
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
-          },
-          "action": {
-            "page": {
-              "type": "category",
-              "query": {
-                "category": [
-                  "Paul-Palmer"
-                ]
-              }
-            },
-            "type": "page"
-          },
-          "_custom_json": {}
-        }
-      ],
-      "discount": "14% OFF",
-      "price": {
-        "marked": {
-          "min": 1399,
-          "max": 1399,
-          "currency_code": "INR",
-          "currency_symbol": "₹"
-        },
-        "effective": {
-          "min": 1199,
-          "max": 1399,
-          "currency_code": "INR",
-          "currency_symbol": "₹"
-        }
-      },
-      "rating": 2.7,
-      "rating_count": 2
-    }
-  ],
-  "page": {
-    "next_id": "6066fc7b3b17fd7038c46317",
-    "has_previous": false,
-    "has_next": true,
-    "item_total": 15,
-    "type": "number"
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### unfollowById
-Unfollow an entity (product/brand/collection)
-
-
-
-
-```kotlin
-catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
-| collectionId | String | yes | The ID of the collection type. |  
-
-
-
-You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
-
-*Returned Response:*
-
-
-
-
-[FollowPostResponse](#FollowPostResponse)
-
-Success. Returns a response object. Check the example shown below or refer `FollowPostResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "message": "Products Removed From Wishlist",
-  "id": "1"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### followById
-Follow an entity (product/brand/collection)
-
-
-
-
-```kotlin
-catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
-| collectionId | String | yes | The ID of the collection type. |  
-
-
-
-Follow a particular entity such as product, brand, collection specified by its ID.
-
-*Returned Response:*
-
-
-
-
-[FollowPostResponse](#FollowPostResponse)
-
-Success. Returns a response object. Check the example shown below or refer `FollowPostResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "message": "Brands Added To Wishlist",
-  "id": "1"
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getFollowerCountById
-Get Follow Count
-
-
-
-
-```kotlin
-catalog.getFollowerCountById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| collectionType | String | yes | Type of collection, i.e. products, brands, or collections. |   
-| collectionId | String | yes | The ID of the collection type. |  
-
-
-
-Get the total count of followers for a given collection type and collection ID.
-
-*Returned Response:*
-
-
-
-
-[FollowerCountResponse](#FollowerCountResponse)
-
-Success. Returns the number of followers for a given collection type. Check the example shown below or refer `FollowerCountResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "count": 0
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getFollowIds
-Get the IDs of followed products, brands and collections.
-
-
-
-
-```kotlin
-catalog.getFollowIds(collectionType: collectionType).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| collectionType | String? | no | Type of collection, i.e. products, brands, collections. |  
-
-
-
-You can get the IDs of all the followed Products, Brands and Collections. Pass collection_type as query parameter to fetch specific Ids
-
-*Returned Response:*
-
-
-
-
-[FollowIdsResponse](#FollowIdsResponse)
-
-Success. Returns the IDs of all the Products, Brands and Collections which were followed. Check the example shown below or refer `FollowIdsResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "data": {
-    "products": [
-      1,
-      15,
-      14,
-      13,
-      12,
-      11,
-      10,
-      9,
-      8,
-      7,
-      6,
-      5,
-      4,
-      3,
-      2
-    ],
-    "brands": [
-      1
-    ],
-    "collections": []
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getStores
-Get store meta information.
-
-
-
-
-```kotlin
-catalog.getStores(pageNo: pageNo, pageSize: pageSize, q: q, city: city, range: range, latitude: latitude, longitude: longitude).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. |   
-| pageSize | Int? | no | Number of items to retrieve in each page. |   
-| q | String? | no | Search a store by its name or store_code. |   
-| city | String? | no | Search stores by the city in which they are situated. |   
-| range | Int? | no | Use this to retrieve stores within a particular range in meters, e.g. 10000, to indicate a 10km range |   
-| latitude | Double? | no | Latitude of the location from where one wants to retreive the nearest stores, e.g. 72.8691788 |   
-| longitude | Double? | no | Longitude of the location from where one wants to retreive the nearest stores, e.g. 19.1174114 |  
-
-
-
-Use this API to get a list of stores in a specific application.
-
-*Returned Response:*
-
-
-
-
-[StoreListingResponse](#StoreListingResponse)
-
-Success. Returns a list of selling locations. Check the example shown below or refer `StoreListingResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "page": {
-    "type": "number",
-    "current": 1,
-    "total": 1,
-    "has_previous": false,
-    "has_next": false,
-    "item_total": 1
-  },
-  "data": [
-    {
-      "pincode": 400059,
-      "city": "MUMBAI",
-      "state": "MAHARASHTRA",
-      "country": "INDIA",
-      "address": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
-      "store_email": "ASHISHCHANDORKAR@FYND.COM",
-      "lat_long": {
-        "type": "Point",
-        "coordinates": [
-          72.8691788,
-          19.1174114
-        ]
-      },
-      "name": "RRL01",
-      "store_code": "WH_8513",
-      "uid": 1
-    }
-  ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getInStockLocations
-Get store meta information.
-
-
-
-
-```kotlin
-catalog.getInStockLocations(pageNo: pageNo, pageSize: pageSize, q: q, city: city, range: range, latitude: latitude, longitude: longitude).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | The page number to navigate through the given set of results. |   
-| pageSize | Int? | no | Number of items to retrieve in each page. |   
-| q | String? | no | Search a store by its name or store_code. |   
-| city | String? | no | Search stores by the city in which they are situated. |   
-| range | Int? | no | Use this to retrieve stores within a particular range in meters, e.g. 10000, to indicate a 10km range |   
-| latitude | Double? | no | Latitude of the location from where one wants to retreive the nearest stores, e.g. 72.8691788 |   
-| longitude | Double? | no | Longitude of the location from where one wants to retreive the nearest stores, e.g. 19.1174114 |  
-
-
-
-Use this API to get a list of stores in a specific application.
-
-*Returned Response:*
-
-
-
-
-[ApplicationStoreListing](#ApplicationStoreListing)
-
-Success. Returns a list of selling locations. Check the example shown below or refer `StoreListingResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "page": {
-    "current": 1,
-    "type": "number",
-    "total": 1,
-    "has_previous": false,
-    "has_next": false,
-    "item_total": 5
-  },
-  "items": [
-    {
-      "uid": 1,
-      "_custom_json": {},
-      "additional_contacts": [
-        {
-          "country_code": 91,
-          "number": "9594495254"
-        }
-      ],
-      "address": {
-        "lat_long": {
-          "type": "Point",
-          "coordinates": [
-            72.809786,
-            19.138787
-          ]
-        },
-        "city": "MUMBAI",
-        "pincode": 400061,
-        "state": "MAHARASHTRA",
-        "country": "INDIA",
-        "landmark": "",
-        "address2": "",
-        "address1": "YARI ROAD, ANDHERI WEST"
-      },
-      "company_id": 1,
-      "display_name": "Reliance Digital P. Ltd",
-      "manager": {
-        "mobile_no": {
-          "country_code": 91,
-          "number": "9594495254"
-        },
-        "name": "Fahim Sakri",
-        "email": "fahimsakri@gmail.com"
-      },
-      "name": "Reliance Digital P. Ltd",
-      "store_code": "HS-52b69",
-      "store_type": "high_street",
-      "company": {
-        "company_type": "mbo",
-        "business_type": "ltd/pvt ltd",
-        "name": "Reliance Digital P. Ltd1234789123",
-        "uid": 1
-      },
-      "departments": [
-        {
-          "priority_order": 7,
-          "name": "Baby Care & Kids Essentials",
-          "uid": 7,
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.fynd.com/media/category_tab_icons/department/Babycareandkidsessential.png"
-          },
-          "is_active": true,
-          "slug": "baby-care-kids-essentials"
-        },
-        {
-          "priority_order": 9,
-          "name": "Industrial Supplies",
-          "uid": 11,
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.fynd.com/media/logo/department/original/15483_a8803bf3fc244c748180588166df82da.jpg"
-          },
-          "is_active": true,
-          "slug": "industrial-supplies"
-        },
-        {
-          "priority_order": 10,
-          "name": "Electricals",
-          "uid": 14,
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.fynd.com/department/pictures/square-logo/original/M93qfyuh1-https:hdn-1.fynd.commedialogodepartmentoriginal17588_44516b7413fd4a4a858556857aa0c4c8.jpg.jpeg"
-          },
-          "is_active": true,
-          "slug": "electricals"
-        },
-        {
-          "priority_order": 1,
-          "name": "Fashion",
-          "uid": 21,
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.fynd.com/department/pictures/square-logo/original/jSt0jjI7D-https/hdn-1.fynd.com/department/pictures/square-logo/original/6ouiCBSSn-https/hdn-1.fynd.com/department/pictures/square-logo/original/o2Rti5if7-.jpeg.jpeg.jpeg"
-          },
-          "is_active": true,
-          "slug": "fashion"
-        },
-        {
-          "slug": "automobile",
-          "is_active": true,
-          "logo": {
-            "type": "image",
-            "url": "https://hdn-1.addsale.com/x0/department/pictures/square-logo/original/kRhYFHWZ5-.jpeg"
-          },
-          "name": "AUTOMOBILE",
-          "uid": 24,
-          "priority_order": 1
-        }
-      ]
-    }
-  ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getLocationDetailsById
-Get store meta information.
-
-
-
-
-```kotlin
-catalog.getLocationDetailsById(locationId: locationId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| locationId | Int | yes | Unique Location ID. |  
-
-
-
-Use this API to get meta details for a store.
-
-*Returned Response:*
-
-
-
-
-[StoreDetails](#StoreDetails)
-
-Success. Returns a metadata object. Check the example shown below or refer `StoreDetails` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "uid": 1,
-  "_custom_json": {},
-  "additional_contacts": [
-    {
-      "country_code": 91,
-      "number": "9594495254"
-    }
-  ],
-  "address": {
-    "lat_long": {
-      "type": "Point",
-      "coordinates": [
-        72.809786,
-        19.138787
-      ]
-    },
-    "city": "MUMBAI",
-    "pincode": 400061,
-    "state": "MAHARASHTRA",
-    "country": "INDIA",
-    "landmark": "",
-    "address2": "",
-    "address1": "YARI ROAD, ANDHERI WEST"
-  },
-  "company_id": 1,
-  "display_name": "Reliance Digital P. Ltd",
-  "manager": {
-    "mobile_no": {
-      "country_code": 91,
-      "number": "9594495254"
-    },
-    "name": "Fahim Sakri",
-    "email": "fahimsakri@gmail.com"
-  },
-  "name": "Reliance Digital P. Ltd",
-  "store_code": "HS-52b69",
-  "store_type": "high_street",
-  "timing": [
-    {
-      "weekday": "monday",
-      "open": true,
-      "closing": {
-        "minute": 30,
-        "hour": 21
-      },
-      "opening": {
-        "minute": 0,
-        "hour": 11
-      }
-    },
-    {
-      "weekday": "tuesday",
-      "open": true,
-      "closing": {
-        "minute": 30,
-        "hour": 21
-      },
-      "opening": {
-        "minute": 0,
-        "hour": 11
-      }
-    },
-    {
-      "weekday": "wednesday",
-      "open": true,
-      "closing": {
-        "minute": 30,
-        "hour": 21
-      },
-      "opening": {
-        "minute": 0,
-        "hour": 11
-      }
-    },
-    {
-      "weekday": "thursday",
-      "open": true,
-      "closing": {
-        "minute": 30,
-        "hour": 21
-      },
-      "opening": {
-        "minute": 0,
-        "hour": 11
-      }
-    },
-    {
-      "weekday": "friday",
-      "open": true,
-      "closing": {
-        "minute": 30,
-        "hour": 21
-      },
-      "opening": {
-        "minute": 0,
-        "hour": 11
-      }
-    },
-    {
-      "weekday": "saturday",
-      "open": true,
-      "closing": {
-        "minute": 30,
-        "hour": 21
-      },
-      "opening": {
-        "minute": 0,
-        "hour": 11
-      }
-    },
-    {
-      "weekday": "sunday",
-      "open": true,
-      "closing": {
-        "minute": 30,
-        "hour": 21
-      },
-      "opening": {
-        "minute": 0,
-        "hour": 11
-      }
-    }
-  ],
-  "company": {
-    "company_type": "mbo",
-    "business_type": "ltd/pvt ltd",
-    "name": "Reliance Digital P. Ltd1234789123",
-    "uid": 1
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getProductPriceBySlug
-Get the price of a product size at a PIN Code
-
-
-
-
-```kotlin
-catalog.getProductPriceBySlug(slug: slug, size: size, storeId: storeId, pincode: pincode).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a product. You can get slug value from the endpoint /service/application/catalog/v1.0/products/ |   
-| size | String | yes | A string indicating the size of the product, e.g. S, M, XL. You can get slug value from the endpoint /service/application/catalog/v1.0/products/sizes |   
-| storeId | Int? | no | The ID of the store that is selling the product, e.g. 1,2,3. |   
-| pincode | String? | no | The PIN Code of the area near which the selling locations should be searched, e.g. 400059. |  
-
-
-
-Prices may vary for different sizes of a product. Use this API to retrieve the price of a product size at all the selling locations near to a PIN Code.
-
-*Returned Response:*
-
-
-
-
-[ProductSizePriceResponse](#ProductSizePriceResponse)
-
-Success. Returns a ProductSizePrice object. Check the example shown below or refer `ProductSizePriceResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "price_per_piece": {
-    "effective": 66.5,
-    "marked": 66.5,
-    "currency_code": "INR",
-    "currency_symbol": "₹"
-  },
-  "price": {
-    "effective": 399,
-    "marked": 399,
-    "currency_code": "INR",
-    "currency_symbol": "₹"
-  },
-  "quantity": 5,
-  "pincode": 400603,
-  "article_id": "1",
-  "long_lat": [
-    72.9159784,
-    19.0990231
-  ],
-  "item_type": "set",
-  "discount": "",
-  "article_assignment": {
-    "level": "multi-companies",
-    "strategy": "optimal"
-  },
-  "seller": {
-    "uid": 1,
-    "name": "Natalie Norman"
-  },
-  "store": {
-    "uid": 1,
-    "name": "Wayne Lamb",
-    "count": 2
-  },
-  "strategy_wise_listing": [
-    {
-      "distance": 11,
-      "quantity": 5,
-      "tat": 2592000,
-      "pincode": 400603
-    },
-    {
-      "distance": 11,
-      "quantity": 5,
-      "tat": 2592000,
-      "pincode": 400603
-    }
-  ],
-  "set": {
-    "size_distribution": {
-      "sizes": [
-        {
-          "size": "5",
-          "pieces": 1
-        },
-        {
-          "size": "7",
-          "pieces": 1
-        },
-        {
-          "size": "8",
-          "pieces": 2
-        },
-        {
-          "size": "9",
-          "pieces": 1
-        },
-        {
-          "size": "10",
-          "pieces": 1
-        }
-      ]
-    },
-    "quantity": 6
-  }
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getProductSellersBySlug
-Get the sellers of a product size at a PIN Code
-
-
-
-
-```kotlin
-catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, strategy: strategy, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| slug | String | yes | A short, human-readable, URL-friendly identifier of a product. You can get slug value from the endpoint /service/application/catalog/v1.0/products/ |   
-| size | String | yes | A string indicating the size of the product, e.g. S, M, XL. You can get slug value from the endpoint /service/application/catalog/v1.0/products/sizes |   
-| pincode | String? | no | The 6-digit PIN Code of the area near which the selling locations should be searched, e.g. 400059 |   
-| strategy | String? | no | Sort stores on the basis of strategy. eg, fast-delivery, low-price, optimal. |   
-| pageNo | Int? | no | The page number to navigate through the given set of results. |   
-| pageSize | Int? | no | The number of items to retrieve in each page. |  
-
-
-
-A product of a particular size may be sold by multiple sellers. Use this API to fetch the sellers having the stock of a particular size at a given PIN Code.
-
-*Returned Response:*
-
-
-
-
-[ProductSizeSellersResponse](#ProductSizeSellersResponse)
-
-Success. Returns a ProductSizeSeller object. Check the example shown below or refer `ProductSizeSellersResponse` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "items": [
-    {
-      "price_per_piece": {
-        "effective": 66.5,
-        "marked": 66.5,
-        "currency_code": "INR",
-        "currency_symbol": "₹"
-      },
-      "price": {
-        "effective": 399,
-        "marked": 399,
-        "currency_code": "INR",
-        "currency_symbol": "₹"
-      },
-      "quantity": 5,
-      "pincode": 400603,
-      "article_id": "1",
-      "discount": "",
-      "article_assignment": {
-        "level": "single-company",
-        "strategy": "optimal"
-      },
-      "seller": {
-        "uid": 1,
-        "name": "Natalie Norman"
-      },
-      "store": {
-        "uid": 1,
-        "name": "Wayne Lamb"
-      }
-    },
-    {
-      "price_per_piece": {
-        "effective": 66.5,
-        "marked": 66.5,
-        "currency_code": "INR",
-        "currency_symbol": "₹"
-      },
-      "price": {
-        "effective": 399,
-        "marked": 399,
-        "currency_code": "INR",
-        "currency_symbol": "₹"
-      },
-      "quantity": 5,
-      "pincode": 400603,
-      "article_id": "2",
-      "discount": "",
-      "article_assignment": {
-        "level": "single-company",
-        "strategy": "optimal"
-      },
-      "seller": {
-        "uid": 1,
-        "name": "Natalie Norman"
-      },
-      "store": {
-        "uid": 1,
-        "name": "Wayne Lamb"
-      }
-    }
-  ],
-  "page": {
-    "current": 1,
-    "total": 1,
-    "has_previous": false,
-    "has_next": false,
-    "item_total": 2,
-    "type": "number"
-  },
-  "sort_on": [
-    {
-      "default": true,
-      "is_selected": true,
-      "name": "Best price & fast delivery",
-      "value": "optimal"
-    },
-    {
-      "default": false,
-      "is_selected": false,
-      "name": "Best Price",
-      "value": "low-price"
-    },
-    {
-      "default": false,
-      "is_selected": false,
-      "name": "Fastest Delivery",
-      "value": "fast-delivery"
-    }
-  ]
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### getCollections
 List all the collections
 
@@ -6640,6 +5228,1123 @@ Success. Returns a Collection object. Check the example shown below or refer `Co
 ---
 
 
+### getFollowedListing
+Get a list of followed Products, Brands, Collections
+
+
+
+
+```kotlin
+catalog.getFollowedListing(collectionType: collectionType, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
+| pageId | String? | no | Page ID to retrieve next set of results. |   
+| pageSize | Int? | no | Page ID to retrieve next set of results. |  
+
+
+
+Users can follow a product they like. This API retrieves the products the user have followed.
+
+*Returned Response:*
+
+
+
+
+[GetFollowListingResponse](#GetFollowListingResponse)
+
+Success. Returns a Followed resource object. Check the example shown below or refer `GetFollowListingResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "type": "product",
+      "name": "revolutionize end-to-end technologies",
+      "item_type": "set",
+      "slug": "revolutionize-end-to-end-technologies",
+      "uid": 1,
+      "brand": {
+        "type": "brand",
+        "name": "Chen PLC",
+        "logo": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        },
+        "action": {
+          "page": {
+            "type": "products",
+            "query": {
+              "brand": [
+                "Chen-PLC"
+              ]
+            }
+          },
+          "type": "page"
+        },
+        "_custom_json": {}
+      },
+      "sellable": false,
+      "action": {
+        "page": {
+          "type": "product",
+          "query": {
+            "slug": "revolutionize-end-to-end-technologies"
+          }
+        },
+        "type": "page"
+      },
+      "attributes": {
+        "color_hex": "808080",
+        "weight": 100,
+        "product_type": "LaptopBags",
+        "gender": [
+          "Men",
+          "Women"
+        ],
+        "material": "Neoprene",
+        "style_note": "Shape up your overall appeal with this stunning laptop bag. The amazing storage and great design will let you carry your laptop in style!",
+        "item_code": "LGLAPTOPSLEEVE5",
+        "occasion": "Casual",
+        "primary_color": "Grey",
+        "primary_material": "Others",
+        "variant": "LGLAPTOPSLEEVE5",
+        "color": "DarkGrey",
+        "product_details": "This is a Unisex Product.",
+        "primary_color_hex": "808080"
+      },
+      "medias": [
+        {
+          "type": "image",
+          "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1309_LGLAPTOPSLEEVE5/1_1564735832806.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 3,
+          "uid": 3,
+          "name": "Paul Palmer",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+          },
+          "action": {
+            "page": {
+              "type": "category",
+              "query": {
+                "category": [
+                  "Paul-Palmer"
+                ]
+              }
+            },
+            "type": "page"
+          },
+          "_custom_json": {}
+        }
+      ],
+      "discount": "14% OFF",
+      "price": {
+        "marked": {
+          "min": 1399,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        },
+        "effective": {
+          "min": 1199,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        }
+      },
+      "rating": 2.7,
+      "rating_count": 2
+    },
+    {
+      "type": "product",
+      "name": "grow B2B experiences",
+      "item_type": "set",
+      "slug": "grow-B2B-experiences",
+      "uid": 15,
+      "brand": {
+        "type": "brand",
+        "name": "Chen PLC",
+        "logo": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        },
+        "action": {
+          "page": {
+            "type": "products",
+            "query": {
+              "brand": [
+                "Chen-PLC"
+              ]
+            }
+          },
+          "type": "page"
+        },
+        "_custom_json": {}
+      },
+      "sellable": false,
+      "action": {
+        "page": {
+          "type": "product",
+          "query": {
+            "slug": "grow-B2B-experiences"
+          }
+        },
+        "type": "page"
+      },
+      "attributes": {
+        "color_hex": "808080",
+        "weight": 100,
+        "product_type": "LaptopBags",
+        "gender": [
+          "Men",
+          "Women"
+        ],
+        "material": "Neoprene",
+        "style_note": "Shape up your overall appeal with this stunning laptop bag. The amazing storage and great design will let you carry your laptop in style!",
+        "item_code": "LGLAPTOPSLEEVE5",
+        "occasion": "Casual",
+        "primary_color": "Grey",
+        "primary_material": "Others",
+        "variant": "LGLAPTOPSLEEVE5",
+        "color": "DarkGrey",
+        "product_details": "This is a Unisex Product.",
+        "primary_color_hex": "808080"
+      },
+      "medias": [
+        {
+          "type": "image",
+          "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1309_LGLAPTOPSLEEVE5/1_1564735832806.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 3,
+          "uid": 3,
+          "name": "Paul Palmer",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+          },
+          "action": {
+            "page": {
+              "type": "category",
+              "query": {
+                "category": [
+                  "Paul-Palmer"
+                ]
+              }
+            },
+            "type": "page"
+          },
+          "_custom_json": {}
+        }
+      ],
+      "discount": "14% OFF",
+      "price": {
+        "marked": {
+          "min": 1399,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        },
+        "effective": {
+          "min": 1199,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        }
+      },
+      "rating": 2.7,
+      "rating_count": 2
+    },
+    {
+      "type": "product",
+      "name": "target robust systems",
+      "item_type": "set",
+      "slug": "target-robust-systems",
+      "uid": 14,
+      "brand": {
+        "type": "brand",
+        "name": "Chen PLC",
+        "logo": {
+          "type": "image",
+          "url": "https://hdn-1.fynd.com/media/logo/brand/original/12391_0d956c6c71a4427895c15e44cba82f88.jpg"
+        },
+        "action": {
+          "page": {
+            "type": "products",
+            "query": {
+              "brand": [
+                "Chen-PLC"
+              ]
+            }
+          },
+          "type": "page"
+        },
+        "_custom_json": {}
+      },
+      "sellable": false,
+      "action": {
+        "page": {
+          "type": "product",
+          "query": {
+            "slug": "target-robust-systems"
+          }
+        },
+        "type": "page"
+      },
+      "attributes": {
+        "color_hex": "808080",
+        "weight": 100,
+        "product_type": "LaptopBags",
+        "gender": [
+          "Men",
+          "Women"
+        ],
+        "material": "Neoprene",
+        "style_note": "Shape up your overall appeal with this stunning laptop bag. The amazing storage and great design will let you carry your laptop in style!",
+        "item_code": "LGLAPTOPSLEEVE5",
+        "occasion": "Casual",
+        "primary_color": "Grey",
+        "primary_material": "Others",
+        "variant": "LGLAPTOPSLEEVE5",
+        "color": "DarkGrey",
+        "product_details": "This is a Unisex Product.",
+        "primary_color_hex": "808080"
+      },
+      "medias": [
+        {
+          "type": "image",
+          "url": "http://cdn4.gofynd.com/media/pictures/tagged_items/original/1309_LGLAPTOPSLEEVE5/1_1564735832806.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 3,
+          "uid": 3,
+          "name": "Paul Palmer",
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/banner_portrait/brand/original/540_ecba3a1af141467da8abc20500f983db.jpg"
+          },
+          "action": {
+            "page": {
+              "type": "category",
+              "query": {
+                "category": [
+                  "Paul-Palmer"
+                ]
+              }
+            },
+            "type": "page"
+          },
+          "_custom_json": {}
+        }
+      ],
+      "discount": "14% OFF",
+      "price": {
+        "marked": {
+          "min": 1399,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        },
+        "effective": {
+          "min": 1199,
+          "max": 1399,
+          "currency_code": "INR",
+          "currency_symbol": "₹"
+        }
+      },
+      "rating": 2.7,
+      "rating_count": 2
+    }
+  ],
+  "page": {
+    "next_id": "6066fc7b3b17fd7038c46317",
+    "has_previous": false,
+    "has_next": true,
+    "item_total": 15,
+    "type": "number"
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### followById
+Follow an entity (product/brand/collection)
+
+
+
+
+```kotlin
+catalog.followById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
+| collectionId | String | yes | The ID of the collection type. |  
+
+
+
+Follow a particular entity such as product, brand, collection specified by its ID.
+
+*Returned Response:*
+
+
+
+
+[FollowPostResponse](#FollowPostResponse)
+
+Success. Returns a response object. Check the example shown below or refer `FollowPostResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Brands Added To Wishlist",
+  "id": "1"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### unfollowById
+Unfollow an entity (product/brand/collection)
+
+
+
+
+```kotlin
+catalog.unfollowById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| collectionType | String | yes | Type of collection followed, i.e. products, brands, or collections. |   
+| collectionId | String | yes | The ID of the collection type. |  
+
+
+
+You can undo a followed product, brand or collection by its ID. This action is referred as _unfollow_.
+
+*Returned Response:*
+
+
+
+
+[FollowPostResponse](#FollowPostResponse)
+
+Success. Returns a response object. Check the example shown below or refer `FollowPostResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "message": "Products Removed From Wishlist",
+  "id": "1"
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getFollowerCountById
+Get Follow Count
+
+
+
+
+```kotlin
+catalog.getFollowerCountById(collectionType: collectionType, collectionId: collectionId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| collectionType | String | yes | Type of collection, i.e. products, brands, or collections. |   
+| collectionId | String | yes | The ID of the collection type. |  
+
+
+
+Get the total count of followers for a given collection type and collection ID.
+
+*Returned Response:*
+
+
+
+
+[FollowerCountResponse](#FollowerCountResponse)
+
+Success. Returns the number of followers for a given collection type. Check the example shown below or refer `FollowerCountResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "count": 0
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getFollowIds
+Get the IDs of followed products, brands and collections.
+
+
+
+
+```kotlin
+catalog.getFollowIds(collectionType: collectionType).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| collectionType | String? | no | Type of collection, i.e. products, brands, collections. |  
+
+
+
+You can get the IDs of all the followed Products, Brands and Collections. Pass collection_type as query parameter to fetch specific Ids
+
+*Returned Response:*
+
+
+
+
+[FollowIdsResponse](#FollowIdsResponse)
+
+Success. Returns the IDs of all the Products, Brands and Collections which were followed. Check the example shown below or refer `FollowIdsResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "data": {
+    "products": [
+      1,
+      15,
+      14,
+      13,
+      12,
+      11,
+      10,
+      9,
+      8,
+      7,
+      6,
+      5,
+      4,
+      3,
+      2
+    ],
+    "brands": [
+      1
+    ],
+    "collections": []
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getStores
+Get store meta information.
+
+
+
+
+```kotlin
+catalog.getStores(pageNo: pageNo, pageSize: pageSize, q: q, city: city, range: range, latitude: latitude, longitude: longitude).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | The page number to navigate through the given set of results. |   
+| pageSize | Int? | no | Number of items to retrieve in each page. |   
+| q | String? | no | Search a store by its name or store_code. |   
+| city | String? | no | Search stores by the city in which they are situated. |   
+| range | Int? | no | Use this to retrieve stores within a particular range in meters, e.g. 10000, to indicate a 10km range |   
+| latitude | Double? | no | Latitude of the location from where one wants to retreive the nearest stores, e.g. 72.8691788 |   
+| longitude | Double? | no | Longitude of the location from where one wants to retreive the nearest stores, e.g. 19.1174114 |  
+
+
+
+Use this API to get a list of stores in a specific application.
+
+*Returned Response:*
+
+
+
+
+[StoreListingResponse](#StoreListingResponse)
+
+Success. Returns a list of selling locations. Check the example shown below or refer `StoreListingResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "type": "number",
+    "current": 1,
+    "total": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_total": 1
+  },
+  "data": [
+    {
+      "pincode": 400059,
+      "city": "MUMBAI",
+      "state": "MAHARASHTRA",
+      "country": "INDIA",
+      "address": "SHOPSENSE RETAIL TECHNOLOGIES PRIVATE LIMITED 1ST FLOOR WEWORK VIJAY DIAMOND, CROSS RD B, AJIT NAGAR,",
+      "store_email": "ASHISHCHANDORKAR@FYND.COM",
+      "lat_long": {
+        "type": "Point",
+        "coordinates": [
+          72.8691788,
+          19.1174114
+        ]
+      },
+      "name": "RRL01",
+      "store_code": "WH_8513",
+      "uid": 1
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getInStockLocations
+Get store meta information.
+
+
+
+
+```kotlin
+catalog.getInStockLocations(pageNo: pageNo, pageSize: pageSize, q: q, city: city, range: range, latitude: latitude, longitude: longitude).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | The page number to navigate through the given set of results. |   
+| pageSize | Int? | no | Number of items to retrieve in each page. |   
+| q | String? | no | Search a store by its name or store_code. |   
+| city | String? | no | Search stores by the city in which they are situated. |   
+| range | Int? | no | Use this to retrieve stores within a particular range in meters, e.g. 10000, to indicate a 10km range |   
+| latitude | Double? | no | Latitude of the location from where one wants to retreive the nearest stores, e.g. 72.8691788 |   
+| longitude | Double? | no | Longitude of the location from where one wants to retreive the nearest stores, e.g. 19.1174114 |  
+
+
+
+Use this API to get a list of stores in a specific application.
+
+*Returned Response:*
+
+
+
+
+[ApplicationStoreListing](#ApplicationStoreListing)
+
+Success. Returns a list of selling locations. Check the example shown below or refer `StoreListingResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "page": {
+    "current": 1,
+    "type": "number",
+    "total": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_total": 5
+  },
+  "items": [
+    {
+      "uid": 1,
+      "_custom_json": {},
+      "additional_contacts": [
+        {
+          "country_code": 91,
+          "number": "9594495254"
+        }
+      ],
+      "address": {
+        "lat_long": {
+          "type": "Point",
+          "coordinates": [
+            72.809786,
+            19.138787
+          ]
+        },
+        "city": "MUMBAI",
+        "pincode": 400061,
+        "state": "MAHARASHTRA",
+        "country": "INDIA",
+        "landmark": "",
+        "address2": "",
+        "address1": "YARI ROAD, ANDHERI WEST"
+      },
+      "company_id": 1,
+      "display_name": "Reliance Digital P. Ltd",
+      "manager": {
+        "mobile_no": {
+          "country_code": 91,
+          "number": "9594495254"
+        },
+        "name": "Fahim Sakri",
+        "email": "fahimsakri@gmail.com"
+      },
+      "name": "Reliance Digital P. Ltd",
+      "store_code": "HS-52b69",
+      "store_type": "high_street",
+      "company": {
+        "company_type": "mbo",
+        "business_type": "ltd/pvt ltd",
+        "name": "Reliance Digital P. Ltd1234789123",
+        "uid": 1
+      },
+      "departments": [
+        {
+          "priority_order": 7,
+          "name": "Baby Care & Kids Essentials",
+          "uid": 7,
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/category_tab_icons/department/Babycareandkidsessential.png"
+          },
+          "is_active": true,
+          "slug": "baby-care-kids-essentials"
+        },
+        {
+          "priority_order": 9,
+          "name": "Industrial Supplies",
+          "uid": 11,
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/media/logo/department/original/15483_a8803bf3fc244c748180588166df82da.jpg"
+          },
+          "is_active": true,
+          "slug": "industrial-supplies"
+        },
+        {
+          "priority_order": 10,
+          "name": "Electricals",
+          "uid": 14,
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/department/pictures/square-logo/original/M93qfyuh1-https:hdn-1.fynd.commedialogodepartmentoriginal17588_44516b7413fd4a4a858556857aa0c4c8.jpg.jpeg"
+          },
+          "is_active": true,
+          "slug": "electricals"
+        },
+        {
+          "priority_order": 1,
+          "name": "Fashion",
+          "uid": 21,
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.fynd.com/department/pictures/square-logo/original/jSt0jjI7D-https/hdn-1.fynd.com/department/pictures/square-logo/original/6ouiCBSSn-https/hdn-1.fynd.com/department/pictures/square-logo/original/o2Rti5if7-.jpeg.jpeg.jpeg"
+          },
+          "is_active": true,
+          "slug": "fashion"
+        },
+        {
+          "slug": "automobile",
+          "is_active": true,
+          "logo": {
+            "type": "image",
+            "url": "https://hdn-1.addsale.com/x0/department/pictures/square-logo/original/kRhYFHWZ5-.jpeg"
+          },
+          "name": "AUTOMOBILE",
+          "uid": 24,
+          "priority_order": 1
+        }
+      ]
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getLocationDetailsById
+Get store meta information.
+
+
+
+
+```kotlin
+catalog.getLocationDetailsById(locationId: locationId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| locationId | Int | yes | Unique Location ID. |  
+
+
+
+Use this API to get meta details for a store.
+
+*Returned Response:*
+
+
+
+
+[StoreDetails](#StoreDetails)
+
+Success. Returns a metadata object. Check the example shown below or refer `StoreDetails` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "uid": 1,
+  "_custom_json": {},
+  "additional_contacts": [
+    {
+      "country_code": 91,
+      "number": "9594495254"
+    }
+  ],
+  "address": {
+    "lat_long": {
+      "type": "Point",
+      "coordinates": [
+        72.809786,
+        19.138787
+      ]
+    },
+    "city": "MUMBAI",
+    "pincode": 400061,
+    "state": "MAHARASHTRA",
+    "country": "INDIA",
+    "landmark": "",
+    "address2": "",
+    "address1": "YARI ROAD, ANDHERI WEST"
+  },
+  "company_id": 1,
+  "display_name": "Reliance Digital P. Ltd",
+  "manager": {
+    "mobile_no": {
+      "country_code": 91,
+      "number": "9594495254"
+    },
+    "name": "Fahim Sakri",
+    "email": "fahimsakri@gmail.com"
+  },
+  "name": "Reliance Digital P. Ltd",
+  "store_code": "HS-52b69",
+  "store_type": "high_street",
+  "timing": [
+    {
+      "weekday": "monday",
+      "open": true,
+      "closing": {
+        "minute": 30,
+        "hour": 21
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      }
+    },
+    {
+      "weekday": "tuesday",
+      "open": true,
+      "closing": {
+        "minute": 30,
+        "hour": 21
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      }
+    },
+    {
+      "weekday": "wednesday",
+      "open": true,
+      "closing": {
+        "minute": 30,
+        "hour": 21
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      }
+    },
+    {
+      "weekday": "thursday",
+      "open": true,
+      "closing": {
+        "minute": 30,
+        "hour": 21
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      }
+    },
+    {
+      "weekday": "friday",
+      "open": true,
+      "closing": {
+        "minute": 30,
+        "hour": 21
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      }
+    },
+    {
+      "weekday": "saturday",
+      "open": true,
+      "closing": {
+        "minute": 30,
+        "hour": 21
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      }
+    },
+    {
+      "weekday": "sunday",
+      "open": true,
+      "closing": {
+        "minute": 30,
+        "hour": 21
+      },
+      "opening": {
+        "minute": 0,
+        "hour": 11
+      }
+    }
+  ],
+  "company": {
+    "company_type": "mbo",
+    "business_type": "ltd/pvt ltd",
+    "name": "Reliance Digital P. Ltd1234789123",
+    "uid": 1
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getProductBundlesBySlug
 Get product bundles
 
@@ -6790,17 +6495,325 @@ Success. Returns a group of products bundle.
 ---
 
 
+### getProductPriceBySlug
+Get the price of a product size at a PIN Code
+
+
+
+
+```kotlin
+catalog.getProductPriceBySlug(slug: slug, size: size, storeId: storeId, pincode: pincode).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a product. You can get slug value from the endpoint /service/application/catalog/v1.0/products/ |   
+| size | String | yes | A string indicating the size of the product, e.g. S, M, XL. You can get slug value from the endpoint /service/application/catalog/v1.0/products/sizes |   
+| storeId | Int? | no | The ID of the store that is selling the product, e.g. 1,2,3. |   
+| pincode | String? | no | The PIN Code of the area near which the selling locations should be searched, e.g. 400059. |  
+
+
+
+Prices may vary for different sizes of a product. Use this API to retrieve the price of a product size at all the selling locations near to a PIN Code.
+
+*Returned Response:*
+
+
+
+
+[ProductSizePriceResponseV2](#ProductSizePriceResponseV2)
+
+Success. Returns a ProductSizePriceV2 object. Check the example shown below or refer `ProductSizePriceResponseV2` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "price_per_piece": {
+    "effective": 66.5,
+    "marked": 66.5,
+    "currency_code": "INR",
+    "currency_symbol": "₹"
+  },
+  "price": {
+    "effective": 399,
+    "marked": 399,
+    "currency_code": "INR",
+    "currency_symbol": "₹"
+  },
+  "quantity": 5,
+  "pincode": 400603,
+  "article_id": "1",
+  "long_lat": [
+    72.9159784,
+    19.0990231
+  ],
+  "item_type": "set",
+  "discount": "",
+  "article_assignment": {
+    "level": "multi-companies",
+    "strategy": "optimal"
+  },
+  "seller": {
+    "uid": 1,
+    "name": "Natalie Norman"
+  },
+  "store": {
+    "uid": 1,
+    "name": "Wayne Lamb",
+    "count": 2
+  },
+  "strategy_wise_listing": [
+    {
+      "distance": 11,
+      "quantity": 5,
+      "tat": 2592000,
+      "pincode": 400603
+    },
+    {
+      "distance": 11,
+      "quantity": 5,
+      "tat": 2592000,
+      "pincode": 400603
+    }
+  ],
+  "set": {
+    "size_distribution": {
+      "sizes": [
+        {
+          "size": "5",
+          "pieces": 1
+        },
+        {
+          "size": "7",
+          "pieces": 1
+        },
+        {
+          "size": "8",
+          "pieces": 2
+        },
+        {
+          "size": "9",
+          "pieces": 1
+        },
+        {
+          "size": "10",
+          "pieces": 1
+        }
+      ]
+    },
+    "quantity": 6
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getProductSellersBySlug
+Get the sellers of a product size at a PIN Code
+
+
+
+
+```kotlin
+catalog.getProductSellersBySlug(slug: slug, size: size, pincode: pincode, strategy: strategy, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| slug | String | yes | A short, human-readable, URL-friendly identifier of a product. You can get slug value from the endpoint /service/application/catalog/v1.0/products/ |   
+| size | String | yes | A string indicating the size of the product, e.g. S, M, XL. You can get slug value from the endpoint /service/application/catalog/v1.0/products/sizes |   
+| pincode | String? | no | The 6-digit PIN Code of the area near which the selling locations should be searched, e.g. 400059 |   
+| strategy | String? | no | Sort stores on the basis of strategy. eg, fast-delivery, low-price, optimal. |   
+| pageNo | Int? | no | The page number to navigate through the given set of results. |   
+| pageSize | Int? | no | The number of items to retrieve in each page. |  
+
+
+
+A product of a particular size may be sold by multiple sellers. Use this API to fetch the sellers having the stock of a particular size at a given PIN Code.
+
+*Returned Response:*
+
+
+
+
+[ProductSizeSellersResponseV2](#ProductSizeSellersResponseV2)
+
+Success. Returns a ProductSizeSellerV2 object. Check the example shown below or refer `ProductSizeSellersResponseV2` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "items": [
+    {
+      "price_per_piece": {
+        "effective": 66.5,
+        "marked": 66.5,
+        "currency_code": "INR",
+        "currency_symbol": "₹"
+      },
+      "price": {
+        "effective": 399,
+        "marked": 399,
+        "currency_code": "INR",
+        "currency_symbol": "₹"
+      },
+      "quantity": 5,
+      "pincode": 400603,
+      "article_id": "1",
+      "discount": "",
+      "article_assignment": {
+        "level": "single-company",
+        "strategy": "optimal"
+      },
+      "seller": {
+        "uid": 1,
+        "name": "Natalie Norman"
+      },
+      "store": {
+        "uid": 1,
+        "name": "Wayne Lamb"
+      }
+    },
+    {
+      "price_per_piece": {
+        "effective": 66.5,
+        "marked": 66.5,
+        "currency_code": "INR",
+        "currency_symbol": "₹"
+      },
+      "price": {
+        "effective": 399,
+        "marked": 399,
+        "currency_code": "INR",
+        "currency_symbol": "₹"
+      },
+      "quantity": 5,
+      "pincode": 400603,
+      "article_id": "2",
+      "discount": "",
+      "article_assignment": {
+        "level": "single-company",
+        "strategy": "optimal"
+      },
+      "seller": {
+        "uid": 1,
+        "name": "Natalie Norman"
+      },
+      "store": {
+        "uid": 1,
+        "name": "Wayne Lamb"
+      }
+    }
+  ],
+  "page": {
+    "current": 1,
+    "total": 1,
+    "has_previous": false,
+    "has_next": false,
+    "item_total": 2,
+    "type": "number"
+  },
+  "sort_on": [
+    {
+      "default": true,
+      "is_selected": true,
+      "name": "Best price & fast delivery",
+      "value": "optimal"
+    },
+    {
+      "default": false,
+      "is_selected": false,
+      "name": "Best Price",
+      "value": "low-price"
+    },
+    {
+      "default": false,
+      "is_selected": false,
+      "name": "Fastest Delivery",
+      "value": "fast-delivery"
+    }
+  ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
  
  
- #### [MetaFields](#MetaFields)
+ #### [ProductDetailAttribute](#ProductDetailAttribute)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  |  |
- | value | String |  no  |  |
+ | type | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | details | ArrayList<[ProductDetailAttribute](#ProductDetailAttribute)>? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -6822,8 +6835,8 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | meta | [Meta](#Meta)? |  yes  |  |
  | type | String? |  yes  |  |
+ | meta | [Meta](#Meta)? |  yes  |  |
  | url | String? |  yes  |  |
 
 ---
@@ -6831,13 +6844,12 @@ Success. Returns a group of products bundle.
 
  
  
- #### [ActionPage](#ActionPage)
+ #### [ProductListingActionPage](#ProductListingActionPage)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | params | HashMap<String,Any>? |  yes  |  |
  | type | String? |  yes  |  |
- | url | String? |  yes  |  |
+ | params | HashMap<String,Any>? |  yes  |  |
  | query | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -6845,13 +6857,12 @@ Success. Returns a group of products bundle.
 
  
  
- #### [Action](#Action)
+ #### [ProductListingAction](#ProductListingAction)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | popup | [ActionPage](#ActionPage)? |  yes  |  |
  | type | String? |  yes  |  |
- | page | [ActionPage](#ActionPage)? |  yes  |  |
+ | page | [ProductListingActionPage](#ProductListingActionPage)? |  yes  |  |
 
 ---
 
@@ -6862,10 +6873,10 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [Media](#Media)? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | uid | Int? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
  | name | String? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
 
 ---
 
@@ -6877,8 +6888,8 @@ Success. Returns a group of products bundle.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | currencySymbol | String? |  yes  |  |
- | min | Double? |  yes  |  |
  | currencyCode | String? |  yes  |  |
+ | min | Double? |  yes  |  |
  | max | Double? |  yes  |  |
 
 ---
@@ -6890,33 +6901,20 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | effective | [Price](#Price)? |  yes  |  |
  | marked | [Price](#Price)? |  yes  |  |
+ | effective | [Price](#Price)? |  yes  |  |
 
 ---
 
 
  
  
- #### [ProductDetailAttribute](#ProductDetailAttribute)
+ #### [MetaFields](#MetaFields)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String? |  yes  |  |
- | type | String? |  yes  |  |
- | value | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | details | ArrayList<[ProductDetailAttribute](#ProductDetailAttribute)>? |  yes  |  |
- | title | String? |  yes  |  |
+ | key | String |  no  |  |
+ | value | String |  no  |  |
 
 ---
 
@@ -6927,33 +6925,33 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | color | String? |  yes  |  |
  | productOnlineDate | String? |  yes  |  |
- | itemType | String? |  yes  |  |
  | slug | String |  no  |  |
- | customMeta | ArrayList<[MetaFields](#MetaFields)>? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
  | teaserTag | String? |  yes  |  |
+ | color | String? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
  | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | similars | ArrayList<String>? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
  | discount | String? |  yes  |  |
  | ratingCount | Int? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
+ | description | String? |  yes  |  |
  | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
- | uid | Int? |  yes  |  |
+ | imageNature | String? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
  | name | String? |  yes  |  |
- | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | imageNature | String? |  yes  |  |
  | rating | Double? |  yes  |  |
  | tryouts | ArrayList<String>? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | similars | ArrayList<String>? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | type | String? |  yes  |  |
- | action | [ActionPage](#ActionPage)? |  yes  |  |
- | description | String? |  yes  |  |
+ | customMeta | ArrayList<[MetaFields](#MetaFields)>? |  yes  |  |
 
 ---
 
@@ -6987,12 +6985,12 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | col3 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col2 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col4 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
+ | col1 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
  | col6 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
  | col5 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col1 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col2 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col3 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
- | col4 | [ColumnHeader](#ColumnHeader)? |  yes  |  |
 
 ---
 
@@ -7003,12 +7001,12 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | col3 | String? |  yes  |  |
+ | col2 | String? |  yes  |  |
+ | col4 | String? |  yes  |  |
+ | col1 | String? |  yes  |  |
  | col6 | String? |  yes  |  |
  | col5 | String? |  yes  |  |
- | col1 | String? |  yes  |  |
- | col2 | String? |  yes  |  |
- | col3 | String? |  yes  |  |
- | col4 | String? |  yes  |  |
 
 ---
 
@@ -7019,13 +7017,27 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | unit | String? |  yes  |  |
  | description | String? |  yes  |  |
  | sizeTip | String? |  yes  |  |
- | image | String? |  yes  |  |
  | headers | [ColumnHeaders](#ColumnHeaders)? |  yes  |  |
- | title | String? |  yes  |  |
  | sizes | ArrayList<[SizeChartValues](#SizeChartValues)>? |  yes  |  |
- | unit | String? |  yes  |  |
+ | image | String? |  yes  |  |
+ | title | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSize](#ProductSize)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isAvailable | Boolean? |  yes  |  |
+ | display | String? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | value | String? |  yes  |  |
 
 ---
 
@@ -7043,30 +7055,16 @@ Success. Returns a group of products bundle.
 
  
  
- #### [ProductSize](#ProductSize)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | value | String? |  yes  |  |
- | isAvailable | Boolean? |  yes  |  |
-
----
-
-
- 
- 
  #### [ProductSizes](#ProductSizes)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | sizeChart | [SizeChart](#SizeChart)? |  yes  |  |
- | discount | String? |  yes  |  |
- | stores | [ProductSizeStores](#ProductSizeStores)? |  yes  |  |
- | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
  | sellable | Boolean? |  yes  |  |
  | sizes | ArrayList<[ProductSize](#ProductSize)>? |  yes  |  |
+ | stores | [ProductSizeStores](#ProductSizeStores)? |  yes  |  |
+ | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
+ | discount | String? |  yes  |  |
 
 ---
 
@@ -7079,8 +7077,8 @@ Success. Returns a group of products bundle.
  | ---------- | ---- | -------- | ----------- |
  | display | String? |  yes  |  |
  | key | String? |  yes  |  |
- | logo | String? |  yes  |  |
  | description | String? |  yes  |  |
+ | logo | String? |  yes  |  |
 
 ---
 
@@ -7103,8 +7101,8 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
  | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
+ | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
 
 ---
 
@@ -7115,10 +7113,10 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
  | subtitle | String? |  yes  |  |
- | title | String? |  yes  |  |
  | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
+ | title | String? |  yes  |  |
+ | attributesMetadata | ArrayList<[AttributeMetadata](#AttributeMetadata)>? |  yes  |  |
 
 ---
 
@@ -7141,8 +7139,8 @@ Success. Returns a group of products bundle.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | subtitle | String? |  yes  |  |
- | title | String? |  yes  |  |
  | items | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
+ | title | String? |  yes  |  |
 
 ---
 
@@ -7164,15 +7162,15 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | color | String? |  yes  |  |
- | value | String? |  yes  |  |
  | name | String? |  yes  |  |
- | colorName | String? |  yes  |  |
  | isAvailable | Boolean? |  yes  |  |
- | slug | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
  | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | colorName | String? |  yes  |  |
+ | color | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | value | String? |  yes  |  |
 
 ---
 
@@ -7183,10 +7181,10 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String? |  yes  |  |
- | header | String? |  yes  |  |
  | items | ArrayList<[ProductVariantItemResponse](#ProductVariantItemResponse)>? |  yes  |  |
  | displayType | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | header | String? |  yes  |  |
 
 ---
 
@@ -7204,40 +7202,13 @@ Success. Returns a group of products bundle.
 
  
  
- #### [StoreDetail](#StoreDetail)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  |  |
- | city | String? |  yes  |  |
- | name | String? |  yes  |  |
- | id | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductStockPrice](#ProductStockPrice)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | effective | Double? |  yes  |  |
- | marked | Double? |  yes  |  |
- | currency | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [Seller](#Seller)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | count | Int? |  yes  |  |
  | uid | Int? |  yes  |  |
  | name | String? |  yes  |  |
- | count | Int? |  yes  |  |
 
 ---
 
@@ -7248,8 +7219,35 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
  | id | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductStockPrice](#ProductStockPrice)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | marked | Double? |  yes  |  |
+ | currency | String? |  yes  |  |
+ | effective | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreDetail](#StoreDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | city | String? |  yes  |  |
+ | code | String? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -7260,15 +7258,15 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | store | [StoreDetail](#StoreDetail)? |  yes  |  |
- | identifier | HashMap<String,Any>? |  yes  |  |
- | itemId | Int? |  yes  |  |
- | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | quantity | Int? |  yes  |  |
  | seller | [Seller](#Seller)? |  yes  |  |
- | uid | String? |  yes  |  |
+ | itemId | Int? |  yes  |  |
  | company | [CompanyDetail](#CompanyDetail)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | identifier | HashMap<String,Any>? |  yes  |  |
  | size | String? |  yes  |  |
+ | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | store | [StoreDetail](#StoreDetail)? |  yes  |  |
 
 ---
 
@@ -7290,12 +7288,12 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | nextId | String? |  yes  |  |
  | hasNext | Boolean? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
  | itemTotal | Int? |  yes  |  |
  | current | Int? |  yes  |  |
  | type | String |  no  |  |
+ | nextId | String? |  yes  |  |
+ | hasPrevious | Boolean? |  yes  |  |
  | size | Int? |  yes  |  |
 
 ---
@@ -7307,8 +7305,94 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[ProductStockStatusItem](#ProductStockStatusItem)>? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductListingDetail](#ProductListingDetail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | productOnlineDate | String? |  yes  |  |
+ | slug | String |  no  |  |
+ | shortDescription | String? |  yes  |  |
+ | teaserTag | String? |  yes  |  |
+ | color | String? |  yes  |  |
+ | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
+ | type | String? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | medias | ArrayList<[Media](#Media)>? |  yes  |  |
+ | sellable | Boolean? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | similars | ArrayList<String>? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+ | discount | String? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
+ | description | String? |  yes  |  |
+ | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
+ | imageNature | String? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
+ | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
+ | name | String? |  yes  |  |
+ | rating | Double? |  yes  |  |
+ | tryouts | ArrayList<String>? |  yes  |  |
+ | customMeta | ArrayList<[MetaFields](#MetaFields)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductFiltersValue](#ProductFiltersValue)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | selectedMin | Int? |  yes  |  |
+ | count | Int? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | displayFormat | String? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+ | min | Int? |  yes  |  |
+ | max | Int? |  yes  |  |
+ | isSelected | Boolean |  no  |  |
+ | display | String |  no  |  |
+ | queryFormat | String? |  yes  |  |
+ | selectedMax | Int? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductFiltersKey](#ProductFiltersKey)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | kind | String? |  yes  |  |
+ | display | String |  no  |  |
+ | name | String |  no  |  |
+ | logo | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductFilters](#ProductFilters)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | values | ArrayList<[ProductFiltersValue](#ProductFiltersValue)> |  no  |  |
+ | key | [ProductFiltersKey](#ProductFiltersKey) |  no  |  |
 
 ---
 
@@ -7320,94 +7404,8 @@ Success. Returns a group of products bundle.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | isSelected | Boolean? |  yes  |  |
- | value | String? |  yes  |  |
  | name | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductFiltersKey](#ProductFiltersKey)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | display | String |  no  |  |
- | logo | String? |  yes  |  |
- | name | String |  no  |  |
- | kind | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductFiltersValue](#ProductFiltersValue)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | displayFormat | String? |  yes  |  |
- | isSelected | Boolean |  no  |  |
- | selectedMin | Int? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | selectedMax | Int? |  yes  |  |
- | queryFormat | String? |  yes  |  |
  | value | String? |  yes  |  |
- | min | Int? |  yes  |  |
- | currencyCode | String? |  yes  |  |
- | display | String |  no  |  |
- | max | Int? |  yes  |  |
- | count | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductFilters](#ProductFilters)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | [ProductFiltersKey](#ProductFiltersKey) |  no  |  |
- | values | ArrayList<[ProductFiltersValue](#ProductFiltersValue)> |  no  |  |
-
----
-
-
- 
- 
- #### [ProductListingDetail](#ProductListingDetail)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | color | String? |  yes  |  |
- | productOnlineDate | String? |  yes  |  |
- | itemType | String? |  yes  |  |
- | slug | String |  no  |  |
- | customMeta | ArrayList<[MetaFields](#MetaFields)>? |  yes  |  |
- | teaserTag | String? |  yes  |  |
- | medias | ArrayList<[Media](#Media)>? |  yes  |  |
- | discount | String? |  yes  |  |
- | ratingCount | Int? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | brand | [ProductBrand](#ProductBrand)? |  yes  |  |
- | uid | Int? |  yes  |  |
- | categories | ArrayList<[ProductBrand](#ProductBrand)>? |  yes  |  |
- | name | String? |  yes  |  |
- | price | [ProductListingPrice](#ProductListingPrice)? |  yes  |  |
- | groupedAttributes | ArrayList<[ProductDetailGroupedAttribute](#ProductDetailGroupedAttribute)>? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | imageNature | String? |  yes  |  |
- | rating | Double? |  yes  |  |
- | tryouts | ArrayList<String>? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | sellable | Boolean? |  yes  |  |
- | similars | ArrayList<String>? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | type | String? |  yes  |  |
- | action | [ActionPage](#ActionPage)? |  yes  |  |
- | description | String? |  yes  |  |
 
 ---
 
@@ -7418,10 +7416,10 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
+ | filters | ArrayList<[ProductFilters](#ProductFilters)>? |  yes  |  |
  | sortOn | ArrayList<[ProductSortOn](#ProductSortOn)>? |  yes  |  |
  | page | [Page](#Page) |  no  |  |
- | filters | ArrayList<[ProductFilters](#ProductFilters)>? |  yes  |  |
- | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
 
 ---
 
@@ -7444,14 +7442,14 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | discount | String? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
- | name | String? |  yes  |  |
- | departments | ArrayList<String>? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | slug | String? |  yes  |  |
+ | departments | ArrayList<String>? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
  | uid | Int? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
+ | discount | String? |  yes  |  |
 
 ---
 
@@ -7462,8 +7460,8 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[BrandItem](#BrandItem)>? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
 
 ---
 
@@ -7474,22 +7472,10 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
-
----
-
-
- 
- 
- #### [DepartmentIdentifier](#DepartmentIdentifier)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
  | uid | Int? |  yes  |  |
- | slug | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
 
 ---
 
@@ -7500,13 +7486,13 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | name | String? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
+ | name | String? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | childs | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7517,13 +7503,13 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
- | name | String? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
+ | name | String? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | childs | ArrayList<[ThirdLevelChild](#ThirdLevelChild)>? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7534,13 +7520,13 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
- | name | String? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
+ | name | String? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | childs | ArrayList<[SecondLevelChild](#SecondLevelChild)>? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7551,12 +7537,12 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | name | String? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | slug | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
  | childs | ArrayList<[Child](#Child)>? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7567,8 +7553,20 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | department | String? |  yes  |  |
  | items | ArrayList<[CategoryItems](#CategoryItems)>? |  yes  |  |
+ | department | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DepartmentIdentifier](#DepartmentIdentifier)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7579,8 +7577,8 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | departments | ArrayList<[DepartmentIdentifier](#DepartmentIdentifier)>? |  yes  |  |
  | data | ArrayList<[DepartmentCategoryTree](#DepartmentCategoryTree)>? |  yes  |  |
+ | departments | ArrayList<[DepartmentIdentifier](#DepartmentIdentifier)>? |  yes  |  |
 
 ---
 
@@ -7591,9 +7589,9 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
  | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
 
 ---
@@ -7605,9 +7603,9 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
  | message | String? |  yes  |  |
  | page | [Page](#Page) |  no  |  |
- | items | ArrayList<[ProductListingDetail](#ProductListingDetail)>? |  yes  |  |
 
 ---
 
@@ -7618,11 +7616,11 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logo | [Media](#Media)? |  yes  |  |
  | name | String? |  yes  |  |
  | slug | String? |  yes  |  |
- | uid | Int? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
  | priorityOrder | Int? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7644,9 +7642,9 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
  | display | String? |  yes  |  |
  | type | String? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
  | logo | [Media](#Media)? |  yes  |  |
 
 ---
@@ -7665,12 +7663,119 @@ Success. Returns a group of products bundle.
 
  
  
+ #### [GetCollectionDetailNest](#GetCollectionDetailNest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tag | ArrayList<String>? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | allowSort | Boolean? |  yes  |  |
+ | type | String? |  yes  |  |
+ | cron | HashMap<String,Any>? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
+ | action | [ProductListingAction](#ProductListingAction)? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | description | String? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
+ | allowFacets | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilterTag](#CollectionListingFilterTag)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isSelected | Boolean? |  yes  |  |
+ | display | String? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilterType](#CollectionListingFilterType)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isSelected | Boolean? |  yes  |  |
+ | display | String? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionListingFilter](#CollectionListingFilter)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
+ | type | ArrayList<[CollectionListingFilterType](#CollectionListingFilterType)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GetCollectionListingResponse](#GetCollectionListingResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[GetCollectionDetailNest](#GetCollectionDetailNest)>? |  yes  |  |
+ | filters | [CollectionListingFilter](#CollectionListingFilter)? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CollectionDetailResponse](#CollectionDetailResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
+ | type | String? |  yes  |  |
+ | tag | ArrayList<String>? |  yes  |  |
+ | description | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | badge | HashMap<String,Any>? |  yes  |  |
+ | cron | HashMap<String,Any>? |  yes  |  |
+ | allowFacets | Boolean? |  yes  |  |
+ | appId | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | schedule | HashMap<String,Any>? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | query | HashMap<String,Any>? |  yes  |  |
+ | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
+ | logo | [Media](#Media)? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | allowSort | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [GetFollowListingResponse](#GetFollowListingResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[ProductListingDetail](#ProductListingDetail)> |  no  |  |
+ | page | [Page](#Page) |  no  |  |
 
 ---
 
@@ -7705,8 +7810,8 @@ Success. Returns a group of products bundle.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | brands | ArrayList<Int>? |  yes  |  |
- | collections | ArrayList<Int>? |  yes  |  |
  | products | ArrayList<Int>? |  yes  |  |
+ | collections | ArrayList<Int>? |  yes  |  |
 
 ---
 
@@ -7728,8 +7833,8 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | coordinates | ArrayList<Double>? |  yes  |  |
  | type | String? |  yes  |  |
+ | coordinates | ArrayList<Double>? |  yes  |  |
 
 ---
 
@@ -7740,16 +7845,16 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | address | String? |  yes  |  |
  | latLong | [LatLong](#LatLong)? |  yes  |  |
- | city | String? |  yes  |  |
- | country | String? |  yes  |  |
  | storeCode | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | state | String? |  yes  |  |
+ | city | String? |  yes  |  |
  | pincode | Int? |  yes  |  |
  | storeEmail | String? |  yes  |  |
- | state | String? |  yes  |  |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | address | String? |  yes  |  |
+ | country | String? |  yes  |  |
 
 ---
 
@@ -7760,23 +7865,8 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
  | items | ArrayList<[Store](#Store)> |  no  |  |
-
----
-
-
- 
- 
- #### [StoreDepartments](#StoreDepartments)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | logo | String? |  yes  |  |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | priorityOrder | Int? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
 
 ---
 
@@ -7799,8 +7889,8 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | mobileNo | [SellerPhoneNumber](#SellerPhoneNumber)? |  yes  |  |
  | email | String? |  yes  |  |
+ | mobileNo | [SellerPhoneNumber](#SellerPhoneNumber)? |  yes  |  |
  | name | String? |  yes  |  |
 
 ---
@@ -7812,9 +7902,9 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companyType | String? |  yes  |  |
- | uid | Int? |  yes  |  |
  | businessType | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | companyType | String? |  yes  |  |
  | name | String? |  yes  |  |
 
 ---
@@ -7826,15 +7916,30 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | city | String? |  yes  |  |
- | country | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
+ | address2 | String? |  yes  |  |
  | address1 | String? |  yes  |  |
  | landmark | String? |  yes  |  |
- | state | String? |  yes  |  |
- | latitude | Double? |  yes  |  |
- | address2 | String? |  yes  |  |
  | longitude | Double? |  yes  |  |
+ | state | String? |  yes  |  |
+ | city | String? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | latitude | Double? |  yes  |  |
+ | country | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreDepartments](#StoreDepartments)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | priorityOrder | Int? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7846,12 +7951,12 @@ Success. Returns a group of products bundle.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | departments | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
  | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
  | manager | [StoreManagerSerializer](#StoreManagerSerializer)? |  yes  |  |
  | company | [CompanyStore](#CompanyStore)? |  yes  |  |
  | address | [StoreAddressSerializer](#StoreAddressSerializer)? |  yes  |  |
+ | departments | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7862,9 +7967,9 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
- | filters | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
  | items | ArrayList<[AppStore](#AppStore)>? |  yes  |  |
+ | filters | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -7889,8 +7994,8 @@ Success. Returns a group of products bundle.
  | ---------- | ---- | -------- | ----------- |
  | closing | [Time](#Time)? |  yes  |  |
  | weekday | String? |  yes  |  |
- | opening | [Time](#Time)? |  yes  |  |
  | open | Boolean? |  yes  |  |
+ | opening | [Time](#Time)? |  yes  |  |
 
 ---
 
@@ -7902,316 +8007,14 @@ Success. Returns a group of products bundle.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | departments | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
- | timing | ArrayList<[StoreTiming](#StoreTiming)>? |  yes  |  |
  | contactNumbers | ArrayList<[SellerPhoneNumber](#SellerPhoneNumber)>? |  yes  |  |
  | manager | [StoreManagerSerializer](#StoreManagerSerializer)? |  yes  |  |
  | company | [CompanyStore](#CompanyStore)? |  yes  |  |
  | address | [StoreAddressSerializer](#StoreAddressSerializer)? |  yes  |  |
  | customJson | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [StrategyWiseListing](#StrategyWiseListing)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | pincode | Int? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | distance | Int? |  yes  |  |
- | tat | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [Store1](#Store1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
+ | timing | ArrayList<[StoreTiming](#StoreTiming)>? |  yes  |  |
+ | departments | ArrayList<[StoreDepartments](#StoreDepartments)>? |  yes  |  |
  | uid | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | count | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [ArticleAssignment](#ArticleAssignment)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | strategy | String? |  yes  |  |
- | level | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Details](#Details)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | String? |  yes  |  |
- | type | String? |  yes  |  |
- | value | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [MarketPlaceSttributes](#MarketPlaceSttributes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | details | ArrayList<[Details](#Details)>? |  yes  |  |
- | title | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSetDistributionSize](#ProductSetDistributionSize)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | pieces | Int? |  yes  |  |
- | size | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSetDistribution](#ProductSetDistribution)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | sizes | ArrayList<[ProductSetDistributionSize](#ProductSetDistributionSize)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSet](#ProductSet)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | sizeDistribution | [ProductSetDistribution](#ProductSetDistribution)? |  yes  |  |
- | quantity | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [ReturnConfig](#ReturnConfig)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | returnable | Boolean? |  yes  |  |
- | time | Int? |  yes  |  |
- | unit | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSizePriceResponse](#ProductSizePriceResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | discount | String? |  yes  |  |
- | strategyWiseListing | ArrayList<[StrategyWiseListing](#StrategyWiseListing)>? |  yes  |  |
- | store | [Store1](#Store1)? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | itemType | String? |  yes  |  |
- | articleAssignment | [ArticleAssignment](#ArticleAssignment)? |  yes  |  |
- | price | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | marketplaceAttributes | ArrayList<[MarketPlaceSttributes](#MarketPlaceSttributes)>? |  yes  |  |
- | articleId | String? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | pricePerPiece | [ProductStockPrice](#ProductStockPrice)? |  yes  |  |
- | seller | [Seller](#Seller)? |  yes  |  |
- | set | [ProductSet](#ProductSet)? |  yes  |  |
- | returnConfig | [ReturnConfig](#ReturnConfig)? |  yes  |  |
- | longLat | ArrayList<Double>? |  yes  |  |
- | specialBadge | String? |  yes  |  |
- | trader | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | sellerCount | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSizeSellerFilter](#ProductSizeSellerFilter)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isSelected | Boolean? |  yes  |  |
- | value | String? |  yes  |  |
- | name | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductSizeSellersResponse](#ProductSizeSellersResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | sortOn | ArrayList<[ProductSizeSellerFilter](#ProductSizeSellerFilter)>? |  yes  |  |
- | page | [Page](#Page) |  no  |  |
- | items | ArrayList<[ProductSizePriceResponse](#ProductSizePriceResponse)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CollectionListingFilterTag](#CollectionListingFilterTag)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CollectionListingFilterType](#CollectionListingFilterType)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | isSelected | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CollectionListingFilter](#CollectionListingFilter)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | tags | ArrayList<[CollectionListingFilterTag](#CollectionListingFilterTag)>? |  yes  |  |
- | type | ArrayList<[CollectionListingFilterType](#CollectionListingFilterType)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetCollectionDetailNest](#GetCollectionDetailNest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | tag | ArrayList<String>? |  yes  |  |
- | slug | String? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | uid | String? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
- | name | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | allowFacets | Boolean? |  yes  |  |
- | allowSort | Boolean? |  yes  |  |
- | appId | String? |  yes  |  |
- | cron | HashMap<String,Any>? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
- | type | String? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
- | description | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [GetCollectionListingResponse](#GetCollectionListingResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page) |  no  |  |
- | filters | [CollectionListingFilter](#CollectionListingFilter)? |  yes  |  |
- | items | ArrayList<[GetCollectionDetailNest](#GetCollectionDetailNest)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [CollectionDetailResponse](#CollectionDetailResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | appId | String? |  yes  |  |
- | tag | ArrayList<String>? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
- | cron | HashMap<String,Any>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | logo | [Media](#Media)? |  yes  |  |
- | name | String? |  yes  |  |
- | allowSort | Boolean? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
- | banners | [ImageUrls](#ImageUrls)? |  yes  |  |
- | slug | String? |  yes  |  |
- | allowFacets | Boolean? |  yes  |  |
- | visibleFacetsKeys | ArrayList<String>? |  yes  |  |
- | type | String? |  yes  |  |
- | schedule | HashMap<String,Any>? |  yes  |  |
- | badge | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Price1](#Price1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | maxMarked | Double? |  yes  |  |
- | minMarked | Double? |  yes  |  |
- | currency | String? |  yes  |  |
- | maxEffective | Double? |  yes  |  |
- | minEffective | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [Size](#Size)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | value | String? |  yes  |  |
- | isAvailable | Boolean? |  yes  |  |
 
 ---
 
@@ -8222,26 +8025,55 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | images | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | slug | String? |  yes  |  |
  | templateTag | String? |  yes  |  |
- | brandUid | Int? |  yes  |  |
- | outOfStock | Boolean? |  yes  |  |
- | ratingCount | Int? |  yes  |  |
- | hsnCode | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | groupedAttributes | HashMap<String,Any>? |  yes  |  |
- | isSet | Boolean? |  yes  |  |
- | hasVariant | Boolean? |  yes  |  |
- | imageNature | String? |  yes  |  |
- | rating | Double? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
- | media | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | images | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | identifier | HashMap<String,Any>? |  yes  |  |
- | itemCode | String? |  yes  |  |
  | shortDescription | String? |  yes  |  |
- | countryOfOrigin | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | outOfStock | Boolean? |  yes  |  |
+ | hsnCode | Int? |  yes  |  |
+ | groupedAttributes | HashMap<String,Any>? |  yes  |  |
+ | hasVariant | Boolean? |  yes  |  |
+ | isSet | Boolean? |  yes  |  |
+ | brandUid | Int? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+ | ratingCount | Int? |  yes  |  |
  | description | String? |  yes  |  |
+ | imageNature | String? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | media | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | countryOfOrigin | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | rating | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Size](#Size)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isAvailable | Boolean? |  yes  |  |
+ | display | String? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Price1](#Price1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | minMarked | Double? |  yes  |  |
+ | maxEffective | Double? |  yes  |  |
+ | maxMarked | Double? |  yes  |  |
+ | currency | String? |  yes  |  |
+ | minEffective | Double? |  yes  |  |
 
 ---
 
@@ -8252,15 +8084,15 @@ Success. Returns a group of products bundle.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | autoSelect | Boolean? |  yes  |  |
+ | autoAddToCart | Boolean? |  yes  |  |
  | maxQuantity | Int? |  yes  |  |
  | allowRemove | Boolean? |  yes  |  |
- | price | [Price1](#Price1)? |  yes  |  |
- | sizes | ArrayList<[Size](#Size)>? |  yes  |  |
- | minQuantity | Int? |  yes  |  |
- | autoAddToCart | Boolean? |  yes  |  |
  | productUid | Int? |  yes  |  |
+ | minQuantity | Int? |  yes  |  |
  | productDetails | [ProductDetails](#ProductDetails)? |  yes  |  |
+ | autoSelect | Boolean? |  yes  |  |
+ | sizes | ArrayList<[Size](#Size)>? |  yes  |  |
+ | price | [Price1](#Price1)? |  yes  |  |
 
 ---
 
@@ -8273,14 +8105,14 @@ Success. Returns a group of products bundle.
  | ---------- | ---- | -------- | ----------- |
  | sameStoreAssignment | Boolean? |  yes  |  |
  | name | String? |  yes  |  |
- | logo | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
  | choice | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | slug | String? |  yes  |  |
  | pageVisibility | ArrayList<String>? |  yes  |  |
- | active | Boolean? |  yes  |  |
  | products | ArrayList<[Products](#Products)>? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | active | Boolean? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | companyId | Int? |  yes  |  |
 
 ---
 
@@ -8292,6 +8124,197 @@ Success. Returns a group of products bundle.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | items | ArrayList<[GetGroupedProducts](#GetGroupedProducts)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSetDistributionSizeV2](#ProductSetDistributionSizeV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | size | String? |  yes  |  |
+ | pieces | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSetDistributionV2](#ProductSetDistributionV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sizes | ArrayList<[ProductSetDistributionSizeV2](#ProductSetDistributionSizeV2)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSetV2](#ProductSetV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sizeDistribution | [ProductSetDistributionV2](#ProductSetDistributionV2)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SellerV2](#SellerV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StrategyWiseListingSchemaV2](#StrategyWiseListingSchemaV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | tat | Int? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | distance | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DetailsSchemaV2](#DetailsSchemaV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [MarketPlaceSttributesSchemaV2](#MarketPlaceSttributesSchemaV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | details | ArrayList<[DetailsSchemaV2](#DetailsSchemaV2)>? |  yes  |  |
+ | title | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductStockPriceV2](#ProductStockPriceV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | marked | Double? |  yes  |  |
+ | currency | String? |  yes  |  |
+ | effective | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticleAssignmentV2](#ArticleAssignmentV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | strategy | String? |  yes  |  |
+ | level | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreV2](#StoreV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | count | Int? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ReturnConfigSchemaV2](#ReturnConfigSchemaV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | time | Int? |  yes  |  |
+ | unit | String? |  yes  |  |
+ | returnable | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSizePriceResponseV2](#ProductSizePriceResponseV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | set | [ProductSetV2](#ProductSetV2)? |  yes  |  |
+ | longLat | ArrayList<Double>? |  yes  |  |
+ | seller | [SellerV2](#SellerV2)? |  yes  |  |
+ | strategyWiseListing | ArrayList<[StrategyWiseListingSchemaV2](#StrategyWiseListingSchemaV2)>? |  yes  |  |
+ | marketplaceAttributes | ArrayList<[MarketPlaceSttributesSchemaV2](#MarketPlaceSttributesSchemaV2)>? |  yes  |  |
+ | articleId | String? |  yes  |  |
+ | specialBadge | String? |  yes  |  |
+ | pricePerPiece | [ProductStockPriceV2](#ProductStockPriceV2)? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | articleAssignment | [ArticleAssignmentV2](#ArticleAssignmentV2)? |  yes  |  |
+ | sellerCount | Int? |  yes  |  |
+ | store | [StoreV2](#StoreV2)? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | returnConfig | [ReturnConfigSchemaV2](#ReturnConfigSchemaV2)? |  yes  |  |
+ | price | [ProductStockPriceV2](#ProductStockPriceV2)? |  yes  |  |
+ | discount | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSizeSellerFilterSchemaV2](#ProductSizeSellerFilterSchemaV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isSelected | Boolean? |  yes  |  |
+ | name | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductSizeSellersResponseV2](#ProductSizeSellersResponseV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ProductSizePriceResponseV2](#ProductSizePriceResponseV2)>? |  yes  |  |
+ | sortOn | ArrayList<[ProductSizeSellerFilterSchemaV2](#ProductSizeSellerFilterSchemaV2)>? |  yes  |  |
+ | page | [Page](#Page) |  no  |  |
 
 ---
 
