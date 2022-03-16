@@ -15,6 +15,33 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         generateleadApiList()
     }
 
+    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
+
+    init{
+            
+                    _relativeUrls["getTicket"] = "/service/application/lead/v1.0/ticket/{id}"?.substring(1)
+            
+                    _relativeUrls["createHistory"] = "/service/application/lead/v1.0/ticket/{id}/history"?.substring(1)
+            
+                    _relativeUrls["createTicket"] = "/service/application/lead/v1.0/ticket/"?.substring(1)
+            
+                    _relativeUrls["getCustomForm"] = "/service/application/lead/v1.0/form/{slug}"?.substring(1)
+            
+                    _relativeUrls["submitCustomForm"] = "/service/application/lead/v1.0/form/{slug}/submit"?.substring(1)
+            
+                    _relativeUrls["getParticipantsInsideVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/participants"?.substring(1)
+            
+                    _relativeUrls["getTokenForVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/token"?.substring(1)
+            
+    }
+
+    public fun update(updatedUrlMap : HashMap<String,String>){
+            for((key,value) in updatedUrlMap){
+                _relativeUrls[key] = value
+            }
+    }
+    
+
     private fun generateleadApiList(): LeadApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -38,37 +65,63 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
     }
     
     fun getTicket(id: String): Deferred<Response<Ticket>>? {
-        return leadApiList?.getTicket(id = id)}
+        var fullUrl : String? = _relativeUrls["getTicket"] 
+        
+        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
+        
+        return leadApiList?.getTicket(fullUrl   )}
 
     
     
     fun createHistory(id: String, body: TicketHistoryPayload): Deferred<Response<TicketHistory>>? {
-        return leadApiList?.createHistory(id = id, body = body)}
+        var fullUrl : String? = _relativeUrls["createHistory"] 
+        
+        fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
+        
+        return leadApiList?.createHistory(fullUrl   ,body = body)}
 
     
     
     fun createTicket(body: AddTicketPayload): Deferred<Response<Ticket>>? {
-        return leadApiList?.createTicket(body = body)}
+        var fullUrl : String? = _relativeUrls["createTicket"] 
+        
+        return leadApiList?.createTicket(fullUrl  ,body = body)}
 
     
     
     fun getCustomForm(slug: String): Deferred<Response<CustomForm>>? {
-        return leadApiList?.getCustomForm(slug = slug)}
+        var fullUrl : String? = _relativeUrls["getCustomForm"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return leadApiList?.getCustomForm(fullUrl   )}
 
     
     
     fun submitCustomForm(slug: String, body: CustomFormSubmissionPayload): Deferred<Response<SubmitCustomFormResponse>>? {
-        return leadApiList?.submitCustomForm(slug = slug, body = body)}
+        var fullUrl : String? = _relativeUrls["submitCustomForm"] 
+        
+        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
+        
+        return leadApiList?.submitCustomForm(fullUrl   ,body = body)}
 
     
     
     fun getParticipantsInsideVideoRoom(uniqueName: String): Deferred<Response<GetParticipantsInsideVideoRoomResponse>>? {
-        return leadApiList?.getParticipantsInsideVideoRoom(uniqueName = uniqueName)}
+        var fullUrl : String? = _relativeUrls["getParticipantsInsideVideoRoom"] 
+        
+        fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())
+        
+        return leadApiList?.getParticipantsInsideVideoRoom(fullUrl   )}
 
     
     
     fun getTokenForVideoRoom(uniqueName: String): Deferred<Response<GetTokenForVideoRoomResponse>>? {
-        return leadApiList?.getTokenForVideoRoom(uniqueName = uniqueName)}
+        var fullUrl : String? = _relativeUrls["getTokenForVideoRoom"] 
+        
+        fullUrl = fullUrl?.replace("{" + "unique_name" +"}",uniqueName.toString())
+        
+        return leadApiList?.getTokenForVideoRoom(fullUrl   )}
 
     
     
