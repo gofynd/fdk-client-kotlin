@@ -864,6 +864,11 @@ interface PaymentApiList {
     : Deferred<Response<EpaylaterBannerResponse>>
     
     
+    @POST 
+    fun resendOrCancelPayment(@Url url1: String?   ,@Body body: ResendOrCancelPaymentRequest)
+    : Deferred<Response<ResendOrCancelPaymentResponse>>
+    
+    
     @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
