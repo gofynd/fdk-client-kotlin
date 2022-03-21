@@ -290,7 +290,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getPromotionOffers(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("page_size") pageSize: Int?)
+    fun getPromotionOffers(@Url url1: String?    ,    @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: Int?)
     : Deferred<Response<PromotionOffersResponse>>
     
     
