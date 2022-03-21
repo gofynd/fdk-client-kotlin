@@ -41,8 +41,8 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     
-    suspend fun getEntityRegionView(body: EntityRegionView_Request_schema)
-    : Deferred<Response<EntityRegionView_Response_schema>>? {
+    suspend fun getEntityRegionView(body: EntityRegionView_Request)
+    : Deferred<Response<EntityRegionView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getEntityRegionView(
@@ -66,7 +66,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     
     
     suspend fun getCompanyStoreView()
-    : Deferred<Response<CompanyStoreView_Response_schema>>? {
+    : Deferred<Response<CompanyStoreView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCompanyStoreView(
