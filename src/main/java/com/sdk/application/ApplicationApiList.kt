@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -862,6 +862,11 @@ interface PaymentApiList {
     @GET 
     fun getRupifiBannerDetails(@Url url1: String?   )
     : Deferred<Response<RupifiBannerResponse>>
+    
+    
+    @POST 
+    fun resendOrCancelPayment(@Url url1: String?   ,@Body body: ResendOrCancelPaymentRequest)
+    : Deferred<Response<ResendOrCancelPaymentResponse>>
     
     
     @GET 

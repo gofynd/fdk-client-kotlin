@@ -282,7 +282,7 @@ interface UserApiList {
     
     @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sesions")
     fun deleteActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String)
-    : Deferred<Response<SessionListResponseSchema>>
+    : Deferred<Response<SessionDeleteResponseSchema>>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
     fun getPlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
