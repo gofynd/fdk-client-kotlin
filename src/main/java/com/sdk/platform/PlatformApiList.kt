@@ -1332,13 +1332,13 @@ interface CatalogApiList {
 
 interface CompanyProfileApiList {
     
-    @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
-    fun cbsOnboardGet(@Path("company_id") companyId: String)
-    : Deferred<Response<GetCompanyProfileSerializerResponse>>
-    
     @PATCH ("/service/platform/company-profile/v1.0/company/{company_id}")
     fun updateCompany(@Path("company_id") companyId: String,@Body body: UpdateCompany)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/company-profile/v1.0/company/{company_id}")
+    fun cbsOnboardGet(@Path("company_id") companyId: String)
+    : Deferred<Response<GetCompanyProfileSerializerResponse>>
     
     @GET ("/service/platform/company-profile/v1.0/company/{company_id}/metrics")
     fun getCompanyMetrics(@Path("company_id") companyId: String)
@@ -1936,17 +1936,17 @@ interface ServiceabilityApiList {
     fun getCompanyStoreView(@Path("company_id") companyId: String)
     : Deferred<Response<CompanyStoreView_Response>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
-    fun upsertZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneRequest)
-    : Deferred<Response<ZoneResponse>>
+    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
+    fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
+    : Deferred<Response<GetSingleZoneDataViewResponse>>
     
     @PUT ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
     fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneRequest)
     : Deferred<Response<ZoneSuccessResponse>>
     
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
-    fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
-    : Deferred<Response<GetSingleZoneDataViewResponse>>
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
+    fun upsertZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneRequest)
+    : Deferred<Response<ZoneResponse>>
     
     @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
     fun upsertZoneControllerView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
