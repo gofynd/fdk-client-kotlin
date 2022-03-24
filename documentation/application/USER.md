@@ -3413,6 +3413,12 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | verifyMobileOtp | Boolean? |  yes  |  |
  | email | String? |  yes  |  |
  | requestId | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | mobile | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
+ | resendTimer | Int? |  yes  |  |
+ | resendToken | String? |  yes  |  |
 
 ---
 

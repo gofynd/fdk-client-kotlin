@@ -1299,6 +1299,12 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | verifyMobileOtp | Boolean? |  yes  |  |
  | email | String? |  yes  |  |
  | requestId | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | mobile | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
+ | resendTimer | Int? |  yes  |  |
+ | resendToken | String? |  yes  |  |
 
 ---
 
