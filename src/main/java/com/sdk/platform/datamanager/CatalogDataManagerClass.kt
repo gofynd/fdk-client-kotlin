@@ -545,24 +545,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createProductsInBulk(batchId: String,body: BulkProductRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createProductsInBulk(
-        companyId = config.companyId, batchId = batchId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun deleteProductBulkJob(batchId: String)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteProductBulkJob(
         companyId = config.companyId, batchId = batchId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createProductsInBulk(batchId: String,body: BulkProductRequest)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.createProductsInBulk(
+        companyId = config.companyId, batchId = batchId, body = body)
         } else {
             null
         } 
@@ -690,24 +690,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createBulkInventory(batchId: String,body: InventoryBulkRequest)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.createBulkInventory(
-        companyId = config.companyId, batchId = batchId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun deleteBulkInventoryJob(batchId: String)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteBulkInventoryJob(
         companyId = config.companyId, batchId = batchId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createBulkInventory(batchId: String,body: InventoryBulkRequest)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.createBulkInventory(
+        companyId = config.companyId, batchId = batchId, body = body)
         } else {
             null
         } 
