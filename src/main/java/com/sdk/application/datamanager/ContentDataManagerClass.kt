@@ -25,8 +25,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getBlogs"] = "/service/application/content/v1.0/blogs/"?.substring(1)
             
-                    _relativeUrls["getDataLoaders"] = "/service/application/content/v1.0/data-loader"?.substring(1)
-            
                     _relativeUrls["getFaqs"] = "/service/application/content/v1.0/faq"?.substring(1)
             
                     _relativeUrls["getFaqCategories"] = "/service/application/content/v1.0/faq/categories"?.substring(1)
@@ -155,13 +153,6 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     
     return paginator
     }
-    
-    fun getDataLoaders(): Deferred<Response<DataLoadersSchema>>? {
-        var fullUrl : String? = _relativeUrls["getDataLoaders"] 
-        
-        return contentApiList?.getDataLoaders(fullUrl  )}
-
-    
     
     fun getFaqs(): Deferred<Response<FaqResponseSchema>>? {
         var fullUrl : String? = _relativeUrls["getFaqs"] 
