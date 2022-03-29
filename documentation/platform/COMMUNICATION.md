@@ -1158,7 +1158,7 @@ Success
       {
         "type": "application",
         "provider": "falconide",
-        "from": [
+        "from_address": [
           {
             "is_default": true,
             "name": "abc",
@@ -1253,7 +1253,7 @@ Success
   "value": {
     "type": "application",
     "provider": "falconide",
-    "from": [
+    "from_address": [
       {
         "is_default": true,
         "name": "abc",
@@ -1340,7 +1340,7 @@ Success
   "value": {
     "type": "application",
     "provider": "falconide",
-    "from": [
+    "from_address": [
       {
         "is_default": true,
         "name": "abc",
@@ -1427,7 +1427,7 @@ Success
   "value": {
     "type": "application",
     "provider": "falconide",
-    "from": [
+    "from_address": [
       {
         "is_default": true,
         "name": "abc",
@@ -1528,7 +1528,6 @@ Success
         "_id": "5ef42a49c8b67d279c27a980",
         "slug": "application-creation",
         "name": "Application creation",
-        "from": "hey@gofynd.com",
         "from_name": "Fynd",
         "subject": {
           "template_type": "nunjucks",
@@ -1644,7 +1643,6 @@ Success
     "keys": {
       "bcc": "abc@gofynd.com"
     },
-    "from": "abc@gofynd.com",
     "reply_to": "abc@gofynd.com",
     "headers": [
       {
@@ -1754,7 +1752,6 @@ Success
         "_id": "5ef42a49c8b67d279c27a980",
         "slug": "application-creation",
         "name": "Application creation",
-        "from": "hey@gofynd.com",
         "from_name": "Fynd",
         "subject": {
           "template_type": "nunjucks",
@@ -1863,7 +1860,6 @@ Success
     "_id": "5ef42a49c8b67d279c27a980",
     "slug": "application-creation",
     "name": "Application creation",
-    "from": "hey@gofynd.com",
     "from_name": "Fynd",
     "subject": {
       "template_type": "nunjucks",
@@ -1971,7 +1967,6 @@ Success
     "keys": {
       "bcc": "abc@gofynd.com"
     },
-    "from": "abc@gofynd.com",
     "reply_to": "abc@gofynd.com",
     "headers": [
       {
@@ -4544,7 +4539,7 @@ Success
  | apiKey | String? |  yes  |  |
  | type | String? |  yes  |  |
  | provider | String? |  yes  |  |
- | from | ArrayList<[EmailProviderReqFrom](#EmailProviderReqFrom)>? |  yes  |  |
+ | fromAddress | ArrayList<[EmailProviderReqFrom](#EmailProviderReqFrom)>? |  yes  |  |
 
 ---
 
@@ -4557,7 +4552,7 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | type | String? |  yes  |  |
  | provider | String? |  yes  |  |
- | from | ArrayList<[EmailProviderReqFrom](#EmailProviderReqFrom)>? |  yes  |  |
+ | fromAddress | ArrayList<[EmailProviderReqFrom](#EmailProviderReqFrom)>? |  yes  |  |
  | id | String? |  yes  |  |
  | name | String? |  yes  |  |
  | description | String? |  yes  |  |
@@ -4641,7 +4636,6 @@ Success
  | name | String? |  yes  |  |
  | description | String? |  yes  |  |
  | keys | [EmailTemplateKeys](#EmailTemplateKeys)? |  yes  |  |
- | from | String? |  yes  |  |
  | staticTo | ArrayList<String>? |  yes  |  |
  | staticCc | ArrayList<String>? |  yes  |  |
  | staticBcc | ArrayList<String>? |  yes  |  |
@@ -4686,7 +4680,6 @@ Success
  | id | String? |  yes  |  |
  | name | String? |  yes  |  |
  | keys | [EmailTemplateKeys](#EmailTemplateKeys)? |  yes  |  |
- | from | String? |  yes  |  |
  | replyTo | String? |  yes  |  |
  | headers | ArrayList<[EmailTemplateHeaders](#EmailTemplateHeaders)>? |  yes  |  |
  | subject | [TemplateAndType](#TemplateAndType)? |  yes  |  |
@@ -4719,7 +4712,6 @@ Success
  | id | String? |  yes  |  |
  | slug | String? |  yes  |  |
  | name | String? |  yes  |  |
- | from | String? |  yes  |  |
  | fromName | String? |  yes  |  |
  | subject | [TemplateAndType](#TemplateAndType)? |  yes  |  |
  | html | [TemplateAndType](#TemplateAndType)? |  yes  |  |
@@ -4751,7 +4743,6 @@ Success
  | id | String? |  yes  |  |
  | slug | String? |  yes  |  |
  | name | String? |  yes  |  |
- | from | String? |  yes  |  |
  | fromName | String? |  yes  |  |
  | subject | [TemplateAndType](#TemplateAndType)? |  yes  |  |
  | html | [TemplateAndType](#TemplateAndType)? |  yes  |  |
