@@ -66,6 +66,8 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
+    
     suspend fun getSystemNotifications(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<SystemNotifications>>? {
         
@@ -616,6 +618,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<EmailTemplateDeleteSuccessRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun sendCommunicationSynchronously(body: EngineRequest)
+    : Deferred<Response<EngineResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.sendCommunicationSynchronously(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun sendCommunicationAsynchronously(body: EngineRequest)
+    : Deferred<Response<EngineResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.sendCommunicationAsynchronously(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

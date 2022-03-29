@@ -8,6 +8,7 @@
 File Storage
 * [startUpload](#startupload)
 * [completeUpload](#completeupload)
+* [signUrls](#signurls)
 
 
 
@@ -145,6 +146,65 @@ This operation will return the URL of the uploaded file.
 
 
 [CompleteResponse](#CompleteResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### signUrls
+Explain here
+
+
+
+
+```kotlin
+filestorage.signUrls(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SignUrlRequest](#SignUrlRequest) | yes | Request body |
+
+
+Describe here
+
+*Returned Response:*
+
+
+
+
+[SignUrlResponse](#SignUrlResponse)
 
 Success
 

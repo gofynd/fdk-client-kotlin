@@ -2783,7 +2783,7 @@ Success. Refer `ThemesListingResponseSchema` for more details.
           "list": [
             {
               "name": "Default",
-              "global": {
+              "global_config": {
                 "static": {
                   "props": {
                     "colors": {
@@ -2871,7 +2871,7 @@ Success. Refer `ThemesListingResponseSchema` for more details.
             },
             {
               "name": "Dark",
-              "global": {
+              "global_config": {
                 "static": {
                   "props": {
                     "colors": {
@@ -2939,7 +2939,7 @@ Success. Refer `ThemesListingResponseSchema` for more details.
             },
             {
               "name": "Blue",
-              "global": {
+              "global_config": {
                 "static": {
                   "props": {
                     "colors": {
@@ -5155,7 +5155,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -7356,7 +7356,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -9630,7 +9630,7 @@ Success. Upgrades the theme and shares the details of the new version in the res
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -11428,7 +11428,7 @@ Success. Refer `ThemesListingResponseSchema` for more details.
           "list": [
             {
               "name": "Default",
-              "global": {
+              "global_config": {
                 "static": {
                   "props": {
                     "colors": {
@@ -11516,7 +11516,7 @@ Success. Refer `ThemesListingResponseSchema` for more details.
             },
             {
               "name": "Dark",
-              "global": {
+              "global_config": {
                 "static": {
                   "props": {
                     "colors": {
@@ -11584,7 +11584,7 @@ Success. Refer `ThemesListingResponseSchema` for more details.
             },
             {
               "name": "Blue",
-              "global": {
+              "global_config": {
                 "static": {
                   "props": {
                     "colors": {
@@ -13800,7 +13800,7 @@ Theme
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -15997,7 +15997,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -18284,7 +18284,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -20486,7 +20486,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -22688,7 +22688,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -24890,7 +24890,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -27092,7 +27092,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -29294,7 +29294,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -31496,7 +31496,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -33698,7 +33698,7 @@ Success. Refer `ThemesSchema` for more details.
       "list": [
         {
           "name": "default",
-          "global": {
+          "global_config": {
             "static": {
               "props": {
                 "colors": {
@@ -35612,7 +35612,7 @@ Success. Refer `ThemesSchema` for more details.
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | global | HashMap<String,Any>? |  yes  |  |
+ | globalConfig | HashMap<String,Any>? |  yes  |  |
  | page | ArrayList<[ConfigPage](#ConfigPage)>? |  yes  |  |
  | name | String? |  yes  |  |
 

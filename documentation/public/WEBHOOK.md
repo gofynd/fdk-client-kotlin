@@ -2,332 +2,26 @@
 
 
 
-##### [Back to Platform docs](./README.md)
+##### [Back to Public docs](./README.md)
 
 ## Webhook Methods
 Webhook dispatcher with retry and one event to many subscriber vice versa
-* [getSubscribersByCompany](#getsubscribersbycompany)
-* [registerSubscriberToEvent](#registersubscribertoevent)
-* [updateSubscriberConfig](#updatesubscriberconfig)
-* [getSubscribersByExtensionId](#getsubscribersbyextensionid)
-* [getSubscriberById](#getsubscriberbyid)
-* [fetchAllEventConfigurations](#fetchalleventconfigurations)
+* [fetchAllWebhookEvents](#fetchallwebhookevents)
+* [queryWebhookEventDetails](#querywebhookeventdetails)
 
 
 
 ## Methods with example and description
 
 
-### getSubscribersByCompany
-Get Subscribers By Company ID
-
-
-
-
-```kotlin
-client.webhook.getSubscribersByCompany(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Page Number |   
-| pageSize | Int? | no | Page Size |   
-| extensionId | String? | no | Extension ID |  
-
-
-
-Get Subscribers By CompanyId
-
-*Returned Response:*
-
-
-
-
-[SubscriberResponse](#SubscriberResponse)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### registerSubscriberToEvent
-Register Subscriber
-
-
-
-
-```kotlin
-client.webhook.registerSubscriberToEvent(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
-
-
-Register Subscriber
-
-*Returned Response:*
-
-
-
-
-[SubscriberConfig](#SubscriberConfig)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### updateSubscriberConfig
-Update Subscriber
-
-
-
-
-```kotlin
-client.webhook.updateSubscriberConfig(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [SubscriberConfig](#SubscriberConfig) | yes | Request body |
-
-
-Update Subscriber
-
-*Returned Response:*
-
-
-
-
-[SubscriberConfig](#SubscriberConfig)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSubscribersByExtensionId
-Get Subscribers By Extension ID
-
-
-
-
-```kotlin
-client.webhook.getSubscribersByExtensionId(pageNo: pageNo, pageSize: pageSize, extensionId: extensionId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | Int? | no | Page Number |   
-| pageSize | Int? | no | Page Size |   
-| extensionId | String | yes | Extension ID |  
-
-
-
-Get Subscribers By ExtensionID
-
-*Returned Response:*
-
-
-
-
-[SubscriberConfigList](#SubscriberConfigList)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getSubscriberById
-Get Subscriber By Subscriber ID
-
-
-
-
-```kotlin
-client.webhook.getSubscriberById(subscriberId: subscriberId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| subscriberId | Int | yes | Subscriber ID |  
-
-
-
-Get Subscriber By Subscriber ID
-
-*Returned Response:*
-
-
-
-
-[SubscriberResponse](#SubscriberResponse)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### fetchAllEventConfigurations
+### fetchAllWebhookEvents
 Get All Webhook Events
 
 
 
 
 ```kotlin
-client.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
+webhook.fetchAllWebhookEvents().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -343,6 +37,65 @@ client.webhook.fetchAllEventConfigurations().safeAwait{ response, error->
 
 
 Get All Webhook Events
+
+*Returned Response:*
+
+
+
+
+[EventConfigResponse](#EventConfigResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### queryWebhookEventDetails
+Send webhook event name, type, version, category in request body to get complete details of event from server
+
+
+
+
+```kotlin
+webhook.queryWebhookEventDetails(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [ArrayList<EventConfigBase>](#ArrayList<EventConfigBase>) | yes | Request body |
+
+
+Get Webhook Event Details for provided events
 
 *Returned Response:*
 

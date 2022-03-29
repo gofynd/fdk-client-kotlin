@@ -77,7 +77,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun getSubscribersByExtensionId(pageNo: Int?=null, pageSize: Int?=null, extensionId: String)
-    : Deferred<Response<SubscriberResponse>>? {
+    : Deferred<Response<SubscriberConfigList>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.getSubscribersByExtensionId(
@@ -101,7 +101,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     suspend fun fetchAllEventConfigurations()
-    : Deferred<Response<EventConfigList>>? {
+    : Deferred<Response<EventConfigResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             webhookApiList?.fetchAllEventConfigurations(

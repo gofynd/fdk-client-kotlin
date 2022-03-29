@@ -15,6 +15,25 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
         generatefileStorageApiList()
     }
 
+    private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
+
+    init{
+            
+                    _relativeUrls["startUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/start/"?.substring(1)
+            
+                    _relativeUrls["completeUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/"?.substring(1)
+            
+                    _relativeUrls["signUrls"] = "/service/application/assets/v1.0/sign-urls/"?.substring(1)
+            
+    }
+
+    public fun update(updatedUrlMap : HashMap<String,String>){
+            for((key,value) in updatedUrlMap){
+                _relativeUrls[key] = value
+            }
+    }
+    
+
     private fun generatefileStorageApiList(): FileStorageApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
@@ -38,12 +57,27 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
     }
     
     fun startUpload(namespace: String, body: StartRequest): Deferred<Response<StartResponse>>? {
-        return fileStorageApiList?.startUpload(namespace = namespace, body = body)}
+        var fullUrl : String? = _relativeUrls["startUpload"] 
+        
+        fullUrl = fullUrl?.replace("{" + "namespace" +"}",namespace.toString())
+        
+        return fileStorageApiList?.startUpload(fullUrl   ,body = body)}
 
     
     
     fun completeUpload(namespace: String, body: StartResponse): Deferred<Response<CompleteResponse>>? {
-        return fileStorageApiList?.completeUpload(namespace = namespace, body = body)}
+        var fullUrl : String? = _relativeUrls["completeUpload"] 
+        
+        fullUrl = fullUrl?.replace("{" + "namespace" +"}",namespace.toString())
+        
+        return fileStorageApiList?.completeUpload(fullUrl   ,body = body)}
+
+    
+    
+    fun signUrls(body: SignUrlRequest): Deferred<Response<SignUrlResponse>>? {
+        var fullUrl : String? = _relativeUrls["signUrls"] 
+        
+        return fileStorageApiList?.signUrls(fullUrl  ,body = body)}
 
     
     

@@ -1,7 +1,7 @@
-package com.sdk.application.datamanager
+package com.sdk.public.datamanager
 
 import com.sdk.common.*
-import com.sdk.application.*
+import com.sdk.public.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -9,10 +9,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
     
-    private val commonApiList by lazy {
-        generatecommonApiList()
+    private val configurationApiList by lazy {
+        generateconfigurationApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
@@ -32,9 +32,9 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
     }
     
 
-    private fun generatecommonApiList(): CommonApiList? {
+    private fun generateconfigurationApiList(): ConfigurationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
-        val headerInterceptor = ApplicationHeaderInterceptor(config)
+        val headerInterceptor = PublicHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
         val interceptorList = ArrayList<Interceptor>()
         interceptorList.add(headerInterceptor)
@@ -48,23 +48,23 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "ApplicationCommon",
+            namespace = "PublicConfiguration",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
+        return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
     
     fun searchApplication(authorization: String?=null, query: String?=null): Deferred<Response<ApplicationResponse>>? {
         var fullUrl : String? = _relativeUrls["searchApplication"] 
         
-        return commonApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
+        return configurationApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
 
     
     
     fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
         var fullUrl : String? = _relativeUrls["getLocations"] 
         
-        return commonApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
+        return configurationApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
 
     
     
