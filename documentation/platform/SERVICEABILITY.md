@@ -10,9 +10,9 @@ Logistics Configuration API's allows you to configure zone, application logistic
 * [getEntityRegionView](#getentityregionview)
 * [getListView](#getlistview)
 * [getCompanyStoreView](#getcompanystoreview)
-* [upsertZoneControllerView](#upsertzonecontrollerview)
-* [getZoneDataView](#getzonedataview)
 * [updateZoneControllerView](#updatezonecontrollerview)
+* [getZoneDataView](#getzonedataview)
+* [upsertZoneControllerView](#upsertzonecontrollerview)
 * [upsertZoneControllerView](#upsertzonecontrollerview)
 
 
@@ -256,14 +256,14 @@ Get Company Store View Data
 ---
 
 
-### upsertZoneControllerView
-Insertion of zone in database.
+### updateZoneControllerView
+Updation of zone collections in database.
 
 
 
 
 ```kotlin
-client.serviceability.upsertZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
+client.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -280,17 +280,17 @@ client.serviceability.upsertZoneControllerView(zoneId: zoneId, body: body).safeA
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | zoneId | String | yes | A `zone_id` is a unique identifier for a particular zone. |  
-| body | [ZoneRequest](#ZoneRequest) | yes | Request body |
+| body | [ZoneUpdateRequest](#ZoneUpdateRequest) | yes | Request body |
 
 
-This API returns response of insertation of zone in mongo database.<br>Correction- `zone_id` in the path must be removed.<br> path is `/service/platform/logistics-internal/v1.0/company/{company_id}/zone/`
+This API returns response of updation of zone in mongo database.
 
 *Returned Response:*
 
 
 
 
-[ZoneResponse](#ZoneResponse)
+[ZoneSuccessResponse](#ZoneSuccessResponse)
 
 Response status_code
 
@@ -376,14 +376,14 @@ Get Application Zone Data
 ---
 
 
-### updateZoneControllerView
-Updation of zone collections in database.
+### upsertZoneControllerView
+Insertion of zone in database.
 
 
 
 
 ```kotlin
-client.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
+client.serviceability.upsertZoneControllerView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -398,19 +398,18 @@ client.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeA
 
 
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| zoneId | String | yes | A `zone_id` is a unique identifier for a particular zone. |  
+| --------- | -----  | -------- | ----------- |
 | body | [ZoneRequest](#ZoneRequest) | yes | Request body |
 
 
-This API returns response of updation of zone in mongo database.
+This API returns response of insertion of zone in mongo database.<br>Correction- `zone_id` in the path must be removed.<br> path is `/service/platform/logistics-internal/v1.0/company/{company_id}/zone/`
 
 *Returned Response:*
 
 
 
 
-[ZoneSuccessResponse](#ZoneSuccessResponse)
+[ZoneResponse](#ZoneResponse)
 
 Response status_code
 
@@ -517,9 +516,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | serviceabilityType | String |  no  |  |
  | channelType | String |  no  |  |
  | channelId | String |  no  |  |
+ | serviceabilityType | String |  no  |  |
 
 ---
 
@@ -530,9 +529,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
  | error | [ServiceabilityrErrorResponse](#ServiceabilityrErrorResponse)? |  yes  |  |
  | data | [ApplicationServiceabilityConfig](#ApplicationServiceabilityConfig)? |  yes  |  |
- | success | Boolean |  no  |  |
 
 ---
 
@@ -543,8 +542,23 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | parentId | ArrayList<String>? |  yes  |  |
  | subType | ArrayList<String> |  no  |  |
+ | parentId | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EntityRegionView_page](#EntityRegionView_page)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | current | Int |  no  |  |
+ | hasNext | Boolean |  no  |  |
+ | type | String |  no  |  |
+ | itemTotal | Int |  no  |  |
+ | size | Int |  no  |  |
 
 ---
 
@@ -568,24 +582,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String |  no  |  |
  | subType | String |  no  |  |
+ | name | String |  no  |  |
  | uid | String |  no  |  |
-
----
-
-
- 
- 
- #### [EntityRegionView_page](#EntityRegionView_page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | size | Int |  no  |  |
- | type | String |  no  |  |
- | current | Int |  no  |  |
- | itemTotal | Int |  no  |  |
- | hasNext | Boolean |  no  |  |
 
 ---
 
@@ -596,38 +595,10 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | page | [EntityRegionView_page](#EntityRegionView_page) |  no  |  |
  | error | [EntityRegionView_Error](#EntityRegionView_Error) |  no  |  |
  | data | ArrayList<[EntityRegionView_Items](#EntityRegionView_Items)> |  no  |  |
- | page | [EntityRegionView_page](#EntityRegionView_page) |  no  |  |
- | success | Boolean |  no  |  |
-
----
-
-
- 
- 
- #### [ZoneDataItem](#ZoneDataItem)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | size | Int |  no  |  |
- | type | String |  no  |  |
- | current | Int |  no  |  |
- | itemTotal | Int |  no  |  |
- | hasNext | Boolean |  no  |  |
-
----
-
-
- 
- 
- #### [ListViewSummary](#ListViewSummary)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | totalActiveZones | Int |  no  |  |
- | totalPincodesServed | Int |  no  |  |
- | totalZones | Int |  no  |  |
 
 ---
 
@@ -662,15 +633,43 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String |  no  |  |
- | isActive | Boolean |  no  |  |
- | slug | String |  no  |  |
- | product | [ListViewProduct](#ListViewProduct) |  no  |  |
- | name | String |  no  |  |
  | storesCount | Int |  no  |  |
+ | zoneId | String |  no  |  |
+ | name | String |  no  |  |
+ | product | [ListViewProduct](#ListViewProduct) |  no  |  |
  | companyId | Int |  no  |  |
+ | slug | String |  no  |  |
+ | isActive | Boolean |  no  |  |
  | channels | [ListViewChannels](#ListViewChannels) |  no  |  |
  | pincodesCount | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ListViewSummary](#ListViewSummary)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | totalActiveZones | Int |  no  |  |
+ | totalZones | Int |  no  |  |
+ | totalPincodesServed | Int |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneDataItem](#ZoneDataItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | current | Int |  no  |  |
+ | hasNext | Boolean |  no  |  |
+ | itemTotal | Int |  no  |  |
+ | size | Int |  no  |  |
 
 ---
 
@@ -681,9 +680,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | ArrayList<[ZoneDataItem](#ZoneDataItem)> |  no  |  |
- | summary | ArrayList<[ListViewSummary](#ListViewSummary)> |  no  |  |
  | items | ArrayList<[ListViewItems](#ListViewItems)> |  no  |  |
+ | summary | ArrayList<[ListViewSummary](#ListViewSummary)> |  no  |  |
+ | page | ArrayList<[ZoneDataItem](#ZoneDataItem)> |  no  |  |
 
 ---
 
@@ -694,11 +693,11 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | size | Int |  no  |  |
- | type | String |  no  |  |
  | current | Int |  no  |  |
- | itemTotal | Int |  no  |  |
  | hasNext | Boolean |  no  |  |
+ | type | String |  no  |  |
+ | itemTotal | Int |  no  |  |
+ | size | Int |  no  |  |
 
 ---
 
@@ -709,46 +708,33 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | ArrayList<[CompanyStoreView_PageItems](#CompanyStoreView_PageItems)> |  no  |  |
  | items | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | page | ArrayList<[CompanyStoreView_PageItems](#CompanyStoreView_PageItems)> |  no  |  |
 
 ---
 
 
  
  
- #### [ZoneRequest](#ZoneRequest)
+ #### [ZoneProductTypes](#ZoneProductTypes)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | HashMap<String,Any> |  no  |  |
- | identifier | String |  no  |  |
- | channels | ArrayList<HashMap<String,Any>> |  no  |  |
-
----
-
-
- 
- 
- #### [ZoneResponse](#ZoneResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  |  |
- | statusCode | Int |  no  |  |
- | zoneId | String |  no  |  |
-
----
-
-
- 
- 
- #### [GetZoneDataViewProduct](#GetZoneDataViewProduct)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | count | Int |  no  |  |
  | type | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneMappingType](#ZoneMappingType)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | country | String |  no  |  |
+ | pincode | ArrayList<String>? |  yes  |  |
+ | state | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -767,18 +753,65 @@ Response status_code
 
  
  
+ #### [UpdateZoneData](#UpdateZoneData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | zoneId | String |  no  |  |
+ | name | String |  no  |  |
+ | product | [ZoneProductTypes](#ZoneProductTypes) |  no  |  |
+ | companyId | Int |  no  |  |
+ | slug | String |  no  |  |
+ | mapping | ArrayList<[ZoneMappingType](#ZoneMappingType)> |  no  |  |
+ | isActive | Boolean |  no  |  |
+ | storeIds | ArrayList<Int> |  no  |  |
+ | regionType | String |  no  |  |
+ | channels | ArrayList<[GetZoneDataViewChannels](#GetZoneDataViewChannels)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneUpdateRequest](#ZoneUpdateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | identifier | String |  no  |  |
+ | data | [UpdateZoneData](#UpdateZoneData) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneSuccessResponse](#ZoneSuccessResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | statusCode | Int |  no  |  |
+
+---
+
+
+ 
+ 
  #### [GetZoneDataViewItems](#GetZoneDataViewItems)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | product | [GetZoneDataViewProduct](#GetZoneDataViewProduct) |  no  |  |
- | isActive | Boolean |  no  |  |
- | slug | String |  no  |  |
- | name | String |  no  |  |
  | storesCount | Int |  no  |  |
  | zoneId | String |  no  |  |
+ | name | String |  no  |  |
+ | product | [ZoneProductTypes](#ZoneProductTypes) |  no  |  |
  | companyId | Int |  no  |  |
- | channels | [GetZoneDataViewChannels](#GetZoneDataViewChannels) |  no  |  |
+ | slug | String |  no  |  |
+ | mapping | ArrayList<[ZoneMappingType](#ZoneMappingType)> |  no  |  |
+ | isActive | Boolean |  no  |  |
+ | storeIds | ArrayList<Int> |  no  |  |
+ | regionType | String |  no  |  |
+ | channels | ArrayList<[GetZoneDataViewChannels](#GetZoneDataViewChannels)> |  no  |  |
  | pincodesCount | Int |  no  |  |
 
 ---
@@ -797,11 +830,43 @@ Response status_code
 
  
  
- #### [ZoneSuccessResponse](#ZoneSuccessResponse)
+ #### [CreateZoneData](#CreateZoneData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | product | [ZoneProductTypes](#ZoneProductTypes) |  no  |  |
+ | companyId | Int |  no  |  |
+ | slug | String |  no  |  |
+ | mapping | ArrayList<[ZoneMappingType](#ZoneMappingType)> |  no  |  |
+ | isActive | Boolean |  no  |  |
+ | storeIds | ArrayList<Int> |  no  |  |
+ | regionType | String |  no  |  |
+ | channels | ArrayList<[GetZoneDataViewChannels](#GetZoneDataViewChannels)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneRequest](#ZoneRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | identifier | String |  no  |  |
+ | data | [CreateZoneData](#CreateZoneData) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneResponse](#ZoneResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean |  no  |  |
+ | zoneId | String |  no  |  |
  | statusCode | Int |  no  |  |
 
 ---

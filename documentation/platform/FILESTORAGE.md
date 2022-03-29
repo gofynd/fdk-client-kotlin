@@ -836,7 +836,7 @@ Success
  | size | Int |  no  |  |
  | upload | [Upload](#Upload) |  no  |  |
  | cdn | [CDN](#CDN) |  no  |  |
- | success | String |  no  |  |
+ | success | Boolean |  no  |  |
  | tags | ArrayList<String>? |  yes  |  |
  | createdOn | String |  no  |  |
  | modifiedOn | String |  no  |  |

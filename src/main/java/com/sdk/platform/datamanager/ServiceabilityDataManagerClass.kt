@@ -77,11 +77,11 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun upsertZoneControllerView(zoneId: String,body: ZoneRequest)
-    : Deferred<Response<ZoneResponse>>? {
+    suspend fun updateZoneControllerView(zoneId: String,body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.upsertZoneControllerView(
+            serviceabilityApiList?.updateZoneControllerView(
         zoneId = zoneId, companyId = config.companyId, body = body)
         } else {
             null
@@ -101,12 +101,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun updateZoneControllerView(zoneId: String,body: ZoneRequest)
-    : Deferred<Response<ZoneSuccessResponse>>? {
+    suspend fun upsertZoneControllerView(body: ZoneRequest)
+    : Deferred<Response<ZoneResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.updateZoneControllerView(
-        zoneId = zoneId, companyId = config.companyId, body = body)
+            serviceabilityApiList?.upsertZoneControllerView(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
