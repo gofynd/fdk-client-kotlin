@@ -786,6 +786,11 @@ interface ConfigurationApiList {
     
     
     @GET 
+    fun getAppStaffList(@Url url1: String?    ,      @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
+    : Deferred<Response<AppStaffListResponse>>
+    
+    
+    @GET 
     fun getAppStaffs(@Url url1: String?    ,    @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
     : Deferred<Response<AppStaffResponse>>
     
