@@ -67,6 +67,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateCartWithSharedItems"] = "/service/application/cart/v1.0/share-cart/{token}/{action}"?.substring(1)
             
+                    _relativeUrls["getPromotionOffers"] = "/service/application/cart/v1.0/available-promotions"?.substring(1)
+            
+                    _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices"?.substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -275,6 +279,20 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         fullUrl = fullUrl?.replace("{" + "action" +"}",action.toString())
         
         return cartApiList?.updateCartWithSharedItems(fullUrl    )}
+
+    
+    
+    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: Int?=null): Deferred<Response<PromotionOffersResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
+        
+        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup)}
+
+    
+    
+    fun getLadderOffers(slug: String, storeId: String?=null, promotionId: String?=null, pageSize: Int?=null): Deferred<Response<LadderPriceOffers>>? {
+        var fullUrl : String? = _relativeUrls["getLadderOffers"] 
+        
+        return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
 
     
     

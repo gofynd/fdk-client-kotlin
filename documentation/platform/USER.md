@@ -9,8 +9,11 @@ Authentication Service
 * [getCustomers](#getcustomers)
 * [searchUsers](#searchusers)
 * [createUser](#createuser)
+* [blockOrUnblockUsers](#blockorunblockusers)
 * [updateUser](#updateuser)
 * [createUserSession](#createusersession)
+* [getActiveSessions](#getactivesessions)
+* [deleteActiveSessions](#deleteactivesessions)
 * [getPlatformConfig](#getplatformconfig)
 * [updatePlatformConfig](#updateplatformconfig)
 
@@ -80,7 +83,6 @@ Success. Refer `CustomerListResponseSchema` for more details.
           "Ark-Qnatemplate-FullAccess"
         ],
         "active": true,
-        "uid": "23106198",
         "emails": [
           {
             "active": true,
@@ -92,7 +94,7 @@ Success. Refer `CustomerListResponseSchema` for more details.
         "username": "raaz_crzy_gmail_com_63747_23106198",
         "__v": 7,
         "debug": {
-          "source": "grimlock",
+          "source": "deadlock",
           "platform": "000000000000000000000003"
         },
         "dob": "1995-07-23T00:00:00.000Z",
@@ -211,7 +213,6 @@ Success. Returns first name, last name, emails, phone number and gender of the u
           "email": "akashmane@uniket.store"
         }
       ],
-      "uid": "61",
       "account_type": "user",
       "first_name": "Akash",
       "last_name": "Mane",
@@ -312,7 +313,7 @@ User create
         "email": "akashmane@uniket.store"
       }
     ],
-    "uid": "61",
+    "external_id": "100002000036789",
     "account_type": "user",
     "first_name": "Akash",
     "last_name": "Mane",
@@ -329,6 +330,67 @@ User create
     "created_at": "2020-03-11T09:28:41.982Z",
     "updated_at": "2020-03-11T09:28:41.982Z"
   }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### blockOrUnblockUsers
+Block/Unblock user
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").user.blockOrUnblockUsers(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [BlockUserRequestSchema](#BlockUserRequestSchema) | yes | Request body |
+
+
+Block/Unblock user
+
+*Returned Response:*
+
+
+
+
+[BlockUserSuccess](#BlockUserSuccess)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
 }
 ```
 </details>
@@ -414,7 +476,7 @@ User update
         "email": "akashmane@uniket.store"
       }
     ],
-    "uid": "61",
+    "external_id": "100002000036789",
     "account_type": "user",
     "first_name": "Akash",
     "last_name": "Mane",
@@ -500,6 +562,152 @@ Create user session
   }
 }
 ```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getActiveSessions
+Get a list of all session for a user
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").user.getActiveSessions(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID of a customer. |  
+
+
+
+Use this API to retrieve a list of session of customers who have registered in the application.
+
+*Returned Response:*
+
+
+
+
+[SessionListResponseSchema](#SessionListResponseSchema)
+
+Success. Refer `SessionListResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      "sess:123",
+      "sess:456"
+    ]
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### deleteActiveSessions
+Delete a list of all session for a user
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").user.deleteActiveSessions(id: id).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | ID of a customer. |  
+
+
+
+Use this API to Delete a list of session of customers who have registered in the application.
+
+*Returned Response:*
+
+
+
+
+[SessionDeleteResponseSchema](#SessionDeleteResponseSchema)
+
+Success. Refer `SessionDeleteResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Success</i></summary>
+
+```json
+{
+  "value": {
+    "items": [
+      "sess:123",
+      "sess:456"
+    ]
+  }
+}
+```
+</details>
+
 </details>
 
 
@@ -759,6 +967,19 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
 
 ### Schemas
+
+ 
+ 
+ #### [BlockUserRequestSchema](#BlockUserRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | Boolean? |  yes  |  |
+ | userId | ArrayList<String>? |  yes  |  |
+ | reason | String? |  yes  |  |
+
+---
+
 
  
  
@@ -1070,8 +1291,8 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | user | [UserSchema](#UserSchema)? |  yes  |  |
- | resendEmailToken | String? |  yes  |  |
  | registerToken | String? |  yes  |  |
+ | resendEmailToken | String? |  yes  |  |
  | userExists | Boolean? |  yes  |  |
  | verifyEmailLink | Boolean? |  yes  |  |
  | verifyEmailOtp | Boolean? |  yes  |  |
@@ -1171,6 +1392,17 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | logout | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BlockUserSuccess](#BlockUserSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -1295,6 +1527,28 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | hasNext | Boolean? |  yes  |  |
  | type | String? |  yes  |  |
  | current | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SessionListResponseSchema](#SessionListResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SessionDeleteResponseSchema](#SessionDeleteResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -1752,6 +2006,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | firstName | String? |  yes  |  |
  | lastName | String? |  yes  |  |
  | gender | String? |  yes  |  |
+ | externalId | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -1763,6 +2018,8 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | applicationId | String? |  yes  |  |
+ | userId | String? |  yes  |  |
  | firstName | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | lastName | String? |  yes  |  |
@@ -1774,7 +2031,6 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | profilePicUrl | String? |  yes  |  |
  | username | String? |  yes  |  |
  | accountType | String? |  yes  |  |
- | uid | String? |  yes  |  |
  | debug | [Debug](#Debug)? |  yes  |  |
  | hasOldPasswordHash | Boolean? |  yes  |  |
  | id | String? |  yes  |  |
