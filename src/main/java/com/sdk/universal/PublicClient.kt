@@ -1,6 +1,6 @@
-package com.sdk.public
+package com.sdk.universal
 
-import com.sdk.public.datamanager.*
+import com.sdk.universal.datamanager.*
 
 class PublicClient(val config:PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
     

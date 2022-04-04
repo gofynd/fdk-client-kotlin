@@ -1,4 +1,4 @@
-package com.sdk.public
+package com.sdk.universal
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
@@ -34,4 +34,5 @@ interface WebhookApiList {
     : Deferred<Response<EventConfigResponse>>
     
 }
+
 

@@ -1,6 +1,6 @@
 package com.sdk.common
 
-import com.sdk.public.PublicConfig
+import com.sdk.universal.PublicConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
