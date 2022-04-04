@@ -160,18 +160,6 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
     }
     
     
-    suspend fun getJobConfigByIntegrationType(integrationType: String, disable: Boolean?=null)
-    : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            inventoryApiList?.getJobConfigByIntegrationType(
-        companyId = config.companyId, integrationType = integrationType, disable = disable )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getJobCodesMetrics(dailyJob: Boolean?=null, jobCode: String?=null)
     : Deferred<Response<ResponseEnvelopeObject>>? {
         
@@ -198,7 +186,6 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
     
     
     

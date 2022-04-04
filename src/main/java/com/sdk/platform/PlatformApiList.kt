@@ -1468,10 +1468,6 @@ interface InventoryApiList {
     fun getJobCodesByCompanyAndIntegration(@Path("company_id") companyId: String, @Path("integration_id") integrationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ResponseEnvelopeListJobConfigListDTO>>
     
-    @GET ("/service/platform/inventory/v1.0/company/{company_id}/job/config")
-    fun getJobConfigByIntegrationType(@Path("company_id") companyId: String, @Query("integration_type") integrationType: String, @Query("disable") disable: Boolean?)
-    : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>
-    
     @GET ("/service/platform/inventory/v1.0/company/{company_id}/email/jobCode")
     fun getJobCodesMetrics(@Path("company_id") companyId: String, @Query("daily_job") dailyJob: Boolean?, @Query("job_code") jobCode: String?)
     : Deferred<Response<ResponseEnvelopeObject>>
