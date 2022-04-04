@@ -304,6 +304,11 @@ interface CommonApiList {
     
     
     @GET 
+    fun searchApplication(@Url url1: String?    ,  @Header("authorization") authorization: String?,  @Query("query") query: String?)
+    : Deferred<Response<ApplicationResponse>>
+    
+    
+    @GET 
     fun getLocations(@Url url1: String?    ,   @Query("location_type") locationType: String?, @Query("id") id: String?)
     : Deferred<Response<Locations>>
     
@@ -788,6 +793,11 @@ interface ConfigurationApiList {
     @DELETE 
     fun removeOrderingStoreCookie(@Url url1: String?   )
     : Deferred<Response<SuccessMessageResponse>>
+    
+    
+    @GET 
+    fun getAppStaffList(@Url url1: String?    ,      @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("order_incent") orderIncent: Boolean?, @Query("ordering_store") orderingStore: Int?, @Query("user") user: String?)
+    : Deferred<Response<AppStaffListResponse>>
     
     
     @GET 

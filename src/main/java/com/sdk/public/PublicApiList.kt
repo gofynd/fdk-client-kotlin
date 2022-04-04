@@ -11,6 +11,11 @@ interface ConfigurationApiList {
     
     
     @GET 
+    fun searchApplication(@Url url1: String?    ,  @Header("authorization") authorization: String?,  @Query("query") query: String?)
+    : Deferred<Response<ApplicationResponse>>
+    
+    
+    @GET 
     fun getLocations(@Url url1: String?    ,   @Query("location_type") locationType: String?, @Query("id") id: String?)
     : Deferred<Response<Locations>>
     

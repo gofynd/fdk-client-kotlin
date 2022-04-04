@@ -19,6 +19,8 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
 
     init{
             
+                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application"?.substring(1)
+            
                     _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location"?.substring(1)
             
     }
@@ -51,6 +53,13 @@ class CommonDataManagerClass(val config: ApplicationConfig, val unauthorizedActi
         )
         return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
     }
+    
+    fun searchApplication(authorization: String?=null, query: String?=null): Deferred<Response<ApplicationResponse>>? {
+        var fullUrl : String? = _relativeUrls["searchApplication"] 
+        
+        return commonApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
+
+    
     
     fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
         var fullUrl : String? = _relativeUrls["getLocations"] 
