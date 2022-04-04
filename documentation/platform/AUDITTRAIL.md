@@ -345,6 +345,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  |  |
  | type | String? |  yes  |  |
  | action | String? |  yes  |  |
 
