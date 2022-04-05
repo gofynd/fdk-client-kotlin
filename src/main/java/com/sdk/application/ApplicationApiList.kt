@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -869,6 +869,11 @@ interface PaymentApiList {
     : Deferred<Response<RupifiBannerResponse>>
     
     
+    @GET 
+    fun getEpaylaterBannerDetails(@Url url1: String?   )
+    : Deferred<Response<EpaylaterBannerResponse>>
+    
+    
     @POST 
     fun resendOrCancelPayment(@Url url1: String?   ,@Body body: ResendOrCancelPaymentRequest)
     : Deferred<Response<ResendOrCancelPaymentResponse>>
@@ -922,6 +927,26 @@ interface PaymentApiList {
     @POST 
     fun updateDefaultBeneficiary(@Url url1: String?   ,@Body body: SetDefaultBeneficiaryRequest)
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+    
+    @GET 
+    fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CustomerCreditSummaryResponse>>
+    
+    
+    @GET 
+    fun redirectToAggregator(@Url url1: String?    ,   @Query("source") source: String?, @Query("aggregator") aggregator: String?)
+    : Deferred<Response<RedirectToAggregatorResponse>>
+    
+    
+    @GET 
+    fun checkCredit(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CheckCreditResponse>>
+    
+    
+    @POST 
+    fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
+    : Deferred<Response<CustomerOnboardingResponse>>
     
 }
 
