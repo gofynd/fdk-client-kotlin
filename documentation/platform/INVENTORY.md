@@ -16,8 +16,6 @@
 * [getJobByCode](#getjobbycode)
 * [getJobCodeMetrics](#getjobcodemetrics)
 * [getJobCodesByCompanyAndIntegration](#getjobcodesbycompanyandintegration)
-* [getJobCodesMetrics](#getjobcodesmetrics)
-* [saveJobCodesMetrics](#savejobcodesmetrics)
 
 
 
@@ -603,126 +601,6 @@ REST Endpoint that returns all job codes by company And integration
 [ResponseEnvelopeListJobConfigListDTO](#ResponseEnvelopeListJobConfigListDTO)
 
 Successful operation
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getJobCodesMetrics
-Find all the JobCodes from Metrics Collection based on the field Values
-
-
-
-
-```kotlin
-client.inventory.getJobCodesMetrics(dailyJob: dailyJob, jobCode: jobCode).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| dailyJob | Boolean? | no | Daily Job Flag |   
-| jobCode | String? | no | Email Job Code |  
-
-
-
-Endpoint to return all JobCodes present in Metrics Collection
-
-*Returned Response:*
-
-
-
-
-[ResponseEnvelopeObject](#ResponseEnvelopeObject)
-
-Successful operation
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### saveJobCodesMetrics
-Save JobCode Metrics
-
-
-
-
-```kotlin
-client.inventory.saveJobCodesMetrics(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [EmailJobMetrics](#EmailJobMetrics) | yes | Request body |
-
-
-Endpoint to save JobCode Metrics
-
-*Returned Response:*
-
-
-
-
-[ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
-
-JobCode Metrics entry Created Successfully
 
 
 
@@ -1619,63 +1497,6 @@ JobCode Metrics entry Created Successfully
  | httpStatus | String? |  yes  |  |
  | items | ArrayList<[JobConfigListDTO](#JobConfigListDTO)>? |  yes  |  |
  | payload | ArrayList<[JobConfigListDTO](#JobConfigListDTO)>? |  yes  |  |
- | traceId | String? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
-
----
-
-
- 
- 
- #### [EmailJobMetrics](#EmailJobMetrics)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | executed | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | jobCode | String? |  yes  |  |
- | dailyJob | Boolean? |  yes  |  |
- | lastExecutedOn | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | timestamp | String? |  yes  |  |
- | status | Int? |  yes  |  |
- | error | String? |  yes  |  |
- | exception | String? |  yes  |  |
- | message | String? |  yes  |  |
- | totalTimeTakenInMillis | Int? |  yes  |  |
- | httpStatus | String? |  yes  |  |
- | items | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
- | payload | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
- | traceId | String? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ResponseEnvelopeObject](#ResponseEnvelopeObject)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | timestamp | String? |  yes  |  |
- | status | Int? |  yes  |  |
- | error | String? |  yes  |  |
- | exception | String? |  yes  |  |
- | message | String? |  yes  |  |
- | totalTimeTakenInMillis | Int? |  yes  |  |
- | httpStatus | String? |  yes  |  |
- | items | HashMap<String,Any>? |  yes  |  |
- | payload | HashMap<String,Any>? |  yes  |  |
  | traceId | String? |  yes  |  |
  | page | [Page](#Page)? |  yes  |  |
 
