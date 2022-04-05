@@ -96,17 +96,32 @@ interface CatalogApiList {
     
     
     @GET 
+    fun getCollections(@Url url1: String?    ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
+    : Deferred<Response<GetCollectionListingResponse>>
+    
+    
+    @GET 
+    fun getCollectionItemsBySlug(@Url url1: String?     ,      @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ProductListingResponse>>
+    
+    
+    @GET 
+    fun getCollectionDetailBySlug(@Url url1: String?    )
+    : Deferred<Response<CollectionDetailResponse>>
+    
+    
+    @GET 
     fun getFollowedListing(@Url url1: String?     ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -136,33 +151,18 @@ interface CatalogApiList {
     
     
     @GET 
+    fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: String?)
+    : Deferred<Response<ProductBundle>>
+    
+    
+    @GET 
     fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
-    : Deferred<Response<ProductSizePriceResponse>>
+    : Deferred<Response<ProductSizePriceResponseV2>>
     
     
     @GET 
     fun getProductSellersBySlug(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductSizeSellersResponse>>
-    
-    
-    @GET 
-    fun getCollections(@Url url1: String?    ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
-    : Deferred<Response<GetCollectionListingResponse>>
-    
-    
-    @GET 
-    fun getCollectionItemsBySlug(@Url url1: String?     ,      @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductListingResponse>>
-    
-    
-    @GET 
-    fun getCollectionDetailBySlug(@Url url1: String?    )
-    : Deferred<Response<CollectionDetailResponse>>
-    
-    
-    @GET 
-    fun getProductBundlesBySlug(@Url url1: String?    ,   @Query("slug") slug: String?, @Query("id") id: String?)
-    : Deferred<Response<ProductBundle>>
+    : Deferred<Response<ProductSizeSellersResponseV2>>
     
 }
 
