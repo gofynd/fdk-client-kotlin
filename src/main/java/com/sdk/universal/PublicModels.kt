@@ -1,4 +1,4 @@
-package com.sdk.public
+package com.sdk.universal
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

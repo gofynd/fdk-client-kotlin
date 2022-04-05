@@ -1,6 +1,6 @@
 package com.sdk.common
 
-import com.sdk.public.PublicConfig
+import com.sdk.universal.PublicConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -11,7 +11,7 @@ class PublicHeaderInterceptor(
         val original = chain.request()
         
         val builder = original.newBuilder()
-            .header("x-fp-sdk-version", "0.1.15")
+            .header("x-fp-sdk-version", "0.1.16")
 	publicConfig?.extraHeaders?.let {
                 for ((key, value) in it) {
                     builder.header(key,value)

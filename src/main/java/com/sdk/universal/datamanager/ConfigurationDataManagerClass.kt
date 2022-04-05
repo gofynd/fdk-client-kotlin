@@ -1,7 +1,7 @@
-package com.sdk.public.datamanager
+package com.sdk.universal.datamanager
 
 import com.sdk.common.*
-import com.sdk.public.*
+import com.sdk.universal.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -9,19 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
     
-    private val webhookApiList by lazy {
-        generatewebhookApiList()
+    private val configurationApiList by lazy {
+        generateconfigurationApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["fetchAllWebhookEvents"] = "/service/common/webhook/v1.0/events"?.substring(1)
+                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application"?.substring(1)
             
-                    _relativeUrls["queryWebhookEventDetails"] = "/service/common/webhook/v1.0/events/query-event-details"?.substring(1)
+                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location"?.substring(1)
             
     }
 
@@ -32,7 +32,7 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
     }
     
 
-    private fun generatewebhookApiList(): WebhookApiList? {
+    private fun generateconfigurationApiList(): ConfigurationApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = PublicHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -48,23 +48,23 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PublicWebhook",
+            namespace = "PublicConfiguration",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
+        return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
     
-    fun fetchAllWebhookEvents(): Deferred<Response<EventConfigResponse>>? {
-        var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"] 
+    fun searchApplication(authorization: String?=null, query: String?=null): Deferred<Response<ApplicationResponse>>? {
+        var fullUrl : String? = _relativeUrls["searchApplication"] 
         
-        return webhookApiList?.fetchAllWebhookEvents(fullUrl  )}
+        return configurationApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
 
     
     
-    fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>): Deferred<Response<EventConfigResponse>>? {
-        var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"] 
+    fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
+        var fullUrl : String? = _relativeUrls["getLocations"] 
         
-        return webhookApiList?.queryWebhookEventDetails(fullUrl  ,body = body)}
+        return configurationApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
 
     
     
