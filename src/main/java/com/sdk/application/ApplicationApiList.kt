@@ -1002,6 +1002,11 @@ interface OrderApiList {
     fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: ReqBodyVerifyOTPShipment)
     : Deferred<Response<ResponseVerifyOTPShipment>>
     
+    
+    @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetInvoiceShipment>>
+    
 }
 
 interface RewardsApiList {

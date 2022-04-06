@@ -2261,217 +2261,30 @@ Checkout cart and create Fynd order id
 
  
  
- #### [Page](#Page)
+ #### [Identifier](#Identifier)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | hasNext | Boolean? |  yes  | True if more records are present for next pages |
- | size | Int? |  yes  | Current request page size |
- | nextId | String? |  yes  | Cursor id for next set of records. |
- | type | String |  no  |  |
- | hasPrevious | Boolean? |  yes  | True if more records are present for previous pages. Sent for cursor pagination |
- | current | Int? |  yes  | Current page no |
- | itemTotal | Int? |  yes  | Total coupon count in system |
+ | companyId | ArrayList<Int>? |  yes  |  |
+ | collectionId | ArrayList<String>? |  yes  |  |
+ | brandId | ArrayList<Int>? |  yes  |  |
+ | categoryId | ArrayList<Int>? |  yes  |  |
+ | itemId | ArrayList<Int>? |  yes  |  |
+ | storeId | ArrayList<Int>? |  yes  |  |
+ | userId | ArrayList<String>? |  yes  |  |
+ | articleId | ArrayList<String>? |  yes  |  |
 
 ---
 
 
  
  
- #### [Validation](#Validation)
+ #### [CouponDateMeta](#CouponDateMeta)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userRegisteredAfter | String? |  yes  |  |
- | appId | ArrayList<String>? |  yes  |  |
- | anonymous | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [CouponAction](#CouponAction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | txnMode | String? |  yes  |  |
- | actionDate | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Ownership](#Ownership)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | payableCategory | String |  no  |  |
- | payableBy | String |  no  |  |
-
----
-
-
- 
- 
- #### [CouponSchedule](#CouponSchedule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | cron | String? |  yes  |  |
- | nextSchedule | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | end | String? |  yes  |  |
- | duration | Int? |  yes  |  |
- | start | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [RuleDefinition](#RuleDefinition)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | applicableOn | String |  no  |  |
- | isExact | Boolean? |  yes  |  |
- | type | String |  no  |  |
- | scope | ArrayList<String>? |  yes  |  |
- | calculateOn | String |  no  |  |
- | valueType | String |  no  |  |
- | autoApply | Boolean? |  yes  |  |
- | currencyCode | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Validity](#Validity)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | priority | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [BulkBundleRestriction](#BulkBundleRestriction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | multiStoreAllowed | Boolean |  no  |  |
-
----
-
-
- 
- 
- #### [PaymentAllowValue](#PaymentAllowValue)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | max | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [PaymentModes](#PaymentModes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | types | ArrayList<String>? |  yes  |  |
- | codes | ArrayList<String>? |  yes  |  |
- | networks | ArrayList<String>? |  yes  |  |
- | uses | [PaymentAllowValue](#PaymentAllowValue)? |  yes  |  |
-
----
-
-
- 
- 
- #### [PostOrder](#PostOrder)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | returnAllowed | Boolean? |  yes  |  |
- | cancellationAllowed | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [UsesRemaining](#UsesRemaining)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | app | Int? |  yes  |  |
- | total | Int? |  yes  |  |
- | user | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [UsesRestriction](#UsesRestriction)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | remaining | [UsesRemaining](#UsesRemaining)? |  yes  |  |
- | maximum | [UsesRemaining](#UsesRemaining)? |  yes  |  |
-
----
-
-
- 
- 
- #### [PriceRange](#PriceRange)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | min | Int? |  yes  |  |
- | max | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [Restrictions](#Restrictions)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | bulkBundle | [BulkBundleRestriction](#BulkBundleRestriction)? |  yes  |  |
- | payments | HashMap<String,[PaymentModes](#PaymentModes)>? |  yes  |  |
- | couponAllowed | Boolean? |  yes  |  |
- | postOrder | [PostOrder](#PostOrder)? |  yes  |  |
- | uses | [UsesRestriction](#UsesRestriction)? |  yes  |  |
- | orderingStores | ArrayList<Int>? |  yes  |  |
- | userGroups | ArrayList<Int>? |  yes  |  |
- | priceRange | [PriceRange](#PriceRange)? |  yes  |  |
- | platforms | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Rule](#Rule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | Double? |  yes  |  |
- | key | Double? |  yes  |  |
- | min | Double? |  yes  |  |
- | discountQty | Double? |  yes  |  |
- | max | Double? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
 
 ---
 
@@ -2494,25 +2307,36 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String? |  yes  |  |
- | subtitle | String? |  yes  |  |
- | apply | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
- | auto | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
  | title | String? |  yes  |  |
+ | apply | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
+ | description | String? |  yes  |  |
  | remove | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
+ | subtitle | String? |  yes  |  |
+ | auto | [DisplayMetaDict](#DisplayMetaDict)? |  yes  |  |
 
 ---
 
 
  
  
- #### [State](#State)
+ #### [Ownership](#Ownership)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isArchived | Boolean? |  yes  |  |
- | isDisplay | Boolean? |  yes  |  |
- | isPublic | Boolean? |  yes  |  |
+ | payableCategory | String |  no  |  |
+ | payableBy | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponAction](#CouponAction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | txnMode | String? |  yes  |  |
+ | actionDate | String? |  yes  |  |
 
 ---
 
@@ -2531,30 +2355,189 @@ Checkout cart and create Fynd order id
 
  
  
- #### [CouponDateMeta](#CouponDateMeta)
+ #### [Validation](#Validation)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | createdOn | String? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
+ | anonymous | Boolean? |  yes  |  |
+ | userRegisteredAfter | String? |  yes  |  |
+ | appId | ArrayList<String>? |  yes  |  |
 
 ---
 
 
  
  
- #### [Identifier](#Identifier)
+ #### [Rule](#Rule)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | categoryId | ArrayList<Int>? |  yes  |  |
- | companyId | ArrayList<Int>? |  yes  |  |
- | userId | ArrayList<String>? |  yes  |  |
- | itemId | ArrayList<Int>? |  yes  |  |
- | storeId | ArrayList<Int>? |  yes  |  |
- | collectionId | ArrayList<String>? |  yes  |  |
- | brandId | ArrayList<Int>? |  yes  |  |
- | articleId | ArrayList<String>? |  yes  |  |
+ | key | Double? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | discountQty | Double? |  yes  |  |
+ | max | Double? |  yes  |  |
+ | min | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PostOrder](#PostOrder)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cancellationAllowed | Boolean? |  yes  |  |
+ | returnAllowed | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkBundleRestriction](#BulkBundleRestriction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | multiStoreAllowed | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PriceRange](#PriceRange)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max | Int? |  yes  |  |
+ | min | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UsesRemaining](#UsesRemaining)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | Int? |  yes  |  |
+ | total | Int? |  yes  |  |
+ | app | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UsesRestriction](#UsesRestriction)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | maximum | [UsesRemaining](#UsesRemaining)? |  yes  |  |
+ | remaining | [UsesRemaining](#UsesRemaining)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentAllowValue](#PaymentAllowValue)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentModes](#PaymentModes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | codes | ArrayList<String>? |  yes  |  |
+ | types | ArrayList<String>? |  yes  |  |
+ | networks | ArrayList<String>? |  yes  |  |
+ | uses | [PaymentAllowValue](#PaymentAllowValue)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Restrictions](#Restrictions)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | postOrder | [PostOrder](#PostOrder)? |  yes  |  |
+ | orderingStores | ArrayList<Int>? |  yes  |  |
+ | userGroups | ArrayList<Int>? |  yes  |  |
+ | platforms | ArrayList<String>? |  yes  |  |
+ | bulkBundle | [BulkBundleRestriction](#BulkBundleRestriction)? |  yes  |  |
+ | priceRange | [PriceRange](#PriceRange)? |  yes  |  |
+ | uses | [UsesRestriction](#UsesRestriction)? |  yes  |  |
+ | couponAllowed | Boolean? |  yes  |  |
+ | payments | HashMap<String,[PaymentModes](#PaymentModes)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Validity](#Validity)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | priority | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [State](#State)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | isDisplay | Boolean? |  yes  |  |
+ | isArchived | Boolean? |  yes  |  |
+ | isPublic | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponSchedule](#CouponSchedule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | nextSchedule | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | cron | String? |  yes  |  |
+ | start | String? |  yes  |  |
+ | end | String? |  yes  |  |
+ | duration | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RuleDefinition](#RuleDefinition)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | valueType | String |  no  |  |
+ | applicableOn | String |  no  |  |
+ | currencyCode | String? |  yes  |  |
+ | autoApply | Boolean? |  yes  |  |
+ | calculateOn | String |  no  |  |
+ | type | String |  no  |  |
+ | isExact | Boolean? |  yes  |  |
+ | scope | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -2565,22 +2548,39 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | validation | [Validation](#Validation)? |  yes  |  |
- | action | [CouponAction](#CouponAction)? |  yes  |  |
- | ownership | [Ownership](#Ownership) |  no  |  |
- | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
- | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
- | code | String |  no  |  |
- | validity | [Validity](#Validity) |  no  |  |
- | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
- | rule | ArrayList<[Rule](#Rule)> |  no  |  |
- | displayMeta | [DisplayMeta](#DisplayMeta) |  no  |  |
- | state | [State](#State)? |  yes  |  |
- | typeSlug | String |  no  |  |
- | author | [CouponAuthor](#CouponAuthor)? |  yes  |  |
- | dateMeta | [CouponDateMeta](#CouponDateMeta)? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
  | identifiers | [Identifier](#Identifier) |  no  |  |
+ | dateMeta | [CouponDateMeta](#CouponDateMeta)? |  yes  |  |
+ | displayMeta | [DisplayMeta](#DisplayMeta) |  no  |  |
+ | ownership | [Ownership](#Ownership) |  no  |  |
+ | action | [CouponAction](#CouponAction)? |  yes  |  |
+ | code | String |  no  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | author | [CouponAuthor](#CouponAuthor)? |  yes  |  |
+ | validation | [Validation](#Validation)? |  yes  |  |
+ | rule | ArrayList<[Rule](#Rule)> |  no  |  |
+ | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
+ | validity | [Validity](#Validity) |  no  |  |
+ | state | [State](#State)? |  yes  |  |
+ | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
+ | typeSlug | String |  no  |  |
+ | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [Page](#Page)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | hasPrevious | Boolean? |  yes  | True if more records are present for previous pages. Sent for cursor pagination |
+ | hasNext | Boolean? |  yes  | True if more records are present for next pages |
+ | nextId | String? |  yes  | Cursor id for next set of records. |
+ | type | String |  no  |  |
+ | current | Int? |  yes  | Current page no |
+ | size | Int? |  yes  | Current request page size |
+ | itemTotal | Int? |  yes  | Total coupon count in system |
 
 ---
 
@@ -2591,8 +2591,8 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | [CouponAdd](#CouponAdd)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -2627,22 +2627,22 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | validation | [Validation](#Validation)? |  yes  |  |
- | action | [CouponAction](#CouponAction)? |  yes  |  |
- | ownership | [Ownership](#Ownership) |  no  |  |
- | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
- | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
- | code | String |  no  |  |
- | validity | [Validity](#Validity) |  no  |  |
- | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
- | rule | ArrayList<[Rule](#Rule)> |  no  |  |
- | displayMeta | [DisplayMeta](#DisplayMeta) |  no  |  |
- | state | [State](#State)? |  yes  |  |
- | typeSlug | String |  no  |  |
- | author | [CouponAuthor](#CouponAuthor)? |  yes  |  |
- | dateMeta | [CouponDateMeta](#CouponDateMeta)? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
  | identifiers | [Identifier](#Identifier) |  no  |  |
+ | dateMeta | [CouponDateMeta](#CouponDateMeta)? |  yes  |  |
+ | displayMeta | [DisplayMeta](#DisplayMeta) |  no  |  |
+ | ownership | [Ownership](#Ownership) |  no  |  |
+ | action | [CouponAction](#CouponAction)? |  yes  |  |
+ | code | String |  no  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | author | [CouponAuthor](#CouponAuthor)? |  yes  |  |
+ | validation | [Validation](#Validation)? |  yes  |  |
+ | rule | ArrayList<[Rule](#Rule)> |  no  |  |
+ | restrictions | [Restrictions](#Restrictions)? |  yes  |  |
+ | validity | [Validity](#Validity) |  no  |  |
+ | state | [State](#State)? |  yes  |  |
+ | schedule | [CouponSchedule](#CouponSchedule)? |  yes  |  |
+ | typeSlug | String |  no  |  |
+ | ruleDefinition | [RuleDefinition](#RuleDefinition) |  no  |  |
 
 ---
 
@@ -2673,123 +2673,60 @@ Checkout cart and create Fynd order id
 
  
  
- #### [PromotionDateMeta](#PromotionDateMeta)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | createdOn | String? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CompareObject](#CompareObject)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | lessThan | Double? |  yes  |  |
- | equals | Double? |  yes  |  |
- | greaterThan | Double? |  yes  |  |
- | lessThanEquals | Double? |  yes  |  |
- | greaterThanEquals | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [ItemCriteria](#ItemCriteria)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | itemStore | ArrayList<Int>? |  yes  |  |
- | itemExcludeCompany | ArrayList<Int>? |  yes  |  |
- | cartTotal | [CompareObject](#CompareObject)? |  yes  |  |
- | itemSku | ArrayList<String>? |  yes  |  |
- | itemBrand | ArrayList<Int>? |  yes  |  |
- | itemExcludeSku | ArrayList<String>? |  yes  |  |
- | itemId | ArrayList<Int>? |  yes  |  |
- | itemExcludeStore | ArrayList<Int>? |  yes  |  |
- | cartQuantity | [CompareObject](#CompareObject)? |  yes  |  |
- | itemCompany | ArrayList<Int>? |  yes  |  |
- | itemSize | ArrayList<String>? |  yes  |  |
- | itemExcludeCategory | ArrayList<Int>? |  yes  |  |
- | buyExpression | String? |  yes  |  |
- | itemCategory | ArrayList<Int>? |  yes  |  |
- | itemExcludeBrand | ArrayList<Int>? |  yes  |  |
-
----
-
-
- 
- 
- #### [DiscountOffer](#DiscountOffer)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | discountPercentage | Double? |  yes  |  |
- | maxOfferQuantity | Int? |  yes  |  |
- | code | String? |  yes  |  |
- | discountPrice | Double? |  yes  |  |
- | maxDiscountAmount | Double? |  yes  |  |
- | discountAmount | Double? |  yes  |  |
- | minOfferQuantity | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [DiscountRule](#DiscountRule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | discountType | String |  no  |  |
- | offer | [DiscountOffer](#DiscountOffer) |  no  |  |
- | buyCondition | String |  no  |  |
- | itemCriteria | [ItemCriteria](#ItemCriteria) |  no  |  |
-
----
-
-
- 
- 
- #### [PromotionSchedule](#PromotionSchedule)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | cron | String? |  yes  |  |
- | nextSchedule | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | end | String? |  yes  |  |
- | duration | Int? |  yes  |  |
- | published | Boolean |  no  |  |
- | start | String |  no  |  |
-
----
-
-
- 
- 
- #### [Visibility](#Visibility)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | couponList | Boolean |  no  |  |
- | pdp | Boolean |  no  |  |
-
----
-
-
- 
- 
  #### [PromotionAuthor](#PromotionAuthor)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | modifiedBy | String? |  yes  |  |
  | createdBy | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PostOrder1](#PostOrder1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | cancellationAllowed | Boolean? |  yes  |  |
+ | returnAllowed | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserRegistered](#UserRegistered)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | end | String? |  yes  |  |
+ | start | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UsesRemaining1](#UsesRemaining1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | user | Int? |  yes  |  |
+ | total | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UsesRestriction1](#UsesRestriction1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | maximum | [UsesRemaining1](#UsesRemaining1)? |  yes  |  |
+ | remaining | [UsesRemaining1](#UsesRemaining1)? |  yes  |  |
 
 ---
 
@@ -2820,67 +2757,130 @@ Checkout cart and create Fynd order id
 
  
  
- #### [PostOrder1](#PostOrder1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | returnAllowed | Boolean? |  yes  |  |
- | cancellationAllowed | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [UsesRemaining1](#UsesRemaining1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | total | Int? |  yes  |  |
- | user | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [UsesRestriction1](#UsesRestriction1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | remaining | [UsesRemaining1](#UsesRemaining1)? |  yes  |  |
- | maximum | [UsesRemaining1](#UsesRemaining1)? |  yes  |  |
-
----
-
-
- 
- 
- #### [UserRegistered](#UserRegistered)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | start | String? |  yes  |  |
- | end | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [Restrictions1](#Restrictions1)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | payments | ArrayList<[PromotionPaymentModes](#PromotionPaymentModes)>? |  yes  |  |
- | userId | ArrayList<String>? |  yes  |  |
  | postOrder | [PostOrder1](#PostOrder1)? |  yes  |  |
- | anonymousUsers | Boolean? |  yes  |  |
- | uses | [UsesRestriction1](#UsesRestriction1) |  no  |  |
- | orderQuantity | Int? |  yes  |  |
  | userRegistered | [UserRegistered](#UserRegistered)? |  yes  |  |
  | userGroups | ArrayList<Int>? |  yes  |  |
  | platforms | ArrayList<String>? |  yes  |  |
+ | orderQuantity | Int? |  yes  |  |
+ | uses | [UsesRestriction1](#UsesRestriction1) |  no  |  |
+ | anonymousUsers | Boolean? |  yes  |  |
+ | payments | ArrayList<[PromotionPaymentModes](#PromotionPaymentModes)>? |  yes  |  |
+ | userId | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DiscountOffer](#DiscountOffer)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | discountPrice | Double? |  yes  |  |
+ | discountAmount | Double? |  yes  |  |
+ | minOfferQuantity | Int? |  yes  |  |
+ | discountPercentage | Double? |  yes  |  |
+ | maxDiscountAmount | Double? |  yes  |  |
+ | code | String? |  yes  |  |
+ | maxOfferQuantity | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CompareObject](#CompareObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | lessThan | Double? |  yes  |  |
+ | lessThanEquals | Double? |  yes  |  |
+ | equals | Double? |  yes  |  |
+ | greaterThanEquals | Double? |  yes  |  |
+ | greaterThan | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ItemCriteria](#ItemCriteria)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | itemSize | ArrayList<String>? |  yes  |  |
+ | itemBrand | ArrayList<Int>? |  yes  |  |
+ | itemStore | ArrayList<Int>? |  yes  |  |
+ | buyExpression | String? |  yes  |  |
+ | itemSku | ArrayList<String>? |  yes  |  |
+ | itemExcludeCategory | ArrayList<Int>? |  yes  |  |
+ | itemCategory | ArrayList<Int>? |  yes  |  |
+ | cartQuantity | [CompareObject](#CompareObject)? |  yes  |  |
+ | itemExcludeBrand | ArrayList<Int>? |  yes  |  |
+ | cartTotal | [CompareObject](#CompareObject)? |  yes  |  |
+ | itemCompany | ArrayList<Int>? |  yes  |  |
+ | itemId | ArrayList<Int>? |  yes  |  |
+ | itemExcludeCompany | ArrayList<Int>? |  yes  |  |
+ | itemExcludeStore | ArrayList<Int>? |  yes  |  |
+ | itemExcludeSku | ArrayList<String>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DiscountRule](#DiscountRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | discountType | String |  no  |  |
+ | offer | [DiscountOffer](#DiscountOffer) |  no  |  |
+ | buyCondition | String |  no  |  |
+ | itemCriteria | [ItemCriteria](#ItemCriteria) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PromotionSchedule](#PromotionSchedule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | nextSchedule | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | published | Boolean |  no  |  |
+ | cron | String? |  yes  |  |
+ | start | String |  no  |  |
+ | end | String? |  yes  |  |
+ | duration | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Visibility](#Visibility)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | couponList | Boolean |  no  |  |
+ | pdp | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [PromotionDateMeta](#PromotionDateMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | modifiedOn | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
 
 ---
 
@@ -2891,9 +2891,9 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
  | description | String? |  yes  |  |
  | offerText | String? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -2916,27 +2916,27 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | promoGroup | String |  no  |  |
  | ownership | [Ownership1](#Ownership1) |  no  |  |
- | applyAllDiscount | Boolean? |  yes  |  |
- | dateMeta | [PromotionDateMeta](#PromotionDateMeta)? |  yes  |  |
- | buyRules | HashMap<String,[ItemCriteria](#ItemCriteria)> |  no  |  |
- | discountRules | ArrayList<[DiscountRule](#DiscountRule)> |  no  |  |
- | schedule | [PromotionSchedule](#PromotionSchedule)? |  yes  |  |
- | code | String? |  yes  |  |
- | visiblility | [Visibility](#Visibility)? |  yes  |  |
- | author | [PromotionAuthor](#PromotionAuthor)? |  yes  |  |
- | promotionType | String |  no  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | restrictions | [Restrictions1](#Restrictions1)? |  yes  |  |
- | displayMeta | [DisplayMeta1](#DisplayMeta1) |  no  |  |
- | currency | String? |  yes  |  |
- | postOrderAction | [PromotionAction](#PromotionAction)? |  yes  |  |
- | stackable | Boolean? |  yes  |  |
  | applicationId | String |  no  |  |
- | applyPriority | Int? |  yes  |  |
+ | author | [PromotionAuthor](#PromotionAuthor)? |  yes  |  |
+ | restrictions | [Restrictions1](#Restrictions1)? |  yes  |  |
+ | applyAllDiscount | Boolean? |  yes  |  |
+ | stackable | Boolean? |  yes  |  |
+ | discountRules | ArrayList<[DiscountRule](#DiscountRule)> |  no  |  |
  | mode | String |  no  |  |
  | applyExclusive | String? |  yes  |  |
+ | schedule | [PromotionSchedule](#PromotionSchedule)? |  yes  |  |
+ | visiblility | [Visibility](#Visibility)? |  yes  |  |
+ | promoGroup | String |  no  |  |
+ | dateMeta | [PromotionDateMeta](#PromotionDateMeta)? |  yes  |  |
+ | promotionType | String |  no  |  |
+ | code | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | buyRules | HashMap<String,[ItemCriteria](#ItemCriteria)> |  no  |  |
+ | currency | String? |  yes  |  |
+ | displayMeta | [DisplayMeta1](#DisplayMeta1) |  no  |  |
+ | postOrderAction | [PromotionAction](#PromotionAction)? |  yes  |  |
+ | applyPriority | Int? |  yes  |  |
 
 ---
 
@@ -2947,8 +2947,8 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | page | [Page](#Page)? |  yes  |  |
  | items | [PromotionListItem](#PromotionListItem)? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -2959,27 +2959,27 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | promoGroup | String |  no  |  |
  | ownership | [Ownership1](#Ownership1) |  no  |  |
- | applyAllDiscount | Boolean? |  yes  |  |
- | dateMeta | [PromotionDateMeta](#PromotionDateMeta)? |  yes  |  |
- | buyRules | HashMap<String,[ItemCriteria](#ItemCriteria)> |  no  |  |
- | discountRules | ArrayList<[DiscountRule](#DiscountRule)> |  no  |  |
- | schedule | [PromotionSchedule](#PromotionSchedule)? |  yes  |  |
- | code | String? |  yes  |  |
- | visiblility | [Visibility](#Visibility)? |  yes  |  |
- | author | [PromotionAuthor](#PromotionAuthor)? |  yes  |  |
- | promotionType | String |  no  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | restrictions | [Restrictions1](#Restrictions1)? |  yes  |  |
- | displayMeta | [DisplayMeta1](#DisplayMeta1) |  no  |  |
- | currency | String? |  yes  |  |
- | postOrderAction | [PromotionAction](#PromotionAction)? |  yes  |  |
- | stackable | Boolean? |  yes  |  |
  | applicationId | String |  no  |  |
- | applyPriority | Int? |  yes  |  |
+ | author | [PromotionAuthor](#PromotionAuthor)? |  yes  |  |
+ | restrictions | [Restrictions1](#Restrictions1)? |  yes  |  |
+ | applyAllDiscount | Boolean? |  yes  |  |
+ | stackable | Boolean? |  yes  |  |
+ | discountRules | ArrayList<[DiscountRule](#DiscountRule)> |  no  |  |
  | mode | String |  no  |  |
  | applyExclusive | String? |  yes  |  |
+ | schedule | [PromotionSchedule](#PromotionSchedule)? |  yes  |  |
+ | visiblility | [Visibility](#Visibility)? |  yes  |  |
+ | promoGroup | String |  no  |  |
+ | dateMeta | [PromotionDateMeta](#PromotionDateMeta)? |  yes  |  |
+ | promotionType | String |  no  |  |
+ | code | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | buyRules | HashMap<String,[ItemCriteria](#ItemCriteria)> |  no  |  |
+ | currency | String? |  yes  |  |
+ | displayMeta | [DisplayMeta1](#DisplayMeta1) |  no  |  |
+ | postOrderAction | [PromotionAction](#PromotionAction)? |  yes  |  |
+ | applyPriority | Int? |  yes  |  |
 
 ---
 
@@ -2990,27 +2990,27 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | promoGroup | String |  no  |  |
  | ownership | [Ownership1](#Ownership1) |  no  |  |
- | applyAllDiscount | Boolean? |  yes  |  |
- | dateMeta | [PromotionDateMeta](#PromotionDateMeta)? |  yes  |  |
- | buyRules | HashMap<String,[ItemCriteria](#ItemCriteria)> |  no  |  |
- | discountRules | ArrayList<[DiscountRule](#DiscountRule)> |  no  |  |
- | schedule | [PromotionSchedule](#PromotionSchedule)? |  yes  |  |
- | code | String? |  yes  |  |
- | visiblility | [Visibility](#Visibility)? |  yes  |  |
- | author | [PromotionAuthor](#PromotionAuthor)? |  yes  |  |
- | promotionType | String |  no  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | restrictions | [Restrictions1](#Restrictions1)? |  yes  |  |
- | displayMeta | [DisplayMeta1](#DisplayMeta1) |  no  |  |
- | currency | String? |  yes  |  |
- | postOrderAction | [PromotionAction](#PromotionAction)? |  yes  |  |
- | stackable | Boolean? |  yes  |  |
  | applicationId | String |  no  |  |
- | applyPriority | Int? |  yes  |  |
+ | author | [PromotionAuthor](#PromotionAuthor)? |  yes  |  |
+ | restrictions | [Restrictions1](#Restrictions1)? |  yes  |  |
+ | applyAllDiscount | Boolean? |  yes  |  |
+ | stackable | Boolean? |  yes  |  |
+ | discountRules | ArrayList<[DiscountRule](#DiscountRule)> |  no  |  |
  | mode | String |  no  |  |
  | applyExclusive | String? |  yes  |  |
+ | schedule | [PromotionSchedule](#PromotionSchedule)? |  yes  |  |
+ | visiblility | [Visibility](#Visibility)? |  yes  |  |
+ | promoGroup | String |  no  |  |
+ | dateMeta | [PromotionDateMeta](#PromotionDateMeta)? |  yes  |  |
+ | promotionType | String |  no  |  |
+ | code | String? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | buyRules | HashMap<String,[ItemCriteria](#ItemCriteria)> |  no  |  |
+ | currency | String? |  yes  |  |
+ | displayMeta | [DisplayMeta1](#DisplayMeta1) |  no  |  |
+ | postOrderAction | [PromotionAction](#PromotionAction)? |  yes  |  |
+ | applyPriority | Int? |  yes  |  |
 
 ---
 
@@ -3033,8 +3033,8 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | productId | String |  no  |  |
  | size | String |  no  |  |
+ | productId | String |  no  |  |
  | quantity | Int? |  yes  |  |
 
 ---
@@ -3053,102 +3053,124 @@ Checkout cart and create Fynd order id
 
  
  
- #### [CouponBreakup](#CouponBreakup)
+ #### [CartProductIdentifer](#CartProductIdentifer)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String? |  yes  |  |
- | value | Double? |  yes  |  |
- | minimumCartValue | Double? |  yes  |  |
- | isApplied | Boolean? |  yes  |  |
- | title | String? |  yes  |  |
- | code | String? |  yes  |  |
- | maxDiscountValue | Double? |  yes  |  |
- | couponValue | Double? |  yes  |  |
- | type | String? |  yes  |  |
- | uid | String? |  yes  |  |
- | subTitle | String? |  yes  |  |
- | couponType | String? |  yes  |  |
- | message | String? |  yes  |  |
+ | identifier | String? |  yes  | Article idenfier generated by cart |
 
 ---
 
 
  
  
- #### [LoyaltyPoints](#LoyaltyPoints)
+ #### [ProductPrice](#ProductPrice)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isApplied | Boolean? |  yes  |  |
- | applicable | Double? |  yes  |  |
- | total | Double? |  yes  |  |
- | description | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [DisplayBreakup](#DisplayBreakup)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | Double? |  yes  |  |
- | key | String? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | display | String? |  yes  |  |
- | message | ArrayList<String>? |  yes  |  |
  | currencyCode | String? |  yes  |  |
+ | selling | Double? |  yes  |  |
+ | marked | Double? |  yes  |  |
+ | effective | Double? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+ | addOn | Double? |  yes  |  |
 
 ---
 
 
  
  
- #### [RawBreakup](#RawBreakup)
+ #### [ProductPriceInfo](#ProductPriceInfo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | coupon | Double? |  yes  |  |
- | convenienceFee | Double? |  yes  |  |
- | mrpTotal | Double? |  yes  |  |
- | vog | Double? |  yes  |  |
- | fyndCash | Double? |  yes  |  |
- | codCharge | Double? |  yes  |  |
- | total | Double? |  yes  |  |
- | subtotal | Double? |  yes  |  |
- | discount | Double? |  yes  |  |
- | gstCharges | Double? |  yes  |  |
- | deliveryCharge | Double? |  yes  |  |
- | youSaved | Double? |  yes  |  |
+ | base | [ProductPrice](#ProductPrice)? |  yes  |  |
+ | converted | [ProductPrice](#ProductPrice)? |  yes  |  |
 
 ---
 
 
  
  
- #### [CartBreakup](#CartBreakup)
+ #### [BaseInfo](#BaseInfo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | coupon | [CouponBreakup](#CouponBreakup)? |  yes  |  |
- | loyaltyPoints | [LoyaltyPoints](#LoyaltyPoints)? |  yes  |  |
- | display | ArrayList<[DisplayBreakup](#DisplayBreakup)>? |  yes  |  |
- | raw | [RawBreakup](#RawBreakup)? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [ProductImage](#ProductImage)
+ #### [BasePrice](#BasePrice)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | secureUrl | String? |  yes  |  |
- | aspectRatio | String? |  yes  |  |
- | url | String? |  yes  |  |
+ | marked | Double? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+ | effective | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ArticlePriceInfo](#ArticlePriceInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | base | [BasePrice](#BasePrice)? |  yes  |  |
+ | converted | [BasePrice](#BasePrice)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductArticle](#ProductArticle)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | seller | [BaseInfo](#BaseInfo)? |  yes  |  |
+ | extraMeta | HashMap<String,Any>? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | price | [ArticlePriceInfo](#ArticlePriceInfo)? |  yes  |  |
+ | productGroupTags | ArrayList<String>? |  yes  |  |
+ | parentItemSize | String? |  yes  |  |
+ | store | [BaseInfo](#BaseInfo)? |  yes  |  |
+ | type | String? |  yes  |  |
+ | size | String? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | parentItemId | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AppliedPromotion](#AppliedPromotion)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | articleQuantity | Int? |  yes  | Quantity of article on which promotion is applicable |
+ | promotionType | String? |  yes  | Promotion type of current promotion |
+ | promoId | String? |  yes  | Promotion id |
+ | amount | Double? |  yes  | Per unit discount amount applied with current promotion |
+ | mrpPromotion | Boolean? |  yes  | If applied promotion is applied on product MRP or ESP |
+
+---
+
+
+ 
+ 
+ #### [PromoMeta](#PromoMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -3179,12 +3201,13 @@ Checkout cart and create Fynd order id
 
  
  
- #### [BaseInfo](#BaseInfo)
+ #### [ProductImage](#ProductImage)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | uid | Int? |  yes  |  |
+ | secureUrl | String? |  yes  |  |
+ | url | String? |  yes  |  |
+ | aspectRatio | String? |  yes  |  |
 
 ---
 
@@ -3195,8 +3218,8 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
  | uid | Int? |  yes  | Product Category Id |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -3207,14 +3230,14 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | slug | String? |  yes  | Unique product url name generated via product name and other meta data |
- | images | ArrayList<[ProductImage](#ProductImage)>? |  yes  |  |
  | action | [ProductAction](#ProductAction)? |  yes  |  |
+ | name | String? |  yes  |  |
  | type | String? |  yes  |  |
  | brand | [BaseInfo](#BaseInfo)? |  yes  |  |
- | uid | Int? |  yes  |  |
- | name | String? |  yes  |  |
+ | slug | String? |  yes  | Unique product url name generated via product name and other meta data |
+ | images | ArrayList<[ProductImage](#ProductImage)>? |  yes  |  |
  | categories | ArrayList<[CategoryInfo](#CategoryInfo)>? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -3225,123 +3248,11 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isValid | Boolean? |  yes  |  |
- | otherStoreQuantity | Int? |  yes  |  |
+ | sizes | ArrayList<String>? |  yes  |  |
  | deliverable | Boolean? |  yes  |  |
  | outOfStock | Boolean? |  yes  |  |
- | sizes | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductPrice](#ProductPrice)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | currencySymbol | String? |  yes  |  |
- | addOn | Double? |  yes  |  |
- | selling | Double? |  yes  |  |
- | effective | Double? |  yes  |  |
- | marked | Double? |  yes  |  |
- | currencyCode | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductPriceInfo](#ProductPriceInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | converted | [ProductPrice](#ProductPrice)? |  yes  |  |
- | base | [ProductPrice](#ProductPrice)? |  yes  |  |
-
----
-
-
- 
- 
- #### [AppliedPromotion](#AppliedPromotion)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | promotionType | String? |  yes  | Promotion type of current promotion |
- | mrpPromotion | Boolean? |  yes  | If applied promotion is applied on product MRP or ESP |
- | articleQuantity | Int? |  yes  | Quantity of article on which promotion is applicable |
- | promoId | String? |  yes  | Promotion id |
- | amount | Double? |  yes  | Per unit discount amount applied with current promotion |
-
----
-
-
- 
- 
- #### [BasePrice](#BasePrice)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | currencyCode | String? |  yes  |  |
- | currencySymbol | String? |  yes  |  |
- | effective | Double? |  yes  |  |
- | marked | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [ArticlePriceInfo](#ArticlePriceInfo)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | converted | [BasePrice](#BasePrice)? |  yes  |  |
- | base | [BasePrice](#BasePrice)? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductArticle](#ProductArticle)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | size | String? |  yes  |  |
- | parentItemSize | String? |  yes  |  |
- | seller | [BaseInfo](#BaseInfo)? |  yes  |  |
- | parentItemId | String? |  yes  |  |
- | type | String? |  yes  |  |
- | uid | String? |  yes  |  |
- | extraMeta | HashMap<String,Any>? |  yes  |  |
- | quantity | Int? |  yes  |  |
- | price | [ArticlePriceInfo](#ArticlePriceInfo)? |  yes  |  |
- | productGroupTags | ArrayList<String>? |  yes  |  |
- | store | [BaseInfo](#BaseInfo)? |  yes  |  |
-
----
-
-
- 
- 
- #### [PromoMeta](#PromoMeta)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [CartProductIdentifer](#CartProductIdentifer)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | identifier | String? |  yes  | Article idenfier generated by cart |
+ | isValid | Boolean? |  yes  |  |
+ | otherStoreQuantity | Int? |  yes  |  |
 
 ---
 
@@ -3352,21 +3263,110 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isSet | Boolean? |  yes  |  |
- | product | [CartProduct](#CartProduct)? |  yes  |  |
- | key | String? |  yes  |  |
- | availability | [ProductAvailability](#ProductAvailability)? |  yes  |  |
- | couponMessage | String? |  yes  |  |
+ | identifiers | [CartProductIdentifer](#CartProductIdentifer) |  no  |  |
  | pricePerUnit | [ProductPriceInfo](#ProductPriceInfo)? |  yes  |  |
- | promotionApplied | ArrayList<[AppliedPromotion](#AppliedPromotion)>? |  yes  |  |
- | bulkOffer | HashMap<String,Any>? |  yes  |  |
- | article | [ProductArticle](#ProductArticle)? |  yes  |  |
- | discount | String? |  yes  |  |
  | quantity | Int? |  yes  |  |
+ | article | [ProductArticle](#ProductArticle)? |  yes  |  |
+ | key | String? |  yes  |  |
  | price | [ProductPriceInfo](#ProductPriceInfo)? |  yes  |  |
+ | promotionApplied | ArrayList<[AppliedPromotion](#AppliedPromotion)>? |  yes  |  |
+ | discount | String? |  yes  |  |
  | promoMeta | [PromoMeta](#PromoMeta)? |  yes  |  |
  | message | String? |  yes  |  |
- | identifiers | [CartProductIdentifer](#CartProductIdentifer) |  no  |  |
+ | couponMessage | String? |  yes  |  |
+ | isSet | Boolean? |  yes  |  |
+ | bulkOffer | HashMap<String,Any>? |  yes  |  |
+ | product | [CartProduct](#CartProduct)? |  yes  |  |
+ | availability | [ProductAvailability](#ProductAvailability)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DisplayBreakup](#DisplayBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  |  |
+ | currencyCode | String? |  yes  |  |
+ | key | String? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | message | ArrayList<String>? |  yes  |  |
+ | currencySymbol | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CouponBreakup](#CouponBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | maxDiscountValue | Double? |  yes  |  |
+ | code | String? |  yes  |  |
+ | title | String? |  yes  |  |
+ | couponValue | Double? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | isApplied | Boolean? |  yes  |  |
+ | couponType | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | minimumCartValue | Double? |  yes  |  |
+ | message | String? |  yes  |  |
+ | subTitle | String? |  yes  |  |
+ | uid | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [LoyaltyPoints](#LoyaltyPoints)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | description | String? |  yes  |  |
+ | applicable | Double? |  yes  |  |
+ | total | Double? |  yes  |  |
+ | isApplied | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RawBreakup](#RawBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | codCharge | Double? |  yes  |  |
+ | fyndCash | Double? |  yes  |  |
+ | subtotal | Double? |  yes  |  |
+ | deliveryCharge | Double? |  yes  |  |
+ | coupon | Double? |  yes  |  |
+ | discount | Double? |  yes  |  |
+ | gstCharges | Double? |  yes  |  |
+ | total | Double? |  yes  |  |
+ | youSaved | Double? |  yes  |  |
+ | mrpTotal | Double? |  yes  |  |
+ | convenienceFee | Double? |  yes  |  |
+ | vog | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CartBreakup](#CartBreakup)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | ArrayList<[DisplayBreakup](#DisplayBreakup)>? |  yes  |  |
+ | coupon | [CouponBreakup](#CouponBreakup)? |  yes  |  |
+ | loyaltyPoints | [LoyaltyPoints](#LoyaltyPoints)? |  yes  |  |
+ | raw | [RawBreakup](#RawBreakup)? |  yes  |  |
 
 ---
 
@@ -3377,10 +3377,10 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isValid | Boolean? |  yes  |  |
- | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
- | message | String? |  yes  |  |
  | items | ArrayList<[CartProductInfo](#CartProductInfo)>? |  yes  |  |
+ | message | String? |  yes  |  |
+ | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
+ | isValid | Boolean? |  yes  |  |
 
 ---
 
@@ -3404,21 +3404,21 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | meta | HashMap<String,Any>? |  yes  |  |
- | countryCode | String? |  yes  |  |
- | area | String? |  yes  |  |
- | phone | Int? |  yes  |  |
- | country | String? |  yes  |  |
- | city | String? |  yes  |  |
+ | name | String? |  yes  |  |
  | landmark | String? |  yes  |  |
  | pincode | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | areaCodeSlug | String? |  yes  |  |
- | address | String? |  yes  |  |
- | areaCode | String |  no  |  |
- | state | String? |  yes  |  |
+ | area | String? |  yes  |  |
  | email | String? |  yes  |  |
+ | areaCode | String |  no  |  |
+ | countryCode | String? |  yes  |  |
+ | phone | Int? |  yes  |  |
+ | city | String? |  yes  |  |
+ | state | String? |  yes  |  |
+ | country | String? |  yes  |  |
+ | areaCodeSlug | String? |  yes  |  |
  | addressType | String? |  yes  |  |
+ | address | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -3429,8 +3429,8 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | cartItems | [CartItem](#CartItem)? |  yes  |  |
  | shippingAddress | [ShippingAddress](#ShippingAddress) |  no  |  |
+ | cartItems | [CartItem](#CartItem)? |  yes  |  |
 
 ---
 
@@ -3441,8 +3441,8 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | min | Double? |  yes  |  |
  | max | Double? |  yes  |  |
+ | min | Double? |  yes  |  |
 
 ---
 
@@ -3453,8 +3453,8 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | min | String? |  yes  |  |
  | max | String? |  yes  |  |
+ | min | String? |  yes  |  |
 
 ---
 
@@ -3477,11 +3477,52 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isValid | Boolean? |  yes  |  |
  | deliveryPromise | [ShipmentPromise](#ShipmentPromise)? |  yes  |  |
- | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
- | message | String? |  yes  |  |
  | items | ArrayList<[CartProductInfo](#CartProductInfo)>? |  yes  |  |
+ | message | String? |  yes  |  |
+ | isValid | Boolean? |  yes  |  |
+ | breakupValues | [CartBreakup](#CartBreakup)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | extraMeta | HashMap<String,Any>? |  yes  |  |
+ | paymentGateway | String? |  yes  |  |
+ | currentStatus | String? |  yes  |  |
+ | orderId | String? |  yes  |  |
+ | paymentId | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [MultiTenderPaymentMethod](#MultiTenderPaymentMethod)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | mode | String |  no  |  |
+ | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
+ | name | String? |  yes  | Payment mode name |
+ | amount | Double |  no  | Payment amount |
+
+---
+
+
+ 
+ 
+ #### [OpenApiFiles](#OpenApiFiles)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String |  no  |  |
+ | values | ArrayList<String> |  no  |  |
 
 ---
 
@@ -3500,68 +3541,27 @@ Checkout cart and create Fynd order id
 
  
  
- #### [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | paymentGateway | String? |  yes  |  |
- | extraMeta | HashMap<String,Any>? |  yes  |  |
- | currentStatus | String? |  yes  |  |
- | orderId | String? |  yes  |  |
- | paymentId | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [MultiTenderPaymentMethod](#MultiTenderPaymentMethod)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  | Payment mode name |
- | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
- | amount | Double |  no  | Payment amount |
- | mode | String |  no  |  |
-
----
-
-
- 
- 
- #### [OpenApiFiles](#OpenApiFiles)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | values | ArrayList<String> |  no  |  |
- | key | String |  no  |  |
-
----
-
-
- 
- 
  #### [OpenApiOrderItem](#OpenApiOrderItem)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | meta | [CartItemMeta](#CartItemMeta)? |  yes  |  |
- | priceEffective | Double |  no  |  |
- | couponEffectiveDiscount | Double |  no  |  |
- | productId | Int |  no  |  |
- | loyaltyDiscount | Double? |  yes  |  |
- | priceMarked | Double |  no  |  |
- | deliveryCharges | Double |  no  |  |
  | size | String |  no  |  |
- | amountPaid | Double |  no  |  |
- | quantity | Int? |  yes  |  |
- | cashbackApplied | Double |  no  |  |
- | discount | Double |  no  |  |
- | employeeDiscount | Double? |  yes  |  |
- | codCharges | Double |  no  |  |
  | extraMeta | HashMap<String,Any>? |  yes  |  |
  | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
  | files | ArrayList<[OpenApiFiles](#OpenApiFiles)>? |  yes  |  |
+ | quantity | Int? |  yes  |  |
+ | couponEffectiveDiscount | Double |  no  |  |
+ | priceMarked | Double |  no  |  |
+ | discount | Double |  no  |  |
+ | meta | [CartItemMeta](#CartItemMeta)? |  yes  |  |
+ | cashbackApplied | Double |  no  |  |
+ | productId | Int |  no  |  |
+ | amountPaid | Double |  no  |  |
+ | employeeDiscount | Double? |  yes  |  |
+ | priceEffective | Double |  no  |  |
+ | codCharges | Double |  no  |  |
+ | deliveryCharges | Double |  no  |  |
+ | loyaltyDiscount | Double? |  yes  |  |
 
 ---
 
@@ -3572,24 +3572,24 @@ Checkout cart and create Fynd order id
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | billingAddress | [ShippingAddress](#ShippingAddress) |  no  |  |
- | couponCode | String |  no  |  |
- | affiliateOrderId | String? |  yes  |  |
- | couponValue | Double |  no  |  |
+ | coupon | String? |  yes  |  |
  | cartItems | ArrayList<[OpenApiOrderItem](#OpenApiOrderItem)> |  no  |  |
  | loyaltyDiscount | Double? |  yes  |  |
- | employeeDiscount | HashMap<String,Any>? |  yes  |  |
- | deliveryCharges | Double |  no  |  |
- | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
- | cartValue | Double |  no  |  |
- | codCharges | Double |  no  |  |
  | currencyCode | String? |  yes  |  |
- | coupon | String? |  yes  |  |
+ | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
  | paymentMode | String? |  yes  |  |
  | files | ArrayList<[OpenApiFiles](#OpenApiFiles)>? |  yes  |  |
+ | couponCode | String |  no  |  |
+ | affiliateOrderId | String? |  yes  |  |
+ | billingAddress | [ShippingAddress](#ShippingAddress) |  no  |  |
+ | couponValue | Double |  no  |  |
  | orderId | String? |  yes  |  |
+ | cartValue | Double |  no  |  |
  | shippingAddress | [ShippingAddress](#ShippingAddress)? |  yes  |  |
  | cashbackApplied | Double |  no  |  |
+ | employeeDiscount | HashMap<String,Any>? |  yes  |  |
+ | codCharges | Double |  no  |  |
+ | deliveryCharges | Double |  no  |  |
 
 ---
 
@@ -3602,8 +3602,8 @@ Checkout cart and create Fynd order id
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean? |  yes  |  |
  | orderId | String |  no  | Fynd order id |
- | message | String? |  yes  |  |
  | orderRefId | String? |  yes  | Order id sent in request |
+ | message | String? |  yes  |  |
 
 ---
 

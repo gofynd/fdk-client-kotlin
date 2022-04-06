@@ -16,6 +16,7 @@ Handles Platform websites OMS
 * [getCustomerDetailsByShipmentId](#getcustomerdetailsbyshipmentid)
 * [sendOtpToShipmentCustomer](#sendotptoshipmentcustomer)
 * [verifyOtpShipmentCustomer](#verifyotpshipmentcustomer)
+* [getInvoiceByShipmentId](#getinvoicebyshipmentid)
 
 
 
@@ -629,6 +630,66 @@ Success, the code is valid and returns a session token
 ---
 
 
+### getInvoiceByShipmentId
+Get Invoice URL
+
+
+
+
+```kotlin
+order.getInvoiceByShipmentId(shipmentId: shipmentId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
+
+
+
+Use this API to get a generated Invoice URL for viewing or download.
+
+*Returned Response:*
+
+
+
+
+[ResponseGetInvoiceShipment](#ResponseGetInvoiceShipment)
+
+Success, the code is valid and returns a SignedUrl
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -703,6 +764,20 @@ Success, the code is valid and returns a session token
  | ---------- | ---- | -------- | ----------- |
  | requestId | String |  no  |  |
  | otpCode | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseGetInvoiceShipment](#ResponseGetInvoiceShipment)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  |  |
+ | presignedType | String |  no  |  |
+ | shipmentId | String |  no  |  |
+ | presignedUrl | String |  no  |  |
 
 ---
 
