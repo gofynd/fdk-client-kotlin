@@ -282,7 +282,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: Int?=null): Deferred<Response<PromotionOffersResponse>>? {
+    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null): Deferred<Response<PromotionOffersResponse>>? {
         var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
         
         return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup)}
