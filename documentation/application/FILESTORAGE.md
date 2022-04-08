@@ -312,12 +312,13 @@ Success
  | fileName | String |  no  |  |
  | filePath | String |  no  |  |
  | contentType | String |  no  |  |
+ | method | String |  no  |  |
  | namespace | String |  no  |  |
  | operation | String |  no  |  |
  | size | Int |  no  |  |
  | upload | [Upload](#Upload) |  no  |  |
  | cdn | [CDN](#CDN) |  no  |  |
- | success | Boolean |  no  |  |
+ | success | String |  no  |  |
  | tags | ArrayList<String>? |  yes  |  |
  | createdOn | String |  no  |  |
  | modifiedOn | String |  no  |  |

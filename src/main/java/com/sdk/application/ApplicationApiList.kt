@@ -290,7 +290,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getPromotionOffers(@Url url1: String?    ,    @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: Int?)
+    fun getPromotionOffers(@Url url1: String?    ,    @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: String?)
     : Deferred<Response<PromotionOffersResponse>>
     
     
@@ -562,6 +562,11 @@ interface ContentApiList {
     @GET 
     fun getBlogs(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<BlogGetResponse>>
+    
+    
+    @GET 
+    fun getDataLoaders(@Url url1: String?   )
+    : Deferred<Response<DataLoadersSchema>>
     
     
     @GET 
