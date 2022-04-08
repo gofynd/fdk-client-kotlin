@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -1107,7 +1107,7 @@ interface FeedbackApiList {
     
     
     @DELETE 
-    fun deleteMedia(@Url url1: String?   )
+    fun deleteMedia(@Url url1: String?    ,  @Query("ids") ids: ArrayList<String>)
     : Deferred<Response<UpdateResponse>>
     
     

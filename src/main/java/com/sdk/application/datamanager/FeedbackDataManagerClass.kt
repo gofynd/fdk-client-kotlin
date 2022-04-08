@@ -19,23 +19,23 @@ class FeedbackDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["createAbuseReport"] = "/service/application/feedback/v1.0/abuse"?.substring(1)
+                    _relativeUrls["createAbuseReport"] = "/service/application/feedback/v1.0/abuse/"?.substring(1)
             
-                    _relativeUrls["updateAbuseReport"] = "/service/application/feedback/v1.0/abuse"?.substring(1)
+                    _relativeUrls["updateAbuseReport"] = "/service/application/feedback/v1.0/abuse/"?.substring(1)
             
                     _relativeUrls["getAbuseReports"] = "/service/application/feedback/v1.0/abuse/entity/{entity_type}/entity-id/{entity_id}"?.substring(1)
             
-                    _relativeUrls["getAttributes"] = "/service/application/feedback/v1.0/attributes"?.substring(1)
+                    _relativeUrls["getAttributes"] = "/service/application/feedback/v1.0/attributes/"?.substring(1)
             
-                    _relativeUrls["createAttribute"] = "/service/application/feedback/v1.0/attributes"?.substring(1)
+                    _relativeUrls["createAttribute"] = "/service/application/feedback/v1.0/attributes/"?.substring(1)
             
                     _relativeUrls["getAttribute"] = "/service/application/feedback/v1.0/attributes/{slug}"?.substring(1)
             
                     _relativeUrls["updateAttribute"] = "/service/application/feedback/v1.0/attributes/{slug}"?.substring(1)
             
-                    _relativeUrls["createComment"] = "/service/application/feedback/v1.0/comment"?.substring(1)
+                    _relativeUrls["createComment"] = "/service/application/feedback/v1.0/comment/"?.substring(1)
             
-                    _relativeUrls["updateComment"] = "/service/application/feedback/v1.0/comment"?.substring(1)
+                    _relativeUrls["updateComment"] = "/service/application/feedback/v1.0/comment/"?.substring(1)
             
                     _relativeUrls["getComments"] = "/service/application/feedback/v1.0/comment/entity/{entity_type}"?.substring(1)
             
@@ -373,10 +373,10 @@ class FeedbackDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun deleteMedia(): Deferred<Response<UpdateResponse>>? {
+    fun deleteMedia(ids: ArrayList<String>): Deferred<Response<UpdateResponse>>? {
         var fullUrl : String? = _relativeUrls["deleteMedia"] 
         
-        return feedbackApiList?.deleteMedia(fullUrl  )}
+        return feedbackApiList?.deleteMedia(fullUrl    ,  ids = ids)}
 
     
     
