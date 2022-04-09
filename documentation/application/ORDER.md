@@ -852,6 +852,7 @@ Success, the code is valid and returns a SignedUrl
  | ---------- | ---- | -------- | ----------- |
  | statuses | ArrayList<[StatusesBody](#StatusesBody)> |  no  |  |
  | forceTransition | Boolean |  no  |  |
+ | task | Boolean |  no  |  |
 
 ---
 
