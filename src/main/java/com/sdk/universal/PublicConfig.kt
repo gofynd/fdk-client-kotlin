@@ -1,4 +1,4 @@
-package com.sdk.public
+package com.sdk.universal
 import java.net.CookieStore
 
 

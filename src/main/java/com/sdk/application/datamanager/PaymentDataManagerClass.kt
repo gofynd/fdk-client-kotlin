@@ -43,6 +43,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getRupifiBannerDetails"] = "/service/application/payment/v1.0/rupifi/banner"?.substring(1)
             
+                    _relativeUrls["getEpaylaterBannerDetails"] = "/service/application/payment/v1.0/epaylater/banner"?.substring(1)
+            
                     _relativeUrls["resendOrCancelPayment"] = "/service/application/payment/v1.0/payment/resend_or_cancel"?.substring(1)
             
                     _relativeUrls["getActiveRefundTransferModes"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
@@ -64,6 +66,14 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                     _relativeUrls["verifyOtpAndAddBeneficiaryForWallet"] = "/service/application/payment/v1.0/refund/verification/wallet"?.substring(1)
             
                     _relativeUrls["updateDefaultBeneficiary"] = "/service/application/payment/v1.0/refund/beneficiary/default"?.substring(1)
+            
+                    _relativeUrls["customerCreditSummary"] = "/service/application/payment/v1.0/payment/credit-summary/"?.substring(1)
+            
+                    _relativeUrls["redirectToAggregator"] = "/service/application/payment/v1.0/payment/redirect-to-aggregator/"?.substring(1)
+            
+                    _relativeUrls["checkCredit"] = "/service/application/payment/v1.0/check-credits/"?.substring(1)
+            
+                    _relativeUrls["customerOnboard"] = "/service/application/payment/v1.0/credit-onboard/"?.substring(1)
             
     }
 
@@ -180,6 +190,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    fun getEpaylaterBannerDetails(): Deferred<Response<EpaylaterBannerResponse>>? {
+        var fullUrl : String? = _relativeUrls["getEpaylaterBannerDetails"] 
+        
+        return paymentApiList?.getEpaylaterBannerDetails(fullUrl  )}
+
+    
+    
     fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest): Deferred<Response<ResendOrCancelPaymentResponse>>? {
         var fullUrl : String? = _relativeUrls["resendOrCancelPayment"] 
         
@@ -254,6 +271,34 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["updateDefaultBeneficiary"] 
         
         return paymentApiList?.updateDefaultBeneficiary(fullUrl  ,body = body)}
+
+    
+    
+    fun customerCreditSummary(aggregator: String?=null): Deferred<Response<CustomerCreditSummaryResponse>>? {
+        var fullUrl : String? = _relativeUrls["customerCreditSummary"] 
+        
+        return paymentApiList?.customerCreditSummary(fullUrl    ,  aggregator = aggregator)}
+
+    
+    
+    fun redirectToAggregator(source: String?=null, aggregator: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
+        var fullUrl : String? = _relativeUrls["redirectToAggregator"] 
+        
+        return paymentApiList?.redirectToAggregator(fullUrl    ,  source = source,    aggregator = aggregator)}
+
+    
+    
+    fun checkCredit(aggregator: String?=null): Deferred<Response<CheckCreditResponse>>? {
+        var fullUrl : String? = _relativeUrls["checkCredit"] 
+        
+        return paymentApiList?.checkCredit(fullUrl    ,  aggregator = aggregator)}
+
+    
+    
+    fun customerOnboard(body: CustomerOnboardingRequest): Deferred<Response<CustomerOnboardingResponse>>? {
+        var fullUrl : String? = _relativeUrls["customerOnboard"] 
+        
+        return paymentApiList?.customerOnboard(fullUrl  ,body = body)}
 
     
     

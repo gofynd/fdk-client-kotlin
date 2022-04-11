@@ -47,6 +47,8 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
             
                     _relativeUrls["removeOrderingStoreCookie"] = "/service/application/configuration/v1.0/ordering-store/select"?.substring(1)
             
+                    _relativeUrls["getAppStaffList"] = "/service/application/configuration/v1.0/staff/list"?.substring(1)
+            
                     _relativeUrls["getAppStaffs"] = "/service/application/configuration/v1.0/staff"?.substring(1)
             
     }
@@ -231,6 +233,73 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
         return configurationApiList?.removeOrderingStoreCookie(fullUrl  )}
 
     
+    
+    fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffListResponse>>? {
+        var fullUrl : String? = _relativeUrls["getAppStaffList"] 
+        
+        return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user)}
+
+    
+    
+    
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAppStaffList
+    **/
+    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null) : Paginator<AppStaffListResponse>{
+
+    val paginator = Paginator<AppStaffListResponse>()
+
+    paginator.setCallBack(object : PaginatorCallback<AppStaffListResponse> {
+
+            override suspend fun onNext(
+                onResponse: (Event<AppStaffListResponse>?,FdkError?) -> Unit) {
+                val pageId = paginator.nextId
+                val pageNo = paginator.pageNo
+                val pageType = "number"
+                var fullUrl : String? = _relativeUrls["getAppStaffList"] 
+                
+                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user)?.safeAwait{ response, error ->
+                    response?.let {
+                        val page = response.peekContent()?.page
+                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                        onResponse.invoke(response, null)
+                    }
+
+                    error?.let {
+                        onResponse.invoke(null,error)
+                    }
+            }
+        }
+
+    })
+    
+    return paginator
+    }
     
     fun getAppStaffs(orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffResponse>>? {
         var fullUrl : String? = _relativeUrls["getAppStaffs"] 

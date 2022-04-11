@@ -4986,6 +4986,7 @@ Success
  | price | [InventoryPrice](#InventoryPrice)? |  yes  |  |
  | discount | [InventoryDiscount](#InventoryDiscount)? |  yes  |  |
  | outOfStock | Boolean? |  yes  |  |
+ | onlyVerifiedProducts | Boolean? |  yes  |  |
  | franchiseEnabled | Boolean? |  yes  |  |
  | excludeCategory | ArrayList<Any>? |  yes  |  |
  | image | ArrayList<String>? |  yes  |  |
@@ -5981,6 +5982,7 @@ Success
  | image | ArrayList<String>? |  yes  |  |
  | franchiseEnabled | Boolean? |  yes  |  |
  | outOfStock | Boolean? |  yes  |  |
+ | onlyVerifiedProducts | Boolean? |  yes  |  |
  | payment | [InventoryPaymentConfig](#InventoryPaymentConfig)? |  yes  |  |
  | articleAssignment | [InventoryArticleAssignment](#InventoryArticleAssignment)? |  yes  |  |
 
