@@ -40,24 +40,24 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun updateCompany(body: UpdateCompany)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.updateCompany(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun cbsOnboardGet()
     : Deferred<Response<GetCompanyProfileSerializerResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.cbsOnboardGet(
         companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateCompany(body: UpdateCompany)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.updateCompany(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
