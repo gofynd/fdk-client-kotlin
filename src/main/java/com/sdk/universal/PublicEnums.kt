@@ -1,4 +1,4 @@
-package com.sdk.public
+package com.sdk.universal
 
 import com.google.gson.annotations.SerializedName
 
@@ -31,4 +31,5 @@ import com.google.gson.annotations.SerializedName
             }
         }
     }
+
 
