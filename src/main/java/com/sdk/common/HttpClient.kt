@@ -14,6 +14,8 @@ object HttpClient {
     var cookieManager: CookieManager? = null
     var cookieJar: CookieJar? = null
     var httpsLoggingInterceptor = HttpLoggingInterceptor.Level.NONE
+    private var currentDomainUrl = ""
+
     fun setHttpLoggingInterceptor(httpLoggingInterceptor: HttpLoggingInterceptor.Level) {
         this.httpsLoggingInterceptor = httpLoggingInterceptor
     }
@@ -31,7 +33,13 @@ object HttpClient {
     ): RetrofitHttpClient? {
         if (persistentCookieStore != null) {
             cookieManager = CookieManager(persistentCookieStore, CookiePolicy.ACCEPT_ALL)
-            cookieJar = JavaNetCookieJar(cookieManager)
+            cookieManager?.let {
+                cookieJar = JavaNetCookieJar(it)    
+            }
+        }
+        if (!currentDomainUrl.equals(baseUrl, ignoreCase = true)) {
+            clientMap.clear()
+            currentDomainUrl = baseUrl
         }
         if (null == clientMap[namespace]) {
             val retrofitHttpClient = RetrofitHttpClient(

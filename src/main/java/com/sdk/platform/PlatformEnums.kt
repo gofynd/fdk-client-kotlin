@@ -267,7 +267,10 @@ import com.google.gson.annotations.SerializedName
         cartPayment("cart-payment"), 
         
         @SerializedName("cart-review")
-        cartReview("cart-review");
+        cartReview("cart-review"), 
+        
+        @SerializedName("login")
+        login("login");
         
 
         companion object {
@@ -321,5 +324,6 @@ import com.google.gson.annotations.SerializedName
             }
         }
     }
+
 
 

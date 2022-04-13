@@ -84,7 +84,9 @@ class RetrofitHttpClient constructor(
             logging.level = getHttpLoggingInterceptor()
             if ((null == cookieManager || null == cookieJar) && persistentCookieStore != null) {
                 cookieManager = CookieManager(persistentCookieStore, CookiePolicy.ACCEPT_ALL)
-                cookieJar = JavaNetCookieJar(cookieManager)
+                cookieManager?.let{
+                    cookieJar = JavaNetCookieJar(it)
+                }
             }
 
             val okHttpClient = BaseOkhttpClient.okHttpClient
@@ -162,7 +164,7 @@ class RetrofitHttpClient constructor(
 
     fun clearCache() {
         try {
-            okHttpClient!!.cache()!!.evictAll()
+            okHttpClient!!.cache!!.evictAll()
         } catch (e: Exception) {
             //CodeReuseUtility.handledExceptionLogging(e);
         }
