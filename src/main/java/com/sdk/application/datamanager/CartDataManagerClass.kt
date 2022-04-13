@@ -282,17 +282,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null): Deferred<Response<PromotionOffersResponse>>? {
+    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null): Deferred<Response<PromotionOffersResponse>>? {
         var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
         
-        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize)}
+        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup)}
 
     
     
-    fun getLadderOffers(slug: String, promotionId: String?=null, pageSize: Int?=null): Deferred<Response<LadderPriceOffers>>? {
+    fun getLadderOffers(slug: String, storeId: String?=null, promotionId: String?=null, pageSize: Int?=null): Deferred<Response<LadderPriceOffers>>? {
         var fullUrl : String? = _relativeUrls["getLadderOffers"] 
         
-        return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    promotionId = promotionId,    pageSize = pageSize)}
+        return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
 
     
     
