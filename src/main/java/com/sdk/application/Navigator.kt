@@ -313,6 +313,12 @@ enum class Navigator(
         pageType = PageType.cartReview,
         navName = "Cart Order Review",
         link = "/cart/order-review"
+    ),
+   
+    LOGIN(
+        pageType = PageType.login,
+        navName = "Login",
+        link = "/auth/login"
     )
    
 }

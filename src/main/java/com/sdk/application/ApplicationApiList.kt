@@ -870,6 +870,11 @@ interface PaymentApiList {
     
     
     @GET 
+    fun getEpaylaterBannerDetails(@Url url1: String?   )
+    : Deferred<Response<EpaylaterBannerResponse>>
+    
+    
+    @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
     
@@ -917,6 +922,26 @@ interface PaymentApiList {
     @POST 
     fun updateDefaultBeneficiary(@Url url1: String?   ,@Body body: SetDefaultBeneficiaryRequest)
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+    
+    @GET 
+    fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CustomerCreditSummaryResponse>>
+    
+    
+    @GET 
+    fun redirectToAggregator(@Url url1: String?    ,  @Query("source") source: String?)
+    : Deferred<Response<RedirectToAggregatorResponse>>
+    
+    
+    @GET 
+    fun checkCredit(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CheckCreditResponse>>
+    
+    
+    @POST 
+    fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
+    : Deferred<Response<CustomerOnboardingResponse>>
     
 }
 
