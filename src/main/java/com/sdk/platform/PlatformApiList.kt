@@ -268,6 +268,10 @@ interface UserApiList {
     fun blockOrUnblockUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BlockUserRequestSchema)
     : Deferred<Response<BlockUserSuccess>>
     
+    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/archive")
+    fun archiveUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ArchiveUserRequestSchema)
+    : Deferred<Response<ArchiveUserSuccess>>
+    
     @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/{user_id}")
     fun updateUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("user_id") userId: String,@Body body: UpdateUserRequestSchema)
     : Deferred<Response<CreateUserResponseSchema>>
