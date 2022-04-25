@@ -33,7 +33,9 @@ object HttpClient {
     ): RetrofitHttpClient? {
         if (persistentCookieStore != null) {
             cookieManager = CookieManager(persistentCookieStore, CookiePolicy.ACCEPT_ALL)
-            cookieJar = JavaNetCookieJar(cookieManager)
+            cookieManager?.let {
+                cookieJar = JavaNetCookieJar(it)    
+            }
         }
         if (!currentDomainUrl.equals(baseUrl, ignoreCase = true)) {
             clientMap.clear()

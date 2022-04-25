@@ -14,7 +14,7 @@ abstract class BaseRepository {
         try {
             val call = this.await()
             if ((call.code() == 200 || call.code() == 201) &&
-                (call.body() != null || call.raw().request().method() == "HEAD")
+                (call.body() != null || call.raw().request.method == "HEAD")
             ) {
                 onSuccess.invoke(Event(call.body(), call.headers()))
             } else {
@@ -36,7 +36,7 @@ abstract class BaseRepository {
         try {
             val call = this.await()
             if ((call.code() == 200 || call.code() == 201) &&
-                (call.body() != null || call.raw().request().method() == "HEAD")
+                (call.body() != null || call.raw().request.method == "HEAD")
             ) {
                 onResponse.invoke(Event(call.body(), call.headers()), null)
             } else {
@@ -57,7 +57,7 @@ abstract class BaseRepository {
         try {
             val call = this.await()
             if ((call.code() == 200 || call.code() == 201) &&
-                (call.body() != null || call.raw().request().method() == "HEAD")
+                (call.body() != null || call.raw().request.method == "HEAD")
             ) {
                 return Pair(Event(call.body(), call.headers()), null)
             } else {

@@ -33,7 +33,7 @@ class RequestSigner(val request: Request) {
         updatedReq = prepareRequest()
         updatedReq = if (signQuery) {
             val httpUrl =
-                updatedReq.url().newBuilder().addQueryParameter("x-fp-signature", signature())
+                updatedReq.url.newBuilder().addQueryParameter("x-fp-signature", signature())
                     .build()
             updatedReq.newBuilder().url(httpUrl).build()
         } else {
@@ -46,12 +46,12 @@ class RequestSigner(val request: Request) {
         val newReqBuilder = request.newBuilder()
         if (signQuery) {
             val httpUrl =
-                request.url().newBuilder().addQueryParameter("x-fp-date", getDateTime()).build()
+                request.url.newBuilder().addQueryParameter("x-fp-date", getDateTime()).build()
             newReqBuilder.url(httpUrl)
         } else {
             newReqBuilder.header("x-fp-date", getDateTime())
         }
-        newReqBuilder.header("host", request.url().host())
+        newReqBuilder.header("host", request.url.host)
         return newReqBuilder.build()
     }
 
@@ -109,13 +109,13 @@ class RequestSigner(val request: Request) {
 
     private fun canonicalString(): String {
         val encodedQueryPieces = StringBuilder("")
-        if (updatedReq.url().querySize() > 0) {
-            updatedReq.url().queryParameterNames().filter { it.isNotBlank() }.map {
+        if (updatedReq.url.querySize > 0) {
+            updatedReq.url.queryParameterNames.filter { it.isNotBlank() }.map {
                 Uri.encode(it) ?: ""
             }.sorted().forEach { encodedQueryName ->
-                updatedReq.url().queryParameterValues(Uri.decode(encodedQueryName)).map {
+                updatedReq.url.queryParameterValues(Uri.decode(encodedQueryName)).map {
                     it//Uri.encode(it) ?: ""
-                }.sorted().forEach { queryValue ->
+                }.sortedBy { it }.forEach { queryValue ->
                     val query = "${encodedQueryName}=${queryValue}"
                     if (encodedQueryPieces.isEmpty()) {
                         encodedQueryPieces.append(query)
@@ -129,7 +129,7 @@ class RequestSigner(val request: Request) {
         //Log.d("ReqSignER", "canonicalQueryString...... $canonicalQueryString")
 
         val encodedPathPieces = StringBuilder()
-        updatedReq.url().pathSegments().forEach {
+        updatedReq.url.pathSegments.forEach {
             val path = Uri.encode(it)
             if (encodedPathPieces.isEmpty()) {
                 encodedPathPieces.append("/").append(path)
@@ -142,14 +142,14 @@ class RequestSigner(val request: Request) {
 
         val canonicalRequest = StringBuilder()
 
-        canonicalRequest.append(updatedReq.method()).append("\n")
+        canonicalRequest.append(updatedReq.method).append("\n")
         canonicalRequest.append(canonicalPath).append("\n")
         canonicalRequest.append(canonicalQueryString).append("\n")
         canonicalRequest.append(canonicalHeaders()).append("\n").append("\n")
         canonicalRequest.append(signedHeaders()).append("\n")
 
         val bodyBuffer = Buffer()
-        updatedReq.body()?.writeTo(bodyBuffer)
+        updatedReq.body?.writeTo(bodyBuffer)
         val body = bodyBuffer.readUtf8()
 
         canonicalRequest.append(hash(body ?: ""))
@@ -163,7 +163,7 @@ class RequestSigner(val request: Request) {
 
     private fun canonicalHeaders(): String {
         val canonicalHeader = StringBuilder()
-        updatedReq.headers().names().filter { headerName ->
+        updatedReq.headers.names().filter { headerName ->
             val notInIgnoreHeader = !HEADERS_TO_IGNORE.contains(headerName.toLowerCase())
             if (notInIgnoreHeader) {
                 var foundMatch = false
@@ -178,7 +178,7 @@ class RequestSigner(val request: Request) {
         }.sortedBy { headerName ->
             headerName.toLowerCase()
         }.forEach { headerName ->
-            updatedReq.headers().values(headerName).forEach { headerValue ->
+            updatedReq.headers.values(headerName).forEach { headerValue ->
                 if (canonicalHeader.isNotEmpty()) {
                     canonicalHeader.append("\n")
                 }
@@ -193,7 +193,7 @@ class RequestSigner(val request: Request) {
 
     private fun signedHeaders(): String {
         val headerNames = StringBuilder()
-        updatedReq.headers().names().filter { headerName ->
+        updatedReq.headers.names().filter { headerName ->
             val notInIgnoreHeader = !HEADERS_TO_IGNORE.contains(headerName.toLowerCase())
             if (notInIgnoreHeader) {
                 var foundMatch = false
