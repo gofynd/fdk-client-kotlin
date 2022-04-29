@@ -159,48 +159,9 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
         } 
     }
     
-    
-    suspend fun getJobConfigByIntegrationType(integrationType: String, disable: Boolean?=null)
-    : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            inventoryApiList?.getJobConfigByIntegrationType(
-        companyId = config.companyId, integrationType = integrationType, disable = disable )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getJobCodesMetrics(dailyJob: Boolean?=null, jobCode: String?=null)
-    : Deferred<Response<ResponseEnvelopeObject>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            inventoryApiList?.getJobCodesMetrics(
-        companyId = config.companyId, dailyJob = dailyJob, jobCode = jobCode )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun saveJobCodesMetrics(body: EmailJobMetrics)
-    : Deferred<Response<ResponseEnvelopeEmailJobMetrics>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            inventoryApiList?.saveJobCodesMetrics(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
-    
     
     
     
