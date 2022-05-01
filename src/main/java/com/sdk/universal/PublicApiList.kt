@@ -35,4 +35,38 @@ interface WebhookApiList {
     
 }
 
+interface InventoryApiList {
+    
+    
+    @GET 
+    fun getConfigByApiKey(@Url url1: String?    ,  @Query("apikey") apikey: String)
+    : Deferred<Response<ResponseEnvelopeSlingshotConfigurationDetail>>
+    
+    
+    @GET 
+    fun getApiKey(@Url url1: String?    ,   @Query("user_name") userName: String, @Query("password") password: String)
+    : Deferred<Response<ResponseEnvelopeObject>>
+    
+    
+    @GET 
+    fun getJobByCode(@Url url1: String?    )
+    : Deferred<Response<ResponseEnvelopeJobConfigDTO>>
+    
+    
+    @GET 
+    fun getJobConfigByIntegrationType(@Url url1: String?    ,   @Query("integration_type") integrationType: String, @Query("disable") disable: Boolean?)
+    : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>
+    
+    
+    @GET 
+    fun getJobCodesMetrics(@Url url1: String?    ,   @Query("daily_job") dailyJob: Boolean?, @Query("job_code") jobCode: String?)
+    : Deferred<Response<ResponseEnvelopeObject>>
+    
+    
+    @POST 
+    fun saveJobCodesMetrics(@Url url1: String?   ,@Body body: EmailJobMetrics)
+    : Deferred<Response<ResponseEnvelopeEmailJobMetrics>>
+    
+}
+
 

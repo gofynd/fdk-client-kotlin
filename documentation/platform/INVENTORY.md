@@ -7,6 +7,7 @@
 ## Inventory Methods
 
 * [getConfigByCompany](#getconfigbycompany)
+* [suppressStores](#suppressstores)
 * [getJobsByCompany](#getjobsbycompany)
 * [updateJob](#updatejob)
 * [createJob](#createjob)
@@ -53,6 +54,65 @@ REST Endpoint that returns all configuration detail of a company
 
 
 [ResponseEnvelopeListSlingshotConfigurationDetail](#ResponseEnvelopeListSlingshotConfigurationDetail)
+
+Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### suppressStores
+Get Slingshot Configuration Of  A Company
+
+
+
+
+```kotlin
+client.inventory.suppressStores(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SuppressStorePayload](#SuppressStorePayload) | yes | Request body |
+
+
+REST Endpoint that returns all configuration detail of a company
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeKafkaResponse](#ResponseEnvelopeKafkaResponse)
 
 Successful operation
 
@@ -796,6 +856,67 @@ Successful operation
  | ---------- | ---- | -------- | ----------- |
  | integration | [Integration](#Integration)? |  yes  |  |
  | companies | ArrayList<[GCompany](#GCompany)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [KafkaMetaModel](#KafkaMetaModel)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | jobType | String? |  yes  |  |
+ | batchId | Int? |  yes  |  |
+ | action | String? |  yes  |  |
+ | trace | ArrayList<String>? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | createdTimestamp | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SuppressStorePayload](#SuppressStorePayload)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | payload | ArrayList<[SuppressStorePayload](#SuppressStorePayload)>? |  yes  |  |
+ | meta | [KafkaMetaModel](#KafkaMetaModel)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [KafkaResponse](#KafkaResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | offset | Int? |  yes  |  |
+ | partition | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeKafkaResponse](#ResponseEnvelopeKafkaResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String? |  yes  |  |
+ | status | Int? |  yes  |  |
+ | error | String? |  yes  |  |
+ | exception | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | totalTimeTakenInMillis | Int? |  yes  |  |
+ | httpStatus | String? |  yes  |  |
+ | items | [KafkaResponse](#KafkaResponse)? |  yes  |  |
+ | payload | [KafkaResponse](#KafkaResponse)? |  yes  |  |
+ | traceId | String? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
