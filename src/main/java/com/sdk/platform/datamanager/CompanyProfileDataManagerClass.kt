@@ -136,6 +136,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
+    
     suspend fun getLocations(storeType: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<LocationListSerializer>>? {
         
@@ -206,6 +207,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    
+    suspend fun updateAppBrand(brandUid: String,body: ApplicationBrandJson)
+    : Deferred<Response<SuccessResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                companyProfileApiList?.updateAppBrand(companyId = config.companyId , applicationId = applicationId , brandUid = brandUid, body = body)
+        } else {
+            null
+        }
+    }
     
     
     
