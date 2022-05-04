@@ -1239,9 +1239,14 @@ data class GStore(
     var code: String?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("data")
+    var data: StoreData?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1423,6 +1428,26 @@ data class SlingshotConfigurationDetail(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: StoreData
+*/
+@Parcelize
+data class StoreData(
+    
+    
+    
+    @SerializedName("location_id")
+    var locationId: String?=null
+    
+): Parcelable {
     
     
     

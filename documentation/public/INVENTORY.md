@@ -418,6 +418,7 @@ JobCode Metrics entry Created Successfully
  | token | String? |  yes  |  |
  | code | String? |  yes  |  |
  | name | String? |  yes  |  |
+ | data | [StoreData](#StoreData)? |  yes  |  |
 
 ---
 
@@ -496,6 +497,17 @@ JobCode Metrics entry Created Successfully
  | ---------- | ---- | -------- | ----------- |
  | integration | [Integration](#Integration)? |  yes  |  |
  | companies | ArrayList<[GCompany](#GCompany)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [StoreData](#StoreData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | locationId | String? |  yes  |  |
 
 ---
 
