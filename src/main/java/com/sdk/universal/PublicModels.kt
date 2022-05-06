@@ -1272,46 +1272,6 @@ data class GStore(
 
 
 /*
-    Model: Integration
-*/
-@Parcelize
-data class Integration(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("meta")
-    var meta: ArrayList<Metum>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: Metum
 */
 @Parcelize
@@ -1420,12 +1380,52 @@ data class SlingshotConfigurationDetail(
     
     
     @SerializedName("integration")
-    var integration: Integration?=null,
+    var integration: SlingshotIntegration?=null,
     
     @SerializedName("companies")
     var companies: ArrayList<GCompany>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: SlingshotIntegration
+*/
+@Parcelize
+data class SlingshotIntegration(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("meta")
+    var meta: ArrayList<Metum>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

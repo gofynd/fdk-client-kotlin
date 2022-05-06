@@ -785,21 +785,6 @@ Successful operation
 
  
  
- #### [Integration](#Integration)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | description | String? |  yes  |  |
- | name | String? |  yes  |  |
- | slug | String? |  yes  |  |
- | meta | ArrayList<[Metum](#Metum)>? |  yes  |  |
-
----
-
-
- 
- 
  #### [Metum](#Metum)
 
  | Properties | Type | Nullable | Description |
@@ -855,8 +840,23 @@ Successful operation
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | integration | [Integration](#Integration)? |  yes  |  |
+ | integration | [SlingshotIntegration](#SlingshotIntegration)? |  yes  |  |
  | companies | ArrayList<[GCompany](#GCompany)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SlingshotIntegration](#SlingshotIntegration)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | meta | ArrayList<[Metum](#Metum)>? |  yes  |  |
 
 ---
 
@@ -890,11 +890,22 @@ Successful operation
 
  
  
+ #### [SuppressStoreModel](#SuppressStoreModel)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | stores | ArrayList<Int>? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [SuppressStorePayload](#SuppressStorePayload)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | payload | ArrayList<[SuppressStorePayload](#SuppressStorePayload)>? |  yes  |  |
+ | payload | ArrayList<[SuppressStoreModel](#SuppressStoreModel)>? |  yes  |  |
  | meta | [KafkaMetaModel](#KafkaMetaModel)? |  yes  |  |
 
 ---
