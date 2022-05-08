@@ -45,7 +45,7 @@ interface InventoryApiList {
     
     @GET 
     fun getApiKey(@Url url1: String?    ,   @Query("user_name") userName: String, @Query("password") password: String)
-    : Deferred<Response<ResponseEnvelopeObject>>
+    : Deferred<Response<ResponseEnvelopeApikeyModel>>
     
     
     @GET 

@@ -69,7 +69,7 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
 
     
     
-    fun getApiKey(userName: String, password: String): Deferred<Response<ResponseEnvelopeObject>>? {
+    fun getApiKey(userName: String, password: String): Deferred<Response<ResponseEnvelopeApikeyModel>>? {
         var fullUrl : String? = _relativeUrls["getApiKey"] 
         
         return inventoryApiList?.getApiKey(fullUrl    ,  userName = userName,    password = password)}

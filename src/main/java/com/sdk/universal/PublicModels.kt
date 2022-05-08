@@ -1457,10 +1457,35 @@ data class StoreData(
 
 
 /*
-    Model: ResponseEnvelopeObject
+    Model: ApikeyModel
 */
 @Parcelize
-data class ResponseEnvelopeObject(
+data class ApikeyModel(
+    
+    
+    
+    @SerializedName("session_id")
+    var sessionId: String?=null,
+    
+    @SerializedName("error_message")
+    var errorMessage: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ResponseEnvelopeApikeyModel
+*/
+@Parcelize
+data class ResponseEnvelopeApikeyModel(
     
     
     
@@ -1486,10 +1511,10 @@ data class ResponseEnvelopeObject(
     var httpStatus: String?=null,
     
     @SerializedName("items")
-    var items: @RawValue HashMap<String,Any>?=null,
+    var items: ApikeyModel?=null,
     
     @SerializedName("payload")
-    var payload: @RawValue HashMap<String,Any>?=null,
+    var payload: ApikeyModel?=null,
     
     @SerializedName("trace_id")
     var traceId: String?=null,
@@ -1885,6 +1910,76 @@ data class ResponseEnvelopeEmailJobMetrics(
     
     @SerializedName("payload")
     var payload: EmailJobMetrics?=null,
+    
+    @SerializedName("trace_id")
+    var traceId: String?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ResponseEnvelopeObject
+*/
+@Parcelize
+data class ResponseEnvelopeObject(
+    
+    
+    
+    @SerializedName("timestamp")
+    var timestamp: String?=null,
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
+    @SerializedName("exception")
+    var exception: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("total_time_taken_in_millis")
+    var totalTimeTakenInMillis: Int?=null,
+    
+    @SerializedName("http_status")
+    var httpStatus: String?=null,
+    
+    @SerializedName("items")
+    var items: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("payload")
+    var payload: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("trace_id")
     var traceId: String?=null,
