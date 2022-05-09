@@ -288,6 +288,16 @@ interface CartApiList {
     fun updateCartWithSharedItems(@Url url1: String?     )
     : Deferred<Response<SharedCartResponse>>
     
+    
+    @GET 
+    fun getPromotionOffers(@Url url1: String?    ,    @Query("slug") slug: String?, @Query("page_size") pageSize: Int?, @Query("promotion_group") promotionGroup: String?)
+    : Deferred<Response<PromotionOffersResponse>>
+    
+    
+    @GET 
+    fun getLadderOffers(@Url url1: String?    ,     @Query("slug") slug: String, @Query("store_id") storeId: String?, @Query("promotion_id") promotionId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<LadderPriceOffers>>
+    
 }
 
 interface CommonApiList {
