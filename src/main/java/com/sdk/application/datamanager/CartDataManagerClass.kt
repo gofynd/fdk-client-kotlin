@@ -67,6 +67,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateCartWithSharedItems"] = "/service/application/cart/v1.0/share-cart/{token}/{action}"?.substring(1)
             
+                    _relativeUrls["getPromotionOffers"] = "/service/application/cart/v1.0/available-promotions"?.substring(1)
+            
+                    _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices"?.substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -98,10 +102,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartDetailResponse>>? {
+    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId)}
+        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    areaCode = areaCode)}
 
     
     
@@ -112,17 +116,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b, body = body)}
+        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode, body = body)}
 
     
     
-    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
+    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
-        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b, body = body)}
+        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode, body = body)}
 
     
     
@@ -275,6 +279,20 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         fullUrl = fullUrl?.replace("{" + "action" +"}",action.toString())
         
         return cartApiList?.updateCartWithSharedItems(fullUrl    )}
+
+    
+    
+    fun getPromotionOffers(slug: String?=null, pageSize: Int?=null, promotionGroup: String?=null): Deferred<Response<PromotionOffersResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPromotionOffers"] 
+        
+        return cartApiList?.getPromotionOffers(fullUrl    ,  slug = slug,    pageSize = pageSize,    promotionGroup = promotionGroup)}
+
+    
+    
+    fun getLadderOffers(slug: String, storeId: String?=null, promotionId: String?=null, pageSize: Int?=null): Deferred<Response<LadderPriceOffers>>? {
+        var fullUrl : String? = _relativeUrls["getLadderOffers"] 
+        
+        return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
 
     
     

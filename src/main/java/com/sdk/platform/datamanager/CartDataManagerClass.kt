@@ -47,6 +47,11 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -185,6 +190,145 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SuccessMessage>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCouponPartially(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPromotions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null)
+    : Deferred<Response<PromotionsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPromotions
+    **/
+    fun getPromotionsPaginator(
+    pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
+    
+    ) : Paginator<PromotionsResponse>{
+        val paginator = Paginator<PromotionsResponse>()
+        paginator.setCallBack(object : PaginatorCallback<PromotionsResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<PromotionsResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun createPromotion(body: PromotionAdd)
+    : Deferred<Response<PromotionAdd>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.createPromotion(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPromotionById(id: String)
+    : Deferred<Response<PromotionUpdate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPromotionById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePromotion(id: String,body: PromotionUpdate)
+    : Deferred<Response<PromotionUpdate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updatePromotion(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePromotionPartially(id: String,body: PromotionPartialUpdate)
+    : Deferred<Response<SuccessMessage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updatePromotionPartially(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
