@@ -65,6 +65,18 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["updateDefaultBeneficiary"] = "/service/application/payment/v1.0/refund/beneficiary/default"?.substring(1)
             
+                    _relativeUrls["getPaymentLink"] = "/service/application/payment/v1.0/create-payment-link/"?.substring(1)
+            
+                    _relativeUrls["createPaymentLink"] = "/service/application/payment/v1.0/create-payment-link/"?.substring(1)
+            
+                    _relativeUrls["resendPaymentLink"] = "/service/application/payment/v1.0/resend-payment-link/"?.substring(1)
+            
+                    _relativeUrls["cancelPaymentLink"] = "/service/application/payment/v1.0/cancel-payment-link/"?.substring(1)
+            
+                    _relativeUrls["getPaymentModeRoutesPaymentLink"] = "/service/application/payment/v1.0/payment/options/link/"?.substring(1)
+            
+                    _relativeUrls["pollingPaymentLink"] = "/service/application/payment/v1.0/polling-payment-link/"?.substring(1)
+            
                     _relativeUrls["customerCreditSummary"] = "/service/application/payment/v1.0/payment/credit-summary/"?.substring(1)
             
                     _relativeUrls["redirectToAggregator"] = "/service/application/payment/v1.0/payment/redirect-to-aggregator/"?.substring(1)
@@ -262,6 +274,48 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["updateDefaultBeneficiary"] 
         
         return paymentApiList?.updateDefaultBeneficiary(fullUrl  ,body = body)}
+
+    
+    
+    fun getPaymentLink(id: String?=null): Deferred<Response<GetPaymentLinkResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPaymentLink"] 
+        
+        return paymentApiList?.getPaymentLink(fullUrl    ,  id = id)}
+
+    
+    
+    fun createPaymentLink(body: CreatePaymentLinkRequest): Deferred<Response<CreatePaymentLinkResponse>>? {
+        var fullUrl : String? = _relativeUrls["createPaymentLink"] 
+        
+        return paymentApiList?.createPaymentLink(fullUrl  ,body = body)}
+
+    
+    
+    fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<CancelOrResendPaymentLinkResponse>>? {
+        var fullUrl : String? = _relativeUrls["resendPaymentLink"] 
+        
+        return paymentApiList?.resendPaymentLink(fullUrl  ,body = body)}
+
+    
+    
+    fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<CancelOrResendPaymentLinkResponse>>? {
+        var fullUrl : String? = _relativeUrls["cancelPaymentLink"] 
+        
+        return paymentApiList?.cancelPaymentLink(fullUrl  ,body = body)}
+
+    
+    
+    fun getPaymentModeRoutesPaymentLink(id: String): Deferred<Response<PaymentModeRouteResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPaymentModeRoutesPaymentLink"] 
+        
+        return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl    ,  id = id)}
+
+    
+    
+    fun pollingPaymentLink(id: String?=null): Deferred<Response<PollingPaymentLinkResponse>>? {
+        var fullUrl : String? = _relativeUrls["pollingPaymentLink"] 
+        
+        return paymentApiList?.pollingPaymentLink(fullUrl    ,  id = id)}
 
     
     

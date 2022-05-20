@@ -925,6 +925,36 @@ interface PaymentApiList {
     
     
     @GET 
+    fun getPaymentLink(@Url url1: String?    ,  @Query("id") id: String?)
+    : Deferred<Response<GetPaymentLinkResponse>>
+    
+    
+    @POST 
+    fun createPaymentLink(@Url url1: String?   ,@Body body: CreatePaymentLinkRequest)
+    : Deferred<Response<CreatePaymentLinkResponse>>
+    
+    
+    @POST 
+    fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<CancelOrResendPaymentLinkResponse>>
+    
+    
+    @POST 
+    fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<CancelOrResendPaymentLinkResponse>>
+    
+    
+    @GET 
+    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,  @Query("id") id: String)
+    : Deferred<Response<PaymentModeRouteResponse>>
+    
+    
+    @GET 
+    fun pollingPaymentLink(@Url url1: String?    ,  @Query("id") id: String?)
+    : Deferred<Response<PollingPaymentLinkResponse>>
+    
+    
+    @GET 
     fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<CustomerCreditSummaryResponse>>
     
@@ -996,6 +1026,11 @@ interface OrderApiList {
     @POST 
     fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: ReqBodyVerifyOTPShipment)
     : Deferred<Response<ResponseVerifyOTPShipment>>
+    
+    
+    @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetInvoiceShipment>>
     
 }
 
@@ -1317,6 +1352,11 @@ interface LogisticApiList {
     @POST 
     fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
     : Deferred<Response<GetTatProductResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
+    : Deferred<Response<GetPincodeZonesResponse>>
     
     
     @GET 
