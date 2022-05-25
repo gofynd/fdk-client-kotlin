@@ -45,6 +45,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getEpaylaterBannerDetails"] = "/service/application/payment/v1.0/epaylater/banner"?.substring(1)
             
+                    _relativeUrls["resendOrCancelPayment"] = "/service/application/payment/v1.0/payment/resend_or_cancel"?.substring(1)
+            
                     _relativeUrls["getActiveRefundTransferModes"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
             
                     _relativeUrls["enableOrDisableRefundTransferMode"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
@@ -207,6 +209,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
+    fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest): Deferred<Response<ResendOrCancelPaymentResponse>>? {
+        var fullUrl : String? = _relativeUrls["resendOrCancelPayment"] 
+        
+        return paymentApiList?.resendOrCancelPayment(fullUrl  ,body = body)}
+
+    
+    
     fun getActiveRefundTransferModes(): Deferred<Response<TransferModeResponse>>? {
         var fullUrl : String? = _relativeUrls["getActiveRefundTransferModes"] 
         
@@ -326,10 +335,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun redirectToAggregator(source: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
+    fun redirectToAggregator(source: String?=null, aggregator: String?=null): Deferred<Response<RedirectToAggregatorResponse>>? {
         var fullUrl : String? = _relativeUrls["redirectToAggregator"] 
         
-        return paymentApiList?.redirectToAggregator(fullUrl    ,  source = source)}
+        return paymentApiList?.redirectToAggregator(fullUrl    ,  source = source,    aggregator = aggregator)}
 
     
     
