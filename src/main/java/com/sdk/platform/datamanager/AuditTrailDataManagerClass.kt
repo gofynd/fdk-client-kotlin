@@ -75,22 +75,9 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
         } 
     }
     
-    
-    suspend fun getEntityTypes()
-    : Deferred<Response<EntityTypesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.getEntityTypes(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
     
     
     
