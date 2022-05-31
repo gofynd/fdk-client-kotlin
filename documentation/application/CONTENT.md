@@ -1912,6 +1912,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | tnc | String? |  yes  |  |
  | policy | String? |  yes  |  |
  | shipping | String? |  yes  |  |
+ | returns | String? |  yes  |  |
  | faq | ArrayList<[ApplicationLegalFAQ](#ApplicationLegalFAQ)>? |  yes  |  |
  | id | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |

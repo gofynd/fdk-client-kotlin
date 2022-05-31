@@ -2137,7 +2137,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | primary | Boolean? |  yes  |  |
  | verified | Boolean? |  yes  |  |
  | phone | String? |  yes  |  |
- | countryCode | Int? |  yes  |  |
+ | countryCode | String? |  yes  |  |
 
 ---
 

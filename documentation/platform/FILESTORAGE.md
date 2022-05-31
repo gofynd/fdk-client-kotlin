@@ -795,7 +795,7 @@ Success
  | fileName | String |  no  |  |
  | filePath | String |  no  |  |
  | contentType | String |  no  |  |
- | method | String |  no  |  |
+ | method | String? |  yes  |  |
  | namespace | String |  no  |  |
  | operation | String |  no  |  |
  | size | Int |  no  |  |
@@ -831,13 +831,12 @@ Success
  | fileName | String |  no  |  |
  | filePath | String |  no  |  |
  | contentType | String |  no  |  |
- | method | String |  no  |  |
  | namespace | String |  no  |  |
  | operation | String |  no  |  |
  | size | Int |  no  |  |
  | upload | [Upload](#Upload) |  no  |  |
  | cdn | [CDN](#CDN) |  no  |  |
- | success | String |  no  |  |
+ | success | Boolean |  no  |  |
  | tags | ArrayList<String>? |  yes  |  |
  | createdOn | String |  no  |  |
  | modifiedOn | String |  no  |  |
