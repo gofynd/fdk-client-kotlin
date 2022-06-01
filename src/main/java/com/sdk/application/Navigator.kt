@@ -108,7 +108,7 @@ enum class Navigator(
     EXTERNAL(
         pageType = PageType.externalLink,
         navName = "External Link",
-        link = "/external/:url",
+        link = "/external/",
         query = arrayListOf(
             NavQuery(key = "url", required = true)
         )
