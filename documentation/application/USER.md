@@ -4123,8 +4123,8 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | firstName | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | lastName | String? |  yes  |  |
- | phoneNumbers | ArrayList<[UserPhoneNumber](#UserPhoneNumber)>? |  yes  |  |
- | emails | ArrayList<[UserEmail](#UserEmail)>? |  yes  |  |
+ | phoneNumbers | ArrayList<[PhoneNumber](#PhoneNumber)>? |  yes  |  |
+ | emails | ArrayList<[Email](#Email)>? |  yes  |  |
  | gender | String? |  yes  |  |
  | dob | String? |  yes  |  |
  | active | Boolean? |  yes  |  |
@@ -4142,7 +4142,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
- #### [UserPhoneNumber](#UserPhoneNumber)
+ #### [PhoneNumber](#PhoneNumber)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
@@ -4157,7 +4157,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
- #### [UserEmail](#UserEmail)
+ #### [Email](#Email)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |

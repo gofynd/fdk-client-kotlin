@@ -2110,8 +2110,8 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | firstName | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | lastName | String? |  yes  |  |
- | phoneNumbers | ArrayList<[UserPhoneNumber](#UserPhoneNumber)>? |  yes  |  |
- | emails | ArrayList<[UserEmail](#UserEmail)>? |  yes  |  |
+ | phoneNumbers | ArrayList<[PhoneNumber](#PhoneNumber)>? |  yes  |  |
+ | emails | ArrayList<[Email](#Email)>? |  yes  |  |
  | gender | String? |  yes  |  |
  | dob | String? |  yes  |  |
  | active | Boolean? |  yes  |  |
@@ -2129,7 +2129,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
  
  
- #### [UserPhoneNumber](#UserPhoneNumber)
+ #### [PhoneNumber](#PhoneNumber)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
@@ -2144,7 +2144,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
  
  
- #### [UserEmail](#UserEmail)
+ #### [Email](#Email)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
