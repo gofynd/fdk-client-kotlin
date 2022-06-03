@@ -1212,12 +1212,12 @@ interface CatalogApiList {
     fun getProductBulkUploadHistory(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductBulkRequestList>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
-    fun createProductsInBulk(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: BulkProductRequest)
-    : Deferred<Response<SuccessResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
     fun deleteProductBulkJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
+    : Deferred<Response<SuccessResponse>>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
+    fun createProductsInBulk(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: BulkProductRequest)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/tags")
@@ -1246,11 +1246,11 @@ interface CatalogApiList {
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/inventory/{size_identifier}")
     fun getInventoryBySizeIdentifier(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("size_identifier") sizeIdentifier: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("location_ids") locationIds: ArrayList<Int>?)
-    : Deferred<Response<InventoryResponsePaginated>>
+    : Deferred<Response<InventorySellerIdentifierResponsePaginated>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/products/{item_id}/inventory/{size_identifier}")
     fun getDiscountedInventoryBySizeIdentifier(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String, @Path("size_identifier") sizeIdentifier: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("location_ids") locationIds: ArrayList<Int>?)
-    : Deferred<Response<InventoryResponsePaginated>>
+    : Deferred<Response<InventorySellerIdentifierResponsePaginated>>
     
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/sizes/{size}/location/{location_id}/")
     fun deleteInventory(@Path("company_id") companyId: String, @Path("size") size: String, @Path("item_id") itemId: String, @Path("location_id") locationId: String)
@@ -1264,12 +1264,12 @@ interface CatalogApiList {
     fun getInventoryBulkUploadHistory(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<BulkInventoryGet>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
-    fun createBulkInventory(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: InventoryBulkRequest)
-    : Deferred<Response<SuccessResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
     fun deleteBulkInventoryJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
+    : Deferred<Response<SuccessResponse>>
+    
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
+    fun createBulkInventory(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: InventoryBulkRequest)
     : Deferred<Response<SuccessResponse>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/download/")
@@ -1955,6 +1955,42 @@ interface AuditTrailApiList {
     @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/entity-types")
     fun getEntityTypes(@Path("company_id") companyId: String)
     : Deferred<Response<EntityTypesResponse>>
+    
+}
+
+interface ServiceabilityApiList {
+    
+    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/serviceability")
+    fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ApplicationServiceabilityConfigResponse>>
+    
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/regions")
+    fun getEntityRegionView(@Path("company_id") companyId: String,@Body body: EntityRegionView_Request)
+    : Deferred<Response<EntityRegionView_Response>>
+    
+    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zones")
+    fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?)
+    : Deferred<Response<ListViewResponse>>
+    
+    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/all-stores")
+    fun getCompanyStoreView(@Path("company_id") companyId: String)
+    : Deferred<Response<CompanyStoreView_Response>>
+    
+    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
+    fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
+    : Deferred<Response<GetSingleZoneDataViewResponse>>
+    
+    @PUT ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
+    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>
+    
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/")
+    fun upsertZoneControllerView(@Path("company_id") companyId: String,@Body body: ZoneRequest)
+    : Deferred<Response<ZoneResponse>>
+    
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
+    fun upsertZoneControllerView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
 }
         

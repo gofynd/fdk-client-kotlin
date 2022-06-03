@@ -102,10 +102,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartDetailResponse>>? {
+    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId)}
+        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
 
     
     
@@ -116,17 +116,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+    fun addItems(i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b, body = body)}
+        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
 
     
     
-    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
+    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, areaCode: String?=null, buyNow: Boolean?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
-        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b, body = body)}
+        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
 
     
     
