@@ -132,31 +132,31 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getItemCount(id: String?=null): Deferred<Response<CartItemCountResponse>>? {
+    fun getItemCount(id: String?=null, buyNow: Boolean?=null): Deferred<Response<CartItemCountResponse>>? {
         var fullUrl : String? = _relativeUrls["getItemCount"] 
         
-        return posCartApiList?.getItemCount(fullUrl    ,  id = id)}
+        return posCartApiList?.getItemCount(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
-    fun getCoupons(id: String?=null): Deferred<Response<GetCouponResponse>>? {
+    fun getCoupons(id: String?=null, buyNow: Boolean?=null): Deferred<Response<GetCouponResponse>>? {
         var fullUrl : String? = _relativeUrls["getCoupons"] 
         
-        return posCartApiList?.getCoupons(fullUrl    ,  id = id)}
+        return posCartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, body: ApplyCouponRequest): Deferred<Response<CartDetailResponse>>? {
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, body: ApplyCouponRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["applyCoupon"] 
         
-        return posCartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id, body = body)}
+        return posCartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow, body = body)}
 
     
     
-    fun removeCoupon(id: String?=null): Deferred<Response<CartDetailResponse>>? {
+    fun removeCoupon(id: String?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["removeCoupon"] 
         
-        return posCartApiList?.removeCoupon(fullUrl    ,  id = id)}
+        return posCartApiList?.removeCoupon(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
@@ -167,17 +167,17 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
+    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
         
-        return posCartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b, body = body)}
+        return posCartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
 
     
     
-    fun getAddresses(cartId: String?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
+    fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
         var fullUrl : String? = _relativeUrls["getAddresses"] 
         
-        return posCartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
+        return posCartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
 
     
     
@@ -188,12 +188,12 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getAddressById(id: String, cartId: String?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+    fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         var fullUrl : String? = _relativeUrls["getAddressById"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return posCartApiList?.getAddressById(fullUrl     ,  cartId = cartId,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
+        return posCartApiList?.getAddressById(fullUrl     ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
 
     
     
@@ -215,24 +215,24 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun selectAddress(cartId: String?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartDetailResponse>>? {
+    fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["selectAddress"] 
         
-        return posCartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    i = i,    b = b, body = body)}
+        return posCartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    i = i,    b = b, body = body)}
 
     
     
-    fun selectPaymentMode(id: String?=null, body: UpdateCartPaymentRequest): Deferred<Response<CartDetailResponse>>? {
+    fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null, body: UpdateCartPaymentRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["selectPaymentMode"] 
         
-        return posCartApiList?.selectPaymentMode(fullUrl    ,  id = id, body = body)}
+        return posCartApiList?.selectPaymentMode(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
 
     
     
-    fun validateCouponForPayment(id: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
+    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
-        return posCartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
+        return posCartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
 
     
     
@@ -257,10 +257,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun updateCartMeta(id: String?=null, body: CartMetaRequest): Deferred<Response<CartMetaResponse>>? {
+    fun updateCartMeta(id: String?=null, buyNow: Boolean?=null, body: CartMetaRequest): Deferred<Response<CartMetaResponse>>? {
         var fullUrl : String? = _relativeUrls["updateCartMeta"] 
         
-        return posCartApiList?.updateCartMeta(fullUrl    ,  id = id, body = body)}
+        return posCartApiList?.updateCartMeta(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
 
     
     
