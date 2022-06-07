@@ -286,10 +286,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getPaymentLink(id: String?=null): Deferred<Response<GetPaymentLinkResponse>>? {
+    fun getPaymentLink(paymentLinkId: String?=null): Deferred<Response<GetPaymentLinkResponse>>? {
         var fullUrl : String? = _relativeUrls["getPaymentLink"] 
         
-        return paymentApiList?.getPaymentLink(fullUrl    ,  id = id)}
+        return paymentApiList?.getPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
 
     
     
@@ -314,17 +314,17 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getPaymentModeRoutesPaymentLink(id: String): Deferred<Response<PaymentModeRouteResponse>>? {
+    fun getPaymentModeRoutesPaymentLink(paymentLinkId: String, refresh: Boolean?=null): Deferred<Response<PaymentModeRouteResponse>>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutesPaymentLink"] 
         
-        return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl    ,  id = id)}
+        return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId,    refresh = refresh)}
 
     
     
-    fun pollingPaymentLink(id: String?=null): Deferred<Response<PollingPaymentLinkResponse>>? {
+    fun pollingPaymentLink(paymentLinkId: String?=null): Deferred<Response<PollingPaymentLinkResponse>>? {
         var fullUrl : String? = _relativeUrls["pollingPaymentLink"] 
         
-        return paymentApiList?.pollingPaymentLink(fullUrl    ,  id = id)}
+        return paymentApiList?.pollingPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
 
     
     

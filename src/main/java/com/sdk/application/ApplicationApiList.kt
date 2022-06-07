@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -930,7 +930,7 @@ interface PaymentApiList {
     
     
     @GET 
-    fun getPaymentLink(@Url url1: String?    ,  @Query("id") id: String?)
+    fun getPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
     : Deferred<Response<GetPaymentLinkResponse>>
     
     
@@ -950,12 +950,12 @@ interface PaymentApiList {
     
     
     @GET 
-    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,  @Query("id") id: String)
+    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,   @Query("payment_link_id") paymentLinkId: String, @Query("refresh") refresh: Boolean?)
     : Deferred<Response<PaymentModeRouteResponse>>
     
     
     @GET 
-    fun pollingPaymentLink(@Url url1: String?    ,  @Query("id") id: String?)
+    fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
     : Deferred<Response<PollingPaymentLinkResponse>>
     
     
