@@ -79,6 +79,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["pollingPaymentLink"] = "/service/application/payment/v1.0/polling-payment-link/"?.substring(1)
             
+                    _relativeUrls["createOrderHandlerPaymentLink"] = "/service/application/payment/v1.0/create-order/link/"?.substring(1)
+            
                     _relativeUrls["customerCreditSummary"] = "/service/application/payment/v1.0/payment/credit-summary/"?.substring(1)
             
                     _relativeUrls["redirectToAggregator"] = "/service/application/payment/v1.0/payment/redirect-to-aggregator/"?.substring(1)
@@ -314,10 +316,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getPaymentModeRoutesPaymentLink(paymentLinkId: String, refresh: Boolean?=null): Deferred<Response<PaymentModeRouteResponse>>? {
+    fun getPaymentModeRoutesPaymentLink(paymentLinkId: String): Deferred<Response<PaymentModeRouteResponse>>? {
         var fullUrl : String? = _relativeUrls["getPaymentModeRoutesPaymentLink"] 
         
-        return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId,    refresh = refresh)}
+        return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
 
     
     
@@ -325,6 +327,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["pollingPaymentLink"] 
         
         return paymentApiList?.pollingPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
+
+    
+    
+    fun createOrderHandlerPaymentLink(body: CreateOrderUserRequest): Deferred<Response<CreateOrderUserResponse>>? {
+        var fullUrl : String? = _relativeUrls["createOrderHandlerPaymentLink"] 
+        
+        return paymentApiList?.createOrderHandlerPaymentLink(fullUrl  ,body = body)}
 
     
     

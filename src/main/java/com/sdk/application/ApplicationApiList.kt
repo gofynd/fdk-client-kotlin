@@ -950,13 +950,18 @@ interface PaymentApiList {
     
     
     @GET 
-    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,   @Query("payment_link_id") paymentLinkId: String, @Query("refresh") refresh: Boolean?)
+    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String)
     : Deferred<Response<PaymentModeRouteResponse>>
     
     
     @GET 
     fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
     : Deferred<Response<PollingPaymentLinkResponse>>
+    
+    
+    @POST 
+    fun createOrderHandlerPaymentLink(@Url url1: String?   ,@Body body: CreateOrderUserRequest)
+    : Deferred<Response<CreateOrderUserResponse>>
     
     
     @GET 
