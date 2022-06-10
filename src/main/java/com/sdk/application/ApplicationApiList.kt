@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -941,12 +941,12 @@ interface PaymentApiList {
     
     @POST 
     fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
-    : Deferred<Response<CancelOrResendPaymentLinkResponse>>
+    : Deferred<Response<ResendPaymentLinkResponse>>
     
     
     @POST 
     fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
-    : Deferred<Response<CancelOrResendPaymentLinkResponse>>
+    : Deferred<Response<CancelPaymentLinkResponse>>
     
     
     @GET 

@@ -8227,6 +8227,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | url | String? |  yes  |  |
  | content | String? |  yes  |  |
  | source | [DataLoaderSourceSchema](#DataLoaderSourceSchema)? |  yes  |  |
+ | id | String? |  yes  |  |
 
 ---
 

@@ -302,14 +302,14 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<CancelOrResendPaymentLinkResponse>>? {
+    fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<ResendPaymentLinkResponse>>? {
         var fullUrl : String? = _relativeUrls["resendPaymentLink"] 
         
         return paymentApiList?.resendPaymentLink(fullUrl  ,body = body)}
 
     
     
-    fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<CancelOrResendPaymentLinkResponse>>? {
+    fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<CancelPaymentLinkResponse>>? {
         var fullUrl : String? = _relativeUrls["cancelPaymentLink"] 
         
         return paymentApiList?.cancelPaymentLink(fullUrl  ,body = body)}
