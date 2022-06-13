@@ -102,10 +102,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null): Deferred<Response<CartDetailResponse>>? {
+    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId)}
+        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    buyNow = buyNow)}
 
     
     
@@ -116,45 +116,45 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun addItems(i: Boolean?=null, b: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
+    fun addItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: AddCartRequest): Deferred<Response<AddCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["addItems"] 
         
-        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b, body = body)}
+        return cartApiList?.addItems(fullUrl    ,  i = i,    b = b,    buyNow = buyNow, body = body)}
 
     
     
-    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
+    fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: UpdateCartRequest): Deferred<Response<UpdateCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
-        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b, body = body)}
+        return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
 
     
     
-    fun getItemCount(id: String?=null): Deferred<Response<CartItemCountResponse>>? {
+    fun getItemCount(id: String?=null, buyNow: Boolean?=null): Deferred<Response<CartItemCountResponse>>? {
         var fullUrl : String? = _relativeUrls["getItemCount"] 
         
-        return cartApiList?.getItemCount(fullUrl    ,  id = id)}
+        return cartApiList?.getItemCount(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
-    fun getCoupons(id: String?=null): Deferred<Response<GetCouponResponse>>? {
+    fun getCoupons(id: String?=null, buyNow: Boolean?=null): Deferred<Response<GetCouponResponse>>? {
         var fullUrl : String? = _relativeUrls["getCoupons"] 
         
-        return cartApiList?.getCoupons(fullUrl    ,  id = id)}
+        return cartApiList?.getCoupons(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
-    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, body: ApplyCouponRequest): Deferred<Response<CartDetailResponse>>? {
+    fun applyCoupon(i: Boolean?=null, b: Boolean?=null, p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, body: ApplyCouponRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["applyCoupon"] 
         
-        return cartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id, body = body)}
+        return cartApiList?.applyCoupon(fullUrl    ,  i = i,    b = b,    p = p,    id = id,    buyNow = buyNow, body = body)}
 
     
     
-    fun removeCoupon(id: String?=null): Deferred<Response<CartDetailResponse>>? {
+    fun removeCoupon(id: String?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["removeCoupon"] 
         
-        return cartApiList?.removeCoupon(fullUrl    ,  id = id)}
+        return cartApiList?.removeCoupon(fullUrl    ,  id = id,    buyNow = buyNow)}
 
     
     
@@ -165,17 +165,17 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
+    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
         
-        return cartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b, body = body)}
+        return cartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
 
     
     
-    fun getAddresses(cartId: String?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
+    fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
         var fullUrl : String? = _relativeUrls["getAddresses"] 
         
-        return cartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
+        return cartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
 
     
     
@@ -186,12 +186,12 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getAddressById(id: String, cartId: String?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
+    fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<Address>>? {
         var fullUrl : String? = _relativeUrls["getAddressById"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return cartApiList?.getAddressById(fullUrl     ,  cartId = cartId,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
+        return cartApiList?.getAddressById(fullUrl     ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
 
     
     
@@ -213,31 +213,31 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun selectAddress(cartId: String?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartDetailResponse>>? {
+    fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["selectAddress"] 
         
-        return cartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    i = i,    b = b, body = body)}
+        return cartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    i = i,    b = b, body = body)}
 
     
     
-    fun selectPaymentMode(id: String?=null, body: UpdateCartPaymentRequest): Deferred<Response<CartDetailResponse>>? {
+    fun selectPaymentMode(id: String?=null, buyNow: Boolean?=null, body: UpdateCartPaymentRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["selectPaymentMode"] 
         
-        return cartApiList?.selectPaymentMode(fullUrl    ,  id = id, body = body)}
+        return cartApiList?.selectPaymentMode(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
 
     
     
-    fun validateCouponForPayment(id: String?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
+    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
-        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
+        return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
 
     
     
-    fun getShipments(p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null): Deferred<Response<CartShipmentsResponse>>? {
+    fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null): Deferred<Response<CartShipmentsResponse>>? {
         var fullUrl : String? = _relativeUrls["getShipments"] 
         
-        return cartApiList?.getShipments(fullUrl    ,  p = p,    id = id,    addressId = addressId,    areaCode = areaCode)}
+        return cartApiList?.getShipments(fullUrl    ,  p = p,    id = id,    buyNow = buyNow,    addressId = addressId,    areaCode = areaCode)}
 
     
     
@@ -248,10 +248,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun updateCartMeta(id: String?=null, body: CartMetaRequest): Deferred<Response<CartMetaResponse>>? {
+    fun updateCartMeta(id: String?=null, buyNow: Boolean?=null, body: CartMetaRequest): Deferred<Response<CartMetaResponse>>? {
         var fullUrl : String? = _relativeUrls["updateCartMeta"] 
         
-        return cartApiList?.updateCartMeta(fullUrl    ,  id = id, body = body)}
+        return cartApiList?.updateCartMeta(fullUrl    ,  id = id,    buyNow = buyNow, body = body)}
 
     
     
