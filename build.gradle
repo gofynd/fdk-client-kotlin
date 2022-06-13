@@ -20,21 +20,21 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 2
         versionName "0.1.19"
         multiDexEnabled true
 
         vectorDrawables.useSupportLibrary = true
-        /*javaCompileOptions {
+        javaCompileOptions {
             annotationProcessorOptions {
                 includeCompileClasspath false
             }
-        }*/
+        }
 
         signingConfigs {
             debugConfig {
