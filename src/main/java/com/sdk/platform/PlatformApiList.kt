@@ -1934,22 +1934,6 @@ interface WebhookApiList {
     
 }
 
-interface AuditTrailApiList {
-    
-    @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")
-    fun getAuditLogs(@Path("company_id") companyId: String, @Query("qs") qs: String)
-    : Deferred<Response<LogSchemaResponse>>
-    
-    @POST ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")
-    fun createAuditLog(@Path("company_id") companyId: String,@Body body: RequestBodyAuditLog)
-    : Deferred<Response<CreateLogResponse>>
-    
-    @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/{id}")
-    fun getAuditLog(@Path("company_id") companyId: String, @Path("id") id: String)
-    : Deferred<Response<LogSchemaResponse>>
-    
-}
-
 interface ServiceabilityApiList {
     
     @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/serviceability")
@@ -1968,13 +1952,13 @@ interface ServiceabilityApiList {
     fun getCompanyStoreView(@Path("company_id") companyId: String)
     : Deferred<Response<CompanyStoreView_Response>>
     
-    @PUT ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
-    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>
-    
     @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
     fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
     : Deferred<Response<GetSingleZoneDataViewResponse>>
+    
+    @PUT ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
+    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>
     
     @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/")
     fun upsertZoneControllerView(@Path("company_id") companyId: String,@Body body: ZoneRequest)
@@ -1983,6 +1967,22 @@ interface ServiceabilityApiList {
     @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
     fun getZoneFromPincode(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+}
+
+interface AuditTrailApiList {
+    
+    @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")
+    fun getAuditLogs(@Path("company_id") companyId: String, @Query("qs") qs: String)
+    : Deferred<Response<LogSchemaResponse>>
+    
+    @POST ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/")
+    fun createAuditLog(@Path("company_id") companyId: String,@Body body: RequestBodyAuditLog)
+    : Deferred<Response<CreateLogResponse>>
+    
+    @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/logs/{id}")
+    fun getAuditLog(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<LogSchemaResponse>>
     
 }
         
