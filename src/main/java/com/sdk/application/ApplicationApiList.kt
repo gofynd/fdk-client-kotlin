@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -170,7 +170,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
+    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -180,12 +180,12 @@ interface CartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,   @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT 
-    fun updateCart(@Url url1: String?    ,    @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: UpdateCartRequest)
+    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
@@ -870,6 +870,16 @@ interface PaymentApiList {
     
     
     @GET 
+    fun getEpaylaterBannerDetails(@Url url1: String?   )
+    : Deferred<Response<EpaylaterBannerResponse>>
+    
+    
+    @POST 
+    fun resendOrCancelPayment(@Url url1: String?   ,@Body body: ResendOrCancelPaymentRequest)
+    : Deferred<Response<ResendOrCancelPaymentResponse>>
+    
+    
+    @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
     
@@ -917,6 +927,26 @@ interface PaymentApiList {
     @POST 
     fun updateDefaultBeneficiary(@Url url1: String?   ,@Body body: SetDefaultBeneficiaryRequest)
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+    
+    @GET 
+    fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CustomerCreditSummaryResponse>>
+    
+    
+    @GET 
+    fun redirectToAggregator(@Url url1: String?    ,   @Query("source") source: String?, @Query("aggregator") aggregator: String?)
+    : Deferred<Response<RedirectToAggregatorResponse>>
+    
+    
+    @GET 
+    fun checkCredit(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CheckCreditResponse>>
+    
+    
+    @POST 
+    fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
+    : Deferred<Response<CustomerOnboardingResponse>>
     
 }
 
@@ -971,6 +1001,11 @@ interface OrderApiList {
     @POST 
     fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: ReqBodyVerifyOTPShipment)
     : Deferred<Response<ResponseVerifyOTPShipment>>
+    
+    
+    @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetInvoiceShipment>>
     
 }
 
@@ -1151,7 +1186,7 @@ interface PosCartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?)
+    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -1161,12 +1196,12 @@ interface PosCartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,   @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT 
-    fun updateCart(@Url url1: String?    ,    @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: UpdateCartRequest)
+    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
@@ -1292,6 +1327,11 @@ interface LogisticApiList {
     @POST 
     fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
     : Deferred<Response<GetTatProductResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
+    : Deferred<Response<GetPincodeZonesResponse>>
     
     
     @GET 
