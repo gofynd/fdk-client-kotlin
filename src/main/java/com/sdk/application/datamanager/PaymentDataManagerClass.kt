@@ -81,6 +81,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["createOrderHandlerPaymentLink"] = "/service/application/payment/v1.0/create-order/link/"?.substring(1)
             
+                    _relativeUrls["initialisePaymentPaymentLink"] = "/service/application/payment/v1.0/payment/request/link/"?.substring(1)
+            
+                    _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"] = "/service/application/payment/v1.0/payment/confirm/polling/link/"?.substring(1)
+            
                     _relativeUrls["customerCreditSummary"] = "/service/application/payment/v1.0/payment/credit-summary/"?.substring(1)
             
                     _relativeUrls["redirectToAggregator"] = "/service/application/payment/v1.0/payment/redirect-to-aggregator/"?.substring(1)
@@ -334,6 +338,20 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["createOrderHandlerPaymentLink"] 
         
         return paymentApiList?.createOrderHandlerPaymentLink(fullUrl  ,body = body)}
+
+    
+    
+    fun initialisePaymentPaymentLink(body: PaymentInitializationRequest): Deferred<Response<PaymentInitializationResponse>>? {
+        var fullUrl : String? = _relativeUrls["initialisePaymentPaymentLink"] 
+        
+        return paymentApiList?.initialisePaymentPaymentLink(fullUrl  ,body = body)}
+
+    
+    
+    fun checkAndUpdatePaymentStatusPaymentLink(body: PaymentStatusUpdateRequest): Deferred<Response<PaymentStatusUpdateResponse>>? {
+        var fullUrl : String? = _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"] 
+        
+        return paymentApiList?.checkAndUpdatePaymentStatusPaymentLink(fullUrl  ,body = body)}
 
     
     

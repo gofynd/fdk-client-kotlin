@@ -964,6 +964,16 @@ interface PaymentApiList {
     : Deferred<Response<CreateOrderUserResponse>>
     
     
+    @POST 
+    fun initialisePaymentPaymentLink(@Url url1: String?   ,@Body body: PaymentInitializationRequest)
+    : Deferred<Response<PaymentInitializationResponse>>
+    
+    
+    @POST 
+    fun checkAndUpdatePaymentStatusPaymentLink(@Url url1: String?   ,@Body body: PaymentStatusUpdateRequest)
+    : Deferred<Response<PaymentStatusUpdateResponse>>
+    
+    
     @GET 
     fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<CustomerCreditSummaryResponse>>
