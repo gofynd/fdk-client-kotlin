@@ -265,7 +265,7 @@ interface CartApiList {
     
     
     @POST 
-    fun checkoutCart(@Url url1: String?   ,@Body body: CartCheckoutDetailRequest)
+    fun checkoutCart(@Url url1: String?    ,  @Query("buy_now") buyNow: Boolean?, @Body body: CartCheckoutDetailRequest)
     : Deferred<Response<CartCheckoutResponse>>
     
     
@@ -870,6 +870,16 @@ interface PaymentApiList {
     
     
     @GET 
+    fun getEpaylaterBannerDetails(@Url url1: String?   )
+    : Deferred<Response<EpaylaterBannerResponse>>
+    
+    
+    @POST 
+    fun resendOrCancelPayment(@Url url1: String?   ,@Body body: ResendOrCancelPaymentRequest)
+    : Deferred<Response<ResendOrCancelPaymentResponse>>
+    
+    
+    @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
     
@@ -917,6 +927,26 @@ interface PaymentApiList {
     @POST 
     fun updateDefaultBeneficiary(@Url url1: String?   ,@Body body: SetDefaultBeneficiaryRequest)
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
+    
+    
+    @GET 
+    fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CustomerCreditSummaryResponse>>
+    
+    
+    @GET 
+    fun redirectToAggregator(@Url url1: String?    ,   @Query("source") source: String?, @Query("aggregator") aggregator: String?)
+    : Deferred<Response<RedirectToAggregatorResponse>>
+    
+    
+    @GET 
+    fun checkCredit(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<CheckCreditResponse>>
+    
+    
+    @POST 
+    fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
+    : Deferred<Response<CustomerOnboardingResponse>>
     
 }
 
