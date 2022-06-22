@@ -152,18 +152,6 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    suspend fun getIntegrationLevelConfig(id: String, level: String, opted: Boolean?=null, checkPermission: Boolean?=null)
-    : Deferred<Response<IntegrationConfigResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.getIntegrationLevelConfig(
-        companyId = config.companyId, id = id, level = level, opted = opted, checkPermission = checkPermission )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getIntegrationByLevelId(id: String, level: String, uid: String)
     : Deferred<Response<IntegrationLevel>>? {
         
@@ -814,7 +802,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     
