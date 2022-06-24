@@ -881,6 +881,11 @@ Success. Returns a JSON object containing the all the platform configurations. R
       "appId": "token_123"
     }
   },
+  "delete_account_reasons": [
+    {
+      "reason_text": "test"
+    }
+  ],
   "_id": "5e04a5e5220bc15839ad9bc0",
   "created_at": "2019-12-26T12:21:57.878Z",
   "updated_at": "2020-08-13T14:31:09.878Z",
@@ -1005,6 +1010,11 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
       "appId": "token_123"
     }
   },
+  "delete_account_reasons": [
+    {
+      "reason_text": "test"
+    }
+  ],
   "_id": "5e04a5e5220bc15839ad9bc0",
   "created_at": "2019-12-26T12:21:57.878Z",
   "updated_at": "2020-08-13T14:31:09.878Z",
@@ -1900,6 +1910,7 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | register | Boolean? |  yes  |  |
  | mobileImage | String? |  yes  |  |
  | desktopImage | String? |  yes  |  |
+ | deleteAccountReasons | ArrayList<[DeleteAccountReasons](#DeleteAccountReasons)>? |  yes  |  |
 
 ---
 
@@ -2047,6 +2058,17 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | facebook | [Facebook](#Facebook)? |  yes  |  |
  | accountKit | [Accountkit](#Accountkit)? |  yes  |  |
  | google | [Google](#Google)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DeleteAccountReasons](#DeleteAccountReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | reasonText | String? |  yes  |  |
 
 ---
 
