@@ -172,6 +172,18 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    suspend fun getGeneralConfig()
+    : Deferred<Response<CloseVideoRoomResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            leadApiList?.getGeneralConfig(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -315,6 +327,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
 }
 }
