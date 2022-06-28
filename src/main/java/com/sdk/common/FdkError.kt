@@ -33,6 +33,8 @@ data class FdkError(
     var stackTrace: String? = null,
 
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String, Any>? = null
+    var meta: @RawValue HashMap<String, Any>? = null,
+
+    var rawErrorString: String? = null
 
 ) : Parcelable

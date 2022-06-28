@@ -1239,6 +1239,7 @@ Success, the code is valid and returns a SignedUrl
  | canReturn | Boolean? |  yes  |  |
  | canBreak | HashMap<String,Any>? |  yes  |  |
  | showDownloadInvoice | Boolean? |  yes  |  |
+ | showTrackLink | Boolean? |  yes  |  |
  | prices | [Prices](#Prices)? |  yes  |  |
  | needHelpUrl | String? |  yes  |  |
  | shipmentId | String? |  yes  |  |
