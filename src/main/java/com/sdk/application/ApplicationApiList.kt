@@ -972,6 +972,11 @@ interface OrderApiList {
     fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: ReqBodyVerifyOTPShipment)
     : Deferred<Response<ResponseVerifyOTPShipment>>
     
+    
+    @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetInvoiceShipment>>
+    
 }
 
 interface RewardsApiList {
@@ -1292,6 +1297,11 @@ interface LogisticApiList {
     @POST 
     fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
     : Deferred<Response<GetTatProductResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
+    : Deferred<Response<GetPincodeZonesResponse>>
     
     
     @GET 
