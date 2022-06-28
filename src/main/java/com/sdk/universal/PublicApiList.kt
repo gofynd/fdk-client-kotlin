@@ -39,6 +39,16 @@ interface InventoryApiList {
     
     
     @GET 
+    fun getConfigByApiKey(@Url url1: String?    ,  @Query("apikey") apikey: String)
+    : Deferred<Response<ResponseEnvelopeSlingshotConfigurationDetail>>
+    
+    
+    @GET 
+    fun getApiKey(@Url url1: String?    ,   @Query("user_name") userName: String, @Query("password") password: String)
+    : Deferred<Response<ResponseEnvelopeApikeyModel>>
+    
+    
+    @GET 
     fun getJobByCode(@Url url1: String?    )
     : Deferred<Response<ResponseEnvelopeJobConfigDTO>>
     
