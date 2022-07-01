@@ -50,6 +50,7 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -99,6 +100,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ArchiveUserSuccess>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun unArchiveUser(body: UnArchiveUserRequestSchema)
+    : Deferred<Response<UnArchiveUserSuccess>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.unArchiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
