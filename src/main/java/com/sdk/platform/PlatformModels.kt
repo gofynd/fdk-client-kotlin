@@ -5177,9 +5177,19 @@ data class UnArchiveUserRequestSchema(
     
     
     @SerializedName("user_id")
-    var userId: String?=null
+    var userId: String?=null,
+    
+    @SerializedName("reason")
+    var reason: String?=null,
+    
+    @SerializedName("reason_id")
+    var reasonId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     

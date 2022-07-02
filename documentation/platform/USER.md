@@ -1145,6 +1145,8 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | userId | String? |  yes  |  |
+ | reason | String? |  yes  |  |
+ | reasonId | String? |  yes  |  |
 
 ---
 
