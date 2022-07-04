@@ -2092,9 +2092,12 @@ Success. Returns a JSON object containing the all the platform configurations. R
   },
   "delete_account_reasons": [
     {
-      "reason_text": "test"
+      "reason_text": "test",
+      "reason_id": "123",
+      "show_text_area": true
     }
   ],
+  "delete_account_day": 7,
   "_id": "5e04a5e5220bc15839ad9bc0",
   "created_at": "2019-12-26T12:21:57.878Z",
   "updated_at": "2020-08-13T14:31:09.878Z",
@@ -4019,6 +4022,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | register | Boolean? |  yes  |  |
  | mobileImage | String? |  yes  |  |
  | desktopImage | String? |  yes  |  |
+ | deleteAccountDay | Int? |  yes  |  |
  | deleteAccountReasons | ArrayList<[DeleteAccountReasons](#DeleteAccountReasons)>? |  yes  |  |
 
 ---
@@ -4178,6 +4182,8 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | reasonText | String? |  yes  |  |
+ | reasonId | String? |  yes  |  |
+ | showTextArea | Boolean? |  yes  |  |
 
 ---
 
