@@ -40,11 +40,11 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun getOrderShipmentDetails(shipmentId: String)
+    suspend fun getShipmentDetails(shipmentId: String)
     : Deferred<Response<ShipmentDetailsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            ordersApiList?.getOrderShipmentDetails(
+            ordersApiList?.getShipmentDetails(
         companyId = config.companyId, shipmentId = shipmentId )
         } else {
             null
@@ -52,11 +52,11 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun getShipmentDetails(orderId: String)
+    suspend fun getOrderShipmentDetails(orderId: String)
     : Deferred<Response<ShipmentDetailsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            ordersApiList?.getShipmentDetails(
+            ordersApiList?.getOrderShipmentDetails(
         companyId = config.companyId, orderId = orderId )
         } else {
             null
