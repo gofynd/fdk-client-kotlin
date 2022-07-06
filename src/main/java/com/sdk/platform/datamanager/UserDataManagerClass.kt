@@ -49,6 +49,7 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -88,6 +89,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<BlockUserSuccess>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.blockOrUnblockUsers(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun archiveUser(body: ArchiveUserRequestSchema)
+    : Deferred<Response<ArchiveUserSuccess>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

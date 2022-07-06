@@ -14,18 +14,20 @@ abstract class BaseRepository {
         try {
             val call = this.await()
             if ((call.code() == 200 || call.code() == 201) &&
-                (call.body() != null || call.raw().request().method() == "HEAD")
+                (call.body() != null || call.raw().request.method == "HEAD")
             ) {
                 onSuccess.invoke(Event(call.body(), call.headers()))
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
-                val error = Gson().fromJson(response.toString(), FdkError::class.java)
+                val errorResponseString = response.toString()
+                val error = Gson().fromJson(errorResponseString, FdkError::class.java)
                 error.status = call.code()
+                error.rawErrorString = errorResponseString
                 onFailure.invoke(error)
             }
         } catch (e: Exception) {
             val message = e.message
-            val error = FdkError(status = 500,message = message)
+            val error = FdkError(status = 500, message = message)
             onFailure.invoke(error)
         }
     }
@@ -36,18 +38,20 @@ abstract class BaseRepository {
         try {
             val call = this.await()
             if ((call.code() == 200 || call.code() == 201) &&
-                (call.body() != null || call.raw().request().method() == "HEAD")
+                (call.body() != null || call.raw().request.method == "HEAD")
             ) {
                 onResponse.invoke(Event(call.body(), call.headers()), null)
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
-                val error = Gson().fromJson(response.toString(), FdkError::class.java)
+                val errorResponseString = response.toString()
+                val error = Gson().fromJson(errorResponseString, FdkError::class.java)
                 error.status = call.code()
+                error.rawErrorString = errorResponseString
                 onResponse.invoke(null, error)
             }
         } catch (e: Exception) {
             val message = e.message
-            val error = FdkError(status = 500,message = message)
+            val error = FdkError(status = 500, message = message)
             onResponse.invoke(null, error)
         }
     }
@@ -57,18 +61,20 @@ abstract class BaseRepository {
         try {
             val call = this.await()
             if ((call.code() == 200 || call.code() == 201) &&
-                (call.body() != null || call.raw().request().method() == "HEAD")
+                (call.body() != null || call.raw().request.method == "HEAD")
             ) {
                 return Pair(Event(call.body(), call.headers()), null)
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
-                val error = Gson().fromJson(response.toString(), FdkError::class.java)
+                val errorResponseString = response.toString()
+                val error = Gson().fromJson(errorResponseString, FdkError::class.java)
                 error.status = call.code()
+                error.rawErrorString = errorResponseString
                 return Pair(null, error)
             }
         } catch (e: Exception) {
             val message = e.message
-            val error = FdkError(status = 500,message = message)
+            val error = FdkError(status = 500, message = message)
             return Pair(null, error)
         }
     }

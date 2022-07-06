@@ -4,7 +4,7 @@ import com.sdk.application.CompleteResponse
 import com.sdk.application.datamanager.*
 import com.sdk.application.StartRequest
 import kotlinx.coroutines.Deferred
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
@@ -49,7 +49,7 @@ suspend fun FileStorageDataManagerClass.uploadMedia(
                     apiList?.updateAWSMedia(
                         contentTypeFromResponse,
                         uploadUrl,
-                        RequestBody.create(MediaType.parse(contentTypeFromResponse), file)
+                        RequestBody.create(contentTypeFromResponse.toMediaType(), file)
                     )?.safeAwait { response, error ->
                         response?.let {
                             completeUpload(
