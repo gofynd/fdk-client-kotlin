@@ -40,11 +40,11 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun getShipmentDetails(shipmentId: String)
+    suspend fun getOrderShipmentDetails(shipmentId: String)
     : Deferred<Response<ShipmentDetailsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            ordersApiList?.getShipmentDetails(
+            ordersApiList?.getOrderShipmentDetails(
         companyId = config.companyId, shipmentId = shipmentId )
         } else {
             null
@@ -52,36 +52,12 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun getLaneConfig(superLane: String?=null, fromDate: String?=null, toDate: String?=null)
-    : Deferred<Response<LaneConfigResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            ordersApiList?.getLaneConfig(
-        companyId = config.companyId, superLane = superLane, fromDate = fromDate, toDate = toDate )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getOrderShipmentDetails(orderId: String)
+    suspend fun getShipmentDetails(orderId: String)
     : Deferred<Response<ShipmentDetailsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            ordersApiList?.getOrderShipmentDetails(
+            ordersApiList?.getShipmentDetails(
         companyId = config.companyId, orderId = orderId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getShipmentList(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null)
-    : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            ordersApiList?.getShipmentList(
-        companyId = config.companyId, lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate )
         } else {
             null
         } 
@@ -102,8 +78,6 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
     
     
     
