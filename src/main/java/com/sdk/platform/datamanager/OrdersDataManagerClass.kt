@@ -52,6 +52,18 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
+    suspend fun getLaneConfig(superLane: String?=null, fromDate: String?=null, toDate: String?=null)
+    : Deferred<Response<LaneConfigResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            ordersApiList?.getLaneConfig(
+        companyId = config.companyId, superLane = superLane, fromDate = fromDate, toDate = toDate )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getOrderShipmentDetails(orderId: String)
     : Deferred<Response<ShipmentDetailsResponse>>? {
         
@@ -63,9 +75,36 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
         } 
     }
     
+    
+    suspend fun getShipmentList(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null)
+    : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            ordersApiList?.getShipmentList(
+        companyId = config.companyId, lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getShipmentToManifest(groupEntity: String, salesChannel: String?=null, dpIds: String?=null)
+    : Deferred<Response<ManifestShipmentResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            ordersApiList?.getShipmentToManifest(
+        companyId = config.companyId, groupEntity = groupEntity, salesChannel = salesChannel, dpIds = dpIds )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
     
     
     
