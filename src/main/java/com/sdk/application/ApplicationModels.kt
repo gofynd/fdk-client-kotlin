@@ -26313,6 +26313,9 @@ data class Shipments(
     @SerializedName("can_break")
     var canBreak: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("show_download_invoice")
+    var showDownloadInvoice: Boolean?=null,
+    
     @SerializedName("prices")
     var prices: Prices?=null,
     
@@ -26368,6 +26371,8 @@ data class Shipments(
     var totalDetails: ShipmentTotalDetails?=null
     
 ): Parcelable {
+    
+    
     
     
     
