@@ -4574,6 +4574,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  | Unique id |
  | supportEmail | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support e-mail details |
  | supportPhone | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support Phone number details |
  | supportFaq | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support FAQ details |
