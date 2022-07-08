@@ -76,12 +76,12 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun getShipmentList(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, isPrioritySort: Boolean?=null)
+    suspend fun getShipmentList(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null)
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             ordersApiList?.getShipmentList(
-        companyId = config.companyId, lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannel = salesChannel, requestByExt = requestByExt, isPrioritySort = isPrioritySort )
+        companyId = config.companyId, lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannel = salesChannel, requestByExt = requestByExt, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort )
         } else {
             null
         } 
@@ -100,12 +100,12 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun getOrders(lane: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannel: String?=null, isPrioritySort: Boolean?=null)
+    suspend fun getOrders(lane: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannel: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null)
     : Deferred<Response<OrderListingResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             ordersApiList?.getOrders(
-        companyId = config.companyId, lane = lane, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannel = salesChannel, isPrioritySort = isPrioritySort )
+        companyId = config.companyId, lane = lane, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannel = salesChannel, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort )
         } else {
             null
         } 
