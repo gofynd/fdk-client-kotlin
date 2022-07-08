@@ -188,12 +188,12 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    suspend fun getLevelActiveIntegrations(id: String, level: String, uid: String)
+    suspend fun getLevelActiveIntegrations(id: String, level: String, uid: String, permission: String?=null)
     : Deferred<Response<OptedStoreIntegration>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getLevelActiveIntegrations(
-        companyId = config.companyId, id = id, level = level, uid = uid )
+        companyId = config.companyId, id = id, level = level, uid = uid, permission = permission )
         } else {
             null
         } 
