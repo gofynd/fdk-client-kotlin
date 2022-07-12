@@ -41,7 +41,7 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     
     
     suspend fun getShipmentDetails(shipmentId: String)
-    : Deferred<Response<ShipmentDetailsResponse>>? {
+    : Deferred<Response<ShipmentInfoResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             ordersApiList?.getShipmentDetails(

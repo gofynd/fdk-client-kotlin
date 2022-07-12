@@ -52,6 +52,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val orders by lazy { OrdersDataManagerClass(config, unauthorizedAction)}
     
+    val orderManage by lazy { OrderManageDataManagerClass(config, unauthorizedAction)}
+    
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
     }
@@ -105,6 +107,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
     
     val orders by lazy { this@PlatformClient.orders.ApplicationClient(applicationId,config)}
+    
+    val orderManage by lazy { this@PlatformClient.orderManage.ApplicationClient(applicationId,config)}
     
     }
 

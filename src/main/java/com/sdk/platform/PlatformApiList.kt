@@ -896,6 +896,10 @@ interface OrderApiList {
     fun getOrderDetails(@Path("company_id") companyId: String, @Query("order_id") orderId: String?, @Query("next") next: String?, @Query("previous") previous: String?)
     : Deferred<Response<OrderDetails>>
     
+    @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/details")
+    fun getOrderDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String?, @Query("next") next: String?, @Query("previous") previous: String?)
+    : Deferred<Response<OrderDetails>>
+    
     @GET ("/service/platform/order/v1.0/company/{company_id}/orders/picklist")
     fun getPicklistOrdersByCompanyId(@Path("company_id") companyId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("q") q: String?, @Query("stage") stage: String?, @Query("sales_channels") salesChannels: String?, @Query("order_id") orderId: String?, @Query("stores") stores: String?, @Query("status") status: String?, @Query("shorten_urls") shortenUrls: Boolean?, @Query("filter_type") filterType: String?)
     : Deferred<Response<OrderPicklistListing>>
@@ -2062,7 +2066,7 @@ interface OrdersApiList {
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/shipment-details/{shipment_id}")
     fun getShipmentDetails(@Path("company_id") companyId: String, @Path("shipment_id") shipmentId: String)
-    : Deferred<Response<ShipmentDetailsResponse>>
+    : Deferred<Response<ShipmentInfoResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/lane-config/")
     fun getLaneConfig(@Path("company_id") companyId: String, @Query("super_lane") superLane: String?, @Query("group_entity") groupEntity: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
@@ -2087,6 +2091,18 @@ interface OrdersApiList {
     @GET ("/service/platform/orders/v1.0/company/{company_id}/filter-listing")
     fun getfilters(@Path("company_id") companyId: String, @Query("view") view: String)
     : Deferred<Response<FiltersResponse>>
+    
+}
+
+interface OrderManageApiList {
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/status-internal")
+    fun statusInternalUpdate(@Path("company_id") companyId: String,@Body body: PlatformShipmentStatusInternal)
+    : Deferred<Response<ResponseDetail>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("bag_id") bagId: Int)
+    : Deferred<Response<ShipmentHistoryResponse>>
     
 }
         
