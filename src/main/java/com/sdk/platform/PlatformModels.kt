@@ -7193,9 +7193,14 @@ data class PlatformSchema(
     var deleteAccountDay: Int?=null,
     
     @SerializedName("delete_account_reasons")
-    var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null
+    var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
+    
+    @SerializedName("delete_account_consent")
+    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -7585,6 +7590,26 @@ data class DeleteAccountReasons(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: DeleteAccountConsent
+*/
+@Parcelize
+data class DeleteAccountConsent(
+    
+    
+    
+    @SerializedName("consent_text")
+    var consentText: String?=null
+    
+): Parcelable {
     
     
     
