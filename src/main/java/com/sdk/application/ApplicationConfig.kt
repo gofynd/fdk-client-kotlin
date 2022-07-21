@@ -1,5 +1,6 @@
 package com.sdk.application
 
+import okhttp3.Interceptor
 import java.net.CookieStore
 
 class ApplicationConfig(
@@ -11,7 +12,8 @@ class ApplicationConfig(
     var languageCode: String = "en-IN",
     var currencyCode: String = "INR",
     var debuggable: Boolean = false,
-    var extraHeaders: HashMap<String,String>? = null
+    var extraHeaders: HashMap<String,String>? = null,
+    var interceptors: List<Interceptor>? = null
 ) {
     init {
         val regex = "^[0-9a-fA-F]{24}$"

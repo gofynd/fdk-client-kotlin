@@ -1,5 +1,6 @@
 package com.sdk.universal
 import java.net.CookieStore
+import okhttp3.Interceptor
 
 
 class PublicConfig(
@@ -10,5 +11,6 @@ class PublicConfig(
     var persistentCookieStore: CookieStore?=null,
     var applicationToken: String?,
     var debuggable: Boolean = false,
-    var extraHeaders: HashMap<String,String>
+    var extraHeaders: HashMap<String,String>,
+    var interceptors: List<Interceptor>? = null
 )
