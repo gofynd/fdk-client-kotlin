@@ -460,6 +460,11 @@ interface UserApiList {
     : Deferred<Response<VerifyEmailSuccess>>
     
     
+    @POST 
+    fun archiveUser(@Url url1: String?   ,@Body body: ArchiveApplicationUserRequestSchema)
+    : Deferred<Response<ArchiveUserSuccess>>
+    
+    
     @GET 
     fun logout(@Url url1: String?   )
     : Deferred<Response<LogoutSuccess>>
