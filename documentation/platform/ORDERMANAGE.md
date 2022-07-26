@@ -195,8 +195,8 @@ It shows the journey of the shipment!
  | ---------- | ---- | -------- | ----------- |
  | storeInvoiceId | String? |  yes  |  |
  | products | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
- | dataUpdate | HashMap<String,Any>? |  yes  |  |
  | reason | ArrayList<Int>? |  yes  |  |
+ | dataUpdate | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -231,9 +231,9 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | forceTransition | Boolean? |  yes  |  |
- | statuses | [Statuses](#Statuses)? |  yes  |  |
  | task | Boolean? |  yes  |  |
+ | statuses | [Statuses](#Statuses)? |  yes  |  |
+ | forceTransition | Boolean? |  yes  |  |
 
 ---
 
@@ -268,15 +268,15 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ticketUrl | String? |  yes  |  |
- | type | String |  no  |  |
- | message | String |  no  |  |
- | l3Detail | String? |  yes  |  |
- | ticketId | String? |  yes  |  |
  | createdat | String |  no  |  |
- | l1Detail | String? |  yes  |  |
- | user | String |  no  |  |
  | l2Detail | String? |  yes  |  |
+ | ticketUrl | String? |  yes  |  |
+ | ticketId | String? |  yes  |  |
+ | type | String |  no  |  |
+ | l3Detail | String? |  yes  |  |
+ | user | String |  no  |  |
+ | l1Detail | String? |  yes  |  |
+ | message | String |  no  |  |
 
 ---
 
