@@ -28,9 +28,6 @@ class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
-        config.interceptors?.let {
-            interceptorList.addAll(it)
-        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(

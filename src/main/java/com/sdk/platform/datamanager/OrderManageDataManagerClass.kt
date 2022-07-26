@@ -11,13 +11,13 @@ import com.sdk.platform.*
 
 
 
-class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
+class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
-    private val auditTrailApiList by lazy {
-        generateauditTrailApiList()
+    private val orderManageApiList by lazy {
+        generateorderManageApiList()
     }
     
-    private fun generateauditTrailApiList(): AuditTrailApiList? {
+    private fun generateorderManageApiList(): OrderManageApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -33,30 +33,18 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformAuditTrail",
+            namespace = "PlatformOrderManage",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(AuditTrailApiList::class.java) as? AuditTrailApiList
+        return retrofitHttpClient?.initializeRestClient(OrderManageApiList::class.java) as? OrderManageApiList
     }
     
     
-    suspend fun getAuditLogs(qs: String)
-    : Deferred<Response<LogSchemaResponse>>? {
+    suspend fun statusInternalUpdate(body: PlatformShipmentStatusInternal)
+    : Deferred<Response<ResponseDetail>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.getAuditLogs(
-        companyId = config.companyId, qs = qs )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createAuditLog(body: RequestBodyAuditLog)
-    : Deferred<Response<CreateLogResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.createAuditLog(
+            orderManageApiList?.statusInternalUpdate(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -64,24 +52,12 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     }
     
     
-    suspend fun getAuditLog(id: String)
-    : Deferred<Response<LogSchemaResponse>>? {
+    suspend fun getShipmentHistory(bagId: Int)
+    : Deferred<Response<ShipmentHistoryResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.getAuditLog(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getEntityTypes()
-    : Deferred<Response<EntityTypesResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.getEntityTypes(
-        companyId = config.companyId )
+            orderManageApiList?.getShipmentHistory(
+        companyId = config.companyId, bagId = bagId )
         } else {
             null
         } 
@@ -90,8 +66,6 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
     
     
     

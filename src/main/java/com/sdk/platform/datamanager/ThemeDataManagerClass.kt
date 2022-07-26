@@ -28,9 +28,6 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
-        config.interceptors?.let {
-            interceptorList.addAll(it)
-        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -41,6 +38,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         )
         return retrofitHttpClient?.initializeRestClient(ThemeApiList::class.java) as? ThemeApiList
     }
+    
     
     
     
@@ -294,6 +292,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ThemesSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.unarchiveTheme(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getThemeLastModified(themeId: String)
+    : Deferred<Response<Void>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getThemeLastModified(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
             null
         }

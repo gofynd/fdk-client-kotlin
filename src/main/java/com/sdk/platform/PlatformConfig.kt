@@ -1,6 +1,5 @@
 package com.sdk.platform
 
-import okhttp3.Interceptor
 import com.sdk.common.BaseRepository
 import java.net.CookieStore
 
@@ -12,8 +11,7 @@ class PlatformConfig(
     var apiSecret: String? = null,
     val persistentCookieStore: CookieStore?=null,
     var debuggable: Boolean = false,
-    var extraHeaders: HashMap<String,String>,
-    var interceptors: List<Interceptor>? = null
+    var extraHeaders: HashMap<String,String>
 ) : BaseRepository() {
 
 

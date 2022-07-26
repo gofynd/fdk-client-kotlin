@@ -28,9 +28,6 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
-        config.interceptors?.let {
-            interceptorList.addAll(it)
-        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(

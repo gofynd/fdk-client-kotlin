@@ -11,13 +11,13 @@ import com.sdk.platform.*
 
 
 
-class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
+class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
-    private val auditTrailApiList by lazy {
-        generateauditTrailApiList()
+    private val orderInvoiceEngineApiList by lazy {
+        generateorderInvoiceEngineApiList()
     }
     
-    private fun generateauditTrailApiList(): AuditTrailApiList? {
+    private fun generateorderInvoiceEngineApiList(): OrderInvoiceEngineApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -33,30 +33,18 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformAuditTrail",
+            namespace = "PlatformOrderInvoiceEngine",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(AuditTrailApiList::class.java) as? AuditTrailApiList
+        return retrofitHttpClient?.initializeRestClient(OrderInvoiceEngineApiList::class.java) as? OrderInvoiceEngineApiList
     }
     
     
-    suspend fun getAuditLogs(qs: String)
-    : Deferred<Response<LogSchemaResponse>>? {
+    suspend fun generateBulkPackageLabel(body: GenerateBulkPackageLabel)
+    : Deferred<Response<SuccessResponseGenerateBulk>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.getAuditLogs(
-        companyId = config.companyId, qs = qs )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createAuditLog(body: RequestBodyAuditLog)
-    : Deferred<Response<CreateLogResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.createAuditLog(
+            orderInvoiceEngineApiList?.generateBulkPackageLabel(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -64,23 +52,35 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
     }
     
     
-    suspend fun getAuditLog(id: String)
-    : Deferred<Response<LogSchemaResponse>>? {
+    suspend fun generateBulkBoxLabel(body: GenerateBulkBoxLabel)
+    : Deferred<Response<SuccessResponseGenerateBulk>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.getAuditLog(
-        companyId = config.companyId, id = id )
+            orderInvoiceEngineApiList?.generateBulkBoxLabel(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
     }
     
     
-    suspend fun getEntityTypes()
-    : Deferred<Response<EntityTypesResponse>>? {
+    suspend fun getLabelStatus()
+    : Deferred<Response<StatusSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            auditTrailApiList?.getEntityTypes(
+            orderInvoiceEngineApiList?.getLabelStatus(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getLabelPresignedURL()
+    : Deferred<Response<SignedSuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderInvoiceEngineApiList?.getLabelPresignedURL(
         companyId = config.companyId )
         } else {
             null
