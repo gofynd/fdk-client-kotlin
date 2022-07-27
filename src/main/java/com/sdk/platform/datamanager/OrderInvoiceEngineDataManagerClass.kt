@@ -64,24 +64,24 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     }
     
     
-    suspend fun getLabelStatus()
+    suspend fun getLabelStatus(uid: String)
     : Deferred<Response<StatusSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderInvoiceEngineApiList?.getLabelStatus(
-        companyId = config.companyId )
+        companyId = config.companyId, uid = uid )
         } else {
             null
         } 
     }
     
     
-    suspend fun getLabelPresignedURL()
+    suspend fun getLabelPresignedURL(uid: String)
     : Deferred<Response<SignedSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderInvoiceEngineApiList?.getLabelPresignedURL(
-        companyId = config.companyId )
+        companyId = config.companyId, uid = uid )
         } else {
             null
         } 

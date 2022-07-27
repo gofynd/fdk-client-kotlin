@@ -141,7 +141,7 @@ Get Staus of Label generations
 
 
 ```kotlin
-client.orderinvoiceengine.getLabelStatus().safeAwait{ response, error->
+client.orderinvoiceengine.getLabelStatus(uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -153,6 +153,11 @@ client.orderinvoiceengine.getLabelStatus().safeAwait{ response, error->
 
 
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| uid | String | yes | UID given at time of generate request |  
 
 
 
@@ -196,7 +201,7 @@ Get Presigned URL to download labels
 
 
 ```kotlin
-client.orderinvoiceengine.getLabelPresignedURL().safeAwait{ response, error->
+client.orderinvoiceengine.getLabelPresignedURL(uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -208,6 +213,11 @@ client.orderinvoiceengine.getLabelPresignedURL().safeAwait{ response, error->
 
 
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| uid | String | yes | UID given at time of generate request |  
 
 
 
