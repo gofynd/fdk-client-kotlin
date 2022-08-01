@@ -61,6 +61,9 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
+        config.interceptors?.let {
+            interceptorList.addAll(it)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -97,12 +100,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentReasons(shipmentId: String): Deferred<Response<ShipmentReasons>>? {
+    fun getShipmentReasons(shipmentId: String, bagId: Int?=null): Deferred<Response<ShipmentReasons>>? {
         var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getShipmentReasons(fullUrl   )}
+        return orderApiList?.getShipmentReasons(fullUrl     ,  bagId = bagId)}
 
     
     
