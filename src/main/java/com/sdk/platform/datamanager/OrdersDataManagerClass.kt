@@ -115,12 +115,12 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
     }
     
     
-    suspend fun getMetricCount()
+    suspend fun getMetricCount(fromDate: String?=null, toDate: String?=null)
     : Deferred<Response<MetricCountResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             ordersApiList?.getMetricCount(
-        companyId = config.companyId )
+        companyId = config.companyId, fromDate = fromDate, toDate = toDate )
         } else {
             null
         } 

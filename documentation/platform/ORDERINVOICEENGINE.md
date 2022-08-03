@@ -8,6 +8,7 @@
 Handles financial pdf generation of Fulfilment
 * [generateBulkPackageLabel](#generatebulkpackagelabel)
 * [generateBulkBoxLabel](#generatebulkboxlabel)
+* [generateBulkShipmentLabel](#generatebulkshipmentlabel)
 * [getLabelStatus](#getlabelstatus)
 * [getLabelPresignedURL](#getlabelpresignedurl)
 
@@ -102,6 +103,65 @@ client.orderinvoiceengine.generateBulkBoxLabel(body: body).safeAwait{ response, 
 
 
 Use this API to generate label for Boxes
+
+*Returned Response:*
+
+
+
+
+[SuccessResponseGenerateBulk](#SuccessResponseGenerateBulk)
+
+Sucsess Response, Labels will be generated
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### generateBulkShipmentLabel
+Generate Labels for Shipments which contains packaged
+
+
+
+
+```kotlin
+client.orderinvoiceengine.generateBulkShipmentLabel(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [GenerateBulkShipmentLabel](#GenerateBulkShipmentLabel) | yes | Request body |
+
+
+Use this API to generate label for Shipments
 
 *Returned Response:*
 
@@ -447,6 +507,37 @@ Sucess Response, Presigned URL of Labels
 
  
  
+ #### [ShippingAddress](#ShippingAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address1 | String |  no  |  |
+ | city | String |  no  |  |
+ | state | String |  no  |  |
+ | country | String |  no  |  |
+ | pincode | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [SellerAddress](#SellerAddress)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | address1 | String |  no  |  |
+ | city | String |  no  |  |
+ | state | String |  no  |  |
+ | country | String |  no  |  |
+ | pincode | String |  no  |  |
+
+---
+
+
+ 
+ 
  #### [BoxDetails](#BoxDetails)
 
  | Properties | Type | Nullable | Description |
@@ -456,6 +547,25 @@ Sucess Response, Presigned URL of Labels
  | packageCount | String |  no  |  |
  | dimension | String |  no  |  |
  | weight | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentDetails](#ShipmentDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shipmentNo | String |  no  |  |
+ | appointmentNo | String |  no  |  |
+ | totalSku | String |  no  |  |
+ | itemQty | String |  no  |  |
+ | noOfBoxes | String |  no  |  |
+ | shippingTo | String |  no  |  |
+ | gstinNumber | String |  no  |  |
+ | shippingAddress | [ShippingAddress](#ShippingAddress) |  no  |  |
+ | sellerAddress | [SellerAddress](#SellerAddress) |  no  |  |
 
 ---
 
@@ -472,6 +582,20 @@ Sucess Response, Presigned URL of Labels
  | sellerName | String |  no  |  |
  | templateId | Double |  no  |  |
  | boxDetails | ArrayList<[BoxDetails](#BoxDetails)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GenerateBulkShipmentLabel](#GenerateBulkShipmentLabel)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | labelType | String |  no  |  |
+ | uid | String |  no  |  |
+ | templateId | Double |  no  |  |
+ | shipments | ArrayList<[ShipmentDetails](#ShipmentDetails)> |  no  |  |
 
 ---
 

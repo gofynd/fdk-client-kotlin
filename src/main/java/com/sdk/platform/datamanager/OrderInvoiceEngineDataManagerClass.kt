@@ -67,6 +67,18 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     }
     
     
+    suspend fun generateBulkShipmentLabel(body: GenerateBulkShipmentLabel)
+    : Deferred<Response<SuccessResponseGenerateBulk>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderInvoiceEngineApiList?.generateBulkShipmentLabel(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getLabelStatus(uid: String)
     : Deferred<Response<StatusSuccessResponse>>? {
         
@@ -93,6 +105,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
