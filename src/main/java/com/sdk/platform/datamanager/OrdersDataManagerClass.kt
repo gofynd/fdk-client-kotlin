@@ -138,6 +138,7 @@ class OrdersDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
         } 
     }
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -149,6 +150,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
+    
+    suspend fun getAppOrderShipmentDetails(orderId: String)
+    : Deferred<Response<ShipmentDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                ordersApiList?.getAppOrderShipmentDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
+        } else {
+            null
+        }
+    }
     
 }
 }
