@@ -6,4 +6,8 @@ class PublicClient(val config:PublicConfig, val unauthorizedAction: ((url: Strin
     
     val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
     
+    val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
+    
+    val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
+    
 }

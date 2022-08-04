@@ -24,6 +24,10 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
     
+    val catalog by lazy { CatalogDataManagerClass(config, unauthorizedAction)}
+    
+    val companyProfile by lazy { CompanyProfileDataManagerClass(config, unauthorizedAction)}
+    
     val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
@@ -73,6 +77,10 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
     val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
+    
+    val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
+    
+    val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
     
     val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
     

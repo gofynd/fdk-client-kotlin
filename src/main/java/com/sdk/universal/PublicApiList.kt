@@ -19,6 +19,10 @@ interface ConfigurationApiList {
     fun getLocations(@Url url1: String?    ,   @Query("location_type") locationType: String?, @Query("id") id: String?)
     : Deferred<Response<Locations>>
     
+}
+
+interface WebhookApiList {
+    
     
     @GET 
     fun fetchAllWebhookEvents(@Url url1: String?   )
@@ -28,6 +32,10 @@ interface ConfigurationApiList {
     @POST 
     fun queryWebhookEventDetails(@Url url1: String?   ,@Body body: ArrayList<EventConfigBase>)
     : Deferred<Response<EventConfigResponse>>
+    
+}
+
+interface InventoryApiList {
     
     
     @GET 

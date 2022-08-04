@@ -9,19 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
     
-    private val configurationApiList by lazy {
-        generateconfigurationApiList()
+    private val webhookApiList by lazy {
+        generatewebhookApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application"?.substring(1)
+                    _relativeUrls["fetchAllWebhookEvents"] = "/service/common/webhook/v1.0/events"?.substring(1)
             
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location"?.substring(1)
+                    _relativeUrls["queryWebhookEventDetails"] = "/service/common/webhook/v1.0/events/query-event-details"?.substring(1)
             
     }
 
@@ -32,7 +32,7 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
     }
     
 
-    private fun generateconfigurationApiList(): ConfigurationApiList? {
+    private fun generatewebhookApiList(): WebhookApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = PublicHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -51,23 +51,23 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PublicConfiguration",
+            namespace = "PublicWebhook",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
+        return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }
     
-    fun searchApplication(authorization: String?=null, query: String?=null): Deferred<Response<ApplicationResponse>>? {
-        var fullUrl : String? = _relativeUrls["searchApplication"] 
+    fun fetchAllWebhookEvents(): Deferred<Response<EventConfigResponse>>? {
+        var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"] 
         
-        return configurationApiList?.searchApplication(fullUrl    ,  authorization = authorization,    query = query)}
+        return webhookApiList?.fetchAllWebhookEvents(fullUrl  )}
 
     
     
-    fun getLocations(locationType: String?=null, id: String?=null): Deferred<Response<Locations>>? {
-        var fullUrl : String? = _relativeUrls["getLocations"] 
+    fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>): Deferred<Response<EventConfigResponse>>? {
+        var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"] 
         
-        return configurationApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
+        return webhookApiList?.queryWebhookEventDetails(fullUrl  ,body = body)}
 
     
     
