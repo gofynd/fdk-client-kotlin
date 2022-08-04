@@ -6,10 +6,9 @@ import com.google.gson.annotations.SerializedName
 
 
 
-
     /*
         Enum: SubscriberStatus
-        Used By: Webhook
+        Used By: Configuration
     */
     enum class SubscriberStatus(val value:String){
         
@@ -31,5 +30,4 @@ import com.google.gson.annotations.SerializedName
             }
         }
     }
-
 

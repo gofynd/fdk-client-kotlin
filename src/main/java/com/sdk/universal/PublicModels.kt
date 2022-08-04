@@ -647,8 +647,6 @@ data class Locations(
 }
 
 
-
-
 /*
     Model: EventConfig
 */
@@ -1137,8 +1135,6 @@ data class EventConfigBase(
     
     
 }
-
-
 
 
 /*

@@ -23,6 +23,16 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
             
                     _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location"?.substring(1)
             
+                    _relativeUrls["fetchAllWebhookEvents"] = "/service/common/webhook/v1.0/events"?.substring(1)
+            
+                    _relativeUrls["queryWebhookEventDetails"] = "/service/common/webhook/v1.0/events/query-event-details"?.substring(1)
+            
+                    _relativeUrls["getJobConfigByIntegrationType"] = "/service/common/inventory/v1.0/company/job/config"?.substring(1)
+            
+                    _relativeUrls["getJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
+            
+                    _relativeUrls["saveJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -68,6 +78,41 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getLocations"] 
         
         return configurationApiList?.getLocations(fullUrl    ,  locationType = locationType,    id = id)}
+
+    
+    
+    fun fetchAllWebhookEvents(): Deferred<Response<EventConfigResponse>>? {
+        var fullUrl : String? = _relativeUrls["fetchAllWebhookEvents"] 
+        
+        return configurationApiList?.fetchAllWebhookEvents(fullUrl  )}
+
+    
+    
+    fun queryWebhookEventDetails(body: ArrayList<EventConfigBase>): Deferred<Response<EventConfigResponse>>? {
+        var fullUrl : String? = _relativeUrls["queryWebhookEventDetails"] 
+        
+        return configurationApiList?.queryWebhookEventDetails(fullUrl  ,body = body)}
+
+    
+    
+    fun getJobConfigByIntegrationType(integrationType: String, disable: Boolean?=null): Deferred<Response<ResponseEnvelopeListJobConfigDTO>>? {
+        var fullUrl : String? = _relativeUrls["getJobConfigByIntegrationType"] 
+        
+        return configurationApiList?.getJobConfigByIntegrationType(fullUrl    ,  integrationType = integrationType,    disable = disable)}
+
+    
+    
+    fun getJobCodesMetrics(dailyJob: Boolean?=null, jobCode: String?=null): Deferred<Response<ResponseEnvelopeObject>>? {
+        var fullUrl : String? = _relativeUrls["getJobCodesMetrics"] 
+        
+        return configurationApiList?.getJobCodesMetrics(fullUrl    ,  dailyJob = dailyJob,    jobCode = jobCode)}
+
+    
+    
+    fun saveJobCodesMetrics(body: EmailJobMetrics): Deferred<Response<ResponseEnvelopeEmailJobMetrics>>? {
+        var fullUrl : String? = _relativeUrls["saveJobCodesMetrics"] 
+        
+        return configurationApiList?.saveJobCodesMetrics(fullUrl  ,body = body)}
 
     
     
