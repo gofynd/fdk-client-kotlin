@@ -91,11 +91,11 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createOneTimeSubscriptionCharge(extensionId: String,body: CreateOneTimeSubscriptionCharge)
-    : Deferred<Response<CreateSubscriptionResponse>>? {
+    suspend fun createOneTimeCharge(extensionId: String,body: CreateOneTimeCharge)
+    : Deferred<Response<CreateOneTimeChargeResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            billingApiList?.createOneTimeSubscriptionCharge(
+            billingApiList?.createOneTimeCharge(
         companyId = config.companyId, extensionId = extensionId, body = body)
         } else {
             null

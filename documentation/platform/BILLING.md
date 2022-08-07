@@ -10,7 +10,7 @@ Handle platform subscription
 * [createSubscriptionCharge](#createsubscriptioncharge)
 * [getSubscriptionCharge](#getsubscriptioncharge)
 * [cancelSubscriptionCharge](#cancelsubscriptioncharge)
-* [createOneTimeSubscriptionCharge](#createonetimesubscriptioncharge)
+* [createOneTimeCharge](#createonetimecharge)
 * [getInvoices](#getinvoices)
 * [getInvoiceById](#getinvoicebyid)
 * [getCustomerDetail](#getcustomerdetail)
@@ -268,14 +268,14 @@ Success
 ---
 
 
-### createOneTimeSubscriptionCharge
+### createOneTimeCharge
 Create one time subscription charge
 
 
 
 
 ```kotlin
-client.billing.createOneTimeSubscriptionCharge(extensionId: extensionId, body: body).safeAwait{ response, error->
+client.billing.createOneTimeCharge(extensionId: extensionId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -292,7 +292,7 @@ client.billing.createOneTimeSubscriptionCharge(extensionId: extensionId, body: b
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | extensionId | String | yes | Extension _id |  
-| body | [CreateOneTimeSubscriptionCharge](#CreateOneTimeSubscriptionCharge) | yes | Request body |
+| body | [CreateOneTimeCharge](#CreateOneTimeCharge) | yes | Request body |
 
 
 Register one time subscription charge for a seller of your extension.
@@ -302,7 +302,7 @@ Register one time subscription charge for a seller of your extension.
 
 
 
-[CreateSubscriptionResponse](#CreateSubscriptionResponse)
+[CreateOneTimeChargeResponse](#CreateOneTimeChargeResponse)
 
 Success
 
@@ -1808,7 +1808,7 @@ Success
 
  
  
- #### [CreateOneTimeSubscriptionCharge](#CreateOneTimeSubscriptionCharge)
+ #### [CreateOneTimeCharge](#CreateOneTimeCharge)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
@@ -1900,7 +1900,7 @@ Success
 
  
  
- #### [OneTimeEntitySubscription](#OneTimeEntitySubscription)
+ #### [OneTimeChargeEntity](#OneTimeChargeEntity)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
@@ -1922,7 +1922,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | subscription | [OneTimeEntitySubscription](#OneTimeEntitySubscription)? |  yes  |  |
+ | subscription | [OneTimeChargeEntity](#OneTimeChargeEntity)? |  yes  |  |
  | confirmUrl | String? |  yes  |  |
 
 ---
