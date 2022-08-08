@@ -28,6 +28,9 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
+        config.interceptors?.let {
+            interceptorList.addAll(it)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -55,7 +58,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getCustomers(q: String?=null, pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getCustomers(q: HashMap<String,Any>?=null, pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<CustomerListResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getCustomers(companyId = config.companyId , applicationId = applicationId , q = q, pageSize = pageSize, pageNo = pageNo )
@@ -65,7 +68,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun searchUsers(q: HashMap<String,Any>?=null)
+    suspend fun searchUsers(q: String?=null)
     : Deferred<Response<UserSearchResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q )

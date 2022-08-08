@@ -46,7 +46,7 @@ client.application("<APPLICATION_ID>").user.getCustomers(q: q, pageSize: pageSiz
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| q | String? | no | The search query. Mobile number or email ID of a customer. |   
+| q | HashMap<String,Any>? | no | The search query. Mobile number or email ID of a customer. |   
 | pageSize | Int? | no | The number of items to retrieve in each page. Default value is 10. |   
 | pageNo | Int? | no | The page number to navigate through the given set of results. Default value is 1.  |  
 
@@ -163,7 +163,7 @@ client.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{ respons
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| q | HashMap<String,Any>? | no | The search query. Mobile number or email ID of a customer. |  
+| q | String? | no | The search query. Mobile number or email ID of a customer. |  
 
 
 
