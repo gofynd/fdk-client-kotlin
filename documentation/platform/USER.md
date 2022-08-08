@@ -11,6 +11,7 @@ Authentication Service
 * [createUser](#createuser)
 * [blockOrUnblockUsers](#blockorunblockusers)
 * [archiveUser](#archiveuser)
+* [unArchiveUser](#unarchiveuser)
 * [updateUser](#updateuser)
 * [createUserSession](#createusersession)
 * [getActiveSessions](#getactivesessions)
@@ -465,6 +466,67 @@ Success
 ---
 
 
+### unArchiveUser
+unarchive user who archived from applcation
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").user.unArchiveUser(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [UnArchiveUserRequestSchema](#UnArchiveUserRequestSchema) | yes | Request body |
+
+
+unarchive user who archived from applcation
+
+*Returned Response:*
+
+
+
+
+[UnArchiveUserSuccess](#UnArchiveUserSuccess)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### updateUser
 Update user
 
@@ -881,6 +943,18 @@ Success. Returns a JSON object containing the all the platform configurations. R
       "appId": "token_123"
     }
   },
+  "support_email": "test@gmail.com",
+  "delete_account_reasons": [
+    {
+      "reason_text": "test",
+      "reason_id": "123",
+      "show_text_area": true
+    }
+  ],
+  "delete_account_day": 7,
+  "delete_account_consent": {
+    "consent_text": ""
+  },
   "_id": "5e04a5e5220bc15839ad9bc0",
   "created_at": "2019-12-26T12:21:57.878Z",
   "updated_at": "2020-08-13T14:31:09.878Z",
@@ -1005,6 +1079,18 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
       "appId": "token_123"
     }
   },
+  "support_email": "test@gmail.com",
+  "delete_account_reasons": [
+    {
+      "reason_text": "test",
+      "reason_id": "123",
+      "show_text_area": true
+    }
+  ],
+  "delete_account_day": 7,
+  "delete_account_consent": {
+    "consent_text": ""
+  },
   "_id": "5e04a5e5220bc15839ad9bc0",
   "created_at": "2019-12-26T12:21:57.878Z",
   "updated_at": "2020-08-13T14:31:09.878Z",
@@ -1047,6 +1133,34 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | userId | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ArchiveApplicationUserRequestSchema](#ArchiveApplicationUserRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | userId | String? |  yes  |  |
+ | reason | String? |  yes  |  |
+ | reasonId | String? |  yes  |  |
+ | requestId | String? |  yes  |  |
+ | otp | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UnArchiveUserRequestSchema](#UnArchiveUserRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | userId | String? |  yes  |  |
+ | reason | String? |  yes  |  |
+ | reasonId | String? |  yes  |  |
 
 ---
 
@@ -1496,6 +1610,17 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
 
  
  
+ #### [UnArchiveUserSuccess](#UnArchiveUserSuccess)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [OtpSuccess](#OtpSuccess)
 
  | Properties | Type | Nullable | Description |
@@ -1900,6 +2025,10 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | register | Boolean? |  yes  |  |
  | mobileImage | String? |  yes  |  |
  | desktopImage | String? |  yes  |  |
+ | supportEmail | String? |  yes  |  |
+ | deleteAccountDay | Int? |  yes  |  |
+ | deleteAccountReasons | ArrayList<[DeleteAccountReasons](#DeleteAccountReasons)>? |  yes  |  |
+ | deleteAccountConsent | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -2047,6 +2176,30 @@ Success. Returns a JSON object with the updated platform configurations. Refer `
  | facebook | [Facebook](#Facebook)? |  yes  |  |
  | accountKit | [Accountkit](#Accountkit)? |  yes  |  |
  | google | [Google](#Google)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DeleteAccountReasons](#DeleteAccountReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | reasonText | String? |  yes  |  |
+ | reasonId | String? |  yes  |  |
+ | showTextArea | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [DeleteAccountConsent](#DeleteAccountConsent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | consentText | String? |  yes  |  |
 
 ---
 

@@ -103,6 +103,18 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun getChargeDetails(extensionId: String, chargeId: String)
+    : Deferred<Response<OneTimeChargeEntity>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getChargeDetails(
+        companyId = config.companyId, extensionId = extensionId, chargeId = chargeId )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getInvoices()
     : Deferred<Response<Invoices>>? {
         
@@ -201,6 +213,7 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
