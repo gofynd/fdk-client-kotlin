@@ -909,7 +909,7 @@ interface OrderApiList {
     : Deferred<Response<OrderDetails>>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/application/{application_id}/orders/details")
-    fun getOrderDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String?, @Query("next") next: String?, @Query("previous") previous: String?)
+    fun getOrderDetails1(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String?, @Query("next") next: String?, @Query("previous") previous: String?)
     : Deferred<Response<OrderDetails>>
     
     @GET ("/service/platform/order/v1.0/company/{company_id}/orders/picklist")
@@ -967,6 +967,10 @@ interface OrderApiList {
     @GET ("/service/platform/order/v1.0/company/{company_id}/voice/click-to-call")
     fun voiceClickToCall(@Path("company_id") companyId: String, @Query("caller") caller: String, @Query("receiver") receiver: String)
     : Deferred<Response<GetClickToCallResponse>>
+    
+    @POST ("/service/platform/order/v1.0/company/{company_id}/create-order")
+    fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>
     
 }
 
