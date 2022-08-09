@@ -79,11 +79,35 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     }
     
     
+    suspend fun generateNoc(body: GenerateNoc)
+    : Deferred<Response<SuccessResponseGenerateBulk>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderInvoiceEngineApiList?.generateNoc(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getLabelStatus(uid: String)
     : Deferred<Response<StatusSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderInvoiceEngineApiList?.getLabelStatus(
+        companyId = config.companyId, uid = uid )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getNocStatus(uid: String)
+    : Deferred<Response<StatusSuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderInvoiceEngineApiList?.getNocStatus(
         companyId = config.companyId, uid = uid )
         } else {
             null
@@ -102,9 +126,24 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
         } 
     }
     
+    
+    suspend fun getNocPresignedURL(uid: String)
+    : Deferred<Response<SignedSuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderInvoiceEngineApiList?.getNocPresignedURL(
+        companyId = config.companyId, uid = uid )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
     
     
     

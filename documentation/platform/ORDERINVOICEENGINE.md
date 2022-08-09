@@ -9,8 +9,11 @@ Handles financial pdf generation of Fulfilment
 * [generateBulkPackageLabel](#generatebulkpackagelabel)
 * [generateBulkBoxLabel](#generatebulkboxlabel)
 * [generateBulkShipmentLabel](#generatebulkshipmentlabel)
+* [generateNoc](#generatenoc)
 * [getLabelStatus](#getlabelstatus)
+* [getNocStatus](#getnocstatus)
 * [getLabelPresignedURL](#getlabelpresignedurl)
+* [getNocPresignedURL](#getnocpresignedurl)
 
 
 
@@ -194,6 +197,75 @@ Sucsess Response, Labels will be generated
 ---
 
 
+### generateNoc
+Generate NOC for Seller having access to a fullfillment center
+
+
+
+
+```kotlin
+client.orderinvoiceengine.generateNoc(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [GenerateNoc](#GenerateNoc) | yes | Request body |
+
+
+Use this API to generate NOC for Seller
+
+*Returned Response:*
+
+
+
+
+[SuccessResponseGenerateBulk](#SuccessResponseGenerateBulk)
+
+Sucsess Response, NOC Pdf will be generated
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success response</i></summary>
+
+```json
+{
+  "value": {
+    "status": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getLabelStatus
 Get Staus of Label generations
 
@@ -254,6 +326,77 @@ Sucess Response, Status Of Label generation
 ---
 
 
+### getNocStatus
+Get Staus of NOC generation
+
+
+
+
+```kotlin
+client.orderinvoiceengine.getNocStatus(uid: uid).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| uid | String | yes | UID given at time of generate request |  
+
+
+
+Use this API to fetch status of PDF generation of NOC
+
+*Returned Response:*
+
+
+
+
+[StatusSuccessResponse](#StatusSuccessResponse)
+
+Sucess Response, Status Of NOC Pdf generation
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success response</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "status": "created"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getLabelPresignedURL
 Get Presigned URL to download labels
 
@@ -301,6 +444,78 @@ Sucess Response, Presigned URL of Labels
 ```json
 
 ```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getNocPresignedURL
+Get Presigned URL to download NOC Pdf
+
+
+
+
+```kotlin
+client.orderinvoiceengine.getNocPresignedURL(uid: uid).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| uid | String | yes | UID given at time of generate request |  
+
+
+
+Use this API to generate Presigned URL for downloading NOC Pdf
+
+*Returned Response:*
+
+
+
+
+[SignedSuccessResponse](#SignedSuccessResponse)
+
+Sucess Response, Presigned URL of NOC Pdf
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; success response</i></summary>
+
+```json
+{
+  "value": {
+    "uid": "l27h38uy",
+    "expires_in": 300,
+    "url": "presigned-url"
+  }
+}
+```
+</details>
+
 </details>
 
 
@@ -465,7 +680,7 @@ Sucess Response, Presigned URL of Labels
  | dataPath | String? |  yes  |  |
  | schemaPath | String? |  yes  |  |
  | parameters | [BadRequestResponseGenerateBulkItemParameters](#BadRequestResponseGenerateBulkItemParameters)? |  yes  |  |
- | errorMessage | String? |  yes  |  |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -596,6 +811,23 @@ Sucess Response, Presigned URL of Labels
  | uid | String |  no  |  |
  | templateId | Double |  no  |  |
  | shipments | ArrayList<[ShipmentDetails](#ShipmentDetails)> |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GenerateNoc](#GenerateNoc)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | uid | String |  no  |  |
+ | sellerName | String |  no  |  |
+ | sellerGstin | String |  no  |  |
+ | fcGstin | String |  no  |  |
+ | templateId | Double |  no  |  |
+ | fcAddress | [SellerAddress](#SellerAddress) |  no  |  |
+ | sellerAddress | [SellerAddress](#SellerAddress) |  no  |  |
 
 ---
 
