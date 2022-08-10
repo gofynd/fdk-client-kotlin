@@ -28,6 +28,9 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
+        config.interceptors?.let {
+            interceptorList.addAll(it)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -37,6 +40,30 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
             persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
+    }
+    
+    
+    suspend fun getConfigByCompany()
+    : Deferred<Response<ResponseEnvelopeListSlingshotConfigurationDetail>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.getConfigByCompany(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun suppressStores(body: SuppressStorePayload)
+    : Deferred<Response<ResponseEnvelopeKafkaResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.suppressStores(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
     }
     
     
@@ -162,6 +189,8 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
     
     
     

@@ -19,6 +19,10 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
 
     init{
             
+                    _relativeUrls["getConfigByApiKey"] = "/service/common/inventory/v1.0/company/slingshot"?.substring(1)
+            
+                    _relativeUrls["getApiKey"] = "/service/common/inventory/v1.0/company/slingshot/apikey"?.substring(1)
+            
                     _relativeUrls["getJobByCode"] = "/service/common/inventory/v1.0/company/jobs/code/{code}"?.substring(1)
             
                     _relativeUrls["getJobConfigByIntegrationType"] = "/service/common/inventory/v1.0/company/job/config"?.substring(1)
@@ -47,6 +51,9 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
+        config.interceptors?.let {
+            interceptorList.addAll(it)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -57,6 +64,20 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
         )
         return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
     }
+    
+    fun getConfigByApiKey(apikey: String): Deferred<Response<ResponseEnvelopeSlingshotConfigurationDetail>>? {
+        var fullUrl : String? = _relativeUrls["getConfigByApiKey"] 
+        
+        return inventoryApiList?.getConfigByApiKey(fullUrl    ,  apikey = apikey)}
+
+    
+    
+    fun getApiKey(userName: String, password: String): Deferred<Response<ResponseEnvelopeApikeyModel>>? {
+        var fullUrl : String? = _relativeUrls["getApiKey"] 
+        
+        return inventoryApiList?.getApiKey(fullUrl    ,  userName = userName,    password = password)}
+
+    
     
     fun getJobByCode(code: String): Deferred<Response<ResponseEnvelopeJobConfigDTO>>? {
         var fullUrl : String? = _relativeUrls["getJobByCode"] 
