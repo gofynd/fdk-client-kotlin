@@ -1012,6 +1012,11 @@ interface OrderApiList {
     fun getInvoiceByShipmentId(@Url url1: String?    )
     : Deferred<Response<ResponseGetInvoiceShipment>>
     
+    
+    @GET 
+    fun getCreditNoteByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetCreditNoteShipment>>
+    
 }
 
 interface RewardsApiList {
@@ -1050,6 +1055,140 @@ interface RewardsApiList {
     @POST 
     fun redeemReferralCode(@Url url1: String?   ,@Body body: RedeemReferralCodeRequest)
     : Deferred<Response<RedeemReferralCodeResponse>>
+    
+}
+
+interface FeedbackApiList {
+    
+    
+    @POST 
+    fun createAbuseReport(@Url url1: String?   ,@Body body: ReportAbuseRequest)
+    : Deferred<Response<InsertResponse>>
+    
+    
+    @PUT 
+    fun updateAbuseReport(@Url url1: String?   ,@Body body: UpdateAbuseStatusRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @GET 
+    fun getAbuseReports(@Url url1: String?      ,    @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ReportAbuseGetResponse>>
+    
+    
+    @GET 
+    fun getAttributes(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<AttributeResponse>>
+    
+    
+    @POST 
+    fun createAttribute(@Url url1: String?   ,@Body body: SaveAttributeRequest)
+    : Deferred<Response<InsertResponse>>
+    
+    
+    @GET 
+    fun getAttribute(@Url url1: String?    )
+    : Deferred<Response<Attribute>>
+    
+    
+    @PUT 
+    fun updateAttribute(@Url url1: String?    ,@Body body: UpdateAttributeRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @POST 
+    fun createComment(@Url url1: String?   ,@Body body: CommentRequest)
+    : Deferred<Response<InsertResponse>>
+    
+    
+    @PUT 
+    fun updateComment(@Url url1: String?   ,@Body body: UpdateCommentRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @GET 
+    fun getComments(@Url url1: String?     ,      @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<CommentGetResponse>>
+    
+    
+    @GET 
+    fun checkEligibility(@Url url1: String?     )
+    : Deferred<Response<CheckEligibilityResponse>>
+    
+    
+    @DELETE 
+    fun deleteMedia(@Url url1: String?    ,  @Query("ids") ids: ArrayList<String>)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @POST 
+    fun createMedia(@Url url1: String?   ,@Body body: AddMediaListRequest)
+    : Deferred<Response<InsertResponse>>
+    
+    
+    @PUT 
+    fun updateMedia(@Url url1: String?   ,@Body body: UpdateMediaListRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @GET 
+    fun getMedias(@Url url1: String?      ,     @Query("id") id: String?, @Query("type") type: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<MediaGetResponse>>
+    
+    
+    @GET 
+    fun getReviewSummaries(@Url url1: String?      ,    @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ReviewMetricGetResponse>>
+    
+    
+    @POST 
+    fun createReview(@Url url1: String?   ,@Body body: UpdateReviewRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @PUT 
+    fun updateReview(@Url url1: String?   ,@Body body: UpdateReviewRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @GET 
+    fun getReviews(@Url url1: String?      ,            @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("active") active: Boolean?, @Query("approve") approve: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<ReviewGetResponse>>
+    
+    
+    @GET 
+    fun getTemplates(@Url url1: String?    ,    @Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?)
+    : Deferred<Response<TemplateGetResponse>>
+    
+    
+    @POST 
+    fun createQuestion(@Url url1: String?   ,@Body body: CreateQNARequest)
+    : Deferred<Response<InsertResponse>>
+    
+    
+    @PUT 
+    fun updateQuestion(@Url url1: String?   ,@Body body: UpdateQNARequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    
+    @GET 
+    fun getQuestionAndAnswers(@Url url1: String?      ,      @Query("id") id: String?, @Query("user_id") userId: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<QNAGetResponse>>
+    
+    
+    @GET 
+    fun getVotes(@Url url1: String?    ,     @Query("id") id: String?, @Query("ref_type") refType: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<VoteResponse>>
+    
+    
+    @POST 
+    fun createVote(@Url url1: String?   ,@Body body: VoteRequest)
+    : Deferred<Response<InsertResponse>>
+    
+    
+    @PUT 
+    fun updateVote(@Url url1: String?   ,@Body body: UpdateVoteRequest)
+    : Deferred<Response<UpdateResponse>>
     
 }
 
