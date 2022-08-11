@@ -1790,6 +1790,9 @@ data class SupportGeneralConfig(
     
     
     
+    @SerializedName("_id")
+    var id: String?=null,
+    
     @SerializedName("support_email")
     var supportEmail: CommunicationDetails?=null,
     
@@ -1809,6 +1812,8 @@ data class SupportGeneralConfig(
     var integration: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
