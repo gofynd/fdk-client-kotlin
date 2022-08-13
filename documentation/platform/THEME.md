@@ -29,7 +29,6 @@ Responsible for themes
 * [unpublishTheme](#unpublishtheme)
 * [archiveTheme](#archivetheme)
 * [unarchiveTheme](#unarchivetheme)
-* [getThemeLastModified](#getthemelastmodified)
 
 
 
@@ -35148,47 +35147,6 @@ Success. Refer `ThemesSchema` for more details.
 ---
 
 
-### getThemeLastModified
-Fetch last modified timestamp
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeLastModified(themeId: themeId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| themeId | String | yes | ID allotted to the theme. |  
-
-
-
-Use this API to fetch Last-Modified timestamp in header metadata.
-
-*Returned Response:*
-
-
-
-
-
-
-
-
----
-
-
 
 ### Schemas
 
@@ -35545,7 +35503,6 @@ Use this API to fetch Last-Modified timestamp in header metadata.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | link | String? |  yes  |  |
- | links | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -35568,7 +35525,6 @@ Use this API to fetch Last-Modified timestamp in header metadata.
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | link | String? |  yes  |  |
- | links | ArrayList<String>? |  yes  |  |
 
 ---
 

@@ -61,9 +61,9 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getFollowedListing"] = "/service/application/catalog/v1.0/follow/{collection_type}/"?.substring(1)
             
-                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/"?.substring(1)
-            
                     _relativeUrls["followById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/"?.substring(1)
+            
+                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/"?.substring(1)
             
                     _relativeUrls["getFollowerCountById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/"?.substring(1)
             
@@ -686,17 +686,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
-        var fullUrl : String? = _relativeUrls["unfollowById"] 
-        
-        fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
-        
-        return catalogApiList?.unfollowById(fullUrl    )}
-
-    
-    
     fun followById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
         var fullUrl : String? = _relativeUrls["followById"] 
         
@@ -705,6 +694,17 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
         
         return catalogApiList?.followById(fullUrl    )}
+
+    
+    
+    fun unfollowById(collectionType: String, collectionId: String): Deferred<Response<FollowPostResponse>>? {
+        var fullUrl : String? = _relativeUrls["unfollowById"] 
+        
+        fullUrl = fullUrl?.replace("{" + "collection_type" +"}",collectionType.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "collection_id" +"}",collectionId.toString())
+        
+        return catalogApiList?.unfollowById(fullUrl    )}
 
     
     
@@ -896,25 +896,25 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null): Deferred<Response<ProductSizePriceResponseV2>>? {
+    fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null, depth: String?=null): Deferred<Response<ProductSizePriceResponseV2>>? {
         var fullUrl : String? = _relativeUrls["getProductPriceBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    pincode = pincode)}
+        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    pincode = pincode,    depth = depth)}
 
     
     
-    fun getProductSellersBySlug(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponseV2>>? {
+    fun getProductSellersBySlug(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null, depth: String?=null): Deferred<Response<ProductSizeSellersResponseV2>>? {
         var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductSellersBySlug(fullUrl      ,  pincode = pincode,    strategy = strategy,    pageNo = pageNo,    pageSize = pageSize)}
+        return catalogApiList?.getProductSellersBySlug(fullUrl      ,  pincode = pincode,    strategy = strategy,    pageNo = pageNo,    pageSize = pageSize,    depth = depth)}
 
     
     
@@ -940,6 +940,11 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
             
         
+            
+            
+        
+            
+                
             
             
         
@@ -952,7 +957,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getProductSellersBySlug
     **/
-    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV2>{
+    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null, depth: String?=null) : Paginator<ProductSizeSellersResponseV2>{
 
     val paginator = Paginator<ProductSizeSellersResponseV2>()
 
@@ -969,7 +974,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 
                 fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
                 
-                catalogApiList?.getProductSellersBySlug(fullUrl , pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                catalogApiList?.getProductSellersBySlug(fullUrl , pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize, depth = depth)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

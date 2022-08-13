@@ -198,9 +198,61 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
         } 
     }
     
+    
+    suspend fun getCompanyRestrictedCategoryInfo()
+    : Deferred<Response<RestrictedCategoryMetricsResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getCompanyRestrictedCategoryInfo(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getCompanyRestrictedCategoryInfoOfOneType()
+    : Deferred<Response<RestrictedCategoryListResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.getCompanyRestrictedCategoryInfoOfOneType(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createCompanyRestrictedCategoryDocument()
+    : Deferred<Response<SuccessResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.createCompanyRestrictedCategoryDocument(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateCompanyRestrictedCategoryDocument(documentId: String)
+    : Deferred<Response<SuccessResponseSerializer>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            companyProfileApiList?.updateCompanyRestrictedCategoryDocument(
+        companyId = config.companyId, documentId = documentId )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
     
     
     

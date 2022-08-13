@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -156,12 +156,12 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
+    fun getProductPriceBySlug(@Url url1: String?      ,    @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?, @Query("depth") depth: String?)
     : Deferred<Response<ProductSizePriceResponseV2>>
     
     
     @GET 
-    fun getProductSellersBySlug(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    fun getProductSellersBySlug(@Url url1: String?      ,      @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("depth") depth: String?)
     : Deferred<Response<ProductSizeSellersResponseV2>>
     
 }
@@ -170,7 +170,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("buy_now") buyNow: Boolean?)
+    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -180,32 +180,32 @@ interface CartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT 
-    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartRequest)
+    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
     @GET 
-    fun getItemCount(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    fun getItemCount(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<CartItemCountResponse>>
     
     
     @GET 
-    fun getCoupons(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    fun getCoupons(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<GetCouponResponse>>
     
     
     @POST 
-    fun applyCoupon(@Url url1: String?    ,      @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: ApplyCouponRequest)
+    fun applyCoupon(@Url url1: String?    ,     @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Body body: ApplyCouponRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @DELETE 
-    fun removeCoupon(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    fun removeCoupon(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -215,12 +215,12 @@ interface CartApiList {
     
     
     @POST 
-    fun applyRewardPoints(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RewardPointRequest)
+    fun applyRewardPoints(@Url url1: String?    ,    @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: RewardPointRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @GET 
-    fun getAddresses(@Url url1: String?    ,       @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
+    fun getAddresses(@Url url1: String?    ,      @Query("cart_id") cartId: String?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressesResponse>>
     
     
@@ -230,7 +230,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getAddressById(@Url url1: String?     ,       @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
+    fun getAddressById(@Url url1: String?     ,      @Query("cart_id") cartId: String?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
     
@@ -245,32 +245,32 @@ interface CartApiList {
     
     
     @POST 
-    fun selectAddress(@Url url1: String?    ,     @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
+    fun selectAddress(@Url url1: String?    ,    @Query("cart_id") cartId: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @PUT 
-    fun selectPaymentMode(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartPaymentRequest)
+    fun selectPaymentMode(@Url url1: String?    ,  @Query("id") id: String?, @Body body: UpdateCartPaymentRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @GET 
-    fun validateCouponForPayment(@Url url1: String?    ,        @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
+    fun validateCouponForPayment(@Url url1: String?    ,       @Query("id") id: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
     : Deferred<Response<PaymentCouponValidate>>
     
     
     @GET 
-    fun getShipments(@Url url1: String?    ,      @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?)
+    fun getShipments(@Url url1: String?    ,     @Query("p") p: Boolean?, @Query("id") id: String?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartShipmentsResponse>>
     
     
     @POST 
-    fun checkoutCart(@Url url1: String?    ,  @Query("buy_now") buyNow: Boolean?, @Body body: CartCheckoutDetailRequest)
+    fun checkoutCart(@Url url1: String?   ,@Body body: CartCheckoutDetailRequest)
     : Deferred<Response<CartCheckoutResponse>>
     
     
     @PUT 
-    fun updateCartMeta(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: CartMetaRequest)
+    fun updateCartMeta(@Url url1: String?    ,  @Query("id") id: String?, @Body body: CartMetaRequest)
     : Deferred<Response<CartMetaResponse>>
     
     
@@ -930,51 +930,6 @@ interface PaymentApiList {
     
     
     @GET 
-    fun getPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
-    : Deferred<Response<GetPaymentLinkResponse>>
-    
-    
-    @POST 
-    fun createPaymentLink(@Url url1: String?   ,@Body body: CreatePaymentLinkRequest)
-    : Deferred<Response<CreatePaymentLinkResponse>>
-    
-    
-    @POST 
-    fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
-    : Deferred<Response<ResendPaymentLinkResponse>>
-    
-    
-    @POST 
-    fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
-    : Deferred<Response<CancelPaymentLinkResponse>>
-    
-    
-    @GET 
-    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String)
-    : Deferred<Response<PaymentModeRouteResponse>>
-    
-    
-    @GET 
-    fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
-    : Deferred<Response<PollingPaymentLinkResponse>>
-    
-    
-    @POST 
-    fun createOrderHandlerPaymentLink(@Url url1: String?   ,@Body body: CreateOrderUserRequest)
-    : Deferred<Response<CreateOrderUserResponse>>
-    
-    
-    @POST 
-    fun initialisePaymentPaymentLink(@Url url1: String?   ,@Body body: PaymentInitializationRequest)
-    : Deferred<Response<PaymentInitializationResponse>>
-    
-    
-    @POST 
-    fun checkAndUpdatePaymentStatusPaymentLink(@Url url1: String?   ,@Body body: PaymentStatusUpdateRequest)
-    : Deferred<Response<PaymentStatusUpdateResponse>>
-    
-    
-    @GET 
     fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<CustomerCreditSummaryResponse>>
     
@@ -1014,7 +969,7 @@ interface OrderApiList {
     
     
     @GET 
-    fun getShipmentReasons(@Url url1: String?    )
+    fun getShipmentReasons(@Url url1: String?     ,  @Query("bag_id") bagId: Int?)
     : Deferred<Response<ShipmentReasons>>
     
     
@@ -1051,6 +1006,11 @@ interface OrderApiList {
     @GET 
     fun getInvoiceByShipmentId(@Url url1: String?    )
     : Deferred<Response<ResponseGetInvoiceShipment>>
+    
+    
+    @GET 
+    fun getCreditNoteByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetCreditNoteShipment>>
     
 }
 
@@ -1093,145 +1053,11 @@ interface RewardsApiList {
     
 }
 
-interface FeedbackApiList {
-    
-    
-    @POST 
-    fun createAbuseReport(@Url url1: String?   ,@Body body: ReportAbuseRequest)
-    : Deferred<Response<InsertResponse>>
-    
-    
-    @PUT 
-    fun updateAbuseReport(@Url url1: String?   ,@Body body: UpdateAbuseStatusRequest)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @GET 
-    fun getAbuseReports(@Url url1: String?      ,    @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ReportAbuseGetResponse>>
-    
-    
-    @GET 
-    fun getAttributes(@Url url1: String?    ,   @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<AttributeResponse>>
-    
-    
-    @POST 
-    fun createAttribute(@Url url1: String?   ,@Body body: SaveAttributeRequest)
-    : Deferred<Response<InsertResponse>>
-    
-    
-    @GET 
-    fun getAttribute(@Url url1: String?    )
-    : Deferred<Response<Attribute>>
-    
-    
-    @PUT 
-    fun updateAttribute(@Url url1: String?    ,@Body body: UpdateAttributeRequest)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @POST 
-    fun createComment(@Url url1: String?   ,@Body body: CommentRequest)
-    : Deferred<Response<InsertResponse>>
-    
-    
-    @PUT 
-    fun updateComment(@Url url1: String?   ,@Body body: UpdateCommentRequest)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @GET 
-    fun getComments(@Url url1: String?     ,      @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("user_id") userId: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<CommentGetResponse>>
-    
-    
-    @GET 
-    fun checkEligibility(@Url url1: String?     )
-    : Deferred<Response<CheckEligibilityResponse>>
-    
-    
-    @DELETE 
-    fun deleteMedia(@Url url1: String?    ,  @Query("ids") ids: ArrayList<String>)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @POST 
-    fun createMedia(@Url url1: String?   ,@Body body: AddMediaListRequest)
-    : Deferred<Response<InsertResponse>>
-    
-    
-    @PUT 
-    fun updateMedia(@Url url1: String?   ,@Body body: UpdateMediaListRequest)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @GET 
-    fun getMedias(@Url url1: String?      ,     @Query("id") id: String?, @Query("type") type: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<MediaGetResponse>>
-    
-    
-    @GET 
-    fun getReviewSummaries(@Url url1: String?      ,    @Query("id") id: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ReviewMetricGetResponse>>
-    
-    
-    @POST 
-    fun createReview(@Url url1: String?   ,@Body body: UpdateReviewRequest)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @PUT 
-    fun updateReview(@Url url1: String?   ,@Body body: UpdateReviewRequest)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @GET 
-    fun getReviews(@Url url1: String?      ,            @Query("id") id: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("active") active: Boolean?, @Query("approve") approve: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ReviewGetResponse>>
-    
-    
-    @GET 
-    fun getTemplates(@Url url1: String?    ,    @Query("template_id") templateId: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?)
-    : Deferred<Response<TemplateGetResponse>>
-    
-    
-    @POST 
-    fun createQuestion(@Url url1: String?   ,@Body body: CreateQNARequest)
-    : Deferred<Response<InsertResponse>>
-    
-    
-    @PUT 
-    fun updateQuestion(@Url url1: String?   ,@Body body: UpdateQNARequest)
-    : Deferred<Response<UpdateResponse>>
-    
-    
-    @GET 
-    fun getQuestionAndAnswers(@Url url1: String?      ,      @Query("id") id: String?, @Query("user_id") userId: String?, @Query("show_answer") showAnswer: Boolean?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<QNAGetResponse>>
-    
-    
-    @GET 
-    fun getVotes(@Url url1: String?    ,     @Query("id") id: String?, @Query("ref_type") refType: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<VoteResponse>>
-    
-    
-    @POST 
-    fun createVote(@Url url1: String?   ,@Body body: VoteRequest)
-    : Deferred<Response<InsertResponse>>
-    
-    
-    @PUT 
-    fun updateVote(@Url url1: String?   ,@Body body: UpdateVoteRequest)
-    : Deferred<Response<UpdateResponse>>
-    
-}
-
 interface PosCartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("buy_now") buyNow: Boolean?)
+    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -1241,32 +1067,32 @@ interface PosCartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
     @PUT 
-    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartRequest)
+    fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
     @GET 
-    fun getItemCount(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    fun getItemCount(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<CartItemCountResponse>>
     
     
     @GET 
-    fun getCoupons(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    fun getCoupons(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<GetCouponResponse>>
     
     
     @POST 
-    fun applyCoupon(@Url url1: String?    ,      @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: ApplyCouponRequest)
+    fun applyCoupon(@Url url1: String?    ,     @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Body body: ApplyCouponRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @DELETE 
-    fun removeCoupon(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
+    fun removeCoupon(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -1276,12 +1102,12 @@ interface PosCartApiList {
     
     
     @POST 
-    fun applyRewardPoints(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RewardPointRequest)
+    fun applyRewardPoints(@Url url1: String?    ,    @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: RewardPointRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @GET 
-    fun getAddresses(@Url url1: String?    ,       @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
+    fun getAddresses(@Url url1: String?    ,      @Query("cart_id") cartId: String?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressesResponse>>
     
     
@@ -1291,7 +1117,7 @@ interface PosCartApiList {
     
     
     @GET 
-    fun getAddressById(@Url url1: String?     ,       @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
+    fun getAddressById(@Url url1: String?     ,      @Query("cart_id") cartId: String?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<Address>>
     
     
@@ -1306,17 +1132,17 @@ interface PosCartApiList {
     
     
     @POST 
-    fun selectAddress(@Url url1: String?    ,     @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
+    fun selectAddress(@Url url1: String?    ,    @Query("cart_id") cartId: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @PUT 
-    fun selectPaymentMode(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartPaymentRequest)
+    fun selectPaymentMode(@Url url1: String?    ,  @Query("id") id: String?, @Body body: UpdateCartPaymentRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
     @GET 
-    fun validateCouponForPayment(@Url url1: String?    ,        @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
+    fun validateCouponForPayment(@Url url1: String?    ,       @Query("id") id: String?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
     : Deferred<Response<PaymentCouponValidate>>
     
     
@@ -1336,7 +1162,7 @@ interface PosCartApiList {
     
     
     @PUT 
-    fun updateCartMeta(@Url url1: String?    ,   @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Body body: CartMetaRequest)
+    fun updateCartMeta(@Url url1: String?    ,  @Query("id") id: String?, @Body body: CartMetaRequest)
     : Deferred<Response<CartMetaResponse>>
     
     
