@@ -11426,6 +11426,36 @@ data class SendResetPasswordEmailRequestSchema(
 
 
 /*
+    Model: SendResetPasswordMobileRequestSchema
+*/
+@Parcelize
+data class SendResetPasswordMobileRequestSchema(
+    
+    
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: PasswordLoginRequestSchema
 */
 @Parcelize
