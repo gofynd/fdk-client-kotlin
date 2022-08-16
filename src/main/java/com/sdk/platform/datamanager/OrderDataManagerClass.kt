@@ -219,6 +219,30 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         } 
     }
     
+    
+    suspend fun createOrder(body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.createOrder(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload)
+    : Deferred<Response<InvalidateShipmentCacheResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.invalidateShipmentCache(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -232,10 +256,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getOrderDetails(orderId: String?=null, next: String?=null, previous: String?=null)
+    suspend fun getOrderDetails1(orderId: String?=null, next: String?=null, previous: String?=null)
     : Deferred<Response<OrderDetails>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.getOrderDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId, next = next, previous = previous )
+                orderApiList?.getOrderDetails1(companyId = config.companyId , applicationId = applicationId , orderId = orderId, next = next, previous = previous )
         } else {
             null
         }
@@ -323,6 +347,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     
