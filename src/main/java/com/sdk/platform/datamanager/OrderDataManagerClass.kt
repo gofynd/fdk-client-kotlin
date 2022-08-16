@@ -219,18 +219,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         } 
     }
     
-    
-    suspend fun createOrder(body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createOrder(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -244,10 +232,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getOrderDetails1(orderId: String?=null, next: String?=null, previous: String?=null)
+    suspend fun getOrderDetails(orderId: String?=null, next: String?=null, previous: String?=null)
     : Deferred<Response<OrderDetails>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.getOrderDetails1(companyId = config.companyId , applicationId = applicationId , orderId = orderId, next = next, previous = previous )
+                orderApiList?.getOrderDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId, next = next, previous = previous )
         } else {
             null
         }
@@ -335,7 +323,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     
