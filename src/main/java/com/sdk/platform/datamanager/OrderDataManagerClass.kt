@@ -232,6 +232,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun updateShipmentStatus(body: UpdateShipmentStatusPayload)
+    : Deferred<Response<UpdateShipmentStatusResponse1>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.updateShipmentStatus(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload)
     : Deferred<Response<InvalidateShipmentCacheResponse>>? {
         
@@ -249,6 +261,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.reassignLocation(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateShipmentLock(body: UpdateShipmentLockPayload)
+    : Deferred<Response<UpdateShipmentLockResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.updateShipmentLock(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -359,6 +383,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     

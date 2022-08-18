@@ -10821,76 +10821,6 @@ data class ArchiveUserRequestSchema(
 
 
 /*
-    Model: ArchiveApplicationUserRequestSchema
-*/
-@Parcelize
-data class ArchiveApplicationUserRequestSchema(
-    
-    
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("reason")
-    var reason: String?=null,
-    
-    @SerializedName("reason_id")
-    var reasonId: String?=null,
-    
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
-    @SerializedName("otp")
-    var otp: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: UnArchiveUserRequestSchema
-*/
-@Parcelize
-data class UnArchiveUserRequestSchema(
-    
-    
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("reason")
-    var reason: String?=null,
-    
-    @SerializedName("reason_id")
-    var reasonId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: EditEmailRequestSchema
 */
 @Parcelize
@@ -11375,36 +11305,6 @@ data class SendResetPasswordEmailRequestSchema(
     var captchaCode: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: SendResetPasswordMobileRequestSchema
-*/
-@Parcelize
-data class SendResetPasswordMobileRequestSchema(
-    
-    
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("mobile")
-    var mobile: String?=null,
-    
-    @SerializedName("captcha_code")
-    var captchaCode: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -12000,26 +11900,6 @@ data class BlockUserSuccess(
 */
 @Parcelize
 data class ArchiveUserSuccess(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: UnArchiveUserSuccess
-*/
-@Parcelize
-data class UnArchiveUserSuccess(
     
     
     
@@ -12909,29 +12789,9 @@ data class PlatformSchema(
     var mobileImage: String?=null,
     
     @SerializedName("desktop_image")
-    var desktopImage: String?=null,
-    
-    @SerializedName("support_email")
-    var supportEmail: String?=null,
-    
-    @SerializedName("delete_account_day")
-    var deleteAccountDay: Int?=null,
-    
-    @SerializedName("delete_account_reasons")
-    var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
-    
-    @SerializedName("delete_account_consent")
-    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null
+    var desktopImage: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -13287,56 +13147,6 @@ data class SocialTokens(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: DeleteAccountReasons
-*/
-@Parcelize
-data class DeleteAccountReasons(
-    
-    
-    
-    @SerializedName("reason_text")
-    var reasonText: String?=null,
-    
-    @SerializedName("reason_id")
-    var reasonId: String?=null,
-    
-    @SerializedName("show_text_area")
-    var showTextArea: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: DeleteAccountConsent
-*/
-@Parcelize
-data class DeleteAccountConsent(
-    
-    
-    
-    @SerializedName("consent_text")
-    var consentText: String?=null
-    
-): Parcelable {
     
     
     
@@ -14838,7 +14648,7 @@ data class NavigationReference(
     var sortOrder: Int?=null,
     
     @SerializedName("sub_navigation")
-    var subNavigation: ArrayList<NavigationReference>?=null
+    var subNavigation: @RawValue ArrayList<Any>?=null
     
 ): Parcelable {
     
@@ -15379,6 +15189,26 @@ data class ContentAPIError(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: APIError
+*/
+@Parcelize
+data class APIError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
     
     
     
