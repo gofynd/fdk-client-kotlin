@@ -28,6 +28,9 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
         }
+        config.interceptors?.let {
+            interceptorList.addAll(it)
+        }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
         val retrofitHttpClient = HttpClient.initialize(
@@ -751,10 +754,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPageMeta(pageType: String?=null, cartPages: Boolean?=null)
+    suspend fun getPageMeta()
     : Deferred<Response<PageMetaSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId , pageType = pageType, cartPages = cartPages )
+                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

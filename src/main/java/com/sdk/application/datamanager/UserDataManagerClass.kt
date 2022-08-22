@@ -51,6 +51,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updatePassword"] = "/service/application/user/authentication/v1.0/password"?.substring(1)
             
+                    _relativeUrls["archiveUser"] = "/service/application/user/authentication/v1.0/archive"?.substring(1)
+            
                     _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout"?.substring(1)
             
                     _relativeUrls["sendOTPOnMobile"] = "/service/application/user/authentication/v1.0/otp/mobile/send"?.substring(1)
@@ -104,6 +106,9 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         if(unauthorizedAction != null){
             val accessUnauthorizedInterceptor = AccessUnauthorizedInterceptor(unauthorizedAction)
             interceptorList.add(accessUnauthorizedInterceptor)
+        }
+        config.interceptors?.let {
+            interceptorList.addAll(it)
         }
         interceptorMap["interceptor"] = interceptorList
         HttpClient.setDebuggable(config.debuggable)
@@ -225,6 +230,13 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updatePassword"] 
         
         return userApiList?.updatePassword(fullUrl  ,body = body)}
+
+    
+    
+    fun archiveUser(body: ArchiveApplicationUserRequestSchema): Deferred<Response<ArchiveUserSuccess>>? {
+        var fullUrl : String? = _relativeUrls["archiveUser"] 
+        
+        return userApiList?.archiveUser(fullUrl  ,body = body)}
 
     
     
