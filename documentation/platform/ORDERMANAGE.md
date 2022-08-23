@@ -193,10 +193,10 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | dataUpdate | HashMap<String,Any>? |  yes  |  |
+ | reason | ArrayList<Int>? |  yes  |  |
  | products | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
  | storeInvoiceId | String? |  yes  |  |
- | reason | ArrayList<Int>? |  yes  |  |
+ | dataUpdate | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -218,9 +218,9 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | excludeBagsNextState | String |  no  |  |
  | shipments | [ShipmentDetail](#ShipmentDetail)? |  yes  |  |
  | status | String |  no  |  |
+ | excludeBagsNextState | String |  no  |  |
 
 ---
 
@@ -232,8 +232,8 @@ It shows the journey of the shipment!
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | forceTransition | Boolean? |  yes  |  |
- | task | Boolean? |  yes  |  |
  | statuses | [Statuses](#Statuses)? |  yes  |  |
+ | task | Boolean? |  yes  |  |
 
 ---
 
@@ -244,8 +244,8 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | ArrayList<String>? |  yes  |  |
  | success | Boolean? |  yes  |  |
+ | message | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -256,8 +256,8 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
  | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -268,15 +268,15 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | l1Detail | String? |  yes  |  |
+ | l3Detail | String? |  yes  |  |
  | createdat | String |  no  |  |
- | ticketUrl | String? |  yes  |  |
- | user | String |  no  |  |
- | ticketId | String? |  yes  |  |
- | type | String |  no  |  |
  | l2Detail | String? |  yes  |  |
  | message | String |  no  |  |
- | l3Detail | String? |  yes  |  |
- | l1Detail | String? |  yes  |  |
+ | ticketId | String? |  yes  |  |
+ | type | String |  no  |  |
+ | ticketUrl | String? |  yes  |  |
+ | user | String |  no  |  |
 
 ---
 
