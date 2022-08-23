@@ -270,10 +270,7 @@ import com.google.gson.annotations.SerializedName
         cartReview("cart-review"), 
         
         @SerializedName("login")
-        login("login"), 
-        
-        @SerializedName("register")
-        register("register");
+        login("login");
         
 
         companion object {
