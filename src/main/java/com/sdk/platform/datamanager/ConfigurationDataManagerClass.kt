@@ -757,10 +757,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun getDomains(comapnyId: String, appicationId: String)
+    suspend fun getDomains()
     : Deferred<Response<DomainsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                configurationApiList?.getDomains(companyId = config.companyId , applicationId = applicationId , comapnyId = comapnyId, appicationId = appicationId )
+                configurationApiList?.getDomains(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
