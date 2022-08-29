@@ -170,6 +170,18 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    suspend fun getPayoutPennyDropAndChequeConfig()
+    : Deferred<Response<PayoutPennyDropAndChequePayload>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.getPayoutPennyDropAndChequeConfig(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -263,6 +275,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
 }
 }
