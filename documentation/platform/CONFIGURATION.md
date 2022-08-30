@@ -2872,7 +2872,7 @@ Success
 
 
 ### addDomain
-Add new domain to application
+Add new domain to current sales channel.
 
 
 
@@ -2897,7 +2897,7 @@ client.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeA
 | body | [DomainAddRequest](#DomainAddRequest) | yes | Request body |
 
 
-Add new domain to application.
+Add a new domain to current sales channel.
 
 *Returned Response:*
 
@@ -2939,7 +2939,7 @@ Success
 
 
 ### removeDomainById
-Remove attached domain
+Remove attached domain with current sales channel.
 
 
 
@@ -2961,11 +2961,11 @@ client.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).sa
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| id | String | yes | Domain _id |  
+| id | String | yes | The unique identifier of the domain |  
 
 
 
-Remove attached domain.
+Remove attached domain with current sales channel. It will disable user's access to website, shared links and other associated features to this domain.
 
 *Returned Response:*
 
@@ -3001,7 +3001,7 @@ Success
 
 
 ### changeDomainType
-Change domain type
+Change domain type for the current sales channel
 
 
 
@@ -3026,7 +3026,7 @@ client.application("<APPLICATION_ID>").configuration.changeDomainType(body: body
 | body | [UpdateDomainTypeRequest](#UpdateDomainTypeRequest) | yes | Request body |
 
 
-Change a domain to Primary or Shortlink domain
+Change a domain to Primary or Shortlink domain for the current sales channel
 
 *Returned Response:*
 
@@ -5576,6 +5576,12 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | name | String? |  yes  | Full domain name |
+ | id | String? |  yes  | The unique identifier of the domain |
+ | verified | Boolean? |  yes  | Domain is verified or not |
+ | isPrimary | Boolean? |  yes  | Domain is primary or not |
+ | isShortlink | Boolean? |  yes  | Shortlink is present or not for the domain |
+ | message | String? |  yes  | New domain added successfully |
+ | txtRecords | ArrayList<Any>? |  yes  |  |
 
 ---
 
@@ -5593,16 +5599,26 @@ Success
 
  
  
+ #### [Domain](#Domain)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | verified | Boolean? |  yes  |  |
+ | isPrimary | Boolean? |  yes  |  |
+ | isShortlink | Boolean? |  yes  |  |
+ | id | String? |  yes  |  |
+ | name | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [DomainsResponse](#DomainsResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | domains | ArrayList<[Domain](#Domain)>? |  yes  | list of domains attached with the application |
- | id | String? |  yes  | The unique identifier of the domain |
- | name | String? |  yes  | Domain Url |
- | verified | Boolean? |  yes  | Domain is verified or not |
- | isPrimary | Boolean? |  yes  | Domain is primary or not |
- | isShortlink | Boolean? |  yes  | Shortlink is present or not for the domain |
+ | domains | ArrayList<[Domain](#Domain)>? |  yes  |  |
 
 ---
 
@@ -5613,7 +5629,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
+ | name | String? |  yes  | Full domain name |
+ | id | String? |  yes  | The unique identifier of the domain |
+ | verified | Boolean? |  yes  | Domain is verified or not |
+ | isPrimary | Boolean? |  yes  | Domain is primary or not |
+ | isShortlink | Boolean? |  yes  | Shortlink is present or not for the domain |
 
 ---
 
@@ -5647,8 +5667,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | display | String? |  yes  |  |
- | status | Boolean? |  yes  |  |
+ | display | String? |  yes  | Details related to Domain TXT record entry and A record |
+ | status | Boolean? |  yes  | Domain TXT record entry and A record status |
 
 ---
 
@@ -5659,7 +5679,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | connected | Boolean? |  yes  |  |
+ | connected | Boolean? |  yes  | Check if domain is live and mapped to appropriate IP to fynd servers |
  | status | ArrayList<[DomainStatus](#DomainStatus)>? |  yes  |  |
 
 ---
@@ -5699,6 +5719,17 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | domains | ArrayList<[DomainSuggestion](#DomainSuggestion)>? |  yes  | Domain url |
+
+---
+
+
+ 
+ 
+ #### [SuccessMessageResponse](#SuccessMessageResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -6787,21 +6818,6 @@ Success
 
  
  
- #### [Domain](#Domain)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | verified | Boolean? |  yes  |  |
- | isPrimary | Boolean? |  yes  |  |
- | isShortlink | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [ApplicationWebsite](#ApplicationWebsite)
 
  | Properties | Type | Nullable | Description |
@@ -6930,17 +6946,6 @@ Success
  
  
  #### [InvalidPayloadRequest](#InvalidPayloadRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [SuccessMessageResponse](#SuccessMessageResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
