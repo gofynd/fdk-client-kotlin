@@ -1012,6 +1012,11 @@ interface OrderApiList {
     fun getInvoiceByShipmentId(@Url url1: String?    )
     : Deferred<Response<ResponseGetInvoiceShipment>>
     
+    
+    @GET 
+    fun getCreditNoteByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetCreditNoteShipment>>
+    
 }
 
 interface RewardsApiList {
