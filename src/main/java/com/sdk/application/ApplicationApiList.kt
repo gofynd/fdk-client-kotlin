@@ -298,6 +298,11 @@ interface CartApiList {
     fun getLadderOffers(@Url url1: String?    ,     @Query("slug") slug: String, @Query("store_id") storeId: String?, @Query("promotion_id") promotionId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LadderPriceOffers>>
     
+    
+    @POST 
+    fun overrideCart(@Url url1: String?   ,@Body body: OverrideCheckoutReq)
+    : Deferred<Response<OverrideCheckoutResponse>>
+    
 }
 
 interface CommonApiList {
