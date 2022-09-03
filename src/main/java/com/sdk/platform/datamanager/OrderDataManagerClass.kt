@@ -115,18 +115,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getOrderLanesCountByCompanyId(pageNo: String?=null, pageSize: String?=null, fromDate: String?=null, toDate: String?=null, q: String?=null, stage: String?=null, salesChannels: String?=null, orderId: String?=null, stores: String?=null, status: String?=null, shortenUrls: Boolean?=null, filterType: String?=null)
-    : Deferred<Response<OrderLanesCount>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getOrderLanesCountByCompanyId(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, q = q, stage = stage, salesChannels = salesChannels, orderId = orderId, stores = stores, status = status, shortenUrls = shortenUrls, filterType = filterType )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getOrderDetails(orderId: String?=null, next: String?=null, previous: String?=null)
     : Deferred<Response<OrderDetails>>? {
         
@@ -183,42 +171,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    
-    suspend fun getPing()
-    : Deferred<Response<GetPingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getPing(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun voiceCallback()
-    : Deferred<Response<GetVoiceCallbackResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.voiceCallback(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun voiceClickToCall(caller: String, receiver: String)
-    : Deferred<Response<GetClickToCallResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.voiceClickToCall(
-        companyId = config.companyId, caller = caller, receiver = receiver )
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -231,11 +183,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    suspend fun getOrderDetails(orderId: String?=null, next: String?=null, previous: String?=null)
+    suspend fun getApplicationOrderDetails(orderId: String?=null, next: String?=null, previous: String?=null)
     : Deferred<Response<OrderDetails>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.getOrderDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId, next = next, previous = previous )
+                orderApiList?.getApplicationOrderDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId, next = next, previous = previous )
         } else {
             null
         }
@@ -323,9 +274,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
-    
-    
     
 }
 }

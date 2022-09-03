@@ -267,20 +267,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPosPaymentModeRoutes()
+    suspend fun getUserCODlimitRoutes()
     : Deferred<Response<GetUserCODLimitResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPosPaymentModeRoutes(companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
     }
     
     
-    suspend fun getPosPaymentModeRoutes(body: SetCODForUserRequest)
+    suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
     : Deferred<Response<SetCODOptionResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPosPaymentModeRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
