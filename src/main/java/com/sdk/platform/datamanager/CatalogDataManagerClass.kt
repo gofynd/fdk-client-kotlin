@@ -926,6 +926,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
     suspend fun getOptimalLocations(body: AssignStore)
     : Deferred<Response<StoreAssignResponse>>? {
         
@@ -1613,6 +1614,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ProductListingResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppProducts(companyId = config.companyId , applicationId = applicationId , brandIds = brandIds, categoryIds = categoryIds, departmentIds = departmentIds, tags = tags, pageNo = pageNo, pageSize = pageSize, q = q )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAppInventory(itemIds: ArrayList<Int>?=null, storeIds: ArrayList<Int>?=null, brandIds: ArrayList<Int>?=null, sellerIdentifiers: ArrayList<String>?=null, timestamp: String?=null, pageSize: Int?=null, pageId: String?=null)
+    : Deferred<Response<InventoryStockResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAppInventory(companyId = config.companyId , applicationId = applicationId , itemIds = itemIds, storeIds = storeIds, brandIds = brandIds, sellerIdentifiers = sellerIdentifiers, timestamp = timestamp, pageSize = pageSize, pageId = pageId )
         } else {
             null
         }
