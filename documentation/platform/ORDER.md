@@ -3517,10 +3517,21 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | shipments | HashMap<String,Any>? |  yes  |  |
- | statuses | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | shipments | HashMap<String,Any> |  no  |  |
+ | statuses | ArrayList<[ShipmentUpdateObject](#ShipmentUpdateObject)> |  no  |  |
  | forceTransition | Boolean |  no  |  |
  | task | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ShipmentUpdateObject](#ShipmentUpdateObject)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | shipments | HashMap<String,Any>? |  yes  |  |
 
 ---
 
