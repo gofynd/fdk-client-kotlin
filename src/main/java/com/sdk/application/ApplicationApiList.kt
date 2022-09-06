@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -297,11 +297,6 @@ interface CartApiList {
     @GET 
     fun getLadderOffers(@Url url1: String?    ,     @Query("slug") slug: String, @Query("store_id") storeId: String?, @Query("promotion_id") promotionId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LadderPriceOffers>>
-    
-    
-    @POST 
-    fun overrideCart(@Url url1: String?   ,@Body body: OverrideCheckoutReq)
-    : Deferred<Response<OverrideCheckoutResponse>>
     
 }
 

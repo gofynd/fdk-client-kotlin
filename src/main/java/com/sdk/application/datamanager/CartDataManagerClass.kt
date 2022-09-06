@@ -71,8 +71,6 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices"?.substring(1)
             
-                    _relativeUrls["overrideCart"] = "/service/application/cart/v1.0/checkout/over-ride"?.substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -298,13 +296,6 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["getLadderOffers"] 
         
         return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
-
-    
-    
-    fun overrideCart(body: OverrideCheckoutReq): Deferred<Response<OverrideCheckoutResponse>>? {
-        var fullUrl : String? = _relativeUrls["overrideCart"] 
-        
-        return cartApiList?.overrideCart(fullUrl  ,body = body)}
 
     
     
