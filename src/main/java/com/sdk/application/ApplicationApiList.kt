@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -187,6 +187,11 @@ interface CartApiList {
     @PUT 
     fun updateCart(@Url url1: String?    ,    @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
+    
+    
+    @PUT 
+    fun deleteCart(@Url url1: String?    ,  @Query("id") id: Int?)
+    : Deferred<Response<DeleteCartDetailResponse>>
     
     
     @GET 
