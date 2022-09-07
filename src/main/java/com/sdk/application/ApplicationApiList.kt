@@ -954,63 +954,48 @@ interface OrderApiList {
     
     
     @GET 
-    fun getOrders(@Url url1: String?    ,      @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("status") status: Int?)
-    : Deferred<Response<OrderList>>
-    
-    
-    @GET 
-    fun getOrderById(@Url url1: String?    )
-    : Deferred<Response<OrderById>>
-    
-    
-    @GET 
     fun getShipmentById(@Url url1: String?    )
     : Deferred<Response<ShipmentById>>
     
     
     @GET 
-    fun getShipmentReasons(@Url url1: String?     ,  @Query("bag_id") bagId: Int?)
-    : Deferred<Response<ShipmentReasons>>
-    
-    
-    @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
-    : Deferred<Response<ShipmentStatusUpdate>>
-    
-    
-    @GET 
-    fun trackShipment(@Url url1: String?    )
-    : Deferred<Response<ShipmentTrack>>
-    
-    
-    @GET 
-    fun getPosOrderById(@Url url1: String?    )
-    : Deferred<Response<PosOrderById>>
-    
-    
-    @GET 
     fun getCustomerDetailsByShipmentId(@Url url1: String?     )
-    : Deferred<Response<CustomerDetailsByShipmentId>>
+    : Deferred<Response<CustomerDetailsResponse>>
     
     
     @POST 
     fun sendOtpToShipmentCustomer(@Url url1: String?     )
-    : Deferred<Response<sendOTPApplicationResponse>>
+    : Deferred<Response<SendOtpToCustomerResponse>>
+    
+    
+    @GET 
+    fun getReasons(@Url url1: String?     ,  @Query("bag_id") bagId: String)
+    : Deferred<Response<ShipmentReasonsResponse>>
     
     
     @POST 
-    fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: ReqBodyVerifyOTPShipment)
-    : Deferred<Response<ResponseVerifyOTPShipment>>
+    fun verifyOtp(@Url url1: String?     ,@Body body: VerifyOtp)
+    : Deferred<Response<VerifyOtpResponse>>
     
     
     @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?    )
-    : Deferred<Response<ResponseGetInvoiceShipment>>
+    fun getOrders(@Url url1: String?    ,      @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
+    : Deferred<Response<OrderList>>
     
     
     @GET 
-    fun getCreditNoteByShipmentId(@Url url1: String?    )
-    : Deferred<Response<ResponseGetCreditNoteShipment>>
+    fun getOrderById(@Url url1: String?    )
+    : Deferred<Response<OrderList>>
+    
+    
+    @GET 
+    fun getPosOrderById(@Url url1: String?    )
+    : Deferred<Response<OrderList>>
+    
+    
+    @GET 
+    fun trackShipment(@Url url1: String?    )
+    : Deferred<Response<TrackShipmentResponse>>
     
 }
 
