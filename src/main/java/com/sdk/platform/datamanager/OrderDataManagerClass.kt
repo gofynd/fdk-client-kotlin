@@ -280,72 +280,72 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentDetailsById(shipmentId: String)
+    suspend fun getShipmentById(shipmentId: String, channelOrderId: String?=null, channelShipmentId: String?=null, channelBagId: String?=null, channelId: String?=null)
     : Deferred<Response<ShipmentDetailsPlatformResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentDetailsById(
-        companyId = config.companyId, shipmentId = shipmentId )
+            orderApiList?.getShipmentById(
+        companyId = config.companyId, shipmentId = shipmentId, channelOrderId = channelOrderId, channelShipmentId = channelShipmentId, channelBagId = channelBagId, channelId = channelId )
         } else {
             null
         } 
     }
     
     
-    suspend fun getShipmentsByShipmentIds(shipmentIds: String, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getShipments(bagIds: String?=null, shipmentIds: String?=null, orderIds: String?=null, channelBagIds: String?=null, channelShipmentIds: String?=null, channelOrderIds: String?=null, channelId: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<BulkShipmentDetailsPlatformResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentsByShipmentIds(
-        companyId = config.companyId, shipmentIds = shipmentIds, pageNo = pageNo, pageSize = pageSize )
+            orderApiList?.getShipments(
+        companyId = config.companyId, bagIds = bagIds, shipmentIds = shipmentIds, orderIds = orderIds, channelBagIds = channelBagIds, channelShipmentIds = channelShipmentIds, channelOrderIds = channelOrderIds, channelId = channelId, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 
     }
     
     
-    suspend fun getOrderById(fyndOrderId: String, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getOrderById(fyndOrderId: String?=null, channelOrderId: String?=null, channelShipmentId: String?=null, channelBagId: String?=null, channelId: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<OrderDetailsPlatformResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrderById(
-        companyId = config.companyId, fyndOrderId = fyndOrderId, pageNo = pageNo, pageSize = pageSize )
+        companyId = config.companyId, fyndOrderId = fyndOrderId, channelOrderId = channelOrderId, channelShipmentId = channelShipmentId, channelBagId = channelBagId, channelId = channelId, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 
     }
     
     
-    suspend fun getShipmentByAffiliateBagId(affiliateBagId: String, affiliateId: String, pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<ShipmentDetailsByAffiliateBagIdResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentByAffiliateBagId(
-        companyId = config.companyId, affiliateBagId = affiliateBagId, affiliateId = affiliateId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getShipmentByAffiliateShipmentId(affiliateShipmentId: String, affiliateId: String)
-    : Deferred<Response<ShipmentDetailsPlatformResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentByAffiliateShipmentId(
-        companyId = config.companyId, affiliateShipmentId = affiliateShipmentId, affiliateId = affiliateId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getShipmentsByAffiliateOrderId(affiliateId: String, affiliateOrderId: String, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getOrders(bagIds: String?=null, shipmentIds: String?=null, orderIds: String?=null, channelBagIds: String?=null, channelShipmentIds: String?=null, channelOrderIds: String?=null, channelId: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<BulkShipmentDetailsPlatformResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentsByAffiliateOrderId(
-        companyId = config.companyId, affiliateId = affiliateId, affiliateOrderId = affiliateOrderId, pageNo = pageNo, pageSize = pageSize )
+            orderApiList?.getOrders(
+        companyId = config.companyId, bagIds = bagIds, shipmentIds = shipmentIds, orderIds = orderIds, channelBagIds = channelBagIds, channelShipmentIds = channelShipmentIds, channelOrderIds = channelOrderIds, channelId = channelId, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBags(bagIds: String?=null, shipmentIds: String?=null, orderIds: String?=null, channelBagIds: String?=null, channelShipmentIds: String?=null, channelOrderIds: String?=null, channelId: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<GetBagsPlatformResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getBags(
+        companyId = config.companyId, bagIds = bagIds, shipmentIds = shipmentIds, orderIds = orderIds, channelBagIds = channelBagIds, channelShipmentIds = channelShipmentIds, channelOrderIds = channelOrderIds, channelId = channelId, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBagById(bagId: String?=null, channelBagId: String?=null, channelId: String?=null)
+    : Deferred<Response<BagDetailsPlatformResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getBagById(
+        companyId = config.companyId, bagId = bagId, channelBagId = channelBagId, channelId = channelId )
         } else {
             null
         } 
