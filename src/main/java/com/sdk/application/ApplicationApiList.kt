@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -187,6 +187,11 @@ interface CartApiList {
     @PUT 
     fun updateCart(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
+    
+    
+    @PUT 
+    fun deleteCart(@Url url1: String?    ,  @Query("id") id: Int?)
+    : Deferred<Response<DeleteCartDetailResponse>>
     
     
     @GET 
@@ -927,51 +932,6 @@ interface PaymentApiList {
     @POST 
     fun updateDefaultBeneficiary(@Url url1: String?   ,@Body body: SetDefaultBeneficiaryRequest)
     : Deferred<Response<SetDefaultBeneficiaryResponse>>
-    
-    
-    @GET 
-    fun getPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
-    : Deferred<Response<GetPaymentLinkResponse>>
-    
-    
-    @POST 
-    fun createPaymentLink(@Url url1: String?   ,@Body body: CreatePaymentLinkRequest)
-    : Deferred<Response<CreatePaymentLinkResponse>>
-    
-    
-    @POST 
-    fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
-    : Deferred<Response<ResendPaymentLinkResponse>>
-    
-    
-    @POST 
-    fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
-    : Deferred<Response<CancelPaymentLinkResponse>>
-    
-    
-    @GET 
-    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String)
-    : Deferred<Response<PaymentModeRouteResponse>>
-    
-    
-    @GET 
-    fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
-    : Deferred<Response<PollingPaymentLinkResponse>>
-    
-    
-    @POST 
-    fun createOrderHandlerPaymentLink(@Url url1: String?   ,@Body body: CreateOrderUserRequest)
-    : Deferred<Response<CreateOrderUserResponse>>
-    
-    
-    @POST 
-    fun initialisePaymentPaymentLink(@Url url1: String?   ,@Body body: PaymentInitializationRequest)
-    : Deferred<Response<PaymentInitializationResponse>>
-    
-    
-    @POST 
-    fun checkAndUpdatePaymentStatusPaymentLink(@Url url1: String?   ,@Body body: PaymentStatusUpdateRequest)
-    : Deferred<Response<PaymentStatusUpdateResponse>>
     
     
     @GET 
