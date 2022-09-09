@@ -2009,4 +2009,20 @@ interface AuditTrailApiList {
     : Deferred<Response<EntityTypesResponse>>
     
 }
+
+interface OrderManageApiList {
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/status-internal")
+    fun statusInternalUpdate(@Path("company_id") companyId: String,@Body body: PlatformShipmentStatusInternal)
+    : Deferred<Response<ResponseDetail>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("bag_id") bagId: Int)
+    : Deferred<Response<ShipmentHistoryResponse>>
+    
+    @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/order/validation")
+    fun orderUpdate(@Path("company_id") companyId: String,@Body body: PlatformOrderUpdate)
+    : Deferred<Response<ResponseDetail>>
+    
+}
         
