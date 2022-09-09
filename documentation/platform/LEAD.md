@@ -4413,6 +4413,7 @@ Success
  | priority | [PriorityEnum](#PriorityEnum)? |  yes  | Priority of the ticket |
  | category | String |  no  | Category of the ticket |
  | content | [TicketContent](#TicketContent) |  no  | Content for the ticket |
+ | customJson | HashMap<String,Any>? |  yes  | optional custom data that needs to be sent |
 
 ---
 
