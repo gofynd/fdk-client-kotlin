@@ -8712,9 +8712,14 @@ data class AddTicketPayload(
     var category: String?=null,
     
     @SerializedName("content")
-    var content: TicketContent?=null
+    var content: TicketContent?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -18119,10 +18124,10 @@ data class CopyFileTask(
 
 
 /*
-    Model: BulkResponse
+    Model: BulkUploadResponse
 */
 @Parcelize
-data class BulkResponse(
+data class BulkUploadResponse(
     
     
     
