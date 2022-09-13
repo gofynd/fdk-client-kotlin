@@ -1569,7 +1569,7 @@ Success
 
 
 ### getInventoryConfig
-Get application configuration
+Get sales channel configuration
 
 
 
@@ -1590,7 +1590,7 @@ client.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAw
 
 
 
-Get application configuration for various features and data
+Get sales channel configuration for various features and data
 
 *Returned Response:*
 
@@ -1809,7 +1809,7 @@ Success
 
 
 ### updateInventoryConfig
-Update application configuration
+Update sales channel configuration
 
 
 
@@ -1834,7 +1834,7 @@ client.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body:
 | body | [ApplicationInventory](#ApplicationInventory) | yes | Request body |
 
 
-Update application configuration for various features and data
+Update sales channel configuration for various features and data
 
 *Returned Response:*
 
@@ -2053,7 +2053,7 @@ Success
 
 
 ### partiallyUpdateInventoryConfig
-Partially update application configuration
+Partially update sales channel configuration
 
 
 
@@ -2078,7 +2078,7 @@ client.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryCon
 | body | [AppInventoryPartialUpdate](#AppInventoryPartialUpdate) | yes | Request body |
 
 
-Partially update application configuration for various features and data
+Partially update sales channel configuration for various features and data
 
 *Returned Response:*
 
@@ -4391,7 +4391,7 @@ Success
 
 
 ### getBrandsByCompany
-Get brands by company
+Get brands by company.
 
 
 
@@ -4417,7 +4417,7 @@ client.configuration.getBrandsByCompany(q: q).safeAwait{ response, error->
 
 
 
-Get brands by company
+Get brands by company for current sales channel
 
 *Returned Response:*
 
@@ -4986,10 +4986,10 @@ Success
  | category | [InventoryCategory](#InventoryCategory)? |  yes  |  |
  | price | [InventoryPrice](#InventoryPrice)? |  yes  |  |
  | discount | [InventoryDiscount](#InventoryDiscount)? |  yes  |  |
- | outOfStock | Boolean? |  yes  |  |
- | onlyVerifiedProducts | Boolean? |  yes  |  |
+ | outOfStock | Boolean? |  yes  | Show out of stock products |
+ | onlyVerifiedProducts | Boolean? |  yes  | Show only verified products |
  | franchiseEnabled | Boolean? |  yes  |  |
- | excludeCategory | ArrayList<Any>? |  yes  |  |
+ | excludeCategory | ArrayList<Any>? |  yes  | List of excluded brands category |
  | image | ArrayList<String>? |  yes  |  |
  | companyStore | ArrayList<Any>? |  yes  |  |
 
@@ -5003,7 +5003,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | criteria | String? |  yes  |  |
- | brands | ArrayList<Any>? |  yes  |  |
+ | brands | ArrayList<Any>? |  yes  | List of brands |
 
 ---
 
@@ -5015,7 +5015,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | criteria | String? |  yes  |  |
- | stores | ArrayList<Any>? |  yes  |  |
+ | stores | ArrayList<Any>? |  yes  | List of stores |
  | rules | [AppStoreRules](#AppStoreRules)? |  yes  |  |
 
 ---
@@ -5027,8 +5027,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companies | ArrayList<Int>? |  yes  |  |
- | brands | ArrayList<Any>? |  yes  |  |
+ | companies | ArrayList<Int>? |  yes  | List of companies |
+ | brands | ArrayList<Any>? |  yes  | List of brands |
 
 ---
 
@@ -5040,7 +5040,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | criteria | String? |  yes  |  |
- | categories | ArrayList<Any>? |  yes  |  |
+ | categories | ArrayList<Any>? |  yes  | List of inventory categories |
 
 ---
 
@@ -5051,8 +5051,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | min | Double? |  yes  |  |
- | max | Double? |  yes  |  |
+ | min | Double? |  yes  | Minimum inventory price |
+ | max | Double? |  yes  | Maximum inventory price |
 
 ---
 
@@ -5063,8 +5063,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | min | Double? |  yes  |  |
- | max | Double? |  yes  |  |
+ | min | Double? |  yes  | Minimum inventory discount |
+ | max | Double? |  yes  | Maximum inventory discount |
 
 ---
 
@@ -5123,11 +5123,11 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | deliveryCharges | [DeliveryCharges](#DeliveryCharges)? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
- | maxCartItems | Int? |  yes  |  |
- | minCartValue | Double? |  yes  |  |
- | bulkCoupons | Boolean? |  yes  |  |
- | revenueEngineCoupon | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow cart configuration |
+ | maxCartItems | Int? |  yes  | Maximum number of items can be added to cart |
+ | minCartValue | Double? |  yes  | Minimum cart value |
+ | bulkCoupons | Boolean? |  yes  | Allow creation of bluk coupons |
+ | revenueEngineCoupon | Boolean? |  yes  | Allow coupon and revenue engine together |
 
 ---
 
@@ -5138,7 +5138,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow delivery charges |
  | charges | [Charges](#Charges)? |  yes  |  |
 
 ---
@@ -5150,8 +5150,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | threshold | Double? |  yes  |  |
- | charges | Double? |  yes  |  |
+ | threshold | Double? |  yes  | Threshold of delivery amount to be charged |
+ | charges | Double? |  yes  | Delivery amount to be charged |
 
 ---
 
@@ -5165,11 +5165,12 @@ Success
  | callbackUrl | [CallbackUrl](#CallbackUrl)? |  yes  |  |
  | methods | [Methods](#Methods)? |  yes  |  |
  | paymentSelectionLock | [PaymentSelectionLock](#PaymentSelectionLock)? |  yes  |  |
- | modeOfPayment | String? |  yes  |  |
+ | modeOfPayment | String? |  yes  | Mode of payment |
  | source | String? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
- | codAmountLimit | Double? |  yes  |  |
- | codCharges | Double? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow payment |
+ | codAmountLimit | Double? |  yes  | Maximum amount allowed for cash on delivery |
+ | codCharges | Double? |  yes  | cash on delivery charges |
+ | anonymousCod | Boolean? |  yes  | Allow cash on delivery for anonymous user |
 
 ---
 
@@ -5180,8 +5181,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | app | String? |  yes  |  |
- | web | String? |  yes  |  |
+ | app | String? |  yes  | Payment callback url for app |
+ | web | String? |  yes  | Payment callback url for web |
 
 ---
 
@@ -5221,7 +5222,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow payment method for payment |
 
 ---
 
@@ -5232,9 +5233,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
- | defaultOptions | String? |  yes  |  |
- | paymentIdentifier | String? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow payment selection method |
+ | defaultOptions | String? |  yes  | Default options for payment selection method |
+ | paymentIdentifier | String? |  yes  | Payment method choosed from default options for payment |
 
 ---
 
@@ -5245,9 +5246,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
- | forceReassignment | Boolean? |  yes  |  |
- | message | String? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow order |
+ | forceReassignment | Boolean? |  yes  | Allow force reassigning of an order |
+ | message | String? |  yes  | Reason for reassigning of an order |
 
 ---
 
@@ -5272,8 +5273,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
- | autoApply | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow loyalty points |
+ | autoApply | Boolean? |  yes  | Allow auto apply of loyalty points |
 
 ---
 
@@ -5376,11 +5377,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
+ | name | String? |  yes  | Brand name |
  | value | Int? |  yes  |  |
- | brandLogoUrl | String? |  yes  |  |
- | brandBannerUrl | String? |  yes  |  |
- | brandBannerPortraitUrl | String? |  yes  |  |
+ | brandLogoUrl | String? |  yes  | Brand logo hosted url |
+ | brandBannerUrl | String? |  yes  | Brand banner hosted url |
+ | brandBannerPortraitUrl | String? |  yes  | Brand banner portrait hosted url |
 
 ---
 
@@ -5392,6 +5393,28 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | brands | [CompanyBrandInfo](#CompanyBrandInfo)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ValidationFailedResponse](#ValidationFailedResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [NotFound](#NotFound)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -6522,7 +6545,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow credit of reward points |
 
 ---
 
@@ -6533,9 +6556,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
- | autoApply | Boolean? |  yes  |  |
- | strategyChannel | String? |  yes  |  |
+ | enabled | Boolean? |  yes  | Allow debit of reward points |
+ | autoApply | Boolean? |  yes  | Allow automatic debit of reward points |
+ | strategyChannel | String? |  yes  | Strategy channel for debiting reward points |
 
 ---
 
@@ -6917,17 +6940,6 @@ Success
  | appType | String? |  yes  |  |
  | mobileLogo | [SecureUrl](#SecureUrl)? |  yes  |  |
  | domain | [Domain](#Domain)? |  yes  |  |
-
----
-
-
- 
- 
- #### [NotFound](#NotFound)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
 
 ---
 

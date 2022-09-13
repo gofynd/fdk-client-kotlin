@@ -280,7 +280,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentById(shipmentId: String, channelOrderId: String?=null, channelShipmentId: String?=null, channelBagId: String?=null, channelId: String?=null)
+    suspend fun getShipmentById(shipmentId: String?=null, channelOrderId: String?=null, channelShipmentId: String?=null, channelBagId: String?=null, channelId: String?=null)
     : Deferred<Response<ShipmentDetailsPlatformResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
