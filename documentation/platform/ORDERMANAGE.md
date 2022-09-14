@@ -181,8 +181,8 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | identifier | String? |  yes  |  |
  | quantity | Int? |  yes  |  |
+ | identifier | String? |  yes  |  |
 
 ---
 
@@ -193,10 +193,10 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | reason | ArrayList<Int>? |  yes  |  |
- | storeInvoiceId | String? |  yes  |  |
- | products | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
  | dataUpdate | HashMap<String,Any>? |  yes  |  |
+ | products | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
+ | storeInvoiceId | String? |  yes  |  |
+ | reason | ArrayList<Int>? |  yes  |  |
 
 ---
 
@@ -218,9 +218,9 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | shipments | [ShipmentDetail](#ShipmentDetail)? |  yes  |  |
  | excludeBagsNextState | String |  no  |  |
  | status | String |  no  |  |
- | shipments | [ShipmentDetail](#ShipmentDetail)? |  yes  |  |
 
 ---
 
@@ -232,8 +232,8 @@ It shows the journey of the shipment!
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | forceTransition | Boolean? |  yes  |  |
- | task | Boolean? |  yes  |  |
  | statuses | [Statuses](#Statuses)? |  yes  |  |
+ | task | Boolean? |  yes  |  |
 
 ---
 
@@ -244,8 +244,8 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | message | ArrayList<String>? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -256,8 +256,8 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -268,15 +268,15 @@ It shows the journey of the shipment!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ticketId | String? |  yes  |  |
- | createdat | String |  no  |  |
- | user | String |  no  |  |
- | message | String |  no  |  |
  | l1Detail | String? |  yes  |  |
- | ticketUrl | String? |  yes  |  |
- | l3Detail | String? |  yes  |  |
  | type | String |  no  |  |
+ | message | String |  no  |  |
+ | createdat | String |  no  |  |
  | l2Detail | String? |  yes  |  |
+ | l3Detail | String? |  yes  |  |
+ | ticketId | String? |  yes  |  |
+ | ticketUrl | String? |  yes  |  |
+ | user | String |  no  |  |
 
 ---
 

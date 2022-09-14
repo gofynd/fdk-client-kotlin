@@ -19,11 +19,9 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0"?.substring(1)
+                    _relativeUrls["getPincodeView"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
             
-                    _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
-            
-                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
+                    _relativeUrls["getTATView"] = "/service/application/logistics/v1.0/"?.substring(1)
             
     }
 
@@ -59,26 +57,19 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getTatProduct(body: GetTatProductReqBody): Deferred<Response<GetTatProductResponse>>? {
-        var fullUrl : String? = _relativeUrls["getTatProduct"] 
-        
-        return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
-
-    
-    
-    fun getPincodeZones(body: GetPincodeZonesReqBody): Deferred<Response<GetPincodeZonesResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
-        
-        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
-
-    
-    
-    fun getPincodeCity(pincode: String): Deferred<Response<GetPincodeCityResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
+    fun getPincodeView(pincode: String, xApplicationId: String?=null): Deferred<Response<PincodeApiResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPincodeView"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeCity(fullUrl   )}
+        return logisticApiList?.getPincodeView(fullUrl     ,  xApplicationId = xApplicationId)}
+
+    
+    
+    fun getTATView(xApplicationId: String?=null, body: TATViewRequest): Deferred<Response<TATViewResponse>>? {
+        var fullUrl : String? = _relativeUrls["getTATView"] 
+        
+        return logisticApiList?.getTATView(fullUrl    ,  xApplicationId = xApplicationId, body = body)}
 
     
     

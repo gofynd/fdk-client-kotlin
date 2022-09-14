@@ -460,11 +460,6 @@ interface UserApiList {
     : Deferred<Response<VerifyEmailSuccess>>
     
     
-    @POST 
-    fun archiveUser(@Url url1: String?   ,@Body body: ArchiveApplicationUserRequestSchema)
-    : Deferred<Response<ArchiveUserSuccess>>
-    
-    
     @GET 
     fun logout(@Url url1: String?   )
     : Deferred<Response<LogoutSuccess>>
@@ -1200,19 +1195,14 @@ interface PosCartApiList {
 interface LogisticApiList {
     
     
-    @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
-    : Deferred<Response<GetTatProductResponse>>
-    
-    
-    @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
-    : Deferred<Response<GetPincodeZonesResponse>>
-    
-    
     @GET 
-    fun getPincodeCity(@Url url1: String?    )
-    : Deferred<Response<GetPincodeCityResponse>>
+    fun getPincodeView(@Url url1: String?     ,  @Header("x-application-id") xApplicationId: String?)
+    : Deferred<Response<PincodeApiResponse>>
+    
+    
+    @POST 
+    fun getTATView(@Url url1: String?    ,  @Header("x-application-id") xApplicationId: String?, @Body body: TATViewRequest)
+    : Deferred<Response<TATViewResponse>>
     
 }
 
