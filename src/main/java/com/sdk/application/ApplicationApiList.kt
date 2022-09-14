@@ -421,6 +421,11 @@ interface UserApiList {
     
     
     @POST 
+    fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    
+    @POST 
     fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
@@ -458,6 +463,11 @@ interface UserApiList {
     @POST 
     fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
     : Deferred<Response<VerifyEmailSuccess>>
+    
+    
+    @POST 
+    fun archiveUser(@Url url1: String?   ,@Body body: ArchiveApplicationUserRequestSchema)
+    : Deferred<Response<ArchiveUserSuccess>>
     
     
     @GET 
