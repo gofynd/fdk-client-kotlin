@@ -19,9 +19,9 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["getPincodeView"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
+                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
             
-                    _relativeUrls["getTATView"] = "/service/application/logistics/v1.0/"?.substring(1)
+                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/"?.substring(1)
             
     }
 
@@ -57,19 +57,19 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getPincodeView(pincode: String, xApplicationId: String?=null): Deferred<Response<PincodeApiResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPincodeView"] 
+    fun getPincodeCity(pincode: String, xApplicationId: String?=null): Deferred<Response<PincodeApiResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeView(fullUrl     ,  xApplicationId = xApplicationId)}
+        return logisticApiList?.getPincodeCity(fullUrl     ,  xApplicationId = xApplicationId)}
 
     
     
-    fun getTATView(xApplicationId: String?=null, body: TATViewRequest): Deferred<Response<TATViewResponse>>? {
-        var fullUrl : String? = _relativeUrls["getTATView"] 
+    fun getTatProduct(xApplicationId: String?=null, body: TATViewRequest): Deferred<Response<TATViewResponse>>? {
+        var fullUrl : String? = _relativeUrls["getTatProduct"] 
         
-        return logisticApiList?.getTATView(fullUrl    ,  xApplicationId = xApplicationId, body = body)}
+        return logisticApiList?.getTatProduct(fullUrl    ,  xApplicationId = xApplicationId, body = body)}
 
     
     

@@ -1196,12 +1196,12 @@ interface LogisticApiList {
     
     
     @GET 
-    fun getPincodeView(@Url url1: String?     ,  @Header("x-application-id") xApplicationId: String?)
+    fun getPincodeCity(@Url url1: String?     ,  @Header("x-application-id") xApplicationId: String?)
     : Deferred<Response<PincodeApiResponse>>
     
     
     @POST 
-    fun getTATView(@Url url1: String?    ,  @Header("x-application-id") xApplicationId: String?, @Body body: TATViewRequest)
+    fun getTatProduct(@Url url1: String?    ,  @Header("x-application-id") xApplicationId: String?, @Body body: TATViewRequest)
     : Deferred<Response<TATViewResponse>>
     
 }

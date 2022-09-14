@@ -6,22 +6,22 @@
 
 ## Logistic Methods
 Open API Documentation for opex-logistics domain
-* [getPincodeView](#getpincodeview)
-* [getTATView](#gettatview)
+* [getPincodeCity](#getpincodecity)
+* [getTatProduct](#gettatproduct)
 
 
 
 ## Methods with example and description
 
 
-### getPincodeView
+### getPincodeCity
 Get Pincode API
 
 
 
 
 ```kotlin
-logistic.getPincodeView(pincode: pincode, xApplicationId: xApplicationId).safeAwait{ response, error->
+logistic.getPincodeCity(pincode: pincode, xApplicationId: xApplicationId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -159,14 +159,14 @@ Get pincode data
 ---
 
 
-### getTATView
+### getTatProduct
 Get TAT API
 
 
 
 
 ```kotlin
-logistic.getTATView(xApplicationId: xApplicationId, body: body).safeAwait{ response, error->
+logistic.getTatProduct(xApplicationId: xApplicationId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -335,10 +335,10 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | journey | String? |  yes  |  |
- | source | String? |  yes  |  |
  | action | String |  no  |  |
  | toPincode | String |  no  |  |
+ | source | String? |  yes  |  |
+ | journey | String? |  yes  |  |
 
 ---
 
@@ -349,9 +349,9 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | journey | String |  no  |  |
  | message | String |  no  |  |
  | type | String |  no  |  |
+ | journey | String |  no  |  |
 
 ---
 
@@ -362,38 +362,13 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | [ErrorResponse](#ErrorResponse) |  no  |  |
- | requestUuid | String |  no  |  |
- | journey | String? |  yes  |  |
- | action | String |  no  |  |
  | success | Boolean |  no  |  |
- | toPincode | String |  no  |  |
+ | error | [ErrorResponse](#ErrorResponse) |  no  |  |
+ | journey | String? |  yes  |  |
  | source | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Error](#Error)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
- | message | String? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Meta](#Meta)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | internalZoneId | Int? |  yes  |  |
- | zone | String? |  yes  |  |
+ | toPincode | String |  no  |  |
+ | requestUuid | String |  no  |  |
+ | action | String |  no  |  |
 
 ---
 
@@ -404,10 +379,35 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
  | uid | String? |  yes  |  |
+ | name | String? |  yes  |  |
  | displayName | String? |  yes  |  |
  | subType | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Error](#Error)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Meta](#Meta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | zone | String? |  yes  |  |
+ | internalZoneId | Int? |  yes  |  |
 
 ---
 
@@ -418,13 +418,13 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | uid | String? |  yes  |  |
+ | parents | ArrayList<[Parents](#Parents)>? |  yes  |  |
  | error | [Error](#Error) |  no  |  |
  | subType | String? |  yes  |  |
- | meta | [Meta](#Meta)? |  yes  |  |
- | uid | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | parents | ArrayList<[Parents](#Parents)>? |  yes  |  |
  | name | String? |  yes  |  |
+ | meta | [Meta](#Meta)? |  yes  |  |
+ | displayName | String? |  yes  |  |
 
 ---
 
@@ -435,9 +435,9 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | [Error](#Error) |  no  |  |
  | data | ArrayList<[DataResponse](#DataResponse)>? |  yes  |  |
  | success | Boolean |  no  |  |
+ | error | [Error](#Error) |  no  |  |
 
 ---
 
@@ -460,8 +460,8 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | category | [Category](#Category)? |  yes  |  |
  | manufacturingTime | Int? |  yes  |  |
+ | category | [Category](#Category)? |  yes  |  |
  | manufacturingTimeUnit | String? |  yes  |  |
 
 ---
@@ -474,8 +474,8 @@ Get TAT  data
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | fromPincode | String? |  yes  |  |
- | articles | ArrayList<[Articles](#Articles)>? |  yes  |  |
  | fulfillmentId | Int? |  yes  |  |
+ | articles | ArrayList<[Articles](#Articles)>? |  yes  |  |
 
 ---
 
@@ -486,12 +486,12 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | locationDetails | ArrayList<[LocationDetails](#LocationDetails)>? |  yes  |  |
- | identifier | String |  no  |  |
  | journey | String |  no  |  |
- | action | String |  no  |  |
- | toPincode | String |  no  |  |
+ | identifier | String |  no  |  |
  | source | String |  no  |  |
+ | toPincode | String |  no  |  |
+ | locationDetails | ArrayList<[LocationDetails](#LocationDetails)>? |  yes  |  |
+ | action | String |  no  |  |
 
 ---
 
@@ -502,9 +502,9 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
  | message | String? |  yes  |  |
  | type | String? |  yes  |  |
+ | value | String? |  yes  |  |
 
 ---
 
@@ -551,13 +551,13 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | manufacturingTime | Int? |  yes  |  |
  | error | [TATError](#TATError) |  no  |  |
  | promise | [Promise](#Promise)? |  yes  |  |
- | manufacturingTime | Int? |  yes  |  |
  | isCodAvailable | Boolean? |  yes  |  |
- | manufacturingTimeUnit | String? |  yes  |  |
- | category | [Category](#Category)? |  yes  |  |
  | manufacturingTimeSeconds | String? |  yes  |  |
+ | category | [Category](#Category)? |  yes  |  |
+ | manufacturingTimeUnit | String? |  yes  |  |
 
 ---
 
@@ -569,8 +569,8 @@ Get TAT  data
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | fromPincode | String? |  yes  |  |
- | articles | ArrayList<[ArticlesResponse](#ArticlesResponse)>? |  yes  |  |
  | fulfillmentId | Int? |  yes  |  |
+ | articles | ArrayList<[ArticlesResponse](#ArticlesResponse)>? |  yes  |  |
 
 ---
 
@@ -581,18 +581,18 @@ Get TAT  data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | locationDetails | ArrayList<[LocationDetailsResponse](#LocationDetailsResponse)>? |  yes  |  |
- | identifier | String |  no  |  |
- | error | [TATError](#TATError) |  no  |  |
- | requestUuid | String |  no  |  |
- | journey | String |  no  |  |
- | action | String |  no  |  |
- | paymentMode | String |  no  |  |
- | isCodAvailable | Boolean |  no  |  |
  | success | Boolean |  no  |  |
- | toPincode | String |  no  |  |
- | toCity | String |  no  |  |
+ | error | [TATError](#TATError) |  no  |  |
+ | isCodAvailable | Boolean |  no  |  |
+ | journey | String |  no  |  |
+ | identifier | String |  no  |  |
+ | paymentMode | String |  no  |  |
  | source | String |  no  |  |
+ | toPincode | String |  no  |  |
+ | locationDetails | ArrayList<[LocationDetailsResponse](#LocationDetailsResponse)>? |  yes  |  |
+ | requestUuid | String |  no  |  |
+ | toCity | String |  no  |  |
+ | action | String |  no  |  |
  | stormbreakerUuid | String |  no  |  |
 
 ---
