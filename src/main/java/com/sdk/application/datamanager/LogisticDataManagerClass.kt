@@ -23,6 +23,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/"?.substring(1)
             
+                    _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -57,19 +59,26 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getPincodeCity(pincode: String, xApplicationId: String?=null): Deferred<Response<PincodeApiResponse>>? {
+    fun getPincodeCity(pincode: String): Deferred<Response<PincodeApiResponse>>? {
         var fullUrl : String? = _relativeUrls["getPincodeCity"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeCity(fullUrl     ,  xApplicationId = xApplicationId)}
+        return logisticApiList?.getPincodeCity(fullUrl   )}
 
     
     
-    fun getTatProduct(xApplicationId: String?=null, body: TATViewRequest): Deferred<Response<TATViewResponse>>? {
+    fun getTatProduct(body: TATViewRequest): Deferred<Response<TATViewResponse>>? {
         var fullUrl : String? = _relativeUrls["getTatProduct"] 
         
-        return logisticApiList?.getTatProduct(fullUrl    ,  xApplicationId = xApplicationId, body = body)}
+        return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
+
+    
+    
+    fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
+        
+        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
 
     
     

@@ -51,6 +51,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updatePassword"] = "/service/application/user/authentication/v1.0/password"?.substring(1)
             
+                    _relativeUrls["deleteUser"] = "/service/application/user/authentication/v1.0/delete"?.substring(1)
+            
                     _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout"?.substring(1)
             
                     _relativeUrls["sendOTPOnMobile"] = "/service/application/user/authentication/v1.0/otp/mobile/send"?.substring(1)
@@ -228,6 +230,13 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updatePassword"] 
         
         return userApiList?.updatePassword(fullUrl  ,body = body)}
+
+    
+    
+    fun deleteUser(body: DeleteApplicationUserRequestSchema): Deferred<Response<DeleteUserSuccess>>? {
+        var fullUrl : String? = _relativeUrls["deleteUser"] 
+        
+        return userApiList?.deleteUser(fullUrl  ,body = body)}
 
     
     

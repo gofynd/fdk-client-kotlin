@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -458,6 +458,11 @@ interface UserApiList {
     @POST 
     fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
     : Deferred<Response<VerifyEmailSuccess>>
+    
+    
+    @POST 
+    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Deferred<Response<DeleteUserSuccess>>
     
     
     @GET 
@@ -1196,13 +1201,18 @@ interface LogisticApiList {
     
     
     @GET 
-    fun getPincodeCity(@Url url1: String?     ,  @Header("x-application-id") xApplicationId: String?)
+    fun getPincodeCity(@Url url1: String?    )
     : Deferred<Response<PincodeApiResponse>>
     
     
     @POST 
-    fun getTatProduct(@Url url1: String?    ,  @Header("x-application-id") xApplicationId: String?, @Body body: TATViewRequest)
+    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
     : Deferred<Response<TATViewResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
 }
 
