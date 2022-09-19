@@ -267,10 +267,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUserCODlimitRoutes()
+    suspend fun getUserCODlimitRoutes(merchantUserId: String, mobileNo: String)
     : Deferred<Response<GetUserCODLimitResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , merchantUserId = merchantUserId, mobileNo = mobileNo )
         } else {
             null
         }
