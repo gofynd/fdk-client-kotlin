@@ -274,10 +274,14 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest): Deferred<Response<RefundAccountResponse>>? {
+    fun addRefundBankAccountUsingOTP(companyId: Int, applicationId: String, body: AddBeneficiaryDetailsOTPRequest): Deferred<Response<RefundAccountResponse>>? {
         var fullUrl : String? = _relativeUrls["addRefundBankAccountUsingOTP"] 
         
-        return paymentApiList?.addRefundBankAccountUsingOTP(fullUrl  ,body = body)}
+        fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "application_id" +"}",applicationId.toString())
+        
+        return paymentApiList?.addRefundBankAccountUsingOTP(fullUrl    ,body = body)}
 
     
     

@@ -109,10 +109,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun unArchiveUser(body: UnArchiveUserRequestSchema)
-    : Deferred<Response<UnArchiveUserSuccess>>? {
+    suspend fun unDeleteUser(body: UnDeleteUserRequestSchema)
+    : Deferred<Response<UnDeleteUserSuccess>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.unArchiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
+                userApiList?.unDeleteUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
