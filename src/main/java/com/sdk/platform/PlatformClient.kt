@@ -8,8 +8,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
-    val feedback by lazy { FeedbackDataManagerClass(config, unauthorizedAction)}
-    
     val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
     
     val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
@@ -59,8 +57,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val common by lazy { this@PlatformClient.common.ApplicationClient(applicationId,config)}
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
-    
-    val feedback by lazy { this@PlatformClient.feedback.ApplicationClient(applicationId,config)}
     
     val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
     

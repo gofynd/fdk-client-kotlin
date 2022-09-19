@@ -109,6 +109,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -805,10 +806,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPathRedirectionRules()
+    suspend fun getPathRedirectionRules(pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<PathMappingSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPathRedirectionRule(pathId: String)
+    : Deferred<Response<PathMappingSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getPathRedirectionRule(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
         } else {
             null
         }
