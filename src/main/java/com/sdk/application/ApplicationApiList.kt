@@ -156,7 +156,7 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
+    fun getProductPriceBySlug(@Url url1: String?      ,    @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?, @Query("moq") moq: Int?)
     : Deferred<Response<ProductSizePriceResponseV2>>
     
     
