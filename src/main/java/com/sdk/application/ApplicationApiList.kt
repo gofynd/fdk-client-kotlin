@@ -1209,10 +1209,5 @@ interface LogisticApiList {
     fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
     : Deferred<Response<TATViewResponse>>
     
-    
-    @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>
-    
 }
 
