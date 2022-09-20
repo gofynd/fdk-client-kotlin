@@ -915,7 +915,7 @@ interface PaymentApiList {
     
     
     @POST 
-    fun addRefundBankAccountUsingOTP(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsOTPRequest)
+    fun addRefundBankAccountUsingOTP(@Url url1: String?     ,@Body body: AddBeneficiaryDetailsOTPRequest)
     : Deferred<Response<RefundAccountResponse>>
     
     

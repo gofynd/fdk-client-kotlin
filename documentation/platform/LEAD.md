@@ -29,6 +29,7 @@ Handles communication between Administrator <-> Staff and Staff <-> Users
 * [getVideoParticipants](#getvideoparticipants)
 * [openVideoRoom](#openvideoroom)
 * [closeVideoRoom](#closevideoroom)
+* [getGeneralConfig](#getgeneralconfig)
 
 
 
@@ -3966,6 +3967,71 @@ Success
 ---
 
 
+### getGeneralConfig
+Get general support configuration.
+
+
+
+
+```kotlin
+client.lead.getGeneralConfig().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Get general support configuration.
+
+*Returned Response:*
+
+
+
+
+[CloseVideoRoomResponse](#CloseVideoRoomResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; Default</i></summary>
+
+```json
+{
+  "value": {
+    "success": true
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -4347,6 +4413,7 @@ Success
  | priority | [PriorityEnum](#PriorityEnum)? |  yes  | Priority of the ticket |
  | category | String |  no  | Category of the ticket |
  | content | [TicketContent](#TicketContent) |  no  | Content for the ticket |
+ | customJson | HashMap<String,Any>? |  yes  | optional custom data that needs to be sent |
 
 ---
 
@@ -4485,6 +4552,36 @@ Success
  | createdOn | [CreatedOn](#CreatedOn)? |  yes  | Gives details of when the form was created |
  | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  | Details of how polling should be done for support |
  | id | String |  no  | Unique identifier for the form |
+
+---
+
+
+ 
+ 
+ #### [CommunicationDetails](#CommunicationDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | String? |  yes  | Value for the communication method |
+ | description | String? |  yes  | Short description for the communication method |
+ | enabled | Boolean? |  yes  | Denotes if this communication method has to be shown |
+
+---
+
+
+ 
+ 
+ #### [SupportGeneralConfig](#SupportGeneralConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  | Unique id |
+ | supportEmail | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support e-mail details |
+ | supportPhone | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support Phone number details |
+ | supportFaq | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support FAQ details |
+ | showCommunicationInfo | Boolean? |  yes  | Denotes if support communication info should be shown |
+ | showSupportDris | Boolean? |  yes  | Denotes if support DRIS info should be shown |
+ | integration | HashMap<String,Any>? |  yes  | Contains integrations basic information |
 
 ---
 
