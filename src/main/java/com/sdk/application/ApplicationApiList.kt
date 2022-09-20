@@ -421,11 +421,6 @@ interface UserApiList {
     
     
     @POST 
-    fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
-    : Deferred<Response<ResetPasswordSuccess>>
-    
-    
-    @POST 
     fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
@@ -465,11 +460,6 @@ interface UserApiList {
     : Deferred<Response<VerifyEmailSuccess>>
     
     
-    @POST 
-    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
-    : Deferred<Response<DeleteUserSuccess>>
-    
-    
     @GET 
     fun logout(@Url url1: String?   )
     : Deferred<Response<LogoutSuccess>>
@@ -503,11 +493,6 @@ interface UserApiList {
     @GET 
     fun getListOfActiveSessions(@Url url1: String?   )
     : Deferred<Response<SessionListSuccess>>
-    
-    
-    @GET 
-    fun getPlatformConfig(@Url url1: String?    ,  @Query("name") name: String?)
-    : Deferred<Response<PlatformSchema>>
     
     
     @POST 

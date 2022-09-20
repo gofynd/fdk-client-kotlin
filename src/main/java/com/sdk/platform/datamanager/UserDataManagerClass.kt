@@ -53,13 +53,12 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
-    suspend fun getCustomers(q: String?=null, pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getCustomers(q: HashMap<String,Any>?=null, pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<CustomerListResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getCustomers(companyId = config.companyId , applicationId = applicationId , q = q, pageSize = pageSize, pageNo = pageNo )
@@ -69,7 +68,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun searchUsers(q: HashMap<String,Any>?=null)
+    suspend fun searchUsers(q: String?=null)
     : Deferred<Response<UserSearchResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q )
@@ -103,16 +102,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ArchiveUserSuccess>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun unDeleteUser(body: UnDeleteUserRequestSchema)
-    : Deferred<Response<UnDeleteUserSuccess>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.unDeleteUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
