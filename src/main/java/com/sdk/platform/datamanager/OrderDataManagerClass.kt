@@ -280,6 +280,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun getReasonCodes(category: String?=null)
+    : Deferred<Response<ReasonCodesResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getReasonCodes(
+        companyId = config.companyId, category = category )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getShipmentById(shipmentId: String?=null, channelOrderId: String?=null, channelShipmentId: String?=null, channelBagId: String?=null, channelId: String?=null)
     : Deferred<Response<ShipmentDetailsPlatformResponse>>? {
         
@@ -455,6 +467,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     
