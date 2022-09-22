@@ -397,7 +397,7 @@ Success. Check the example shown below or refer `PushtokenRes` for more details.
 
  
  
- #### [BadRequestErr](#BadRequestErr)
+ #### [BadRequestSchema](#BadRequestSchema)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |

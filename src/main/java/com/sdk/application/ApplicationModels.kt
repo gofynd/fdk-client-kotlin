@@ -12539,9 +12539,14 @@ data class AuthenticationApiErrorSchema(
     
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("is_deleted")
+    var isDeleted: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -17465,10 +17470,10 @@ data class CommunicationConsent(
 
 
 /*
-    Model: BadRequestErr
+    Model: BadRequestSchema
 */
 @Parcelize
-data class BadRequestErr(
+data class BadRequestSchema(
     
     
     

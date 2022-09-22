@@ -6732,9 +6732,14 @@ data class AuthenticationApiErrorSchema(
     
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("is_deleted")
+    var isDeleted: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -15756,7 +15761,7 @@ data class PayloadSmsTemplateStructure(
     var key: String?=null,
     
     @SerializedName("value")
-    var value: String?=null
+    var value: @RawValue Any?=null
     
 ): Parcelable {
     
