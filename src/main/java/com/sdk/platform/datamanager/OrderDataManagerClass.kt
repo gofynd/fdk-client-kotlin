@@ -280,12 +280,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getReasonCodes(category: String?=null)
+    suspend fun getReasonCodes(category: String?=null, pageSize: String?=null, pageNo: String?=null)
     : Deferred<Response<ReasonCodesResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getReasonCodes(
-        companyId = config.companyId, category = category )
+        companyId = config.companyId, category = category, pageSize = pageSize, pageNo = pageNo )
         } else {
             null
         } 

@@ -997,7 +997,7 @@ interface OrderApiList {
     : Deferred<Response<UpdateShipmentStatusResponse1>>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/get-reason-codes")
-    fun getReasonCodes(@Path("company_id") companyId: String, @Query("category") category: String?)
+    fun getReasonCodes(@Path("company_id") companyId: String, @Query("category") category: String?, @Query("page_size") pageSize: String?, @Query("page_no") pageNo: String?)
     : Deferred<Response<ReasonCodesResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/shipment-details")
