@@ -156,7 +156,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun verifyIfscCode(ifscCode: String?=null)
     : Deferred<Response<IfscCodeResponse>>? {
         
@@ -225,20 +224,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getBankAccountDetailsOpenAPI(orderId: String, requestHash: String?=null)
+    suspend fun addBeneficiaryDetails(body: AddBeneficiaryDetailsRequest)
     : Deferred<Response<RefundAccountResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getBankAccountDetailsOpenAPI(orderId = orderId, requestHash = requestHash, companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest)
-    : Deferred<Response<RefundAccountResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.addRefundBankAccountUsingOTP(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.addBeneficiaryDetails(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
