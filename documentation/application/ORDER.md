@@ -1037,6 +1037,8 @@ Success, the code is valid and returns a SignedUrl
  | financialBreakup | ArrayList<[FinancialBreakup](#FinancialBreakup)>? |  yes  |  |
  | canCancel | Boolean? |  yes  |  |
  | canReturn | Boolean? |  yes  |  |
+ | deliveryDate | String? |  yes  |  |
+ | returnableDate | String? |  yes  |  |
 
 ---
 
