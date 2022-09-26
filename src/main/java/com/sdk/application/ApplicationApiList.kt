@@ -505,6 +505,11 @@ interface UserApiList {
     : Deferred<Response<SessionListSuccess>>
     
     
+    @GET 
+    fun getPlatformConfig(@Url url1: String?    ,  @Query("name") name: String?)
+    : Deferred<Response<PlatformSchema>>
+    
+    
     @POST 
     fun updateProfile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: EditProfileRequestSchema)
     : Deferred<Response<ProfileEditSuccess>>

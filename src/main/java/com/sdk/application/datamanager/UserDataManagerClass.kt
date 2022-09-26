@@ -69,6 +69,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getListOfActiveSessions"] = "/service/application/user/authentication/v1.0/sessions"?.substring(1)
             
+                    _relativeUrls["getPlatformConfig"] = "/service/application/user/platform/v1.0/config"?.substring(1)
+            
                     _relativeUrls["updateProfile"] = "/service/application/user/profile/v1.0/detail"?.substring(1)
             
                     _relativeUrls["addMobileNumber"] = "/service/application/user/profile/v1.0/mobile"?.substring(1)
@@ -293,6 +295,13 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["getListOfActiveSessions"] 
         
         return userApiList?.getListOfActiveSessions(fullUrl  )}
+
+    
+    
+    fun getPlatformConfig(name: String?=null): Deferred<Response<PlatformSchema>>? {
+        var fullUrl : String? = _relativeUrls["getPlatformConfig"] 
+        
+        return userApiList?.getPlatformConfig(fullUrl    ,  name = name)}
 
     
     
