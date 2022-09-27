@@ -35,6 +35,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["sendResetPasswordEmail"] = "/service/application/user/authentication/v1.0/login/password/reset"?.substring(1)
             
+                    _relativeUrls["sendResetPasswordMobile"] = "/service/application/user/authentication/v1.0/login/password/mobile/reset"?.substring(1)
+            
                     _relativeUrls["forgotPassword"] = "/service/application/user/authentication/v1.0/login/password/reset/forgot"?.substring(1)
             
                     _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token"?.substring(1)
@@ -114,7 +116,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationUser",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
@@ -172,6 +175,13 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["sendResetPasswordEmail"] 
         
         return userApiList?.sendResetPasswordEmail(fullUrl    ,  platform = platform, body = body)}
+
+    
+    
+    fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Deferred<Response<ResetPasswordSuccess>>? {
+        var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"] 
+        
+        return userApiList?.sendResetPasswordMobile(fullUrl    ,  platform = platform, body = body)}
 
     
     
