@@ -29,7 +29,8 @@ class RetrofitHttpClient constructor(
     var interceptorMap: Map<String, List<Interceptor>>? = null,
     private var cookieJar: CookieJar?,
     var cookieManager: CookieManager?,
-    val persistentCookieStore: CookieStore? = null
+    val persistentCookieStore: CookieStore? = null,
+    val certPublicKey: String? = null
 ) {
 
     var apiService: Any? = null
@@ -97,6 +98,21 @@ class RetrofitHttpClient constructor(
                 builder.cookieJar(it)
             }
 
+            val domain: String = baseUrl
+
+            var certificatePinner: CertificatePinner? = null
+            if (!domain.isEmpty() && certPublicKey != null) {
+                val split1 = domain.split("//").toTypedArray()
+                if (split1.size > 1) {
+                    val domainName = split1[1].split("/").toTypedArray()[0]
+                    if (domainName.isNotEmpty()) {
+                        certificatePinner = CertificatePinner.Builder()
+                            .add(domainName, "sha256/$certPublicKey")
+                            .build()
+                    }
+                }
+            }
+
             builder
                 .addNetworkInterceptor(logging) //.sslSocketFactory(sslSocketFactory)
                 .retryOnConnectionFailure(true)
@@ -104,6 +120,9 @@ class RetrofitHttpClient constructor(
                 .readTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
                 .hostnameVerifier { hostname: String?, session: SSLSession? -> true }
+                
+            if (certificatePinner != null) builder.certificatePinner(certificatePinner)
+            
             if (interceptorMap != null) {
                 for ((key, value) in interceptorMap!!) for (interceptor in value) if ("network".equals(
                         key, ignoreCase = true
