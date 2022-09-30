@@ -241,8 +241,8 @@ We are processing the order!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | quantity | Int? |  yes  |  |
  | identifier | String? |  yes  |  |
+ | quantity | Int? |  yes  |  |
 
 ---
 
@@ -253,10 +253,10 @@ We are processing the order!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | products | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
- | storeInvoiceId | String? |  yes  |  |
- | reason | ArrayList<Int>? |  yes  |  |
  | dataUpdate | HashMap<String,Any>? |  yes  |  |
+ | reason | ArrayList<Int>? |  yes  |  |
+ | storeInvoiceId | String? |  yes  |  |
+ | products | ArrayList<[ProductDetail](#ProductDetail)>? |  yes  |  |
 
 ---
 
@@ -328,15 +328,15 @@ We are processing the order!
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | l3Detail | String? |  yes  |  |
+ | user | String |  no  |  |
+ | message | String |  no  |  |
  | l1Detail | String? |  yes  |  |
  | ticketId | String? |  yes  |  |
- | ticketUrl | String? |  yes  |  |
  | createdat | String |  no  |  |
- | l3Detail | String? |  yes  |  |
- | message | String |  no  |  |
- | user | String |  no  |  |
- | type | String |  no  |  |
  | l2Detail | String? |  yes  |  |
+ | type | String |  no  |  |
+ | ticketUrl | String? |  yes  |  |
 
 ---
 
