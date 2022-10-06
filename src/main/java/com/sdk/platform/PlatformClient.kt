@@ -38,8 +38,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
     
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
-    
     val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
     
     val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
@@ -89,8 +87,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
-    
-    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
     val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     

@@ -139,12 +139,12 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getLocations(storeType: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null, locationIds: ArrayList<Int>?=null)
+    suspend fun getLocations(storeType: String?=null, q: String?=null, stage: String?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<LocationListSerializer>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             companyProfileApiList?.getLocations(
-        companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize, locationIds = locationIds )
+        companyId = config.companyId, storeType = storeType, q = q, stage = stage, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 

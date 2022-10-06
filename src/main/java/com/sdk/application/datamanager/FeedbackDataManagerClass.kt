@@ -100,7 +100,8 @@ class FeedbackDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationFeedback",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(FeedbackApiList::class.java) as? FeedbackApiList
     }
