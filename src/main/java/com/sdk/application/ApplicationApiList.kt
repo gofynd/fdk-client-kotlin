@@ -953,6 +953,16 @@ interface PaymentApiList {
     fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
     : Deferred<Response<CustomerOnboardingResponse>>
     
+    
+    @GET 
+    fun outstandingOrderDetails(@Url url1: String?    ,  @Query("merchant_user_id") merchantUserId: String?)
+    : Deferred<Response<OutstandingOrderDetailsResponse>>
+    
+    
+    @GET 
+    fun paidOrderDetails(@Url url1: String?    ,  @Query("merchant_user_id") merchantUserId: String?)
+    : Deferred<Response<PaidOrderDetailsResponse>>
+    
 }
 
 interface OrderApiList {
