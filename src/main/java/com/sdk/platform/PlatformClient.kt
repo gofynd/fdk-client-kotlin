@@ -52,7 +52,7 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val orderManage by lazy { OrderManageDataManagerClass(config, unauthorizedAction)}
     
-    val orderInvoiceEngine by lazy { OrderInvoiceEngineDataManagerClass(config, unauthorizedAction)}
+    val documentEngine by lazy { DocumentEngineDataManagerClass(config, unauthorizedAction)}
     
     val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
     
@@ -110,7 +110,7 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val orderManage by lazy { this@PlatformClient.orderManage.ApplicationClient(applicationId,config)}
     
-    val orderInvoiceEngine by lazy { this@PlatformClient.orderInvoiceEngine.ApplicationClient(applicationId,config)}
+    val documentEngine by lazy { this@PlatformClient.documentEngine.ApplicationClient(applicationId,config)}
     
     val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
     

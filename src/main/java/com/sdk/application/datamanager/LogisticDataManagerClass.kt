@@ -23,6 +23,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/"?.substring(1)
             
+                    _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -52,7 +54,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationLogistic",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
@@ -70,6 +73,13 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getTatProduct"] 
         
         return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
+
+    
+    
+    fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
+        
+        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
 
     
     

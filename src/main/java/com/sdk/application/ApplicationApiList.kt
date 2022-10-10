@@ -959,23 +959,48 @@ interface OrderApiList {
     
     
     @GET 
-    fun getOrders(@Url url1: String?    ,      @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("status") status: Int?)
-    : Deferred<Response<OrderList>>
-    
-    
-    @GET 
-    fun getOrderById(@Url url1: String?    )
-    : Deferred<Response<OrderById>>
-    
-    
-    @GET 
     fun getShipmentById(@Url url1: String?    )
     : Deferred<Response<ShipmentById>>
     
     
     @GET 
-    fun getShipmentReasons(@Url url1: String?     ,  @Query("bag_id") bagId: Int?)
-    : Deferred<Response<ShipmentReasons>>
+    fun getCustomerDetailsByShipmentId(@Url url1: String?     )
+    : Deferred<Response<CustomerDetailsResponse>>
+    
+    
+    @POST 
+    fun sendOtpToShipmentCustomer(@Url url1: String?     )
+    : Deferred<Response<SendOtpToCustomerResponse>>
+    
+    
+    @GET 
+    fun getShipmentReasons(@Url url1: String?     ,  @Query("bag_id") bagId: String)
+    : Deferred<Response<ShipmentReasonsResponse>>
+    
+    
+    @POST 
+    fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: VerifyOtp)
+    : Deferred<Response<VerifyOtpResponse>>
+    
+    
+    @GET 
+    fun getOrders(@Url url1: String?    ,      @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
+    : Deferred<Response<OrderList>>
+    
+    
+    @GET 
+    fun getOrderById(@Url url1: String?    )
+    : Deferred<Response<OrderList>>
+    
+    
+    @GET 
+    fun getPosOrderById(@Url url1: String?    )
+    : Deferred<Response<OrderList>>
+    
+    
+    @GET 
+    fun trackShipment(@Url url1: String?    )
+    : Deferred<Response<TrackShipmentResponse>>
     
     
     @PUT 
@@ -984,38 +1009,13 @@ interface OrderApiList {
     
     
     @GET 
-    fun trackShipment(@Url url1: String?    )
-    : Deferred<Response<ShipmentTrack>>
+    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
+    : Deferred<Response<getInvoiceByShipmentId200Response>>
     
     
     @GET 
-    fun getPosOrderById(@Url url1: String?    )
-    : Deferred<Response<PosOrderById>>
-    
-    
-    @GET 
-    fun getCustomerDetailsByShipmentId(@Url url1: String?     )
-    : Deferred<Response<CustomerDetailsByShipmentId>>
-    
-    
-    @POST 
-    fun sendOtpToShipmentCustomer(@Url url1: String?     )
-    : Deferred<Response<sendOTPApplicationResponse>>
-    
-    
-    @POST 
-    fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: ReqBodyVerifyOTPShipment)
-    : Deferred<Response<ResponseVerifyOTPShipment>>
-    
-    
-    @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?    )
-    : Deferred<Response<ResponseGetInvoiceShipment>>
-    
-    
-    @GET 
-    fun getCreditNoteByShipmentId(@Url url1: String?    )
-    : Deferred<Response<ResponseGetCreditNoteShipment>>
+    fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
+    : Deferred<Response<getInvoiceByShipmentId200Response>>
     
 }
 
@@ -1208,6 +1208,25 @@ interface LogisticApiList {
     @POST 
     fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
     : Deferred<Response<TATViewResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+}
+
+interface DocumentEngineApiList {
+    
+    
+    @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
+    : Deferred<Response<getInvoiceByShipmentId200Response>>
+    
+    
+    @GET 
+    fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
+    : Deferred<Response<getInvoiceByShipmentId200Response>>
     
 }
 

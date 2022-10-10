@@ -11,13 +11,13 @@ import com.sdk.platform.*
 
 
 
-class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
+class DocumentEngineDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
-    private val orderInvoiceEngineApiList by lazy {
-        generateorderInvoiceEngineApiList()
+    private val documentEngineApiList by lazy {
+        generatedocumentEngineApiList()
     }
     
-    private fun generateorderInvoiceEngineApiList(): OrderInvoiceEngineApiList? {
+    private fun generatedocumentEngineApiList(): DocumentEngineApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -36,10 +36,10 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformOrderInvoiceEngine",
+            namespace = "PlatformDocumentEngine",
             persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(OrderInvoiceEngineApiList::class.java) as? OrderInvoiceEngineApiList
+        return retrofitHttpClient?.initializeRestClient(DocumentEngineApiList::class.java) as? DocumentEngineApiList
     }
     
     
@@ -47,7 +47,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<SuccessResponseGenerateBulk>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.generateBulkPackageLabel(
+            documentEngineApiList?.generateBulkPackageLabel(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -59,7 +59,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<SuccessResponseGenerateBulk>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.generateBulkBoxLabel(
+            documentEngineApiList?.generateBulkBoxLabel(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -71,7 +71,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<SuccessResponseGenerateBulk>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.generateBulkShipmentLabel(
+            documentEngineApiList?.generateBulkShipmentLabel(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -83,7 +83,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<SuccessResponseGenerateBulk>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.generateNoc(
+            documentEngineApiList?.generateNoc(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -95,7 +95,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<StatusSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.getLabelStatus(
+            documentEngineApiList?.getLabelStatus(
         companyId = config.companyId, uid = uid )
         } else {
             null
@@ -107,8 +107,20 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<StatusSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.getNocStatus(
+            documentEngineApiList?.getNocStatus(
         companyId = config.companyId, uid = uid )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getPresignedURL(body: InvoiceLabelPresignedRequestBody)
+    : Deferred<Response<SignedSuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            documentEngineApiList?.getPresignedURL(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -119,7 +131,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<SignedSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.getLabelPresignedURL(
+            documentEngineApiList?.getLabelPresignedURL(
         companyId = config.companyId, uid = uid )
         } else {
             null
@@ -131,7 +143,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
     : Deferred<Response<SignedSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderInvoiceEngineApiList?.getNocPresignedURL(
+            documentEngineApiList?.getNocPresignedURL(
         companyId = config.companyId, uid = uid )
         } else {
             null
@@ -141,6 +153,7 @@ class OrderInvoiceEngineDataManagerClass(val config: PlatformConfig, val unautho
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

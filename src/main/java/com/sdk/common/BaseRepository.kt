@@ -26,6 +26,7 @@ abstract class BaseRepository {
                 onFailure.invoke(error)
             }
         } catch (e: Exception) {
+            e.printStackTrace()
             val message = e.message
             val error = FdkError(status = 500, message = message)
             onFailure.invoke(error)
@@ -50,6 +51,7 @@ abstract class BaseRepository {
                 onResponse.invoke(null, error)
             }
         } catch (e: Exception) {
+            e.printStackTrace()
             val message = e.message
             val error = FdkError(status = 500, message = message)
             onResponse.invoke(null, error)
@@ -73,6 +75,7 @@ abstract class BaseRepository {
                 return Pair(null, error)
             }
         } catch (e: Exception) {
+            e.printStackTrace()
             val message = e.message
             val error = FdkError(status = 500, message = message)
             return Pair(null, error)

@@ -36,4 +36,6 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     
     val logistic by lazy { LogisticDataManagerClass(config, unauthorizedAction)}
     
+    val documentEngine by lazy { DocumentEngineDataManagerClass(config, unauthorizedAction)}
+    
 }

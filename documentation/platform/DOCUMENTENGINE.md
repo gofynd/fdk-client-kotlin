@@ -4,7 +4,7 @@
 
 ##### [Back to Platform docs](./README.md)
 
-## OrderInvoiceEngine Methods
+## DocumentEngine Methods
 Handles financial pdf generation of Fulfilment
 * [generateBulkPackageLabel](#generatebulkpackagelabel)
 * [generateBulkBoxLabel](#generatebulkboxlabel)
@@ -12,6 +12,7 @@ Handles financial pdf generation of Fulfilment
 * [generateNoc](#generatenoc)
 * [getLabelStatus](#getlabelstatus)
 * [getNocStatus](#getnocstatus)
+* [getPresignedURL](#getpresignedurl)
 * [getLabelPresignedURL](#getlabelpresignedurl)
 * [getNocPresignedURL](#getnocpresignedurl)
 
@@ -27,7 +28,7 @@ Generate Labels for Packages
 
 
 ```kotlin
-client.orderinvoiceengine.generateBulkPackageLabel(body: body).safeAwait{ response, error->
+client.documentengine.generateBulkPackageLabel(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -86,7 +87,7 @@ Generate Labels for Boxes which will go inside package
 
 
 ```kotlin
-client.orderinvoiceengine.generateBulkBoxLabel(body: body).safeAwait{ response, error->
+client.documentengine.generateBulkBoxLabel(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -145,7 +146,7 @@ Generate Labels for Shipments which contains packaged
 
 
 ```kotlin
-client.orderinvoiceengine.generateBulkShipmentLabel(body: body).safeAwait{ response, error->
+client.documentengine.generateBulkShipmentLabel(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -204,7 +205,7 @@ Generate NOC for Seller having access to a fullfillment center
 
 
 ```kotlin
-client.orderinvoiceengine.generateNoc(body: body).safeAwait{ response, error->
+client.documentengine.generateNoc(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -273,7 +274,7 @@ Get Staus of Label generations
 
 
 ```kotlin
-client.orderinvoiceengine.getLabelStatus(uid: uid).safeAwait{ response, error->
+client.documentengine.getLabelStatus(uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -333,7 +334,7 @@ Get Staus of NOC generation
 
 
 ```kotlin
-client.orderinvoiceengine.getNocStatus(uid: uid).safeAwait{ response, error->
+client.documentengine.getNocStatus(uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -397,6 +398,65 @@ Sucess Response, Status Of NOC Pdf generation
 ---
 
 
+### getPresignedURL
+Get Presigned URL to download PDFs
+
+
+
+
+```kotlin
+client.documentengine.getPresignedURL(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [InvoiceLabelPresignedRequestBody](#InvoiceLabelPresignedRequestBody) | yes | Request body |
+
+
+Use this API to generate Presigned URLs for downloading PDFs
+
+*Returned Response:*
+
+
+
+
+[SignedSuccessResponse](#SignedSuccessResponse)
+
+Sucess Response, Presigned URL of PDFs
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getLabelPresignedURL
 Get Presigned URL to download labels
 
@@ -404,7 +464,7 @@ Get Presigned URL to download labels
 
 
 ```kotlin
-client.orderinvoiceengine.getLabelPresignedURL(uid: uid).safeAwait{ response, error->
+client.documentengine.getLabelPresignedURL(uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -464,7 +524,7 @@ Get Presigned URL to download NOC Pdf
 
 
 ```kotlin
-client.orderinvoiceengine.getNocPresignedURL(uid: uid).safeAwait{ response, error->
+client.documentengine.getNocPresignedURL(uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1015,6 +1075,19 @@ Sucess Response, Presigned URL of NOC Pdf
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean? |  yes  |  |
  | error | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceLabelPresignedRequestBody](#InvoiceLabelPresignedRequestBody)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | documentType | String |  no  |  |
+ | entityId | String |  no  |  |
+ | expiresIn | Double? |  yes  |  |
 
 ---
 

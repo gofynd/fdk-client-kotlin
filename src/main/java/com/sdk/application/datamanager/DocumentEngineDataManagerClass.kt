@@ -9,21 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 
 
-class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
+class DocumentEngineDataManagerClass(val config: ApplicationConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {
     
-    private val communicationApiList by lazy {
-        generatecommunicationApiList()
+    private val documentEngineApiList by lazy {
+        generatedocumentEngineApiList()
     }
 
     private var _relativeUrls : HashMap<String,String> = HashMap<String,String>()
 
     init{
             
-                    _relativeUrls["getCommunicationConsent"] = "/service/application/communication/v1.0/consent"?.substring(1)
+                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
             
-                    _relativeUrls["upsertCommunicationConsent"] = "/service/application/communication/v1.0/consent"?.substring(1)
-            
-                    _relativeUrls["upsertAppPushtoken"] = "/service/application/communication/v1.0/pn-token"?.substring(1)
+                    _relativeUrls["getCreditNoteByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/credit-note"?.substring(1)
             
     }
 
@@ -34,7 +32,7 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
     }
     
 
-    private fun generatecommunicationApiList(): CommunicationApiList? {
+    private fun generatedocumentEngineApiList(): DocumentEngineApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = ApplicationHeaderInterceptor(config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -53,31 +51,28 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "ApplicationCommunication",
+            namespace = "ApplicationDocumentEngine",
             persistentCookieStore = config.persistentCookieStore,
             certPublicKey = config.certPublicKey
         )
-        return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
+        return retrofitHttpClient?.initializeRestClient(DocumentEngineApiList::class.java) as? DocumentEngineApiList
     }
     
-    fun getCommunicationConsent(): Deferred<Response<CommunicationConsent>>? {
-        var fullUrl : String? = _relativeUrls["getCommunicationConsent"] 
+    fun getInvoiceByShipmentId(shipmentId: String, parameters: invoiceParameter?=null): Deferred<Response<getInvoiceByShipmentId200Response>>? {
+        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
-        return communicationApiList?.getCommunicationConsent(fullUrl  )}
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return documentEngineApiList?.getInvoiceByShipmentId(fullUrl     ,  parameters = parameters)}
 
     
     
-    fun upsertCommunicationConsent(body: CommunicationConsentReq): Deferred<Response<CommunicationConsentRes>>? {
-        var fullUrl : String? = _relativeUrls["upsertCommunicationConsent"] 
+    fun getCreditNoteByShipmentId(shipmentId: String, parameters: creditNoteParameter?=null): Deferred<Response<getInvoiceByShipmentId200Response>>? {
+        var fullUrl : String? = _relativeUrls["getCreditNoteByShipmentId"] 
         
-        return communicationApiList?.upsertCommunicationConsent(fullUrl  ,body = body)}
-
-    
-    
-    fun upsertAppPushtoken(body: PushtokenReq): Deferred<Response<PushtokenRes>>? {
-        var fullUrl : String? = _relativeUrls["upsertAppPushtoken"] 
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return communicationApiList?.upsertAppPushtoken(fullUrl  ,body = body)}
+        return documentEngineApiList?.getCreditNoteByShipmentId(fullUrl     ,  parameters = parameters)}
 
     
     
