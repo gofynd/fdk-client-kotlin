@@ -267,20 +267,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUserCODlimitRoutes(merchantUserId: String, mobileNo: String)
-    : Deferred<Response<GetUserCODLimitResponse>>? {
+    suspend fun repaymentDetails(body: RepaymentRequestDetails)
+    : Deferred<Response<RepaymentResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , merchantUserId = merchantUserId, mobileNo = mobileNo )
+                paymentApiList?.repaymentDetails(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
-    : Deferred<Response<SetCODOptionResponse>>? {
+    suspend fun merchantOnBoarding(body: MerchantOnBoardingRequest)
+    : Deferred<Response<MerchantOnBoardingResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.merchantOnBoarding(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
