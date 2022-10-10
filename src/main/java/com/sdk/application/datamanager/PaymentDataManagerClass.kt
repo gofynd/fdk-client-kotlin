@@ -309,17 +309,17 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun outstandingOrderDetails(merchantUserId: String?=null): Deferred<Response<OutstandingOrderDetailsResponse>>? {
+    fun outstandingOrderDetails(aggregator: String?=null): Deferred<Response<OutstandingOrderDetailsResponse>>? {
         var fullUrl : String? = _relativeUrls["outstandingOrderDetails"] 
         
-        return paymentApiList?.outstandingOrderDetails(fullUrl    ,  merchantUserId = merchantUserId)}
+        return paymentApiList?.outstandingOrderDetails(fullUrl    ,  aggregator = aggregator)}
 
     
     
-    fun paidOrderDetails(merchantUserId: String?=null): Deferred<Response<PaidOrderDetailsResponse>>? {
+    fun paidOrderDetails(aggregator: String?=null): Deferred<Response<PaidOrderDetailsResponse>>? {
         var fullUrl : String? = _relativeUrls["paidOrderDetails"] 
         
-        return paymentApiList?.paidOrderDetails(fullUrl    ,  merchantUserId = merchantUserId)}
+        return paymentApiList?.paidOrderDetails(fullUrl    ,  aggregator = aggregator)}
 
     
     

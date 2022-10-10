@@ -955,12 +955,12 @@ interface PaymentApiList {
     
     
     @GET 
-    fun outstandingOrderDetails(@Url url1: String?    ,  @Query("merchant_user_id") merchantUserId: String?)
+    fun outstandingOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<OutstandingOrderDetailsResponse>>
     
     
     @GET 
-    fun paidOrderDetails(@Url url1: String?    ,  @Query("merchant_user_id") merchantUserId: String?)
+    fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<PaidOrderDetailsResponse>>
     
 }
