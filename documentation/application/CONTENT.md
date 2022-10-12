@@ -2696,6 +2696,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | id | String? |  yes  |  |
  | question | String? |  yes  |  |
  | answer | String? |  yes  |  |
+ | tags | Any? |  yes  |  |
 
 ---
 
