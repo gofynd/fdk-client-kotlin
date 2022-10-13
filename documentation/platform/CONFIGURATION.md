@@ -59,7 +59,7 @@ Application configuration apis
 
 
 ### getBuildConfig
-Get latest build config
+Get configuration of latest mobile build
 
 
 
@@ -81,11 +81,11 @@ client.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| platformType | String | yes | Current platform name |  
+| platformType | String | yes | The device platform for which the mobile app was built, e.g. android, ios. |  
 
 
 
-Get latest build config
+Fetch latest build configuration, such as app name, landing page image, splash image used in a mobile build.
 
 *Returned Response:*
 
@@ -290,7 +290,7 @@ Success
 
 
 ### getAppFeatures
-Get features of application
+Get features of sales channel
 
 
 
@@ -311,7 +311,7 @@ client.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{
 
 
 
-Get features of application
+It gives the features of sales channel. Moreover, get the details about product details, landing page, registration page, home page, listing page, reward points and many more properties.
 
 *Returned Response:*
 
@@ -441,7 +441,7 @@ Success
 
 
 ### updateAppFeatures
-Update features of application
+Update features of sale channel
 
 
 
@@ -466,7 +466,7 @@ client.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: bod
 | body | [AppFeatureRequest](#AppFeatureRequest) | yes | Request body |
 
 
-Update features of application
+It saves or Updates the features of sales channel.
 
 *Returned Response:*
 
@@ -584,7 +584,7 @@ Success
 
 
 ### getAppBasicDetails
-Get basic application details
+Get basic sales channel details
 
 
 
@@ -605,7 +605,7 @@ client.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAw
 
 
 
-Get basic application details like name
+Get basic sales channel details like name, description, logo, domain ,company id and other related information.
 
 *Returned Response:*
 
@@ -679,7 +679,7 @@ Success
 
 
 ### updateAppBasicDetails
-Add or update application's basic details
+Add or update sales channel basic details
 
 
 
@@ -704,7 +704,7 @@ client.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body:
 | body | [ApplicationDetail](#ApplicationDetail) | yes | Request body |
 
 
-Add or update application's basic details
+Add or update sales channel basic details like name, description, logo, domain ,company id and other information.
 
 *Returned Response:*
 
@@ -776,7 +776,7 @@ Success
 
 
 ### getAppContactInfo
-Get application information
+Get sales channel current information
 
 
 
@@ -797,7 +797,7 @@ client.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwa
 
 
 
-Get Application Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
+Get sales channel Current Information. This includes information about social links, address and contact information of company/seller/brand of the application.
 
 *Returned Response:*
 
@@ -946,7 +946,7 @@ Success
 
 
 ### updateAppContactInfo
-Get application information
+Save or update sales channel current information
 
 
 
@@ -971,7 +971,7 @@ client.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: 
 | body | [ApplicationInformation](#ApplicationInformation) | yes | Request body |
 
 
-Save Application Current Information. This includes information about social links, address and contact information of an application.
+Save or update the sales channel current information. This includes information about social links, address and contact information of an application.
 
 *Returned Response:*
 
@@ -1113,7 +1113,7 @@ Success
 
 
 ### getAppApiTokens
-Get social tokens
+Get social tokens for the sales channel
 
 
 
@@ -1134,7 +1134,7 @@ client.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait
 
 
 
-Get social tokens.
+Get social tokens for the sales channel.
 
 *Returned Response:*
 
@@ -1246,7 +1246,7 @@ Success
 
 
 ### updateAppApiTokens
-Add social tokens
+Add social tokens for the sales channel
 
 
 
@@ -1271,7 +1271,7 @@ client.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: bo
 | body | [TokenResponse](#TokenResponse) | yes | Request body |
 
 
-Add social tokens.
+Add social tokens for the sales channel.
 
 *Returned Response:*
 
@@ -1383,7 +1383,7 @@ Success
 
 
 ### getAppCompanies
-Application inventory enabled companies
+Get sales channel inventory enabled companies
 
 
 
@@ -1411,7 +1411,7 @@ client.application("<APPLICATION_ID>").configuration.getAppCompanies(uid: uid, p
 
 
 
-Application inventory enabled companies.
+Get sales channel inventory enabled companies. Company has information about company name, uid and company type.
 
 *Returned Response:*
 
@@ -1470,7 +1470,7 @@ Success
 
 
 ### getAppStores
-Application inventory enabled stores
+sales channel inventory enabled stores
 
 
 
@@ -1497,7 +1497,7 @@ client.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo
 
 
 
-Application inventory enabled stores.
+Get sales channel inventory enabled stores. Inventory enabled store has information about uid, name, display name, store type, store code and company id.
 
 *Returned Response:*
 
@@ -2297,7 +2297,7 @@ Success
 
 
 ### getAppCurrencyConfig
-Get application enabled currency list
+Get current channel enabled currency list
 
 
 
@@ -2318,7 +2318,7 @@ client.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safe
 
 
 
-Get application enabled currency list
+It gives all enabled currency list for the current sales channel.
 
 *Returned Response:*
 
@@ -2368,7 +2368,7 @@ Success
 
 
 ### updateAppCurrencyConfig
-Add initial application supported currency
+Update initial sales channel supported currency
 
 
 
@@ -2393,7 +2393,7 @@ client.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(bod
 | body | [AppSupportedCurrency](#AppSupportedCurrency) | yes | Request body |
 
 
-Add initial application supported currency for various features and data. Default INR will be enabled.
+Update sales channel supported currency for various features and data. Default INR will be enabled.
 
 *Returned Response:*
 
@@ -5127,7 +5127,7 @@ Success
  | maxCartItems | Int? |  yes  | Maximum number of items can be added to cart |
  | minCartValue | Double? |  yes  | Minimum cart value |
  | bulkCoupons | Boolean? |  yes  | Allow creation of bluk coupons |
- | revenueEngineCoupon | Boolean? |  yes  | Allow coupon and revenue engine together |
+ | revenueEngineCoupon | Boolean? |  yes  | Allow coupon apply and credits together. Default value is false. |
 
 ---
 
@@ -5462,17 +5462,17 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | appName | String? |  yes  |  |
+ | isActive | Boolean? |  yes  | Indicates the availability of the mobile build |
+ | id | String? |  yes  | 24-digit Mongo Object ID |
+ | appName | String? |  yes  | Shows the name of the mobile app |
  | landingImage | [LandingImage](#LandingImage)? |  yes  |  |
  | splashImage | [SplashImage](#SplashImage)? |  yes  |  |
- | application | String? |  yes  |  |
- | platformType | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | v | Int? |  yes  |  |
- | packageName | String? |  yes  |  |
+ | application | String? |  yes  | Application ID of the sales channel |
+ | platformType | String? |  yes  | The device platform for which the mobile app was built, e.g. android, ios. |
+ | createdAt | String? |  yes  | Epoch timestamp of app creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of last known modifications to the app |
+ | v | Int? |  yes  | Version key for tracking revisions. Default value is zero. |
+ | packageName | String? |  yes  | Shows bundle identifier if device platform is iOS, and directory of the app if device platform is Android |
 
 ---
 
@@ -5483,8 +5483,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aspectRatio | String? |  yes  |  |
- | secureUrl | String? |  yes  |  |
+ | aspectRatio | String? |  yes  | Width-to-height ratio of landing image |
+ | secureUrl | String? |  yes  | URL where the landing image is hosted |
 
 ---
 
@@ -5495,8 +5495,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aspectRatio | String? |  yes  |  |
- | secureUrl | String? |  yes  |  |
+ | aspectRatio | String? |  yes  | Width-to-height ratio of splash image |
+ | secureUrl | String? |  yes  | URL where the splash image is hosted |
 
 ---
 
@@ -5552,12 +5552,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier of the sales channel support currency |
  | supportedCurrency | ArrayList<String>? |  yes  |  |
- | application | String? |  yes  |  |
+ | application | String? |  yes  | Current sales channel id |
  | defaultCurrency | [DefaultCurrency](#DefaultCurrency)? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
+ | createdAt | String? |  yes  | Epoch timestamp of sales channel support currency creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of sales channel support currency updation |
 
 ---
 
@@ -5568,8 +5568,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ref | String? |  yes  |  |
- | code | String? |  yes  |  |
+ | ref | String? |  yes  | Unique identifier of the default currency |
+ | code | String? |  yes  | Identifier code of the dafault currency |
 
 ---
 
@@ -5580,14 +5580,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
- | code | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | decimalDigits | Int? |  yes  |  |
- | symbol | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier of the currency config |
+ | isActive | Boolean? |  yes  | Currency is enabled or not for the current sales channel |
+ | name | String? |  yes  | Name of the currency |
+ | code | String? |  yes  | Identifier code of the currency |
+ | createdAt | String? |  yes  | Epoch timestamp of sales channel currency config creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of sales channel currency config updation |
+ | decimalDigits | Int? |  yes  | It shows a currency that can be divided into smaller units by dividing by ten or a hundred |
+ | symbol | String? |  yes  | Unique Symbol of the currency for identify the currency |
 
 ---
 
@@ -5626,11 +5626,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | verified | Boolean? |  yes  |  |
- | isPrimary | Boolean? |  yes  |  |
- | isShortlink | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
+ | verified | Boolean? |  yes  | Domain is verified or not |
+ | isPrimary | Boolean? |  yes  | Domain is primary or not |
+ | isShortlink | Boolean? |  yes  | Shortlink is present or not for the domain |
+ | id | String? |  yes  | The unique identifier of the sales channel domain |
+ | name | String? |  yes  | Full domain name |
 
 ---
 
@@ -6078,9 +6078,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uid | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | companyType | String? |  yes  |  |
+ | uid | Int? |  yes  | Company uid |
+ | name | String? |  yes  | Name of the company |
+ | companyType | String? |  yes  | Indicate type of the inventory company like franchisee, distributor etc. |
 
 ---
 
@@ -6103,14 +6103,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | uid | Int? |  yes  |  |
- | name | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | storeType | String? |  yes  |  |
- | storeCode | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
+ | id | String? |  yes  | The unique identifier of the sales channel inventory store |
+ | modifiedOn | String? |  yes  | Epoch timestamp of sales channel inventory store updation |
+ | uid | Int? |  yes  | Sales channel inventory store uid |
+ | name | String? |  yes  | Name of the sales channel inventory store |
+ | displayName | String? |  yes  | Display name of the sales channel inventory store |
+ | storeType | String? |  yes  | Store type of the sales channel inventory store like warehouse, high_street etc. |
+ | storeCode | String? |  yes  | Store code of the enabled inventory store. It is unique for every store. |
+ | companyId | Int? |  yes  | Company id related to enabled inventory store |
 
 ---
 
@@ -6287,11 +6287,11 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | tokens | [Tokens](#Tokens)? |  yes  |  |
- | id | String? |  yes  |  |
- | application | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | v | Int? |  yes  |  |
+ | id | String? |  yes  | Unique identifier of the token |
+ | application | String? |  yes  | Current application id |
+ | createdAt | String? |  yes  | Epoch timestamp of token creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of token updation |
+ | v | Int? |  yes  | Show version of the Token |
 
 ---
 
@@ -6570,9 +6570,9 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | similar | ArrayList<String>? |  yes  |  |
- | sellerSelection | Boolean? |  yes  |  |
- | updateProductMeta | Boolean? |  yes  |  |
- | requestProduct | Boolean? |  yes  |  |
+ | sellerSelection | Boolean? |  yes  | Allow seller selection. Default value is true. |
+ | updateProductMeta | Boolean? |  yes  | Allow user to update product meta. Default value is true. |
+ | requestProduct | Boolean? |  yes  | Allow user to request product. Default value is false. |
 
 ---
 
@@ -6583,9 +6583,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | pageType | String? |  yes  |  |
- | params | HashMap<String,Any>? |  yes  |  |
- | query | HashMap<String,Any>? |  yes  |  |
+ | pageType | String? |  yes  | Type of the launch page |
+ | params | HashMap<String,Any>? |  yes  | Launch page params. It can be nullable. |
+ | query | HashMap<String,Any>? |  yes  | Query related to launch page. It can be nullable. |
 
 ---
 
@@ -6597,10 +6597,10 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | launchPage | [LaunchPage](#LaunchPage)? |  yes  |  |
- | continueAsGuest | Boolean? |  yes  |  |
- | loginBtnText | String? |  yes  |  |
- | showDomainTextbox | Boolean? |  yes  |  |
- | showRegisterBtn | Boolean? |  yes  |  |
+ | continueAsGuest | Boolean? |  yes  | Allow user to continue as a guest |
+ | loginBtnText | String? |  yes  | Login button text |
+ | showDomainTextbox | Boolean? |  yes  | Allow to show domain text box |
+ | showRegisterBtn | Boolean? |  yes  | Allow to show registeration button |
 
 ---
 
@@ -6611,7 +6611,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | askStoreAddress | Boolean? |  yes  |  |
+ | askStoreAddress | Boolean? |  yes  | Allow ask or add store address |
 
 ---
 
@@ -6631,10 +6631,10 @@ Success
  | qr | [QrFeature](#QrFeature)? |  yes  |  |
  | pcr | [PcrFeature](#PcrFeature)? |  yes  |  |
  | order | [OrderFeature](#OrderFeature)? |  yes  |  |
- | id | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier for the sales channel features |
  | app | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
+ | createdAt | String? |  yes  | Epoch timestamp of sales channel feature creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of sales channel feature updation |
  | v | Int? |  yes  |  |
 
 ---
@@ -6646,7 +6646,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | orderProcessing | Boolean? |  yes  |  |
+ | orderProcessing | Boolean? |  yes  | Allow order processing |
 
 ---
 
@@ -6675,7 +6675,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | visibility | Boolean? |  yes  |  |
+ | visibility | Boolean? |  yes  | Allow to show communication dialog |
 
 ---
 
@@ -6686,8 +6686,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
- | type | String? |  yes  |  |
+ | enabled | Boolean? |  yes  | Enable deployment store selection |
+ | type | String? |  yes  | Type of deployment store value |
 
 ---
 
@@ -6698,7 +6698,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  |  |
+ | value | String? |  yes  | Listing price value like min, max or range. Default value is range. |
+ | sort | String? |  yes  | Sorting of listing price with min or max value. Default value is min. |
 
 ---
 
@@ -6710,8 +6711,8 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | value | ArrayList<String>? |  yes  |  |
- | type | String? |  yes  |  |
- | defaultCurrency | String? |  yes  |  |
+ | type | String? |  yes  | For explicit or all currency selection |
+ | defaultCurrency | String? |  yes  | Value of Default currency. Default vaule is 'INR'. |
 
 ---
 
@@ -6722,7 +6723,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Enable revenue engine. Default value is false. |
 
 ---
 
@@ -6733,7 +6734,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Enable user feedback. Default value is false. |
 
 ---
 
@@ -6744,7 +6745,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Enable comparison of the products. |
 
 ---
 
@@ -6755,11 +6756,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | gstInput | Boolean? |  yes  |  |
- | staffSelection | Boolean? |  yes  |  |
- | placingForCustomer | Boolean? |  yes  |  |
- | googleMap | Boolean? |  yes  |  |
- | revenueEngineCoupon | Boolean? |  yes  |  |
+ | gstInput | Boolean? |  yes  | Allow gst input in cart. Default value is true. |
+ | staffSelection | Boolean? |  yes  | Allow staff selection. Default value is true. |
+ | placingForCustomer | Boolean? |  yes  | Show placing for customer. Default value is true. |
+ | googleMap | Boolean? |  yes  | Allow adding of google map. Default value is true. |
+ | revenueEngineCoupon | Boolean? |  yes  | Allow coupon apply and credits together. Default value is false. |
 
 ---
 
@@ -6770,9 +6771,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | application | Boolean? |  yes  |  |
- | products | Boolean? |  yes  |  |
- | collections | Boolean? |  yes  |  |
+ | application | Boolean? |  yes  | Allow application. Default value is false. |
+ | products | Boolean? |  yes  | Allow products. Default value is false. |
+ | collections | Boolean? |  yes  | Allow collection. Default value is false. |
 
 ---
 
@@ -6783,7 +6784,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | staffSelection | Boolean? |  yes  |  |
+ | staffSelection | Boolean? |  yes  | Allow staff selection. Default value is false. |
 
 ---
 
@@ -6794,7 +6795,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | buyAgain | Boolean? |  yes  |  |
+ | buyAgain | Boolean? |  yes  | Allow buy again for order. Default value is false. |
 
 ---
 
@@ -6827,14 +6828,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
- | code | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | decimalDigits | Int? |  yes  |  |
- | symbol | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier of the current sales channel support currency |
+ | isActive | Boolean? |  yes  | Shows currency is enabled or not in current sales channel |
+ | name | String? |  yes  | Name of the currency |
+ | code | String? |  yes  | Identifier code of the currency |
+ | createdAt | String? |  yes  | Epoch timestamp of sales channel support currency creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of sales channel support currency updation |
+ | decimalDigits | Int? |  yes  | It shows a currency that can be divided into smaller units by dividing by ten or a hundred |
+ | symbol | String? |  yes  | Unique Symbol of the currency for identify the currency |
 
 ---
 
@@ -6904,7 +6905,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | secureUrl | String? |  yes  |  |
+ | secureUrl | String? |  yes  | hosted Url of the image |
 
 ---
 
@@ -7123,13 +7124,13 @@ Success
  | support | [InformationSupport](#InformationSupport)? |  yes  |  |
  | socialLinks | [SocialLinks](#SocialLinks)? |  yes  |  |
  | links | [Links](#Links)? |  yes  |  |
- | copyrightText | String? |  yes  |  |
- | id | String? |  yes  |  |
+ | copyrightText | String? |  yes  | Copyright text |
+ | id | String? |  yes  | Unique identifier of the application information |
  | businessHighlights | [BusinessHighlights](#BusinessHighlights)? |  yes  |  |
- | application | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | v | Int? |  yes  |  |
+ | application | String? |  yes  | Application id |
+ | createdAt | String? |  yes  | Epoch timestamp of the application information creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of the application information updation |
+ | v | Int? |  yes  | Show version of the application information |
 
 ---
 
@@ -7140,12 +7141,12 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | loc | String? |  yes  |  |
- | addressLine | ArrayList<String>? |  yes  |  |
+ | loc | String? |  yes  | Contain Address location |
+ | addressLine | ArrayList<String>? |  yes  | Detailed address info of the company |
  | phone | [InformationPhone](#InformationPhone)? |  yes  |  |
- | city | String? |  yes  |  |
- | country | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
+ | city | String? |  yes  | City name |
+ | country | String? |  yes  | Country name |
+ | pincode | Int? |  yes  | Pincode of the city |
 
 ---
 
@@ -7200,9 +7201,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the social media platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to facebook |
 
 ---
 
@@ -7213,9 +7214,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the social media platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to instagram |
 
 ---
 
@@ -7226,9 +7227,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the social media platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to twitter |
 
 ---
 
@@ -7239,9 +7240,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the social media platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to pinterest |
 
 ---
 
@@ -7252,9 +7253,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the social media platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to goole plus |
 
 ---
 
@@ -7265,9 +7266,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the social media platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to youtube channel |
 
 ---
 
@@ -7278,9 +7279,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the social networking platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to facebook |
 
 ---
 
@@ -7291,9 +7292,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the platfrom |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to vimeo |
 
 ---
 
@@ -7304,9 +7305,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the Blog title |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | link | String? |  yes  | Web url for redirecting to Blog |
 
 ---
 
@@ -7317,8 +7318,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  |  |
- | link | String? |  yes  |  |
+ | title | String? |  yes  | Name of the related page or link |
+ | link | String? |  yes  | Web url for redirecting to related page |
 
 ---
 
@@ -7329,10 +7330,10 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | title | String? |  yes  |  |
- | icon | String? |  yes  |  |
- | subTitle | String? |  yes  |  |
+ | id | String? |  yes  | Unique identifier of the related business |
+ | title | String? |  yes  | Title of the business |
+ | icon | String? |  yes  | Hosted url of icon image |
+ | subTitle | String? |  yes  | Detailed information about the business |
 
 ---
 
@@ -7343,15 +7344,15 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String |  no  |  |
- | description | String |  no  |  |
+ | name | String |  no  | Name of the sales channel. It is required. |
+ | description | String |  no  | Description about the sales channel. It gives the detail information about the sales channel. It is required. |
  | logo | [SecureUrl](#SecureUrl) |  no  |  |
  | mobileLogo | [SecureUrl](#SecureUrl) |  no  |  |
  | favicon | [SecureUrl](#SecureUrl) |  no  |  |
  | banner | [SecureUrl](#SecureUrl) |  no  |  |
  | domain | [Domain](#Domain)? |  yes  |  |
  | domains | ArrayList<[Domain](#Domain)>? |  yes  |  |
- | id | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier for the sales channel details |
 
 ---
 
@@ -7373,7 +7374,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | application | String? |  yes  |  |
+ | application | String? |  yes  | Current sales channel id |
  | defaultCurrency | [DefaultCurrency](#DefaultCurrency)? |  yes  |  |
  | supportedCurrency | ArrayList<[Currency](#Currency)>? |  yes  |  |
 
