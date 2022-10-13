@@ -12474,14 +12474,9 @@ data class AuthenticationApiErrorSchema(
     
     
     @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("is_deleted")
-    var isDeleted: Boolean?=null
+    var message: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -13003,14 +12998,9 @@ data class PlatformSchema(
     var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
     
     @SerializedName("delete_account_consent")
-    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("session_timeout")
-    var sessionTimeout: @RawValue HashMap<String,Any>?=null
+    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -13482,31 +13472,6 @@ data class Google(
     var appId: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: SessionExpiry
-*/
-@Parcelize
-data class SessionExpiry(
-    
-    
-    
-    @SerializedName("duration")
-    var duration: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
