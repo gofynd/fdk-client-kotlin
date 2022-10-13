@@ -109,7 +109,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentReasons(shipmentId: Int, bagId: String): Deferred<Response<ShipmentReasonsResponse>>? {
+    fun getShipmentReasons(shipmentId: String, bagId: String): Deferred<Response<ShipmentReasonsResponse>>? {
         var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
