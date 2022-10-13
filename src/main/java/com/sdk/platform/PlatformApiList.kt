@@ -260,6 +260,22 @@ interface UserApiList {
     fun updatePlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformSchema)
     : Deferred<Response<PlatformSchema>>
     
+    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_groups")
+    fun createUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserGroupSchema)
+    : Deferred<Response<UserGroupResponseSchema>>
+    
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_groups")
+    fun getUserGroups(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?, @Query("name") name: String?, @Query("status") status: String?)
+    : Deferred<Response<UserGroupListResponseSchema>>
+    
+    @PUT ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_groups/{group_id}")
+    fun updateUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String,@Body body: UpdateUserGroupSchema)
+    : Deferred<Response<UserGroupResponseSchema>>
+    
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_groups/{group_id}")
+    fun getUserGroupById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("group_id") groupId: String)
+    : Deferred<Response<UserGroupResponseSchema>>
+    
 }
 
 interface ContentApiList {

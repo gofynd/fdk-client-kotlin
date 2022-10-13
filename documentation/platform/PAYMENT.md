@@ -2840,12 +2840,12 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
- | appId | String |  no  | Application Id to which Payment config Mapped |
  | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
  | success | Boolean |  no  | Response is successful or not |
- | created | Boolean |  no  | Response is created or not |
+ | appId | String |  no  | Application Id to which Payment config Mapped |
  | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
+ | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
+ | created | Boolean |  no  | Response is created or not |
 
 ---
 
@@ -2856,8 +2856,8 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
  | description | String |  no  | Error human understandable description. |
+ | success | Boolean |  no  | Response is successful or not |
  | code | String |  no  | Error descrption code. |
 
 ---
@@ -2869,11 +2869,11 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | merchantSalt | String |  no  | Merchant key of the payment aggregator |
  | configType | String |  no  | Config Type of the aggregator |
- | key | String |  no  | Api key of the payment aggregator |
- | isActive | Boolean? |  yes  | Enable/ Disable Flag |
+ | merchantSalt | String |  no  | Merchant key of the payment aggregator |
  | secret | String |  no  | Secret Key of the payment aggregator |
+ | isActive | Boolean? |  yes  | Enable/ Disable Flag |
+ | key | String |  no  | Api key of the payment aggregator |
 
 ---
 
@@ -2885,8 +2885,8 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | appId | String |  no  | Application Id to which Payment config Mapped |
- | isActive | Boolean? |  yes  | Enable/ Disable Flag |
  | aggregatorName | [PaymentGatewayConfig](#PaymentGatewayConfig)? |  yes  |  |
+ | isActive | Boolean? |  yes  | Enable/ Disable Flag |
 
 ---
 
@@ -2909,8 +2909,8 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | String |  no  | Error descrption code. |
  | description | String |  no  | Error human understandable description. |
+ | code | String |  no  | Error descrption code. |
 
 ---
 
@@ -2929,24 +2929,24 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  
  
- #### [IntentAppErrorList](#IntentAppErrorList)
+ #### [PaymentModeLogo](#PaymentModeLogo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  | code |
- | packageName | String? |  yes  | package_name |
+ | small | String |  no  | smalll |
+ | large | String |  no  | large |
 
 ---
 
 
  
  
- #### [PaymentModeLogo](#PaymentModeLogo)
+ #### [IntentAppErrorList](#IntentAppErrorList)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | large | String |  no  | large |
- | small | String |  no  | smalll |
+ | packageName | String? |  yes  | package_name |
+ | code | String? |  yes  | code |
 
 ---
 
@@ -2957,10 +2957,10 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | packageName | String? |  yes  | package_name |
+ | displayName | String? |  yes  | display_name |
  | code | String? |  yes  | code |
  | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
- | displayName | String? |  yes  | display_name |
- | packageName | String? |  yes  | package_name |
 
 ---
 
@@ -2971,38 +2971,38 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | cardType | String? |  yes  | card_type |
- | name | String? |  yes  | name |
- | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
- | aggregatorName | String |  no  | aggregator_name |
- | cardIssuer | String? |  yes  | card_issuer |
- | cardFingerprint | String? |  yes  | card_fingerprint |
- | code | String? |  yes  | code |
- | retryCount | Int? |  yes  | retry_count |
- | cardNumber | String? |  yes  | card_number |
- | cardBrandImage | String? |  yes  | card_brand_image |
- | expMonth | Int? |  yes  | exp_month |
- | cardBrand | String? |  yes  | card_brand |
- | codLimit | Double? |  yes  | cod limit |
- | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
- | displayName | String? |  yes  | display name |
- | fyndVpa | String? |  yes  | fynd_vpa |
- | expired | Boolean? |  yes  | expired |
- | expYear | Int? |  yes  | exp_year |
- | merchantCode | String? |  yes  | merchant code |
- | codLimitPerOrder | Double? |  yes  | Cod limit per order |
- | cardToken | String? |  yes  | card_token |
  | cardId | String? |  yes  | card_id |
- | remainingLimit | Double? |  yes  | Remaining limit |
- | cardReference | String? |  yes  | card_reference |
- | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
- | nickname | String? |  yes  | nickname |
- | displayPriority | Int? |  yes  | Dispaly Priority |
- | cardIsin | String? |  yes  | card_isin |
- | timeout | Int? |  yes  | timeout |
  | intentFlow | Boolean? |  yes  | intent_flow |
- | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
+ | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
+ | expYear | Int? |  yes  | exp_year |
+ | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
+ | cardBrandImage | String? |  yes  | card_brand_image |
+ | merchantCode | String? |  yes  | merchant code |
+ | cardNumber | String? |  yes  | card_number |
+ | cardBrand | String? |  yes  | card_brand |
+ | fyndVpa | String? |  yes  | fynd_vpa |
+ | cardIssuer | String? |  yes  | card_issuer |
+ | aggregatorName | String |  no  | aggregator_name |
  | cardName | String? |  yes  | card_name |
+ | nickname | String? |  yes  | nickname |
+ | expired | Boolean? |  yes  | expired |
+ | cardFingerprint | String? |  yes  | card_fingerprint |
+ | cardToken | String? |  yes  | card_token |
+ | cardType | String? |  yes  | card_type |
+ | cardIsin | String? |  yes  | card_isin |
+ | displayPriority | Int? |  yes  | Dispaly Priority |
+ | displayName | String? |  yes  | display name |
+ | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
+ | cardReference | String? |  yes  | card_reference |
+ | name | String? |  yes  | name |
+ | codLimit | Double? |  yes  | cod limit |
+ | codLimitPerOrder | Double? |  yes  | Cod limit per order |
+ | expMonth | Int? |  yes  | exp_month |
+ | timeout | Int? |  yes  | timeout |
+ | code | String? |  yes  | code |
+ | remainingLimit | Double? |  yes  | Remaining limit |
+ | retryCount | Int? |  yes  | retry_count |
 
 ---
 
@@ -3013,15 +3013,15 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
- | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
  | displayName | String |  no  | Payment mode display name |
- | name | String |  no  | Payment mode name |
- | logo | String? |  yes  | Logo |
- | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logos dict with small and large logo url |
  | displayPriority | Int |  no  | Dispaly Priority |
  | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
+ | name | String |  no  | Payment mode name |
+ | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
  | aggregatorName | String? |  yes  | Dispaly Priority |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logos dict with small and large logo url |
+ | logo | String? |  yes  | Logo |
+ | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
 
 ---
 
@@ -3055,13 +3055,13 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | customers | HashMap<String,Any> |  no  | customers details object |
- | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
- | moreAttributes | HashMap<String,Any> |  no  | bank details object |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | transferType | String |  no  | transafer type |
  | isDefault | Boolean |  no  | default or not  |
+ | moreAttributes | HashMap<String,Any> |  no  | bank details object |
+ | transferType | String |  no  | transafer type |
+ | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
  | uniqueTransferNo | HashMap<String,Any> |  no  | display priority of the payment mode |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | customers | HashMap<String,Any> |  no  | customers details object |
 
 ---
 
@@ -3072,16 +3072,16 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | state | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | ifscCode | String |  no  |  |
- | accountType | String |  no  |  |
- | branchName | String? |  yes  |  |
- | country | String? |  yes  |  |
  | city | String? |  yes  |  |
- | bankName | String? |  yes  |  |
  | accountHolder | String? |  yes  |  |
+ | bankName | String? |  yes  |  |
+ | state | String? |  yes  |  |
+ | accountType | String |  no  |  |
  | accountNo | String? |  yes  |  |
+ | pincode | Int? |  yes  |  |
+ | country | String? |  yes  |  |
+ | ifscCode | String |  no  |  |
+ | branchName | String? |  yes  |  |
 
 ---
 
@@ -3092,12 +3092,12 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | users | HashMap<String,Any> |  no  | payout users object |
+ | transferType | String |  no  | transafer type |
  | aggregator | String |  no  | Aggregator Name |
  | uniqueExternalId | String |  no  | Unique Id of Payout |
- | transferType | String |  no  | transafer type |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
  | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
- | users | HashMap<String,Any> |  no  | payout users object |
 
 ---
 
@@ -3108,16 +3108,16 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | String |  no  | Aggregator Name |
- | paymentStatus | String |  no  | status of payment |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | transferType | String |  no  | transfer type |
- | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
- | success | Boolean |  no  | Response is successful or not |
- | payouts | HashMap<String,Any> |  no  | payout  object |
- | created | Boolean |  no  | created flag |
- | uniqueTransferNo | String |  no  | unique transfer no |
  | users | HashMap<String,Any> |  no  | users details object |
+ | success | Boolean |  no  | Response is successful or not |
+ | transferType | String |  no  | transfer type |
+ | aggregator | String |  no  | Aggregator Name |
+ | payouts | HashMap<String,Any> |  no  | payout  object |
+ | uniqueTransferNo | String |  no  | unique transfer no |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | created | Boolean |  no  | created flag |
+ | paymentStatus | String |  no  | status of payment |
+ | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
 
 ---
 
@@ -3141,8 +3141,8 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uniqueExternalId | String |  no  | Unique Id of Payout |
  | isDefault | Boolean |  no  | Enable/Disable Default Payout |
+ | uniqueExternalId | String |  no  | Unique Id of Payout |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
 
 ---
@@ -3224,17 +3224,17 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | address | String? |  yes  | Address of the User |
+ | mobile | String |  no  | Moblie Number of the User |
+ | ifscCode | String |  no  | Ifsc Code of the Account |
+ | accountHolder | String |  no  | Name of the Account Holder |
+ | vpa | String? |  yes  |  |
+ | accountNo | String |  no  | Account NUmber of the Account Holder |
+ | comment | String? |  yes  | Remarks added by The user |
  | email | String |  no  | Email of the Account Holder |
  | wallet | String? |  yes  |  |
- | ifscCode | String |  no  | Ifsc Code of the Account |
- | branchName | String |  no  | Branch Name of the Account |
- | comment | String? |  yes  | Remarks added by The user |
- | accountHolder | String |  no  | Name of the Account Holder |
+ | address | String? |  yes  | Address of the User |
  | bankName | String |  no  | Bank Name of the Account |
- | accountNo | String |  no  | Account NUmber of the Account Holder |
- | vpa | String? |  yes  |  |
- | mobile | String |  no  | Moblie Number of the User |
+ | branchName | String |  no  | Branch Name of the Account |
 
 ---
 
@@ -3246,12 +3246,12 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | otp | String? |  yes  |  |
- | details | [BeneficiaryModeDetails](#BeneficiaryModeDetails) |  no  | Beneficiary bank details |
- | orderId | String |  no  | Merchant Order Id |
- | requestId | String? |  yes  |  |
- | shipmentId | String |  no  | Shipment Id of the respective Merchant Order Id |
  | transferMode | String |  no  | Transfer Mode of the Beneficiary to be added |
+ | requestId | String? |  yes  |  |
+ | details | [BeneficiaryModeDetails](#BeneficiaryModeDetails) |  no  | Beneficiary bank details |
  | delights | Boolean |  no  | True if  beneficiary to be added by delights or False if by User |
+ | shipmentId | String |  no  | Shipment Id of the respective Merchant Order Id |
+ | orderId | String |  no  | Merchant Order Id |
 
 ---
 
@@ -3262,8 +3262,8 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isVerifiedFlag | Boolean? |  yes  |  |
  | success | Boolean |  no  | Success or failure flag. |
+ | isVerifiedFlag | Boolean? |  yes  |  |
  | data | HashMap<String,Any>? |  yes  | Refund account data. |
  | message | String |  no  | Response message |
 
@@ -3276,8 +3276,8 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
  | description | String |  no  | Not Found |
+ | success | Boolean |  no  | Response is successful or not |
  | code | String |  no  | Bad Request Data |
 
 ---
@@ -3289,9 +3289,9 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  | Response is successful or not |
  | bankName | String |  no  | Bank Name Of Account |
  | branchName | String |  no  | Branch Name Of Account |
- | success | Boolean? |  yes  | Response is successful or not |
 
 ---
 
@@ -3302,25 +3302,25 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | MOdification Date of Beneficiary |
- | email | String |  no  | EMail of User |
- | id | Int |  no  |   |
- | ifscCode | String |  no  | Ifsc Code Of Account |
- | title | String |  no  | Title Of Account |
- | transferMode | String |  no  | Transfer Mode Of Account |
- | mobile | String? |  yes  | MObile no of User |
- | beneficiaryId | String |  no  | Benenficiary Id |
- | address | String |  no  | Address of User |
- | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
- | branchName | String? |  yes  | Branch Name Of Account |
- | displayName | String |  no  | Display Name Of Account |
  | accountNo | String |  no  | Account Number |
- | createdOn | String |  no  | Creation Date of Beneficiary |
- | subtitle | String |  no  | SHort Title Of Account |
- | comment | String? |  yes  | Remarks |
- | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | email | String |  no  | EMail of User |
+ | address | String |  no  | Address of User |
  | bankName | String |  no  | Bank Name Of Account |
+ | branchName | String? |  yes  | Branch Name Of Account |
+ | comment | String? |  yes  | Remarks |
+ | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
+ | title | String |  no  | Title Of Account |
+ | beneficiaryId | String |  no  | Benenficiary Id |
+ | id | Int |  no  |   |
+ | mobile | String? |  yes  | MObile no of User |
+ | subtitle | String |  no  | SHort Title Of Account |
+ | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | ifscCode | String |  no  | Ifsc Code Of Account |
+ | modifiedOn | String |  no  | MOdification Date of Beneficiary |
+ | displayName | String |  no  | Display Name Of Account |
  | accountHolder | String |  no  | Account Holder Name |
+ | transferMode | String |  no  | Transfer Mode Of Account |
+ | createdOn | String |  no  | Creation Date of Beneficiary |
 
 ---
 
@@ -3343,10 +3343,10 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | mode | String |  no  | Payment mode |
  | amount | Double |  no  | Payment amount |
- | meta | HashMap<String,Any>? |  yes  | Payment meta i.e payment id, order id, gateway |
  | name | String? |  yes  | Payment mode name |
+ | meta | HashMap<String,Any>? |  yes  | Payment meta i.e payment id, order id, gateway |
+ | mode | String |  no  | Payment mode |
 
 ---
 
@@ -3370,8 +3370,8 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean |  no  | Payment confirmation updated or not. |
- | orderId | String |  no  | Unique order id |
  | message | String |  no  | Message |
+ | orderId | String |  no  | Unique order id |
 
 ---
 
@@ -3382,15 +3382,15 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | String |  no  | Name of Payment Gateway |
- | paymentModeIdentifier | String |  no  | Payment Mode Id |
- | amount | Int |  no  | Amount to paid back |
  | paymentMode | String |  no  | Payment Mode |
  | aggregatorTransactionId | String |  no  | Unique Id for the transaction |
+ | amount | Int |  no  | Amount to paid back |
  | merchantOrderId | String |  no  | Merchant's Order Id |
- | fwdShipmentId | String |  no  | Purchase Shipment Id |
- | aggregatorOrderId | String |  no  | Id of payment gateway |
  | currentStatus | String |  no  | Status |
+ | aggregator | String |  no  | Name of Payment Gateway |
+ | aggregatorOrderId | String |  no  | Id of payment gateway |
+ | paymentModeIdentifier | String |  no  | Payment Mode Id |
+ | fwdShipmentId | String |  no  | Purchase Shipment Id |
 
 ---
 
@@ -3413,11 +3413,11 @@ Success. Returns the status of API. Check the example shown below or refer `Repa
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  | Status |
  | aggregator | String |  no  | Payment aggregator name |
  | appId | String |  no  | Application id |
- | creditLineId | String |  no  | Merchant ID at Ajiodhan's end |
- | status | String |  no  | Status |
  | userId | String |  no  | Deadlock/Grimlock user id |
+ | creditLineId | String |  no  | Merchant ID at Ajiodhan's end |
 
 ---
 
