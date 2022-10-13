@@ -41,6 +41,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getInvoiceByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
             
+                    _relativeUrls["getCreditNoteByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/credit-note/"?.substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -176,6 +178,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
+
+    
+    
+    fun getCreditNoteByShipmentId(shipmentId: String): Deferred<Response<ResponseGetCreditNoteShipment>>? {
+        var fullUrl : String? = _relativeUrls["getCreditNoteByShipmentId"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getCreditNoteByShipmentId(fullUrl   )}
 
     
     

@@ -21,7 +21,6 @@ Content System
 * [getDataLoaders](#getdataloaders)
 * [deleteDataLoader](#deletedataloader)
 * [editDataLoader](#editdataloader)
-* [getDataLoadersByService](#getdataloadersbyservice)
 * [selectDataLoader](#selectdataloader)
 * [resetDataLoader](#resetdataloader)
 * [getFaqCategories](#getfaqcategories)
@@ -1569,99 +1568,6 @@ Success.
   "type": "url",
   "application": "000000000000000000000001",
   "__v": 0
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getDataLoadersByService
-Get all the data loaders in an application by service name
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").content.getDataLoadersByService(serviceName: serviceName).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| serviceName | String | yes | Service name of the data loader. |  
-
-
-
-Use this to get all data loaders of an application by service name
-
-*Returned Response:*
-
-
-
-
-[DataLoadersSchema](#DataLoadersSchema)
-
-Success. Refer `DataLoaderResponseSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "items": [
-    {
-      "name": "Algolia",
-      "is_selected": false,
-      "type": "url",
-      "_id": "61bc4523a7ffc7504f4de4a5",
-      "service": "catalog",
-      "operation_id": "fetchSuggestions",
-      "url": "/ext/example/url",
-      "__source": {
-        "type": "extension",
-        "id": "000000000000000000000003"
-      },
-      "application": "100000000000000000000001",
-      "__v": 0
-    },
-    {
-      "name": "Algolia v3",
-      "is_selected": false,
-      "type": "url",
-      "_id": "61bc452da7ffc7504f4de4a7",
-      "service": "catalog",
-      "operation_id": "fetchSuggestions",
-      "url": "/ext/example/url",
-      "__source": {
-        "type": "extension",
-        "id": "000000000000000000000003"
-      },
-      "application": "100000000000000000000001",
-      "__v": 0
-    }
-  ]
 }
 ```
 </details>
@@ -5030,7 +4936,7 @@ Get page meta
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response, error->
+client.application("<APPLICATION_ID>").content.getPageMeta(pageType: pageType, cartPages: cartPages).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5042,6 +4948,12 @@ client.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response
 
 
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageType | String? | no | Fetch meta by page type. Acceptable values are: system, custom and all |   
+| cartPages | Boolean? | no | Pass this param value as `true` to fetch meta with cart pages |  
 
 
 
@@ -8058,7 +7970,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | active | Boolean? |  yes  |  |
  | display | String? |  yes  |  |
  | sortOrder | Int? |  yes  |  |
- | subNavigation | ArrayList<[NavigationReference](#NavigationReference)>? |  yes  |  |
+ | subNavigation | ArrayList<Any>? |  yes  |  |
 
 ---
 
@@ -8275,6 +8187,17 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | requestId | String? |  yes  |  |
  | stackTrace | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CommonError](#CommonError)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
 
 ---
 

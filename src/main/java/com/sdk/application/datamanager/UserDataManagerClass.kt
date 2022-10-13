@@ -35,8 +35,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["sendResetPasswordEmail"] = "/service/application/user/authentication/v1.0/login/password/reset"?.substring(1)
             
-                    _relativeUrls["sendResetPasswordMobile"] = "/service/application/user/authentication/v1.0/login/password/mobile/reset"?.substring(1)
-            
                     _relativeUrls["forgotPassword"] = "/service/application/user/authentication/v1.0/login/password/reset/forgot"?.substring(1)
             
                     _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token"?.substring(1)
@@ -52,6 +50,8 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
                     _relativeUrls["hasPassword"] = "/service/application/user/authentication/v1.0/has-password"?.substring(1)
             
                     _relativeUrls["updatePassword"] = "/service/application/user/authentication/v1.0/password"?.substring(1)
+            
+                    _relativeUrls["deleteUser"] = "/service/application/user/authentication/v1.0/delete"?.substring(1)
             
                     _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout"?.substring(1)
             
@@ -178,13 +178,6 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun sendResetPasswordMobile(platform: String?=null, body: SendResetPasswordMobileRequestSchema): Deferred<Response<ResetPasswordSuccess>>? {
-        var fullUrl : String? = _relativeUrls["sendResetPasswordMobile"] 
-        
-        return userApiList?.sendResetPasswordMobile(fullUrl    ,  platform = platform, body = body)}
-
-    
-    
     fun forgotPassword(body: ForgotPasswordRequestSchema): Deferred<Response<LoginSuccess>>? {
         var fullUrl : String? = _relativeUrls["forgotPassword"] 
         
@@ -238,6 +231,13 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updatePassword"] 
         
         return userApiList?.updatePassword(fullUrl  ,body = body)}
+
+    
+    
+    fun deleteUser(body: DeleteApplicationUserRequestSchema): Deferred<Response<DeleteUserSuccess>>? {
+        var fullUrl : String? = _relativeUrls["deleteUser"] 
+        
+        return userApiList?.deleteUser(fullUrl  ,body = body)}
 
     
     

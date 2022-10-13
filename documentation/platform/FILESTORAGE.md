@@ -427,7 +427,7 @@ Copy Files
 
 
 
-[BulkUploadResponse](#BulkUploadResponse)
+[BulkResponse](#BulkResponse)
 
 Success
 
@@ -514,7 +514,7 @@ Copy Files
 
 
 
-[BulkUploadResponse](#BulkUploadResponse)
+[BulkResponse](#BulkResponse)
 
 Success
 
@@ -880,7 +880,7 @@ Success
 
  
  
- #### [BulkUploadResponse](#BulkUploadResponse)
+ #### [BulkResponse](#BulkResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
