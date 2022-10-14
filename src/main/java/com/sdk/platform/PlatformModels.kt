@@ -55804,20 +55804,20 @@ data class ShipmentBody(
     
     
     
-    @SerializedName("bags")
-    var bags: ArrayList<Int>?=null,
-    
-    @SerializedName("reason")
-    var reason: ArrayList<Int>?=null,
-    
-    @SerializedName("products")
-    var products: ArrayList<ProductDetail>?=null,
+    @SerializedName("data_update")
+    var dataUpdate: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("store_invoice_id")
     var storeInvoiceId: String?=null,
     
-    @SerializedName("data_update")
-    var dataUpdate: @RawValue HashMap<String,Any>?=null
+    @SerializedName("products")
+    var products: ArrayList<ProductDetail>?=null,
+    
+    @SerializedName("bags")
+    var bags: ArrayList<Int>?=null,
+    
+    @SerializedName("reason")
+    var reason: ArrayList<Int>?=null
     
 ): Parcelable {
     
@@ -55864,14 +55864,14 @@ data class Statuses(
     
     
     
+    @SerializedName("shipments")
+    var shipments: ShipmentDetail?=null,
+    
     @SerializedName("exclude_bags_next_state")
     var excludeBagsNextState: String?=null,
     
     @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("shipments")
-    var shipments: ShipmentDetail?=null
+    var status: String?=null
     
 ): Parcelable {
     
@@ -55969,32 +55969,32 @@ data class HistoryDict(
     
     
     
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("l1_detail")
-    var l1Detail: String?=null,
-    
-    @SerializedName("createdat")
-    var createdat: String?=null,
-    
-    @SerializedName("user")
-    var user: String?=null,
-    
-    @SerializedName("l2_detail")
-    var l2Detail: String?=null,
+    @SerializedName("ticket_url")
+    var ticketUrl: String?=null,
     
     @SerializedName("ticket_id")
     var ticketId: String?=null,
     
+    @SerializedName("user")
+    var user: String?=null,
+    
+    @SerializedName("l1_detail")
+    var l1Detail: String?=null,
+    
     @SerializedName("l3_detail")
     var l3Detail: String?=null,
+    
+    @SerializedName("l2_detail")
+    var l2Detail: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
     
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("ticket_url")
-    var ticketUrl: String?=null
+    @SerializedName("createdat")
+    var createdat: String?=null
     
 ): Parcelable {
     

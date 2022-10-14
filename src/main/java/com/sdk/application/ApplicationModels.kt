@@ -25458,14 +25458,14 @@ data class ShipmentBody(
     
     
     
+    @SerializedName("store_invoice_id")
+    var storeInvoiceId: String?=null,
+    
     @SerializedName("products")
     var products: ArrayList<ProductDetail>?=null,
     
     @SerializedName("data_update")
     var dataUpdate: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("store_invoice_id")
-    var storeInvoiceId: String?=null,
     
     @SerializedName("bags")
     var bags: ArrayList<Int>?=null,
@@ -25548,14 +25548,14 @@ data class ShipmentStatusUpdateBody(
     
     
     
-    @SerializedName("statuses")
-    var statuses: ArrayList<Statuses1>?=null,
-    
     @SerializedName("task")
     var task: Boolean?=null,
     
     @SerializedName("force_transition")
-    var forceTransition: Boolean?=null
+    var forceTransition: Boolean?=null,
+    
+    @SerializedName("statuses")
+    var statuses: ArrayList<Statuses1>?=null
     
 ): Parcelable {
     
@@ -25578,11 +25578,11 @@ data class ShipmentStatusUpdate(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("message")
-    var message: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var message: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
     
