@@ -217,14 +217,14 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | name | String? |  yes  |  |
- | code | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | decimalDigits | Int? |  yes  |  |
- | symbol | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier of the current sales channel supported currency |
+ | isActive | Boolean? |  yes  | Shows currency is enabled or not in current sales channel |
+ | name | String? |  yes  | Name of the currency |
+ | code | String? |  yes  | Identifier code of the currency |
+ | createdAt | String? |  yes  | Epoch timestamp of sales channel support currency creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of sales channel support currency updation |
+ | decimalDigits | Int? |  yes  | It shows a currency that can be divided into smaller units by dividing by ten or a hundred |
+ | symbol | String? |  yes  | Unique Symbol of the currency for identify the currency |
 
 ---
 
@@ -235,11 +235,11 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | verified | Boolean? |  yes  |  |
- | isPrimary | Boolean? |  yes  |  |
- | isShortlink | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
+ | verified | Boolean? |  yes  | Indicates domain is verified or not |
+ | isPrimary | Boolean? |  yes  | Indicates domain is primary or not |
+ | isShortlink | Boolean? |  yes  | Shortlink is present or not for the domain |
+ | id | String? |  yes  | The unique identifier of the domain |
+ | name | String? |  yes  | Full domain name |
 
 ---
 
@@ -250,8 +250,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
- | basepath | String? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows sales channel website url is enabled or not |
+ | basepath | String? |  yes  | Base path for the current sales channel website |
 
 ---
 
@@ -284,9 +284,9 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | redirectFrom | String? |  yes  |  |
- | redirectTo | String? |  yes  |  |
- | type | String? |  yes  |  |
+ | redirectFrom | String? |  yes  | Old domain url of the sales channel. |
+ | redirectTo | String? |  yes  | New domain url of the sales channel. User will redirect from old domain to new domain. |
+ | type | String? |  yes  | It shows domain redirection type. Permanent redirection is for long time period redirection and temporary redirection for the short time period. |
 
 ---
 
@@ -309,7 +309,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | secureUrl | String? |  yes  |  |
+ | secureUrl | String? |  yes  | Hosted Url of the image |
 
 ---
 
@@ -323,26 +323,26 @@ Success
  | website | [ApplicationWebsite](#ApplicationWebsite)? |  yes  |  |
  | cors | [ApplicationCors](#ApplicationCors)? |  yes  |  |
  | auth | [ApplicationAuth](#ApplicationAuth)? |  yes  |  |
- | description | String? |  yes  |  |
- | channelType | String? |  yes  |  |
+ | description | String? |  yes  | Detailed information about the sales channel |
+ | channelType | String? |  yes  | It indicates different channel types like store, website-and-mobile-apps. Default value is store |
  | cacheTtl | Int? |  yes  |  |
- | isInternal | Boolean? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
- | owner | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
+ | isInternal | Boolean? |  yes  | Indicates sales channel is internal sales channel or not an internal sales channel |
+ | isActive | Boolean? |  yes  | Indicates sales channel is active or not active |
+ | id | String? |  yes  | The unique identifier of the sales channel |
+ | name | String? |  yes  | Name of the sales channel |
+ | owner | String? |  yes  | Unique id of the owner to identify owner |
+ | companyId | Int? |  yes  | Company ID for the sales channel |
  | token | String? |  yes  |  |
  | redirections | ArrayList<[ApplicationRedirections](#ApplicationRedirections)>? |  yes  |  |
  | meta | ArrayList<[ApplicationMeta](#ApplicationMeta)>? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | v | Int? |  yes  |  |
+ | createdAt | String? |  yes  | Epoch timestamp of sale channel creation |
+ | updatedAt | String? |  yes  | Epoch timestamp of sale channel updation |
+ | v | Int? |  yes  | Version key for tracking revisions. Default value is zero. |
  | banner | [SecureUrl](#SecureUrl)? |  yes  |  |
  | logo | [SecureUrl](#SecureUrl)? |  yes  |  |
  | favicon | [SecureUrl](#SecureUrl)? |  yes  |  |
  | domains | ArrayList<[Domain](#Domain)>? |  yes  |  |
- | appType | String? |  yes  |  |
+ | appType | String? |  yes  | It shows application is live or in development mode. |
  | mobileLogo | [SecureUrl](#SecureUrl)? |  yes  |  |
  | domain | [Domain](#Domain)? |  yes  |  |
 
@@ -355,7 +355,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
+ | message | String? |  yes  | Response message for not found |
 
 ---
 
@@ -377,13 +377,13 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | size | Int? |  yes  |  |
- | current | Int? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | nextId | String? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
+ | type | String |  no  | Page type |
+ | size | Int? |  yes  | The number of items to retrieve in each page. Default value is 10. |
+ | current | Int? |  yes  | Current page number |
+ | hasNext | Boolean? |  yes  | Next page is present or not |
+ | itemTotal | Int? |  yes  | Total number of items to retrieve |
+ | nextId | String? |  yes  | Next page id |
+ | hasPrevious | Boolean? |  yes  | Previous page is present or not |
 
 ---
 
