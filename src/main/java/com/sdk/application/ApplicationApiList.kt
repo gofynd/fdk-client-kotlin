@@ -465,6 +465,11 @@ interface UserApiList {
     : Deferred<Response<VerifyEmailSuccess>>
     
     
+    @POST 
+    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Deferred<Response<DeleteUserSuccess>>
+    
+    
     @GET 
     fun logout(@Url url1: String?   )
     : Deferred<Response<LogoutSuccess>>
