@@ -115,13 +115,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -421,6 +421,11 @@ interface UserApiList {
     
     
     @POST 
+    fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    
+    @POST 
     fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
@@ -461,8 +466,8 @@ interface UserApiList {
     
     
     @POST 
-    fun archiveUser(@Url url1: String?   ,@Body body: ArchiveApplicationUserRequestSchema)
-    : Deferred<Response<ArchiveUserSuccess>>
+    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Deferred<Response<DeleteUserSuccess>>
     
     
     @GET 
