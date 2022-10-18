@@ -72,7 +72,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationOrder",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
