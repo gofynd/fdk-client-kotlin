@@ -78,22 +78,9 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
         } 
     }
     
-    
-    suspend fun shipmentEDDUpdate(body: ShipmentEDDUpdate)
-    : Deferred<Response<SuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderManageApiList?.shipmentEDDUpdate(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
     
     
     
