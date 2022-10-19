@@ -159,6 +159,7 @@ class RetrofitHttpClient constructor(
 
     fun initializeRestClient(apiServiceClass: Class<*>?): Any? {
         val gson = GsonBuilder()
+            .registerTypeAdapterFactory(IgnoreJsonParsingExceptionsTypeAdapterFactory())
             .registerTypeAdapterFactory(ItemTypeAdapterFactory())
             .setLenient()
             .create()
