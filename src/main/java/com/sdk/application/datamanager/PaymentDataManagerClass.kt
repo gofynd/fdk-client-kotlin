@@ -108,7 +108,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationPayment",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }

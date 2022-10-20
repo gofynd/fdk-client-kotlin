@@ -6,29 +6,31 @@
 
 ## Serviceability Methods
 Logistics Configuration API's allows you to configure zone, application logistics and many more useful features. 
-* [postApplicationServiceability](#postapplicationserviceability)
 * [getApplicationServiceability](#getapplicationserviceability)
+* [postApplicationServiceability](#postapplicationserviceability)
 * [getEntityRegionView](#getentityregionview)
 * [getListView](#getlistview)
 * [getCompanyStoreView](#getcompanystoreview)
-* [updateZoneControllerView](#updatezonecontrollerview)
 * [getZoneDataView](#getzonedataview)
+* [updateZoneControllerView](#updatezonecontrollerview)
 * [upsertZoneControllerView](#upsertzonecontrollerview)
-* [upsertZoneControllerView](#upsertzonecontrollerview)
+* [getZonesFromApplicationIdView](#getzonesfromapplicationidview)
+* [getZoneFromPincodeView](#getzonefrompincodeview)
+* [getZoneListView](#getzonelistview)
 
 
 
 ## Methods with example and description
 
 
-### postApplicationServiceability
+### getApplicationServiceability
 Zone configuration of application.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").serviceability.postApplicationServiceability(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").serviceability.getApplicationServiceability().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -41,10 +43,6 @@ client.application("<APPLICATION_ID>").serviceability.postApplicationServiceabil
 
 
 
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [ApplicationServiceabilityConfig](#ApplicationServiceabilityConfig) | yes | Request body |
 
 
 This API returns serviceability config of the application.
@@ -92,14 +90,14 @@ Response Data
 ---
 
 
-### getApplicationServiceability
+### postApplicationServiceability
 Zone configuration of application.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").serviceability.getApplicationServiceability().safeAwait{ response, error->
+client.application("<APPLICATION_ID>").serviceability.postApplicationServiceability(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -112,6 +110,10 @@ client.application("<APPLICATION_ID>").serviceability.getApplicationServiceabili
 
 
 
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [ApplicationServiceabilityConfig](#ApplicationServiceabilityConfig) | yes | Request body |
 
 
 This API returns serviceability config of the application.
@@ -225,7 +227,7 @@ Zone List of application.
 
 
 ```kotlin
-client.serviceability.getListView(pageNumber: pageNumber, pageSize: pageSize, name: name, isActive: isActive, channelIds: channelIds, q: q).safeAwait{ response, error->
+client.serviceability.getListView(pageNumber: pageNumber, pageNo: pageNo, pageSize: pageSize, name: name, isActive: isActive, channelIds: channelIds, q: q, zoneId: zoneId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -242,11 +244,13 @@ client.serviceability.getListView(pageNumber: pageNumber, pageSize: pageSize, na
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | pageNumber | Int? | no | index of the item to start returning with |   
+| pageNo | Int? | no | index of the item to start returning with |   
 | pageSize | Int? | no | determines the items to be displayed in a page |   
 | name | String? | no | Name of particular zone in the seller account |   
 | isActive | Boolean? | no | status of  zone whether active or inactive |   
 | channelIds | String? | no | zones associated with the given channel ids' |   
-| q | String? | no | search with name as a free text |  
+| q | String? | no | search with name as a free text |   
+| zoneId | ArrayList<String>? | no | list of zones to query for |  
 
 
 
@@ -338,66 +342,6 @@ Get Company Store View Data
 ---
 
 
-### updateZoneControllerView
-Updation of zone collections in database.
-
-
-
-
-```kotlin
-client.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| zoneId | String | yes | A `zone_id` is a unique identifier for a particular zone. |  
-| body | [ZoneUpdateRequest](#ZoneUpdateRequest) | yes | Request body |
-
-
-This API returns response of updation of zone in mongo database.
-
-*Returned Response:*
-
-
-
-
-[ZoneSuccessResponse](#ZoneSuccessResponse)
-
-Response status_code
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
 ### getZoneDataView
 Zone Data View of application.
 
@@ -435,6 +379,66 @@ This API returns Zone Data View of the application.
 [GetSingleZoneDataViewResponse](#GetSingleZoneDataViewResponse)
 
 Get Application Zone Data
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateZoneControllerView
+Updation of zone collections in database.
+
+
+
+
+```kotlin
+client.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| zoneId | String | yes | A `zone_id` is a unique identifier for a particular zone. |  
+| body | [ZoneUpdateRequest](#ZoneUpdateRequest) | yes | Request body |
+
+
+This API returns response of updation of zone in mongo database.
+
+*Returned Response:*
+
+
+
+
+[ZoneSuccessResponse](#ZoneSuccessResponse)
+
+Response status_code
 
 
 
@@ -517,14 +521,77 @@ Response status_code
 ---
 
 
-### upsertZoneControllerView
+### getZonesFromApplicationIdView
+GET zones from the application_id.
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").serviceability.getZonesFromApplicationIdView(pageNo: pageNo, pageSize: pageSize, zoneId: zoneId, q: q).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNo | Int? | no | index of the item to start returning with |   
+| pageSize | Int? | no | determines the items to be displayed in a page |   
+| zoneId | ArrayList<String>? | no | list of zones to query for |   
+| q | String? | no | search with name as a free text |  
+
+
+
+This API returns zones from the application_id View.
+
+*Returned Response:*
+
+
+
+
+[GetZoneFromApplicationIdViewResponse](#GetZoneFromApplicationIdViewResponse)
+
+List of zones for the given application_id
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getZoneFromPincodeView
 GET zone from the Pincode.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").serviceability.upsertZoneControllerView(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").serviceability.getZoneFromPincodeView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -576,19 +643,75 @@ Response status_code
 ---
 
 
+### getZoneListView
+Zone List of application.
 
-### Schemas
 
- 
- 
- #### [ApplicationServiceabilityConfig](#ApplicationServiceabilityConfig)
 
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | serviceabilityType | String |  no  |  |
+
+```kotlin
+client.serviceability.getZoneListView(pageNumber: pageNumber, pageNo: pageNo, pageSize: pageSize, name: name, isActive: isActive, channelIds: channelIds, q: q, zoneId: zoneId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNumber | Int? | no | index of the item to start returning with |   
+| pageNo | Int? | no | index of the item to start returning with |   
+| pageSize | Int? | no | determines the items to be displayed in a page |   
+| name | String? | no | Name of particular zone in the seller account |   
+| isActive | Boolean? | no | status of  zone whether active or inactive |   
+| channelIds | String? | no | zones associated with the given channel ids' |   
+| q | String? | no | search with name as a free text |   
+| zoneId | ArrayList<String>? | no | list of zones to query for |  
+
+
+
+This API returns Zone List View of the application.
+
+*Returned Response:*
+
+
+
+
+[ListViewResponse](#ListViewResponse)
+
+Zone List of application in descending order of their last modified date.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
 
 ---
 
+
+
+### Schemas
 
  
  
@@ -596,9 +719,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | String |  no  |  |
- | type | String |  no  |  |
  | value | String |  no  |  |
+ | type | String |  no  |  |
+ | message | String |  no  |  |
 
 ---
 
@@ -609,8 +732,8 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | channelType | String |  no  |  |
  | channelId | String |  no  |  |
+ | channelType | String |  no  |  |
  | serviceabilityType | String |  no  |  |
 
 ---
@@ -625,6 +748,17 @@ Response status_code
  | error | [ServiceabilityErrorResponse](#ServiceabilityErrorResponse)? |  yes  |  |
  | success | Boolean |  no  |  |
  | data | [ApplicationServiceabilityResponse](#ApplicationServiceabilityResponse)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ApplicationServiceabilityConfig](#ApplicationServiceabilityConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | serviceabilityType | String |  no  |  |
 
 ---
 
@@ -647,9 +781,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
- | type | String? |  yes  |  |
  | value | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | message | String? |  yes  |  |
 
 ---
 
@@ -661,10 +795,10 @@ Response status_code
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | size | Int |  no  |  |
- | type | String |  no  |  |
+ | current | Int |  no  |  |
  | hasNext | Boolean |  no  |  |
  | itemTotal | Int |  no  |  |
- | current | Int |  no  |  |
+ | type | String |  no  |  |
 
 ---
 
@@ -675,9 +809,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String |  no  |  |
- | uid | String |  no  |  |
  | subType | String |  no  |  |
+ | uid | String |  no  |  |
+ | name | String |  no  |  |
 
 ---
 
@@ -690,8 +824,8 @@ Response status_code
  | ---------- | ---- | -------- | ----------- |
  | error | [EntityRegionViewError](#EntityRegionViewError) |  no  |  |
  | page | [EntityRegionViewPage](#EntityRegionViewPage) |  no  |  |
- | data | ArrayList<[EntityRegionViewItems](#EntityRegionViewItems)> |  no  |  |
  | success | Boolean |  no  |  |
+ | data | ArrayList<[EntityRegionViewItems](#EntityRegionViewItems)> |  no  |  |
 
 ---
 
@@ -702,8 +836,8 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | channelType | String |  no  |  |
  | channelId | String |  no  |  |
+ | channelType | String |  no  |  |
 
 ---
 
@@ -726,15 +860,15 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | channels | [ListViewChannels](#ListViewChannels) |  no  |  |
+ | zoneId | String |  no  |  |
  | pincodesCount | Int |  no  |  |
- | name | String |  no  |  |
- | isActive | Boolean |  no  |  |
  | storesCount | Int |  no  |  |
- | companyId | Int |  no  |  |
+ | isActive | Boolean |  no  |  |
+ | channels | [ListViewChannels](#ListViewChannels) |  no  |  |
+ | name | String |  no  |  |
  | slug | String |  no  |  |
  | product | [ListViewProduct](#ListViewProduct) |  no  |  |
- | zoneId | String |  no  |  |
+ | companyId | Int |  no  |  |
 
 ---
 
@@ -746,10 +880,10 @@ Response status_code
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | size | Int |  no  |  |
- | hasNext | Boolean |  no  |  |
- | type | String |  no  |  |
- | itemTotal | Int |  no  |  |
  | current | Int |  no  |  |
+ | type | String |  no  |  |
+ | hasNext | Boolean |  no  |  |
+ | itemTotal | Int |  no  |  |
 
 ---
 
@@ -760,9 +894,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | totalPincodesServed | Int |  no  |  |
  | totalZones | Int |  no  |  |
  | totalActiveZones | Int |  no  |  |
+ | totalPincodesServed | Int |  no  |  |
 
 ---
 
@@ -787,10 +921,10 @@ Response status_code
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | size | Int |  no  |  |
- | type | String |  no  |  |
+ | current | Int |  no  |  |
  | hasNext | Boolean |  no  |  |
  | itemTotal | Int |  no  |  |
- | current | Int |  no  |  |
+ | type | String |  no  |  |
 
 ---
 
@@ -813,8 +947,8 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | channelType | String |  no  |  |
  | channelId | String |  no  |  |
+ | channelType | String |  no  |  |
 
 ---
 
@@ -825,8 +959,8 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | tags | ArrayList<String> |  no  |  |
  | type | String |  no  |  |
+ | tags | ArrayList<String> |  no  |  |
 
 ---
 
@@ -837,54 +971,9 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | pincode | ArrayList<String>? |  yes  |  |
  | state | ArrayList<String>? |  yes  |  |
  | country | String |  no  |  |
- | pincode | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [UpdateZoneData](#UpdateZoneData)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | zoneId | String |  no  |  |
- | name | String |  no  |  |
- | slug | String |  no  |  |
- | companyId | Int |  no  |  |
- | isActive | Boolean |  no  |  |
- | channels | ArrayList<[GetZoneDataViewChannels](#GetZoneDataViewChannels)> |  no  |  |
- | product | [ZoneProductTypes](#ZoneProductTypes) |  no  |  |
- | storeIds | ArrayList<Int> |  no  |  |
- | regionType | String |  no  |  |
- | mapping | ArrayList<[ZoneMappingType](#ZoneMappingType)> |  no  |  |
- | assignmentPreference | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ZoneUpdateRequest](#ZoneUpdateRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | data | [UpdateZoneData](#UpdateZoneData) |  no  |  |
- | identifier | String |  no  |  |
-
----
-
-
- 
- 
- #### [ZoneSuccessResponse](#ZoneSuccessResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | statusCode | Int |  no  |  |
- | success | Boolean |  no  |  |
 
 ---
 
@@ -925,6 +1014,51 @@ Response status_code
 
  
  
+ #### [UpdateZoneData](#UpdateZoneData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | zoneId | String |  no  |  |
+ | name | String |  no  |  |
+ | slug | String |  no  |  |
+ | companyId | Int |  no  |  |
+ | isActive | Boolean |  no  |  |
+ | channels | ArrayList<[GetZoneDataViewChannels](#GetZoneDataViewChannels)> |  no  |  |
+ | product | [ZoneProductTypes](#ZoneProductTypes) |  no  |  |
+ | storeIds | ArrayList<Int> |  no  |  |
+ | regionType | String |  no  |  |
+ | mapping | ArrayList<[ZoneMappingType](#ZoneMappingType)> |  no  |  |
+ | assignmentPreference | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneUpdateRequest](#ZoneUpdateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | identifier | String |  no  |  |
+ | data | [UpdateZoneData](#UpdateZoneData) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [ZoneSuccessResponse](#ZoneSuccessResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | statusCode | Int |  no  |  |
+ | success | Boolean |  no  |  |
+
+---
+
+
+ 
+ 
  #### [CreateZoneData](#CreateZoneData)
 
  | Properties | Type | Nullable | Description |
@@ -949,8 +1083,8 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | [CreateZoneData](#CreateZoneData) |  no  |  |
  | identifier | String |  no  |  |
+ | data | [CreateZoneData](#CreateZoneData) |  no  |  |
 
 ---
 
@@ -961,9 +1095,21 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | zoneId | String |  no  |  |
  | statusCode | Int |  no  |  |
  | success | Boolean |  no  |  |
- | zoneId | String |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [GetZoneFromApplicationIdViewResponse](#GetZoneFromApplicationIdViewResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[ListViewItems](#ListViewItems)> |  no  |  |
+ | page | ArrayList<[ZoneDataItem](#ZoneDataItem)> |  no  |  |
 
 ---
 
@@ -974,8 +1120,8 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | country | String |  no  |  |
  | pincode | String |  no  |  |
+ | country | String |  no  |  |
 
 ---
 
@@ -986,8 +1132,8 @@ Response status_code
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | serviceabilityType | String |  no  |  |
  | zones | ArrayList<String> |  no  |  |
+ | serviceabilityType | String |  no  |  |
 
 ---
 
