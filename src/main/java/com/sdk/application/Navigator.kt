@@ -319,12 +319,6 @@ enum class Navigator(
         pageType = PageType.login,
         navName = "Login",
         link = "/auth/login"
-    ),
-   
-    REGISTER(
-        pageType = PageType.register,
-        navName = "Register",
-        link = "/auth/register"
     )
    
 }

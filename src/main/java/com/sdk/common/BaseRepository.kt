@@ -20,7 +20,7 @@ abstract class BaseRepository {
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
                 val errorResponseString = response.toString()
-                val error = HttpClient.gson.fromJson(errorResponseString, FdkError::class.java)
+                val error = Gson().fromJson(errorResponseString, FdkError::class.java)
                 error.status = call.code()
                 error.rawErrorString = errorResponseString
                 onFailure.invoke(error)
@@ -44,7 +44,7 @@ abstract class BaseRepository {
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
                 val errorResponseString = response.toString()
-                val error = HttpClient.gson.fromJson(errorResponseString, FdkError::class.java)
+                val error = Gson().fromJson(errorResponseString, FdkError::class.java)
                 error.status = call.code()
                 error.rawErrorString = errorResponseString
                 onResponse.invoke(null, error)
@@ -67,7 +67,7 @@ abstract class BaseRepository {
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
                 val errorResponseString = response.toString()
-                val error = HttpClient.gson.fromJson(errorResponseString, FdkError::class.java)
+                val error = Gson().fromJson(errorResponseString, FdkError::class.java)
                 error.status = call.code()
                 error.rawErrorString = errorResponseString
                 return Pair(null, error)

@@ -54,8 +54,7 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationCommunication",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
     }

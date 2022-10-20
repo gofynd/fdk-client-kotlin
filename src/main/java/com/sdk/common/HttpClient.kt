@@ -1,7 +1,5 @@
 package com.sdk.common
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import okhttp3.CookieJar
 import okhttp3.Interceptor
 import okhttp3.JavaNetCookieJar
@@ -17,14 +15,6 @@ object HttpClient {
     var cookieJar: CookieJar? = null
     var httpsLoggingInterceptor = HttpLoggingInterceptor.Level.NONE
     private var currentDomainUrl = ""
-    val gson: Gson by lazy { getGsonInstance() }
-
-    private fun getGsonInstance(): Gson {
-        return GsonBuilder()
-            .registerTypeAdapterFactory(IgnoreJsonParsingExceptionsTypeAdapterFactory())
-            .setLenient()
-            .create()
-    }
 
     fun setHttpLoggingInterceptor(httpLoggingInterceptor: HttpLoggingInterceptor.Level) {
         this.httpsLoggingInterceptor = httpLoggingInterceptor
@@ -39,13 +29,12 @@ object HttpClient {
         headers: Map<String, String>? = null,
         interceptorList: Map<String, List<Interceptor>>? = null,
         namespace: String = "client",
-        persistentCookieStore: CookieStore? = null,
-        certPublicKey: String? = null
+        persistentCookieStore: CookieStore? = null
     ): RetrofitHttpClient? {
         if (persistentCookieStore != null) {
             cookieManager = CookieManager(persistentCookieStore, CookiePolicy.ACCEPT_ALL)
             cookieManager?.let {
-                cookieJar = JavaNetCookieJar(it)
+                cookieJar = JavaNetCookieJar(it)    
             }
         }
         if (!currentDomainUrl.equals(baseUrl, ignoreCase = true)) {
@@ -55,7 +44,7 @@ object HttpClient {
         if (null == clientMap[namespace]) {
             val retrofitHttpClient = RetrofitHttpClient(
                 baseUrl,
-                headers, interceptorList, cookieJar, cookieManager, persistentCookieStore, certPublicKey
+                headers, interceptorList, cookieJar, cookieManager, persistentCookieStore
             )
             clientMap[namespace] = retrofitHttpClient
         }
@@ -63,9 +52,9 @@ object HttpClient {
     }
 
     fun setDebuggable(debuggable: Boolean) {
-        httpsLoggingInterceptor = if (debuggable) {
+        httpsLoggingInterceptor = if(debuggable){
             HttpLoggingInterceptor.Level.BODY
-        } else {
+        }else{
             HttpLoggingInterceptor.Level.NONE
         }
     }
