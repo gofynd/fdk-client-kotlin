@@ -8374,7 +8374,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | faqs | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | faqs | ArrayList<[FaqSchema](#FaqSchema)>? |  yes  |  |
 
 ---
 
