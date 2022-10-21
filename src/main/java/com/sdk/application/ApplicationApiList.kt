@@ -265,7 +265,7 @@ interface CartApiList {
     
     
     @POST 
-    fun checkoutCart(@Url url1: String?    ,  @Query("id") id: String?, @Body body: CartCheckoutDetailRequest)
+    fun checkoutCart(@Url url1: String?   ,@Body body: CartCheckoutDetailRequest)
     : Deferred<Response<CartCheckoutResponse>>
     
     
