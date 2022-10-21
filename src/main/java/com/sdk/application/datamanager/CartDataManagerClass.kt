@@ -245,10 +245,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun checkoutCart(body: CartCheckoutDetailRequest): Deferred<Response<CartCheckoutResponse>>? {
+    fun checkoutCart(id: String?=null, body: CartCheckoutDetailRequest): Deferred<Response<CartCheckoutResponse>>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"] 
         
-        return cartApiList?.checkoutCart(fullUrl  ,body = body)}
+        return cartApiList?.checkoutCart(fullUrl    ,  id = id, body = body)}
 
     
     
