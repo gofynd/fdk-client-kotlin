@@ -327,8 +327,8 @@ enum class Navigator(
         link = "/auth/register"
     ),
    
-    SHIPMENT_POLICY(
-        pageType = PageType.shipmentPolicy,
+    SHIPPING_POLICY(
+        pageType = PageType.shippingPolicy,
         navName = "Shipping policy",
         link = "/shipping-policy"
     ),

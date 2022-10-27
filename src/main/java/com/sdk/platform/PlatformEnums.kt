@@ -275,8 +275,8 @@ import com.google.gson.annotations.SerializedName
         @SerializedName("register")
         register("register"), 
         
-        @SerializedName("shipment-policy")
-        shipmentPolicy("shipment-policy"), 
+        @SerializedName("shipping-policy")
+        shippingPolicy("shipping-policy"), 
         
         @SerializedName("return-policy")
         returnPolicy("return-policy");
