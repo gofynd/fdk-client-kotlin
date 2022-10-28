@@ -136,7 +136,6 @@ import com.google.gson.annotations.SerializedName
 
 
 
-
     /*
         Enum: PageType
         Used By: Content
@@ -273,13 +272,7 @@ import com.google.gson.annotations.SerializedName
         login("login"), 
         
         @SerializedName("register")
-        register("register"), 
-        
-        @SerializedName("shipping-policy")
-        shippingPolicy("shipping-policy"), 
-        
-        @SerializedName("return-policy")
-        returnPolicy("return-policy");
+        register("register");
         
 
         companion object {
