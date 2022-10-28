@@ -36,6 +36,11 @@ interface CatalogApiList {
     
     
     @GET 
+    fun getProductSimilarByIdentifier(@Url url1: String?     )
+    : Deferred<Response<SimilarProductByTypeResponse>>
+    
+    
+    @GET 
     fun getProductVariantsBySlug(@Url url1: String?    )
     : Deferred<Response<ProductVariantsResponse>>
     
