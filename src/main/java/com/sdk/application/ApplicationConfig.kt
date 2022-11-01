@@ -13,8 +13,7 @@ class ApplicationConfig(
     var currencyCode: String = "INR",
     var debuggable: Boolean = false,
     var extraHeaders: HashMap<String,String>? = null,
-    var interceptors: List<Interceptor>? = null,
-    val certPublicKey: String? = null
+    var interceptors: List<Interceptor>? = null
 ) {
     init {
         val regex = "^[0-9a-fA-F]{24}$"

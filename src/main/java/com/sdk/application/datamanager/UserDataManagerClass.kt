@@ -118,8 +118,7 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationUser",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
