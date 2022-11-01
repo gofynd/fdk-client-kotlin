@@ -140,7 +140,13 @@ import android.net.Uri
         login("login"), 
         
         @SerializedName("register")
-        register("register");
+        register("register"), 
+        
+        @SerializedName("shipping-policy")
+        shippingPolicy("shipping-policy"), 
+        
+        @SerializedName("return-policy")
+        returnPolicy("return-policy");
         
 
         companion object {
