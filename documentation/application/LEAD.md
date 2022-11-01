@@ -1353,20 +1353,8 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | response | ArrayList<[KeyValue](#KeyValue)> |  no  | Form response |
+ | response | ArrayList<HashMap<String,Any>> |  no  | Form response |
  | attachments | ArrayList<[TicketAsset](#TicketAsset)>? |  yes  | List of all attachments related to the form |
-
----
-
-
- 
- 
- #### [KeyValue](#KeyValue)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | key | String |  no  | Parameter for evaluating |
- | value | HashMap<String,Any> |  no  | Response for the parameter |
 
 ---
 
@@ -1478,6 +1466,7 @@ Success
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Success message for form submission |
  | ticket | [Ticket](#Ticket) |  no  | Ticket created on form submission |
 
 ---
@@ -1543,6 +1532,7 @@ Success
  | priority | [PriorityEnum](#PriorityEnum)? |  yes  | Priority of the ticket |
  | category | String |  no  | Category of the ticket |
  | content | [TicketContent](#TicketContent) |  no  | Content for the ticket |
+ | customJson | HashMap<String,Any>? |  yes  | optional custom data that needs to be sent |
 
 ---
 
@@ -1679,9 +1669,38 @@ Success
  | submitButton | [SubmitButton](#SubmitButton)? |  yes  | Details for submit button |
  | inputs | ArrayList<HashMap<String,Any>> |  no  | List of all the form fields |
  | createdOn | [CreatedOn](#CreatedOn)? |  yes  | Gives details of when the form was created |
- | createdBy | HashMap<String,Any>? |  yes  | Gives details of user who created the form |
  | pollForAssignment | [PollForAssignment](#PollForAssignment)? |  yes  | Details of how polling should be done for support |
  | id | String |  no  | Unique identifier for the form |
+
+---
+
+
+ 
+ 
+ #### [CommunicationDetails](#CommunicationDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | value | String? |  yes  | Value for the communication method |
+ | description | String? |  yes  | Short description for the communication method |
+ | enabled | Boolean? |  yes  | Denotes if this communication method has to be shown |
+
+---
+
+
+ 
+ 
+ #### [SupportGeneralConfig](#SupportGeneralConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  | Unique id |
+ | supportEmail | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support e-mail details |
+ | supportPhone | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support Phone number details |
+ | supportFaq | [CommunicationDetails](#CommunicationDetails)? |  yes  | Support FAQ details |
+ | showCommunicationInfo | Boolean? |  yes  | Denotes if support communication info should be shown |
+ | showSupportDris | Boolean? |  yes  | Denotes if support DRIS info should be shown |
+ | integration | HashMap<String,Any>? |  yes  | Contains integrations basic information |
 
 ---
 
