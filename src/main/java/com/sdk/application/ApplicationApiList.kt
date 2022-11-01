@@ -36,11 +36,6 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductSimilarByIdentifier(@Url url1: String?     )
-    : Deferred<Response<SimilarProductByTypeResponse>>
-    
-    
-    @GET 
     fun getProductVariantsBySlug(@Url url1: String?    )
     : Deferred<Response<ProductVariantsResponse>>
     
@@ -115,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
