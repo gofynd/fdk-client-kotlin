@@ -66,9 +66,22 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
         } 
     }
     
+    
+    suspend fun manualStoreReassignment(body: ManualStoreReassign)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.manualStoreReassignment(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
