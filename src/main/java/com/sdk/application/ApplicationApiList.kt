@@ -189,6 +189,11 @@ interface CartApiList {
     : Deferred<Response<UpdateCartDetailResponse>>
     
     
+    @PUT 
+    fun deleteCart(@Url url1: String?    ,  @Query("id") id: Int?)
+    : Deferred<Response<DeleteCartDetailResponse>>
+    
+    
     @GET 
     fun getItemCount(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<CartItemCountResponse>>
