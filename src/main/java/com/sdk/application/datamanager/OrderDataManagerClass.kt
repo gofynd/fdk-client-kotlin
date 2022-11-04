@@ -78,7 +78,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, status: String?=null, customMeta: String?=null): Deferred<Response<OrderList>>? {
+    fun getOrders(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, status: Int?=null, customMeta: String?=null): Deferred<Response<OrderList>>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
         return orderApiList?.getOrders(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    status = status,    customMeta = customMeta)}
