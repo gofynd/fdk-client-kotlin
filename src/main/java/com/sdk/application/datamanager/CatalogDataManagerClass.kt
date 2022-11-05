@@ -29,8 +29,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getComparedFrequentlyProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently/"?.substring(1)
             
-                    _relativeUrls["getProductSimilarByIdentifier"] = "/service/application/catalog/v1.0/products/{slug}/similar/{similar_type}/"?.substring(1)
-            
                     _relativeUrls["getProductVariantsBySlug"] = "/service/application/catalog/v1.0/products/{slug}/variants/"?.substring(1)
             
                     _relativeUrls["getProductStockByIds"] = "/service/application/catalog/v1.0/products/stock-status/"?.substring(1)
@@ -156,17 +154,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         return catalogApiList?.getComparedFrequentlyProductBySlug(fullUrl   )}
-
-    
-    
-    fun getProductSimilarByIdentifier(slug: String, similarType: String): Deferred<Response<SimilarProductByTypeResponse>>? {
-        var fullUrl : String? = _relativeUrls["getProductSimilarByIdentifier"] 
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "similar_type" +"}",similarType.toString())
-        
-        return catalogApiList?.getProductSimilarByIdentifier(fullUrl    )}
 
     
     

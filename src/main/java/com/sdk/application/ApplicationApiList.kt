@@ -36,11 +36,6 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductSimilarByIdentifier(@Url url1: String?     )
-    : Deferred<Response<SimilarProductByTypeResponse>>
-    
-    
-    @GET 
     fun getProductVariantsBySlug(@Url url1: String?    )
     : Deferred<Response<ProductVariantsResponse>>
     
@@ -889,6 +884,11 @@ interface PaymentApiList {
     : Deferred<Response<ResendOrCancelPaymentResponse>>
     
     
+    @POST 
+    fun renderHTML(@Url url1: String?   ,@Body body: renderHTMLRequest)
+    : Deferred<Response<renderHTMLResponse>>
+    
+    
     @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
@@ -964,7 +964,7 @@ interface OrderApiList {
     
     
     @GET 
-    fun getOrders(@Url url1: String?    ,      @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("status") status: Int?)
+    fun getOrders(@Url url1: String?    ,       @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("status") status: Int?, @Query("custom_meta") customMeta: String?)
     : Deferred<Response<OrderList>>
     
     
