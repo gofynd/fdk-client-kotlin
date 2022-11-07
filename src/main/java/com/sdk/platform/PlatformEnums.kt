@@ -272,13 +272,7 @@ import com.google.gson.annotations.SerializedName
         login("login"), 
         
         @SerializedName("register")
-        register("register"), 
-        
-        @SerializedName("shipping-policy")
-        shippingPolicy("shipping-policy"), 
-        
-        @SerializedName("return-policy")
-        returnPolicy("return-policy");
+        register("register");
         
 
         companion object {
@@ -332,5 +326,6 @@ import com.google.gson.annotations.SerializedName
             }
         }
     }
+
 
 
