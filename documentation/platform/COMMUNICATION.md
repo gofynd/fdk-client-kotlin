@@ -5285,7 +5285,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | key | String? |  yes  |  |
- | value | String? |  yes  |  |
+ | value | Any? |  yes  |  |
 
 ---
 
@@ -5297,7 +5297,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | key | String? |  yes  |  |
- | value | String? |  yes  |  |
+ | value | Any? |  yes  |  |
 
 ---
 
