@@ -325,6 +325,18 @@ enum class Navigator(
         pageType = PageType.register,
         navName = "Register",
         link = "/auth/register"
+    ),
+   
+    SHIPPING_POLICY(
+        pageType = PageType.shippingPolicy,
+        navName = "Shipping policy",
+        link = "/shipping-policy"
+    ),
+   
+    RETURN_POLICY(
+        pageType = PageType.returnPolicy,
+        navName = "Return policy",
+        link = "/return-policy"
     )
    
 }
