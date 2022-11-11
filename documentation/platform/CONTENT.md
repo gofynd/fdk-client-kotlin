@@ -8020,7 +8020,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | active | Boolean? |  yes  |  |
  | display | String? |  yes  |  |
  | sortOrder | Int? |  yes  |  |
- | subNavigation | ArrayList<Any>? |  yes  |  |
+ | subNavigation | ArrayList<[NavigationReference](#NavigationReference)>? |  yes  |  |
 
 ---
 

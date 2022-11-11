@@ -2640,7 +2640,7 @@ Success
  | hsnCode | String? |  yes  |  |
  | priceEffective | Double? |  yes  |  |
  | codCharges | Double? |  yes  |  |
- | gstFee | String? |  yes  |  |
+ | gstFee | Double? |  yes  |  |
  | fyndCredits | Double? |  yes  |  |
  | refundAmount | Double? |  yes  |  |
  | cashbackApplied | Double? |  yes  |  |
@@ -2780,7 +2780,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | brandCalculatedAmount | Double? |  yes  |  |
- | gstFee | String? |  yes  |  |
+ | gstFee | Double? |  yes  |  |
  | gstTag | String? |  yes  |  |
  | hsnCode | String? |  yes  |  |
  | valueOfGood | Double? |  yes  |  |

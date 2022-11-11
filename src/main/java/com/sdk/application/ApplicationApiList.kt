@@ -925,7 +925,7 @@ interface PaymentApiList {
     
     
     @POST 
-    fun addRefundBankAccountUsingOTP(@Url url1: String?   ,@Body body: AddBeneficiaryDetailsOTPRequest)
+    fun addRefundBankAccountUsingOTP(@Url url1: String?     ,@Body body: AddBeneficiaryDetailsOTPRequest)
     : Deferred<Response<RefundAccountResponse>>
     
     
@@ -1026,6 +1026,11 @@ interface OrderApiList {
     @GET 
     fun getShipmentReasons(@Url url1: String?    )
     : Deferred<Response<ShipmentReasons>>
+    
+    
+    @GET 
+    fun getShipmentBagReasons(@Url url1: String?     )
+    : Deferred<Response<ShipmentBagReasons>>
     
     
     @PUT 
