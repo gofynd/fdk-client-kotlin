@@ -10,6 +10,7 @@ Handles Platform websites OMS
 * [getOrderById](#getorderbyid)
 * [getShipmentById](#getshipmentbyid)
 * [getShipmentReasons](#getshipmentreasons)
+* [getShipmentBagReasons](#getshipmentbagreasons)
 * [updateShipmentStatus](#updateshipmentstatus)
 * [trackShipment](#trackshipment)
 * [getPosOrderById](#getposorderbyid)
@@ -246,6 +247,67 @@ Use this API to retrieve the issues that led to the cancellation of bags within 
 [ShipmentReasons](#ShipmentReasons)
 
 Success. Check the example shown below or refer `ShipmentReasons` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getShipmentBagReasons
+Get reasons at l1,l2 and l3 for cancellation and return based on department
+
+
+
+
+```kotlin
+order.getShipmentBagReasons(shipmentId: shipmentId, bagId: bagId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |   
+| bagId | String | yes | ID of the bag. |  
+
+
+
+Use this API to retrieve the issues that led to the cancellation of bags within a shipment.
+
+*Returned Response:*
+
+
+
+
+[ShipmentBagReasons](#ShipmentBagReasons)
+
+Success. Check the example shown below or refer `ShipmentBagReasons` for more details.
 
 
 
@@ -885,6 +947,17 @@ Success, the code is valid and returns a SignedUrl
 
  
  
+ #### [ShipmentBagReasons](#ShipmentBagReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | reasons | ArrayList<[BagReasons](#BagReasons)> |  no  |  |
+
+---
+
+
+ 
+ 
  #### [ShipmentById](#ShipmentById)
 
  | Properties | Type | Nullable | Description |
@@ -1020,6 +1093,18 @@ Success, the code is valid and returns a SignedUrl
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | order | [OrderSchema](#OrderSchema) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BagReasons](#BagReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | Int? |  yes  |  |
+ | displayName | String? |  yes  |  |
 
 ---
 

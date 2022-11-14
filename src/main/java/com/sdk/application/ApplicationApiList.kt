@@ -983,6 +983,11 @@ interface OrderApiList {
     : Deferred<Response<ShipmentReasons>>
     
     
+    @GET 
+    fun getShipmentBagReasons(@Url url1: String?     )
+    : Deferred<Response<ShipmentBagReasons>>
+    
+    
     @PUT 
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
     : Deferred<Response<ShipmentStatusUpdate>>
