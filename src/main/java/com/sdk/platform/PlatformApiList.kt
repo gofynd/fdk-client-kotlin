@@ -112,6 +112,10 @@ interface LeadApiList {
     fun closeVideoRoom(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("unique_name") uniqueName: String)
     : Deferred<Response<CloseVideoRoomResponse>>
     
+    @GET ("/service/platform/lead/v1.0/company/{company_id}/general-config")
+    fun getGeneralConfig(@Path("company_id") companyId: String)
+    : Deferred<Response<CloseVideoRoomResponse>>
+    
 }
 
 interface FeedbackApiList {
@@ -1538,11 +1542,11 @@ interface FileStorageApiList {
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/uploads/copy/")
     fun copyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String,@Body body: BulkRequest)
-    : Deferred<Response<BulkResponse>>
+    : Deferred<Response<BulkUploadResponse>>
     
     @POST ("/service/platform/assets/v1.0/company/{company_id}/application/{application_id}/uploads/copy/")
     fun appCopyFiles(@Query("sync") sync: Boolean?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: BulkRequest)
-    : Deferred<Response<BulkResponse>>
+    : Deferred<Response<BulkUploadResponse>>
     
     @GET ("/service/platform/assets/v1.0/company/{company_id}/namespaces/{namespace}/browse/")
     fun browse(@Path("namespace") namespace: String, @Path("company_id") companyId: String, @Query("page_no") pageNo: Int?)
