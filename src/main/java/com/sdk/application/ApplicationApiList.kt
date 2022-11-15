@@ -886,7 +886,7 @@ interface PaymentApiList {
     
     @POST 
     fun renderHTML(@Url url1: String?   ,@Body body: renderHTMLRequest)
-    : Deferred<Response<Any>>
+    : Deferred<Response<renderHTMLResponse>>
     
     
     @GET 

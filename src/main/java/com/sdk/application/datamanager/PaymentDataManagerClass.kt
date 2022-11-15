@@ -210,7 +210,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun renderHTML(body: renderHTMLRequest): Deferred<Response<Any>>? {
+    fun renderHTML(body: renderHTMLRequest): Deferred<Response<renderHTMLResponse>>? {
         var fullUrl : String? = _relativeUrls["renderHTML"] 
         
         return paymentApiList?.renderHTML(fullUrl  ,body = body)}
