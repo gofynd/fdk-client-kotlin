@@ -117,10 +117,7 @@ enum class Navigator(
     FAQ(
         pageType = PageType.faq,
         navName = "FAQ",
-        link = "/faq/:category",
-        params = arrayListOf(
-            NavParam(key = "category", required = false)
-        )
+        link = "/faq"
     ),
    
     FRESHCHAT(
