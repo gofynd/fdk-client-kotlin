@@ -1002,6 +1002,11 @@ interface OrderApiList {
     fun getPlatformShipmentReasons(@Url url1: String?    )
     : Deferred<Response<ShipmentReasonsResponse>>
     
+    
+    @PUT 
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
+    : Deferred<Response<StatusUpdateInternalResponse>>
+    
 }
 
 interface RewardsApiList {

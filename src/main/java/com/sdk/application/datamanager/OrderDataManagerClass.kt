@@ -37,6 +37,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getPlatformShipmentReasons"] = "/service/application/orders/v1.0/orders/bags/{bag_id}/reasons"?.substring(1)
             
+                    _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -154,6 +156,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "bag_id" +"}",bagId.toString())
         
         return orderApiList?.getPlatformShipmentReasons(fullUrl   )}
+
+    
+    
+    fun updateShipmentStatus(shipmentId: String, body: StatusUpdateInternalRequest): Deferred<Response<StatusUpdateInternalResponse>>? {
+        var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
 
     
     
