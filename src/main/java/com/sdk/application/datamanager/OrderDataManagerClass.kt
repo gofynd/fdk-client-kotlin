@@ -275,7 +275,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun verifyOtpShipmentCustomer1(orderId: String, shipmentId: Int, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
+    fun verifyOtpShipmentCustomer1(orderId: String, shipmentId: String, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
         var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer1"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())

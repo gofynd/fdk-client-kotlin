@@ -2815,7 +2815,7 @@ order.verifyOtpShipmentCustomer1(orderId: orderId, shipmentId: shipmentId, body:
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
 | orderId | String | yes | A unique number used for identifying and tracking your orders. |   
-| shipmentId | Int | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
+| shipmentId | String | yes | ID of the shipment. An order may contain multiple items and may get divided into one or more shipment, each having its own ID. |  
 | body | [VerifyOtp](#VerifyOtp) | yes | Request body |
 
 
@@ -3194,10 +3194,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | itemId | Int? |  yes  |  |
- | itemSize | String? |  yes  |  |
- | storeId | Int? |  yes  |  |
  | sellerId | Int? |  yes  |  |
+ | storeId | Int? |  yes  |  |
  | quantity | Int? |  yes  |  |
+ | itemSize | String? |  yes  |  |
  | articleAssignment | [BagsForReorderArticleAssignment](#BagsForReorderArticleAssignment)? |  yes  |  |
 
 ---
@@ -3209,8 +3209,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | level | String? |  yes  |  |
  | strategy | String? |  yes  |  |
+ | level | String? |  yes  |  |
 
 ---
 
@@ -3277,26 +3277,26 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amountPaidRoundoff | Double? |  yes  |  |
- | fyndCredits | Double? |  yes  |  |
- | codCharges | Double? |  yes  |  |
  | cashback | Double? |  yes  |  |
- | addedToFyndCash | Boolean? |  yes  |  |
- | priceMarked | Double? |  yes  |  |
- | transferPrice | Double? |  yes  |  |
- | couponValue | Double? |  yes  |  |
- | priceEffective | Double? |  yes  |  |
- | refundCredit | Double? |  yes  |  |
- | amountPaid | Double? |  yes  |  |
- | refundAmount | Double? |  yes  |  |
- | cashbackApplied | Double? |  yes  |  |
- | gstTaxPercentage | Double? |  yes  |  |
- | valueOfGood | Double? |  yes  |  |
- | brandCalculatedAmount | Double? |  yes  |  |
- | promotionEffectiveDiscount | Double? |  yes  |  |
  | discount | Double? |  yes  |  |
+ | cashbackApplied | Double? |  yes  |  |
+ | amountPaid | Double? |  yes  |  |
+ | addedToFyndCash | Boolean? |  yes  |  |
+ | amountPaidRoundoff | Double? |  yes  |  |
+ | gstTaxPercentage | Double? |  yes  |  |
+ | codCharges | Double? |  yes  |  |
+ | priceEffective | Double? |  yes  |  |
+ | fyndCredits | Double? |  yes  |  |
  | couponEffectiveDiscount | Double? |  yes  |  |
+ | valueOfGood | Double? |  yes  |  |
+ | transferPrice | Double? |  yes  |  |
+ | brandCalculatedAmount | Double? |  yes  |  |
+ | priceMarked | Double? |  yes  |  |
+ | refundAmount | Double? |  yes  |  |
  | deliveryCharge | Double? |  yes  |  |
+ | refundCredit | Double? |  yes  |  |
+ | couponValue | Double? |  yes  |  |
+ | promotionEffectiveDiscount | Double? |  yes  |  |
 
 ---
 
@@ -3307,10 +3307,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | String? |  yes  |  |
  | name | String? |  yes  |  |
- | journeyType | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
+ | status | String? |  yes  |  |
+ | journeyType | String? |  yes  |  |
 
 ---
 
@@ -3321,33 +3321,33 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | brandCalculatedAmount | Double? |  yes  |  |
- | couponValue | Double? |  yes  |  |
- | amountPaidRoundoff | Double? |  yes  |  |
- | gstFee | Double? |  yes  |  |
- | refundCredit | Double? |  yes  |  |
  | cashback | Double? |  yes  |  |
- | refundAmount | Double? |  yes  |  |
- | valueOfGood | Double? |  yes  |  |
- | promotionEffectiveDiscount | Double? |  yes  |  |
- | size | String? |  yes  |  |
- | totalUnits | Int? |  yes  |  |
- | discount | Double? |  yes  |  |
- | amountPaid | Double? |  yes  |  |
- | fyndCredits | Double? |  yes  |  |
- | addedToFyndCash | Boolean? |  yes  |  |
- | deliveryCharge | Double? |  yes  |  |
- | hsnCode | String? |  yes  |  |
- | couponEffectiveDiscount | Double? |  yes  |  |
- | transferPrice | Double? |  yes  |  |
- | identifiers | [Identifiers](#Identifiers)? |  yes  |  |
- | gstTag | String? |  yes  |  |
- | priceMarked | Double? |  yes  |  |
- | priceEffective | Double? |  yes  |  |
- | codCharges | Double? |  yes  |  |
  | itemName | String? |  yes  |  |
+ | discount | Double? |  yes  |  |
  | cashbackApplied | Double? |  yes  |  |
+ | amountPaid | Double? |  yes  |  |
+ | totalUnits | Int? |  yes  |  |
+ | addedToFyndCash | Boolean? |  yes  |  |
+ | hsnCode | String? |  yes  |  |
+ | amountPaidRoundoff | Double? |  yes  |  |
  | gstTaxPercentage | Double? |  yes  |  |
+ | codCharges | Double? |  yes  |  |
+ | gstTag | String? |  yes  |  |
+ | priceEffective | Double? |  yes  |  |
+ | fyndCredits | Double? |  yes  |  |
+ | couponEffectiveDiscount | Double? |  yes  |  |
+ | valueOfGood | Double? |  yes  |  |
+ | transferPrice | Double? |  yes  |  |
+ | gstFee | Double? |  yes  |  |
+ | identifiers | [Identifiers](#Identifiers)? |  yes  |  |
+ | brandCalculatedAmount | Double? |  yes  |  |
+ | priceMarked | Double? |  yes  |  |
+ | size | String? |  yes  |  |
+ | refundAmount | Double? |  yes  |  |
+ | refundCredit | Double? |  yes  |  |
+ | deliveryCharge | Double? |  yes  |  |
+ | couponValue | Double? |  yes  |  |
+ | promotionEffectiveDiscount | Double? |  yes  |  |
 
 ---
 
@@ -3358,8 +3358,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ean | String? |  yes  |  |
  | skuCode | String? |  yes  |  |
+ | ean | String? |  yes  |  |
 
 ---
 
@@ -3382,12 +3382,12 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double? |  yes  |  |
  | promoId | String? |  yes  |  |
  | promotionName | String? |  yes  |  |
  | promotionType | String? |  yes  |  |
  | articleQuantity | Double? |  yes  |  |
  | mrpPromotion | Boolean? |  yes  |  |
+ | amount | Double? |  yes  |  |
  | appliedFreeArticles | [AppliedFreeArticles](#AppliedFreeArticles)? |  yes  |  |
 
 ---
@@ -3399,10 +3399,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | quantity | Double? |  yes  |  |
- | articleId | String? |  yes  |  |
  | parentItemIdentifier | String? |  yes  |  |
+ | quantity | Double? |  yes  |  |
  | freeGiftItemDetails | ArrayList<[FreeGiftItemDetails](#FreeGiftItemDetails)>? |  yes  |  |
+ | articleId | String? |  yes  |  |
 
 ---
 
@@ -3413,10 +3413,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | itemId | String? |  yes  |  |
  | itemName | String? |  yes  |  |
- | itemBrandName | String? |  yes  |  |
+ | itemId | String? |  yes  |  |
  | itemPriceDetails | [ItemPriceDetails](#ItemPriceDetails)? |  yes  |  |
+ | itemBrandName | String? |  yes  |  |
 
 ---
 
@@ -3428,8 +3428,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | currency | String? |  yes  |  |
- | marked | [MarkedValues](#MarkedValues)? |  yes  |  |
  | effective | [EffectiveValues](#EffectiveValues)? |  yes  |  |
+ | marked | [MarkedValues](#MarkedValues)? |  yes  |  |
 
 ---
 
@@ -3440,8 +3440,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | max | Double? |  yes  |  |
  | min | Double? |  yes  |  |
+ | max | Double? |  yes  |  |
 
 ---
 
@@ -3452,8 +3452,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | max | Double? |  yes  |  |
  | min | Double? |  yes  |  |
+ | max | Double? |  yes  |  |
 
 ---
 
@@ -3477,26 +3477,26 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | pincode | String? |  yes  |  |
- | landmark | String? |  yes  |  |
- | contactPerson | String? |  yes  |  |
- | phone | String? |  yes  |  |
- | state | String? |  yes  |  |
- | version | String? |  yes  |  |
  | address1 | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | addressType | String? |  yes  |  |
- | addressCategory | String? |  yes  |  |
- | area | String? |  yes  |  |
- | city | String? |  yes  |  |
+ | contactPerson | String? |  yes  |  |
  | latitude | Double? |  yes  |  |
- | longitude | Double? |  yes  |  |
- | email | String? |  yes  |  |
- | country | String? |  yes  |  |
- | address2 | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
+ | area | String? |  yes  |  |
+ | longitude | Double? |  yes  |  |
+ | addressCategory | String? |  yes  |  |
+ | addressType | String? |  yes  |  |
+ | state | String? |  yes  |  |
+ | country | String? |  yes  |  |
+ | landmark | String? |  yes  |  |
  | name | String? |  yes  |  |
+ | pincode | String? |  yes  |  |
+ | city | String? |  yes  |  |
+ | email | String? |  yes  |  |
  | address | String? |  yes  |  |
+ | phone | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | address2 | String? |  yes  |  |
+ | version | String? |  yes  |  |
 
 ---
 
@@ -3507,11 +3507,11 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  |  |
+ | companyId | Int? |  yes  |  |
  | id | Int? |  yes  |  |
  | name | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
  | companyName | String? |  yes  |  |
+ | code | String? |  yes  |  |
 
 ---
 
@@ -3684,10 +3684,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isCurrent | Boolean? |  yes  |  |
- | status | String? |  yes  |  |
- | time | String? |  yes  |  |
  | isPassed | Boolean? |  yes  |  |
+ | status | String? |  yes  |  |
+ | isCurrent | Boolean? |  yes  |  |
+ | time | String? |  yes  |  |
 
 ---
 
@@ -3698,10 +3698,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | mobile | String? |  yes  |  |
- | email | String? |  yes  |  |
- | name | String? |  yes  |  |
  | gender | String? |  yes  |  |
+ | email | String? |  yes  |  |
+ | mobile | String? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -3719,13 +3719,51 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  
  
- #### [PricesBreakup](#PricesBreakup)
+ #### [Statuses](#Statuses)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | value | Int? |  yes  |  |
  | display | String? |  yes  |  |
+ | isSelected | Boolean? |  yes  |  |
+ | value | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Filters](#Filters)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | statuses | ArrayList<[Statuses](#Statuses)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [InvoiceData](#InvoiceData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | invoiceUrl | String? |  yes  |  |
+ | updatedDate | String? |  yes  |  |
+ | labelUrl | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserInfo1](#UserInfo1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | gender | String? |  yes  |  |
+ | firstName | String? |  yes  |  |
+ | lastName | String? |  yes  |  |
+ | mobile | String? |  yes  |  |
 
 ---
 
@@ -3736,44 +3774,14 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | slugKey | String? |  yes  |  |
- | size | String? |  yes  |  |
- | brand | [ItemBrand](#ItemBrand)? |  yes  |  |
- | id | Int? |  yes  |  |
- | code | String? |  yes  |  |
  | sellerIdentifier | String? |  yes  |  |
+ | slugKey | String? |  yes  |  |
+ | brand | [ItemBrand](#ItemBrand)? |  yes  |  |
  | image | ArrayList<String>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Prices1](#Prices1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | priceEffective | Int? |  yes  |  |
- | refundCredit | Int? |  yes  |  |
- | couponValue | Int? |  yes  |  |
- | valueOfGood | Int? |  yes  |  |
- | addedToFyndCash | Int? |  yes  |  |
- | transferPrice | Int? |  yes  |  |
- | discount | Int? |  yes  |  |
- | brandCalculatedAmount | Int? |  yes  |  |
- | gstTaxPercentage | Int? |  yes  |  |
- | codCharges | Int? |  yes  |  |
- | pmPriceSplit | HashMap<String,Any>? |  yes  |  |
- | couponEffectiveDiscount | Int? |  yes  |  |
- | amountPaid | Int? |  yes  |  |
- | cashback | Int? |  yes  |  |
- | cashbackApplied | Int? |  yes  |  |
- | refundAmount | Int? |  yes  |  |
- | priceMarked | Int? |  yes  |  |
- | deliveryCharge | Int? |  yes  |  |
- | fyndCredits | Int? |  yes  |  |
- | promotionEffectiveDiscount | Int? |  yes  |  |
+ | size | String? |  yes  |  |
+ | id | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | code | String? |  yes  |  |
 
 ---
 
@@ -3784,14 +3792,55 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | appliedPromos | ArrayList<[AppliedPromos](#AppliedPromos)>? |  yes  |  |
+ | prices | [Prices](#Prices)? |  yes  |  |
  | canCancel | Boolean? |  yes  |  |
- | currentStatus | [CurrentStatus](#CurrentStatus)? |  yes  |  |
  | canReturn | Boolean? |  yes  |  |
- | financialBreakup | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | item | [Item1](#Item1)? |  yes  |  |
+ | financialBreakup | ArrayList<[FinancialBreakup](#FinancialBreakup)>? |  yes  |  |
+ | returnableDate | String? |  yes  |  |
  | quantity | Int? |  yes  |  |
  | id | Int? |  yes  |  |
- | prices | [Prices1](#Prices1)? |  yes  |  |
+ | deliveryDate | String? |  yes  |  |
+ | item | [Item1](#Item1)? |  yes  |  |
+ | currentStatus | [CurrentStatus](#CurrentStatus)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PaymentInfo](#PaymentInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | logo | String? |  yes  |  |
+ | mop | String? |  yes  |  |
+ | status | String? |  yes  |  |
+ | mode | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TimeStampData](#TimeStampData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | min | String? |  yes  |  |
+ | max | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Promise1](#Promise1)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | showPromise | String? |  yes  |  |
+ | timestamp | [TimeStampData](#TimeStampData)? |  yes  |  |
 
 ---
 
@@ -3810,28 +3859,26 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  
  
- #### [PaymentInfo](#PaymentInfo)
+ #### [PricesBreakup](#PricesBreakup)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | mop | String? |  yes  |  |
- | status | String? |  yes  |  |
- | logo | String? |  yes  |  |
- | mode | String? |  yes  |  |
+ | display | String? |  yes  |  |
+ | value | Double? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [FulfillingStore1](#FulfillingStore1)
+ #### [ShipmentTotalDetails1](#ShipmentTotalDetails1)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | code | String? |  yes  |  |
- | id | Int? |  yes  |  |
- | companyId | Int? |  yes  |  |
+ | totalPrice | Double? |  yes  |  |
+ | pieces | Double? |  yes  |  |
+ | sizes | Double? |  yes  |  |
 
 ---
 
@@ -3842,39 +3889,41 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userInfo | [UserInfo](#UserInfo)? |  yes  |  |
- | returnableDate | String? |  yes  |  |
- | breakupValues | ArrayList<[PricesBreakup](#PricesBreakup)>? |  yes  |  |
- | bags | ArrayList<[BagsData](#BagsData)>? |  yes  |  |
- | prices | HashMap<String,Any>? |  yes  |  |
- | refundDetails | HashMap<String,Any>? |  yes  |  |
- | canCancel | Boolean? |  yes  |  |
- | canBreak | HashMap<String,Any>? |  yes  |  |
- | dpName | String? |  yes  |  |
+ | prices | [Prices](#Prices)? |  yes  |  |
  | showTrackLink | Boolean? |  yes  |  |
- | trakingNo | String? |  yes  |  |
- | fulfillingCompany | [FulfillingCompany](#FulfillingCompany)? |  yes  |  |
- | beneficiaryDetails | Boolean? |  yes  |  |
- | invoice | HashMap<String,Any>? |  yes  |  |
- | payment | [PaymentInfo](#PaymentInfo)? |  yes  |  |
- | shipmentCreatedAt | String? |  yes  |  |
- | needHelpUrl | String? |  yes  |  |
- | awbNo | String? |  yes  |  |
- | sizeInfo | HashMap<String,Any>? |  yes  |  |
  | shipmentId | String? |  yes  |  |
- | trackingDetails | HashMap<String,Any>? |  yes  |  |
- | deliveryAddress | HashMap<String,Any>? |  yes  |  |
- | showDownloadInvoice | Boolean? |  yes  |  |
- | shipmentStatus | HashMap<String,Any>? |  yes  |  |
+ | invoice | [InvoiceData](#InvoiceData)? |  yes  |  |
+ | userInfo | [UserInfo1](#UserInfo1)? |  yes  |  |
+ | deliveryAddress | [DeliveryAddress](#DeliveryAddress)? |  yes  |  |
+ | dpName | String? |  yes  |  |
+ | refundDetails | HashMap<String,Any>? |  yes  |  |
+ | orderType | String? |  yes  |  |
+ | beneficiaryDetails | Boolean? |  yes  |  |
+ | bags | ArrayList<[BagsData](#BagsData)>? |  yes  |  |
+ | canBreak | HashMap<String,Any>? |  yes  |  |
  | canReturn | Boolean? |  yes  |  |
- | comment | String? |  yes  |  |
- | orderId | String? |  yes  |  |
- | totalDetails | HashMap<String,Any>? |  yes  |  |
+ | showDownloadInvoice | Boolean? |  yes  |  |
  | trackUrl | String? |  yes  |  |
+ | payment | [PaymentInfo](#PaymentInfo)? |  yes  |  |
+ | customMeta | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | promise | [Promise1](#Promise1)? |  yes  |  |
+ | fulfillingCompany | [FulfillingCompany](#FulfillingCompany)? |  yes  |  |
+ | sizeInfo | HashMap<String,Any>? |  yes  |  |
+ | shipmentStatus | [ShipmentStatus](#ShipmentStatus)? |  yes  |  |
+ | orderId | String? |  yes  |  |
+ | shipmentCreatedAt | String? |  yes  |  |
+ | awbNo | String? |  yes  |  |
+ | needHelpUrl | String? |  yes  |  |
+ | breakupValues | ArrayList<[PricesBreakup](#PricesBreakup)>? |  yes  |  |
+ | trackingDetails | ArrayList<[TrackingDetails](#TrackingDetails)>? |  yes  |  |
+ | canCancel | Boolean? |  yes  |  |
+ | totalDetails | [ShipmentTotalDetails1](#ShipmentTotalDetails1)? |  yes  |  |
+ | trakingNo | String? |  yes  |  |
+ | returnableDate | String? |  yes  |  |
  | deliveryDate | String? |  yes  |  |
+ | comment | String? |  yes  |  |
  | totalBags | Int? |  yes  |  |
- | fulfillingStore | [FulfillingStore1](#FulfillingStore1)? |  yes  |  |
- | promise | HashMap<String,Any>? |  yes  |  |
+ | fulfillingStore | [FulfillingStore](#FulfillingStore)? |  yes  |  |
 
 ---
 
@@ -3885,36 +3934,13 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userInfo | HashMap<String,Any>? |  yes  |  |
- | totalShipmentsInOrder | Int? |  yes  |  |
- | bagsForReorder | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | userInfo | [UserInfo](#UserInfo)? |  yes  |  |
  | orderCreatedTime | String? |  yes  |  |
- | orderId | String? |  yes  |  |
  | shipments | ArrayList<[ShipmentResponse](#ShipmentResponse)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Statuses](#Statuses)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | value | Int? |  yes  |  |
- | isSelected | Boolean? |  yes  |  |
- | display | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Filters](#Filters)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | statuses | ArrayList<[Statuses](#Statuses)>? |  yes  |  |
+ | orderId | String? |  yes  |  |
+ | breakupValues | ArrayList<[PricesBreakup](#PricesBreakup)>? |  yes  |  |
+ | totalShipmentsInOrder | Int? |  yes  |  |
+ | bagsForReorder | ArrayList<[BagsForReorder](#BagsForReorder)>? |  yes  |  |
 
 ---
 
@@ -3925,9 +3951,9 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | size | Int? |  yes  |  |
- | type | String? |  yes  |  |
  | hasNext | Boolean? |  yes  |  |
+ | type | String? |  yes  |  |
+ | size | Int? |  yes  |  |
  | current | Int? |  yes  |  |
  | itemTotal | Int? |  yes  |  |
 
@@ -3940,8 +3966,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[OrderItems](#OrderItems)>? |  yes  |  |
  | filters | [Filters](#Filters)? |  yes  |  |
+ | items | ArrayList<[OrderItems](#OrderItems)>? |  yes  |  |
  | page | [Page](#Page)? |  yes  |  |
 
 ---
@@ -3975,14 +4001,14 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | reason | String? |  yes  |  |
+ | awb | String? |  yes  |  |
  | shipmentType | String? |  yes  |  |
  | accountName | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | status | String? |  yes  |  |
- | awb | String? |  yes  |  |
- | updatedTime | String? |  yes  |  |
- | reason | String? |  yes  |  |
  | lastLocationRecievedAt | String? |  yes  |  |
+ | updatedTime | String? |  yes  |  |
 
 ---
 
@@ -4004,11 +4030,11 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | country | String? |  yes  |  |
- | phone | String? |  yes  |  |
- | orderId | String? |  yes  |  |
  | shipmentId | String? |  yes  |  |
+ | orderId | String? |  yes  |  |
+ | country | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | phone | String? |  yes  |  |
 
 ---
 
@@ -4019,10 +4045,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | requestId | String? |  yes  |  |
  | resendTimer | Int? |  yes  |  |
  | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -4056,8 +4082,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayName | String? |  yes  |  |
  | id | Int? |  yes  |  |
+ | displayName | String? |  yes  |  |
 
 ---
 
@@ -4068,10 +4094,10 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | questionSet | ArrayList<[QuestionSet](#QuestionSet)>? |  yes  |  |
- | displayName | String? |  yes  |  |
  | id | Int? |  yes  |  |
+ | displayName | String? |  yes  |  |
  | qcType | ArrayList<String>? |  yes  |  |
+ | questionSet | ArrayList<[QuestionSet](#QuestionSet)>? |  yes  |  |
 
 ---
 
@@ -4082,8 +4108,8 @@ Success. Check the example shown below or refer `ShipmentReasons` for more detai
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | reasons | ArrayList<[ReasonsResponse](#ReasonsResponse)>? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
