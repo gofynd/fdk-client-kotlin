@@ -15093,7 +15093,7 @@ data class NavigationReference(
     var sortOrder: Int?=null,
     
     @SerializedName("sub_navigation")
-    var subNavigation: ArrayList<_NavigationReference>?=null
+    var subNavigation: ArrayList<SubNavigationReference>?=null
     
 ): Parcelable {
     
@@ -15123,10 +15123,10 @@ data class NavigationReference(
 
 
 /*
-    Model: _NavigationReference
+    Model: SubNavigationReference
 */
 @Parcelize
-data class _NavigationReference(
+data class SubNavigationReference(
     
     
     
