@@ -92,6 +92,8 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -958,6 +960,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         
     })
     return paginator
+    }
+    
+    
+    suspend fun sendOtp(body: SendOtpCommsReq)
+    : Deferred<Response<SendOtpCommsRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.sendOtp(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun verfiyOtp(body: VerifyOtpCommsReq)
+    : Deferred<Response<VerifyOtpCommsSuccessRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.verfiyOtp(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
     }
     
     
