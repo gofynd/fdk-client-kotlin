@@ -35,7 +35,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify/"?.substring(1)
             
-                    _relativeUrls["getPlatformShipmentReasons"] = "/service/application/orders/v1.0/orders/bags/{bag_id}/reasons"?.substring(1)
+                    _relativeUrls["getShipmentBagReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons"?.substring(1)
             
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
@@ -139,7 +139,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: Int, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
+    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
         var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -150,12 +150,14 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getPlatformShipmentReasons(bagId: String): Deferred<Response<ShipmentReasonsResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPlatformShipmentReasons"] 
+    fun getShipmentBagReasons(shipmentId: String, bagId: Int): Deferred<Response<ShipmentReasonsResponse>>? {
+        var fullUrl : String? = _relativeUrls["getShipmentBagReasons"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         fullUrl = fullUrl?.replace("{" + "bag_id" +"}",bagId.toString())
         
-        return orderApiList?.getPlatformShipmentReasons(fullUrl   )}
+        return orderApiList?.getShipmentBagReasons(fullUrl    )}
 
     
     
