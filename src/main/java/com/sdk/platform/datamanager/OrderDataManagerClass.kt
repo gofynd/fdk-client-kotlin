@@ -92,7 +92,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    
     suspend fun getOrders(lane: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannel: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null)
     : Deferred<Response<OrderListingResponse>>? {
         
@@ -160,6 +159,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.upsertJioCode(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBulkInvoice(batchId: String)
+    : Deferred<Response<BulkInvoicingResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getBulkInvoice(
+        companyId = config.companyId, batchId = batchId )
         } else {
             null
         } 
@@ -354,16 +365,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getLaneConfigCrossSellingData(superLane: String?=null, groupEntity: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannel: String?=null, paymentMode: String?=null, bagStatus: String?=null)
-    : Deferred<Response<LaneConfigResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.getLaneConfigCrossSellingData(companyId = config.companyId , applicationId = applicationId , superLane = superLane, groupEntity = groupEntity, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannel = salesChannel, paymentMode = paymentMode, bagStatus = bagStatus )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getApplicationShipments(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, customerId: String?=null, isPrioritySort: Boolean?=null)
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -384,6 +385,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

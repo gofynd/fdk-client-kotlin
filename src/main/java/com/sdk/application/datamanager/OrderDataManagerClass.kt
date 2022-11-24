@@ -78,14 +78,14 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null): Deferred<Response<OrderList>>? {
+    fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Deferred<Response<OrderList>>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
-        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate)}
+        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    customMeta = customMeta)}
 
     
     
-    fun getOrderById(orderId: String): Deferred<Response<OrderList>>? {
+    fun getOrderById(orderId: String): Deferred<Response<OrderById>>? {
         var fullUrl : String? = _relativeUrls["getOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -154,7 +154,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentBagReasons(shipmentId: String, bagId: Int): Deferred<Response<ShipmentReasonsResponse>>? {
+    fun getShipmentBagReasons(shipmentId: String, bagId: String): Deferred<Response<ShipmentBagReasons>>? {
         var fullUrl : String? = _relativeUrls["getShipmentBagReasons"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())

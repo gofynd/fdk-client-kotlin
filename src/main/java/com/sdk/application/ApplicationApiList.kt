@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -959,13 +959,13 @@ interface OrderApiList {
     
     
     @GET 
-    fun getOrders(@Url url1: String?    ,      @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
+    fun getOrders(@Url url1: String?    ,       @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("custom_meta") customMeta: String?)
     : Deferred<Response<OrderList>>
     
     
     @GET 
     fun getOrderById(@Url url1: String?    )
-    : Deferred<Response<OrderList>>
+    : Deferred<Response<OrderById>>
     
     
     @GET 
@@ -1000,7 +1000,7 @@ interface OrderApiList {
     
     @GET 
     fun getShipmentBagReasons(@Url url1: String?     )
-    : Deferred<Response<ShipmentReasonsResponse>>
+    : Deferred<Response<ShipmentBagReasons>>
     
     
     @PUT 
