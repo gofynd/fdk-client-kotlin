@@ -150,22 +150,9 @@ class DocumentEngineDataManagerClass(val config: PlatformConfig, val unauthorize
         } 
     }
     
-    
-    suspend fun getBulkShipmentStatus(batchId: String)
-    : Deferred<Response<SuccessResponseBulkStatus>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            documentEngineApiList?.getBulkShipmentStatus(
-        companyId = config.companyId, batchId = batchId )
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
     
     
     
