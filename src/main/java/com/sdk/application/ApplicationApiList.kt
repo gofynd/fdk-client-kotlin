@@ -1007,6 +1007,16 @@ interface OrderApiList {
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
     : Deferred<Response<StatusUpdateInternalResponse>>
     
+    
+    @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
+    : Deferred<Response<getInvoiceByShipmentId200Response>>
+    
+    
+    @GET 
+    fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
+    : Deferred<Response<getInvoiceByShipmentId200Response>>
+    
 }
 
 interface RewardsApiList {
