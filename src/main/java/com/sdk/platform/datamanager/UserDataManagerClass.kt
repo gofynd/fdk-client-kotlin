@@ -53,6 +53,7 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -102,6 +103,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ArchiveUserSuccess>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun unDeleteUser(body: UnDeleteUserRequestSchema)
+    : Deferred<Response<UnDeleteUserSuccess>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.unDeleteUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

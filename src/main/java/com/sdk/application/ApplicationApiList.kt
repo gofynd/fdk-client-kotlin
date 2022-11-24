@@ -36,11 +36,6 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductSimilarByIdentifier(@Url url1: String?     )
-    : Deferred<Response<SimilarProductByTypeResponse>>
-    
-    
-    @GET 
     fun getProductVariantsBySlug(@Url url1: String?    )
     : Deferred<Response<ProductVariantsResponse>>
     
@@ -156,7 +151,7 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
+    fun getProductPriceBySlug(@Url url1: String?      ,    @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?, @Query("moq") moq: Int?)
     : Deferred<Response<ProductSizePriceResponseV2>>
     
     
@@ -421,6 +416,11 @@ interface UserApiList {
     
     
     @POST 
+    fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    
+    @POST 
     fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
@@ -458,6 +458,11 @@ interface UserApiList {
     @POST 
     fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
     : Deferred<Response<VerifyEmailSuccess>>
+    
+    
+    @POST 
+    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Deferred<Response<DeleteUserSuccess>>
     
     
     @GET 
@@ -954,31 +959,6 @@ interface OrderApiList {
     
     
     @GET 
-    fun getShipmentById(@Url url1: String?    )
-    : Deferred<Response<ShipmentById>>
-    
-    
-    @GET 
-    fun getCustomerDetailsByShipmentId(@Url url1: String?     )
-    : Deferred<Response<CustomerDetailsResponse>>
-    
-    
-    @POST 
-    fun sendOtpToShipmentCustomer(@Url url1: String?     )
-    : Deferred<Response<SendOtpToCustomerResponse>>
-    
-    
-    @GET 
-    fun getShipmentReasons(@Url url1: String?     ,  @Query("bag_id") bagId: String)
-    : Deferred<Response<ShipmentReasonsResponse>>
-    
-    
-    @POST 
-    fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: VerifyOtp)
-    : Deferred<Response<VerifyOtpResponse>>
-    
-    
-    @GET 
     fun getOrders(@Url url1: String?    ,      @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
     : Deferred<Response<OrderList>>
     
@@ -994,13 +974,38 @@ interface OrderApiList {
     
     
     @GET 
+    fun getShipmentById(@Url url1: String?    )
+    : Deferred<Response<ShipmentById>>
+    
+    
+    @GET 
     fun trackShipment(@Url url1: String?    )
     : Deferred<Response<TrackShipmentResponse>>
     
     
+    @GET 
+    fun getCustomerDetailsByShipmentId(@Url url1: String?     )
+    : Deferred<Response<CustomerDetailsResponse>>
+    
+    
+    @POST 
+    fun sendOtpToShipmentCustomer(@Url url1: String?     )
+    : Deferred<Response<SendOtpToCustomerResponse>>
+    
+    
+    @POST 
+    fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: VerifyOtp)
+    : Deferred<Response<VerifyOtpResponse>>
+    
+    
+    @GET 
+    fun getShipmentBagReasons(@Url url1: String?     )
+    : Deferred<Response<ShipmentReasonsResponse>>
+    
+    
     @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
-    : Deferred<Response<ShipmentStatusUpdate>>
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
+    : Deferred<Response<StatusUpdateInternalResponse>>
     
     
     @GET 

@@ -19,23 +19,23 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     init{
             
-                    _relativeUrls["getShipmentById"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}"?.substring(1)
-            
-                    _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details"?.substring(1)
-            
-                    _relativeUrls["sendOtpToShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send"?.substring(1)
-            
-                    _relativeUrls["getShipmentReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
-            
-                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify"?.substring(1)
-            
                     _relativeUrls["getOrders"] = "/service/application/orders/v1.0/orders"?.substring(1)
             
                     _relativeUrls["getOrderById"] = "/service/application/orders/v1.0/orders/{order_id}"?.substring(1)
             
-                    _relativeUrls["getPosOrderById"] = "/service/application/orders/v1.0/pos-order/{order_id}"?.substring(1)
+                    _relativeUrls["getPosOrderById"] = "/service/application/orders/v1.0/orders/pos-order/{order_id}"?.substring(1)
+            
+                    _relativeUrls["getShipmentById"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}"?.substring(1)
             
                     _relativeUrls["trackShipment"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/track"?.substring(1)
+            
+                    _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details"?.substring(1)
+            
+                    _relativeUrls["sendOtpToShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send/"?.substring(1)
+            
+                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify/"?.substring(1)
+            
+                    _relativeUrls["getShipmentBagReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons"?.substring(1)
             
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
@@ -77,57 +77,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getShipmentById(shipmentId: String): Deferred<Response<ShipmentById>>? {
-        var fullUrl : String? = _relativeUrls["getShipmentById"] 
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getShipmentById(fullUrl   )}
-
-    
-    
-    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsResponse>>? {
-        var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getCustomerDetailsByShipmentId(fullUrl    )}
-
-    
-    
-    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<SendOtpToCustomerResponse>>? {
-        var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.sendOtpToShipmentCustomer(fullUrl    )}
-
-    
-    
-    fun getShipmentReasons(shipmentId: String, bagId: String): Deferred<Response<ShipmentReasonsResponse>>? {
-        var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getShipmentReasons(fullUrl     ,  bagId = bagId)}
-
-    
-    
-    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: Int, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
-        var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.verifyOtpShipmentCustomer(fullUrl    ,body = body)}
-
-    
-    
     fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null): Deferred<Response<OrderList>>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
@@ -153,6 +102,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
+    fun getShipmentById(shipmentId: String): Deferred<Response<ShipmentById>>? {
+        var fullUrl : String? = _relativeUrls["getShipmentById"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getShipmentById(fullUrl   )}
+
+    
+    
     fun trackShipment(shipmentId: String): Deferred<Response<TrackShipmentResponse>>? {
         var fullUrl : String? = _relativeUrls["trackShipment"] 
         
@@ -162,7 +120,51 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus(shipmentId: String, body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentStatusUpdate>>? {
+    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"] 
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getCustomerDetailsByShipmentId(fullUrl    )}
+
+    
+    
+    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<SendOtpToCustomerResponse>>? {
+        var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"] 
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.sendOtpToShipmentCustomer(fullUrl    )}
+
+    
+    
+    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
+        var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"] 
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.verifyOtpShipmentCustomer(fullUrl    ,body = body)}
+
+    
+    
+    fun getShipmentBagReasons(shipmentId: String, bagId: Int): Deferred<Response<ShipmentReasonsResponse>>? {
+        var fullUrl : String? = _relativeUrls["getShipmentBagReasons"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "bag_id" +"}",bagId.toString())
+        
+        return orderApiList?.getShipmentBagReasons(fullUrl    )}
+
+    
+    
+    fun updateShipmentStatus(shipmentId: String, body: StatusUpdateInternalRequest): Deferred<Response<StatusUpdateInternalResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())

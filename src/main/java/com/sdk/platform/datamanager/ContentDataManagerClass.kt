@@ -107,7 +107,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -375,16 +374,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<DataLoaderResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getDataLoadersByService(serviceName: String)
-    : Deferred<Response<DataLoadersSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getDataLoadersByService(companyId = config.companyId , applicationId = applicationId , serviceName = serviceName )
         } else {
             null
         }

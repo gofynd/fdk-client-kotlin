@@ -43,12 +43,120 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun statusInternalUpdate(body: PlatformShipmentStatusInternal)
-    : Deferred<Response<ResponseDetail>>? {
+    suspend fun createOrder(body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderManageApiList?.statusInternalUpdate(
+            orderManageApiList?.createOrder(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload)
+    : Deferred<Response<InvalidateShipmentCacheResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.invalidateShipmentCache(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun reassignLocation(body: StoreReassign)
+    : Deferred<Response<StoreReassignResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.reassignLocation(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateShipmentLock(body: UpdateShipmentLockPayload)
+    : Deferred<Response<UpdateShipmentLockResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.updateShipmentLock(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getAnnouncements(date: String?=null)
+    : Deferred<Response<AnnouncementsResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.getAnnouncements(
+        companyId = config.companyId, date = date )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateAddress(shipmentId: String, name: String?=null, address: String?=null, addressType: String?=null, pincode: String?=null, phone: String?=null, email: String?=null, landmark: String?=null, addressCategory: String, city: String?=null, state: String?=null, country: String?=null)
+    : Deferred<Response<BaseResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.updateAddress(
+        shipmentId = shipmentId, name = name, address = address, addressType = addressType, pincode = pincode, phone = phone, email = email, landmark = landmark, addressCategory = addressCategory, city = city, state = state, country = country, companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun click2Call(caller: String, receiver: String, bagId: String, callingTo: String?=null, callerId: String?=null)
+    : Deferred<Response<Click2CallResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.click2Call(
+        caller = caller, receiver = receiver, bagId = bagId, callingTo = callingTo, callerId = callerId, companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun statusUpdateInternalV4(body: StatusUpdateInternalRequest)
+    : Deferred<Response<StatusUpdateInternalResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.statusUpdateInternalV4(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun processManifest(body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.processManifest(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getRoleBasedActions()
+    : Deferred<Response<GetActionsResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.getRoleBasedActions(
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -67,11 +175,23 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun manualStoreReassignment(body: ManualStoreReassign)
-    : Deferred<Response<SuccessResponse>>? {
+    suspend fun sendSmsNinja(body: SendSmsPayload)
+    : Deferred<Response<OrderStatusResult>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderManageApiList?.manualStoreReassignment(
+            orderManageApiList?.sendSmsNinja(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun checkOrderStatus(body: OrderStatus)
+    : Deferred<Response<OrderStatusResult>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.checkOrderStatus(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -81,6 +201,16 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
