@@ -1010,12 +1010,12 @@ interface OrderApiList {
     
     @GET 
     fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
-    : Deferred<Response<getInvoiceByShipmentId200Response>>
+    : Deferred<Response<ResponseGetInvoiceShipment>>
     
     
     @GET 
     fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
-    : Deferred<Response<getInvoiceByShipmentId200Response>>
+    : Deferred<Response<ResponseGetInvoiceShipment>>
     
 }
 

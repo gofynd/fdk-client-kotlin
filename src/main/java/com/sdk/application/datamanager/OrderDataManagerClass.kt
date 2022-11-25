@@ -173,7 +173,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getInvoiceByShipmentId(shipmentId: String, parameters: invoiceParameter?=null): Deferred<Response<getInvoiceByShipmentId200Response>>? {
+    fun getInvoiceByShipmentId(shipmentId: String, parameters: invoiceParameter?=null): Deferred<Response<ResponseGetInvoiceShipment>>? {
         var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -182,7 +182,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getCreditNoteByShipmentId(shipmentId: String, parameters: creditNoteParameter?=null): Deferred<Response<getInvoiceByShipmentId200Response>>? {
+    fun getCreditNoteByShipmentId(shipmentId: String, parameters: creditNoteParameter?=null): Deferred<Response<ResponseGetInvoiceShipment>>? {
         var fullUrl : String? = _relativeUrls["getCreditNoteByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())

@@ -54,6 +54,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
     
+    val documentEngine by lazy { DocumentEngineDataManagerClass(config, unauthorizedAction)}
+    
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
     }
@@ -109,6 +111,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val orderManage by lazy { this@PlatformClient.orderManage.ApplicationClient(applicationId,config)}
     
     val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
+    
+    val documentEngine by lazy { this@PlatformClient.documentEngine.ApplicationClient(applicationId,config)}
     
     }
 
