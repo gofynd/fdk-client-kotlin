@@ -36,11 +36,6 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductSimilarByIdentifier(@Url url1: String?     )
-    : Deferred<Response<SimilarProductByTypeResponse>>
-    
-    
-    @GET 
     fun getProductVariantsBySlug(@Url url1: String?    )
     : Deferred<Response<ProductVariantsResponse>>
     
@@ -115,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -463,6 +458,11 @@ interface UserApiList {
     @POST 
     fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
     : Deferred<Response<VerifyEmailSuccess>>
+    
+    
+    @POST 
+    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Deferred<Response<DeleteUserSuccess>>
     
     
     @GET 
@@ -986,6 +986,11 @@ interface OrderApiList {
     @GET 
     fun getShipmentReasons(@Url url1: String?    )
     : Deferred<Response<ShipmentReasons>>
+    
+    
+    @GET 
+    fun getShipmentBagReasons(@Url url1: String?     )
+    : Deferred<Response<ShipmentBagReasons>>
     
     
     @PUT 

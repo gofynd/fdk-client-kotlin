@@ -2398,7 +2398,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | active | Boolean? |  yes  |  |
  | display | String? |  yes  |  |
  | sortOrder | Int? |  yes  |  |
- | subNavigation | ArrayList<Any>? |  yes  |  |
+ | subNavigation | ArrayList<[NavigationReference](#NavigationReference)>? |  yes  |  |
 
 ---
 
@@ -2752,7 +2752,7 @@ Success. Returns a list of pages along with their details. Check the example sho
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | faqs | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | faqs | ArrayList<[FaqSchema](#FaqSchema)>? |  yes  |  |
 
 ---
 
@@ -3392,6 +3392,8 @@ Success. Returns a list of pages along with their details. Check the example sho
  | cartReview | cart-review | Symbolic link for Cart Order Review: /cart/order-review |
  | login | login | Symbolic link for Login: /auth/login |
  | register | register | Symbolic link for Register: /auth/register |
+ | shippingPolicy | shipping-policy | Symbolic link for Shipping policy: /shipping-policy |
+ | returnPolicy | return-policy | Symbolic link for Return policy: /return-policy |
 
 ---
 

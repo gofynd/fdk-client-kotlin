@@ -82,7 +82,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     
     
     suspend fun copyFiles(sync: Boolean?=null,body: BulkRequest)
-    : Deferred<Response<BulkResponse>>? {
+    : Deferred<Response<BulkUploadResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             fileStorageApiList?.copyFiles(
@@ -148,7 +148,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun appCopyFiles(sync: Boolean?=null,body: BulkRequest)
-    : Deferred<Response<BulkResponse>>? {
+    : Deferred<Response<BulkUploadResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 fileStorageApiList?.appCopyFiles(sync = sync, companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
