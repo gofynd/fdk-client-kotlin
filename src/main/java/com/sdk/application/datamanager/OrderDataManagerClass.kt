@@ -210,14 +210,14 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getOrders1(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null): Deferred<Response<OrderList1>>? {
+    fun getOrders1(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Deferred<Response<OrderList1>>? {
         var fullUrl : String? = _relativeUrls["getOrders1"] 
         
-        return orderApiList?.getOrders1(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate)}
+        return orderApiList?.getOrders1(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    customMeta = customMeta)}
 
     
     
-    fun getOrderById1(orderId: String): Deferred<Response<OrderList1>>? {
+    fun getOrderById1(orderId: String): Deferred<Response<OrderById1>>? {
         var fullUrl : String? = _relativeUrls["getOrderById1"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -244,7 +244,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun trackShipment1(shipmentId: String): Deferred<Response<TrackShipmentResponse>>? {
+    fun trackShipment1(shipmentId: String): Deferred<Response<ShipmentTrack1>>? {
         var fullUrl : String? = _relativeUrls["trackShipment1"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -286,7 +286,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentBagReasons1(shipmentId: String, bagId: Int): Deferred<Response<ShipmentReasonsResponse>>? {
+    fun getShipmentBagReasons1(shipmentId: String, bagId: String): Deferred<Response<ShipmentBagReasons1>>? {
         var fullUrl : String? = _relativeUrls["getShipmentBagReasons1"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
