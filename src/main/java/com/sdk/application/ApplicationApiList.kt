@@ -1003,6 +1003,11 @@ interface OrderApiList {
     : Deferred<Response<ShipmentBagReasons>>
     
     
+    @GET 
+    fun getShipmentReasons(@Url url1: String?    )
+    : Deferred<Response<ShipmentReasons>>
+    
+    
     @PUT 
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
     : Deferred<Response<ShipmentStatusUpdate>>

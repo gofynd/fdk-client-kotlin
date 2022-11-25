@@ -37,6 +37,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getShipmentBagReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons"?.substring(1)
             
+                    _relativeUrls["getShipmentReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
+            
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
                     _relativeUrls["getInvoiceByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
@@ -162,6 +164,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "bag_id" +"}",bagId.toString())
         
         return orderApiList?.getShipmentBagReasons(fullUrl    )}
+
+    
+    
+    fun getShipmentReasons(shipmentId: String): Deferred<Response<ShipmentReasons>>? {
+        var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getShipmentReasons(fullUrl   )}
 
     
     
