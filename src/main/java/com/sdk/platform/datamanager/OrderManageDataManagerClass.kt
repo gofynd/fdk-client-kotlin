@@ -163,12 +163,12 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun getShipmentHistory(bagId: Int)
+    suspend fun getShipmentHistory(shipmentId: Int?=null, bagId: Int?=null)
     : Deferred<Response<ShipmentHistoryResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderManageApiList?.getShipmentHistory(
-        companyId = config.companyId, bagId = bagId )
+        companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
         } else {
             null
         } 
