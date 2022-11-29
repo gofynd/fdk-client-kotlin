@@ -953,13 +953,23 @@ interface PaymentApiList {
     fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
     : Deferred<Response<CustomerOnboardingResponse>>
     
+    
+    @GET 
+    fun outstandingOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<OutstandingOrderDetailsResponse>>
+    
+    
+    @GET 
+    fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<PaidOrderDetailsResponse>>
+    
 }
 
 interface OrderApiList {
     
     
     @GET 
-    fun getOrders(@Url url1: String?    ,      @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("status") status: Int?)
+    fun getOrders(@Url url1: String?    ,       @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("status") status: Int?, @Query("custom_meta") customMeta: String?)
     : Deferred<Response<OrderList>>
     
     
@@ -976,6 +986,11 @@ interface OrderApiList {
     @GET 
     fun getShipmentReasons(@Url url1: String?    )
     : Deferred<Response<ShipmentReasons>>
+    
+    
+    @GET 
+    fun getShipmentBagReasons(@Url url1: String?     )
+    : Deferred<Response<ShipmentBagReasons>>
     
     
     @PUT 

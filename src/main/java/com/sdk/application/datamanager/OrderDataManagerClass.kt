@@ -27,6 +27,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getShipmentReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
             
+                    _relativeUrls["getShipmentBagReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons/"?.substring(1)
+            
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
                     _relativeUrls["trackShipment"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/track"?.substring(1)
@@ -78,10 +80,10 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, status: Int?=null): Deferred<Response<OrderList>>? {
+    fun getOrders(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, status: Int?=null, customMeta: String?=null): Deferred<Response<OrderList>>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
-        return orderApiList?.getOrders(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    status = status)}
+        return orderApiList?.getOrders(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    status = status,    customMeta = customMeta)}
 
     
     
@@ -109,6 +111,17 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.getShipmentReasons(fullUrl   )}
+
+    
+    
+    fun getShipmentBagReasons(shipmentId: String, bagId: String): Deferred<Response<ShipmentBagReasons>>? {
+        var fullUrl : String? = _relativeUrls["getShipmentBagReasons"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "bag_id" +"}",bagId.toString())
+        
+        return orderApiList?.getShipmentBagReasons(fullUrl    )}
 
     
     
