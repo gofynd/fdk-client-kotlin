@@ -239,7 +239,8 @@ Success
  | isPrimary | Boolean? |  yes  | Indicates domain is primary or not |
  | isShortlink | Boolean? |  yes  | Shortlink is present or not for the domain |
  | id | String? |  yes  | The unique identifier of the domain |
- | name | String? |  yes  | Full domain name |
+ | name | String? |  yes  |  |
+ | isPredefined | Boolean? |  yes  | Domain is hosting domain or not. |
 
 ---
 

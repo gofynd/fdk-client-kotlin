@@ -103,9 +103,14 @@ data class Domain(
     var id: String?=null,
     
     @SerializedName("name")
-    var name: String?=null
+    var name: String?=null,
+    
+    @SerializedName("is_predefined")
+    var isPredefined: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     
