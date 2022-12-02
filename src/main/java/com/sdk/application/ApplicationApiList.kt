@@ -979,6 +979,11 @@ interface OrderApiList {
     
     
     @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetInvoiceShipment>>
+    
+    
+    @GET 
     fun trackShipment(@Url url1: String?    )
     : Deferred<Response<ShipmentTrack>>
     
@@ -1010,17 +1015,17 @@ interface OrderApiList {
     
     @PUT 
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
-    : Deferred<Response<ShipmentStatusUpdate>>
+    : Deferred<Response<ShipmentApplicationStatusResponse>>
     
     
     @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment>>
+    fun getInvoiceByShipmentId1(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
+    : Deferred<Response<ResponseGetInvoiceShipment1>>
     
     
     @GET 
     fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment>>
+    : Deferred<Response<ResponseGetInvoiceShipment1>>
     
 }
 
