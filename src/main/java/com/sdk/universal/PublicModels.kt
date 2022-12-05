@@ -1142,6 +1142,116 @@ data class EventConfigBase(
 
 
 /*
+    Model: EmailJobMetrics
+*/
+@Parcelize
+data class EmailJobMetrics(
+    
+    
+    
+    @SerializedName("executed")
+    var executed: Boolean?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("job_code")
+    var jobCode: String?=null,
+    
+    @SerializedName("daily_job")
+    var dailyJob: Boolean?=null,
+    
+    @SerializedName("last_executed_on")
+    var lastExecutedOn: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ResponseEnvelopeEmailJobMetrics
+*/
+@Parcelize
+data class ResponseEnvelopeEmailJobMetrics(
+    
+    
+    
+    @SerializedName("timestamp")
+    var timestamp: String?=null,
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("error")
+    var error: String?=null,
+    
+    @SerializedName("exception")
+    var exception: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("total_time_taken_in_millis")
+    var totalTimeTakenInMillis: Int?=null,
+    
+    @SerializedName("http_status")
+    var httpStatus: String?=null,
+    
+    @SerializedName("items")
+    var items: EmailJobMetrics?=null,
+    
+    @SerializedName("payload")
+    var payload: EmailJobMetrics?=null,
+    
+    @SerializedName("trace_id")
+    var traceId: String?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: GCompany
 */
 @Parcelize
@@ -1174,14 +1284,9 @@ data class GCompany(
     var name: String?=null,
     
     @SerializedName("stores")
-    var stores: ArrayList<GStore>?=null,
-    
-    @SerializedName("gstores")
-    var gstores: ArrayList<GStore>?=null
+    var stores: ArrayList<GStore>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1624,14 +1729,14 @@ data class JobConfigDTO(
     
     
     
-    @SerializedName("integration")
-    var integration: String?=null,
-    
     @SerializedName("integration_data")
     var integrationData: @RawValue HashMap<String,HashMap<String,Any>>?=null,
     
     @SerializedName("company_name")
     var companyName: String?=null,
+    
+    @SerializedName("integration")
+    var integration: String?=null,
     
     @SerializedName("company_id")
     var companyId: Int?=null,
@@ -1800,116 +1905,6 @@ data class ResponseEnvelopeListJobConfigDTO(
     
     @SerializedName("payload")
     var payload: ArrayList<JobConfigDTO>?=null,
-    
-    @SerializedName("trace_id")
-    var traceId: String?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: EmailJobMetrics
-*/
-@Parcelize
-data class EmailJobMetrics(
-    
-    
-    
-    @SerializedName("executed")
-    var executed: Boolean?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("job_code")
-    var jobCode: String?=null,
-    
-    @SerializedName("daily_job")
-    var dailyJob: Boolean?=null,
-    
-    @SerializedName("last_executed_on")
-    var lastExecutedOn: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ResponseEnvelopeEmailJobMetrics
-*/
-@Parcelize
-data class ResponseEnvelopeEmailJobMetrics(
-    
-    
-    
-    @SerializedName("timestamp")
-    var timestamp: String?=null,
-    
-    @SerializedName("status")
-    var status: Int?=null,
-    
-    @SerializedName("error")
-    var error: String?=null,
-    
-    @SerializedName("exception")
-    var exception: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("total_time_taken_in_millis")
-    var totalTimeTakenInMillis: Int?=null,
-    
-    @SerializedName("http_status")
-    var httpStatus: String?=null,
-    
-    @SerializedName("items")
-    var items: EmailJobMetrics?=null,
-    
-    @SerializedName("payload")
-    var payload: EmailJobMetrics?=null,
     
     @SerializedName("trace_id")
     var traceId: String?=null,

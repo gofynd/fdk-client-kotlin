@@ -58,6 +58,7 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -464,6 +465,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     })
     return paginator
     }
+    
+    suspend fun getAbandonedCartDetails(id: String?=null, i: Boolean?=null, b: Boolean?=null)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAbandonedCartDetails(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b )
+        } else {
+            null
+        }
+    }
+    
     
     suspend fun addItems(cartId: String, b: Boolean?=null,body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>? {
