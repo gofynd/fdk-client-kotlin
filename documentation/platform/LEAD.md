@@ -4591,12 +4591,43 @@ Success
 
  
  
+ #### [FeedbackForm](#FeedbackForm)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  | Unique identifier for the category |
+ | inputs | HashMap<String,Any>? |  yes  | Input details for the feed back form |
+ | title | String? |  yes  | Title for the feed back form |
+ | timestamps | HashMap<String,Any>? |  yes  | Gives details of category releted data |
+
+---
+
+
+ 
+ 
+ #### [CategorySchema](#CategorySchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String? |  yes  | Unique identifier for the category |
+ | display | String? |  yes  | Category display value identifier |
+ | key | String? |  yes  | Category key value identifier |
+ | subCategories | [CategorySchema](#CategorySchema)? |  yes  | Support category array list details |
+ | groupId | Double? |  yes  | Group id of category releted data |
+ | feedbackForm | [FeedbackForm](#FeedbackForm)? |  yes  | Support category array list details |
+
+---
+
+
+ 
+ 
  #### [CategoryData](#CategoryData)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | id | String? |  yes  | Unique identifier for the ticket |
  | timestamps | HashMap<String,Any>? |  yes  | Gives details of category releted data |
+ | list | [CategorySchema](#CategorySchema)? |  yes  |  |
 
 ---
 
