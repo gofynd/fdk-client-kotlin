@@ -36,11 +36,6 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductSimilarByIdentifier(@Url url1: String?     )
-    : Deferred<Response<SimilarProductByTypeResponse>>
-    
-    
-    @GET 
     fun getProductVariantsBySlug(@Url url1: String?    )
     : Deferred<Response<ProductVariantsResponse>>
     
@@ -180,7 +175,7 @@ interface CartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,     @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("id") id: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
@@ -463,6 +458,11 @@ interface UserApiList {
     @POST 
     fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
     : Deferred<Response<VerifyEmailSuccess>>
+    
+    
+    @POST 
+    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Deferred<Response<DeleteUserSuccess>>
     
     
     @GET 
@@ -1087,7 +1087,7 @@ interface PosCartApiList {
     
     
     @POST 
-    fun addItems(@Url url1: String?    ,    @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Body body: AddCartRequest)
+    fun addItems(@Url url1: String?    ,     @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("id") id: String?, @Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     
