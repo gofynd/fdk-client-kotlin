@@ -1024,7 +1024,7 @@ interface OrderApiList {
     
     
     @GET 
-    fun getInvoiceByShipmentIds(@Url url1: String?    )
+    fun getInvoiceByShipmentId(@Url url1: String?    )
     : Deferred<Response<ResponseGetInvoiceShipment>>
     
     

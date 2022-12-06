@@ -27,7 +27,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getShipmentById"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}"?.substring(1)
             
-                    _relativeUrls["getInvoiceByShipmentIds"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
+                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
             
                     _relativeUrls["trackShipment"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/track"?.substring(1)
             
@@ -116,12 +116,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getInvoiceByShipmentIds(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
-        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentIds"] 
+    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
+        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getInvoiceByShipmentIds(fullUrl   )}
+        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
 
     
     
