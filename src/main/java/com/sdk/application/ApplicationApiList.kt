@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -979,7 +979,7 @@ interface OrderApiList {
     
     
     @GET 
-    fun getInvoiceByShipmentIds(@Url url1: String?    )
+    fun getInvoiceByShipmentId(@Url url1: String?    )
     : Deferred<Response<ResponseGetInvoiceShipment>>
     
     
@@ -1018,8 +1018,18 @@ interface OrderApiList {
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
     
+    @POST 
+    fun createOrderConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
+    : Deferred<Response<CreateOrderConfigDataResponse>>
+    
+    
     @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
+    fun getCreateOrderConfig(@Url url1: String?   )
+    : Deferred<Response<CreateOrderConfigData>>
+    
+    
+    @GET 
+    fun getInvoiceByShipmentId1(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
     : Deferred<Response<ResponseGetInvoiceShipment1>>
     
     

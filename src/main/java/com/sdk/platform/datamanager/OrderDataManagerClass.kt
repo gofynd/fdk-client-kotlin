@@ -286,18 +286,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun createOrder(body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createOrder(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload)
     : Deferred<Response<InvalidateShipmentCacheResponse>>? {
         
@@ -430,11 +418,11 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun manualAssignDPToShipment(body: ManualAssignDPToShipment)
+    suspend fun platformManualAssignDPToShipment(body: ManualAssignDPToShipment)
     : Deferred<Response<ManualAssignDPToShipmentResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.manualAssignDPToShipment(
+            orderApiList?.platformManualAssignDPToShipment(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -447,6 +435,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updatePackagingDimensions(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createOrder(body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.createOrder(
         companyId = config.companyId, body = body)
         } else {
             null
