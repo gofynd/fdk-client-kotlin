@@ -170,7 +170,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
+    fun getCart(@Url url1: String?    ,       @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("empty_cart") emptyCart: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -1072,7 +1072,7 @@ interface PosCartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?)
+    fun getCart(@Url url1: String?    ,       @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("empty_cart") emptyCart: String?)
     : Deferred<Response<CartDetailResponse>>
     
     
