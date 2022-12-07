@@ -1059,18 +1059,18 @@ interface OrderApiList {
     
     
     @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
-    
-    
-    @POST 
-    fun createChannelConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
-    : Deferred<Response<CreateOrderConfigDataResponse>>
     
     
     @GET 
     fun getChannelConfig(@Url url1: String?   )
     : Deferred<Response<CreateOrderConfigData>>
+    
+    
+    @POST 
+    fun createChannelConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
+    : Deferred<Response<CreateOrderConfigDataResponse>>
     
 }
 
