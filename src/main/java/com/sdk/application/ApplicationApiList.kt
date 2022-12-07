@@ -1064,12 +1064,12 @@ interface OrderApiList {
     
     
     @POST 
-    fun createOrderConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
+    fun createChannelConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
     : Deferred<Response<CreateOrderConfigDataResponse>>
     
     
     @GET 
-    fun getCreateOrderConfig(@Url url1: String?   )
+    fun getChannelConfig(@Url url1: String?   )
     : Deferred<Response<CreateOrderConfigData>>
     
 }

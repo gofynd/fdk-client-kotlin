@@ -43,9 +43,9 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
-                    _relativeUrls["createOrderConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
+                    _relativeUrls["createChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
             
-                    _relativeUrls["getCreateOrderConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
+                    _relativeUrls["getChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
             
     }
 
@@ -196,17 +196,17 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun createOrderConfig(body: CreateOrderConfigData): Deferred<Response<CreateOrderConfigDataResponse>>? {
-        var fullUrl : String? = _relativeUrls["createOrderConfig"] 
+    fun createChannelConfig(body: CreateOrderConfigData): Deferred<Response<CreateOrderConfigDataResponse>>? {
+        var fullUrl : String? = _relativeUrls["createChannelConfig"] 
         
-        return orderApiList?.createOrderConfig(fullUrl  ,body = body)}
+        return orderApiList?.createChannelConfig(fullUrl  ,body = body)}
 
     
     
-    fun getCreateOrderConfig(): Deferred<Response<CreateOrderConfigData>>? {
-        var fullUrl : String? = _relativeUrls["getCreateOrderConfig"] 
+    fun getChannelConfig(): Deferred<Response<CreateOrderConfigData>>? {
+        var fullUrl : String? = _relativeUrls["getChannelConfig"] 
         
-        return orderApiList?.getCreateOrderConfig(fullUrl  )}
+        return orderApiList?.getChannelConfig(fullUrl  )}
 
     
     
