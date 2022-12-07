@@ -54,6 +54,10 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -173,6 +177,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PlatformSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.updatePlatformConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createUserGroup(body: CreateUserGroupSchema)
+    : Deferred<Response<UserGroupResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.createUserGroup(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserGroups(pageNo: String?=null, pageSize: String?=null, name: String?=null, status: String?=null, groupUid: Int?=null)
+    : Deferred<Response<UserGroupListResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUserGroups(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, name = name, status = status, groupUid = groupUid )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateUserGroup(groupId: String,body: UpdateUserGroupSchema)
+    : Deferred<Response<UserGroupResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.updateUserGroup(companyId = config.companyId , applicationId = applicationId , groupId = groupId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserGroupById(groupId: String)
+    : Deferred<Response<UserGroupResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUserGroupById(companyId = config.companyId , applicationId = applicationId , groupId = groupId )
         } else {
             null
         }

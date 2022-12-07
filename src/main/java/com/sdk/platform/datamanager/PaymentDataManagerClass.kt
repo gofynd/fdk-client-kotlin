@@ -289,7 +289,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun repaymentDetails(body: RepaymentRequestDetails)
+    suspend fun repaymentDetails(body: RepaymentDetailsSerialiserPayAll)
     : Deferred<Response<RepaymentResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.repaymentDetails(companyId = config.companyId , applicationId = applicationId , body = body)
