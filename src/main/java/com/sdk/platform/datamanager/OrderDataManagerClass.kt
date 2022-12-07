@@ -442,7 +442,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun createOrder(body: CreateOrderPayload)
+    suspend fun createOrder(body: CreateOrderAPI)
     : Deferred<Response<CreateOrderResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
