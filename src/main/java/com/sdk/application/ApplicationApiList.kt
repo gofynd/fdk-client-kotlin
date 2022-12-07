@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -1014,17 +1014,17 @@ interface OrderApiList {
     
     
     @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
     
     @POST 
-    fun createOrderConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
+    fun createChannelConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
     : Deferred<Response<CreateOrderConfigDataResponse>>
     
     
     @GET 
-    fun getCreateOrderConfig(@Url url1: String?   )
+    fun getChannelConfig(@Url url1: String?   )
     : Deferred<Response<CreateOrderConfigData>>
     
     
