@@ -43,18 +43,6 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun createOrder(body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderManageApiList?.createOrder(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload)
     : Deferred<Response<InvalidateShipmentCacheResponse>>? {
         
@@ -187,6 +175,42 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
+    suspend fun platformManualAssignDPToShipment(body: ManualAssignDPToShipment)
+    : Deferred<Response<ManualAssignDPToShipmentResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.platformManualAssignDPToShipment(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updatePackagingDimensions(body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.updatePackagingDimensions(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createOrder(body: CreateOrderAPI)
+    : Deferred<Response<CreateOrderResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.createOrder(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun checkOrderStatus(body: OrderStatus)
     : Deferred<Response<OrderStatusResult>>? {
         
@@ -201,6 +225,8 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
     
     
     

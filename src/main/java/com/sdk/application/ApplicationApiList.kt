@@ -959,13 +959,13 @@ interface OrderApiList {
     
     
     @GET 
-    fun getOrders(@Url url1: String?    ,      @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
+    fun getOrders(@Url url1: String?    ,       @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("custom_meta") customMeta: String?)
     : Deferred<Response<OrderList>>
     
     
     @GET 
     fun getOrderById(@Url url1: String?    )
-    : Deferred<Response<OrderList>>
+    : Deferred<Response<OrderById>>
     
     
     @GET 
@@ -979,8 +979,13 @@ interface OrderApiList {
     
     
     @GET 
+    fun getInvoiceByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetInvoiceShipment>>
+    
+    
+    @GET 
     fun trackShipment(@Url url1: String?    )
-    : Deferred<Response<TrackShipmentResponse>>
+    : Deferred<Response<ShipmentTrack>>
     
     
     @GET 
@@ -1000,22 +1005,37 @@ interface OrderApiList {
     
     @GET 
     fun getShipmentBagReasons(@Url url1: String?     )
-    : Deferred<Response<ShipmentReasonsResponse>>
+    : Deferred<Response<ShipmentBagReasons>>
+    
+    
+    @GET 
+    fun getShipmentReasons(@Url url1: String?    )
+    : Deferred<Response<ShipmentReasons>>
     
     
     @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
     
     @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment>>
+    fun getChannelConfig(@Url url1: String?   )
+    : Deferred<Response<CreateOrderConfigData>>
+    
+    
+    @POST 
+    fun createChannelConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
+    : Deferred<Response<CreateOrderConfigDataResponse>>
+    
+    
+    @GET 
+    fun getInvoiceByShipmentId1(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
+    : Deferred<Response<ResponseGetInvoiceShipment1>>
     
     
     @GET 
     fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment>>
+    : Deferred<Response<ResponseGetInvoiceShipment1>>
     
 }
 

@@ -27,6 +27,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getShipmentById"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}"?.substring(1)
             
+                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
+            
                     _relativeUrls["trackShipment"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/track"?.substring(1)
             
                     _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details"?.substring(1)
@@ -37,9 +39,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getShipmentBagReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons"?.substring(1)
             
+                    _relativeUrls["getShipmentReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
+            
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
-                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
+                    _relativeUrls["getChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
+            
+                    _relativeUrls["createChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
+            
+                    _relativeUrls["getInvoiceByShipmentId1"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
             
                     _relativeUrls["getCreditNoteByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/credit-note"?.substring(1)
             
@@ -77,14 +85,14 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null): Deferred<Response<OrderList>>? {
+    fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Deferred<Response<OrderList>>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
-        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate)}
+        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    customMeta = customMeta)}
 
     
     
-    fun getOrderById(orderId: String): Deferred<Response<OrderList>>? {
+    fun getOrderById(orderId: String): Deferred<Response<OrderById>>? {
         var fullUrl : String? = _relativeUrls["getOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -111,7 +119,16 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun trackShipment(shipmentId: String): Deferred<Response<TrackShipmentResponse>>? {
+    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
+        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
+
+    
+    
+    fun trackShipment(shipmentId: String): Deferred<Response<ShipmentTrack>>? {
         var fullUrl : String? = _relativeUrls["trackShipment"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -153,7 +170,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentBagReasons(shipmentId: String, bagId: Int): Deferred<Response<ShipmentReasonsResponse>>? {
+    fun getShipmentBagReasons(shipmentId: String, bagId: String): Deferred<Response<ShipmentBagReasons>>? {
         var fullUrl : String? = _relativeUrls["getShipmentBagReasons"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -164,7 +181,16 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus(shipmentId: String, body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentApplicationStatusResponse>>? {
+    fun getShipmentReasons(shipmentId: String): Deferred<Response<ShipmentReasons>>? {
+        var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getShipmentReasons(fullUrl   )}
+
+    
+    
+    fun updateShipmentStatus(shipmentId: String, body: StatusUpdateInternalRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -173,16 +199,30 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getInvoiceByShipmentId(shipmentId: String, parameters: invoiceParameter?=null): Deferred<Response<ResponseGetInvoiceShipment>>? {
-        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
+    fun getChannelConfig(): Deferred<Response<CreateOrderConfigData>>? {
+        var fullUrl : String? = _relativeUrls["getChannelConfig"] 
         
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getInvoiceByShipmentId(fullUrl     ,  parameters = parameters)}
+        return orderApiList?.getChannelConfig(fullUrl  )}
 
     
     
-    fun getCreditNoteByShipmentId(shipmentId: String, parameters: creditNoteParameter?=null): Deferred<Response<ResponseGetInvoiceShipment>>? {
+    fun createChannelConfig(body: CreateOrderConfigData): Deferred<Response<CreateOrderConfigDataResponse>>? {
+        var fullUrl : String? = _relativeUrls["createChannelConfig"] 
+        
+        return orderApiList?.createChannelConfig(fullUrl  ,body = body)}
+
+    
+    
+    fun getInvoiceByShipmentId1(shipmentId: String, parameters: invoiceParameter?=null): Deferred<Response<ResponseGetInvoiceShipment1>>? {
+        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId1"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getInvoiceByShipmentId1(fullUrl     ,  parameters = parameters)}
+
+    
+    
+    fun getCreditNoteByShipmentId(shipmentId: String, parameters: creditNoteParameter?=null): Deferred<Response<ResponseGetInvoiceShipment1>>? {
         var fullUrl : String? = _relativeUrls["getCreditNoteByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
