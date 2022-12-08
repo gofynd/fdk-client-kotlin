@@ -43,10 +43,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
-                    _relativeUrls["getChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
-            
-                    _relativeUrls["createChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -193,20 +189,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
-
-    
-    
-    fun getChannelConfig(): Deferred<Response<CreateOrderConfigData>>? {
-        var fullUrl : String? = _relativeUrls["getChannelConfig"] 
-        
-        return orderApiList?.getChannelConfig(fullUrl  )}
-
-    
-    
-    fun createChannelConfig(body: CreateOrderConfigData): Deferred<Response<CreateOrderConfigDataResponse>>? {
-        var fullUrl : String? = _relativeUrls["createChannelConfig"] 
-        
-        return orderApiList?.createChannelConfig(fullUrl  ,body = body)}
 
     
     

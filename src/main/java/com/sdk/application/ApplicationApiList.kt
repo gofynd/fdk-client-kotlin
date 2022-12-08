@@ -1062,16 +1062,6 @@ interface OrderApiList {
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
-    
-    @GET 
-    fun getChannelConfig(@Url url1: String?   )
-    : Deferred<Response<CreateOrderConfigData>>
-    
-    
-    @POST 
-    fun createChannelConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
-    : Deferred<Response<CreateOrderConfigDataResponse>>
-    
 }
 
 interface RewardsApiList {
