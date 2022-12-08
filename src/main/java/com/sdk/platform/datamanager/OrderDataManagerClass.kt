@@ -250,11 +250,11 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getPlatformShipmentReasons(shipmentId: String, bagId: String, state: String)
+    suspend fun getShipmentReasons(shipmentId: String, bagId: String, state: String)
     : Deferred<Response<PlatformShipmentReasonsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getPlatformShipmentReasons(
+            orderApiList?.getShipmentReasons(
         companyId = config.companyId, shipmentId = shipmentId, bagId = bagId, state = state )
         } else {
             null
@@ -280,6 +280,30 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.bulkActionDetails(
         companyId = config.companyId, batchId = batchId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBagById(bagId: String?=null, channelBagId: String?=null, channelId: String?=null)
+    : Deferred<Response<BagDetailsPlatformResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getBagById(
+        companyId = config.companyId, bagId = bagId, channelBagId = channelBagId, channelId = channelId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBags(bagIds: String?=null, shipmentIds: String?=null, orderIds: String?=null, channelBagIds: String?=null, channelShipmentIds: String?=null, channelOrderIds: String?=null, channelId: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<GetBagsPlatformResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getBags(
+        companyId = config.companyId, bagIds = bagIds, shipmentIds = shipmentIds, orderIds = orderIds, channelBagIds = channelBagIds, channelShipmentIds = channelShipmentIds, channelOrderIds = channelOrderIds, channelId = channelId, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 
@@ -504,6 +528,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     
