@@ -115,11 +115,11 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
-    suspend fun statusUpdateInternalV4(body: StatusUpdateInternalRequest)
-    : Deferred<Response<StatusUpdateInternalResponse>>? {
+    suspend fun updateShipmentStatus(body: UpdateShipmentStatusRequest)
+    : Deferred<Response<UpdateShipmentStatusResponseBody>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            orderManageApiList?.statusUpdateInternalV4(
+            orderManageApiList?.updateShipmentStatus(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -132,6 +132,18 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderManageApiList?.processManifest(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun dispatchManifest(body: DispatchManifest)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.dispatchManifest(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -211,6 +223,42 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
     }
     
     
+    suspend fun createChannelConfig(body: CreateChannelConfigData)
+    : Deferred<Response<CreateChannelConfigResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.createChannelConfig(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannelConfig()
+    : Deferred<Response<CreateChannelConfigData>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.getChannelConfig(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun uploadConsent(body: UploadConsent)
+    : Deferred<Response<SuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderManageApiList?.uploadConsent(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun checkOrderStatus(body: OrderStatus)
     : Deferred<Response<OrderStatusResult>>? {
         
@@ -225,6 +273,10 @@ class OrderManageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
+    
     
     
     
