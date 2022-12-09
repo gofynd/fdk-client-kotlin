@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -935,6 +935,51 @@ interface PaymentApiList {
     
     
     @GET 
+    fun getPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
+    : Deferred<Response<GetPaymentLinkResponse>>
+    
+    
+    @POST 
+    fun createPaymentLink(@Url url1: String?   ,@Body body: CreatePaymentLinkRequest)
+    : Deferred<Response<CreatePaymentLinkResponse>>
+    
+    
+    @POST 
+    fun resendPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<ResendPaymentLinkResponse>>
+    
+    
+    @POST 
+    fun cancelPaymentLink(@Url url1: String?   ,@Body body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<CancelPaymentLinkResponse>>
+    
+    
+    @GET 
+    fun getPaymentModeRoutesPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String)
+    : Deferred<Response<PaymentModeRouteResponse>>
+    
+    
+    @GET 
+    fun pollingPaymentLink(@Url url1: String?    ,  @Query("payment_link_id") paymentLinkId: String?)
+    : Deferred<Response<PollingPaymentLinkResponse>>
+    
+    
+    @POST 
+    fun createOrderHandlerPaymentLink(@Url url1: String?   ,@Body body: CreateOrderUserRequest)
+    : Deferred<Response<CreateOrderUserResponse>>
+    
+    
+    @POST 
+    fun initialisePaymentPaymentLink(@Url url1: String?   ,@Body body: PaymentInitializationRequest)
+    : Deferred<Response<PaymentInitializationResponse>>
+    
+    
+    @POST 
+    fun checkAndUpdatePaymentStatusPaymentLink(@Url url1: String?   ,@Body body: PaymentStatusUpdateRequest)
+    : Deferred<Response<PaymentStatusUpdateResponse>>
+    
+    
+    @GET 
     fun customerCreditSummary(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<CustomerCreditSummaryResponse>>
     
@@ -1014,18 +1059,8 @@ interface OrderApiList {
     
     
     @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: StatusUpdateInternalRequest)
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
-    
-    
-    @POST 
-    fun createChannelConfig(@Url url1: String?   ,@Body body: CreateOrderConfigData)
-    : Deferred<Response<CreateOrderConfigDataResponse>>
-    
-    
-    @GET 
-    fun getChannelConfig(@Url url1: String?   )
-    : Deferred<Response<CreateOrderConfigData>>
     
     
     @GET 

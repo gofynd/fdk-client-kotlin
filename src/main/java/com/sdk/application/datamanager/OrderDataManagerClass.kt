@@ -43,10 +43,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
-                    _relativeUrls["createChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
-            
-                    _relativeUrls["getChannelConfig"] = "/service/application/order-manage/v1.0/orders/co-config"?.substring(1)
-            
                     _relativeUrls["getInvoiceByShipmentId1"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
             
                     _relativeUrls["getCreditNoteByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/credit-note"?.substring(1)
@@ -191,26 +187,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus(shipmentId: String, body: StatusUpdateInternalRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
+    fun updateShipmentStatus(shipmentId: String, body: UpdateShipmentStatusRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
-
-    
-    
-    fun createChannelConfig(body: CreateOrderConfigData): Deferred<Response<CreateOrderConfigDataResponse>>? {
-        var fullUrl : String? = _relativeUrls["createChannelConfig"] 
-        
-        return orderApiList?.createChannelConfig(fullUrl  ,body = body)}
-
-    
-    
-    fun getChannelConfig(): Deferred<Response<CreateOrderConfigData>>? {
-        var fullUrl : String? = _relativeUrls["getChannelConfig"] 
-        
-        return orderApiList?.getChannelConfig(fullUrl  )}
 
     
     
