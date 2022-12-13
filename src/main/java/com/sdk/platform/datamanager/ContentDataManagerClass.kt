@@ -108,6 +108,8 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -594,6 +596,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<LandingPageSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.deleteLandingPage(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getLegalInformation()
+    : Deferred<Response<ApplicationLegal>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getLegalInformation(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateLegalInformation(body: ApplicationLegal)
+    : Deferred<Response<ApplicationLegal>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updateLegalInformation(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
