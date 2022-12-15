@@ -1940,22 +1940,12 @@ Success. Returns a list of pages along with their details. Check the example sho
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | application | String? |  yes  |  |
- | redirections | ArrayList<[RedirectionSchema](#RedirectionSchema)>? |  yes  |  |
  | id | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | createdAt | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [RedirectionSchema](#RedirectionSchema)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
  | redirectFrom | String? |  yes  |  |
  | redirectTo | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | source | [TagSourceSchema](#TagSourceSchema)? |  yes  |  |
 
 ---
 
@@ -2726,6 +2716,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | id | String? |  yes  |  |
  | question | String? |  yes  |  |
  | answer | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
 
 ---
 
