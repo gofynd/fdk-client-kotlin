@@ -19,10 +19,6 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
 
     init{
             
-                    _relativeUrls["getJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
-            
-                    _relativeUrls["saveJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
-            
                     _relativeUrls["getConfigByApiKey"] = "/service/common/inventory/v1.0/company/slingshot"?.substring(1)
             
                     _relativeUrls["getApiKey"] = "/service/common/inventory/v1.0/company/slingshot/apikey"?.substring(1)
@@ -30,6 +26,10 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
                     _relativeUrls["getJobByCode"] = "/service/common/inventory/v1.0/company/jobs/code/{code}"?.substring(1)
             
                     _relativeUrls["getJobConfigByIntegrationType"] = "/service/common/inventory/v1.0/company/job/config"?.substring(1)
+            
+                    _relativeUrls["getJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
+            
+                    _relativeUrls["saveJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
             
     }
 
@@ -65,20 +65,6 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
     }
     
-    fun getJobCodesMetrics(dailyJob: Boolean?=null, jobCode: String?=null): Deferred<Response<ResponseEnvelopeObject>>? {
-        var fullUrl : String? = _relativeUrls["getJobCodesMetrics"] 
-        
-        return inventoryApiList?.getJobCodesMetrics(fullUrl    ,  dailyJob = dailyJob,    jobCode = jobCode)}
-
-    
-    
-    fun saveJobCodesMetrics(body: EmailJobMetrics): Deferred<Response<ResponseEnvelopeEmailJobMetrics>>? {
-        var fullUrl : String? = _relativeUrls["saveJobCodesMetrics"] 
-        
-        return inventoryApiList?.saveJobCodesMetrics(fullUrl  ,body = body)}
-
-    
-    
     fun getConfigByApiKey(apikey: String): Deferred<Response<ResponseEnvelopeSlingshotConfigurationDetail>>? {
         var fullUrl : String? = _relativeUrls["getConfigByApiKey"] 
         
@@ -106,6 +92,20 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["getJobConfigByIntegrationType"] 
         
         return inventoryApiList?.getJobConfigByIntegrationType(fullUrl    ,  integrationType = integrationType,    disable = disable)}
+
+    
+    
+    fun getJobCodesMetrics(dailyJob: Boolean?=null, jobCode: String?=null): Deferred<Response<ResponseEnvelopeObject>>? {
+        var fullUrl : String? = _relativeUrls["getJobCodesMetrics"] 
+        
+        return inventoryApiList?.getJobCodesMetrics(fullUrl    ,  dailyJob = dailyJob,    jobCode = jobCode)}
+
+    
+    
+    fun saveJobCodesMetrics(body: EmailJobMetrics): Deferred<Response<ResponseEnvelopeEmailJobMetrics>>? {
+        var fullUrl : String? = _relativeUrls["saveJobCodesMetrics"] 
+        
+        return inventoryApiList?.saveJobCodesMetrics(fullUrl  ,body = body)}
 
     
     

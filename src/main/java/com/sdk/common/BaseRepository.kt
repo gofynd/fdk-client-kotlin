@@ -1,5 +1,6 @@
 package com.sdk.common
 
+import com.google.gson.Gson
 import kotlinx.coroutines.Deferred
 import org.json.JSONObject
 import retrofit2.Response
@@ -7,11 +8,14 @@ import retrofit2.Response
 abstract class BaseRepository {
 
     suspend inline fun <T : Any> Deferred<Response<T>>.safeAwait(
-        onSuccess: (Event<T>) -> Unit, onFailure: (FdkError) -> Unit
+        onSuccess: (Event<T>) -> Unit,
+        onFailure: (FdkError) -> Unit
     ) {
         try {
             val call = this.await()
-            if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request.method == "HEAD")) {
+            if ((call.code() == 200 || call.code() == 201) &&
+                (call.body() != null || call.raw().request.method == "HEAD")
+            ) {
                 onSuccess.invoke(Event(call.body(), call.headers()))
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
@@ -21,11 +25,6 @@ abstract class BaseRepository {
                 error.rawErrorString = errorResponseString
                 onFailure.invoke(error)
             }
-        } catch (jex: org.json.JSONException) {
-            jex.printStackTrace()
-            val message = "Something went wrong"
-            val error = FdkError(status = 500, message = message, exception = jex::class.java.canonicalName)
-            onFailure.invoke(error)
         } catch (e: Exception) {
             e.printStackTrace()
             val message = e.message
@@ -35,11 +34,13 @@ abstract class BaseRepository {
     }
 
     suspend inline fun <T : Any> Deferred<Response<T>>.safeAwait(
-        onResponse: (Event<T>?, FdkError?) -> Unit = { _, _ -> }
+        onResponse: (Event<T>?, FdkError?) -> Unit = { response, error -> }
     ) {
         try {
             val call = this.await()
-            if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request.method == "HEAD")) {
+            if ((call.code() == 200 || call.code() == 201) &&
+                (call.body() != null || call.raw().request.method == "HEAD")
+            ) {
                 onResponse.invoke(Event(call.body(), call.headers()), null)
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
@@ -49,11 +50,6 @@ abstract class BaseRepository {
                 error.rawErrorString = errorResponseString
                 onResponse.invoke(null, error)
             }
-        } catch (jex: org.json.JSONException) {
-            jex.printStackTrace()
-            val message = "Something went wrong"
-            val error = FdkError(status = 500, message = message, exception = jex::class.java.canonicalName)
-            onResponse.invoke(null, error)
         } catch (e: Exception) {
             e.printStackTrace()
             val message = e.message
@@ -66,21 +62,18 @@ abstract class BaseRepository {
 
         try {
             val call = this.await()
-            return if ((call.code() == 200 || call.code() == 201) && (call.body() != null || call.raw().request.method == "HEAD")) {
-                Pair(Event(call.body(), call.headers()), null)
+            if ((call.code() == 200 || call.code() == 201) &&
+                (call.body() != null || call.raw().request.method == "HEAD")
+            ) {
+                return Pair(Event(call.body(), call.headers()), null)
             } else {
                 val response = JSONObject(call.errorBody()?.string() ?: "")
                 val errorResponseString = response.toString()
                 val error = HttpClient.gson.fromJson(errorResponseString, FdkError::class.java)
                 error.status = call.code()
                 error.rawErrorString = errorResponseString
-                Pair(null, error)
+                return Pair(null, error)
             }
-        } catch (jex: org.json.JSONException) {
-            jex.printStackTrace()
-            val message = "Something went wrong"
-            val error = FdkError(status = 500, message = message, exception = jex::class.java.canonicalName)
-            return Pair(null, error)
         } catch (e: Exception) {
             e.printStackTrace()
             val message = e.message
@@ -88,4 +81,5 @@ abstract class BaseRepository {
             return Pair(null, error)
         }
     }
+
 }
