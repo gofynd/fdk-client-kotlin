@@ -490,18 +490,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun createChannelConfig(body: CreateChannelConfigData)
-    : Deferred<Response<CreateChannelConfigResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createChannelConfig(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getChannelConfig()
     : Deferred<Response<CreateChannelConfigData>>? {
         
@@ -514,11 +502,35 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun createChannelConfig(body: CreateChannelConfigData)
+    : Deferred<Response<CreateChannelConfigResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.createChannelConfig(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun uploadConsent(body: UploadConsent)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.uploadConsent(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun orderUpdate(body: PlatformOrderUpdate)
+    : Deferred<Response<ResponseDetail>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.orderUpdate(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -576,6 +588,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     
