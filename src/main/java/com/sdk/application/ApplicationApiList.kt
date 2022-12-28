@@ -889,6 +889,11 @@ interface PaymentApiList {
     : Deferred<Response<renderHTMLResponse>>
     
     
+    @POST 
+    fun validateVPA(@Url url1: String?   ,@Body body: ValidateVPARequest)
+    : Deferred<Response<ValidateVPAResponse>>
+    
+    
     @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
