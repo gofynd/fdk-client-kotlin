@@ -335,7 +335,7 @@ Success
 
 
 ### getSignUrls
-Explain here
+Gives signed urls to access private files
 
 
 

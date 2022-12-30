@@ -55,12 +55,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentById(channelShipmentId: String?=null, shipmentId: String?=null, orderingCompanyId: String?=null, requestByExt: String?=null)
+    suspend fun getShipmentById(channelShipmentId: String, orderingCompanyId: String?=null, requestByExt: String?=null)
     : Deferred<Response<ShipmentInfoResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentById(
-        companyId = config.companyId, channelShipmentId = channelShipmentId, shipmentId = shipmentId, orderingCompanyId = orderingCompanyId, requestByExt = requestByExt )
+        companyId = config.companyId, channelShipmentId = channelShipmentId, orderingCompanyId = orderingCompanyId, requestByExt = requestByExt )
         } else {
             null
         } 
@@ -549,6 +549,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         } 
     }
     
+    
+    suspend fun sendSmsNinjaPlatform(body: SendSmsPayload)
+    : Deferred<Response<OrderStatusResult>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.sendSmsNinjaPlatform(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -588,6 +600,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     
