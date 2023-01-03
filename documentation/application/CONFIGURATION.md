@@ -168,7 +168,7 @@ configuration.getOwnerInfo().safeAwait{ response, error->
 
 
 
-Use this API to get the current sale channel details which includes channel name, description, banner, logo, favicon, domain details, etc. This API also retrieves the seller and owner information such as address, email address, and phone number.
+Use this API to get the current sales channel details which includes channel name, description, banner, logo, favicon, domain details, etc. This API also retrieves the seller and owner information such as address, email address, and phone number.
 
 *Returned Response:*
 
@@ -303,7 +303,7 @@ Success. Check the example shown below or refer `ApplicationAboutResponse` for m
 
 
 ### getBasicDetails
-Get basic application details
+Get basic details of the application
 
 
 
@@ -1203,7 +1203,7 @@ configuration.getLanguages().safeAwait{ response, error->
 
 
 
-Use this API to get a list of languages supported in the application.
+Use this API to get a list of languages supported in the application
 
 *Returned Response:*
 
@@ -1521,15 +1521,15 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | domain | [Domain](#Domain)? |  yes  |  |
  | website | [ApplicationWebsite](#ApplicationWebsite)? |  yes  |  |
  | cors | [ApplicationCors](#ApplicationCors)? |  yes  |  |
- | description | String? |  yes  | It contains details information about the sales channel. |
- | name | String? |  yes  | Name of the sales channel |
+ | description | String? |  yes  | It contains details information about the sales channel |
+ | name | String? |  yes  | Name of the sales channel, e.g. Zenz Fashion |
  | meta | [ApplicationMeta](#ApplicationMeta)? |  yes  |  |
- | token | String? |  yes  |  |
- | secret | String? |  yes  |  |
- | createdAt | String? |  yes  | Epoch timestamp of sales channel information creation |
+ | token | String? |  yes  | Random generated fix length string for sales channel. It is required and auto-generated. |
+ | secret | String? |  yes  | Random generated fix length string for sales channel. It is required and auto-generated. |
+ | createdAt | String? |  yes  | ISO 8601 timestamp of sales channel information creation |
  | banner | [SecureUrl](#SecureUrl)? |  yes  |  |
  | logo | [SecureUrl](#SecureUrl)? |  yes  |  |
- | isActive | Boolean? |  yes  | Indicates sales channel is active or not active |
+ | isActive | Boolean? |  yes  | Indicates whether sales channel is active or not active |
 
 ---
 
@@ -1541,10 +1541,10 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of company information |
- | uid | Int? |  yes  | company uid |
- | createdOn | String? |  yes  | Epoch timestamp of company information creation |
+ | uid | Int? |  yes  | Company UID |
+ | createdOn | String? |  yes  | ISO 8601 timestamp of company information creation |
  | isActive | Boolean? |  yes  | Indicates company is active or not active |
- | name | String? |  yes  | Name of the company |
+ | name | String? |  yes  | Name of the company, Reliance Retail Limited |
  | addresses | ArrayList<[CompanyAboutAddress](#CompanyAboutAddress)>? |  yes  |  |
  | notificationEmails | ArrayList<String>? |  yes  |  |
 
@@ -1562,7 +1562,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | phoneNumbers | ArrayList<[UserPhoneNumber](#UserPhoneNumber)>? |  yes  |  |
  | firstName | String? |  yes  | First name of the owner |
  | lastName | String? |  yes  | Last name of the owner |
- | profilePic | String? |  yes  | Hosted url of profile pic |
+ | profilePic | String? |  yes  | Hosted URL of profile pic |
 
 ---
 
@@ -1627,8 +1627,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  | Name of the supported language. |
- | code | String? |  yes  | Unique code of supported language. |
+ | name | String? |  yes  | Name of the supported language, e.g. हिन्दी |
+ | code | String? |  yes  | Unique code of supported language, e.g. hi-IN |
 
 ---
 
@@ -1707,17 +1707,16 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  | The unique identifier for the sale channel staff member |
+ | id | String? |  yes  | The unique identifier for the sales channel staff member |
  | orderIncent | Boolean? |  yes  | This is a boolean value. `true` to retrieve the staff members eligible for getting incentives on orders. |
  | stores | ArrayList<Int>? |  yes  |  |
- | application | String? |  yes  |  |
+ | application | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the current sales channel |
  | title | String? |  yes  | Tittle for the staff member like owner, staff. |
  | user | String? |  yes  | Mongo ID of the staff. Helps in retrieving the details of a particular staff member. |
- | employeeCode | String? |  yes  | Employee code of sale channel staff member. It has unique value. |
+ | employeeCode | String? |  yes  | Employee code of sales channel staff member. It has unique value. |
  | firstName | String? |  yes  | First name the staff member |
  | lastName | String? |  yes  | Last name the staff member |
- | profilePicUrl | String? |  yes  |  |
- | description | Any? |  yes  |  |
+ | profilePicUrl | String? |  yes  | Profile image hosted url of the staff member |
 
 ---
 
@@ -1729,10 +1728,10 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | tokens | [Tokens](#Tokens)? |  yes  |  |
- | id | String? |  yes  | Unique identifier of the token |
- | application | String? |  yes  | Current sales channel id |
- | createdAt | String? |  yes  | Epoch timestamp of token creation |
- | updatedAt | String? |  yes  | Epoch timestamp of token updation |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the token |
+ | application | String? |  yes  | Alphanumeric ID allotted to the current application created within the current business account |
+ | createdAt | String? |  yes  | ISO 8601 timestamp of token creation |
+ | updatedAt | String? |  yes  | ISO 8601 timestamp of token updation |
  | v | Int? |  yes  | Version key for tracking revisions. Default value is zero. |
 
 ---
@@ -1763,7 +1762,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | credentials | [Credentials](#Credentials)? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows whether Firebase integration is enabled or disabled for the sales channel |
 
 ---
 
@@ -1776,10 +1775,10 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | ---------- | ---- | -------- | ----------- |
  | ios | [Ios](#Ios)? |  yes  |  |
  | android | [Android](#Android)? |  yes  |  |
- | projectId | String? |  yes  |  |
- | gcmSenderId | String? |  yes  |  |
- | applicationId | String? |  yes  |  |
- | apiKey | String? |  yes  |  |
+ | projectId | String? |  yes  | Project ID for Firebase integration. Project ID is a unique identifier for a project and is used only within the console. |
+ | gcmSenderId | String? |  yes  | Google Cloud Manager's Sender ID for Firebase. It is a unique numerical value which is created when you configure your project in the Google Developers Console/Google Cloud Console. |
+ | applicationId | String? |  yes  | Alphanumeric ID allotted to the current application created within the current business account |
+ | apiKey | String? |  yes  | An API key is a unique string that's used to route requests to your Firebase project when interacting with Firebase. |
 
 ---
 
@@ -1790,8 +1789,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applicationId | String? |  yes  |  |
- | apiKey | String? |  yes  |  |
+ | applicationId | String? |  yes  | Alphanumeric ID allotted to a sales channel application created within a business account |
+ | apiKey | String? |  yes  | Firebase secret credential API key for IOS |
 
 ---
 
@@ -1802,8 +1801,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applicationId | String? |  yes  |  |
- | apiKey | String? |  yes  |  |
+ | applicationId | String? |  yes  | Alphanumeric ID allotted to a sales channel application created within a business account |
+ | apiKey | String? |  yes  | Firebase secret credential API key for Android |
 
 ---
 
@@ -1815,7 +1814,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | credentials | [MoengageCredentials](#MoengageCredentials)? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows whether MoEngage integation is enabled or disabled for the sales channel |
 
 ---
 
@@ -1826,7 +1825,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | appId | String? |  yes  |  |
+ | appId | String? |  yes  | APP ID provided by MoEngage to identify a specific app. The app_id for your MoEngage account is available on the MoEngage Dashboard. |
 
 ---
 
@@ -1838,7 +1837,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | credentials | [SegmentCredentials](#SegmentCredentials)? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows whether Segment integration is enabled or disabled for the sales channel |
 
 ---
 
@@ -1849,7 +1848,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | writeKey | String? |  yes  |  |
+ | writeKey | String? |  yes  | The unique identifier for a source that tells Segment from which source data is coming from, to which workspace the data belongs, and which destinations should receive the data. |
 
 ---
 
@@ -1861,7 +1860,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | credentials | [GtmCredentials](#GtmCredentials)? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows whether GTM integration is enabled or disabled for the sales channel |
 
 ---
 
@@ -1872,7 +1871,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | apiKey | String? |  yes  |  |
+ | apiKey | String? |  yes  | Secret credential API key for GTM |
 
 ---
 
@@ -1884,7 +1883,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | credentials | [FreshchatCredentials](#FreshchatCredentials)? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows whether Freshchat integration is enabled or disabled for the sales channel |
 
 ---
 
@@ -1895,9 +1894,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | appId | String? |  yes  |  |
- | appKey | String? |  yes  |  |
- | webToken | String? |  yes  |  |
+ | appId | String? |  yes  | The unique app_id of your Freshchat account for integrating Freshchat with your sales channel |
+ | appKey | String? |  yes  | The unique app_key of your Freshchat account for integrating Freshchat with your sales channel |
+ | webToken | String? |  yes  | Web token used for accessing the Freshchat APIs |
 
 ---
 
@@ -1909,7 +1908,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | credentials | [SafetynetCredentials](#SafetynetCredentials)? |  yes  |  |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows whether Safetynet integration is enabled or disabled for the sales channel |
 
 ---
 
@@ -1920,7 +1919,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | apiKey | String? |  yes  |  |
+ | apiKey | String? |  yes  | Secret credential API key for Safetynet. This API key is used for calling the methods of Safetynet APIs. |
 
 ---
 
@@ -1942,7 +1941,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | publicKey | String? |  yes  |  |
+ | publicKey | String? |  yes  | Public key for integrating with Fynd rewards. |
 
 ---
 
@@ -1964,7 +1963,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | apiKey | String? |  yes  |  |
+ | apiKey | String? |  yes  | Secret API key for Google Maps. A unique identifier that authenticates requests made to Google Maps API. |
 
 ---
 
@@ -1987,7 +1986,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  | Allow credit of reward points |
+ | enabled | Boolean? |  yes  | Shows whether reward points should be credited |
 
 ---
 
@@ -1998,7 +1997,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  | Allow debit of reward points |
+ | enabled | Boolean? |  yes  | Shows whether reward points are available for debit |
  | autoApply | Boolean? |  yes  | Allow automatic debit of reward points |
  | strategyChannel | String? |  yes  | Strategy channel for debiting reward points |
 
@@ -2011,10 +2010,10 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | similar | ArrayList<String>? |  yes  |  |
- | sellerSelection | Boolean? |  yes  | Allow seller selection. Default value is true. |
+ | similar | ArrayList<String>? |  yes  | Configuration to show similar products, other products from same seller, other products in same category, other products in same price range, etc. |
+ | sellerSelection | Boolean? |  yes  | Shows whether the customers can choose the seller on PDP |
  | updateProductMeta | Boolean? |  yes  | Allow user to update product meta. Default value is true. |
- | requestProduct | Boolean? |  yes  | Allow user to request product. Default value is false. |
+ | requestProduct | Boolean? |  yes  | Indicates whether customers can request for a product. Default value is false. |
 
 ---
 
@@ -2039,10 +2038,10 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | launchPage | [LaunchPage](#LaunchPage)? |  yes  |  |
- | continueAsGuest | Boolean? |  yes  | Allow user to continue as a guest |
- | loginBtnText | String? |  yes  | Login button text |
- | showDomainTextbox | Boolean? |  yes  | Allow to show domain text box |
- | showRegisterBtn | Boolean? |  yes  | Allow to show registeration button |
+ | continueAsGuest | Boolean? |  yes  | Shows whether a guest can checkout from cart without logging in |
+ | loginBtnText | String? |  yes  | Shows the text displayed over the login button |
+ | showDomainTextbox | Boolean? |  yes  | Shows whether a textbox for entering domain is available |
+ | showRegisterBtn | Boolean? |  yes  | Shows whether register button is available in the login/landing page |
 
 ---
 
@@ -2053,7 +2052,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | askStoreAddress | Boolean? |  yes  | Allow ask or add store address |
+ | askStoreAddress | Boolean? |  yes  | Shows whether a form to collect the address of the store, should be displayed upon visiting the website |
 
 ---
 
@@ -2073,11 +2072,11 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | qr | [QrFeature](#QrFeature)? |  yes  |  |
  | pcr | [PcrFeature](#PcrFeature)? |  yes  |  |
  | order | [OrderFeature](#OrderFeature)? |  yes  |  |
- | id | String? |  yes  | The unique identifier for the sales channel features |
- | app | String? |  yes  | Current sales channel id |
- | createdAt | String? |  yes  | Epoch timestamp of sales channel feature creation |
- | updatedAt | String? |  yes  | Epoch timestamp of sales channel feature updation |
- | v | Int? |  yes  | Version key for tracking revisions. Default value is zero. |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) for the sales channel features |
+ | app | String? |  yes  | Application ID of the sales channel |
+ | createdAt | String? |  yes  | ISO 8601 timestamp showing the date when the features were configured |
+ | updatedAt | String? |  yes  | ISO 8601 timestamp of last known modifications to the sales channel feature configuration |
+ | v | Int? |  yes  | Version key for tracking revisions. Default value is zero |
 
 ---
 
@@ -2088,7 +2087,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | orderProcessing | Boolean? |  yes  | Allow order processing |
+ | orderProcessing | Boolean? |  yes  | Shows whether order processing is enabled or not enabled |
 
 ---
 
@@ -2117,7 +2116,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | visibility | Boolean? |  yes  | Allow to show communication dialog |
+ | visibility | Boolean? |  yes  | Shows whether WhatsApp communication is enabled |
 
 ---
 
@@ -2128,8 +2127,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  | Enable deployment store selection |
- | type | String? |  yes  | Type of deployment store value |
+ | enabled | Boolean? |  yes  | Shows whether selection of store (for deploying the application) is permitted |
+ | type | String? |  yes  | Permitted values are 'hard' and 'soft'. For hard type delivery, store selection is compulsory. For soft type, delivery store selection is optional. |
 
 ---
 
@@ -2140,7 +2139,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | String? |  yes  | Listing price value like min, max or range. Default value is range. |
+ | value | String? |  yes  | Shows which price to display on PLP if one product has multiple prices (for each size), valid values are 'min', 'max', 'range'. Default value is range. |
  | sort | String? |  yes  | Sorting of listing price with min or max value. Default value is min. |
 
 ---
@@ -2152,9 +2151,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | value | ArrayList<String>? |  yes  |  |
- | type | String? |  yes  | For explicit or all currency selection |
- | defaultCurrency | String? |  yes  | Value of Default currency. Default vaule is 'INR'. |
+ | value | ArrayList<String>? |  yes  | 3-letter currency code |
+ | type | String? |  yes  | If 'explicit', currency formatting shows currency code with price. For explicit or all currency selection. |
+ | defaultCurrency | String? |  yes  | 3-letter code of the default currency used in the application. Default vaule is 'INR'. |
 
 ---
 
@@ -2176,7 +2175,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  | Enable user feedback. Default value is false. |
+ | enabled | Boolean? |  yes  | Shows whether customer feedback is enabled on PDP. Default value is false. |
 
 ---
 
@@ -2187,7 +2186,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  | Enable comparison of the products. |
+ | enabled | Boolean? |  yes  | Shows whether product comparison feature is enabled on PDP |
 
 ---
 
@@ -2198,11 +2197,11 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | gstInput | Boolean? |  yes  | Allow gst input in cart. Default value is true. |
- | staffSelection | Boolean? |  yes  | Allow staff selection. Default value is true. |
- | placingForCustomer | Boolean? |  yes  | Show placing for customer. Default value is true. |
- | googleMap | Boolean? |  yes  | Allow adding of google map. Default value is true. |
- | revenueEngineCoupon | Boolean? |  yes  | Allow coupon apply and credits together. Default value is false. |
+ | gstInput | Boolean? |  yes  | Shows whether customer is allowed to enter GST on the cart page for claiming input credits |
+ | staffSelection | Boolean? |  yes  | Shows whether staff selection is enabled on cart page |
+ | placingForCustomer | Boolean? |  yes  | Shows whether the staff is placing order on behalf of customer. Default value is true. |
+ | googleMap | Boolean? |  yes  | Allow adding of Google Maps. Default value is true. |
+ | revenueEngineCoupon | Boolean? |  yes  | Allow coupon apply and credits, together. Default value is false. |
 
 ---
 
@@ -2213,9 +2212,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | application | Boolean? |  yes  | Allow application. Default value is false. |
- | products | Boolean? |  yes  | Allow products. Default value is false. |
- | collections | Boolean? |  yes  | Allow collections. Default value is false. |
+ | application | Boolean? |  yes  | Shows whether sharing of mobile app via QR code is allowed. Default value is false. |
+ | products | Boolean? |  yes  | Shows whether sharing product via QR code is allowed. Default value is false. |
+ | collections | Boolean? |  yes  | Shows whether sharing collection via QR code is allowed. Default value is false. |
 
 ---
 
@@ -2237,7 +2236,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | buyAgain | Boolean? |  yes  | Allow buy again for order. Default value is false. |
+ | buyAgain | Boolean? |  yes  | Allow buy again option for order. Default value is false. |
 
 ---
 
@@ -2270,14 +2269,14 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  | The unique identifier of the current sales channel support currency |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the current sales channel supported currency |
  | isActive | Boolean? |  yes  | Shows currency is enabled or not in current sales channel |
- | name | String? |  yes  | Name of the currency |
- | code | String? |  yes  | Identifier code of the currency |
- | createdAt | String? |  yes  | Epoch timestamp of sales channel support currency creation |
- | updatedAt | String? |  yes  | Epoch timestamp of sales channel support currency updation |
- | decimalDigits | Int? |  yes  | It shows a currency that can be divided into smaller units by dividing by ten or a hundred |
- | symbol | String? |  yes  | Unique Symbol of the currency for identify the currency |
+ | name | String? |  yes  | Name of the currency, e.g Indian Rupee |
+ | code | String? |  yes  | 3-character currency code, e.g. INR, USD, EUR. |
+ | createdAt | String? |  yes  | ISO 8601 timestamp of sales channel support currency creation |
+ | updatedAt | String? |  yes  | ISO 8601 timestamp of sales channel support currency updation |
+ | decimalDigits | Int? |  yes  | Acceptable decimal limits for a given currency, e.g. 1.05$ means upto 2 decimal digits can be accepted as a valid value of a currency. |
+ | symbol | String? |  yes  | Unique symbol for identifying the currency, e.g. ₹ |
 
 ---
 
@@ -2288,10 +2287,10 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | verified | Boolean? |  yes  | Domain is verified or not |
- | isPrimary | Boolean? |  yes  | Domain is primary or not |
+ | verified | Boolean? |  yes  | Domain is verified or not. TXT and A records should propagate correctly. |
+ | isPrimary | Boolean? |  yes  | Domain is primary or not. Primary domain is the default/main domain. |
  | isShortlink | Boolean? |  yes  | Shortlink is present or not for the domain |
- | id | String? |  yes  | The unique identifier of the sales channel domain |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the sales channel domain |
  | name | String? |  yes  | Full domain name |
  | isPredefined | Boolean? |  yes  | Domain is hosting domain or not. |
 
@@ -2304,7 +2303,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  | Shows sales channel website url is enabled or not |
+ | enabled | Boolean? |  yes  | Shows whether sales channel website URL is enabled or not |
  | basepath | String? |  yes  | Base path for the current sales channel website |
 
 ---
@@ -2327,7 +2326,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows sales channel auth is enabled or not enabled. |
 
 ---
 
@@ -2338,9 +2337,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | redirectFrom | String? |  yes  | Old domain url of the sales channel. |
- | redirectTo | String? |  yes  | New domain url of the sales channel. User will redirect from old domain to new domain. |
- | type | String? |  yes  | It shows domain redirection type. Permanent redirection is for long time period redirection and temporary redirection for the short time period. |
+ | redirectFrom | String? |  yes  | Old domain url of the sales channel |
+ | redirectTo | String? |  yes  | New domain URL of the sales channel. Users will be automatically redirected from old domain to new domain. |
+ | type | String? |  yes  | It shows domain redirection type. Permanent redirection is for long time period redirection, and temporary redirection for a short time period. |
 
 ---
 
@@ -2351,8 +2350,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
- | value | String? |  yes  |  |
+ | name | String? |  yes  | Indicates to name of application meta |
+ | value | String? |  yes  | Value related to application meta name |
 
 ---
 
@@ -2363,7 +2362,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | secureUrl | String? |  yes  | Hosted Url of the image |
+ | secureUrl | String? |  yes  | Hosted URL of the image |
 
 ---
 
@@ -2377,20 +2376,20 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | website | [ApplicationWebsite](#ApplicationWebsite)? |  yes  |  |
  | cors | [ApplicationCors](#ApplicationCors)? |  yes  |  |
  | auth | [ApplicationAuth](#ApplicationAuth)? |  yes  |  |
- | description | String? |  yes  | It contains details information about the sales channel. |
+ | description | String? |  yes  | It contains detailed information about the sales channel. |
  | channelType | String? |  yes  | It indicates different channel types like store, website-and-mobile-apps. Default value is store |
- | cacheTtl | Int? |  yes  |  |
- | isInternal | Boolean? |  yes  |  |
+ | cacheTtl | Int? |  yes  | An integer value that specifies the number of seconds until the key expires |
+ | isInternal | Boolean? |  yes  | Indicates whether a sales channel is internal or not |
  | isActive | Boolean? |  yes  | Indicates sales channel is active or not active |
- | id | String? |  yes  | The unique identifier of the sales channel |
- | name | String? |  yes  | Name of the sales channel |
- | owner | String? |  yes  | Unique id of the owner to identify owner |
- | companyId | Int? |  yes  | Company ID for the sales channel |
- | token | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the sales channel |
+ | name | String? |  yes  | Name of the sales channel, e.g. Zenz Fashion |
+ | owner | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of owner who owns the application |
+ | companyId | Int? |  yes  | Numeric ID allotted to a business account where the sales channel exists |
+ | token | String? |  yes  | Random generated fix length string for sales channel. It is required and auto-generated. |
  | redirections | ArrayList<[ApplicationRedirections](#ApplicationRedirections)>? |  yes  |  |
  | meta | ArrayList<[ApplicationMeta](#ApplicationMeta)>? |  yes  |  |
- | createdAt | String? |  yes  | Epoch timestamp of sales channel creation |
- | updatedAt | String? |  yes  | Epoch timestamp of sales channel updation |
+ | createdAt | String? |  yes  | ISO 8601 timestamp of sales channel creation |
+ | updatedAt | String? |  yes  | ISO 8601 timestamp of sales channel updation |
  | v | Int? |  yes  | Version key for tracking revisions. Default value is zero. |
  | banner | [SecureUrl](#SecureUrl)? |  yes  |  |
  | logo | [SecureUrl](#SecureUrl)? |  yes  |  |
@@ -2431,7 +2430,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
+ | message | String? |  yes  | Error message when request body payload is improper |
 
 ---
 
@@ -2442,7 +2441,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
+ | message | String? |  yes  | Success message shown to the user (in a string format) |
 
 ---
 
@@ -2453,8 +2452,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | criteria | String? |  yes  | Whether enable all or explicitly few brands as inventory |
- | brands | ArrayList<Int>? |  yes  | Brand uids in case of explicit criteria |
+ | criteria | String? |  yes  | Whether all brands are enabled, or explicitly few brands in the inventory |
+ | brands | ArrayList<Int>? |  yes  |  |
 
 ---
 
@@ -2465,8 +2464,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | companies | ArrayList<Int>? |  yes  | list of company uids |
- | brands | ArrayList<Int>? |  yes  | list of brand uids |
+ | companies | ArrayList<Int>? |  yes  | List of company UID |
+ | brands | ArrayList<Int>? |  yes  | List of brand UID |
 
 ---
 
@@ -2477,9 +2476,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | criteria | String? |  yes  | Whether enable all or explicitly few stores or use filter of brands and company as inventory stores |
- | rules | ArrayList<[StoreCriteriaRule](#StoreCriteriaRule)>? |  yes  | List of rules with company and brands uids. Used when critera is `filter` |
- | stores | ArrayList<Int>? |  yes  | List of store uids. Used when critera is `explicit` |
+ | criteria | String? |  yes  | Whether all stores are enabled, or explicitly few stores in the inventory, or use brands and company filter. |
+ | rules | ArrayList<[StoreCriteriaRule](#StoreCriteriaRule)>? |  yes  | List of rules with company and brands uids. Used when critera is `filter`. |
+ | stores | ArrayList<Int>? |  yes  | List of store uids. Used when critera is `explicit`. |
 
 ---
 
@@ -2502,7 +2501,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | enabled | Boolean? |  yes  |  |
+ | enabled | Boolean? |  yes  | Shows store priority is enabled or not enabled for the article assignment. |
  | storetypeOrder | ArrayList<String>? |  yes  |  |
 
 ---
@@ -2525,7 +2524,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | postOrderReassignment | Boolean? |  yes  |  |
+ | postOrderReassignment | Boolean? |  yes  | Allow post order reassigment of article |
  | rules | [ArticleAssignmentRule](#ArticleAssignmentRule)? |  yes  |  |
 
 ---
@@ -2537,13 +2536,13 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | pincode | Int? |  yes  | Pin code of the city |
- | address1 | String? |  yes  | Primary details about the address of the comapany |
- | address2 | String? |  yes  | Secondary details about the address of the comapany |
- | city | String? |  yes  | City name |
- | state | String? |  yes  | State name |
- | country | String? |  yes  | Country name |
- | addressType | String? |  yes  | Indicates different office types like office, registered and home. |
+ | pincode | Int? |  yes  | 6-digit PIN code of the city, e.g. 400001 |
+ | address1 | String? |  yes  | Primary address line of the company |
+ | address2 | String? |  yes  | Secondary address line of the company |
+ | city | String? |  yes  | City name, e.g. Mumbai |
+ | state | String? |  yes  | State name, e.g. Maharashtra |
+ | country | String? |  yes  | Country name, e.g. India |
+ | addressType | String? |  yes  | Indicates different office types like office, registered, and home. |
 
 ---
 
@@ -2571,8 +2570,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | active | Boolean? |  yes  | Current phone number is active or not active |
  | primary | Boolean? |  yes  | Indicates current phone number is primay  or not primary of user |
  | verified | Boolean? |  yes  | Indicates current phone number is verified or not verified |
- | countryCode | Int? |  yes  | Country code |
- | phone | String? |  yes  | Phone nubmer of the user |
+ | countryCode | Int? |  yes  | Country code, e.g. +91 |
+ | phone | String? |  yes  | Phone number of the user |
 
 ---
 
@@ -2588,7 +2587,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | current | Int? |  yes  | Current page number |
  | hasNext | Boolean? |  yes  | Next page is present or not |
  | itemTotal | Int? |  yes  | Total number of items to retrieve |
- | nextId | String? |  yes  | Next page id |
+ | nextId | String? |  yes  | Next page ID |
  | hasPrevious | Boolean? |  yes  | Previous page is present or not |
 
 ---
@@ -2604,12 +2603,12 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | support | [InformationSupport](#InformationSupport)? |  yes  |  |
  | socialLinks | [SocialLinks](#SocialLinks)? |  yes  |  |
  | links | [Links](#Links)? |  yes  |  |
- | copyrightText | String? |  yes  | Copyright text for current sales channel |
- | id | String? |  yes  | Unique identifier of the application information |
+ | copyrightText | String? |  yes  | Copyright statement usually seen at the site's footer |
+ | id | String? |  yes  | Unique identifier (24-digit Mongo Object ID) of the application information |
  | businessHighlights | [BusinessHighlights](#BusinessHighlights)? |  yes  |  |
- | application | String? |  yes  | Current application id |
- | createdAt | String? |  yes  | Epoch timestamp of the application information creation |
- | updatedAt | String? |  yes  | Epoch timestamp of the application information updation |
+ | application | String? |  yes  | Alphanumeric ID allotted to a sales channel application created within a business account |
+ | createdAt | String? |  yes  | ISO 8601 timestamp of creation of the application information |
+ | updatedAt | String? |  yes  | ISO 8601 timestamp of updation of the application information |
  | v | Int? |  yes  | Version key for tracking revisions. Default value is zero. |
 
 ---
@@ -2621,12 +2620,12 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | loc | String? |  yes  | Contain Address location |
- | addressLine | ArrayList<String>? |  yes  |  |
+ | loc | String? |  yes  | Co-ordinates of the location |
+ | addressLine | ArrayList<String>? |  yes  | Contact address of the sales channel |
  | phone | [InformationPhone](#InformationPhone)? |  yes  |  |
- | city | String? |  yes  | City name |
- | country | String? |  yes  | Country name |
- | pincode | Int? |  yes  | Pincode of the city |
+ | city | String? |  yes  | Name of the city, e.g. Mumbai |
+ | country | String? |  yes  | Name of the country, e.g. India |
+ | pincode | Int? |  yes  | 6-digit PIN Code of the city, e.g. 400001 |
 
 ---
 
@@ -2637,8 +2636,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  | Unique code related to country for contact number |
- | number | String? |  yes  | Contact number for application information |
+ | code | String? |  yes  | Country code for contact number, e.g. +91 (for India) |
+ | number | String? |  yes  | 10-digit mobile number |
 
 ---
 
@@ -2651,7 +2650,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | ---------- | ---- | -------- | ----------- |
  | phone | ArrayList<String>? |  yes  |  |
  | email | ArrayList<String>? |  yes  |  |
- | timing | String? |  yes  | Information support available timing for user |
+ | timing | String? |  yes  | Working hours of support team, e.g. 9 AM to 9 PM |
 
 ---
 
@@ -2681,9 +2680,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the social media platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to facebook |
+ | title | String? |  yes  | Name of the social media platform, e.g. Facebook |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's Facebook page |
 
 ---
 
@@ -2694,9 +2693,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the social media platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to instagram |
+ | title | String? |  yes  | Name of the social media platform, e.g. Instagram |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's Instagram page |
 
 ---
 
@@ -2707,9 +2706,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the social media platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to twitter |
+ | title | String? |  yes  | Name of the social media platform, e.g. Twitter |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's Twitter account |
 
 ---
 
@@ -2720,9 +2719,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the social media platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to pinterest |
+ | title | String? |  yes  | Name of the social media platform, e.g. Pinterest |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's Pinterest page |
 
 ---
 
@@ -2733,9 +2732,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the social media platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to goole plus |
+ | title | String? |  yes  | Name of the social media platform, e.g. Google+ |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's Google+ account |
 
 ---
 
@@ -2746,9 +2745,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the social media platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to youtube channel |
+ | title | String? |  yes  | Name of the social media platform, e.g. YouTube |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's YouTube channel |
 
 ---
 
@@ -2759,9 +2758,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the social networking platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to facebook |
+ | title | String? |  yes  | Name of the social media platform, e.g. LinkedIn |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's LinkedIn channel |
 
 ---
 
@@ -2772,9 +2771,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the platfrom |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to vimeo |
+ | title | String? |  yes  | Name of the video hosting platform, e.g. Vimeo |
+ | icon | String? |  yes  | Hosted URL of social icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's Vimeo channel |
 
 ---
 
@@ -2785,9 +2784,9 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | title | String? |  yes  | Name of the Blog title |
- | icon | String? |  yes  | Hosted url of icon image |
- | link | String? |  yes  | Web url for redirecting to Blog |
+ | title | String? |  yes  | Name of the brand's blog page |
+ | icon | String? |  yes  | Hosted URL of icon image shown on the website |
+ | link | String? |  yes  | Web URL of brand's blog page |
 
 ---
 
@@ -2799,7 +2798,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | title | String? |  yes  | Name of the related page or link |
- | link | String? |  yes  | Web url for redirecting to related page |
+ | link | String? |  yes  | Web URL for redirecting to a related page |
 
 ---
 
@@ -2810,10 +2809,10 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  | Unique identifier of the related business |
- | title | String? |  yes  | Title of the business |
- | icon | String? |  yes  | Hosted url of icon image |
- | subTitle | String? |  yes  | Detailed information about the business |
+ | id | String? |  yes  | Unique identifier (24-digit Mongo Object ID) of the related business |
+ | title | String? |  yes  | Title of the business highlight, e.g. Superfast Delivery |
+ | icon | String? |  yes  | Hosted URL of icon image representing the business highlight |
+ | subTitle | String? |  yes  | Detailed information about the highlight |
 
 ---
 
@@ -2825,14 +2824,14 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | name | String |  no  | Name of the sales channel. It is required. |
- | description | String |  no  | Description about the sales channel. It gives the detail information about the sales channel. It is required. |
+ | description | String |  no  | It gives a detailed information about the sales channel. It is required. |
  | logo | [SecureUrl](#SecureUrl) |  no  |  |
  | mobileLogo | [SecureUrl](#SecureUrl) |  no  |  |
  | favicon | [SecureUrl](#SecureUrl) |  no  |  |
  | banner | [SecureUrl](#SecureUrl) |  no  |  |
  | domain | [Domain](#Domain)? |  yes  |  |
  | domains | ArrayList<[Domain](#Domain)>? |  yes  |  |
- | id | String? |  yes  | The unique identifier for the sales channel details |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) for the sales channel details |
 
 ---
 
@@ -2854,8 +2853,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ref | String? |  yes  | Unique identifier of the default currency |
- | code | String? |  yes  | Identifier code of the dafault currency |
+ | ref | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the default currency |
+ | code | String? |  yes  | 3-character code of the default currency, e.g. INR, EUR, USD |
 
 ---
 
@@ -2866,7 +2865,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | application | String? |  yes  | Current sales channel id |
+ | application | String? |  yes  | Alphanumeric ID allotted to an application (sales channel website) created within a business account |
  | defaultCurrency | [DefaultCurrency](#DefaultCurrency)? |  yes  |  |
  | supportedCurrency | ArrayList<[Currency](#Currency)>? |  yes  |  |
 
@@ -2879,7 +2878,7 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  | coordinates type of the opted store |
+ | type | String? |  yes  | Coordinates type of the opted store |
  | coordinates | ArrayList<Double>? |  yes  |  |
 
 ---
@@ -2891,13 +2890,13 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | state | String? |  yes  | State of the opted store |
+ | state | String? |  yes  | State of the opted store, e.g. Maharashtra |
  | address1 | String? |  yes  | Address of the opted store |
  | latLong | [StoreLatLong](#StoreLatLong)? |  yes  |  |
  | address2 | String? |  yes  | Address of the opted store |
- | pincode | Int? |  yes  | Pincode of the opted store location |
- | country | String? |  yes  | Country of the opted store |
- | city | String? |  yes  | City of the opted store |
+ | pincode | Int? |  yes  | 6-digit PIN code of the opted store location |
+ | country | String? |  yes  | Country of the opted store, e.g. India |
+ | city | String? |  yes  | City of the opted store, e.g. Mumbai |
 
 ---
 
@@ -2909,14 +2908,14 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | address | [OptedStoreAddress](#OptedStoreAddress)? |  yes  |  |
- | id | String? |  yes  | The unique identifier of the ordering store |
- | uid | Int? |  yes  | Ordering store uid |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the ordering store |
+ | uid | Int? |  yes  | Ordering store UID |
  | name | String? |  yes  | Store name of the ordering store |
  | displayName | String? |  yes  | Display name of the ordering store |
- | storeType | String? |  yes  | Store type of the ordering store |
- | storeCode | String? |  yes  | Store code of the ordering store |
- | pincode | Int? |  yes  | Pincode of the ordering store |
- | code | String? |  yes  | Code of the ordering store |
+ | storeType | String? |  yes  | Store type of the ordering store, e.g. high_street, mall, warehouse |
+ | storeCode | String? |  yes  | Store code of the ordering store, e.g. MUM-102 |
+ | pincode | Int? |  yes  | 6-digit PIN Code  of the ordering store, e.g. 400001 |
+ | code | String? |  yes  | Code of the ordering store (usually same as Store Code) |
 
 ---
 
@@ -2931,11 +2930,11 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | items | ArrayList<[OrderingStore](#OrderingStore)>? |  yes  |  |
  | deployedStores | ArrayList<Int>? |  yes  |  |
  | allStores | Boolean? |  yes  | Allow all stores of the ordering stores |
- | enabled | Boolean? |  yes  | Allow ordering stores |
- | type | String? |  yes  | For hard type delivery store selection is compulsory and for soft type delivery store selection is optional. |
- | id | String? |  yes  | The unique identifier of the ordering stores |
- | app | String? |  yes  | Current application id |
- | v | Int? |  yes  | Version of the ordering stores |
+ | enabled | Boolean? |  yes  | Allow ordering stores for current sales channel |
+ | type | String? |  yes  | For hard type delivery, store selection is compulsory. For soft type, delivery store selection is optional. |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the ordering store |
+ | app | String? |  yes  | Alphanumeric ID allotted to an application (sales channel website) created within a business account |
+ | v | Int? |  yes  | Version key for tracking ordering stores. Default value is zero. |
 
 ---
 

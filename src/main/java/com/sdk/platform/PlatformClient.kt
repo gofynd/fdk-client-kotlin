@@ -8,8 +8,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
-    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
-    
     val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
     
     val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
@@ -38,11 +36,11 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
     
+    val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
+    
     val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
     
     val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
-    
-    val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
     
     val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
@@ -59,8 +57,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val common by lazy { this@PlatformClient.common.ApplicationClient(applicationId,config)}
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
-    
-    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
     val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
     
@@ -90,11 +86,11 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val cart by lazy { this@PlatformClient.cart.ApplicationClient(applicationId,config)}
     
+    val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
+    
     val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
     
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
-    
-    val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
     
     val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
