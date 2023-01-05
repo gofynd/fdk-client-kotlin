@@ -1131,6 +1131,36 @@ interface RewardsApiList {
     fun getOfferByName(@Url url1: String?    )
     : Deferred<Response<Offer>>
     
+    
+    @POST 
+    fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
+    : Deferred<Response<CatalogueOrderResponse>>
+    
+    
+    @GET 
+    fun getPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PointsHistoryResponse>>
+    
+    
+    @GET 
+    fun getPoints(@Url url1: String?   )
+    : Deferred<Response<PointsResponse>>
+    
+    
+    @GET 
+    fun referral(@Url url1: String?   )
+    : Deferred<Response<ReferralDetailsResponse>>
+    
+    
+    @POST 
+    fun orderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
+    : Deferred<Response<OrderDiscountResponse>>
+    
+    
+    @POST 
+    fun redeemReferralCode(@Url url1: String?   ,@Body body: RedeemReferralCodeRequest)
+    : Deferred<Response<RedeemReferralCodeResponse>>
+    
 }
 
 interface PosCartApiList {
