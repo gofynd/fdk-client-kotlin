@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -884,6 +884,11 @@ interface PaymentApiList {
     : Deferred<Response<renderHTMLResponse>>
     
     
+    @POST 
+    fun validateVPA(@Url url1: String?   ,@Body body: ValidateVPARequest)
+    : Deferred<Response<ValidateVPAResponse>>
+    
+    
     @GET 
     fun getActiveRefundTransferModes(@Url url1: String?   )
     : Deferred<Response<TransferModeResponse>>
@@ -1004,7 +1009,7 @@ interface OrderApiList {
     
     
     @GET 
-    fun getOrders(@Url url1: String?    ,       @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("custom_meta") customMeta: String?)
+    fun getOrders(@Url url1: String?    ,       @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("status") status: Int?, @Query("custom_meta") customMeta: String?)
     : Deferred<Response<OrderList>>
     
     
@@ -1014,18 +1019,23 @@ interface OrderApiList {
     
     
     @GET 
-    fun getPosOrderById(@Url url1: String?    )
-    : Deferred<Response<OrderList>>
-    
-    
-    @GET 
     fun getShipmentById(@Url url1: String?    )
     : Deferred<Response<ShipmentById>>
     
     
     @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?    )
-    : Deferred<Response<ResponseGetInvoiceShipment>>
+    fun getShipmentReasons(@Url url1: String?    )
+    : Deferred<Response<ShipmentReasons>>
+    
+    
+    @GET 
+    fun getShipmentBagReasons(@Url url1: String?     )
+    : Deferred<Response<ShipmentBagReasons>>
+    
+    
+    @PUT 
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
+    : Deferred<Response<ShipmentStatusUpdate>>
     
     
     @GET 
@@ -1034,43 +1044,33 @@ interface OrderApiList {
     
     
     @GET 
+    fun getPosOrderById(@Url url1: String?    )
+    : Deferred<Response<PosOrderById>>
+    
+    
+    @GET 
     fun getCustomerDetailsByShipmentId(@Url url1: String?     )
-    : Deferred<Response<CustomerDetailsResponse>>
+    : Deferred<Response<CustomerDetailsByShipmentId>>
     
     
     @POST 
     fun sendOtpToShipmentCustomer(@Url url1: String?     )
-    : Deferred<Response<SendOtpToCustomerResponse>>
+    : Deferred<Response<sendOTPApplicationResponse>>
     
     
     @POST 
-    fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: VerifyOtp)
-    : Deferred<Response<VerifyOtpResponse>>
+    fun verifyOtpShipmentCustomer(@Url url1: String?     ,@Body body: ReqBodyVerifyOTPShipment)
+    : Deferred<Response<ResponseVerifyOTPShipment>>
     
     
     @GET 
-    fun getShipmentBagReasons(@Url url1: String?     )
-    : Deferred<Response<ShipmentBagReasons>>
+    fun getInvoiceByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetInvoiceShipment>>
     
     
     @GET 
-    fun getShipmentReasons(@Url url1: String?    )
-    : Deferred<Response<ShipmentReasons>>
-    
-    
-    @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
-    : Deferred<Response<ShipmentApplicationStatusResponse>>
-    
-    
-    @GET 
-    fun getInvoiceByShipmentId1(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment1>>
-    
-    
-    @GET 
-    fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment1>>
+    fun getCreditNoteByShipmentId(@Url url1: String?    )
+    : Deferred<Response<ResponseGetCreditNoteShipment>>
     
 }
 
