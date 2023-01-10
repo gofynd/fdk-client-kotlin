@@ -52,6 +52,7 @@ class RewardsDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -156,5 +157,81 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    suspend fun getPointsHistory(pageId: String?=null, pageSize: Int?=null, userId: String)
+    : Deferred<Response<HistoryRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                rewardsApiList?.getPointsHistory(pageId = pageId, pageSize = pageSize, userId = userId, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+            
+                
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getPointsHistory
+    **/
+    fun getPointsHistoryPaginator(
+    pageSize: Int?=null, userId: String
+    
+    ) : Paginator<HistoryRes>{
+        val paginator = Paginator<HistoryRes>()
+        paginator.setCallBack(object : PaginatorCallback<HistoryRes> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<HistoryRes>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "cursor"
+                    rewardsApiList?.getPointsHistory(pageId = pageId, pageSize = pageSize, userId = userId, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
 }
 }

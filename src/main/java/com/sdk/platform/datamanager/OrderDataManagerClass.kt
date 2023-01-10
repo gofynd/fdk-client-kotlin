@@ -283,12 +283,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun sendSmsNinjaPlatform(body: SendSmsPayload)
+    suspend fun sendSmsNinjaPlatform()
     : Deferred<Response<OrderStatusResult>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.sendSmsNinjaPlatform(
-        companyId = config.companyId, body = body)
+        companyId = config.companyId )
         } else {
             null
         } 
