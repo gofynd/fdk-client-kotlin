@@ -936,13 +936,13 @@ interface OrderApiList {
     fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI)
     : Deferred<Response<CreateOrderResponse>>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    fun getChannelConfig(@Path("company_id") companyId: String)
-    : Deferred<Response<CreateChannelConfigData>>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
     fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
     : Deferred<Response<CreateChannelConfigResponse>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
+    fun getChannelConfig(@Path("company_id") companyId: String)
+    : Deferred<Response<CreateChannelConfigData>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/uploadConsent")
     fun uploadConsent(@Path("company_id") companyId: String,@Body body: UploadConsent)
@@ -1140,13 +1140,13 @@ interface CatalogApiList {
     fun getSizeGuide(@Path("company_id") companyId: String, @Path("id") id: String)
     : Deferred<Response<SizeGuideResponse>>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
-    fun getAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String)
-    : Deferred<Response<ApplicationItemResponse>>
-    
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
     fun updateAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String,@Body body: ApplicationItemMeta)
     : Deferred<Response<SuccessResponse1>>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
+    fun getAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String)
+    : Deferred<Response<ApplicationItemResponse>>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/metadata/")
     fun getConfigurationMetadata(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Query("template_slug") templateSlug: String?)
@@ -1372,13 +1372,13 @@ interface CatalogApiList {
     fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String)
     : Deferred<Response<SuccessResponse>>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
-    fun getProduct(@Query("item_code") itemCode: String?, @Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?)
-    : Deferred<Response<Product>>
-    
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
     fun patchProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductPatch)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
+    fun getProduct(@Query("item_code") itemCode: String?, @Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?)
+    : Deferred<Response<Product>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/validation/")
     fun getProductValidation(@Path("company_id") companyId: String)
@@ -1396,12 +1396,12 @@ interface CatalogApiList {
     fun getProductBulkUploadHistory(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductBulkRequestList>>
     
-    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
-    fun deleteProductBulkJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
-    : Deferred<Response<SuccessResponse>>
-    
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
     fun createProductsInBulk(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: BulkProductRequest)
+    : Deferred<Response<SuccessResponse>>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/bulk/{batch_id}")
+    fun deleteProductBulkJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/tags")
@@ -1452,12 +1452,12 @@ interface CatalogApiList {
     fun getInventories(@Path("company_id") companyId: String, @Query("item_id") itemId: String?, @Query("size") size: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("sellable") sellable: Boolean?, @Query("size_identifier") sizeIdentifier: String?)
     : Deferred<Response<InventoryResponsePaginated>>
     
-    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
-    fun deleteBulkInventoryJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
-    : Deferred<Response<SuccessResponse>>
-    
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
     fun createBulkInventory(@Path("company_id") companyId: String, @Path("batch_id") batchId: String,@Body body: InventoryBulkRequest)
+    : Deferred<Response<SuccessResponse>>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/inventory/bulk/{batch_id}/")
+    fun deleteBulkInventoryJob(@Path("company_id") companyId: String, @Path("batch_id") batchId: String)
     : Deferred<Response<SuccessResponse>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/inventory/download/")
@@ -1472,12 +1472,12 @@ interface CatalogApiList {
     fun exportInventoryConfig(@Path("company_id") companyId: String, @Query("filter_type") filterType: String?)
     : Deferred<Response<InventoryConfig>>
     
-    @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/inventory/{seller_identifier}/")
-    fun deleteRealtimeInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: InventoryRequestSchemaV2)
-    : Deferred<Response<InventoryUpdateResponse>>
-    
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/inventory/{seller_identifier}/")
     fun updateRealtimeInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: InventoryRequestSchemaV2)
+    : Deferred<Response<InventoryUpdateResponse>>
+    
+    @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/inventory/{seller_identifier}/")
+    fun deleteRealtimeInventory(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Path("seller_identifier") sellerIdentifier: String,@Body body: InventoryRequestSchemaV2)
     : Deferred<Response<InventoryUpdateResponse>>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/inventory/")
