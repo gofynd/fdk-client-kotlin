@@ -23,25 +23,25 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getOrderById"] = "/service/application/order/v1.0/orders/{order_id}"?.substring(1)
             
+                    _relativeUrls["getPosOrderById"] = "/service/application/order/v1.0/orders/pos-order/{order_id}"?.substring(1)
+            
                     _relativeUrls["getShipmentById"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}"?.substring(1)
             
-                    _relativeUrls["getShipmentReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
-            
-                    _relativeUrls["getShipmentBagReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons/"?.substring(1)
-            
-                    _relativeUrls["updateShipmentStatus"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
+                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
             
                     _relativeUrls["trackShipment"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/track"?.substring(1)
-            
-                    _relativeUrls["getPosOrderById"] = "/service/application/order/v1.0/orders/pos-order/{order_id}"?.substring(1)
             
                     _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details"?.substring(1)
             
                     _relativeUrls["sendOtpToShipmentCustomer"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send/"?.substring(1)
             
-                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify"?.substring(1)
+                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify/"?.substring(1)
             
-                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
+                    _relativeUrls["getShipmentBagReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons"?.substring(1)
+            
+                    _relativeUrls["getShipmentReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
+            
+                    _relativeUrls["updateShipmentExternal"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
     }
 
@@ -78,10 +78,10 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
-    fun getOrders(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, status: Int?=null): Deferred<Response<OrderList>>? {
+    fun getOrders(status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, customMeta: String?=null): Deferred<Response<OrderList>>? {
         var fullUrl : String? = _relativeUrls["getOrders"] 
         
-        return orderApiList?.getOrders(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    status = status)}
+        return orderApiList?.getOrders(fullUrl    ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    customMeta = customMeta)}
 
     
     
@@ -94,6 +94,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
+    fun getPosOrderById(orderId: String): Deferred<Response<OrderList>>? {
+        var fullUrl : String? = _relativeUrls["getPosOrderById"] 
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        return orderApiList?.getPosOrderById(fullUrl   )}
+
+    
+    
     fun getShipmentById(shipmentId: String): Deferred<Response<ShipmentById>>? {
         var fullUrl : String? = _relativeUrls["getShipmentById"] 
         
@@ -103,12 +112,54 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getShipmentReasons(shipmentId: String): Deferred<Response<ShipmentReasons>>? {
-        var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
+    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
+        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getShipmentReasons(fullUrl   )}
+        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
+
+    
+    
+    fun trackShipment(shipmentId: String): Deferred<Response<ShipmentTrack>>? {
+        var fullUrl : String? = _relativeUrls["trackShipment"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.trackShipment(fullUrl   )}
+
+    
+    
+    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"] 
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.getCustomerDetailsByShipmentId(fullUrl    )}
+
+    
+    
+    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<SendOtpToCustomerResponse>>? {
+        var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"] 
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.sendOtpToShipmentCustomer(fullUrl    )}
+
+    
+    
+    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: VerifyOtp): Deferred<Response<VerifyOtpResponse>>? {
+        var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"] 
+        
+        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.verifyOtpShipmentCustomer(fullUrl    ,body = body)}
 
     
     
@@ -123,72 +174,21 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus(shipmentId: String, body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentStatusUpdate>>? {
-        var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
+    fun getShipmentReasons(shipmentId: String): Deferred<Response<ShipmentReasons>>? {
+        var fullUrl : String? = _relativeUrls["getShipmentReasons"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
+        return orderApiList?.getShipmentReasons(fullUrl   )}
 
     
     
-    fun trackShipment(shipmentId: String): Deferred<Response<ShipmentTrack>>? {
-        var fullUrl : String? = _relativeUrls["trackShipment"] 
+    fun updateShipmentExternal(shipmentId: Int, body: UpdateShipmentExternalRequest): Deferred<Response<UpdateShipmentResponse>>? {
+        var fullUrl : String? = _relativeUrls["updateShipmentExternal"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.trackShipment(fullUrl   )}
-
-    
-    
-    fun getPosOrderById(orderId: String): Deferred<Response<PosOrderById>>? {
-        var fullUrl : String? = _relativeUrls["getPosOrderById"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        return orderApiList?.getPosOrderById(fullUrl   )}
-
-    
-    
-    fun getCustomerDetailsByShipmentId(orderId: String, shipmentId: String): Deferred<Response<CustomerDetailsByShipmentId>>? {
-        var fullUrl : String? = _relativeUrls["getCustomerDetailsByShipmentId"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getCustomerDetailsByShipmentId(fullUrl    )}
-
-    
-    
-    fun sendOtpToShipmentCustomer(orderId: String, shipmentId: String): Deferred<Response<sendOTPApplicationResponse>>? {
-        var fullUrl : String? = _relativeUrls["sendOtpToShipmentCustomer"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.sendOtpToShipmentCustomer(fullUrl    )}
-
-    
-    
-    fun verifyOtpShipmentCustomer(orderId: String, shipmentId: String, body: ReqBodyVerifyOTPShipment): Deferred<Response<ResponseVerifyOTPShipment>>? {
-        var fullUrl : String? = _relativeUrls["verifyOtpShipmentCustomer"] 
-        
-        fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.verifyOtpShipmentCustomer(fullUrl    ,body = body)}
-
-    
-    
-    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
-        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
+        return orderApiList?.updateShipmentExternal(fullUrl   ,body = body)}
 
     
     
