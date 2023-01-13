@@ -41,7 +41,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getShipmentReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
             
-                    _relativeUrls["updateShipmentExternal"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
+                    _relativeUrls["updateShipmentStatus"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
             
     }
 
@@ -183,12 +183,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentExternal(shipmentId: Int, body: UpdateShipmentExternalRequest): Deferred<Response<UpdateShipmentResponse>>? {
-        var fullUrl : String? = _relativeUrls["updateShipmentExternal"] 
+    fun updateShipmentStatus(shipmentId: Int, body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentStatusUpdate>>? {
+        var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.updateShipmentExternal(fullUrl   ,body = body)}
+        return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
 
     
     
