@@ -35,6 +35,8 @@ Manages email, sms, push notifications sent to users
 * [getJobLogs](#getjoblogs)
 * [getCommunicationLogs](#getcommunicationlogs)
 * [getSystemNotifications](#getsystemnotifications)
+* [sendOtp](#sendotp)
+* [verfiyOtp](#verfiyotp)
 * [getSmsProviders](#getsmsproviders)
 * [createSmsProvider](#createsmsprovider)
 * [getSmsProviderById](#getsmsproviderbyid)
@@ -3327,6 +3329,161 @@ Success
 ---
 
 
+### sendOtp
+Send OTP using email and sms
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").communication.sendOtp(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [SendOtpCommsReq](#SendOtpCommsReq) | yes | Request body |
+
+
+Send OTP Comms via email and sms
+
+*Returned Response:*
+
+
+
+
+[SendOtpCommsRes](#SendOtpCommsRes)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "sms": {
+      "success": true,
+      "request_id": "c8d1bd63d56a2d368aae9dbd4e7d8326",
+      "message": "OTP sent",
+      "mobile": "9096686804",
+      "country_code": "91",
+      "resend_timer": 30
+    },
+    "email": {
+      "success": true,
+      "request_id": "1cc79c911923971580d903039ea9ee05",
+      "message": "OTP sent",
+      "to": "parvezshaikh@gofynd.com",
+      "resend_timer": 30
+    }
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### verfiyOtp
+Verify OTP sent via email and sms
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").communication.verfiyOtp(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [VerifyOtpCommsReq](#VerifyOtpCommsReq) | yes | Request body |
+
+
+Verify OTP sent via email and sms
+
+*Returned Response:*
+
+
+
+
+[VerifyOtpCommsSuccessRes](#VerifyOtpCommsSuccessRes)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "success": true,
+    "mobile": "9096686804",
+    "country_code": "91",
+    "message": "OTP verified"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getSmsProviders
 Get sms providers
 
@@ -4388,6 +4545,29 @@ Success
 
  
  
+ #### [BadRequestSchema](#BadRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String? |  yes  | Response status. |
+ | message | String? |  yes  | Failure message. |
+
+---
+
+
+ 
+ 
+ #### [NotFound](#NotFound)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  | Failure message. |
+
+---
+
+
+ 
+ 
  #### [BigqueryHeadersReq](#BigqueryHeadersReq)
 
  | Properties | Type | Nullable | Description |
@@ -4787,7 +4967,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | key | String? |  yes  |  |
- | value | String? |  yes  |  |
+ | value | Any? |  yes  |  |
 
 ---
 
@@ -4822,7 +5002,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | key | String? |  yes  |  |
- | value | String? |  yes  |  |
+ | value | Any? |  yes  |  |
 
 ---
 
@@ -5117,6 +5297,177 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | items | ArrayList<[Log](#Log)>? |  yes  |  |
  | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpSmsCommsTemplate](#SendOtpSmsCommsTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  |  |
+ | value | Any? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpSmsCommsProvider](#SendOtpSmsCommsProvider)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | slug | String? |  yes  |  |
+ | id | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpEmailCommsTemplate](#SendOtpEmailCommsTemplate)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | key | String? |  yes  |  |
+ | value | Any? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpCommsReqData](#SendOtpCommsReqData)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sendSameOtpToChannel | Boolean? |  yes  |  |
+ | mobile | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | to | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpCommsReqSms](#SendOtpCommsReqSms)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | otpLength | Int? |  yes  |  |
+ | expiry | Int? |  yes  |  |
+ | template | [SendOtpSmsCommsTemplate](#SendOtpSmsCommsTemplate)? |  yes  |  |
+ | provider | [SendOtpSmsCommsProvider](#SendOtpSmsCommsProvider)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpCommsReqEmail](#SendOtpCommsReqEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | otpLength | Int? |  yes  |  |
+ | expiry | Int? |  yes  |  |
+ | template | [SendOtpEmailCommsTemplate](#SendOtpEmailCommsTemplate)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpCommsResSms](#SendOtpCommsResSms)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | requestId | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | mobile | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | resendTimer | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpCommsResEmail](#SendOtpCommsResEmail)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | requestId | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | to | String? |  yes  |  |
+ | resendTimer | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpCommsReq](#SendOtpCommsReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | [SendOtpCommsReqData](#SendOtpCommsReqData)? |  yes  |  |
+ | sms | [SendOtpCommsReqSms](#SendOtpCommsReqSms)? |  yes  |  |
+ | email | [SendOtpCommsReqEmail](#SendOtpCommsReqEmail)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SendOtpCommsRes](#SendOtpCommsRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sms | [SendOtpCommsResSms](#SendOtpCommsResSms)? |  yes  |  |
+ | email | [SendOtpCommsResEmail](#SendOtpCommsResEmail)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyOtpCommsReq](#VerifyOtpCommsReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | requestId | String? |  yes  |  |
+ | otp | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyOtpCommsSuccessRes](#VerifyOtpCommsSuccessRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | mobile | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
+ | message | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [VerifyOtpCommsErrorRes](#VerifyOtpCommsErrorRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+ | message | String? |  yes  |  |
 
 ---
 

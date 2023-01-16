@@ -108,6 +108,8 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -375,16 +377,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<DataLoaderResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editDataLoader(companyId = config.companyId , applicationId = applicationId , dataLoaderId = dataLoaderId, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getDataLoadersByService(serviceName: String)
-    : Deferred<Response<DataLoadersSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getDataLoadersByService(companyId = config.companyId , applicationId = applicationId , serviceName = serviceName )
         } else {
             null
         }
@@ -804,20 +796,50 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updatePathRedirectionRules(body: PathMappingSchema)
+    suspend fun addPathRedirectionRules(body: PathMappingSchema)
     : Deferred<Response<PathMappingSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updatePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , body = body)
+                contentApiList?.addPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getPathRedirectionRules()
+    suspend fun getPathRedirectionRules(pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<PathMappingSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPathRedirectionRule(pathId: String)
+    : Deferred<Response<PathMappingSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getPathRedirectionRule(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePathRedirectionRules(pathId: String,body: PathMappingSchema)
+    : Deferred<Response<PathMappingSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.updatePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deletePathRedirectionRules(pathId: String)
+    : Deferred<Response<HashMap<String,Any>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.deletePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
         } else {
             null
         }

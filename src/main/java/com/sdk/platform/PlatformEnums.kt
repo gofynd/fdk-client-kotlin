@@ -133,6 +133,33 @@ import com.google.gson.annotations.SerializedName
 
 
 
+    /*
+        Enum: TicketIntegrationDetails
+        Used By: Lead
+    */
+    enum class TicketIntegrationDetails(val value:String){
+        
+        @SerializedName("default")
+        defaultCase("default"), 
+        
+        @SerializedName("freshdesk")
+        freshdesk("freshdesk"), 
+        
+        @SerializedName("kapture")
+        kapture("kapture");
+        
+
+        companion object {
+            fun valueOfTicketIntegrationDetails(value : String): TicketIntegrationDetails? {
+                return TicketIntegrationDetails.values().find {
+                    it.value == value
+                }
+            }
+        }
+    }
+
+
+
 
 
 
@@ -272,7 +299,13 @@ import com.google.gson.annotations.SerializedName
         login("login"), 
         
         @SerializedName("register")
-        register("register");
+        register("register"), 
+        
+        @SerializedName("shipping-policy")
+        shippingPolicy("shipping-policy"), 
+        
+        @SerializedName("return-policy")
+        returnPolicy("return-policy");
         
 
         companion object {

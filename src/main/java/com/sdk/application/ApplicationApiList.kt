@@ -36,11 +36,6 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductSimilarByIdentifier(@Url url1: String?     )
-    : Deferred<Response<SimilarProductByTypeResponse>>
-    
-    
-    @GET 
     fun getProductVariantsBySlug(@Url url1: String?    )
     : Deferred<Response<ProductVariantsResponse>>
     
@@ -426,6 +421,11 @@ interface UserApiList {
     
     
     @POST 
+    fun sendResetPasswordMobile(@Url url1: String?    ,  @Query("platform") platform: String?, @Body body: SendResetPasswordMobileRequestSchema)
+    : Deferred<Response<ResetPasswordSuccess>>
+    
+    
+    @POST 
     fun forgotPassword(@Url url1: String?   ,@Body body: ForgotPasswordRequestSchema)
     : Deferred<Response<LoginSuccess>>
     
@@ -463,6 +463,11 @@ interface UserApiList {
     @POST 
     fun updatePassword(@Url url1: String?   ,@Body body: UpdatePasswordRequestSchema)
     : Deferred<Response<VerifyEmailSuccess>>
+    
+    
+    @POST 
+    fun deleteUser(@Url url1: String?   ,@Body body: DeleteApplicationUserRequestSchema)
+    : Deferred<Response<DeleteUserSuccess>>
     
     
     @GET 
