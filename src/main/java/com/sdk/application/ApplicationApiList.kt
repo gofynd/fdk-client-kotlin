@@ -1059,12 +1059,12 @@ interface OrderApiList {
     
     
     @PUT 
-    fun updateShipmentExternal(@Url url1: String?    ,@Body body: UpdateShipmentExternalRequest)
-    : Deferred<Response<UpdateShipmentResponse>>
+    fun updateShipmentStatus(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
+    : Deferred<Response<ShipmentStatusUpdate>>
     
     
     @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
+    fun updateShipmentStatus1(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
     
@@ -1124,8 +1124,8 @@ interface OrderApiList {
     
     
     @PUT 
-    fun updateShipmentExternal1(@Url url1: String?    ,@Body body: UpdateShipmentExternalRequest)
-    : Deferred<Response<UpdateShipmentResponse>>
+    fun updateShipmentStatus2(@Url url1: String?    ,@Body body: ShipmentStatusUpdateBody)
+    : Deferred<Response<ShipmentStatusUpdate>>
     
 }
 
