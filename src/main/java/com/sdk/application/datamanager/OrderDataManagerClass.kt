@@ -209,7 +209,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus(shipmentId: Int, body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentStatusUpdate>>? {
+    fun updateShipmentStatus(shipmentId: String, body: UpdateShipmentStatusRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
@@ -332,7 +332,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus2(shipmentId: Int, body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentStatusUpdate>>? {
+    fun updateShipmentStatus2(shipmentId: String, body: UpdateShipmentStatusRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus2"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
