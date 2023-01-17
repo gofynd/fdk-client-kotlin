@@ -107,9 +107,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -796,50 +793,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addPathRedirectionRules(body: PathMappingSchema)
+    suspend fun updatePathRedirectionRules(body: PathMappingSchema)
     : Deferred<Response<PathMappingSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.addPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , body = body)
+                contentApiList?.updatePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun getPathRedirectionRules(pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getPathRedirectionRules()
     : Deferred<Response<PathMappingSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pageSize = pageSize, pageNo = pageNo )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPathRedirectionRule(pathId: String)
-    : Deferred<Response<PathMappingSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPathRedirectionRule(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePathRedirectionRules(pathId: String,body: PathMappingSchema)
-    : Deferred<Response<PathMappingSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updatePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun deletePathRedirectionRules(pathId: String)
-    : Deferred<Response<HashMap<String,Any>>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.deletePathRedirectionRules(companyId = config.companyId , applicationId = applicationId , pathId = pathId )
+                contentApiList?.getPathRedirectionRules(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

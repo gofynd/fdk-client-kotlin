@@ -2851,24 +2851,21 @@ Success
       "verified": true,
       "name": "uniket.hostx0.de",
       "is_primary": true,
-      "is_shortlink": false,
-      "is_predefined": true
+      "is_shortlink": false
     },
     {
       "verified": true,
       "is_primary": false,
       "is_shortlink": true,
       "_id": "5f0858c5f86e00cd42dccc8d",
-      "name": "jd.hostx0.de",
-      "is_predefined": true
+      "name": "jd.hostx0.de"
     },
     {
       "verified": true,
       "is_primary": false,
       "is_shortlink": false,
       "_id": "6048497e87f5730423149190",
-      "name": "testdm.hostx0.de",
-      "is_predefined": true
+      "name": "testdm.hostx0.de"
     }
   ]
 }
@@ -6804,7 +6801,6 @@ Success
  | isShortlink | Boolean? |  yes  |  |
  | id | String? |  yes  |  |
  | name | String? |  yes  |  |
- | isPredefined | Boolean? |  yes  | Domain is hosting domain or not. |
 
 ---
 

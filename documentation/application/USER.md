@@ -3467,7 +3467,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | countryCode | String? |  yes  |  |
  | captchaCode | String? |  yes  |  |
  | mobile | String? |  yes  |  |
- | androidHash | String? |  yes  |  |
 
 ---
 

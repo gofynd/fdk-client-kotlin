@@ -14,7 +14,7 @@ Handles Platform websites OMS
 * [getOrdersByCompanyId](#getordersbycompanyid)
 * [getOrderLanesCountByCompanyId](#getorderlanescountbycompanyid)
 * [getOrderDetails](#getorderdetails)
-* [getApplicationOrderDetails](#getapplicationorderdetails)
+* [getOrderDetails](#getorderdetails)
 * [getPicklistOrdersByCompanyId](#getpicklistordersbycompanyid)
 * [trackShipmentPlatform](#trackshipmentplatform)
 * [trackOrder](#trackorder)
@@ -536,14 +536,14 @@ Success
 ---
 
 
-### getApplicationOrderDetails
+### getOrderDetails
 Get Order Details for company based on Company Id and Order Id
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getApplicationOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").order.getOrderDetails(orderId: orderId, next: next, previous: previous).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2508,7 +2508,7 @@ Success
  | channel | [Channel](#Channel)? |  yes  |  |
  | fyndstoreEmp | HashMap<String,Any>? |  yes  |  |
  | orderingStore | HashMap<String,Any>? |  yes  |  |
- | breakupValues | ArrayList<[PlatformBreakupValues](#PlatformBreakupValues)>? |  yes  |  |
+ | breakupValues | [PlatformBreakupValues](#PlatformBreakupValues)? |  yes  |  |
  | id | String? |  yes  |  |
  | application | [PlatformApplication](#PlatformApplication)? |  yes  |  |
  | shipments | [PlatformShipmentDetails](#PlatformShipmentDetails)? |  yes  |  |
@@ -2552,9 +2552,9 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | status | [PlatformShipmentDetailsStatus](#PlatformShipmentDetailsStatus)? |  yes  |  |
- | bags | ArrayList<[BagsDetails](#BagsDetails)>? |  yes  |  |
+ | bags | [BagsDetails](#BagsDetails)? |  yes  |  |
  | prices | [ShipmentPrices](#ShipmentPrices)? |  yes  |  |
- | breakupValues | ArrayList<[ShipmentBreakupValues](#ShipmentBreakupValues)>? |  yes  |  |
+ | breakupValues | [ShipmentBreakupValues](#ShipmentBreakupValues)? |  yes  |  |
  | id | String? |  yes  |  |
  | dpDetails | [DpDetails](#DpDetails)? |  yes  |  |
  | paymentMethods | HashMap<String,Any>? |  yes  |  |
@@ -2570,7 +2570,7 @@ Success
  | canBreak | HashMap<String,Any>? |  yes  |  |
  | comment | String? |  yes  |  |
  | promise | [Promise](#Promise)? |  yes  |  |
- | trackingDetails | ArrayList<[ShipmentTrackingDetails](#ShipmentTrackingDetails)>? |  yes  |  |
+ | trackingDetails | [ShipmentTrackingDetails](#ShipmentTrackingDetails)? |  yes  |  |
  | isFyndCoupon | Boolean? |  yes  |  |
  | orderType | String? |  yes  |  |
  | totalShipmentBags | Int? |  yes  |  |
@@ -2619,7 +2619,7 @@ Success
  | id | Int? |  yes  |  |
  | prices | [BagPrices](#BagPrices)? |  yes  |  |
  | gstDetails | [GstDetails](#GstDetails)? |  yes  |  |
- | breakupValues | ArrayList<[BagBreakupValues](#BagBreakupValues)>? |  yes  |  |
+ | breakupValues | [BagBreakupValues](#BagBreakupValues)? |  yes  |  |
  | updateTime | Int? |  yes  |  |
  | currentStatus | [BagCurrentStatus](#BagCurrentStatus)? |  yes  |  |
  | bagStatus | [BagStatus](#BagStatus)? |  yes  |  |
@@ -3316,11 +3316,11 @@ Success
  | deliveryAddress | [PlatformDeliveryAddress](#PlatformDeliveryAddress)? |  yes  |  |
  | channel | [Channel](#Channel)? |  yes  |  |
  | fyndstoreEmp | HashMap<String,Any>? |  yes  |  |
- | orderingStore | [PlatformFulfillingStore](#PlatformFulfillingStore)? |  yes  |  |
- | breakupValues | ArrayList<[PlatformBreakupValues](#PlatformBreakupValues)>? |  yes  |  |
+ | orderingStore | HashMap<String,Any>? |  yes  |  |
+ | breakupValues | [PlatformBreakupValues](#PlatformBreakupValues)? |  yes  |  |
  | id | String? |  yes  |  |
  | application | [PlatformApplication](#PlatformApplication)? |  yes  |  |
- | shipments | ArrayList<[PlatformShipmentDetails](#PlatformShipmentDetails)>? |  yes  |  |
+ | shipments | [PlatformShipmentDetails](#PlatformShipmentDetails)? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | totalShipmentsInOrder | Int? |  yes  |  |
  | payments | [ItemsPayments](#ItemsPayments)? |  yes  |  |
