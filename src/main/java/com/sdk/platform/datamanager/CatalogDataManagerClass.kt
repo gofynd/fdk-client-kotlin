@@ -909,6 +909,18 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun getOptimalLocations(body: AssignStore)
+    : Deferred<Response<StoreAssignResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getOptimalLocations(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getSingleProductHSNCode(reportingHsn: String)
     : Deferred<Response<HSNDataInsertV2>>? {
         
@@ -919,6 +931,8 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             null
         } 
     }
+    
+    
     
     
     
@@ -1047,7 +1061,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppProduct(itemId: String)
-    : Deferred<Response<ApplicationItemResponse>>? {
+    : Deferred<Response<OwnerAppItemResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.getAppProduct(companyId = config.companyId , applicationId = applicationId , itemId = itemId )
         } else {
@@ -1368,6 +1382,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     
@@ -1802,10 +1817,99 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getApplicationCategoryListing(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
+    suspend fun getApplicationCategoryListing(departmentId: Int?=null, pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
     : Deferred<Response<BrandListingResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getApplicationCategoryListing(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q )
+                catalogApiList?.getApplicationCategoryListing(companyId = config.companyId , applicationId = applicationId , departmentId = departmentId, pageNo = pageNo, pageSize = pageSize, q = q )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getApplicationCategoryListing
+    **/
+    fun getApplicationCategoryListingPaginator(
+    departmentId: Int?=null, pageSize: Int?=null, q: String?=null
+    
+    ) : Paginator<BrandListingResponse>{
+        val paginator = Paginator<BrandListingResponse>()
+        paginator.setCallBack(object : PaginatorCallback<BrandListingResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<BrandListingResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    catalogApiList?.getApplicationCategoryListing(companyId = config.companyId , applicationId = applicationId , departmentId = departmentId, pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun updateAppCategory(categoryUid: String,body: ApplicationCategoryJson)
+    : Deferred<Response<SuccessResponse1>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.updateAppCategory(companyId = config.companyId , applicationId = applicationId , categoryUid = categoryUid, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getApplicationDepartmentListing(pageNo: Int?=null, pageSize: Int?=null, q: String?=null)
+    : Deferred<Response<ApplicationDepartmentListingResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getApplicationDepartmentListing(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q )
         } else {
             null
         }
@@ -1839,23 +1943,23 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         
     /**
     *
-    * Summary: Paginator for getApplicationCategoryListing
+    * Summary: Paginator for getApplicationDepartmentListing
     **/
-    fun getApplicationCategoryListingPaginator(
+    fun getApplicationDepartmentListingPaginator(
     pageSize: Int?=null, q: String?=null
     
-    ) : Paginator<BrandListingResponse>{
-        val paginator = Paginator<BrandListingResponse>()
-        paginator.setCallBack(object : PaginatorCallback<BrandListingResponse> {
+    ) : Paginator<ApplicationDepartmentListingResponse>{
+        val paginator = Paginator<ApplicationDepartmentListingResponse>()
+        paginator.setCallBack(object : PaginatorCallback<ApplicationDepartmentListingResponse> {
             
             override suspend fun onNext(
-                onResponse: (Event<BrandListingResponse>?,FdkError?) -> Unit){
+                onResponse: (Event<ApplicationDepartmentListingResponse>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    catalogApiList?.getApplicationCategoryListing(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
+                    catalogApiList?.getApplicationDepartmentListing(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -1876,10 +1980,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun updateAppCategory(categoryUid: String,body: ApplicationCategoryJson)
+    suspend fun updateAppDepartment(departmentUid: String,body: ApplicationDepartmentJson)
     : Deferred<Response<SuccessResponse1>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.updateAppCategory(companyId = config.companyId , applicationId = applicationId , categoryUid = categoryUid, body = body)
+                catalogApiList?.updateAppDepartment(companyId = config.companyId , applicationId = applicationId , departmentUid = departmentUid, body = body)
         } else {
             null
         }

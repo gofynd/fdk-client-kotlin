@@ -848,8 +848,8 @@ interface OrderApiList {
     fun getShipments(@Path("company_id") companyId: String, @Query("lane") lane: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("search_id") searchId: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("ordering_company_id") orderingCompanyId: String?, @Query("stores") stores: String?, @Query("sales_channel") salesChannel: String?, @Query("request_by_ext") requestByExt: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_priority_sort") isPrioritySort: Boolean?, @Query("exclude_locked_shipments") excludeLockedShipments: Boolean?, @Query("payment_methods") paymentMethods: String?, @Query("channel_shipment_id") channelShipmentId: String?, @Query("channel_order_id") channelOrderId: String?, @Query("custom_meta") customMeta: String?)
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>
     
-    @GET ("/service/platform/orders/v1.0/company/{company_id}/shipment-details")
-    fun getShipmentById(@Path("company_id") companyId: String, @Query("channel_shipment_id") channelShipmentId: String?, @Query("shipment_id") shipmentId: String?, @Query("ordering_company_id") orderingCompanyId: String?, @Query("request_by_ext") requestByExt: String?)
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/shipment-details/{channel_shipment_id}")
+    fun getShipmentById(@Path("company_id") companyId: String, @Path("channel_shipment_id") channelShipmentId: String, @Query("ordering_company_id") orderingCompanyId: String?, @Query("request_by_ext") requestByExt: String?)
     : Deferred<Response<ShipmentInfoResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/order-details")
@@ -1025,7 +1025,7 @@ interface OrderApiList {
     : Deferred<Response<OrderStatusResult>>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/bag/state/transition")
-    fun sendSmsNinjaPlatform(@Path("company_id") companyId: String,@Body body: SendSmsPayload)
+    fun sendSmsNinjaPlatform(@Path("company_id") companyId: String)
     : Deferred<Response<OrderStatusResult>>
     
 }
@@ -1106,7 +1106,7 @@ interface CatalogApiList {
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
     fun getAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String)
-    : Deferred<Response<ApplicationItemResponse>>
+    : Deferred<Response<OwnerAppItemResponse>>
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
     fun updateAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String,@Body body: ApplicationItemMeta)
@@ -1460,6 +1460,10 @@ interface CatalogApiList {
     fun getAllProductHsnCodes(@Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("type") type: String?, @Path("company_id") companyId: String)
     : Deferred<Response<HsnCodesListingResponseSchemaV2>>
     
+    @POST ("/service/platform/catalog/v1.0/company/{company_id}/location/reassign/")
+    fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: AssignStore)
+    : Deferred<Response<StoreAssignResponse>>
+    
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/hsn/{reporting_hsn}")
     fun getSingleProductHSNCode(@Path("reporting_hsn") reportingHsn: String, @Path("company_id") companyId: String)
     : Deferred<Response<HSNDataInsertV2>>
@@ -1505,11 +1509,19 @@ interface CatalogApiList {
     : Deferred<Response<SuccessResponse1>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/category")
-    fun getApplicationCategoryListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    fun getApplicationCategoryListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("department_id") departmentId: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Deferred<Response<BrandListingResponse>>
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/category/{category_uid}")
     fun updateAppCategory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("category_uid") categoryUid: String,@Body body: ApplicationCategoryJson)
+    : Deferred<Response<SuccessResponse1>>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/department")
+    fun getApplicationDepartmentListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    : Deferred<Response<ApplicationDepartmentListingResponse>>
+    
+    @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/department/{department_uid}")
+    fun updateAppDepartment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("department_uid") departmentUid: String,@Body body: ApplicationDepartmentJson)
     : Deferred<Response<SuccessResponse1>>
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/store/{store_uid}")
@@ -1571,6 +1583,10 @@ interface CompanyProfileApiList {
     @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location/bulk")
     fun createLocationBulk(@Path("company_id") companyId: String,@Body body: BulkLocationSerializer)
     : Deferred<Response<ProfileSuccessResponse>>
+    
+    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location/reassign")
+    fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: AssignStoreRequestValidator)
+    : Deferred<Response<AssignStoreResponseSerializer>>
     
 }
 
