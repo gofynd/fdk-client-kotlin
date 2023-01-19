@@ -78,7 +78,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationOrder",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
@@ -188,7 +189,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun updateShipmentStatus(shipmentId: Int, body: ShipmentStatusUpdateBody): Deferred<Response<ShipmentStatusUpdate>>? {
+    fun updateShipmentStatus(shipmentId: String, body: UpdateShipmentStatusRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
