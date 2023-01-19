@@ -6,136 +6,16 @@
 
 ## Inventory Methods
 
-* [getJobCodesMetrics](#getjobcodesmetrics)
-* [saveJobCodesMetrics](#savejobcodesmetrics)
 * [getConfigByApiKey](#getconfigbyapikey)
 * [getApiKey](#getapikey)
 * [getJobByCode](#getjobbycode)
 * [getJobConfigByIntegrationType](#getjobconfigbyintegrationtype)
+* [getJobCodesMetrics](#getjobcodesmetrics)
+* [saveJobCodesMetrics](#savejobcodesmetrics)
 
 
 
 ## Methods with example and description
-
-
-### getJobCodesMetrics
-Find all the JobCodes from Metrics Collection based on the field Values
-
-
-
-
-```kotlin
-inventory.getJobCodesMetrics(dailyJob: dailyJob, jobCode: jobCode).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| dailyJob | Boolean? | no | Daily Job Flag |   
-| jobCode | String? | no | Email Job Code |  
-
-
-
-Endpoint to return all JobCodes present in Metrics Collection
-
-*Returned Response:*
-
-
-
-
-[ResponseEnvelopeObject](#ResponseEnvelopeObject)
-
-Successful operation
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### saveJobCodesMetrics
-Save JobCode Metrics
-
-
-
-
-```kotlin
-inventory.saveJobCodesMetrics(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [EmailJobMetrics](#EmailJobMetrics) | yes | Request body |
-
-
-Endpoint to save JobCode Metrics
-
-*Returned Response:*
-
-
-
-
-[ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
-
-JobCode Metrics entry Created Successfully
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
 
 
 ### getConfigByApiKey
@@ -380,61 +260,128 @@ Successful operation
 ---
 
 
+### getJobCodesMetrics
+Find all the JobCodes from Metrics Collection based on the field Values
+
+
+
+
+```kotlin
+inventory.getJobCodesMetrics(dailyJob: dailyJob, jobCode: jobCode).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| dailyJob | Boolean? | no | Daily Job Flag |   
+| jobCode | String? | no | Email Job Code |  
+
+
+
+Endpoint to return all JobCodes present in Metrics Collection
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeObject](#ResponseEnvelopeObject)
+
+Successful operation
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### saveJobCodesMetrics
+Save JobCode Metrics
+
+
+
+
+```kotlin
+inventory.saveJobCodesMetrics(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EmailJobMetrics](#EmailJobMetrics) | yes | Request body |
+
+
+Endpoint to save JobCode Metrics
+
+*Returned Response:*
+
+
+
+
+[ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
+
+JobCode Metrics entry Created Successfully
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
-
- 
- 
- #### [EmailJobMetrics](#EmailJobMetrics)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | executed | Boolean? |  yes  |  |
- | id | String? |  yes  |  |
- | jobCode | String? |  yes  |  |
- | dailyJob | Boolean? |  yes  |  |
- | lastExecutedOn | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Page](#Page)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String |  no  |  |
- | size | Int? |  yes  |  |
- | current | Int? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | nextId | String? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | timestamp | String? |  yes  |  |
- | status | Int? |  yes  |  |
- | error | String? |  yes  |  |
- | exception | String? |  yes  |  |
- | message | String? |  yes  |  |
- | totalTimeTakenInMillis | Int? |  yes  |  |
- | httpStatus | String? |  yes  |  |
- | items | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
- | payload | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
- | traceId | String? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
-
----
-
 
  
  
@@ -451,6 +398,7 @@ Successful operation
  | token | String? |  yes  |  |
  | name | String? |  yes  |  |
  | stores | ArrayList<[GStore](#GStore)>? |  yes  |  |
+ | gstores | ArrayList<[GStore](#GStore)>? |  yes  |  |
 
 ---
 
@@ -484,6 +432,23 @@ Successful operation
  | id | String? |  yes  |  |
  | name | String? |  yes  |  |
  | value | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Page](#Page)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String |  no  |  |
+ | size | Int? |  yes  |  |
+ | current | Int? |  yes  |  |
+ | hasNext | Boolean? |  yes  |  |
+ | itemTotal | Int? |  yes  |  |
+ | nextId | String? |  yes  |  |
+ | hasPrevious | Boolean? |  yes  |  |
 
 ---
 
@@ -613,9 +578,9 @@ Successful operation
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | integration | String |  no  |  |
  | integrationData | HashMap<String,HashMap<String,Any>>? |  yes  |  |
  | companyName | String? |  yes  |  |
- | integration | String |  no  |  |
  | companyId | Int |  no  |  |
  | taskDetails | [TaskDTO](#TaskDTO)? |  yes  |  |
  | thresholdDetails | [DataTresholdDTO](#DataTresholdDTO)? |  yes  |  |
@@ -673,6 +638,42 @@ Successful operation
  | httpStatus | String? |  yes  |  |
  | items | ArrayList<[JobConfigDTO](#JobConfigDTO)>? |  yes  |  |
  | payload | ArrayList<[JobConfigDTO](#JobConfigDTO)>? |  yes  |  |
+ | traceId | String? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [EmailJobMetrics](#EmailJobMetrics)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | executed | Boolean? |  yes  |  |
+ | id | String? |  yes  |  |
+ | jobCode | String? |  yes  |  |
+ | dailyJob | Boolean? |  yes  |  |
+ | lastExecutedOn | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ResponseEnvelopeEmailJobMetrics](#ResponseEnvelopeEmailJobMetrics)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | timestamp | String? |  yes  |  |
+ | status | Int? |  yes  |  |
+ | error | String? |  yes  |  |
+ | exception | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | totalTimeTakenInMillis | Int? |  yes  |  |
+ | httpStatus | String? |  yes  |  |
+ | items | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
+ | payload | [EmailJobMetrics](#EmailJobMetrics)? |  yes  |  |
  | traceId | String? |  yes  |  |
  | page | [Page](#Page)? |  yes  |  |
 

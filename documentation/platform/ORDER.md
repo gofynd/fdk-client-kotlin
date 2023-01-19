@@ -12,7 +12,6 @@ Handles Platform websites OMS
 * [checkRefund](#checkrefund)
 * [shipmentBagsCanBreak](#shipmentbagscanbreak)
 * [getOrdersByCompanyId](#getordersbycompanyid)
-* [getOrderLanesCountByCompanyId](#getorderlanescountbycompanyid)
 * [getOrderDetails](#getorderdetails)
 * [getApplicationOrderDetails](#getapplicationorderdetails)
 * [getPicklistOrdersByCompanyId](#getpicklistordersbycompanyid)
@@ -379,76 +378,6 @@ Get Orders
 
 
 [OrderListing](#OrderListing)
-
-Success
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getOrderLanesCountByCompanyId
-Get Order Lanes Count for company based on Company Id
-
-
-
-
-```kotlin
-client.order.getOrderLanesCountByCompanyId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, filterType: filterType).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| pageNo | String? | no | Current page number |   
-| pageSize | String? | no | Page limit |   
-| fromDate | String? | no | From Date |   
-| toDate | String? | no | To Date |   
-| q | String? | no | Keyword for Search |   
-| stage | String? | no | Specefic Order Stage |   
-| salesChannels | String? | no | Selected Sales Channel |   
-| orderId | String? | no | Order Id |   
-| stores | String? | no | Selected Stores |   
-| status | String? | no | Status of order |   
-| filterType | String? | no | Filters |  
-
-
-
-Get Orders Seperate Lane Count
-
-*Returned Response:*
-
-
-
-
-[OrderLanesCount](#OrderLanesCount)
 
 Success
 
@@ -1213,7 +1142,7 @@ Get Orders for company based on Company Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, userId: userId, filterType: filterType).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, q: q, stage: stage, salesChannels: salesChannels, orderId: orderId, stores: stores, status: status, dp: dp, userId: userId, shortenUrls: shortenUrls, filterType: filterType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1241,6 +1170,7 @@ client.application("<APPLICATION_ID>").order.getOrdersByApplicationId(pageNo: pa
 | status | String? | no | Status of order |   
 | dp | String? | no | Delivery Partners |   
 | userId | String? | no | User Id |   
+| shortenUrls | String? | no | User Id |   
 | filterType | String? | no | Filters |  
 
 
@@ -2330,6 +2260,7 @@ Success
  | image | ArrayList<String>? |  yes  |  |
  | brand | String? |  yes  |  |
  | lastUpdatedAt | String? |  yes  |  |
+ | quantity | Int? |  yes  |  |
 
 ---
 
@@ -2508,7 +2439,7 @@ Success
  | channel | [Channel](#Channel)? |  yes  |  |
  | fyndstoreEmp | HashMap<String,Any>? |  yes  |  |
  | orderingStore | HashMap<String,Any>? |  yes  |  |
- | breakupValues | ArrayList<[PlatformBreakupValues](#PlatformBreakupValues)>? |  yes  |  |
+ | breakupValues | [PlatformBreakupValues](#PlatformBreakupValues)? |  yes  |  |
  | id | String? |  yes  |  |
  | application | [PlatformApplication](#PlatformApplication)? |  yes  |  |
  | shipments | [PlatformShipmentDetails](#PlatformShipmentDetails)? |  yes  |  |
@@ -2552,9 +2483,9 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | status | [PlatformShipmentDetailsStatus](#PlatformShipmentDetailsStatus)? |  yes  |  |
- | bags | ArrayList<[BagsDetails](#BagsDetails)>? |  yes  |  |
+ | bags | [BagsDetails](#BagsDetails)? |  yes  |  |
  | prices | [ShipmentPrices](#ShipmentPrices)? |  yes  |  |
- | breakupValues | ArrayList<[ShipmentBreakupValues](#ShipmentBreakupValues)>? |  yes  |  |
+ | breakupValues | [ShipmentBreakupValues](#ShipmentBreakupValues)? |  yes  |  |
  | id | String? |  yes  |  |
  | dpDetails | [DpDetails](#DpDetails)? |  yes  |  |
  | paymentMethods | HashMap<String,Any>? |  yes  |  |
@@ -2570,7 +2501,7 @@ Success
  | canBreak | HashMap<String,Any>? |  yes  |  |
  | comment | String? |  yes  |  |
  | promise | [Promise](#Promise)? |  yes  |  |
- | trackingDetails | ArrayList<[ShipmentTrackingDetails](#ShipmentTrackingDetails)>? |  yes  |  |
+ | trackingDetails | [ShipmentTrackingDetails](#ShipmentTrackingDetails)? |  yes  |  |
  | isFyndCoupon | Boolean? |  yes  |  |
  | orderType | String? |  yes  |  |
  | totalShipmentBags | Int? |  yes  |  |
@@ -2619,7 +2550,7 @@ Success
  | id | Int? |  yes  |  |
  | prices | [BagPrices](#BagPrices)? |  yes  |  |
  | gstDetails | [GstDetails](#GstDetails)? |  yes  |  |
- | breakupValues | ArrayList<[BagBreakupValues](#BagBreakupValues)>? |  yes  |  |
+ | breakupValues | [BagBreakupValues](#BagBreakupValues)? |  yes  |  |
  | updateTime | Int? |  yes  |  |
  | currentStatus | [BagCurrentStatus](#BagCurrentStatus)? |  yes  |  |
  | bagStatus | [BagStatus](#BagStatus)? |  yes  |  |
@@ -3316,11 +3247,11 @@ Success
  | deliveryAddress | [PlatformDeliveryAddress](#PlatformDeliveryAddress)? |  yes  |  |
  | channel | [Channel](#Channel)? |  yes  |  |
  | fyndstoreEmp | HashMap<String,Any>? |  yes  |  |
- | orderingStore | [PlatformFulfillingStore](#PlatformFulfillingStore)? |  yes  |  |
- | breakupValues | ArrayList<[PlatformBreakupValues](#PlatformBreakupValues)>? |  yes  |  |
+ | orderingStore | HashMap<String,Any>? |  yes  |  |
+ | breakupValues | [PlatformBreakupValues](#PlatformBreakupValues)? |  yes  |  |
  | id | String? |  yes  |  |
  | application | [PlatformApplication](#PlatformApplication)? |  yes  |  |
- | shipments | ArrayList<[PlatformShipmentDetails](#PlatformShipmentDetails)>? |  yes  |  |
+ | shipments | [PlatformShipmentDetails](#PlatformShipmentDetails)? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | totalShipmentsInOrder | Int? |  yes  |  |
  | payments | [ItemsPayments](#ItemsPayments)? |  yes  |  |
@@ -3585,6 +3516,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | shipments | HashMap<String,Any> |  no  |  |
+ | statuses | ArrayList<Any>? |  yes  |  |
  | forceTransition | Boolean |  no  |  |
  | task | Boolean |  no  |  |
 
