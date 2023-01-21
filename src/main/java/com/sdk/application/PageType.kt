@@ -137,7 +137,16 @@ import android.net.Uri
         cartReview("cart-review"), 
         
         @SerializedName("login")
-        login("login");
+        login("login"), 
+        
+        @SerializedName("register")
+        register("register"), 
+        
+        @SerializedName("shipping-policy")
+        shippingPolicy("shipping-policy"), 
+        
+        @SerializedName("return-policy")
+        returnPolicy("return-policy");
         
 
         companion object {

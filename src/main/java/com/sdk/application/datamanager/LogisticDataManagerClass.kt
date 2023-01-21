@@ -52,7 +52,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationLogistic",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
