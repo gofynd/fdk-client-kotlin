@@ -183,6 +183,18 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun paymentStatusBulk(applicationId: String,body: PaymentStatusBulkHandlerRequest)
+    : Deferred<Response<PaymentStatusBulkHandlerResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            paymentApiList?.paymentStatusBulk(
+        companyId = config.companyId, applicationId = applicationId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -286,6 +298,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
 }
