@@ -25,7 +25,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
             
-                    _relativeUrls["assignStore"] = "/service/application/logistics/v1.0/assign_stores"?.substring(1)
+                    _relativeUrls["upsertZoneControllerView"] = "/service/application/logistics/v1.0/assign_stores"?.substring(1)
             
     }
 
@@ -85,10 +85,14 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun assignStore(body: AssignStoreRequest): Deferred<Response<AssignStoreResponse>>? {
-        var fullUrl : String? = _relativeUrls["assignStore"] 
+    fun upsertZoneControllerView(companyId: Int, applicationId: String, body: AssignStoreRequest): Deferred<Response<AssignStoreResponse>>? {
+        var fullUrl : String? = _relativeUrls["upsertZoneControllerView"] 
         
-        return logisticApiList?.assignStore(fullUrl  ,body = body)}
+        fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
+        
+        fullUrl = fullUrl?.replace("{" + "application_id" +"}",applicationId.toString())
+        
+        return logisticApiList?.upsertZoneControllerView(fullUrl    ,body = body)}
 
     
     
