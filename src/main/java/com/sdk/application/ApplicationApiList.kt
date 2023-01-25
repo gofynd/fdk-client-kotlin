@@ -1067,34 +1067,34 @@ interface OrderApiList {
 interface RewardsApiList {
     
     
-    @POST 
-    fun getPointsOnProduct(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
-    : Deferred<Response<CatalogueOrderResponse>>
-    
-    
     @GET 
     fun getOfferByName(@Url url1: String?    )
     : Deferred<Response<Offer>>
     
     
     @POST 
-    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
-    : Deferred<Response<OrderDiscountResponse>>
+    fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
+    : Deferred<Response<CatalogueOrderResponse>>
     
     
     @GET 
-    fun getUserPoints(@Url url1: String?   )
-    : Deferred<Response<PointsResponse>>
-    
-    
-    @GET 
-    fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    fun getPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<PointsHistoryResponse>>
     
     
     @GET 
-    fun getUserReferralDetails(@Url url1: String?   )
+    fun getPoints(@Url url1: String?   )
+    : Deferred<Response<PointsResponse>>
+    
+    
+    @GET 
+    fun referral(@Url url1: String?   )
     : Deferred<Response<ReferralDetailsResponse>>
+    
+    
+    @POST 
+    fun orderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
+    : Deferred<Response<OrderDiscountResponse>>
     
     
     @POST 
