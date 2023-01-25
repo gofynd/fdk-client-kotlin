@@ -51,6 +51,8 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["validateVPA"] = "/service/application/payment/v1.0/validate-vpa"?.substring(1)
             
+                    _relativeUrls["cardDetails"] = "/service/application/payment/v1.0/cards/info"?.substring(1)
+            
                     _relativeUrls["getActiveRefundTransferModes"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
             
                     _relativeUrls["enableOrDisableRefundTransferMode"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
@@ -241,6 +243,13 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["validateVPA"] 
         
         return paymentApiList?.validateVPA(fullUrl  ,body = body)}
+
+    
+    
+    fun cardDetails(body: cardDetails): Deferred<Response<cardDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["cardDetails"] 
+        
+        return paymentApiList?.cardDetails(fullUrl  ,body = body)}
 
     
     
