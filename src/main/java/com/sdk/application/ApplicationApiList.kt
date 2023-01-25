@@ -895,7 +895,7 @@ interface PaymentApiList {
     
     
     @POST 
-    fun cardDetails(@Url url1: String?   ,@Body body: cardDetails)
+    fun cardDetails(@Url url1: String?   ,@Body body: cardDetailsRequest)
     : Deferred<Response<cardDetailsResponse>>
     
     
