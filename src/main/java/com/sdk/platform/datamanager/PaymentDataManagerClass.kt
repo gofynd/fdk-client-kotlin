@@ -172,6 +172,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
     suspend fun getPayoutPennyDropAndChequeConfig()
     : Deferred<Response<PayoutPennyDropAndChequePayload>>? {
         
@@ -183,17 +185,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
-    
-    suspend fun paymentStatusBulk(applicationId: String,body: PaymentStatusBulkHandlerRequest)
-    : Deferred<Response<PaymentStatusBulkHandlerResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            paymentApiList?.paymentStatusBulk(
-        companyId = config.companyId, applicationId = applicationId, body = body)
-        } else {
-            null
-        } 
-    }
     
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
@@ -300,6 +291,35 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getUserCODlimitRoutes(merchantUserId: String, mobileNo: String)
+    : Deferred<Response<GetUserCODLimitResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , merchantUserId = merchantUserId, mobileNo = mobileNo )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
+    : Deferred<Response<SetCODOptionResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    suspend fun paymentStatusBulk(body: PaymentStatusBulkHandlerRequest)
+    : Deferred<Response<PaymentStatusBulkHandlerResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.paymentStatusBulk(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
     
 }
 }
