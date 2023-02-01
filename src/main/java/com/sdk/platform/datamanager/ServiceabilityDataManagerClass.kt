@@ -68,24 +68,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getCompanyStoreView()
+    suspend fun getCompanyStoreView(pageNumber: Int?=null, pageSize: Int?=null)
     : Deferred<Response<CompanyStoreView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCompanyStoreView(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getZoneDataView(zoneId: String)
-    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getZoneDataView(
-        companyId = config.companyId, zoneId = zoneId )
+        companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize )
         } else {
             null
         } 
@@ -98,6 +86,18 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.updateZoneControllerView(
         zoneId = zoneId, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getZoneDataView(zoneId: String)
+    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getZoneDataView(
+        companyId = config.companyId, zoneId = zoneId )
         } else {
             null
         } 
