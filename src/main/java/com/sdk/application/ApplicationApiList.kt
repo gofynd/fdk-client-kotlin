@@ -1261,7 +1261,7 @@ interface LogisticApiList {
     
     
     @POST 
-    fun upsertZoneControllerView(@Url url1: String?     ,@Body body: AssignStoreRequest)
+    fun assignLocations(@Url url1: String?   ,@Body body: AssignStoreRequest)
     : Deferred<Response<AssignStoreResponse>>
     
 }
