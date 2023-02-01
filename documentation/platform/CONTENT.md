@@ -8334,6 +8334,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | url | String? |  yes  |  |
  | position | String? |  yes  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
+ | pages | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | content | String? |  yes  |  |
 
 ---
@@ -9119,6 +9120,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | position | String? |  yes  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
  | content | String? |  yes  |  |
+ | pages | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | source | [TagSourceSchema](#TagSourceSchema)? |  yes  |  |
 
 ---
