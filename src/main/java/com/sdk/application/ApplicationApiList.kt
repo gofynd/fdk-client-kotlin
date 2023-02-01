@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -894,8 +894,8 @@ interface PaymentApiList {
     : Deferred<Response<ValidateVPAResponse>>
     
     
-    @POST 
-    fun cardDetails(@Url url1: String?   ,@Body body: cardDetailsRequest)
+    @GET 
+    fun cardDetails(@Url url1: String?     ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<cardDetailsResponse>>
     
     

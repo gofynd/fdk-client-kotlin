@@ -246,10 +246,12 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun cardDetails(body: cardDetailsRequest): Deferred<Response<cardDetailsResponse>>? {
+    fun cardDetails(cardBin: String, aggregator: String?=null): Deferred<Response<cardDetailsResponse>>? {
         var fullUrl : String? = _relativeUrls["cardDetails"] 
         
-        return paymentApiList?.cardDetails(fullUrl  ,body = body)}
+        fullUrl = fullUrl?.replace("{" + "card_bin" +"}",cardBin.toString())
+        
+        return paymentApiList?.cardDetails(fullUrl     ,  aggregator = aggregator)}
 
     
     
