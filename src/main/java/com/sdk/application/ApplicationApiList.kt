@@ -1083,17 +1083,17 @@ interface RewardsApiList {
     
     
     @GET 
-    fun getPoints(@Url url1: String?   )
+    fun getUserPoints(@Url url1: String?   )
     : Deferred<Response<PointsResponse>>
     
     
     @GET 
-    fun referral(@Url url1: String?   )
+    fun getUserReferralDetails(@Url url1: String?   )
     : Deferred<Response<ReferralDetailsResponse>>
     
     
     @POST 
-    fun orderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
+    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
     : Deferred<Response<OrderDiscountResponse>>
     
     
