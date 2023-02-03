@@ -250,7 +250,7 @@ interface CartApiList {
     
     
     @GET 
-    fun validateCouponForPayment(@Url url1: String?    ,        @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
+    fun validateCouponForPayment(@Url url1: String?    ,           @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?)
     : Deferred<Response<PaymentCouponValidate>>
     
     
@@ -894,8 +894,8 @@ interface PaymentApiList {
     : Deferred<Response<ValidateVPAResponse>>
     
     
-    @POST 
-    fun cardDetails(@Url url1: String?   ,@Body body: cardDetailsRequest)
+    @GET 
+    fun cardDetails(@Url url1: String?     ,  @Query("aggregator") aggregator: String?)
     : Deferred<Response<cardDetailsResponse>>
     
     
@@ -1207,7 +1207,7 @@ interface PosCartApiList {
     
     
     @GET 
-    fun validateCouponForPayment(@Url url1: String?    ,        @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
+    fun validateCouponForPayment(@Url url1: String?    ,           @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?)
     : Deferred<Response<PaymentCouponValidate>>
     
     
