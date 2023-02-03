@@ -1078,7 +1078,7 @@ interface RewardsApiList {
     
     
     @GET 
-    fun getPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<PointsHistoryResponse>>
     
     

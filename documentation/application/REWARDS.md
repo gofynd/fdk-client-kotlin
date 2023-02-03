@@ -8,7 +8,7 @@
 Earn and redeem reward points
 * [getOfferByName](#getofferbyname)
 * [catalogueOrder](#catalogueorder)
-* [getPointsHistory](#getpointshistory)
+* [getUserPointsHistory](#getuserpointshistory)
 * [getUserPoints](#getuserpoints)
 * [getUserReferralDetails](#getuserreferraldetails)
 * [getOrderDiscount](#getorderdiscount)
@@ -138,14 +138,14 @@ Success. Check example below or refer `CatalogueOrderResponse` for more details.
 ---
 
 
-### getPointsHistory
+### getUserPointsHistory
 Get all transactions of reward points
 
 
 
 
 ```kotlin
-rewards.getPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

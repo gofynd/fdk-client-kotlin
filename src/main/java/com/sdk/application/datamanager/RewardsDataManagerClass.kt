@@ -23,7 +23,7 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["catalogueOrder"] = "/service/application/rewards/v1.0/catalogue/offer/order/"?.substring(1)
             
-                    _relativeUrls["getPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/"?.substring(1)
+                    _relativeUrls["getUserPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/"?.substring(1)
             
                     _relativeUrls["getUserPoints"] = "/service/application/rewards/v1.0/user/points/"?.substring(1)
             
@@ -84,10 +84,10 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPointsHistory"] 
+    fun getUserPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
+        var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
         
-        return rewardsApiList?.getPointsHistory(fullUrl    ,  pageId = pageId,    pageSize = pageSize)}
+        return rewardsApiList?.getUserPointsHistory(fullUrl    ,  pageId = pageId,    pageSize = pageSize)}
 
     
     
@@ -105,9 +105,9 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         
     /**
     *
-    * Summary: Paginator for getPointsHistory
+    * Summary: Paginator for getUserPointsHistory
     **/
-    fun getPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
+    fun getUserPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
 
     val paginator = Paginator<PointsHistoryResponse>()
 
@@ -118,9 +118,9 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                var fullUrl : String? = _relativeUrls["getPointsHistory"] 
+                var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
                 
-                rewardsApiList?.getPointsHistory(fullUrl , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                rewardsApiList?.getUserPointsHistory(fullUrl , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
