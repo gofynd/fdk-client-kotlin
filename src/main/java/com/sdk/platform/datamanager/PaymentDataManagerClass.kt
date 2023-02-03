@@ -171,6 +171,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -270,6 +271,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentConfirmationResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.confirmPayment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentCodeOption()
+    : Deferred<Response<getPaymentCodeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
