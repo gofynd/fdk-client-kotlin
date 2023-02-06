@@ -42,11 +42,11 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
     
+    val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
+    
     val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
-    
-    val logistic by lazy { LogisticDataManagerClass(config, unauthorizedAction)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -92,11 +92,11 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
+    val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
+    
     val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
-    
-    val logistic by lazy { this@PlatformClient.logistic.ApplicationClient(applicationId,config)}
     
     }
 
