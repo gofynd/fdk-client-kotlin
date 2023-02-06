@@ -449,12 +449,24 @@ interface ContentApiList {
     : Deferred<Response<PageSchema>>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings")
-    fun updatePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PathMappingSchema)
+    fun addPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PathMappingSchema)
     : Deferred<Response<PathMappingSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings")
-    fun getPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
     : Deferred<Response<PathMappingSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
+    fun getPathRedirectionRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String)
+    : Deferred<Response<PathMappingSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
+    fun updatePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String,@Body body: PathMappingSchema)
+    : Deferred<Response<PathMappingSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
+    fun deletePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String)
+    : Deferred<Response<HashMap<String,Any>>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo")
     fun getSEOConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -976,13 +988,13 @@ interface CatalogApiList {
     fun getProductBundle(@Path("company_id") companyId: String, @Query("q") q: String?, @Query("slug") slug: ArrayList<String>?)
     : Deferred<Response<GetProductBundleListingResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/{id}/")
-    fun updateProductBundle(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: ProductBundleUpdateRequest)
-    : Deferred<Response<GetProductBundleCreateResponse>>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/{id}/")
     fun getProductBundleDetail(@Path("company_id") companyId: String, @Path("id") id: String)
     : Deferred<Response<GetProductBundleResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/product-bundle/{id}/")
+    fun updateProductBundle(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: ProductBundleUpdateRequest)
+    : Deferred<Response<GetProductBundleCreateResponse>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/sizeguide")
     fun createSizeGuide(@Path("company_id") companyId: String,@Body body: ValidateSizeGuide)
@@ -992,63 +1004,63 @@ interface CatalogApiList {
     fun getSizeGuides(@Path("company_id") companyId: String, @Query("active") active: Boolean?, @Query("q") q: String?, @Query("tag") tag: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ListSizeGuide>>
     
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/sizeguide/{id}/")
+    fun getSizeGuide(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<SizeGuideResponse>>
+    
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/sizeguide/{id}/")
     fun updateSizeGuide(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: ValidateSizeGuide)
     : Deferred<Response<SuccessResponse>>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/sizeguide/{id}/")
-    fun getSizeGuide(@Path("company_id") companyId: String, @Path("id") id: String)
-    : Deferred<Response<SizeGuideResponse>>
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
+    fun getAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String)
+    : Deferred<Response<OwnerAppItemResponse>>
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
     fun updateAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String,@Body body: ApplicationItemMeta)
     : Deferred<Response<SuccessResponse1>>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product/{item_id}/")
-    fun getAppProduct(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("item_id") itemId: String, @Query("slice_attr") sliceAttr: String)
-    : Deferred<Response<ApplicationItemResponse>>
-    
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/metadata/")
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/metadata/")
     fun getConfigurationMetadata(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Query("template_slug") templateSlug: String?)
     : Deferred<Response<GetConfigMetadataResponse>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups")
+    @POST ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups")
     fun createGroupConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: AppConfigurationDetail)
     : Deferred<Response<AppConfigurationDetail>>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups")
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups")
     fun getGroupConfigurations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?, @Query("template_slug") templateSlug: String?)
     : Deferred<Response<GetConfigResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups/{group_slug}")
+    @PUT ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups/{group_slug}")
     fun updateGroupConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("group_slug") groupSlug: String,@Body body: AppConfigurationDetail)
     : Deferred<Response<AppConfigurationDetail>>
     
-    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups/{group_slug}")
+    @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/groups/{group_slug}")
     fun deleteGroupConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("group_slug") groupSlug: String)
     : Deferred<Response<ConfigSuccessResponse>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/")
+    @POST ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/")
     fun createListingConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String,@Body body: AppConfigurationsSort)
     : Deferred<Response<AppConfigurationsSort>>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/")
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/")
     fun getListingConfigurations(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("search") search: String?)
     : Deferred<Response<GetConfigResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/item/{config_id}/")
+    @PUT ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/item/{config_id}/")
     fun updateListingConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("config_id") configId: String,@Body body: AppConfigurationsSort)
     : Deferred<Response<AppConfigurationsSort>>
     
-    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/item/{config_id}/")
+    @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/{config_type}/item/{config_id}/")
     fun deleteListingConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("config_type") configType: String, @Path("config_id") configId: String)
     : Deferred<Response<ConfigSuccessResponse>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/filter/allow_single")
+    @POST ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/filter/allow_single")
     fun updateAllowSingle(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AllowSingleRequest)
     : Deferred<Response<ConfigSuccessResponse>>
     
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/product-configuration/sort/default_key")
+    @POST ("/service/platform/catalog/v2.0/company/{company_id}/application/{application_id}/product-configuration/sort/default_key")
     fun updateDefaultSort(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DefaultKeyRequest)
     : Deferred<Response<ConfigSuccessResponse>>
     
@@ -1152,13 +1164,13 @@ interface CatalogApiList {
     fun listDepartmentsData(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("search") search: String?, @Query("is_active") isActive: Boolean?)
     : Deferred<Response<DepartmentsResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/departments/{uid}/")
-    fun updateDepartment(@Path("company_id") companyId: String, @Path("uid") uid: String,@Body body: DepartmentCreateUpdate)
-    : Deferred<Response<DepartmentModel>>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/departments/{uid}/")
     fun getDepartmentData(@Path("company_id") companyId: String, @Path("uid") uid: String)
     : Deferred<Response<DepartmentsResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/departments/{uid}/")
+    fun updateDepartment(@Path("company_id") companyId: String, @Path("uid") uid: String,@Body body: DepartmentCreateUpdate)
+    : Deferred<Response<DepartmentModel>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/products/templates/")
     fun listProductTemplate(@Path("company_id") companyId: String, @Query("department") department: String)
@@ -1200,13 +1212,13 @@ interface CatalogApiList {
     fun listCategories(@Path("company_id") companyId: String, @Query("level") level: String?, @Query("departments") departments: String?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<CategoryResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/category/{uid}/")
-    fun updateCategory(@Path("company_id") companyId: String, @Path("uid") uid: String,@Body body: CategoryRequestBody)
-    : Deferred<Response<CategoryUpdateResponse>>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/category/{uid}/")
     fun getCategoryData(@Path("company_id") companyId: String, @Path("uid") uid: String)
     : Deferred<Response<SingleCategoryResponse>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/category/{uid}/")
+    fun updateCategory(@Path("company_id") companyId: String, @Path("uid") uid: String,@Body body: CategoryRequestBody)
+    : Deferred<Response<CategoryUpdateResponse>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/products/")
     fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateUpdate)
@@ -1340,12 +1352,12 @@ interface CatalogApiList {
     fun getAllHsnCodes(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Deferred<Response<HsnCodesListingResponse>>
     
-    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/hsn/{id}/")
-    fun updateHsnCode(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: HsnUpsert)
-    : Deferred<Response<HsnCode>>
-    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/hsn/{id}/")
     fun getHsnCode(@Path("company_id") companyId: String, @Path("id") id: String)
+    : Deferred<Response<HsnCode>>
+    
+    @PUT ("/service/platform/catalog/v1.0/company/{company_id}/hsn/{id}/")
+    fun updateHsnCode(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: HsnUpsert)
     : Deferred<Response<HsnCode>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/hsn/bulk/")
@@ -1401,11 +1413,19 @@ interface CatalogApiList {
     : Deferred<Response<SuccessResponse1>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/category")
-    fun getApplicationCategoryListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    fun getApplicationCategoryListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("department_id") departmentId: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Deferred<Response<BrandListingResponse>>
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/category/{category_uid}")
     fun updateAppCategory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("category_uid") categoryUid: String,@Body body: ApplicationCategoryJson)
+    : Deferred<Response<SuccessResponse1>>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/department")
+    fun getApplicationDepartmentListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    : Deferred<Response<ApplicationDepartmentListingResponse>>
+    
+    @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/department/{department_uid}")
+    fun updateAppDepartment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("department_uid") departmentUid: String,@Body body: ApplicationDepartmentJson)
     : Deferred<Response<SuccessResponse1>>
     
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/store/{store_uid}")
@@ -1467,6 +1487,10 @@ interface CompanyProfileApiList {
     @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location/bulk")
     fun createLocationBulk(@Path("company_id") companyId: String,@Body body: BulkLocationSerializer)
     : Deferred<Response<ProfileSuccessResponse>>
+    
+    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location/reassign")
+    fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: AssignStoreRequestValidator)
+    : Deferred<Response<AssignStoreResponseSerializer>>
     
 }
 
@@ -2040,12 +2064,12 @@ interface AuditTrailApiList {
 
 interface ServiceabilityApiList {
     
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/serviceability")
-    fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ApplicationServiceabilityConfigResponse>>
-    
     @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/serviceability")
     fun postApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationServiceabilityConfig)
+    : Deferred<Response<ApplicationServiceabilityConfigResponse>>
+    
+    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/serviceability")
+    fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<ApplicationServiceabilityConfigResponse>>
     
     @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/regions")
@@ -2072,13 +2096,13 @@ interface ServiceabilityApiList {
     fun upsertZoneControllerView(@Path("company_id") companyId: String,@Body body: ZoneRequest)
     : Deferred<Response<ZoneResponse>>
     
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
-    fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
-    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
-    
     @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
     fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
+    fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
+    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
     
     @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zones-list")
     fun getZoneListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
