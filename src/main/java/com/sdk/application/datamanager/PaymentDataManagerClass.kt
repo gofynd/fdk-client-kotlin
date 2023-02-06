@@ -47,6 +47,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["resendOrCancelPayment"] = "/service/application/payment/v1.0/payment/resend_or_cancel"?.substring(1)
             
+                    _relativeUrls["renderHTML"] = "/service/application/payment/v1.0/payment/html/render/"?.substring(1)
+            
+                    _relativeUrls["validateVPA"] = "/service/application/payment/v1.0/validate-vpa"?.substring(1)
+            
                     _relativeUrls["getActiveRefundTransferModes"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
             
                     _relativeUrls["enableOrDisableRefundTransferMode"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
@@ -223,6 +227,20 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["resendOrCancelPayment"] 
         
         return paymentApiList?.resendOrCancelPayment(fullUrl  ,body = body)}
+
+    
+    
+    fun renderHTML(body: renderHTMLRequest): Deferred<Response<renderHTMLResponse>>? {
+        var fullUrl : String? = _relativeUrls["renderHTML"] 
+        
+        return paymentApiList?.renderHTML(fullUrl  ,body = body)}
+
+    
+    
+    fun validateVPA(body: ValidateVPARequest): Deferred<Response<ValidateVPAResponse>>? {
+        var fullUrl : String? = _relativeUrls["validateVPA"] 
+        
+        return paymentApiList?.validateVPA(fullUrl  ,body = body)}
 
     
     
