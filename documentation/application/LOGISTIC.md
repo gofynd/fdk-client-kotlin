@@ -561,13 +561,14 @@ Get location data
 
  
  
- #### [PincodeErrorSchemaResponse](#PincodeErrorSchemaResponse)
+ #### [PincodeParentsResponse](#PincodeParentsResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
- | value | String? |  yes  |  |
- | type | String? |  yes  |  |
+ | displayName | String? |  yes  |  |
+ | uid | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | subType | String? |  yes  |  |
 
 ---
 
@@ -586,14 +587,13 @@ Get location data
 
  
  
- #### [PincodeParentsResponse](#PincodeParentsResponse)
+ #### [PincodeErrorSchemaResponse](#PincodeErrorSchemaResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uid | String? |  yes  |  |
- | name | String? |  yes  |  |
- | displayName | String? |  yes  |  |
- | subType | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | value | String? |  yes  |  |
 
 ---
 
@@ -604,12 +604,12 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayName | String? |  yes  |  |
- | meta | [PincodeMetaResponse](#PincodeMetaResponse)? |  yes  |  |
  | uid | String? |  yes  |  |
  | parents | ArrayList<[PincodeParentsResponse](#PincodeParentsResponse)>? |  yes  |  |
- | subType | String? |  yes  |  |
+ | displayName | String? |  yes  |  |
  | name | String? |  yes  |  |
+ | subType | String? |  yes  |  |
+ | meta | [PincodeMetaResponse](#PincodeMetaResponse)? |  yes  |  |
  | error | [PincodeErrorSchemaResponse](#PincodeErrorSchemaResponse) |  no  |  |
 
 ---
@@ -621,9 +621,9 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | [PincodeErrorSchemaResponse](#PincodeErrorSchemaResponse) |  no  |  |
- | success | Boolean |  no  |  |
  | data | ArrayList<[PincodeDataResponse](#PincodeDataResponse)>? |  yes  |  |
+ | success | Boolean |  no  |  |
+ | error | [PincodeErrorSchemaResponse](#PincodeErrorSchemaResponse) |  no  |  |
 
 ---
 
@@ -634,8 +634,8 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | id | Int? |  yes  |  |
  | level | String? |  yes  |  |
+ | id | Int? |  yes  |  |
 
 ---
 
@@ -659,8 +659,8 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | fromPincode | String? |  yes  |  |
  | articles | ArrayList<[TATArticlesRequest](#TATArticlesRequest)>? |  yes  |  |
+ | fromPincode | String? |  yes  |  |
  | fulfillmentId | Int? |  yes  |  |
 
 ---
@@ -672,38 +672,13 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | locationDetails | ArrayList<[TATLocationDetailsRequest](#TATLocationDetailsRequest)>? |  yes  |  |
  | action | String? |  yes  |  |
- | toPincode | String? |  yes  |  |
- | source | String? |  yes  |  |
+ | identifier | String? |  yes  |  |
  | paymentMode | String? |  yes  |  |
  | journey | String? |  yes  |  |
- | locationDetails | ArrayList<[TATLocationDetailsRequest](#TATLocationDetailsRequest)>? |  yes  |  |
- | identifier | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [TATErrorSchemaResponse](#TATErrorSchemaResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | message | String? |  yes  |  |
- | value | String? |  yes  |  |
- | type | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [TATTimestampResponse](#TATTimestampResponse)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | min | Int? |  yes  |  |
- | max | Int? |  yes  |  |
+ | source | String? |  yes  |  |
+ | toPincode | String? |  yes  |  |
 
 ---
 
@@ -714,8 +689,20 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | min | String? |  yes  |  |
  | max | String? |  yes  |  |
+ | min | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TATTimestampResponse](#TATTimestampResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | max | Int? |  yes  |  |
+ | min | Int? |  yes  |  |
 
 ---
 
@@ -726,8 +713,21 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | timestamp | [TATTimestampResponse](#TATTimestampResponse)? |  yes  |  |
  | formatted | [TATFormattedResponse](#TATFormattedResponse)? |  yes  |  |
+ | timestamp | [TATTimestampResponse](#TATTimestampResponse)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [TATErrorSchemaResponse](#TATErrorSchemaResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | value | String? |  yes  |  |
 
 ---
 
@@ -738,13 +738,13 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | category | [TATCategoryRequest](#TATCategoryRequest)? |  yes  |  |
- | manufacturingTimeUnit | String? |  yes  |  |
  | isCodAvailable | Boolean? |  yes  |  |
- | manufacturingTimeSeconds | Int? |  yes  |  |
- | error | [TATErrorSchemaResponse](#TATErrorSchemaResponse)? |  yes  |  |
  | manufacturingTime | Int? |  yes  |  |
  | promise | [TATPromiseResponse](#TATPromiseResponse)? |  yes  |  |
+ | manufacturingTimeSeconds | Int? |  yes  |  |
+ | manufacturingTimeUnit | String? |  yes  |  |
+ | category | [TATCategoryRequest](#TATCategoryRequest)? |  yes  |  |
+ | error | [TATErrorSchemaResponse](#TATErrorSchemaResponse)? |  yes  |  |
 
 ---
 
@@ -755,8 +755,8 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | fromPincode | String? |  yes  |  |
  | articles | ArrayList<[TATArticlesResponse](#TATArticlesResponse)>? |  yes  |  |
+ | fromPincode | String? |  yes  |  |
  | fulfillmentId | Int? |  yes  |  |
 
 ---
@@ -768,18 +768,18 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
- | action | String? |  yes  |  |
- | toPincode | String? |  yes  |  |
- | toCity | String? |  yes  |  |
- | requestUuid | String? |  yes  |  |
- | source | String? |  yes  |  |
- | isCodAvailable | Boolean? |  yes  |  |
- | paymentMode | String? |  yes  |  |
- | stormbreakerUuid | String? |  yes  |  |
- | journey | String? |  yes  |  |
  | locationDetails | ArrayList<[TATLocationDetailsResponse](#TATLocationDetailsResponse)>? |  yes  |  |
+ | action | String? |  yes  |  |
+ | toCity | String? |  yes  |  |
+ | isCodAvailable | Boolean? |  yes  |  |
+ | stormbreakerUuid | String? |  yes  |  |
  | identifier | String? |  yes  |  |
+ | paymentMode | String? |  yes  |  |
+ | journey | String? |  yes  |  |
+ | requestUuid | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+ | source | String? |  yes  |  |
+ | toPincode | String? |  yes  |  |
  | error | [TATErrorSchemaResponse](#TATErrorSchemaResponse)? |  yes  |  |
 
 ---
@@ -791,8 +791,8 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | country | String |  no  |  |
  | pincode | String |  no  |  |
+ | country | String |  no  |  |
 
 ---
 
@@ -803,8 +803,8 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | serviceabilityType | String |  no  |  |
  | zones | ArrayList<String> |  no  |  |
+ | serviceabilityType | String |  no  |  |
 
 ---
 
@@ -815,15 +815,15 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applicationConfig | HashMap<String,Any> |  no  |  |
- | pageSize | Int |  no  |  |
- | toPincode | String |  no  |  |
- | extensionConfig | HashMap<String,Any> |  no  |  |
  | pageNo | Int |  no  |  |
  | items | HashMap<String,Any> |  no  |  |
  | identifier | String |  no  |  |
+ | extensionConfig | HashMap<String,Any> |  no  |  |
+ | pageSize | Int |  no  |  |
  | customerDetails | HashMap<String,Any> |  no  |  |
+ | applicationConfig | HashMap<String,Any> |  no  |  |
  | articles | ArrayList<HashMap<String,Any>> |  no  |  |
+ | toPincode | String |  no  |  |
 
 ---
 
@@ -834,18 +834,18 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | article | HashMap<String,Any> |  no  |  |
- | success | Boolean |  no  |  |
- | pageSize | Int |  no  |  |
- | toPincode | String |  no  |  |
- | company | HashMap<String,Any> |  no  |  |
- | assignedStores | ArrayList<HashMap<String,Any>> |  no  |  |
  | pageNo | Int |  no  |  |
  | items | HashMap<String,Any> |  no  |  |
- | pystormbreakerUuid | String |  no  |  |
+ | pageSize | Int |  no  |  |
+ | article | HashMap<String,Any> |  no  |  |
+ | assignedStores | ArrayList<HashMap<String,Any>> |  no  |  |
  | customerDetails | HashMap<String,Any> |  no  |  |
- | articles | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | store | HashMap<String,Any> |  no  |  |
+ | success | Boolean |  no  |  |
+ | articles | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | pystormbreakerUuid | String |  no  |  |
+ | company | HashMap<String,Any> |  no  |  |
+ | toPincode | String |  no  |  |
  | error | HashMap<String,Any> |  no  |  |
 
 ---
@@ -857,8 +857,8 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | longitude | String? |  yes  |  |
  | latitude | String? |  yes  |  |
+ | longitude | String? |  yes  |  |
 
 ---
 
@@ -869,10 +869,10 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | location | [LocationDetailResponse](#LocationDetailResponse)? |  yes  |  |
- | country | String? |  yes  |  |
  | name | String? |  yes  |  |
  | city | String? |  yes  |  |
+ | country | String? |  yes  |  |
+ | location | [LocationDetailResponse](#LocationDetailResponse)? |  yes  |  |
 
 ---
 
@@ -883,9 +883,9 @@ Get location data
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | [PincodeErrorSchemaResponse](#PincodeErrorSchemaResponse) |  no  |  |
- | success | Boolean |  no  |  |
  | data | [LocationDataResponse](#LocationDataResponse) |  no  |  |
+ | success | Boolean |  no  |  |
+ | error | [PincodeErrorSchemaResponse](#PincodeErrorSchemaResponse) |  no  |  |
 
 ---
 
