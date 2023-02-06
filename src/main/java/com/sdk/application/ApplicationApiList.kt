@@ -1274,10 +1274,5 @@ interface LogisticApiList {
     fun assignLocations(@Url url1: String?   ,@Body body: AssignStoreRequest)
     : Deferred<Response<AssignStoreResponse>>
     
-    
-    @GET 
-    fun getLocationDetails(@Url url1: String?    )
-    : Deferred<Response<LocationApiResponse>>
-    
 }
 

@@ -2221,7 +2221,7 @@ interface LogisticApiList {
     : Deferred<Response<ListViewResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/all-stores")
-    fun getCompanyStoreView(@Path("company_id") companyId: String)
+    fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: String?, @Query("enabled") enabled: String?, @Query("q") q: String?)
     : Deferred<Response<CompanyStoreView_Response>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
