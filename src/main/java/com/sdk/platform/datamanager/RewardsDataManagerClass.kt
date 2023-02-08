@@ -158,10 +158,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUserPointsHistory(userId: String, pageId: String?=null, pageSize: Int?=null)
+    suspend fun getPointsHistory(pageId: String?=null, pageSize: Int?=null, userId: String)
     : Deferred<Response<HistoryRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                rewardsApiList?.getUserPointsHistory(userId = userId, companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize )
+                rewardsApiList?.getPointsHistory(pageId = pageId, pageSize = pageSize, userId = userId, companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -171,8 +171,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
         
             
-                
             
+                
             
         
             
@@ -186,8 +186,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             
         
             
-            
                 
+            
             
         
             
@@ -197,10 +197,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         
     /**
     *
-    * Summary: Paginator for getUserPointsHistory
+    * Summary: Paginator for getPointsHistory
     **/
-    fun getUserPointsHistoryPaginator(
-    userId: String, pageSize: Int?=null
+    fun getPointsHistoryPaginator(
+    pageSize: Int?=null, userId: String
     
     ) : Paginator<HistoryRes>{
         val paginator = Paginator<HistoryRes>()
@@ -213,7 +213,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "cursor"
-                    rewardsApiList?.getUserPointsHistory(userId = userId, companyId = config.companyId , applicationId = applicationId , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                    rewardsApiList?.getPointsHistory(pageId = pageId, pageSize = pageSize, userId = userId, companyId = config.companyId , applicationId = applicationId )?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)

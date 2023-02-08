@@ -8,10 +8,10 @@
 Earn and redeem reward points
 * [getOfferByName](#getofferbyname)
 * [catalogueOrder](#catalogueorder)
-* [getUserPointsHistory](#getuserpointshistory)
-* [getUserPoints](#getuserpoints)
-* [getUserReferralDetails](#getuserreferraldetails)
-* [getOrderDiscount](#getorderdiscount)
+* [getPointsHistory](#getpointshistory)
+* [getPoints](#getpoints)
+* [referral](#referral)
+* [orderDiscount](#orderdiscount)
 * [redeemReferralCode](#redeemreferralcode)
 
 
@@ -138,14 +138,14 @@ Success. Check example below or refer `CatalogueOrderResponse` for more details.
 ---
 
 
-### getUserPointsHistory
+### getPointsHistory
 Get all transactions of reward points
 
 
 
 
 ```kotlin
-rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+rewards.getPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -199,14 +199,14 @@ Success. Check example below or refer `PointsHistoryResponse` for more details.
 ---
 
 
-### getUserPoints
+### getPoints
 Get referral details of a user
 
 
 
 
 ```kotlin
-rewards.getUserPoints().safeAwait{ response, error->
+rewards.getPoints().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -254,14 +254,14 @@ Success. Check example below or refer `PointsResponse` for more details.
 ---
 
 
-### getUserReferralDetails
+### referral
 Get referral details of a user
 
 
 
 
 ```kotlin
-rewards.getUserReferralDetails().safeAwait{ response, error->
+rewards.referral().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -309,14 +309,14 @@ Success. Check example below or refer `ReferralDetailsResponse` for more details
 ---
 
 
-### getOrderDiscount
+### orderDiscount
 Calculates the discount on order-amount
 
 
 
 
 ```kotlin
-rewards.getOrderDiscount(body: body).safeAwait{ response, error->
+rewards.orderDiscount(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

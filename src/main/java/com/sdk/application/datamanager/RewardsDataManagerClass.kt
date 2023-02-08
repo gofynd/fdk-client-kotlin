@@ -23,13 +23,13 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["catalogueOrder"] = "/service/application/rewards/v1.0/catalogue/offer/order/"?.substring(1)
             
-                    _relativeUrls["getUserPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/"?.substring(1)
+                    _relativeUrls["getPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/"?.substring(1)
             
-                    _relativeUrls["getUserPoints"] = "/service/application/rewards/v1.0/user/points/"?.substring(1)
+                    _relativeUrls["getPoints"] = "/service/application/rewards/v1.0/user/points/"?.substring(1)
             
-                    _relativeUrls["getUserReferralDetails"] = "/service/application/rewards/v1.0/user/referral/"?.substring(1)
+                    _relativeUrls["referral"] = "/service/application/rewards/v1.0/user/referral/"?.substring(1)
             
-                    _relativeUrls["getOrderDiscount"] = "/service/application/rewards/v1.0/user/offer/order-discount/"?.substring(1)
+                    _relativeUrls["orderDiscount"] = "/service/application/rewards/v1.0/user/offer/order-discount/"?.substring(1)
             
                     _relativeUrls["redeemReferralCode"] = "/service/application/rewards/v1.0/user/referral/redeem/"?.substring(1)
             
@@ -84,10 +84,10 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getUserPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
-        var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
+    fun getPointsHistory(pageId: String?=null, pageSize: Int?=null): Deferred<Response<PointsHistoryResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPointsHistory"] 
         
-        return rewardsApiList?.getUserPointsHistory(fullUrl    ,  pageId = pageId,    pageSize = pageSize)}
+        return rewardsApiList?.getPointsHistory(fullUrl    ,  pageId = pageId,    pageSize = pageSize)}
 
     
     
@@ -105,9 +105,9 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         
     /**
     *
-    * Summary: Paginator for getUserPointsHistory
+    * Summary: Paginator for getPointsHistory
     **/
-    fun getUserPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
+    fun getPointsHistoryPaginator(pageSize: Int?=null) : Paginator<PointsHistoryResponse>{
 
     val paginator = Paginator<PointsHistoryResponse>()
 
@@ -118,9 +118,9 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "cursor"
-                var fullUrl : String? = _relativeUrls["getUserPointsHistory"] 
+                var fullUrl : String? = _relativeUrls["getPointsHistory"] 
                 
-                rewardsApiList?.getUserPointsHistory(fullUrl , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                rewardsApiList?.getPointsHistory(fullUrl , pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
@@ -138,24 +138,24 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getUserPoints(): Deferred<Response<PointsResponse>>? {
-        var fullUrl : String? = _relativeUrls["getUserPoints"] 
+    fun getPoints(): Deferred<Response<PointsResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPoints"] 
         
-        return rewardsApiList?.getUserPoints(fullUrl  )}
+        return rewardsApiList?.getPoints(fullUrl  )}
 
     
     
-    fun getUserReferralDetails(): Deferred<Response<ReferralDetailsResponse>>? {
-        var fullUrl : String? = _relativeUrls["getUserReferralDetails"] 
+    fun referral(): Deferred<Response<ReferralDetailsResponse>>? {
+        var fullUrl : String? = _relativeUrls["referral"] 
         
-        return rewardsApiList?.getUserReferralDetails(fullUrl  )}
+        return rewardsApiList?.referral(fullUrl  )}
 
     
     
-    fun getOrderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
-        var fullUrl : String? = _relativeUrls["getOrderDiscount"] 
+    fun orderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
+        var fullUrl : String? = _relativeUrls["orderDiscount"] 
         
-        return rewardsApiList?.getOrderDiscount(fullUrl  ,body = body)}
+        return rewardsApiList?.orderDiscount(fullUrl  ,body = body)}
 
     
     
