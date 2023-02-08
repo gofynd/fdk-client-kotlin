@@ -151,22 +151,12 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getProductPriceBySlug(@Url url1: String?      ,   @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?)
-    : Deferred<Response<ProductSizePriceResponseV2>>
-    
-    
-    @GET 
-    fun getProductSellersBySlug(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductSizeSellersResponseV2>>
-    
-    
-    @GET 
-    fun getProductPriceBySlugV3(@Url url1: String?      ,    @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?, @Query("moq") moq: Int?)
+    fun getProductPriceBySlug(@Url url1: String?      ,    @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?, @Query("moq") moq: Int?)
     : Deferred<Response<ProductSizePriceResponseV3>>
     
     
     @GET 
-    fun getProductSellersBySlugV3(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    fun getProductSellersBySlug(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ProductSizeSellersResponseV3>>
     
 }

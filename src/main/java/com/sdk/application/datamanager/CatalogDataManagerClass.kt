@@ -75,13 +75,9 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["getProductBundlesBySlug"] = "/service/application/catalog/v1.0/product-grouping/"?.substring(1)
             
-                    _relativeUrls["getProductPriceBySlug"] = "/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/"?.substring(1)
+                    _relativeUrls["getProductPriceBySlug"] = "/service/application/catalog/v3.0/products/{slug}/sizes/{size}/price/"?.substring(1)
             
-                    _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/"?.substring(1)
-            
-                    _relativeUrls["getProductPriceBySlugV3"] = "/service/application/catalog/v3.0/products/{slug}/sizes/{size}/price/"?.substring(1)
-            
-                    _relativeUrls["getProductSellersBySlugV3"] = "/service/application/catalog/v3.0/products/{slug}/sizes/{size}/sellers/"?.substring(1)
+                    _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v3.0/products/{slug}/sizes/{size}/sellers/"?.substring(1)
             
     }
 
@@ -888,18 +884,18 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null): Deferred<Response<ProductSizePriceResponseV2>>? {
+    fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null, moq: Int?=null): Deferred<Response<ProductSizePriceResponseV3>>? {
         var fullUrl : String? = _relativeUrls["getProductPriceBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    pincode = pincode)}
+        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    pincode = pincode,    moq = moq)}
 
     
     
-    fun getProductSellersBySlug(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponseV2>>? {
+    fun getProductSellersBySlug(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponseV3>>? {
         var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
@@ -944,98 +940,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getProductSellersBySlug
     **/
-    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV2>{
-
-    val paginator = Paginator<ProductSizeSellersResponseV2>()
-
-    paginator.setCallBack(object : PaginatorCallback<ProductSizeSellersResponseV2> {
-
-            override suspend fun onNext(
-                onResponse: (Event<ProductSizeSellersResponseV2>?,FdkError?) -> Unit) {
-                val pageId = paginator.nextId
-                val pageNo = paginator.pageNo
-                val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
-                
-                fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-                
-                fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
-                
-                catalogApiList?.getProductSellersBySlug(fullUrl , pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
-                    response?.let {
-                        val page = response.peekContent()?.page
-                        paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
-                        onResponse.invoke(response, null)
-                    }
-
-                    error?.let {
-                        onResponse.invoke(null,error)
-                    }
-            }
-        }
-
-    })
-    
-    return paginator
-    }
-    
-    fun getProductPriceBySlugV3(slug: String, size: String, storeId: Int?=null, pincode: String?=null, moq: Int?=null): Deferred<Response<ProductSizePriceResponseV3>>? {
-        var fullUrl : String? = _relativeUrls["getProductPriceBySlugV3"] 
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
-        
-        return catalogApiList?.getProductPriceBySlugV3(fullUrl      ,  storeId = storeId,    pincode = pincode,    moq = moq)}
-
-    
-    
-    fun getProductSellersBySlugV3(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageNo: Int?=null, pageSize: Int?=null): Deferred<Response<ProductSizeSellersResponseV3>>? {
-        var fullUrl : String? = _relativeUrls["getProductSellersBySlugV3"] 
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
-        
-        return catalogApiList?.getProductSellersBySlugV3(fullUrl      ,  pincode = pincode,    strategy = strategy,    pageNo = pageNo,    pageSize = pageSize)}
-
-    
-    
-    
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-                
-            
-            
-        
-            
-            
-        
-            
-                
-            
-            
-        
-    /**
-    *
-    * Summary: Paginator for getProductSellersBySlugV3
-    **/
-    fun getProductSellersBySlugV3Paginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV3>{
+    fun getProductSellersBySlugPaginator(slug: String, size: String, pincode: String?=null, strategy: String?=null, pageSize: Int?=null) : Paginator<ProductSizeSellersResponseV3>{
 
     val paginator = Paginator<ProductSizeSellersResponseV3>()
 
@@ -1046,13 +951,13 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageId = paginator.nextId
                 val pageNo = paginator.pageNo
                 val pageType = "number"
-                var fullUrl : String? = _relativeUrls["getProductSellersBySlugV3"] 
+                var fullUrl : String? = _relativeUrls["getProductSellersBySlug"] 
                 
                 fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
                 
                 fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
                 
-                catalogApiList?.getProductSellersBySlugV3(fullUrl , pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
+                catalogApiList?.getProductSellersBySlug(fullUrl , pincode = pincode, strategy = strategy, pageNo = pageNo, pageSize = pageSize)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
