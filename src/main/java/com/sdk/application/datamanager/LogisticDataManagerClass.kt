@@ -23,6 +23,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/"?.substring(1)
             
+                    _relativeUrls["getEntityList"] = "/service/application/logistics/v1.0/entity-list"?.substring(1)
+            
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
             
     }
@@ -60,12 +62,12 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getPincodeCity(pincode: String): Deferred<Response<PincodeApiResponse>>? {
+    fun getPincodeCity(pincode: String, countryCode: String?=null): Deferred<Response<PincodeApiResponse>>? {
         var fullUrl : String? = _relativeUrls["getPincodeCity"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeCity(fullUrl   )}
+        return logisticApiList?.getPincodeCity(fullUrl     ,  countryCode = countryCode)}
 
     
     
@@ -73,6 +75,13 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getTatProduct"] 
         
         return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
+
+    
+    
+    fun getEntityList(page: String?=null, limit: String?=null, body: EntityListRequest): Deferred<Response<EntityListResponse>>? {
+        var fullUrl : String? = _relativeUrls["getEntityList"] 
+        
+        return logisticApiList?.getEntityList(fullUrl    ,  page = page,    limit = limit, body = body)}
 
     
     
