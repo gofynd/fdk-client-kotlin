@@ -23,7 +23,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/"?.substring(1)
             
-                    _relativeUrls["getEntityList"] = "/service/application/logistics/v1.0/entity-list"?.substring(1)
+                    _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list"?.substring(1)
             
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
             
@@ -78,10 +78,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun getEntityList(page: String?=null, limit: String?=null, body: EntityListRequest): Deferred<Response<EntityListResponse>>? {
-        var fullUrl : String? = _relativeUrls["getEntityList"] 
+    fun getAllCountries(): Deferred<Response<CountryListResponse>>? {
+        var fullUrl : String? = _relativeUrls["getAllCountries"] 
         
-        return logisticApiList?.getEntityList(fullUrl    ,  page = page,    limit = limit, body = body)}
+        return logisticApiList?.getAllCountries(fullUrl  )}
 
     
     

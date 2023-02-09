@@ -1265,9 +1265,9 @@ interface LogisticApiList {
     : Deferred<Response<TATViewResponse>>
     
     
-    @POST 
-    fun getEntityList(@Url url1: String?    ,   @Query("page") page: String?, @Query("limit") limit: String?, @Body body: EntityListRequest)
-    : Deferred<Response<EntityListResponse>>
+    @GET 
+    fun getAllCountries(@Url url1: String?   )
+    : Deferred<Response<CountryListResponse>>
     
     
     @POST 
