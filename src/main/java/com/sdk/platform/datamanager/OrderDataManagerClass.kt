@@ -406,6 +406,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun postShipmentHistory(body: PostShipmentHistory)
+    : Deferred<Response<ShipmentHistoryResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.postShipmentHistory(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getShipmentHistory(shipmentId: Int?=null, bagId: Int?=null)
     : Deferred<Response<ShipmentHistoryResponse>>? {
         
@@ -576,6 +588,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

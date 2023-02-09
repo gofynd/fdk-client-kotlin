@@ -1246,13 +1246,18 @@ interface LogisticApiList {
     
     
     @GET 
-    fun getPincodeCity(@Url url1: String?    )
+    fun getPincodeCity(@Url url1: String?     ,  @Query("country_code") countryCode: String?)
     : Deferred<Response<PincodeApiResponse>>
     
     
     @POST 
     fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
     : Deferred<Response<TATViewResponse>>
+    
+    
+    @POST 
+    fun getEntityList(@Url url1: String?    ,   @Query("page") page: String?, @Query("limit") limit: String?, @Body body: EntityListRequest)
+    : Deferred<Response<EntityListResponse>>
     
     
     @POST 
