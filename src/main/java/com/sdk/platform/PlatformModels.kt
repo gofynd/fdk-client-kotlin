@@ -52820,7 +52820,7 @@ data class InformationAddress(
     var addressLine: ArrayList<String>?=null,
     
     @SerializedName("phone")
-    var phone: InformationPhone?=null,
+    var phone: ArrayList<InformationPhone>?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -53328,9 +53328,14 @@ data class ApplicationDetail(
     var domains: ArrayList<Domain>?=null,
     
     @SerializedName("_id")
-    var id: String?=null
+    var id: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
