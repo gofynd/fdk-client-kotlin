@@ -175,6 +175,10 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -314,6 +318,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SetCODOptionResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDevice(body: EdcDetailsRequest)
+    : Deferred<Response<EdcDeviceDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDevice(body: EdcUpdateRequest)
+    : Deferred<Response<EdcDeviceAddUpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDevice(body: EdcAddRequest)
+    : Deferred<Response<EdcDeviceAddUpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDeviceList()
+    : Deferred<Response<EdcDeviceListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDeviceList(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
