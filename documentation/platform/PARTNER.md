@@ -15,7 +15,7 @@ Partner configuration apis
 
 
 ### addProxyPath
-Add proxy path for external url
+Create proxy URL for the external URL
 
 
 
@@ -37,11 +37,11 @@ client.application("<APPLICATION_ID>").partner.addProxyPath(extensionId: extensi
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| extensionId | String | yes | Extension id |  
+| extensionId | String | yes | Extension id for which proxy URL will be generated |  
 | body | [AddProxyReq](#AddProxyReq) | yes | Request body |
 
 
-Add proxy path for external url
+Use this API to generate proxy URL for the external URL
 
 *Returned Response:*
 
@@ -50,7 +50,7 @@ Add proxy path for external url
 
 [AddProxyResponse](#AddProxyResponse)
 
-Success
+Proxy created successfully
 
 
 
@@ -84,7 +84,7 @@ Success
 
 
 ### removeProxyPath
-Remove proxy path for external url
+Remove proxy URL for the external URL
 
 
 
@@ -106,12 +106,12 @@ client.application("<APPLICATION_ID>").partner.removeProxyPath(extensionId: exte
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| extensionId | String | yes | Extension id |   
+| extensionId | String | yes | Extension id for which proxy URL needs to be removed |   
 | attachedPath | String | yes | Attachaed path slug |  
 
 
 
-Remove proxy path for external url
+Use this API to remove the proxy URL which is already generated for the external URL
 
 *Returned Response:*
 
@@ -166,7 +166,7 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | attachedPath | String? |  yes  | Proxy path slug |
- | proxyUrl | String? |  yes  | Proxied url |
+ | proxyUrl | String? |  yes  | The external URL for which the proxy URL will be generated |
 
 ---
 
