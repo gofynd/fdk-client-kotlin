@@ -108,10 +108,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(PosCartApiList::class.java) as? PosCartApiList
     }
     
-    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
+    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return posCartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
+        return posCartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    buyNow = buyNow)}
 
     
     
@@ -178,10 +178,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null): Deferred<Response<GetAddressesResponse>>? {
+    fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null, userId: String?=null): Deferred<Response<GetAddressesResponse>>? {
         var fullUrl : String? = _relativeUrls["getAddresses"] 
         
-        return posCartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault)}
+        return posCartApiList?.getAddresses(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    mobileNo = mobileNo,    checkoutMode = checkoutMode,    tags = tags,    isDefault = isDefault,    userId = userId)}
 
     
     
@@ -210,19 +210,19 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun removeAddress(id: String): Deferred<Response<DeleteAddressResponse>>? {
+    fun removeAddress(id: String, userId: String?=null): Deferred<Response<DeleteAddressResponse>>? {
         var fullUrl : String? = _relativeUrls["removeAddress"] 
         
         fullUrl = fullUrl?.replace("{" + "id" +"}",id.toString())
         
-        return posCartApiList?.removeAddress(fullUrl   )}
+        return posCartApiList?.removeAddress(fullUrl     ,  userId = userId)}
 
     
     
-    fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null, body: SelectCartAddressRequest): Deferred<Response<CartDetailResponse>>? {
+    fun selectAddress(cartId: String?=null, buyNow: Boolean?=null, i: Boolean?=null, b: Boolean?=null, userId: String?=null, body: SelectCartAddressRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["selectAddress"] 
         
-        return posCartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    i = i,    b = b, body = body)}
+        return posCartApiList?.selectAddress(fullUrl    ,  cartId = cartId,    buyNow = buyNow,    i = i,    b = b,    userId = userId, body = body)}
 
     
     
