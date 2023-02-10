@@ -80,24 +80,24 @@ class LogisticDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    suspend fun updateZoneControllerView(zoneId: String,body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            logisticApiList?.updateZoneControllerView(
-        zoneId = zoneId, companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getZoneDataView(zoneId: String)
     : Deferred<Response<GetSingleZoneDataViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             logisticApiList?.getZoneDataView(
         companyId = config.companyId, zoneId = zoneId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun updateZoneControllerView(zoneId: String,body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            logisticApiList?.updateZoneControllerView(
+        zoneId = zoneId, companyId = config.companyId, body = body)
         } else {
             null
         } 
