@@ -51,7 +51,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["validateVPA"] = "/service/application/payment/v1.0/validate-vpa"?.substring(1)
             
-                    _relativeUrls["cardDetails"] = "/service/application/payment/v1.0/cards/info"?.substring(1)
+                    _relativeUrls["cardDetails"] = "/service/application/payment/v1.0/cards/info/{card_bin}"?.substring(1)
             
                     _relativeUrls["getActiveRefundTransferModes"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
             
