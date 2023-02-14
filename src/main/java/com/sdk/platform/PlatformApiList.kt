@@ -118,6 +118,46 @@ interface LeadApiList {
     
 }
 
+interface FeedbackApiList {
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/attributes/")
+    fun getAttributes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<FeedbackAttributes>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/reviews/")
+    fun getCustomerReviews(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("entity_id") entityId: String?, @Query("entity_type") entityType: String?, @Query("user_id") userId: String?, @Query("media") media: String?, @Query("rating") rating: ArrayList<Double>?, @Query("attribute_rating") attributeRating: ArrayList<String>?, @Query("facets") facets: Boolean?, @Query("sort") sort: String?, @Query("next") next: String?, @Query("start") start: String?, @Query("limit") limit: String?, @Query("count") count: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<GetReviewResponse>>
+    
+    @PUT ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/reviews/{review_id}/approve/")
+    fun updateApprove(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("review_id") reviewId: String,@Body body: ApproveRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/reviews/{review_id}/history/")
+    fun getHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("review_id") reviewId: String)
+    : Deferred<Response<ArrayList<ActivityDump>>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/")
+    fun getApplicationTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<TemplateGetResponse>>
+    
+    @POST ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/")
+    fun createTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: TemplateRequestList)
+    : Deferred<Response<InsertResponse>>
+    
+    @GET ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/{id}/")
+    fun getTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<Template>>
+    
+    @PUT ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/{id}/")
+    fun updateTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateTemplateRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+    @PATCH ("/service/platform/feedback/v1.0/company/{company_id}/application/{application_id}/templates/{id}/status/")
+    fun updateTemplateStatus(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: UpdateTemplateStatusRequest)
+    : Deferred<Response<UpdateResponse>>
+    
+}
+
 interface ThemeApiList {
     
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/{theme_id}/page")
@@ -2222,6 +2262,18 @@ interface DiscountApiList {
     
 }
 
+interface PartnerApiList {
+    
+    @POST ("/service/platform/partners/v1.0/company/{company_id}/application/{application_id}/proxy/{extension_id}")
+    fun addProxyPath(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String,@Body body: AddProxyReq)
+    : Deferred<Response<AddProxyResponse>>
+    
+    @DELETE ("/service/platform/partners/v1.0/company/{company_id}/application/{application_id}/proxy/{extension_id}/{attached_path}")
+    fun removeProxyPath(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String, @Path("attached_path") attachedPath: String)
+    : Deferred<Response<RemoveProxyResponse>>
+    
+}
+
 interface WebhookApiList {
     
     @GET ("/service/platform/webhook/v1.0/company/{company_id}/subscriber")
@@ -2267,50 +2319,6 @@ interface AuditTrailApiList {
     @GET ("/service/platform/audit-trail/v1.0/company/{company_id}/entity-types")
     fun getEntityTypes(@Path("company_id") companyId: String)
     : Deferred<Response<EntityTypesResponse>>
-    
-}
-
-interface LogisticApiList {
-    
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/serviceability")
-    fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ApplicationServiceabilityConfigResponse>>
-    
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/regions")
-    fun getEntityRegionView(@Path("company_id") companyId: String,@Body body: EntityRegionView_Request)
-    : Deferred<Response<EntityRegionView_Response>>
-    
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/zones")
-    fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?)
-    : Deferred<Response<ListViewResponse>>
-    
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/all-stores")
-    fun getCompanyStoreView(@Path("company_id") companyId: String)
-    : Deferred<Response<CompanyStoreView_Response>>
-    
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>
-    
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
-    : Deferred<Response<GetSingleZoneDataViewResponse>>
-    
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/zone/")
-    fun insertZoneControllerView(@Path("company_id") companyId: String,@Body body: ZoneRequest)
-    : Deferred<Response<ZoneResponse>>
-    
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
-    fun upsertZoneControllerView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>
-    
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/stores/{store_uid}")
-    fun getStore(@Path("company_id") companyId: String, @Path("store_uid") storeUid: String)
-    : Deferred<Response<GetStoresViewResponse>>
-    
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics/stores")
-    fun getAllStores(@Path("company_id") companyId: String)
-    : Deferred<Response<GetStoresViewResponse>>
     
 }
         

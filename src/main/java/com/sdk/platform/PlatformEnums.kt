@@ -163,6 +163,7 @@ import com.google.gson.annotations.SerializedName
 
 
 
+
     /*
         Enum: PageType
         Used By: Content
@@ -246,6 +247,9 @@ import com.google.gson.annotations.SerializedName
         
         @SerializedName("profile")
         profile("profile"), 
+        
+        @SerializedName("profile-order-shipment")
+        profileOrderShipment("profile-order-shipment"), 
         
         @SerializedName("profile-basic")
         profileBasic("profile-basic"), 
@@ -334,6 +338,7 @@ import com.google.gson.annotations.SerializedName
 
 
 
+
     /*
         Enum: SubscriberStatus
         Used By: Webhook
@@ -358,6 +363,5 @@ import com.google.gson.annotations.SerializedName
             }
         }
     }
-
 
 

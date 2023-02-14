@@ -8,6 +8,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val lead by lazy { LeadDataManagerClass(config, unauthorizedAction)}
     
+    val feedback by lazy { FeedbackDataManagerClass(config, unauthorizedAction)}
+    
     val theme by lazy { ThemeDataManagerClass(config, unauthorizedAction)}
     
     val user by lazy { UserDataManagerClass(config, unauthorizedAction)}
@@ -42,11 +44,11 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
     
+    val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
+    
     val webhook by lazy { WebhookDataManagerClass(config, unauthorizedAction)}
     
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
-    
-    val logistic by lazy { LogisticDataManagerClass(config, unauthorizedAction)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -57,6 +59,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val common by lazy { this@PlatformClient.common.ApplicationClient(applicationId,config)}
     
     val lead by lazy { this@PlatformClient.lead.ApplicationClient(applicationId,config)}
+    
+    val feedback by lazy { this@PlatformClient.feedback.ApplicationClient(applicationId,config)}
     
     val theme by lazy { this@PlatformClient.theme.ApplicationClient(applicationId,config)}
     
@@ -92,11 +96,11 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
+    val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
+    
     val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
-    
-    val logistic by lazy { this@PlatformClient.logistic.ApplicationClient(applicationId,config)}
     
     }
 
