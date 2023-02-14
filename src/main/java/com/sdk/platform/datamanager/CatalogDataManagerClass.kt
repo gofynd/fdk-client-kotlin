@@ -77,24 +77,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProductBundleDetail(id: String)
-    : Deferred<Response<GetProductBundleResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProductBundleDetail(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateProductBundle(id: String,body: ProductBundleUpdateRequest)
     : Deferred<Response<GetProductBundleCreateResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateProductBundle(
         companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getProductBundleDetail(id: String)
+    : Deferred<Response<GetProductBundleResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getProductBundleDetail(
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
@@ -125,24 +125,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getSizeGuide(id: String)
-    : Deferred<Response<SizeGuideResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getSizeGuide(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateSizeGuide(id: String,body: ValidateSizeGuide)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateSizeGuide(
         companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getSizeGuide(id: String)
+    : Deferred<Response<SizeGuideResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getSizeGuide(
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
@@ -308,24 +308,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getDepartmentData(uid: String)
-    : Deferred<Response<DepartmentsResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getDepartmentData(
-        companyId = config.companyId, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateDepartment(uid: String,body: DepartmentCreateUpdate)
     : Deferred<Response<DepartmentModel>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateDepartment(
         companyId = config.companyId, uid = uid, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getDepartmentData(uid: String)
+    : Deferred<Response<DepartmentsResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getDepartmentData(
+        companyId = config.companyId, uid = uid )
         } else {
             null
         } 
@@ -452,24 +452,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getCategoryData(uid: String)
-    : Deferred<Response<SingleCategoryResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getCategoryData(
-        companyId = config.companyId, uid = uid )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateCategory(uid: String,body: CategoryRequestBody)
     : Deferred<Response<CategoryUpdateResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateCategory(
         companyId = config.companyId, uid = uid, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getCategoryData(uid: String)
+    : Deferred<Response<SingleCategoryResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getCategoryData(
+        companyId = config.companyId, uid = uid )
         } else {
             null
         } 
@@ -524,18 +524,6 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getProduct(itemCode: String?=null, itemId: String, brandUid: Int?=null)
-    : Deferred<Response<Product>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getProduct(
-        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun deleteProduct(itemId: String)
     : Deferred<Response<SuccessResponse>>? {
         
@@ -554,6 +542,18 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.editProduct(
         companyId = config.companyId, itemId = itemId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getProduct(itemCode: String?=null, itemId: String, brandUid: Int?=null)
+    : Deferred<Response<Product>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getProduct(
+        itemCode = itemCode, companyId = config.companyId, itemId = itemId, brandUid = brandUid )
         } else {
             null
         } 
@@ -885,24 +885,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getHsnCode(id: String)
-    : Deferred<Response<HsnCode>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.getHsnCode(
-        companyId = config.companyId, id = id )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateHsnCode(id: String,body: HsnUpsert)
     : Deferred<Response<HsnCode>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.updateHsnCode(
         companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getHsnCode(id: String)
+    : Deferred<Response<HsnCode>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            catalogApiList?.getHsnCode(
+        companyId = config.companyId, id = id )
         } else {
             null
         } 
@@ -976,16 +976,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun getSearchKeywords(id: String)
-    : Deferred<Response<GetSearchWordsDetailResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun deleteSearchKeywords(id: String)
     : Deferred<Response<DeleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1000,6 +990,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<GetSearchWordsData>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSearchKeywords(id: String)
+    : Deferred<Response<GetSearchWordsDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getSearchKeywords(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -1026,16 +1026,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAutocompleteKeywordDetail(id: String)
-    : Deferred<Response<GetAutocompleteWordsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId , applicationId = applicationId , id = id )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun deleteAutocompleteKeyword(id: String)
     : Deferred<Response<DeleteResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -1050,6 +1040,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<GetAutocompleteWordsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 catalogApiList?.updateAutocompleteKeyword(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAutocompleteKeywordDetail(id: String)
+    : Deferred<Response<GetAutocompleteWordsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                catalogApiList?.getAutocompleteKeywordDetail(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
