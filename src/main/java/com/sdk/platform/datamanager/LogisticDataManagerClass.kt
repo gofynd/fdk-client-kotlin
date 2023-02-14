@@ -68,24 +68,12 @@ class LogisticDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    suspend fun getCompanyStoreView(pageNumber: Int?=null, pageSize: Int?=null, zoneId: String?=null, enabled: String?=null, q: String?=null)
+    suspend fun getCompanyStoreView()
     : Deferred<Response<CompanyStoreView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             logisticApiList?.getCompanyStoreView(
-        companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize, zoneId = zoneId, enabled = enabled, q = q )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getZoneDataView(zoneId: String)
-    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            logisticApiList?.getZoneDataView(
-        companyId = config.companyId, zoneId = zoneId )
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -98,6 +86,18 @@ class LogisticDataManagerClass(val config: PlatformConfig, val unauthorizedActio
         return if (config.oauthClient.isAccessTokenValid()) {
             logisticApiList?.updateZoneControllerView(
         zoneId = zoneId, companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getZoneDataView(zoneId: String)
+    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            logisticApiList?.getZoneDataView(
+        companyId = config.companyId, zoneId = zoneId )
         } else {
             null
         } 

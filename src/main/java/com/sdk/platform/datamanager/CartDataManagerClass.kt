@@ -77,6 +77,8 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -518,6 +520,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<UpdateCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCartList()
+    : Deferred<Response<CartList>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartUser(id: String?=null)
+    : Deferred<Response<UserCartMappingResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartUser(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }

@@ -17,6 +17,8 @@ Earn and redeem reward points
 * [updateUserStatus](#updateuserstatus)
 * [user](#user)
 * [getUserPointsHistory](#getuserpointshistory)
+* [getAndroidPaths](#getandroidpaths)
+* [updateAndroidPaths](#updateandroidpaths)
 
 
 
@@ -681,6 +683,120 @@ Success. Check example below or refer `HistoryRes` for more details.
 ---
 
 
+### getAndroidPaths
+Get all valid android paths
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").rewards.getAndroidPaths().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Use this API to get a list of valid android paths required by the Rewards INIT API to validate a fradualent device.
+
+*Returned Response:*
+
+
+
+
+[AndroidPathsRes](#AndroidPathsRes)
+
+Success. Refer `AndroidPathsRes` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### updateAndroidPaths
+Updates the collection with given android paths.
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").rewards.updateAndroidPaths(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [AndroidPathReq](#AndroidPathReq) | yes | Request body |
+
+
+Updates the configuration or inserts new records.
+
+*Returned Response:*
+
+
+
+
+[AndroidPathsRes](#AndroidPathsRes)
+
+ok
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
 
@@ -956,6 +1072,29 @@ Success. Check example below or refer `HistoryRes` for more details.
  | txnName | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | userId | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AndroidPathsRes](#AndroidPathsRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | data | ArrayList<String>? |  yes  | Contains array of string items, Valid android paths. |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AndroidPathReq](#AndroidPathReq)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | paths | ArrayList<String>? |  yes  |  |
 
 ---
 
