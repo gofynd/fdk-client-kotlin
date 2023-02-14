@@ -47,10 +47,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             
                     _relativeUrls["resendOrCancelPayment"] = "/service/application/payment/v1.0/payment/resend_or_cancel"?.substring(1)
             
-                    _relativeUrls["renderHTML"] = "/service/application/payment/v1.0/payment/html/render/"?.substring(1)
-            
-                    _relativeUrls["validateVPA"] = "/service/application/payment/v1.0/validate-vpa"?.substring(1)
-            
                     _relativeUrls["getActiveRefundTransferModes"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
             
                     _relativeUrls["enableOrDisableRefundTransferMode"] = "/service/application/payment/v1.0/refund/transfer-mode"?.substring(1)
@@ -70,24 +66,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                     _relativeUrls["verifyOtpAndAddBeneficiaryForWallet"] = "/service/application/payment/v1.0/refund/verification/wallet"?.substring(1)
             
                     _relativeUrls["updateDefaultBeneficiary"] = "/service/application/payment/v1.0/refund/beneficiary/default"?.substring(1)
-            
-                    _relativeUrls["getPaymentLink"] = "/service/application/payment/v1.0/create-payment-link/"?.substring(1)
-            
-                    _relativeUrls["createPaymentLink"] = "/service/application/payment/v1.0/create-payment-link/"?.substring(1)
-            
-                    _relativeUrls["resendPaymentLink"] = "/service/application/payment/v1.0/resend-payment-link/"?.substring(1)
-            
-                    _relativeUrls["cancelPaymentLink"] = "/service/application/payment/v1.0/cancel-payment-link/"?.substring(1)
-            
-                    _relativeUrls["getPaymentModeRoutesPaymentLink"] = "/service/application/payment/v1.0/payment/options/link/"?.substring(1)
-            
-                    _relativeUrls["pollingPaymentLink"] = "/service/application/payment/v1.0/polling-payment-link/"?.substring(1)
-            
-                    _relativeUrls["createOrderHandlerPaymentLink"] = "/service/application/payment/v1.0/create-order/link/"?.substring(1)
-            
-                    _relativeUrls["initialisePaymentPaymentLink"] = "/service/application/payment/v1.0/payment/request/link/"?.substring(1)
-            
-                    _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"] = "/service/application/payment/v1.0/payment/confirm/polling/link/"?.substring(1)
             
                     _relativeUrls["customerCreditSummary"] = "/service/application/payment/v1.0/payment/credit-summary/"?.substring(1)
             
@@ -230,20 +208,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun renderHTML(body: renderHTMLRequest): Deferred<Response<renderHTMLResponse>>? {
-        var fullUrl : String? = _relativeUrls["renderHTML"] 
-        
-        return paymentApiList?.renderHTML(fullUrl  ,body = body)}
-
-    
-    
-    fun validateVPA(body: ValidateVPARequest): Deferred<Response<ValidateVPAResponse>>? {
-        var fullUrl : String? = _relativeUrls["validateVPA"] 
-        
-        return paymentApiList?.validateVPA(fullUrl  ,body = body)}
-
-    
-    
     fun getActiveRefundTransferModes(): Deferred<Response<TransferModeResponse>>? {
         var fullUrl : String? = _relativeUrls["getActiveRefundTransferModes"] 
         
@@ -311,69 +275,6 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         var fullUrl : String? = _relativeUrls["updateDefaultBeneficiary"] 
         
         return paymentApiList?.updateDefaultBeneficiary(fullUrl  ,body = body)}
-
-    
-    
-    fun getPaymentLink(paymentLinkId: String?=null): Deferred<Response<GetPaymentLinkResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPaymentLink"] 
-        
-        return paymentApiList?.getPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
-
-    
-    
-    fun createPaymentLink(body: CreatePaymentLinkRequest): Deferred<Response<CreatePaymentLinkResponse>>? {
-        var fullUrl : String? = _relativeUrls["createPaymentLink"] 
-        
-        return paymentApiList?.createPaymentLink(fullUrl  ,body = body)}
-
-    
-    
-    fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<ResendPaymentLinkResponse>>? {
-        var fullUrl : String? = _relativeUrls["resendPaymentLink"] 
-        
-        return paymentApiList?.resendPaymentLink(fullUrl  ,body = body)}
-
-    
-    
-    fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest): Deferred<Response<CancelPaymentLinkResponse>>? {
-        var fullUrl : String? = _relativeUrls["cancelPaymentLink"] 
-        
-        return paymentApiList?.cancelPaymentLink(fullUrl  ,body = body)}
-
-    
-    
-    fun getPaymentModeRoutesPaymentLink(paymentLinkId: String): Deferred<Response<PaymentModeRouteResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPaymentModeRoutesPaymentLink"] 
-        
-        return paymentApiList?.getPaymentModeRoutesPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
-
-    
-    
-    fun pollingPaymentLink(paymentLinkId: String?=null): Deferred<Response<PollingPaymentLinkResponse>>? {
-        var fullUrl : String? = _relativeUrls["pollingPaymentLink"] 
-        
-        return paymentApiList?.pollingPaymentLink(fullUrl    ,  paymentLinkId = paymentLinkId)}
-
-    
-    
-    fun createOrderHandlerPaymentLink(body: CreateOrderUserRequest): Deferred<Response<CreateOrderUserResponse>>? {
-        var fullUrl : String? = _relativeUrls["createOrderHandlerPaymentLink"] 
-        
-        return paymentApiList?.createOrderHandlerPaymentLink(fullUrl  ,body = body)}
-
-    
-    
-    fun initialisePaymentPaymentLink(body: PaymentInitializationRequest): Deferred<Response<PaymentInitializationResponse>>? {
-        var fullUrl : String? = _relativeUrls["initialisePaymentPaymentLink"] 
-        
-        return paymentApiList?.initialisePaymentPaymentLink(fullUrl  ,body = body)}
-
-    
-    
-    fun checkAndUpdatePaymentStatusPaymentLink(body: PaymentStatusUpdateRequest): Deferred<Response<PaymentStatusUpdateResponse>>? {
-        var fullUrl : String? = _relativeUrls["checkAndUpdatePaymentStatusPaymentLink"] 
-        
-        return paymentApiList?.checkAndUpdatePaymentStatusPaymentLink(fullUrl  ,body = body)}
 
     
     
