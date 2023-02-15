@@ -247,6 +247,9 @@ import com.google.gson.annotations.SerializedName
         @SerializedName("profile")
         profile("profile"), 
         
+        @SerializedName("profile-order-shipment")
+        profileOrderShipment("profile-order-shipment"), 
+        
         @SerializedName("profile-basic")
         profileBasic("profile-basic"), 
         

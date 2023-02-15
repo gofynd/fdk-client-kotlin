@@ -204,6 +204,15 @@ enum class Navigator(
         link = "/profile"
     ),
    
+    PROFILE_ORDER_SHIPMENT(
+        pageType = PageType.profileOrderShipment,
+        navName = "profile orders shipment",
+        link = "/profile/orders/shipment/:shipmentid",
+        params = arrayListOf(
+            NavParam(key = "shipmentid", required = true)
+        )
+    ),
+   
     PROFILE_BASIC(
         pageType = PageType.profileBasic,
         navName = "Basic Profile",
