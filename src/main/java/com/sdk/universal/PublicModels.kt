@@ -16,7 +16,7 @@ data class ApplicationResponse(
     
     
     @SerializedName("application")
-    var application: Application?=null
+    var application: ApplicationData?=null
     
 ): Parcelable {
     
@@ -268,10 +268,10 @@ data class SecureUrl(
 
 
 /*
-    Model: Application
+    Model: ApplicationData
 */
 @Parcelize
-data class Application(
+data class ApplicationData(
     
     
     
@@ -348,9 +348,14 @@ data class Application(
     var mobileLogo: SecureUrl?=null,
     
     @SerializedName("domain")
-    var domain: Domain?=null
+    var domain: Domain?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

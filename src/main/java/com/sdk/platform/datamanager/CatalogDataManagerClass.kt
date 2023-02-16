@@ -548,11 +548,11 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun editProduct(itemId: String,body: ProductCreateUpdateSchemaV2)
+    suspend fun patchProduct(itemId: String,body: ProductCreateUpdate)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.editProduct(
+            catalogApiList?.patchProduct(
         companyId = config.companyId, itemId = itemId, body = body)
         } else {
             null
@@ -560,11 +560,11 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun patchProduct(itemId: String,body: ProductCreateUpdate)
+    suspend fun editProduct(itemId: String,body: ProductCreateUpdateSchemaV2)
     : Deferred<Response<SuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            catalogApiList?.patchProduct(
+            catalogApiList?.editProduct(
         companyId = config.companyId, itemId = itemId, body = body)
         } else {
             null

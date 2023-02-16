@@ -1412,12 +1412,12 @@ interface CatalogApiList {
     fun getProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?, @Query("item_code") itemCode: String?)
     : Deferred<Response<SingleProductResponse>>
     
-    @PUT ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdateSchemaV2)
-    : Deferred<Response<SuccessResponse>>
-    
     @PATCH ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
     fun patchProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdate)
+    : Deferred<Response<SuccessResponse>>
+    
+    @PUT ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
+    fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdateSchemaV2)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/all_sizes")
