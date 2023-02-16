@@ -163,7 +163,6 @@ import com.google.gson.annotations.SerializedName
 
 
 
-
     /*
         Enum: PageType
         Used By: Content
@@ -338,7 +337,6 @@ import com.google.gson.annotations.SerializedName
 
 
 
-
     /*
         Enum: SubscriberStatus
         Used By: Webhook
@@ -363,5 +361,6 @@ import com.google.gson.annotations.SerializedName
             }
         }
     }
+
 
 
