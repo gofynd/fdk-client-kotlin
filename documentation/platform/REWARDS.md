@@ -712,9 +712,9 @@ Use this API to get a list of valid android paths required by the Rewards INIT A
 
 
 
-[AndroidPathsRes](#AndroidPathsRes)
+[ConfigurationRes](#ConfigurationRes)
 
-Success. Refer `AndroidPathsRes` for more details.
+Success. Refer `ConfigurationRes` for more details.
 
 
 
@@ -761,7 +761,7 @@ client.application("<APPLICATION_ID>").rewards.updateAndroidPaths(body: body).sa
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- |
-| body | [AndroidPathReq](#AndroidPathReq) | yes | Request body |
+| body | [ConfigurationRequest](#ConfigurationRequest) | yes | Request body |
 
 
 Updates the configuration or inserts new records.
@@ -771,7 +771,7 @@ Updates the configuration or inserts new records.
 
 
 
-[AndroidPathsRes](#AndroidPathsRes)
+[SetConfigurationRes](#SetConfigurationRes)
 
 ok
 
@@ -1078,11 +1078,13 @@ ok
 
  
  
- #### [AndroidPathsRes](#AndroidPathsRes)
+ #### [ConfigurationRes](#ConfigurationRes)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | ArrayList<String>? |  yes  | Contains array of string items, Valid android paths. |
+ | validAndroidPackages | ArrayList<String>? |  yes  | Contains array of string items, Valid android package names. |
+ | termsConditionsLink | String? |  yes  | A URL that redirects to the referral information suport page link |
+ | applicationId | String? |  yes  |  |
  | success | Boolean? |  yes  |  |
 
 ---
@@ -1090,11 +1092,23 @@ ok
 
  
  
- #### [AndroidPathReq](#AndroidPathReq)
+ #### [SetConfigurationRes](#SetConfigurationRes)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paths | ArrayList<String>? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationRequest](#ConfigurationRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | validAndroidPackages | ArrayList<String>? |  yes  |  |
+ | termsConditionsLink | String? |  yes  |  |
 
 ---
 

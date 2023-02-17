@@ -237,7 +237,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     suspend fun getAndroidPaths()
-    : Deferred<Response<AndroidPathsRes>>? {
+    : Deferred<Response<ConfigurationRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.getAndroidPaths(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -246,8 +246,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateAndroidPaths(body: AndroidPathReq)
-    : Deferred<Response<AndroidPathsRes>>? {
+    suspend fun updateAndroidPaths(body: ConfigurationRequest)
+    : Deferred<Response<SetConfigurationRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.updateAndroidPaths(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
