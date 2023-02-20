@@ -1255,19 +1255,24 @@ interface PosCartApiList {
 interface LogisticApiList {
     
     
-    @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
-    : Deferred<Response<GetTatProductResponse>>
+    @GET 
+    fun getPincodeCity(@Url url1: String?     ,  @Query("country_code") countryCode: String?)
+    : Deferred<Response<PincodeApiResponse>>
     
     
     @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
-    : Deferred<Response<GetPincodeZonesResponse>>
+    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
+    : Deferred<Response<TATViewResponse>>
     
     
     @GET 
-    fun getPincodeCity(@Url url1: String?    )
-    : Deferred<Response<GetPincodeCityResponse>>
+    fun getAllCountries(@Url url1: String?   )
+    : Deferred<Response<CountryListResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
 }
 

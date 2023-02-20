@@ -19,11 +19,13 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0"?.substring(1)
+                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
+            
+                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/"?.substring(1)
+            
+                    _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list"?.substring(1)
             
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
-            
-                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
             
     }
 
@@ -60,26 +62,33 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getTatProduct(body: GetTatProductReqBody): Deferred<Response<GetTatProductResponse>>? {
+    fun getPincodeCity(pincode: String, countryCode: String?=null): Deferred<Response<PincodeApiResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
+        
+        fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
+        
+        return logisticApiList?.getPincodeCity(fullUrl     ,  countryCode = countryCode)}
+
+    
+    
+    fun getTatProduct(body: TATViewRequest): Deferred<Response<TATViewResponse>>? {
         var fullUrl : String? = _relativeUrls["getTatProduct"] 
         
         return logisticApiList?.getTatProduct(fullUrl  ,body = body)}
 
     
     
-    fun getPincodeZones(body: GetPincodeZonesReqBody): Deferred<Response<GetPincodeZonesResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
+    fun getAllCountries(): Deferred<Response<CountryListResponse>>? {
+        var fullUrl : String? = _relativeUrls["getAllCountries"] 
         
-        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
+        return logisticApiList?.getAllCountries(fullUrl  )}
 
     
     
-    fun getPincodeCity(pincode: String): Deferred<Response<GetPincodeCityResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPincodeCity"] 
+    fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
         
-        fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
-        
-        return logisticApiList?.getPincodeCity(fullUrl   )}
+        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
 
     
     
