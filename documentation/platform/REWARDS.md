@@ -17,8 +17,8 @@ Earn and redeem reward points
 * [updateUserStatus](#updateuserstatus)
 * [user](#user)
 * [getUserPointsHistory](#getuserpointshistory)
-* [getAndroidPaths](#getandroidpaths)
-* [updateAndroidPaths](#updateandroidpaths)
+* [getRewardsConfiguration](#getrewardsconfiguration)
+* [setRewardsConfiguration](#setrewardsconfiguration)
 
 
 
@@ -683,14 +683,14 @@ Success. Check example below or refer `HistoryRes` for more details.
 ---
 
 
-### getAndroidPaths
+### getRewardsConfiguration
 Get all valid android paths
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getAndroidPaths().safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.getRewardsConfiguration().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -738,14 +738,14 @@ Success. Refer `ConfigurationRes` for more details.
 ---
 
 
-### updateAndroidPaths
+### setRewardsConfiguration
 Updates the collection with given android paths.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateAndroidPaths(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.setRewardsConfiguration(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

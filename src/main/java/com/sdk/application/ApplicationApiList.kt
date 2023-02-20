@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -215,7 +215,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getAddresses(@Url url1: String?    ,        @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?, @Query("user_id") userId: String?)
+    fun getAddresses(@Url url1: String?    ,       @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressesResponse>>
     
     
@@ -235,12 +235,12 @@ interface CartApiList {
     
     
     @DELETE 
-    fun removeAddress(@Url url1: String?     ,  @Query("user_id") userId: String?)
+    fun removeAddress(@Url url1: String?    )
     : Deferred<Response<DeleteAddressResponse>>
     
     
     @POST 
-    fun selectAddress(@Url url1: String?    ,      @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("user_id") userId: String?, @Body body: SelectCartAddressRequest)
+    fun selectAddress(@Url url1: String?    ,     @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -1157,7 +1157,7 @@ interface PosCartApiList {
     
     
     @GET 
-    fun getAddresses(@Url url1: String?    ,        @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?, @Query("user_id") userId: String?)
+    fun getAddresses(@Url url1: String?    ,       @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?)
     : Deferred<Response<GetAddressesResponse>>
     
     
@@ -1177,12 +1177,12 @@ interface PosCartApiList {
     
     
     @DELETE 
-    fun removeAddress(@Url url1: String?     ,  @Query("user_id") userId: String?)
+    fun removeAddress(@Url url1: String?    )
     : Deferred<Response<DeleteAddressResponse>>
     
     
     @POST 
-    fun selectAddress(@Url url1: String?    ,      @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("user_id") userId: String?, @Body body: SelectCartAddressRequest)
+    fun selectAddress(@Url url1: String?    ,     @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Body body: SelectCartAddressRequest)
     : Deferred<Response<CartDetailResponse>>
     
     

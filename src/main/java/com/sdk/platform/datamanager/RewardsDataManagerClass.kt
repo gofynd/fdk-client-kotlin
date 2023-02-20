@@ -236,20 +236,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun getAndroidPaths()
+    suspend fun getRewardsConfiguration()
     : Deferred<Response<ConfigurationRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                rewardsApiList?.getAndroidPaths(companyId = config.companyId , applicationId = applicationId  )
+                rewardsApiList?.getRewardsConfiguration(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
     }
     
     
-    suspend fun updateAndroidPaths(body: ConfigurationRequest)
+    suspend fun setRewardsConfiguration(body: ConfigurationRequest)
     : Deferred<Response<SetConfigurationRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                rewardsApiList?.updateAndroidPaths(companyId = config.companyId , applicationId = applicationId , body = body)
+                rewardsApiList?.setRewardsConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
