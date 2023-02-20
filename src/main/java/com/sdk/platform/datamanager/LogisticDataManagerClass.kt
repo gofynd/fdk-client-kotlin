@@ -68,12 +68,12 @@ class LogisticDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    suspend fun getCompanyStoreView()
+    suspend fun getCompanyStoreView(pageNumber: Int?=null, pageSize: Int?=null, zoneId: String?=null, enabled: String?=null, q: String?=null)
     : Deferred<Response<CompanyStoreView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             logisticApiList?.getCompanyStoreView(
-        companyId = config.companyId )
+        companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize, zoneId = zoneId, enabled = enabled, q = q )
         } else {
             null
         } 
@@ -140,10 +140,6 @@ class LogisticDataManagerClass(val config: PlatformConfig, val unauthorizedActio
         } 
     }
     
-    
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -175,46 +171,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-    
-    suspend fun updatePincodeMopView(body: PincodeMopData)
-    : Deferred<Response<PincodeMOPresponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                logisticApiList?.updatePincodeMopView(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePincodeBulkView(body: PincodeMopBulkData)
-    : Deferred<Response<PincodeBulkViewResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                logisticApiList?.updatePincodeBulkView(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePincodeCoDListing(body: PincodeCodStatusListingRequest)
-    : Deferred<Response<PincodeCodStatusListingResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                logisticApiList?.updatePincodeCoDListing(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePincodeAuditHistory(body: PincodeMopUpdateAuditHistoryRequest)
-    : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                logisticApiList?.updatePincodeAuditHistory(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
     
 }
 }
