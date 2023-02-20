@@ -33,6 +33,8 @@ Collect payment through many payment gateway i.e Stripe, Razorpay, Juspay etc.in
 * [edcDevice](#edcdevice)
 * [edcDevice](#edcdevice)
 * [edcDeviceList](#edcdevicelist)
+* [getPaymentModeRoutesPos](#getpaymentmoderoutespos)
+* [checkAndUpdatePaymentStatus](#checkandupdatepaymentstatus)
 
 
 
@@ -3213,7 +3215,7 @@ get details of a single edc device
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.edcDevice(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").payment.edcDevice(terminalSerialNo: terminalSerialNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3228,8 +3230,9 @@ client.application("<APPLICATION_ID>").payment.edcDevice(body: body).safeAwait{ 
 
 
 | Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [EdcDetailsRequest](#EdcDetailsRequest) | yes | Request body |
+| --------- | -----  | -------- | ----------- | 
+| terminalSerialNo | String | yes |  |  
+
 
 
 Use this API to get details of a single edc device
@@ -3253,13 +3256,86 @@ Success. Returns the single edc device mapped to the terminal. Check the example
 {
   "success": true,
   "data": {
-    "app_id": "1",
-    "terminal_serial_no": "15c26ee7297e4339",
-    "edc_serial_no": "123456789",
+    "application_id": "2",
+    "terminal_serial_no": "15c26ee7297e4334",
+    "edc_device_serial_no": "123456784",
+    "terminal_unique_identifier": "1231208734",
     "merchant_store_pos_code": "12345123",
     "store_id": 12312,
     "device_tag": "Counter 2",
     "is_active": true
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### edcDevice
+map new edc device to the terminal
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").payment.edcDevice(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [EdcAddRequest](#EdcAddRequest) | yes | Request body |
+
+
+Use this API to map new edc device to the terminal
+
+*Returned Response:*
+
+
+
+
+[EdcDeviceAddResponse](#EdcDeviceAddResponse)
+
+Success. Returns the single edc device mapped to the terminal. Check the example shown below or refer `EdcDeviceAddResponseSchema` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "data": {
+    "application_id": "2",
+    "aggregator_id": 1,
+    "terminal_serial_no": "15c26ee7297e4334",
+    "edc_device_serial_no": "123456784",
+    "terminal_unique_identifier": "1231208734",
+    "merchant_store_pos_code": null,
+    "store_id": 12312,
+    "device_tag": "Counter 2",
+    "is_active": false
   }
 }
 ```
@@ -3309,70 +3385,9 @@ Use this API to Update store id and device tag of edc device
 
 
 
-[EdcDeviceAddUpdateResponse](#EdcDeviceAddUpdateResponse)
+[EdcDeviceUpdateResponse](#EdcDeviceUpdateResponse)
 
-Check the example shown below or refer `EdcDeviceAddUpdateResponseSchema` for more details.
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-{
-  "success": true
-}
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### edcDevice
-map new edc device to the terminal
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").payment.edcDevice(body: body).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- |
-| body | [EdcAddRequest](#EdcAddRequest) | yes | Request body |
-
-
-Use this API to map new edc device to the terminal
-
-*Returned Response:*
-
-
-
-
-[EdcDeviceAddUpdateResponse](#EdcDeviceAddUpdateResponse)
-
-Success. Returns the single edc device mapped to the terminal. Check the example shown below or refer `EdcDeviceAddUpdateResponseSchema` for more details.
+Check the example shown below or refer `EdcDeviceUpdateResponseSchema` for more details.
 
 
 
@@ -3405,7 +3420,7 @@ get all the device list of an app
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.edcDeviceList().safeAwait{ response, error->
+client.application("<APPLICATION_ID>").payment.edcDeviceList(pageNumber: pageNumber, isActive: isActive, storeId: storeId, deviceTag: deviceTag, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3417,6 +3432,15 @@ client.application("<APPLICATION_ID>").payment.edcDeviceList().safeAwait{ respon
 
 
 
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| pageNumber | Int? | no |  |   
+| isActive | Boolean? | no |  |   
+| storeId | Int? | no |  |   
+| deviceTag | String? | no |  |   
+| pageSize | Int? | no |  |  
 
 
 
@@ -3440,17 +3464,1302 @@ Success. Returns the list of devices linked to the application Check the example
 ```json
 {
   "success": true,
+  "total_stores": 4,
+  "active_device_count": 2,
+  "inactive_device_count": 0,
+  "device_count": 1,
+  "current_page": 1,
+  "total_page": 1,
+  "next_page": false,
   "device_list": [
     {
-      "app_id": "test_app_12345",
-      "terminal_serial_no": "0123456789",
-      "edc_serial_no": "123456789",
-      "merchant_store_pos_code": "12345123",
+      "application_id": "2",
+      "terminal_serial_no": "15c26ee7297e4331",
+      "edc_device_serial_no": "123456781",
+      "terminal_unique_identifier": "1231242081",
+      "merchant_store_pos_code": "122120009",
       "store_id": 12312,
-      "device_tag": "Counter 2000",
-      "is_active": false
+      "device_tag": "Counter 2",
+      "is_active": true
     }
   ]
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getPaymentModeRoutesPos
+Get All Valid Payment Options
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").payment.getPaymentModeRoutesPos(refresh: refresh, requestType: requestType).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| refresh | Boolean | yes |  |   
+| requestType | String | yes |  |  
+
+
+
+Use this API to get Get All Valid Payment Options for making payment
+
+*Returned Response:*
+
+
+
+
+[PaymentOptionsResponse](#PaymentOptionsResponse)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "success": true,
+  "payment_options": {
+    "payment_option": [
+      {
+        "name": "CARD",
+        "display_priority": 2,
+        "payment_mode_id": 2,
+        "display_name": "Card",
+        "list": [],
+        "anonymous_enable": true,
+        "aggregator_name": "Razorpay",
+        "add_card_enabled": false,
+        "save_card": true,
+        "types": [],
+        "networks": [],
+        "banks": []
+      },
+      {
+        "name": "NB",
+        "display_priority": 3,
+        "payment_mode_id": 3,
+        "display_name": "Net Banking",
+        "list": [
+          {
+            "aggregator_name": "Razorpay",
+            "name": "ICICI Bank",
+            "code": "ICIC",
+            "bank_name": "ICICI Bank",
+            "bank_code": "ICIC",
+            "url": "https://hdn-1.fynd.com/payment/NB_ICICI.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_ICICI.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_ICICI.png"
+            },
+            "merchant_code": "NB_ICICI",
+            "display_priority": 1,
+            "display_name": "ICICI Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "HDFC Bank",
+            "code": "HDFC",
+            "bank_name": "HDFC Bank",
+            "bank_code": "HDFC",
+            "url": "https://hdn-1.fynd.com/payment/NB_HDFC.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_HDFC.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_HDFC.png"
+            },
+            "merchant_code": "NB_HDFC",
+            "display_priority": 2,
+            "display_name": "HDFC Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Axis Bank",
+            "code": "UTIB",
+            "bank_name": "Axis Bank",
+            "bank_code": "UTIB",
+            "url": "https://hdn-1.fynd.com/payment/NB_AXIS.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_AXIS.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_AXIS.png"
+            },
+            "merchant_code": "NB_AXIS",
+            "display_priority": 3,
+            "display_name": "Axis Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of India",
+            "code": "SBIN",
+            "bank_name": "State Bank of India",
+            "bank_code": "SBIN",
+            "url": "https://hdn-1.fynd.com/payment/NB_SBI.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_SBI.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_SBI.png"
+            },
+            "merchant_code": "NB_SBI",
+            "display_priority": 4,
+            "display_name": "State Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Kotak Mahindra Bank",
+            "code": "KKBK",
+            "bank_name": "Kotak Mahindra Bank",
+            "bank_code": "KKBK",
+            "url": "https://hdn-1.fynd.com/payment/NB_KOTAK.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_KOTAK.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_KOTAK.png"
+            },
+            "merchant_code": "NB_KOTAK",
+            "display_priority": 5,
+            "display_name": "Kotak Mahindra Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Indusind Bank",
+            "code": "INDB",
+            "bank_name": "Indusind Bank",
+            "bank_code": "INDB",
+            "url": "https://hdn-1.fynd.com/payment/NB_INDUS.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_INDUS.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_INDUS.png"
+            },
+            "merchant_code": "INDB",
+            "display_priority": 6,
+            "display_name": "Indusind Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "City Union Bank",
+            "code": "CIUB",
+            "bank_name": "City Union Bank",
+            "bank_code": "CIUB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_CUB",
+            "display_priority": 9,
+            "display_name": "City Union Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Catholic Syrian Bank",
+            "code": "CSBK",
+            "bank_name": "Catholic Syrian Bank",
+            "bank_code": "CSBK",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "CSBK",
+            "display_priority": 11,
+            "display_name": "Catholic Syrian Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Hyderabad",
+            "code": "SBHY",
+            "bank_name": "State Bank of Hyderabad",
+            "bank_code": "SBHY",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBH",
+            "display_priority": 12,
+            "display_name": "State Bank of Hyderabad"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Allahabad Bank",
+            "code": "ALLA",
+            "bank_name": "Allahabad Bank",
+            "bank_code": "ALLA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "ALLA",
+            "display_priority": 15,
+            "display_name": "Allahabad Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Syndicate Bank",
+            "code": "SYNB",
+            "bank_name": "Syndicate Bank",
+            "bank_code": "SYNB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SYNB",
+            "display_priority": 17,
+            "display_name": "Syndicate Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Corporation Bank",
+            "code": "CORP",
+            "bank_name": "Corporation Bank",
+            "bank_code": "CORP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_CORP",
+            "display_priority": 18,
+            "display_name": "Corporation Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab National Bank - Corporate Banking",
+            "code": "PUNB_C",
+            "bank_name": "Punjab National Bank - Corporate Banking",
+            "bank_code": "PUNB_C",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PUNB_C",
+            "display_priority": 19,
+            "display_name": "Punjab National Bank - Corporate Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Canara Bank",
+            "code": "CNRB",
+            "bank_name": "Canara Bank",
+            "bank_code": "CNRB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_CANR",
+            "display_priority": 20,
+            "display_name": "Canara Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Saraswat Co-operative Bank",
+            "code": "SRCB",
+            "bank_name": "Saraswat Co-operative Bank",
+            "bank_code": "SRCB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SRCB",
+            "display_priority": 21,
+            "display_name": "Saraswat Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Deutsche Bank",
+            "code": "DEUT",
+            "bank_name": "Deutsche Bank",
+            "bank_code": "DEUT",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_DEUT",
+            "display_priority": 22,
+            "display_name": "Deutsche Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Dhanlaxmi Bank",
+            "code": "DLXB",
+            "bank_name": "Dhanlaxmi Bank",
+            "bank_code": "DLXB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "DLXB",
+            "display_priority": 24,
+            "display_name": "Dhanlaxmi Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Oriental Bank of Commerce",
+            "code": "ORBC",
+            "bank_name": "Oriental Bank of Commerce",
+            "bank_code": "ORBC",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "ORBC",
+            "display_priority": 25,
+            "display_name": "Oriental Bank of Commerce"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab National Bank - Retail Banking",
+            "code": "PUNB_R",
+            "bank_name": "Punjab National Bank - Retail Banking",
+            "bank_code": "PUNB_R",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PUNB_R",
+            "display_priority": 26,
+            "display_name": "Punjab National Bank - Retail Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Bikaner and Jaipur",
+            "code": "SBBJ",
+            "bank_name": "State Bank of Bikaner and Jaipur",
+            "bank_code": "SBBJ",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBBJ",
+            "display_priority": 27,
+            "display_name": "State Bank of Bikaner and Jaipur"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Indian Overseas Bank",
+            "code": "IOBA",
+            "bank_name": "Indian Overseas Bank",
+            "bank_code": "IOBA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_IOB",
+            "display_priority": 28,
+            "display_name": "Indian Overseas Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Travancore",
+            "code": "SBTR",
+            "bank_name": "State Bank of Travancore",
+            "bank_code": "SBTR",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBT",
+            "display_priority": 29,
+            "display_name": "State Bank of Travancore"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Airtel Payments Bank",
+            "code": "AIRP",
+            "bank_name": "Airtel Payments Bank",
+            "bank_code": "AIRP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "AIRP",
+            "display_priority": 30,
+            "display_name": "Airtel Payments Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Development Bank of Singapore",
+            "code": "DBSS",
+            "bank_name": "Development Bank of Singapore",
+            "bank_code": "DBSS",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "DBSS",
+            "display_priority": 31,
+            "display_name": "Development Bank of Singapore"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Vijaya Bank",
+            "code": "VIJB",
+            "bank_name": "Vijaya Bank",
+            "bank_code": "VIJB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_VJYB",
+            "display_priority": 32,
+            "display_name": "Vijaya Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "NKGSB Co-operative Bank",
+            "code": "NKGS",
+            "bank_name": "NKGSB Co-operative Bank",
+            "bank_code": "NKGS",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NKGS",
+            "display_priority": 33,
+            "display_name": "NKGSB Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "RBL Bank",
+            "code": "RATN",
+            "bank_name": "RBL Bank",
+            "bank_code": "RATN",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "RATN",
+            "display_priority": 35,
+            "display_name": "RBL Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of Baroda - Retail Banking",
+            "code": "BARB_R",
+            "bank_name": "Bank of Baroda - Retail Banking",
+            "bank_code": "BARB_R",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "BARB_R",
+            "display_priority": 36,
+            "display_name": "Bank of Baroda - Retail Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Karnataka Bank",
+            "code": "KARB",
+            "bank_name": "Karnataka Bank",
+            "bank_code": "KARB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_KARN",
+            "display_priority": 37,
+            "display_name": "Karnataka Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Tamilnadu State Apex Co-operative Bank",
+            "code": "TNSC",
+            "bank_name": "Tamilnadu State Apex Co-operative Bank",
+            "bank_code": "TNSC",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "TNSC",
+            "display_priority": 38,
+            "display_name": "Tamilnadu State Apex Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Tamilnadu Mercantile Bank",
+            "code": "TMBL",
+            "bank_name": "Tamilnadu Mercantile Bank",
+            "bank_code": "TMBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "TMBL",
+            "display_priority": 40,
+            "display_name": "Tamilnadu Mercantile Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Lakshmi Vilas Bank - Retail Banking",
+            "code": "LAVB_R",
+            "bank_name": "Lakshmi Vilas Bank - Retail Banking",
+            "bank_code": "LAVB_R",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "LAVB_R",
+            "display_priority": 42,
+            "display_name": "Lakshmi Vilas Bank - Retail Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Dena Bank",
+            "code": "BKDN",
+            "bank_name": "Dena Bank",
+            "bank_code": "BKDN",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "BKDN",
+            "display_priority": 43,
+            "display_name": "Dena Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Federal Bank",
+            "code": "FDRL",
+            "bank_name": "Federal Bank",
+            "bank_code": "FDRL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_FED",
+            "display_priority": 44,
+            "display_name": "Federal Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Indian Bank",
+            "code": "IDIB",
+            "bank_name": "Indian Bank",
+            "bank_code": "IDIB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_INDB",
+            "display_priority": 45,
+            "display_name": "Indian Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "South Indian Bank",
+            "code": "SIBL",
+            "bank_name": "South Indian Bank",
+            "bank_code": "SIBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SOIB",
+            "display_priority": 46,
+            "display_name": "South Indian Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "IDBI",
+            "code": "IBKL",
+            "bank_name": "IDBI",
+            "bank_code": "IBKL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "IBKL",
+            "display_priority": 49,
+            "display_name": "IDBI"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Karur Vysya Bank",
+            "code": "KVBL",
+            "bank_name": "Karur Vysya Bank",
+            "bank_code": "KVBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_KVB",
+            "display_priority": 50,
+            "display_name": "Karur Vysya Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab & Sind Bank",
+            "code": "PSIB",
+            "bank_name": "Punjab & Sind Bank",
+            "bank_code": "PSIB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PSIB",
+            "display_priority": 52,
+            "display_name": "Punjab & Sind Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "UCO Bank",
+            "code": "UCBA",
+            "bank_name": "UCO Bank",
+            "bank_code": "UCBA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "UCBA",
+            "display_priority": 53,
+            "display_name": "UCO Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of Bahrein and Kuwait",
+            "code": "BBKM",
+            "bank_name": "Bank of Bahrein and Kuwait",
+            "bank_code": "BBKM",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "BBKM",
+            "display_priority": 54,
+            "display_name": "Bank of Bahrein and Kuwait"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Yes Bank",
+            "code": "YESB",
+            "bank_name": "Yes Bank",
+            "bank_code": "YESB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_YESB",
+            "display_priority": 55,
+            "display_name": "Yes Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Punjab & Maharashtra Co-operative Bank",
+            "code": "PMCB",
+            "bank_name": "Punjab & Maharashtra Co-operative Bank",
+            "bank_code": "PMCB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "PMCB",
+            "display_priority": 56,
+            "display_name": "Punjab & Maharashtra Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of India",
+            "code": "BKID",
+            "bank_name": "Bank of India",
+            "bank_code": "BKID",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_BOI",
+            "display_priority": 57,
+            "display_name": "Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Bank of Maharashtra",
+            "code": "MAHB",
+            "bank_name": "Bank of Maharashtra",
+            "bank_code": "MAHB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_BOM",
+            "display_priority": 58,
+            "display_name": "Bank of Maharashtra"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "IDFC Bank",
+            "code": "IDFB",
+            "bank_name": "IDFC Bank",
+            "bank_code": "IDFB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "IDFB",
+            "display_priority": 59,
+            "display_name": "IDFC Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Janata Sahakari Bank (Pune)",
+            "code": "JSBP",
+            "bank_name": "Janata Sahakari Bank (Pune)",
+            "bank_code": "JSBP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "JSBP",
+            "display_priority": 60,
+            "display_name": "Janata Sahakari Bank (Pune)"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Shamrao Vithal Co-operative Bank",
+            "code": "SVCB",
+            "bank_name": "Shamrao Vithal Co-operative Bank",
+            "bank_code": "SVCB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SVCB",
+            "display_priority": 61,
+            "display_name": "Shamrao Vithal Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Cosmos Co-operative Bank",
+            "code": "COSB",
+            "bank_name": "Cosmos Co-operative Bank",
+            "bank_code": "COSB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "COSB",
+            "display_priority": 62,
+            "display_name": "Cosmos Co-operative Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Mysore",
+            "code": "SBMY",
+            "bank_name": "State Bank of Mysore",
+            "bank_code": "SBMY",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBM",
+            "display_priority": 63,
+            "display_name": "State Bank of Mysore"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Andhra Bank",
+            "code": "ANDB",
+            "bank_name": "Andhra Bank",
+            "bank_code": "ANDB",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "ANDB",
+            "display_priority": 65,
+            "display_name": "Andhra Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Jammu and Kashmir Bank",
+            "code": "JAKA",
+            "bank_name": "Jammu and Kashmir Bank",
+            "bank_code": "JAKA",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_JNK",
+            "display_priority": 66,
+            "display_name": "Jammu and Kashmir Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "United Bank of India",
+            "code": "UTBI",
+            "bank_name": "United Bank of India",
+            "bank_code": "UTBI",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "UTBI",
+            "display_priority": 67,
+            "display_name": "United Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Lakshmi Vilas Bank - Corporate Banking",
+            "code": "LAVB_C",
+            "bank_name": "Lakshmi Vilas Bank - Corporate Banking",
+            "bank_code": "LAVB_C",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "LAVB_C",
+            "display_priority": 69,
+            "display_name": "Lakshmi Vilas Bank - Corporate Banking"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "State Bank of Patiala",
+            "code": "STBP",
+            "bank_name": "State Bank of Patiala",
+            "bank_code": "STBP",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_SBP",
+            "display_priority": 70,
+            "display_name": "State Bank of Patiala"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "DCB Bank",
+            "code": "DCBL",
+            "bank_name": "DCB Bank",
+            "bank_code": "DCBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "DCBL",
+            "display_priority": 71,
+            "display_name": "DCB Bank"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Union Bank of India",
+            "code": "UBIN",
+            "bank_name": "Union Bank of India",
+            "bank_code": "UBIN",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "NB_UBI",
+            "display_priority": 73,
+            "display_name": "Union Bank of India"
+          },
+          {
+            "aggregator_name": "Razorpay",
+            "name": "Standard Chartered Bank",
+            "code": "SCBL",
+            "bank_name": "Standard Chartered Bank",
+            "bank_code": "SCBL",
+            "url": "https://hdn-1.fynd.com/payment/NB_generic.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/NB_generic.png",
+              "large": "https://hdn-1.fynd.com/payment/NB_generic.png"
+            },
+            "merchant_code": "SCBL",
+            "display_priority": 74,
+            "display_name": "Standard Chartered Bank"
+          }
+        ]
+      },
+      {
+        "name": "WL",
+        "display_priority": 4,
+        "payment_mode_id": 4,
+        "display_name": "Wallet",
+        "list": [
+          {
+            "wallet_name": "Paytm",
+            "wallet_code": "paytm",
+            "name": "Paytm",
+            "display_name": "Paytm",
+            "code": "PAYTM",
+            "wallet_id": 4,
+            "merchant_code": "PAYTM",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/paytm_logo_small.png",
+              "large": "https://hdn-1.fynd.com/payment/paytm_logo_large.png"
+            },
+            "aggregator_name": "Juspay",
+            "display_priority": 1
+          },
+          {
+            "wallet_name": "Mobikwik",
+            "wallet_code": "mobikwik",
+            "name": "Mobikwik",
+            "display_name": "Mobikwik",
+            "code": "MOBIKWIK",
+            "wallet_id": 5,
+            "merchant_code": "MOBIKWIK",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/mobikwik_logo_small.png",
+              "large": "https://hdn-1.fynd.com/payment/mobikwik_logo_small.png"
+            },
+            "aggregator_name": "Juspay",
+            "display_priority": 3
+          },
+          {
+            "wallet_name": "Ola Money",
+            "wallet_code": "olamoney",
+            "name": "Ola Money",
+            "display_name": "Ola Money",
+            "code": "OLAMONEY",
+            "wallet_id": 6,
+            "merchant_code": "OLAMONEY",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/olamoney.png",
+              "large": "https://hdn-1.fynd.com/payment/olamoney.png"
+            },
+            "aggregator_name": "Razorpay",
+            "display_priority": 4
+          },
+          {
+            "wallet_name": "Amazon Pay",
+            "wallet_code": "amazonpay",
+            "name": "Amazon Pay",
+            "display_name": "Amazon Pay",
+            "code": "AMAZONPAY",
+            "wallet_id": 10,
+            "merchant_code": "AMAZONPAY",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/amazon-pay.png",
+              "large": "https://hdn-1.fynd.com/payment/amazon-pay.png"
+            },
+            "aggregator_name": "Razorpay",
+            "display_priority": 9
+          },
+          {
+            "wallet_name": "PayPal",
+            "wallet_code": "paypal",
+            "name": "PayPal",
+            "display_name": "PayPal",
+            "code": "PAYPAL",
+            "wallet_id": 11,
+            "merchant_code": "PAYPAL",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/paypal.jpg",
+              "large": "https://hdn-1.fynd.com/payment/paypal.jpg "
+            },
+            "aggregator_name": "Razorpay",
+            "display_priority": 10
+          }
+        ]
+      },
+      {
+        "name": "UPI",
+        "display_priority": 9,
+        "payment_mode_id": 7,
+        "display_name": "UPI",
+        "list": [
+          {
+            "aggregator_name": "Razorpay",
+            "name": "UPI",
+            "display_name": "BHIM UPI",
+            "code": "UPI",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/upi_150x100.png",
+              "small": "https://hdn-1.fynd.com/payment/upi_100x78.png"
+            },
+            "merchant_code": "UPI",
+            "timeout": 240,
+            "retry_count": 0,
+            "fynd_vpa": "shopsense.rzp@hdfcbank",
+            "intent_flow": true,
+            "intent_app": [
+              {
+                "code": "google_pay",
+                "display_name": "Google Pay",
+                "package_name": "com.google.android.apps.nbu.paisa.user",
+                "logos": {
+                  "small": "https://hdn-1.fynd.com/payment/upi-google-pay.png",
+                  "large": "https://hdn-1.fynd.com/payment/upi-google-pay.png"
+                }
+              }
+            ],
+            "intent_app_error_list": [
+              "com.csam.icici.bank.imobile",
+              "in.org.npci.upiapp",
+              "com.whatsapp"
+            ],
+            "intent_app_error_dict_list": [
+              {
+                "package_name": "com.csam.icici.bank.imobile",
+                "code": "icici"
+              },
+              {
+                "package_name": "in.org.npci.upiapp",
+                "code": "upiapp"
+              },
+              {
+                "package_name": "com.whatsapp",
+                "code": "whatsapp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "EMI",
+        "display_priority": 18,
+        "payment_mode_id": 19,
+        "display_name": "Easy EMI",
+        "list": [
+          {
+            "aggregator_name": "Razorpay",
+            "name": "EMI",
+            "display_name": "Easy EMI",
+            "code": "EMI",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Pos+Logo.png",
+              "small": "https://hdn-1.fynd.com/payment/Pos+Logo.png"
+            },
+            "merchant_code": "EMI"
+          }
+        ]
+      },
+      {
+        "name": "JUSPAYPG",
+        "display_priority": 18,
+        "payment_mode_id": 23,
+        "display_name": "Pay Using Juspay",
+        "list": [
+          {
+            "aggregator_name": "Juspay",
+            "name": "JUSPAYPG",
+            "display_name": "Pay Using Juspay",
+            "code": "JUSPAYPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/netbanking.png",
+              "small": "https://hdn-1.fynd.com/payment/netbanking.png"
+            },
+            "merchant_code": "JUSPAYPG"
+          }
+        ]
+      },
+      {
+        "name": "PG_PAYMENT",
+        "display_priority": 20,
+        "display_name": "Other payment gateway",
+        "list": [
+          {
+            "aggregator_name": "Stripe",
+            "name": "STRIPEPG",
+            "display_name": "Pay using Stripe",
+            "code": "STRIPEPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Pos+Logo.png",
+              "small": "https://hdn-1.fynd.com/payment/Pos+Logo.png"
+            },
+            "merchant_code": "STRIPEPG"
+          },
+          {
+            "aggregator_name": "Ccavenue",
+            "name": "CCAVENUEPG",
+            "display_name": "Pay using Ccavenue",
+            "code": "CCAVENUEPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Pos+Logo.png",
+              "small": "https://hdn-1.fynd.com/payment/Pos+Logo.png"
+            },
+            "merchant_code": "CCAVENUEPG"
+          },
+          {
+            "aggregator_name": "Payumoney",
+            "name": "PAYUMONEYPG",
+            "display_name": "Pay using Payumoney",
+            "code": "PAYUMONEYPG",
+            "logo_url": {
+              "large": "https://fynd-obscuro-media-new.s3.amazonaws.com/payment/payu_logo_large.png",
+              "small": "https://fynd-obscuro-media-new.s3.amazonaws.com/payment/payu_logo_small.png"
+            },
+            "merchant_code": "PAYUMONEYPG"
+          },
+          {
+            "aggregator_name": "Payubiz",
+            "name": "PAYUBIZPG",
+            "display_name": "Pay using Payubiz",
+            "code": "PAYUBIZPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/payu.png",
+              "small": "https://hdn-1.fynd.com/payment/payu.png"
+            },
+            "merchant_code": "PAYUBIZPG"
+          }
+        ]
+      },
+      {
+        "name": "PL",
+        "display_priority": 21,
+        "display_name": "Pay Later",
+        "list": [
+          {
+            "aggregator_name": "Simpl",
+            "name": "Simpl",
+            "display_name": "Simpl",
+            "code": "SIMPL",
+            "merchant_code": "SIMPL",
+            "logo": "https://hdn-1.fynd.com/payment/simpl_logo.png",
+            "logo_url": {
+              "small": "https://hdn-1.fynd.com/payment/simpl_logo.png",
+              "large": "https://hdn-1.fynd.com/payment/simpl_logo.png"
+            }
+          },
+          {
+            "aggregator_name": "Rupifi",
+            "name": "RUPIFIPG",
+            "display_name": "Pay using Rupifi",
+            "code": "RUPIFIPG",
+            "logo_url": {
+              "large": "https://hdn-1.fynd.com/payment/Rupifi.png",
+              "small": "https://hdn-1.fynd.com/payment/Rupifi.png"
+            },
+            "merchant_code": "RUPIFIPG"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### checkAndUpdatePaymentStatus
+Performs continuous polling to check status of payment on the server
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").payment.checkAndUpdatePaymentStatus(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [PaymentStatusUpdateRequest](#PaymentStatusUpdateRequest) | yes | Request body |
+
+
+Use this API to perform continuous polling at intervals to check the status of payment until timeout.
+
+*Returned Response:*
+
+
+
+
+[PaymentStatusUpdateResponse](#PaymentStatusUpdateResponse)
+
+Success. Returns the status of payment. Check the example shown below or refer `PaymentStatusUpdateResponse` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "aggregator_name": "UPI_Razorpay",
+  "status": "success",
+  "retry": false
 }
 ```
 </details>
@@ -3475,12 +4784,12 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
- | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
- | appId | String |  no  | Application Id to which Payment config Mapped |
- | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
- | created | Boolean |  no  | Response is created or not |
  | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
+ | appId | String |  no  | Application Id to which Payment config Mapped |
+ | created | Boolean |  no  | Response is created or not |
+ | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
+ | success | Boolean |  no  | Response is successful or not |
+ | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
 
 ---
 
@@ -3491,8 +4800,8 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Error human understandable description. |
  | success | Boolean |  no  | Response is successful or not |
+ | description | String |  no  | Error human understandable description. |
  | code | String |  no  | Error descrption code. |
 
 ---
@@ -3504,11 +4813,11 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | secret | String |  no  | Secret Key of the payment aggregator |
+ | configType | String |  no  | Config Type of the aggregator |
  | isActive | Boolean? |  yes  | Enable/ Disable Flag |
+ | secret | String |  no  | Secret Key of the payment aggregator |
  | key | String |  no  | Api key of the payment aggregator |
  | merchantSalt | String |  no  | Merchant key of the payment aggregator |
- | configType | String |  no  | Config Type of the aggregator |
 
 ---
 
@@ -3519,8 +4828,8 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregatorName | [PaymentGatewayConfig](#PaymentGatewayConfig)? |  yes  |  |
  | isActive | Boolean? |  yes  | Enable/ Disable Flag |
+ | aggregatorName | [PaymentGatewayConfig](#PaymentGatewayConfig)? |  yes  |  |
  | appId | String |  no  | Application Id to which Payment config Mapped |
 
 ---
@@ -3568,8 +4877,8 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  | code |
  | packageName | String? |  yes  | package_name |
+ | code | String? |  yes  | code |
 
 ---
 
@@ -3592,10 +4901,10 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayName | String? |  yes  | display_name |
- | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
- | code | String? |  yes  | code |
  | packageName | String? |  yes  | package_name |
+ | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
+ | displayName | String? |  yes  | display_name |
+ | code | String? |  yes  | code |
 
 ---
 
@@ -3606,39 +4915,39 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayName | String? |  yes  | display name |
- | cardIssuer | String? |  yes  | card_issuer |
  | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
- | codLimit | Double? |  yes  | cod limit |
- | cardToken | String? |  yes  | card_token |
- | expired | Boolean? |  yes  | expired |
- | fyndVpa | String? |  yes  | fynd_vpa |
- | displayPriority | Int? |  yes  | Dispaly Priority |
- | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
- | expYear | Int? |  yes  | exp_year |
- | codLimitPerOrder | Double? |  yes  | Cod limit per order |
- | name | String? |  yes  | name |
- | cardType | String? |  yes  | card_type |
- | cardIsin | String? |  yes  | card_isin |
- | cardId | String? |  yes  | card_id |
- | merchantCode | String? |  yes  | merchant code |
- | intentFlow | Boolean? |  yes  | intent_flow |
- | code | String? |  yes  | code |
- | cardBrandImage | String? |  yes  | card_brand_image |
- | remainingLimit | Double? |  yes  | Remaining limit |
- | cardReference | String? |  yes  | card_reference |
- | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
- | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
- | cardName | String? |  yes  | card_name |
- | aggregatorName | String |  no  | aggregator_name |
  | nickname | String? |  yes  | nickname |
- | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
- | cardNumber | String? |  yes  | card_number |
- | cardFingerprint | String? |  yes  | card_fingerprint |
- | cardBrand | String? |  yes  | card_brand |
- | timeout | Int? |  yes  | timeout |
+ | cardBrandImage | String? |  yes  | card_brand_image |
+ | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
  | retryCount | Int? |  yes  | retry_count |
+ | aggregatorName | String |  no  | aggregator_name |
+ | merchantCode | String? |  yes  | merchant code |
+ | timeout | Int? |  yes  | timeout |
+ | displayName | String? |  yes  | display name |
+ | fyndVpa | String? |  yes  | fynd_vpa |
+ | expired | Boolean? |  yes  | expired |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
+ | name | String? |  yes  | name |
+ | displayPriority | Int? |  yes  | Dispaly Priority |
+ | expYear | Int? |  yes  | exp_year |
+ | cardReference | String? |  yes  | card_reference |
+ | cardName | String? |  yes  | card_name |
+ | codLimit | Double? |  yes  | cod limit |
+ | cardId | String? |  yes  | card_id |
+ | code | String? |  yes  | code |
+ | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
+ | remainingLimit | Double? |  yes  | Remaining limit |
  | expMonth | Int? |  yes  | exp_month |
+ | cardIsin | String? |  yes  | card_isin |
+ | cardFingerprint | String? |  yes  | card_fingerprint |
+ | codLimitPerOrder | Double? |  yes  | Cod limit per order |
+ | cardType | String? |  yes  | card_type |
+ | cardIssuer | String? |  yes  | card_issuer |
+ | cardToken | String? |  yes  | card_token |
+ | cardBrand | String? |  yes  | card_brand |
+ | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
+ | intentFlow | Boolean? |  yes  | intent_flow |
+ | cardNumber | String? |  yes  | card_number |
 
 ---
 
@@ -3649,15 +4958,15 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregatorName | String? |  yes  | Dispaly Priority |
- | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
+ | name | String |  no  | Payment mode name |
  | displayName | String |  no  | Payment mode display name |
  | saveCard | Boolean? |  yes  | Card save or not |
+ | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
  | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
- | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
- | name | String |  no  | Payment mode name |
- | displayPriority | Int |  no  | Dispaly Priority |
  | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
+ | aggregatorName | String? |  yes  | Dispaly Priority |
+ | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
+ | displayPriority | Int |  no  | Dispaly Priority |
 
 ---
 
@@ -3691,13 +5000,13 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | moreAttributes | HashMap<String,Any> |  no  | bank details object |
- | customers | HashMap<String,Any> |  no  | customers details object |
- | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | isDefault | Boolean |  no  | default or not  |
- | transferType | String |  no  | transafer type |
  | uniqueTransferNo | HashMap<String,Any> |  no  | display priority of the payment mode |
+ | moreAttributes | HashMap<String,Any> |  no  | bank details object |
+ | isDefault | Boolean |  no  | default or not  |
+ | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
+ | customers | HashMap<String,Any> |  no  | customers details object |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | transferType | String |  no  | transafer type |
 
 ---
 
@@ -3721,13 +5030,13 @@ Success. Returns the list of devices linked to the application Check the example
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | pincode | Int? |  yes  |  |
- | accountType | String |  no  |  |
  | bankName | String? |  yes  |  |
+ | city | String? |  yes  |  |
  | ifscCode | String |  no  |  |
+ | accountType | String |  no  |  |
+ | accountHolder | String? |  yes  |  |
  | state | String? |  yes  |  |
  | accountNo | String? |  yes  |  |
- | accountHolder | String? |  yes  |  |
- | city | String? |  yes  |  |
  | country | String? |  yes  |  |
  | branchName | String? |  yes  |  |
 
@@ -3740,10 +5049,10 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uniqueExternalId | String |  no  | Unique Id of Payout |
- | aggregator | String |  no  | Aggregator Name |
  | users | HashMap<String,Any> |  no  | payout users object |
  | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
+ | uniqueExternalId | String |  no  | Unique Id of Payout |
+ | aggregator | String |  no  | Aggregator Name |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
  | transferType | String |  no  | transafer type |
 
@@ -3756,16 +5065,16 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | uniqueTransferNo | String |  no  | unique transfer no |
+ | created | Boolean |  no  | created flag |
+ | payouts | HashMap<String,Any> |  no  | payout  object |
  | success | Boolean |  no  | Response is successful or not |
- | aggregator | String |  no  | Aggregator Name |
  | users | HashMap<String,Any> |  no  | users details object |
  | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
- | payouts | HashMap<String,Any> |  no  | payout  object |
+ | aggregator | String |  no  | Aggregator Name |
  | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | transferType | String |  no  | transfer type |
- | created | Boolean |  no  | created flag |
- | uniqueTransferNo | String |  no  | unique transfer no |
  | paymentStatus | String |  no  | status of payment |
+ | transferType | String |  no  | transfer type |
 
 ---
 
@@ -3776,9 +5085,9 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isDefault | Boolean |  no  | Enable/Disable Default Payout |
  | success | Boolean |  no  | Response is successful or not |
  | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | isDefault | Boolean |  no  | Enable/Disable Default Payout |
 
 ---
 
@@ -3789,9 +5098,9 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isDefault | Boolean |  no  | Enable/Disable Default Payout |
- | uniqueExternalId | String |  no  | Unique Id of Payout |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
+ | uniqueExternalId | String |  no  | Unique Id of Payout |
+ | isDefault | Boolean |  no  | Enable/Disable Default Payout |
 
 ---
 
@@ -3837,8 +5146,8 @@ Success. Returns the list of devices linked to the application Check the example
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean |  no  | Response is successful or not |
- | aggregator | String |  no  | Aggregator Name |
  | config | HashMap<String,Any> |  no  | Aggregator Config |
+ | aggregator | String |  no  | Aggregator Name |
 
 ---
 
@@ -3873,9 +5182,9 @@ Success. Returns the list of devices linked to the application Check the example
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean |  no  | Success or failure flag. |
- | isVerifiedFlag | Boolean? |  yes  |  |
  | data | HashMap<String,Any>? |  yes  | Refund account data. |
  | message | String |  no  | Response message |
+ | isVerifiedFlag | Boolean? |  yes  |  |
 
 ---
 
@@ -3886,8 +5195,8 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Not Found |
  | success | Boolean |  no  | Response is successful or not |
+ | description | String |  no  | Not Found |
  | code | String |  no  | Bad Request Data |
 
 ---
@@ -3901,8 +5210,8 @@ Success. Returns the list of devices linked to the application Check the example
  | ---------- | ---- | -------- | ----------- |
  | bankName | String |  no  |  |
  | ifscCode | String |  no  |  |
- | accountNo | String |  no  |  |
  | accountHolder | String |  no  |  |
+ | accountNo | String |  no  |  |
  | branchName | String |  no  |  |
 
 ---
@@ -3926,8 +5235,8 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankName | String |  no  | Bank Name Of Account |
  | success | Boolean? |  yes  | Response is successful or not |
+ | bankName | String |  no  | Bank Name Of Account |
  | branchName | String |  no  | Branch Name Of Account |
 
 ---
@@ -3939,25 +5248,25 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | email | String |  no  | EMail of User |
+ | accountHolder | String |  no  | Account Holder Name |
+ | beneficiaryId | String |  no  | Benenficiary Id |
+ | mobile | String? |  yes  | MObile no of User |
  | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
  | displayName | String |  no  | Display Name Of Account |
- | accountNo | String |  no  | Account Number |
- | transferMode | String |  no  | Transfer Mode Of Account |
- | mobile | String? |  yes  | MObile no of User |
- | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
- | branchName | String? |  yes  | Branch Name Of Account |
- | modifiedOn | String |  no  | MOdification Date of Beneficiary |
- | id | Int |  no  |   |
- | accountHolder | String |  no  | Account Holder Name |
- | subtitle | String |  no  | SHort Title Of Account |
  | address | String |  no  | Address of User |
- | comment | String? |  yes  | Remarks |
- | beneficiaryId | String |  no  | Benenficiary Id |
+ | title | String |  no  | Title Of Account |
+ | modifiedOn | String |  no  | MOdification Date of Beneficiary |
+ | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | createdOn | String |  no  | Creation Date of Beneficiary |
+ | email | String |  no  | EMail of User |
+ | branchName | String? |  yes  | Branch Name Of Account |
  | bankName | String |  no  | Bank Name Of Account |
  | ifscCode | String |  no  | Ifsc Code Of Account |
- | title | String |  no  | Title Of Account |
- | createdOn | String |  no  | Creation Date of Beneficiary |
+ | transferMode | String |  no  | Transfer Mode Of Account |
+ | comment | String? |  yes  | Remarks |
+ | accountNo | String |  no  | Account Number |
+ | subtitle | String |  no  | SHort Title Of Account |
+ | id | Int |  no  |   |
 
 ---
 
@@ -3968,8 +5277,8 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
  | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)>? |  yes  | All Beneficiaries Of An Order |
+ | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
 
 ---
 
@@ -3980,11 +5289,11 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paymentGateway | String? |  yes  |  |
- | extraMeta | HashMap<String,Any>? |  yes  |  |
  | paymentId | String? |  yes  |  |
- | orderId | String? |  yes  |  |
  | currentStatus | String? |  yes  |  |
+ | extraMeta | HashMap<String,Any>? |  yes  |  |
+ | orderId | String? |  yes  |  |
+ | paymentGateway | String? |  yes  |  |
 
 ---
 
@@ -3995,10 +5304,10 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  | Payment mode name |
- | amount | Double |  no  | Payment amount |
- | mode | String |  no  |  |
  | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
+ | mode | String |  no  |  |
+ | amount | Double |  no  | Payment amount |
+ | name | String? |  yes  | Payment mode name |
 
 ---
 
@@ -4034,15 +5343,15 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paymentSelectionLock | HashMap<String,Any>? |  yes  |  |
- | anonymousCod | Boolean? |  yes  |  |
- | enabled | Boolean |  no  |  |
- | modeOfPayment | String |  no  |  |
- | codAmountLimit | Int? |  yes  |  |
- | codCharges | Int? |  yes  |  |
- | methods | HashMap<String,Any> |  no  |  |
- | source | String |  no  |  |
  | callbackUrl | HashMap<String,Any>? |  yes  |  |
+ | enabled | Boolean |  no  |  |
+ | codCharges | Int? |  yes  |  |
+ | anonymousCod | Boolean? |  yes  |  |
+ | modeOfPayment | String |  no  |  |
+ | source | String |  no  |  |
+ | paymentSelectionLock | HashMap<String,Any>? |  yes  |  |
+ | codAmountLimit | Int? |  yes  |  |
+ | methods | HashMap<String,Any> |  no  |  |
 
 ---
 
@@ -4066,10 +5375,10 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paymentSelectionLock | HashMap<String,Any>? |  yes  |  |
- | anonymousCod | Boolean? |  yes  |  |
- | codAmountLimit | Int? |  yes  |  |
  | codCharges | Int? |  yes  |  |
+ | anonymousCod | Boolean? |  yes  |  |
+ | paymentSelectionLock | HashMap<String,Any>? |  yes  |  |
+ | codAmountLimit | Int? |  yes  |  |
  | methods | HashMap<String,Any> |  no  |  |
 
 ---
@@ -4082,8 +5391,8 @@ Success. Returns the list of devices linked to the application Check the example
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | userId | String |  no  | Payment mode name |
- | isActive | Boolean |  no  | COD option is active or not |
  | remainingLimit | Int |  no  | Remaining Limit for COD of User |
+ | isActive | Boolean |  no  | COD option is active or not |
  | limit | Int |  no  | Total Limit of user |
  | usages | Int |  no  | Used COD limit from the user Limit |
 
@@ -4108,9 +5417,9 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | mobileno | String |  no  | Mobile No. of User |
  | isActive | Boolean |  no  | either true or false |
  | merchantUserId | String |  no  | Merchant User id |
- | mobileno | String |  no  | Mobile No. of User |
 
 ---
 
@@ -4129,28 +5438,19 @@ Success. Returns the list of devices linked to the application Check the example
 
  
  
- #### [EdcDetailsRequest](#EdcDetailsRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
-
----
-
-
- 
- 
  #### [EdcDevice](#EdcDevice)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | terminalSerialNo | String? |  yes  |  |
- | appId | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | deviceTag | String? |  yes  |  |
- | storeId | Int? |  yes  |  |
- | edcSerialNo | String? |  yes  |  |
- | merchantStorePosCode | String? |  yes  |  |
+ | deviceTag | String |  no  | Device tag of edc device to identify it |
+ | applicationId | String |  no  | Application ID |
+ | storeId | Int |  no  | Store at which devices is to used |
+ | terminalUniqueIdentifier | String |  no  | Genearated unique value for edc device |
+ | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
+ | isActive | String |  no  | State whether device is active or inactive |
+ | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
+ | edcDeviceSerialNo | String |  no  | Serial number of EDC device |
 
 ---
 
@@ -4169,41 +5469,54 @@ Success. Returns the list of devices linked to the application Check the example
 
  
  
+ #### [EdcAddRequest](#EdcAddRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | deviceTag | String? |  yes  | Device tag of edc device to identify it |
+ | edcSerialNo | String |  no  | Serial number or imei of EDC device |
+ | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
+ | storeId | Int? |  yes  | Store at which devices is to used |
+
+---
+
+
+ 
+ 
+ #### [EdcDeviceAddResponse](#EdcDeviceAddResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  | Response is successful or not |
+ | data | [EdcDevice](#EdcDevice) |  no  | Details of the EDC Device that is added |
+
+---
+
+
+ 
+ 
  #### [EdcUpdateRequest](#EdcUpdateRequest)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | deviceTag | String? |  yes  | Device tag of edc device to identify it |
- | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
- | storeId | Int |  no  | Store at which devices is to used |
+ | aggregatorId | Int? |  yes  | Aggregator which will accept payment |
+ | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
  | isActive | String? |  yes  | State whether device is active or inactive |
+ | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
+ | storeId | Int? |  yes  | Store at which devices is to used |
 
 ---
 
 
  
  
- #### [EdcDeviceAddUpdateResponse](#EdcDeviceAddUpdateResponse)
+ #### [EdcDeviceUpdateResponse](#EdcDeviceUpdateResponse)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean |  no  | Response is successful or not |
-
----
-
-
- 
- 
- #### [EdcAddRequest](#EdcAddRequest)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
- | isActive | String |  no  | State whether device is active or inactive |
- | deviceTag | String |  no  | Device tag of edc device to identify it |
- | storeId | Int |  no  | Store at which devices is to used |
- | edcSerialNo | String |  no  | Serial number or imei of EDC device |
- | merchantStorePosCode | String |  no  | This is provided by pinelabs |
 
 ---
 
@@ -4214,8 +5527,102 @@ Success. Returns the list of devices linked to the application Check the example
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
+ | totalStores | Int |  no  | Total no of stores of a company |
+ | currentPage | Int |  no  | This page number |
+ | nextPage | Boolean |  no  | Weather next page exist or not |
+ | deviceCount | Int |  no  | Count of device according to filters |
+ | activeDeviceCount | Int |  no  | Total number of active edc device |
+ | totalPage | Int |  no  | Total pages |
  | deviceList | ArrayList<[EdcDevice](#EdcDevice)> |  no  | List of all edc mapped to the application options with their Details. |
+ | success | Boolean |  no  | Response is successful or not |
+ | inactiveDeviceCount | Int |  no  | Total number of inactive edc device |
+
+---
+
+
+ 
+ 
+ #### [PaymentInitializationRequest](#PaymentInitializationRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | customerId | String |  no  | Payment gateway customer id. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
+ | vpa | String? |  yes  | Customer vpa address |
+ | amount | Int |  no  | Payable amount. |
+ | razorpayPaymentId | String? |  yes  | Payment gateway payment id |
+ | contact | String |  no  | Customer valid mobile number |
+ | orderId | String |  no  | Payment gateway order id |
+ | timeout | Int? |  yes  | Payment polling timeout if not recieved response |
+ | aggregator | String |  no  | Payment gateway name |
+ | method | String |  no  | Payment method |
+ | merchantOrderId | String |  no  | Unique fynd order id |
+ | currency | String |  no  | Currency code. |
+ | email | String |  no  | Customer valid email |
+
+---
+
+
+ 
+ 
+ #### [PaymentInitializationResponse](#PaymentInitializationResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bqrImage | String? |  yes  | Bharath qr image url. |
+ | customerId | String? |  yes  | Payment gateway customer id. |
+ | vpa | String? |  yes  | Customer vpa address |
+ | amount | Int? |  yes  | Payable amount. |
+ | razorpayPaymentId | String? |  yes  | Payment  id. |
+ | success | Boolean |  no  | Response is successful or not. |
+ | upiPollUrl | String? |  yes  | UPI poll url. |
+ | aggregatorOrderId | String? |  yes  | Payment order id |
+ | pollingUrl | String |  no  | Polling url. |
+ | virtualId | String? |  yes  | Payment virtual address. |
+ | timeout | Int? |  yes  | timeout. |
+ | aggregator | String |  no  | Payment gateway name |
+ | method | String |  no  | Payment method |
+ | merchantOrderId | String |  no  | order id |
+ | currency | String? |  yes  | Currency code. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
+ | status | String? |  yes  | Status of payment. |
+
+---
+
+
+ 
+ 
+ #### [PaymentStatusUpdateRequest](#PaymentStatusUpdateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | customerId | String |  no  | Payment gateway customer id. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
+ | vpa | String? |  yes  | Customer vpa address |
+ | amount | Int |  no  | Payable amount. |
+ | contact | String |  no  | Customer valid mobile number |
+ | orderId | String |  no  | Payment gateway order id |
+ | aggregator | String |  no  | Payment gateway name |
+ | method | String |  no  | Payment method |
+ | merchantOrderId | String |  no  | Unique fynd order id |
+ | currency | String |  no  | Currency code. |
+ | email | String |  no  | Customer valid email |
+ | status | String |  no  | Status of payment. |
+
+---
+
+
+ 
+ 
+ #### [PaymentStatusUpdateResponse](#PaymentStatusUpdateResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | redirectUrl | String? |  yes  | Redirect url |
+ | retry | Boolean |  no  | Response is successful or not. |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | aggregatorName | String |  no  | Payment gateway name |
+ | status | String |  no  | Payment status |
 
 ---
 

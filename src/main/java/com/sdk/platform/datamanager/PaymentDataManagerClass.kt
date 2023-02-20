@@ -179,6 +179,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -324,8 +326,18 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun edcDevice(body: EdcDetailsRequest)
+    suspend fun edcDevice(terminalSerialNo: String)
     : Deferred<Response<EdcDeviceDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDevice(terminalSerialNo = terminalSerialNo, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDevice(body: EdcAddRequest)
+    : Deferred<Response<EdcDeviceAddResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -335,7 +347,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun edcDevice(body: EdcUpdateRequest)
-    : Deferred<Response<EdcDeviceAddUpdateResponse>>? {
+    : Deferred<Response<EdcDeviceUpdateResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -344,20 +356,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun edcDevice(body: EdcAddRequest)
-    : Deferred<Response<EdcDeviceAddUpdateResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun edcDeviceList()
+    suspend fun edcDeviceList(pageNumber: Int?=null, isActive: Boolean?=null, storeId: Int?=null, deviceTag: String?=null, pageSize: Int?=null)
     : Deferred<Response<EdcDeviceListResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDeviceList(companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.edcDeviceList(pageNumber = pageNumber, isActive = isActive, storeId = storeId, deviceTag = deviceTag, pageSize = pageSize, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentModeRoutesPos(refresh: Boolean, requestType: String)
+    : Deferred<Response<PaymentOptionsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentModeRoutesPos(companyId = config.companyId , applicationId = applicationId , refresh = refresh, requestType = requestType )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun checkAndUpdatePaymentStatus(body: PaymentStatusUpdateRequest)
+    : Deferred<Response<PaymentStatusUpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.checkAndUpdatePaymentStatus(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
