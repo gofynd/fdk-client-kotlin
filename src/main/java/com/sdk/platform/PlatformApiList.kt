@@ -988,12 +988,12 @@ interface OrderApiList {
     fun getRoleBasedActions(@Path("company_id") companyId: String)
     : Deferred<Response<GetActionsResponse>>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: Int?, @Query("bag_id") bagId: Int?)
-    : Deferred<Response<ShipmentHistoryResponse>>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
     fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
+    : Deferred<Response<ShipmentHistoryResponse>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: Int?, @Query("bag_id") bagId: Int?)
     : Deferred<Response<ShipmentHistoryResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")
@@ -1012,13 +1012,13 @@ interface OrderApiList {
     fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI)
     : Deferred<Response<CreateOrderResponse>>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    fun getChannelConfig(@Path("company_id") companyId: String)
-    : Deferred<Response<CreateChannelConfigData>>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
     fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
     : Deferred<Response<CreateChannelConfigResponse>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
+    fun getChannelConfig(@Path("company_id") companyId: String)
+    : Deferred<Response<CreateChannelConfigData>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/uploadConsent")
     fun uploadConsent(@Path("company_id") companyId: String,@Body body: UploadConsent)
@@ -2301,7 +2301,7 @@ interface LogisticApiList {
     : Deferred<Response<ListViewResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/all-stores")
-    fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: String?, @Query("enabled") enabled: String?, @Query("q") q: String?)
+    fun getCompanyStoreView(@Path("company_id") companyId: String)
     : Deferred<Response<CompanyStoreView_Response>>
     
     @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
@@ -2327,6 +2327,22 @@ interface LogisticApiList {
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics/stores")
     fun getAllStores(@Path("company_id") companyId: String)
     : Deferred<Response<GetStoresViewResponse>>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
+    fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)
+    : Deferred<Response<PincodeMOPresponse>>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-bulk-update")
+    fun updatePincodeBulkView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopBulkData)
+    : Deferred<Response<PincodeBulkViewResponse>>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-data")
+    fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeCodStatusListingRequest)
+    : Deferred<Response<PincodeCodStatusListingResponse>>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/history")
+    fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest)
+    : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>
     
 }
         
