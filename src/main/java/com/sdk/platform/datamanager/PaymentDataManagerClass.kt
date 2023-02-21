@@ -181,6 +181,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -366,10 +368,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPaymentModeRoutesPos(refresh: Boolean, requestType: String)
+    suspend fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, orderType: String, userDetails: String?=null)
     : Deferred<Response<PaymentOptionsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPaymentModeRoutesPos(companyId = config.companyId , applicationId = applicationId , refresh = refresh, requestType = requestType )
+                paymentApiList?.getPosPaymentModeRoutes(companyId = config.companyId , applicationId = applicationId , amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, cardReference = cardReference, orderType = orderType, userDetails = userDetails )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun initialisePayment(body: PaymentInitializationRequest)
+    : Deferred<Response<PaymentInitializationResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.initialisePayment(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -380,6 +392,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentStatusUpdateResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.checkAndUpdatePaymentStatus(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest)
+    : Deferred<Response<ResendOrCancelPaymentResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.resendOrCancelPayment(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
