@@ -655,7 +655,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null, userId: String?=null)
-    : Deferred<Response<GetAddressesResponse>>? {
+    : Deferred<Response<PlatformGetAddressesResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getAddresses(companyId = config.companyId , applicationId = applicationId , cartId = cartId, buyNow = buyNow, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault, userId = userId )
         } else {
@@ -675,7 +675,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null, userId: String?=null)
-    : Deferred<Response<Address>>? {
+    : Deferred<Response<PlatformAddress>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getAddressById(companyId = config.companyId , applicationId = applicationId , id = id, cartId = cartId, buyNow = buyNow, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault, userId = userId )
         } else {
@@ -714,10 +714,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null)
+    suspend fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null, orderingStoreId: Int?=null, orderType: String?=null)
     : Deferred<Response<CartShipmentsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getShipments(companyId = config.companyId , applicationId = applicationId , p = p, id = id, buyNow = buyNow, addressId = addressId, areaCode = areaCode )
+                cartApiList?.getShipments(companyId = config.companyId , applicationId = applicationId , p = p, id = id, buyNow = buyNow, addressId = addressId, areaCode = areaCode, orderingStoreId = orderingStoreId, orderType = orderType )
         } else {
             null
         }

@@ -8,6 +8,66 @@ import com.google.gson.annotations.SerializedName
 
 
 /*
+    Model: Price
+*/
+@Parcelize
+data class Price(
+    
+    
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("min")
+    var min: Double?=null,
+    
+    @SerializedName("max")
+    var max: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ProductListingPrice
+*/
+@Parcelize
+data class ProductListingPrice(
+    
+    
+    
+    @SerializedName("marked")
+    var marked: Price?=null,
+    
+    @SerializedName("effective")
+    var effective: Price?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: Meta
 */
 @Parcelize
@@ -38,14 +98,14 @@ data class Media(
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("meta")
-    var meta: Meta?=null,
-    
     @SerializedName("url")
     var url: String?=null,
     
     @SerializedName("alt")
-    var alt: String?=null
+    var alt: String?=null,
+    
+    @SerializedName("meta")
+    var meta: Meta?=null
     
 ): Parcelable {
     
@@ -70,14 +130,14 @@ data class ProductListingActionPage(
     
     
     
+    @SerializedName("query")
+    var query: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("type")
     var type: String?=null,
     
     @SerializedName("params")
-    var params: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("query")
-    var query: @RawValue HashMap<String,Any>?=null
+    var params: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -128,9 +188,6 @@ data class ProductBrand(
     @SerializedName("logo")
     var logo: Media?=null,
     
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
     @SerializedName("name")
     var name: String?=null,
     
@@ -138,68 +195,16 @@ data class ProductBrand(
     var uid: Int?=null,
     
     @SerializedName("description")
-    var description: String?=null
+    var description: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: CustomMetaFields
-*/
-@Parcelize
-data class CustomMetaFields(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductCategoryMap
-*/
-@Parcelize
-data class ProductCategoryMap(
-    
-    
-    
-    @SerializedName("l3")
-    var l3: ProductBrand?=null,
-    
-    @SerializedName("l1")
-    var l1: ProductBrand?=null,
-    
-    @SerializedName("l2")
-    var l2: ProductBrand?=null
-    
-): Parcelable {
     
     
     
@@ -238,18 +243,48 @@ data class ApplicationItemSEO(
 
 
 /*
-    Model: NetQuantity
+    Model: ProductCategoryMap
 */
 @Parcelize
-data class NetQuantity(
+data class ProductCategoryMap(
     
     
     
-    @SerializedName("unit")
-    var unit: @RawValue Any?=null,
+    @SerializedName("l1")
+    var l1: ProductBrand?=null,
+    
+    @SerializedName("l3")
+    var l3: ProductBrand?=null,
+    
+    @SerializedName("l2")
+    var l2: ProductBrand?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: CustomMetaFields
+*/
+@Parcelize
+data class CustomMetaFields(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("value")
-    var value: Double?=null
+    var value: String?=null
     
 ): Parcelable {
     
@@ -318,66 +353,6 @@ data class ProductDetailGroupedAttribute(
 
 
 /*
-    Model: Price
-*/
-@Parcelize
-data class Price(
-    
-    
-    
-    @SerializedName("currency_symbol")
-    var currencySymbol: String?=null,
-    
-    @SerializedName("min")
-    var min: Double?=null,
-    
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("max")
-    var max: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductListingPrice
-*/
-@Parcelize
-data class ProductListingPrice(
-    
-    
-    
-    @SerializedName("effective")
-    var effective: Price?=null,
-    
-    @SerializedName("marked")
-    var marked: Price?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: ApplicationItemMOQ
 */
 @Parcelize
@@ -408,6 +383,31 @@ data class ApplicationItemMOQ(
 
 
 /*
+    Model: NetQuantity
+*/
+@Parcelize
+data class NetQuantity(
+    
+    
+    
+    @SerializedName("value")
+    var value: Double?=null,
+    
+    @SerializedName("unit")
+    var unit: @RawValue Any?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: ProductDetail
 */
 @Parcelize
@@ -415,8 +415,74 @@ data class ProductDetail(
     
     
     
-    @SerializedName("image_nature")
-    var imageNature: String?=null,
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("price")
+    var price: ProductListingPrice?=null,
+    
+    @SerializedName("brand")
+    var brand: ProductBrand?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("rating_count")
+    var ratingCount: Int?=null,
+    
+    @SerializedName("discount")
+    var discount: String?=null,
+    
+    @SerializedName("rating")
+    var rating: Double?=null,
+    
+    @SerializedName("color")
+    var color: String?=null,
+    
+    @SerializedName("similars")
+    var similars: ArrayList<String>?=null,
+    
+    @SerializedName("categories")
+    var categories: ArrayList<ProductBrand>?=null,
+    
+    @SerializedName("seo")
+    var seo: ApplicationItemSEO?=null,
+    
+    @SerializedName("product_online_date")
+    var productOnlineDate: String?=null,
+    
+    @SerializedName("medias")
+    var medias: ArrayList<Media>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("teaser_tag")
+    var teaserTag: String?=null,
+    
+    @SerializedName("has_variant")
+    var hasVariant: Boolean?=null,
+    
+    @SerializedName("tryouts")
+    var tryouts: ArrayList<String>?=null,
+    
+    @SerializedName("category_map")
+    var categoryMap: ProductCategoryMap?=null,
+    
+    @SerializedName("short_description")
+    var shortDescription: String?=null,
+    
+    @SerializedName("highlights")
+    var highlights: ArrayList<String>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_custom_meta")
+    var customMeta: ArrayList<CustomMetaFields>?=null,
     
     @SerializedName("item_code")
     var itemCode: String?=null,
@@ -424,98 +490,32 @@ data class ProductDetail(
     @SerializedName("uid")
     var uid: Int?=null,
     
-    @SerializedName("categories")
-    var categories: ArrayList<ProductBrand>?=null,
-    
-    @SerializedName("_custom_meta")
-    var customMeta: ArrayList<CustomMetaFields>?=null,
-    
-    @SerializedName("similars")
-    var similars: ArrayList<String>?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("color")
-    var color: String?=null,
-    
-    @SerializedName("rating")
-    var rating: Double?=null,
-    
-    @SerializedName("short_description")
-    var shortDescription: String?=null,
-    
-    @SerializedName("category_map")
-    var categoryMap: ProductCategoryMap?=null,
-    
-    @SerializedName("seo")
-    var seo: ApplicationItemSEO?=null,
-    
-    @SerializedName("medias")
-    var medias: ArrayList<Media>?=null,
-    
-    @SerializedName("highlights")
-    var highlights: ArrayList<String>?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("item_type")
-    var itemType: String?=null,
-    
-    @SerializedName("is_dependent")
-    var isDependent: Boolean?=null,
-    
-    @SerializedName("discount")
-    var discount: String?=null,
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("slug")
     var slug: String?=null,
     
-    @SerializedName("product_online_date")
-    var productOnlineDate: String?=null,
-    
-    @SerializedName("net_quantity")
-    var netQuantity: NetQuantity?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("brand")
-    var brand: ProductBrand?=null,
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("grouped_attributes")
     var groupedAttributes: ArrayList<ProductDetailGroupedAttribute>?=null,
     
-    @SerializedName("tryouts")
-    var tryouts: ArrayList<String>?=null,
-    
-    @SerializedName("teaser_tag")
-    var teaserTag: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("rating_count")
-    var ratingCount: Int?=null,
-    
-    @SerializedName("price")
-    var price: ProductListingPrice?=null,
-    
-    @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
     @SerializedName("moq")
     var moq: ApplicationItemMOQ?=null,
     
-    @SerializedName("has_variant")
-    var hasVariant: Boolean?=null,
+    @SerializedName("net_quantity")
+    var netQuantity: NetQuantity?=null,
     
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    @SerializedName("is_dependent")
+    var isDependent: Boolean?=null,
+    
+    @SerializedName("image_nature")
+    var imageNature: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -613,33 +613,23 @@ data class ErrorResponse(
 
 
 /*
-    Model: Dimension
+    Model: Weight
 */
 @Parcelize
-data class Dimension(
+data class Weight(
     
     
     
-    @SerializedName("unit")
-    var unit: String?=null,
-    
-    @SerializedName("length")
-    var length: Double?=null,
-    
-    @SerializedName("width")
-    var width: Double?=null,
-    
-    @SerializedName("height")
-    var height: Double?=null,
+    @SerializedName("shipping")
+    var shipping: Double?=null,
     
     @SerializedName("is_default")
-    var isDefault: Boolean?=null
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("unit")
+    var unit: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -653,12 +643,15 @@ data class Dimension(
 
 
 /*
-    Model: Weight
+    Model: Dimension
 */
 @Parcelize
-data class Weight(
+data class Dimension(
     
     
+    
+    @SerializedName("length")
+    var length: Double?=null,
     
     @SerializedName("unit")
     var unit: String?=null,
@@ -666,10 +659,17 @@ data class Weight(
     @SerializedName("is_default")
     var isDefault: Boolean?=null,
     
-    @SerializedName("shipping")
-    var shipping: Double?=null
+    @SerializedName("height")
+    var height: Double?=null,
+    
+    @SerializedName("width")
+    var width: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -690,23 +690,23 @@ data class ProductSize(
     
     
     
-    @SerializedName("dimension")
-    var dimension: Dimension?=null,
-    
-    @SerializedName("seller_identifiers")
-    var sellerIdentifiers: ArrayList<String>?=null,
-    
     @SerializedName("is_available")
     var isAvailable: Boolean?=null,
     
     @SerializedName("value")
     var value: String?=null,
     
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
     @SerializedName("weight")
     var weight: Weight?=null,
+    
+    @SerializedName("seller_identifiers")
+    var sellerIdentifiers: ArrayList<String>?=null,
+    
+    @SerializedName("dimension")
+    var dimension: Dimension?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
     
     @SerializedName("display")
     var display: String?=null
@@ -733,6 +733,26 @@ data class ProductSize(
 
 
 /*
+    Model: ProductSizeStores
+*/
+@Parcelize
+data class ProductSizeStores(
+    
+    
+    
+    @SerializedName("count")
+    var count: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: SizeChartValues
 */
 @Parcelize
@@ -740,23 +760,23 @@ data class SizeChartValues(
     
     
     
-    @SerializedName("col_3")
-    var col3: String?=null,
-    
-    @SerializedName("col_6")
-    var col6: String?=null,
+    @SerializedName("col_5")
+    var col5: String?=null,
     
     @SerializedName("col_1")
     var col1: String?=null,
     
-    @SerializedName("col_5")
-    var col5: String?=null,
+    @SerializedName("col_3")
+    var col3: String?=null,
     
     @SerializedName("col_4")
     var col4: String?=null,
     
     @SerializedName("col_2")
-    var col2: String?=null
+    var col2: String?=null,
+    
+    @SerializedName("col_6")
+    var col6: String?=null
     
 ): Parcelable {
     
@@ -810,23 +830,23 @@ data class ColumnHeaders(
     
     
     
-    @SerializedName("col_3")
-    var col3: ColumnHeader?=null,
-    
-    @SerializedName("col_6")
-    var col6: ColumnHeader?=null,
+    @SerializedName("col_5")
+    var col5: ColumnHeader?=null,
     
     @SerializedName("col_1")
     var col1: ColumnHeader?=null,
     
-    @SerializedName("col_5")
-    var col5: ColumnHeader?=null,
+    @SerializedName("col_3")
+    var col3: ColumnHeader?=null,
     
     @SerializedName("col_4")
     var col4: ColumnHeader?=null,
     
     @SerializedName("col_2")
-    var col2: ColumnHeader?=null
+    var col2: ColumnHeader?=null,
+    
+    @SerializedName("col_6")
+    var col6: ColumnHeader?=null
     
 ): Parcelable {
     
@@ -861,6 +881,9 @@ data class SizeChart(
     @SerializedName("sizes")
     var sizes: ArrayList<SizeChartValues>?=null,
     
+    @SerializedName("headers")
+    var headers: ColumnHeaders?=null,
+    
     @SerializedName("size_tip")
     var sizeTip: String?=null,
     
@@ -869,9 +892,6 @@ data class SizeChart(
     
     @SerializedName("title")
     var title: String?=null,
-    
-    @SerializedName("headers")
-    var headers: ColumnHeaders?=null,
     
     @SerializedName("description")
     var description: String?=null
@@ -898,26 +918,6 @@ data class SizeChart(
 
 
 /*
-    Model: ProductSizeStores
-*/
-@Parcelize
-data class ProductSizeStores(
-    
-    
-    
-    @SerializedName("count")
-    var count: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: ProductSizes
 */
 @Parcelize
@@ -928,23 +928,23 @@ data class ProductSizes(
     @SerializedName("sizes")
     var sizes: ArrayList<ProductSize>?=null,
     
-    @SerializedName("discount")
-    var discount: String?=null,
-    
-    @SerializedName("size_chart")
-    var sizeChart: SizeChart?=null,
+    @SerializedName("price")
+    var price: ProductListingPrice?=null,
     
     @SerializedName("sellable")
     var sellable: Boolean?=null,
     
-    @SerializedName("price")
-    var price: ProductListingPrice?=null,
+    @SerializedName("stores")
+    var stores: ProductSizeStores?=null,
     
     @SerializedName("multi_size")
     var multiSize: Boolean?=null,
     
-    @SerializedName("stores")
-    var stores: ProductSizeStores?=null
+    @SerializedName("size_chart")
+    var sizeChart: SizeChart?=null,
+    
+    @SerializedName("discount")
+    var discount: String?=null
     
 ): Parcelable {
     
@@ -975,11 +975,11 @@ data class AttributeDetail(
     
     
     
-    @SerializedName("key")
-    var key: String?=null,
-    
     @SerializedName("logo")
     var logo: String?=null,
+    
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("display")
     var display: String?=null,
@@ -1060,17 +1060,17 @@ data class ProductCompareResponse(
     
     
     
-    @SerializedName("title")
-    var title: String?=null,
-    
     @SerializedName("items")
     var items: ArrayList<ProductDetail>?=null,
     
-    @SerializedName("subtitle")
-    var subtitle: String?=null,
+    @SerializedName("title")
+    var title: String?=null,
     
     @SerializedName("attributes_metadata")
-    var attributesMetadata: ArrayList<AttributeMetadata>?=null
+    var attributesMetadata: ArrayList<AttributeMetadata>?=null,
+    
+    @SerializedName("subtitle")
+    var subtitle: String?=null
     
 ): Parcelable {
     
@@ -1115,35 +1115,35 @@ data class ProductVariantItemResponse(
     
     
     
-    @SerializedName("color_name")
-    var colorName: String?=null,
-    
-    @SerializedName("medias")
-    var medias: ArrayList<Media>?=null,
-    
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
-    @SerializedName("_custom_meta")
-    var customMeta: ArrayList<CustomMetaFields>?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("color")
+    var color: String?=null,
     
     @SerializedName("is_available")
     var isAvailable: Boolean?=null,
     
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("color")
-    var color: String?=null,
-    
     @SerializedName("value")
     var value: String?=null,
     
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_custom_meta")
+    var customMeta: ArrayList<CustomMetaFields>?=null,
+    
+    @SerializedName("color_name")
+    var colorName: String?=null,
+    
     @SerializedName("uid")
-    var uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("medias")
+    var medias: ArrayList<Media>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -1180,14 +1180,14 @@ data class ProductVariantResponse(
     
     
     
-    @SerializedName("key")
-    var key: String?=null,
-    
     @SerializedName("display_type")
     var displayType: String?=null,
     
     @SerializedName("items")
     var items: ArrayList<ProductVariantItemResponse>?=null,
+    
+    @SerializedName("key")
+    var key: String?=null,
     
     @SerializedName("header")
     var header: String?=null
@@ -1228,21 +1228,21 @@ data class ProductVariantsResponse(
 
 
 /*
-    Model: Seller
+    Model: ProductStockPrice
 */
 @Parcelize
-data class Seller(
+data class ProductStockPrice(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("marked")
+    var marked: Double?=null,
     
-    @SerializedName("count")
-    var count: Int?=null,
+    @SerializedName("effective")
+    var effective: Double?=null,
     
-    @SerializedName("uid")
-    var uid: Int?=null
+    @SerializedName("currency")
+    var currency: String?=null
     
 ): Parcelable {
     
@@ -1258,23 +1258,28 @@ data class Seller(
 
 
 /*
-    Model: ProductStockPrice
+    Model: StoreDetail
 */
 @Parcelize
-data class ProductStockPrice(
+data class StoreDetail(
     
     
     
-    @SerializedName("currency")
-    var currency: String?=null,
+    @SerializedName("code")
+    var code: String?=null,
     
-    @SerializedName("effective")
-    var effective: Double?=null,
+    @SerializedName("id")
+    var id: Int?=null,
     
-    @SerializedName("marked")
-    var marked: Double?=null
+    @SerializedName("city")
+    var city: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1295,11 +1300,11 @@ data class CompanyDetail(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("id")
-    var id: Int?=null
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
     
@@ -1313,28 +1318,23 @@ data class CompanyDetail(
 
 
 /*
-    Model: StoreDetail
+    Model: Seller
 */
 @Parcelize
-data class StoreDetail(
+data class Seller(
     
     
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("count")
+    var count: Int?=null,
     
     @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("city")
-    var city: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null
+    var name: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -1355,14 +1355,11 @@ data class ProductStockStatusItem(
     
     
     
-    @SerializedName("seller")
-    var seller: Seller?=null,
+    @SerializedName("identifier")
+    var identifier: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("price")
     var price: ProductStockPrice?=null,
-    
-    @SerializedName("company")
-    var company: CompanyDetail?=null,
     
     @SerializedName("size")
     var size: String?=null,
@@ -1370,17 +1367,20 @@ data class ProductStockStatusItem(
     @SerializedName("store")
     var store: StoreDetail?=null,
     
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("company")
+    var company: CompanyDetail?=null,
+    
+    @SerializedName("seller")
+    var seller: Seller?=null,
+    
     @SerializedName("quantity")
     var quantity: Int?=null,
     
-    @SerializedName("identifier")
-    var identifier: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("item_id")
-    var itemId: Int?=null
+    var uid: String?=null
     
 ): Parcelable {
     
@@ -1435,11 +1435,11 @@ data class ProductStockPolling(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
-    var items: ArrayList<ProductStockStatusItem>?=null
+    var items: ArrayList<ProductStockStatusItem>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -1460,20 +1460,20 @@ data class ProductVariantListingResponse(
     
     
     
+    @SerializedName("total")
+    var total: Int?=null,
+    
     @SerializedName("key")
     var key: String?=null,
     
-    @SerializedName("header")
-    var header: String?=null,
+    @SerializedName("display_type")
+    var displayType: String?=null,
     
     @SerializedName("items")
     var items: ArrayList<ProductVariantItemResponse>?=null,
     
-    @SerializedName("total")
-    var total: Int?=null,
-    
-    @SerializedName("display_type")
-    var displayType: String?=null
+    @SerializedName("header")
+    var header: String?=null
     
 ): Parcelable {
     
@@ -1500,119 +1500,119 @@ data class ProductListingDetail(
     
     
     
-    @SerializedName("image_nature")
-    var imageNature: String?=null,
-    
-    @SerializedName("item_code")
-    var itemCode: String?=null,
-    
-    @SerializedName("identifiers")
-    var identifiers: ArrayList<String>?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("categories")
-    var categories: ArrayList<ProductBrand>?=null,
-    
-    @SerializedName("_custom_meta")
-    var customMeta: ArrayList<CustomMetaFields>?=null,
-    
-    @SerializedName("similars")
-    var similars: ArrayList<String>?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("color")
-    var color: String?=null,
-    
-    @SerializedName("rating")
-    var rating: Double?=null,
-    
-    @SerializedName("short_description")
-    var shortDescription: String?=null,
-    
-    @SerializedName("category_map")
-    var categoryMap: ProductCategoryMap?=null,
-    
-    @SerializedName("seo")
-    var seo: ApplicationItemSEO?=null,
-    
     @SerializedName("sizes")
     var sizes: ArrayList<String>?=null,
-    
-    @SerializedName("sellable")
-    var sellable: Boolean?=null,
-    
-    @SerializedName("medias")
-    var medias: ArrayList<Media>?=null,
-    
-    @SerializedName("highlights")
-    var highlights: ArrayList<String>?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("item_type")
     var itemType: String?=null,
     
-    @SerializedName("is_dependent")
-    var isDependent: Boolean?=null,
-    
-    @SerializedName("variants")
-    var variants: ArrayList<ProductVariantListingResponse>?=null,
-    
-    @SerializedName("discount")
-    var discount: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("product_online_date")
-    var productOnlineDate: String?=null,
-    
-    @SerializedName("net_quantity")
-    var netQuantity: NetQuantity?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("price")
+    var price: ProductListingPrice?=null,
     
     @SerializedName("brand")
     var brand: ProductBrand?=null,
     
-    @SerializedName("grouped_attributes")
-    var groupedAttributes: ArrayList<ProductDetailGroupedAttribute>?=null,
-    
-    @SerializedName("tryouts")
-    var tryouts: ArrayList<String>?=null,
-    
-    @SerializedName("teaser_tag")
-    var teaserTag: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
     
     @SerializedName("rating_count")
     var ratingCount: Int?=null,
     
-    @SerializedName("price")
-    var price: ProductListingPrice?=null,
+    @SerializedName("discount")
+    var discount: String?=null,
     
-    @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("rating")
+    var rating: Double?=null,
     
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
+    @SerializedName("color")
+    var color: String?=null,
     
-    @SerializedName("moq")
-    var moq: ApplicationItemMOQ?=null,
+    @SerializedName("similars")
+    var similars: ArrayList<String>?=null,
+    
+    @SerializedName("categories")
+    var categories: ArrayList<ProductBrand>?=null,
+    
+    @SerializedName("seo")
+    var seo: ApplicationItemSEO?=null,
+    
+    @SerializedName("product_online_date")
+    var productOnlineDate: String?=null,
+    
+    @SerializedName("medias")
+    var medias: ArrayList<Media>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("variants")
+    var variants: ArrayList<ProductVariantListingResponse>?=null,
+    
+    @SerializedName("teaser_tag")
+    var teaserTag: String?=null,
     
     @SerializedName("has_variant")
     var hasVariant: Boolean?=null,
     
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null
+    @SerializedName("tryouts")
+    var tryouts: ArrayList<String>?=null,
+    
+    @SerializedName("category_map")
+    var categoryMap: ProductCategoryMap?=null,
+    
+    @SerializedName("short_description")
+    var shortDescription: String?=null,
+    
+    @SerializedName("highlights")
+    var highlights: ArrayList<String>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_custom_meta")
+    var customMeta: ArrayList<CustomMetaFields>?=null,
+    
+    @SerializedName("item_code")
+    var itemCode: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("grouped_attributes")
+    var groupedAttributes: ArrayList<ProductDetailGroupedAttribute>?=null,
+    
+    @SerializedName("sellable")
+    var sellable: Boolean?=null,
+    
+    @SerializedName("identifiers")
+    var identifiers: ArrayList<String>?=null,
+    
+    @SerializedName("moq")
+    var moq: ApplicationItemMOQ?=null,
+    
+    @SerializedName("net_quantity")
+    var netQuantity: NetQuantity?=null,
+    
+    @SerializedName("is_dependent")
+    var isDependent: Boolean?=null,
+    
+    @SerializedName("image_nature")
+    var imageNature: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -1667,6 +1667,111 @@ data class ProductListingDetail(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ProductSortOn
+*/
+@Parcelize
+data class ProductSortOn(
+    
+    
+    
+    @SerializedName("is_selected")
+    var isSelected: Boolean?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ProductFiltersValue
+*/
+@Parcelize
+data class ProductFiltersValue(
+    
+    
+    
+    @SerializedName("query_format")
+    var queryFormat: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("min")
+    var min: Int?=null,
+    
+    @SerializedName("display_format")
+    var displayFormat: String?=null,
+    
+    @SerializedName("selected_min")
+    var selectedMin: Int?=null,
+    
+    @SerializedName("count")
+    var count: Int?=null,
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("is_selected")
+    var isSelected: Boolean?=null,
+    
+    @SerializedName("selected_max")
+    var selectedMax: Int?=null,
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("max")
+    var max: Int?=null
+    
+): Parcelable {
     
     
     
@@ -1705,94 +1810,19 @@ data class ProductFiltersKey(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("kind")
-    var kind: String?=null,
-    
     @SerializedName("logo")
     var logo: String?=null,
     
     @SerializedName("display")
-    var display: String?=null
+    var display: String?=null,
+    
+    @SerializedName("kind")
+    var kind: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductFiltersValue
-*/
-@Parcelize
-data class ProductFiltersValue(
-    
-    
-    
-    @SerializedName("is_selected")
-    var isSelected: Boolean?=null,
-    
-    @SerializedName("min")
-    var min: Int?=null,
-    
-    @SerializedName("selected_max")
-    var selectedMax: Int?=null,
-    
-    @SerializedName("currency_symbol")
-    var currencySymbol: String?=null,
-    
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("selected_min")
-    var selectedMin: Int?=null,
-    
-    @SerializedName("query_format")
-    var queryFormat: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("max")
-    var max: Int?=null,
-    
-    @SerializedName("display_format")
-    var displayFormat: String?=null,
-    
-    @SerializedName("count")
-    var count: Int?=null,
-    
-    @SerializedName("display")
-    var display: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1815,43 +1845,13 @@ data class ProductFilters(
     
     
     
-    @SerializedName("key")
-    var key: ProductFiltersKey?=null,
-    
     @SerializedName("values")
-    var values: ArrayList<ProductFiltersValue>?=null
+    var values: ArrayList<ProductFiltersValue>?=null,
+    
+    @SerializedName("key")
+    var key: ProductFiltersKey?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductSortOn
-*/
-@Parcelize
-data class ProductSortOn(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("is_selected")
-    var isSelected: Boolean?=null,
-    
-    @SerializedName("value")
-    var value: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -1870,17 +1870,17 @@ data class ProductListingResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
     var items: ArrayList<ProductListingDetail>?=null,
     
-    @SerializedName("filters")
-    var filters: ArrayList<ProductFilters>?=null,
+    @SerializedName("page")
+    var page: Page?=null,
     
     @SerializedName("sort_on")
-    var sortOn: ArrayList<ProductSortOn>?=null
+    var sortOn: ArrayList<ProductSortOn>?=null,
+    
+    @SerializedName("filters")
+    var filters: ArrayList<ProductFilters>?=null
     
 ): Parcelable {
     
@@ -1905,11 +1905,11 @@ data class ImageUrls(
     
     
     
-    @SerializedName("landscape")
-    var landscape: Media?=null,
-    
     @SerializedName("portrait")
-    var portrait: Media?=null
+    var portrait: Media?=null,
+    
+    @SerializedName("landscape")
+    var landscape: Media?=null
     
 ): Parcelable {
     
@@ -1930,32 +1930,32 @@ data class BrandItem(
     
     
     
-    @SerializedName("banners")
-    var banners: ImageUrls?=null,
-    
-    @SerializedName("discount")
-    var discount: String?=null,
-    
-    @SerializedName("logo")
-    var logo: Media?=null,
-    
-    @SerializedName("departments")
-    var departments: ArrayList<String>?=null,
-    
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("description")
+    var description: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
+    @SerializedName("departments")
+    var departments: ArrayList<String>?=null,
+    
     @SerializedName("uid")
     var uid: Int?=null,
     
-    @SerializedName("description")
-    var description: String?=null
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("discount")
+    var discount: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -1990,11 +1990,11 @@ data class BrandListingResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
-    var items: ArrayList<BrandItem>?=null
+    var items: ArrayList<BrandItem>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -2015,23 +2015,23 @@ data class BrandDetailResponse(
     
     
     
-    @SerializedName("banners")
-    var banners: ImageUrls?=null,
-    
-    @SerializedName("logo")
-    var logo: Media?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
+    @SerializedName("description")
+    var description: String?=null,
     
     @SerializedName("_custom_json")
     var customJson: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("description")
-    var description: String?=null
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("logo")
+    var logo: Media?=null
     
 ): Parcelable {
     
@@ -2060,11 +2060,11 @@ data class DepartmentIdentifier(
     
     
     
-    @SerializedName("slug")
-    var slug: String?=null,
-    
     @SerializedName("uid")
-    var uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
     
@@ -2085,11 +2085,11 @@ data class CategoryBanner(
     
     
     
-    @SerializedName("landscape")
-    var landscape: Media?=null,
-    
     @SerializedName("portrait")
-    var portrait: Media?=null
+    var portrait: Media?=null,
+    
+    @SerializedName("landscape")
+    var landscape: Media?=null
     
 ): Parcelable {
     
@@ -2110,26 +2110,26 @@ data class ThirdLevelChild(
     
     
     
-    @SerializedName("banners")
-    var banners: ImageUrls?=null,
-    
-    @SerializedName("childs")
-    var childs: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
     @SerializedName("uid")
     var uid: Int?=null,
     
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    @SerializedName("childs")
+    var childs: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -2160,26 +2160,26 @@ data class SecondLevelChild(
     
     
     
-    @SerializedName("banners")
-    var banners: ImageUrls?=null,
-    
-    @SerializedName("childs")
-    var childs: ArrayList<ThirdLevelChild>?=null,
-    
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
     @SerializedName("uid")
     var uid: Int?=null,
     
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    @SerializedName("childs")
+    var childs: ArrayList<ThirdLevelChild>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -2210,26 +2210,26 @@ data class Child(
     
     
     
-    @SerializedName("banners")
-    var banners: ImageUrls?=null,
-    
-    @SerializedName("childs")
-    var childs: ArrayList<SecondLevelChild>?=null,
-    
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
     @SerializedName("uid")
     var uid: Int?=null,
     
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    @SerializedName("childs")
+    var childs: ArrayList<SecondLevelChild>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -2260,23 +2260,23 @@ data class CategoryItems(
     
     
     
+    @SerializedName("name")
+    var name: String?=null,
+    
     @SerializedName("banners")
     var banners: CategoryBanner?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
     
     @SerializedName("childs")
     var childs: ArrayList<Child>?=null,
     
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
     @SerializedName("slug")
     var slug: String?=null,
     
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -2355,20 +2355,20 @@ data class CategoryMetaResponse(
     
     
     
-    @SerializedName("banners")
-    var banners: ImageUrls?=null,
-    
-    @SerializedName("logo")
-    var logo: Media?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
     @SerializedName("uid")
     var uid: Int?=null,
     
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null
+    @SerializedName("logo")
+    var logo: Media?=null
     
 ): Parcelable {
     
@@ -2395,14 +2395,14 @@ data class HomeListingResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
     var items: ArrayList<ProductListingDetail>?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -2425,12 +2425,6 @@ data class Department(
     
     
     
-    @SerializedName("logo")
-    var logo: Media?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
     @SerializedName("name")
     var name: String?=null,
     
@@ -2438,7 +2432,13 @@ data class Department(
     var priorityOrder: Int?=null,
     
     @SerializedName("uid")
-    var uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
     
@@ -2485,20 +2485,20 @@ data class AutocompleteItem(
     
     
     
-    @SerializedName("logo")
-    var logo: Media?=null,
-    
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
-    
     @SerializedName("type")
     var type: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null,
     
     @SerializedName("_custom_json")
     var customJson: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("display")
-    var display: String?=null
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -2545,11 +2545,11 @@ data class CollectionQuery(
     
     
     
-    @SerializedName("value")
-    var value: @RawValue ArrayList<Any>?=null,
-    
     @SerializedName("attribute")
     var attribute: String?=null,
+    
+    @SerializedName("value")
+    var value: @RawValue ArrayList<Any>?=null,
     
     @SerializedName("op")
     var op: String?=null
@@ -2575,71 +2575,71 @@ data class GetCollectionDetailNest(
     
     
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("app_id")
-    var appId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("allow_facets")
-    var allowFacets: Boolean?=null,
-    
-    @SerializedName("tag")
-    var tag: ArrayList<String>?=null,
-    
-    @SerializedName("banners")
-    var banners: ImageUrls?=null,
-    
-    @SerializedName("visible_facets_keys")
-    var visibleFacetsKeys: ArrayList<String>?=null,
-    
-    @SerializedName("_schedule")
-    var schedule: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("sort_on")
-    var sortOn: String?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
     @SerializedName("query")
     var query: ArrayList<CollectionQuery>?=null,
-    
-    @SerializedName("priority")
-    var priority: Int?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("allow_sort")
-    var allowSort: Boolean?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("logo")
-    var logo: Media?=null,
-    
-    @SerializedName("badge")
-    var badge: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("cron")
     var cron: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("action")
-    var action: ProductListingAction?=null,
+    @SerializedName("allow_facets")
+    var allowFacets: Boolean?=null,
+    
+    @SerializedName("visible_facets_keys")
+    var visibleFacetsKeys: ArrayList<String>?=null,
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
+    
+    @SerializedName("banners")
+    var banners: ImageUrls?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("priority")
+    var priority: Int?=null,
+    
+    @SerializedName("sort_on")
+    var sortOn: String?=null,
+    
+    @SerializedName("allow_sort")
+    var allowSort: Boolean?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("tag")
+    var tag: ArrayList<String>?=null,
+    
+    @SerializedName("badge")
+    var badge: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("uid")
-    var uid: String?=null
+    var uid: String?=null,
+    
+    @SerializedName("_schedule")
+    var schedule: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("logo")
+    var logo: Media?=null,
+    
+    @SerializedName("action")
+    var action: ProductListingAction?=null
     
 ): Parcelable {
     
@@ -2700,14 +2700,14 @@ data class CollectionListingFilterType(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("display")
+    var display: String?=null,
     
     @SerializedName("is_selected")
     var isSelected: Boolean?=null,
     
-    @SerializedName("display")
-    var display: String?=null
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
     
@@ -2730,14 +2730,14 @@ data class CollectionListingFilterTag(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("display")
+    var display: String?=null,
     
     @SerializedName("is_selected")
     var isSelected: Boolean?=null,
     
-    @SerializedName("display")
-    var display: String?=null
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
     
@@ -2785,11 +2785,11 @@ data class GetCollectionListingResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
     var items: ArrayList<GetCollectionDetailNest>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null,
     
     @SerializedName("filters")
     var filters: CollectionListingFilter?=null
@@ -2815,65 +2815,65 @@ data class CollectionDetailResponse(
     
     
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("query")
+    var query: ArrayList<CollectionQuery>?=null,
     
-    @SerializedName("app_id")
-    var appId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
+    @SerializedName("cron")
+    var cron: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("allow_facets")
     var allowFacets: Boolean?=null,
     
-    @SerializedName("tag")
-    var tag: ArrayList<String>?=null,
+    @SerializedName("visible_facets_keys")
+    var visibleFacetsKeys: ArrayList<String>?=null,
+    
+    @SerializedName("app_id")
+    var appId: String?=null,
     
     @SerializedName("banners")
     var banners: ImageUrls?=null,
     
-    @SerializedName("visible_facets_keys")
-    var visibleFacetsKeys: ArrayList<String>?=null,
-    
-    @SerializedName("_schedule")
-    var schedule: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("sort_on")
-    var sortOn: String?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("query")
-    var query: ArrayList<CollectionQuery>?=null,
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("priority")
     var priority: Int?=null,
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("sort_on")
+    var sortOn: String?=null,
     
     @SerializedName("allow_sort")
     var allowSort: Boolean?=null,
     
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
     @SerializedName("description")
     var description: String?=null,
     
-    @SerializedName("logo")
-    var logo: Media?=null,
+    @SerializedName("tag")
+    var tag: ArrayList<String>?=null,
     
     @SerializedName("badge")
     var badge: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("cron")
-    var cron: @RawValue HashMap<String,Any>?=null
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("_schedule")
+    var schedule: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("logo")
+    var logo: Media?=null
     
 ): Parcelable {
     
@@ -2930,11 +2930,11 @@ data class GetFollowListingResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
-    var items: ArrayList<ProductListingDetail>?=null
+    var items: ArrayList<ProductListingDetail>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -2955,11 +2955,11 @@ data class FollowPostResponse(
     
     
     
-    @SerializedName("id")
-    var id: String?=null,
-    
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null
     
 ): Parcelable {
     
@@ -3000,11 +3000,11 @@ data class FollowIdsData(
     
     
     
-    @SerializedName("collections")
-    var collections: ArrayList<Int>?=null,
-    
     @SerializedName("products")
     var products: ArrayList<Int>?=null,
+    
+    @SerializedName("collections")
+    var collections: ArrayList<Int>?=null,
     
     @SerializedName("brands")
     var brands: ArrayList<Int>?=null
@@ -3075,17 +3075,20 @@ data class Store(
     
     
     
+    @SerializedName("state")
+    var state: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
+    
     @SerializedName("pincode")
     var pincode: Int?=null,
     
     @SerializedName("store_email")
     var storeEmail: String?=null,
-    
-    @SerializedName("lat_long")
-    var latLong: LatLong?=null,
-    
-    @SerializedName("store_code")
-    var storeCode: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -3093,17 +3096,14 @@ data class Store(
     @SerializedName("uid")
     var uid: Int?=null,
     
-    @SerializedName("address")
-    var address: String?=null,
-    
-    @SerializedName("state")
-    var state: String?=null,
-    
-    @SerializedName("country")
-    var country: String?=null,
+    @SerializedName("store_code")
+    var storeCode: String?=null,
     
     @SerializedName("city")
-    var city: String?=null
+    var city: String?=null,
+    
+    @SerializedName("lat_long")
+    var latLong: LatLong?=null
     
 ): Parcelable {
     
@@ -3140,88 +3140,13 @@ data class StoreListingResponse(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
-    var items: ArrayList<Store>?=null
+    var items: ArrayList<Store>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: StoreDepartments
-*/
-@Parcelize
-data class StoreDepartments(
-    
-    
-    
-    @SerializedName("logo")
-    var logo: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("priority_order")
-    var priorityOrder: Int?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: CompanyStore
-*/
-@Parcelize
-data class CompanyStore(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("business_type")
-    var businessType: String?=null,
-    
-    @SerializedName("company_type")
-    var companyType: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -3265,14 +3190,14 @@ data class StoreManagerSerializer(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("email")
     var email: String?=null,
     
     @SerializedName("mobile_no")
-    var mobileNo: SellerPhoneNumber?=null
+    var mobileNo: SellerPhoneNumber?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
     
@@ -3295,32 +3220,32 @@ data class StoreAddressSerializer(
     
     
     
-    @SerializedName("address2")
-    var address2: String?=null,
+    @SerializedName("state")
+    var state: String?=null,
     
     @SerializedName("country")
     var country: String?=null,
     
-    @SerializedName("longitude")
-    var longitude: Double?=null,
-    
-    @SerializedName("latitude")
-    var latitude: Double?=null,
-    
-    @SerializedName("landmark")
-    var landmark: String?=null,
-    
     @SerializedName("address1")
     var address1: String?=null,
-    
-    @SerializedName("state")
-    var state: String?=null,
     
     @SerializedName("pincode")
     var pincode: Int?=null,
     
+    @SerializedName("address2")
+    var address2: String?=null,
+    
+    @SerializedName("landmark")
+    var landmark: String?=null,
+    
+    @SerializedName("longitude")
+    var longitude: Double?=null,
+    
     @SerializedName("city")
-    var city: String?=null
+    var city: String?=null,
+    
+    @SerializedName("latitude")
+    var latitude: Double?=null
     
 ): Parcelable {
     
@@ -3331,6 +3256,81 @@ data class StoreAddressSerializer(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: CompanyStore
+*/
+@Parcelize
+data class CompanyStore(
+    
+    
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("company_type")
+    var companyType: String?=null,
+    
+    @SerializedName("business_type")
+    var businessType: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: StoreDepartments
+*/
+@Parcelize
+data class StoreDepartments(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("priority_order")
+    var priorityOrder: Int?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("logo")
+    var logo: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
     
     
     
@@ -3355,26 +3355,26 @@ data class AppStore(
     
     
     
-    @SerializedName("departments")
-    var departments: ArrayList<StoreDepartments>?=null,
-    
-    @SerializedName("company")
-    var company: CompanyStore?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("manager")
     var manager: StoreManagerSerializer?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
     
     @SerializedName("address")
     var address: StoreAddressSerializer?=null,
     
+    @SerializedName("name")
+    var name: String?=null,
+    
     @SerializedName("contact_numbers")
-    var contactNumbers: ArrayList<SellerPhoneNumber>?=null
+    var contactNumbers: ArrayList<SellerPhoneNumber>?=null,
+    
+    @SerializedName("company")
+    var company: CompanyStore?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("departments")
+    var departments: ArrayList<StoreDepartments>?=null
     
 ): Parcelable {
     
@@ -3405,14 +3405,14 @@ data class ApplicationStoreListing(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
     var items: ArrayList<AppStore>?=null,
     
     @SerializedName("filters")
-    var filters: ArrayList<StoreDepartments>?=null
+    var filters: ArrayList<StoreDepartments>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -3460,17 +3460,17 @@ data class StoreTiming(
     
     
     
-    @SerializedName("open")
-    var open: Boolean?=null,
-    
-    @SerializedName("opening")
-    var opening: Time?=null,
+    @SerializedName("closing")
+    var closing: Time?=null,
     
     @SerializedName("weekday")
     var weekday: String?=null,
     
-    @SerializedName("closing")
-    var closing: Time?=null
+    @SerializedName("opening")
+    var opening: Time?=null,
+    
+    @SerializedName("open")
+    var open: Boolean?=null
     
 ): Parcelable {
     
@@ -3495,32 +3495,32 @@ data class StoreDetails(
     
     
     
-    @SerializedName("timing")
-    var timing: ArrayList<StoreTiming>?=null,
-    
-    @SerializedName("departments")
-    var departments: ArrayList<StoreDepartments>?=null,
-    
-    @SerializedName("company")
-    var company: CompanyStore?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("manager")
     var manager: StoreManagerSerializer?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("address")
     var address: StoreAddressSerializer?=null,
     
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("contact_numbers")
-    var contactNumbers: ArrayList<SellerPhoneNumber>?=null
+    var contactNumbers: ArrayList<SellerPhoneNumber>?=null,
+    
+    @SerializedName("company")
+    var company: CompanyStore?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("timing")
+    var timing: ArrayList<StoreTiming>?=null,
+    
+    @SerializedName("departments")
+    var departments: ArrayList<StoreDepartments>?=null
     
 ): Parcelable {
     
@@ -3548,6 +3548,41 @@ data class StoreDetails(
 
 
 /*
+    Model: UserDetail
+*/
+@Parcelize
+data class UserDetail(
+    
+    
+    
+    @SerializedName("super_user")
+    var superUser: Boolean?=null,
+    
+    @SerializedName("username")
+    var username: String?=null,
+    
+    @SerializedName("contact")
+    var contact: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: Size
 */
 @Parcelize
@@ -3555,17 +3590,17 @@ data class Size(
     
     
     
-    @SerializedName("value")
-    var value: @RawValue Any?=null,
-    
     @SerializedName("quantity")
     var quantity: Int?=null,
+    
+    @SerializedName("is_available")
+    var isAvailable: Boolean?=null,
     
     @SerializedName("display")
     var display: @RawValue Any?=null,
     
-    @SerializedName("is_available")
-    var isAvailable: Boolean?=null
+    @SerializedName("value")
+    var value: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -3590,20 +3625,20 @@ data class ProductGroupPrice(
     
     
     
+    @SerializedName("max_effective")
+    var maxEffective: Double?=null,
+    
     @SerializedName("max_marked")
     var maxMarked: Double?=null,
+    
+    @SerializedName("min_marked")
+    var minMarked: Double?=null,
     
     @SerializedName("currency")
     var currency: @RawValue Any?=null,
     
     @SerializedName("min_effective")
-    var minEffective: Double?=null,
-    
-    @SerializedName("min_marked")
-    var minMarked: Double?=null,
-    
-    @SerializedName("max_effective")
-    var maxEffective: Double?=null
+    var minEffective: Double?=null
     
 ): Parcelable {
     
@@ -3630,68 +3665,68 @@ data class ProductDetails(
     
     
     
-    @SerializedName("image_nature")
-    var imageNature: @RawValue Any?=null,
-    
-    @SerializedName("media")
-    var media: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("item_code")
-    var itemCode: @RawValue Any?=null,
-    
-    @SerializedName("short_description")
-    var shortDescription: @RawValue Any?=null,
-    
-    @SerializedName("rating")
-    var rating: Double?=null,
-    
     @SerializedName("template_tag")
     var templateTag: @RawValue Any?=null,
     
-    @SerializedName("identifier")
-    var identifier: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("is_set")
-    var isSet: Boolean?=null,
-    
-    @SerializedName("country_of_origin")
-    var countryOfOrigin: @RawValue Any?=null,
-    
-    @SerializedName("highlights")
-    var highlights: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("images")
-    var images: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("slug")
-    var slug: @RawValue Any?=null,
-    
-    @SerializedName("name")
-    var name: @RawValue Any?=null,
-    
-    @SerializedName("grouped_attributes")
-    var groupedAttributes: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("description")
-    var description: @RawValue Any?=null,
+    @SerializedName("brand_uid")
+    var brandUid: Int?=null,
     
     @SerializedName("rating_count")
     var ratingCount: Int?=null,
     
-    @SerializedName("attributes")
-    var attributes: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("rating")
+    var rating: Double?=null,
     
-    @SerializedName("out_of_stock")
-    var outOfStock: Boolean?=null,
-    
-    @SerializedName("brand_uid")
-    var brandUid: Int?=null,
+    @SerializedName("description")
+    var description: @RawValue Any?=null,
     
     @SerializedName("hsn_code")
     var hsnCode: Int?=null,
     
     @SerializedName("has_variant")
-    var hasVariant: Boolean?=null
+    var hasVariant: Boolean?=null,
+    
+    @SerializedName("short_description")
+    var shortDescription: @RawValue Any?=null,
+    
+    @SerializedName("highlights")
+    var highlights: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("name")
+    var name: @RawValue Any?=null,
+    
+    @SerializedName("item_code")
+    var itemCode: @RawValue Any?=null,
+    
+    @SerializedName("attributes")
+    var attributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("slug")
+    var slug: @RawValue Any?=null,
+    
+    @SerializedName("identifier")
+    var identifier: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("out_of_stock")
+    var outOfStock: Boolean?=null,
+    
+    @SerializedName("grouped_attributes")
+    var groupedAttributes: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("media")
+    var media: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("is_set")
+    var isSet: Boolean?=null,
+    
+    @SerializedName("images")
+    var images: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("country_of_origin")
+    var countryOfOrigin: @RawValue Any?=null,
+    
+    @SerializedName("image_nature")
+    var imageNature: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -3753,9 +3788,6 @@ data class ProductInGroup(
     @SerializedName("sizes")
     var sizes: ArrayList<Size>?=null,
     
-    @SerializedName("min_quantity")
-    var minQuantity: Int?=null,
-    
     @SerializedName("allow_remove")
     var allowRemove: Boolean?=null,
     
@@ -3765,14 +3797,17 @@ data class ProductInGroup(
     @SerializedName("auto_select")
     var autoSelect: Boolean?=null,
     
-    @SerializedName("max_quantity")
-    var maxQuantity: Int?=null,
+    @SerializedName("product_details")
+    var productDetails: ProductDetails?=null,
     
     @SerializedName("product_uid")
     var productUid: Int?=null,
     
-    @SerializedName("product_details")
-    var productDetails: ProductDetails?=null,
+    @SerializedName("min_quantity")
+    var minQuantity: Int?=null,
+    
+    @SerializedName("max_quantity")
+    var maxQuantity: Int?=null,
     
     @SerializedName("auto_add_to_cart")
     var autoAddToCart: Boolean?=null
@@ -3803,41 +3838,6 @@ data class ProductInGroup(
 
 
 /*
-    Model: UserDetail
-*/
-@Parcelize
-data class UserDetail(
-    
-    
-    
-    @SerializedName("super_user")
-    var superUser: Boolean?=null,
-    
-    @SerializedName("username")
-    var username: String?=null,
-    
-    @SerializedName("user_id")
-    var userId: String?=null,
-    
-    @SerializedName("contact")
-    var contact: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: ProductGroupingModel
 */
 @Parcelize
@@ -3845,32 +3845,29 @@ data class ProductGroupingModel(
     
     
     
-    @SerializedName("products")
-    var products: ArrayList<ProductInGroup>?=null,
+    @SerializedName("page_visibility")
+    var pageVisibility: @RawValue ArrayList<Any>?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
     
-    @SerializedName("same_store_assignment")
-    var sameStoreAssignment: Boolean?=null,
-    
-    @SerializedName("logo")
-    var logo: String?=null,
+    @SerializedName("modified_by")
+    var modifiedBy: UserDetail?=null,
     
     @SerializedName("modified_on")
     var modifiedOn: String?=null,
     
-    @SerializedName("slug")
-    var slug: @RawValue Any?=null,
+    @SerializedName("logo")
+    var logo: String?=null,
     
-    @SerializedName("created_by")
-    var createdBy: UserDetail?=null,
+    @SerializedName("products")
+    var products: ArrayList<ProductInGroup>?=null,
     
-    @SerializedName("verified_by")
-    var verifiedBy: UserDetail?=null,
+    @SerializedName("same_store_assignment")
+    var sameStoreAssignment: Boolean?=null,
     
-    @SerializedName("created_on")
-    var createdOn: String?=null,
+    @SerializedName("company_id")
+    var companyId: Int?=null,
     
     @SerializedName("verified_on")
     var verifiedOn: String?=null,
@@ -3878,23 +3875,26 @@ data class ProductGroupingModel(
     @SerializedName("name")
     var name: @RawValue Any?=null,
     
-    @SerializedName("page_visibility")
-    var pageVisibility: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("_id")
-    var id: @RawValue Any?=null,
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("choice")
     var choice: @RawValue Any?=null,
     
-    @SerializedName("modified_by")
-    var modifiedBy: UserDetail?=null,
+    @SerializedName("created_by")
+    var createdBy: UserDetail?=null,
     
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
+    @SerializedName("_id")
+    var id: @RawValue Any?=null,
     
-    @SerializedName("company_id")
-    var companyId: Int?=null
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("verified_by")
+    var verifiedBy: UserDetail?=null,
+    
+    @SerializedName("slug")
+    var slug: @RawValue Any?=null
     
 ): Parcelable {
     
@@ -3958,28 +3958,113 @@ data class ProductBundle(
 
 
 /*
-    Model: ProductStockUnitPriceV2
+    Model: ProductStockPriceV2
 */
 @Parcelize
-data class ProductStockUnitPriceV2(
+data class ProductStockPriceV2(
     
     
     
-    @SerializedName("unit")
-    var unit: String?=null,
+    @SerializedName("marked")
+    var marked: Double?=null,
     
-    @SerializedName("currency_symbol")
-    var currencySymbol: String?=null,
+    @SerializedName("effective")
+    var effective: Double?=null,
     
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("price")
-    var price: Double?=null
+    @SerializedName("currency")
+    var currency: String?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ArticleAssignmentV2
+*/
+@Parcelize
+data class ArticleAssignmentV2(
+    
+    
+    
+    @SerializedName("strategy")
+    var strategy: String?=null,
+    
+    @SerializedName("level")
+    var level: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: StrategyWiseListingSchemaV2
+*/
+@Parcelize
+data class StrategyWiseListingSchemaV2(
+    
+    
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("tat")
+    var tat: Int?=null,
+    
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    
+    @SerializedName("distance")
+    var distance: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: SellerV2
+*/
+@Parcelize
+data class SellerV2(
+    
+    
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("count")
+    var count: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
     
     
     
@@ -4000,14 +4085,14 @@ data class ReturnConfigSchemaV2(
     
     
     
-    @SerializedName("unit")
-    var unit: String?=null,
-    
     @SerializedName("time")
     var time: Int?=null,
     
     @SerializedName("returnable")
-    var returnable: Boolean?=null
+    var returnable: Boolean?=null,
+    
+    @SerializedName("unit")
+    var unit: String?=null
     
 ): Parcelable {
     
@@ -4023,54 +4108,24 @@ data class ReturnConfigSchemaV2(
 
 
 /*
-    Model: StoreV2
+    Model: ProductStockUnitPriceV2
 */
 @Parcelize
-data class StoreV2(
+data class ProductStockUnitPriceV2(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("price")
+    var price: Double?=null,
     
-    @SerializedName("count")
-    var count: Int?=null,
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
     
-    @SerializedName("uid")
-    var uid: Int?=null
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
     
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: StrategyWiseListingSchemaV2
-*/
-@Parcelize
-data class StrategyWiseListingSchemaV2(
-    
-    
-    
-    @SerializedName("distance")
-    var distance: Int?=null,
-    
-    @SerializedName("tat")
-    var tat: Int?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
-    @SerializedName("pincode")
-    var pincode: Int?=null
+    @SerializedName("unit")
+    var unit: String?=null
     
 ): Parcelable {
     
@@ -4140,43 +4195,13 @@ data class ProductSetV2(
     
     
     
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
     @SerializedName("size_distribution")
-    var sizeDistribution: ProductSetDistributionV2?=null
+    var sizeDistribution: ProductSetDistributionV2?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: SellerV2
-*/
-@Parcelize
-data class SellerV2(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("count")
-    var count: Int?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -4218,31 +4243,6 @@ data class DetailsSchemaV2(
 
 
 /*
-    Model: MarketPlaceSttributesSchemaV2
-*/
-@Parcelize
-data class MarketPlaceSttributesSchemaV2(
-    
-    
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("details")
-    var details: ArrayList<DetailsSchemaV2>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: SellerGroupAttributes
 */
 @Parcelize
@@ -4268,25 +4268,20 @@ data class SellerGroupAttributes(
 
 
 /*
-    Model: ProductStockPriceV2
+    Model: MarketPlaceSttributesSchemaV2
 */
 @Parcelize
-data class ProductStockPriceV2(
+data class MarketPlaceSttributesSchemaV2(
     
     
     
-    @SerializedName("currency")
-    var currency: String?=null,
+    @SerializedName("title")
+    var title: String?=null,
     
-    @SerializedName("effective")
-    var effective: Double?=null,
-    
-    @SerializedName("marked")
-    var marked: Double?=null
+    @SerializedName("details")
+    var details: ArrayList<DetailsSchemaV2>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -4298,20 +4293,25 @@ data class ProductStockPriceV2(
 
 
 /*
-    Model: ArticleAssignmentV2
+    Model: StoreV2
 */
 @Parcelize
-data class ArticleAssignmentV2(
+data class StoreV2(
     
     
     
-    @SerializedName("level")
-    var level: String?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
     
-    @SerializedName("strategy")
-    var strategy: String?=null
+    @SerializedName("count")
+    var count: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -4330,14 +4330,62 @@ data class ProductSizePriceResponseV3(
     
     
     
-    @SerializedName("is_cod")
-    var isCod: Boolean?=null,
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("price")
+    var price: ProductStockPriceV2?=null,
+    
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    
+    @SerializedName("is_serviceable")
+    var isServiceable: Boolean?=null,
+    
+    @SerializedName("article_assignment")
+    var articleAssignment: ArticleAssignmentV2?=null,
+    
+    @SerializedName("strategy_wise_listing")
+    var strategyWiseListing: ArrayList<StrategyWiseListingSchemaV2>?=null,
+    
+    @SerializedName("discount")
+    var discount: String?=null,
+    
+    @SerializedName("seller_count")
+    var sellerCount: Int?=null,
+    
+    @SerializedName("seller")
+    var seller: SellerV2?=null,
+    
+    @SerializedName("return_config")
+    var returnConfig: ReturnConfigSchemaV2?=null,
+    
+    @SerializedName("article_id")
+    var articleId: String?=null,
+    
+    @SerializedName("long_lat")
+    var longLat: ArrayList<Double>?=null,
+    
+    @SerializedName("is_gift")
+    var isGift: Boolean?=null,
     
     @SerializedName("price_per_unit")
     var pricePerUnit: ProductStockUnitPriceV2?=null,
     
-    @SerializedName("return_config")
-    var returnConfig: ReturnConfigSchemaV2?=null,
+    @SerializedName("is_cod")
+    var isCod: Boolean?=null,
+    
+    @SerializedName("set")
+    var set: ProductSetV2?=null,
+    
+    @SerializedName("grouped_attributes")
+    var groupedAttributes: ArrayList<SellerGroupAttributes>?=null,
+    
+    @SerializedName("marketplace_attributes")
+    var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV2>?=null,
+    
+    @SerializedName("price_per_piece")
+    var pricePerPiece: ProductStockPriceV2?=null,
     
     @SerializedName("store")
     var store: StoreV2?=null,
@@ -4345,56 +4393,8 @@ data class ProductSizePriceResponseV3(
     @SerializedName("quantity")
     var quantity: Int?=null,
     
-    @SerializedName("strategy_wise_listing")
-    var strategyWiseListing: ArrayList<StrategyWiseListingSchemaV2>?=null,
-    
-    @SerializedName("is_gift")
-    var isGift: Boolean?=null,
-    
-    @SerializedName("set")
-    var set: ProductSetV2?=null,
-    
-    @SerializedName("long_lat")
-    var longLat: ArrayList<Double>?=null,
-    
     @SerializedName("special_badge")
-    var specialBadge: String?=null,
-    
-    @SerializedName("article_id")
-    var articleId: String?=null,
-    
-    @SerializedName("item_type")
-    var itemType: String?=null,
-    
-    @SerializedName("seller_count")
-    var sellerCount: Int?=null,
-    
-    @SerializedName("discount")
-    var discount: String?=null,
-    
-    @SerializedName("seller")
-    var seller: SellerV2?=null,
-    
-    @SerializedName("marketplace_attributes")
-    var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV2>?=null,
-    
-    @SerializedName("grouped_attributes")
-    var groupedAttributes: ArrayList<SellerGroupAttributes>?=null,
-    
-    @SerializedName("pincode")
-    var pincode: Int?=null,
-    
-    @SerializedName("price")
-    var price: ProductStockPriceV2?=null,
-    
-    @SerializedName("article_assignment")
-    var articleAssignment: ArticleAssignmentV2?=null,
-    
-    @SerializedName("price_per_piece")
-    var pricePerPiece: ProductStockPriceV2?=null,
-    
-    @SerializedName("is_serviceable")
-    var isServiceable: Boolean?=null
+    var specialBadge: String?=null
     
 ): Parcelable {
     
@@ -4455,14 +4455,59 @@ data class ProductSizePriceResponseV2(
     
     
     
-    @SerializedName("is_cod")
-    var isCod: Boolean?=null,
+    @SerializedName("item_type")
+    var itemType: String?=null,
+    
+    @SerializedName("price")
+    var price: ProductStockPriceV2?=null,
+    
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    
+    @SerializedName("article_assignment")
+    var articleAssignment: ArticleAssignmentV2?=null,
+    
+    @SerializedName("strategy_wise_listing")
+    var strategyWiseListing: ArrayList<StrategyWiseListingSchemaV2>?=null,
+    
+    @SerializedName("discount")
+    var discount: String?=null,
+    
+    @SerializedName("seller_count")
+    var sellerCount: Int?=null,
+    
+    @SerializedName("seller")
+    var seller: SellerV2?=null,
+    
+    @SerializedName("return_config")
+    var returnConfig: ReturnConfigSchemaV2?=null,
+    
+    @SerializedName("article_id")
+    var articleId: String?=null,
+    
+    @SerializedName("long_lat")
+    var longLat: ArrayList<Double>?=null,
+    
+    @SerializedName("is_gift")
+    var isGift: Boolean?=null,
     
     @SerializedName("price_per_unit")
     var pricePerUnit: ProductStockUnitPriceV2?=null,
     
-    @SerializedName("return_config")
-    var returnConfig: ReturnConfigSchemaV2?=null,
+    @SerializedName("is_cod")
+    var isCod: Boolean?=null,
+    
+    @SerializedName("set")
+    var set: ProductSetV2?=null,
+    
+    @SerializedName("grouped_attributes")
+    var groupedAttributes: ArrayList<SellerGroupAttributes>?=null,
+    
+    @SerializedName("marketplace_attributes")
+    var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV2>?=null,
+    
+    @SerializedName("price_per_piece")
+    var pricePerPiece: ProductStockPriceV2?=null,
     
     @SerializedName("store")
     var store: StoreV2?=null,
@@ -4470,53 +4515,8 @@ data class ProductSizePriceResponseV2(
     @SerializedName("quantity")
     var quantity: Int?=null,
     
-    @SerializedName("strategy_wise_listing")
-    var strategyWiseListing: ArrayList<StrategyWiseListingSchemaV2>?=null,
-    
-    @SerializedName("is_gift")
-    var isGift: Boolean?=null,
-    
-    @SerializedName("set")
-    var set: ProductSetV2?=null,
-    
-    @SerializedName("long_lat")
-    var longLat: ArrayList<Double>?=null,
-    
     @SerializedName("special_badge")
-    var specialBadge: String?=null,
-    
-    @SerializedName("article_id")
-    var articleId: String?=null,
-    
-    @SerializedName("item_type")
-    var itemType: String?=null,
-    
-    @SerializedName("seller_count")
-    var sellerCount: Int?=null,
-    
-    @SerializedName("discount")
-    var discount: String?=null,
-    
-    @SerializedName("seller")
-    var seller: SellerV2?=null,
-    
-    @SerializedName("marketplace_attributes")
-    var marketplaceAttributes: ArrayList<MarketPlaceSttributesSchemaV2>?=null,
-    
-    @SerializedName("grouped_attributes")
-    var groupedAttributes: ArrayList<SellerGroupAttributes>?=null,
-    
-    @SerializedName("pincode")
-    var pincode: Int?=null,
-    
-    @SerializedName("price")
-    var price: ProductStockPriceV2?=null,
-    
-    @SerializedName("article_assignment")
-    var articleAssignment: ArticleAssignmentV2?=null,
-    
-    @SerializedName("price_per_piece")
-    var pricePerPiece: ProductStockPriceV2?=null
+    var specialBadge: String?=null
     
 ): Parcelable {
     
@@ -4575,14 +4575,14 @@ data class ProductSizeSellerFilterSchemaV2(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("is_selected")
     var isSelected: Boolean?=null,
     
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
     
@@ -4605,14 +4605,14 @@ data class ProductSizeSellersResponseV3(
     
     
     
-    @SerializedName("page")
-    var page: Page?=null,
-    
     @SerializedName("items")
     var items: ArrayList<ProductSizePriceResponseV2>?=null,
     
     @SerializedName("sort_on")
-    var sortOn: ArrayList<ProductSizeSellerFilterSchemaV2>?=null
+    var sortOn: ArrayList<ProductSizeSellerFilterSchemaV2>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -4627,31 +4627,6 @@ data class ProductSizeSellersResponseV3(
 }
 
 
-
-
-/*
-    Model: CartCurrency
-*/
-@Parcelize
-data class CartCurrency(
-    
-    
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("symbol")
-    var symbol: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
 
 
 /*
@@ -4662,128 +4637,23 @@ data class DiscountRulesApp(
     
     
     
-    @SerializedName("matched_buy_rules")
-    var matchedBuyRules: ArrayList<String>?=null,
+    @SerializedName("raw_offer")
+    var rawOffer: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("offer")
     var offer: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("matched_buy_rules")
+    var matchedBuyRules: ArrayList<String>?=null,
+    
     @SerializedName("item_criteria")
-    var itemCriteria: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("raw_offer")
-    var rawOffer: @RawValue HashMap<String,Any>?=null
+    var itemCriteria: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: FreeGiftItem
-*/
-@Parcelize
-data class FreeGiftItem(
-    
-    
-    
-    @SerializedName("item_slug")
-    var itemSlug: String?=null,
-    
-    @SerializedName("item_price_details")
-    var itemPriceDetails: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("item_images_url")
-    var itemImagesUrl: ArrayList<String>?=null,
-    
-    @SerializedName("item_brand_name")
-    var itemBrandName: String?=null,
-    
-    @SerializedName("item_name")
-    var itemName: String?=null,
-    
-    @SerializedName("item_id")
-    var itemId: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: AppliedFreeArticles
-*/
-@Parcelize
-data class AppliedFreeArticles(
-    
-    
-    
-    @SerializedName("article_id")
-    var articleId: String?=null,
-    
-    @SerializedName("free_gift_item_details")
-    var freeGiftItemDetails: FreeGiftItem?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
-    @SerializedName("parent_item_identifier")
-    var parentItemIdentifier: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: Ownership
-*/
-@Parcelize
-data class Ownership(
-    
-    
-    
-    @SerializedName("payable_category")
-    var payableCategory: String?=null,
-    
-    @SerializedName("payable_by")
-    var payableBy: String?=null
-    
-): Parcelable {
     
     
     
@@ -4820,6 +4690,111 @@ data class BuyRules(
 
 
 /*
+    Model: FreeGiftItem
+*/
+@Parcelize
+data class FreeGiftItem(
+    
+    
+    
+    @SerializedName("item_images_url")
+    var itemImagesUrl: ArrayList<String>?=null,
+    
+    @SerializedName("item_name")
+    var itemName: String?=null,
+    
+    @SerializedName("item_id")
+    var itemId: Int?=null,
+    
+    @SerializedName("item_price_details")
+    var itemPriceDetails: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("item_slug")
+    var itemSlug: String?=null,
+    
+    @SerializedName("item_brand_name")
+    var itemBrandName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: AppliedFreeArticles
+*/
+@Parcelize
+data class AppliedFreeArticles(
+    
+    
+    
+    @SerializedName("parent_item_identifier")
+    var parentItemIdentifier: String?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("free_gift_item_details")
+    var freeGiftItemDetails: FreeGiftItem?=null,
+    
+    @SerializedName("article_id")
+    var articleId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: Ownership
+*/
+@Parcelize
+data class Ownership(
+    
+    
+    
+    @SerializedName("payable_by")
+    var payableBy: String?=null,
+    
+    @SerializedName("payable_category")
+    var payableCategory: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: AppliedPromotion
 */
 @Parcelize
@@ -4827,41 +4802,41 @@ data class AppliedPromotion(
     
     
     
-    @SerializedName("promo_id")
-    var promoId: String?=null,
-    
     @SerializedName("discount_rules")
     var discountRules: ArrayList<DiscountRulesApp>?=null,
-    
-    @SerializedName("amount")
-    var amount: Double?=null,
-    
-    @SerializedName("promotion_name")
-    var promotionName: String?=null,
-    
-    @SerializedName("article_quantity")
-    var articleQuantity: Int?=null,
-    
-    @SerializedName("applied_free_articles")
-    var appliedFreeArticles: ArrayList<AppliedFreeArticles>?=null,
-    
-    @SerializedName("ownership")
-    var ownership: Ownership?=null,
-    
-    @SerializedName("promotion_type")
-    var promotionType: String?=null,
-    
-    @SerializedName("offer_text")
-    var offerText: String?=null,
-    
-    @SerializedName("buy_rules")
-    var buyRules: ArrayList<BuyRules>?=null,
     
     @SerializedName("mrp_promotion")
     var mrpPromotion: Boolean?=null,
     
+    @SerializedName("promotion_name")
+    var promotionName: String?=null,
+    
+    @SerializedName("buy_rules")
+    var buyRules: ArrayList<BuyRules>?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("applied_free_articles")
+    var appliedFreeArticles: ArrayList<AppliedFreeArticles>?=null,
+    
+    @SerializedName("promo_id")
+    var promoId: String?=null,
+    
+    @SerializedName("offer_text")
+    var offerText: String?=null,
+    
     @SerializedName("promotion_group")
-    var promotionGroup: String?=null
+    var promotionGroup: String?=null,
+    
+    @SerializedName("ownership")
+    var ownership: Ownership?=null,
+    
+    @SerializedName("article_quantity")
+    var articleQuantity: Int?=null,
+    
+    @SerializedName("promotion_type")
+    var promotionType: String?=null
     
 ): Parcelable {
     
@@ -4882,6 +4857,76 @@ data class AppliedPromotion(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ProductAvailability
+*/
+@Parcelize
+data class ProductAvailability(
+    
+    
+    
+    @SerializedName("is_valid")
+    var isValid: Boolean?=null,
+    
+    @SerializedName("sizes")
+    var sizes: ArrayList<String>?=null,
+    
+    @SerializedName("out_of_stock")
+    var outOfStock: Boolean?=null,
+    
+    @SerializedName("other_store_quantity")
+    var otherStoreQuantity: Int?=null,
+    
+    @SerializedName("deliverable")
+    var deliverable: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ProductImage
+*/
+@Parcelize
+data class ProductImage(
+    
+    
+    
+    @SerializedName("secure_url")
+    var secureUrl: String?=null,
+    
+    @SerializedName("aspect_ratio")
+    var aspectRatio: String?=null,
+    
+    @SerializedName("url")
+    var url: String?=null
+    
+): Parcelable {
     
     
     
@@ -4902,283 +4947,13 @@ data class BaseInfo(
     
     
     
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
     @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null
+    var name: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: BasePrice
-*/
-@Parcelize
-data class BasePrice(
-    
-    
-    
-    @SerializedName("currency_symbol")
-    var currencySymbol: String?=null,
-    
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("effective")
-    var effective: Double?=null,
-    
-    @SerializedName("marked")
-    var marked: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ArticlePriceInfo
-*/
-@Parcelize
-data class ArticlePriceInfo(
-    
-    
-    
-    @SerializedName("converted")
-    var converted: BasePrice?=null,
-    
-    @SerializedName("base")
-    var base: BasePrice?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductArticle
-*/
-@Parcelize
-data class ProductArticle(
-    
-    
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("size")
-    var size: String?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
-    @SerializedName("seller")
-    var seller: BaseInfo?=null,
-    
-    @SerializedName("extra_meta")
-    var extraMeta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("product_group_tags")
-    var productGroupTags: ArrayList<String>?=null,
-    
-    @SerializedName("price")
-    var price: ArticlePriceInfo?=null,
-    
-    @SerializedName("parent_item_identifiers")
-    var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("store")
-    var store: BaseInfo?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: PromoMeta
-*/
-@Parcelize
-data class PromoMeta(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductPrice
-*/
-@Parcelize
-data class ProductPrice(
-    
-    
-    
-    @SerializedName("currency_symbol")
-    var currencySymbol: String?=null,
-    
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("effective")
-    var effective: Double?=null,
-    
-    @SerializedName("selling")
-    var selling: Double?=null,
-    
-    @SerializedName("add_on")
-    var addOn: Double?=null,
-    
-    @SerializedName("marked")
-    var marked: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductPriceInfo
-*/
-@Parcelize
-data class ProductPriceInfo(
-    
-    
-    
-    @SerializedName("converted")
-    var converted: ProductPrice?=null,
-    
-    @SerializedName("base")
-    var base: ProductPrice?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: CartProductIdentifer
-*/
-@Parcelize
-data class CartProductIdentifer(
-    
-    
-    
-    @SerializedName("identifier")
-    var identifier: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ProductImage
-*/
-@Parcelize
-data class ProductImage(
-    
-    
-    
-    @SerializedName("secure_url")
-    var secureUrl: String?=null,
-    
-    @SerializedName("url")
-    var url: String?=null,
-    
-    @SerializedName("aspect_ratio")
-    var aspectRatio: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -5217,11 +4992,11 @@ data class ProductAction(
     
     
     
-    @SerializedName("query")
-    var query: ActionQuery?=null,
-    
     @SerializedName("type")
     var type: String?=null,
+    
+    @SerializedName("query")
+    var query: ActionQuery?=null,
     
     @SerializedName("url")
     var url: String?=null
@@ -5247,11 +5022,11 @@ data class CategoryInfo(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("uid")
-    var uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
     
@@ -5272,29 +5047,29 @@ data class CartProduct(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
     @SerializedName("images")
     var images: ArrayList<ProductImage>?=null,
-    
-    @SerializedName("net_quantity")
-    var netQuantity: NetQuantity?=null,
     
     @SerializedName("slug")
     var slug: String?=null,
     
+    @SerializedName("net_quantity")
+    var netQuantity: NetQuantity?=null,
+    
     @SerializedName("brand")
     var brand: BaseInfo?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("action")
     var action: ProductAction?=null,
     
-    @SerializedName("type")
-    var type: String?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
     
     @SerializedName("categories")
     var categories: ArrayList<CategoryInfo>?=null
@@ -5325,29 +5100,229 @@ data class CartProduct(
 
 
 /*
-    Model: ProductAvailability
+    Model: ProductPrice
 */
 @Parcelize
-data class ProductAvailability(
+data class ProductPrice(
     
     
     
-    @SerializedName("sizes")
-    var sizes: ArrayList<String>?=null,
+    @SerializedName("selling")
+    var selling: Double?=null,
     
-    @SerializedName("other_store_quantity")
-    var otherStoreQuantity: Int?=null,
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
     
-    @SerializedName("out_of_stock")
-    var outOfStock: Boolean?=null,
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
     
-    @SerializedName("is_valid")
-    var isValid: Boolean?=null,
+    @SerializedName("effective")
+    var effective: Double?=null,
     
-    @SerializedName("deliverable")
-    var deliverable: Boolean?=null
+    @SerializedName("marked")
+    var marked: Double?=null,
+    
+    @SerializedName("add_on")
+    var addOn: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ProductPriceInfo
+*/
+@Parcelize
+data class ProductPriceInfo(
+    
+    
+    
+    @SerializedName("base")
+    var base: ProductPrice?=null,
+    
+    @SerializedName("converted")
+    var converted: ProductPrice?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: PromoMeta
+*/
+@Parcelize
+data class PromoMeta(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: CartProductIdentifer
+*/
+@Parcelize
+data class CartProductIdentifer(
+    
+    
+    
+    @SerializedName("identifier")
+    var identifier: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: BasePrice
+*/
+@Parcelize
+data class BasePrice(
+    
+    
+    
+    @SerializedName("marked")
+    var marked: Double?=null,
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("effective")
+    var effective: Double?=null,
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ArticlePriceInfo
+*/
+@Parcelize
+data class ArticlePriceInfo(
+    
+    
+    
+    @SerializedName("base")
+    var base: BasePrice?=null,
+    
+    @SerializedName("converted")
+    var converted: BasePrice?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: ProductArticle
+*/
+@Parcelize
+data class ProductArticle(
+    
+    
+    
+    @SerializedName("seller")
+    var seller: BaseInfo?=null,
+    
+    @SerializedName("extra_meta")
+    var extraMeta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("parent_item_identifiers")
+    var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("price")
+    var price: ArticlePriceInfo?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("product_group_tags")
+    var productGroupTags: ArrayList<String>?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("store")
+    var store: BaseInfo?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -5372,53 +5347,53 @@ data class CartProductInfo(
     
     
     
-    @SerializedName("is_set")
-    var isSet: Boolean?=null,
+    @SerializedName("coupon_message")
+    var couponMessage: String?=null,
     
     @SerializedName("promotions_applied")
     var promotionsApplied: ArrayList<AppliedPromotion>?=null,
     
-    @SerializedName("article")
-    var article: ProductArticle?=null,
-    
-    @SerializedName("promo_meta")
-    var promoMeta: PromoMeta?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
-    @SerializedName("price_per_unit")
-    var pricePerUnit: ProductPriceInfo?=null,
-    
-    @SerializedName("price")
-    var price: ProductPriceInfo?=null,
-    
-    @SerializedName("coupon_message")
-    var couponMessage: String?=null,
-    
-    @SerializedName("parent_item_identifiers")
-    var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("discount")
-    var discount: String?=null,
-    
-    @SerializedName("identifiers")
-    var identifiers: CartProductIdentifer?=null,
-    
-    @SerializedName("product")
-    var product: CartProduct?=null,
+    @SerializedName("availability")
+    var availability: ProductAvailability?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
+    @SerializedName("parent_item_identifiers")
+    var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("key")
     var key: String?=null,
     
-    @SerializedName("availability")
-    var availability: ProductAvailability?=null,
-    
     @SerializedName("bulk_offer")
-    var bulkOffer: @RawValue HashMap<String,Any>?=null
+    var bulkOffer: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("product")
+    var product: CartProduct?=null,
+    
+    @SerializedName("price")
+    var price: ProductPriceInfo?=null,
+    
+    @SerializedName("discount")
+    var discount: String?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("promo_meta")
+    var promoMeta: PromoMeta?=null,
+    
+    @SerializedName("identifiers")
+    var identifiers: CartProductIdentifer?=null,
+    
+    @SerializedName("is_set")
+    var isSet: Boolean?=null,
+    
+    @SerializedName("article")
+    var article: ProductArticle?=null,
+    
+    @SerializedName("price_per_unit")
+    var pricePerUnit: ProductPriceInfo?=null
     
 ): Parcelable {
     
@@ -5467,43 +5442,18 @@ data class PaymentSelectionLock(
     
     
     
-    @SerializedName("enabled")
-    var enabled: Boolean?=null,
+    @SerializedName("default_options")
+    var defaultOptions: String?=null,
     
     @SerializedName("payment_identifier")
     var paymentIdentifier: String?=null,
     
-    @SerializedName("default_options")
-    var defaultOptions: String?=null
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
     
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: PromiseTimestamp
-*/
-@Parcelize
-data class PromiseTimestamp(
-    
-    
-    
-    @SerializedName("max")
-    var max: Double?=null,
-    
-    @SerializedName("min")
-    var min: Double?=null
-    
-): Parcelable {
     
     
     
@@ -5540,18 +5490,18 @@ data class PromiseFormatted(
 
 
 /*
-    Model: ShipmentPromise
+    Model: PromiseTimestamp
 */
 @Parcelize
-data class ShipmentPromise(
+data class PromiseTimestamp(
     
     
     
-    @SerializedName("timestamp")
-    var timestamp: PromiseTimestamp?=null,
+    @SerializedName("max")
+    var max: Double?=null,
     
-    @SerializedName("formatted")
-    var formatted: PromiseFormatted?=null
+    @SerializedName("min")
+    var min: Double?=null
     
 ): Parcelable {
     
@@ -5565,32 +5515,112 @@ data class ShipmentPromise(
 
 
 /*
-    Model: DisplayBreakup
+    Model: ShipmentPromise
 */
 @Parcelize
-data class DisplayBreakup(
+data class ShipmentPromise(
     
     
     
-    @SerializedName("currency_symbol")
-    var currencySymbol: String?=null,
+    @SerializedName("formatted")
+    var formatted: PromiseFormatted?=null,
     
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("display")
-    var display: String?=null,
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("message")
-    var message: ArrayList<String>?=null,
-    
-    @SerializedName("value")
-    var value: Double?=null
+    @SerializedName("timestamp")
+    var timestamp: PromiseTimestamp?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: CartCurrency
+*/
+@Parcelize
+data class CartCurrency(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("symbol")
+    var symbol: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: RawBreakup
+*/
+@Parcelize
+data class RawBreakup(
+    
+    
+    
+    @SerializedName("cod_charge")
+    var codCharge: Double?=null,
+    
+    @SerializedName("fynd_cash")
+    var fyndCash: Double?=null,
+    
+    @SerializedName("delivery_charge")
+    var deliveryCharge: Double?=null,
+    
+    @SerializedName("coupon")
+    var coupon: Double?=null,
+    
+    @SerializedName("subtotal")
+    var subtotal: Double?=null,
+    
+    @SerializedName("convenience_fee")
+    var convenienceFee: Double?=null,
+    
+    @SerializedName("gst_charges")
+    var gstCharges: Double?=null,
+    
+    @SerializedName("discount")
+    var discount: Double?=null,
+    
+    @SerializedName("mrp_total")
+    var mrpTotal: Double?=null,
+    
+    @SerializedName("vog")
+    var vog: Double?=null,
+    
+    @SerializedName("total")
+    var total: Double?=null,
+    
+    @SerializedName("you_saved")
+    var youSaved: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -5617,41 +5647,41 @@ data class CouponBreakup(
     
     
     
-    @SerializedName("is_applied")
-    var isApplied: Boolean?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("max_discount_value")
-    var maxDiscountValue: Double?=null,
-    
-    @SerializedName("sub_title")
-    var subTitle: String?=null,
-    
     @SerializedName("coupon_value")
     var couponValue: Double?=null,
-    
-    @SerializedName("coupon_type")
-    var couponType: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
     
     @SerializedName("minimum_cart_value")
     var minimumCartValue: Double?=null,
     
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("coupon_type")
+    var couponType: String?=null,
+    
+    @SerializedName("max_discount_value")
+    var maxDiscountValue: Double?=null,
+    
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("message")
-    var message: String?=null,
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("is_applied")
+    var isApplied: Boolean?=null,
+    
+    @SerializedName("sub_title")
+    var subTitle: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null,
     
     @SerializedName("value")
     var value: Double?=null
@@ -5690,26 +5720,36 @@ data class CouponBreakup(
 
 
 /*
-    Model: LoyaltyPoints
+    Model: DisplayBreakup
 */
 @Parcelize
-data class LoyaltyPoints(
+data class DisplayBreakup(
     
     
     
-    @SerializedName("total")
-    var total: Double?=null,
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
     
-    @SerializedName("description")
-    var description: String?=null,
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
     
-    @SerializedName("applicable")
-    var applicable: Double?=null,
+    @SerializedName("message")
+    var message: ArrayList<String>?=null,
     
-    @SerializedName("is_applied")
-    var isApplied: Boolean?=null
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -5725,66 +5765,26 @@ data class LoyaltyPoints(
 
 
 /*
-    Model: RawBreakup
+    Model: LoyaltyPoints
 */
 @Parcelize
-data class RawBreakup(
+data class LoyaltyPoints(
     
     
+    
+    @SerializedName("is_applied")
+    var isApplied: Boolean?=null,
+    
+    @SerializedName("applicable")
+    var applicable: Double?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
     
     @SerializedName("total")
-    var total: Double?=null,
-    
-    @SerializedName("gst_charges")
-    var gstCharges: Double?=null,
-    
-    @SerializedName("fynd_cash")
-    var fyndCash: Double?=null,
-    
-    @SerializedName("subtotal")
-    var subtotal: Double?=null,
-    
-    @SerializedName("you_saved")
-    var youSaved: Double?=null,
-    
-    @SerializedName("vog")
-    var vog: Double?=null,
-    
-    @SerializedName("cod_charge")
-    var codCharge: Double?=null,
-    
-    @SerializedName("coupon")
-    var coupon: Double?=null,
-    
-    @SerializedName("discount")
-    var discount: Double?=null,
-    
-    @SerializedName("mrp_total")
-    var mrpTotal: Double?=null,
-    
-    @SerializedName("delivery_charge")
-    var deliveryCharge: Double?=null,
-    
-    @SerializedName("convenience_fee")
-    var convenienceFee: Double?=null
+    var total: Double?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -5807,17 +5807,17 @@ data class CartBreakup(
     
     
     
-    @SerializedName("display")
-    var display: ArrayList<DisplayBreakup>?=null,
+    @SerializedName("raw")
+    var raw: RawBreakup?=null,
     
     @SerializedName("coupon")
     var coupon: CouponBreakup?=null,
     
-    @SerializedName("loyalty_points")
-    var loyaltyPoints: LoyaltyPoints?=null,
+    @SerializedName("display")
+    var display: ArrayList<DisplayBreakup>?=null,
     
-    @SerializedName("raw")
-    var raw: RawBreakup?=null
+    @SerializedName("loyalty_points")
+    var loyaltyPoints: LoyaltyPoints?=null
     
 ): Parcelable {
     
@@ -5842,26 +5842,8 @@ data class CartDetailResponse(
     
     
     
-    @SerializedName("currency")
-    var currency: CartCurrency?=null,
-    
-    @SerializedName("coupon_text")
-    var couponText: String?=null,
-    
     @SerializedName("items")
     var items: ArrayList<CartProductInfo>?=null,
-    
-    @SerializedName("last_modified")
-    var lastModified: String?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("buy_now")
-    var buyNow: Boolean?=null,
-    
-    @SerializedName("is_valid")
-    var isValid: Boolean?=null,
     
     @SerializedName("comment")
     var comment: String?=null,
@@ -5869,11 +5851,17 @@ data class CartDetailResponse(
     @SerializedName("payment_selection_lock")
     var paymentSelectionLock: PaymentSelectionLock?=null,
     
-    @SerializedName("delivery_promise")
-    var deliveryPromise: ShipmentPromise?=null,
+    @SerializedName("id")
+    var id: String?=null,
     
-    @SerializedName("restrict_checkout")
-    var restrictCheckout: Boolean?=null,
+    @SerializedName("is_valid")
+    var isValid: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("gstin")
+    var gstin: String?=null,
     
     @SerializedName("checkout_mode")
     var checkoutMode: String?=null,
@@ -5881,11 +5869,23 @@ data class CartDetailResponse(
     @SerializedName("delivery_charge_info")
     var deliveryChargeInfo: String?=null,
     
-    @SerializedName("gstin")
-    var gstin: String?=null,
+    @SerializedName("buy_now")
+    var buyNow: Boolean?=null,
     
-    @SerializedName("message")
-    var message: String?=null,
+    @SerializedName("last_modified")
+    var lastModified: String?=null,
+    
+    @SerializedName("coupon_text")
+    var couponText: String?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: ShipmentPromise?=null,
+    
+    @SerializedName("currency")
+    var currency: CartCurrency?=null,
+    
+    @SerializedName("restrict_checkout")
+    var restrictCheckout: Boolean?=null,
     
     @SerializedName("breakup_values")
     var breakupValues: CartBreakup?=null
@@ -5937,15 +5937,6 @@ data class AddProductCart(
     
     
     
-    @SerializedName("article_assignment")
-    var articleAssignment: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
     @SerializedName("extra_meta")
     var extraMeta: @RawValue HashMap<String,Any>?=null,
     
@@ -5955,23 +5946,32 @@ data class AddProductCart(
     @SerializedName("seller_id")
     var sellerId: Int?=null,
     
-    @SerializedName("store_id")
-    var storeId: Int?=null,
-    
-    @SerializedName("product_group_tags")
-    var productGroupTags: ArrayList<String>?=null,
+    @SerializedName("parent_item_identifiers")
+    var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("display")
     var display: String?=null,
     
-    @SerializedName("parent_item_identifiers")
-    var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("article_assignment")
+    var articleAssignment: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("article_id")
+    var articleId: String?=null,
+    
+    @SerializedName("product_group_tags")
+    var productGroupTags: ArrayList<String>?=null,
     
     @SerializedName("pos")
     var pos: Boolean?=null,
     
-    @SerializedName("article_id")
-    var articleId: String?=null,
+    @SerializedName("store_id")
+    var storeId: Int?=null,
     
     @SerializedName("item_size")
     var itemSize: String?=null
@@ -6037,17 +6037,17 @@ data class AddCartDetailResponse(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("cart")
-    var cart: CartDetailResponse?=null,
+    @SerializedName("message")
+    var message: String?=null,
     
     @SerializedName("partial")
     var partial: Boolean?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("cart")
+    var cart: CartDetailResponse?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
     
@@ -6072,29 +6072,29 @@ data class UpdateProductCart(
     
     
     
-    @SerializedName("_custom_json")
-    var customJson: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
     @SerializedName("extra_meta")
     var extraMeta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("item_id")
     var itemId: Int?=null,
     
-    @SerializedName("item_index")
-    var itemIndex: Int?=null,
-    
     @SerializedName("parent_item_identifiers")
     var parentItemIdentifiers: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("identifiers")
-    var identifiers: CartProductIdentifer?=null,
+    @SerializedName("item_index")
+    var itemIndex: Int?=null,
+    
+    @SerializedName("_custom_json")
+    var customJson: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
     
     @SerializedName("article_id")
     var articleId: String?=null,
+    
+    @SerializedName("identifiers")
+    var identifiers: CartProductIdentifer?=null,
     
     @SerializedName("item_size")
     var itemSize: String?=null
@@ -6157,14 +6157,14 @@ data class UpdateCartDetailResponse(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("message")
+    var message: String?=null,
     
     @SerializedName("cart")
     var cart: CartDetailResponse?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
     
@@ -6207,17 +6207,17 @@ data class Coupon(
     
     
     
-    @SerializedName("expires_on")
-    var expiresOn: String?=null,
+    @SerializedName("coupon_value")
+    var couponValue: Double?=null,
     
-    @SerializedName("is_applicable")
-    var isApplicable: Boolean?=null,
+    @SerializedName("minimum_cart_value")
+    var minimumCartValue: Double?=null,
     
-    @SerializedName("is_applied")
-    var isApplied: Boolean?=null,
+    @SerializedName("message")
+    var message: String?=null,
     
-    @SerializedName("coupon_code")
-    var couponCode: String?=null,
+    @SerializedName("coupon_type")
+    var couponType: String?=null,
     
     @SerializedName("max_discount_value")
     var maxDiscountValue: Double?=null,
@@ -6225,23 +6225,23 @@ data class Coupon(
     @SerializedName("sub_title")
     var subTitle: String?=null,
     
-    @SerializedName("coupon_value")
-    var couponValue: Double?=null,
+    @SerializedName("is_applied")
+    var isApplied: Boolean?=null,
     
-    @SerializedName("coupon_type")
-    var couponType: String?=null,
+    @SerializedName("is_applicable")
+    var isApplicable: Boolean?=null,
+    
+    @SerializedName("coupon_code")
+    var couponCode: String?=null,
+    
+    @SerializedName("expires_on")
+    var expiresOn: String?=null,
     
     @SerializedName("title")
     var title: String?=null,
     
     @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("minimum_cart_value")
-    var minimumCartValue: Double?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
+    var description: String?=null
     
 ): Parcelable {
     
@@ -6285,14 +6285,14 @@ data class PageCoupon(
     @SerializedName("total")
     var total: Int?=null,
     
-    @SerializedName("has_previous")
-    var hasPrevious: Boolean?=null,
-    
     @SerializedName("current")
     var current: Int?=null,
     
     @SerializedName("has_next")
     var hasNext: Boolean?=null,
+    
+    @SerializedName("has_previous")
+    var hasPrevious: Boolean?=null,
     
     @SerializedName("total_item_count")
     var totalItemCount: Int?=null
@@ -6367,11 +6367,11 @@ data class OfferSeller(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("uid")
-    var uid: Int?=null
+    var uid: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
     
 ): Parcelable {
     
@@ -6392,9 +6392,6 @@ data class OfferPrice(
     
     
     
-    @SerializedName("bulk_effective")
-    var bulkEffective: Double?=null,
-    
     @SerializedName("currency_symbol")
     var currencySymbol: String?=null,
     
@@ -6405,7 +6402,10 @@ data class OfferPrice(
     var effective: Int?=null,
     
     @SerializedName("marked")
-    var marked: Int?=null
+    var marked: Int?=null,
+    
+    @SerializedName("bulk_effective")
+    var bulkEffective: Double?=null
     
 ): Parcelable {
     
@@ -6432,26 +6432,26 @@ data class OfferItem(
     
     
     
-    @SerializedName("total")
-    var total: Double?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null,
-    
-    @SerializedName("auto_applied")
-    var autoApplied: Boolean?=null,
-    
-    @SerializedName("best")
-    var best: Boolean?=null,
+    @SerializedName("margin")
+    var margin: Int?=null,
     
     @SerializedName("price")
     var price: OfferPrice?=null,
     
-    @SerializedName("margin")
-    var margin: Int?=null,
-    
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("auto_applied")
+    var autoApplied: Boolean?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null,
+    
+    @SerializedName("total")
+    var total: Double?=null,
+    
+    @SerializedName("best")
+    var best: Boolean?=null
     
 ): Parcelable {
     
@@ -6572,80 +6572,80 @@ data class Address(
     
     
     
-    @SerializedName("address_type")
-    var addressType: String?=null,
-    
-    @SerializedName("address")
-    var address: String?=null,
-    
-    @SerializedName("country")
-    var country: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
-    @SerializedName("geo_location")
-    var geoLocation: GeoLocation?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("landmark")
-    var landmark: String?=null,
-    
-    @SerializedName("google_map_point")
-    var googleMapPoint: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("checkout_mode")
-    var checkoutMode: String?=null,
-    
-    @SerializedName("is_default_address")
-    var isDefaultAddress: Boolean?=null,
-    
-    @SerializedName("country_phone_code")
-    var countryPhoneCode: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
-    @SerializedName("country_iso_code")
-    var countryIsoCode: String?=null,
-    
-    @SerializedName("area_code_slug")
-    var areaCodeSlug: String?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
+    @SerializedName("state")
+    var state: String?=null,
     
     @SerializedName("area_code")
     var areaCode: String?=null,
     
-    @SerializedName("city")
-    var city: String?=null,
+    @SerializedName("created_by_user_id")
+    var createdByUserId: String?=null,
     
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
+    @SerializedName("checkout_mode")
+    var checkoutMode: String?=null,
     
-    @SerializedName("area")
-    var area: String?=null,
-    
-    @SerializedName("state")
-    var state: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("country_iso_code")
+    var countryIsoCode: String?=null,
     
     @SerializedName("user_id")
     var userId: String?=null,
     
-    @SerializedName("created_by_user_id")
-    var createdByUserId: String?=null
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("city")
+    var city: String?=null,
+    
+    @SerializedName("is_default_address")
+    var isDefaultAddress: Boolean?=null,
+    
+    @SerializedName("landmark")
+    var landmark: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("address_type")
+    var addressType: String?=null,
+    
+    @SerializedName("geo_location")
+    var geoLocation: GeoLocation?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("area_code_slug")
+    var areaCodeSlug: String?=null,
+    
+    @SerializedName("google_map_point")
+    var googleMapPoint: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("area")
+    var area: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_phone_code")
+    var countryPhoneCode: String?=null
     
 ): Parcelable {
     
@@ -6732,11 +6732,11 @@ data class SaveAddressResponse(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("is_default_address")
     var isDefaultAddress: Boolean?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("id")
     var id: String?=null
@@ -6765,11 +6765,11 @@ data class UpdateAddressResponse(
     @SerializedName("is_updated")
     var isUpdated: Boolean?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("is_default_address")
     var isDefaultAddress: Boolean?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("id")
     var id: String?=null
@@ -6852,23 +6852,23 @@ data class UpdateCartPaymentRequest(
     
     
     
-    @SerializedName("address_id")
-    var addressId: String?=null,
-    
     @SerializedName("id")
     var id: String?=null,
     
-    @SerializedName("aggregator_name")
-    var aggregatorName: String?=null,
-    
-    @SerializedName("payment_identifier")
-    var paymentIdentifier: String?=null,
+    @SerializedName("address_id")
+    var addressId: String?=null,
     
     @SerializedName("payment_mode")
     var paymentMode: String?=null,
     
     @SerializedName("merchant_code")
-    var merchantCode: String?=null
+    var merchantCode: String?=null,
+    
+    @SerializedName("payment_identifier")
+    var paymentIdentifier: String?=null,
+    
+    @SerializedName("aggregator_name")
+    var aggregatorName: String?=null
     
 ): Parcelable {
     
@@ -6897,20 +6897,20 @@ data class CouponValidity(
     
     
     
-    @SerializedName("valid")
-    var valid: Boolean?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
+    @SerializedName("display_message_en")
+    var displayMessageEn: String?=null,
     
     @SerializedName("discount")
     var discount: Double?=null,
     
-    @SerializedName("display_message_en")
-    var displayMessageEn: String?=null
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("valid")
+    var valid: Boolean?=null,
+    
+    @SerializedName("title")
+    var title: String?=null
     
 ): Parcelable {
     
@@ -6937,14 +6937,14 @@ data class PaymentCouponValidate(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("coupon_validity")
     var couponValidity: CouponValidity?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
     
@@ -6967,35 +6967,35 @@ data class ShipmentResponse(
     
     
     
-    @SerializedName("promise")
-    var promise: ShipmentPromise?=null,
-    
-    @SerializedName("fulfillment_id")
-    var fulfillmentId: Int?=null,
+    @SerializedName("box_type")
+    var boxType: String?=null,
     
     @SerializedName("items")
     var items: ArrayList<CartProductInfo>?=null,
     
-    @SerializedName("shipment_type")
-    var shipmentType: String?=null,
-    
-    @SerializedName("dp_id")
-    var dpId: String?=null,
-    
-    @SerializedName("shipments")
-    var shipments: Int?=null,
-    
-    @SerializedName("box_type")
-    var boxType: String?=null,
+    @SerializedName("dp_options")
+    var dpOptions: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("order_type")
     var orderType: String?=null,
     
-    @SerializedName("dp_options")
-    var dpOptions: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("fulfillment_id")
+    var fulfillmentId: Int?=null,
+    
+    @SerializedName("shipment_type")
+    var shipmentType: String?=null,
     
     @SerializedName("fulfillment_type")
-    var fulfillmentType: String?=null
+    var fulfillmentType: String?=null,
+    
+    @SerializedName("shipments")
+    var shipments: Int?=null,
+    
+    @SerializedName("promise")
+    var promise: ShipmentPromise?=null,
+    
+    @SerializedName("dp_id")
+    var dpId: String?=null
     
 ): Parcelable {
     
@@ -7032,62 +7032,62 @@ data class CartShipmentsResponse(
     
     
     
-    @SerializedName("last_modified")
-    var lastModified: String?=null,
-    
-    @SerializedName("shipments")
-    var shipments: ArrayList<ShipmentResponse>?=null,
-    
-    @SerializedName("comment")
-    var comment: String?=null,
-    
-    @SerializedName("delivery_promise")
-    var deliveryPromise: ShipmentPromise?=null,
-    
-    @SerializedName("payment_selection_lock")
-    var paymentSelectionLock: PaymentSelectionLock?=null,
-    
-    @SerializedName("cart_id")
-    var cartId: Int?=null,
-    
-    @SerializedName("delivery_charge_info")
-    var deliveryChargeInfo: String?=null,
-    
-    @SerializedName("breakup_values")
-    var breakupValues: CartBreakup?=null,
-    
-    @SerializedName("error")
-    var error: Boolean?=null,
-    
-    @SerializedName("currency")
-    var currency: CartCurrency?=null,
-    
-    @SerializedName("coupon_text")
-    var couponText: String?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
     @SerializedName("is_valid")
     var isValid: Boolean?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("buy_now")
-    var buyNow: Boolean?=null,
-    
-    @SerializedName("restrict_checkout")
-    var restrictCheckout: Boolean?=null,
-    
-    @SerializedName("gstin")
-    var gstin: String?=null,
     
     @SerializedName("checkout_mode")
     var checkoutMode: String?=null,
     
+    @SerializedName("gstin")
+    var gstin: String?=null,
+    
+    @SerializedName("error")
+    var error: Boolean?=null,
+    
+    @SerializedName("buy_now")
+    var buyNow: Boolean?=null,
+    
+    @SerializedName("coupon_text")
+    var couponText: String?=null,
+    
+    @SerializedName("restrict_checkout")
+    var restrictCheckout: Boolean?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: ShipmentPromise?=null,
+    
+    @SerializedName("breakup_values")
+    var breakupValues: CartBreakup?=null,
+    
+    @SerializedName("cart_id")
+    var cartId: Int?=null,
+    
+    @SerializedName("comment")
+    var comment: String?=null,
+    
+    @SerializedName("payment_selection_lock")
+    var paymentSelectionLock: PaymentSelectionLock?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("delivery_charge_info")
+    var deliveryChargeInfo: String?=null,
+    
+    @SerializedName("shipments")
+    var shipments: ArrayList<ShipmentResponse>?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("currency")
+    var currency: CartCurrency?=null,
+    
+    @SerializedName("last_modified")
+    var lastModified: String?=null
     
 ): Parcelable {
     
@@ -7142,11 +7142,11 @@ data class CartCheckoutCustomMeta(
     
     
     
-    @SerializedName("key")
-    var key: String?=null,
-    
     @SerializedName("value")
-    var value: String?=null
+    var value: String?=null,
+    
+    @SerializedName("key")
+    var key: String?=null
     
 ): Parcelable {
     
@@ -7167,17 +7167,17 @@ data class StaffCheckout(
     
     
     
-    @SerializedName("_id")
-    var id: String?=null,
-    
     @SerializedName("last_name")
     var lastName: String?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
     
     @SerializedName("user")
     var user: String?=null,
     
-    @SerializedName("first_name")
-    var firstName: String?=null
+    @SerializedName("_id")
+    var id: String?=null
     
 ): Parcelable {
     
@@ -7205,50 +7205,50 @@ data class CartCheckoutDetailRequest(
     @SerializedName("callback_url")
     var callbackUrl: String?=null,
     
-    @SerializedName("address_id")
-    var addressId: String?=null,
-    
-    @SerializedName("payment_auto_confirm")
-    var paymentAutoConfirm: Boolean?=null,
-    
     @SerializedName("custom_meta")
     var customMeta: ArrayList<CartCheckoutCustomMeta>?=null,
     
-    @SerializedName("payment_identifier")
-    var paymentIdentifier: String?=null,
-    
-    @SerializedName("ordering_store")
-    var orderingStore: Int?=null,
-    
-    @SerializedName("payment_params")
-    var paymentParams: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("delivery_address")
-    var deliveryAddress: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("extra_meta")
-    var extraMeta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("address_id")
+    var addressId: String?=null,
     
     @SerializedName("payment_mode")
     var paymentMode: String?=null,
     
+    @SerializedName("billing_address")
+    var billingAddress: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("billing_address_id")
     var billingAddressId: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("staff")
-    var staff: StaffCheckout?=null,
-    
-    @SerializedName("merchant_code")
-    var merchantCode: String?=null,
     
     @SerializedName("aggregator")
     var aggregator: String?=null,
     
-    @SerializedName("billing_address")
-    var billingAddress: @RawValue HashMap<String,Any>?=null
+    @SerializedName("merchant_code")
+    var merchantCode: String?=null,
+    
+    @SerializedName("staff")
+    var staff: StaffCheckout?=null,
+    
+    @SerializedName("payment_params")
+    var paymentParams: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("payment_identifier")
+    var paymentIdentifier: String?=null,
+    
+    @SerializedName("extra_meta")
+    var extraMeta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("payment_auto_confirm")
+    var paymentAutoConfirm: Boolean?=null,
+    
+    @SerializedName("ordering_store")
+    var orderingStore: Int?=null,
+    
+    @SerializedName("delivery_address")
+    var deliveryAddress: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -7297,53 +7297,32 @@ data class CheckCart(
     
     
     
-    @SerializedName("last_modified")
-    var lastModified: String?=null,
-    
-    @SerializedName("delivery_promise")
-    var deliveryPromise: ShipmentPromise?=null,
-    
-    @SerializedName("cod_message")
-    var codMessage: String?=null,
-    
-    @SerializedName("delivery_charge_info")
-    var deliveryChargeInfo: String?=null,
-    
-    @SerializedName("store_code")
-    var storeCode: String?=null,
-    
-    @SerializedName("breakup_values")
-    var breakupValues: CartBreakup?=null,
-    
-    @SerializedName("coupon_text")
-    var couponText: String?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<CartProductInfo>?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("is_valid")
-    var isValid: Boolean?=null,
-    
-    @SerializedName("restrict_checkout")
-    var restrictCheckout: Boolean?=null,
-    
-    @SerializedName("order_id")
-    var orderId: String?=null,
-    
     @SerializedName("user_type")
     var userType: String?=null,
-    
-    @SerializedName("cod_available")
-    var codAvailable: Boolean?=null,
     
     @SerializedName("checkout_mode")
     var checkoutMode: String?=null,
     
-    @SerializedName("error_message")
-    var errorMessage: String?=null,
+    @SerializedName("cod_charges")
+    var codCharges: Int?=null,
+    
+    @SerializedName("delivery_charges")
+    var deliveryCharges: Int?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null,
+    
+    @SerializedName("restrict_checkout")
+    var restrictCheckout: Boolean?=null,
+    
+    @SerializedName("breakup_values")
+    var breakupValues: CartBreakup?=null,
+    
+    @SerializedName("cart_id")
+    var cartId: Int?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<CartProductInfo>?=null,
     
     @SerializedName("comment")
     var comment: String?=null,
@@ -7351,38 +7330,59 @@ data class CheckCart(
     @SerializedName("payment_selection_lock")
     var paymentSelectionLock: PaymentSelectionLock?=null,
     
-    @SerializedName("store_emps")
-    var storeEmps: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("error_message")
+    var errorMessage: String?=null,
     
-    @SerializedName("cod_charges")
-    var codCharges: Int?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("cart_id")
-    var cartId: Int?=null,
-    
-    @SerializedName("currency")
-    var currency: CartCurrency?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("buy_now")
-    var buyNow: Boolean?=null,
-    
-    @SerializedName("gstin")
-    var gstin: String?=null,
-    
-    @SerializedName("delivery_charge_order_value")
-    var deliveryChargeOrderValue: Int?=null,
+    @SerializedName("id")
+    var id: String?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("delivery_charges")
-    var deliveryCharges: Int?=null
+    @SerializedName("delivery_charge_info")
+    var deliveryChargeInfo: String?=null,
+    
+    @SerializedName("delivery_charge_order_value")
+    var deliveryChargeOrderValue: Int?=null,
+    
+    @SerializedName("currency")
+    var currency: CartCurrency?=null,
+    
+    @SerializedName("last_modified")
+    var lastModified: String?=null,
+    
+    @SerializedName("cod_message")
+    var codMessage: String?=null,
+    
+    @SerializedName("is_valid")
+    var isValid: Boolean?=null,
+    
+    @SerializedName("gstin")
+    var gstin: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("buy_now")
+    var buyNow: Boolean?=null,
+    
+    @SerializedName("coupon_text")
+    var couponText: String?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: ShipmentPromise?=null,
+    
+    @SerializedName("store_code")
+    var storeCode: String?=null,
+    
+    @SerializedName("cod_available")
+    var codAvailable: Boolean?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("store_emps")
+    var storeEmps: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
     
@@ -7457,14 +7457,20 @@ data class CartCheckoutResponse(
     
     
     
-    @SerializedName("cart")
-    var cart: CheckCart?=null,
-    
     @SerializedName("callback_url")
     var callbackUrl: String?=null,
     
     @SerializedName("app_intercept_url")
     var appInterceptUrl: String?=null,
+    
+    @SerializedName("cart")
+    var cart: CheckCart?=null,
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
     
     @SerializedName("payment_confirm_url")
     var paymentConfirmUrl: String?=null,
@@ -7473,13 +7479,7 @@ data class CartCheckoutResponse(
     var success: Boolean?=null,
     
     @SerializedName("order_id")
-    var orderId: String?=null,
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
+    var orderId: String?=null
     
 ): Parcelable {
     
@@ -7515,11 +7515,11 @@ data class CartMetaRequest(
     @SerializedName("comment")
     var comment: String?=null,
     
-    @SerializedName("checkout_mode")
-    var checkoutMode: String?=null,
-    
     @SerializedName("gstin")
     var gstin: String?=null,
+    
+    @SerializedName("checkout_mode")
+    var checkoutMode: String?=null,
     
     @SerializedName("pick_up_customer_details")
     var pickUpCustomerDetails: @RawValue HashMap<String,Any>?=null
@@ -7612,11 +7612,11 @@ data class GetShareCartLinkResponse(
     
     
     
-    @SerializedName("token")
-    var token: String?=null,
-    
     @SerializedName("share_url")
-    var shareUrl: String?=null
+    var shareUrl: String?=null,
+    
+    @SerializedName("token")
+    var token: String?=null
     
 ): Parcelable {
     
@@ -7637,20 +7637,20 @@ data class SharedCartDetails(
     
     
     
-    @SerializedName("token")
-    var token: String?=null,
+    @SerializedName("created_on")
+    var createdOn: String?=null,
     
     @SerializedName("user")
     var user: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("created_on")
-    var createdOn: String?=null,
-    
-    @SerializedName("source")
-    var source: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("token")
+    var token: String?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("source")
+    var source: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -7677,38 +7677,20 @@ data class SharedCart(
     
     
     
-    @SerializedName("last_modified")
-    var lastModified: String?=null,
-    
-    @SerializedName("delivery_promise")
-    var deliveryPromise: ShipmentPromise?=null,
-    
-    @SerializedName("delivery_charge_info")
-    var deliveryChargeInfo: String?=null,
-    
-    @SerializedName("breakup_values")
-    var breakupValues: CartBreakup?=null,
-    
-    @SerializedName("coupon_text")
-    var couponText: String?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<CartProductInfo>?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("is_valid")
-    var isValid: Boolean?=null,
+    @SerializedName("checkout_mode")
+    var checkoutMode: String?=null,
     
     @SerializedName("restrict_checkout")
     var restrictCheckout: Boolean?=null,
     
-    @SerializedName("message")
-    var message: String?=null,
+    @SerializedName("breakup_values")
+    var breakupValues: CartBreakup?=null,
     
-    @SerializedName("checkout_mode")
-    var checkoutMode: String?=null,
+    @SerializedName("cart_id")
+    var cartId: Int?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<CartProductInfo>?=null,
     
     @SerializedName("comment")
     var comment: String?=null,
@@ -7716,23 +7698,41 @@ data class SharedCart(
     @SerializedName("payment_selection_lock")
     var paymentSelectionLock: PaymentSelectionLock?=null,
     
-    @SerializedName("cart_id")
-    var cartId: Int?=null,
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("delivery_charge_info")
+    var deliveryChargeInfo: String?=null,
+    
+    @SerializedName("shared_cart_details")
+    var sharedCartDetails: SharedCartDetails?=null,
     
     @SerializedName("currency")
     var currency: CartCurrency?=null,
     
-    @SerializedName("uid")
-    var uid: String?=null,
+    @SerializedName("last_modified")
+    var lastModified: String?=null,
     
-    @SerializedName("buy_now")
-    var buyNow: Boolean?=null,
+    @SerializedName("is_valid")
+    var isValid: Boolean?=null,
     
     @SerializedName("gstin")
     var gstin: String?=null,
     
-    @SerializedName("shared_cart_details")
-    var sharedCartDetails: SharedCartDetails?=null
+    @SerializedName("buy_now")
+    var buyNow: Boolean?=null,
+    
+    @SerializedName("coupon_text")
+    var couponText: String?=null,
+    
+    @SerializedName("delivery_promise")
+    var deliveryPromise: ShipmentPromise?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null
     
 ): Parcelable {
     
@@ -7787,11 +7787,11 @@ data class SharedCartResponse(
     
     
     
-    @SerializedName("error")
-    var error: String?=null,
-    
     @SerializedName("cart")
-    var cart: SharedCart?=null
+    var cart: SharedCart?=null,
+    
+    @SerializedName("error")
+    var error: String?=null
     
 ): Parcelable {
     
@@ -7812,23 +7812,23 @@ data class FreeGiftItems(
     
     
     
-    @SerializedName("item_slug")
-    var itemSlug: String?=null,
-    
-    @SerializedName("item_price_details")
-    var itemPriceDetails: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("item_images_url")
     var itemImagesUrl: ArrayList<String>?=null,
-    
-    @SerializedName("item_brand_name")
-    var itemBrandName: String?=null,
     
     @SerializedName("item_name")
     var itemName: String?=null,
     
     @SerializedName("item_id")
-    var itemId: Int?=null
+    var itemId: Int?=null,
+    
+    @SerializedName("item_price_details")
+    var itemPriceDetails: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("item_slug")
+    var itemSlug: String?=null,
+    
+    @SerializedName("item_brand_name")
+    var itemBrandName: String?=null
     
 ): Parcelable {
     
@@ -7866,20 +7866,20 @@ data class PromotionOffer(
     @SerializedName("valid_till")
     var validTill: String?=null,
     
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("buy_rules")
-    var buyRules: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("free_gift_items")
+    var freeGiftItems: ArrayList<FreeGiftItems>?=null,
     
     @SerializedName("offer_text")
     var offerText: String?=null,
     
-    @SerializedName("free_gift_items")
-    var freeGiftItems: ArrayList<FreeGiftItems>?=null,
-    
     @SerializedName("promotion_group")
-    var promotionGroup: String?=null
+    var promotionGroup: String?=null,
+    
+    @SerializedName("buy_rules")
+    var buyRules: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
     
 ): Parcelable {
     
@@ -7932,13 +7932,158 @@ data class OperationErrorResponse(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("message")
-    var message: String?=null
+    var message: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: LadderPrice
+*/
+@Parcelize
+data class LadderPrice(
+    
+    
+    
+    @SerializedName("currency_symbol")
+    var currencySymbol: String?=null,
+    
+    @SerializedName("currency_code")
+    var currencyCode: String?=null,
+    
+    @SerializedName("effective")
+    var effective: Int?=null,
+    
+    @SerializedName("marked")
+    var marked: Int?=null,
+    
+    @SerializedName("offer_price")
+    var offerPrice: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: LadderOfferItem
+*/
+@Parcelize
+data class LadderOfferItem(
+    
+    
+    
+    @SerializedName("min_quantity")
+    var minQuantity: Int?=null,
+    
+    @SerializedName("margin")
+    var margin: Int?=null,
+    
+    @SerializedName("price")
+    var price: LadderPrice?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("max_quantity")
+    var maxQuantity: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: LadderPriceOffer
+*/
+@Parcelize
+data class LadderPriceOffer(
+    
+    
+    
+    @SerializedName("offer_prices")
+    var offerPrices: ArrayList<LadderOfferItem>?=null,
+    
+    @SerializedName("discount_rules")
+    var discountRules: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("valid_till")
+    var validTill: String?=null,
+    
+    @SerializedName("free_gift_items")
+    var freeGiftItems: ArrayList<FreeGiftItems>?=null,
+    
+    @SerializedName("offer_text")
+    var offerText: String?=null,
+    
+    @SerializedName("promotion_group")
+    var promotionGroup: String?=null,
+    
+    @SerializedName("calculate_on")
+    var calculateOn: String?=null,
+    
+    @SerializedName("buy_rules")
+    var buyRules: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -7975,151 +8120,6 @@ data class CurrencyInfo(
 
 
 /*
-    Model: LadderPrice
-*/
-@Parcelize
-data class LadderPrice(
-    
-    
-    
-    @SerializedName("currency_symbol")
-    var currencySymbol: String?=null,
-    
-    @SerializedName("currency_code")
-    var currencyCode: String?=null,
-    
-    @SerializedName("effective")
-    var effective: Int?=null,
-    
-    @SerializedName("offer_price")
-    var offerPrice: Double?=null,
-    
-    @SerializedName("marked")
-    var marked: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: LadderOfferItem
-*/
-@Parcelize
-data class LadderOfferItem(
-    
-    
-    
-    @SerializedName("min_quantity")
-    var minQuantity: Int?=null,
-    
-    @SerializedName("price")
-    var price: LadderPrice?=null,
-    
-    @SerializedName("margin")
-    var margin: Int?=null,
-    
-    @SerializedName("max_quantity")
-    var maxQuantity: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: LadderPriceOffer
-*/
-@Parcelize
-data class LadderPriceOffer(
-    
-    
-    
-    @SerializedName("discount_rules")
-    var discountRules: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("id")
-    var id: String?=null,
-    
-    @SerializedName("calculate_on")
-    var calculateOn: String?=null,
-    
-    @SerializedName("valid_till")
-    var validTill: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("buy_rules")
-    var buyRules: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("offer_text")
-    var offerText: String?=null,
-    
-    @SerializedName("free_gift_items")
-    var freeGiftItems: ArrayList<FreeGiftItems>?=null,
-    
-    @SerializedName("offer_prices")
-    var offerPrices: ArrayList<LadderOfferItem>?=null,
-    
-    @SerializedName("promotion_group")
-    var promotionGroup: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: LadderPriceOffers
 */
 @Parcelize
@@ -8127,11 +8127,11 @@ data class LadderPriceOffers(
     
     
     
-    @SerializedName("currency")
-    var currency: CurrencyInfo?=null,
-    
     @SerializedName("available_offers")
-    var availableOffers: ArrayList<LadderPriceOffer>?=null
+    var availableOffers: ArrayList<LadderPriceOffer>?=null,
+    
+    @SerializedName("currency")
+    var currency: CurrencyInfo?=null
     
 ): Parcelable {
     
@@ -23121,23 +23121,14 @@ data class AggregatorConfigDetail(
     
     
     
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("pin")
-    var pin: String?=null,
-    
     @SerializedName("sdk")
     var sdk: Boolean?=null,
-    
-    @SerializedName("api")
-    var api: String?=null,
     
     @SerializedName("secret")
     var secret: String?=null,
     
-    @SerializedName("verify_api")
-    var verifyApi: String?=null,
+    @SerializedName("user_id")
+    var userId: String?=null,
     
     @SerializedName("merchant_id")
     var merchantId: String?=null,
@@ -23145,11 +23136,20 @@ data class AggregatorConfigDetail(
     @SerializedName("config_type")
     var configType: String?=null,
     
+    @SerializedName("verify_api")
+    var verifyApi: String?=null,
+    
+    @SerializedName("api")
+    var api: String?=null,
+    
     @SerializedName("merchant_key")
     var merchantKey: String?=null,
     
-    @SerializedName("user_id")
-    var userId: String?=null
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("pin")
+    var pin: String?=null
     
 ): Parcelable {
     
@@ -23186,35 +23186,35 @@ data class AggregatorsConfigDetailResponse(
     
     
     
-    @SerializedName("env")
-    var env: String?=null,
-    
-    @SerializedName("mswipe")
-    var mswipe: AggregatorConfigDetail?=null,
-    
     @SerializedName("rupifi")
     var rupifi: AggregatorConfigDetail?=null,
-    
-    @SerializedName("juspay")
-    var juspay: AggregatorConfigDetail?=null,
-    
-    @SerializedName("ccavenue")
-    var ccavenue: AggregatorConfigDetail?=null,
-    
-    @SerializedName("stripe")
-    var stripe: AggregatorConfigDetail?=null,
     
     @SerializedName("simpl")
     var simpl: AggregatorConfigDetail?=null,
     
-    @SerializedName("payumoney")
-    var payumoney: AggregatorConfigDetail?=null,
+    @SerializedName("juspay")
+    var juspay: AggregatorConfigDetail?=null,
+    
+    @SerializedName("env")
+    var env: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("stripe")
+    var stripe: AggregatorConfigDetail?=null,
     
     @SerializedName("razorpay")
     var razorpay: AggregatorConfigDetail?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("mswipe")
+    var mswipe: AggregatorConfigDetail?=null,
+    
+    @SerializedName("ccavenue")
+    var ccavenue: AggregatorConfigDetail?=null,
+    
+    @SerializedName("payumoney")
+    var payumoney: AggregatorConfigDetail?=null
     
 ): Parcelable {
     
@@ -23336,14 +23336,14 @@ data class AttachCardsResponse(
     
     
     
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -23366,14 +23366,14 @@ data class CardPaymentGateway(
     
     
     
+    @SerializedName("customer_id")
+    var customerId: String?=null,
+    
     @SerializedName("aggregator")
     var aggregator: String?=null,
     
     @SerializedName("api")
-    var api: String?=null,
-    
-    @SerializedName("customer_id")
-    var customerId: String?=null
+    var api: String?=null
     
 ): Parcelable {
     
@@ -23396,11 +23396,11 @@ data class ActiveCardPaymentGatewayResponse(
     
     
     
-    @SerializedName("message")
-    var message: String?=null,
-    
     @SerializedName("success")
     var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
     
     @SerializedName("cards")
     var cards: CardPaymentGateway?=null
@@ -23426,47 +23426,47 @@ data class Card(
     
     
     
-    @SerializedName("card_token")
-    var cardToken: String?=null,
-    
-    @SerializedName("expired")
-    var expired: Boolean?=null,
-    
-    @SerializedName("card_name")
-    var cardName: String?=null,
-    
-    @SerializedName("card_isin")
-    var cardIsin: String?=null,
-    
-    @SerializedName("exp_month")
-    var expMonth: Int?=null,
-    
-    @SerializedName("exp_year")
-    var expYear: Int?=null,
-    
-    @SerializedName("card_issuer")
-    var cardIssuer: String?=null,
+    @SerializedName("aggregator_name")
+    var aggregatorName: String?=null,
     
     @SerializedName("card_type")
     var cardType: String?=null,
     
-    @SerializedName("card_reference")
-    var cardReference: String?=null,
+    @SerializedName("expired")
+    var expired: Boolean?=null,
     
-    @SerializedName("aggregator_name")
-    var aggregatorName: String?=null,
+    @SerializedName("card_id")
+    var cardId: String?=null,
+    
+    @SerializedName("card_brand")
+    var cardBrand: String?=null,
+    
+    @SerializedName("exp_month")
+    var expMonth: Int?=null,
+    
+    @SerializedName("card_name")
+    var cardName: String?=null,
     
     @SerializedName("compliant_with_tokenisation_guidelines")
     var compliantWithTokenisationGuidelines: Boolean?=null,
     
-    @SerializedName("nickname")
-    var nickname: String?=null,
+    @SerializedName("card_reference")
+    var cardReference: String?=null,
+    
+    @SerializedName("card_issuer")
+    var cardIssuer: String?=null,
     
     @SerializedName("card_brand_image")
     var cardBrandImage: String?=null,
     
-    @SerializedName("card_id")
-    var cardId: String?=null,
+    @SerializedName("card_isin")
+    var cardIsin: String?=null,
+    
+    @SerializedName("card_token")
+    var cardToken: String?=null,
+    
+    @SerializedName("exp_year")
+    var expYear: Int?=null,
     
     @SerializedName("card_fingerprint")
     var cardFingerprint: String?=null,
@@ -23474,8 +23474,8 @@ data class Card(
     @SerializedName("card_number")
     var cardNumber: String?=null,
     
-    @SerializedName("card_brand")
-    var cardBrand: String?=null
+    @SerializedName("nickname")
+    var nickname: String?=null
     
 ): Parcelable {
     
@@ -23526,14 +23526,14 @@ data class ListCardsResponse(
     
     
     
-    @SerializedName("data")
-    var data: ArrayList<Card>?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("data")
+    var data: ArrayList<Card>?=null
     
 ): Parcelable {
     
@@ -23576,11 +23576,11 @@ data class DeleteCardsResponse(
     
     
     
-    @SerializedName("message")
-    var message: String?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
     
@@ -23601,29 +23601,29 @@ data class ValidateCustomerRequest(
     
     
     
-    @SerializedName("transaction_amount_in_paise")
-    var transactionAmountInPaise: Int?=null,
-    
-    @SerializedName("aggregator")
-    var aggregator: String?=null,
-    
     @SerializedName("phone_number")
     var phoneNumber: String?=null,
     
-    @SerializedName("payload")
-    var payload: String?=null,
+    @SerializedName("transaction_amount_in_paise")
+    var transactionAmountInPaise: Int?=null,
+    
+    @SerializedName("billing_address")
+    var billingAddress: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("merchant_params")
     var merchantParams: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("delivery_address")
-    var deliveryAddress: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("aggregator")
+    var aggregator: String?=null,
     
     @SerializedName("order_items")
     var orderItems: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
-    @SerializedName("billing_address")
-    var billingAddress: @RawValue HashMap<String,Any>?=null
+    @SerializedName("payload")
+    var payload: String?=null,
+    
+    @SerializedName("delivery_address")
+    var deliveryAddress: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -23656,17 +23656,17 @@ data class ValidateCustomerResponse(
     
     
     
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("error")
-    var error: @RawValue HashMap<String,Any>?=null
+    var error: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -23691,12 +23691,6 @@ data class ChargeCustomerRequest(
     
     
     
-    @SerializedName("aggregator")
-    var aggregator: String?=null,
-    
-    @SerializedName("amount")
-    var amount: Int?=null,
-    
     @SerializedName("order_id")
     var orderId: String?=null,
     
@@ -23704,7 +23698,13 @@ data class ChargeCustomerRequest(
     var transactionToken: String?=null,
     
     @SerializedName("verified")
-    var verified: Boolean?=null
+    var verified: Boolean?=null,
+    
+    @SerializedName("aggregator")
+    var aggregator: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Int?=null
     
 ): Parcelable {
     
@@ -23731,26 +23731,26 @@ data class ChargeCustomerResponse(
     
     
     
+    @SerializedName("order_id")
+    var orderId: String?=null,
+    
     @SerializedName("aggregator")
     var aggregator: String?=null,
     
-    @SerializedName("delivery_address_id")
-    var deliveryAddressId: String?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("order_id")
-    var orderId: String?=null,
-    
-    @SerializedName("cart_id")
-    var cartId: String?=null,
+    @SerializedName("delivery_address_id")
+    var deliveryAddressId: String?=null,
     
     @SerializedName("status")
     var status: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("cart_id")
+    var cartId: String?=null
     
 ): Parcelable {
     
@@ -23781,14 +23781,23 @@ data class PaymentInitializationRequest(
     
     
     
-    @SerializedName("method")
-    var method: String?=null,
+    @SerializedName("email")
+    var email: String?=null,
     
-    @SerializedName("razorpay_payment_id")
-    var razorpayPaymentId: String?=null,
+    @SerializedName("device_id")
+    var deviceId: String?=null,
     
-    @SerializedName("merchant_order_id")
-    var merchantOrderId: String?=null,
+    @SerializedName("customer_id")
+    var customerId: String?=null,
+    
+    @SerializedName("vpa")
+    var vpa: String?=null,
+    
+    @SerializedName("contact")
+    var contact: String?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null,
     
     @SerializedName("aggregator")
     var aggregator: String?=null,
@@ -23796,29 +23805,20 @@ data class PaymentInitializationRequest(
     @SerializedName("amount")
     var amount: Int?=null,
     
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("customer_id")
-    var customerId: String?=null,
-    
     @SerializedName("timeout")
     var timeout: Int?=null,
     
-    @SerializedName("order_id")
-    var orderId: String?=null,
+    @SerializedName("merchant_order_id")
+    var merchantOrderId: String?=null,
     
     @SerializedName("currency")
     var currency: String?=null,
     
-    @SerializedName("vpa")
-    var vpa: String?=null,
+    @SerializedName("razorpay_payment_id")
+    var razorpayPaymentId: String?=null,
     
-    @SerializedName("device_id")
-    var deviceId: String?=null,
-    
-    @SerializedName("contact")
-    var contact: String?=null
+    @SerializedName("method")
+    var method: String?=null
     
 ): Parcelable {
     
@@ -23861,56 +23861,56 @@ data class PaymentInitializationResponse(
     
     
     
-    @SerializedName("method")
-    var method: String?=null,
-    
-    @SerializedName("razorpay_payment_id")
-    var razorpayPaymentId: String?=null,
-    
-    @SerializedName("merchant_order_id")
-    var merchantOrderId: String?=null,
-    
-    @SerializedName("aggregator")
-    var aggregator: String?=null,
-    
-    @SerializedName("upi_poll_url")
-    var upiPollUrl: String?=null,
-    
-    @SerializedName("amount")
-    var amount: Int?=null,
-    
-    @SerializedName("customer_id")
-    var customerId: String?=null,
-    
-    @SerializedName("bqr_image")
-    var bqrImage: String?=null,
-    
-    @SerializedName("timeout")
-    var timeout: Int?=null,
-    
-    @SerializedName("aggregator_order_id")
-    var aggregatorOrderId: String?=null,
-    
-    @SerializedName("currency")
-    var currency: String?=null,
-    
     @SerializedName("device_id")
     var deviceId: String?=null,
-    
-    @SerializedName("vpa")
-    var vpa: String?=null,
-    
-    @SerializedName("polling_url")
-    var pollingUrl: String?=null,
     
     @SerializedName("virtual_id")
     var virtualId: String?=null,
     
+    @SerializedName("customer_id")
+    var customerId: String?=null,
+    
+    @SerializedName("vpa")
+    var vpa: String?=null,
+    
+    @SerializedName("bqr_image")
+    var bqrImage: String?=null,
+    
+    @SerializedName("aggregator")
+    var aggregator: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("merchant_order_id")
+    var merchantOrderId: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Int?=null,
+    
+    @SerializedName("polling_url")
+    var pollingUrl: String?=null,
+    
+    @SerializedName("currency")
+    var currency: String?=null,
+    
+    @SerializedName("upi_poll_url")
+    var upiPollUrl: String?=null,
+    
+    @SerializedName("aggregator_order_id")
+    var aggregatorOrderId: String?=null,
+    
     @SerializedName("status")
     var status: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("razorpay_payment_id")
+    var razorpayPaymentId: String?=null,
+    
+    @SerializedName("timeout")
+    var timeout: Int?=null,
+    
+    @SerializedName("method")
+    var method: String?=null
     
 ): Parcelable {
     
@@ -23961,11 +23961,20 @@ data class PaymentStatusUpdateRequest(
     
     
     
-    @SerializedName("method")
-    var method: String?=null,
+    @SerializedName("email")
+    var email: String?=null,
     
-    @SerializedName("merchant_order_id")
-    var merchantOrderId: String?=null,
+    @SerializedName("customer_id")
+    var customerId: String?=null,
+    
+    @SerializedName("vpa")
+    var vpa: String?=null,
+    
+    @SerializedName("contact")
+    var contact: String?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null,
     
     @SerializedName("aggregator")
     var aggregator: String?=null,
@@ -23973,29 +23982,20 @@ data class PaymentStatusUpdateRequest(
     @SerializedName("amount")
     var amount: Int?=null,
     
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("customer_id")
-    var customerId: String?=null,
-    
-    @SerializedName("order_id")
-    var orderId: String?=null,
+    @SerializedName("merchant_order_id")
+    var merchantOrderId: String?=null,
     
     @SerializedName("currency")
     var currency: String?=null,
     
-    @SerializedName("vpa")
-    var vpa: String?=null,
+    @SerializedName("status")
+    var status: String?=null,
     
     @SerializedName("device_id")
     var deviceId: String?=null,
     
-    @SerializedName("contact")
-    var contact: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null
+    @SerializedName("method")
+    var method: String?=null
     
 ): Parcelable {
     
@@ -24039,17 +24039,17 @@ data class PaymentStatusUpdateResponse(
     @SerializedName("aggregator_name")
     var aggregatorName: String?=null,
     
-    @SerializedName("redirect_url")
-    var redirectUrl: String?=null,
-    
     @SerializedName("retry")
     var retry: Boolean?=null,
     
-    @SerializedName("status")
-    var status: String?=null,
+    @SerializedName("redirect_url")
+    var redirectUrl: String?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("status")
+    var status: String?=null
     
 ): Parcelable {
     
@@ -24069,20 +24069,110 @@ data class PaymentStatusUpdateResponse(
 
 
 /*
-    Model: IntentAppErrorList
+    Model: AggregatorRoute
 */
 @Parcelize
-data class IntentAppErrorList(
+data class AggregatorRoute(
     
     
     
-    @SerializedName("package_name")
-    var packageName: String?=null,
+    @SerializedName("payment_flow")
+    var paymentFlow: String?=null,
     
-    @SerializedName("code")
-    var code: String?=null
+    @SerializedName("api_link")
+    var apiLink: String?=null,
+    
+    @SerializedName("payment_flow_data")
+    var paymentFlowData: String?=null,
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: PaymentFlow
+*/
+@Parcelize
+data class PaymentFlow(
+    
+    
+    
+    @SerializedName("payubiz")
+    var payubiz: AggregatorRoute?=null,
+    
+    @SerializedName("epaylater")
+    var epaylater: AggregatorRoute?=null,
+    
+    @SerializedName("rupifi")
+    var rupifi: AggregatorRoute?=null,
+    
+    @SerializedName("bqr_razorpay")
+    var bqrRazorpay: AggregatorRoute?=null,
+    
+    @SerializedName("simpl")
+    var simpl: AggregatorRoute?=null,
+    
+    @SerializedName("upi_razorpay")
+    var upiRazorpay: AggregatorRoute?=null,
+    
+    @SerializedName("juspay")
+    var juspay: AggregatorRoute?=null,
+    
+    @SerializedName("fynd")
+    var fynd: AggregatorRoute?=null,
+    
+    @SerializedName("stripe")
+    var stripe: AggregatorRoute?=null,
+    
+    @SerializedName("jiopay")
+    var jiopay: AggregatorRoute?=null,
+    
+    @SerializedName("razorpay")
+    var razorpay: AggregatorRoute?=null,
+    
+    @SerializedName("mswipe")
+    var mswipe: AggregatorRoute?=null,
+    
+    @SerializedName("ccavenue")
+    var ccavenue: AggregatorRoute?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -24126,23 +24216,48 @@ data class IntentApp(
     
     
     
-    @SerializedName("package_name")
-    var packageName: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
+    @SerializedName("logos")
+    var logos: PaymentModeLogo?=null,
     
     @SerializedName("code")
     var code: String?=null,
     
-    @SerializedName("logos")
-    var logos: PaymentModeLogo?=null
+    @SerializedName("package_name")
+    var packageName: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
     
 ): Parcelable {
     
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: IntentAppErrorList
+*/
+@Parcelize
+data class IntentAppErrorList(
+    
+    
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("package_name")
+    var packageName: String?=null
+    
+): Parcelable {
     
     
     
@@ -24161,59 +24276,17 @@ data class PaymentModeList(
     
     
     
-    @SerializedName("expired")
-    var expired: Boolean?=null,
+    @SerializedName("aggregator_name")
+    var aggregatorName: String?=null,
     
-    @SerializedName("card_isin")
-    var cardIsin: String?=null,
-    
-    @SerializedName("retry_count")
-    var retryCount: Int?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("intent_app_error_dict_list")
-    var intentAppErrorDictList: ArrayList<IntentAppErrorList>?=null,
+    @SerializedName("card_type")
+    var cardType: String?=null,
     
     @SerializedName("intent_app")
     var intentApp: ArrayList<IntentApp>?=null,
     
-    @SerializedName("cod_limit")
-    var codLimit: Double?=null,
-    
     @SerializedName("cod_limit_per_order")
     var codLimitPerOrder: Double?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("card_brand")
-    var cardBrand: String?=null,
-    
-    @SerializedName("card_token")
-    var cardToken: String?=null,
-    
-    @SerializedName("exp_year")
-    var expYear: Int?=null,
-    
-    @SerializedName("timeout")
-    var timeout: Int?=null,
-    
-    @SerializedName("nickname")
-    var nickname: String?=null,
-    
-    @SerializedName("card_brand_image")
-    var cardBrandImage: String?=null,
-    
-    @SerializedName("card_id")
-    var cardId: String?=null,
-    
-    @SerializedName("card_number")
-    var cardNumber: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
     
     @SerializedName("intent_app_error_list")
     var intentAppErrorList: ArrayList<String>?=null,
@@ -24221,44 +24294,86 @@ data class PaymentModeList(
     @SerializedName("card_issuer")
     var cardIssuer: String?=null,
     
-    @SerializedName("card_type")
-    var cardType: String?=null,
+    @SerializedName("card_brand_image")
+    var cardBrandImage: String?=null,
     
-    @SerializedName("aggregator_name")
-    var aggregatorName: String?=null,
+    @SerializedName("card_isin")
+    var cardIsin: String?=null,
     
-    @SerializedName("fynd_vpa")
-    var fyndVpa: String?=null,
+    @SerializedName("card_token")
+    var cardToken: String?=null,
+    
+    @SerializedName("exp_year")
+    var expYear: Int?=null,
     
     @SerializedName("card_fingerprint")
     var cardFingerprint: String?=null,
     
-    @SerializedName("logo_url")
-    var logoUrl: PaymentModeLogo?=null,
+    @SerializedName("display_name")
+    var displayName: String?=null,
     
-    @SerializedName("card_name")
-    var cardName: String?=null,
+    @SerializedName("card_number")
+    var cardNumber: String?=null,
+    
+    @SerializedName("card_brand")
+    var cardBrand: String?=null,
     
     @SerializedName("exp_month")
     var expMonth: Int?=null,
     
-    @SerializedName("intent_flow")
-    var intentFlow: Boolean?=null,
+    @SerializedName("compliant_with_tokenisation_guidelines")
+    var compliantWithTokenisationGuidelines: Boolean?=null,
     
     @SerializedName("card_reference")
     var cardReference: String?=null,
     
-    @SerializedName("compliant_with_tokenisation_guidelines")
-    var compliantWithTokenisationGuidelines: Boolean?=null,
-    
     @SerializedName("display_priority")
     var displayPriority: Int?=null,
+    
+    @SerializedName("merchant_code")
+    var merchantCode: String?=null,
+    
+    @SerializedName("card_id")
+    var cardId: String?=null,
+    
+    @SerializedName("fynd_vpa")
+    var fyndVpa: String?=null,
+    
+    @SerializedName("timeout")
+    var timeout: Int?=null,
     
     @SerializedName("remaining_limit")
     var remainingLimit: Double?=null,
     
-    @SerializedName("merchant_code")
-    var merchantCode: String?=null
+    @SerializedName("expired")
+    var expired: Boolean?=null,
+    
+    @SerializedName("nickname")
+    var nickname: String?=null,
+    
+    @SerializedName("intent_flow")
+    var intentFlow: Boolean?=null,
+    
+    @SerializedName("retry_count")
+    var retryCount: Int?=null,
+    
+    @SerializedName("cod_limit")
+    var codLimit: Double?=null,
+    
+    @SerializedName("card_name")
+    var cardName: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("logo_url")
+    var logoUrl: PaymentModeLogo?=null,
+    
+    @SerializedName("intent_app_error_dict_list")
+    var intentAppErrorDictList: ArrayList<IntentAppErrorList>?=null
     
 ): Parcelable {
     
@@ -24341,14 +24456,20 @@ data class RootPaymentMode(
     
     
     
+    @SerializedName("aggregator_name")
+    var aggregatorName: String?=null,
+    
+    @SerializedName("anonymous_enable")
+    var anonymousEnable: Boolean?=null,
+    
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
+    @SerializedName("is_pay_by_card_pl")
+    var isPayByCardPl: Boolean?=null,
     
-    @SerializedName("aggregator_name")
-    var aggregatorName: String?=null,
+    @SerializedName("save_card")
+    var saveCard: Boolean?=null,
     
     @SerializedName("list")
     var list: ArrayList<PaymentModeList>?=null,
@@ -24359,131 +24480,10 @@ data class RootPaymentMode(
     @SerializedName("display_priority")
     var displayPriority: Int?=null,
     
-    @SerializedName("is_pay_by_card_pl")
-    var isPayByCardPl: Boolean?=null,
-    
-    @SerializedName("save_card")
-    var saveCard: Boolean?=null,
-    
-    @SerializedName("anonymous_enable")
-    var anonymousEnable: Boolean?=null
+    @SerializedName("display_name")
+    var displayName: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: AggregatorRoute
-*/
-@Parcelize
-data class AggregatorRoute(
-    
-    
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("payment_flow")
-    var paymentFlow: String?=null,
-    
-    @SerializedName("payment_flow_data")
-    var paymentFlowData: String?=null,
-    
-    @SerializedName("api_link")
-    var apiLink: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: PaymentFlow
-*/
-@Parcelize
-data class PaymentFlow(
-    
-    
-    
-    @SerializedName("fynd")
-    var fynd: AggregatorRoute?=null,
-    
-    @SerializedName("upi_razorpay")
-    var upiRazorpay: AggregatorRoute?=null,
-    
-    @SerializedName("epaylater")
-    var epaylater: AggregatorRoute?=null,
-    
-    @SerializedName("payubiz")
-    var payubiz: AggregatorRoute?=null,
-    
-    @SerializedName("mswipe")
-    var mswipe: AggregatorRoute?=null,
-    
-    @SerializedName("rupifi")
-    var rupifi: AggregatorRoute?=null,
-    
-    @SerializedName("juspay")
-    var juspay: AggregatorRoute?=null,
-    
-    @SerializedName("bqr_razorpay")
-    var bqrRazorpay: AggregatorRoute?=null,
-    
-    @SerializedName("stripe")
-    var stripe: AggregatorRoute?=null,
-    
-    @SerializedName("simpl")
-    var simpl: AggregatorRoute?=null,
-    
-    @SerializedName("jiopay")
-    var jiopay: AggregatorRoute?=null,
-    
-    @SerializedName("razorpay")
-    var razorpay: AggregatorRoute?=null,
-    
-    @SerializedName("ccavenue")
-    var ccavenue: AggregatorRoute?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -24516,11 +24516,11 @@ data class PaymentOptionAndFlow(
     
     
     
-    @SerializedName("payment_option")
-    var paymentOption: ArrayList<RootPaymentMode>?=null,
-    
     @SerializedName("payment_flows")
-    var paymentFlows: PaymentFlow?=null
+    var paymentFlows: PaymentFlow?=null,
+    
+    @SerializedName("payment_option")
+    var paymentOption: ArrayList<RootPaymentMode>?=null
     
 ): Parcelable {
     
@@ -24541,11 +24541,11 @@ data class PaymentModeRouteResponse(
     
     
     
-    @SerializedName("payment_options")
-    var paymentOptions: PaymentOptionAndFlow?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("payment_options")
+    var paymentOptions: PaymentOptionAndFlow?=null
     
 ): Parcelable {
     
@@ -24591,11 +24591,11 @@ data class RupifiBannerResponse(
     
     
     
-    @SerializedName("data")
-    var data: RupifiBannerData?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: RupifiBannerData?=null
     
 ): Parcelable {
     
@@ -24616,14 +24616,14 @@ data class EpaylaterBannerData(
     
     
     
+    @SerializedName("message")
+    var message: String?=null,
+    
     @SerializedName("display")
     var display: Boolean?=null,
     
     @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
+    var status: String?=null
     
 ): Parcelable {
     
@@ -24646,11 +24646,11 @@ data class EpaylaterBannerResponse(
     
     
     
-    @SerializedName("data")
-    var data: EpaylaterBannerData?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: EpaylaterBannerData?=null
     
 ): Parcelable {
     
@@ -24726,11 +24726,11 @@ data class ResendOrCancelPaymentResponse(
     
     
     
-    @SerializedName("data")
-    var data: LinkStatus?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: LinkStatus?=null
     
 ): Parcelable {
     
@@ -24751,11 +24751,11 @@ data class renderHTMLRequest(
     
     
     
-    @SerializedName("returntype")
-    var returntype: String?=null,
-    
     @SerializedName("base64_html")
-    var base64Html: String?=null
+    var base64Html: String?=null,
+    
+    @SerializedName("returntype")
+    var returntype: String?=null
     
 ): Parcelable {
     
@@ -24816,17 +24816,17 @@ data class ValidateUPI(
     
     
     
-    @SerializedName("upi_vpa")
-    var upiVpa: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
     @SerializedName("customer_name")
     var customerName: String?=null,
     
+    @SerializedName("upi_vpa")
+    var upiVpa: String?=null,
+    
     @SerializedName("is_valid")
-    var isValid: Boolean?=null
+    var isValid: Boolean?=null,
+    
+    @SerializedName("status")
+    var status: String?=null
     
 ): Parcelable {
     
@@ -24851,11 +24851,11 @@ data class ValidateVPAResponse(
     
     
     
-    @SerializedName("data")
-    var data: ValidateUPI?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: ValidateUPI?=null
     
 ): Parcelable {
     
@@ -24876,20 +24876,20 @@ data class TransferItemsDetails(
     
     
     
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
+    @SerializedName("logo_large")
+    var logoLarge: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("logo_large")
-    var logoLarge: String?=null,
+    @SerializedName("id")
+    var id: Int?=null,
     
     @SerializedName("logo_small")
-    var logoSmall: String?=null
+    var logoSmall: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
     
 ): Parcelable {
     
@@ -24916,11 +24916,11 @@ data class TransferModeDetails(
     
     
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
     @SerializedName("items")
-    var items: ArrayList<TransferItemsDetails>?=null
+    var items: ArrayList<TransferItemsDetails>?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
     
 ): Parcelable {
     
@@ -24961,11 +24961,11 @@ data class UpdateRefundTransferModeRequest(
     
     
     
-    @SerializedName("enable")
-    var enable: Boolean?=null,
-    
     @SerializedName("transfer_mode")
-    var transferMode: String?=null
+    var transferMode: String?=null,
+    
+    @SerializedName("enable")
+    var enable: Boolean?=null
     
 ): Parcelable {
     
@@ -25006,23 +25006,26 @@ data class OrderBeneficiaryDetails(
     
     
     
-    @SerializedName("account_no")
-    var accountNo: String?=null,
+    @SerializedName("beneficiary_id")
+    var beneficiaryId: String?=null,
     
     @SerializedName("id")
     var id: Int?=null,
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
     @SerializedName("ifsc_code")
     var ifscCode: String?=null,
     
+    @SerializedName("account_holder")
+    var accountHolder: String?=null,
+    
+    @SerializedName("comment")
+    var comment: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
     @SerializedName("delights_user_name")
     var delightsUserName: String?=null,
-    
-    @SerializedName("branch_name")
-    var branchName: String?=null,
     
     @SerializedName("subtitle")
     var subtitle: String?=null,
@@ -25030,38 +25033,35 @@ data class OrderBeneficiaryDetails(
     @SerializedName("bank_name")
     var bankName: String?=null,
     
-    @SerializedName("created_on")
-    var createdOn: String?=null,
-    
     @SerializedName("mobile")
     var mobile: String?=null,
-    
-    @SerializedName("modified_on")
-    var modifiedOn: String?=null,
     
     @SerializedName("address")
     var address: String?=null,
     
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("comment")
-    var comment: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("account_holder")
-    var accountHolder: String?=null,
-    
-    @SerializedName("beneficiary_id")
-    var beneficiaryId: String?=null,
-    
     @SerializedName("is_active")
     var isActive: Boolean?=null,
     
+    @SerializedName("modified_on")
+    var modifiedOn: String?=null,
+    
+    @SerializedName("account_no")
+    var accountNo: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null,
+    
     @SerializedName("transfer_mode")
-    var transferMode: String?=null
+    var transferMode: String?=null,
+    
+    @SerializedName("branch_name")
+    var branchName: String?=null,
+    
+    @SerializedName("created_on")
+    var createdOn: String?=null,
+    
+    @SerializedName("title")
+    var title: String?=null
     
 ): Parcelable {
     
@@ -25116,11 +25116,11 @@ data class OrderBeneficiaryResponse(
     
     
     
-    @SerializedName("beneficiaries")
-    var beneficiaries: ArrayList<OrderBeneficiaryDetails>?=null,
-    
     @SerializedName("show_beneficiary_details")
-    var showBeneficiaryDetails: Boolean?=null
+    var showBeneficiaryDetails: Boolean?=null,
+    
+    @SerializedName("beneficiaries")
+    var beneficiaries: ArrayList<OrderBeneficiaryDetails>?=null
     
 ): Parcelable {
     
@@ -25141,14 +25141,14 @@ data class NotFoundResourceError(
     
     
     
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
     @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
+    var code: String?=null
     
 ): Parcelable {
     
@@ -25171,14 +25171,14 @@ data class IfscCodeResponse(
     
     
     
-    @SerializedName("branch_name")
-    var branchName: String?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("bank_name")
     var bankName: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("branch_name")
+    var branchName: String?=null
     
 ): Parcelable {
     
@@ -25201,14 +25201,14 @@ data class ErrorCodeDescription(
     
     
     
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
     @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null
+    var code: String?=null
     
 ): Parcelable {
     
@@ -25231,11 +25231,11 @@ data class AddBeneficiaryViaOtpVerificationRequest(
     
     
     
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
     @SerializedName("hash_key")
     var hashKey: String?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
     
     @SerializedName("otp")
     var otp: String?=null
@@ -25261,11 +25261,11 @@ data class AddBeneficiaryViaOtpVerificationResponse(
     
     
     
-    @SerializedName("message")
-    var message: String?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
     
@@ -25286,11 +25286,11 @@ data class WrongOtpError(
     
     
     
-    @SerializedName("description")
-    var description: String?=null,
-    
     @SerializedName("success")
     var success: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
     
     @SerializedName("is_verified_flag")
     var isVerifiedFlag: Boolean?=null
@@ -25316,38 +25316,38 @@ data class BeneficiaryModeDetails(
     
     
     
-    @SerializedName("account_no")
-    var accountNo: String?=null,
-    
     @SerializedName("email")
     var email: String?=null,
-    
-    @SerializedName("comment")
-    var comment: String?=null,
-    
-    @SerializedName("branch_name")
-    var branchName: String?=null,
-    
-    @SerializedName("address")
-    var address: String?=null,
-    
-    @SerializedName("account_holder")
-    var accountHolder: String?=null,
-    
-    @SerializedName("bank_name")
-    var bankName: String?=null,
     
     @SerializedName("ifsc_code")
     var ifscCode: String?=null,
     
+    @SerializedName("branch_name")
+    var branchName: String?=null,
+    
+    @SerializedName("bank_name")
+    var bankName: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
     @SerializedName("wallet")
     var wallet: String?=null,
     
-    @SerializedName("vpa")
-    var vpa: String?=null,
+    @SerializedName("account_holder")
+    var accountHolder: String?=null,
     
-    @SerializedName("mobile")
-    var mobile: String?=null
+    @SerializedName("comment")
+    var comment: String?=null,
+    
+    @SerializedName("account_no")
+    var accountNo: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
+    
+    @SerializedName("vpa")
+    var vpa: String?=null
     
 ): Parcelable {
     
@@ -25386,26 +25386,26 @@ data class AddBeneficiaryDetailsRequest(
     
     
     
+    @SerializedName("delights")
+    var delights: Boolean?=null,
+    
+    @SerializedName("transfer_mode")
+    var transferMode: String?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null,
+    
     @SerializedName("otp")
     var otp: String?=null,
     
     @SerializedName("shipment_id")
     var shipmentId: String?=null,
     
-    @SerializedName("details")
-    var details: BeneficiaryModeDetails?=null,
-    
-    @SerializedName("order_id")
-    var orderId: String?=null,
-    
-    @SerializedName("delights")
-    var delights: Boolean?=null,
-    
     @SerializedName("request_id")
     var requestId: String?=null,
     
-    @SerializedName("transfer_mode")
-    var transferMode: String?=null
+    @SerializedName("details")
+    var details: BeneficiaryModeDetails?=null
     
 ): Parcelable {
     
@@ -25436,14 +25436,14 @@ data class RefundAccountResponse(
     
     
     
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("is_verified_flag")
     var isVerifiedFlag: Boolean?=null
@@ -25471,20 +25471,20 @@ data class BankDetailsForOTP(
     
     
     
-    @SerializedName("account_no")
-    var accountNo: String?=null,
-    
-    @SerializedName("branch_name")
-    var branchName: String?=null,
-    
-    @SerializedName("account_holder")
-    var accountHolder: String?=null,
+    @SerializedName("ifsc_code")
+    var ifscCode: String?=null,
     
     @SerializedName("bank_name")
     var bankName: String?=null,
     
-    @SerializedName("ifsc_code")
-    var ifscCode: String?=null
+    @SerializedName("account_holder")
+    var accountHolder: String?=null,
+    
+    @SerializedName("branch_name")
+    var branchName: String?=null,
+    
+    @SerializedName("account_no")
+    var accountNo: String?=null
     
 ): Parcelable {
     
@@ -25511,11 +25511,11 @@ data class AddBeneficiaryDetailsOTPRequest(
     
     
     
-    @SerializedName("order_id")
-    var orderId: String?=null,
-    
     @SerializedName("details")
-    var details: BankDetailsForOTP?=null
+    var details: BankDetailsForOTP?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null
     
 ): Parcelable {
     
@@ -25536,11 +25536,11 @@ data class WalletOtpRequest(
     
     
     
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
     @SerializedName("mobile")
-    var mobile: String?=null
+    var mobile: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
     
 ): Parcelable {
     
@@ -25561,11 +25561,11 @@ data class WalletOtpResponse(
     
     
     
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
     @SerializedName("success")
     var success: Boolean?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null,
     
     @SerializedName("is_verified_flag")
     var isVerifiedFlag: String?=null
@@ -25591,11 +25591,11 @@ data class SetDefaultBeneficiaryRequest(
     
     
     
-    @SerializedName("order_id")
-    var orderId: String?=null,
-    
     @SerializedName("beneficiary_id")
-    var beneficiaryId: String?=null
+    var beneficiaryId: String?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null
     
 ): Parcelable {
     
@@ -25616,11 +25616,11 @@ data class SetDefaultBeneficiaryResponse(
     
     
     
-    @SerializedName("is_beneficiary_set")
-    var isBeneficiarySet: Boolean?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("is_beneficiary_set")
+    var isBeneficiarySet: Boolean?=null
     
 ): Parcelable {
     
@@ -25641,32 +25641,32 @@ data class GetPaymentLinkResponse(
     
     
     
-    @SerializedName("polling_timeout")
-    var pollingTimeout: Int?=null,
-    
-    @SerializedName("amount")
-    var amount: Double?=null,
-    
-    @SerializedName("payment_link_current_status")
-    var paymentLinkCurrentStatus: String?=null,
+    @SerializedName("merchant_name")
+    var merchantName: String?=null,
     
     @SerializedName("status_code")
     var statusCode: Int?=null,
     
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
     @SerializedName("message")
     var message: String?=null,
-    
-    @SerializedName("payment_link_url")
-    var paymentLinkUrl: String?=null,
     
     @SerializedName("external_order_id")
     var externalOrderId: String?=null,
     
-    @SerializedName("merchant_name")
-    var merchantName: String?=null,
+    @SerializedName("payment_link_url")
+    var paymentLinkUrl: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("payment_link_current_status")
+    var paymentLinkCurrentStatus: String?=null,
+    
+    @SerializedName("polling_timeout")
+    var pollingTimeout: Int?=null
     
 ): Parcelable {
     
@@ -25701,29 +25701,29 @@ data class ErrorDescription(
     
     
     
-    @SerializedName("expired")
-    var expired: Boolean?=null,
-    
-    @SerializedName("merchant_order_id")
-    var merchantOrderId: String?=null,
-    
-    @SerializedName("amount")
-    var amount: Double?=null,
-    
     @SerializedName("payment_transaction_id")
     var paymentTransactionId: String?=null,
     
-    @SerializedName("invalid_id")
-    var invalidId: Boolean?=null,
-    
-    @SerializedName("cancelled")
-    var cancelled: Boolean?=null,
+    @SerializedName("merchant_name")
+    var merchantName: String?=null,
     
     @SerializedName("msg")
     var msg: String?=null,
     
-    @SerializedName("merchant_name")
-    var merchantName: String?=null
+    @SerializedName("cancelled")
+    var cancelled: Boolean?=null,
+    
+    @SerializedName("invalid_id")
+    var invalidId: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("merchant_order_id")
+    var merchantOrderId: String?=null,
+    
+    @SerializedName("expired")
+    var expired: Boolean?=null
     
 ): Parcelable {
     
@@ -25756,20 +25756,20 @@ data class CreatePaymentLinkMeta(
     
     
     
+    @SerializedName("assign_card_id")
+    var assignCardId: String?=null,
+    
     @SerializedName("amount")
     var amount: String?=null,
+    
+    @SerializedName("checkout_mode")
+    var checkoutMode: String?=null,
     
     @SerializedName("pincode")
     var pincode: String?=null,
     
-    @SerializedName("assign_card_id")
-    var assignCardId: String?=null,
-    
     @SerializedName("cart_id")
-    var cartId: String?=null,
-    
-    @SerializedName("checkout_mode")
-    var checkoutMode: String?=null
+    var cartId: String?=null
     
 ): Parcelable {
     
@@ -25796,20 +25796,20 @@ data class CreatePaymentLinkRequest(
     
     
     
-    @SerializedName("amount")
-    var amount: Double?=null,
-    
     @SerializedName("email")
     var email: String?=null,
     
-    @SerializedName("description")
-    var description: String?=null,
+    @SerializedName("meta")
+    var meta: CreatePaymentLinkMeta?=null,
     
     @SerializedName("mobile_number")
     var mobileNumber: String?=null,
     
-    @SerializedName("meta")
-    var meta: CreatePaymentLinkMeta?=null,
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
     
     @SerializedName("external_order_id")
     var externalOrderId: String?=null
@@ -25841,23 +25841,23 @@ data class CreatePaymentLinkResponse(
     
     
     
-    @SerializedName("payment_link_id")
-    var paymentLinkId: String?=null,
-    
-    @SerializedName("polling_timeout")
-    var pollingTimeout: Int?=null,
-    
     @SerializedName("status_code")
     var statusCode: Int?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
+    @SerializedName("payment_link_id")
+    var paymentLinkId: String?=null,
+    
     @SerializedName("payment_link_url")
     var paymentLinkUrl: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("polling_timeout")
+    var pollingTimeout: Int?=null
     
 ): Parcelable {
     
@@ -25906,14 +25906,14 @@ data class ResendPaymentLinkResponse(
     
     
     
-    @SerializedName("status_code")
-    var statusCode: Int?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("status_code")
+    var statusCode: Int?=null,
     
     @SerializedName("polling_timeout")
     var pollingTimeout: Int?=null
@@ -25941,14 +25941,14 @@ data class CancelPaymentLinkResponse(
     
     
     
-    @SerializedName("status_code")
-    var statusCode: Int?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("message")
     var message: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("status_code")
+    var statusCode: Int?=null
     
 ): Parcelable {
     
@@ -25971,35 +25971,35 @@ data class PollingPaymentLinkResponse(
     
     
     
-    @SerializedName("payment_link_id")
-    var paymentLinkId: String?=null,
-    
-    @SerializedName("amount")
-    var amount: Double?=null,
-    
-    @SerializedName("redirect_url")
-    var redirectUrl: String?=null,
+    @SerializedName("aggregator_name")
+    var aggregatorName: String?=null,
     
     @SerializedName("status_code")
     var statusCode: Int?=null,
     
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("aggregator_name")
-    var aggregatorName: String?=null,
+    @SerializedName("redirect_url")
+    var redirectUrl: String?=null,
     
     @SerializedName("order_id")
     var orderId: String?=null,
     
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
     @SerializedName("http_status")
     var httpStatus: Int?=null,
     
-    @SerializedName("status")
-    var status: String?=null,
+    @SerializedName("payment_link_id")
+    var paymentLinkId: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null
+    @SerializedName("status")
+    var status: String?=null
     
 ): Parcelable {
     
@@ -26036,14 +26036,14 @@ data class PaymentMethodsMeta(
     
     
     
-    @SerializedName("payment_gateway")
-    var paymentGateway: String?=null,
+    @SerializedName("merchant_code")
+    var merchantCode: String?=null,
     
     @SerializedName("payment_identifier")
     var paymentIdentifier: String?=null,
     
-    @SerializedName("merchant_code")
-    var merchantCode: String?=null
+    @SerializedName("payment_gateway")
+    var paymentGateway: String?=null
     
 ): Parcelable {
     
@@ -26096,23 +26096,23 @@ data class CreateOrderUserRequest(
     
     
     
-    @SerializedName("payment_link_id")
-    var paymentLinkId: String?=null,
-    
-    @SerializedName("payment_methods")
-    var paymentMethods: CreateOrderUserPaymentMethods?=null,
-    
-    @SerializedName("success_callback_url")
-    var successCallbackUrl: String?=null,
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("currency")
     var currency: String?=null,
     
-    @SerializedName("failure_callback_url")
-    var failureCallbackUrl: String?=null,
+    @SerializedName("payment_methods")
+    var paymentMethods: CreateOrderUserPaymentMethods?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
+    @SerializedName("payment_link_id")
+    var paymentLinkId: String?=null,
+    
+    @SerializedName("success_callback_url")
+    var successCallbackUrl: String?=null,
+    
+    @SerializedName("failure_callback_url")
+    var failureCallbackUrl: String?=null
     
 ): Parcelable {
     
@@ -26141,14 +26141,17 @@ data class CreateOrderUserData(
     
     
     
-    @SerializedName("callback_url")
-    var callbackUrl: String?=null,
+    @SerializedName("email")
+    var email: String?=null,
     
-    @SerializedName("method")
-    var method: String?=null,
+    @SerializedName("customer_id")
+    var customerId: String?=null,
     
-    @SerializedName("merchant_order_id")
-    var merchantOrderId: String?=null,
+    @SerializedName("contact")
+    var contact: String?=null,
+    
+    @SerializedName("order_id")
+    var orderId: String?=null,
     
     @SerializedName("aggregator")
     var aggregator: String?=null,
@@ -26156,20 +26159,17 @@ data class CreateOrderUserData(
     @SerializedName("amount")
     var amount: Double?=null,
     
-    @SerializedName("email")
-    var email: String?=null,
-    
-    @SerializedName("customer_id")
-    var customerId: String?=null,
-    
-    @SerializedName("order_id")
-    var orderId: String?=null,
+    @SerializedName("merchant_order_id")
+    var merchantOrderId: String?=null,
     
     @SerializedName("currency")
     var currency: String?=null,
     
-    @SerializedName("contact")
-    var contact: String?=null
+    @SerializedName("callback_url")
+    var callbackUrl: String?=null,
+    
+    @SerializedName("method")
+    var method: String?=null
     
 ): Parcelable {
     
@@ -26206,26 +26206,26 @@ data class CreateOrderUserResponse(
     
     
     
-    @SerializedName("callback_url")
-    var callbackUrl: String?=null,
-    
-    @SerializedName("payment_confirm_url")
-    var paymentConfirmUrl: String?=null,
-    
-    @SerializedName("data")
-    var data: CreateOrderUserData?=null,
-    
     @SerializedName("status_code")
     var statusCode: Int?=null,
     
-    @SerializedName("message")
-    var message: String?=null,
+    @SerializedName("payment_confirm_url")
+    var paymentConfirmUrl: String?=null,
     
     @SerializedName("order_id")
     var orderId: String?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("data")
+    var data: CreateOrderUserData?=null,
+    
+    @SerializedName("callback_url")
+    var callbackUrl: String?=null
     
 ): Parcelable {
     
@@ -26259,11 +26259,11 @@ data class BalanceDetails(
     @SerializedName("value")
     var value: Double?=null,
     
-    @SerializedName("formatted_value")
-    var formattedValue: String?=null,
-    
     @SerializedName("currency")
-    var currency: String?=null
+    var currency: String?=null,
+    
+    @SerializedName("formatted_value")
+    var formattedValue: String?=null
     
 ): Parcelable {
     
@@ -26289,14 +26289,14 @@ data class CreditSummary(
     @SerializedName("balance")
     var balance: BalanceDetails?=null,
     
+    @SerializedName("merchant_customer_ref_id")
+    var merchantCustomerRefId: String?=null,
+    
     @SerializedName("status_message")
     var statusMessage: String?=null,
     
     @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("merchant_customer_ref_id")
-    var merchantCustomerRefId: String?=null
+    var status: String?=null
     
 ): Parcelable {
     
@@ -26321,11 +26321,11 @@ data class CustomerCreditSummaryResponse(
     
     
     
-    @SerializedName("data")
-    var data: CreditSummary?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: CreditSummary?=null
     
 ): Parcelable {
     
@@ -26371,11 +26371,11 @@ data class RedirectToAggregatorResponse(
     
     
     
-    @SerializedName("data")
-    var data: RedirectURL?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: RedirectURL?=null
     
 ): Parcelable {
     
@@ -26396,11 +26396,11 @@ data class CreditDetail(
     
     
     
-    @SerializedName("signup_url")
-    var signupUrl: String?=null,
-    
     @SerializedName("is_registered")
     var isRegistered: Boolean?=null,
+    
+    @SerializedName("signup_url")
+    var signupUrl: String?=null,
     
     @SerializedName("status")
     var status: Boolean?=null
@@ -26426,11 +26426,11 @@ data class CheckCreditResponse(
     
     
     
-    @SerializedName("data")
-    var data: CreditDetail?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: CreditDetail?=null
     
 ): Parcelable {
     
@@ -26451,146 +26451,26 @@ data class KYCAddress(
     
     
     
-    @SerializedName("addressline1")
-    var addressline1: String?=null,
-    
-    @SerializedName("ownership_type")
-    var ownershipType: String?=null,
-    
-    @SerializedName("pincode")
-    var pincode: String?=null,
-    
-    @SerializedName("addressline2")
-    var addressline2: String?=null,
+    @SerializedName("city")
+    var city: String?=null,
     
     @SerializedName("land_mark")
     var landMark: String?=null,
     
-    @SerializedName("city")
-    var city: String?=null,
-    
     @SerializedName("state")
-    var state: String?=null
+    var state: String?=null,
     
-): Parcelable {
+    @SerializedName("ownership_type")
+    var ownershipType: String?=null,
     
+    @SerializedName("addressline2")
+    var addressline2: String?=null,
     
+    @SerializedName("pincode")
+    var pincode: String?=null,
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: BusinessDetails
-*/
-@Parcelize
-data class BusinessDetails(
-    
-    
-    
-    @SerializedName("fda")
-    var fda: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("shop_and_establishment")
-    var shopAndEstablishment: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("gstin")
-    var gstin: String?=null,
-    
-    @SerializedName("address")
-    var address: KYCAddress?=null,
-    
-    @SerializedName("pan")
-    var pan: String?=null,
-    
-    @SerializedName("vintage")
-    var vintage: String?=null,
-    
-    @SerializedName("fssai")
-    var fssai: String?=null,
-    
-    @SerializedName("business_ownership_type")
-    var businessOwnershipType: String?=null,
-    
-    @SerializedName("business_type")
-    var businessType: String?=null,
-    
-    @SerializedName("entity_type")
-    var entityType: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: DeviceDetails
-*/
-@Parcelize
-data class DeviceDetails(
-    
-    
-    
-    @SerializedName("device_type")
-    var deviceType: String?=null,
-    
-    @SerializedName("device_make")
-    var deviceMake: String?=null,
-    
-    @SerializedName("identifier_type")
-    var identifierType: String?=null,
-    
-    @SerializedName("os_version")
-    var osVersion: String?=null,
-    
-    @SerializedName("os")
-    var os: String?=null,
-    
-    @SerializedName("device_model")
-    var deviceModel: String?=null,
-    
-    @SerializedName("identification_number")
-    var identificationNumber: String?=null
+    @SerializedName("addressline1")
+    var addressline1: String?=null
     
 ): Parcelable {
     
@@ -26621,41 +26501,11 @@ data class UserPersonalInfoInDetails(
     
     
     
-    @SerializedName("mothers_name")
-    var mothersName: String?=null,
-    
-    @SerializedName("passport")
-    var passport: String?=null,
-    
-    @SerializedName("address_as_per_id")
-    var addressAsPerId: KYCAddress?=null,
-    
-    @SerializedName("voter_id")
-    var voterId: String?=null,
-    
     @SerializedName("email")
     var email: String?=null,
     
-    @SerializedName("gender")
-    var gender: String?=null,
-    
-    @SerializedName("mobile_verified")
-    var mobileVerified: Boolean?=null,
-    
-    @SerializedName("pan")
-    var pan: String?=null,
-    
-    @SerializedName("middle_name")
-    var middleName: String?=null,
-    
-    @SerializedName("last_name")
-    var lastName: String?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("first_name")
-    var firstName: String?=null,
+    @SerializedName("voter_id")
+    var voterId: String?=null,
     
     @SerializedName("dob")
     var dob: String?=null,
@@ -26663,11 +26513,41 @@ data class UserPersonalInfoInDetails(
     @SerializedName("fathers_name")
     var fathersName: String?=null,
     
+    @SerializedName("middle_name")
+    var middleName: String?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("passport")
+    var passport: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("mothers_name")
+    var mothersName: String?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("pan")
+    var pan: String?=null,
+    
+    @SerializedName("email_verified")
+    var emailVerified: Boolean?=null,
+    
     @SerializedName("driving_license")
     var drivingLicense: String?=null,
     
-    @SerializedName("email_verified")
-    var emailVerified: Boolean?=null
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("mobile_verified")
+    var mobileVerified: Boolean?=null,
+    
+    @SerializedName("address_as_per_id")
+    var addressAsPerId: KYCAddress?=null
     
 ): Parcelable {
     
@@ -26716,16 +26596,136 @@ data class MarketplaceInfo(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("date_of_joining")
     var dateOfJoining: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
     
     @SerializedName("membership_id")
     var membershipId: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: BusinessDetails
+*/
+@Parcelize
+data class BusinessDetails(
+    
+    
+    
+    @SerializedName("fssai")
+    var fssai: String?=null,
+    
+    @SerializedName("business_ownership_type")
+    var businessOwnershipType: String?=null,
+    
+    @SerializedName("address")
+    var address: KYCAddress?=null,
+    
+    @SerializedName("vintage")
+    var vintage: String?=null,
+    
+    @SerializedName("business_type")
+    var businessType: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("entity_type")
+    var entityType: String?=null,
+    
+    @SerializedName("pan")
+    var pan: String?=null,
+    
+    @SerializedName("fda")
+    var fda: String?=null,
+    
+    @SerializedName("shop_and_establishment")
+    var shopAndEstablishment: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("gstin")
+    var gstin: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: DeviceDetails
+*/
+@Parcelize
+data class DeviceDetails(
+    
+    
+    
+    @SerializedName("device_make")
+    var deviceMake: String?=null,
+    
+    @SerializedName("os_version")
+    var osVersion: String?=null,
+    
+    @SerializedName("os")
+    var os: String?=null,
+    
+    @SerializedName("device_type")
+    var deviceType: String?=null,
+    
+    @SerializedName("identification_number")
+    var identificationNumber: String?=null,
+    
+    @SerializedName("identifier_type")
+    var identifierType: String?=null,
+    
+    @SerializedName("device_model")
+    var deviceModel: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -26746,26 +26746,26 @@ data class CustomerOnboardingRequest(
     
     
     
+    @SerializedName("personal_info")
+    var personalInfo: UserPersonalInfoInDetails?=null,
+    
+    @SerializedName("marketplace_info")
+    var marketplaceInfo: MarketplaceInfo?=null,
+    
     @SerializedName("business_info")
     var businessInfo: BusinessDetails?=null,
     
     @SerializedName("aggregator")
     var aggregator: String?=null,
     
+    @SerializedName("mcc")
+    var mcc: String?=null,
+    
     @SerializedName("source")
     var source: String?=null,
     
     @SerializedName("device")
-    var device: DeviceDetails?=null,
-    
-    @SerializedName("personal_info")
-    var personalInfo: UserPersonalInfoInDetails?=null,
-    
-    @SerializedName("mcc")
-    var mcc: String?=null,
-    
-    @SerializedName("marketplace_info")
-    var marketplaceInfo: MarketplaceInfo?=null
+    var device: DeviceDetails?=null
     
 ): Parcelable {
     
@@ -26796,14 +26796,14 @@ data class OnboardSummary(
     
     
     
-    @SerializedName("status")
-    var status: Boolean?=null,
+    @SerializedName("redirect_url")
+    var redirectUrl: String?=null,
     
     @SerializedName("session")
     var session: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("redirect_url")
-    var redirectUrl: String?=null
+    @SerializedName("status")
+    var status: Boolean?=null
     
 ): Parcelable {
     
@@ -26826,11 +26826,11 @@ data class CustomerOnboardingResponse(
     
     
     
-    @SerializedName("data")
-    var data: OnboardSummary?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: OnboardSummary?=null
     
 ): Parcelable {
     
@@ -26846,248 +26846,23 @@ data class CustomerOnboardingResponse(
 
 
 /*
-    Model: OrderPage
+    Model: BreakupValues
 */
 @Parcelize
-data class OrderPage(
-    
-    
-    
-    @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("item_total")
-    var itemTotal: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: OrderStatuses
-*/
-@Parcelize
-data class OrderStatuses(
+data class BreakupValues(
     
     
     
     @SerializedName("display")
     var display: String?=null,
     
-    @SerializedName("is_selected")
-    var isSelected: Boolean?=null,
-    
-    @SerializedName("value")
-    var value: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: OrderFilters
-*/
-@Parcelize
-data class OrderFilters(
-    
-    
-    
-    @SerializedName("statuses")
-    var statuses: ArrayList<OrderStatuses>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ShipmentStatus
-*/
-@Parcelize
-data class ShipmentStatus(
-    
-    
-    
-    @SerializedName("hex_code")
-    var hexCode: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: FulfillingCompany
-*/
-@Parcelize
-data class FulfillingCompany(
-    
-    
-    
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("id")
-    var id: Int?=null
+    @SerializedName("value")
+    var value: Double?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: Prices
-*/
-@Parcelize
-data class Prices(
-    
-    
-    
-    @SerializedName("promotion_effective_discount")
-    var promotionEffectiveDiscount: Double?=null,
-    
-    @SerializedName("cod_charges")
-    var codCharges: Double?=null,
-    
-    @SerializedName("value_of_good")
-    var valueOfGood: Double?=null,
-    
-    @SerializedName("refund_credit")
-    var refundCredit: Double?=null,
-    
-    @SerializedName("amount_paid")
-    var amountPaid: Double?=null,
-    
-    @SerializedName("added_to_fynd_cash")
-    var addedToFyndCash: Boolean?=null,
-    
-    @SerializedName("brand_calculated_amount")
-    var brandCalculatedAmount: Double?=null,
-    
-    @SerializedName("refund_amount")
-    var refundAmount: Double?=null,
-    
-    @SerializedName("price_marked")
-    var priceMarked: Double?=null,
-    
-    @SerializedName("coupon_value")
-    var couponValue: Double?=null,
-    
-    @SerializedName("fynd_credits")
-    var fyndCredits: Double?=null,
-    
-    @SerializedName("delivery_charge")
-    var deliveryCharge: Double?=null,
-    
-    @SerializedName("gst_tax_percentage")
-    var gstTaxPercentage: Double?=null,
-    
-    @SerializedName("transfer_price")
-    var transferPrice: Double?=null,
-    
-    @SerializedName("price_effective")
-    var priceEffective: Double?=null,
-    
-    @SerializedName("discount")
-    var discount: Double?=null,
-    
-    @SerializedName("cashback")
-    var cashback: Double?=null,
-    
-    @SerializedName("amount_paid_roundoff")
-    var amountPaidRoundoff: Double?=null,
-    
-    @SerializedName("coupon_effective_discount")
-    var couponEffectiveDiscount: Double?=null,
-    
-    @SerializedName("cashback_applied")
-    var cashbackApplied: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -27108,11 +26883,11 @@ data class DeliveryAddress(
     
     
     
-    @SerializedName("address2")
-    var address2: String?=null,
+    @SerializedName("state")
+    var state: String?=null,
     
-    @SerializedName("address")
-    var address: String?=null,
+    @SerializedName("area")
+    var area: String?=null,
     
     @SerializedName("name")
     var name: String?=null,
@@ -27120,44 +26895,38 @@ data class DeliveryAddress(
     @SerializedName("contact_person")
     var contactPerson: String?=null,
     
-    @SerializedName("email")
-    var email: String?=null,
+    @SerializedName("address1")
+    var address1: String?=null,
     
-    @SerializedName("city")
-    var city: String?=null,
-    
-    @SerializedName("landmark")
-    var landmark: String?=null,
-    
-    @SerializedName("area")
-    var area: String?=null,
-    
-    @SerializedName("longitude")
-    var longitude: Double?=null,
-    
-    @SerializedName("latitude")
-    var latitude: Double?=null,
+    @SerializedName("version")
+    var version: String?=null,
     
     @SerializedName("updated_at")
     var updatedAt: String?=null,
     
-    @SerializedName("state")
-    var state: String?=null,
-    
-    @SerializedName("address1")
-    var address1: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("address_type")
-    var addressType: String?=null,
+    @SerializedName("address2")
+    var address2: String?=null,
     
     @SerializedName("phone")
     var phone: String?=null,
     
+    @SerializedName("longitude")
+    var longitude: Double?=null,
+    
+    @SerializedName("landmark")
+    var landmark: String?=null,
+    
+    @SerializedName("address")
+    var address: String?=null,
+    
+    @SerializedName("city")
+    var city: String?=null,
+    
     @SerializedName("pincode")
     var pincode: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
     
     @SerializedName("address_category")
     var addressCategory: String?=null,
@@ -27165,8 +26934,14 @@ data class DeliveryAddress(
     @SerializedName("country")
     var country: String?=null,
     
-    @SerializedName("version")
-    var version: String?=null
+    @SerializedName("email")
+    var email: String?=null,
+    
+    @SerializedName("latitude")
+    var latitude: Double?=null,
+    
+    @SerializedName("address_type")
+    var addressType: String?=null
     
 ): Parcelable {
     
@@ -27199,6 +26974,46 @@ data class DeliveryAddress(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: FulfillingStore
+*/
+@Parcelize
+data class FulfillingStore(
+    
+    
+    
+    @SerializedName("company_name")
+    var companyName: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null
+    
+): Parcelable {
     
     
     
@@ -27266,6 +27081,116 @@ data class Promise(
 
 
 /*
+    Model: ShipmentUserInfo
+*/
+@Parcelize
+data class ShipmentUserInfo(
+    
+    
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: NestedTrackingDetails
+*/
+@Parcelize
+data class NestedTrackingDetails(
+    
+    
+    
+    @SerializedName("is_passed")
+    var isPassed: Boolean?=null,
+    
+    @SerializedName("time")
+    var time: String?=null,
+    
+    @SerializedName("is_current")
+    var isCurrent: Boolean?=null,
+    
+    @SerializedName("status")
+    var status: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: TrackingDetails
+*/
+@Parcelize
+data class TrackingDetails(
+    
+    
+    
+    @SerializedName("is_passed")
+    var isPassed: Boolean?=null,
+    
+    @SerializedName("is_current")
+    var isCurrent: Boolean?=null,
+    
+    @SerializedName("tracking_details")
+    var trackingDetails: ArrayList<NestedTrackingDetails>?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("time")
+    var time: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
     Model: Invoice
 */
 @Parcelize
@@ -27296,37 +27221,32 @@ data class Invoice(
 
 
 /*
-    Model: AppliedPromos
+    Model: ShipmentPayment
 */
 @Parcelize
-data class AppliedPromos(
+data class ShipmentPayment(
     
     
     
-    @SerializedName("mrp_promotion")
-    var mrpPromotion: Boolean?=null,
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
     
-    @SerializedName("article_quantity")
-    var articleQuantity: Double?=null,
+    @SerializedName("mop")
+    var mop: String?=null,
     
-    @SerializedName("amount")
-    var amount: Double?=null,
+    @SerializedName("mode")
+    var mode: String?=null,
     
-    @SerializedName("applied_free_articles")
-    var appliedFreeArticles: ArrayList<AppliedFreeArticles>?=null,
+    @SerializedName("display_name")
+    var displayName: String?=null,
     
-    @SerializedName("promotion_type")
-    var promotionType: String?=null,
+    @SerializedName("status")
+    var status: String?=null,
     
-    @SerializedName("promo_id")
-    var promoId: String?=null,
-    
-    @SerializedName("promotion_name")
-    var promotionName: String?=null
+    @SerializedName("logo")
+    var logo: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -27346,26 +27266,106 @@ data class AppliedPromos(
 
 
 /*
-    Model: CurrentStatus
+    Model: Prices
 */
 @Parcelize
-data class CurrentStatus(
+data class Prices(
     
     
     
-    @SerializedName("status")
-    var status: String?=null,
+    @SerializedName("transfer_price")
+    var transferPrice: Double?=null,
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("coupon_value")
+    var couponValue: Double?=null,
     
-    @SerializedName("journey_type")
-    var journeyType: String?=null,
+    @SerializedName("value_of_good")
+    var valueOfGood: Double?=null,
     
-    @SerializedName("updated_at")
-    var updatedAt: String?=null
+    @SerializedName("cod_charges")
+    var codCharges: Double?=null,
+    
+    @SerializedName("price_marked")
+    var priceMarked: Double?=null,
+    
+    @SerializedName("amount_paid_roundoff")
+    var amountPaidRoundoff: Double?=null,
+    
+    @SerializedName("promotion_effective_discount")
+    var promotionEffectiveDiscount: Double?=null,
+    
+    @SerializedName("brand_calculated_amount")
+    var brandCalculatedAmount: Double?=null,
+    
+    @SerializedName("delivery_charge")
+    var deliveryCharge: Double?=null,
+    
+    @SerializedName("price_effective")
+    var priceEffective: Double?=null,
+    
+    @SerializedName("refund_credit")
+    var refundCredit: Double?=null,
+    
+    @SerializedName("discount")
+    var discount: Double?=null,
+    
+    @SerializedName("cashback_applied")
+    var cashbackApplied: Double?=null,
+    
+    @SerializedName("coupon_effective_discount")
+    var couponEffectiveDiscount: Double?=null,
+    
+    @SerializedName("gst_tax_percentage")
+    var gstTaxPercentage: Double?=null,
+    
+    @SerializedName("refund_amount")
+    var refundAmount: Double?=null,
+    
+    @SerializedName("amount_paid")
+    var amountPaid: Double?=null,
+    
+    @SerializedName("fynd_credits")
+    var fyndCredits: Double?=null,
+    
+    @SerializedName("added_to_fynd_cash")
+    var addedToFyndCash: Boolean?=null,
+    
+    @SerializedName("cashback")
+    var cashback: Double?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -27388,11 +27388,11 @@ data class Identifiers(
     
     
     
-    @SerializedName("ean")
-    var ean: String?=null,
-    
     @SerializedName("sku_code")
-    var skuCode: String?=null
+    var skuCode: String?=null,
+    
+    @SerializedName("ean")
+    var ean: String?=null
     
 ): Parcelable {
     
@@ -27413,62 +27413,41 @@ data class FinancialBreakup(
     
     
     
-    @SerializedName("promotion_effective_discount")
-    var promotionEffectiveDiscount: Double?=null,
-    
-    @SerializedName("cod_charges")
-    var codCharges: Double?=null,
-    
-    @SerializedName("value_of_good")
-    var valueOfGood: Double?=null,
-    
-    @SerializedName("refund_credit")
-    var refundCredit: Double?=null,
-    
-    @SerializedName("amount_paid")
-    var amountPaid: Double?=null,
-    
-    @SerializedName("identifiers")
-    var identifiers: Identifiers?=null,
-    
-    @SerializedName("added_to_fynd_cash")
-    var addedToFyndCash: Boolean?=null,
-    
-    @SerializedName("hsn_code")
-    var hsnCode: String?=null,
-    
-    @SerializedName("gst_fee")
-    var gstFee: Double?=null,
-    
-    @SerializedName("brand_calculated_amount")
-    var brandCalculatedAmount: Double?=null,
-    
-    @SerializedName("refund_amount")
-    var refundAmount: Double?=null,
-    
-    @SerializedName("price_marked")
-    var priceMarked: Double?=null,
+    @SerializedName("transfer_price")
+    var transferPrice: Double?=null,
     
     @SerializedName("coupon_value")
     var couponValue: Double?=null,
     
-    @SerializedName("item_name")
-    var itemName: String?=null,
+    @SerializedName("size")
+    var size: String?=null,
     
-    @SerializedName("fynd_credits")
-    var fyndCredits: Double?=null,
+    @SerializedName("value_of_good")
+    var valueOfGood: Double?=null,
+    
+    @SerializedName("price_marked")
+    var priceMarked: Double?=null,
+    
+    @SerializedName("cod_charges")
+    var codCharges: Double?=null,
+    
+    @SerializedName("amount_paid_roundoff")
+    var amountPaidRoundoff: Double?=null,
+    
+    @SerializedName("promotion_effective_discount")
+    var promotionEffectiveDiscount: Double?=null,
+    
+    @SerializedName("brand_calculated_amount")
+    var brandCalculatedAmount: Double?=null,
     
     @SerializedName("delivery_charge")
     var deliveryCharge: Double?=null,
     
-    @SerializedName("gst_tax_percentage")
-    var gstTaxPercentage: Double?=null,
+    @SerializedName("total_units")
+    var totalUnits: Int?=null,
     
-    @SerializedName("size")
-    var size: String?=null,
-    
-    @SerializedName("transfer_price")
-    var transferPrice: Double?=null,
+    @SerializedName("identifiers")
+    var identifiers: Identifiers?=null,
     
     @SerializedName("price_effective")
     var priceEffective: Double?=null,
@@ -27476,23 +27455,44 @@ data class FinancialBreakup(
     @SerializedName("discount")
     var discount: Double?=null,
     
-    @SerializedName("total_units")
-    var totalUnits: Int?=null,
+    @SerializedName("refund_credit")
+    var refundCredit: Double?=null,
     
-    @SerializedName("cashback")
-    var cashback: Double?=null,
+    @SerializedName("gst_fee")
+    var gstFee: Double?=null,
     
-    @SerializedName("gst_tag")
-    var gstTag: String?=null,
-    
-    @SerializedName("amount_paid_roundoff")
-    var amountPaidRoundoff: Double?=null,
+    @SerializedName("cashback_applied")
+    var cashbackApplied: Double?=null,
     
     @SerializedName("coupon_effective_discount")
     var couponEffectiveDiscount: Double?=null,
     
-    @SerializedName("cashback_applied")
-    var cashbackApplied: Double?=null
+    @SerializedName("gst_tag")
+    var gstTag: String?=null,
+    
+    @SerializedName("gst_tax_percentage")
+    var gstTaxPercentage: Double?=null,
+    
+    @SerializedName("refund_amount")
+    var refundAmount: Double?=null,
+    
+    @SerializedName("hsn_code")
+    var hsnCode: String?=null,
+    
+    @SerializedName("amount_paid")
+    var amountPaid: Double?=null,
+    
+    @SerializedName("fynd_credits")
+    var fyndCredits: Double?=null,
+    
+    @SerializedName("added_to_fynd_cash")
+    var addedToFyndCash: Boolean?=null,
+    
+    @SerializedName("cashback")
+    var cashback: Double?=null,
+    
+    @SerializedName("item_name")
+    var itemName: String?=null
     
 ): Parcelable {
     
@@ -27588,33 +27588,118 @@ data class Item(
     
     
     
-    @SerializedName("size")
-    var size: String?=null,
+    @SerializedName("slug_key")
+    var slugKey: String?=null,
     
     @SerializedName("code")
     var code: String?=null,
     
-    @SerializedName("slug_key")
-    var slugKey: String?=null,
+    @SerializedName("id")
+    var id: Double?=null,
     
     @SerializedName("name")
     var name: String?=null,
     
-    @SerializedName("id")
-    var id: Double?=null,
+    @SerializedName("seller_identifier")
+    var sellerIdentifier: String?=null,
+    
+    @SerializedName("size")
+    var size: String?=null,
     
     @SerializedName("brand")
     var brand: ItemBrand?=null,
     
     @SerializedName("image")
-    var image: ArrayList<String>?=null,
-    
-    @SerializedName("seller_identifier")
-    var sellerIdentifier: String?=null
+    var image: ArrayList<String>?=null
     
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: CurrentStatus
+*/
+@Parcelize
+data class CurrentStatus(
+    
+    
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("journey_type")
+    var journeyType: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: AppliedPromos
+*/
+@Parcelize
+data class AppliedPromos(
+    
+    
+    
+    @SerializedName("amount")
+    var amount: Double?=null,
+    
+    @SerializedName("promotion_name")
+    var promotionName: String?=null,
+    
+    @SerializedName("mrp_promotion")
+    var mrpPromotion: Boolean?=null,
+    
+    @SerializedName("article_quantity")
+    var articleQuantity: Double?=null,
+    
+    @SerializedName("promotion_type")
+    var promotionType: String?=null,
+    
+    @SerializedName("promo_id")
+    var promoId: String?=null,
+    
+    @SerializedName("applied_free_articles")
+    var appliedFreeArticles: ArrayList<AppliedFreeArticles>?=null
+    
+): Parcelable {
     
     
     
@@ -27643,44 +27728,44 @@ data class Bags(
     
     
     
-    @SerializedName("applied_promos")
-    var appliedPromos: ArrayList<AppliedPromos>?=null,
-    
-    @SerializedName("can_return")
-    var canReturn: Boolean?=null,
-    
-    @SerializedName("line_number")
-    var lineNumber: Int?=null,
-    
-    @SerializedName("returnable_date")
-    var returnableDate: String?=null,
-    
     @SerializedName("parent_promo_bags")
     var parentPromoBags: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
-    @SerializedName("current_status")
-    var currentStatus: CurrentStatus?=null,
-    
-    @SerializedName("financial_breakup")
-    var financialBreakup: ArrayList<FinancialBreakup>?=null,
-    
-    @SerializedName("item")
-    var item: Item?=null,
-    
-    @SerializedName("seller_identifier")
-    var sellerIdentifier: String?=null,
     
     @SerializedName("prices")
     var prices: Prices?=null,
     
-    @SerializedName("delivery_date")
-    var deliveryDate: String?=null,
+    @SerializedName("financial_breakup")
+    var financialBreakup: ArrayList<FinancialBreakup>?=null,
+    
+    @SerializedName("can_return")
+    var canReturn: Boolean?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
     
     @SerializedName("can_cancel")
     var canCancel: Boolean?=null,
+    
+    @SerializedName("item")
+    var item: Item?=null,
+    
+    @SerializedName("current_status")
+    var currentStatus: CurrentStatus?=null,
+    
+    @SerializedName("delivery_date")
+    var deliveryDate: String?=null,
+    
+    @SerializedName("applied_promos")
+    var appliedPromos: ArrayList<AppliedPromos>?=null,
+    
+    @SerializedName("seller_identifier")
+    var sellerIdentifier: String?=null,
+    
+    @SerializedName("returnable_date")
+    var returnableDate: String?=null,
+    
+    @SerializedName("line_number")
+    var lineNumber: Int?=null,
     
     @SerializedName("quantity")
     var quantity: Int?=null
@@ -27721,30 +27806,20 @@ data class Bags(
 
 
 /*
-    Model: ShipmentUserInfo
+    Model: ShipmentStatus
 */
 @Parcelize
-data class ShipmentUserInfo(
+data class ShipmentStatus(
     
     
     
-    @SerializedName("gender")
-    var gender: String?=null,
+    @SerializedName("title")
+    var title: String?=null,
     
-    @SerializedName("first_name")
-    var firstName: String?=null,
-    
-    @SerializedName("mobile")
-    var mobile: String?=null,
-    
-    @SerializedName("last_name")
-    var lastName: String?=null
+    @SerializedName("hex_code")
+    var hexCode: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -27756,185 +27831,20 @@ data class ShipmentUserInfo(
 
 
 /*
-    Model: NestedTrackingDetails
+    Model: FulfillingCompany
 */
 @Parcelize
-data class NestedTrackingDetails(
+data class FulfillingCompany(
     
     
-    
-    @SerializedName("time")
-    var time: String?=null,
-    
-    @SerializedName("is_passed")
-    var isPassed: Boolean?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("is_current")
-    var isCurrent: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: TrackingDetails
-*/
-@Parcelize
-data class TrackingDetails(
-    
-    
-    
-    @SerializedName("tracking_details")
-    var trackingDetails: ArrayList<NestedTrackingDetails>?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("is_current")
-    var isCurrent: Boolean?=null,
-    
-    @SerializedName("is_passed")
-    var isPassed: Boolean?=null,
-    
-    @SerializedName("time")
-    var time: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: ShipmentPayment
-*/
-@Parcelize
-data class ShipmentPayment(
-    
-    
-    
-    @SerializedName("payment_mode")
-    var paymentMode: String?=null,
-    
-    @SerializedName("mop")
-    var mop: String?=null,
-    
-    @SerializedName("logo")
-    var logo: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("mode")
-    var mode: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: FulfillingStore
-*/
-@Parcelize
-data class FulfillingStore(
-    
-    
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
     
     @SerializedName("id")
     var id: Int?=null,
     
-    @SerializedName("company_name")
-    var companyName: String?=null,
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: BreakupValues
-*/
-@Parcelize
-data class BreakupValues(
-    
-    
-    
-    @SerializedName("display")
-    var display: String?=null,
-    
     @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("value")
-    var value: Double?=null
+    var name: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -27953,14 +27863,14 @@ data class ShipmentTotalDetails(
     
     
     
+    @SerializedName("pieces")
+    var pieces: Int?=null,
+    
     @SerializedName("sizes")
     var sizes: Int?=null,
     
     @SerializedName("total_price")
-    var totalPrice: Double?=null,
-    
-    @SerializedName("pieces")
-    var pieces: Int?=null
+    var totalPrice: Double?=null
     
 ): Parcelable {
     
@@ -27983,110 +27893,110 @@ data class Shipments(
     
     
     
-    @SerializedName("beneficiary_details")
-    var beneficiaryDetails: Boolean?=null,
-    
-    @SerializedName("need_help_url")
-    var needHelpUrl: String?=null,
-    
-    @SerializedName("shipment_status")
-    var shipmentStatus: ShipmentStatus?=null,
-    
-    @SerializedName("show_download_invoice")
-    var showDownloadInvoice: Boolean?=null,
-    
-    @SerializedName("fulfilling_company")
-    var fulfillingCompany: FulfillingCompany?=null,
-    
-    @SerializedName("size_info")
-    var sizeInfo: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("prices")
-    var prices: Prices?=null,
-    
-    @SerializedName("delivery_address")
-    var deliveryAddress: DeliveryAddress?=null,
-    
-    @SerializedName("promise")
-    var promise: Promise?=null,
-    
-    @SerializedName("can_cancel")
-    var canCancel: Boolean?=null,
-    
-    @SerializedName("total_bags")
-    var totalBags: Int?=null,
-    
-    @SerializedName("invoice")
-    var invoice: Invoice?=null,
-    
-    @SerializedName("returnable_date")
-    var returnableDate: String?=null,
-    
-    @SerializedName("bags")
-    var bags: ArrayList<Bags>?=null,
-    
-    @SerializedName("user_info")
-    var userInfo: ShipmentUserInfo?=null,
-    
-    @SerializedName("delivery_date")
-    var deliveryDate: String?=null,
-    
-    @SerializedName("tracking_details")
-    var trackingDetails: ArrayList<TrackingDetails>?=null,
-    
-    @SerializedName("awb_no")
-    var awbNo: String?=null,
-    
-    @SerializedName("can_return")
-    var canReturn: Boolean?=null,
-    
-    @SerializedName("dp_name")
-    var dpName: String?=null,
-    
-    @SerializedName("shipment_created_at")
-    var shipmentCreatedAt: String?=null,
-    
-    @SerializedName("custom_meta")
-    var customMeta: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("show_track_link")
-    var showTrackLink: Boolean?=null,
-    
-    @SerializedName("order_id")
-    var orderId: String?=null,
-    
-    @SerializedName("payment")
-    var payment: ShipmentPayment?=null,
-    
-    @SerializedName("refund_details")
-    var refundDetails: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("can_break")
-    var canBreak: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("traking_no")
-    var trakingNo: String?=null,
-    
-    @SerializedName("shipment_id")
-    var shipmentId: String?=null,
-    
-    @SerializedName("order_type")
-    var orderType: String?=null,
-    
-    @SerializedName("fulfilling_store")
-    var fulfillingStore: FulfillingStore?=null,
-    
     @SerializedName("comment")
     var comment: String?=null,
     
     @SerializedName("breakup_values")
     var breakupValues: ArrayList<BreakupValues>?=null,
     
+    @SerializedName("total_bags")
+    var totalBags: Int?=null,
+    
+    @SerializedName("custom_meta")
+    var customMeta: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("delivery_address")
+    var deliveryAddress: DeliveryAddress?=null,
+    
+    @SerializedName("can_cancel")
+    var canCancel: Boolean?=null,
+    
+    @SerializedName("delivery_date")
+    var deliveryDate: String?=null,
+    
+    @SerializedName("fulfilling_store")
+    var fulfillingStore: FulfillingStore?=null,
+    
+    @SerializedName("size_info")
+    var sizeInfo: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("refund_details")
+    var refundDetails: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("shipment_created_at")
+    var shipmentCreatedAt: String?=null,
+    
+    @SerializedName("promise")
+    var promise: Promise?=null,
+    
+    @SerializedName("can_return")
+    var canReturn: Boolean?=null,
+    
+    @SerializedName("user_info")
+    var userInfo: ShipmentUserInfo?=null,
+    
+    @SerializedName("need_help_url")
+    var needHelpUrl: String?=null,
+    
+    @SerializedName("tracking_details")
+    var trackingDetails: ArrayList<TrackingDetails>?=null,
+    
+    @SerializedName("dp_name")
+    var dpName: String?=null,
+    
+    @SerializedName("invoice")
+    var invoice: Invoice?=null,
+    
+    @SerializedName("payment")
+    var payment: ShipmentPayment?=null,
+    
+    @SerializedName("bags")
+    var bags: ArrayList<Bags>?=null,
+    
+    @SerializedName("traking_no")
+    var trakingNo: String?=null,
+    
+    @SerializedName("prices")
+    var prices: Prices?=null,
+    
+    @SerializedName("show_download_invoice")
+    var showDownloadInvoice: Boolean?=null,
+    
+    @SerializedName("awb_no")
+    var awbNo: String?=null,
+    
+    @SerializedName("shipment_status")
+    var shipmentStatus: ShipmentStatus?=null,
+    
+    @SerializedName("fulfilling_company")
+    var fulfillingCompany: FulfillingCompany?=null,
+    
+    @SerializedName("beneficiary_details")
+    var beneficiaryDetails: Boolean?=null,
+    
     @SerializedName("track_url")
     var trackUrl: String?=null,
     
+    @SerializedName("order_id")
+    var orderId: String?=null,
+    
+    @SerializedName("order_type")
+    var orderType: String?=null,
+    
+    @SerializedName("can_break")
+    var canBreak: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
     @SerializedName("total_details")
-    var totalDetails: ShipmentTotalDetails?=null
+    var totalDetails: ShipmentTotalDetails?=null,
+    
+    @SerializedName("returnable_date")
+    var returnableDate: String?=null,
+    
+    @SerializedName("show_track_link")
+    var showTrackLink: Boolean?=null
     
 ): Parcelable {
     
@@ -28151,6 +28061,41 @@ data class Shipments(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: UserInfo
+*/
+@Parcelize
+data class UserInfo(
+    
+    
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("email")
+    var email: String?=null
+    
+): Parcelable {
     
     
     
@@ -28201,6 +28146,9 @@ data class BagsForReorder(
     @SerializedName("article_assignment")
     var articleAssignment: BagsForReorderArticleAssignment?=null,
     
+    @SerializedName("store_id")
+    var storeId: Int?=null,
+    
     @SerializedName("item_size")
     var itemSize: String?=null,
     
@@ -28209,9 +28157,6 @@ data class BagsForReorder(
     
     @SerializedName("seller_id")
     var sellerId: Int?=null,
-    
-    @SerializedName("store_id")
-    var storeId: Int?=null,
     
     @SerializedName("quantity")
     var quantity: Int?=null
@@ -28236,26 +28181,41 @@ data class BagsForReorder(
 
 
 /*
-    Model: UserInfo
+    Model: OrderSchema
 */
 @Parcelize
-data class UserInfo(
+data class OrderSchema(
     
     
     
-    @SerializedName("email")
-    var email: String?=null,
+    @SerializedName("order_id")
+    var orderId: String?=null,
     
-    @SerializedName("gender")
-    var gender: String?=null,
+    @SerializedName("breakup_values")
+    var breakupValues: ArrayList<BreakupValues>?=null,
     
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("order_created_time")
+    var orderCreatedTime: String?=null,
     
-    @SerializedName("mobile")
-    var mobile: String?=null
+    @SerializedName("shipments")
+    var shipments: ArrayList<Shipments>?=null,
+    
+    @SerializedName("user_info")
+    var userInfo: UserInfo?=null,
+    
+    @SerializedName("bags_for_reorder")
+    var bagsForReorder: ArrayList<BagsForReorder>?=null,
+    
+    @SerializedName("total_shipments_in_order")
+    var totalShipmentsInOrder: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     
@@ -28271,33 +28231,27 @@ data class UserInfo(
 
 
 /*
-    Model: OrderSchema
+    Model: OrderPage
 */
 @Parcelize
-data class OrderSchema(
+data class OrderPage(
     
     
     
-    @SerializedName("total_shipments_in_order")
-    var totalShipmentsInOrder: Int?=null,
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
     
-    @SerializedName("order_created_time")
-    var orderCreatedTime: String?=null,
+    @SerializedName("current")
+    var current: Int?=null,
     
-    @SerializedName("shipments")
-    var shipments: ArrayList<Shipments>?=null,
+    @SerializedName("size")
+    var size: Int?=null,
     
-    @SerializedName("breakup_values")
-    var breakupValues: ArrayList<BreakupValues>?=null,
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
     
-    @SerializedName("bags_for_reorder")
-    var bagsForReorder: ArrayList<BagsForReorder>?=null,
-    
-    @SerializedName("order_id")
-    var orderId: String?=null,
-    
-    @SerializedName("user_info")
-    var userInfo: UserInfo?=null
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable {
     
@@ -28312,6 +28266,52 @@ data class OrderSchema(
     
     
     
+    
+}
+
+
+/*
+    Model: OrderStatuses
+*/
+@Parcelize
+data class OrderStatuses(
+    
+    
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("value")
+    var value: Int?=null,
+    
+    @SerializedName("is_selected")
+    var isSelected: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: OrderFilters
+*/
+@Parcelize
+data class OrderFilters(
+    
+    
+    
+    @SerializedName("statuses")
+    var statuses: ArrayList<OrderStatuses>?=null
+    
+): Parcelable {
     
     
     
@@ -28328,14 +28328,14 @@ data class OrderList(
     
     
     
+    @SerializedName("items")
+    var items: ArrayList<OrderSchema>?=null,
+    
     @SerializedName("page")
     var page: OrderPage?=null,
     
     @SerializedName("filters")
-    var filters: OrderFilters?=null,
-    
-    @SerializedName("items")
-    var items: ArrayList<OrderSchema>?=null
+    var filters: OrderFilters?=null
     
 ): Parcelable {
     
@@ -28429,11 +28429,11 @@ data class ResponseGetInvoiceShipment(
     @SerializedName("success")
     var success: Boolean?=null,
     
-    @SerializedName("shipment_id")
-    var shipmentId: String?=null,
-    
     @SerializedName("presigned_url")
-    var presignedUrl: String?=null
+    var presignedUrl: String?=null,
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null
     
 ): Parcelable {
     
@@ -28458,29 +28458,29 @@ data class Track(
     
     
     
-    @SerializedName("status")
-    var status: String?=null,
+    @SerializedName("account_name")
+    var accountName: String?=null,
     
-    @SerializedName("updated_time")
-    var updatedTime: String?=null,
+    @SerializedName("last_location_recieved_at")
+    var lastLocationRecievedAt: String?=null,
     
     @SerializedName("awb")
     var awb: String?=null,
     
-    @SerializedName("shipment_type")
-    var shipmentType: String?=null,
-    
     @SerializedName("updated_at")
     var updatedAt: String?=null,
     
-    @SerializedName("account_name")
-    var accountName: String?=null,
+    @SerializedName("updated_time")
+    var updatedTime: String?=null,
+    
+    @SerializedName("shipment_type")
+    var shipmentType: String?=null,
     
     @SerializedName("reason")
     var reason: String?=null,
     
-    @SerializedName("last_location_recieved_at")
-    var lastLocationRecievedAt: String?=null
+    @SerializedName("status")
+    var status: String?=null
     
 ): Parcelable {
     
@@ -28533,17 +28533,17 @@ data class CustomerDetailsResponse(
     
     
     
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("shipment_id")
-    var shipmentId: String?=null,
-    
     @SerializedName("order_id")
     var orderId: String?=null,
     
     @SerializedName("country")
     var country: String?=null,
+    
+    @SerializedName("shipment_id")
+    var shipmentId: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
     
     @SerializedName("phone")
     var phone: String?=null
@@ -28573,17 +28573,17 @@ data class SendOtpToCustomerResponse(
     
     
     
-    @SerializedName("resend_timer")
-    var resendTimer: Int?=null,
-    
     @SerializedName("success")
     var success: Boolean?=null,
     
-    @SerializedName("message")
-    var message: String?=null,
+    @SerializedName("resend_timer")
+    var resendTimer: Int?=null,
     
     @SerializedName("request_id")
-    var requestId: String?=null
+    var requestId: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
     
@@ -28608,11 +28608,11 @@ data class VerifyOtp(
     
     
     
-    @SerializedName("request_id")
-    var requestId: String?=null,
-    
     @SerializedName("otp_code")
-    var otpCode: String?=null
+    var otpCode: String?=null,
+    
+    @SerializedName("request_id")
+    var requestId: String?=null
     
 ): Parcelable {
     
@@ -28673,11 +28673,11 @@ data class QuestionSet(
     
     
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
     @SerializedName("id")
-    var id: Int?=null
+    var id: Int?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null
     
 ): Parcelable {
     
@@ -28698,20 +28698,20 @@ data class BagReasons(
     
     
     
-    @SerializedName("id")
-    var id: Int?=null,
-    
     @SerializedName("qc_type")
     var qcType: ArrayList<String>?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
     
     @SerializedName("reasons")
     var reasons: ArrayList<BagReasons>?=null,
     
-    @SerializedName("meta")
-    var meta: BagReasonMeta?=null,
-    
     @SerializedName("display_name")
     var displayName: String?=null,
+    
+    @SerializedName("meta")
+    var meta: BagReasonMeta?=null,
     
     @SerializedName("question_set")
     var questionSet: ArrayList<QuestionSet>?=null
@@ -28743,11 +28743,11 @@ data class ShipmentBagReasons(
     
     
     
-    @SerializedName("reasons")
-    var reasons: ArrayList<BagReasons>?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("reasons")
+    var reasons: ArrayList<BagReasons>?=null
     
 ): Parcelable {
     
@@ -28768,23 +28768,23 @@ data class ShipmentReason(
     
     
     
-    @SerializedName("show_text_area")
-    var showTextArea: Boolean?=null,
+    @SerializedName("priority")
+    var priority: Int?=null,
+    
+    @SerializedName("flow")
+    var flow: String?=null,
     
     @SerializedName("feedback_type")
     var feedbackType: String?=null,
+    
+    @SerializedName("show_text_area")
+    var showTextArea: Boolean?=null,
     
     @SerializedName("reason_text")
     var reasonText: String?=null,
     
     @SerializedName("reason_id")
-    var reasonId: Int?=null,
-    
-    @SerializedName("flow")
-    var flow: String?=null,
-    
-    @SerializedName("priority")
-    var priority: Int?=null
+    var reasonId: Int?=null
     
 ): Parcelable {
     
@@ -28817,6 +28817,86 @@ data class ShipmentReasons(
     var reasons: ArrayList<ShipmentReason>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: Products
+*/
+@Parcelize
+data class Products(
+    
+    
+    
+    @SerializedName("identifier")
+    var identifier: String?=null,
+    
+    @SerializedName("line_number")
+    var lineNumber: Int?=null,
+    
+    @SerializedName("quantity")
+    var quantity: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: EntityReasonData
+*/
+@Parcelize
+data class EntityReasonData(
+    
+    
+    
+    @SerializedName("reason_text")
+    var reasonText: String?=null,
+    
+    @SerializedName("reason_id")
+    var reasonId: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+/*
+    Model: EntitiesReasons
+*/
+@Parcelize
+data class EntitiesReasons(
+    
+    
+    
+    @SerializedName("filters")
+    var filters: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("data")
+    var data: EntityReasonData?=null
+    
+): Parcelable {
+    
+    
     
     
     
@@ -28906,56 +28986,6 @@ data class ProductsReasons(
 
 
 /*
-    Model: EntityReasonData
-*/
-@Parcelize
-data class EntityReasonData(
-    
-    
-    
-    @SerializedName("reason_text")
-    var reasonText: String?=null,
-    
-    @SerializedName("reason_id")
-    var reasonId: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
-    Model: EntitiesReasons
-*/
-@Parcelize
-data class EntitiesReasons(
-    
-    
-    
-    @SerializedName("filters")
-    var filters: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("data")
-    var data: EntityReasonData?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: ReasonsData
 */
 @Parcelize
@@ -28963,11 +28993,11 @@ data class ReasonsData(
     
     
     
-    @SerializedName("products")
-    var products: ArrayList<ProductsReasons>?=null,
-    
     @SerializedName("entities")
-    var entities: ArrayList<EntitiesReasons>?=null
+    var entities: ArrayList<EntitiesReasons>?=null,
+    
+    @SerializedName("products")
+    var products: ArrayList<ProductsReasons>?=null
     
 ): Parcelable {
     
@@ -28981,25 +29011,20 @@ data class ReasonsData(
 
 
 /*
-    Model: Products
+    Model: EntitiesDataUpdates
 */
 @Parcelize
-data class Products(
+data class EntitiesDataUpdates(
     
     
     
-    @SerializedName("identifier")
-    var identifier: String?=null,
+    @SerializedName("filters")
+    var filters: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
-    @SerializedName("line_number")
-    var lineNumber: Int?=null,
-    
-    @SerializedName("quantity")
-    var quantity: Int?=null
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -29061,31 +29086,6 @@ data class ProductsDataUpdates(
 
 
 /*
-    Model: EntitiesDataUpdates
-*/
-@Parcelize
-data class EntitiesDataUpdates(
-    
-    
-    
-    @SerializedName("filters")
-    var filters: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-/*
     Model: DataUpdates
 */
 @Parcelize
@@ -29093,11 +29093,11 @@ data class DataUpdates(
     
     
     
-    @SerializedName("products")
-    var products: ArrayList<ProductsDataUpdates>?=null,
-    
     @SerializedName("entities")
-    var entities: ArrayList<EntitiesDataUpdates>?=null
+    var entities: ArrayList<EntitiesDataUpdates>?=null,
+    
+    @SerializedName("products")
+    var products: ArrayList<ProductsDataUpdates>?=null
     
 ): Parcelable {
     
@@ -29121,11 +29121,11 @@ data class ShipmentsRequest(
     @SerializedName("identifier")
     var identifier: String?=null,
     
-    @SerializedName("reasons")
-    var reasons: ReasonsData?=null,
-    
     @SerializedName("products")
     var products: ArrayList<Products>?=null,
+    
+    @SerializedName("reasons")
+    var reasons: ReasonsData?=null,
     
     @SerializedName("data_updates")
     var dataUpdates: DataUpdates?=null
@@ -29153,14 +29153,14 @@ data class StatuesRequest(
     
     
     
-    @SerializedName("status")
-    var status: String?=null,
+    @SerializedName("exclude_bags_next_state")
+    var excludeBagsNextState: String?=null,
     
     @SerializedName("shipments")
     var shipments: ArrayList<ShipmentsRequest>?=null,
     
-    @SerializedName("exclude_bags_next_state")
-    var excludeBagsNextState: String?=null
+    @SerializedName("status")
+    var status: String?=null
     
 ): Parcelable {
     
@@ -29183,20 +29183,20 @@ data class UpdateShipmentStatusRequest(
     
     
     
-    @SerializedName("unlock_before_transition")
-    var unlockBeforeTransition: Boolean?=null,
-    
     @SerializedName("task")
     var task: Boolean?=null,
     
     @SerializedName("statuses")
     var statuses: ArrayList<StatuesRequest>?=null,
     
-    @SerializedName("force_transition")
-    var forceTransition: Boolean?=null,
+    @SerializedName("unlock_before_transition")
+    var unlockBeforeTransition: Boolean?=null,
     
     @SerializedName("lock_after_transition")
-    var lockAfterTransition: Boolean?=null
+    var lockAfterTransition: Boolean?=null,
+    
+    @SerializedName("force_transition")
+    var forceTransition: Boolean?=null
     
 ): Parcelable {
     
@@ -30017,11 +30017,11 @@ data class Files(
     
     
     
-    @SerializedName("values")
-    var values: ArrayList<String>?=null,
-    
     @SerializedName("key")
-    var key: String?=null
+    var key: String?=null,
+    
+    @SerializedName("values")
+    var values: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -30042,41 +30042,29 @@ data class CartPosCheckoutDetailRequest(
     
     
     
-    @SerializedName("pos")
-    var pos: Boolean?=null,
-    
-    @SerializedName("files")
-    var files: ArrayList<Files>?=null,
-    
-    @SerializedName("merchant_code")
-    var merchantCode: String?=null,
-    
-    @SerializedName("payment_params")
-    var paymentParams: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("extra_meta")
-    var extraMeta: @RawValue HashMap<String,Any>?=null,
-    
     @SerializedName("custom_meta")
     var customMeta: ArrayList<CartCheckoutCustomMeta>?=null,
     
-    @SerializedName("pick_at_store_uid")
-    var pickAtStoreUid: Int?=null,
-    
-    @SerializedName("address_id")
-    var addressId: String?=null,
-    
-    @SerializedName("payment_mode")
-    var paymentMode: String?=null,
+    @SerializedName("payment_identifier")
+    var paymentIdentifier: String?=null,
     
     @SerializedName("billing_address_id")
     var billingAddressId: String?=null,
     
-    @SerializedName("staff")
-    var staff: StaffCheckout?=null,
+    @SerializedName("extra_meta")
+    var extraMeta: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("payment_params")
+    var paymentParams: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
+    
+    @SerializedName("delivery_address")
+    var deliveryAddress: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("pick_at_store_uid")
+    var pickAtStoreUid: Int?=null,
     
     @SerializedName("billing_address")
     var billingAddress: @RawValue HashMap<String,Any>?=null,
@@ -30084,23 +30072,35 @@ data class CartPosCheckoutDetailRequest(
     @SerializedName("order_type")
     var orderType: String?=null,
     
-    @SerializedName("payment_identifier")
-    var paymentIdentifier: String?=null,
-    
     @SerializedName("aggregator")
     var aggregator: String?=null,
     
-    @SerializedName("callback_url")
-    var callbackUrl: String?=null,
-    
-    @SerializedName("delivery_address")
-    var deliveryAddress: @RawValue HashMap<String,Any>?=null,
+    @SerializedName("address_id")
+    var addressId: String?=null,
     
     @SerializedName("payment_auto_confirm")
     var paymentAutoConfirm: Boolean?=null,
     
+    @SerializedName("files")
+    var files: ArrayList<Files>?=null,
+    
+    @SerializedName("callback_url")
+    var callbackUrl: String?=null,
+    
+    @SerializedName("pos")
+    var pos: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("ordering_store")
-    var orderingStore: Int?=null
+    var orderingStore: Int?=null,
+    
+    @SerializedName("staff")
+    var staff: StaffCheckout?=null,
+    
+    @SerializedName("merchant_code")
+    var merchantCode: String?=null
     
 ): Parcelable {
     
@@ -30182,53 +30182,53 @@ data class PickupStoreDetail(
     
     
     
-    @SerializedName("country")
-    var country: String?=null,
-    
-    @SerializedName("address_type")
-    var addressType: String?=null,
-    
-    @SerializedName("address")
-    var address: String?=null,
-    
-    @SerializedName("pincode")
-    var pincode: Int?=null,
-    
-    @SerializedName("store_code")
-    var storeCode: String?=null,
-    
-    @SerializedName("area_code_slug")
-    var areaCodeSlug: String?=null,
-    
-    @SerializedName("id")
-    var id: Int?=null,
-    
     @SerializedName("landmark")
     var landmark: String?=null,
-    
-    @SerializedName("state")
-    var state: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("area_code")
-    var areaCode: String?=null,
     
     @SerializedName("city")
     var city: String?=null,
     
+    @SerializedName("area_code_slug")
+    var areaCodeSlug: String?=null,
+    
+    @SerializedName("address_type")
+    var addressType: String?=null,
+    
+    @SerializedName("store_code")
+    var storeCode: String?=null,
+    
+    @SerializedName("area_code")
+    var areaCode: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("state")
+    var state: String?=null,
+    
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    
+    @SerializedName("id")
+    var id: Int?=null,
+    
+    @SerializedName("area")
+    var area: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
     @SerializedName("email")
     var email: String?=null,
     
-    @SerializedName("area")
-    var area: String?=null
+    @SerializedName("address")
+    var address: String?=null
     
 ): Parcelable {
     
