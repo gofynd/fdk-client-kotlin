@@ -86,7 +86,6 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -714,20 +713,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null, orderingStoreId: Int?=null, orderType: String?=null)
+    suspend fun getShipments(pickAtStoreUid: Int?=null, orderingStoreId: Int?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null)
     : Deferred<Response<CartShipmentsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getShipments(companyId = config.companyId , applicationId = applicationId , p = p, id = id, buyNow = buyNow, addressId = addressId, areaCode = areaCode, orderingStoreId = orderingStoreId, orderType = orderType )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getShipmentDelivery(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, orderType: String?=null)
-    : Deferred<Response<CartShipmentsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getShipmentDelivery(companyId = config.companyId , applicationId = applicationId , i = i, p = p, id = id, addressId = addressId, orderType = orderType )
+                cartApiList?.getShipments(companyId = config.companyId , applicationId = applicationId , pickAtStoreUid = pickAtStoreUid, orderingStoreId = orderingStoreId, p = p, id = id, addressId = addressId, areaCode = areaCode, orderType = orderType )
         } else {
             null
         }
