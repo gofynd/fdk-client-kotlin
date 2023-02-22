@@ -132,10 +132,10 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }
     
-    fun getAggregatorsConfig(xApiToken: String?=null, refresh: Boolean?=null): Deferred<Response<AggregatorsConfigDetailResponse>>? {
+    fun getAggregatorsConfig(refresh: Boolean?=null): Deferred<Response<AggregatorsConfigDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["getAggregatorsConfig"] 
         
-        return paymentApiList?.getAggregatorsConfig(fullUrl    ,  xApiToken = xApiToken,    refresh = refresh)}
+        return paymentApiList?.getAggregatorsConfig(fullUrl    ,  refresh = refresh)}
 
     
     

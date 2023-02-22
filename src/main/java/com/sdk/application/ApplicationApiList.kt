@@ -815,7 +815,7 @@ interface PaymentApiList {
     
     
     @GET 
-    fun getAggregatorsConfig(@Url url1: String?    ,  @Header("x-api-token") xApiToken: String?,  @Query("refresh") refresh: Boolean?)
+    fun getAggregatorsConfig(@Url url1: String?    ,  @Query("refresh") refresh: Boolean?)
     : Deferred<Response<AggregatorsConfigDetailResponse>>
     
     
