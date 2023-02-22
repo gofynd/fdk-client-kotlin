@@ -714,10 +714,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null)
+    suspend fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null, orderingStoreId: Int?=null, orderType: String?=null)
     : Deferred<Response<CartShipmentsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getShipments(companyId = config.companyId , applicationId = applicationId , p = p, id = id, buyNow = buyNow, addressId = addressId, areaCode = areaCode )
+                cartApiList?.getShipments(companyId = config.companyId , applicationId = applicationId , p = p, id = id, buyNow = buyNow, addressId = addressId, areaCode = areaCode, orderingStoreId = orderingStoreId, orderType = orderType )
         } else {
             null
         }

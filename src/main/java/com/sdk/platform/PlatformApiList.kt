@@ -948,6 +948,10 @@ interface OrderApiList {
     fun getBags(@Path("company_id") companyId: String, @Query("bag_ids") bagIds: String?, @Query("shipment_ids") shipmentIds: String?, @Query("order_ids") orderIds: String?, @Query("channel_bag_ids") channelBagIds: String?, @Query("channel_shipment_ids") channelShipmentIds: String?, @Query("channel_order_ids") channelOrderIds: String?, @Query("channel_id") channelId: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetBagsPlatformResponse>>
     
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/orders/{order_id}/generate/pos-receipt")
+    fun generatePOSReceiptByOrderId(@Path("company_id") companyId: String, @Path("order_id") orderId: String)
+    : Deferred<Response<GeneratePosOrderReceiptResponse>>
+    
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/update-cache")
     fun invalidateShipmentCache(@Path("company_id") companyId: String,@Body body: InvalidateShipmentCachePayload)
     : Deferred<Response<InvalidateShipmentCacheResponse>>
@@ -988,12 +992,12 @@ interface OrderApiList {
     fun getRoleBasedActions(@Path("company_id") companyId: String)
     : Deferred<Response<GetActionsResponse>>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
-    : Deferred<Response<ShipmentHistoryResponse>>
-    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
     fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: Int?, @Query("bag_id") bagId: Int?)
+    : Deferred<Response<ShipmentHistoryResponse>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
     : Deferred<Response<ShipmentHistoryResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")
@@ -1012,13 +1016,13 @@ interface OrderApiList {
     fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI)
     : Deferred<Response<CreateOrderResponse>>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
-    : Deferred<Response<CreateChannelConfigResponse>>
-    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
     fun getChannelConfig(@Path("company_id") companyId: String)
     : Deferred<Response<CreateChannelConfigData>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
+    fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
+    : Deferred<Response<CreateChannelConfigResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/uploadConsent")
     fun uploadConsent(@Path("company_id") companyId: String,@Body body: UploadConsent)
@@ -1344,12 +1348,12 @@ interface CatalogApiList {
     fun getProduct(@Query("item_code") itemCode: String?, @Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?)
     : Deferred<Response<Product>>
     
-    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
-    fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String)
-    : Deferred<Response<SuccessResponse>>
-    
     @PATCH ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
     fun patchProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductPatch)
+    : Deferred<Response<SuccessResponse>>
+    
+    @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/products/{item_id}/")
+    fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String)
     : Deferred<Response<SuccessResponse>>
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/all_sizes")
@@ -2061,7 +2065,7 @@ interface CartApiList {
     : Deferred<Response<CartDetailResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/shipment")
-    fun getShipments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?)
+    fun getShipments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("order_type") orderType: String?)
     : Deferred<Response<CartShipmentsResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/shipments/delivery")
@@ -2320,13 +2324,13 @@ interface LogisticApiList {
     fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: String?, @Query("enabled") enabled: String?, @Query("q") q: String?)
     : Deferred<Response<CompanyStoreView_Response>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
     fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
     : Deferred<Response<GetSingleZoneDataViewResponse>>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
+    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/zone/")
     fun insertZoneControllerView(@Path("company_id") companyId: String,@Body body: ZoneRequest)
