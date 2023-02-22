@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.lead.*
+import com.sdk.application.apis.lead.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,19 +21,19 @@ class LeadDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     init{
             
-                    _relativeUrls["getTicket"] = "/service/application/lead/v1.0/ticket/{id}"?.substring(1)
+                    _relativeUrls["getTicket"] = "/service/application/lead/v1.0/ticket/{id}".substring(1)
             
-                    _relativeUrls["createHistory"] = "/service/application/lead/v1.0/ticket/{id}/history"?.substring(1)
+                    _relativeUrls["createHistory"] = "/service/application/lead/v1.0/ticket/{id}/history".substring(1)
             
-                    _relativeUrls["createTicket"] = "/service/application/lead/v1.0/ticket/"?.substring(1)
+                    _relativeUrls["createTicket"] = "/service/application/lead/v1.0/ticket/".substring(1)
             
-                    _relativeUrls["getCustomForm"] = "/service/application/lead/v1.0/form/{slug}"?.substring(1)
+                    _relativeUrls["getCustomForm"] = "/service/application/lead/v1.0/form/{slug}".substring(1)
             
-                    _relativeUrls["submitCustomForm"] = "/service/application/lead/v1.0/form/{slug}/submit"?.substring(1)
+                    _relativeUrls["submitCustomForm"] = "/service/application/lead/v1.0/form/{slug}/submit".substring(1)
             
-                    _relativeUrls["getParticipantsInsideVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/participants"?.substring(1)
+                    _relativeUrls["getParticipantsInsideVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/participants".substring(1)
             
-                    _relativeUrls["getTokenForVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/token"?.substring(1)
+                    _relativeUrls["getTokenForVideoRoom"] = "/service/application/lead/v1.0/video/room/{unique_name}/token".substring(1)
             
     }
 
