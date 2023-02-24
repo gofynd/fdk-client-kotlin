@@ -573,10 +573,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateCartUser(id: String?=null)
+    suspend fun updateCartUser(id: String?=null,body: UpdateUserCartMapping)
     : Deferred<Response<UserCartMappingResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCartUser(companyId = config.companyId , applicationId = applicationId , id = id )
+                cartApiList?.updateCartUser(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
@@ -593,10 +593,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null,body: AddCartRequest)
+    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, id: String?=null,body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.addItems(companyId = config.companyId , applicationId = applicationId , i = i, b = b, buyNow = buyNow, body = body)
+                cartApiList?.addItems(companyId = config.companyId , applicationId = applicationId , i = i, b = b, buyNow = buyNow, id = id, body = body)
         } else {
             null
         }
@@ -733,7 +733,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateCartMeta(id: String?=null, buyNow: Boolean?=null,body: CartMetaRequest)
+    suspend fun updateCartMeta(id: String?=null, buyNow: Boolean?=null,body: PlatformCartMetaRequest)
     : Deferred<Response<CartMetaResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCartMeta(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, body = body)

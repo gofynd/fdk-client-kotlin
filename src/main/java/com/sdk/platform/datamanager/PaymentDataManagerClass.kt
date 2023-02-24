@@ -183,6 +183,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -328,6 +330,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun edcAggregatorsList()
+    : Deferred<Response<EdcAggregatorListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcAggregatorsList(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDeviceStats()
+    : Deferred<Response<EdcDeviceStatsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDeviceStats(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun edcDevice(terminalSerialNo: String)
     : Deferred<Response<EdcDeviceDetailsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -358,10 +380,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun edcDeviceList(pageNumber: Int?=null, isActive: Boolean?=null, storeId: Int?=null, deviceTag: String?=null, pageSize: Int?=null)
+    suspend fun edcDeviceList(pageNo: Int?=null, pageSize: Int?=null, isActive: Boolean?=null, storeId: Int?=null, deviceTag: String?=null)
     : Deferred<Response<EdcDeviceListResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDeviceList(pageNumber = pageNumber, isActive = isActive, storeId = storeId, deviceTag = deviceTag, pageSize = pageSize, companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.edcDeviceList(pageNo = pageNo, pageSize = pageSize, isActive = isActive, storeId = storeId, deviceTag = deviceTag, companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
