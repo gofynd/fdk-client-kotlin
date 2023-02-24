@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -1072,6 +1072,21 @@ interface OrderApiList {
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
+    
+    @PUT 
+    fun updateShipmentStatus1(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
+    : Deferred<Response<ShipmentApplicationStatusResponse>>
+    
+    
+    @GET 
+    fun getInvoiceByShipmentId1(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
+    : Deferred<Response<ResponseGetInvoiceShipment1>>
+    
+    
+    @GET 
+    fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
+    : Deferred<Response<ResponseGetInvoiceShipment1>>
+    
 }
 
 interface RewardsApiList {
@@ -1255,19 +1270,19 @@ interface PosCartApiList {
 interface LogisticApiList {
     
     
-    @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
-    : Deferred<Response<GetTatProductResponse>>
-    
-    
-    @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
-    : Deferred<Response<GetPincodeZonesResponse>>
-    
-    
     @GET 
     fun getPincodeCity(@Url url1: String?    )
-    : Deferred<Response<GetPincodeCityResponse>>
+    : Deferred<Response<PincodeApiResponse>>
+    
+    
+    @POST 
+    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
+    : Deferred<Response<TATViewResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
 }
 
