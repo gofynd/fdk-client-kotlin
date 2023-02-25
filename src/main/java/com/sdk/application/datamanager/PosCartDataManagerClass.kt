@@ -233,10 +233,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null): Deferred<Response<PaymentCouponValidate>>? {
+    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null, iin: String?=null, network: String?=null, type: String?=null, cardId: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
-        return posCartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type)}
+        return posCartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode,    iin = iin,    network = network,    type = type,    cardId = cardId)}
 
     
     
