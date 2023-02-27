@@ -95,10 +95,10 @@ interface CartApiList {
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart-list")
     fun getCartList(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<CartList>>
+    : Deferred<Response<MultiCartResponse>>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/update-user")
-    fun updateCartUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?)
+    fun updateCartUser(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: UpdateUserCartMapping)
     : Deferred<Response<UserCartMappingResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
@@ -106,12 +106,16 @@ interface CartApiList {
     : Deferred<Response<CartDetailResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
-    fun addItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: AddCartRequest)
+    fun addItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Query("id") id: String?,@Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/detail")
     fun updateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?,@Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
+    
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_archive")
+    fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: Int?)
+    : Deferred<Response<DeleteCartDetailResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/basic")
     fun getItemCount(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?)
@@ -131,7 +135,7 @@ interface CartApiList {
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address")
     fun getAddresses(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?, @Query("user_id") userId: String?)
-    : Deferred<Response<GetAddressesResponse>>
+    : Deferred<Response<PlatformGetAddressesResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address")
     fun addAddress(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformAddress)
@@ -139,7 +143,7 @@ interface CartApiList {
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address/{id}")
     fun getAddressById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String, @Query("cart_id") cartId: String?, @Query("buy_now") buyNow: Boolean?, @Query("mobile_no") mobileNo: String?, @Query("checkout_mode") checkoutMode: String?, @Query("tags") tags: String?, @Query("is_default") isDefault: Boolean?, @Query("user_id") userId: String?)
-    : Deferred<Response<Address>>
+    : Deferred<Response<PlatformAddress>>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/address/{id}")
     fun updateAddress(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PlatformAddress)
@@ -154,19 +158,15 @@ interface CartApiList {
     : Deferred<Response<CartDetailResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/shipment")
-    fun getShipments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("order_type") orderType: String?)
+    fun getShipments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("pick_at_store_uid") pickAtStoreUid: Int?, @Query("ordering_store_id") orderingStoreId: Int?, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)
     : Deferred<Response<CartShipmentsResponse>>
     
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/shipments/delivery")
-    fun getShipmentDelivery(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("address_id") addressId: String?, @Query("order_type") orderType: String?)
-    : Deferred<Response<CartShipmentsResponse>>
-    
-    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/shipments/delivery")
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/shipment")
     fun updateShipments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("i") i: Boolean?, @Query("p") p: Boolean?, @Query("id") id: String?, @Query("address_id") addressId: String?, @Query("order_type") orderType: String?,@Body body: UpdateCartShipmentRequest)
     : Deferred<Response<CartShipmentsResponse>>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/meta")
-    fun updateCartMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?,@Body body: CartMetaRequest)
+    fun updateCartMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformCartMetaRequest)
     : Deferred<Response<CartMetaResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/checkout")
