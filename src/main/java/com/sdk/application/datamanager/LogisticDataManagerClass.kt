@@ -23,7 +23,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/"?.substring(1)
             
-                    _relativeUrls["upsertZoneControllerView"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
+                    _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones"?.substring(1)
             
     }
 
@@ -76,10 +76,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun upsertZoneControllerView(body: GetZoneFromPincodeViewRequest): Deferred<Response<GetZoneFromPincodeViewResponse>>? {
-        var fullUrl : String? = _relativeUrls["upsertZoneControllerView"] 
+    fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+        var fullUrl : String? = _relativeUrls["getPincodeZones"] 
         
-        return logisticApiList?.upsertZoneControllerView(fullUrl  ,body = body)}
+        return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
 
     
     

@@ -1226,7 +1226,7 @@ interface LogisticApiList {
     
     
     @POST 
-    fun upsertZoneControllerView(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
 }
