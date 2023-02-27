@@ -101,12 +101,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getSizeGuides(active: Boolean?=null, q: String?=null, tag: String?=null, pageNo: Int?=null, pageSize: Int?=null)
+    suspend fun getSizeGuides(active: Boolean?=null, q: String?=null, tag: String?=null, pageNo: Int?=null, pageSize: Int?=null, brandId: Int?=null)
     : Deferred<Response<ListSizeGuide>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getSizeGuides(
-        companyId = config.companyId, active = active, q = q, tag = tag, pageNo = pageNo, pageSize = pageSize )
+        companyId = config.companyId, active = active, q = q, tag = tag, pageNo = pageNo, pageSize = pageSize, brandId = brandId )
         } else {
             null
         } 
@@ -284,12 +284,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun listDepartmentsData(pageNo: Int?=null, pageSize: Int?=null, name: String?=null, search: String?=null, isActive: Boolean?=null)
+    suspend fun listDepartmentsData(pageNo: Int?=null, pageSize: Int?=null, name: String?=null, search: String?=null, isActive: Boolean?=null, itemType: String?=null)
     : Deferred<Response<DepartmentsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listDepartmentsData(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, name = name, search = search, isActive = isActive )
+        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize, name = name, search = search, isActive = isActive, itemType = itemType )
         } else {
             null
         } 
@@ -404,24 +404,24 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun listProductTemplateExportDetails()
+    suspend fun listProductTemplateExportDetails(status: String?=null, fromDate: String?=null, toDate: String?=null, q: String?=null)
     : Deferred<Response<ProductDownloadsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listProductTemplateExportDetails(
-        companyId = config.companyId )
+        companyId = config.companyId, status = status, fromDate = fromDate, toDate = toDate, q = q )
         } else {
             null
         } 
     }
     
     
-    suspend fun listTemplateBrandTypeValues(filter: String)
+    suspend fun listTemplateBrandTypeValues(filter: String, templateTag: String?=null, itemType: String?=null)
     : Deferred<Response<ProductConfigurationDownloads>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.listTemplateBrandTypeValues(
-        companyId = config.companyId, filter = filter )
+        companyId = config.companyId, filter = filter, templateTag = templateTag, itemType = itemType )
         } else {
             null
         } 
@@ -813,12 +813,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getInventoryExport()
+    suspend fun getInventoryExport(status: String?=null, fromDate: String?=null, toDate: String?=null, q: String?=null)
     : Deferred<Response<InventoryExportJob>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.getInventoryExport(
-        companyId = config.companyId )
+        companyId = config.companyId, status = status, fromDate = fromDate, toDate = toDate, q = q )
         } else {
             null
         } 

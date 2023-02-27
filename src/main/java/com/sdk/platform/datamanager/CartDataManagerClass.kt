@@ -86,6 +86,7 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -564,7 +565,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCartList()
-    : Deferred<Response<CartList>>? {
+    : Deferred<Response<MultiCartResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId  )
         } else {
@@ -607,6 +608,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<UpdateCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b, buyNow = buyNow, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteCart(id: Int?=null)
+    : Deferred<Response<DeleteCartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.deleteCart(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -743,10 +754,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun checkoutCart(buyNow: Boolean?=null,body: PlatformCartCheckoutDetailRequest)
+    suspend fun checkoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest)
     : Deferred<Response<CartCheckoutResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.checkoutCart(companyId = config.companyId , applicationId = applicationId , buyNow = buyNow, body = body)
+                cartApiList?.checkoutCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }

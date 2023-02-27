@@ -330,10 +330,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun edcAggregatorsList()
-    : Deferred<Response<EdcAggregatorListResponse>>? {
+    suspend fun edcAggregatorsAndModelList()
+    : Deferred<Response<EdcAggregatorAndModelListResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcAggregatorsList(companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.edcAggregatorsAndModelList(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
