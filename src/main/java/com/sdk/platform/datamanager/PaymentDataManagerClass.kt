@@ -350,30 +350,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun edcDevice(terminalSerialNo: String)
-    : Deferred<Response<EdcDeviceDetailsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDevice(terminalSerialNo = terminalSerialNo, companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun edcDevice(body: EdcAddRequest)
+    suspend fun edcDevice(terminalUniqueIdentifier: String,body: EdcAddRequest)
     : Deferred<Response<EdcDeviceAddResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun edcDevice(body: EdcUpdateRequest)
+    suspend fun edcDevice(terminalUniqueIdentifier: String)
+    : Deferred<Response<EdcDeviceDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDevice(terminalUniqueIdentifier: String,body: EdcUpdateRequest)
     : Deferred<Response<EdcDeviceUpdateResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
         } else {
             null
         }
