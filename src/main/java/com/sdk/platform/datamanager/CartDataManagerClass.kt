@@ -614,7 +614,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteCart(id: Int?=null)
+    suspend fun deleteCart(id: String?=null)
     : Deferred<Response<DeleteCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.deleteCart(companyId = config.companyId , applicationId = applicationId , id = id )

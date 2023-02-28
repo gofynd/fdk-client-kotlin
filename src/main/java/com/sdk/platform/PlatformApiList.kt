@@ -2113,7 +2113,7 @@ interface CartApiList {
     : Deferred<Response<UpdateCartDetailResponse>>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_archive")
-    fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: Int?)
+    fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?)
     : Deferred<Response<DeleteCartDetailResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/basic")

@@ -185,7 +185,7 @@ interface CartApiList {
     
     
     @PUT 
-    fun deleteCart(@Url url1: String?    ,  @Query("id") id: Int?)
+    fun deleteCart(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<DeleteCartDetailResponse>>
     
     

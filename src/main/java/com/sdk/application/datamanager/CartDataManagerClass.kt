@@ -136,7 +136,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun deleteCart(id: Int?=null): Deferred<Response<DeleteCartDetailResponse>>? {
+    fun deleteCart(id: String?=null): Deferred<Response<DeleteCartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["deleteCart"] 
         
         return cartApiList?.deleteCart(fullUrl    ,  id = id)}
