@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -250,7 +250,7 @@ interface CartApiList {
     
     
     @GET 
-    fun validateCouponForPayment(@Url url1: String?    ,           @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?)
+    fun validateCouponForPayment(@Url url1: String?    ,            @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?, @Query("card_id") cardId: String?)
     : Deferred<Response<PaymentCouponValidate>>
     
     
@@ -896,7 +896,7 @@ interface PaymentApiList {
     
     @GET 
     fun cardDetails(@Url url1: String?     ,  @Query("aggregator") aggregator: String?)
-    : Deferred<Response<cardDetailsResponse>>
+    : Deferred<Response<CardDetailsResponse>>
     
     
     @GET 
@@ -1093,22 +1093,22 @@ interface RewardsApiList {
     
     
     @GET 
-    fun getPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<PointsHistoryResponse>>
     
     
     @GET 
-    fun getPoints(@Url url1: String?   )
+    fun getUserPoints(@Url url1: String?   )
     : Deferred<Response<PointsResponse>>
     
     
     @GET 
-    fun referral(@Url url1: String?   )
+    fun getUserReferralDetails(@Url url1: String?   )
     : Deferred<Response<ReferralDetailsResponse>>
     
     
     @POST 
-    fun orderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
+    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
     : Deferred<Response<OrderDiscountResponse>>
     
     
@@ -1207,7 +1207,7 @@ interface PosCartApiList {
     
     
     @GET 
-    fun validateCouponForPayment(@Url url1: String?    ,           @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?)
+    fun validateCouponForPayment(@Url url1: String?    ,            @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?, @Query("iin") iin: String?, @Query("network") network: String?, @Query("type") type: String?, @Query("card_id") cardId: String?)
     : Deferred<Response<PaymentCouponValidate>>
     
     
