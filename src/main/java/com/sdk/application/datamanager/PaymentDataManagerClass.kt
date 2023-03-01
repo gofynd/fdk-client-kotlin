@@ -246,7 +246,7 @@ class PaymentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun cardDetails(cardInfo: String, aggregator: String?=null): Deferred<Response<cardDetailsResponse>>? {
+    fun cardDetails(cardInfo: String, aggregator: String?=null): Deferred<Response<CardDetailsResponse>>? {
         var fullUrl : String? = _relativeUrls["cardDetails"] 
         
         fullUrl = fullUrl?.replace("{" + "card_info" +"}",cardInfo.toString())

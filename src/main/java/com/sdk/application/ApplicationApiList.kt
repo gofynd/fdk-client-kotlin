@@ -896,7 +896,7 @@ interface PaymentApiList {
     
     @GET 
     fun cardDetails(@Url url1: String?     ,  @Query("aggregator") aggregator: String?)
-    : Deferred<Response<cardDetailsResponse>>
+    : Deferred<Response<CardDetailsResponse>>
     
     
     @GET 
