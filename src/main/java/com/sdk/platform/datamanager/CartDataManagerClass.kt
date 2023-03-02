@@ -554,10 +554,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateCartWithSharedItems(token: String, action: String)
+    suspend fun updateCartWithSharedItems(token: String, action: String, cartId: String?=null)
     : Deferred<Response<SharedCartResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCartWithSharedItems(companyId = config.companyId , applicationId = applicationId , token = token, action = action )
+                cartApiList?.updateCartWithSharedItems(companyId = config.companyId , applicationId = applicationId , token = token, action = action, cartId = cartId )
         } else {
             null
         }
