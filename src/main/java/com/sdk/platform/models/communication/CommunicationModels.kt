@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: StatsImported
 */
@@ -29,6 +30,8 @@ data class StatsImported(
 }
 
 
+
+             
 /*
     Model: StatsProcessedEmail
 */
@@ -59,6 +62,8 @@ data class StatsProcessedEmail(
 }
 
 
+
+             
 /*
     Model: StatsProcessedSms
 */
@@ -89,6 +94,8 @@ data class StatsProcessedSms(
 }
 
 
+
+             
 /*
     Model: StatsProcessed
 */
@@ -114,6 +121,8 @@ data class StatsProcessed(
 }
 
 
+
+             
 /*
     Model: Stats
 */
@@ -144,6 +153,8 @@ data class Stats(
 }
 
 
+
+             
 /*
     Model: GetStats
 */
@@ -164,6 +175,8 @@ data class GetStats(
 }
 
 
+
+             
 /*
     Model: CampaignReq
 */
@@ -224,6 +237,8 @@ data class CampaignReq(
 }
 
 
+
+             
 /*
     Model: RecipientHeaders
 */
@@ -244,6 +259,8 @@ data class RecipientHeaders(
 }
 
 
+
+             
 /*
     Model: CampaignEmailTemplate
 */
@@ -269,6 +286,8 @@ data class CampaignEmailTemplate(
 }
 
 
+
+             
 /*
     Model: CampignEmailProvider
 */
@@ -299,6 +318,8 @@ data class CampignEmailProvider(
 }
 
 
+
+             
 /*
     Model: CampaignEmail
 */
@@ -324,6 +345,8 @@ data class CampaignEmail(
 }
 
 
+
+             
 /*
     Model: Campaign
 */
@@ -409,6 +432,8 @@ data class Campaign(
 }
 
 
+
+             
 /*
     Model: Campaigns
 */
@@ -434,6 +459,8 @@ data class Campaigns(
 }
 
 
+
+             
 /*
     Model: BadRequestSchema
 */
@@ -459,6 +486,8 @@ data class BadRequestSchema(
 }
 
 
+
+             
 /*
     Model: NotFound
 */
@@ -479,6 +508,8 @@ data class NotFound(
 }
 
 
+
+             
 /*
     Model: BigqueryHeadersReq
 */
@@ -504,6 +535,8 @@ data class BigqueryHeadersReq(
 }
 
 
+
+             
 /*
     Model: BigqueryHeadersResHeaders
 */
@@ -529,6 +562,8 @@ data class BigqueryHeadersResHeaders(
 }
 
 
+
+             
 /*
     Model: BigqueryHeadersRes
 */
@@ -549,6 +584,8 @@ data class BigqueryHeadersRes(
 }
 
 
+
+             
 /*
     Model: GetNRecordsCsvReq
 */
@@ -579,6 +616,8 @@ data class GetNRecordsCsvReq(
 }
 
 
+
+             
 /*
     Model: GetNRecordsCsvResItems
 */
@@ -619,6 +658,8 @@ data class GetNRecordsCsvResItems(
 }
 
 
+
+             
 /*
     Model: GetNRecordsCsvRes
 */
@@ -639,6 +680,8 @@ data class GetNRecordsCsvRes(
 }
 
 
+
+             
 /*
     Model: AudienceReq
 */
@@ -699,6 +742,8 @@ data class AudienceReq(
 }
 
 
+
+             
 /*
     Model: Audience
 */
@@ -784,6 +829,8 @@ data class Audience(
 }
 
 
+
+             
 /*
     Model: Audiences
 */
@@ -809,6 +856,8 @@ data class Audiences(
 }
 
 
+
+             
 /*
     Model: EmailProviderReqFrom
 */
@@ -839,6 +888,8 @@ data class EmailProviderReqFrom(
 }
 
 
+
+             
 /*
     Model: EmailProviderReq
 */
@@ -884,6 +935,8 @@ data class EmailProviderReq(
 }
 
 
+
+             
 /*
     Model: EmailProvider
 */
@@ -959,6 +1012,8 @@ data class EmailProvider(
 }
 
 
+
+             
 /*
     Model: EmailProviders
 */
@@ -984,6 +1039,8 @@ data class EmailProviders(
 }
 
 
+
+             
 /*
     Model: EmailTemplateDeleteSuccessRes
 */
@@ -1009,6 +1066,8 @@ data class EmailTemplateDeleteSuccessRes(
 }
 
 
+
+             
 /*
     Model: EmailTemplateDeleteFailureRes
 */
@@ -1034,6 +1093,8 @@ data class EmailTemplateDeleteFailureRes(
 }
 
 
+
+             
 /*
     Model: EmailTemplateKeys
 */
@@ -1064,6 +1125,8 @@ data class EmailTemplateKeys(
 }
 
 
+
+             
 /*
     Model: EmailTemplateHeaders
 */
@@ -1089,6 +1152,8 @@ data class EmailTemplateHeaders(
 }
 
 
+
+             
 /*
     Model: EmailTemplateReq
 */
@@ -1169,6 +1234,8 @@ data class EmailTemplateReq(
 }
 
 
+
+             
 /*
     Model: TemplateAndType
 */
@@ -1194,6 +1261,8 @@ data class TemplateAndType(
 }
 
 
+
+             
 /*
     Model: EmailTemplateRes
 */
@@ -1319,6 +1388,8 @@ data class EmailTemplateRes(
 }
 
 
+
+             
 /*
     Model: EmailTemplate
 */
@@ -1439,6 +1510,8 @@ data class EmailTemplate(
 }
 
 
+
+             
 /*
     Model: SystemEmailTemplate
 */
@@ -1559,6 +1632,8 @@ data class SystemEmailTemplate(
 }
 
 
+
+             
 /*
     Model: EmailTemplates
 */
@@ -1584,6 +1659,8 @@ data class EmailTemplates(
 }
 
 
+
+             
 /*
     Model: SystemEmailTemplates
 */
@@ -1609,6 +1686,8 @@ data class SystemEmailTemplates(
 }
 
 
+
+             
 /*
     Model: PayloadEmailTemplateStructure
 */
@@ -1634,6 +1713,8 @@ data class PayloadEmailTemplateStructure(
 }
 
 
+
+             
 /*
     Model: PayloadEmailProviderStructure
 */
@@ -1654,6 +1735,8 @@ data class PayloadEmailProviderStructure(
 }
 
 
+
+             
 /*
     Model: PayloadEmailStructure
 */
@@ -1679,6 +1762,8 @@ data class PayloadEmailStructure(
 }
 
 
+
+             
 /*
     Model: PayloadSmsTemplateStructure
 */
@@ -1704,6 +1789,8 @@ data class PayloadSmsTemplateStructure(
 }
 
 
+
+             
 /*
     Model: PayloadSmsProviderStructure
 */
@@ -1724,6 +1811,8 @@ data class PayloadSmsProviderStructure(
 }
 
 
+
+             
 /*
     Model: PayloadSmsStructure
 */
@@ -1749,6 +1838,8 @@ data class PayloadSmsStructure(
 }
 
 
+
+             
 /*
     Model: PayloadStructure
 */
@@ -1784,6 +1875,8 @@ data class PayloadStructure(
 }
 
 
+
+             
 /*
     Model: MetaStructure
 */
@@ -1819,6 +1912,8 @@ data class MetaStructure(
 }
 
 
+
+             
 /*
     Model: EngineRequest
 */
@@ -1844,6 +1939,8 @@ data class EngineRequest(
 }
 
 
+
+             
 /*
     Model: EngineResponse
 */
@@ -1864,6 +1961,8 @@ data class EngineResponse(
 }
 
 
+
+             
 /*
     Model: EventSubscriptionTemplateSms
 */
@@ -1889,6 +1988,8 @@ data class EventSubscriptionTemplateSms(
 }
 
 
+
+             
 /*
     Model: EventSubscriptionTemplateEmail
 */
@@ -1914,6 +2015,8 @@ data class EventSubscriptionTemplateEmail(
 }
 
 
+
+             
 /*
     Model: EventSubscriptionTemplate
 */
@@ -1939,6 +2042,8 @@ data class EventSubscriptionTemplate(
 }
 
 
+
+             
 /*
     Model: EventSubscription
 */
@@ -1999,6 +2104,8 @@ data class EventSubscription(
 }
 
 
+
+             
 /*
     Model: EventSubscriptions
 */
@@ -2024,6 +2131,8 @@ data class EventSubscriptions(
 }
 
 
+
+             
 /*
     Model: TriggerJobResponse
 */
@@ -2044,6 +2153,8 @@ data class TriggerJobResponse(
 }
 
 
+
+             
 /*
     Model: TriggerJobRequest
 */
@@ -2064,6 +2175,8 @@ data class TriggerJobRequest(
 }
 
 
+
+             
 /*
     Model: Job
 */
@@ -2119,6 +2232,8 @@ data class Job(
 }
 
 
+
+             
 /*
     Model: Jobs
 */
@@ -2144,6 +2259,8 @@ data class Jobs(
 }
 
 
+
+             
 /*
     Model: JobLog
 */
@@ -2199,6 +2316,8 @@ data class JobLog(
 }
 
 
+
+             
 /*
     Model: JobLogs
 */
@@ -2224,6 +2343,8 @@ data class JobLogs(
 }
 
 
+
+             
 /*
     Model: LogEmail
 */
@@ -2244,6 +2365,8 @@ data class LogEmail(
 }
 
 
+
+             
 /*
     Model: LogPushnotification
 */
@@ -2264,6 +2387,8 @@ data class LogPushnotification(
 }
 
 
+
+             
 /*
     Model: LogMeta
 */
@@ -2309,6 +2434,8 @@ data class LogMeta(
 }
 
 
+
+             
 /*
     Model: Log
 */
@@ -2379,6 +2506,8 @@ data class Log(
 }
 
 
+
+             
 /*
     Model: Logs
 */
@@ -2404,6 +2533,8 @@ data class Logs(
 }
 
 
+
+             
 /*
     Model: SendOtpSmsCommsTemplate
 */
@@ -2429,6 +2560,8 @@ data class SendOtpSmsCommsTemplate(
 }
 
 
+
+             
 /*
     Model: SendOtpSmsCommsProvider
 */
@@ -2454,6 +2587,8 @@ data class SendOtpSmsCommsProvider(
 }
 
 
+
+             
 /*
     Model: SendOtpEmailCommsTemplate
 */
@@ -2479,6 +2614,8 @@ data class SendOtpEmailCommsTemplate(
 }
 
 
+
+             
 /*
     Model: SendOtpCommsReqData
 */
@@ -2514,6 +2651,8 @@ data class SendOtpCommsReqData(
 }
 
 
+
+             
 /*
     Model: SendOtpCommsReqSms
 */
@@ -2549,6 +2688,8 @@ data class SendOtpCommsReqSms(
 }
 
 
+
+             
 /*
     Model: SendOtpCommsReqEmail
 */
@@ -2579,6 +2720,8 @@ data class SendOtpCommsReqEmail(
 }
 
 
+
+             
 /*
     Model: SendOtpCommsResSms
 */
@@ -2624,6 +2767,8 @@ data class SendOtpCommsResSms(
 }
 
 
+
+             
 /*
     Model: SendOtpCommsResEmail
 */
@@ -2664,6 +2809,8 @@ data class SendOtpCommsResEmail(
 }
 
 
+
+             
 /*
     Model: SendOtpCommsReq
 */
@@ -2694,6 +2841,8 @@ data class SendOtpCommsReq(
 }
 
 
+
+             
 /*
     Model: SendOtpCommsRes
 */
@@ -2719,6 +2868,8 @@ data class SendOtpCommsRes(
 }
 
 
+
+             
 /*
     Model: VerifyOtpCommsReq
 */
@@ -2744,6 +2895,8 @@ data class VerifyOtpCommsReq(
 }
 
 
+
+             
 /*
     Model: VerifyOtpCommsSuccessRes
 */
@@ -2779,6 +2932,8 @@ data class VerifyOtpCommsSuccessRes(
 }
 
 
+
+             
 /*
     Model: VerifyOtpCommsErrorRes
 */
@@ -2804,6 +2959,8 @@ data class VerifyOtpCommsErrorRes(
 }
 
 
+
+             
 /*
     Model: PushtokenReq
 */
@@ -2839,6 +2996,8 @@ data class PushtokenReq(
 }
 
 
+
+             
 /*
     Model: PushtokenRes
 */
@@ -2909,6 +3068,8 @@ data class PushtokenRes(
 }
 
 
+
+             
 /*
     Model: SmsProviderReq
 */
@@ -2959,6 +3120,8 @@ data class SmsProviderReq(
 }
 
 
+
+             
 /*
     Model: SmsProvider
 */
@@ -3044,6 +3207,8 @@ data class SmsProvider(
 }
 
 
+
+             
 /*
     Model: SmsProviders
 */
@@ -3069,6 +3234,8 @@ data class SmsProviders(
 }
 
 
+
+             
 /*
     Model: SmsTemplateDeleteSuccessRes
 */
@@ -3094,6 +3261,8 @@ data class SmsTemplateDeleteSuccessRes(
 }
 
 
+
+             
 /*
     Model: SmsTemplateDeleteFailureRes
 */
@@ -3119,6 +3288,8 @@ data class SmsTemplateDeleteFailureRes(
 }
 
 
+
+             
 /*
     Model: SmsTemplateMessage
 */
@@ -3144,6 +3315,8 @@ data class SmsTemplateMessage(
 }
 
 
+
+             
 /*
     Model: SmsTemplateReq
 */
@@ -3189,6 +3362,8 @@ data class SmsTemplateReq(
 }
 
 
+
+             
 /*
     Model: SmsTemplateRes
 */
@@ -3274,6 +3449,8 @@ data class SmsTemplateRes(
 }
 
 
+
+             
 /*
     Model: SmsTemplate
 */
@@ -3359,6 +3536,8 @@ data class SmsTemplate(
 }
 
 
+
+             
 /*
     Model: SystemSmsTemplate
 */
@@ -3444,6 +3623,8 @@ data class SystemSmsTemplate(
 }
 
 
+
+             
 /*
     Model: SmsTemplates
 */
@@ -3469,6 +3650,8 @@ data class SmsTemplates(
 }
 
 
+
+             
 /*
     Model: SystemSmsTemplates
 */
@@ -3494,6 +3677,8 @@ data class SystemSmsTemplates(
 }
 
 
+
+             
 /*
     Model: Notification
 */
@@ -3539,6 +3724,8 @@ data class Notification(
 }
 
 
+
+             
 /*
     Model: SystemNotificationUser
 */
@@ -3564,6 +3751,8 @@ data class SystemNotificationUser(
 }
 
 
+
+             
 /*
     Model: SystemNotificationSettings
 */
@@ -3594,6 +3783,8 @@ data class SystemNotificationSettings(
 }
 
 
+
+             
 /*
     Model: SystemNotification
 */
@@ -3639,6 +3830,8 @@ data class SystemNotification(
 }
 
 
+
+             
 /*
     Model: SystemNotificationsPage
 */
@@ -3679,6 +3872,8 @@ data class SystemNotificationsPage(
 }
 
 
+
+             
 /*
     Model: SystemNotifications
 */
@@ -3709,6 +3904,8 @@ data class SystemNotifications(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -3757,5 +3954,6 @@ data class Page(
     
     
 }
+
 
 

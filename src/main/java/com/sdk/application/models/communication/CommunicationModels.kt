@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: CommunicationConsentReq
 */
@@ -39,6 +40,8 @@ data class CommunicationConsentReq(
 }
 
 
+
+             
 /*
     Model: CommunicationConsentRes
 */
@@ -69,6 +72,8 @@ data class CommunicationConsentRes(
 }
 
 
+
+             
 /*
     Model: CommunicationConsentChannelsEmail
 */
@@ -94,6 +99,8 @@ data class CommunicationConsentChannelsEmail(
 }
 
 
+
+             
 /*
     Model: CommunicationConsentChannelsSms
 */
@@ -119,6 +126,8 @@ data class CommunicationConsentChannelsSms(
 }
 
 
+
+             
 /*
     Model: CommunicationConsentChannelsWhatsapp
 */
@@ -154,6 +163,8 @@ data class CommunicationConsentChannelsWhatsapp(
 }
 
 
+
+             
 /*
     Model: CommunicationConsentChannels
 */
@@ -184,6 +195,8 @@ data class CommunicationConsentChannels(
 }
 
 
+
+             
 /*
     Model: CommunicationConsent
 */
@@ -214,6 +227,8 @@ data class CommunicationConsent(
 }
 
 
+
+             
 /*
     Model: BadRequestSchema
 */
@@ -239,6 +254,8 @@ data class BadRequestSchema(
 }
 
 
+
+             
 /*
     Model: NotFound
 */
@@ -259,6 +276,8 @@ data class NotFound(
 }
 
 
+
+             
 /*
     Model: PushtokenReq
 */
@@ -299,6 +318,8 @@ data class PushtokenReq(
 }
 
 
+
+             
 /*
     Model: PushtokenRes
 */
@@ -369,6 +390,8 @@ data class PushtokenRes(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -417,5 +440,6 @@ data class Page(
     
     
 }
+
 
 

@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: ApplicationLegal
 */
@@ -69,6 +70,8 @@ data class ApplicationLegal(
 }
 
 
+
+             
 /*
     Model: ApplicationLegalFAQ
 */
@@ -94,6 +97,8 @@ data class ApplicationLegalFAQ(
 }
 
 
+
+             
 /*
     Model: PathMappingSchema
 */
@@ -144,6 +149,8 @@ data class PathMappingSchema(
 }
 
 
+
+             
 /*
     Model: SeoComponent
 */
@@ -164,6 +171,8 @@ data class SeoComponent(
 }
 
 
+
+             
 /*
     Model: SeoSchema
 */
@@ -219,6 +228,8 @@ data class SeoSchema(
 }
 
 
+
+             
 /*
     Model: CustomMetaTag
 */
@@ -249,6 +260,8 @@ data class CustomMetaTag(
 }
 
 
+
+             
 /*
     Model: Detail
 */
@@ -274,6 +287,8 @@ data class Detail(
 }
 
 
+
+             
 /*
     Model: AnnouncementPageSchema
 */
@@ -299,6 +314,8 @@ data class AnnouncementPageSchema(
 }
 
 
+
+             
 /*
     Model: EditorMeta
 */
@@ -334,6 +351,8 @@ data class EditorMeta(
 }
 
 
+
+             
 /*
     Model: AnnouncementAuthorSchema
 */
@@ -359,6 +378,8 @@ data class AnnouncementAuthorSchema(
 }
 
 
+
+             
 /*
     Model: AdminAnnouncementSchema
 */
@@ -429,6 +450,8 @@ data class AdminAnnouncementSchema(
 }
 
 
+
+             
 /*
     Model: ScheduleSchema
 */
@@ -469,6 +492,8 @@ data class ScheduleSchema(
 }
 
 
+
+             
 /*
     Model: NextSchedule
 */
@@ -494,6 +519,8 @@ data class NextSchedule(
 }
 
 
+
+             
 /*
     Model: AnnouncementSchema
 */
@@ -519,6 +546,8 @@ data class AnnouncementSchema(
 }
 
 
+
+             
 /*
     Model: ScheduleStartSchema
 */
@@ -544,6 +573,8 @@ data class ScheduleStartSchema(
 }
 
 
+
+             
 /*
     Model: BlogGetResponse
 */
@@ -569,6 +600,8 @@ data class BlogGetResponse(
 }
 
 
+
+             
 /*
     Model: ResourceContent
 */
@@ -594,6 +627,8 @@ data class ResourceContent(
 }
 
 
+
+             
 /*
     Model: Asset
 */
@@ -624,6 +659,8 @@ data class Asset(
 }
 
 
+
+             
 /*
     Model: Author
 */
@@ -654,6 +691,8 @@ data class Author(
 }
 
 
+
+             
 /*
     Model: BlogSchema
 */
@@ -744,6 +783,8 @@ data class BlogSchema(
 }
 
 
+
+             
 /*
     Model: SEO
 */
@@ -774,6 +815,8 @@ data class SEO(
 }
 
 
+
+             
 /*
     Model: SEOImage
 */
@@ -794,6 +837,8 @@ data class SEOImage(
 }
 
 
+
+             
 /*
     Model: DateMeta
 */
@@ -819,6 +864,8 @@ data class DateMeta(
 }
 
 
+
+             
 /*
     Model: BlogRequest
 */
@@ -894,6 +941,8 @@ data class BlogRequest(
 }
 
 
+
+             
 /*
     Model: GetAnnouncementListSchema
 */
@@ -919,6 +968,8 @@ data class GetAnnouncementListSchema(
 }
 
 
+
+             
 /*
     Model: CreateAnnouncementSchema
 */
@@ -944,6 +995,8 @@ data class CreateAnnouncementSchema(
 }
 
 
+
+             
 /*
     Model: DataLoaderResponseSchema
 */
@@ -1009,6 +1062,8 @@ data class DataLoaderResponseSchema(
 }
 
 
+
+             
 /*
     Model: DataLoaderResetResponseSchema
 */
@@ -1029,6 +1084,8 @@ data class DataLoaderResetResponseSchema(
 }
 
 
+
+             
 /*
     Model: Navigation
 */
@@ -1094,6 +1151,8 @@ data class Navigation(
 }
 
 
+
+             
 /*
     Model: LocaleLanguage
 */
@@ -1124,6 +1183,8 @@ data class LocaleLanguage(
 }
 
 
+
+             
 /*
     Model: Language
 */
@@ -1144,6 +1205,8 @@ data class Language(
 }
 
 
+
+             
 /*
     Model: Action
 */
@@ -1174,6 +1237,8 @@ data class Action(
 }
 
 
+
+             
 /*
     Model: ActionPage
 */
@@ -1209,6 +1274,8 @@ data class ActionPage(
 }
 
 
+
+             
 /*
     Model: NavigationReference
 */
@@ -1274,6 +1341,8 @@ data class NavigationReference(
 }
 
 
+
+             
 /*
     Model: LandingPage
 */
@@ -1299,6 +1368,8 @@ data class LandingPage(
 }
 
 
+
+             
 /*
     Model: ConfigurationSchema
 */
@@ -1334,6 +1405,8 @@ data class ConfigurationSchema(
 }
 
 
+
+             
 /*
     Model: SlideshowMedia
 */
@@ -1379,6 +1452,8 @@ data class SlideshowMedia(
 }
 
 
+
+             
 /*
     Model: Slideshow
 */
@@ -1404,6 +1479,8 @@ data class Slideshow(
 }
 
 
+
+             
 /*
     Model: AnnouncementsResponseSchema
 */
@@ -1434,6 +1511,8 @@ data class AnnouncementsResponseSchema(
 }
 
 
+
+             
 /*
     Model: FaqResponseSchema
 */
@@ -1454,6 +1533,8 @@ data class FaqResponseSchema(
 }
 
 
+
+             
 /*
     Model: UpdateHandpickedSchema
 */
@@ -1474,6 +1555,8 @@ data class UpdateHandpickedSchema(
 }
 
 
+
+             
 /*
     Model: HandpickedTagSchema
 */
@@ -1524,6 +1607,8 @@ data class HandpickedTagSchema(
 }
 
 
+
+             
 /*
     Model: RemoveHandpickedSchema
 */
@@ -1544,6 +1629,8 @@ data class RemoveHandpickedSchema(
 }
 
 
+
+             
 /*
     Model: CreateTagSchema
 */
@@ -1604,6 +1691,8 @@ data class CreateTagSchema(
 }
 
 
+
+             
 /*
     Model: CreateTagRequestSchema
 */
@@ -1624,6 +1713,8 @@ data class CreateTagRequestSchema(
 }
 
 
+
+             
 /*
     Model: DataLoaderSchema
 */
@@ -1679,6 +1770,8 @@ data class DataLoaderSchema(
 }
 
 
+
+             
 /*
     Model: DataLoaderSourceSchema
 */
@@ -1704,6 +1797,8 @@ data class DataLoaderSourceSchema(
 }
 
 
+
+             
 /*
     Model: DataLoadersSchema
 */
@@ -1724,6 +1819,8 @@ data class DataLoadersSchema(
 }
 
 
+
+             
 /*
     Model: TagDeleteSuccessResponse
 */
@@ -1744,6 +1841,8 @@ data class TagDeleteSuccessResponse(
 }
 
 
+
+             
 /*
     Model: ContentAPIError
 */
@@ -1799,6 +1898,8 @@ data class ContentAPIError(
 }
 
 
+
+             
 /*
     Model: CommonError
 */
@@ -1819,6 +1920,8 @@ data class CommonError(
 }
 
 
+
+             
 /*
     Model: CategorySchema
 */
@@ -1879,6 +1982,8 @@ data class CategorySchema(
 }
 
 
+
+             
 /*
     Model: ChildrenSchema
 */
@@ -1919,6 +2024,8 @@ data class ChildrenSchema(
 }
 
 
+
+             
 /*
     Model: CategoryRequestSchema
 */
@@ -1944,6 +2051,8 @@ data class CategoryRequestSchema(
 }
 
 
+
+             
 /*
     Model: FAQCategorySchema
 */
@@ -2004,6 +2113,8 @@ data class FAQCategorySchema(
 }
 
 
+
+             
 /*
     Model: FaqSchema
 */
@@ -2049,6 +2160,8 @@ data class FaqSchema(
 }
 
 
+
+             
 /*
     Model: FAQ
 */
@@ -2079,6 +2192,8 @@ data class FAQ(
 }
 
 
+
+             
 /*
     Model: CreateFaqResponseSchema
 */
@@ -2099,6 +2214,8 @@ data class CreateFaqResponseSchema(
 }
 
 
+
+             
 /*
     Model: CreateFaqSchema
 */
@@ -2119,6 +2236,8 @@ data class CreateFaqSchema(
 }
 
 
+
+             
 /*
     Model: GetFaqSchema
 */
@@ -2139,6 +2258,8 @@ data class GetFaqSchema(
 }
 
 
+
+             
 /*
     Model: UpdateFaqCategoryRequestSchema
 */
@@ -2159,6 +2280,8 @@ data class UpdateFaqCategoryRequestSchema(
 }
 
 
+
+             
 /*
     Model: CreateFaqCategoryRequestSchema
 */
@@ -2179,6 +2302,8 @@ data class CreateFaqCategoryRequestSchema(
 }
 
 
+
+             
 /*
     Model: CreateFaqCategorySchema
 */
@@ -2199,6 +2324,8 @@ data class CreateFaqCategorySchema(
 }
 
 
+
+             
 /*
     Model: GetFaqCategoriesSchema
 */
@@ -2219,6 +2346,8 @@ data class GetFaqCategoriesSchema(
 }
 
 
+
+             
 /*
     Model: GetFaqCategoryBySlugSchema
 */
@@ -2239,6 +2368,8 @@ data class GetFaqCategoryBySlugSchema(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -2289,6 +2420,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: LandingPageGetResponse
 */
@@ -2314,6 +2447,8 @@ data class LandingPageGetResponse(
 }
 
 
+
+             
 /*
     Model: LandingPageSchema
 */
@@ -2374,6 +2509,8 @@ data class LandingPageSchema(
 }
 
 
+
+             
 /*
     Model: DefaultNavigationResponse
 */
@@ -2394,6 +2531,8 @@ data class DefaultNavigationResponse(
 }
 
 
+
+             
 /*
     Model: NavigationGetResponse
 */
@@ -2419,6 +2558,8 @@ data class NavigationGetResponse(
 }
 
 
+
+             
 /*
     Model: Orientation
 */
@@ -2444,6 +2585,8 @@ data class Orientation(
 }
 
 
+
+             
 /*
     Model: NavigationSchema
 */
@@ -2514,6 +2657,8 @@ data class NavigationSchema(
 }
 
 
+
+             
 /*
     Model: NavigationRequest
 */
@@ -2554,6 +2699,8 @@ data class NavigationRequest(
 }
 
 
+
+             
 /*
     Model: CustomPageSchema
 */
@@ -2639,6 +2786,8 @@ data class CustomPageSchema(
 }
 
 
+
+             
 /*
     Model: ContentSchema
 */
@@ -2664,6 +2813,8 @@ data class ContentSchema(
 }
 
 
+
+             
 /*
     Model: CustomPage
 */
@@ -2684,6 +2835,8 @@ data class CustomPage(
 }
 
 
+
+             
 /*
     Model: FeatureImage
 */
@@ -2704,6 +2857,8 @@ data class FeatureImage(
 }
 
 
+
+             
 /*
     Model: PageGetResponse
 */
@@ -2729,6 +2884,8 @@ data class PageGetResponse(
 }
 
 
+
+             
 /*
     Model: PageSpec
 */
@@ -2749,6 +2906,8 @@ data class PageSpec(
 }
 
 
+
+             
 /*
     Model: PageSpecParam
 */
@@ -2774,6 +2933,8 @@ data class PageSpecParam(
 }
 
 
+
+             
 /*
     Model: PageSpecItem
 */
@@ -2809,6 +2970,8 @@ data class PageSpecItem(
 }
 
 
+
+             
 /*
     Model: PageSchema
 */
@@ -2934,6 +3097,8 @@ data class PageSchema(
 }
 
 
+
+             
 /*
     Model: CreatedBySchema
 */
@@ -2954,6 +3119,8 @@ data class CreatedBySchema(
 }
 
 
+
+             
 /*
     Model: PageContent
 */
@@ -2979,6 +3146,8 @@ data class PageContent(
 }
 
 
+
+             
 /*
     Model: PageMeta
 */
@@ -3004,6 +3173,8 @@ data class PageMeta(
 }
 
 
+
+             
 /*
     Model: PageRequest
 */
@@ -3084,6 +3255,8 @@ data class PageRequest(
 }
 
 
+
+             
 /*
     Model: CronSchedule
 */
@@ -3119,6 +3292,8 @@ data class CronSchedule(
 }
 
 
+
+             
 /*
     Model: PagePublishRequest
 */
@@ -3139,6 +3314,8 @@ data class PagePublishRequest(
 }
 
 
+
+             
 /*
     Model: PageMetaSchema
 */
@@ -3169,6 +3346,8 @@ data class PageMetaSchema(
 }
 
 
+
+             
 /*
     Model: SlideshowGetResponse
 */
@@ -3194,6 +3373,8 @@ data class SlideshowGetResponse(
 }
 
 
+
+             
 /*
     Model: SlideshowSchema
 */
@@ -3259,6 +3440,8 @@ data class SlideshowSchema(
 }
 
 
+
+             
 /*
     Model: SlideshowRequest
 */
@@ -3299,6 +3482,8 @@ data class SlideshowRequest(
 }
 
 
+
+             
 /*
     Model: Support
 */
@@ -3349,6 +3534,8 @@ data class Support(
 }
 
 
+
+             
 /*
     Model: PhoneProperties
 */
@@ -3379,6 +3566,8 @@ data class PhoneProperties(
 }
 
 
+
+             
 /*
     Model: PhoneSchema
 */
@@ -3404,6 +3593,8 @@ data class PhoneSchema(
 }
 
 
+
+             
 /*
     Model: EmailProperties
 */
@@ -3429,6 +3620,8 @@ data class EmailProperties(
 }
 
 
+
+             
 /*
     Model: EmailSchema
 */
@@ -3454,6 +3647,8 @@ data class EmailSchema(
 }
 
 
+
+             
 /*
     Model: ContactSchema
 */
@@ -3479,6 +3674,8 @@ data class ContactSchema(
 }
 
 
+
+             
 /*
     Model: TagsSchema
 */
@@ -3509,6 +3706,8 @@ data class TagsSchema(
 }
 
 
+
+             
 /*
     Model: TagSchema
 */
@@ -3574,6 +3773,8 @@ data class TagSchema(
 }
 
 
+
+             
 /*
     Model: TagSourceSchema
 */
@@ -3597,5 +3798,6 @@ data class TagSourceSchema(
     
     
 }
+
 
 

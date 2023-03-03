@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: RequestBodyAuditLog
 */
@@ -34,6 +35,8 @@ data class RequestBodyAuditLog(
 }
 
 
+
+             
 /*
     Model: CreateLogResponse
 */
@@ -59,6 +62,8 @@ data class CreateLogResponse(
 }
 
 
+
+             
 /*
     Model: LogMetaObj
 */
@@ -99,6 +104,8 @@ data class LogMetaObj(
 }
 
 
+
+             
 /*
     Model: EntityObject
 */
@@ -129,6 +136,8 @@ data class EntityObject(
 }
 
 
+
+             
 /*
     Model: LogSchemaResponse
 */
@@ -149,6 +158,8 @@ data class LogSchemaResponse(
 }
 
 
+
+             
 /*
     Model: LogDocs
 */
@@ -214,6 +225,8 @@ data class LogDocs(
 }
 
 
+
+             
 /*
     Model: EntityObj
 */
@@ -249,6 +262,8 @@ data class EntityObj(
 }
 
 
+
+             
 /*
     Model: Modifier
 */
@@ -279,6 +294,8 @@ data class Modifier(
 }
 
 
+
+             
 /*
     Model: DeviceInfo
 */
@@ -304,6 +321,8 @@ data class DeviceInfo(
 }
 
 
+
+             
 /*
     Model: Location
 */
@@ -324,6 +343,8 @@ data class Location(
 }
 
 
+
+             
 /*
     Model: BadRequest
 */
@@ -344,6 +365,8 @@ data class BadRequest(
 }
 
 
+
+             
 /*
     Model: ResourceNotFound
 */
@@ -364,6 +387,8 @@ data class ResourceNotFound(
 }
 
 
+
+             
 /*
     Model: InternalServerError
 */
@@ -389,6 +414,8 @@ data class InternalServerError(
 }
 
 
+
+             
 /*
     Model: EntityTypesResponse
 */
@@ -409,6 +436,8 @@ data class EntityTypesResponse(
 }
 
 
+
+             
 /*
     Model: EntityTypeObj
 */
@@ -432,5 +461,6 @@ data class EntityTypeObj(
     
     
 }
+
 
 

@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: QRCodeResp
 */
@@ -34,6 +35,8 @@ data class QRCodeResp(
 }
 
 
+
+             
 /*
     Model: RedirectDevice
 */
@@ -59,6 +62,8 @@ data class RedirectDevice(
 }
 
 
+
+             
 /*
     Model: WebRedirect
 */
@@ -84,6 +89,8 @@ data class WebRedirect(
 }
 
 
+
+             
 /*
     Model: Redirects
 */
@@ -119,6 +126,8 @@ data class Redirects(
 }
 
 
+
+             
 /*
     Model: CampaignShortLink
 */
@@ -144,6 +153,8 @@ data class CampaignShortLink(
 }
 
 
+
+             
 /*
     Model: Attribution
 */
@@ -164,6 +175,8 @@ data class Attribution(
 }
 
 
+
+             
 /*
     Model: SocialMediaTags
 */
@@ -194,6 +207,8 @@ data class SocialMediaTags(
 }
 
 
+
+             
 /*
     Model: ShortLinkReq
 */
@@ -269,6 +284,8 @@ data class ShortLinkReq(
 }
 
 
+
+             
 /*
     Model: UrlInfo
 */
@@ -299,6 +316,8 @@ data class UrlInfo(
 }
 
 
+
+             
 /*
     Model: ShortLinkRes
 */
@@ -414,6 +433,8 @@ data class ShortLinkRes(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -464,6 +485,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: ShortLinkList
 */
@@ -489,6 +512,8 @@ data class ShortLinkList(
 }
 
 
+
+             
 /*
     Model: ErrorRes
 */
@@ -507,5 +532,6 @@ data class ErrorRes(
     
     
 }
+
 
 

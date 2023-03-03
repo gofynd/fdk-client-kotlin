@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: ValidityObject
 */
@@ -34,6 +35,8 @@ data class ValidityObject(
 }
 
 
+
+             
 /*
     Model: CreateUpdateDiscount
 */
@@ -114,6 +117,8 @@ data class CreateUpdateDiscount(
 }
 
 
+
+             
 /*
     Model: DiscountJob
 */
@@ -219,6 +224,8 @@ data class DiscountJob(
 }
 
 
+
+             
 /*
     Model: ListOrCalender
 */
@@ -244,6 +251,8 @@ data class ListOrCalender(
 }
 
 
+
+             
 /*
     Model: DiscountItems
 */
@@ -284,6 +293,8 @@ data class DiscountItems(
 }
 
 
+
+             
 /*
     Model: BulkDiscount
 */
@@ -309,6 +320,8 @@ data class BulkDiscount(
 }
 
 
+
+             
 /*
     Model: FileJobResponse
 */
@@ -359,6 +372,8 @@ data class FileJobResponse(
 }
 
 
+
+             
 /*
     Model: DownloadFileJob
 */
@@ -384,6 +399,8 @@ data class DownloadFileJob(
 }
 
 
+
+             
 /*
     Model: CancelJobResponse
 */
@@ -404,6 +421,8 @@ data class CancelJobResponse(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -454,6 +473,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: UserDetails
 */
@@ -479,6 +500,8 @@ data class UserDetails(
 }
 
 
+
+             
 /*
     Model: BadRequestObject
 */
@@ -497,5 +520,6 @@ data class BadRequestObject(
     
     
 }
+
 
 

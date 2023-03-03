@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: AvailablePageSchema
 */
@@ -74,6 +75,8 @@ data class AvailablePageSchema(
 }
 
 
+
+             
 /*
     Model: AvailablePageSectionMetaAttributes
 */
@@ -94,6 +97,8 @@ data class AvailablePageSectionMetaAttributes(
 }
 
 
+
+             
 /*
     Model: AvailablePageSeo
 */
@@ -124,6 +129,8 @@ data class AvailablePageSeo(
 }
 
 
+
+             
 /*
     Model: AvailablePageSchemaSections
 */
@@ -169,6 +176,8 @@ data class AvailablePageSchemaSections(
 }
 
 
+
+             
 /*
     Model: AvailablePageScreenPredicate
 */
@@ -199,6 +208,8 @@ data class AvailablePageScreenPredicate(
 }
 
 
+
+             
 /*
     Model: AvailablePageUserPredicate
 */
@@ -224,6 +235,8 @@ data class AvailablePageUserPredicate(
 }
 
 
+
+             
 /*
     Model: AvailablePageRoutePredicate
 */
@@ -254,6 +267,8 @@ data class AvailablePageRoutePredicate(
 }
 
 
+
+             
 /*
     Model: AvailablePagePredicate
 */
@@ -284,6 +299,8 @@ data class AvailablePagePredicate(
 }
 
 
+
+             
 /*
     Model: AllAvailablePageSchema
 */
@@ -304,6 +321,8 @@ data class AllAvailablePageSchema(
 }
 
 
+
+             
 /*
     Model: PaginationSchema
 */
@@ -344,6 +363,8 @@ data class PaginationSchema(
 }
 
 
+
+             
 /*
     Model: ThemesListingResponseSchema
 */
@@ -369,6 +390,8 @@ data class ThemesListingResponseSchema(
 }
 
 
+
+             
 /*
     Model: AddThemeRequestSchema
 */
@@ -389,6 +412,8 @@ data class AddThemeRequestSchema(
 }
 
 
+
+             
 /*
     Model: UpgradableThemeSchema
 */
@@ -419,6 +444,8 @@ data class UpgradableThemeSchema(
 }
 
 
+
+             
 /*
     Model: FontsSchema
 */
@@ -444,6 +471,8 @@ data class FontsSchema(
 }
 
 
+
+             
 /*
     Model: BlitzkriegApiErrorSchema
 */
@@ -464,6 +493,8 @@ data class BlitzkriegApiErrorSchema(
 }
 
 
+
+             
 /*
     Model: BlitzkriegNotFoundSchema
 */
@@ -484,6 +515,8 @@ data class BlitzkriegNotFoundSchema(
 }
 
 
+
+             
 /*
     Model: BlitzkriegInternalServerErrorSchema
 */
@@ -504,6 +537,8 @@ data class BlitzkriegInternalServerErrorSchema(
 }
 
 
+
+             
 /*
     Model: FontsSchemaItems
 */
@@ -559,6 +594,8 @@ data class FontsSchemaItems(
 }
 
 
+
+             
 /*
     Model: FontsSchemaItemsFiles
 */
@@ -589,6 +626,8 @@ data class FontsSchemaItemsFiles(
 }
 
 
+
+             
 /*
     Model: ThemesSchema
 */
@@ -709,6 +748,8 @@ data class ThemesSchema(
 }
 
 
+
+             
 /*
     Model: availableSectionSchema
 */
@@ -744,6 +785,8 @@ data class availableSectionSchema(
 }
 
 
+
+             
 /*
     Model: Information
 */
@@ -779,6 +822,8 @@ data class Information(
 }
 
 
+
+             
 /*
     Model: Images
 */
@@ -814,6 +859,8 @@ data class Images(
 }
 
 
+
+             
 /*
     Model: Src
 */
@@ -834,6 +881,8 @@ data class Src(
 }
 
 
+
+             
 /*
     Model: AssetsSchema
 */
@@ -864,6 +913,8 @@ data class AssetsSchema(
 }
 
 
+
+             
 /*
     Model: UmdJs
 */
@@ -889,6 +940,8 @@ data class UmdJs(
 }
 
 
+
+             
 /*
     Model: CommonJs
 */
@@ -909,6 +962,8 @@ data class CommonJs(
 }
 
 
+
+             
 /*
     Model: Css
 */
@@ -934,6 +989,8 @@ data class Css(
 }
 
 
+
+             
 /*
     Model: Sections
 */
@@ -954,6 +1011,8 @@ data class Sections(
 }
 
 
+
+             
 /*
     Model: Config
 */
@@ -989,6 +1048,8 @@ data class Config(
 }
 
 
+
+             
 /*
     Model: Preset
 */
@@ -1009,6 +1070,8 @@ data class Preset(
 }
 
 
+
+             
 /*
     Model: GlobalSchema
 */
@@ -1029,6 +1092,8 @@ data class GlobalSchema(
 }
 
 
+
+             
 /*
     Model: ListSchemaItem
 */
@@ -1059,6 +1124,8 @@ data class ListSchemaItem(
 }
 
 
+
+             
 /*
     Model: Colors
 */
@@ -1104,6 +1171,8 @@ data class Colors(
 }
 
 
+
+             
 /*
     Model: Custom
 */
@@ -1124,6 +1193,8 @@ data class Custom(
 }
 
 
+
+             
 /*
     Model: ConfigPage
 */
@@ -1149,6 +1220,8 @@ data class ConfigPage(
 }
 
 
+
+             
 /*
     Model: Font
 */
@@ -1174,6 +1247,8 @@ data class Font(
 }
 
 
+
+             
 /*
     Model: Variants
 */
@@ -1214,6 +1289,8 @@ data class Variants(
 }
 
 
+
+             
 /*
     Model: Medium
 */
@@ -1239,6 +1316,8 @@ data class Medium(
 }
 
 
+
+             
 /*
     Model: SemiBold
 */
@@ -1264,6 +1343,8 @@ data class SemiBold(
 }
 
 
+
+             
 /*
     Model: Bold
 */
@@ -1289,6 +1370,8 @@ data class Bold(
 }
 
 
+
+             
 /*
     Model: Light
 */
@@ -1314,6 +1397,8 @@ data class Light(
 }
 
 
+
+             
 /*
     Model: Regular
 */
@@ -1339,6 +1424,8 @@ data class Regular(
 }
 
 
+
+             
 /*
     Model: Blocks
 */
@@ -1369,6 +1456,8 @@ data class Blocks(
 }
 
 
+
+             
 /*
     Model: GlobalSchemaProps
 */
@@ -1404,6 +1493,8 @@ data class GlobalSchemaProps(
 }
 
 
+
+             
 /*
     Model: BlocksProps
 */
@@ -1432,5 +1523,6 @@ data class BlocksProps(
     
     
 }
+
 
 

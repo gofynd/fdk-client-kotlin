@@ -1780,6 +1780,17 @@ Success
   },
   "business": "retail",
   "comms_enabled": true,
+  "communication": {
+    "email": {
+      "enabled": false
+    },
+    "sms": {
+      "enabled": false
+    },
+    "voice": {
+      "enabled": false
+    }
+  },
   "platforms": [
     "uniket_wholesale"
   ],
@@ -2024,6 +2035,17 @@ Success
   },
   "business": "retail",
   "comms_enabled": true,
+  "communication": {
+    "email": {
+      "enabled": false
+    },
+    "sms": {
+      "enabled": false
+    },
+    "voice": {
+      "enabled": false
+    }
+  },
   "platforms": [
     "uniket_wholesale"
   ],
@@ -2268,6 +2290,17 @@ Success
   },
   "business": "retail",
   "comms_enabled": true,
+  "communication": {
+    "email": {
+      "enabled": false
+    },
+    "sms": {
+      "enabled": false
+    },
+    "voice": {
+      "enabled": false
+    }
+  },
   "platforms": [
     "uniket_wholesale"
   ],
@@ -4979,6 +5012,7 @@ Success
  | logistics | [AppLogisticsConfig](#AppLogisticsConfig)? |  yes  |  |
  | business | String? |  yes  | Indicates the business type for sales channel e.g. retail or wholesale |
  | commsEnabled | Boolean? |  yes  | Shows communication(comms) is enabled or not for sales channel inventory |
+ | communication | [CommunicationConfig](#CommunicationConfig)? |  yes  |  |
  | platforms | ArrayList<String>? |  yes  |  |
  | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) of the sales channel inventory |
  | loyaltyPoints | [LoyaltyPointsConfig](#LoyaltyPointsConfig)? |  yes  |  |
@@ -5144,6 +5178,7 @@ Success
  | bulkCoupons | Boolean? |  yes  | Allow creation of bulk coupons |
  | revenueEngineCoupon | Boolean? |  yes  | Allow coupon apply and credits together. Default value is false. |
  | emptyCart | Boolean? |  yes  | Enable/disable to allow adding cart items added before login to user's cart once user is logged in |
+ | panCard | [PanCardConfig](#PanCardConfig)? |  yes  |  |
 
 ---
 
@@ -5306,6 +5341,7 @@ Success
  | payment | [AppPaymentConfig](#AppPaymentConfig)? |  yes  |  |
  | loyaltyPoints | [LoyaltyPointsConfig](#LoyaltyPointsConfig)? |  yes  |  |
  | commsEnabled | Boolean? |  yes  | Shows communication (comms) is enabled or not for sales channel partial inventory update |
+ | communication | [CommunicationConfig](#CommunicationConfig)? |  yes  |  |
 
 ---
 
@@ -5431,6 +5467,42 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | message | String? |  yes  | Response message for not found |
+
+---
+
+
+ 
+ 
+ #### [CommunicationConfig](#CommunicationConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [CommsConfig](#CommsConfig)? |  yes  |  |
+ | sms | [CommsConfig](#CommsConfig)? |  yes  |  |
+ | voice | [CommsConfig](#CommsConfig)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CommsConfig](#CommsConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PanCardConfig](#PanCardConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean? |  yes  | If pan card accepting is enabled on cart |
+ | thresholdAmount | Double? |  yes  | On which amount pan card number is expected from customer for order |
 
 ---
 

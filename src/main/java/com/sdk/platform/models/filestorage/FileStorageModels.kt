@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: FailedResponse
 */
@@ -29,6 +30,8 @@ data class FailedResponse(
 }
 
 
+
+             
 /*
     Model: CDN
 */
@@ -59,6 +62,8 @@ data class CDN(
 }
 
 
+
+             
 /*
     Model: Upload
 */
@@ -84,6 +89,8 @@ data class Upload(
 }
 
 
+
+             
 /*
     Model: StartResponse
 */
@@ -149,6 +156,8 @@ data class StartResponse(
 }
 
 
+
+             
 /*
     Model: StartRequest
 */
@@ -189,6 +198,8 @@ data class StartRequest(
 }
 
 
+
+             
 /*
     Model: CompleteResponse
 */
@@ -269,6 +280,8 @@ data class CompleteResponse(
 }
 
 
+
+             
 /*
     Model: Opts
 */
@@ -299,6 +312,8 @@ data class Opts(
 }
 
 
+
+             
 /*
     Model: CopyFileTask
 */
@@ -369,6 +384,8 @@ data class CopyFileTask(
 }
 
 
+
+             
 /*
     Model: BulkUploadResponse
 */
@@ -394,6 +411,8 @@ data class BulkUploadResponse(
 }
 
 
+
+             
 /*
     Model: ReqConfiguration
 */
@@ -414,6 +433,8 @@ data class ReqConfiguration(
 }
 
 
+
+             
 /*
     Model: Destination
 */
@@ -444,6 +465,8 @@ data class Destination(
 }
 
 
+
+             
 /*
     Model: BulkRequest
 */
@@ -474,6 +497,8 @@ data class BulkRequest(
 }
 
 
+
+             
 /*
     Model: Urls
 */
@@ -504,6 +529,8 @@ data class Urls(
 }
 
 
+
+             
 /*
     Model: SignUrlResponse
 */
@@ -524,6 +551,8 @@ data class SignUrlResponse(
 }
 
 
+
+             
 /*
     Model: SignUrlRequest
 */
@@ -549,6 +578,8 @@ data class SignUrlRequest(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -599,6 +630,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: DbRecord
 */
@@ -674,6 +707,8 @@ data class DbRecord(
 }
 
 
+
+             
 /*
     Model: BrowseResponse
 */
@@ -697,5 +732,6 @@ data class BrowseResponse(
     
     
 }
+
 
 

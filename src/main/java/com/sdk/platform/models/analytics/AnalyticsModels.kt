@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: StatGroup
 */
@@ -39,6 +40,8 @@ data class StatGroup(
 }
 
 
+
+             
 /*
     Model: ErrorRes
 */
@@ -59,6 +62,8 @@ data class ErrorRes(
 }
 
 
+
+             
 /*
     Model: StatsGroups
 */
@@ -79,6 +84,8 @@ data class StatsGroups(
 }
 
 
+
+             
 /*
     Model: StatsGroupComponent
 */
@@ -119,6 +126,8 @@ data class StatsGroupComponent(
 }
 
 
+
+             
 /*
     Model: StatsGroupComponents
 */
@@ -144,6 +153,8 @@ data class StatsGroupComponents(
 }
 
 
+
+             
 /*
     Model: StatsRes
 */
@@ -179,6 +190,8 @@ data class StatsRes(
 }
 
 
+
+             
 /*
     Model: ReceivedAt
 */
@@ -199,6 +212,8 @@ data class ReceivedAt(
 }
 
 
+
+             
 /*
     Model: AbandonCartsDetail
 */
@@ -254,6 +269,8 @@ data class AbandonCartsDetail(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -304,6 +321,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: AbandonCartsList
 */
@@ -334,6 +353,8 @@ data class AbandonCartsList(
 }
 
 
+
+             
 /*
     Model: AbandonCartDetail
 */
@@ -379,6 +400,8 @@ data class AbandonCartDetail(
 }
 
 
+
+             
 /*
     Model: ExportJobReq
 */
@@ -419,6 +442,8 @@ data class ExportJobReq(
 }
 
 
+
+             
 /*
     Model: ExportJobRes
 */
@@ -444,6 +469,8 @@ data class ExportJobRes(
 }
 
 
+
+             
 /*
     Model: ExportJobStatusRes
 */
@@ -474,6 +501,8 @@ data class ExportJobStatusRes(
 }
 
 
+
+             
 /*
     Model: GetLogsListReq
 */
@@ -509,6 +538,8 @@ data class GetLogsListReq(
 }
 
 
+
+             
 /*
     Model: MkpLogsResp
 */
@@ -554,6 +585,8 @@ data class MkpLogsResp(
 }
 
 
+
+             
 /*
     Model: GetLogsListRes
 */
@@ -579,6 +612,8 @@ data class GetLogsListRes(
 }
 
 
+
+             
 /*
     Model: SearchLogReq
 */
@@ -624,6 +659,8 @@ data class SearchLogReq(
 }
 
 
+
+             
 /*
     Model: LogInfo
 */
@@ -704,6 +741,8 @@ data class LogInfo(
 }
 
 
+
+             
 /*
     Model: SearchLogRes
 */
@@ -727,5 +766,6 @@ data class SearchLogRes(
     
     
 }
+
 
 

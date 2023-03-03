@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: DataTresholdDTO
 */
@@ -49,6 +50,8 @@ data class DataTresholdDTO(
 }
 
 
+
+             
 /*
     Model: GenericDTO
 */
@@ -74,6 +77,8 @@ data class GenericDTO(
 }
 
 
+
+             
 /*
     Model: JobConfigDTO
 */
@@ -129,6 +134,8 @@ data class JobConfigDTO(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -179,6 +186,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeListJobConfigDTO
 */
@@ -249,6 +258,8 @@ data class ResponseEnvelopeListJobConfigDTO(
 }
 
 
+
+             
 /*
     Model: TaskDTO
 */
@@ -274,6 +285,8 @@ data class TaskDTO(
 }
 
 
+
+             
 /*
     Model: EmailJobMetrics
 */
@@ -314,6 +327,8 @@ data class EmailJobMetrics(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeEmailJobMetrics
 */
@@ -384,6 +399,8 @@ data class ResponseEnvelopeEmailJobMetrics(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeObject
 */
@@ -452,5 +469,6 @@ data class ResponseEnvelopeObject(
     
     
 }
+
 
 

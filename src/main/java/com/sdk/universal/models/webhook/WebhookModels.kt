@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: EventConfig
 */
@@ -64,6 +65,8 @@ data class EventConfig(
 }
 
 
+
+             
 /*
     Model: EventConfigList
 */
@@ -89,6 +92,8 @@ data class EventConfigList(
 }
 
 
+
+             
 /*
     Model: EventConfigResponse
 */
@@ -109,6 +114,8 @@ data class EventConfigResponse(
 }
 
 
+
+             
 /*
     Model: SubscriberConfigList
 */
@@ -134,6 +141,8 @@ data class SubscriberConfigList(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -184,6 +193,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: EventProcessedStatus
 */
@@ -239,6 +250,8 @@ data class EventProcessedStatus(
 }
 
 
+
+             
 /*
     Model: EventPayload
 */
@@ -289,6 +302,8 @@ data class EventPayload(
 }
 
 
+
+             
 /*
     Model: SubscriberConfig
 */
@@ -349,6 +364,8 @@ data class SubscriberConfig(
 }
 
 
+
+             
 /*
     Model: SubscriberResponse
 */
@@ -419,6 +436,8 @@ data class SubscriberResponse(
 }
 
 
+
+             
 /*
     Model: SubscriberEvent
 */
@@ -454,6 +473,8 @@ data class SubscriberEvent(
 }
 
 
+
+             
 /*
     Model: AuthMeta
 */
@@ -479,6 +500,8 @@ data class AuthMeta(
 }
 
 
+
+             
 /*
     Model: Association
 */
@@ -514,6 +537,8 @@ data class Association(
 }
 
 
+
+             
 /*
     Model: EventConfigBase
 */
@@ -547,5 +572,6 @@ data class EventConfigBase(
     
     
 }
+
 
 

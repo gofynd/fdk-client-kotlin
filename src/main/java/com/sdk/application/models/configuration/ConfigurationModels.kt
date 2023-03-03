@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: ApplicationAboutResponse
 */
@@ -39,6 +40,8 @@ data class ApplicationAboutResponse(
 }
 
 
+
+             
 /*
     Model: ApplicationInfo
 */
@@ -119,6 +122,8 @@ data class ApplicationInfo(
 }
 
 
+
+             
 /*
     Model: CompanyInfo
 */
@@ -169,6 +174,8 @@ data class CompanyInfo(
 }
 
 
+
+             
 /*
     Model: OwnerInfo
 */
@@ -214,6 +221,8 @@ data class OwnerInfo(
 }
 
 
+
+             
 /*
     Model: AppVersionRequest
 */
@@ -249,6 +258,8 @@ data class AppVersionRequest(
 }
 
 
+
+             
 /*
     Model: ApplicationVersionRequest
 */
@@ -289,6 +300,8 @@ data class ApplicationVersionRequest(
 }
 
 
+
+             
 /*
     Model: Device
 */
@@ -319,6 +332,8 @@ data class Device(
 }
 
 
+
+             
 /*
     Model: OS
 */
@@ -344,6 +359,8 @@ data class OS(
 }
 
 
+
+             
 /*
     Model: SupportedLanguage
 */
@@ -369,6 +386,8 @@ data class SupportedLanguage(
 }
 
 
+
+             
 /*
     Model: LanguageResponse
 */
@@ -389,6 +408,8 @@ data class LanguageResponse(
 }
 
 
+
+             
 /*
     Model: AppStaffResponse
 */
@@ -409,6 +430,8 @@ data class AppStaffResponse(
 }
 
 
+
+             
 /*
     Model: AppStaffListResponse
 */
@@ -434,6 +457,8 @@ data class AppStaffListResponse(
 }
 
 
+
+             
 /*
     Model: UpdateDialog
 */
@@ -459,6 +484,8 @@ data class UpdateDialog(
 }
 
 
+
+             
 /*
     Model: OrderingStoreSelectRequest
 */
@@ -479,6 +506,8 @@ data class OrderingStoreSelectRequest(
 }
 
 
+
+             
 /*
     Model: OrderingStoreSelect
 */
@@ -499,6 +528,8 @@ data class OrderingStoreSelect(
 }
 
 
+
+             
 /*
     Model: AppStaff
 */
@@ -564,6 +595,8 @@ data class AppStaff(
 }
 
 
+
+             
 /*
     Model: AppTokenResponse
 */
@@ -609,6 +642,8 @@ data class AppTokenResponse(
 }
 
 
+
+             
 /*
     Model: Tokens
 */
@@ -664,6 +699,8 @@ data class Tokens(
 }
 
 
+
+             
 /*
     Model: Firebase
 */
@@ -689,6 +726,8 @@ data class Firebase(
 }
 
 
+
+             
 /*
     Model: Credentials
 */
@@ -786,6 +825,8 @@ data class Credentials(
 }
 
 
+
+             
 /*
     Model: Ios
 */
@@ -837,6 +878,8 @@ data class Ios(
 }
 
 
+
+             
 /*
     Model: Android
 */
@@ -888,6 +931,8 @@ data class Android(
 }
 
 
+
+             
 /*
     Model: Moengage
 */
@@ -913,6 +958,8 @@ data class Moengage(
 }
 
 
+
+             
 /*
     Model: MoengageCredentials
 */
@@ -946,6 +993,8 @@ data class MoengageCredentials(
 }
 
 
+
+             
 /*
     Model: Segment
 */
@@ -971,6 +1020,8 @@ data class Segment(
 }
 
 
+
+             
 /*
     Model: SegmentCredentials
 */
@@ -1004,6 +1055,8 @@ data class SegmentCredentials(
 }
 
 
+
+             
 /*
     Model: Gtm
 */
@@ -1029,6 +1082,8 @@ data class Gtm(
 }
 
 
+
+             
 /*
     Model: GtmCredentials
 */
@@ -1062,6 +1117,8 @@ data class GtmCredentials(
 }
 
 
+
+             
 /*
     Model: Freshchat
 */
@@ -1087,6 +1144,8 @@ data class Freshchat(
 }
 
 
+
+             
 /*
     Model: FreshchatCredentials
 */
@@ -1156,6 +1215,8 @@ data class FreshchatCredentials(
 }
 
 
+
+             
 /*
     Model: Safetynet
 */
@@ -1181,6 +1242,8 @@ data class Safetynet(
 }
 
 
+
+             
 /*
     Model: SafetynetCredentials
 */
@@ -1214,6 +1277,8 @@ data class SafetynetCredentials(
 }
 
 
+
+             
 /*
     Model: FyndRewards
 */
@@ -1234,6 +1299,8 @@ data class FyndRewards(
 }
 
 
+
+             
 /*
     Model: FyndRewardsCredentials
 */
@@ -1267,6 +1334,8 @@ data class FyndRewardsCredentials(
 }
 
 
+
+             
 /*
     Model: GoogleMap
 */
@@ -1287,6 +1356,8 @@ data class GoogleMap(
 }
 
 
+
+             
 /*
     Model: GoogleMapCredentials
 */
@@ -1320,6 +1391,8 @@ data class GoogleMapCredentials(
 }
 
 
+
+             
 /*
     Model: RewardPointsConfig
 */
@@ -1345,6 +1418,8 @@ data class RewardPointsConfig(
 }
 
 
+
+             
 /*
     Model: Credit
 */
@@ -1365,6 +1440,8 @@ data class Credit(
 }
 
 
+
+             
 /*
     Model: Debit
 */
@@ -1395,6 +1472,8 @@ data class Debit(
 }
 
 
+
+             
 /*
     Model: ProductDetailFeature
 */
@@ -1430,6 +1509,8 @@ data class ProductDetailFeature(
 }
 
 
+
+             
 /*
     Model: LaunchPage
 */
@@ -1460,6 +1541,8 @@ data class LaunchPage(
 }
 
 
+
+             
 /*
     Model: LandingPageFeature
 */
@@ -1500,6 +1583,8 @@ data class LandingPageFeature(
 }
 
 
+
+             
 /*
     Model: RegistrationPageFeature
 */
@@ -1520,6 +1605,8 @@ data class RegistrationPageFeature(
 }
 
 
+
+             
 /*
     Model: AppFeature
 */
@@ -1605,6 +1692,8 @@ data class AppFeature(
 }
 
 
+
+             
 /*
     Model: HomePageFeature
 */
@@ -1625,6 +1714,8 @@ data class HomePageFeature(
 }
 
 
+
+             
 /*
     Model: CommonFeature
 */
@@ -1680,6 +1771,8 @@ data class CommonFeature(
 }
 
 
+
+             
 /*
     Model: CommunicationOptinDialogFeature
 */
@@ -1700,6 +1793,8 @@ data class CommunicationOptinDialogFeature(
 }
 
 
+
+             
 /*
     Model: DeploymentStoreSelectionFeature
 */
@@ -1725,6 +1820,8 @@ data class DeploymentStoreSelectionFeature(
 }
 
 
+
+             
 /*
     Model: ListingPriceFeature
 */
@@ -1750,6 +1847,8 @@ data class ListingPriceFeature(
 }
 
 
+
+             
 /*
     Model: CurrencyFeature
 */
@@ -1780,6 +1879,8 @@ data class CurrencyFeature(
 }
 
 
+
+             
 /*
     Model: RevenueEngineFeature
 */
@@ -1800,6 +1901,8 @@ data class RevenueEngineFeature(
 }
 
 
+
+             
 /*
     Model: FeedbackFeature
 */
@@ -1820,6 +1923,8 @@ data class FeedbackFeature(
 }
 
 
+
+             
 /*
     Model: CompareProductsFeature
 */
@@ -1840,6 +1945,8 @@ data class CompareProductsFeature(
 }
 
 
+
+             
 /*
     Model: CartFeature
 */
@@ -1880,6 +1987,8 @@ data class CartFeature(
 }
 
 
+
+             
 /*
     Model: QrFeature
 */
@@ -1910,6 +2019,8 @@ data class QrFeature(
 }
 
 
+
+             
 /*
     Model: PcrFeature
 */
@@ -1930,6 +2041,8 @@ data class PcrFeature(
 }
 
 
+
+             
 /*
     Model: OrderFeature
 */
@@ -1950,6 +2063,8 @@ data class OrderFeature(
 }
 
 
+
+             
 /*
     Model: AppFeatureRequest
 */
@@ -1970,6 +2085,8 @@ data class AppFeatureRequest(
 }
 
 
+
+             
 /*
     Model: AppFeatureResponse
 */
@@ -1990,6 +2107,8 @@ data class AppFeatureResponse(
 }
 
 
+
+             
 /*
     Model: Currency
 */
@@ -2045,6 +2164,8 @@ data class Currency(
 }
 
 
+
+             
 /*
     Model: Domain
 */
@@ -2090,6 +2211,8 @@ data class Domain(
 }
 
 
+
+             
 /*
     Model: ApplicationWebsite
 */
@@ -2115,6 +2238,8 @@ data class ApplicationWebsite(
 }
 
 
+
+             
 /*
     Model: ApplicationCors
 */
@@ -2135,6 +2260,8 @@ data class ApplicationCors(
 }
 
 
+
+             
 /*
     Model: ApplicationAuth
 */
@@ -2155,6 +2282,8 @@ data class ApplicationAuth(
 }
 
 
+
+             
 /*
     Model: ApplicationRedirections
 */
@@ -2185,6 +2314,8 @@ data class ApplicationRedirections(
 }
 
 
+
+             
 /*
     Model: ApplicationMeta
 */
@@ -2210,6 +2341,8 @@ data class ApplicationMeta(
 }
 
 
+
+             
 /*
     Model: SecureUrl
 */
@@ -2230,6 +2363,8 @@ data class SecureUrl(
 }
 
 
+
+             
 /*
     Model: Application
 */
@@ -2375,6 +2510,8 @@ data class Application(
 }
 
 
+
+             
 /*
     Model: NotFound
 */
@@ -2395,6 +2532,8 @@ data class NotFound(
 }
 
 
+
+             
 /*
     Model: UnhandledError
 */
@@ -2415,6 +2554,8 @@ data class UnhandledError(
 }
 
 
+
+             
 /*
     Model: InvalidPayloadRequest
 */
@@ -2435,6 +2576,8 @@ data class InvalidPayloadRequest(
 }
 
 
+
+             
 /*
     Model: SuccessMessageResponse
 */
@@ -2455,6 +2598,8 @@ data class SuccessMessageResponse(
 }
 
 
+
+             
 /*
     Model: InventoryBrandRule
 */
@@ -2480,6 +2625,8 @@ data class InventoryBrandRule(
 }
 
 
+
+             
 /*
     Model: StoreCriteriaRule
 */
@@ -2505,6 +2652,8 @@ data class StoreCriteriaRule(
 }
 
 
+
+             
 /*
     Model: InventoryStoreRule
 */
@@ -2535,6 +2684,8 @@ data class InventoryStoreRule(
 }
 
 
+
+             
 /*
     Model: InventoryPaymentConfig
 */
@@ -2560,6 +2711,8 @@ data class InventoryPaymentConfig(
 }
 
 
+
+             
 /*
     Model: StorePriorityRule
 */
@@ -2585,6 +2738,8 @@ data class StorePriorityRule(
 }
 
 
+
+             
 /*
     Model: ArticleAssignmentRule
 */
@@ -2605,6 +2760,8 @@ data class ArticleAssignmentRule(
 }
 
 
+
+             
 /*
     Model: InventoryArticleAssignment
 */
@@ -2630,6 +2787,8 @@ data class InventoryArticleAssignment(
 }
 
 
+
+             
 /*
     Model: CompanyAboutAddress
 */
@@ -2680,6 +2839,8 @@ data class CompanyAboutAddress(
 }
 
 
+
+             
 /*
     Model: UserEmail
 */
@@ -2715,6 +2876,8 @@ data class UserEmail(
 }
 
 
+
+             
 /*
     Model: UserPhoneNumber
 */
@@ -2755,6 +2918,8 @@ data class UserPhoneNumber(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -2805,6 +2970,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: ApplicationInformation
 */
@@ -2875,6 +3042,8 @@ data class ApplicationInformation(
 }
 
 
+
+             
 /*
     Model: InformationAddress
 */
@@ -2920,6 +3089,8 @@ data class InformationAddress(
 }
 
 
+
+             
 /*
     Model: InformationPhone
 */
@@ -2945,6 +3116,8 @@ data class InformationPhone(
 }
 
 
+
+             
 /*
     Model: InformationSupport
 */
@@ -2975,6 +3148,8 @@ data class InformationSupport(
 }
 
 
+
+             
 /*
     Model: SocialLinks
 */
@@ -3035,6 +3210,8 @@ data class SocialLinks(
 }
 
 
+
+             
 /*
     Model: FacebookLink
 */
@@ -3065,6 +3242,8 @@ data class FacebookLink(
 }
 
 
+
+             
 /*
     Model: InstagramLink
 */
@@ -3095,6 +3274,8 @@ data class InstagramLink(
 }
 
 
+
+             
 /*
     Model: TwitterLink
 */
@@ -3125,6 +3306,8 @@ data class TwitterLink(
 }
 
 
+
+             
 /*
     Model: PinterestLink
 */
@@ -3155,6 +3338,8 @@ data class PinterestLink(
 }
 
 
+
+             
 /*
     Model: GooglePlusLink
 */
@@ -3185,6 +3370,8 @@ data class GooglePlusLink(
 }
 
 
+
+             
 /*
     Model: YoutubeLink
 */
@@ -3215,6 +3402,8 @@ data class YoutubeLink(
 }
 
 
+
+             
 /*
     Model: LinkedInLink
 */
@@ -3245,6 +3434,8 @@ data class LinkedInLink(
 }
 
 
+
+             
 /*
     Model: VimeoLink
 */
@@ -3275,6 +3466,8 @@ data class VimeoLink(
 }
 
 
+
+             
 /*
     Model: BlogLink
 */
@@ -3305,6 +3498,8 @@ data class BlogLink(
 }
 
 
+
+             
 /*
     Model: Links
 */
@@ -3330,6 +3525,8 @@ data class Links(
 }
 
 
+
+             
 /*
     Model: BusinessHighlights
 */
@@ -3365,6 +3562,8 @@ data class BusinessHighlights(
 }
 
 
+
+             
 /*
     Model: ApplicationDetail
 */
@@ -3430,6 +3629,8 @@ data class ApplicationDetail(
 }
 
 
+
+             
 /*
     Model: CurrenciesResponse
 */
@@ -3450,6 +3651,8 @@ data class CurrenciesResponse(
 }
 
 
+
+             
 /*
     Model: DefaultCurrency
 */
@@ -3475,6 +3678,8 @@ data class DefaultCurrency(
 }
 
 
+
+             
 /*
     Model: AppCurrencyResponse
 */
@@ -3505,6 +3710,8 @@ data class AppCurrencyResponse(
 }
 
 
+
+             
 /*
     Model: StoreLatLong
 */
@@ -3530,6 +3737,8 @@ data class StoreLatLong(
 }
 
 
+
+             
 /*
     Model: OptedStoreAddress
 */
@@ -3580,6 +3789,8 @@ data class OptedStoreAddress(
 }
 
 
+
+             
 /*
     Model: OrderingStore
 */
@@ -3640,6 +3851,8 @@ data class OrderingStore(
 }
 
 
+
+             
 /*
     Model: OrderingStores
 */
@@ -3700,6 +3913,8 @@ data class OrderingStores(
 }
 
 
+
+             
 /*
     Model: OrderingStoresResponse
 */
@@ -3723,5 +3938,6 @@ data class OrderingStoresResponse(
     
     
 }
+
 
 

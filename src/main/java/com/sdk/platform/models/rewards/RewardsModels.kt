@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: E
 */
@@ -44,6 +45,8 @@ data class E(
 }
 
 
+
+             
 /*
     Model: GiveawayResponse
 */
@@ -69,6 +72,8 @@ data class GiveawayResponse(
 }
 
 
+
+             
 /*
     Model: Giveaway
 */
@@ -144,6 +149,8 @@ data class Giveaway(
 }
 
 
+
+             
 /*
     Model: Schedule
 */
@@ -179,6 +186,8 @@ data class Schedule(
 }
 
 
+
+             
 /*
     Model: RewardsAudience
 */
@@ -204,6 +213,8 @@ data class RewardsAudience(
 }
 
 
+
+             
 /*
     Model: Asset
 */
@@ -234,6 +245,8 @@ data class Asset(
 }
 
 
+
+             
 /*
     Model: RewardsRule
 */
@@ -254,6 +267,8 @@ data class RewardsRule(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -304,6 +319,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: Offer
 */
@@ -389,6 +406,8 @@ data class Offer(
 }
 
 
+
+             
 /*
     Model: ShareMessages
 */
@@ -449,6 +468,8 @@ data class ShareMessages(
 }
 
 
+
+             
 /*
     Model: UserRes
 */
@@ -474,6 +495,8 @@ data class UserRes(
 }
 
 
+
+             
 /*
     Model: Points
 */
@@ -494,6 +517,8 @@ data class Points(
 }
 
 
+
+             
 /*
     Model: RewardUser
 */
@@ -549,6 +574,8 @@ data class RewardUser(
 }
 
 
+
+             
 /*
     Model: Referral
 */
@@ -569,6 +596,8 @@ data class Referral(
 }
 
 
+
+             
 /*
     Model: AppUser
 */
@@ -619,6 +648,8 @@ data class AppUser(
 }
 
 
+
+             
 /*
     Model: GiveawayAudience
 */
@@ -644,6 +675,8 @@ data class GiveawayAudience(
 }
 
 
+
+             
 /*
     Model: HistoryRes
 */
@@ -674,6 +707,8 @@ data class HistoryRes(
 }
 
 
+
+             
 /*
     Model: PointsHistory
 */
@@ -759,6 +794,8 @@ data class PointsHistory(
 }
 
 
+
+             
 /*
     Model: ConfigurationRes
 */
@@ -794,6 +831,8 @@ data class ConfigurationRes(
 }
 
 
+
+             
 /*
     Model: SetConfigurationRes
 */
@@ -814,6 +853,8 @@ data class SetConfigurationRes(
 }
 
 
+
+             
 /*
     Model: ConfigurationRequest
 */
@@ -837,5 +878,6 @@ data class ConfigurationRequest(
     
     
 }
+
 
 

@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: TicketList
 */
@@ -39,6 +40,8 @@ data class TicketList(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -89,6 +92,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: TicketHistoryList
 */
@@ -114,6 +119,8 @@ data class TicketHistoryList(
 }
 
 
+
+             
 /*
     Model: CustomFormList
 */
@@ -139,6 +146,8 @@ data class CustomFormList(
 }
 
 
+
+             
 /*
     Model: CreateCustomFormPayload
 */
@@ -199,6 +208,8 @@ data class CreateCustomFormPayload(
 }
 
 
+
+             
 /*
     Model: EditCustomFormPayload
 */
@@ -259,6 +270,8 @@ data class EditCustomFormPayload(
 }
 
 
+
+             
 /*
     Model: EditTicketPayload
 */
@@ -314,6 +327,8 @@ data class EditTicketPayload(
 }
 
 
+
+             
 /*
     Model: AgentChangePayload
 */
@@ -334,6 +349,8 @@ data class AgentChangePayload(
 }
 
 
+
+             
 /*
     Model: CreateVideoRoomResponse
 */
@@ -354,6 +371,8 @@ data class CreateVideoRoomResponse(
 }
 
 
+
+             
 /*
     Model: CloseVideoRoomResponse
 */
@@ -374,6 +393,8 @@ data class CloseVideoRoomResponse(
 }
 
 
+
+             
 /*
     Model: CreateVideoRoomPayload
 */
@@ -399,6 +420,8 @@ data class CreateVideoRoomPayload(
 }
 
 
+
+             
 /*
     Model: NotifyUser
 */
@@ -424,6 +447,8 @@ data class NotifyUser(
 }
 
 
+
+             
 /*
     Model: Filter
 */
@@ -459,6 +484,8 @@ data class Filter(
 }
 
 
+
+             
 /*
     Model: TicketHistoryPayload
 */
@@ -484,6 +511,8 @@ data class TicketHistoryPayload(
 }
 
 
+
+             
 /*
     Model: CustomFormSubmissionPayload
 */
@@ -509,6 +538,8 @@ data class CustomFormSubmissionPayload(
 }
 
 
+
+             
 /*
     Model: GetTokenForVideoRoomResponse
 */
@@ -529,6 +560,8 @@ data class GetTokenForVideoRoomResponse(
 }
 
 
+
+             
 /*
     Model: GetParticipantsInsideVideoRoomResponse
 */
@@ -549,6 +582,8 @@ data class GetParticipantsInsideVideoRoomResponse(
 }
 
 
+
+             
 /*
     Model: Participant
 */
@@ -579,6 +614,8 @@ data class Participant(
 }
 
 
+
+             
 /*
     Model: UserSchema
 */
@@ -674,6 +711,8 @@ data class UserSchema(
 }
 
 
+
+             
 /*
     Model: PhoneNumber
 */
@@ -714,6 +753,8 @@ data class PhoneNumber(
 }
 
 
+
+             
 /*
     Model: Email
 */
@@ -749,6 +790,8 @@ data class Email(
 }
 
 
+
+             
 /*
     Model: Debug
 */
@@ -774,6 +817,8 @@ data class Debug(
 }
 
 
+
+             
 /*
     Model: SubmitCustomFormResponse
 */
@@ -799,6 +844,8 @@ data class SubmitCustomFormResponse(
 }
 
 
+
+             
 /*
     Model: TicketContext
 */
@@ -824,6 +871,8 @@ data class TicketContext(
 }
 
 
+
+             
 /*
     Model: CreatedOn
 */
@@ -844,6 +893,8 @@ data class CreatedOn(
 }
 
 
+
+             
 /*
     Model: TicketAsset
 */
@@ -874,6 +925,8 @@ data class TicketAsset(
 }
 
 
+
+             
 /*
     Model: TicketContent
 */
@@ -917,6 +970,8 @@ data class TicketContent(
 }
 
 
+
+             
 /*
     Model: AddTicketPayload
 */
@@ -962,6 +1017,8 @@ data class AddTicketPayload(
 }
 
 
+
+             
 /*
     Model: Priority
 */
@@ -992,6 +1049,8 @@ data class Priority(
 }
 
 
+
+             
 /*
     Model: Status
 */
@@ -1022,6 +1081,8 @@ data class Status(
 }
 
 
+
+             
 /*
     Model: TicketFeedbackForm
 */
@@ -1047,6 +1108,8 @@ data class TicketFeedbackForm(
 }
 
 
+
+             
 /*
     Model: TicketFeedbackList
 */
@@ -1067,6 +1130,8 @@ data class TicketFeedbackList(
 }
 
 
+
+             
 /*
     Model: TicketFeedbackPayload
 */
@@ -1087,6 +1152,8 @@ data class TicketFeedbackPayload(
 }
 
 
+
+             
 /*
     Model: SubmitButton
 */
@@ -1117,6 +1184,8 @@ data class SubmitButton(
 }
 
 
+
+             
 /*
     Model: PollForAssignment
 */
@@ -1152,6 +1221,8 @@ data class PollForAssignment(
 }
 
 
+
+             
 /*
     Model: CustomForm
 */
@@ -1237,6 +1308,8 @@ data class CustomForm(
 }
 
 
+
+             
 /*
     Model: CommunicationDetails
 */
@@ -1277,6 +1350,8 @@ data class CommunicationDetails(
 }
 
 
+
+             
 /*
     Model: SupportGeneralConfig
 */
@@ -1332,6 +1407,8 @@ data class SupportGeneralConfig(
 }
 
 
+
+             
 /*
     Model: FeedbackForm
 */
@@ -1362,6 +1439,8 @@ data class FeedbackForm(
 }
 
 
+
+             
 /*
     Model: TicketSubCategory
 */
@@ -1392,6 +1471,8 @@ data class TicketSubCategory(
 }
 
 
+
+             
 /*
     Model: TicketCategory
 */
@@ -1432,6 +1513,8 @@ data class TicketCategory(
 }
 
 
+
+             
 /*
     Model: CategoryData
 */
@@ -1452,6 +1535,8 @@ data class CategoryData(
 }
 
 
+
+             
 /*
     Model: IntegrationConfig
 */
@@ -1522,6 +1607,8 @@ data class IntegrationConfig(
 }
 
 
+
+             
 /*
     Model: FeedbackResponseItem
 */
@@ -1552,6 +1639,8 @@ data class FeedbackResponseItem(
 }
 
 
+
+             
 /*
     Model: TicketFeedback
 */
@@ -1607,6 +1696,8 @@ data class TicketFeedback(
 }
 
 
+
+             
 /*
     Model: TicketHistory
 */
@@ -1662,6 +1753,8 @@ data class TicketHistory(
 }
 
 
+
+             
 /*
     Model: Ticket
 */
@@ -1765,5 +1858,6 @@ data class Ticket(
     
     
 }
+
 
 

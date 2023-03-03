@@ -90,7 +90,7 @@ interface CartApiList {
     : Deferred<Response<SharedCartResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/share-cart/{token}/{action}")
-    fun updateCartWithSharedItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("token") token: String, @Path("action") action: String)
+    fun updateCartWithSharedItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("token") token: String, @Path("action") action: String, @Query("cart_id") cartId: String?)
     : Deferred<Response<SharedCartResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart-list")
@@ -114,7 +114,7 @@ interface CartApiList {
     : Deferred<Response<UpdateCartDetailResponse>>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_archive")
-    fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: Int?)
+    fun deleteCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?)
     : Deferred<Response<DeleteCartDetailResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/basic")
@@ -170,7 +170,7 @@ interface CartApiList {
     : Deferred<Response<CartMetaResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/checkout")
-    fun checkoutCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("buy_now") buyNow: Boolean?,@Body body: PlatformCartCheckoutDetailRequest)
+    fun checkoutCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?,@Body body: PlatformCartCheckoutDetailRequest)
     : Deferred<Response<CartCheckoutResponse>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/available-delivery-mode")

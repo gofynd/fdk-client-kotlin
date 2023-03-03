@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: Page
 */
@@ -59,6 +60,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: UnauthenticatedUser
 */
@@ -79,6 +82,8 @@ data class UnauthenticatedUser(
 }
 
 
+
+             
 /*
     Model: UnauthenticatedApplication
 */
@@ -99,6 +104,8 @@ data class UnauthenticatedApplication(
 }
 
 
+
+             
 /*
     Model: BadRequest
 */
@@ -119,6 +126,8 @@ data class BadRequest(
 }
 
 
+
+             
 /*
     Model: ResourceNotFound
 */
@@ -139,6 +148,8 @@ data class ResourceNotFound(
 }
 
 
+
+             
 /*
     Model: InternalServerError
 */
@@ -164,6 +175,8 @@ data class InternalServerError(
 }
 
 
+
+             
 /*
     Model: CheckValidityResponse
 */
@@ -189,6 +202,8 @@ data class CheckValidityResponse(
 }
 
 
+
+             
 /*
     Model: PlanRecurring
 */
@@ -214,6 +229,8 @@ data class PlanRecurring(
 }
 
 
+
+             
 /*
     Model: Plan
 */
@@ -324,6 +341,8 @@ data class Plan(
 }
 
 
+
+             
 /*
     Model: DetailedPlanComponents
 */
@@ -379,6 +398,8 @@ data class DetailedPlanComponents(
 }
 
 
+
+             
 /*
     Model: DetailedPlan
 */
@@ -494,6 +515,8 @@ data class DetailedPlan(
 }
 
 
+
+             
 /*
     Model: SubscriptionTrialPeriod
 */
@@ -519,6 +542,8 @@ data class SubscriptionTrialPeriod(
 }
 
 
+
+             
 /*
     Model: EntityChargePrice
 */
@@ -544,6 +569,8 @@ data class EntityChargePrice(
 }
 
 
+
+             
 /*
     Model: EntityChargeRecurring
 */
@@ -564,6 +591,8 @@ data class EntityChargeRecurring(
 }
 
 
+
+             
 /*
     Model: ChargeLineItem
 */
@@ -624,6 +653,8 @@ data class ChargeLineItem(
 }
 
 
+
+             
 /*
     Model: CreateSubscriptionCharge
 */
@@ -664,6 +695,8 @@ data class CreateSubscriptionCharge(
 }
 
 
+
+             
 /*
     Model: OneTimeChargeItem
 */
@@ -714,6 +747,8 @@ data class OneTimeChargeItem(
 }
 
 
+
+             
 /*
     Model: CreateOneTimeCharge
 */
@@ -749,6 +784,8 @@ data class CreateOneTimeCharge(
 }
 
 
+
+             
 /*
     Model: CurrentPeriod
 */
@@ -774,6 +811,8 @@ data class CurrentPeriod(
 }
 
 
+
+             
 /*
     Model: SubscriptionCharge
 */
@@ -859,6 +898,8 @@ data class SubscriptionCharge(
 }
 
 
+
+             
 /*
     Model: EntitySubscription
 */
@@ -924,6 +965,8 @@ data class EntitySubscription(
 }
 
 
+
+             
 /*
     Model: OneTimeChargeEntity
 */
@@ -1009,6 +1052,8 @@ data class OneTimeChargeEntity(
 }
 
 
+
+             
 /*
     Model: CreateOneTimeChargeResponse
 */
@@ -1034,6 +1079,8 @@ data class CreateOneTimeChargeResponse(
 }
 
 
+
+             
 /*
     Model: CreateSubscriptionResponse
 */
@@ -1059,6 +1106,8 @@ data class CreateSubscriptionResponse(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsPeriod
 */
@@ -1084,6 +1133,8 @@ data class InvoiceDetailsPeriod(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsClient
 */
@@ -1119,6 +1170,8 @@ data class InvoiceDetailsClient(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsStatusTrail
 */
@@ -1149,6 +1202,8 @@ data class InvoiceDetailsStatusTrail(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsPaymentMethodsDataChecks
 */
@@ -1179,6 +1234,8 @@ data class InvoiceDetailsPaymentMethodsDataChecks(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsPaymentMethodsDataNetworks
 */
@@ -1204,6 +1261,8 @@ data class InvoiceDetailsPaymentMethodsDataNetworks(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsPaymentMethodsDataThreeDSecureUsage
 */
@@ -1224,6 +1283,8 @@ data class InvoiceDetailsPaymentMethodsDataThreeDSecureUsage(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsPaymentMethodsData
 */
@@ -1299,6 +1360,8 @@ data class InvoiceDetailsPaymentMethodsData(
 }
 
 
+
+             
 /*
     Model: InvoiceDetailsPaymentMethods
 */
@@ -1339,6 +1402,8 @@ data class InvoiceDetailsPaymentMethods(
 }
 
 
+
+             
 /*
     Model: InvoicePaymentMethod
 */
@@ -1359,6 +1424,8 @@ data class InvoicePaymentMethod(
 }
 
 
+
+             
 /*
     Model: InvoiceDetails
 */
@@ -1494,6 +1561,8 @@ data class InvoiceDetails(
 }
 
 
+
+             
 /*
     Model: InvoiceItemsPlanRecurring
 */
@@ -1519,6 +1588,8 @@ data class InvoiceItemsPlanRecurring(
 }
 
 
+
+             
 /*
     Model: InvoiceItemsPlan
 */
@@ -1629,6 +1700,8 @@ data class InvoiceItemsPlan(
 }
 
 
+
+             
 /*
     Model: InvoiceItemsPeriod
 */
@@ -1654,6 +1727,8 @@ data class InvoiceItemsPeriod(
 }
 
 
+
+             
 /*
     Model: InvoiceItems
 */
@@ -1734,6 +1809,8 @@ data class InvoiceItems(
 }
 
 
+
+             
 /*
     Model: Invoice
 */
@@ -1759,6 +1836,8 @@ data class Invoice(
 }
 
 
+
+             
 /*
     Model: InvoicesDataClient
 */
@@ -1794,6 +1873,8 @@ data class InvoicesDataClient(
 }
 
 
+
+             
 /*
     Model: InvoicesDataPeriod
 */
@@ -1819,6 +1900,8 @@ data class InvoicesDataPeriod(
 }
 
 
+
+             
 /*
     Model: InvoicesDataPaymentMethod
 */
@@ -1839,6 +1922,8 @@ data class InvoicesDataPaymentMethod(
 }
 
 
+
+             
 /*
     Model: InvoicesData
 */
@@ -1979,6 +2064,8 @@ data class InvoicesData(
 }
 
 
+
+             
 /*
     Model: Invoices
 */
@@ -2024,6 +2111,8 @@ data class Invoices(
 }
 
 
+
+             
 /*
     Model: Phone
 */
@@ -2049,6 +2138,8 @@ data class Phone(
 }
 
 
+
+             
 /*
     Model: SubscriptionBillingAddress
 */
@@ -2094,6 +2185,8 @@ data class SubscriptionBillingAddress(
 }
 
 
+
+             
 /*
     Model: SubscriptionCustomer
 */
@@ -2164,6 +2257,8 @@ data class SubscriptionCustomer(
 }
 
 
+
+             
 /*
     Model: SubscriptionCustomerCreate
 */
@@ -2209,6 +2304,8 @@ data class SubscriptionCustomerCreate(
 }
 
 
+
+             
 /*
     Model: SubscriptionCurrentPeriod
 */
@@ -2234,6 +2331,8 @@ data class SubscriptionCurrentPeriod(
 }
 
 
+
+             
 /*
     Model: SubscriptionPauseCollection
 */
@@ -2259,6 +2358,8 @@ data class SubscriptionPauseCollection(
 }
 
 
+
+             
 /*
     Model: SubscriptionTrial
 */
@@ -2284,6 +2385,8 @@ data class SubscriptionTrial(
 }
 
 
+
+             
 /*
     Model: SubscriptionInvoiceSettings
 */
@@ -2309,6 +2412,8 @@ data class SubscriptionInvoiceSettings(
 }
 
 
+
+             
 /*
     Model: Subscription
 */
@@ -2404,6 +2509,8 @@ data class Subscription(
 }
 
 
+
+             
 /*
     Model: SubscriptionStatus
 */
@@ -2429,6 +2536,8 @@ data class SubscriptionStatus(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimitApplication
 */
@@ -2459,6 +2568,8 @@ data class SubscriptionLimitApplication(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimitMarketplace
 */
@@ -2479,6 +2590,8 @@ data class SubscriptionLimitMarketplace(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimitOtherPlatform
 */
@@ -2499,6 +2612,8 @@ data class SubscriptionLimitOtherPlatform(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimitTeam
 */
@@ -2519,6 +2634,8 @@ data class SubscriptionLimitTeam(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimitProducts
 */
@@ -2544,6 +2661,8 @@ data class SubscriptionLimitProducts(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimitExtensions
 */
@@ -2569,6 +2688,8 @@ data class SubscriptionLimitExtensions(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimitIntegrations
 */
@@ -2594,6 +2715,8 @@ data class SubscriptionLimitIntegrations(
 }
 
 
+
+             
 /*
     Model: SubscriptionLimit
 */
@@ -2649,6 +2772,8 @@ data class SubscriptionLimit(
 }
 
 
+
+             
 /*
     Model: SubscriptionActivateReq
 */
@@ -2689,6 +2814,8 @@ data class SubscriptionActivateReq(
 }
 
 
+
+             
 /*
     Model: SubscriptionActivateRes
 */
@@ -2714,6 +2841,8 @@ data class SubscriptionActivateRes(
 }
 
 
+
+             
 /*
     Model: CancelSubscriptionReq
 */
@@ -2749,6 +2878,8 @@ data class CancelSubscriptionReq(
 }
 
 
+
+             
 /*
     Model: CancelSubscriptionRes
 */
@@ -2772,5 +2903,6 @@ data class CancelSubscriptionRes(
     
     
 }
+
 
 

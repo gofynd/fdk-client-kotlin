@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: DataTresholdDTO
 */
@@ -49,6 +50,8 @@ data class DataTresholdDTO(
 }
 
 
+
+             
 /*
     Model: GenericDTO
 */
@@ -74,6 +77,8 @@ data class GenericDTO(
 }
 
 
+
+             
 /*
     Model: JobConfigDTO
 */
@@ -129,6 +134,8 @@ data class JobConfigDTO(
 }
 
 
+
+             
 /*
     Model: TaskDTO
 */
@@ -154,6 +161,8 @@ data class TaskDTO(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -204,6 +213,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeString
 */
@@ -274,6 +285,8 @@ data class ResponseEnvelopeString(
 }
 
 
+
+             
 /*
     Model: AWSS3config
 */
@@ -354,6 +367,8 @@ data class AWSS3config(
 }
 
 
+
+             
 /*
     Model: ArchiveConfig
 */
@@ -384,6 +399,8 @@ data class ArchiveConfig(
 }
 
 
+
+             
 /*
     Model: Audit
 */
@@ -419,6 +436,8 @@ data class Audit(
 }
 
 
+
+             
 /*
     Model: CatalogMasterConfig
 */
@@ -439,6 +458,8 @@ data class CatalogMasterConfig(
 }
 
 
+
+             
 /*
     Model: CompanyConfig
 */
@@ -484,6 +505,8 @@ data class CompanyConfig(
 }
 
 
+
+             
 /*
     Model: DBConfig
 */
@@ -554,6 +577,8 @@ data class DBConfig(
 }
 
 
+
+             
 /*
     Model: DBConnectionProfile
 */
@@ -574,6 +599,8 @@ data class DBConnectionProfile(
 }
 
 
+
+             
 /*
     Model: DBParamConfig
 */
@@ -594,6 +621,8 @@ data class DBParamConfig(
 }
 
 
+
+             
 /*
     Model: DefaultHeadersDTO
 */
@@ -629,6 +658,8 @@ data class DefaultHeadersDTO(
 }
 
 
+
+             
 /*
     Model: DocMappingConfig
 */
@@ -669,6 +700,8 @@ data class DocMappingConfig(
 }
 
 
+
+             
 /*
     Model: EmailConfig
 */
@@ -799,6 +832,8 @@ data class EmailConfig(
 }
 
 
+
+             
 /*
     Model: FTPConfig
 */
@@ -884,6 +919,8 @@ data class FTPConfig(
 }
 
 
+
+             
 /*
     Model: FileConfig
 */
@@ -979,6 +1016,8 @@ data class FileConfig(
 }
 
 
+
+             
 /*
     Model: GoogleSpreadSheetConfig
 */
@@ -1024,6 +1063,8 @@ data class GoogleSpreadSheetConfig(
 }
 
 
+
+             
 /*
     Model: HttpConfig
 */
@@ -1079,6 +1120,8 @@ data class HttpConfig(
 }
 
 
+
+             
 /*
     Model: JobConfig
 */
@@ -1239,6 +1282,8 @@ data class JobConfig(
 }
 
 
+
+             
 /*
     Model: JobConfigRawDTO
 */
@@ -1274,6 +1319,8 @@ data class JobConfigRawDTO(
 }
 
 
+
+             
 /*
     Model: JsonDocConfig
 */
@@ -1294,6 +1341,8 @@ data class JsonDocConfig(
 }
 
 
+
+             
 /*
     Model: LocalFileConfig
 */
@@ -1359,6 +1408,8 @@ data class LocalFileConfig(
 }
 
 
+
+             
 /*
     Model: MongoDocConfig
 */
@@ -1404,6 +1455,8 @@ data class MongoDocConfig(
 }
 
 
+
+             
 /*
     Model: OAuthConfig
 */
@@ -1469,6 +1522,8 @@ data class OAuthConfig(
 }
 
 
+
+             
 /*
     Model: ProcessConfig
 */
@@ -1559,6 +1614,8 @@ data class ProcessConfig(
 }
 
 
+
+             
 /*
     Model: PropBeanConfig
 */
@@ -1684,6 +1741,8 @@ data class PropBeanConfig(
 }
 
 
+
+             
 /*
     Model: PropBeanDTO
 */
@@ -1794,6 +1853,8 @@ data class PropBeanDTO(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeListJobConfigRawDTO
 */
@@ -1864,6 +1925,8 @@ data class ResponseEnvelopeListJobConfigRawDTO(
 }
 
 
+
+             
 /*
     Model: SFTPConfig
 */
@@ -1964,6 +2027,8 @@ data class SFTPConfig(
 }
 
 
+
+             
 /*
     Model: Send
 */
@@ -1989,6 +2054,8 @@ data class Send(
 }
 
 
+
+             
 /*
     Model: StoreConfig
 */
@@ -2039,6 +2106,8 @@ data class StoreConfig(
 }
 
 
+
+             
 /*
     Model: StoreFilter
 */
@@ -2069,6 +2138,8 @@ data class StoreFilter(
 }
 
 
+
+             
 /*
     Model: TaskConfig
 */
@@ -2099,6 +2170,8 @@ data class TaskConfig(
 }
 
 
+
+             
 /*
     Model: TaskParam
 */
@@ -2124,6 +2197,8 @@ data class TaskParam(
 }
 
 
+
+             
 /*
     Model: TaskStepConfig
 */
@@ -2154,6 +2229,8 @@ data class TaskStepConfig(
 }
 
 
+
+             
 /*
     Model: JobStepsDTO
 */
@@ -2209,6 +2286,8 @@ data class JobStepsDTO(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeListJobStepsDTO
 */
@@ -2279,6 +2358,8 @@ data class ResponseEnvelopeListJobStepsDTO(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeListJobConfigDTO
 */
@@ -2349,6 +2430,8 @@ data class ResponseEnvelopeListJobConfigDTO(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeJobConfigDTO
 */
@@ -2419,6 +2502,8 @@ data class ResponseEnvelopeJobConfigDTO(
 }
 
 
+
+             
 /*
     Model: JobHistoryDto
 */
@@ -2489,6 +2574,8 @@ data class JobHistoryDto(
 }
 
 
+
+             
 /*
     Model: JobMetricsDto
 */
@@ -2544,6 +2631,8 @@ data class JobMetricsDto(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeJobMetricsDto
 */
@@ -2614,6 +2703,8 @@ data class ResponseEnvelopeJobMetricsDto(
 }
 
 
+
+             
 /*
     Model: JobConfigListDTO
 */
@@ -2669,6 +2760,8 @@ data class JobConfigListDTO(
 }
 
 
+
+             
 /*
     Model: ResponseEnvelopeListJobConfigListDTO
 */
@@ -2737,5 +2830,6 @@ data class ResponseEnvelopeListJobConfigListDTO(
     
     
 }
+
 
 

@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: BlockUserRequestSchema
 */
@@ -39,6 +40,8 @@ data class BlockUserRequestSchema(
 }
 
 
+
+             
 /*
     Model: ArchiveUserRequestSchema
 */
@@ -59,6 +62,8 @@ data class ArchiveUserRequestSchema(
 }
 
 
+
+             
 /*
     Model: DeleteApplicationUserRequestSchema
 */
@@ -99,6 +104,8 @@ data class DeleteApplicationUserRequestSchema(
 }
 
 
+
+             
 /*
     Model: UnDeleteUserRequestSchema
 */
@@ -129,6 +136,8 @@ data class UnDeleteUserRequestSchema(
 }
 
 
+
+             
 /*
     Model: EditEmailRequestSchema
 */
@@ -149,6 +158,8 @@ data class EditEmailRequestSchema(
 }
 
 
+
+             
 /*
     Model: SendVerificationLinkMobileRequestSchema
 */
@@ -189,6 +200,8 @@ data class SendVerificationLinkMobileRequestSchema(
 }
 
 
+
+             
 /*
     Model: EditMobileRequestSchema
 */
@@ -214,6 +227,8 @@ data class EditMobileRequestSchema(
 }
 
 
+
+             
 /*
     Model: EditProfileRequestSchema
 */
@@ -284,6 +299,8 @@ data class EditProfileRequestSchema(
 }
 
 
+
+             
 /*
     Model: EditProfileMobileSchema
 */
@@ -309,6 +326,8 @@ data class EditProfileMobileSchema(
 }
 
 
+
+             
 /*
     Model: SendEmailOtpRequestSchema
 */
@@ -344,6 +363,8 @@ data class SendEmailOtpRequestSchema(
 }
 
 
+
+             
 /*
     Model: VerifyEmailOtpRequestSchema
 */
@@ -379,6 +400,8 @@ data class VerifyEmailOtpRequestSchema(
 }
 
 
+
+             
 /*
     Model: VerifyOtpRequestSchema
 */
@@ -409,6 +432,8 @@ data class VerifyOtpRequestSchema(
 }
 
 
+
+             
 /*
     Model: SendMobileOtpRequestSchema
 */
@@ -459,6 +484,8 @@ data class SendMobileOtpRequestSchema(
 }
 
 
+
+             
 /*
     Model: UpdatePasswordRequestSchema
 */
@@ -484,6 +511,8 @@ data class UpdatePasswordRequestSchema(
 }
 
 
+
+             
 /*
     Model: FormRegisterRequestSchema
 */
@@ -534,6 +563,8 @@ data class FormRegisterRequestSchema(
 }
 
 
+
+             
 /*
     Model: TokenRequestBodySchema
 */
@@ -554,6 +585,8 @@ data class TokenRequestBodySchema(
 }
 
 
+
+             
 /*
     Model: ForgotPasswordRequestSchema
 */
@@ -579,6 +612,8 @@ data class ForgotPasswordRequestSchema(
 }
 
 
+
+             
 /*
     Model: CodeRequestBodySchema
 */
@@ -599,6 +634,8 @@ data class CodeRequestBodySchema(
 }
 
 
+
+             
 /*
     Model: SendResetPasswordEmailRequestSchema
 */
@@ -624,6 +661,8 @@ data class SendResetPasswordEmailRequestSchema(
 }
 
 
+
+             
 /*
     Model: SendResetPasswordMobileRequestSchema
 */
@@ -654,6 +693,8 @@ data class SendResetPasswordMobileRequestSchema(
 }
 
 
+
+             
 /*
     Model: PasswordLoginRequestSchema
 */
@@ -684,6 +725,8 @@ data class PasswordLoginRequestSchema(
 }
 
 
+
+             
 /*
     Model: SendOtpRequestSchema
 */
@@ -719,6 +762,8 @@ data class SendOtpRequestSchema(
 }
 
 
+
+             
 /*
     Model: OAuthRequestSchema
 */
@@ -749,6 +794,8 @@ data class OAuthRequestSchema(
 }
 
 
+
+             
 /*
     Model: OAuthRequestAppleSchema
 */
@@ -779,6 +826,8 @@ data class OAuthRequestAppleSchema(
 }
 
 
+
+             
 /*
     Model: UserObjectSchema
 */
@@ -799,6 +848,8 @@ data class UserObjectSchema(
 }
 
 
+
+             
 /*
     Model: AuthSuccess
 */
@@ -829,6 +880,8 @@ data class AuthSuccess(
 }
 
 
+
+             
 /*
     Model: SendOtpResponse
 */
@@ -909,6 +962,8 @@ data class SendOtpResponse(
 }
 
 
+
+             
 /*
     Model: ProfileEditSuccess
 */
@@ -999,6 +1054,8 @@ data class ProfileEditSuccess(
 }
 
 
+
+             
 /*
     Model: LoginSuccess
 */
@@ -1029,6 +1086,8 @@ data class LoginSuccess(
 }
 
 
+
+             
 /*
     Model: VerifyOtpSuccess
 */
@@ -1059,6 +1118,8 @@ data class VerifyOtpSuccess(
 }
 
 
+
+             
 /*
     Model: ResetPasswordSuccess
 */
@@ -1079,6 +1140,8 @@ data class ResetPasswordSuccess(
 }
 
 
+
+             
 /*
     Model: RegisterFormSuccess
 */
@@ -1159,6 +1222,8 @@ data class RegisterFormSuccess(
 }
 
 
+
+             
 /*
     Model: VerifyEmailSuccess
 */
@@ -1179,6 +1244,8 @@ data class VerifyEmailSuccess(
 }
 
 
+
+             
 /*
     Model: HasPasswordSuccess
 */
@@ -1199,6 +1266,8 @@ data class HasPasswordSuccess(
 }
 
 
+
+             
 /*
     Model: LogoutSuccess
 */
@@ -1219,6 +1288,8 @@ data class LogoutSuccess(
 }
 
 
+
+             
 /*
     Model: BlockUserSuccess
 */
@@ -1239,6 +1310,8 @@ data class BlockUserSuccess(
 }
 
 
+
+             
 /*
     Model: ArchiveUserSuccess
 */
@@ -1259,6 +1332,8 @@ data class ArchiveUserSuccess(
 }
 
 
+
+             
 /*
     Model: DeleteUserSuccess
 */
@@ -1279,6 +1354,8 @@ data class DeleteUserSuccess(
 }
 
 
+
+             
 /*
     Model: UnDeleteUserSuccess
 */
@@ -1299,6 +1376,8 @@ data class UnDeleteUserSuccess(
 }
 
 
+
+             
 /*
     Model: OtpSuccess
 */
@@ -1354,6 +1433,8 @@ data class OtpSuccess(
 }
 
 
+
+             
 /*
     Model: EmailOtpSuccess
 */
@@ -1374,6 +1455,8 @@ data class EmailOtpSuccess(
 }
 
 
+
+             
 /*
     Model: SessionListSuccess
 */
@@ -1394,6 +1477,8 @@ data class SessionListSuccess(
 }
 
 
+
+             
 /*
     Model: VerifyMobileOTPSuccess
 */
@@ -1419,6 +1504,8 @@ data class VerifyMobileOTPSuccess(
 }
 
 
+
+             
 /*
     Model: VerifyEmailOTPSuccess
 */
@@ -1444,6 +1531,8 @@ data class VerifyEmailOTPSuccess(
 }
 
 
+
+             
 /*
     Model: SendMobileVerifyLinkSuccess
 */
@@ -1464,6 +1553,8 @@ data class SendMobileVerifyLinkSuccess(
 }
 
 
+
+             
 /*
     Model: SendEmailVerifyLinkSuccess
 */
@@ -1484,6 +1575,8 @@ data class SendEmailVerifyLinkSuccess(
 }
 
 
+
+             
 /*
     Model: UserSearchResponseSchema
 */
@@ -1504,6 +1597,8 @@ data class UserSearchResponseSchema(
 }
 
 
+
+             
 /*
     Model: CustomerListResponseSchema
 */
@@ -1529,6 +1624,8 @@ data class CustomerListResponseSchema(
 }
 
 
+
+             
 /*
     Model: PaginationSchema
 */
@@ -1569,6 +1666,8 @@ data class PaginationSchema(
 }
 
 
+
+             
 /*
     Model: SessionListResponseSchema
 */
@@ -1589,6 +1688,8 @@ data class SessionListResponseSchema(
 }
 
 
+
+             
 /*
     Model: SessionDeleteResponseSchema
 */
@@ -1609,6 +1710,8 @@ data class SessionDeleteResponseSchema(
 }
 
 
+
+             
 /*
     Model: UnauthorizedSchema
 */
@@ -1629,6 +1732,8 @@ data class UnauthorizedSchema(
 }
 
 
+
+             
 /*
     Model: UnauthenticatedSchema
 */
@@ -1649,6 +1754,8 @@ data class UnauthenticatedSchema(
 }
 
 
+
+             
 /*
     Model: NotFoundSchema
 */
@@ -1669,6 +1776,8 @@ data class NotFoundSchema(
 }
 
 
+
+             
 /*
     Model: AuthenticationInternalServerErrorSchema
 */
@@ -1689,6 +1798,8 @@ data class AuthenticationInternalServerErrorSchema(
 }
 
 
+
+             
 /*
     Model: AuthenticationApiErrorSchema
 */
@@ -1709,6 +1820,8 @@ data class AuthenticationApiErrorSchema(
 }
 
 
+
+             
 /*
     Model: ProfileEditSuccessSchema
 */
@@ -1759,6 +1872,8 @@ data class ProfileEditSuccessSchema(
 }
 
 
+
+             
 /*
     Model: FormRegisterRequestSchemaPhone
 */
@@ -1784,6 +1899,8 @@ data class FormRegisterRequestSchemaPhone(
 }
 
 
+
+             
 /*
     Model: OAuthRequestSchemaOauth2
 */
@@ -1814,6 +1931,8 @@ data class OAuthRequestSchemaOauth2(
 }
 
 
+
+             
 /*
     Model: OAuthRequestSchemaProfile
 */
@@ -1859,6 +1978,8 @@ data class OAuthRequestSchemaProfile(
 }
 
 
+
+             
 /*
     Model: OAuthRequestAppleSchemaOauth
 */
@@ -1879,6 +2000,8 @@ data class OAuthRequestAppleSchemaOauth(
 }
 
 
+
+             
 /*
     Model: OAuthRequestAppleSchemaProfile
 */
@@ -1909,6 +2032,8 @@ data class OAuthRequestAppleSchemaProfile(
 }
 
 
+
+             
 /*
     Model: AuthSuccessUser
 */
@@ -1949,6 +2074,8 @@ data class AuthSuccessUser(
 }
 
 
+
+             
 /*
     Model: SessionListResponseInfo
 */
@@ -1989,6 +2116,8 @@ data class SessionListResponseInfo(
 }
 
 
+
+             
 /*
     Model: AuthSuccessUserDebug
 */
@@ -2009,6 +2138,8 @@ data class AuthSuccessUserDebug(
 }
 
 
+
+             
 /*
     Model: AuthSuccessUserEmails
 */
@@ -2044,6 +2175,8 @@ data class AuthSuccessUserEmails(
 }
 
 
+
+             
 /*
     Model: CreateUserRequestSchema
 */
@@ -2094,6 +2227,8 @@ data class CreateUserRequestSchema(
 }
 
 
+
+             
 /*
     Model: CreateUserResponseSchema
 */
@@ -2114,6 +2249,8 @@ data class CreateUserResponseSchema(
 }
 
 
+
+             
 /*
     Model: CreateUserSessionRequestSchema
 */
@@ -2144,6 +2281,8 @@ data class CreateUserSessionRequestSchema(
 }
 
 
+
+             
 /*
     Model: CreateUserSessionResponseSchema
 */
@@ -2184,6 +2323,8 @@ data class CreateUserSessionResponseSchema(
 }
 
 
+
+             
 /*
     Model: PlatformSchema
 */
@@ -2324,6 +2465,8 @@ data class PlatformSchema(
 }
 
 
+
+             
 /*
     Model: LookAndFeel
 */
@@ -2349,6 +2492,8 @@ data class LookAndFeel(
 }
 
 
+
+             
 /*
     Model: Login
 */
@@ -2374,6 +2519,8 @@ data class Login(
 }
 
 
+
+             
 /*
     Model: MetaSchema
 */
@@ -2394,6 +2541,8 @@ data class MetaSchema(
 }
 
 
+
+             
 /*
     Model: Social
 */
@@ -2429,6 +2578,8 @@ data class Social(
 }
 
 
+
+             
 /*
     Model: RequiredFields
 */
@@ -2454,6 +2605,8 @@ data class RequiredFields(
 }
 
 
+
+             
 /*
     Model: PlatformEmail
 */
@@ -2479,6 +2632,8 @@ data class PlatformEmail(
 }
 
 
+
+             
 /*
     Model: PlatformMobile
 */
@@ -2504,6 +2659,8 @@ data class PlatformMobile(
 }
 
 
+
+             
 /*
     Model: RegisterRequiredFields
 */
@@ -2529,6 +2686,8 @@ data class RegisterRequiredFields(
 }
 
 
+
+             
 /*
     Model: RegisterRequiredFieldsEmail
 */
@@ -2554,6 +2713,8 @@ data class RegisterRequiredFieldsEmail(
 }
 
 
+
+             
 /*
     Model: RegisterRequiredFieldsMobile
 */
@@ -2579,6 +2740,8 @@ data class RegisterRequiredFieldsMobile(
 }
 
 
+
+             
 /*
     Model: FlashCard
 */
@@ -2609,6 +2772,8 @@ data class FlashCard(
 }
 
 
+
+             
 /*
     Model: SocialTokens
 */
@@ -2639,6 +2804,8 @@ data class SocialTokens(
 }
 
 
+
+             
 /*
     Model: DeleteAccountReasons
 */
@@ -2669,6 +2836,8 @@ data class DeleteAccountReasons(
 }
 
 
+
+             
 /*
     Model: DeleteAccountConsent
 */
@@ -2689,6 +2858,8 @@ data class DeleteAccountConsent(
 }
 
 
+
+             
 /*
     Model: Facebook
 */
@@ -2709,6 +2880,8 @@ data class Facebook(
 }
 
 
+
+             
 /*
     Model: Accountkit
 */
@@ -2729,6 +2902,8 @@ data class Accountkit(
 }
 
 
+
+             
 /*
     Model: Google
 */
@@ -2749,6 +2924,8 @@ data class Google(
 }
 
 
+
+             
 /*
     Model: SessionExpiry
 */
@@ -2779,6 +2956,8 @@ data class SessionExpiry(
 }
 
 
+
+             
 /*
     Model: UpdateUserRequestSchema
 */
@@ -2819,6 +2998,8 @@ data class UpdateUserRequestSchema(
 }
 
 
+
+             
 /*
     Model: UserSchema
 */
@@ -2914,6 +3095,8 @@ data class UserSchema(
 }
 
 
+
+             
 /*
     Model: PhoneNumber
 */
@@ -2954,6 +3137,8 @@ data class PhoneNumber(
 }
 
 
+
+             
 /*
     Model: Email
 */
@@ -2987,5 +3172,6 @@ data class Email(
     
     
 }
+
 
 

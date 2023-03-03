@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: RewardsArticle
 */
@@ -39,6 +40,8 @@ data class RewardsArticle(
 }
 
 
+
+             
 /*
     Model: CatalogueOrderResponse
 */
@@ -59,6 +62,8 @@ data class CatalogueOrderResponse(
 }
 
 
+
+             
 /*
     Model: CatalogueOrderRequest
 */
@@ -79,6 +84,8 @@ data class CatalogueOrderRequest(
 }
 
 
+
+             
 /*
     Model: PointsResponse
 */
@@ -99,6 +106,8 @@ data class PointsResponse(
 }
 
 
+
+             
 /*
     Model: ReferralDetailsUser
 */
@@ -134,6 +143,8 @@ data class ReferralDetailsUser(
 }
 
 
+
+             
 /*
     Model: Offer
 */
@@ -219,6 +230,8 @@ data class Offer(
 }
 
 
+
+             
 /*
     Model: Schedule
 */
@@ -254,6 +267,8 @@ data class Schedule(
 }
 
 
+
+             
 /*
     Model: Error
 */
@@ -289,6 +304,8 @@ data class Error(
 }
 
 
+
+             
 /*
     Model: Asset
 */
@@ -319,6 +336,8 @@ data class Asset(
 }
 
 
+
+             
 /*
     Model: ShareMessages
 */
@@ -379,6 +398,8 @@ data class ShareMessages(
 }
 
 
+
+             
 /*
     Model: ReferralDetailsResponse
 */
@@ -419,6 +440,8 @@ data class ReferralDetailsResponse(
 }
 
 
+
+             
 /*
     Model: OrderDiscountRequest
 */
@@ -444,6 +467,8 @@ data class OrderDiscountRequest(
 }
 
 
+
+             
 /*
     Model: OrderDiscountRuleBucket
 */
@@ -484,6 +509,8 @@ data class OrderDiscountRuleBucket(
 }
 
 
+
+             
 /*
     Model: DiscountProperties
 */
@@ -524,6 +551,8 @@ data class DiscountProperties(
 }
 
 
+
+             
 /*
     Model: OrderDiscountResponse
 */
@@ -564,6 +593,8 @@ data class OrderDiscountResponse(
 }
 
 
+
+             
 /*
     Model: RedeemReferralCodeRequest
 */
@@ -589,6 +620,8 @@ data class RedeemReferralCodeRequest(
 }
 
 
+
+             
 /*
     Model: RedeemReferralCodeResponse
 */
@@ -629,6 +662,8 @@ data class RedeemReferralCodeResponse(
 }
 
 
+
+             
 /*
     Model: PointsHistoryResponse
 */
@@ -654,6 +689,8 @@ data class PointsHistoryResponse(
 }
 
 
+
+             
 /*
     Model: PointsHistory
 */
@@ -739,6 +776,8 @@ data class PointsHistory(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -787,5 +826,6 @@ data class Page(
     
     
 }
+
 
 

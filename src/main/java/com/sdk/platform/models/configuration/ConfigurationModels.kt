@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: ApplicationInventory
 */
@@ -46,6 +47,9 @@ data class ApplicationInventory(
     
     @SerializedName("comms_enabled")
     var commsEnabled: Boolean?=null,
+    
+    @SerializedName("communication")
+    var communication: CommunicationConfig?=null,
     
     @SerializedName("platforms")
     var platforms: ArrayList<String>?=null,
@@ -106,9 +110,13 @@ data class ApplicationInventory(
     
     
     
+    
+    
 }
 
 
+
+             
 /*
     Model: AppInventoryConfig
 */
@@ -179,6 +187,8 @@ data class AppInventoryConfig(
 }
 
 
+
+             
 /*
     Model: InventoryBrand
 */
@@ -204,6 +214,8 @@ data class InventoryBrand(
 }
 
 
+
+             
 /*
     Model: InventoryStore
 */
@@ -234,6 +246,8 @@ data class InventoryStore(
 }
 
 
+
+             
 /*
     Model: AppStoreRules
 */
@@ -259,6 +273,8 @@ data class AppStoreRules(
 }
 
 
+
+             
 /*
     Model: InventoryCategory
 */
@@ -284,6 +300,8 @@ data class InventoryCategory(
 }
 
 
+
+             
 /*
     Model: InventoryPrice
 */
@@ -309,6 +327,8 @@ data class InventoryPrice(
 }
 
 
+
+             
 /*
     Model: InventoryDiscount
 */
@@ -334,6 +354,8 @@ data class InventoryDiscount(
 }
 
 
+
+             
 /*
     Model: AuthenticationConfig
 */
@@ -359,6 +381,8 @@ data class AuthenticationConfig(
 }
 
 
+
+             
 /*
     Model: ArticleAssignmentConfig
 */
@@ -384,6 +408,8 @@ data class ArticleAssignmentConfig(
 }
 
 
+
+             
 /*
     Model: ArticleAssignmentRules
 */
@@ -404,6 +430,8 @@ data class ArticleAssignmentRules(
 }
 
 
+
+             
 /*
     Model: StorePriority
 */
@@ -429,6 +457,8 @@ data class StorePriority(
 }
 
 
+
+             
 /*
     Model: AppCartConfig
 */
@@ -456,9 +486,14 @@ data class AppCartConfig(
     var revenueEngineCoupon: Boolean?=null,
     
     @SerializedName("empty_cart")
-    var emptyCart: Boolean?=null
+    var emptyCart: Boolean?=null,
+    
+    @SerializedName("pan_card")
+    var panCard: PanCardConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -479,6 +514,8 @@ data class AppCartConfig(
 }
 
 
+
+             
 /*
     Model: DeliveryCharges
 */
@@ -504,6 +541,8 @@ data class DeliveryCharges(
 }
 
 
+
+             
 /*
     Model: Charges
 */
@@ -529,6 +568,8 @@ data class Charges(
 }
 
 
+
+             
 /*
     Model: AppPaymentConfig
 */
@@ -589,6 +630,8 @@ data class AppPaymentConfig(
 }
 
 
+
+             
 /*
     Model: CallbackUrl
 */
@@ -614,6 +657,8 @@ data class CallbackUrl(
 }
 
 
+
+             
 /*
     Model: Methods
 */
@@ -724,6 +769,8 @@ data class Methods(
 }
 
 
+
+             
 /*
     Model: PaymentModeConfig
 */
@@ -744,6 +791,8 @@ data class PaymentModeConfig(
 }
 
 
+
+             
 /*
     Model: PaymentSelectionLock
 */
@@ -774,6 +823,8 @@ data class PaymentSelectionLock(
 }
 
 
+
+             
 /*
     Model: AppOrderConfig
 */
@@ -804,6 +855,8 @@ data class AppOrderConfig(
 }
 
 
+
+             
 /*
     Model: AppLogisticsConfig
 */
@@ -839,6 +892,8 @@ data class AppLogisticsConfig(
 }
 
 
+
+             
 /*
     Model: LoyaltyPointsConfig
 */
@@ -864,6 +919,8 @@ data class LoyaltyPointsConfig(
 }
 
 
+
+             
 /*
     Model: AppInventoryPartialUpdate
 */
@@ -885,9 +942,14 @@ data class AppInventoryPartialUpdate(
     var loyaltyPoints: LoyaltyPointsConfig?=null,
     
     @SerializedName("comms_enabled")
-    var commsEnabled: Boolean?=null
+    var commsEnabled: Boolean?=null,
+    
+    @SerializedName("communication")
+    var communication: CommunicationConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -904,6 +966,8 @@ data class AppInventoryPartialUpdate(
 }
 
 
+
+             
 /*
     Model: BrandCompanyInfo
 */
@@ -929,6 +993,8 @@ data class BrandCompanyInfo(
 }
 
 
+
+             
 /*
     Model: CompanyByBrandsRequest
 */
@@ -954,6 +1020,8 @@ data class CompanyByBrandsRequest(
 }
 
 
+
+             
 /*
     Model: CompanyByBrandsResponse
 */
@@ -979,6 +1047,8 @@ data class CompanyByBrandsResponse(
 }
 
 
+
+             
 /*
     Model: StoreByBrandsRequest
 */
@@ -1009,6 +1079,8 @@ data class StoreByBrandsRequest(
 }
 
 
+
+             
 /*
     Model: StoreByBrandsResponse
 */
@@ -1034,6 +1106,8 @@ data class StoreByBrandsResponse(
 }
 
 
+
+             
 /*
     Model: BrandStoreInfo
 */
@@ -1079,6 +1153,8 @@ data class BrandStoreInfo(
 }
 
 
+
+             
 /*
     Model: CompanyBrandInfo
 */
@@ -1119,6 +1195,8 @@ data class CompanyBrandInfo(
 }
 
 
+
+             
 /*
     Model: BrandsByCompanyResponse
 */
@@ -1139,6 +1217,8 @@ data class BrandsByCompanyResponse(
 }
 
 
+
+             
 /*
     Model: ValidationFailedResponse
 */
@@ -1159,6 +1239,8 @@ data class ValidationFailedResponse(
 }
 
 
+
+             
 /*
     Model: NotFound
 */
@@ -1179,6 +1261,89 @@ data class NotFound(
 }
 
 
+
+             
+/*
+    Model: CommunicationConfig
+*/
+@Parcelize
+data class CommunicationConfig(
+    
+    
+    
+    @SerializedName("email")
+    var email: CommsConfig?=null,
+    
+    @SerializedName("sms")
+    var sms: CommsConfig?=null,
+    
+    @SerializedName("voice")
+    var voice: CommsConfig?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CommsConfig
+*/
+@Parcelize
+data class CommsConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PanCardConfig
+*/
+@Parcelize
+data class PanCardConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("threshold_amount")
+    var thresholdAmount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
 /*
     Model: CreateApplicationRequest
 */
@@ -1209,6 +1374,8 @@ data class CreateApplicationRequest(
 }
 
 
+
+             
 /*
     Model: CreateAppResponse
 */
@@ -1234,6 +1401,8 @@ data class CreateAppResponse(
 }
 
 
+
+             
 /*
     Model: ApplicationsResponse
 */
@@ -1259,6 +1428,8 @@ data class ApplicationsResponse(
 }
 
 
+
+             
 /*
     Model: MobileAppConfiguration
 */
@@ -1329,6 +1500,8 @@ data class MobileAppConfiguration(
 }
 
 
+
+             
 /*
     Model: LandingImage
 */
@@ -1354,6 +1527,8 @@ data class LandingImage(
 }
 
 
+
+             
 /*
     Model: SplashImage
 */
@@ -1379,6 +1554,8 @@ data class SplashImage(
 }
 
 
+
+             
 /*
     Model: MobileAppConfigRequest
 */
@@ -1414,6 +1591,8 @@ data class MobileAppConfigRequest(
 }
 
 
+
+             
 /*
     Model: BuildVersionHistory
 */
@@ -1439,6 +1618,8 @@ data class BuildVersionHistory(
 }
 
 
+
+             
 /*
     Model: BuildVersion
 */
@@ -1499,6 +1680,8 @@ data class BuildVersion(
 }
 
 
+
+             
 /*
     Model: AppSupportedCurrency
 */
@@ -1544,6 +1727,8 @@ data class AppSupportedCurrency(
 }
 
 
+
+             
 /*
     Model: DefaultCurrency
 */
@@ -1569,6 +1754,8 @@ data class DefaultCurrency(
 }
 
 
+
+             
 /*
     Model: CurrencyConfig
 */
@@ -1624,6 +1811,8 @@ data class CurrencyConfig(
 }
 
 
+
+             
 /*
     Model: DomainAdd
 */
@@ -1674,6 +1863,8 @@ data class DomainAdd(
 }
 
 
+
+             
 /*
     Model: DomainAddRequest
 */
@@ -1694,6 +1885,8 @@ data class DomainAddRequest(
 }
 
 
+
+             
 /*
     Model: Domain
 */
@@ -1739,6 +1932,8 @@ data class Domain(
 }
 
 
+
+             
 /*
     Model: DomainsResponse
 */
@@ -1759,6 +1954,8 @@ data class DomainsResponse(
 }
 
 
+
+             
 /*
     Model: UpdateDomain
 */
@@ -1799,6 +1996,8 @@ data class UpdateDomain(
 }
 
 
+
+             
 /*
     Model: UpdateDomainTypeRequest
 */
@@ -1824,6 +2023,8 @@ data class UpdateDomainTypeRequest(
 }
 
 
+
+             
 /*
     Model: DomainStatusRequest
 */
@@ -1844,6 +2045,8 @@ data class DomainStatusRequest(
 }
 
 
+
+             
 /*
     Model: DomainStatus
 */
@@ -1869,6 +2072,8 @@ data class DomainStatus(
 }
 
 
+
+             
 /*
     Model: DomainStatusResponse
 */
@@ -1894,6 +2099,8 @@ data class DomainStatusResponse(
 }
 
 
+
+             
 /*
     Model: DomainSuggestionsRequest
 */
@@ -1919,6 +2126,8 @@ data class DomainSuggestionsRequest(
 }
 
 
+
+             
 /*
     Model: DomainSuggestion
 */
@@ -1959,6 +2168,8 @@ data class DomainSuggestion(
 }
 
 
+
+             
 /*
     Model: DomainSuggestionsResponse
 */
@@ -1979,6 +2190,8 @@ data class DomainSuggestionsResponse(
 }
 
 
+
+             
 /*
     Model: SuccessMessageResponse
 */
@@ -2004,6 +2217,8 @@ data class SuccessMessageResponse(
 }
 
 
+
+             
 /*
     Model: GetIntegrationsOptInsResponse
 */
@@ -2029,6 +2244,8 @@ data class GetIntegrationsOptInsResponse(
 }
 
 
+
+             
 /*
     Model: IntegrationOptIn
 */
@@ -2124,6 +2341,8 @@ data class IntegrationOptIn(
 }
 
 
+
+             
 /*
     Model: Validators
 */
@@ -2159,6 +2378,8 @@ data class Validators(
 }
 
 
+
+             
 /*
     Model: CompanyValidator
 */
@@ -2184,6 +2405,8 @@ data class CompanyValidator(
 }
 
 
+
+             
 /*
     Model: JsonSchema
 */
@@ -2219,6 +2442,8 @@ data class JsonSchema(
 }
 
 
+
+             
 /*
     Model: StoreValidator
 */
@@ -2244,6 +2469,8 @@ data class StoreValidator(
 }
 
 
+
+             
 /*
     Model: InventoryValidator
 */
@@ -2269,6 +2496,8 @@ data class InventoryValidator(
 }
 
 
+
+             
 /*
     Model: OrderValidator
 */
@@ -2294,6 +2523,8 @@ data class OrderValidator(
 }
 
 
+
+             
 /*
     Model: IntegrationMeta
 */
@@ -2329,6 +2560,8 @@ data class IntegrationMeta(
 }
 
 
+
+             
 /*
     Model: Integration
 */
@@ -2424,6 +2657,8 @@ data class Integration(
 }
 
 
+
+             
 /*
     Model: IntegrationConfigResponse
 */
@@ -2444,6 +2679,8 @@ data class IntegrationConfigResponse(
 }
 
 
+
+             
 /*
     Model: IntegrationLevel
 */
@@ -2524,6 +2761,8 @@ data class IntegrationLevel(
 }
 
 
+
+             
 /*
     Model: UpdateIntegrationLevelRequest
 */
@@ -2544,6 +2783,8 @@ data class UpdateIntegrationLevelRequest(
 }
 
 
+
+             
 /*
     Model: OptedStoreIntegration
 */
@@ -2574,6 +2815,8 @@ data class OptedStoreIntegration(
 }
 
 
+
+             
 /*
     Model: OtherEntity
 */
@@ -2654,6 +2897,8 @@ data class OtherEntity(
 }
 
 
+
+             
 /*
     Model: LastPatch
 */
@@ -2684,6 +2929,8 @@ data class LastPatch(
 }
 
 
+
+             
 /*
     Model: OtherEntityData
 */
@@ -2704,6 +2951,8 @@ data class OtherEntityData(
 }
 
 
+
+             
 /*
     Model: App
 */
@@ -2744,6 +2993,8 @@ data class App(
 }
 
 
+
+             
 /*
     Model: AppInventory
 */
@@ -2799,6 +3050,8 @@ data class AppInventory(
 }
 
 
+
+             
 /*
     Model: AppDomain
 */
@@ -2819,6 +3072,8 @@ data class AppDomain(
 }
 
 
+
+             
 /*
     Model: CompaniesResponse
 */
@@ -2844,6 +3099,8 @@ data class CompaniesResponse(
 }
 
 
+
+             
 /*
     Model: AppInventoryCompanies
 */
@@ -2874,6 +3131,8 @@ data class AppInventoryCompanies(
 }
 
 
+
+             
 /*
     Model: StoresResponse
 */
@@ -2899,6 +3158,8 @@ data class StoresResponse(
 }
 
 
+
+             
 /*
     Model: AppInventoryStores
 */
@@ -2954,6 +3215,8 @@ data class AppInventoryStores(
 }
 
 
+
+             
 /*
     Model: FilterOrderingStoreRequest
 */
@@ -2989,6 +3252,8 @@ data class FilterOrderingStoreRequest(
 }
 
 
+
+             
 /*
     Model: DeploymentMeta
 */
@@ -3034,6 +3299,8 @@ data class DeploymentMeta(
 }
 
 
+
+             
 /*
     Model: OrderingStoreConfig
 */
@@ -3054,6 +3321,8 @@ data class OrderingStoreConfig(
 }
 
 
+
+             
 /*
     Model: OtherSellerCompany
 */
@@ -3079,6 +3348,8 @@ data class OtherSellerCompany(
 }
 
 
+
+             
 /*
     Model: OtherSellerApplication
 */
@@ -3124,6 +3395,8 @@ data class OtherSellerApplication(
 }
 
 
+
+             
 /*
     Model: OtherSellerApplications
 */
@@ -3149,6 +3422,8 @@ data class OtherSellerApplications(
 }
 
 
+
+             
 /*
     Model: OptedApplicationResponse
 */
@@ -3199,6 +3474,8 @@ data class OptedApplicationResponse(
 }
 
 
+
+             
 /*
     Model: OptedCompany
 */
@@ -3224,6 +3501,8 @@ data class OptedCompany(
 }
 
 
+
+             
 /*
     Model: OptedInventory
 */
@@ -3249,6 +3528,8 @@ data class OptedInventory(
 }
 
 
+
+             
 /*
     Model: OptType
 */
@@ -3274,6 +3555,8 @@ data class OptType(
 }
 
 
+
+             
 /*
     Model: OptedStore
 */
@@ -3334,6 +3617,8 @@ data class OptedStore(
 }
 
 
+
+             
 /*
     Model: OptOutInventory
 */
@@ -3359,6 +3644,8 @@ data class OptOutInventory(
 }
 
 
+
+             
 /*
     Model: TokenResponse
 */
@@ -3404,6 +3691,8 @@ data class TokenResponse(
 }
 
 
+
+             
 /*
     Model: Tokens
 */
@@ -3459,6 +3748,8 @@ data class Tokens(
 }
 
 
+
+             
 /*
     Model: Firebase
 */
@@ -3484,6 +3775,8 @@ data class Firebase(
 }
 
 
+
+             
 /*
     Model: Credentials
 */
@@ -3581,6 +3874,8 @@ data class Credentials(
 }
 
 
+
+             
 /*
     Model: Ios
 */
@@ -3632,6 +3927,8 @@ data class Ios(
 }
 
 
+
+             
 /*
     Model: Android
 */
@@ -3683,6 +3980,8 @@ data class Android(
 }
 
 
+
+             
 /*
     Model: Moengage
 */
@@ -3708,6 +4007,8 @@ data class Moengage(
 }
 
 
+
+             
 /*
     Model: MoengageCredentials
 */
@@ -3728,6 +4029,8 @@ data class MoengageCredentials(
 }
 
 
+
+             
 /*
     Model: Segment
 */
@@ -3753,6 +4056,8 @@ data class Segment(
 }
 
 
+
+             
 /*
     Model: SegmentCredentials
 */
@@ -3786,6 +4091,8 @@ data class SegmentCredentials(
 }
 
 
+
+             
 /*
     Model: Gtm
 */
@@ -3811,6 +4118,8 @@ data class Gtm(
 }
 
 
+
+             
 /*
     Model: GtmCredentials
 */
@@ -3844,6 +4153,8 @@ data class GtmCredentials(
 }
 
 
+
+             
 /*
     Model: Freshchat
 */
@@ -3869,6 +4180,8 @@ data class Freshchat(
 }
 
 
+
+             
 /*
     Model: FreshchatCredentials
 */
@@ -3938,6 +4251,8 @@ data class FreshchatCredentials(
 }
 
 
+
+             
 /*
     Model: Safetynet
 */
@@ -3963,6 +4278,8 @@ data class Safetynet(
 }
 
 
+
+             
 /*
     Model: SafetynetCredentials
 */
@@ -3996,6 +4313,8 @@ data class SafetynetCredentials(
 }
 
 
+
+             
 /*
     Model: FyndRewards
 */
@@ -4016,6 +4335,8 @@ data class FyndRewards(
 }
 
 
+
+             
 /*
     Model: FyndRewardsCredentials
 */
@@ -4049,6 +4370,8 @@ data class FyndRewardsCredentials(
 }
 
 
+
+             
 /*
     Model: GoogleMap
 */
@@ -4069,6 +4392,8 @@ data class GoogleMap(
 }
 
 
+
+             
 /*
     Model: GoogleMapCredentials
 */
@@ -4102,6 +4427,8 @@ data class GoogleMapCredentials(
 }
 
 
+
+             
 /*
     Model: RewardPointsConfig
 */
@@ -4127,6 +4454,8 @@ data class RewardPointsConfig(
 }
 
 
+
+             
 /*
     Model: Credit
 */
@@ -4147,6 +4476,8 @@ data class Credit(
 }
 
 
+
+             
 /*
     Model: Debit
 */
@@ -4177,6 +4508,8 @@ data class Debit(
 }
 
 
+
+             
 /*
     Model: ProductDetailFeature
 */
@@ -4212,6 +4545,8 @@ data class ProductDetailFeature(
 }
 
 
+
+             
 /*
     Model: LaunchPage
 */
@@ -4242,6 +4577,8 @@ data class LaunchPage(
 }
 
 
+
+             
 /*
     Model: LandingPageFeature
 */
@@ -4282,6 +4619,8 @@ data class LandingPageFeature(
 }
 
 
+
+             
 /*
     Model: RegistrationPageFeature
 */
@@ -4302,6 +4641,8 @@ data class RegistrationPageFeature(
 }
 
 
+
+             
 /*
     Model: AppFeature
 */
@@ -4387,6 +4728,8 @@ data class AppFeature(
 }
 
 
+
+             
 /*
     Model: HomePageFeature
 */
@@ -4407,6 +4750,8 @@ data class HomePageFeature(
 }
 
 
+
+             
 /*
     Model: CommonFeature
 */
@@ -4462,6 +4807,8 @@ data class CommonFeature(
 }
 
 
+
+             
 /*
     Model: CommunicationOptinDialogFeature
 */
@@ -4482,6 +4829,8 @@ data class CommunicationOptinDialogFeature(
 }
 
 
+
+             
 /*
     Model: DeploymentStoreSelectionFeature
 */
@@ -4507,6 +4856,8 @@ data class DeploymentStoreSelectionFeature(
 }
 
 
+
+             
 /*
     Model: ListingPriceFeature
 */
@@ -4532,6 +4883,8 @@ data class ListingPriceFeature(
 }
 
 
+
+             
 /*
     Model: CurrencyFeature
 */
@@ -4562,6 +4915,8 @@ data class CurrencyFeature(
 }
 
 
+
+             
 /*
     Model: RevenueEngineFeature
 */
@@ -4582,6 +4937,8 @@ data class RevenueEngineFeature(
 }
 
 
+
+             
 /*
     Model: FeedbackFeature
 */
@@ -4602,6 +4959,8 @@ data class FeedbackFeature(
 }
 
 
+
+             
 /*
     Model: CompareProductsFeature
 */
@@ -4622,6 +4981,8 @@ data class CompareProductsFeature(
 }
 
 
+
+             
 /*
     Model: CartFeature
 */
@@ -4662,6 +5023,8 @@ data class CartFeature(
 }
 
 
+
+             
 /*
     Model: QrFeature
 */
@@ -4692,6 +5055,8 @@ data class QrFeature(
 }
 
 
+
+             
 /*
     Model: PcrFeature
 */
@@ -4712,6 +5077,8 @@ data class PcrFeature(
 }
 
 
+
+             
 /*
     Model: OrderFeature
 */
@@ -4732,6 +5099,8 @@ data class OrderFeature(
 }
 
 
+
+             
 /*
     Model: AppFeatureRequest
 */
@@ -4752,6 +5121,8 @@ data class AppFeatureRequest(
 }
 
 
+
+             
 /*
     Model: AppFeatureResponse
 */
@@ -4772,6 +5143,8 @@ data class AppFeatureResponse(
 }
 
 
+
+             
 /*
     Model: Currency
 */
@@ -4827,6 +5200,8 @@ data class Currency(
 }
 
 
+
+             
 /*
     Model: ApplicationWebsite
 */
@@ -4852,6 +5227,8 @@ data class ApplicationWebsite(
 }
 
 
+
+             
 /*
     Model: ApplicationCors
 */
@@ -4872,6 +5249,8 @@ data class ApplicationCors(
 }
 
 
+
+             
 /*
     Model: ApplicationAuth
 */
@@ -4892,6 +5271,8 @@ data class ApplicationAuth(
 }
 
 
+
+             
 /*
     Model: ApplicationRedirections
 */
@@ -4922,6 +5303,8 @@ data class ApplicationRedirections(
 }
 
 
+
+             
 /*
     Model: ApplicationMeta
 */
@@ -4947,6 +5330,8 @@ data class ApplicationMeta(
 }
 
 
+
+             
 /*
     Model: SecureUrl
 */
@@ -4967,6 +5352,8 @@ data class SecureUrl(
 }
 
 
+
+             
 /*
     Model: Application
 */
@@ -5112,6 +5499,8 @@ data class Application(
 }
 
 
+
+             
 /*
     Model: UnhandledError
 */
@@ -5132,6 +5521,8 @@ data class UnhandledError(
 }
 
 
+
+             
 /*
     Model: InvalidPayloadRequest
 */
@@ -5152,6 +5543,8 @@ data class InvalidPayloadRequest(
 }
 
 
+
+             
 /*
     Model: InventoryBrandRule
 */
@@ -5177,6 +5570,8 @@ data class InventoryBrandRule(
 }
 
 
+
+             
 /*
     Model: StoreCriteriaRule
 */
@@ -5202,6 +5597,8 @@ data class StoreCriteriaRule(
 }
 
 
+
+             
 /*
     Model: InventoryStoreRule
 */
@@ -5232,6 +5629,8 @@ data class InventoryStoreRule(
 }
 
 
+
+             
 /*
     Model: InventoryPaymentConfig
 */
@@ -5257,6 +5656,8 @@ data class InventoryPaymentConfig(
 }
 
 
+
+             
 /*
     Model: StorePriorityRule
 */
@@ -5282,6 +5683,8 @@ data class StorePriorityRule(
 }
 
 
+
+             
 /*
     Model: ArticleAssignmentRule
 */
@@ -5302,6 +5705,8 @@ data class ArticleAssignmentRule(
 }
 
 
+
+             
 /*
     Model: InventoryArticleAssignment
 */
@@ -5327,6 +5732,8 @@ data class InventoryArticleAssignment(
 }
 
 
+
+             
 /*
     Model: CompanyAboutAddress
 */
@@ -5377,6 +5784,8 @@ data class CompanyAboutAddress(
 }
 
 
+
+             
 /*
     Model: UserEmail
 */
@@ -5412,6 +5821,8 @@ data class UserEmail(
 }
 
 
+
+             
 /*
     Model: UserPhoneNumber
 */
@@ -5452,6 +5863,8 @@ data class UserPhoneNumber(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -5502,6 +5915,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: ApplicationInformation
 */
@@ -5572,6 +5987,8 @@ data class ApplicationInformation(
 }
 
 
+
+             
 /*
     Model: InformationAddress
 */
@@ -5617,6 +6034,8 @@ data class InformationAddress(
 }
 
 
+
+             
 /*
     Model: InformationPhone
 */
@@ -5642,6 +6061,8 @@ data class InformationPhone(
 }
 
 
+
+             
 /*
     Model: InformationSupport
 */
@@ -5672,6 +6093,8 @@ data class InformationSupport(
 }
 
 
+
+             
 /*
     Model: SocialLinks
 */
@@ -5732,6 +6155,8 @@ data class SocialLinks(
 }
 
 
+
+             
 /*
     Model: FacebookLink
 */
@@ -5762,6 +6187,8 @@ data class FacebookLink(
 }
 
 
+
+             
 /*
     Model: InstagramLink
 */
@@ -5792,6 +6219,8 @@ data class InstagramLink(
 }
 
 
+
+             
 /*
     Model: TwitterLink
 */
@@ -5822,6 +6251,8 @@ data class TwitterLink(
 }
 
 
+
+             
 /*
     Model: PinterestLink
 */
@@ -5852,6 +6283,8 @@ data class PinterestLink(
 }
 
 
+
+             
 /*
     Model: GooglePlusLink
 */
@@ -5882,6 +6315,8 @@ data class GooglePlusLink(
 }
 
 
+
+             
 /*
     Model: YoutubeLink
 */
@@ -5912,6 +6347,8 @@ data class YoutubeLink(
 }
 
 
+
+             
 /*
     Model: LinkedInLink
 */
@@ -5942,6 +6379,8 @@ data class LinkedInLink(
 }
 
 
+
+             
 /*
     Model: VimeoLink
 */
@@ -5972,6 +6411,8 @@ data class VimeoLink(
 }
 
 
+
+             
 /*
     Model: BlogLink
 */
@@ -6002,6 +6443,8 @@ data class BlogLink(
 }
 
 
+
+             
 /*
     Model: Links
 */
@@ -6027,6 +6470,8 @@ data class Links(
 }
 
 
+
+             
 /*
     Model: BusinessHighlights
 */
@@ -6062,6 +6507,8 @@ data class BusinessHighlights(
 }
 
 
+
+             
 /*
     Model: ApplicationDetail
 */
@@ -6127,6 +6574,8 @@ data class ApplicationDetail(
 }
 
 
+
+             
 /*
     Model: CurrenciesResponse
 */
@@ -6147,6 +6596,8 @@ data class CurrenciesResponse(
 }
 
 
+
+             
 /*
     Model: AppCurrencyResponse
 */
@@ -6177,6 +6628,8 @@ data class AppCurrencyResponse(
 }
 
 
+
+             
 /*
     Model: StoreLatLong
 */
@@ -6202,6 +6655,8 @@ data class StoreLatLong(
 }
 
 
+
+             
 /*
     Model: OptedStoreAddress
 */
@@ -6252,6 +6707,8 @@ data class OptedStoreAddress(
 }
 
 
+
+             
 /*
     Model: OrderingStore
 */
@@ -6312,6 +6769,8 @@ data class OrderingStore(
 }
 
 
+
+             
 /*
     Model: OrderingStores
 */
@@ -6372,6 +6831,8 @@ data class OrderingStores(
 }
 
 
+
+             
 /*
     Model: OrderingStoresResponse
 */
@@ -6395,5 +6856,6 @@ data class OrderingStoresResponse(
     
     
 }
+
 
 

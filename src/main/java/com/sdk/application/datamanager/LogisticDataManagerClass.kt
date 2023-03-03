@@ -25,11 +25,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/".substring(1)
             
-                    _relativeUrls["getEntityList"] = "/service/application/logistics/v1.0/entity-list".substring(1)
-            
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones".substring(1)
-            
-                    _relativeUrls["assignLocations"] = "/service/application/logistics/v1.0/assign_stores".substring(1)
             
     }
 
@@ -66,12 +62,12 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getPincodeCity(pincode: String, countryCode: String?=null): Deferred<Response<PincodeApiResponse>>? {
+    fun getPincodeCity(pincode: String): Deferred<Response<PincodeApiResponse>>? {
         var fullUrl : String? = _relativeUrls["getPincodeCity"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeCity(fullUrl     ,  countryCode = countryCode)}
+        return logisticApiList?.getPincodeCity(fullUrl   )}
 
     
     
@@ -82,24 +78,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun getEntityList(page: String?=null, limit: String?=null, body: EntityListRequest): Deferred<Response<EntityListResponse>>? {
-        var fullUrl : String? = _relativeUrls["getEntityList"] 
-        
-        return logisticApiList?.getEntityList(fullUrl    ,  page = page,    limit = limit, body = body)}
-
-    
-    
     fun getPincodeZones(body: GetZoneFromPincodeViewRequest): Deferred<Response<GetZoneFromPincodeViewResponse>>? {
         var fullUrl : String? = _relativeUrls["getPincodeZones"] 
         
         return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
-
-    
-    
-    fun assignLocations(body: AssignStoreRequest): Deferred<Response<AssignStoreResponse>>? {
-        var fullUrl : String? = _relativeUrls["assignLocations"] 
-        
-        return logisticApiList?.assignLocations(fullUrl  ,body = body)}
 
     
     

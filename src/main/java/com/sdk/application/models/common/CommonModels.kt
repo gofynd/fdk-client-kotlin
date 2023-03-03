@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: ApplicationResponse
 */
@@ -29,6 +30,8 @@ data class ApplicationResponse(
 }
 
 
+
+             
 /*
     Model: Currency
 */
@@ -84,6 +87,8 @@ data class Currency(
 }
 
 
+
+             
 /*
     Model: Domain
 */
@@ -129,6 +134,8 @@ data class Domain(
 }
 
 
+
+             
 /*
     Model: ApplicationWebsite
 */
@@ -154,6 +161,8 @@ data class ApplicationWebsite(
 }
 
 
+
+             
 /*
     Model: ApplicationCors
 */
@@ -174,6 +183,8 @@ data class ApplicationCors(
 }
 
 
+
+             
 /*
     Model: ApplicationAuth
 */
@@ -194,6 +205,8 @@ data class ApplicationAuth(
 }
 
 
+
+             
 /*
     Model: ApplicationRedirections
 */
@@ -224,6 +237,8 @@ data class ApplicationRedirections(
 }
 
 
+
+             
 /*
     Model: ApplicationMeta
 */
@@ -249,6 +264,8 @@ data class ApplicationMeta(
 }
 
 
+
+             
 /*
     Model: SecureUrl
 */
@@ -269,6 +286,8 @@ data class SecureUrl(
 }
 
 
+
+             
 /*
     Model: ApplicationData
 */
@@ -414,6 +433,8 @@ data class ApplicationData(
 }
 
 
+
+             
 /*
     Model: NotFound
 */
@@ -434,6 +455,8 @@ data class NotFound(
 }
 
 
+
+             
 /*
     Model: BadRequest
 */
@@ -454,6 +477,8 @@ data class BadRequest(
 }
 
 
+
+             
 /*
     Model: Page
 */
@@ -504,6 +529,8 @@ data class Page(
 }
 
 
+
+             
 /*
     Model: LocationDefaultLanguage
 */
@@ -529,6 +556,8 @@ data class LocationDefaultLanguage(
 }
 
 
+
+             
 /*
     Model: LocationDefaultCurrency
 */
@@ -559,6 +588,8 @@ data class LocationDefaultCurrency(
 }
 
 
+
+             
 /*
     Model: LocationDetails
 */
@@ -659,6 +690,8 @@ data class LocationDetails(
 }
 
 
+
+             
 /*
     Model: Locations
 */
@@ -677,5 +710,6 @@ data class Locations(
     
     
 }
+
 
 

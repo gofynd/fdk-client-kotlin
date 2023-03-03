@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: PaymentGatewayConfigResponse
 */
@@ -54,6 +55,8 @@ data class PaymentGatewayConfigResponse(
 }
 
 
+
+             
 /*
     Model: ErrorCodeDescription
 */
@@ -84,6 +87,8 @@ data class ErrorCodeDescription(
 }
 
 
+
+             
 /*
     Model: PaymentGatewayConfig
 */
@@ -124,6 +129,8 @@ data class PaymentGatewayConfig(
 }
 
 
+
+             
 /*
     Model: PaymentGatewayConfigRequest
 */
@@ -154,6 +161,8 @@ data class PaymentGatewayConfigRequest(
 }
 
 
+
+             
 /*
     Model: PaymentGatewayToBeReviewed
 */
@@ -179,6 +188,8 @@ data class PaymentGatewayToBeReviewed(
 }
 
 
+
+             
 /*
     Model: ErrorCodeAndDescription
 */
@@ -204,6 +215,8 @@ data class ErrorCodeAndDescription(
 }
 
 
+
+             
 /*
     Model: HttpErrorCodeAndResponse
 */
@@ -229,6 +242,8 @@ data class HttpErrorCodeAndResponse(
 }
 
 
+
+             
 /*
     Model: IntentAppErrorList
 */
@@ -254,6 +269,8 @@ data class IntentAppErrorList(
 }
 
 
+
+             
 /*
     Model: PaymentModeLogo
 */
@@ -279,6 +296,8 @@ data class PaymentModeLogo(
 }
 
 
+
+             
 /*
     Model: IntentApp
 */
@@ -314,6 +333,8 @@ data class IntentApp(
 }
 
 
+
+             
 /*
     Model: PaymentModeList
 */
@@ -494,6 +515,8 @@ data class PaymentModeList(
 }
 
 
+
+             
 /*
     Model: RootPaymentMode
 */
@@ -554,6 +577,8 @@ data class RootPaymentMode(
 }
 
 
+
+             
 /*
     Model: PaymentOptions
 */
@@ -574,6 +599,8 @@ data class PaymentOptions(
 }
 
 
+
+             
 /*
     Model: PaymentOptionsResponse
 */
@@ -599,6 +626,8 @@ data class PaymentOptionsResponse(
 }
 
 
+
+             
 /*
     Model: PayoutsResponse
 */
@@ -649,6 +678,8 @@ data class PayoutsResponse(
 }
 
 
+
+             
 /*
     Model: PayoutBankDetails
 */
@@ -714,6 +745,8 @@ data class PayoutBankDetails(
 }
 
 
+
+             
 /*
     Model: PayoutRequest
 */
@@ -759,6 +792,8 @@ data class PayoutRequest(
 }
 
 
+
+             
 /*
     Model: PayoutResponse
 */
@@ -824,6 +859,8 @@ data class PayoutResponse(
 }
 
 
+
+             
 /*
     Model: UpdatePayoutResponse
 */
@@ -854,6 +891,8 @@ data class UpdatePayoutResponse(
 }
 
 
+
+             
 /*
     Model: UpdatePayoutRequest
 */
@@ -884,6 +923,8 @@ data class UpdatePayoutRequest(
 }
 
 
+
+             
 /*
     Model: DeletePayoutResponse
 */
@@ -904,6 +945,8 @@ data class DeletePayoutResponse(
 }
 
 
+
+             
 /*
     Model: SubscriptionPaymentMethodResponse
 */
@@ -929,6 +972,8 @@ data class SubscriptionPaymentMethodResponse(
 }
 
 
+
+             
 /*
     Model: DeleteSubscriptionPaymentMethodResponse
 */
@@ -949,6 +994,8 @@ data class DeleteSubscriptionPaymentMethodResponse(
 }
 
 
+
+             
 /*
     Model: SubscriptionConfigResponse
 */
@@ -979,6 +1026,8 @@ data class SubscriptionConfigResponse(
 }
 
 
+
+             
 /*
     Model: SaveSubscriptionSetupIntentRequest
 */
@@ -999,6 +1048,8 @@ data class SaveSubscriptionSetupIntentRequest(
 }
 
 
+
+             
 /*
     Model: SaveSubscriptionSetupIntentResponse
 */
@@ -1024,6 +1075,8 @@ data class SaveSubscriptionSetupIntentResponse(
 }
 
 
+
+             
 /*
     Model: RefundAccountResponse
 */
@@ -1059,6 +1112,8 @@ data class RefundAccountResponse(
 }
 
 
+
+             
 /*
     Model: NotFoundResourceError
 */
@@ -1089,6 +1144,8 @@ data class NotFoundResourceError(
 }
 
 
+
+             
 /*
     Model: BankDetailsForOTP
 */
@@ -1129,6 +1186,8 @@ data class BankDetailsForOTP(
 }
 
 
+
+             
 /*
     Model: AddBeneficiaryDetailsOTPRequest
 */
@@ -1154,6 +1213,8 @@ data class AddBeneficiaryDetailsOTPRequest(
 }
 
 
+
+             
 /*
     Model: IfscCodeResponse
 */
@@ -1184,6 +1245,8 @@ data class IfscCodeResponse(
 }
 
 
+
+             
 /*
     Model: OrderBeneficiaryDetails
 */
@@ -1294,6 +1357,8 @@ data class OrderBeneficiaryDetails(
 }
 
 
+
+             
 /*
     Model: OrderBeneficiaryResponse
 */
@@ -1319,6 +1384,8 @@ data class OrderBeneficiaryResponse(
 }
 
 
+
+             
 /*
     Model: MultiTenderPaymentMeta
 */
@@ -1359,6 +1426,8 @@ data class MultiTenderPaymentMeta(
 }
 
 
+
+             
 /*
     Model: MultiTenderPaymentMethod
 */
@@ -1394,6 +1463,8 @@ data class MultiTenderPaymentMethod(
 }
 
 
+
+             
 /*
     Model: PaymentConfirmationRequest
 */
@@ -1419,6 +1490,8 @@ data class PaymentConfirmationRequest(
 }
 
 
+
+             
 /*
     Model: PaymentConfirmationResponse
 */
@@ -1449,6 +1522,8 @@ data class PaymentConfirmationResponse(
 }
 
 
+
+             
 /*
     Model: CODdata
 */
@@ -1489,6 +1564,8 @@ data class CODdata(
 }
 
 
+
+             
 /*
     Model: GetUserCODLimitResponse
 */
@@ -1514,6 +1591,8 @@ data class GetUserCODLimitResponse(
 }
 
 
+
+             
 /*
     Model: SetCODForUserRequest
 */
@@ -1544,6 +1623,8 @@ data class SetCODForUserRequest(
 }
 
 
+
+             
 /*
     Model: SetCODOptionResponse
 */
@@ -1567,5 +1648,6 @@ data class SetCODOptionResponse(
     
     
 }
+
 
 

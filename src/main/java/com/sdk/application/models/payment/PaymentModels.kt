@@ -9,6 +9,7 @@ import kotlinx.android.parcel.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
+             
 /*
     Model: AggregatorConfigDetail
 */
@@ -74,6 +75,8 @@ data class AggregatorConfigDetail(
 }
 
 
+
+             
 /*
     Model: AggregatorsConfigDetailResponse
 */
@@ -139,6 +142,8 @@ data class AggregatorsConfigDetailResponse(
 }
 
 
+
+             
 /*
     Model: ErrorCodeAndDescription
 */
@@ -164,6 +169,8 @@ data class ErrorCodeAndDescription(
 }
 
 
+
+             
 /*
     Model: HttpErrorCodeAndResponse
 */
@@ -189,6 +196,8 @@ data class HttpErrorCodeAndResponse(
 }
 
 
+
+             
 /*
     Model: AttachCardRequest
 */
@@ -224,6 +233,8 @@ data class AttachCardRequest(
 }
 
 
+
+             
 /*
     Model: AttachCardsResponse
 */
@@ -254,6 +265,8 @@ data class AttachCardsResponse(
 }
 
 
+
+             
 /*
     Model: CardPaymentGateway
 */
@@ -284,6 +297,8 @@ data class CardPaymentGateway(
 }
 
 
+
+             
 /*
     Model: ActiveCardPaymentGatewayResponse
 */
@@ -314,6 +329,8 @@ data class ActiveCardPaymentGatewayResponse(
 }
 
 
+
+             
 /*
     Model: Card
 */
@@ -414,6 +431,8 @@ data class Card(
 }
 
 
+
+             
 /*
     Model: ListCardsResponse
 */
@@ -444,6 +463,8 @@ data class ListCardsResponse(
 }
 
 
+
+             
 /*
     Model: DeletehCardRequest
 */
@@ -464,6 +485,8 @@ data class DeletehCardRequest(
 }
 
 
+
+             
 /*
     Model: DeleteCardsResponse
 */
@@ -489,6 +512,8 @@ data class DeleteCardsResponse(
 }
 
 
+
+             
 /*
     Model: ValidateCustomerRequest
 */
@@ -544,6 +569,8 @@ data class ValidateCustomerRequest(
 }
 
 
+
+             
 /*
     Model: ValidateCustomerResponse
 */
@@ -579,6 +606,8 @@ data class ValidateCustomerResponse(
 }
 
 
+
+             
 /*
     Model: ChargeCustomerRequest
 */
@@ -619,6 +648,8 @@ data class ChargeCustomerRequest(
 }
 
 
+
+             
 /*
     Model: ChargeCustomerResponse
 */
@@ -669,6 +700,8 @@ data class ChargeCustomerResponse(
 }
 
 
+
+             
 /*
     Model: PaymentInitializationRequest
 */
@@ -744,6 +777,8 @@ data class PaymentInitializationRequest(
 }
 
 
+
+             
 /*
     Model: PaymentInitializationResponse
 */
@@ -839,6 +874,8 @@ data class PaymentInitializationResponse(
 }
 
 
+
+             
 /*
     Model: PaymentStatusUpdateRequest
 */
@@ -909,6 +946,8 @@ data class PaymentStatusUpdateRequest(
 }
 
 
+
+             
 /*
     Model: PaymentStatusUpdateResponse
 */
@@ -949,6 +988,8 @@ data class PaymentStatusUpdateResponse(
 }
 
 
+
+             
 /*
     Model: PaymentModeLogo
 */
@@ -974,6 +1015,8 @@ data class PaymentModeLogo(
 }
 
 
+
+             
 /*
     Model: IntentApp
 */
@@ -1009,6 +1052,8 @@ data class IntentApp(
 }
 
 
+
+             
 /*
     Model: IntentAppErrorList
 */
@@ -1034,6 +1079,8 @@ data class IntentAppErrorList(
 }
 
 
+
+             
 /*
     Model: PaymentModeList
 */
@@ -1214,6 +1261,8 @@ data class PaymentModeList(
 }
 
 
+
+             
 /*
     Model: RootPaymentMode
 */
@@ -1274,6 +1323,8 @@ data class RootPaymentMode(
 }
 
 
+
+             
 /*
     Model: AggregatorRoute
 */
@@ -1309,6 +1360,8 @@ data class AggregatorRoute(
 }
 
 
+
+             
 /*
     Model: PaymentFlow
 */
@@ -1389,6 +1442,8 @@ data class PaymentFlow(
 }
 
 
+
+             
 /*
     Model: PaymentOptionAndFlow
 */
@@ -1414,6 +1469,8 @@ data class PaymentOptionAndFlow(
 }
 
 
+
+             
 /*
     Model: PaymentModeRouteResponse
 */
@@ -1439,6 +1496,8 @@ data class PaymentModeRouteResponse(
 }
 
 
+
+             
 /*
     Model: RupifiBannerData
 */
@@ -1464,6 +1523,8 @@ data class RupifiBannerData(
 }
 
 
+
+             
 /*
     Model: RupifiBannerResponse
 */
@@ -1489,6 +1550,8 @@ data class RupifiBannerResponse(
 }
 
 
+
+             
 /*
     Model: EpaylaterBannerData
 */
@@ -1519,6 +1582,8 @@ data class EpaylaterBannerData(
 }
 
 
+
+             
 /*
     Model: EpaylaterBannerResponse
 */
@@ -1544,6 +1609,8 @@ data class EpaylaterBannerResponse(
 }
 
 
+
+             
 /*
     Model: ResendOrCancelPaymentRequest
 */
@@ -1569,6 +1636,8 @@ data class ResendOrCancelPaymentRequest(
 }
 
 
+
+             
 /*
     Model: LinkStatus
 */
@@ -1594,6 +1663,8 @@ data class LinkStatus(
 }
 
 
+
+             
 /*
     Model: ResendOrCancelPaymentResponse
 */
@@ -1619,6 +1690,8 @@ data class ResendOrCancelPaymentResponse(
 }
 
 
+
+             
 /*
     Model: TransferItemsDetails
 */
@@ -1659,6 +1732,8 @@ data class TransferItemsDetails(
 }
 
 
+
+             
 /*
     Model: TransferModeDetails
 */
@@ -1684,6 +1759,8 @@ data class TransferModeDetails(
 }
 
 
+
+             
 /*
     Model: TransferModeResponse
 */
@@ -1704,6 +1781,8 @@ data class TransferModeResponse(
 }
 
 
+
+             
 /*
     Model: UpdateRefundTransferModeRequest
 */
@@ -1729,6 +1808,8 @@ data class UpdateRefundTransferModeRequest(
 }
 
 
+
+             
 /*
     Model: UpdateRefundTransferModeResponse
 */
@@ -1749,6 +1830,8 @@ data class UpdateRefundTransferModeResponse(
 }
 
 
+
+             
 /*
     Model: OrderBeneficiaryDetails
 */
@@ -1859,6 +1942,8 @@ data class OrderBeneficiaryDetails(
 }
 
 
+
+             
 /*
     Model: OrderBeneficiaryResponse
 */
@@ -1884,6 +1969,8 @@ data class OrderBeneficiaryResponse(
 }
 
 
+
+             
 /*
     Model: NotFoundResourceError
 */
@@ -1914,6 +2001,8 @@ data class NotFoundResourceError(
 }
 
 
+
+             
 /*
     Model: IfscCodeResponse
 */
@@ -1944,6 +2033,8 @@ data class IfscCodeResponse(
 }
 
 
+
+             
 /*
     Model: ErrorCodeDescription
 */
@@ -1974,6 +2065,8 @@ data class ErrorCodeDescription(
 }
 
 
+
+             
 /*
     Model: AddBeneficiaryViaOtpVerificationRequest
 */
@@ -2004,6 +2097,8 @@ data class AddBeneficiaryViaOtpVerificationRequest(
 }
 
 
+
+             
 /*
     Model: AddBeneficiaryViaOtpVerificationResponse
 */
@@ -2029,6 +2124,8 @@ data class AddBeneficiaryViaOtpVerificationResponse(
 }
 
 
+
+             
 /*
     Model: WrongOtpError
 */
@@ -2059,6 +2156,8 @@ data class WrongOtpError(
 }
 
 
+
+             
 /*
     Model: BeneficiaryModeDetails
 */
@@ -2129,6 +2228,8 @@ data class BeneficiaryModeDetails(
 }
 
 
+
+             
 /*
     Model: AddBeneficiaryDetailsRequest
 */
@@ -2179,6 +2280,8 @@ data class AddBeneficiaryDetailsRequest(
 }
 
 
+
+             
 /*
     Model: RefundAccountResponse
 */
@@ -2214,6 +2317,8 @@ data class RefundAccountResponse(
 }
 
 
+
+             
 /*
     Model: BankDetailsForOTP
 */
@@ -2254,6 +2359,8 @@ data class BankDetailsForOTP(
 }
 
 
+
+             
 /*
     Model: AddBeneficiaryDetailsOTPRequest
 */
@@ -2279,6 +2386,8 @@ data class AddBeneficiaryDetailsOTPRequest(
 }
 
 
+
+             
 /*
     Model: WalletOtpRequest
 */
@@ -2304,6 +2413,8 @@ data class WalletOtpRequest(
 }
 
 
+
+             
 /*
     Model: WalletOtpResponse
 */
@@ -2334,6 +2445,8 @@ data class WalletOtpResponse(
 }
 
 
+
+             
 /*
     Model: SetDefaultBeneficiaryRequest
 */
@@ -2359,6 +2472,8 @@ data class SetDefaultBeneficiaryRequest(
 }
 
 
+
+             
 /*
     Model: SetDefaultBeneficiaryResponse
 */
@@ -2384,6 +2499,8 @@ data class SetDefaultBeneficiaryResponse(
 }
 
 
+
+             
 /*
     Model: GetPaymentLinkResponse
 */
@@ -2444,6 +2561,8 @@ data class GetPaymentLinkResponse(
 }
 
 
+
+             
 /*
     Model: ErrorDescription
 */
@@ -2499,6 +2618,8 @@ data class ErrorDescription(
 }
 
 
+
+             
 /*
     Model: ErrorResponse
 */
@@ -2534,6 +2655,8 @@ data class ErrorResponse(
 }
 
 
+
+             
 /*
     Model: CreatePaymentLinkMeta
 */
@@ -2574,6 +2697,8 @@ data class CreatePaymentLinkMeta(
 }
 
 
+
+             
 /*
     Model: CreatePaymentLinkRequest
 */
@@ -2619,6 +2744,8 @@ data class CreatePaymentLinkRequest(
 }
 
 
+
+             
 /*
     Model: CreatePaymentLinkResponse
 */
@@ -2664,6 +2791,8 @@ data class CreatePaymentLinkResponse(
 }
 
 
+
+             
 /*
     Model: CancelOrResendPaymentLinkRequest
 */
@@ -2684,6 +2813,8 @@ data class CancelOrResendPaymentLinkRequest(
 }
 
 
+
+             
 /*
     Model: ResendPaymentLinkResponse
 */
@@ -2719,6 +2850,8 @@ data class ResendPaymentLinkResponse(
 }
 
 
+
+             
 /*
     Model: CancelPaymentLinkResponse
 */
@@ -2749,6 +2882,8 @@ data class CancelPaymentLinkResponse(
 }
 
 
+
+             
 /*
     Model: PollingPaymentLinkResponse
 */
@@ -2814,6 +2949,8 @@ data class PollingPaymentLinkResponse(
 }
 
 
+
+             
 /*
     Model: PaymentMethodsMeta
 */
@@ -2844,6 +2981,8 @@ data class PaymentMethodsMeta(
 }
 
 
+
+             
 /*
     Model: CreateOrderUserPaymentMethods
 */
@@ -2874,6 +3013,8 @@ data class CreateOrderUserPaymentMethods(
 }
 
 
+
+             
 /*
     Model: CreateOrderUserRequest
 */
@@ -2919,6 +3060,8 @@ data class CreateOrderUserRequest(
 }
 
 
+
+             
 /*
     Model: CreateOrderUserData
 */
@@ -2984,6 +3127,8 @@ data class CreateOrderUserData(
 }
 
 
+
+             
 /*
     Model: CreateOrderUserResponse
 */
@@ -3034,6 +3179,8 @@ data class CreateOrderUserResponse(
 }
 
 
+
+             
 /*
     Model: BalanceDetails
 */
@@ -3064,6 +3211,8 @@ data class BalanceDetails(
 }
 
 
+
+             
 /*
     Model: CreditSummary
 */
@@ -3099,6 +3248,8 @@ data class CreditSummary(
 }
 
 
+
+             
 /*
     Model: CustomerCreditSummaryResponse
 */
@@ -3124,6 +3275,8 @@ data class CustomerCreditSummaryResponse(
 }
 
 
+
+             
 /*
     Model: RedirectURL
 */
@@ -3149,6 +3302,8 @@ data class RedirectURL(
 }
 
 
+
+             
 /*
     Model: RedirectToAggregatorResponse
 */
@@ -3174,6 +3329,8 @@ data class RedirectToAggregatorResponse(
 }
 
 
+
+             
 /*
     Model: CreditDetail
 */
@@ -3204,6 +3361,8 @@ data class CreditDetail(
 }
 
 
+
+             
 /*
     Model: CheckCreditResponse
 */
@@ -3229,6 +3388,8 @@ data class CheckCreditResponse(
 }
 
 
+
+             
 /*
     Model: KYCAddress
 */
@@ -3279,6 +3440,8 @@ data class KYCAddress(
 }
 
 
+
+             
 /*
     Model: UserPersonalInfoInDetails
 */
@@ -3374,6 +3537,8 @@ data class UserPersonalInfoInDetails(
 }
 
 
+
+             
 /*
     Model: BusinessDetails
 */
@@ -3444,6 +3609,8 @@ data class BusinessDetails(
 }
 
 
+
+             
 /*
     Model: DeviceDetails
 */
@@ -3494,6 +3661,8 @@ data class DeviceDetails(
 }
 
 
+
+             
 /*
     Model: MarketplaceInfo
 */
@@ -3524,6 +3693,8 @@ data class MarketplaceInfo(
 }
 
 
+
+             
 /*
     Model: CustomerOnboardingRequest
 */
@@ -3574,6 +3745,8 @@ data class CustomerOnboardingRequest(
 }
 
 
+
+             
 /*
     Model: OnboardSummary
 */
@@ -3604,6 +3777,8 @@ data class OnboardSummary(
 }
 
 
+
+             
 /*
     Model: CustomerOnboardingResponse
 */
@@ -3627,5 +3802,6 @@ data class CustomerOnboardingResponse(
     
     
 }
+
 
 
