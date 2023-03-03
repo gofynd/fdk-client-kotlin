@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -1255,19 +1255,19 @@ interface PosCartApiList {
 interface LogisticApiList {
     
     
-    @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
-    : Deferred<Response<GetTatProductResponse>>
-    
-    
-    @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
-    : Deferred<Response<GetPincodeZonesResponse>>
-    
-    
     @GET 
     fun getPincodeCity(@Url url1: String?    )
-    : Deferred<Response<GetPincodeCityResponse>>
+    : Deferred<Response<PincodeApiResponse>>
+    
+    
+    @POST 
+    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
+    : Deferred<Response<TATViewResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
 }
 
