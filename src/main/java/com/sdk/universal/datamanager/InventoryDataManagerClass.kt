@@ -2,6 +2,8 @@ package com.sdk.universal.datamanager
 
 import com.sdk.common.*
 import com.sdk.universal.*
+import com.sdk.universal.models.inventory.*
+import com.sdk.universal.apis.inventory.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,17 +21,17 @@ class InventoryDataManagerClass(val config: PublicConfig, val unauthorizedAction
 
     init{
             
-                    _relativeUrls["getJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
+                    _relativeUrls["getJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode".substring(1)
             
-                    _relativeUrls["saveJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode"?.substring(1)
+                    _relativeUrls["saveJobCodesMetrics"] = "/service/common/inventory/v1.0/company/email/jobCode".substring(1)
             
-                    _relativeUrls["getConfigByApiKey"] = "/service/common/inventory/v1.0/company/slingshot"?.substring(1)
+                    _relativeUrls["getConfigByApiKey"] = "/service/common/inventory/v1.0/company/slingshot".substring(1)
             
-                    _relativeUrls["getApiKey"] = "/service/common/inventory/v1.0/company/slingshot/apikey"?.substring(1)
+                    _relativeUrls["getApiKey"] = "/service/common/inventory/v1.0/company/slingshot/apikey".substring(1)
             
-                    _relativeUrls["getJobByCode"] = "/service/common/inventory/v1.0/company/jobs/code/{code}"?.substring(1)
+                    _relativeUrls["getJobByCode"] = "/service/common/inventory/v1.0/company/jobs/code/{code}".substring(1)
             
-                    _relativeUrls["getJobConfigByIntegrationType"] = "/service/common/inventory/v1.0/company/job/config"?.substring(1)
+                    _relativeUrls["getJobConfigByIntegrationType"] = "/service/common/inventory/v1.0/company/job/config".substring(1)
             
     }
 

@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.discount.*
+import com.sdk.platform.apis.discount.*
 
 
 
@@ -91,6 +93,18 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
+    suspend fun upsertDiscountItems(id: String,body: BulkDiscount)
+    : Deferred<Response<HashMap<String,Any>>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            discountApiList?.upsertDiscountItems(
+        companyId = config.companyId, id = id, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun validateDiscountFile(discount: String?=null,body: DiscountJob)
     : Deferred<Response<FileJobResponse>>? {
         
@@ -165,6 +179,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     
