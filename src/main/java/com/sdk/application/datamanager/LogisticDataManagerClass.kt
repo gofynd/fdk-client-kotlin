@@ -27,7 +27,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones".substring(1)
             
-                    _relativeUrls["reassignStore"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
+                    _relativeUrls["getOptimalLocations"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
             
     }
 
@@ -87,10 +87,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun reassignStore(body: ReAssignStoreRequest): Deferred<Response<ReAssignStoreResponse>>? {
-        var fullUrl : String? = _relativeUrls["reassignStore"] 
+    fun getOptimalLocations(body: ReAssignStoreRequest): Deferred<Response<ReAssignStoreResponse>>? {
+        var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
         
-        return logisticApiList?.reassignStore(fullUrl  ,body = body)}
+        return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}
 
     
     

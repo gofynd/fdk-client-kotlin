@@ -1376,7 +1376,7 @@ Get a list of staff.
 
 
 ```kotlin
-configuration.getAppStaffList(pageNo: pageNo, pageSize: pageSize, orderIncent: orderIncent, orderingStore: orderingStore, user: user).safeAwait{ response, error->
+configuration.getAppStaffList(pageNo: pageNo, pageSize: pageSize, orderIncent: orderIncent, orderingStore: orderingStore, user: user, userName: userName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1396,7 +1396,8 @@ configuration.getAppStaffList(pageNo: pageNo, pageSize: pageSize, orderIncent: o
 | pageSize | Int? | no |  |   
 | orderIncent | Boolean? | no | This is a boolean value. Select `true` to retrieve the staff members eligible for getting incentives on orders. |   
 | orderingStore | Int? | no | ID of the ordering store. Helps in retrieving staff members working at a particular ordering store. |   
-| user | String? | no | Mongo ID of the staff. Helps in retrieving the details of a particular staff member. |  
+| user | String? | no | Mongo ID of the staff. Helps in retrieving the details of a particular staff member. |   
+| userName | String? | no | user name of the member |  
 
 
 

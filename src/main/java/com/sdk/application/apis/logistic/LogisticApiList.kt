@@ -27,7 +27,7 @@ interface LogisticApiList {
     
     
     @POST 
-    fun reassignStore(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
+    fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
     : Deferred<Response<ReAssignStoreResponse>>
     
 }

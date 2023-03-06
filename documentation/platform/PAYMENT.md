@@ -97,7 +97,6 @@ Refund Transfer Mode
         "link": "",
         "text": "Review in under process. Please  wait while process completed or contact us for any further query.",
         "description": "Juspay is not a Payment Gateway (like Citrus, CCAvenue, PayU) but it works with any gateway or aggregator with zero interference in the Merchant-PG relations.",
-        "webhook_url": "https://api.fyndx0.de/service/webhooks/payment/v1.0/events/juspay",
         "reviewed": false
       },
       "logo": "https://hdn-1.fynd.com/payment/juspay-pg-logo.jpg"
@@ -129,7 +128,6 @@ Refund Transfer Mode
         "link": "",
         "text": "Review in under process. Please  wait while process completed or contact us for any further query.",
         "description": "PayUmoney supports wide range of options for making online payments via wallets, UPI, cards, and netbanking.",
-        "webhook_url": "https://api.fyndx0.de/service/webhooks/payment/v1.0/events/payumoney",
         "reviewed": false
       },
       "logo": "https://hdn-1.fynd.com/payment/payu_logo_large.png"
@@ -145,7 +143,6 @@ Refund Transfer Mode
         "link": "",
         "text": "Well done, You payment gateway successfully lived. Collect your payment at your end.",
         "description": "Razorpay is a payments platform which accept online payments via Credit Card, Debit Card, Net banking, UPI, BharatQR and Wallets.",
-        "webhook_url": "https://api.fyndx0.de/service/webhooks/payment/v1.0/events/razorpay",
         "reviewed": true
       },
       "logo": "https://hdn-1.fynd.com/payment/razorpay-pg-logo.jpg"
@@ -159,8 +156,7 @@ Refund Transfer Mode
       "display": {
         "link": "",
         "text": "Submitted request to be reviewed before going live. Please contact us for any further query.",
-        "description": "Rupifi enables businesses to avail credits and allows a 'Buy now, Pay later' system for making transactions and purchases.",
-        "webhook_url": "https://api.fyndx0.de/service/webhooks/payment/v1.0/events/rupifi"
+        "description": "Rupifi enables businesses to avail credits and allows a 'Buy now, Pay later' system for making transactions and purchases."
       },
       "logo": "https://hdn-1.fynd.com/payment/Rupifi.png"
     },
@@ -189,8 +185,7 @@ Refund Transfer Mode
       "display": {
         "link": "",
         "text": "Submitted request to be reviewed before going live. Please contact us for any further query.",
-        "description": "Stripe is a payment processor that supports online payments, credit cards, recurring subscriptions and direct payouts to bank accounts.",
-        "webhook_url": "https://api.fyndx0.de/service/webhooks/payment/v1.0/events/stripe"
+        "description": "Stripe is a payment processor that supports online payments, credit cards, recurring subscriptions and direct payouts to bank accounts."
       },
       "logo": "https://hdn-1.fynd.com/payment/Stripe.png"
     }
@@ -2924,11 +2919,11 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
+ | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
  | success | Boolean |  no  | Response is successful or not |
  | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
  | created | Boolean |  no  | Response is created or not |
- | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
- | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
  | appId | String |  no  | Application Id to which Payment config Mapped |
 
 ---
@@ -2940,9 +2935,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Error human understandable description. |
- | code | String |  no  | Error descrption code. |
  | success | Boolean |  no  | Response is successful or not |
+ | code | String |  no  | Error descrption code. |
+ | description | String |  no  | Error human understandable description. |
 
 ---
 
@@ -2953,11 +2948,11 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | configType | String |  no  | Config Type of the aggregator |
- | merchantSalt | String |  no  | Merchant key of the payment aggregator |
- | isActive | Boolean? |  yes  | Enable/ Disable Flag |
- | key | String |  no  | Api key of the payment aggregator |
  | secret | String |  no  | Secret Key of the payment aggregator |
+ | key | String |  no  | Api key of the payment aggregator |
+ | merchantSalt | String |  no  | Merchant key of the payment aggregator |
+ | configType | String |  no  | Config Type of the aggregator |
+ | isActive | Boolean? |  yes  | Enable/ Disable Flag |
 
 ---
 
@@ -2968,9 +2963,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean? |  yes  | Enable/ Disable Flag |
  | aggregatorName | [PaymentGatewayConfig](#PaymentGatewayConfig)? |  yes  |  |
  | appId | String |  no  | Application Id to which Payment config Mapped |
+ | isActive | Boolean? |  yes  | Enable/ Disable Flag |
 
 ---
 
@@ -2981,8 +2976,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | ArrayList<String> |  no  | List of added payment gateway |
  | success | Boolean |  no  | Response is successful or not |
+ | aggregator | ArrayList<String> |  no  | List of added payment gateway |
 
 ---
 
@@ -2993,8 +2988,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Error human understandable description. |
  | code | String |  no  | Error descrption code. |
+ | description | String |  no  | Error human understandable description. |
 
 ---
 
@@ -3007,18 +3002,6 @@ Success. Returns true/false for user cod option for payment. Check the example s
  | ---------- | ---- | -------- | ----------- |
  | error | [ErrorCodeAndDescription](#ErrorCodeAndDescription) |  no  |  |
  | success | Boolean |  no  | Response is successful or not |
-
----
-
-
- 
- 
- #### [IntentAppErrorList](#IntentAppErrorList)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  | code |
- | packageName | String? |  yes  | package_name |
 
 ---
 
@@ -3041,8 +3024,20 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
  | displayName | String? |  yes  | display_name |
+ | code | String? |  yes  | code |
+ | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
+ | packageName | String? |  yes  | package_name |
+
+---
+
+
+ 
+ 
+ #### [IntentAppErrorList](#IntentAppErrorList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
  | code | String? |  yes  | code |
  | packageName | String? |  yes  | package_name |
 
@@ -3055,39 +3050,39 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayPriority | Int? |  yes  | Dispaly Priority |
- | expired | Boolean? |  yes  | expired |
- | timeout | Int? |  yes  | timeout |
- | cardType | String? |  yes  | card_type |
- | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
- | cardBrand | String? |  yes  | card_brand |
- | code | String? |  yes  | code |
- | intentFlow | Boolean? |  yes  | intent_flow |
- | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
- | cardIsin | String? |  yes  | card_isin |
+ | retryCount | Int? |  yes  | retry_count |
+ | remainingLimit | Double? |  yes  | Remaining limit |
  | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
+ | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
+ | cardType | String? |  yes  | card_type |
+ | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
+ | cardBrandImage | String? |  yes  | card_brand_image |
+ | cardIsin | String? |  yes  | card_isin |
+ | cardReference | String? |  yes  | card_reference |
+ | cardToken | String? |  yes  | card_token |
+ | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
  | displayName | String? |  yes  | display name |
  | aggregatorName | String |  no  | aggregator_name |
- | remainingLimit | Double? |  yes  | Remaining limit |
- | cardIssuer | String? |  yes  | card_issuer |
+ | code | String? |  yes  | code |
  | cardNumber | String? |  yes  | card_number |
- | merchantCode | String? |  yes  | merchant code |
+ | name | String? |  yes  | name |
+ | displayPriority | Int? |  yes  | Dispaly Priority |
+ | timeout | Int? |  yes  | timeout |
+ | expired | Boolean? |  yes  | expired |
+ | intentFlow | Boolean? |  yes  | intent_flow |
+ | nickname | String? |  yes  | nickname |
+ | fyndVpa | String? |  yes  | fynd_vpa |
  | codLimit | Double? |  yes  | cod limit |
  | codLimitPerOrder | Double? |  yes  | Cod limit per order |
- | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
- | retryCount | Int? |  yes  | retry_count |
- | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
- | expMonth | Int? |  yes  | exp_month |
- | expYear | Int? |  yes  | exp_year |
- | cardBrandImage | String? |  yes  | card_brand_image |
- | cardToken | String? |  yes  | card_token |
- | cardId | String? |  yes  | card_id |
- | cardReference | String? |  yes  | card_reference |
- | name | String? |  yes  | name |
- | cardName | String? |  yes  | card_name |
- | fyndVpa | String? |  yes  | fynd_vpa |
- | nickname | String? |  yes  | nickname |
  | cardFingerprint | String? |  yes  | card_fingerprint |
+ | expMonth | Int? |  yes  | exp_month |
+ | cardId | String? |  yes  | card_id |
+ | cardBrand | String? |  yes  | card_brand |
+ | cardName | String? |  yes  | card_name |
+ | merchantCode | String? |  yes  | merchant code |
+ | expYear | Int? |  yes  | exp_year |
+ | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
+ | cardIssuer | String? |  yes  | card_issuer |
 
 ---
 
@@ -3098,15 +3093,15 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayPriority | Int |  no  | Dispaly Priority |
- | saveCard | Boolean? |  yes  | Card save or not |
  | displayName | String |  no  | Payment mode display name |
  | aggregatorName | String? |  yes  | Dispaly Priority |
- | name | String |  no  | Payment mode name |
- | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
- | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
  | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
+ | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
+ | name | String |  no  | Payment mode name |
+ | displayPriority | Int |  no  | Dispaly Priority |
+ | saveCard | Boolean? |  yes  | Card save or not |
  | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
+ | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
 
 ---
 
@@ -3140,13 +3135,13 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | transferType | String |  no  | transafer type |
+ | customers | HashMap<String,Any> |  no  | customers details object |
  | isDefault | Boolean |  no  | default or not  |
+ | moreAttributes | HashMap<String,Any> |  no  | bank details object |
  | uniqueTransferNo | HashMap<String,Any> |  no  | display priority of the payment mode |
  | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
- | moreAttributes | HashMap<String,Any> |  no  | bank details object |
  | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | customers | HashMap<String,Any> |  no  | customers details object |
- | transferType | String |  no  | transafer type |
 
 ---
 
@@ -3158,15 +3153,15 @@ Success. Returns true/false for user cod option for payment. Check the example s
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | bankName | String? |  yes  |  |
- | city | String? |  yes  |  |
- | state | String? |  yes  |  |
- | accountNo | String? |  yes  |  |
  | pincode | Int? |  yes  |  |
- | accountType | String |  no  |  |
  | branchName | String? |  yes  |  |
  | accountHolder | String? |  yes  |  |
+ | accountNo | String? |  yes  |  |
  | country | String? |  yes  |  |
+ | city | String? |  yes  |  |
  | ifscCode | String |  no  |  |
+ | accountType | String |  no  |  |
+ | state | String? |  yes  |  |
 
 ---
 
@@ -3177,12 +3172,12 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | users | HashMap<String,Any> |  no  | payout users object |
- | uniqueExternalId | String |  no  | Unique Id of Payout |
- | isActive | Boolean |  no  | Enable/Disable Flag Payout |
- | aggregator | String |  no  | Aggregator Name |
- | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
  | transferType | String |  no  | transafer type |
+ | uniqueExternalId | String |  no  | Unique Id of Payout |
+ | users | HashMap<String,Any> |  no  | payout users object |
+ | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
+ | aggregator | String |  no  | Aggregator Name |
+ | isActive | Boolean |  no  | Enable/Disable Flag Payout |
 
 ---
 
@@ -3193,16 +3188,16 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | transferType | String |  no  | transfer type |
+ | paymentStatus | String |  no  | status of payment |
+ | success | Boolean |  no  | Response is successful or not |
  | users | HashMap<String,Any> |  no  | users details object |
  | uniqueTransferNo | String |  no  | unique transfer no |
- | paymentStatus | String |  no  | status of payment |
  | payouts | HashMap<String,Any> |  no  | payout  object |
- | success | Boolean |  no  | Response is successful or not |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
  | created | Boolean |  no  | created flag |
- | aggregator | String |  no  | Aggregator Name |
  | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
- | transferType | String |  no  | transfer type |
+ | aggregator | String |  no  | Aggregator Name |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
 
 ---
 
@@ -3213,9 +3208,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | isDefault | Boolean |  no  | Enable/Disable Default Payout |
  | success | Boolean |  no  | Response is successful or not |
+ | isDefault | Boolean |  no  | Enable/Disable Default Payout |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
 
 ---
 
@@ -3227,8 +3222,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
- | uniqueExternalId | String |  no  | Unique Id of Payout |
  | isDefault | Boolean |  no  | Enable/Disable Default Payout |
+ | uniqueExternalId | String |  no  | Unique Id of Payout |
 
 ---
 
@@ -3250,8 +3245,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | ArrayList<HashMap<String,Any>> |  no  | Subscription Payment Method Object |
  | success | Boolean |  no  | Response is successful or not |
+ | data | ArrayList<HashMap<String,Any>> |  no  | Subscription Payment Method Object |
 
 ---
 
@@ -3274,8 +3269,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | config | HashMap<String,Any> |  no  | Aggregator Config |
- | aggregator | String |  no  | Aggregator Name |
  | success | Boolean |  no  | Response is successful or not |
+ | aggregator | String |  no  | Aggregator Name |
 
 ---
 
@@ -3297,8 +3292,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | HashMap<String,Any> |  no  | Subscription Payment Method Object |
  | success | Boolean |  no  | Response is successful or not |
+ | data | HashMap<String,Any> |  no  | Subscription Payment Method Object |
 
 ---
 
@@ -3309,9 +3304,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | HashMap<String,Any>? |  yes  | Refund account data. |
- | success | Boolean |  no  | Success or failure flag. |
  | message | String |  no  | Response message |
+ | success | Boolean |  no  | Success or failure flag. |
+ | data | HashMap<String,Any>? |  yes  | Refund account data. |
  | isVerifiedFlag | Boolean? |  yes  |  |
 
 ---
@@ -3323,9 +3318,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Not Found |
- | code | String |  no  | Bad Request Data |
  | success | Boolean |  no  | Response is successful or not |
+ | code | String |  no  | Bad Request Data |
+ | description | String |  no  | Not Found |
 
 ---
 
@@ -3337,9 +3332,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | bankName | String |  no  |  |
- | accountNo | String |  no  |  |
  | branchName | String |  no  |  |
  | accountHolder | String |  no  |  |
+ | accountNo | String |  no  |  |
  | ifscCode | String |  no  |  |
 
 ---
@@ -3351,8 +3346,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | orderId | String |  no  |  |
  | details | [BankDetailsForOTP](#BankDetailsForOTP) |  no  |  |
+ | orderId | String |  no  |  |
 
 ---
 
@@ -3364,8 +3359,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | bankName | String |  no  | Bank Name Of Account |
- | branchName | String |  no  | Branch Name Of Account |
  | success | Boolean? |  yes  | Response is successful or not |
+ | branchName | String |  no  | Branch Name Of Account |
 
 ---
 
@@ -3376,25 +3371,25 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | transferMode | String |  no  | Transfer Mode Of Account |
  | email | String |  no  | EMail of User |
- | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
- | modifiedOn | String |  no  | MOdification Date of Beneficiary |
- | address | String |  no  | Address of User |
+ | createdOn | String |  no  | Creation Date of Beneficiary |
  | bankName | String |  no  | Bank Name Of Account |
  | displayName | String |  no  | Display Name Of Account |
- | comment | String? |  yes  | Remarks |
- | beneficiaryId | String |  no  | Benenficiary Id |
- | mobile | String? |  yes  | MObile no of User |
- | branchName | String? |  yes  | Branch Name Of Account |
- | accountHolder | String |  no  | Account Holder Name |
- | ifscCode | String |  no  | Ifsc Code Of Account |
  | title | String |  no  | Title Of Account |
- | accountNo | String |  no  | Account Number |
- | transferMode | String |  no  | Transfer Mode Of Account |
  | subtitle | String |  no  | SHort Title Of Account |
+ | branchName | String? |  yes  | Branch Name Of Account |
+ | modifiedOn | String |  no  | MOdification Date of Beneficiary |
+ | mobile | String? |  yes  | MObile no of User |
+ | address | String |  no  | Address of User |
+ | comment | String? |  yes  | Remarks |
+ | accountNo | String |  no  | Account Number |
+ | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
  | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | accountHolder | String |  no  | Account Holder Name |
  | id | Int |  no  |   |
- | createdOn | String |  no  | Creation Date of Beneficiary |
+ | beneficiaryId | String |  no  | Benenficiary Id |
+ | ifscCode | String |  no  | Ifsc Code Of Account |
 
 ---
 
@@ -3405,8 +3400,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
  | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)>? |  yes  | All Beneficiaries Of An Order |
+ | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
 
 ---
 
@@ -3420,8 +3415,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
  | extraMeta | HashMap<String,Any>? |  yes  |  |
  | paymentGateway | String? |  yes  |  |
  | orderId | String? |  yes  |  |
- | currentStatus | String? |  yes  |  |
  | paymentId | String? |  yes  |  |
+ | currentStatus | String? |  yes  |  |
 
 ---
 
@@ -3432,10 +3427,10 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | mode | String |  no  |  |
  | name | String? |  yes  | Payment mode name |
- | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
+ | mode | String |  no  |  |
  | amount | Double |  no  | Payment amount |
+ | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
 
 ---
 
@@ -3458,9 +3453,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | orderId | String |  no  | Unique order id |
- | success | Boolean |  no  | Payment confirmation updated or not. |
  | message | String |  no  | Message |
+ | success | Boolean |  no  | Payment confirmation updated or not. |
+ | orderId | String |  no  | Unique order id |
 
 ---
 
@@ -3471,11 +3466,11 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | remainingLimit | Int |  no  | Remaining Limit for COD of User |
- | isActive | Boolean |  no  | COD option is active or not |
- | usages | Int |  no  | Used COD limit from the user Limit |
  | limit | Int |  no  | Total Limit of user |
  | userId | String |  no  | Payment mode name |
+ | usages | Int |  no  | Used COD limit from the user Limit |
+ | remainingLimit | Int |  no  | Remaining Limit for COD of User |
+ | isActive | Boolean |  no  | COD option is active or not |
 
 ---
 
@@ -3486,8 +3481,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userCodData | [CODdata](#CODdata) |  no  | User COD Data |
  | success | Boolean |  no  | Response is successful or not |
+ | userCodData | [CODdata](#CODdata) |  no  | User COD Data |
 
 ---
 
@@ -3498,9 +3493,9 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | either true or false |
- | merchantUserId | String |  no  | Merchant User id |
  | mobileno | String |  no  | Mobile No. of User |
+ | merchantUserId | String |  no  | Merchant User id |
+ | isActive | Boolean |  no  | either true or false |
 
 ---
 
@@ -3511,8 +3506,8 @@ Success. Returns true/false for user cod option for payment. Check the example s
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
  | message | String |  no  | Message |
+ | success | Boolean |  no  | Response is successful or not |
 
 ---
 
