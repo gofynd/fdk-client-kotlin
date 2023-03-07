@@ -61,8 +61,4 @@ interface CompanyProfileApiList {
     fun createLocationBulk(@Path("company_id") companyId: String,@Body body: BulkLocationSerializer)
     : Deferred<Response<ProfileSuccessResponse>>
     
-    @POST ("/service/platform/company-profile/v1.0/company/{company_id}/location/reassign")
-    fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: AssignStoreRequestValidator)
-    : Deferred<Response<AssignStoreResponseSerializer>>
-    
 }
