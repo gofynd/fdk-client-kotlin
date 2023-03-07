@@ -481,9 +481,14 @@ data class AppCartConfig(
     var revenueEngineCoupon: Boolean?=null,
     
     @SerializedName("empty_cart")
-    var emptyCart: Boolean?=null
+    var emptyCart: Boolean?=null,
+    
+    @SerializedName("pan_card")
+    var panCard: PanCardConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1189,6 +1194,33 @@ data class BrandsByCompanyResponse(
     var brands: CompanyBrandInfo?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PanCardConfig
+*/
+@Parcelize
+data class PanCardConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("threshold_amount")
+    var thresholdAmount: Double?=null
+    
+): Parcelable {
+    
+    
     
     
     
