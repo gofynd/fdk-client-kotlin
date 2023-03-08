@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.content.*
+import com.sdk.application.apis.content.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,43 +21,43 @@ class ContentDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     init{
             
-                    _relativeUrls["getAnnouncements"] = "/service/application/content/v1.0/announcements"?.substring(1)
+                    _relativeUrls["getAnnouncements"] = "/service/application/content/v1.0/announcements".substring(1)
             
-                    _relativeUrls["getBlog"] = "/service/application/content/v1.0/blogs/{slug}"?.substring(1)
+                    _relativeUrls["getBlog"] = "/service/application/content/v1.0/blogs/{slug}".substring(1)
             
-                    _relativeUrls["getBlogs"] = "/service/application/content/v1.0/blogs/"?.substring(1)
+                    _relativeUrls["getBlogs"] = "/service/application/content/v1.0/blogs/".substring(1)
             
-                    _relativeUrls["getDataLoaders"] = "/service/application/content/v1.0/data-loader"?.substring(1)
+                    _relativeUrls["getDataLoaders"] = "/service/application/content/v1.0/data-loader".substring(1)
             
-                    _relativeUrls["getFaqs"] = "/service/application/content/v1.0/faq"?.substring(1)
+                    _relativeUrls["getFaqs"] = "/service/application/content/v1.0/faq".substring(1)
             
-                    _relativeUrls["getFaqCategories"] = "/service/application/content/v1.0/faq/categories"?.substring(1)
+                    _relativeUrls["getFaqCategories"] = "/service/application/content/v1.0/faq/categories".substring(1)
             
-                    _relativeUrls["getFaqBySlug"] = "/service/application/content/v1.0/faq/{slug}"?.substring(1)
+                    _relativeUrls["getFaqBySlug"] = "/service/application/content/v1.0/faq/{slug}".substring(1)
             
-                    _relativeUrls["getFaqCategoryBySlug"] = "/service/application/content/v1.0/faq/category/{slug}"?.substring(1)
+                    _relativeUrls["getFaqCategoryBySlug"] = "/service/application/content/v1.0/faq/category/{slug}".substring(1)
             
-                    _relativeUrls["getFaqsByCategorySlug"] = "/service/application/content/v1.0/faq/category/{slug}/faqs"?.substring(1)
+                    _relativeUrls["getFaqsByCategorySlug"] = "/service/application/content/v1.0/faq/category/{slug}/faqs".substring(1)
             
-                    _relativeUrls["getLandingPage"] = "/service/application/content/v1.0/landing-page"?.substring(1)
+                    _relativeUrls["getLandingPage"] = "/service/application/content/v1.0/landing-page".substring(1)
             
-                    _relativeUrls["getLegalInformation"] = "/service/application/content/v1.0/legal"?.substring(1)
+                    _relativeUrls["getLegalInformation"] = "/service/application/content/v1.0/legal".substring(1)
             
-                    _relativeUrls["getNavigations"] = "/service/application/content/v1.0/navigations/"?.substring(1)
+                    _relativeUrls["getNavigations"] = "/service/application/content/v1.0/navigations/".substring(1)
             
-                    _relativeUrls["getSEOConfiguration"] = "/service/application/content/v1.0/seo"?.substring(1)
+                    _relativeUrls["getSEOConfiguration"] = "/service/application/content/v1.0/seo".substring(1)
             
-                    _relativeUrls["getSlideshows"] = "/service/application/content/v1.0/slideshow/"?.substring(1)
+                    _relativeUrls["getSlideshows"] = "/service/application/content/v1.0/slideshow/".substring(1)
             
-                    _relativeUrls["getSlideshow"] = "/service/application/content/v1.0/slideshow/{slug}"?.substring(1)
+                    _relativeUrls["getSlideshow"] = "/service/application/content/v1.0/slideshow/{slug}".substring(1)
             
-                    _relativeUrls["getSupportInformation"] = "/service/application/content/v1.0/support"?.substring(1)
+                    _relativeUrls["getSupportInformation"] = "/service/application/content/v1.0/support".substring(1)
             
-                    _relativeUrls["getTags"] = "/service/application/content/v1.0/tags"?.substring(1)
+                    _relativeUrls["getTags"] = "/service/application/content/v1.0/tags".substring(1)
             
-                    _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}"?.substring(1)
+                    _relativeUrls["getPage"] = "/service/application/content/v2.0/pages/{slug}".substring(1)
             
-                    _relativeUrls["getPages"] = "/service/application/content/v2.0/pages/"?.substring(1)
+                    _relativeUrls["getPages"] = "/service/application/content/v2.0/pages/".substring(1)
             
     }
 
