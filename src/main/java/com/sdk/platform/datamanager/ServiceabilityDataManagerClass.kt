@@ -135,16 +135,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
 
     
     
-    suspend fun postApplicationServiceability(body: ApplicationServiceabilityConfig)
-    : Deferred<Response<ApplicationServiceabilityConfigResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.postApplicationServiceability(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getApplicationServiceability()
     : Deferred<Response<ApplicationServiceabilityConfigResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -155,26 +145,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    
-    
-    
-    
-    
-    
-    suspend fun getZoneFromPincodeView(body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+    suspend fun postApplicationServiceability(body: ApplicationServiceabilityConfig)
+    : Deferred<Response<ApplicationServiceabilityConfigResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZoneFromPincodeView(companyId = config.companyId , applicationId = applicationId , body = body)
+                serviceabilityApiList?.postApplicationServiceability(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
     }
     
     
+    
+    
+    
+    
+    
+    
     suspend fun getZonesFromApplicationIdView(pageNo: Int?=null, pageSize: Int?=null, zoneId: ArrayList<String>?=null, q: String?=null)
     : Deferred<Response<GetZoneFromApplicationIdViewResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 serviceabilityApiList?.getZonesFromApplicationIdView(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, zoneId = zoneId, q = q )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getZoneFromPincodeView(country: String?=null,body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getZoneFromPincodeView(companyId = config.companyId , applicationId = applicationId , country = country, body = body)
         } else {
             null
         }
