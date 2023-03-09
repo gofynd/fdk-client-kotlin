@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.rewards.*
+import com.sdk.application.apis.rewards.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,19 +21,19 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     init{
             
-                    _relativeUrls["getPointsOnProduct"] = "/service/application/rewards/v1.0/catalogue/offer/order/"?.substring(1)
+                    _relativeUrls["getOfferByName"] = "/service/application/rewards/v1.0/offers/{name}/".substring(1)
             
-                    _relativeUrls["getOfferByName"] = "/service/application/rewards/v1.0/offers/{name}/"?.substring(1)
+                    _relativeUrls["catalogueOrder"] = "/service/application/rewards/v1.0/catalogue/offer/order/".substring(1)
             
-                    _relativeUrls["getOrderDiscount"] = "/service/application/rewards/v1.0/user/offers/order-discount/"?.substring(1)
+                    _relativeUrls["getUserPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/".substring(1)
             
-                    _relativeUrls["getUserPoints"] = "/service/application/rewards/v1.0/user/points/"?.substring(1)
+                    _relativeUrls["getUserPoints"] = "/service/application/rewards/v1.0/user/points/".substring(1)
             
-                    _relativeUrls["getUserPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/"?.substring(1)
+                    _relativeUrls["getUserReferralDetails"] = "/service/application/rewards/v1.0/user/referral/".substring(1)
             
-                    _relativeUrls["getUserReferralDetails"] = "/service/application/rewards/v1.0/user/referral/"?.substring(1)
+                    _relativeUrls["getOrderDiscount"] = "/service/application/rewards/v1.0/user/offer/order-discount/".substring(1)
             
-                    _relativeUrls["redeemReferralCode"] = "/service/application/rewards/v1.0/user/referral/redeem/"?.substring(1)
+                    _relativeUrls["redeemReferralCode"] = "/service/application/rewards/v1.0/user/referral/redeem/".substring(1)
             
     }
 
@@ -68,13 +70,6 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         return retrofitHttpClient?.initializeRestClient(RewardsApiList::class.java) as? RewardsApiList
     }
     
-    fun getPointsOnProduct(body: CatalogueOrderRequest): Deferred<Response<CatalogueOrderResponse>>? {
-        var fullUrl : String? = _relativeUrls["getPointsOnProduct"] 
-        
-        return rewardsApiList?.getPointsOnProduct(fullUrl  ,body = body)}
-
-    
-    
     fun getOfferByName(name: String): Deferred<Response<Offer>>? {
         var fullUrl : String? = _relativeUrls["getOfferByName"] 
         
@@ -84,17 +79,10 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getOrderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
-        var fullUrl : String? = _relativeUrls["getOrderDiscount"] 
+    fun catalogueOrder(body: CatalogueOrderRequest): Deferred<Response<CatalogueOrderResponse>>? {
+        var fullUrl : String? = _relativeUrls["catalogueOrder"] 
         
-        return rewardsApiList?.getOrderDiscount(fullUrl  ,body = body)}
-
-    
-    
-    fun getUserPoints(): Deferred<Response<PointsResponse>>? {
-        var fullUrl : String? = _relativeUrls["getUserPoints"] 
-        
-        return rewardsApiList?.getUserPoints(fullUrl  )}
+        return rewardsApiList?.catalogueOrder(fullUrl  ,body = body)}
 
     
     
@@ -152,10 +140,24 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
+    fun getUserPoints(): Deferred<Response<PointsResponse>>? {
+        var fullUrl : String? = _relativeUrls["getUserPoints"] 
+        
+        return rewardsApiList?.getUserPoints(fullUrl  )}
+
+    
+    
     fun getUserReferralDetails(): Deferred<Response<ReferralDetailsResponse>>? {
         var fullUrl : String? = _relativeUrls["getUserReferralDetails"] 
         
         return rewardsApiList?.getUserReferralDetails(fullUrl  )}
+
+    
+    
+    fun getOrderDiscount(body: OrderDiscountRequest): Deferred<Response<OrderDiscountResponse>>? {
+        var fullUrl : String? = _relativeUrls["getOrderDiscount"] 
+        
+        return rewardsApiList?.getOrderDiscount(fullUrl  ,body = body)}
 
     
     
