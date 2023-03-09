@@ -4369,6 +4369,37 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | gender | String? |  yes  |  |
  | externalId | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | phoneNumbers | ArrayList<[UserPhoneNumbers](#UserPhoneNumbers)>? |  yes  |  |
+ | emails | HashMap<String,Any>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserEmails](#UserEmails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | primary | Boolean? |  yes  |  |
+ | verified | Boolean? |  yes  |  |
+ | email | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserPhoneNumbers](#UserPhoneNumbers)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | primary | Boolean? |  yes  |  |
+ | verified | Boolean? |  yes  |  |
+ | phone | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
 
 ---
 

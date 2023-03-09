@@ -48,6 +48,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val logistic by lazy { LogisticDataManagerClass(config, unauthorizedAction)}
     
+    val documentEngine by lazy { DocumentEngineDataManagerClass(config, unauthorizedAction)}
+    
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
     }
@@ -97,6 +99,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
     
     val logistic by lazy { this@PlatformClient.logistic.ApplicationClient(applicationId,config)}
+    
+    val documentEngine by lazy { this@PlatformClient.documentEngine.ApplicationClient(applicationId,config)}
     
     }
 
