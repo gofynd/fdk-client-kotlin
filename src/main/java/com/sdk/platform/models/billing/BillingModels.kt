@@ -2519,6 +2519,9 @@ data class SubscriptionStatus(
     
     
     
+    @SerializedName("mandate_amount")
+    var mandateAmount: Double?=null,
+    
     @SerializedName("is_enabled")
     var isEnabled: Boolean?=null,
     
@@ -2526,6 +2529,8 @@ data class SubscriptionStatus(
     var subscription: Subscription?=null
     
 ): Parcelable {
+    
+    
     
     
     
