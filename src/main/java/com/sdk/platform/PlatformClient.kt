@@ -20,8 +20,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
-    val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
-    
     val catalog by lazy { CatalogDataManagerClass(config, unauthorizedAction)}
     
     val companyProfile by lazy { CompanyProfileDataManagerClass(config, unauthorizedAction)}
@@ -71,8 +69,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val communication by lazy { this@PlatformClient.communication.ApplicationClient(applicationId,config)}
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
-    
-    val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
     
     val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
     
