@@ -22,7 +22,7 @@ interface LogisticApiList {
     
     
     @GET 
-    fun getAllCountries(@Url url1: String?   )
+    fun getAllCountries(@Url url1: String?     )
     : Deferred<Response<CountryListResponse>>
     
     
