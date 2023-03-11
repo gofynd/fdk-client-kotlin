@@ -25,7 +25,7 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0/".substring(1)
             
-                    _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list/company/{company_id}/application/{application_id}".substring(1)
+                    _relativeUrls["getAllCountries"] = "/service/application/logistics/v1.0/country-list".substring(1)
             
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones".substring(1)
             
@@ -80,14 +80,10 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     
     
-    fun getAllCountries(companyId: String, applicationId: String): Deferred<Response<CountryListResponse>>? {
+    fun getAllCountries(): Deferred<Response<CountryListResponse>>? {
         var fullUrl : String? = _relativeUrls["getAllCountries"] 
         
-        fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "application_id" +"}",applicationId.toString())
-        
-        return logisticApiList?.getAllCountries(fullUrl    )}
+        return logisticApiList?.getAllCountries(fullUrl  )}
 
     
     
