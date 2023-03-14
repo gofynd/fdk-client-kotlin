@@ -89,7 +89,7 @@ class PlatformOAuthClient(val config: PlatformConfig) : BaseRepository() {
             val encodedToken =
                 encodeToString("${config.apiKey}:${config.apiSecret}".toByteArray(), NO_WRAP)
             val body = HashMap<String, String>()
-            body["grant_type"] = GrantType.authorization_code?.toString()
+            body["grant_type"] = GrantType.authorization_code.toString()
             body["refresh_token"] = refreshToken ?: ""
             val url =
                 "${config.domain}/service/panel/authentication/v1.0/company/${config.companyId}/oauth/token"
