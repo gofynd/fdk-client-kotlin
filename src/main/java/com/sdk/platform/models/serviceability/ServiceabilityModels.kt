@@ -33,21 +33,21 @@ data class ApplicationServiceabilityConfig(
 
              
 /*
-    Model: ApplicationServiceabilityResponse
+    Model: ServiceabilityErrorResponse
 */
 @Parcelize
-data class ApplicationServiceabilityResponse(
+data class ServiceabilityErrorResponse(
     
     
     
-    @SerializedName("channel_id")
-    var channelId: String?=null,
+    @SerializedName("type")
+    var type: String?=null,
     
-    @SerializedName("serviceability_type")
-    var serviceabilityType: String?=null,
+    @SerializedName("value")
+    var value: String?=null,
     
-    @SerializedName("channel_type")
-    var channelType: String?=null
+    @SerializedName("message")
+    var message: String?=null
     
 ): Parcelable {
     
@@ -65,21 +65,21 @@ data class ApplicationServiceabilityResponse(
 
              
 /*
-    Model: ServiceabilityErrorResponse
+    Model: ApplicationServiceabilityResponse
 */
 @Parcelize
-data class ServiceabilityErrorResponse(
+data class ApplicationServiceabilityResponse(
     
     
     
-    @SerializedName("message")
-    var message: String?=null,
+    @SerializedName("channel_type")
+    var channelType: String?=null,
     
-    @SerializedName("value")
-    var value: String?=null,
+    @SerializedName("channel_id")
+    var channelId: String?=null,
     
-    @SerializedName("type")
-    var type: String?=null
+    @SerializedName("serviceability_type")
+    var serviceabilityType: String?=null
     
 ): Parcelable {
     
@@ -104,14 +104,14 @@ data class ApplicationServiceabilityConfigResponse(
     
     
     
-    @SerializedName("data")
-    var data: ApplicationServiceabilityResponse?=null,
-    
     @SerializedName("error")
     var error: ServiceabilityErrorResponse?=null,
     
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: ApplicationServiceabilityResponse?=null
     
 ): Parcelable {
     
@@ -136,77 +136,13 @@ data class EntityRegionViewRequest(
     
     
     
+    @SerializedName("sub_type")
+    var subType: ArrayList<String>?=null,
+    
     @SerializedName("parent_id")
-    var parentId: ArrayList<String>?=null,
-    
-    @SerializedName("sub_type")
-    var subType: ArrayList<String>?=null
+    var parentId: ArrayList<String>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EntityRegionViewItems
-*/
-@Parcelize
-data class EntityRegionViewItems(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("sub_type")
-    var subType: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EntityRegionViewError
-*/
-@Parcelize
-data class EntityRegionViewError(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -227,14 +163,14 @@ data class EntityRegionViewPage(
     
     
     
-    @SerializedName("current")
-    var current: Int?=null,
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("size")
     var size: Int?=null,
     
-    @SerializedName("type")
-    var type: String?=null,
+    @SerializedName("current")
+    var current: Int?=null,
     
     @SerializedName("item_total")
     var itemTotal: Int?=null,
@@ -262,6 +198,70 @@ data class EntityRegionViewPage(
 
              
 /*
+    Model: EntityRegionViewError
+*/
+@Parcelize
+data class EntityRegionViewError(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EntityRegionViewItems
+*/
+@Parcelize
+data class EntityRegionViewItems(
+    
+    
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("sub_type")
+    var subType: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: EntityRegionViewResponse
 */
 @Parcelize
@@ -269,17 +269,17 @@ data class EntityRegionViewResponse(
     
     
     
-    @SerializedName("data")
-    var data: ArrayList<EntityRegionViewItems>?=null,
+    @SerializedName("page")
+    var page: EntityRegionViewPage?=null,
     
     @SerializedName("error")
     var error: EntityRegionViewError?=null,
     
-    @SerializedName("page")
-    var page: EntityRegionViewPage?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<EntityRegionViewItems>?=null
     
 ): Parcelable {
     
@@ -299,103 +299,29 @@ data class EntityRegionViewResponse(
 
              
 /*
-    Model: ListViewChannels
+    Model: ZoneDataItem
 */
 @Parcelize
-data class ListViewChannels(
+data class ZoneDataItem(
     
     
     
-    @SerializedName("channel_id")
-    var channelId: String?=null,
+    @SerializedName("size")
+    var size: Int?=null,
     
-    @SerializedName("channel_type")
-    var channelType: String?=null
+    @SerializedName("current")
+    var current: Int?=null,
     
-): Parcelable {
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
     
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ListViewProduct
-*/
-@Parcelize
-data class ListViewProduct(
-    
-    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
     
     @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("count")
-    var count: Int?=null
+    var type: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ListViewItems
-*/
-@Parcelize
-data class ListViewItems(
-    
-    
-    
-    @SerializedName("company_id")
-    var companyId: Int?=null,
-    
-    @SerializedName("stores_count")
-    var storesCount: Int?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("channels")
-    var channels: ListViewChannels?=null,
-    
-    @SerializedName("zone_id")
-    var zoneId: String?=null,
-    
-    @SerializedName("product")
-    var product: ListViewProduct?=null,
-    
-    @SerializedName("pincodes_count")
-    var pincodesCount: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -447,29 +373,103 @@ data class ListViewSummary(
 
              
 /*
-    Model: ZoneDataItem
+    Model: ListViewChannels
 */
 @Parcelize
-data class ZoneDataItem(
+data class ListViewChannels(
+    
+    
+    
+    @SerializedName("channel_type")
+    var channelType: String?=null,
+    
+    @SerializedName("channel_id")
+    var channelId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ListViewProduct
+*/
+@Parcelize
+data class ListViewProduct(
     
     
     
     @SerializedName("type")
     var type: String?=null,
     
-    @SerializedName("current")
-    var current: Int?=null,
-    
-    @SerializedName("size")
-    var size: Int?=null,
-    
-    @SerializedName("item_total")
-    var itemTotal: Int?=null,
-    
-    @SerializedName("has_next")
-    var hasNext: Boolean?=null
+    @SerializedName("count")
+    var count: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ListViewItems
+*/
+@Parcelize
+data class ListViewItems(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("channels")
+    var channels: ListViewChannels?=null,
+    
+    @SerializedName("pincodes_count")
+    var pincodesCount: Int?=null,
+    
+    @SerializedName("product")
+    var product: ListViewProduct?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("stores_count")
+    var storesCount: Int?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("zone_id")
+    var zoneId: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -496,14 +496,14 @@ data class ListViewResponse(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<ListViewItems>?=null,
+    @SerializedName("page")
+    var page: ArrayList<ZoneDataItem>?=null,
     
     @SerializedName("summary")
     var summary: ArrayList<ListViewSummary>?=null,
     
-    @SerializedName("page")
-    var page: ArrayList<ZoneDataItem>?=null
+    @SerializedName("items")
+    var items: ArrayList<ListViewItems>?=null
     
 ): Parcelable {
     
@@ -528,14 +528,14 @@ data class CompanyStoreView_PageItems(
     
     
     
-    @SerializedName("current")
-    var current: Int?=null,
+    @SerializedName("type")
+    var type: String?=null,
     
     @SerializedName("size")
     var size: Int?=null,
     
-    @SerializedName("type")
-    var type: String?=null,
+    @SerializedName("current")
+    var current: Int?=null,
     
     @SerializedName("item_total")
     var itemTotal: Int?=null,
@@ -570,11 +570,11 @@ data class CompanyStoreView_Response(
     
     
     
-    @SerializedName("items")
-    var items: @RawValue ArrayList<HashMap<String,Any>>?=null,
-    
     @SerializedName("page")
-    var page: ArrayList<CompanyStoreView_PageItems>?=null
+    var page: ArrayList<CompanyStoreView_PageItems>?=null,
+    
+    @SerializedName("items")
+    var items: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
     
@@ -597,11 +597,11 @@ data class GetZoneDataViewChannels(
     
     
     
-    @SerializedName("channel_id")
-    var channelId: String?=null,
-    
     @SerializedName("channel_type")
-    var channelType: String?=null
+    var channelType: String?=null,
+    
+    @SerializedName("channel_id")
+    var channelId: String?=null
     
 ): Parcelable {
     
@@ -624,11 +624,11 @@ data class ZoneProductTypes(
     
     
     
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
     @SerializedName("type")
-    var type: String?=null
+    var type: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -651,11 +651,11 @@ data class ZoneMappingType(
     
     
     
-    @SerializedName("pincode")
-    var pincode: ArrayList<String>?=null,
-    
     @SerializedName("state")
     var state: ArrayList<String>?=null,
+    
+    @SerializedName("pincode")
+    var pincode: ArrayList<String>?=null,
     
     @SerializedName("country")
     var country: String?=null
@@ -859,11 +859,11 @@ data class ZoneUpdateRequest(
     
     
     
-    @SerializedName("data")
-    var data: UpdateZoneData?=null,
-    
     @SerializedName("identifier")
-    var identifier: String?=null
+    var identifier: String?=null,
+    
+    @SerializedName("data")
+    var data: UpdateZoneData?=null
     
 ): Parcelable {
     
@@ -980,11 +980,11 @@ data class ZoneRequest(
     
     
     
-    @SerializedName("data")
-    var data: CreateZoneData?=null,
-    
     @SerializedName("identifier")
-    var identifier: String?=null
+    var identifier: String?=null,
+    
+    @SerializedName("data")
+    var data: CreateZoneData?=null
     
 ): Parcelable {
     
@@ -1010,11 +1010,11 @@ data class ZoneResponse(
     @SerializedName("status_code")
     var statusCode: Int?=null,
     
-    @SerializedName("zone_id")
-    var zoneId: String?=null,
-    
     @SerializedName("success")
-    var success: Boolean?=null
+    var success: Boolean?=null,
+    
+    @SerializedName("zone_id")
+    var zoneId: String?=null
     
 ): Parcelable {
     
@@ -1093,13 +1093,536 @@ data class GetZoneFromApplicationIdViewResponse(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<ListViewItems>?=null,
-    
     @SerializedName("page")
-    var page: ArrayList<ZoneDataItem>?=null
+    var page: ArrayList<ZoneDataItem>?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<ListViewItems>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMopData
+*/
+@Parcelize
+data class PincodeMopData(
+    
+    
+    
+    @SerializedName("pincodes")
+    var pincodes: ArrayList<Int>?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMopUpdateResponse
+*/
+@Parcelize
+data class PincodeMopUpdateResponse(
+    
+    
+    
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    
+    @SerializedName("channel_id")
+    var channelId: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMOPresponse
+*/
+@Parcelize
+data class PincodeMOPresponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("status_code")
+    var statusCode: Int?=null,
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("pincodes")
+    var pincodes: ArrayList<Int>?=null,
+    
+    @SerializedName("updated_pincodes")
+    var updatedPincodes: ArrayList<PincodeMopUpdateResponse>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMopBulkData
+*/
+@Parcelize
+data class PincodeMopBulkData(
+    
+    
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null,
+    
+    @SerializedName("s3_url")
+    var s3Url: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeBulkViewResponse
+*/
+@Parcelize
+data class PincodeBulkViewResponse(
+    
+    
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null,
+    
+    @SerializedName("s3_url")
+    var s3Url: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeCodStatusListingRequest
+*/
+@Parcelize
+data class PincodeCodStatusListingRequest(
+    
+    
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("is_active")
+    var isActive: Boolean?=null,
+    
+    @SerializedName("pincode")
+    var pincode: Int?=null,
+    
+    @SerializedName("current_page_number")
+    var currentPageNumber: Int?=null,
+    
+    @SerializedName("page_size")
+    var pageSize: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeCodStatusListingResponse
+*/
+@Parcelize
+data class PincodeCodStatusListingResponse(
+    
+    
+    
+    @SerializedName("country")
+    var country: String?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<PincodeCodStatusListingResponse>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("errors")
+    var errors: ArrayList<Error>?=null,
+    
+    @SerializedName("page")
+    var page: PincodeCodStatusListingPage?=null,
+    
+    @SerializedName("summary")
+    var summary: PincodeCodStatusListingSummary?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Error
+*/
+@Parcelize
+data class Error(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeCodStatusListingPage
+*/
+@Parcelize
+data class PincodeCodStatusListingPage(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("current_page_number")
+    var currentPageNumber: Int?=null,
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeCodStatusListingSummary
+*/
+@Parcelize
+data class PincodeCodStatusListingSummary(
+    
+    
+    
+    @SerializedName("total_active_pincodes")
+    var totalActivePincodes: Int?=null,
+    
+    @SerializedName("total_inactive_pincodes")
+    var totalInactivePincodes: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMopUpdateAuditHistoryRequest
+*/
+@Parcelize
+data class PincodeMopUpdateAuditHistoryRequest(
+    
+    
+    
+    @SerializedName("entity_type")
+    var entityType: String?=null,
+    
+    @SerializedName("file_name")
+    var fileName: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMopUpdateAuditHistoryPaging
+*/
+@Parcelize
+data class PincodeMopUpdateAuditHistoryPaging(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMopUpdateAuditHistoryResponse
+*/
+@Parcelize
+data class PincodeMopUpdateAuditHistoryResponse(
+    
+    
+    
+    @SerializedName("batch_id")
+    var batchId: String?=null,
+    
+    @SerializedName("entity_type")
+    var entityType: String?=null,
+    
+    @SerializedName("error_file_s3_url")
+    var errorFileS3Url: String?=null,
+    
+    @SerializedName("s3_url")
+    var s3Url: String?=null,
+    
+    @SerializedName("file_name")
+    var fileName: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("updated_by")
+    var updatedBy: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeMopUpdateAuditHistoryResponseData
+*/
+@Parcelize
+data class PincodeMopUpdateAuditHistoryResponseData(
+    
+    
+    
+    @SerializedName("entity_type")
+    var entityType: String?=null,
+    
+    @SerializedName("page")
+    var page: PincodeMopUpdateAuditHistoryPaging?=null,
+    
+    @SerializedName("data")
+    var data: ArrayList<PincodeMopUpdateAuditHistoryResponse>?=null
+    
+): Parcelable {
+    
+    
     
     
     

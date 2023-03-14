@@ -53,4 +53,20 @@ interface ServiceabilityApiList {
     fun getZoneListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
     : Deferred<Response<ListViewResponse>>
     
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
+    fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)
+    : Deferred<Response<PincodeMOPresponse>>
+    
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/pincode-mop-bulk-update")
+    fun updatePincodeBulkView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopBulkData)
+    : Deferred<Response<PincodeBulkViewResponse>>
+    
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/pincode-mop-data")
+    fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeCodStatusListingRequest)
+    : Deferred<Response<PincodeCodStatusListingResponse>>
+    
+    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/history")
+    fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest)
+    : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>
+    
 }

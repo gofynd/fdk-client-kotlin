@@ -132,6 +132,10 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
         } 
     }
     
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -182,6 +186,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         }
     }
     
+    
+    
+    suspend fun updatePincodeMopView(body: PincodeMopData)
+    : Deferred<Response<PincodeMOPresponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeMopView(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePincodeBulkView(body: PincodeMopBulkData)
+    : Deferred<Response<PincodeBulkViewResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeBulkView(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePincodeCoDListing(body: PincodeCodStatusListingRequest)
+    : Deferred<Response<PincodeCodStatusListingResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeCoDListing(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePincodeAuditHistory(body: PincodeMopUpdateAuditHistoryRequest)
+    : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeAuditHistory(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
     
 }
 }
