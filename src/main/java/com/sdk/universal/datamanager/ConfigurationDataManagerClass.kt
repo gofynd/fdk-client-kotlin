@@ -2,8 +2,6 @@ package com.sdk.universal.datamanager
 
 import com.sdk.common.*
 import com.sdk.universal.*
-import com.sdk.universal.models.configuration.*
-import com.sdk.universal.apis.configuration.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -21,9 +19,9 @@ class ConfigurationDataManagerClass(val config: PublicConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application".substring(1)
+                    _relativeUrls["searchApplication"] = "/service/common/configuration/v1.0/application/search-application"?.substring(1)
             
-                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location".substring(1)
+                    _relativeUrls["getLocations"] = "/service/common/configuration/v1.0/location"?.substring(1)
             
     }
 

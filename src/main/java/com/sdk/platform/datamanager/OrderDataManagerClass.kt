@@ -7,8 +7,6 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
-import com.sdk.platform.models.order.*
-import com.sdk.platform.apis.order.*
 
 
 
@@ -57,12 +55,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentById(channelShipmentId: String?=null, shipmentId: String?=null, orderingCompanyId: String?=null, requestByExt: String?=null)
+    suspend fun getShipmentById(channelShipmentId: String, orderingCompanyId: String?=null, requestByExt: String?=null)
     : Deferred<Response<ShipmentInfoResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentById(
-        companyId = config.companyId, channelShipmentId = channelShipmentId, shipmentId = shipmentId, orderingCompanyId = orderingCompanyId, requestByExt = requestByExt )
+        companyId = config.companyId, channelShipmentId = channelShipmentId, orderingCompanyId = orderingCompanyId, requestByExt = requestByExt )
         } else {
             null
         } 
@@ -492,24 +490,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun createChannelConfig(body: CreateChannelConfigData)
-    : Deferred<Response<CreateChannelConfigResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createChannelConfig(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getChannelConfig()
     : Deferred<Response<CreateChannelConfigData>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getChannelConfig(
         companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createChannelConfig(body: CreateChannelConfigData)
+    : Deferred<Response<CreateChannelConfigResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.createChannelConfig(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 
