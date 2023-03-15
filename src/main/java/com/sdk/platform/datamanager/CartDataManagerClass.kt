@@ -636,10 +636,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getCoupons(id: String?=null, buyNow: Boolean?=null)
+    suspend fun getPlatformPOSCoupons(id: String?=null, buyNow: Boolean?=null)
     : Deferred<Response<GetCouponResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
+                cartApiList?.getPlatformPOSCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
         } else {
             null
         }
