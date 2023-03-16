@@ -352,30 +352,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun edcDevice(terminalUniqueIdentifier: String,body: EdcAddRequest)
+    suspend fun updateEdcDevice(terminalUniqueIdentifier: String,body: EdcAddRequest)
     : Deferred<Response<EdcDeviceAddResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
+                paymentApiList?.updateEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun edcDevice(terminalUniqueIdentifier: String)
+    suspend fun getEdcDevice(terminalUniqueIdentifier: String)
     : Deferred<Response<EdcDeviceDetailsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier )
+                paymentApiList?.getEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier )
         } else {
             null
         }
     }
     
     
-    suspend fun edcDevice(terminalUniqueIdentifier: String,body: EdcUpdateRequest)
+    suspend fun addEdcDevice(terminalUniqueIdentifier: String,body: EdcUpdateRequest)
     : Deferred<Response<EdcDeviceUpdateResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.edcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
+                paymentApiList?.addEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
         } else {
             null
         }

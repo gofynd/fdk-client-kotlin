@@ -596,20 +596,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun addItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, id: String?=null,body: AddCartRequest)
+    suspend fun platformAddItems(i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, id: String?=null,body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.addItems(companyId = config.companyId , applicationId = applicationId , i = i, b = b, buyNow = buyNow, id = id, body = body)
+                cartApiList?.platformAddItems(companyId = config.companyId , applicationId = applicationId , i = i, b = b, buyNow = buyNow, id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun updateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null,body: UpdateCartRequest)
+    suspend fun platformUpdateCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null,body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b, buyNow = buyNow, body = body)
+                cartApiList?.platformUpdateCart(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b, buyNow = buyNow, body = body)
         } else {
             null
         }
@@ -636,10 +636,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPlatformPOSCoupons(id: String?=null, buyNow: Boolean?=null)
+    suspend fun getAppCoupons(id: String?=null, buyNow: Boolean?=null)
     : Deferred<Response<GetCouponResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPlatformPOSCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
+                cartApiList?.getAppCoupons(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow )
         } else {
             null
         }
@@ -756,10 +756,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun checkoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest)
+    suspend fun platformCheckoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest)
     : Deferred<Response<CartCheckoutResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.checkoutCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+                cartApiList?.platformCheckoutCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
