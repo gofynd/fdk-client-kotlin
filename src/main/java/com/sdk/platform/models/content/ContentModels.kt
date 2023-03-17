@@ -11,6 +11,55 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: GenerateSEOContent
+*/
+@Parcelize
+data class GenerateSEOContent(
+    
+    
+    
+    @SerializedName("text")
+    var text: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GeneratedSEOContent
+*/
+@Parcelize
+data class GeneratedSEOContent(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ApplicationLegal
 */
 @Parcelize

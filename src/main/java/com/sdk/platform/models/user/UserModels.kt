@@ -2985,7 +2985,7 @@ data class UpdateUserRequestSchema(
     var phoneNumbers: ArrayList<UserPhoneNumbers>?=null,
     
     @SerializedName("emails")
-    var emails: @RawValue HashMap<String,Any>?=null
+    var emails: ArrayList<UserEmails>?=null
     
 ): Parcelable {
     

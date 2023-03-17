@@ -4370,7 +4370,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | externalId | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
  | phoneNumbers | ArrayList<[UserPhoneNumbers](#UserPhoneNumbers)>? |  yes  |  |
- | emails | HashMap<String,Any>? |  yes  |  |
+ | emails | ArrayList<[UserEmails](#UserEmails)>? |  yes  |  |
 
 ---
 
