@@ -1312,73 +1312,6 @@ data class NavigationReference(
     var sortOrder: Int?=null,
     
     @SerializedName("sub_navigation")
-    var subNavigation: ArrayList<SubNavigationReference>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SubNavigationReference
-*/
-@Parcelize
-data class SubNavigationReference(
-    
-    
-    
-    @SerializedName("acl")
-    var acl: ArrayList<String>?=null,
-    
-    @SerializedName("tags")
-    var tags: ArrayList<String>?=null,
-    
-    @SerializedName("_locale_language")
-    var localeLanguage: LocaleLanguage?=null,
-    
-    @SerializedName("image")
-    var image: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("action")
-    var action: Action?=null,
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("display")
-    var display: String?=null,
-    
-    @SerializedName("sort_order")
-    var sortOrder: Int?=null,
-    
-    @SerializedName("sub_navigation")
     var subNavigation: ArrayList<NavigationReference>?=null
     
 ): Parcelable {
@@ -1727,10 +1660,15 @@ data class CreateTagSchema(
     @SerializedName("attributes")
     var attributes: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("pages")
+    var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
     @SerializedName("content")
     var content: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3802,10 +3740,15 @@ data class TagSchema(
     @SerializedName("content")
     var content: String?=null,
     
+    @SerializedName("pages")
+    var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
     @SerializedName("__source")
     var source: TagSourceSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
