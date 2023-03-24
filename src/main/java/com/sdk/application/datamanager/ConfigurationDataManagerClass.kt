@@ -240,20 +240,15 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null): Deferred<Response<AppStaffListResponse>>? {
+    fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffListResponse>>? {
         var fullUrl : String? = _relativeUrls["getAppStaffList"] 
         
-        return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user,    userName = userName)}
+        return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user)}
 
     
     
     
         
-            
-            
-        
-            
-                
             
             
         
@@ -281,7 +276,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
     *
     * Summary: Paginator for getAppStaffList
     **/
-    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null) : Paginator<AppStaffListResponse>{
+    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null) : Paginator<AppStaffListResponse>{
 
     val paginator = Paginator<AppStaffListResponse>()
 
@@ -294,7 +289,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
                 val pageType = "number"
                 var fullUrl : String? = _relativeUrls["getAppStaffList"] 
                 
-                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, userName = userName)?.safeAwait{ response, error ->
+                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

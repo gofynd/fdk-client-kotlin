@@ -169,6 +169,18 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
+    suspend fun updateLevelIntegration(id: String, level: String,body: UpdateIntegrationLevelRequest)
+    : Deferred<Response<IntegrationLevel>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            configurationApiList?.updateLevelIntegration(
+        companyId = config.companyId, id = id, level = level, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getIntegrationByLevelId(id: String, level: String, uid: String)
     : Deferred<Response<IntegrationLevel>>? {
         
@@ -193,24 +205,12 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     }
     
     
-    suspend fun getLevelActiveIntegrations(id: String, level: String, uid: String, permission: String?=null)
+    suspend fun getLevelActiveIntegrations(id: String, level: String, uid: String)
     : Deferred<Response<OptedStoreIntegration>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             configurationApiList?.getLevelActiveIntegrations(
-        companyId = config.companyId, id = id, level = level, uid = uid, permission = permission )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun updateLevelIntegration(id: String, level: String,body: UpdateIntegrationLevelRequest)
-    : Deferred<Response<IntegrationLevel>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            configurationApiList?.updateLevelIntegration(
-        companyId = config.companyId, id = id, level = level, body = body)
+        companyId = config.companyId, id = id, level = level, uid = uid )
         } else {
             null
         } 

@@ -1831,14 +1831,9 @@ data class ListingPriceFeature(
     
     
     @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("sort")
-    var sort: String?=null
+    var value: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2446,14 +2441,9 @@ data class Application(
     var mobileLogo: SecureUrl?=null,
     
     @SerializedName("domain")
-    var domain: Domain?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null
+    var domain: Domain?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3059,7 +3049,7 @@ data class InformationAddress(
     var addressLine: ArrayList<String>?=null,
     
     @SerializedName("phone")
-    var phone: ArrayList<InformationPhone>?=null,
+    var phone: InformationPhone?=null,
     
     @SerializedName("city")
     var city: String?=null,
@@ -3597,14 +3587,9 @@ data class ApplicationDetail(
     var domains: ArrayList<Domain>?=null,
     
     @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null
+    var id: String?=null
     
 ): Parcelable {
-    
-    
     
     
     
