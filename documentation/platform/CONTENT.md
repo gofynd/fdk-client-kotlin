@@ -7772,6 +7772,9 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | text | String? |  yes  |  |
+ | existingText | String? |  yes  |  |
+ | keywords | ArrayList<String>? |  yes  |  |
+ | type | String? |  yes  |  |
 
 ---
 
