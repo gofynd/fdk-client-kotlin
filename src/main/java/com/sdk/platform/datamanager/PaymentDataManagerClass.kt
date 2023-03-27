@@ -174,7 +174,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -280,20 +279,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUserCODlimitRoutes(merchantUserId: String, mobileNo: String)
-    : Deferred<Response<GetUserCODLimitResponse>>? {
+    suspend fun getPaymentCodeOption()
+    : Deferred<Response<GetPaymentCodeResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , merchantUserId = merchantUserId, mobileNo = mobileNo )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
-    : Deferred<Response<SetCODOptionResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

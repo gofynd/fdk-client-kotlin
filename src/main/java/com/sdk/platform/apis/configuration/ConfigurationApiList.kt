@@ -166,7 +166,7 @@ interface ConfigurationApiList {
     : Deferred<Response<IntegrationLevel>>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/integration-opt-in/check/configuration/{id}/{level}/{uid}")
-    fun getLevelActiveIntegrations(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String, @Path("uid") uid: String)
+    fun getLevelActiveIntegrations(@Path("company_id") companyId: String, @Path("id") id: String, @Path("level") level: String, @Path("uid") uid: String, @Query("permission") permission: String?)
     : Deferred<Response<OptedStoreIntegration>>
     
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/inventory/brands-by-companies")

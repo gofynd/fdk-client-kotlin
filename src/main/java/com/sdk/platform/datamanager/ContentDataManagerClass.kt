@@ -748,10 +748,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPageMeta()
+    suspend fun getPageMeta(pageType: String?=null, cartPages: Boolean?=null)
     : Deferred<Response<PageMetaSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId  )
+                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId , pageType = pageType, cartPages = cartPages )
         } else {
             null
         }

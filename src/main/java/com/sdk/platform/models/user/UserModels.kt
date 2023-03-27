@@ -2361,14 +2361,9 @@ data class PlatformSchema(
     var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
     
     @SerializedName("delete_account_consent")
-    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("session_config")
-    var sessionConfig: @RawValue HashMap<String,Any>?=null
+    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2885,38 +2880,6 @@ data class Google(
 
              
 /*
-    Model: SessionExpiry
-*/
-@Parcelize
-data class SessionExpiry(
-    
-    
-    
-    @SerializedName("duration")
-    var duration: Int?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("is_rolling")
-    var isRolling: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: UpdateUserRequestSchema
 */
 @Parcelize
@@ -3005,6 +2968,12 @@ data class UserSchema(
     @SerializedName("account_type")
     var accountType: String?=null,
     
+    @SerializedName("debug")
+    var debug: Debug?=null,
+    
+    @SerializedName("has_old_password_hash")
+    var hasOldPasswordHash: Boolean?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -3015,6 +2984,10 @@ data class UserSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3122,6 +3095,33 @@ data class Email(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Debug
+*/
+@Parcelize
+data class Debug(
+    
+    
+    
+    @SerializedName("source")
+    var source: String?=null,
+    
+    @SerializedName("platform")
+    var platform: String?=null
+    
+): Parcelable {
     
     
     

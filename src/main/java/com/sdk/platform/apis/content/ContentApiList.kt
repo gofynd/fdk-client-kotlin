@@ -166,7 +166,7 @@ interface ContentApiList {
     : Deferred<Response<NavigationSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/meta")
-    fun getPageMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getPageMeta(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_type") pageType: String?, @Query("cart_pages") cartPages: Boolean?)
     : Deferred<Response<PageMetaSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/pages/spec")

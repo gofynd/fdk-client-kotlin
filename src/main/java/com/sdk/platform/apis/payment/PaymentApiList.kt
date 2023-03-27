@@ -85,12 +85,8 @@ interface PaymentApiList {
     fun confirmPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentConfirmationRequest)
     : Deferred<Response<PaymentConfirmationResponse>>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
-    fun getUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("merchant_user_id") merchantUserId: String, @Query("mobile_no") mobileNo: String)
-    : Deferred<Response<GetUserCODLimitResponse>>
-    
-    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
-    fun setUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetCODForUserRequest)
-    : Deferred<Response<SetCODOptionResponse>>
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/codes")
+    fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<GetPaymentCodeResponse>>
     
 }

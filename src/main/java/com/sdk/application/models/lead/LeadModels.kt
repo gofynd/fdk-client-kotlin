@@ -663,6 +663,12 @@ data class UserSchema(
     @SerializedName("account_type")
     var accountType: String?=null,
     
+    @SerializedName("debug")
+    var debug: Debug?=null,
+    
+    @SerializedName("has_old_password_hash")
+    var hasOldPasswordHash: Boolean?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -673,6 +679,10 @@ data class UserSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1084,6 +1094,75 @@ data class Status(
 
              
 /*
+    Model: TicketCategory
+*/
+@Parcelize
+data class TicketCategory(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null,
+    
+    @SerializedName("form")
+    var form: CustomForm?=null,
+    
+    @SerializedName("sub_categories")
+    var subCategories: ArrayList<TicketSubCategory>?=null,
+    
+    @SerializedName("feedback_form")
+    var feedbackForm: TicketFeedbackForm?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TicketSubCategory
+*/
+@Parcelize
+data class TicketSubCategory(
+    
+    
+    
+    @SerializedName("key")
+    var key: String?=null,
+    
+    @SerializedName("display")
+    var display: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TicketFeedbackForm
 */
 @Parcelize
@@ -1318,12 +1397,6 @@ data class CommunicationDetails(
     
     
     
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
     @SerializedName("value")
     var value: String?=null,
     
@@ -1334,10 +1407,6 @@ data class CommunicationDetails(
     var enabled: Boolean?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -1375,9 +1444,6 @@ data class SupportGeneralConfig(
     @SerializedName("show_communication_info")
     var showCommunicationInfo: Boolean?=null,
     
-    @SerializedName("support_communication")
-    var supportCommunication: CommunicationDetails?=null,
-    
     @SerializedName("show_support_dris")
     var showSupportDris: Boolean?=null,
     
@@ -1385,208 +1451,6 @@ data class SupportGeneralConfig(
     var integration: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FeedbackForm
-*/
-@Parcelize
-data class FeedbackForm(
-    
-    
-    
-    @SerializedName("inputs")
-    var inputs: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("title")
-    var title: String?=null,
-    
-    @SerializedName("timestamps")
-    var timestamps: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: TicketSubCategory
-*/
-@Parcelize
-data class TicketSubCategory(
-    
-    
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("display")
-    var display: String?=null,
-    
-    @SerializedName("sub_categories")
-    var subCategories: TicketSubCategory?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: TicketCategory
-*/
-@Parcelize
-data class TicketCategory(
-    
-    
-    
-    @SerializedName("display")
-    var display: String?=null,
-    
-    @SerializedName("key")
-    var key: String?=null,
-    
-    @SerializedName("sub_categories")
-    var subCategories: TicketCategory?=null,
-    
-    @SerializedName("group_id")
-    var groupId: Double?=null,
-    
-    @SerializedName("feedback_form")
-    var feedbackForm: FeedbackForm?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CategoryData
-*/
-@Parcelize
-data class CategoryData(
-    
-    
-    
-    @SerializedName("list")
-    var list: TicketCategory?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: IntegrationConfig
-*/
-@Parcelize
-data class IntegrationConfig(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("integration_type")
-    var integrationType: String?=null,
-    
-    @SerializedName("base_url")
-    var baseUrl: String?=null,
-    
-    @SerializedName("create_ticket_apikey")
-    var createTicketApikey: String?=null,
-    
-    @SerializedName("update_ticket_apikey")
-    var updateTicketApikey: String?=null,
-    
-    @SerializedName("category_sync_apikey")
-    var categorySyncApikey: String?=null,
-    
-    @SerializedName("category_data")
-    var categoryData: CategoryData?=null,
-    
-    @SerializedName("webhook_apikey")
-    var webhookApikey: String?=null,
-    
-    @SerializedName("config_completed")
-    var configCompleted: Boolean?=null,
-    
-    @SerializedName("allow_ticket_creation")
-    var allowTicketCreation: Boolean?=null,
-    
-    @SerializedName("show_listing")
-    var showListing: Boolean?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -1775,11 +1639,14 @@ data class Ticket(
     @SerializedName("content")
     var content: TicketContent?=null,
     
+    @SerializedName("ticket_id")
+    var ticketId: String?=null,
+    
     @SerializedName("category")
     var category: TicketCategory?=null,
     
     @SerializedName("sub_category")
-    var subCategory: String?=null,
+    var subCategory: TicketSubCategory?=null,
     
     @SerializedName("source")
     var source: TicketSourceEnum?=null,
@@ -1804,9 +1671,6 @@ data class Ticket(
     
     @SerializedName("is_feedback_pending")
     var isFeedbackPending: Boolean?=null,
-    
-    @SerializedName("integration")
-    var integration: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("_id")
     var id: String?=null,

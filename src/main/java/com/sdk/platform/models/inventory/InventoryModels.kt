@@ -11,107 +11,48 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
-    Model: DataTresholdDTO
+    Model: GCompany
 */
 @Parcelize
-data class DataTresholdDTO(
+data class GCompany(
     
     
     
-    @SerializedName("min_price")
-    var minPrice: Double?=null,
-    
-    @SerializedName("safe_stock")
-    var safeStock: Int?=null,
-    
-    @SerializedName("period_threshold")
-    var periodThreshold: Int?=null,
-    
-    @SerializedName("period_threshold_type")
-    var periodThresholdType: String?=null,
-    
-    @SerializedName("period_type_list")
-    var periodTypeList: ArrayList<GenericDTO>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: GenericDTO
-*/
-@Parcelize
-data class GenericDTO(
-    
-    
-    
-    @SerializedName("text")
-    var text: String?=null,
-    
-    @SerializedName("value")
-    var value: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: JobConfigDTO
-*/
-@Parcelize
-data class JobConfigDTO(
-    
-    
-    
-    @SerializedName("integration_data")
-    var integrationData: @RawValue HashMap<String,HashMap<String,Any>>?=null,
-    
-    @SerializedName("company_name")
-    var companyName: String?=null,
+    @SerializedName("_id")
+    var id: String?=null,
     
     @SerializedName("integration")
     var integration: String?=null,
     
-    @SerializedName("company_id")
-    var companyId: Int?=null,
+    @SerializedName("level")
+    var level: String?=null,
     
-    @SerializedName("task_details")
-    var taskDetails: TaskDTO?=null,
+    @SerializedName("uid")
+    var uid: Int?=null,
     
-    @SerializedName("threshold_details")
-    var thresholdDetails: DataTresholdDTO?=null,
+    @SerializedName("opted")
+    var opted: Boolean?=null,
     
-    @SerializedName("job_code")
-    var jobCode: String?=null,
+    @SerializedName("permissions")
+    var permissions: ArrayList<String>?=null,
     
-    @SerializedName("alias")
-    var alias: String?=null
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("stores")
+    var stores: ArrayList<GStore>?=null,
+    
+    @SerializedName("gstores")
+    var gstores: ArrayList<GStore>?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -137,20 +78,92 @@ data class JobConfigDTO(
 
              
 /*
-    Model: TaskDTO
+    Model: GStore
 */
 @Parcelize
-data class TaskDTO(
+data class GStore(
     
     
     
-    @SerializedName("type")
-    var type: Int?=null,
+    @SerializedName("_id")
+    var id: String?=null,
     
-    @SerializedName("group_list")
-    var groupList: ArrayList<GenericDTO>?=null
+    @SerializedName("integration")
+    var integration: String?=null,
+    
+    @SerializedName("level")
+    var level: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("opted")
+    var opted: Boolean?=null,
+    
+    @SerializedName("permissions")
+    var permissions: ArrayList<String>?=null,
+    
+    @SerializedName("token")
+    var token: String?=null,
+    
+    @SerializedName("code")
+    var code: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("data")
+    var data: StoreData?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Metum
+*/
+@Parcelize
+data class Metum(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
     
     
     
@@ -216,10 +229,10 @@ data class Page(
 
              
 /*
-    Model: ResponseEnvelopeString
+    Model: ResponseEnvelopeListSlingshotConfigurationDetail
 */
 @Parcelize
-data class ResponseEnvelopeString(
+data class ResponseEnvelopeListSlingshotConfigurationDetail(
     
     
     
@@ -245,10 +258,10 @@ data class ResponseEnvelopeString(
     var httpStatus: String?=null,
     
     @SerializedName("items")
-    var items: String?=null,
+    var items: ArrayList<SlingshotConfigurationDetail>?=null,
     
     @SerializedName("payload")
-    var payload: String?=null,
+    var payload: ArrayList<SlingshotConfigurationDetail>?=null,
     
     @SerializedName("trace_id")
     var traceId: String?=null,
@@ -277,6 +290,97 @@ data class ResponseEnvelopeString(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SlingshotConfigurationDetail
+*/
+@Parcelize
+data class SlingshotConfigurationDetail(
+    
+    
+    
+    @SerializedName("integration")
+    var integration: SlingshotIntegration?=null,
+    
+    @SerializedName("companies")
+    var companies: ArrayList<GCompany>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SlingshotIntegration
+*/
+@Parcelize
+data class SlingshotIntegration(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("meta")
+    var meta: ArrayList<Metum>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StoreData
+*/
+@Parcelize
+data class StoreData(
+    
+    
+    
+    @SerializedName("location_id")
+    var locationId: String?=null
+    
+): Parcelable {
     
     
     
@@ -483,49 +587,29 @@ data class ResponseEnvelopeKafkaResponse(
 
              
 /*
-    Model: GCompany
+    Model: DataTresholdDTO
 */
 @Parcelize
-data class GCompany(
+data class DataTresholdDTO(
     
     
     
-    @SerializedName("_id")
-    var id: String?=null,
+    @SerializedName("min_price")
+    var minPrice: Double?=null,
     
-    @SerializedName("integration")
-    var integration: String?=null,
+    @SerializedName("safe_stock")
+    var safeStock: Int?=null,
     
-    @SerializedName("level")
-    var level: String?=null,
+    @SerializedName("period_threshold")
+    var periodThreshold: Int?=null,
     
-    @SerializedName("uid")
-    var uid: Int?=null,
+    @SerializedName("period_threshold_type")
+    var periodThresholdType: String?=null,
     
-    @SerializedName("opted")
-    var opted: Boolean?=null,
-    
-    @SerializedName("permissions")
-    var permissions: ArrayList<String>?=null,
-    
-    @SerializedName("token")
-    var token: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("stores")
-    var stores: ArrayList<GStore>?=null
+    @SerializedName("period_type_list")
+    var periodTypeList: ArrayList<GenericDTO>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -545,90 +629,75 @@ data class GCompany(
 
              
 /*
-    Model: GStore
+    Model: GenericDTO
 */
 @Parcelize
-data class GStore(
+data class GenericDTO(
     
     
     
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("integration")
-    var integration: String?=null,
-    
-    @SerializedName("level")
-    var level: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("opted")
-    var opted: Boolean?=null,
-    
-    @SerializedName("permissions")
-    var permissions: ArrayList<String>?=null,
-    
-    @SerializedName("token")
-    var token: String?=null,
-    
-    @SerializedName("code")
-    var code: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("data")
-    var data: StoreData?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Metum
-*/
-@Parcelize
-data class Metum(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
+    @SerializedName("text")
+    var text: String?=null,
     
     @SerializedName("value")
-    var value: String?=null
+    var value: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: JobConfigDTO
+*/
+@Parcelize
+data class JobConfigDTO(
+    
+    
+    
+    @SerializedName("integration")
+    var integration: String?=null,
+    
+    @SerializedName("integration_data")
+    var integrationData: @RawValue HashMap<String,HashMap<String,Any>>?=null,
+    
+    @SerializedName("company_name")
+    var companyName: String?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("task_details")
+    var taskDetails: TaskDTO?=null,
+    
+    @SerializedName("threshold_details")
+    var thresholdDetails: DataTresholdDTO?=null,
+    
+    @SerializedName("job_code")
+    var jobCode: String?=null,
+    
+    @SerializedName("alias")
+    var alias: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -644,10 +713,37 @@ data class Metum(
 
              
 /*
-    Model: ResponseEnvelopeListSlingshotConfigurationDetail
+    Model: TaskDTO
 */
 @Parcelize
-data class ResponseEnvelopeListSlingshotConfigurationDetail(
+data class TaskDTO(
+    
+    
+    
+    @SerializedName("type")
+    var type: Int?=null,
+    
+    @SerializedName("group_list")
+    var groupList: ArrayList<GenericDTO>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ResponseEnvelopeString
+*/
+@Parcelize
+data class ResponseEnvelopeString(
     
     
     
@@ -673,10 +769,10 @@ data class ResponseEnvelopeListSlingshotConfigurationDetail(
     var httpStatus: String?=null,
     
     @SerializedName("items")
-    var items: ArrayList<SlingshotConfigurationDetail>?=null,
+    var items: String?=null,
     
     @SerializedName("payload")
-    var payload: ArrayList<SlingshotConfigurationDetail>?=null,
+    var payload: String?=null,
     
     @SerializedName("trace_id")
     var traceId: String?=null,
@@ -705,97 +801,6 @@ data class ResponseEnvelopeListSlingshotConfigurationDetail(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SlingshotConfigurationDetail
-*/
-@Parcelize
-data class SlingshotConfigurationDetail(
-    
-    
-    
-    @SerializedName("integration")
-    var integration: SlingshotIntegration?=null,
-    
-    @SerializedName("companies")
-    var companies: ArrayList<GCompany>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SlingshotIntegration
-*/
-@Parcelize
-data class SlingshotIntegration(
-    
-    
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("meta")
-    var meta: ArrayList<Metum>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: StoreData
-*/
-@Parcelize
-data class StoreData(
-    
-    
-    
-    @SerializedName("location_id")
-    var locationId: String?=null
-    
-): Parcelable {
     
     
     
@@ -1811,11 +1816,11 @@ data class JobConfigRawDTO(
     
     
     
-    @SerializedName("company_name")
-    var companyName: String?=null,
-    
     @SerializedName("integration")
     var integration: String?=null,
+    
+    @SerializedName("company_name")
+    var companyName: String?=null,
     
     @SerializedName("company_id")
     var companyId: Int?=null,
@@ -2146,6 +2151,9 @@ data class PropBeanConfig(
     @SerializedName("required")
     var required: Boolean?=null,
     
+    @SerializedName("mapping")
+    var mapping: HashMap<String,PropBeanConfig>?=null,
+    
     @SerializedName("optional")
     var optional: Boolean?=null,
     
@@ -2210,6 +2218,8 @@ data class PropBeanConfig(
     var enrichFromMaster: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

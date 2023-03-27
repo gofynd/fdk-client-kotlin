@@ -45,6 +45,30 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
     }
     
     
+    suspend fun getConfigByCompany()
+    : Deferred<Response<ResponseEnvelopeListSlingshotConfigurationDetail>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.getConfigByCompany(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun suppressStores(body: SuppressStorePayload)
+    : Deferred<Response<ResponseEnvelopeKafkaResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            inventoryApiList?.suppressStores(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getJobsByCompany(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<ResponseEnvelopeListJobConfigRawDTO>>? {
         
@@ -75,30 +99,6 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
         return if (config.oauthClient.isAccessTokenValid()) {
             inventoryApiList?.createJob(
         companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun suppressStores(body: SuppressStorePayload)
-    : Deferred<Response<ResponseEnvelopeKafkaResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            inventoryApiList?.suppressStores(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getConfigByCompany()
-    : Deferred<Response<ResponseEnvelopeListSlingshotConfigurationDetail>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            inventoryApiList?.getConfigByCompany(
-        companyId = config.companyId )
         } else {
             null
         } 
