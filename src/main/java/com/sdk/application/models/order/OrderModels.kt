@@ -2142,14 +2142,14 @@ data class Products(
     
     
     
-    @SerializedName("quantity")
-    var quantity: Int?=null,
+    @SerializedName("line_number")
+    var lineNumber: Int?=null,
     
     @SerializedName("identifier")
     var identifier: String?=null,
     
-    @SerializedName("line_number")
-    var lineNumber: Int?=null
+    @SerializedName("quantity")
+    var quantity: Int?=null
     
 ): Parcelable {
     
@@ -2201,14 +2201,14 @@ data class ProductsReasonsFilters(
     
     
     
-    @SerializedName("quantity")
-    var quantity: Int?=null,
+    @SerializedName("line_number")
+    var lineNumber: Int?=null,
     
     @SerializedName("identifier")
     var identifier: String?=null,
     
-    @SerializedName("line_number")
-    var lineNumber: Int?=null
+    @SerializedName("quantity")
+    var quantity: Int?=null
     
 ): Parcelable {
     
@@ -2341,11 +2341,11 @@ data class ProductsDataUpdatesFilters(
     
     
     
-    @SerializedName("identifier")
-    var identifier: String?=null,
-    
     @SerializedName("line_number")
-    var lineNumber: Int?=null
+    var lineNumber: Int?=null,
+    
+    @SerializedName("identifier")
+    var identifier: String?=null
     
 ): Parcelable {
     
@@ -2452,11 +2452,11 @@ data class ShipmentsRequest(
     @SerializedName("products")
     var products: ArrayList<Products>?=null,
     
-    @SerializedName("reasons")
-    var reasons: ReasonsData?=null,
-    
     @SerializedName("identifier")
     var identifier: String?=null,
+    
+    @SerializedName("reasons")
+    var reasons: ReasonsData?=null,
     
     @SerializedName("data_updates")
     var dataUpdates: DataUpdates?=null
@@ -2486,14 +2486,14 @@ data class StatuesRequest(
     
     
     
+    @SerializedName("status")
+    var status: String?=null,
+    
     @SerializedName("exclude_bags_next_state")
     var excludeBagsNextState: String?=null,
     
     @SerializedName("shipments")
-    var shipments: ArrayList<ShipmentsRequest>?=null,
-    
-    @SerializedName("status")
-    var status: String?=null
+    var shipments: ArrayList<ShipmentsRequest>?=null
     
 ): Parcelable {
     
@@ -2518,20 +2518,20 @@ data class UpdateShipmentStatusRequest(
     
     
     
-    @SerializedName("force_transition")
-    var forceTransition: Boolean?=null,
-    
-    @SerializedName("lock_after_transition")
-    var lockAfterTransition: Boolean?=null,
-    
     @SerializedName("task")
     var task: Boolean?=null,
     
     @SerializedName("statuses")
     var statuses: ArrayList<StatuesRequest>?=null,
     
+    @SerializedName("force_transition")
+    var forceTransition: Boolean?=null,
+    
     @SerializedName("unlock_before_transition")
-    var unlockBeforeTransition: Boolean?=null
+    var unlockBeforeTransition: Boolean?=null,
+    
+    @SerializedName("lock_after_transition")
+    var lockAfterTransition: Boolean?=null
     
 ): Parcelable {
     
