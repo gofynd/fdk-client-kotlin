@@ -418,9 +418,14 @@ data class ReferralDetailsResponse(
     var user: ReferralDetailsUser?=null,
     
     @SerializedName("referrer_info")
-    var referrerInfo: String?=null
+    var referrerInfo: String?=null,
+    
+    @SerializedName("terms_conditions_link")
+    var termsConditionsLink: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

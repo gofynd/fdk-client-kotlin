@@ -87,6 +87,6 @@ interface PaymentApiList {
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/codes")
     fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<getPaymentCodeResponse>>
+    : Deferred<Response<GetPaymentCodeResponse>>
     
 }

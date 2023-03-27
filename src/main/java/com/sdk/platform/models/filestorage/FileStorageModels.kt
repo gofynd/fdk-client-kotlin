@@ -41,9 +41,19 @@ data class CDN(
     
     
     @SerializedName("url")
-    var url: String?=null
+    var url: String?=null,
+    
+    @SerializedName("absolute_url")
+    var absoluteUrl: String?=null,
+    
+    @SerializedName("relative_url")
+    var relativeUrl: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
