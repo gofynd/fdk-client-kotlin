@@ -566,10 +566,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getCartList()
+    suspend fun getCartList(fromDate: String?=null, toDate: String?=null, sortOn: String?=null)
     : Deferred<Response<MultiCartResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId  )
+                cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate, sortOn = sortOn )
         } else {
             null
         }
