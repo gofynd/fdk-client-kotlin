@@ -2,8 +2,6 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
-import com.sdk.application.models.cart.*
-import com.sdk.application.apis.cart.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -21,57 +19,57 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     init{
             
-                    _relativeUrls["getCart"] = "/service/application/cart/v1.0/detail".substring(1)
+                    _relativeUrls["getCart"] = "/service/application/cart/v1.0/detail"?.substring(1)
             
-                    _relativeUrls["getCartLastModified"] = "/service/application/cart/v1.0/detail".substring(1)
+                    _relativeUrls["getCartLastModified"] = "/service/application/cart/v1.0/detail"?.substring(1)
             
-                    _relativeUrls["addItems"] = "/service/application/cart/v1.0/detail".substring(1)
+                    _relativeUrls["addItems"] = "/service/application/cart/v1.0/detail"?.substring(1)
             
-                    _relativeUrls["updateCart"] = "/service/application/cart/v1.0/detail".substring(1)
+                    _relativeUrls["updateCart"] = "/service/application/cart/v1.0/detail"?.substring(1)
             
-                    _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic".substring(1)
+                    _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic"?.substring(1)
             
-                    _relativeUrls["getCoupons"] = "/service/application/cart/v1.0/coupon".substring(1)
+                    _relativeUrls["getCoupons"] = "/service/application/cart/v1.0/coupon"?.substring(1)
             
-                    _relativeUrls["applyCoupon"] = "/service/application/cart/v1.0/coupon".substring(1)
+                    _relativeUrls["applyCoupon"] = "/service/application/cart/v1.0/coupon"?.substring(1)
             
-                    _relativeUrls["removeCoupon"] = "/service/application/cart/v1.0/coupon".substring(1)
+                    _relativeUrls["removeCoupon"] = "/service/application/cart/v1.0/coupon"?.substring(1)
             
-                    _relativeUrls["getBulkDiscountOffers"] = "/service/application/cart/v1.0/bulk-price".substring(1)
+                    _relativeUrls["getBulkDiscountOffers"] = "/service/application/cart/v1.0/bulk-price"?.substring(1)
             
-                    _relativeUrls["applyRewardPoints"] = "/service/application/cart/v1.0/redeem/points/".substring(1)
+                    _relativeUrls["applyRewardPoints"] = "/service/application/cart/v1.0/redeem/points/"?.substring(1)
             
-                    _relativeUrls["getAddresses"] = "/service/application/cart/v1.0/address".substring(1)
+                    _relativeUrls["getAddresses"] = "/service/application/cart/v1.0/address"?.substring(1)
             
-                    _relativeUrls["addAddress"] = "/service/application/cart/v1.0/address".substring(1)
+                    _relativeUrls["addAddress"] = "/service/application/cart/v1.0/address"?.substring(1)
             
-                    _relativeUrls["getAddressById"] = "/service/application/cart/v1.0/address/{id}".substring(1)
+                    _relativeUrls["getAddressById"] = "/service/application/cart/v1.0/address/{id}"?.substring(1)
             
-                    _relativeUrls["updateAddress"] = "/service/application/cart/v1.0/address/{id}".substring(1)
+                    _relativeUrls["updateAddress"] = "/service/application/cart/v1.0/address/{id}"?.substring(1)
             
-                    _relativeUrls["removeAddress"] = "/service/application/cart/v1.0/address/{id}".substring(1)
+                    _relativeUrls["removeAddress"] = "/service/application/cart/v1.0/address/{id}"?.substring(1)
             
-                    _relativeUrls["selectAddress"] = "/service/application/cart/v1.0/select-address".substring(1)
+                    _relativeUrls["selectAddress"] = "/service/application/cart/v1.0/select-address"?.substring(1)
             
-                    _relativeUrls["selectPaymentMode"] = "/service/application/cart/v1.0/payment".substring(1)
+                    _relativeUrls["selectPaymentMode"] = "/service/application/cart/v1.0/payment"?.substring(1)
             
-                    _relativeUrls["validateCouponForPayment"] = "/service/application/cart/v1.0/payment/validate/".substring(1)
+                    _relativeUrls["validateCouponForPayment"] = "/service/application/cart/v1.0/payment/validate/"?.substring(1)
             
-                    _relativeUrls["getShipments"] = "/service/application/cart/v1.0/shipment".substring(1)
+                    _relativeUrls["getShipments"] = "/service/application/cart/v1.0/shipment"?.substring(1)
             
-                    _relativeUrls["checkoutCart"] = "/service/application/cart/v1.0/checkout".substring(1)
+                    _relativeUrls["checkoutCart"] = "/service/application/cart/v1.0/checkout"?.substring(1)
             
-                    _relativeUrls["updateCartMeta"] = "/service/application/cart/v1.0/meta".substring(1)
+                    _relativeUrls["updateCartMeta"] = "/service/application/cart/v1.0/meta"?.substring(1)
             
-                    _relativeUrls["getCartShareLink"] = "/service/application/cart/v1.0/share-cart".substring(1)
+                    _relativeUrls["getCartShareLink"] = "/service/application/cart/v1.0/share-cart"?.substring(1)
             
-                    _relativeUrls["getCartSharedItems"] = "/service/application/cart/v1.0/share-cart/{token}".substring(1)
+                    _relativeUrls["getCartSharedItems"] = "/service/application/cart/v1.0/share-cart/{token}"?.substring(1)
             
-                    _relativeUrls["updateCartWithSharedItems"] = "/service/application/cart/v1.0/share-cart/{token}/{action}".substring(1)
+                    _relativeUrls["updateCartWithSharedItems"] = "/service/application/cart/v1.0/share-cart/{token}/{action}"?.substring(1)
             
-                    _relativeUrls["getPromotionOffers"] = "/service/application/cart/v1.0/available-promotions".substring(1)
+                    _relativeUrls["getPromotionOffers"] = "/service/application/cart/v1.0/available-promotions"?.substring(1)
             
-                    _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices".substring(1)
+                    _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices"?.substring(1)
             
     }
 

@@ -2,8 +2,6 @@ package com.sdk.universal.datamanager
 
 import com.sdk.common.*
 import com.sdk.universal.*
-import com.sdk.universal.models.webhook.*
-import com.sdk.universal.apis.webhook.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -21,9 +19,9 @@ class WebhookDataManagerClass(val config: PublicConfig, val unauthorizedAction: 
 
     init{
             
-                    _relativeUrls["fetchAllWebhookEvents"] = "/service/common/webhook/v1.0/events".substring(1)
+                    _relativeUrls["fetchAllWebhookEvents"] = "/service/common/webhook/v1.0/events"?.substring(1)
             
-                    _relativeUrls["queryWebhookEventDetails"] = "/service/common/webhook/v1.0/events/query-event-details".substring(1)
+                    _relativeUrls["queryWebhookEventDetails"] = "/service/common/webhook/v1.0/events/query-event-details"?.substring(1)
             
     }
 
