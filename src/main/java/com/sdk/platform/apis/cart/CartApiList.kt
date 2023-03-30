@@ -30,7 +30,7 @@ interface CartApiList {
     : Deferred<Response<SuccessMessage>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
-    fun getPromotions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("is_active") isActive: Boolean?, @Query("promo_group") promoGroup: String?, @Query("promotion_type") promotionType: String?, @Query("fp_panel") fpPanel: String?, @Query("promotion_id") promotionId: String?)
+    fun getPromotions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("status") status: String?, @Query("promo_group") promoGroup: String?, @Query("promotion_type") promotionType: String?, @Query("fp_panel") fpPanel: String?, @Query("promotion_id") promotionId: String?)
     : Deferred<Response<PromotionsResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
@@ -48,6 +48,10 @@ interface CartApiList {
     @PATCH ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion/{id}")
     fun updatePromotionPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PromotionPartialUpdate)
     : Deferred<Response<SuccessMessage>>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promo-coupons")
+    fun getPromosCouponConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ActivePromosResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
     fun fetchAndvalidateCartItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsRequest)

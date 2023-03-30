@@ -186,12 +186,24 @@ interface ContentApiList {
     : Deferred<Response<PageSchema>>
     
     @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings")
-    fun updatePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PathMappingSchema)
+    fun addPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PathMappingSchema)
     : Deferred<Response<PathMappingSchema>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings")
-    fun getPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getPathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
     : Deferred<Response<PathMappingSchema>>
+    
+    @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
+    fun getPathRedirectionRule(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String)
+    : Deferred<Response<PathMappingSchema>>
+    
+    @PUT ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
+    fun updatePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String,@Body body: PathMappingSchema)
+    : Deferred<Response<PathMappingSchema>>
+    
+    @DELETE ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/path-mappings/{path_id}")
+    fun deletePathRedirectionRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("path_id") pathId: String)
+    : Deferred<Response<HashMap<String,Any>>>
     
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo")
     fun getSEOConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)

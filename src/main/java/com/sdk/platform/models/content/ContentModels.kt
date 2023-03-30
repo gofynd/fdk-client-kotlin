@@ -110,19 +110,29 @@ data class PathMappingSchema(
     @SerializedName("application")
     var application: String?=null,
     
-    @SerializedName("redirections")
-    var redirections: ArrayList<RedirectionSchema>?=null,
-    
     @SerializedName("_id")
     var id: String?=null,
+    
+    @SerializedName("redirect_from")
+    var redirectFrom: String?=null,
+    
+    @SerializedName("redirect_to")
+    var redirectTo: String?=null,
     
     @SerializedName("updated_at")
     var updatedAt: String?=null,
     
     @SerializedName("created_at")
-    var createdAt: String?=null
+    var createdAt: String?=null,
+    
+    @SerializedName("__source")
+    var source: PathSourceSchema?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -142,18 +152,18 @@ data class PathMappingSchema(
 
              
 /*
-    Model: RedirectionSchema
+    Model: PathSourceSchema
 */
 @Parcelize
-data class RedirectionSchema(
+data class PathSourceSchema(
     
     
     
-    @SerializedName("redirect_from")
-    var redirectFrom: String?=null,
+    @SerializedName("type")
+    var type: String?=null,
     
-    @SerializedName("redirect_to")
-    var redirectTo: String?=null
+    @SerializedName("id")
+    var id: String?=null
     
 ): Parcelable {
     
@@ -1329,7 +1339,7 @@ data class NavigationReference(
     var sortOrder: Int?=null,
     
     @SerializedName("sub_navigation")
-    var subNavigation: @RawValue ArrayList<Any>?=null
+    var subNavigation: ArrayList<NavigationReference>?=null
     
 ): Parcelable {
     
@@ -1677,10 +1687,15 @@ data class CreateTagSchema(
     @SerializedName("attributes")
     var attributes: @RawValue HashMap<String,Any>?=null,
     
+    @SerializedName("pages")
+    var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
     @SerializedName("content")
     var content: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -3752,10 +3767,15 @@ data class TagSchema(
     @SerializedName("content")
     var content: String?=null,
     
+    @SerializedName("pages")
+    var pages: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
     @SerializedName("__source")
     var source: TagSourceSchema?=null
     
 ): Parcelable {
+    
+    
     
     
     
