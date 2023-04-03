@@ -18,7 +18,7 @@ interface ServiceabilityApiList {
     : Deferred<Response<EntityRegionView_Response>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zones")
-    fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?)
+    fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?)
     : Deferred<Response<ListViewResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/all-stores")
@@ -37,13 +37,13 @@ interface ServiceabilityApiList {
     fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
     : Deferred<Response<ZoneResponse>>
     
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
-    fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
-    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
-    
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
     fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
+    fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
+    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/stores/{store_uid}")
     fun getStore(@Path("company_id") companyId: String, @Path("store_uid") storeUid: String)
