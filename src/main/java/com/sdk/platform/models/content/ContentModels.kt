@@ -11,6 +11,70 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: GenerateSEOContent
+*/
+@Parcelize
+data class GenerateSEOContent(
+    
+    
+    
+    @SerializedName("text")
+    var text: String?=null,
+    
+    @SerializedName("existing_text")
+    var existingText: String?=null,
+    
+    @SerializedName("keywords")
+    var keywords: ArrayList<String>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GeneratedSEOContent
+*/
+@Parcelize
+data class GeneratedSEOContent(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: ApplicationLegal
 */
 @Parcelize
@@ -126,7 +190,7 @@ data class PathMappingSchema(
     var createdAt: String?=null,
     
     @SerializedName("__source")
-    var source: TagSourceSchema?=null
+    var source: PathSourceSchema?=null
     
 ): Parcelable {
     
@@ -139,6 +203,33 @@ data class PathMappingSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PathSourceSchema
+*/
+@Parcelize
+data class PathSourceSchema(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null
+    
+): Parcelable {
     
     
     

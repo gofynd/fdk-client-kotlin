@@ -95,6 +95,33 @@ data class AddProxyResponse(
 
              
 /*
+    Model: RemoveProxyResponse
+*/
+@Parcelize
+data class RemoveProxyResponse(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("data")
+    var data: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: APIError
 */
 @Parcelize
@@ -124,33 +151,6 @@ data class APIError(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: RemoveProxyResponse
-*/
-@Parcelize
-data class RemoveProxyResponse(
-    
-    
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("data")
-    var data: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
     
     
     
