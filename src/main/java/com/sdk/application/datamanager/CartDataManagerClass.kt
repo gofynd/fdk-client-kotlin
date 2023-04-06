@@ -27,6 +27,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateCart"] = "/service/application/cart/v1.0/detail"?.substring(1)
             
+                    _relativeUrls["deleteCart"] = "/service/application/cart/v1.0/cart_archive"?.substring(1)
+            
                     _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic"?.substring(1)
             
                     _relativeUrls["getCoupons"] = "/service/application/cart/v1.0/coupon"?.substring(1)
@@ -131,6 +133,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
         return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
+
+    
+    
+    fun deleteCart(id: String?=null): Deferred<Response<DeleteCartDetailResponse>>? {
+        var fullUrl : String? = _relativeUrls["deleteCart"] 
+        
+        return cartApiList?.deleteCart(fullUrl    ,  id = id)}
 
     
     
