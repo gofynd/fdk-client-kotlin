@@ -566,10 +566,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getCartList()
+    suspend fun getCartList(fromDate: String?=null, toDate: String?=null, filterOn: String?=null)
     : Deferred<Response<MultiCartResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId  )
+                cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate, filterOn = filterOn )
         } else {
             null
         }
@@ -616,10 +616,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteCart(id: String?=null)
+    suspend fun deleteCart(id: String?=null,body: DeleteCartRequest)
     : Deferred<Response<DeleteCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.deleteCart(companyId = config.companyId , applicationId = applicationId , id = id )
+                cartApiList?.deleteCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
