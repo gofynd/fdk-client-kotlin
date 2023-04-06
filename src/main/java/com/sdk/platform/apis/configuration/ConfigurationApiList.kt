@@ -29,6 +29,10 @@ interface ConfigurationApiList {
     fun updateAppFeatures(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppFeatureRequest)
     : Deferred<Response<AppFeature>>
     
+    @PATCH ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/feature")
+    fun modifyAppFeatures(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppFeatureRequest)
+    : Deferred<Response<AppFeature>>
+    
     @GET ("/service/platform/configuration/v1.0/company/{company_id}/application/{application_id}/detail")
     fun getAppBasicDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<ApplicationDetail>>
