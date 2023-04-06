@@ -742,9 +742,14 @@ data class SendOtpRequestSchema(
     var captchaCode: String?=null,
     
     @SerializedName("mobile")
-    var mobile: String?=null
+    var mobile: String?=null,
+    
+    @SerializedName("android_hash")
+    var androidHash: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2131,6 +2136,132 @@ data class AuthSuccessUserEmails(
 
              
 /*
+    Model: UserGroupResponseSchema
+*/
+@Parcelize
+data class UserGroupResponseSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("file_url")
+    var fileUrl: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserGroupListResponseSchema
+*/
+@Parcelize
+data class UserGroupListResponseSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<UserGroupResponseSchema>?=null,
+    
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateUserGroupSchema
+*/
+@Parcelize
+data class CreateUserGroupSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("file_url")
+    var fileUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CreateUserRequestSchema
 */
 @Parcelize
@@ -2356,9 +2487,14 @@ data class PlatformSchema(
     var deleteAccountReasons: ArrayList<DeleteAccountReasons>?=null,
     
     @SerializedName("delete_account_consent")
-    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null
+    var deleteAccountConsent: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("session_config")
+    var sessionConfig: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2875,6 +3011,70 @@ data class Google(
 
              
 /*
+    Model: SessionExpiry
+*/
+@Parcelize
+data class SessionExpiry(
+    
+    
+    
+    @SerializedName("duration")
+    var duration: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("is_rolling")
+    var isRolling: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateUserGroupSchema
+*/
+@Parcelize
+data class UpdateUserGroupSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("file_url")
+    var fileUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UpdateUserRequestSchema
 */
 @Parcelize
@@ -2963,12 +3163,6 @@ data class UserSchema(
     @SerializedName("account_type")
     var accountType: String?=null,
     
-    @SerializedName("debug")
-    var debug: Debug?=null,
-    
-    @SerializedName("has_old_password_hash")
-    var hasOldPasswordHash: Boolean?=null,
-    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -2979,10 +3173,6 @@ data class UserSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     
@@ -3090,33 +3280,6 @@ data class Email(
     
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Debug
-*/
-@Parcelize
-data class Debug(
-    
-    
-    
-    @SerializedName("source")
-    var source: String?=null,
-    
-    @SerializedName("platform")
-    var platform: String?=null
-    
-): Parcelable {
     
     
     
