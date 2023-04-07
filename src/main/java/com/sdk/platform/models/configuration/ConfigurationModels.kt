@@ -478,9 +478,14 @@ data class AppCartConfig(
     var bulkCoupons: Boolean?=null,
     
     @SerializedName("revenue_engine_coupon")
-    var revenueEngineCoupon: Boolean?=null
+    var revenueEngineCoupon: Boolean?=null,
+    
+    @SerializedName("empty_cart")
+    var emptyCart: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

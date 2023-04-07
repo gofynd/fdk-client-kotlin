@@ -112,7 +112,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -500,16 +499,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<CreateFaqResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getFaqByIdOrSlug(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun generateSEOTitle(type: String,body: GenerateSEOContent)
-    : Deferred<Response<GeneratedSEOContent>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.generateSEOTitle(companyId = config.companyId , applicationId = applicationId , type = type, body = body)
         } else {
             null
         }
