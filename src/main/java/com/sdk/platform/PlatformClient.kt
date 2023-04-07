@@ -1,8 +1,14 @@
 package com.sdk.platform
 
+import com.sdk.common.HttpClient
 import com.sdk.platform.datamanager.*
 
 class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) {
+
+    init {
+        HttpClient.reset()
+    }
+
     
     val common by lazy { CommonDataManagerClass(config, unauthorizedAction)}
     
