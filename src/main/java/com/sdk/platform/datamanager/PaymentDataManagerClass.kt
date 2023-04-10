@@ -173,6 +173,16 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -292,6 +302,106 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SetCODOptionResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcAggregatorsAndModelList()
+    : Deferred<Response<EdcAggregatorAndModelListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcAggregatorsAndModelList(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDeviceStats()
+    : Deferred<Response<EdcDeviceStatsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDeviceStats(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateEdcDevice(terminalUniqueIdentifier: String,body: EdcAddRequest)
+    : Deferred<Response<EdcDeviceAddResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEdcDevice(terminalUniqueIdentifier: String)
+    : Deferred<Response<EdcDeviceDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addEdcDevice(terminalUniqueIdentifier: String,body: EdcUpdateRequest)
+    : Deferred<Response<EdcDeviceUpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.addEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDeviceList(pageNo: Int?=null, pageSize: Int?=null, isActive: Boolean?=null, storeId: Int?=null, deviceTag: String?=null)
+    : Deferred<Response<EdcDeviceListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDeviceList(pageNo = pageNo, pageSize = pageSize, isActive = isActive, storeId = storeId, deviceTag = deviceTag, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, orderType: String, userDetails: String?=null)
+    : Deferred<Response<PaymentOptionsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPosPaymentModeRoutes(companyId = config.companyId , applicationId = applicationId , amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, cardReference = cardReference, orderType = orderType, userDetails = userDetails )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun initialisePayment(body: PaymentInitializationRequest)
+    : Deferred<Response<PaymentInitializationResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.initialisePayment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun checkAndUpdatePaymentStatus(body: PaymentStatusUpdateRequest)
+    : Deferred<Response<PaymentStatusUpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.checkAndUpdatePaymentStatus(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest)
+    : Deferred<Response<ResendOrCancelPaymentResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.resendOrCancelPayment(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
