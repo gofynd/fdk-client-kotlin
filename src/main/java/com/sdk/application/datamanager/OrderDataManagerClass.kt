@@ -114,12 +114,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getInvoiceByShipmentId(shipmentId: String, documentType: String?=null): Deferred<Response<ResponseGetInvoiceShipment>>? {
+    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
         var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getInvoiceByShipmentId(fullUrl     ,  documentType = documentType)}
+        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
 
     
     
