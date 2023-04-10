@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.content.*
+import com.sdk.platform.apis.content.*
 
 
 
@@ -41,6 +43,8 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         )
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
+    
+    
     
     
     
@@ -502,6 +506,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun generateSEOTitle(type: String,body: GenerateSEOContent)
+    : Deferred<Response<GeneratedSEOContent>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.generateSEOTitle(companyId = config.companyId , applicationId = applicationId , type = type, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getLandingPages(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<LandingPageGetResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -745,10 +759,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPageMeta(pageType: String?=null, cartPages: Boolean?=null)
+    suspend fun getPageMeta()
     : Deferred<Response<PageMetaSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId , pageType = pageType, cartPages = cartPages )
+                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -759,6 +773,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PageSpec>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPageSpec(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createPagePreview(body: PageRequest)
+    : Deferred<Response<PageSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createPagePreview(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

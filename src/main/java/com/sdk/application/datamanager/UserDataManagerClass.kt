@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.user.*
+import com.sdk.application.apis.user.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,75 +21,75 @@ class UserDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     init{
             
-                    _relativeUrls["loginWithFacebook"] = "/service/application/user/authentication/v1.0/login/facebook-token"?.substring(1)
+                    _relativeUrls["loginWithFacebook"] = "/service/application/user/authentication/v1.0/login/facebook-token".substring(1)
             
-                    _relativeUrls["loginWithGoogle"] = "/service/application/user/authentication/v1.0/login/google-token"?.substring(1)
+                    _relativeUrls["loginWithGoogle"] = "/service/application/user/authentication/v1.0/login/google-token".substring(1)
             
-                    _relativeUrls["loginWithGoogleAndroid"] = "/service/application/user/authentication/v1.0/login/google-android"?.substring(1)
+                    _relativeUrls["loginWithGoogleAndroid"] = "/service/application/user/authentication/v1.0/login/google-android".substring(1)
             
-                    _relativeUrls["loginWithGoogleIOS"] = "/service/application/user/authentication/v1.0/login/google-ios"?.substring(1)
+                    _relativeUrls["loginWithGoogleIOS"] = "/service/application/user/authentication/v1.0/login/google-ios".substring(1)
             
-                    _relativeUrls["loginWithAppleIOS"] = "/service/application/user/authentication/v1.0/login/apple-ios"?.substring(1)
+                    _relativeUrls["loginWithAppleIOS"] = "/service/application/user/authentication/v1.0/login/apple-ios".substring(1)
             
-                    _relativeUrls["loginWithOTP"] = "/service/application/user/authentication/v1.0/login/otp"?.substring(1)
+                    _relativeUrls["loginWithOTP"] = "/service/application/user/authentication/v1.0/login/otp".substring(1)
             
-                    _relativeUrls["loginWithEmailAndPassword"] = "/service/application/user/authentication/v1.0/login/password"?.substring(1)
+                    _relativeUrls["loginWithEmailAndPassword"] = "/service/application/user/authentication/v1.0/login/password".substring(1)
             
-                    _relativeUrls["sendResetPasswordEmail"] = "/service/application/user/authentication/v1.0/login/password/reset"?.substring(1)
+                    _relativeUrls["sendResetPasswordEmail"] = "/service/application/user/authentication/v1.0/login/password/reset".substring(1)
             
-                    _relativeUrls["sendResetPasswordMobile"] = "/service/application/user/authentication/v1.0/login/password/mobile/reset"?.substring(1)
+                    _relativeUrls["sendResetPasswordMobile"] = "/service/application/user/authentication/v1.0/login/password/mobile/reset".substring(1)
             
-                    _relativeUrls["forgotPassword"] = "/service/application/user/authentication/v1.0/login/password/reset/forgot"?.substring(1)
+                    _relativeUrls["forgotPassword"] = "/service/application/user/authentication/v1.0/login/password/reset/forgot".substring(1)
             
-                    _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token"?.substring(1)
+                    _relativeUrls["sendResetToken"] = "/service/application/user/authentication/v1.0/login/password/reset/token".substring(1)
             
-                    _relativeUrls["loginWithToken"] = "/service/application/user/authentication/v1.0/login/token"?.substring(1)
+                    _relativeUrls["loginWithToken"] = "/service/application/user/authentication/v1.0/login/token".substring(1)
             
-                    _relativeUrls["registerWithForm"] = "/service/application/user/authentication/v1.0/register/form"?.substring(1)
+                    _relativeUrls["registerWithForm"] = "/service/application/user/authentication/v1.0/register/form".substring(1)
             
-                    _relativeUrls["verifyEmail"] = "/service/application/user/authentication/v1.0/verify/email"?.substring(1)
+                    _relativeUrls["verifyEmail"] = "/service/application/user/authentication/v1.0/verify/email".substring(1)
             
-                    _relativeUrls["verifyMobile"] = "/service/application/user/authentication/v1.0/verify/mobile"?.substring(1)
+                    _relativeUrls["verifyMobile"] = "/service/application/user/authentication/v1.0/verify/mobile".substring(1)
             
-                    _relativeUrls["hasPassword"] = "/service/application/user/authentication/v1.0/has-password"?.substring(1)
+                    _relativeUrls["hasPassword"] = "/service/application/user/authentication/v1.0/has-password".substring(1)
             
-                    _relativeUrls["updatePassword"] = "/service/application/user/authentication/v1.0/password"?.substring(1)
+                    _relativeUrls["updatePassword"] = "/service/application/user/authentication/v1.0/password".substring(1)
             
-                    _relativeUrls["deleteUser"] = "/service/application/user/authentication/v1.0/delete"?.substring(1)
+                    _relativeUrls["deleteUser"] = "/service/application/user/authentication/v1.0/delete".substring(1)
             
-                    _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout"?.substring(1)
+                    _relativeUrls["logout"] = "/service/application/user/authentication/v1.0/logout".substring(1)
             
-                    _relativeUrls["sendOTPOnMobile"] = "/service/application/user/authentication/v1.0/otp/mobile/send"?.substring(1)
+                    _relativeUrls["sendOTPOnMobile"] = "/service/application/user/authentication/v1.0/otp/mobile/send".substring(1)
             
-                    _relativeUrls["verifyMobileOTP"] = "/service/application/user/authentication/v1.0/otp/mobile/verify"?.substring(1)
+                    _relativeUrls["verifyMobileOTP"] = "/service/application/user/authentication/v1.0/otp/mobile/verify".substring(1)
             
-                    _relativeUrls["sendOTPOnEmail"] = "/service/application/user/authentication/v1.0/otp/email/send"?.substring(1)
+                    _relativeUrls["sendOTPOnEmail"] = "/service/application/user/authentication/v1.0/otp/email/send".substring(1)
             
-                    _relativeUrls["verifyEmailOTP"] = "/service/application/user/authentication/v1.0/otp/email/verify"?.substring(1)
+                    _relativeUrls["verifyEmailOTP"] = "/service/application/user/authentication/v1.0/otp/email/verify".substring(1)
             
-                    _relativeUrls["getLoggedInUser"] = "/service/application/user/authentication/v1.0/session"?.substring(1)
+                    _relativeUrls["getLoggedInUser"] = "/service/application/user/authentication/v1.0/session".substring(1)
             
-                    _relativeUrls["getListOfActiveSessions"] = "/service/application/user/authentication/v1.0/sessions"?.substring(1)
+                    _relativeUrls["getListOfActiveSessions"] = "/service/application/user/authentication/v1.0/sessions".substring(1)
             
-                    _relativeUrls["getPlatformConfig"] = "/service/application/user/platform/v1.0/config"?.substring(1)
+                    _relativeUrls["getPlatformConfig"] = "/service/application/user/platform/v1.0/config".substring(1)
             
-                    _relativeUrls["updateProfile"] = "/service/application/user/profile/v1.0/detail"?.substring(1)
+                    _relativeUrls["updateProfile"] = "/service/application/user/profile/v1.0/detail".substring(1)
             
-                    _relativeUrls["addMobileNumber"] = "/service/application/user/profile/v1.0/mobile"?.substring(1)
+                    _relativeUrls["addMobileNumber"] = "/service/application/user/profile/v1.0/mobile".substring(1)
             
-                    _relativeUrls["deleteMobileNumber"] = "/service/application/user/profile/v1.0/mobile"?.substring(1)
+                    _relativeUrls["deleteMobileNumber"] = "/service/application/user/profile/v1.0/mobile".substring(1)
             
-                    _relativeUrls["setMobileNumberAsPrimary"] = "/service/application/user/profile/v1.0/mobile/primary"?.substring(1)
+                    _relativeUrls["setMobileNumberAsPrimary"] = "/service/application/user/profile/v1.0/mobile/primary".substring(1)
             
-                    _relativeUrls["sendVerificationLinkToMobile"] = "/service/application/user/profile/v1.0/mobile/link/send"?.substring(1)
+                    _relativeUrls["sendVerificationLinkToMobile"] = "/service/application/user/profile/v1.0/mobile/link/send".substring(1)
             
-                    _relativeUrls["addEmail"] = "/service/application/user/profile/v1.0/email"?.substring(1)
+                    _relativeUrls["addEmail"] = "/service/application/user/profile/v1.0/email".substring(1)
             
-                    _relativeUrls["deleteEmail"] = "/service/application/user/profile/v1.0/email"?.substring(1)
+                    _relativeUrls["deleteEmail"] = "/service/application/user/profile/v1.0/email".substring(1)
             
-                    _relativeUrls["setEmailAsPrimary"] = "/service/application/user/profile/v1.0/email/primary"?.substring(1)
+                    _relativeUrls["setEmailAsPrimary"] = "/service/application/user/profile/v1.0/email/primary".substring(1)
             
-                    _relativeUrls["sendVerificationLinkToEmail"] = "/service/application/user/profile/v1.0/email/link/send"?.substring(1)
+                    _relativeUrls["sendVerificationLinkToEmail"] = "/service/application/user/profile/v1.0/email/link/send".substring(1)
             
     }
 

@@ -117,10 +117,7 @@ enum class Navigator(
     FAQ(
         pageType = PageType.faq,
         navName = "FAQ",
-        link = "/faq/:category",
-        params = arrayListOf(
-            NavParam(key = "category", required = false)
-        )
+        link = "/faq"
     ),
    
     FRESHCHAT(
@@ -205,6 +202,15 @@ enum class Navigator(
         pageType = PageType.profile,
         navName = "Profile",
         link = "/profile"
+    ),
+   
+    PROFILE_ORDER_SHIPMENT(
+        pageType = PageType.profileOrderShipment,
+        navName = "profile orders shipment",
+        link = "/profile/orders/shipment/:shipmentid",
+        params = arrayListOf(
+            NavParam(key = "shipmentid", required = true)
+        )
     ),
    
     PROFILE_BASIC(
