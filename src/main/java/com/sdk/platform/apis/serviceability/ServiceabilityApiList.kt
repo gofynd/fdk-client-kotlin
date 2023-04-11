@@ -9,63 +9,63 @@ import com.sdk.platform.models.serviceability.*
 
 interface ServiceabilityApiList {
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/serviceability")
-    fun postApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationServiceabilityConfig)
-    : Deferred<Response<ApplicationServiceabilityConfigResponse>>
-    
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/serviceability")
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/serviceability")
     fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<ApplicationServiceabilityConfigResponse>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/regions")
-    fun getEntityRegionView(@Path("company_id") companyId: String,@Body body: EntityRegionViewRequest)
-    : Deferred<Response<EntityRegionViewResponse>>
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/regions")
+    fun getEntityRegionView(@Path("company_id") companyId: String,@Body body: EntityRegionView_Request)
+    : Deferred<Response<EntityRegionView_Response>>
     
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zones")
-    fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/zones")
+    fun getListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?)
     : Deferred<Response<ListViewResponse>>
     
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/all-stores")
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/all-stores")
     fun getCompanyStoreView(@Path("company_id") companyId: String)
     : Deferred<Response<CompanyStoreView_Response>>
     
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
     fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
     : Deferred<Response<GetSingleZoneDataViewResponse>>
     
-    @PUT ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone/{zone_id}")
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
     fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
     : Deferred<Response<ZoneSuccessResponse>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/zone")
-    fun upsertZoneControllerView(@Path("company_id") companyId: String,@Body body: ZoneRequest)
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/zone")
+    fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
     : Deferred<Response<ZoneResponse>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
-    fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>
-    
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/zones")
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
     fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
     : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
     
-    @GET ("/service/platform/logistics-internal/v1.0/company/{company_id}/zones-list")
-    fun getZoneListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
-    : Deferred<Response<ListViewResponse>>
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
+    fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/stores/{store_uid}")
+    fun getStore(@Path("company_id") companyId: String, @Path("store_uid") storeUid: String)
+    : Deferred<Response<GetStoresViewResponse>>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics/stores")
+    fun getAllStores(@Path("company_id") companyId: String)
+    : Deferred<Response<GetStoresViewResponse>>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
     fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)
     : Deferred<Response<PincodeMOPresponse>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/pincode-mop-bulk-update")
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-bulk-update")
     fun updatePincodeBulkView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopBulkData)
     : Deferred<Response<PincodeBulkViewResponse>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/pincode-mop-data")
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-data")
     fun updatePincodeCoDListing(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeCodStatusListingRequest)
     : Deferred<Response<PincodeCodStatusListingResponse>>
     
-    @POST ("/service/platform/logistics-internal/v1.0/company/{company_id}/application/{application_id}/history")
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/history")
     fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest)
     : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>
     
