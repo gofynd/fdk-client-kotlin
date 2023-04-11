@@ -4037,6 +4037,51 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [UserGroupResponseSchema](#UserGroupResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | fileUrl | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | status | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | applicationId | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | modifiedAt | String? |  yes  |  |
+ | v | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserGroupListResponseSchema](#UserGroupListResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[UserGroupResponseSchema](#UserGroupResponseSchema)>? |  yes  |  |
+ | page | [PaginationSchema](#PaginationSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUserGroupSchema](#CreateUserGroupSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | fileUrl | String |  no  |  |
+
+---
+
+
+ 
+ 
  #### [CreateUserRequestSchema](#CreateUserRequestSchema)
 
  | Properties | Type | Nullable | Description |
@@ -4345,6 +4390,19 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [UpdateUserGroupSchema](#UpdateUserGroupSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | fileUrl | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [UpdateUserRequestSchema](#UpdateUserRequestSchema)
 
  | Properties | Type | Nullable | Description |
@@ -4354,6 +4412,37 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | gender | String? |  yes  |  |
  | externalId | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | phoneNumbers | ArrayList<[UserPhoneNumbers](#UserPhoneNumbers)>? |  yes  |  |
+ | emails | ArrayList<[UserEmails](#UserEmails)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserEmails](#UserEmails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | primary | Boolean? |  yes  |  |
+ | verified | Boolean? |  yes  |  |
+ | email | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserPhoneNumbers](#UserPhoneNumbers)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | primary | Boolean? |  yes  |  |
+ | verified | Boolean? |  yes  |  |
+ | phone | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
 
 ---
 
