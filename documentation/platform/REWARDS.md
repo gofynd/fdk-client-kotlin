@@ -5,31 +5,34 @@
 ##### [Back to Platform docs](./README.md)
 
 ## Rewards Methods
-Rewards
-* [getGiveaways](#getgiveaways)
-* [createGiveaway](#creategiveaway)
-* [getGiveawayByID](#getgiveawaybyid)
-* [updateGiveaway](#updategiveaway)
-* [getOffers](#getoffers)
+Earn and redeem reward points
+* [showGiveaways](#showgiveaways)
+* [saveGiveAway](#savegiveaway)
+* [getGiveawayById](#getgiveawaybyid)
+* [updateGiveAway](#updategiveaway)
+* [getGiveawayAudienceStatus](#getgiveawayaudiencestatus)
+* [showOffers](#showoffers)
 * [getOfferByName](#getofferbyname)
 * [updateOfferByName](#updateofferbyname)
-* [getUserAvailablePoints](#getuseravailablepoints)
 * [updateUserStatus](#updateuserstatus)
+* [user](#user)
 * [getUserPointsHistory](#getuserpointshistory)
+* [getRewardsConfiguration](#getrewardsconfiguration)
+* [setRewardsConfiguration](#setrewardsconfiguration)
 
 
 
 ## Methods with example and description
 
 
-### getGiveaways
+### showGiveaways
 List of giveaways of the current application.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.showGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -45,8 +48,8 @@ client.application("<APPLICATION_ID>").rewards.getGiveaways(pageId: pageId, page
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| pageId | String? | no | pagination page id |   
-| pageSize | Int? | no | pagination page size |  
+| pageId | String | yes | pagination page id |   
+| pageSize | Int | yes | pagination page size |  
 
 
 
@@ -83,14 +86,14 @@ ok
 ---
 
 
-### createGiveaway
-Adds a new giveaway.
+### saveGiveAway
+List of giveaways of the current application.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.createGiveaway(body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.saveGiveAway(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -142,14 +145,14 @@ ok
 ---
 
 
-### getGiveawayByID
+### getGiveawayById
 Get giveaway by ID.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getGiveawayByID(id: id).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.getGiveawayById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -202,14 +205,14 @@ ok
 ---
 
 
-### updateGiveaway
+### updateGiveAway
 Updates the giveaway by it's ID.
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateGiveaway(id: id, body: body).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.updateGiveAway(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -262,14 +265,74 @@ ok
 ---
 
 
-### getOffers
-List of offer of the current application.
+### getGiveawayAudienceStatus
+Get the Giveaway audience status
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getOffers().safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.getGiveawayAudienceStatus(audienceId: audienceId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| audienceId | String | yes | audience id |  
+
+
+
+Get giveaway audience status
+
+*Returned Response:*
+
+
+
+
+[GiveawayAudience](#GiveawayAudience)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### showOffers
+List of offers of the current application.
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").rewards.showOffers().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -284,7 +347,7 @@ client.application("<APPLICATION_ID>").rewards.getOffers().safeAwait{ response, 
 
 
 
-List of offer of the current application.
+List of offers of the current application.
 
 *Returned Response:*
 
@@ -318,13 +381,13 @@ ok
 
 
 ### getOfferByName
-Get offer by name.
+Get offer by name
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getOfferByName(cookie: cookie, name: name).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.getOfferByName(name: name, cookie: cookie).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -340,12 +403,12 @@ client.application("<APPLICATION_ID>").rewards.getOfferByName(cookie: cookie, na
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| cookie | String | yes | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |   
-| name | String | yes | Offer name |  
+| name | String | yes | The name given to the offer. |   
+| cookie | String | yes | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |  
 
 
 
-Get offer by name.
+Use this API to get the offer details and configuration by entering the name of the offer.
 
 *Returned Response:*
 
@@ -354,7 +417,7 @@ Get offer by name.
 
 [Offer](#Offer)
 
-ok
+Success. Check example below or refer `Offer` for more details.
 
 
 
@@ -379,7 +442,7 @@ ok
 
 
 ### updateOfferByName
-Updates the offer by name.
+Update offer by name
 
 
 
@@ -401,11 +464,11 @@ client.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, bod
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| name | String | yes | Offer name |  
+| name | String | yes | The name given to the offer. |  
 | body | [Offer](#Offer) | yes | Request body |
 
 
-Updates the offer by name.
+Use this API to update the offer details
 
 *Returned Response:*
 
@@ -414,67 +477,7 @@ Updates the offer by name.
 
 [Offer](#Offer)
 
-ok
-
-
-
-
-<details>
-<summary><i>&nbsp; Example:</i></summary>
-
-```json
-
-```
-</details>
-
-
-
-
-
-
-
-
-
----
-
-
-### getUserAvailablePoints
-User's reward details.
-
-
-
-
-```kotlin
-client.application("<APPLICATION_ID>").rewards.getUserAvailablePoints(userId: userId).safeAwait{ response, error->
-    response?.let{
-      // Use response
-    } ->
-    error?.let{
-      
-    } 
-}
-```
-
-
-
-
-
-| Argument  |  Type  | Required | Description |
-| --------- | -----  | -------- | ----------- | 
-| userId | String | yes | user id |  
-
-
-
-User's reward details.
-
-*Returned Response:*
-
-
-
-
-[UserRes](#UserRes)
-
-ok
+Success. Check example below or refer `Offer` for more details.
 
 
 
@@ -499,7 +502,7 @@ ok
 
 
 ### updateUserStatus
-Update User status
+Update user status
 
 
 
@@ -525,7 +528,7 @@ client.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, 
 | body | [AppUser](#AppUser) | yes | Request body |
 
 
-Update user status, active/archive
+Use this API to update the user status active/archive
 
 *Returned Response:*
 
@@ -558,14 +561,74 @@ Success
 ---
 
 
-### getUserPointsHistory
-Get list of points transactions.
+### user
+Get user reward details
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageLimit: pageLimit, pageSize: pageSize).safeAwait{ response, error->
+client.application("<APPLICATION_ID>").rewards.user(userId: userId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| userId | String | yes | user id |  
+
+
+
+Use this API to get the user reward details
+
+*Returned Response:*
+
+
+
+
+[UserRes](#UserRes)
+
+Success. Check example below or refer `UserRes` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getUserPointsHistory
+Get all transactions of reward points
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -583,13 +646,11 @@ client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: user
 | --------- | -----  | -------- | ----------- | 
 | userId | String | yes | user id |   
 | pageId | String? | no | PageID is the ID of the requested page. For first request it should be kept empty. |   
-| pageLimit | Int? | no | PageLimit is the number of requested items in response. |   
-| pageSize | Int? | no | PageSize is the number of requested items in response. |  
+| pageSize | Int? | no | The number of items to retrieve in each page. |  
 
 
 
-Get list of points transactions.
-The list of points history is paginated.
+Use this API to get a list of points transactions.
 
 *Returned Response:*
 
@@ -597,6 +658,120 @@ The list of points history is paginated.
 
 
 [HistoryRes](#HistoryRes)
+
+Success. Check example below or refer `HistoryRes` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### getRewardsConfiguration
+Get all valid android paths
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").rewards.getRewardsConfiguration().safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+
+Use this API to get a list of valid android paths required by the Rewards INIT API to validate a fradualent device.
+
+*Returned Response:*
+
+
+
+
+[ConfigurationRes](#ConfigurationRes)
+
+Success. Refer `ConfigurationRes` for more details.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### setRewardsConfiguration
+Updates the collection with given android paths.
+
+
+
+
+```kotlin
+client.application("<APPLICATION_ID>").rewards.setRewardsConfiguration(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [ConfigurationRequest](#ConfigurationRequest) | yes | Request body |
+
+
+Updates the configuration or inserts new records.
+
+*Returned Response:*
+
+
+
+
+[SetConfigurationRes](#SetConfigurationRes)
 
 ok
 
@@ -627,47 +802,26 @@ ok
 
  
  
- #### [AppUser](#AppUser)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | id | String? |  yes  |  |
- | active | Boolean? |  yes  |  |
- | applicationId | String? |  yes  |  |
- | blockReason | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | updatedBy | String? |  yes  |  |
- | userId | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Asset](#Asset)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | aspectRatio | String? |  yes  |  |
- | id | String? |  yes  |  |
- | secureUrl | String? |  yes  |  |
-
----
-
-
- 
- 
  #### [E](#E)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | HashMap<String,Any>? |  yes  |  |
+ | code | Int? |  yes  |  |
  | exception | String? |  yes  |  |
  | info | String? |  yes  |  |
  | message | String? |  yes  |  |
- | requestId | String? |  yes  |  |
- | stackTrace | String? |  yes  |  |
- | status | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GiveawayResponse](#GiveawayResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[Giveaway](#Giveaway)>? |  yes  |  |
+ | page | [Page](#Page)? |  yes  |  |
 
 ---
 
@@ -696,48 +850,67 @@ ok
 
  
  
- #### [GiveawayResponse](#GiveawayResponse)
+ #### [Schedule](#Schedule)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[Giveaway](#Giveaway)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
+ | duration | Int? |  yes  |  |
+ | end | String? |  yes  |  |
+ | start | String? |  yes  |  |
+ | cron | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [HistoryPretty](#HistoryPretty)
+ #### [RewardsAudience](#RewardsAudience)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | headerUserId | String? |  yes  |  |
  | id | String? |  yes  |  |
- | applicationId | String? |  yes  |  |
- | claimed | Boolean? |  yes  |  |
- | createdAt | String? |  yes  |  |
- | expiresOn | String? |  yes  |  |
- | points | Double? |  yes  |  |
- | remainingPoints | Double? |  yes  |  |
- | text1 | String? |  yes  |  |
- | text2 | String? |  yes  |  |
- | text3 | String? |  yes  |  |
- | txnName | String? |  yes  |  |
- | updatedAt | String? |  yes  |  |
- | userId | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [HistoryRes](#HistoryRes)
+ #### [Asset](#Asset)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[HistoryPretty](#HistoryPretty)>? |  yes  |  |
- | page | [Page](#Page)? |  yes  |  |
- | points | Double? |  yes  |  |
+ | aspectRatio | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | secureUrl | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [RewardsRule](#RewardsRule)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | amount | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Page](#Page)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | current | Int? |  yes  |  |
+ | hasNext | Boolean? |  yes  |  |
+ | hasPrevious | Boolean? |  yes  |  |
+ | itemTotal | Int? |  yes  |  |
+ | nextId | String? |  yes  |  |
+ | size | Int? |  yes  |  |
+ | type | String |  no  |  |
 
 ---
 
@@ -768,17 +941,31 @@ ok
 
  
  
- #### [Page](#Page)
+ #### [ShareMessages](#ShareMessages)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | current | Int? |  yes  |  |
- | hasNext | Boolean? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | nextId | String? |  yes  |  |
- | size | Int? |  yes  |  |
- | type | String |  no  |  |
+ | email | Int? |  yes  |  |
+ | facebook | String? |  yes  |  |
+ | fallback | String? |  yes  |  |
+ | message | String? |  yes  |  |
+ | messenger | String? |  yes  |  |
+ | sms | String? |  yes  |  |
+ | text | String? |  yes  |  |
+ | twitter | String? |  yes  |  |
+ | whatsapp | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserRes](#UserRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | points | [Points](#Points)? |  yes  |  |
+ | user | [RewardUser](#RewardUser)? |  yes  |  |
 
 ---
 
@@ -790,17 +977,6 @@ ok
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | available | Double? |  yes  |  |
-
----
-
-
- 
- 
- #### [Referral](#Referral)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | code | String? |  yes  |  |
 
 ---
 
@@ -825,68 +1001,114 @@ ok
 
  
  
- #### [RewardsAudience](#RewardsAudience)
+ #### [Referral](#Referral)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | headerUserId | String? |  yes  |  |
+ | code | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [AppUser](#AppUser)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
  | id | String? |  yes  |  |
+ | active | Boolean? |  yes  |  |
+ | applicationId | String? |  yes  |  |
+ | blockReason | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | updatedBy | String? |  yes  |  |
+ | userId | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [RewardsRule](#RewardsRule)
+ #### [GiveawayAudience](#GiveawayAudience)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double? |  yes  |  |
+ | audienceId | String? |  yes  |  |
+ | currentCount | Double? |  yes  |  |
 
 ---
 
 
  
  
- #### [Schedule](#Schedule)
+ #### [HistoryRes](#HistoryRes)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | cron | String? |  yes  |  |
- | duration | Int? |  yes  |  |
- | end | String? |  yes  |  |
- | start | String? |  yes  |  |
+ | items | ArrayList<[PointsHistory](#PointsHistory)>? |  yes  | History is the list of points transaction. |
+ | page | [Page](#Page)? |  yes  |  |
+ | points | Double? |  yes  |  |
 
 ---
 
 
  
  
- #### [ShareMessages](#ShareMessages)
+ #### [PointsHistory](#PointsHistory)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | email | String? |  yes  |  |
- | facebook | String? |  yes  |  |
- | fallback | String? |  yes  |  |
- | message | String? |  yes  |  |
- | messenger | String? |  yes  |  |
- | sms | String? |  yes  |  |
- | text | String? |  yes  |  |
- | twitter | String? |  yes  |  |
- | whatsapp | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | applicationId | String? |  yes  |  |
+ | claimed | Boolean? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | expiresOn | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | points | Double? |  yes  |  |
+ | remainingPoints | Double? |  yes  |  |
+ | text1 | String? |  yes  |  |
+ | text2 | String? |  yes  |  |
+ | text3 | String? |  yes  |  |
+ | txnName | String? |  yes  |  |
+ | updatedAt | String? |  yes  |  |
+ | userId | String? |  yes  |  |
 
 ---
 
 
  
  
- #### [UserRes](#UserRes)
+ #### [ConfigurationRes](#ConfigurationRes)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | points | [Points](#Points)? |  yes  |  |
- | user | [RewardUser](#RewardUser)? |  yes  |  |
+ | validAndroidPackages | ArrayList<String>? |  yes  | Contains array of string items, Valid android package names. |
+ | termsConditionsLink | String? |  yes  | A URL that redirects to the referral information suport page link |
+ | applicationId | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [SetConfigurationRes](#SetConfigurationRes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ConfigurationRequest](#ConfigurationRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | validAndroidPackages | ArrayList<String>? |  yes  |  |
+ | termsConditionsLink | String? |  yes  |  |
 
 ---
 
