@@ -1677,7 +1677,7 @@ data class SessionListResponseSchema(
     
     
     @SerializedName("items")
-    var items: ArrayList<String>?=null
+    var items: ArrayList<SessionListResponseInfo>?=null
     
 ): Parcelable {
     
@@ -2056,6 +2056,48 @@ data class AuthSuccessUser(
     
     @SerializedName("emails")
     var emails: AuthSuccessUserEmails?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SessionListResponseInfo
+*/
+@Parcelize
+data class SessionListResponseInfo(
+    
+    
+    
+    @SerializedName("session_id")
+    var sessionId: String?=null,
+    
+    @SerializedName("user_agent")
+    var userAgent: String?=null,
+    
+    @SerializedName("ip")
+    var ip: String?=null,
+    
+    @SerializedName("domain")
+    var domain: String?=null,
+    
+    @SerializedName("expire_in")
+    var expireIn: String?=null
     
 ): Parcelable {
     
