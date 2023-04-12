@@ -4332,7 +4332,7 @@ Check store has active integration
 
 
 ```kotlin
-client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response, error->
+client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid, permission: permission).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4350,7 +4350,8 @@ client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).
 | --------- | -----  | -------- | ----------- | 
 | id | String | yes | Integration id |   
 | level | String | yes | Integration level |   
-| uid | Int | yes | Integration level uid |  
+| uid | Int | yes | Integration level uid |   
+| permission | String? | no | Check opt-in for specific integration permissions |  
 
 
 

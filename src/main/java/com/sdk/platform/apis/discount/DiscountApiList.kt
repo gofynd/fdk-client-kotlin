@@ -25,10 +25,6 @@ interface DiscountApiList {
     fun updateDiscount(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: CreateUpdateDiscount)
     : Deferred<Response<DiscountJob>>
     
-    @POST ("/service/platform/discount/v1.0/company/{company_id}/job/{id}/items/")
-    fun upsertDiscountItems(@Path("company_id") companyId: String, @Path("id") id: String,@Body body: BulkDiscount)
-    : Deferred<Response<HashMap<String,Any>>>
-    
     @POST ("/service/platform/discount/v1.0/company/{company_id}/file/validation/")
     fun validateDiscountFile(@Path("company_id") companyId: String, @Query("discount") discount: String?,@Body body: DiscountJob)
     : Deferred<Response<FileJobResponse>>

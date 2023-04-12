@@ -663,6 +663,12 @@ data class UserSchema(
     @SerializedName("account_type")
     var accountType: String?=null,
     
+    @SerializedName("debug")
+    var debug: Debug?=null,
+    
+    @SerializedName("has_old_password_hash")
+    var hasOldPasswordHash: Boolean?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -673,6 +679,10 @@ data class UserSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1776,7 +1786,7 @@ data class Ticket(
     var content: TicketContent?=null,
     
     @SerializedName("category")
-    var category: TicketCategory?=null,
+    var category: String?=null,
     
     @SerializedName("sub_category")
     var subCategory: String?=null,

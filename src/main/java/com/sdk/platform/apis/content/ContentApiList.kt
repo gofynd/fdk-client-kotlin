@@ -117,10 +117,6 @@ interface ContentApiList {
     fun getFaqByIdOrSlug(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id_or_slug") idOrSlug: String)
     : Deferred<Response<CreateFaqResponseSchema>>
     
-    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/generate-seo/{type}")
-    fun generateSEOTitle(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("type") type: String,@Body body: GenerateSEOContent)
-    : Deferred<Response<GeneratedSEOContent>>
-    
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/landing-page/")
     fun getLandingPages(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LandingPageGetResponse>>

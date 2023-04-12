@@ -11,23 +11,13 @@ import com.sdk.application.models.logistic.*
 interface LogisticApiList {
     
     
-    @GET 
-    fun getPincodeCity(@Url url1: String?     ,  @Query("country_code") countryCode: String?)
-    : Deferred<Response<PincodeApiResponse>>
-    
-    
     @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
-    : Deferred<Response<TATViewResponse>>
+    fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
+    : Deferred<Response<GetTatProductResponse>>
     
     
     @GET 
-    fun getAllCountries(@Url url1: String?   )
-    : Deferred<Response<CountryListResponse>>
-    
-    
-    @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    fun getPincodeCity(@Url url1: String?    )
+    : Deferred<Response<GetPincodeCityResponse>>
     
 }

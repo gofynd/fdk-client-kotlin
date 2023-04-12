@@ -158,7 +158,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun verifyIfscCode(ifscCode: String?=null)
     : Deferred<Response<IfscCodeResponse>>? {
         
@@ -169,8 +168,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             null
         } 
     }
-    
-    
     
     
     
@@ -229,20 +226,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getBankAccountDetailsOpenAPI(orderId: String, requestHash: String?=null)
+    suspend fun addBeneficiaryDetails(body: AddBeneficiaryDetailsRequest)
     : Deferred<Response<RefundAccountResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getBankAccountDetailsOpenAPI(orderId = orderId, requestHash = requestHash, companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest)
-    : Deferred<Response<RefundAccountResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.addRefundBankAccountUsingOTP(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.addBeneficiaryDetails(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -274,26 +261,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentConfirmationResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.confirmPayment(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUserCODlimitRoutes(merchantUserId: String, mobileNo: String)
-    : Deferred<Response<GetUserCODLimitResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , merchantUserId = merchantUserId, mobileNo = mobileNo )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
-    : Deferred<Response<SetCODOptionResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

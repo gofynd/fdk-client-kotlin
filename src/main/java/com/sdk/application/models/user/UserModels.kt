@@ -1677,7 +1677,7 @@ data class SessionListResponseSchema(
     
     
     @SerializedName("items")
-    var items: ArrayList<SessionListResponseInfo>?=null
+    var items: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -2077,48 +2077,6 @@ data class AuthSuccessUser(
 
              
 /*
-    Model: SessionListResponseInfo
-*/
-@Parcelize
-data class SessionListResponseInfo(
-    
-    
-    
-    @SerializedName("session_id")
-    var sessionId: String?=null,
-    
-    @SerializedName("user_agent")
-    var userAgent: String?=null,
-    
-    @SerializedName("ip")
-    var ip: String?=null,
-    
-    @SerializedName("domain")
-    var domain: String?=null,
-    
-    @SerializedName("expire_in")
-    var expireIn: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: AuthSuccessUserDebug
 */
 @Parcelize
@@ -2163,132 +2121,6 @@ data class AuthSuccessUserEmails(
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserGroupResponseSchema
-*/
-@Parcelize
-data class UserGroupResponseSchema(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("file_url")
-    var fileUrl: String?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("status")
-    var status: String?=null,
-    
-    @SerializedName("uid")
-    var uid: Int?=null,
-    
-    @SerializedName("application_id")
-    var applicationId: String?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("modified_at")
-    var modifiedAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserGroupListResponseSchema
-*/
-@Parcelize
-data class UserGroupListResponseSchema(
-    
-    
-    
-    @SerializedName("items")
-    var items: ArrayList<UserGroupResponseSchema>?=null,
-    
-    @SerializedName("page")
-    var page: PaginationSchema?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateUserGroupSchema
-*/
-@Parcelize
-data class CreateUserGroupSchema(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("file_url")
-    var fileUrl: String?=null
-    
-): Parcelable {
     
     
     
@@ -3085,38 +2917,6 @@ data class SessionExpiry(
 
              
 /*
-    Model: UpdateUserGroupSchema
-*/
-@Parcelize
-data class UpdateUserGroupSchema(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("file_url")
-    var fileUrl: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: UpdateUserRequestSchema
 */
 @Parcelize
@@ -3137,96 +2937,7 @@ data class UpdateUserRequestSchema(
     var externalId: String?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("phone_numbers")
-    var phoneNumbers: ArrayList<UserPhoneNumbers>?=null,
-    
-    @SerializedName("emails")
-    var emails: ArrayList<UserEmails>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserEmails
-*/
-@Parcelize
-data class UserEmails(
-    
-    
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("email")
-    var email: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserPhoneNumbers
-*/
-@Parcelize
-data class UserPhoneNumbers(
-    
-    
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
@@ -3294,6 +3005,12 @@ data class UserSchema(
     @SerializedName("account_type")
     var accountType: String?=null,
     
+    @SerializedName("debug")
+    var debug: Debug?=null,
+    
+    @SerializedName("has_old_password_hash")
+    var hasOldPasswordHash: Boolean?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -3304,6 +3021,10 @@ data class UserSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -3411,6 +3132,33 @@ data class Email(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Debug
+*/
+@Parcelize
+data class Debug(
+    
+    
+    
+    @SerializedName("source")
+    var source: String?=null,
+    
+    @SerializedName("platform")
+    var platform: String?=null
+    
+): Parcelable {
     
     
     

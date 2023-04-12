@@ -61,12 +61,8 @@ interface PaymentApiList {
     fun saveSubscriptionSetupIntent(@Path("company_id") companyId: String,@Body body: SaveSubscriptionSetupIntentRequest)
     : Deferred<Response<SaveSubscriptionSetupIntentResponse>>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account")
-    fun getBankAccountDetailsOpenAPI(@Query("order_id") orderId: String, @Query("request_hash") requestHash: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<RefundAccountResponse>>
-    
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account")
-    fun addRefundBankAccountUsingOTP(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddBeneficiaryDetailsOTPRequest)
+    fun addBeneficiaryDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddBeneficiaryDetailsRequest)
     : Deferred<Response<RefundAccountResponse>>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/ifsc-code/verify")
@@ -84,13 +80,5 @@ interface PaymentApiList {
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/confirm")
     fun confirmPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentConfirmationRequest)
     : Deferred<Response<PaymentConfirmationResponse>>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
-    fun getUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("merchant_user_id") merchantUserId: String, @Query("mobile_no") mobileNo: String)
-    : Deferred<Response<GetUserCODLimitResponse>>
-    
-    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
-    fun setUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetCODForUserRequest)
-    : Deferred<Response<SetCODOptionResponse>>
     
 }
