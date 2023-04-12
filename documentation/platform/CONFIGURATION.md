@@ -5142,6 +5142,7 @@ Success
  | minCartValue | Double? |  yes  |  |
  | bulkCoupons | Boolean? |  yes  |  |
  | revenueEngineCoupon | Boolean? |  yes  |  |
+ | panCard | [PanCardConfig](#PanCardConfig)? |  yes  |  |
 
 ---
 
@@ -5406,6 +5407,19 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | brands | [CompanyBrandInfo](#CompanyBrandInfo)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PanCardConfig](#PanCardConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean? |  yes  | If pan card accepting is enabled on cart |
+ | codThresholdAmount | Double? |  yes  | On which COD order amount pan card number is expected from customer for order |
+ | onlineThresholdAmount | Double? |  yes  | On which online payment order amount pan card number is expected from customer for order |
 
 ---
 

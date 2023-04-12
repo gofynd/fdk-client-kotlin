@@ -478,9 +478,14 @@ data class AppCartConfig(
     var bulkCoupons: Boolean?=null,
     
     @SerializedName("revenue_engine_coupon")
-    var revenueEngineCoupon: Boolean?=null
+    var revenueEngineCoupon: Boolean?=null,
+    
+    @SerializedName("pan_card")
+    var panCard: PanCardConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1184,6 +1189,38 @@ data class BrandsByCompanyResponse(
     var brands: CompanyBrandInfo?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PanCardConfig
+*/
+@Parcelize
+data class PanCardConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null,
+    
+    @SerializedName("cod_threshold_amount")
+    var codThresholdAmount: Double?=null,
+    
+    @SerializedName("online_threshold_amount")
+    var onlineThresholdAmount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
     
     
     
