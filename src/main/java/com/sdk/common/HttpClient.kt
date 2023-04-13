@@ -69,4 +69,9 @@ object HttpClient {
             HttpLoggingInterceptor.Level.NONE
         }
     }
+
+    fun reset() {
+        clientMap.clear()
+    }
+
 }
