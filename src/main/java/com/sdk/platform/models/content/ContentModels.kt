@@ -126,7 +126,7 @@ data class PathMappingSchema(
     var createdAt: String?=null,
     
     @SerializedName("__source")
-    var source: TagSourceSchema?=null
+    var source: PathSourceSchema?=null
     
 ): Parcelable {
     
@@ -139,6 +139,33 @@ data class PathMappingSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PathSourceSchema
+*/
+@Parcelize
+data class PathSourceSchema(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null
+    
+): Parcelable {
     
     
     
