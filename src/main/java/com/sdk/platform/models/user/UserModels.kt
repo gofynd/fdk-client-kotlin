@@ -346,9 +346,14 @@ data class SendEmailOtpRequestSchema(
     var token: String?=null,
     
     @SerializedName("register_token")
-    var registerToken: String?=null
+    var registerToken: String?=null,
+    
+    @SerializedName("captcha_code")
+    var captchaCode: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2178,6 +2183,132 @@ data class AuthSuccessUserEmails(
 
              
 /*
+    Model: UserGroupResponseSchema
+*/
+@Parcelize
+data class UserGroupResponseSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("file_url")
+    var fileUrl: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("uid")
+    var uid: Int?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("modified_at")
+    var modifiedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserGroupListResponseSchema
+*/
+@Parcelize
+data class UserGroupListResponseSchema(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<UserGroupResponseSchema>?=null,
+    
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateUserGroupSchema
+*/
+@Parcelize
+data class CreateUserGroupSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("file_url")
+    var fileUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CreateUserRequestSchema
 */
 @Parcelize
@@ -2942,6 +3073,38 @@ data class SessionExpiry(
     
     @SerializedName("is_rolling")
     var isRolling: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateUserGroupSchema
+*/
+@Parcelize
+data class UpdateUserGroupSchema(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("file_url")
+    var fileUrl: String?=null
     
 ): Parcelable {
     

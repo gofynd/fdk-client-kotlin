@@ -284,6 +284,9 @@ data class SeoSchema(
     @SerializedName("sitemap_enabled")
     var sitemapEnabled: Boolean?=null,
     
+    @SerializedName("cannonical_enabled")
+    var cannonicalEnabled: Boolean?=null,
+    
     @SerializedName("custom_meta_tags")
     var customMetaTags: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
@@ -297,6 +300,8 @@ data class SeoSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
