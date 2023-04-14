@@ -20,8 +20,6 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     
     val communication by lazy { CommunicationDataManagerClass(config, unauthorizedAction)}
     
-    val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
-    
     val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
     
     val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
