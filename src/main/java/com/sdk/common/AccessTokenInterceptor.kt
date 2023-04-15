@@ -12,7 +12,7 @@ class AccessTokenInterceptor(
         
         val builder = original.newBuilder()
             .header("Authorization", "Bearer ${platformConfig?.oauthClient?.token?.token}")
-            .header("x-fp-sdk-version", "1.0.2")
+            .header("x-fp-sdk-version", "1.0.3")
 	platformConfig?.extraHeaders?.let {
                 for ((key, value) in it) {
                     builder.header(key,value)
