@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.companyprofile.*
+import com.sdk.platform.apis.companyprofile.*
 
 
 
@@ -198,22 +200,9 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
         } 
     }
     
-    
-    suspend fun getOptimalLocations(body: AssignStoreRequestValidator)
-    : Deferred<Response<AssignStoreResponseSerializer>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            companyProfileApiList?.getOptimalLocations(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
     
     
     
