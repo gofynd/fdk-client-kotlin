@@ -1225,10 +1225,15 @@ data class PanCardConfig(
     @SerializedName("enabled")
     var enabled: Boolean?=null,
     
-    @SerializedName("threshold_amount")
-    var thresholdAmount: Double?=null
+    @SerializedName("cod_threshold_amount")
+    var codThresholdAmount: Double?=null,
+    
+    @SerializedName("online_threshold_amount")
+    var onlineThresholdAmount: Double?=null
     
 ): Parcelable {
+    
+    
     
     
     

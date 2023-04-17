@@ -48,7 +48,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun getAllPayouts(uniqueExternalId: String?=null)
     : Deferred<Response<PayoutsResponse>>? {
         
@@ -206,16 +205,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentGatewayToBeReviewed>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.saveBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateBrandPaymentGatewayConfig(body: PaymentGatewayConfigRequest)
-    : Deferred<Response<PaymentGatewayToBeReviewed>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.updateBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

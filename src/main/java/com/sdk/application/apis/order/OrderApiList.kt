@@ -32,7 +32,7 @@ interface OrderApiList {
     
     
     @GET 
-    fun getInvoiceByShipmentId(@Url url1: String?     ,  @Query("document_type") documentType: String?)
+    fun getInvoiceByShipmentId(@Url url1: String?    )
     : Deferred<Response<ResponseGetInvoiceShipment>>
     
     

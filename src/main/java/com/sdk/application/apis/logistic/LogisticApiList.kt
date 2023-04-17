@@ -30,4 +30,9 @@ interface LogisticApiList {
     fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
     
+    
+    @POST 
+    fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
+    : Deferred<Response<ReAssignStoreResponse>>
+    
 }
