@@ -110,6 +110,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -756,10 +757,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPageMeta(pageType: String?=null, cartPages: Boolean?=null)
+    suspend fun getPageMeta()
     : Deferred<Response<PageMetaSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId , pageType = pageType, cartPages = cartPages )
+                contentApiList?.getPageMeta(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -770,6 +771,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PageSpec>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getPageSpec(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createPagePreview(body: PageRequest)
+    : Deferred<Response<PageSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.createPagePreview(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
