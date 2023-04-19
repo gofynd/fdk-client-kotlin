@@ -11,7 +11,7 @@ class PublicHeaderInterceptor(
         val original = chain.request()
         
         val builder = original.newBuilder()
-            .header("x-fp-sdk-version", "1.0.2")
+            .header("x-fp-sdk-version", "1.0.3")
 	publicConfig?.extraHeaders?.let {
                 for ((key, value) in it) {
                     builder.header(key,value)
