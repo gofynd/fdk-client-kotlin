@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.logistic.*
+import com.sdk.application.apis.logistic.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,9 +21,9 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
 
     init{
             
-                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0"?.substring(1)
+                    _relativeUrls["getTatProduct"] = "/service/application/logistics/v1.0".substring(1)
             
-                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}"?.substring(1)
+                    _relativeUrls["getPincodeCity"] = "/service/application/logistics/v1.0/pincode/{pincode}".substring(1)
             
     }
 

@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.communication.*
+import com.sdk.application.apis.communication.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,11 +21,11 @@ class CommunicationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     init{
             
-                    _relativeUrls["getCommunicationConsent"] = "/service/application/communication/v1.0/consent"?.substring(1)
+                    _relativeUrls["getCommunicationConsent"] = "/service/application/communication/v1.0/consent".substring(1)
             
-                    _relativeUrls["upsertCommunicationConsent"] = "/service/application/communication/v1.0/consent"?.substring(1)
+                    _relativeUrls["upsertCommunicationConsent"] = "/service/application/communication/v1.0/consent".substring(1)
             
-                    _relativeUrls["upsertAppPushtoken"] = "/service/application/communication/v1.0/pn-token"?.substring(1)
+                    _relativeUrls["upsertAppPushtoken"] = "/service/application/communication/v1.0/pn-token".substring(1)
             
     }
 
