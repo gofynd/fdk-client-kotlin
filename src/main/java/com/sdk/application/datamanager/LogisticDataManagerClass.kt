@@ -29,6 +29,8 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
             
                     _relativeUrls["getPincodeZones"] = "/service/application/logistics/v1.0/pincode/zones".substring(1)
             
+                    _relativeUrls["getOptimalLocations"] = "/service/application/logistics/v1.0/reassign_stores".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -64,12 +66,12 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getPincodeCity(pincode: String, countryCode: String?=null): Deferred<Response<PincodeApiResponse>>? {
+    fun getPincodeCity(pincode: String): Deferred<Response<PincodeApiResponse>>? {
         var fullUrl : String? = _relativeUrls["getPincodeCity"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeCity(fullUrl     ,  countryCode = countryCode)}
+        return logisticApiList?.getPincodeCity(fullUrl   )}
 
     
     
@@ -91,6 +93,13 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         var fullUrl : String? = _relativeUrls["getPincodeZones"] 
         
         return logisticApiList?.getPincodeZones(fullUrl  ,body = body)}
+
+    
+    
+    fun getOptimalLocations(body: ReAssignStoreRequest): Deferred<Response<ReAssignStoreResponse>>? {
+        var fullUrl : String? = _relativeUrls["getOptimalLocations"] 
+        
+        return logisticApiList?.getOptimalLocations(fullUrl  ,body = body)}
 
     
     

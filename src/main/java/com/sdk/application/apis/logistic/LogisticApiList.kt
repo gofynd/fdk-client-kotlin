@@ -12,7 +12,7 @@ interface LogisticApiList {
     
     
     @GET 
-    fun getPincodeCity(@Url url1: String?     ,  @Query("country_code") countryCode: String?)
+    fun getPincodeCity(@Url url1: String?    )
     : Deferred<Response<PincodeApiResponse>>
     
     
@@ -29,5 +29,10 @@ interface LogisticApiList {
     @POST 
     fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+    
+    @POST 
+    fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
+    : Deferred<Response<ReAssignStoreResponse>>
     
 }
