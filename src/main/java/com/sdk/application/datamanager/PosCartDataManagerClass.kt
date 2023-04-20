@@ -249,10 +249,10 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun updateShipments(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, orderType: String?=null, body: UpdateCartShipmentRequest): Deferred<Response<CartShipmentsResponse>>? {
+    fun updateShipments(i: Boolean?=null, p: Boolean?=null, id: String?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null, body: UpdateCartShipmentRequest): Deferred<Response<CartShipmentsResponse>>? {
         var fullUrl : String? = _relativeUrls["updateShipments"] 
         
-        return posCartApiList?.updateShipments(fullUrl    ,  i = i,    p = p,    id = id,    addressId = addressId,    orderType = orderType, body = body)}
+        return posCartApiList?.updateShipments(fullUrl    ,  i = i,    p = p,    id = id,    addressId = addressId,    areaCode = areaCode,    orderType = orderType, body = body)}
 
     
     
