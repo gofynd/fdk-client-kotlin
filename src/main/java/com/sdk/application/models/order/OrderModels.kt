@@ -1900,9 +1900,14 @@ data class Shipments(
     var sizeInfo: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("total_details")
-    var totalDetails: ShipmentTotalDetails?=null
+    var totalDetails: ShipmentTotalDetails?=null,
+    
+    @SerializedName("return_meta")
+    var returnMeta: ReturnMetaData?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2036,6 +2041,50 @@ data class ShipmentPayment(
     
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ReturnMetaData
+*/
+@Parcelize
+data class ReturnMetaData(
+    
+    
+    
+    @SerializedName("images")
+    var images: ArrayList<ReturnMetaDataImages>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ReturnMetaDataImages
+*/
+@Parcelize
+data class ReturnMetaDataImages(
+    
+    
+    
+    @SerializedName("url")
+    var url: String?=null
+    
+): Parcelable {
     
     
     
