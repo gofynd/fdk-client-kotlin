@@ -70,4 +70,9 @@ interface OrderApiList {
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
+    
+    @PUT 
+    fun updateShipmentStatus1(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
+    : Deferred<Response<ShipmentApplicationStatusResponse>>
+    
 }
