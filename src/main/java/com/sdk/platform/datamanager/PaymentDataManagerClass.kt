@@ -39,7 +39,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformPayment",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }
@@ -169,6 +170,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             null
         } 
     }
+    
     
     
     
@@ -404,6 +406,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ResendOrCancelPaymentResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.resendOrCancelPayment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentCodeOption()
+    : Deferred<Response<GetPaymentCodeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

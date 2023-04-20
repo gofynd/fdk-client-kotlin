@@ -39,7 +39,8 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformConfiguration",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }

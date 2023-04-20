@@ -39,7 +39,8 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformDiscount",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(DiscountApiList::class.java) as? DiscountApiList
     }

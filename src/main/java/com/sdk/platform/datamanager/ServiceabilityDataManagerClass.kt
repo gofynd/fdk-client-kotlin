@@ -39,7 +39,8 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformServiceability",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(ServiceabilityApiList::class.java) as? ServiceabilityApiList
     }

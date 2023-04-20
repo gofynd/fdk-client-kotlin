@@ -39,7 +39,8 @@ class AnalyticsDataManagerClass(val config: PlatformConfig, val unauthorizedActi
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformAnalytics",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(AnalyticsApiList::class.java) as? AnalyticsApiList
     }

@@ -39,7 +39,8 @@ class LeadDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformLead",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(LeadApiList::class.java) as? LeadApiList
     }
