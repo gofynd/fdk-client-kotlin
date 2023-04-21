@@ -23,7 +23,7 @@ Get all pages of a theme
 
 
 ```kotlin
-theme.getAllPages(themeId: themeId).safeAwait{ response, error->
+applicationClient.theme.getAllPages(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -349,7 +349,7 @@ Get page of a theme
 
 
 ```kotlin
-theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
+applicationClient.theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -778,7 +778,7 @@ Get the theme currently applied to an application
 
 
 ```kotlin
-theme.getAppliedTheme().safeAwait{ response, error->
+applicationClient.theme.getAppliedTheme().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2963,7 +2963,7 @@ Get a theme for a preview
 
 
 ```kotlin
-theme.getThemeForPreview(themeId: themeId).safeAwait{ response, error->
+applicationClient.theme.getThemeForPreview(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
