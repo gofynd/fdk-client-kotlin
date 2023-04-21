@@ -8,10 +8,10 @@
 Earn and redeem reward points
 * [getOfferByName](#getofferbyname)
 * [catalogueOrder](#catalogueorder)
-* [getPointsHistory](#getpointshistory)
-* [getPoints](#getpoints)
-* [referral](#referral)
-* [orderDiscount](#orderdiscount)
+* [getUserPointsHistory](#getuserpointshistory)
+* [getUserPoints](#getuserpoints)
+* [getUserReferralDetails](#getuserreferraldetails)
+* [getOrderDiscount](#getorderdiscount)
 * [redeemReferralCode](#redeemreferralcode)
 
 
@@ -138,14 +138,14 @@ Success. Check example below or refer `CatalogueOrderResponse` for more details.
 ---
 
 
-### getPointsHistory
+### getUserPointsHistory
 Get all transactions of reward points
 
 
 
 
 ```kotlin
-rewards.getPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+rewards.getUserPointsHistory(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -199,14 +199,14 @@ Success. Check example below or refer `PointsHistoryResponse` for more details.
 ---
 
 
-### getPoints
+### getUserPoints
 Get referral details of a user
 
 
 
 
 ```kotlin
-rewards.getPoints().safeAwait{ response, error->
+rewards.getUserPoints().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -254,14 +254,14 @@ Success. Check example below or refer `PointsResponse` for more details.
 ---
 
 
-### referral
+### getUserReferralDetails
 Get referral details of a user
 
 
 
 
 ```kotlin
-rewards.referral().safeAwait{ response, error->
+rewards.getUserReferralDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -309,14 +309,14 @@ Success. Check example below or refer `ReferralDetailsResponse` for more details
 ---
 
 
-### orderDiscount
+### getOrderDiscount
 Calculates the discount on order-amount
 
 
 
 
 ```kotlin
-rewards.orderDiscount(body: body).safeAwait{ response, error->
+rewards.getOrderDiscount(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -584,6 +584,7 @@ Success. Check example below or refer `RedeemReferralCodeResponse` for more deta
  | share | [ShareMessages](#ShareMessages)? |  yes  |  |
  | user | [ReferralDetailsUser](#ReferralDetailsUser)? |  yes  |  |
  | referrerInfo | String? |  yes  |  |
+ | termsConditionsLink | String? |  yes  |  |
 
 ---
 
