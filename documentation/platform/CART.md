@@ -63,7 +63,7 @@ Get with single coupon details or coupon list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCoupons(pageNo: pageNo, pageSize: pageSize, isArchived: isArchived, title: title, isPublic: isPublic, isDisplay: isDisplay, typeSlug: typeSlug, code: code).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getCoupons(pageNo: pageNo, pageSize: pageSize, isArchived: isArchived, title: title, isPublic: isPublic, isDisplay: isDisplay, typeSlug: typeSlug, code: code).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -182,7 +182,7 @@ Create new coupon
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.createCoupon(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.createCoupon(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -244,7 +244,7 @@ Get with single coupon details or coupon list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCouponById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getCouponById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -444,7 +444,7 @@ Update existing coupon configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCoupon(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateCoupon(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -507,7 +507,7 @@ Update coupon archive state and schedule
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCouponPartially(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateCouponPartially(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -591,7 +591,7 @@ Get promotion list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getPromotions(pageNo: pageNo, pageSize: pageSize, q: q, status: status, promoGroup: promoGroup, promotionType: promotionType, fpPanel: fpPanel, promotionId: promotionId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getPromotions(pageNo: pageNo, pageSize: pageSize, q: q, status: status, promoGroup: promoGroup, promotionType: promotionType, fpPanel: fpPanel, promotionId: promotionId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -703,7 +703,7 @@ Create new promotion
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.createPromotion(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.createPromotion(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -876,7 +876,7 @@ Get with single promotion details or promotion list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getPromotionById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getPromotionById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1050,7 +1050,7 @@ Update existing promotion configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updatePromotion(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updatePromotion(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1224,7 +1224,7 @@ Update promotion publish state and schedule
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updatePromotionPartially(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updatePromotionPartially(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1308,7 +1308,7 @@ Fetch all promos that are set as active
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getPromosCouponConfig().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getPromosCouponConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1380,7 +1380,7 @@ Fetch Cart Details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.fetchAndvalidateCartItems(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.fetchAndvalidateCartItems(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1713,7 +1713,7 @@ Check Pincode Serviceability
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.checkCartServiceability(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.checkCartServiceability(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2302,7 +2302,7 @@ Create Fynd order with cart details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.checkoutCart(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.checkoutCart(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2366,7 +2366,7 @@ Get with abandoned cart list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getAbandonedCart(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, anonymousCart: anonymousCart, lastId: lastId, sortOn: sortOn).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getAbandonedCart(pageNo: pageNo, pageSize: pageSize, fromDate: fromDate, toDate: toDate, anonymousCart: anonymousCart, lastId: lastId, sortOn: sortOn).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2593,7 +2593,7 @@ Add items to abandoned cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.addItems(cartId: cartId, b: b, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.addItems(cartId: cartId, b: b, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3299,7 +3299,7 @@ Update items in the abandoned cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCart(cartId: cartId, b: b, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateCart(cartId: cartId, b: b, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3869,7 +3869,7 @@ Generate token for sharing the cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCartShareLink(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getCartShareLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3939,7 +3939,7 @@ Get details of a shared cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCartSharedItems(token: token).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getCartSharedItems(token: token).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4275,7 +4275,7 @@ Merge or replace existing cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCartWithSharedItems(token: token, action: action, cartId: cartId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateCartWithSharedItems(token: token, action: action, cartId: cartId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4620,7 +4620,7 @@ Get cart list for store os user
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCartList(fromDate: fromDate, toDate: toDate, filterOn: filterOn).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getCartList(fromDate: fromDate, toDate: toDate, filterOn: filterOn).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4713,7 +4713,7 @@ Update user id for store os customer
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCartUser(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateCartUser(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5099,7 +5099,7 @@ Fetch all items added to the customer cart using cart id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, buyNow: buyNow).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getCart(id: id, i: i, b: b, assignCardId: assignCardId, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5330,7 +5330,7 @@ Add items to cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.platformAddItems(i: i, b: b, buyNow: buyNow, id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.platformAddItems(i: i, b: b, buyNow: buyNow, id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6038,7 +6038,7 @@ Update items in the customer 's cart using cart id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.platformUpdateCart(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.platformUpdateCart(id: id, i: i, b: b, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6475,7 +6475,7 @@ Delete cart once user made successful checkout
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.deleteCart(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.deleteCart(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6538,7 +6538,7 @@ Count items in the customer's cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getItemCount(id: id, buyNow: buyNow).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getItemCount(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6601,7 +6601,7 @@ Fetch Coupon
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getAppCoupons(id: id, buyNow: buyNow).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getAppCoupons(id: id, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6698,7 +6698,7 @@ Apply Coupon for platform pos user
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.applyCoupon(i: i, b: b, p: p, id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.applyCoupon(i: i, b: b, p: p, id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7299,7 +7299,7 @@ Remove Applied Coupon for platform pos user
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.removeCoupon(uid: uid, buyNow: buyNow).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.removeCoupon(uid: uid, buyNow: buyNow).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7518,7 +7518,7 @@ Fetch address
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getAddresses(cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault, userId: userId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getAddresses(cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault, userId: userId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7615,7 +7615,7 @@ Add address to an account
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.addAddress(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.addAddress(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7678,7 +7678,7 @@ Fetch a single address by its ID
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getAddressById(id: id, cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault, userId: userId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getAddressById(id: id, cartId: cartId, buyNow: buyNow, mobileNo: mobileNo, checkoutMode: checkoutMode, tags: tags, isDefault: isDefault, userId: userId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7773,7 +7773,7 @@ Update address added to an account
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateAddress(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateAddress(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7838,7 +7838,7 @@ Remove address associated with an account
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.removeAddress(id: id, userId: userId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.removeAddress(id: id, userId: userId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7902,7 +7902,7 @@ Select an address from available addresses
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.selectAddress(cartId: cartId, buyNow: buyNow, i: i, b: b, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.selectAddress(cartId: cartId, buyNow: buyNow, i: i, b: b, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -8221,7 +8221,7 @@ Get delivery date and options before checkout
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, i: i, p: p, id: id, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getShipments(pickAtStoreUid: pickAtStoreUid, orderingStoreId: orderingStoreId, i: i, p: p, id: id, addressId: addressId, areaCode: areaCode, orderType: orderType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -8928,7 +8928,7 @@ Update shipment delivery type and quantity before checkout
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateShipments(i: i, p: p, id: id, addressId: addressId, areaCode: areaCode, orderType: orderType, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateShipments(i: i, p: p, id: id, addressId: addressId, areaCode: areaCode, orderType: orderType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -9634,7 +9634,7 @@ Update the cart meta for platform pos user
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.updateCartMeta(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.updateCartMeta(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -9697,7 +9697,7 @@ Checkout all items in the cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.platformCheckoutCart(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.platformCheckoutCart(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -10137,7 +10137,7 @@ Get available delivery modes for cart
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getAvailableDeliveryModes(areaCode: areaCode, id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getAvailableDeliveryModes(areaCode: areaCode, id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -10206,7 +10206,7 @@ Get list of stores for give uids
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.getStoreAddressByUid(storeUid: storeUid).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.getStoreAddressByUid(storeUid: storeUid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -10290,7 +10290,7 @@ Update cart payment
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.selectPaymentMode(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.selectPaymentMode(id: id, buyNow: buyNow, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -10619,7 +10619,7 @@ Verify the coupon eligibility against the payment mode
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").cart.validateCouponForPayment(id: id, buyNow: buyNow, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").cart.validateCouponForPayment(id: id, buyNow: buyNow, addressId: addressId, paymentMode: paymentMode, paymentIdentifier: paymentIdentifier, aggregatorName: aggregatorName, merchantCode: merchantCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

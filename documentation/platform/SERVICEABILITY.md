@@ -29,7 +29,7 @@ Zone configuration of application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").serviceability.getApplicationServiceability().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").serviceability.getApplicationServiceability().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -96,7 +96,7 @@ Get country and state list
 
 
 ```kotlin
-client.serviceability.getEntityRegionView(body: body).safeAwait{ response, error->
+platformClient.serviceability.getEntityRegionView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -155,7 +155,7 @@ Zone List of application.
 
 
 ```kotlin
-client.serviceability.getListView(pageNumber: pageNumber, pageSize: pageSize, name: name, isActive: isActive, channelIds: channelIds).safeAwait{ response, error->
+platformClient.serviceability.getListView(pageNumber: pageNumber, pageSize: pageSize, name: name, isActive: isActive, channelIds: channelIds).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -219,7 +219,7 @@ Company Store View of application.
 
 
 ```kotlin
-client.serviceability.getCompanyStoreView(pageNumber: pageNumber, pageSize: pageSize).safeAwait{ response, error->
+platformClient.serviceability.getCompanyStoreView(pageNumber: pageNumber, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -280,7 +280,7 @@ Updation of zone collections in database.
 
 
 ```kotlin
-client.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
+platformClient.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -340,7 +340,7 @@ Zone Data View of application.
 
 
 ```kotlin
-client.serviceability.getZoneDataView(zoneId: zoneId).safeAwait{ response, error->
+platformClient.serviceability.getZoneDataView(zoneId: zoneId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -400,7 +400,7 @@ Insertion of zone in database.
 
 
 ```kotlin
-client.serviceability.insertZoneControllerView(body: body).safeAwait{ response, error->
+platformClient.serviceability.insertZoneControllerView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -459,7 +459,7 @@ GET zone from the Pincode.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").serviceability.upsertZoneControllerView(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").serviceability.upsertZoneControllerView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -518,7 +518,7 @@ GET stores data
 
 
 ```kotlin
-client.serviceability.getStore(storeUid: storeUid).safeAwait{ response, error->
+platformClient.serviceability.getStore(storeUid: storeUid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -798,7 +798,7 @@ GET stores data
 
 
 ```kotlin
-client.serviceability.getAllStores().safeAwait{ response, error->
+platformClient.serviceability.getAllStores().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

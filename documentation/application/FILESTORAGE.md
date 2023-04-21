@@ -22,7 +22,7 @@ Initiates an upload and returns a storage link that is valid for 30 minutes. You
 
 
 ```kotlin
-filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
+applicationClient.filestorage.startUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -100,7 +100,7 @@ Completes the upload process. After successfully uploading a file, call this API
 
 
 ```kotlin
-filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
+applicationClient.filestorage.completeUpload(namespace: namespace, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -178,7 +178,7 @@ Explain here
 
 
 ```kotlin
-filestorage.signUrls(body: body).safeAwait{ response, error->
+applicationClient.filestorage.signUrls(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
