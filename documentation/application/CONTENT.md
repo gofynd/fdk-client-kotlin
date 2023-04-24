@@ -38,7 +38,7 @@ Get live announcements
 
 
 ```kotlin
-content.getAnnouncements().safeAwait{ response, error->
+applicationClient.content.getAnnouncements().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -128,7 +128,7 @@ Get a blog
 
 
 ```kotlin
-content.getBlog(slug: slug, rootId: rootId).safeAwait{ response, error->
+applicationClient.content.getBlog(slug: slug, rootId: rootId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -234,7 +234,7 @@ Get a list of blogs
 
 
 ```kotlin
-content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -344,7 +344,7 @@ Get the data loaders associated with an application
 
 
 ```kotlin
-content.getDataLoaders().safeAwait{ response, error->
+applicationClient.content.getDataLoaders().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -420,7 +420,7 @@ Get a list of FAQs
 
 
 ```kotlin
-content.getFaqs().safeAwait{ response, error->
+applicationClient.content.getFaqs().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -493,7 +493,7 @@ Get a list of FAQ categories
 
 
 ```kotlin
-content.getFaqCategories().safeAwait{ response, error->
+applicationClient.content.getFaqCategories().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -561,7 +561,7 @@ Get an FAQ
 
 
 ```kotlin
-content.getFaqBySlug(slug: slug).safeAwait{ response, error->
+applicationClient.content.getFaqBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -627,7 +627,7 @@ Get the FAQ category
 
 
 ```kotlin
-content.getFaqCategoryBySlug(slug: slug).safeAwait{ response, error->
+applicationClient.content.getFaqCategoryBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -704,7 +704,7 @@ Get FAQs using the slug of FAQ category
 
 
 ```kotlin
-content.getFaqsByCategorySlug(slug: slug).safeAwait{ response, error->
+applicationClient.content.getFaqsByCategorySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -774,7 +774,7 @@ Get the landing page
 
 
 ```kotlin
-content.getLandingPage().safeAwait{ response, error->
+applicationClient.content.getLandingPage().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -860,7 +860,7 @@ Get legal information
 
 
 ```kotlin
-content.getLegalInformation().safeAwait{ response, error->
+applicationClient.content.getLegalInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -955,7 +955,7 @@ Get the navigation
 
 
 ```kotlin
-content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1211,7 +1211,7 @@ Get the SEO of an application
 
 
 ```kotlin
-content.getSEOConfiguration().safeAwait{ response, error->
+applicationClient.content.getSEOConfiguration().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1300,7 +1300,7 @@ Get the slideshows
 
 
 ```kotlin
-content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1420,7 +1420,7 @@ Get a slideshow
 
 
 ```kotlin
-content.getSlideshow(slug: slug).safeAwait{ response, error->
+applicationClient.content.getSlideshow(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1527,7 +1527,7 @@ Get the support information
 
 
 ```kotlin
-content.getSupportInformation().safeAwait{ response, error->
+applicationClient.content.getSupportInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1613,7 +1613,7 @@ Get the tags associated with an application
 
 
 ```kotlin
-content.getTags().safeAwait{ response, error->
+applicationClient.content.getTags().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1684,7 +1684,7 @@ Get a page
 
 
 ```kotlin
-content.getPage(slug: slug, rootId: rootId).safeAwait{ response, error->
+applicationClient.content.getPage(slug: slug, rootId: rootId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1793,7 +1793,7 @@ Get all pages
 
 
 ```kotlin
-content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

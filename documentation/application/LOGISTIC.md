@@ -24,7 +24,7 @@ Get Pincode API
 
 
 ```kotlin
-logistic.getPincodeCity(pincode: pincode, countryCode: countryCode).safeAwait{ response, error->
+applicationClient.logistic.getPincodeCity(pincode: pincode, countryCode: countryCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -180,7 +180,7 @@ Get TAT API
 
 
 ```kotlin
-logistic.getTatProduct(body: body).safeAwait{ response, error->
+applicationClient.logistic.getTatProduct(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -346,7 +346,7 @@ Get Country List
 
 
 ```kotlin
-logistic.getAllCountries().safeAwait{ response, error->
+applicationClient.logistic.getAllCountries().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -401,7 +401,7 @@ GET zone from the Pincode.
 
 
 ```kotlin
-logistic.getPincodeZones(body: body).safeAwait{ response, error->
+applicationClient.logistic.getPincodeZones(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -460,7 +460,7 @@ GET zone from the Pincode.
 
 
 ```kotlin
-logistic.getOptimalLocations(body: body).safeAwait{ response, error->
+applicationClient.logistic.getOptimalLocations(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

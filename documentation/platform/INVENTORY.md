@@ -31,7 +31,7 @@ Get Job Configs For A Company
 
 
 ```kotlin
-client.inventory.getJobsByCompany(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.inventory.getJobsByCompany(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -92,7 +92,7 @@ Updates An Existing Job Config
 
 
 ```kotlin
-client.inventory.updateJob(body: body).safeAwait{ response, error->
+platformClient.inventory.updateJob(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -151,7 +151,7 @@ Creates A New Job Config
 
 
 ```kotlin
-client.inventory.createJob(body: body).safeAwait{ response, error->
+platformClient.inventory.createJob(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -210,7 +210,7 @@ Get Slingshot Configuration Of  A Company
 
 
 ```kotlin
-client.inventory.suppressStores(body: body).safeAwait{ response, error->
+platformClient.inventory.suppressStores(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -269,7 +269,7 @@ Get Slingshot Configuration Of  A Company
 
 
 ```kotlin
-client.inventory.getConfigByCompany().safeAwait{ response, error->
+platformClient.inventory.getConfigByCompany().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -324,7 +324,7 @@ Get Job Code Steps
 
 
 ```kotlin
-client.inventory.getJobSteps(jobId: jobId).safeAwait{ response, error->
+platformClient.inventory.getJobSteps(jobId: jobId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -384,7 +384,7 @@ Get Job Configs By Company And Integration
 
 
 ```kotlin
-client.inventory.getJobByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.inventory.getJobByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -446,7 +446,7 @@ Disable Job Config
 
 
 ```kotlin
-client.inventory.disable(integrationId: integrationId).safeAwait{ response, error->
+platformClient.inventory.disable(integrationId: integrationId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -506,7 +506,7 @@ Get Job Configs Defaults
 
 
 ```kotlin
-client.inventory.getJobConfigDefaults().safeAwait{ response, error->
+platformClient.inventory.getJobConfigDefaults().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -561,7 +561,7 @@ Get Job Config By Code
 
 
 ```kotlin
-client.inventory.getJobByCode(code: code).safeAwait{ response, error->
+platformClient.inventory.getJobByCode(code: code).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -621,7 +621,7 @@ Get Job Metrics
 
 
 ```kotlin
-client.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSize, status: status, date: date).safeAwait{ response, error->
+platformClient.inventory.getJobCodeMetrics(code: code, pageNo: pageNo, pageSize: pageSize, status: status, date: date).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -685,7 +685,7 @@ Get Job Codes By Company And Integration
 
 
 ```kotlin
-client.inventory.getJobCodesByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.inventory.getJobCodesByCompanyAndIntegration(integrationId: integrationId, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
