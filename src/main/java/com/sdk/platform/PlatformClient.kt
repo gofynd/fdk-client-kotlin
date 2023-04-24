@@ -26,6 +26,12 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
+    val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
+    
+    val catalog by lazy { CatalogDataManagerClass(config, unauthorizedAction)}
+    
+    val companyProfile by lazy { CompanyProfileDataManagerClass(config, unauthorizedAction)}
+    
     val fileStorage by lazy { FileStorageDataManagerClass(config, unauthorizedAction)}
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
@@ -39,6 +45,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
     val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
+    
+    val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
     
     val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
     
@@ -68,6 +76,12 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val payment by lazy { this@PlatformClient.payment.ApplicationClient(applicationId,config)}
     
+    val order by lazy { this@PlatformClient.order.ApplicationClient(applicationId,config)}
+    
+    val catalog by lazy { this@PlatformClient.catalog.ApplicationClient(applicationId,config)}
+    
+    val companyProfile by lazy { this@PlatformClient.companyProfile.ApplicationClient(applicationId,config)}
+    
     val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
@@ -81,6 +95,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
     val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
+    
+    val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
     

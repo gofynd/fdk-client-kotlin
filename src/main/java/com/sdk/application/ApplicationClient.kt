@@ -28,6 +28,8 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     
     val payment by lazy { PaymentDataManagerClass(config, unauthorizedAction)}
     
+    val order by lazy { OrderDataManagerClass(config, unauthorizedAction)}
+    
     val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
     val posCart by lazy { PosCartDataManagerClass(config, unauthorizedAction)}
