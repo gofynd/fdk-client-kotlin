@@ -278,7 +278,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPaymentCodeOption()
-    : Deferred<Response<getPaymentCodeResponse>>? {
+    : Deferred<Response<GetPaymentCodeResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {

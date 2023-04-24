@@ -53,6 +53,8 @@ class RewardsDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -233,5 +235,25 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     })
     return paginator
     }
+    
+    suspend fun getRewardsConfiguration()
+    : Deferred<Response<ConfigurationRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                rewardsApiList?.getRewardsConfiguration(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun setRewardsConfiguration(body: ConfigurationRequest)
+    : Deferred<Response<SetConfigurationRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                rewardsApiList?.setRewardsConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
 }
 }
