@@ -89,6 +89,9 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -800,6 +803,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentCouponValidate>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.validateCouponForPayment(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCouponOptionValues()
+    : Deferred<Response<HashMap<String,Any>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getCouponOptionValues(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getCouponCodeExists(code: String?=null)
+    : Deferred<Response<HashMap<String,Any>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getCouponCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPromotionCodeExists(code: String?=null)
+    : Deferred<Response<HashMap<String,Any>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPromotionCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
         } else {
             null
         }

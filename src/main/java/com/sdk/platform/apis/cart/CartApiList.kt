@@ -189,4 +189,16 @@ interface CartApiList {
     fun validateCouponForPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
     : Deferred<Response<PaymentCouponValidate>>
     
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_options")
+    fun getCouponOptionValues(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<HashMap<String,Any>>>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_code_exists")
+    fun getCouponCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?)
+    : Deferred<Response<HashMap<String,Any>>>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion_code_exists")
+    fun getPromotionCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?)
+    : Deferred<Response<HashMap<String,Any>>>
+    
 }

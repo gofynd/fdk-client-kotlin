@@ -60,7 +60,6 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -180,16 +179,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PlatformSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getPlatformConfig(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePlatformConfig(body: PlatformSchema)
-    : Deferred<Response<PlatformSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.updatePlatformConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

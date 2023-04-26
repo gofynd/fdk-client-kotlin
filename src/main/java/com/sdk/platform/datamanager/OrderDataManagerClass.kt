@@ -69,6 +69,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun getAssetByShipmentIds(shipmentIds: String, invoice: Boolean?=null, expiresIn: String?=null)
+    : Deferred<Response<ResponseGetAssetShipment>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getAssetByShipmentIds(
+        companyId = config.companyId, shipmentIds = shipmentIds, invoice = invoice, expiresIn = expiresIn )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getOrderById(orderId: String)
     : Deferred<Response<ShipmentDetailsResponse>>? {
         
@@ -554,6 +566,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
     
     
     

@@ -57,10 +57,6 @@ interface UserApiList {
     fun getPlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<PlatformSchema>>
     
-    @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")
-    fun updatePlatformConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PlatformSchema)
-    : Deferred<Response<PlatformSchema>>
-    
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/user_group")
     fun createUserGroup(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserGroupSchema)
     : Deferred<Response<UserGroupResponseSchema>>

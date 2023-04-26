@@ -466,9 +466,14 @@ data class SendMobileOtpRequestSchema(
     var force: String?=null,
     
     @SerializedName("captcha_code")
-    var captchaCode: String?=null
+    var captchaCode: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -750,9 +755,14 @@ data class SendOtpRequestSchema(
     var mobile: String?=null,
     
     @SerializedName("android_hash")
-    var androidHash: String?=null
+    var androidHash: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2637,9 +2647,14 @@ data class Login(
     var password: Boolean?=null,
     
     @SerializedName("otp")
-    var otp: Boolean?=null
+    var otp: Boolean?=null,
+    
+    @SerializedName("voice_otp")
+    var voiceOtp: Boolean?=null
     
 ): Parcelable {
+    
+    
     
     
     

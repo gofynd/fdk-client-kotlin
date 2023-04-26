@@ -17,6 +17,10 @@ interface OrderApiList {
     fun getShipmentById(@Path("company_id") companyId: String, @Query("channel_shipment_id") channelShipmentId: String?, @Query("shipment_id") shipmentId: String?, @Query("ordering_company_id") orderingCompanyId: String?, @Query("request_by_ext") requestByExt: String?)
     : Deferred<Response<ShipmentInfoResponse>>
     
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/shipments-invoice")
+    fun getAssetByShipmentIds(@Path("company_id") companyId: String, @Query("shipment_ids") shipmentIds: String, @Query("invoice") invoice: Boolean?, @Query("expires_in") expiresIn: String?)
+    : Deferred<Response<ResponseGetAssetShipment>>
+    
     @GET ("/service/platform/orders/v1.0/company/{company_id}/order-details")
     fun getOrderById(@Path("company_id") companyId: String, @Query("order_id") orderId: String)
     : Deferred<Response<ShipmentDetailsResponse>>
