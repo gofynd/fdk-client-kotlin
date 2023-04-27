@@ -15,7 +15,7 @@ Earn and redeem reward points
 * [getOfferByName](#getofferbyname)
 * [updateOfferByName](#updateofferbyname)
 * [updateUserStatus](#updateuserstatus)
-* [user](#user)
+* [getUserDetails](#getuserdetails)
 * [getUserPointsHistory](#getuserpointshistory)
 * [getRewardsConfiguration](#getrewardsconfiguration)
 * [setRewardsConfiguration](#setrewardsconfiguration)
@@ -272,7 +272,7 @@ Get the Giveaway audience status
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").rewards.getGiveawayAudienceStatus(audienceId: audienceId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getGiveawayAudienceStatus(id: id, audienceId: audienceId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -288,6 +288,7 @@ platformClient.application("<APPLICATION_ID>").rewards.getGiveawayAudienceStatus
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
+| id | String | yes | Giveaway ID |   
 | audienceId | String | yes | audience id |  
 
 
@@ -387,7 +388,7 @@ Get offer by name
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").rewards.getOfferByName(name: name, cookie: cookie).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getOfferByName(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -403,8 +404,7 @@ platformClient.application("<APPLICATION_ID>").rewards.getOfferByName(name: name
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| name | String | yes | The name given to the offer. |   
-| cookie | String | yes | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |  
+| name | String | yes | The name given to the offer. |  
 
 
 
@@ -561,14 +561,14 @@ Success
 ---
 
 
-### user
+### getUserDetails
 Get user reward details
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").rewards.user(userId: userId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getUserDetails(userId: userId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
