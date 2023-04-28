@@ -105,6 +105,10 @@ interface OrderApiList {
     fun getBags(@Path("company_id") companyId: String, @Query("bag_ids") bagIds: String?, @Query("shipment_ids") shipmentIds: String?, @Query("order_ids") orderIds: String?, @Query("channel_bag_ids") channelBagIds: String?, @Query("channel_shipment_ids") channelShipmentIds: String?, @Query("channel_order_ids") channelOrderIds: String?, @Query("channel_id") channelId: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<GetBagsPlatformResponse>>
     
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/orders/{order_id}/generate/pos-receipt")
+    fun generatePOSReceiptByOrderId(@Path("company_id") companyId: String, @Path("order_id") orderId: String, @Query("document_type") documentType: String?)
+    : Deferred<Response<GeneratePosOrderReceiptResponse>>
+    
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/update-cache")
     fun invalidateShipmentCache(@Path("company_id") companyId: String,@Body body: InvalidateShipmentCachePayload)
     : Deferred<Response<InvalidateShipmentCacheResponse>>
