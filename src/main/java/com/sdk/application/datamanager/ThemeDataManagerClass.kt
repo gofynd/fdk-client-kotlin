@@ -29,6 +29,10 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getThemeForPreview"] = "/service/application/theme/v1.0/{theme_id}/preview".substring(1)
             
+                    _relativeUrls["getAppliedThemeV2"] = "/service/application/theme/v2.0/applied-theme".substring(1)
+            
+                    _relativeUrls["getThemeForPreviewV2"] = "/service/application/theme/v2.0/{theme_id}/preview".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -97,6 +101,22 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
         
         return themeApiList?.getThemeForPreview(fullUrl   )}
+
+    
+    
+    fun getAppliedThemeV2(): Deferred<Response<ThemesSchema>>? {
+        var fullUrl : String? = _relativeUrls["getAppliedThemeV2"] 
+        
+        return themeApiList?.getAppliedThemeV2(fullUrl  )}
+
+    
+    
+    fun getThemeForPreviewV2(themeId: String): Deferred<Response<ThemesSchema>>? {
+        var fullUrl : String? = _relativeUrls["getThemeForPreviewV2"] 
+        
+        fullUrl = fullUrl?.replace("{" + "theme_id" +"}",themeId.toString())
+        
+        return themeApiList?.getThemeForPreviewV2(fullUrl   )}
 
     
     

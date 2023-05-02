@@ -30,4 +30,14 @@ interface ThemeApiList {
     fun getThemeForPreview(@Url url1: String?    )
     : Deferred<Response<ThemesSchema>>
     
+    
+    @GET 
+    fun getAppliedThemeV2(@Url url1: String?   )
+    : Deferred<Response<ThemesSchema>>
+    
+    
+    @GET 
+    fun getThemeForPreviewV2(@Url url1: String?    )
+    : Deferred<Response<ThemesSchema>>
+    
 }
