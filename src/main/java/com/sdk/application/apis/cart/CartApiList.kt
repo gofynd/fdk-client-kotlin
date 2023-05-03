@@ -62,7 +62,7 @@ interface CartApiList {
     
     
     @POST 
-    fun applyRewardPoints(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RewardPointRequest)
+    fun applyRewardPoints(@Url url1: String?    ,     @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("buy_now") buyNow: Boolean?, @Body body: RewardPointRequestSchema)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -103,7 +103,7 @@ interface CartApiList {
     
     @GET 
     fun validateCouponForPayment(@Url url1: String?    ,        @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("payment_mode") paymentMode: String?, @Query("payment_identifier") paymentIdentifier: String?, @Query("aggregator_name") aggregatorName: String?, @Query("merchant_code") merchantCode: String?)
-    : Deferred<Response<PaymentCouponValidate>>
+    : Deferred<Response<PaymentCouponValidateSchema>>
     
     
     @GET 
@@ -113,7 +113,7 @@ interface CartApiList {
     
     @POST 
     fun checkoutCart(@Url url1: String?    ,  @Query("buy_now") buyNow: Boolean?, @Body body: CartCheckoutDetailRequest)
-    : Deferred<Response<CartCheckoutResponse>>
+    : Deferred<Response<CartCheckoutResponseSchema>>
     
     
     @PUT 
@@ -144,5 +144,10 @@ interface CartApiList {
     @GET 
     fun getLadderOffers(@Url url1: String?    ,     @Query("slug") slug: String, @Query("store_id") storeId: String?, @Query("promotion_id") promotionId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LadderPriceOffers>>
+    
+    
+    @POST 
+    fun checkoutCartV2(@Url url1: String?    ,  @Query("buy_now") buyNow: Boolean?, @Body body: CartCheckoutDetailV2Request)
+    : Deferred<Response<CartCheckoutResponseSchema>>
     
 }

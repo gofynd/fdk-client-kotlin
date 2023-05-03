@@ -75,6 +75,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices".substring(1)
             
+                    _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -180,7 +182,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
+    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequestSchema): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
         
         return cartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
@@ -242,7 +244,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
+    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidateSchema>>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
         return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
@@ -256,7 +258,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun checkoutCart(buyNow: Boolean?=null, body: CartCheckoutDetailRequest): Deferred<Response<CartCheckoutResponse>>? {
+    fun checkoutCart(buyNow: Boolean?=null, body: CartCheckoutDetailRequest): Deferred<Response<CartCheckoutResponseSchema>>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"] 
         
         return cartApiList?.checkoutCart(fullUrl    ,  buyNow = buyNow, body = body)}
@@ -308,6 +310,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["getLadderOffers"] 
         
         return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
+
+    
+    
+    fun checkoutCartV2(buyNow: Boolean?=null, body: CartCheckoutDetailV2Request): Deferred<Response<CartCheckoutResponseSchema>>? {
+        var fullUrl : String? = _relativeUrls["checkoutCartV2"] 
+        
+        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow, body = body)}
 
     
     
