@@ -66,12 +66,12 @@ class LogisticDataManagerClass(val config: ApplicationConfig, val unauthorizedAc
         return retrofitHttpClient?.initializeRestClient(LogisticApiList::class.java) as? LogisticApiList
     }
     
-    fun getPincodeCity(pincode: String, countryCode: String?=null): Deferred<Response<PincodeApiResponse>>? {
+    fun getPincodeCity(pincode: String): Deferred<Response<PincodeApiResponse>>? {
         var fullUrl : String? = _relativeUrls["getPincodeCity"] 
         
         fullUrl = fullUrl?.replace("{" + "pincode" +"}",pincode.toString())
         
-        return logisticApiList?.getPincodeCity(fullUrl     ,  countryCode = countryCode)}
+        return logisticApiList?.getPincodeCity(fullUrl   )}
 
     
     

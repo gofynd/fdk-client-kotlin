@@ -112,7 +112,6 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -863,16 +862,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SeoComponent>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getSEOConfiguration(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateSEOConfiguration(body: SeoComponent)
-    : Deferred<Response<SeoSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                contentApiList?.updateSEOConfiguration(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
