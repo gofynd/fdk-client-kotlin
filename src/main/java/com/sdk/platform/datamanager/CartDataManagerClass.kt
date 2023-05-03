@@ -92,6 +92,8 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -196,7 +198,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun createCoupon(body: CouponAdd)
+    suspend fun createCoupon(body: CouponAddSchema)
     : Deferred<Response<SuccessMessage>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createCoupon(companyId = config.companyId , applicationId = applicationId , body = body)
@@ -207,7 +209,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCouponById(id: String)
-    : Deferred<Response<CouponUpdate>>? {
+    : Deferred<Response<CouponUpdateSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getCouponById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -216,7 +218,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateCoupon(id: String,body: CouponUpdate)
+    suspend fun updateCoupon(id: String,body: CouponUpdateSchema)
     : Deferred<Response<SuccessMessage>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCoupon(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
@@ -335,8 +337,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun createPromotion(body: PromotionAdd)
-    : Deferred<Response<PromotionAdd>>? {
+    suspend fun createPromotion(body: PromotionAddSchema)
+    : Deferred<Response<PromotionAddSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createPromotion(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -346,7 +348,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getPromotionById(id: String)
-    : Deferred<Response<PromotionUpdate>>? {
+    : Deferred<Response<PromotionUpdateSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getPromotionById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -355,8 +357,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updatePromotion(id: String,body: PromotionUpdate)
-    : Deferred<Response<PromotionUpdate>>? {
+    suspend fun updatePromotion(id: String,body: PromotionUpdateSchema)
+    : Deferred<Response<PromotionUpdateSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updatePromotion(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -405,7 +407,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun checkoutCart(body: OpenApiPlatformCheckoutReq)
+    suspend fun checkoutCart(body: OpenApiPlatformCheckoutReqSchema)
     : Deferred<Response<OpenApiCheckoutResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.checkoutCart(companyId = config.companyId , applicationId = applicationId , body = body)
@@ -416,7 +418,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAbandonedCart(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null)
-    : Deferred<Response<AbandonedCartResponse>>? {
+    : Deferred<Response<AbandonedCartResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn )
         } else {
@@ -477,12 +479,12 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     fun getAbandonedCartPaginator(
     pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null
     
-    ) : Paginator<AbandonedCartResponse>{
-        val paginator = Paginator<AbandonedCartResponse>()
-        paginator.setCallBack(object : PaginatorCallback<AbandonedCartResponse> {
+    ) : Paginator<AbandonedCartResponseSchema>{
+        val paginator = Paginator<AbandonedCartResponseSchema>()
+        paginator.setCallBack(object : PaginatorCallback<AbandonedCartResponseSchema> {
             
             override suspend fun onNext(
-                onResponse: (Event<AbandonedCartResponse>?,FdkError?) -> Unit){
+                onResponse: (Event<AbandonedCartResponseSchema>?,FdkError?) -> Unit){
 
                 if (config.oauthClient.isAccessTokenValid()) {
                     val pageId = paginator.nextId
@@ -570,7 +572,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getCartList(fromDate: String?=null, toDate: String?=null, filterOn: String?=null)
-    : Deferred<Response<MultiCartResponse>>? {
+    : Deferred<Response<MultiCartResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getCartList(companyId = config.companyId , applicationId = applicationId , fromDate = fromDate, toDate = toDate, filterOn = filterOn )
         } else {
@@ -760,7 +762,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun platformCheckoutCart(id: String?=null,body: PlatformCartCheckoutDetailRequest)
-    : Deferred<Response<CartCheckoutResponse>>? {
+    : Deferred<Response<CartCheckoutResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.platformCheckoutCart(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -800,9 +802,29 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null)
-    : Deferred<Response<PaymentCouponValidate>>? {
+    : Deferred<Response<PaymentCouponValidateSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.validateCouponForPayment(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, addressId = addressId, paymentMode = paymentMode, paymentIdentifier = paymentIdentifier, aggregatorName = aggregatorName, merchantCode = merchantCode )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun platformCheckoutCartV2(id: String?=null,body: PlatformCartCheckoutDetailV2Request)
+    : Deferred<Response<CartCheckoutResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.platformCheckoutCartV2(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun selectPaymentModeV2(id: String?=null, buyNow: Boolean?=null,body: UpdateCartPaymentRequestV2)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.selectPaymentModeV2(companyId = config.companyId , applicationId = applicationId , id = id, buyNow = buyNow, body = body)
         } else {
             null
         }
