@@ -6697,9 +6697,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | department | Int |  no  |  |
  | l2 | Int |  no  |  |
  | l1 | Int |  no  |  |
- | department | Int |  no  |  |
 
 ---
 
@@ -6710,9 +6710,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | landscape | String |  no  |  |
- | logo | String |  no  |  |
  | portrait | String |  no  |  |
+ | logo | String |  no  |  |
+ | landscape | String |  no  |  |
 
 ---
 
@@ -6735,9 +6735,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ajio | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
- | facebook | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
  | google | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
+ | facebook | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
+ | ajio | [CategoryMappingValues](#CategoryMappingValues)? |  yes  |  |
 
 ---
 
@@ -6748,17 +6748,17 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
- | slug | String? |  yes  |  |
- | priority | Int? |  yes  |  |
- | synonyms | ArrayList<String>? |  yes  |  |
- | departments | ArrayList<Int> |  no  |  |
- | media | [Media](#Media)? |  yes  |  |
- | isActive | Boolean |  no  |  |
  | name | String |  no  |  |
+ | departments | ArrayList<Int> |  no  |  |
+ | synonyms | ArrayList<String>? |  yes  |  |
+ | isActive | Boolean |  no  |  |
+ | priority | Int? |  yes  |  |
+ | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
  | level | Int |  no  |  |
- | marketplaces | [CategoryMapping](#CategoryMapping)? |  yes  |  |
  | tryouts | ArrayList<String>? |  yes  |  |
+ | media | [Media](#Media)? |  yes  |  |
+ | marketplaces | [CategoryMapping](#CategoryMapping)? |  yes  |  |
+ | slug | String? |  yes  |  |
 
 ---
 
@@ -6769,8 +6769,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uid | Int? |  yes  |  |
  | message | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -6781,11 +6781,11 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | Int? |  yes  |  |
- | error | String? |  yes  |  |
  | message | String? |  yes  |  |
- | code | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | code | String? |  yes  |  |
+ | error | String? |  yes  |  |
+ | status | Int? |  yes  |  |
 
 ---
 
@@ -6796,13 +6796,13 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | nextId | String? |  yes  |  |
  | hasNext | Boolean? |  yes  |  |
- | size | Int? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
- | current | Int? |  yes  |  |
  | type | String |  no  |  |
  | hasPrevious | Boolean? |  yes  |  |
- | nextId | String? |  yes  |  |
+ | current | Int? |  yes  |  |
+ | size | Int? |  yes  |  |
+ | itemTotal | Int? |  yes  |  |
 
 ---
 
@@ -6813,23 +6813,23 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String? |  yes  |  |
- | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
- | slug | String? |  yes  |  |
- | priority | Int? |  yes  |  |
- | synonyms | ArrayList<String>? |  yes  |  |
- | departments | ArrayList<Int> |  no  |  |
- | uid | Int? |  yes  |  |
- | media | [Media](#Media)? |  yes  |  |
- | isActive | Boolean |  no  |  |
- | id | String? |  yes  |  |
- | name | String |  no  |  |
- | level | Int |  no  |  |
- | createdOn | String? |  yes  |  |
  | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | marketplaces | [CategoryMapping](#CategoryMapping)? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
+ | departments | ArrayList<Int> |  no  |  |
+ | name | String |  no  |  |
+ | synonyms | ArrayList<String>? |  yes  |  |
+ | id | String? |  yes  |  |
+ | isActive | Boolean |  no  |  |
+ | priority | Int? |  yes  |  |
+ | hierarchy | ArrayList<[Hierarchy](#Hierarchy)>? |  yes  |  |
+ | level | Int |  no  |  |
  | tryouts | ArrayList<String>? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | media | [Media](#Media)? |  yes  |  |
+ | marketplaces | [CategoryMapping](#CategoryMapping)? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -6852,8 +6852,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -6875,17 +6875,17 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | slug | String? |  yes  |  |
- | synonyms | ArrayList<String>? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | uid | Int? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | name | String |  no  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | cls | String? |  yes  |  |
- | logo | String |  no  |  |
- | platforms | HashMap<String,Any>? |  yes  |  |
  | priorityOrder | Int |  no  |  |
+ | name | String |  no  |  |
+ | synonyms | ArrayList<String>? |  yes  |  |
+ | logo | String |  no  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | platforms | HashMap<String,Any>? |  yes  |  |
+ | cls | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -6896,10 +6896,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | superUser | Boolean? |  yes  | A flag indicating whether the user is a super user. |
+ | username | String |  no  | The username of the user. |
  | userId | String |  no  | The user ID of the user. |
  | contact | String? |  yes  | The contact details of the user. |
- | username | String |  no  | The username of the user. |
- | superUser | Boolean? |  yes  | A flag indicating whether the user is a super user. |
 
 ---
 
@@ -6910,22 +6910,22 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
- | slug | String |  no  | The unique slug identifier for the department |
- | synonyms | ArrayList<String>? |  yes  | A list of synonyms for the department name |
- | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
- | uid | Int |  no  | The unique ID for the department |
- | isActive | Boolean? |  yes  | Whether the department is currently active |
- | id | Any? |  yes  |  |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
- | name | String |  no  | The name of the department |
  | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
- | createdOn | String |  no  | Timestamp of the creation of the document |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
- | cls | String? |  yes  |  |
- | logo | String |  no  | The URL of the department's logo |
+ | name | String |  no  | The name of the department |
  | priorityOrder | Int |  no  | The priority order of the department |
+ | synonyms | ArrayList<String>? |  yes  | A list of synonyms for the department name |
+ | logo | String |  no  | The URL of the department's logo |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
+ | uid | Int |  no  | The unique ID for the department |
+ | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
+ | cls | String? |  yes  |  |
+ | isActive | Boolean? |  yes  | Whether the department is currently active |
+ | slug | String |  no  | The unique slug identifier for the department |
+ | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -6948,10 +6948,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | userId | String? |  yes  |  |
- | contact | String? |  yes  |  |
- | uid | String? |  yes  |  |
- | id | String? |  yes  |  |
  | username | String? |  yes  |  |
+ | contact | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | uid | String? |  yes  |  |
 
 ---
 
@@ -6962,21 +6962,21 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String? |  yes  |  |
- | search | String? |  yes  |  |
- | pageSize | Int? |  yes  |  |
- | slug | String? |  yes  |  |
- | pageNo | Int? |  yes  |  |
- | synonyms | ArrayList<String>? |  yes  |  |
- | uid | Int? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | itemType | String? |  yes  |  |
- | name | String? |  yes  |  |
- | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | createdOn | String? |  yes  |  |
- | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
- | logo | String? |  yes  |  |
  | priorityOrder | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | synonyms | ArrayList<String>? |  yes  |  |
+ | modifiedBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | search | String? |  yes  |  |
+ | pageNo | Int? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | pageSize | Int? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | createdBy | [UserSerializer](#UserSerializer)? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -6999,11 +6999,11 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | code | String? |  yes  |  |
  | status | Int? |  yes  |  |
  | errors | HashMap<String,Any>? |  yes  |  |
- | message | String? |  yes  |  |
- | code | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7014,8 +7014,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | uid | Int |  no  |  |
  | message | String |  no  |  |
+ | uid | Int |  no  |  |
 
 ---
 
@@ -7037,8 +7037,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean? |  yes  |  |
  | message | String? |  yes  |  |
+ | success | Boolean? |  yes  |  |
 
 ---
 
@@ -7049,8 +7049,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
  | slug | String? |  yes  |  |
+ | name | String? |  yes  |  |
 
 ---
 
@@ -7073,9 +7073,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
  | success | Boolean? |  yes  |  |
  | data | [ShuffleAttributeDataResponse](#ShuffleAttributeDataResponse)? |  yes  |  |
- | message | String? |  yes  |  |
 
 ---
 
@@ -7086,9 +7086,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
  | success | Boolean? |  yes  |  |
  | data | [ShuffleAttributeFilter](#ShuffleAttributeFilter)? |  yes  |  |
- | message | String? |  yes  |  |
 
 ---
 
@@ -7099,9 +7099,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | display | Boolean? |  yes  | Whether or not to display the comparison attribute group |
  | attributes | ArrayList<String>? |  yes  | List of attributes in the comparison group |
  | templateSlugs | ArrayList<String>? |  yes  | List of template slugs related to the comparison attribute group |
+ | display | Boolean? |  yes  | Whether or not to display the comparison attribute group |
  | priority | Int? |  yes  | Priority of the comparison attribute group for sorting |
 
 ---
@@ -7113,9 +7113,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | display | Boolean? |  yes  | Whether or not to display the attribute group |
  | attributes | ArrayList<String>? |  yes  | List of attributes in the group |
  | templateSlugs | ArrayList<String>? |  yes  | List of template slugs related to the attribute group |
+ | display | Boolean? |  yes  | Whether or not to display the attribute group |
  | priority | Int? |  yes  | Priority of the attribute group for sorting |
 
 ---
@@ -7127,19 +7127,19 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
  | comparisons | [AttributeMasterGroupComparisons](#AttributeMasterGroupComparisons)? |  yes  | Comparison details of the attribute group |
+ | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
+ | name | String? |  yes  | Name of the attribute group |
+ | type | String? |  yes  | Type of the attribute group |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
+ | uid | Int |  no  | Unique ID of the attribute group |
+ | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
  | slug | String |  no  | Slug of the attribute group |
  | details | [AttributeMasterGroupDetails](#AttributeMasterGroupDetails)? |  yes  | Details of the attribute group |
- | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
- | uid | Int |  no  | Unique ID of the attribute group |
- | id | Any? |  yes  |  |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
- | type | String? |  yes  | Type of the attribute group |
- | name | String? |  yes  | Name of the attribute group |
- | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
- | createdOn | String |  no  | Timestamp of the creation of the document |
  | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -7173,20 +7173,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | indexing | Boolean |  no  | Whether to index the attribute or not |
- | priority | Int? |  yes  | The priority of the attribute for filtering |
  | dependsOn | ArrayList<String>? |  yes  | The list of attributes on which this attribute depends |
-
----
-
-
- 
- 
- #### [AttributeMasterDetails](#AttributeMasterDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | displayType | String |  no  | The display type of the attribute |
+ | priority | Int? |  yes  | The priority of the attribute for filtering |
+ | indexing | Boolean |  no  | Whether to index the attribute or not |
 
 ---
 
@@ -7209,12 +7198,23 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | format | String? |  yes  | The format of the attribute value |
- | mandatory | Boolean? |  yes  | Whether the attribute is mandatory or not |
- | multi | Boolean? |  yes  | Whether the attribute can have multiple values or not |
  | type | String |  no  | The data type of the attribute |
- | range | [AttributeSchemaRange](#AttributeSchemaRange)? |  yes  | The range of the attribute values |
  | allowedValues | ArrayList<String>? |  yes  | The list of allowed values for the attribute |
+ | mandatory | Boolean? |  yes  | Whether the attribute is mandatory or not |
+ | format | String? |  yes  | The format of the attribute value |
+ | range | [AttributeSchemaRange](#AttributeSchemaRange)? |  yes  | The range of the attribute values |
+ | multi | Boolean? |  yes  | Whether the attribute can have multiple values or not |
+
+---
+
+
+ 
+ 
+ #### [AttributeMasterDetails](#AttributeMasterDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | displayType | String |  no  | The display type of the attribute |
 
 ---
 
@@ -7225,29 +7225,29 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | slug | String |  no  | The unique slug of the attribute master |
- | rawKey | String? |  yes  | The raw key of the attribute |
- | synonyms | HashMap<String,Any>? |  yes  | Dictionary of synonyms for the attribute |
- | departments | ArrayList<String> |  no  | The list of departments to which the attribute belongs to |
- | unit | String? |  yes  | The unit of the attribute value |
- | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
- | suggestion | String? |  yes  | The suggestion for the attribute value |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
- | name | String? |  yes  | The name of the attribute |
- | createdOn | String |  no  | Timestamp of the creation of the document |
- | logo | String? |  yes  | The URL of the attribute logo |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
- | tags | ArrayList<String>? |  yes  | The list of tags associated with the attribute |
+ | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
+ | enabledForEndConsumer | Boolean? |  yes  | Whether the attribute is enabled for end consumers or not |
  | variant | Boolean? |  yes  | Whether the attribute is a variant or not |
  | filters | [AttributeMasterFilter](#AttributeMasterFilter) |  no  | Filters of the attribute |
- | enabledForEndConsumer | Boolean? |  yes  | Whether the attribute is enabled for end consumers or not |
- | details | [AttributeMasterDetails](#AttributeMasterDetails) |  no  | Details of the attribute |
- | id | Any? |  yes  |  |
- | isNested | Boolean? |  yes  | Whether the attribute is nested or not |
+ | slug | String |  no  | The unique slug of the attribute master |
  | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
- | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
+ | name | String? |  yes  | The name of the attribute |
+ | synonyms | HashMap<String,Any>? |  yes  | Dictionary of synonyms for the attribute |
  | description | String? |  yes  | The description of the attribute |
  | schema | [AttributeMaster](#AttributeMaster) |  no  | Schema of the attribute |
+ | tags | ArrayList<String>? |  yes  | The list of tags associated with the attribute |
+ | suggestion | String? |  yes  | The suggestion for the attribute value |
+ | details | [AttributeMasterDetails](#AttributeMasterDetails) |  no  | Details of the attribute |
+ | rawKey | String? |  yes  | The raw key of the attribute |
+ | unit | String? |  yes  | The unit of the attribute value |
+ | logo | String? |  yes  | The URL of the attribute logo |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
+ | departments | ArrayList<String> |  no  | The list of departments to which the attribute belongs to |
+ | isNested | Boolean? |  yes  | Whether the attribute is nested or not |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -7270,14 +7270,14 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aspectRatio | String? |  yes  | Aspect ratio of the image |
- | fileType | ArrayList<String>? |  yes  | List of allowed file types |
- | minHeight | Int? |  yes  | Minimum height of the image |
- | maxHeight | Int? |  yes  | Maximum height of the image |
- | minWidth | Int? |  yes  | Minimum width of the image |
- | maintainAspectRatio | Boolean? |  yes  | Flag to maintain aspect ratio of the image |
  | maxSize | Int? |  yes  | Maximum size of the image in bytes |
  | maxWidth | Int? |  yes  | Maximum width of the image |
+ | minHeight | Int? |  yes  | Minimum height of the image |
+ | maintainAspectRatio | Boolean? |  yes  | Flag to maintain aspect ratio of the image |
+ | fileType | ArrayList<String>? |  yes  | List of allowed file types |
+ | aspectRatio | String? |  yes  | Aspect ratio of the image |
+ | maxHeight | Int? |  yes  | Maximum height of the image |
+ | minWidth | Int? |  yes  | Minimum width of the image |
 
 ---
 
@@ -7288,23 +7288,23 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
- | priority | Int? |  yes  | Priority of the variant attribute |
- | departments | ArrayList<String>? |  yes  | List of departments for the variant attribute |
- | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
- | uid | Int? |  yes  | Unique ID of the variant attribute |
- | isActive | Boolean? |  yes  | Flag to indicate if the variant attribute is active or not |
- | id | Any? |  yes  |  |
- | key | String? |  yes  | Key name of the variant attribute |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
  | display | String? |  yes  | Display name of the variant attribute |
- | displayType | ArrayList<String>? |  yes  | List of display types for the variant attribute |
- | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
- | createdOn | String |  no  | Timestamp of the creation of the document |
- | templates | ArrayList<String>? |  yes  | List of templates for the variant attribute |
  | imageConfig | [SwatchImageConfig](#SwatchImageConfig)? |  yes  | Configuration for the swatch image |
- | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
+ | displayType | ArrayList<String>? |  yes  | List of display types for the variant attribute |
+ | departments | ArrayList<String>? |  yes  | List of departments for the variant attribute |
+ | templates | ArrayList<String>? |  yes  | List of templates for the variant attribute |
+ | priority | Int? |  yes  | Priority of the variant attribute |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
+ | uid | Int? |  yes  | Unique ID of the variant attribute |
+ | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
  | cls | String? |  yes  | Class name of the variant attribute |
+ | isActive | Boolean? |  yes  | Flag to indicate if the variant attribute is active or not |
+ | key | String? |  yes  | Key name of the variant attribute |
+ | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -7326,10 +7326,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | nextPageId | String? |  yes  |  |
- | totalItemCount | Int |  no  |  |
  | hasNext | Boolean |  no  |  |
  | hasPrevious | Boolean |  no  |  |
+ | totalItemCount | Int |  no  |  |
+ | nextPageId | String? |  yes  |  |
 
 ---
 
@@ -7340,14 +7340,14 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aspectRatio | String? |  yes  |  |
- | fileType | ArrayList<String>? |  yes  |  |
- | minHeight | Int? |  yes  |  |
- | maxHeight | Int? |  yes  |  |
- | minWidth | Int? |  yes  |  |
- | maintainAspectRatio | Boolean? |  yes  |  |
  | maxSize | Int? |  yes  |  |
  | maxWidth | Int? |  yes  |  |
+ | minHeight | Int? |  yes  |  |
+ | maintainAspectRatio | Boolean? |  yes  |  |
+ | fileType | ArrayList<String>? |  yes  |  |
+ | aspectRatio | String? |  yes  |  |
+ | maxHeight | Int? |  yes  |  |
+ | minWidth | Int? |  yes  |  |
 
 ---
 
@@ -7358,9 +7358,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | username | String? |  yes  |  |
  | userId | String? |  yes  |  |
  | contact | String? |  yes  |  |
- | username | String? |  yes  |  |
 
 ---
 
@@ -7371,19 +7371,19 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String? |  yes  |  |
- | priority | Int? |  yes  |  |
- | departments | ArrayList<String>? |  yes  |  |
- | uid | Int? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
  | display | String? |  yes  |  |
- | key | String? |  yes  |  |
- | displayType | ArrayList<String>? |  yes  |  |
- | templates | ArrayList<String>? |  yes  |  |
  | imageConfig | [SwatchImageConfig1](#SwatchImageConfig1)? |  yes  |  |
  | modifiedBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | displayType | ArrayList<String>? |  yes  |  |
+ | departments | ArrayList<String>? |  yes  |  |
+ | priority | Int? |  yes  |  |
  | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | templates | ArrayList<String>? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | key | String? |  yes  |  |
  | createdBy | [UserSerializer1](#UserSerializer1)? |  yes  |  |
+ | uid | Int? |  yes  |  |
 
 ---
 
@@ -7417,25 +7417,25 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | slug | String |  no  | Slug of the product template |
- | departments | ArrayList<String>? |  yes  | List of departments the product template belongs to |
- | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
- | isExpirable | Boolean? |  yes  | Flag to indicate if the product template is expirable or not |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
- | name | String? |  yes  | Name of the product template |
- | createdOn | String |  no  | Timestamp of the creation of the document |
- | logo | String? |  yes  | URL of the logo associated with the product template |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
- | isArchived | Boolean? |  yes  | Flag to indicate if the product template is archived or not |
- | isActive | Boolean? |  yes  | Flag to indicate if the product template is active or not |
- | id | Any? |  yes  |  |
- | isPhysical | Boolean |  no  | Flag to indicate if the product template is physical or not |
- | tag | String? |  yes  | Tag of the product template |
- | categories | ArrayList<String>? |  yes  | List of categories the product template belongs to |
- | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
  | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
- | description | String? |  yes  | Description of the product template |
  | attributes | ArrayList<String>? |  yes  | List of attributes associated with the product template |
+ | slug | String |  no  | Slug of the product template |
+ | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | name | String? |  yes  | Name of the product template |
+ | isArchived | Boolean? |  yes  | Flag to indicate if the product template is archived or not |
+ | description | String? |  yes  | Description of the product template |
+ | isActive | Boolean? |  yes  | Flag to indicate if the product template is active or not |
+ | logo | String? |  yes  | URL of the logo associated with the product template |
+ | isExpirable | Boolean? |  yes  | Flag to indicate if the product template is expirable or not |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
+ | categories | ArrayList<String>? |  yes  | List of categories the product template belongs to |
+ | isPhysical | Boolean |  no  | Flag to indicate if the product template is physical or not |
+ | departments | ArrayList<String>? |  yes  | List of departments the product template belongs to |
+ | tag | String? |  yes  | Tag of the product template |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -7446,22 +7446,22 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String? |  yes  |  |
- | slug | String |  no  |  |
- | isArchived | Boolean? |  yes  |  |
- | departments | ArrayList<String>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | isExpirable | Boolean |  no  |  |
+ | categories | ArrayList<String>? |  yes  |  |
  | isPhysical | Boolean |  no  |  |
  | name | String? |  yes  |  |
+ | departments | ArrayList<String>? |  yes  |  |
  | description | String? |  yes  |  |
+ | isArchived | Boolean? |  yes  |  |
  | attributes | ArrayList<String>? |  yes  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | createdOn | String? |  yes  |  |
- | tag | String? |  yes  |  |
- | categories | ArrayList<String>? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
  | logo | String? |  yes  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | tag | String? |  yes  |  |
+ | isExpirable | Boolean |  no  |  |
+ | createdOn | String? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | slug | String |  no  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7484,11 +7484,11 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | code | String? |  yes  |  |
  | status | Int? |  yes  |  |
  | errors | HashMap<String,Any>? |  yes  |  |
- | message | String? |  yes  |  |
- | code | String? |  yes  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7507,39 +7507,62 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  
  
+ #### [TemplateDetails](#TemplateDetails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | categories | ArrayList<String>? |  yes  |  |
+ | isPhysical | Boolean |  no  |  |
+ | name | String? |  yes  |  |
+ | departments | ArrayList<String>? |  yes  |  |
+ | description | String? |  yes  |  |
+ | isArchived | Boolean? |  yes  |  |
+ | attributes | ArrayList<String>? |  yes  |  |
+ | logo | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | tag | String? |  yes  |  |
+ | isExpirable | Boolean |  no  |  |
+ | isActive | Boolean? |  yes  |  |
+ | slug | String |  no  |  |
+
+---
+
+
+ 
+ 
  #### [Properties](#Properties)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | brandUid | HashMap<String,Any>? |  yes  |  |
+ | itemCode | HashMap<String,Any>? |  yes  |  |
+ | highlights | HashMap<String,Any>? |  yes  |  |
+ | isDependent | HashMap<String,Any>? |  yes  |  |
+ | itemType | HashMap<String,Any>? |  yes  |  |
+ | media | HashMap<String,Any>? |  yes  |  |
  | slug | HashMap<String,Any>? |  yes  |  |
  | variants | HashMap<String,Any>? |  yes  |  |
+ | currency | HashMap<String,Any>? |  yes  |  |
+ | trader | HashMap<String,Any>? |  yes  |  |
+ | noOfBoxes | HashMap<String,Any>? |  yes  |  |
  | name | HashMap<String,Any>? |  yes  |  |
- | categorySlug | HashMap<String,Any>? |  yes  |  |
- | sizes | HashMap<String,Any>? |  yes  |  |
- | highlights | HashMap<String,Any>? |  yes  |  |
- | brandUid | HashMap<String,Any>? |  yes  |  |
+ | description | HashMap<String,Any>? |  yes  |  |
+ | countryOfOrigin | HashMap<String,Any>? |  yes  |  |
  | tags | HashMap<String,Any>? |  yes  |  |
+ | hsnCode | HashMap<String,Any>? |  yes  |  |
+ | multiSize | HashMap<String,Any>? |  yes  |  |
+ | categorySlug | HashMap<String,Any>? |  yes  |  |
  | isActive | HashMap<String,Any>? |  yes  |  |
- | productGroupTag | HashMap<String,Any>? |  yes  |  |
  | returnConfig | HashMap<String,Any>? |  yes  |  |
  | customOrder | HashMap<String,Any>? |  yes  |  |
- | shortDescription | HashMap<String,Any>? |  yes  |  |
- | productPublish | HashMap<String,Any>? |  yes  |  |
- | countryOfOrigin | HashMap<String,Any>? |  yes  |  |
- | noOfBoxes | HashMap<String,Any>? |  yes  |  |
- | media | HashMap<String,Any>? |  yes  |  |
- | teaserTag | HashMap<String,Any>? |  yes  |  |
- | itemType | HashMap<String,Any>? |  yes  |  |
- | trader | HashMap<String,Any>? |  yes  |  |
- | sizeGuide | HashMap<String,Any>? |  yes  |  |
  | traderType | HashMap<String,Any>? |  yes  |  |
+ | productPublish | HashMap<String,Any>? |  yes  |  |
+ | sizeGuide | HashMap<String,Any>? |  yes  |  |
+ | teaserTag | HashMap<String,Any>? |  yes  |  |
+ | sizes | HashMap<String,Any>? |  yes  |  |
  | command | HashMap<String,Any>? |  yes  |  |
- | itemCode | HashMap<String,Any>? |  yes  |  |
- | isDependent | HashMap<String,Any>? |  yes  |  |
- | description | HashMap<String,Any>? |  yes  |  |
- | hsnCode | HashMap<String,Any>? |  yes  |  |
- | currency | HashMap<String,Any>? |  yes  |  |
- | multiSize | HashMap<String,Any>? |  yes  |  |
+ | productGroupTag | HashMap<String,Any>? |  yes  |  |
+ | shortDescription | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7552,10 +7575,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
  | ---------- | ---- | -------- | ----------- |
  | properties | [Properties](#Properties)? |  yes  |  |
  | title | String? |  yes  |  |
- | definitions | HashMap<String,Any>? |  yes  |  |
- | required | ArrayList<String>? |  yes  |  |
- | type | String? |  yes  |  |
  | description | String? |  yes  |  |
+ | type | String? |  yes  |  |
+ | required | ArrayList<String>? |  yes  |  |
+ | definitions | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7566,31 +7589,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | templateValidation | HashMap<String,Any>? |  yes  |  |
  | globalValidation | [GlobalValidation](#GlobalValidation)? |  yes  |  |
-
----
-
-
- 
- 
- #### [TemplateDetails](#TemplateDetails)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | slug | String |  no  |  |
- | isArchived | Boolean? |  yes  |  |
- | departments | ArrayList<String>? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | isExpirable | Boolean |  no  |  |
- | id | String? |  yes  |  |
- | isPhysical | Boolean |  no  |  |
- | name | String? |  yes  |  |
- | description | String? |  yes  |  |
- | attributes | ArrayList<String>? |  yes  |  |
- | tag | String? |  yes  |  |
- | categories | ArrayList<String>? |  yes  |  |
- | logo | String? |  yes  |  |
+ | templateValidation | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7601,8 +7601,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | [TemplateValidationData](#TemplateValidationData)? |  yes  |  |
  | templateDetails | [TemplateDetails](#TemplateDetails)? |  yes  |  |
+ | data | [TemplateValidationData](#TemplateValidationData)? |  yes  |  |
 
 ---
 
@@ -7613,12 +7613,12 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | nextId | String? |  yes  |  |
  | hasNext | Boolean? |  yes  |  |
- | size | Int? |  yes  |  |
- | itemTotal | Int? |  yes  |  |
  | type | String |  no  |  |
  | hasPrevious | Boolean? |  yes  |  |
- | nextId | String? |  yes  |  |
+ | size | Int? |  yes  |  |
+ | itemTotal | Int? |  yes  |  |
 
 ---
 
@@ -7629,10 +7629,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | pending | Int? |  yes  |  |
- | total | Int? |  yes  |  |
- | verified | Int? |  yes  |  |
  | rejected | Int? |  yes  |  |
+ | pending | Int? |  yes  |  |
+ | verified | Int? |  yes  |  |
+ | total | Int? |  yes  |  |
 
 ---
 
@@ -7668,22 +7668,22 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
- | status | String |  no  | The status of the product verification |
- | itemCode | String |  no  | The item code of the product being verified |
- | slug | String |  no  | The slug of the product being verified |
  | brandUid | Int |  no  | The unique identifier of the brand |
- | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
- | product | HashMap<String,Any>? |  yes  | The product information being verified |
- | id | Any? |  yes  |  |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
- | itemId | Int |  no  | The unique identifier of the item being verified |
  | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
- | createdOn | String |  no  | Timestamp of the creation of the document |
  | companyIds | ArrayList<Int> |  no  | The list of company IDs associated with the product |
- | rejectedFields | HashMap<String,Any>? |  yes  | A dictionary of any rejected fields and their corresponding values |
- | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
  | remark | String? |  yes  | Any additional remarks or notes about the verification process |
+ | product | HashMap<String,Any>? |  yes  | The product information being verified |
+ | itemCode | String |  no  | The item code of the product being verified |
+ | rejectedFields | HashMap<String,Any>? |  yes  | A dictionary of any rejected fields and their corresponding values |
+ | itemId | Int |  no  | The unique identifier of the item being verified |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
+ | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
+ | slug | String |  no  | The slug of the product being verified |
+ | status | String |  no  | The status of the product verification |
+ | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -7707,9 +7707,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | username | String? |  yes  | The username of the user. |
+ | email | String? |  yes  | The email address of the user. |
  | userId | String? |  yes  | The ID of the user. |
  | uid | String? |  yes  | The unique ID of the user. |
- | email | String? |  yes  | The email address of the user. |
 
 ---
 
@@ -7720,18 +7720,18 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | String |  no  |  |
- | modifiedOn | String? |  yes  |  |
- | itemCode | String |  no  |  |
- | slug | String |  no  |  |
  | brandUid | Int |  no  |  |
- | itemId | Int |  no  |  |
  | modifiedBy | [UserInfo](#UserInfo) |  no  |  |
- | createdOn | String |  no  |  |
  | companyIds | ArrayList<Int> |  no  |  |
- | rejectedFields | HashMap<String,Any>? |  yes  |  |
- | createdBy | [UserInfo](#UserInfo) |  no  |  |
  | remark | String? |  yes  |  |
+ | itemCode | String |  no  |  |
+ | rejectedFields | HashMap<String,Any>? |  yes  |  |
+ | itemId | Int |  no  |  |
+ | createdOn | String |  no  |  |
+ | modifiedOn | String? |  yes  |  |
+ | slug | String |  no  |  |
+ | status | String |  no  |  |
+ | createdBy | [UserInfo](#UserInfo) |  no  |  |
 
 ---
 
@@ -7742,9 +7742,9 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | headers | HashMap<String,Any>? |  yes  |  |
- | unit | String? |  yes  |  |
  | values | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | unit | String? |  yes  |  |
+ | headers | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -7766,20 +7766,20 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String? |  yes  |  |
- | image | String? |  yes  |  |
- | active | Boolean? |  yes  |  |
- | brandId | Int? |  yes  |  |
- | guide | [Guide](#Guide)? |  yes  |  |
- | title | String |  no  |  |
- | companyId | Int? |  yes  |  |
  | subtitle | String? |  yes  |  |
- | id | String? |  yes  |  |
  | name | String |  no  |  |
- | description | String? |  yes  |  |
  | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | createdOn | String? |  yes  |  |
+ | title | String |  no  |  |
+ | description | String? |  yes  |  |
+ | id | String? |  yes  |  |
  | tag | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | active | Boolean? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | guide | [Guide](#Guide)? |  yes  |  |
+ | image | String? |  yes  |  |
+ | brandId | Int? |  yes  |  |
+ | companyId | Int? |  yes  |  |
  | createdBy | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -7814,18 +7814,18 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String? |  yes  |  |
- | active | Boolean? |  yes  |  |
- | brandId | Int? |  yes  |  |
- | guide | HashMap<String,Any>? |  yes  |  |
- | title | String? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | subtitle | String? |  yes  |  |
- | id | String? |  yes  |  |
- | name | String? |  yes  |  |
  | modifiedBy | HashMap<String,Any>? |  yes  |  |
- | createdOn | String? |  yes  |  |
+ | name | String? |  yes  |  |
+ | subtitle | String? |  yes  |  |
+ | title | String? |  yes  |  |
+ | id | String? |  yes  |  |
  | tag | String? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | active | Boolean? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | guide | HashMap<String,Any>? |  yes  |  |
+ | brandId | Int? |  yes  |  |
+ | companyId | Int? |  yes  |  |
  | createdBy | HashMap<String,Any>? |  yes  |  |
 
 ---
@@ -7833,12 +7833,65 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  
  
- #### [VerifiedBy](#VerifiedBy)
+ #### [Media1](#Media1)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userId | String? |  yes  |  |
- | username | String? |  yes  |  |
+ | url | String |  no  |  |
+ | meta | HashMap<String,Any>? |  yes  |  |
+ | type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Trader](#Trader)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | address | ArrayList<String>? |  yes  |  |
+ | name | String |  no  |  |
+ | type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ReturnConfigResponse](#ReturnConfigResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | time | Int? |  yes  |  |
+ | returnable | Boolean? |  yes  |  |
+ | unit | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Image](#Image)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | aspectRatio | String? |  yes  |  |
+ | secureUrl | String? |  yes  |  |
+ | url | String? |  yes  |  |
+ | aspectRatioF | Double? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ProductPublished](#ProductPublished)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | productOnlineDate | Int? |  yes  |  |
+ | isSet | Boolean? |  yes  |  |
 
 ---
 
@@ -7849,10 +7902,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aspectRatioF | Int? |  yes  |  |
  | aspectRatio | String? |  yes  |  |
- | url | String? |  yes  |  |
  | secureUrl | String? |  yes  |  |
+ | url | String? |  yes  |  |
+ | aspectRatioF | Int? |  yes  |  |
 
 ---
 
@@ -7863,8 +7916,8 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  |  |
  | logo | [Logo](#Logo)? |  yes  |  |
+ | name | String? |  yes  |  |
  | uid | Int? |  yes  |  |
 
 ---
@@ -7884,65 +7937,12 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  
  
- #### [ReturnConfigResponse](#ReturnConfigResponse)
+ #### [VerifiedBy](#VerifiedBy)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | returnable | Boolean? |  yes  |  |
- | time | Int? |  yes  |  |
- | unit | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [ProductPublished](#ProductPublished)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | isSet | Boolean? |  yes  |  |
- | productOnlineDate | Int? |  yes  |  |
-
----
-
-
- 
- 
- #### [Media1](#Media1)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | url | String |  no  |  |
- | meta | HashMap<String,Any>? |  yes  |  |
-
----
-
-
- 
- 
- #### [Image](#Image)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | aspectRatioF | Double? |  yes  |  |
- | aspectRatio | String? |  yes  |  |
- | url | String? |  yes  |  |
- | secureUrl | String? |  yes  |  |
-
----
-
-
- 
- 
- #### [Trader](#Trader)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | type | String? |  yes  |  |
- | name | String |  no  |  |
- | address | ArrayList<String>? |  yes  |  |
+ | username | String? |  yes  |  |
+ | userId | String? |  yes  |  |
 
 ---
 
@@ -7953,68 +7953,68 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | slug | String? |  yes  |  |
- | departments | ArrayList<Int>? |  yes  |  |
- | variants | HashMap<String,Any>? |  yes  |  |
- | uid | Int? |  yes  |  |
- | verifiedBy | [VerifiedBy](#VerifiedBy)? |  yes  |  |
- | isExpirable | Boolean? |  yes  |  |
- | imageNature | String? |  yes  |  |
- | id | String? |  yes  |  |
- | verifiedOn | String? |  yes  |  |
- | name | String? |  yes  |  |
- | createdOn | String? |  yes  |  |
- | categorySlug | String? |  yes  |  |
- | sizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | allSizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
- | brand | [Brand](#Brand)? |  yes  |  |
- | modifiedOn | String? |  yes  |  |
- | netQuantity | [NetQuantityResponse](#NetQuantityResponse)? |  yes  |  |
- | highlights | ArrayList<String>? |  yes  |  |
- | brandUid | Int? |  yes  |  |
- | l3Mapping | ArrayList<String>? |  yes  |  |
- | taxIdentifier | HashMap<String,Any>? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | primaryColor | String? |  yes  |  |
- | isActive | Boolean? |  yes  |  |
- | companyId | Int? |  yes  |  |
- | pending | String? |  yes  |  |
- | productGroupTag | ArrayList<String>? |  yes  |  |
- | returnConfig | [ReturnConfigResponse](#ReturnConfigResponse)? |  yes  |  |
- | variantGroup | HashMap<String,Any>? |  yes  |  |
- | shortDescription | String? |  yes  |  |
- | customOrder | HashMap<String,Any>? |  yes  |  |
- | productPublish | [ProductPublished](#ProductPublished)? |  yes  |  |
- | templateTag | String? |  yes  |  |
- | countryOfOrigin | String? |  yes  |  |
- | allCompanyIds | ArrayList<Int>? |  yes  |  |
- | moq | HashMap<String,Any>? |  yes  |  |
- | noOfBoxes | Int? |  yes  |  |
- | isImageLessProduct | Boolean? |  yes  |  |
- | media | ArrayList<[Media1](#Media1)>? |  yes  |  |
- | categoryUid | Int? |  yes  |  |
- | teaserTag | HashMap<String,Any>? |  yes  |  |
- | itemType | String? |  yes  |  |
- | sizeGuide | String? |  yes  |  |
- | isSet | Boolean? |  yes  |  |
- | isPhysical | Boolean? |  yes  |  |
- | images | ArrayList<[Image](#Image)>? |  yes  |  |
- | variantMedia | HashMap<String,Any>? |  yes  |  |
- | customJson | HashMap<String,Any>? |  yes  |  |
- | color | String? |  yes  |  |
- | trader | ArrayList<[Trader](#Trader)>? |  yes  |  |
- | createdBy | HashMap<String,Any>? |  yes  |  |
  | stage | String? |  yes  |  |
- | itemCode | String? |  yes  |  |
- | allIdentifiers | ArrayList<String>? |  yes  |  |
- | isDependent | Boolean? |  yes  |  |
- | category | HashMap<String,Any>? |  yes  |  |
- | description | String? |  yes  |  |
- | hsnCode | String? |  yes  |  |
- | attributes | HashMap<String,Any>? |  yes  |  |
+ | brandUid | Int? |  yes  |  |
+ | taxIdentifier | HashMap<String,Any>? |  yes  |  |
  | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | attributes | HashMap<String,Any>? |  yes  |  |
+ | color | String? |  yes  |  |
+ | itemCode | String? |  yes  |  |
+ | highlights | ArrayList<String>? |  yes  |  |
+ | isDependent | Boolean? |  yes  |  |
+ | itemType | String? |  yes  |  |
+ | media | ArrayList<[Media1](#Media1)>? |  yes  |  |
+ | slug | String? |  yes  |  |
+ | variants | HashMap<String,Any>? |  yes  |  |
+ | companyId | Int? |  yes  |  |
  | currency | String? |  yes  |  |
+ | createdBy | HashMap<String,Any>? |  yes  |  |
+ | l3Mapping | ArrayList<String>? |  yes  |  |
+ | variantMedia | HashMap<String,Any>? |  yes  |  |
+ | trader | ArrayList<[Trader](#Trader)>? |  yes  |  |
+ | noOfBoxes | Int? |  yes  |  |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | pending | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | countryOfOrigin | String? |  yes  |  |
+ | tags | ArrayList<String>? |  yes  |  |
+ | allIdentifiers | ArrayList<String>? |  yes  |  |
+ | allSizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | multiSize | Boolean? |  yes  |  |
+ | hsnCode | String? |  yes  |  |
+ | categorySlug | String? |  yes  |  |
+ | isActive | Boolean? |  yes  |  |
+ | allCompanyIds | ArrayList<Int>? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | returnConfig | [ReturnConfigResponse](#ReturnConfigResponse)? |  yes  |  |
+ | customOrder | HashMap<String,Any>? |  yes  |  |
+ | images | ArrayList<[Image](#Image)>? |  yes  |  |
+ | categoryUid | Int? |  yes  |  |
+ | customJson | HashMap<String,Any>? |  yes  |  |
+ | isExpirable | Boolean? |  yes  |  |
+ | productPublish | [ProductPublished](#ProductPublished)? |  yes  |  |
+ | sizeGuide | String? |  yes  |  |
+ | primaryColor | String? |  yes  |  |
+ | isSet | Boolean? |  yes  |  |
+ | teaserTag | HashMap<String,Any>? |  yes  |  |
+ | modifiedOn | String? |  yes  |  |
+ | moq | HashMap<String,Any>? |  yes  |  |
+ | imageNature | String? |  yes  |  |
+ | brand | [Brand](#Brand)? |  yes  |  |
+ | variantGroup | HashMap<String,Any>? |  yes  |  |
+ | isPhysical | Boolean? |  yes  |  |
+ | departments | ArrayList<Int>? |  yes  |  |
+ | netQuantity | [NetQuantityResponse](#NetQuantityResponse)? |  yes  |  |
+ | sizes | ArrayList<HashMap<String,Any>>? |  yes  |  |
+ | category | HashMap<String,Any>? |  yes  |  |
+ | isImageLessProduct | Boolean? |  yes  |  |
+ | createdOn | String? |  yes  |  |
+ | templateTag | String? |  yes  |  |
+ | verifiedBy | [VerifiedBy](#VerifiedBy)? |  yes  |  |
+ | verifiedOn | String? |  yes  |  |
+ | productGroupTag | ArrayList<String>? |  yes  |  |
+ | shortDescription | String? |  yes  |  |
 
 ---
 
@@ -8037,10 +8037,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | fileType | String |  no  | It contains the type of file. |
- | trackingUrl | String |  no  | It contains url of the uploaded file. |
  | notificationEmails | ArrayList<String>? |  yes  | User email to get notification post completion of the job. |
  | totalCount | Int |  no  | Total no of records for import. |
+ | fileType | String |  no  | It contains the type of file. |
+ | trackingUrl | String |  no  | It contains url of the uploaded file. |
  | jobType | String |  no  | It contains the name of entity for the job. |
 
 ---
@@ -8052,10 +8052,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | total | Int |  no  | It contains the count of total records to be uploaded. |
- | failed | Int? |  yes  | It contains the count of failed records. |
  | succeed | Int? |  yes  | It contains the count of successfull records. |
+ | failed | Int? |  yes  | It contains the count of failed records. |
  | cancelled | Int? |  yes  | It contains the count of cancelled records. |
+ | total | Int |  no  | It contains the count of total records to be uploaded. |
 
 ---
 
@@ -8066,23 +8066,23 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
  | stage | String? |  yes  | Field to track the current stage of job. |
- | fileType | String |  no  | It contains the type of file. |
- | trackingUrl | String |  no  | It contains url of the uploaded file. |
+ | cancelledRecords | ArrayList<HashMap<String,Any>>? |  yes  | It contains all the canceled records with specific message. |
  | stats | [BulkJobsStats](#BulkJobsStats) |  no  | It contains the stats of job. |
- | notificationEmails | ArrayList<String>? |  yes  | User email to get notification post completion of the job. |
  | failedRecords | ArrayList<HashMap<String,Any>>? |  yes  | It contains all the failed records with specific errors. |
+ | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
+ | notificationEmails | ArrayList<String>? |  yes  | User email to get notification post completion of the job. |
+ | isActive | Boolean? |  yes  | Field to track whether the job is active or not. |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | fileType | String |  no  | It contains the type of file. |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
  | completedOn | String? |  yes  | Date of completion of the job. |
  | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
- | isActive | Boolean? |  yes  | Field to track whether the job is active or not. |
- | id | Any? |  yes  |  |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | trackingUrl | String |  no  | It contains url of the uploaded file. |
  | jobType | String |  no  | It contains the name of entity for the job. |
- | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
- | createdOn | String |  no  | Timestamp of the creation of the document |
- | cancelledRecords | ArrayList<HashMap<String,Any>>? |  yes  | It contains all the canceled records with specific message. |
  | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -8117,10 +8117,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | completedOn | String? |  yes  |  |
  | fileType | String |  no  |  |
  | filters | HashMap<String,Any>? |  yes  |  |
  | notificationEmails | ArrayList<String>? |  yes  |  |
+ | completedOn | String? |  yes  |  |
 
 ---
 
@@ -8131,20 +8131,20 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String |  no  | Timestamp of the last modification of the document |
  | stage | String? |  yes  | Field to track the current stage of job. |
- | fileType | String |  no  | It contains the type of file. |
+ | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
+ | filters | HashMap<String,Any>? |  yes  | It contains the filters to apply while exporting the data. |
  | notificationEmails | ArrayList<String>? |  yes  | User email to get notification post completion of the job. |
+ | createdOn | String |  no  | Timestamp of the creation of the document |
+ | fileType | String |  no  | It contains the type of file. |
+ | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
+ | modifiedOn | String |  no  | Timestamp of the last modification of the document |
  | completedOn | String? |  yes  | Date of completion of the job. |
  | verifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the verifier of the document, if applicable |
  | isActive | Boolean? |  yes  | Field to track whether the job is active or not. |
- | id | Any? |  yes  |  |
- | filters | HashMap<String,Any>? |  yes  | It contains the filters to apply while exporting the data. |
- | verifiedOn | String? |  yes  | Timestamp of when the document was verified, if applicable |
  | jobType | String |  no  | It contains the name of entity for the job. |
- | modifiedBy | [UserDetail](#UserDetail)? |  yes  | User details of the last modifier of the document |
- | createdOn | String |  no  | Timestamp of the creation of the document |
  | createdBy | [UserDetail](#UserDetail)? |  yes  | User details of the creator of the document |
+ | id | Any? |  yes  |  |
 
 ---
 
@@ -8178,10 +8178,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | rate | Double |  no  |  |
+ | threshold | Double |  no  |  |
  | effectiveDate | String |  no  |  |
  | cess | Double? |  yes  |  |
- | threshold | Double |  no  |  |
- | rate | Double |  no  |  |
 
 ---
 
@@ -8192,11 +8192,11 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | countryCode | String |  no  |  |
+ | taxes | ArrayList<[TaxSlab](#TaxSlab)> |  no  |  |
  | type | String |  no  |  |
  | description | String |  no  |  |
  | hsnCode | String |  no  |  |
- | taxes | ArrayList<[TaxSlab](#TaxSlab)> |  no  |  |
+ | countryCode | String |  no  |  |
 
 ---
 
@@ -8207,14 +8207,14 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | countryCode | String |  no  |  |
  | reportingHsn | String |  no  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | taxes | ArrayList<[TaxSlab](#TaxSlab)> |  no  |  |
  | type | String |  no  |  |
  | description | String |  no  |  |
- | hsnCode | String |  no  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
  | createdBy | HashMap<String,Any>? |  yes  |  |
- | taxes | ArrayList<[TaxSlab](#TaxSlab)> |  no  |  |
+ | hsnCode | String |  no  |  |
+ | countryCode | String |  no  |  |
 
 ---
 
@@ -8226,10 +8226,10 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | hasNext | Boolean? |  yes  |  |
+ | hasPrevious | Boolean? |  yes  |  |
+ | current | String? |  yes  |  |
  | size | Int? |  yes  |  |
  | itemTotal | Int? |  yes  |  |
- | current | String? |  yes  |  |
- | hasPrevious | Boolean? |  yes  |  |
 
 ---
 
@@ -8240,17 +8240,17 @@ Get specific HSN details. See example below or refer `HsnCodesListingResponseSch
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | modifiedOn | String? |  yes  |  |
- | countryCode | String |  no  |  |
- | hsnCodeId | String? |  yes  |  |
  | reportingHsn | String |  no  |  |
+ | modifiedBy | HashMap<String,Any>? |  yes  |  |
+ | taxes | ArrayList<[TaxSlab](#TaxSlab)> |  no  |  |
  | type | String |  no  |  |
  | description | String |  no  |  |
- | hsnCode | String |  no  |  |
- | modifiedBy | HashMap<String,Any>? |  yes  |  |
  | createdOn | String? |  yes  |  |
  | createdBy | HashMap<String,Any>? |  yes  |  |
- | taxes | ArrayList<[TaxSlab](#TaxSlab)> |  no  |  |
+ | modifiedOn | String? |  yes  |  |
+ | hsnCode | String |  no  |  |
+ | countryCode | String |  no  |  |
+ | hsnCodeId | String? |  yes  |  |
 
 ---
 
