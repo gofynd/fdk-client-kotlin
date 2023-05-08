@@ -526,12 +526,12 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     return paginator
     }
     
-    fun getCollectionItemsBySlug(slug: String, f: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null): Deferred<Response<ProductListingResponse>>? {
+    fun getCollectionItemsBySlug(slug: String, f: String?=null, filters: Boolean?=null, sortOn: String?=null, pageId: String?=null, pageSize: Int?=null, pageNo: Int?=null, pageType: String?=null): Deferred<Response<ProductListingResponse>>? {
         var fullUrl : String? = _relativeUrls["getCollectionItemsBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
-        return catalogApiList?.getCollectionItemsBySlug(fullUrl     ,  f = f,    filters = filters,    sortOn = sortOn,    pageId = pageId,    pageSize = pageSize)}
+        return catalogApiList?.getCollectionItemsBySlug(fullUrl     ,  f = f,    filters = filters,    sortOn = sortOn,    pageId = pageId,    pageSize = pageSize,    pageNo = pageNo,    pageType = pageType)}
 
     
     
@@ -564,6 +564,12 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         
             
                 
+            
+            
+        
+            
+            
+        
             
             
         
@@ -586,7 +592,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 
                 fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
                 
-                catalogApiList?.getCollectionItemsBySlug(fullUrl , f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize)?.safeAwait{ response, error ->
+                catalogApiList?.getCollectionItemsBySlug(fullUrl , f = f, filters = filters, sortOn = sortOn, pageId = pageId, pageSize = pageSize, pageNo = pageNo, pageType = pageType)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,nextId=page?.nextId)
