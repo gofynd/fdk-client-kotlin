@@ -3907,6 +3907,625 @@ data class SystemNotifications(
 
              
 /*
+    Model: VoiceProviderReq
+*/
+@Parcelize
+data class VoiceProviderReq(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("sender")
+    var sender: String?=null,
+    
+    @SerializedName("username")
+    var username: String?=null,
+    
+    @SerializedName("authkey")
+    var authkey: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceProvider
+*/
+@Parcelize
+data class VoiceProvider(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("application")
+    var application: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("provider")
+    var provider: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Double?=null,
+    
+    @SerializedName("discriminator")
+    var discriminator: String?=null,
+    
+    @SerializedName("username")
+    var username: String?=null,
+    
+    @SerializedName("password")
+    var password: String?=null,
+    
+    @SerializedName("caller_id")
+    var callerId: String?=null,
+    
+    @SerializedName("applet_url")
+    var appletUrl: String?=null,
+    
+    @SerializedName("whitelisted_ip")
+    var whitelistedIp: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceProviders
+*/
+@Parcelize
+data class VoiceProviders(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<VoiceProvider>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceTemplateDeleteSuccessRes
+*/
+@Parcelize
+data class VoiceTemplateDeleteSuccessRes(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceTemplateDeleteFailureRes
+*/
+@Parcelize
+data class VoiceTemplateDeleteFailureRes(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceTemplateMessage
+*/
+@Parcelize
+data class VoiceTemplateMessage(
+    
+    
+    
+    @SerializedName("template_type")
+    var templateType: String?=null,
+    
+    @SerializedName("template")
+    var template: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceTemplateReq
+*/
+@Parcelize
+data class VoiceTemplateReq(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("message")
+    var message: VoiceTemplateMessage?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue Any?=null,
+    
+    @SerializedName("attachments")
+    var attachments: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceTemplateRes
+*/
+@Parcelize
+data class VoiceTemplateRes(
+    
+    
+    
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
+    
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("tags")
+    var tags: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("message")
+    var message: VoiceTemplateMessage?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue Any?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceTemplate
+*/
+@Parcelize
+data class VoiceTemplate(
+    
+    
+    
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
+    
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("tags")
+    var tags: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("message")
+    var message: VoiceTemplateMessage?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue Any?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SystemVoiceTemplate
+*/
+@Parcelize
+data class SystemVoiceTemplate(
+    
+    
+    
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
+    
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("tags")
+    var tags: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("message")
+    var message: VoiceTemplateMessage?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue Any?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: VoiceTemplates
+*/
+@Parcelize
+data class VoiceTemplates(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<VoiceTemplate>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SystemVoiceTemplates
+*/
+@Parcelize
+data class SystemVoiceTemplates(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<SystemVoiceTemplate>?=null,
+    
+    @SerializedName("page")
+    var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: Page
 */
 @Parcelize

@@ -173,4 +173,40 @@ interface CommunicationApiList {
     fun getSystemSystemTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Deferred<Response<SystemSmsTemplates>>
     
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/providers")
+    fun getVoiceProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
+    : Deferred<Response<VoiceProviders>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/providers")
+    fun createVoiceProvider(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: VoiceProviderReq)
+    : Deferred<Response<VoiceProvider>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/providers/{id}")
+    fun getVoiceProviderById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<VoiceProvider>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/templates")
+    fun getVoiceTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
+    : Deferred<Response<VoiceTemplates>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/templates")
+    fun createVoiceTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: VoiceTemplateReq)
+    : Deferred<Response<VoiceTemplateRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/templates/{id}")
+    fun getVoiceTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<VoiceTemplate>>
+    
+    @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/templates/{id}")
+    fun updateVoiceTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: VoiceTemplateReq)
+    : Deferred<Response<VoiceTemplateRes>>
+    
+    @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/templates/{id}")
+    fun deleteVoiceTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<VoiceTemplateDeleteSuccessRes>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/system-templates")
+    fun getSystemVoiceTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
+    : Deferred<Response<SystemVoiceTemplates>>
+    
 }

@@ -96,6 +96,15 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -1257,6 +1266,288 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageNo = paginator.pageNo
                     val pageType = "number"
                     communicationApiList?.getSystemSystemTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun getVoiceProviders(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
+    : Deferred<Response<VoiceProviders>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getVoiceProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getVoiceProviders
+    **/
+    fun getVoiceProvidersPaginator(
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
+    
+    ) : Paginator<VoiceProviders>{
+        val paginator = Paginator<VoiceProviders>()
+        paginator.setCallBack(object : PaginatorCallback<VoiceProviders> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<VoiceProviders>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getVoiceProviders(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun createVoiceProvider(body: VoiceProviderReq)
+    : Deferred<Response<VoiceProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createVoiceProvider(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getVoiceProviderById(id: String)
+    : Deferred<Response<VoiceProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getVoiceProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getVoiceTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
+    : Deferred<Response<VoiceTemplates>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getVoiceTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getVoiceTemplates
+    **/
+    fun getVoiceTemplatesPaginator(
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
+    
+    ) : Paginator<VoiceTemplates>{
+        val paginator = Paginator<VoiceTemplates>()
+        paginator.setCallBack(object : PaginatorCallback<VoiceTemplates> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<VoiceTemplates>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getVoiceTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun createVoiceTemplate(body: VoiceTemplateReq)
+    : Deferred<Response<VoiceTemplateRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.createVoiceTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getVoiceTemplateById(id: String)
+    : Deferred<Response<VoiceTemplate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getVoiceTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateVoiceTemplateById(id: String,body: VoiceTemplateReq)
+    : Deferred<Response<VoiceTemplateRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateVoiceTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteVoiceTemplateById(id: String)
+    : Deferred<Response<VoiceTemplateDeleteSuccessRes>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.deleteVoiceTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSystemVoiceTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
+    : Deferred<Response<SystemVoiceTemplates>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSystemVoiceTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getSystemVoiceTemplates
+    **/
+    fun getSystemVoiceTemplatesPaginator(
+    pageSize: Int?=null, sort: HashMap<String,Any>?=null
+    
+    ) : Paginator<SystemVoiceTemplates>{
+        val paginator = Paginator<SystemVoiceTemplates>()
+        paginator.setCallBack(object : PaginatorCallback<SystemVoiceTemplates> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<SystemVoiceTemplates>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    communicationApiList?.getSystemVoiceTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
