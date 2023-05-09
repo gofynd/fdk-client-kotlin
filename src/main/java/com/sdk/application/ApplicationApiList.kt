@@ -110,13 +110,13 @@ interface CatalogApiList {
     : Deferred<Response<GetFollowListingResponse>>
     
     
-    @POST 
-    fun followById(@Url url1: String?     )
+    @DELETE 
+    fun unfollowById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
-    @DELETE 
-    fun unfollowById(@Url url1: String?     )
+    @POST 
+    fun followById(@Url url1: String?     )
     : Deferred<Response<FollowPostResponse>>
     
     
@@ -1087,19 +1087,19 @@ interface OrderApiList {
 interface RewardsApiList {
     
     
+    @POST 
+    fun getPointsOnProduct(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
+    : Deferred<Response<CatalogueOrderResponse>>
+    
+    
     @GET 
     fun getOfferByName(@Url url1: String?    )
     : Deferred<Response<Offer>>
     
     
     @POST 
-    fun catalogueOrder(@Url url1: String?   ,@Body body: CatalogueOrderRequest)
-    : Deferred<Response<CatalogueOrderResponse>>
-    
-    
-    @GET 
-    fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<PointsHistoryResponse>>
+    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
+    : Deferred<Response<OrderDiscountResponse>>
     
     
     @GET 
@@ -1108,13 +1108,13 @@ interface RewardsApiList {
     
     
     @GET 
+    fun getUserPointsHistory(@Url url1: String?    ,   @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<PointsHistoryResponse>>
+    
+    
+    @GET 
     fun getUserReferralDetails(@Url url1: String?   )
     : Deferred<Response<ReferralDetailsResponse>>
-    
-    
-    @POST 
-    fun getOrderDiscount(@Url url1: String?   ,@Body body: OrderDiscountRequest)
-    : Deferred<Response<OrderDiscountResponse>>
     
     
     @POST 
@@ -1265,19 +1265,19 @@ interface PosCartApiList {
 interface LogisticApiList {
     
     
+    @POST 
+    fun getTatProduct(@Url url1: String?   ,@Body body: GetTatProductReqBody)
+    : Deferred<Response<GetTatProductResponse>>
+    
+    
+    @POST 
+    fun getPincodeZones(@Url url1: String?   ,@Body body: GetPincodeZonesReqBody)
+    : Deferred<Response<GetPincodeZonesResponse>>
+    
+    
     @GET 
     fun getPincodeCity(@Url url1: String?    )
-    : Deferred<Response<PincodeApiResponse>>
-    
-    
-    @POST 
-    fun getTatProduct(@Url url1: String?   ,@Body body: TATViewRequest)
-    : Deferred<Response<TATViewResponse>>
-    
-    
-    @POST 
-    fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    : Deferred<Response<GetPincodeCityResponse>>
     
 }
 
