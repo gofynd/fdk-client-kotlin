@@ -213,6 +213,10 @@ interface ContentApiList {
     fun getSEOConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<SeoComponent>>
     
+    @POST ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/seo")
+    fun updateSEOConfiguration(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SeoComponent)
+    : Deferred<Response<SeoSchema>>
+    
     @GET ("/service/platform/content/v1.0/company/{company_id}/application/{application_id}/slideshows/")
     fun getSlideshows(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("device_platform") devicePlatform: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<SlideshowGetResponse>>

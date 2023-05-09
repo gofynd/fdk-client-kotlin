@@ -698,6 +698,95 @@ data class CreateSubscriptionCharge(
 
              
 /*
+    Model: OneTimeChargeItem
+*/
+@Parcelize
+data class OneTimeChargeItem(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("term")
+    var term: String?=null,
+    
+    @SerializedName("pricing_type")
+    var pricingType: String?=null,
+    
+    @SerializedName("price")
+    var price: EntityChargePrice?=null,
+    
+    @SerializedName("capped_amount")
+    var cappedAmount: Double?=null,
+    
+    @SerializedName("is_test")
+    var isTest: Boolean?=null,
+    
+    @SerializedName("metadata")
+    var metadata: @RawValue HashMap<String,Any>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateOneTimeCharge
+*/
+@Parcelize
+data class CreateOneTimeCharge(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("charge")
+    var charge: OneTimeChargeItem?=null,
+    
+    @SerializedName("is_test")
+    var isTest: Boolean?=null,
+    
+    @SerializedName("return_url")
+    var returnUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CurrentPeriod
 */
 @Parcelize
@@ -866,6 +955,120 @@ data class EntitySubscription(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OneTimeChargeEntity
+*/
+@Parcelize
+data class OneTimeChargeEntity(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("activated_on")
+    var activatedOn: String?=null,
+    
+    @SerializedName("cancelled_on")
+    var cancelledOn: String?=null,
+    
+    @SerializedName("metadata")
+    var metadata: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("return_url")
+    var returnUrl: String?=null,
+    
+    @SerializedName("is_test")
+    var isTest: Boolean?=null,
+    
+    @SerializedName("pricing_type")
+    var pricingType: String?=null,
+    
+    @SerializedName("subscriber_id")
+    var subscriberId: String?=null,
+    
+    @SerializedName("entity_type")
+    var entityType: String?=null,
+    
+    @SerializedName("entity_id")
+    var entityId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("price")
+    var price: EntityChargePrice?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CreateOneTimeChargeResponse
+*/
+@Parcelize
+data class CreateOneTimeChargeResponse(
+    
+    
+    
+    @SerializedName("charge")
+    var charge: OneTimeChargeEntity?=null,
+    
+    @SerializedName("confirm_url")
+    var confirmUrl: String?=null
+    
+): Parcelable {
     
     
     
@@ -2311,6 +2514,9 @@ data class SubscriptionStatus(
     
     
     
+    @SerializedName("mandate_amount")
+    var mandateAmount: Double?=null,
+    
     @SerializedName("is_enabled")
     var isEnabled: Boolean?=null,
     
@@ -2318,6 +2524,8 @@ data class SubscriptionStatus(
     var subscription: Subscription?=null
     
 ): Parcelable {
+    
+    
     
     
     
