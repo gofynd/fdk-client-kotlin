@@ -97,7 +97,7 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getCollectionItemsBySlug(@Url url1: String?     ,      @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    fun getCollectionItemsBySlug(@Url url1: String?     ,        @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?)
     : Deferred<Response<ProductListingResponse>>
     
     
@@ -153,11 +153,11 @@ interface CatalogApiList {
     
     @GET 
     fun getProductPriceBySlug(@Url url1: String?      ,    @Query("store_id") storeId: Int?, @Query("pincode") pincode: String?, @Query("moq") moq: Int?)
-    : Deferred<Response<ProductSizePriceResponseV3>>
+    : Deferred<Response<ProductSizePriceResponseV2>>
     
     
     @GET 
     fun getProductSellersBySlug(@Url url1: String?      ,     @Query("pincode") pincode: String?, @Query("strategy") strategy: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductSizeSellersResponseV3>>
+    : Deferred<Response<ProductSizeSellersResponseV2>>
     
 }
