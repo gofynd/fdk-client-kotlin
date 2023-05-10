@@ -217,4 +217,8 @@ interface OrderApiList {
     fun verifyMobileOTP(@Path("company_id") companyId: String,@Body body: VerifyMobileOTP)
     : Deferred<Response<PointBlankOtpData>>
     
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/einvoice/retry/irn")
+    fun eInvoiceRetry(@Path("company_id") companyId: String,@Body body: EInvoiceRetry)
+    : Deferred<Response<EInvoiceRetryResponse>>
+    
 }
