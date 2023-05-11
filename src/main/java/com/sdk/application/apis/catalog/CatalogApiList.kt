@@ -97,7 +97,7 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getCollectionItemsBySlug(@Url url1: String?     ,      @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?)
+    fun getCollectionItemsBySlug(@Url url1: String?     ,        @Query("f") f: String?, @Query("filters") filters: Boolean?, @Query("sort_on") sortOn: String?, @Query("page_id") pageId: String?, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?, @Query("page_type") pageType: String?)
     : Deferred<Response<ProductListingResponse>>
     
     
