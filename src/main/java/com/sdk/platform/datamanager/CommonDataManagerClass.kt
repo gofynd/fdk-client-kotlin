@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.common.*
+import com.sdk.platform.apis.common.*
 
 
 
@@ -37,7 +39,8 @@ class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformCommon",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
     }

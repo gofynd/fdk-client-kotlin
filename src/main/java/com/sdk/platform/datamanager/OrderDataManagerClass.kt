@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.order.*
+import com.sdk.platform.apis.order.*
 
 
 
@@ -37,18 +39,19 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformOrder",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
     
     
-    suspend fun getShipments(lane: String?=null, searchType: String?=null, searchValue: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null)
+    suspend fun getShipments(lane: String?=null, bagStatus: String?=null, statusOverrideLane: Boolean?=null, searchType: String?=null, searchValue: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, fetchActiveShipment: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null, orderingChannel: String?=null, companyAffiliateTag: String?=null)
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipments(
-        companyId = config.companyId, lane = lane, searchType = searchType, searchValue = searchValue, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannel = salesChannel, requestByExt = requestByExt, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, excludeLockedShipments = excludeLockedShipments, paymentMethods = paymentMethods, channelShipmentId = channelShipmentId, channelOrderId = channelOrderId, customMeta = customMeta )
+        companyId = config.companyId, lane = lane, bagStatus = bagStatus, statusOverrideLane = statusOverrideLane, searchType = searchType, searchValue = searchValue, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannel = salesChannel, requestByExt = requestByExt, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, fetchActiveShipment = fetchActiveShipment, excludeLockedShipments = excludeLockedShipments, paymentMethods = paymentMethods, channelShipmentId = channelShipmentId, channelOrderId = channelOrderId, customMeta = customMeta, orderingChannel = orderingChannel, companyAffiliateTag = companyAffiliateTag )
         } else {
             null
         } 
@@ -92,12 +95,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
-    suspend fun getOrders(lane: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannel: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null)
+    suspend fun getOrders(lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: String?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannel: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null)
     : Deferred<Response<OrderListingResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrders(
-        companyId = config.companyId, lane = lane, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannel = salesChannel, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, customMeta = customMeta )
+        companyId = config.companyId, lane = lane, searchType = searchType, bagStatus = bagStatus, timeToDispatch = timeToDispatch, paymentMethods = paymentMethods, tags = tags, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannel = salesChannel, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, customMeta = customMeta )
         } else {
             null
         } 
@@ -214,30 +217,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getManifestList(status: String?=null, storeId: Int?=null, pageNo: Int?=null, pageSize: Int?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null)
-    : Deferred<Response<GeneratedManifestResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getManifestList(
-        companyId = config.companyId, status = status, storeId = storeId, pageNo = pageNo, pageSize = pageSize, searchValue = searchValue, fromDate = fromDate, toDate = toDate )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getManifestDetailsWithShipments(manifestId: String, fromDate: String?=null, toDate: String?=null, storeId: Int, page: Int?=null, pageSize: Int?=null, lane: String?=null, dpIds: Int?=null, searchType: String?=null, searchValue: String?=null)
-    : Deferred<Response<ManifestDetailResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getManifestDetailsWithShipments(
-        companyId = config.companyId, manifestId = manifestId, fromDate = fromDate, toDate = toDate, storeId = storeId, page = page, pageSize = pageSize, lane = lane, dpIds = dpIds, searchType = searchType, searchValue = searchValue )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getBulkActionFailedReport(batchId: String, reportType: String?=null)
     : Deferred<Response<FileResponse>>? {
         
@@ -304,6 +283,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBags(
         companyId = config.companyId, bagIds = bagIds, shipmentIds = shipmentIds, orderIds = orderIds, channelBagIds = channelBagIds, channelShipmentIds = channelShipmentIds, channelOrderIds = channelOrderIds, channelId = channelId, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun generatePOSReceiptByOrderId(orderId: String, documentType: String?=null)
+    : Deferred<Response<GeneratePosOrderReceiptResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.generatePOSReceiptByOrderId(
+        companyId = config.companyId, orderId = orderId, documentType = documentType )
         } else {
             null
         } 
@@ -436,6 +427,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentHistory(
         companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun postShipmentHistory(body: PostShipmentHistory)
+    : Deferred<Response<ShipmentHistoryResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.postShipmentHistory(
+        companyId = config.companyId, body = body)
         } else {
             null
         } 

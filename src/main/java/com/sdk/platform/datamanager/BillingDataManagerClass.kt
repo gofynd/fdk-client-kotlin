@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.billing.*
+import com.sdk.platform.apis.billing.*
 
 
 
@@ -37,7 +39,8 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformBilling",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(BillingApiList::class.java) as? BillingApiList
     }

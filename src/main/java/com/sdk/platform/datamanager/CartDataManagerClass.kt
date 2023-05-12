@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.cart.*
+import com.sdk.platform.apis.cart.*
 
 
 
@@ -37,7 +39,8 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformCart",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }

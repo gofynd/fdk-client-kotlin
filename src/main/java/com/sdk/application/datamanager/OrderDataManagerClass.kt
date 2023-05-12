@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.order.*
+import com.sdk.application.apis.order.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,29 +21,31 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     init{
             
-                    _relativeUrls["getOrders"] = "/service/application/order/v1.0/orders"?.substring(1)
+                    _relativeUrls["getOrders"] = "/service/application/order/v1.0/orders".substring(1)
             
-                    _relativeUrls["getOrderById"] = "/service/application/order/v1.0/orders/{order_id}"?.substring(1)
+                    _relativeUrls["getOrderById"] = "/service/application/order/v1.0/orders/{order_id}".substring(1)
             
-                    _relativeUrls["getPosOrderById"] = "/service/application/order/v1.0/orders/pos-order/{order_id}"?.substring(1)
+                    _relativeUrls["getPosOrderById"] = "/service/application/order/v1.0/orders/pos-order/{order_id}".substring(1)
             
-                    _relativeUrls["getShipmentById"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}"?.substring(1)
+                    _relativeUrls["getShipmentById"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}".substring(1)
             
-                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
+                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/invoice".substring(1)
             
-                    _relativeUrls["trackShipment"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/track"?.substring(1)
+                    _relativeUrls["trackShipment"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/track".substring(1)
             
-                    _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details"?.substring(1)
+                    _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details".substring(1)
             
-                    _relativeUrls["sendOtpToShipmentCustomer"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send/"?.substring(1)
+                    _relativeUrls["sendOtpToShipmentCustomer"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send/".substring(1)
             
-                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify/"?.substring(1)
+                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/order/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify/".substring(1)
             
-                    _relativeUrls["getShipmentBagReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons"?.substring(1)
+                    _relativeUrls["getShipmentBagReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/bags/{bag_id}/reasons".substring(1)
             
-                    _relativeUrls["getShipmentReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
+                    _relativeUrls["getShipmentReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons".substring(1)
             
-                    _relativeUrls["updateShipmentStatus"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
+                    _relativeUrls["updateShipmentStatus"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status".substring(1)
+            
+                    _relativeUrls["updateShipmentStatus1"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status".substring(1)
             
     }
 
@@ -112,12 +116,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
+    fun getInvoiceByShipmentId(shipmentId: String, documentType: String?=null): Deferred<Response<ResponseGetInvoiceShipment>>? {
         var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
+        return orderApiList?.getInvoiceByShipmentId(fullUrl     ,  documentType = documentType)}
 
     
     
@@ -189,6 +193,15 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
+
+    
+    
+    fun updateShipmentStatus1(shipmentId: String, body: UpdateShipmentStatusRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
+        var fullUrl : String? = _relativeUrls["updateShipmentStatus1"] 
+        
+        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
+        
+        return orderApiList?.updateShipmentStatus1(fullUrl   ,body = body)}
 
     
     

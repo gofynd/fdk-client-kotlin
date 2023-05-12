@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.configuration.*
+import com.sdk.application.apis.configuration.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,37 +21,37 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     init{
             
-                    _relativeUrls["getApplication"] = "/service/application/configuration/v1.0/application"?.substring(1)
+                    _relativeUrls["getApplication"] = "/service/application/configuration/v1.0/application".substring(1)
             
-                    _relativeUrls["getOwnerInfo"] = "/service/application/configuration/v1.0/about"?.substring(1)
+                    _relativeUrls["getOwnerInfo"] = "/service/application/configuration/v1.0/about".substring(1)
             
-                    _relativeUrls["getBasicDetails"] = "/service/application/configuration/v1.0/detail"?.substring(1)
+                    _relativeUrls["getBasicDetails"] = "/service/application/configuration/v1.0/detail".substring(1)
             
-                    _relativeUrls["getIntegrationTokens"] = "/service/application/configuration/v1.0/token"?.substring(1)
+                    _relativeUrls["getIntegrationTokens"] = "/service/application/configuration/v1.0/token".substring(1)
             
-                    _relativeUrls["getOrderingStores"] = "/service/application/configuration/v1.0/ordering-store/stores"?.substring(1)
+                    _relativeUrls["getOrderingStores"] = "/service/application/configuration/v1.0/ordering-store/stores".substring(1)
             
-                    _relativeUrls["getStoreDetailById"] = "/service/application/configuration/v1.0/ordering-store/stores/{store_id}"?.substring(1)
+                    _relativeUrls["getStoreDetailById"] = "/service/application/configuration/v1.0/ordering-store/stores/{store_id}".substring(1)
             
-                    _relativeUrls["getFeatures"] = "/service/application/configuration/v1.0/feature"?.substring(1)
+                    _relativeUrls["getFeatures"] = "/service/application/configuration/v1.0/feature".substring(1)
             
-                    _relativeUrls["getContactInfo"] = "/service/application/configuration/v1.0/information"?.substring(1)
+                    _relativeUrls["getContactInfo"] = "/service/application/configuration/v1.0/information".substring(1)
             
-                    _relativeUrls["getCurrencies"] = "/service/application/configuration/v1.0/currencies"?.substring(1)
+                    _relativeUrls["getCurrencies"] = "/service/application/configuration/v1.0/currencies".substring(1)
             
-                    _relativeUrls["getCurrencyById"] = "/service/application/configuration/v1.0/currency/{id}"?.substring(1)
+                    _relativeUrls["getCurrencyById"] = "/service/application/configuration/v1.0/currency/{id}".substring(1)
             
-                    _relativeUrls["getAppCurrencies"] = "/service/application/configuration/v1.0/currency"?.substring(1)
+                    _relativeUrls["getAppCurrencies"] = "/service/application/configuration/v1.0/currency".substring(1)
             
-                    _relativeUrls["getLanguages"] = "/service/application/configuration/v1.0/languages"?.substring(1)
+                    _relativeUrls["getLanguages"] = "/service/application/configuration/v1.0/languages".substring(1)
             
-                    _relativeUrls["getOrderingStoreCookie"] = "/service/application/configuration/v1.0/ordering-store/select"?.substring(1)
+                    _relativeUrls["getOrderingStoreCookie"] = "/service/application/configuration/v1.0/ordering-store/select".substring(1)
             
-                    _relativeUrls["removeOrderingStoreCookie"] = "/service/application/configuration/v1.0/ordering-store/select"?.substring(1)
+                    _relativeUrls["removeOrderingStoreCookie"] = "/service/application/configuration/v1.0/ordering-store/select".substring(1)
             
-                    _relativeUrls["getAppStaffList"] = "/service/application/configuration/v1.0/staff/list"?.substring(1)
+                    _relativeUrls["getAppStaffList"] = "/service/application/configuration/v1.0/staff/list".substring(1)
             
-                    _relativeUrls["getAppStaffs"] = "/service/application/configuration/v1.0/staff"?.substring(1)
+                    _relativeUrls["getAppStaffs"] = "/service/application/configuration/v1.0/staff".substring(1)
             
     }
 
@@ -238,15 +240,20 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
 
     
     
-    fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null): Deferred<Response<AppStaffListResponse>>? {
+    fun getAppStaffList(pageNo: Int?=null, pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null): Deferred<Response<AppStaffListResponse>>? {
         var fullUrl : String? = _relativeUrls["getAppStaffList"] 
         
-        return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user)}
+        return configurationApiList?.getAppStaffList(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    orderIncent = orderIncent,    orderingStore = orderingStore,    user = user,    userName = userName)}
 
     
     
     
         
+            
+            
+        
+            
+                
             
             
         
@@ -274,7 +281,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
     *
     * Summary: Paginator for getAppStaffList
     **/
-    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null) : Paginator<AppStaffListResponse>{
+    fun getAppStaffListPaginator(pageSize: Int?=null, orderIncent: Boolean?=null, orderingStore: Int?=null, user: String?=null, userName: String?=null) : Paginator<AppStaffListResponse>{
 
     val paginator = Paginator<AppStaffListResponse>()
 
@@ -287,7 +294,7 @@ class ConfigurationDataManagerClass(val config: ApplicationConfig, val unauthori
                 val pageType = "number"
                 var fullUrl : String? = _relativeUrls["getAppStaffList"] 
                 
-                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user)?.safeAwait{ response, error ->
+                configurationApiList?.getAppStaffList(fullUrl , pageNo = pageNo, pageSize = pageSize, orderIncent = orderIncent, orderingStore = orderingStore, user = user, userName = userName)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

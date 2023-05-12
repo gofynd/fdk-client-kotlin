@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.partner.*
+import com.sdk.platform.apis.partner.*
 
 
 
@@ -37,7 +39,8 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformPartner",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(PartnerApiList::class.java) as? PartnerApiList
     }

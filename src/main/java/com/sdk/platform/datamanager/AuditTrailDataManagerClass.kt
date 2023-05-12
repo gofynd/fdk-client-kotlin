@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.audittrail.*
+import com.sdk.platform.apis.audittrail.*
 
 
 
@@ -37,7 +39,8 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformAuditTrail",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(AuditTrailApiList::class.java) as? AuditTrailApiList
     }

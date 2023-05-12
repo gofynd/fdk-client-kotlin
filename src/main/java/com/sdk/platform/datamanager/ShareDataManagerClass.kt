@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.share.*
+import com.sdk.platform.apis.share.*
 
 
 
@@ -37,7 +39,8 @@ class ShareDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformShare",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(ShareApiList::class.java) as? ShareApiList
     }

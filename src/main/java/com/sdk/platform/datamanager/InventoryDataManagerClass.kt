@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.inventory.*
+import com.sdk.platform.apis.inventory.*
 
 
 
@@ -37,7 +39,8 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformInventory",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
     }

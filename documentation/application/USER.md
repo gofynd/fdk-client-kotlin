@@ -54,7 +54,7 @@ Login or Register using Facebook
 
 
 ```kotlin
-user.loginWithFacebook(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.loginWithFacebook(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -142,7 +142,7 @@ Login or Register using Google
 
 
 ```kotlin
-user.loginWithGoogle(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.loginWithGoogle(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -230,7 +230,7 @@ Login or Register using Google on Android
 
 
 ```kotlin
-user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.loginWithGoogleAndroid(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -318,7 +318,7 @@ Login or Register using Google on iOS
 
 
 ```kotlin
-user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.loginWithGoogleIOS(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -406,7 +406,7 @@ Login or Register using Apple on iOS
 
 
 ```kotlin
-user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.loginWithAppleIOS(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -494,7 +494,7 @@ Login or Register with OTP
 
 
 ```kotlin
-user.loginWithOTP(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.loginWithOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -570,7 +570,7 @@ Login or Register with password
 
 
 ```kotlin
-user.loginWithEmailAndPassword(body: body).safeAwait{ response, error->
+applicationClient.user.loginWithEmailAndPassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -684,7 +684,7 @@ Reset Password
 
 
 ```kotlin
-user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.sendResetPasswordEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -746,7 +746,7 @@ Reset Password
 
 
 ```kotlin
-user.sendResetPasswordMobile(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.sendResetPasswordMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -808,7 +808,7 @@ Forgot Password
 
 
 ```kotlin
-user.forgotPassword(body: body).safeAwait{ response, error->
+applicationClient.user.forgotPassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -922,7 +922,7 @@ Reset Password using token
 
 
 ```kotlin
-user.sendResetToken(body: body).safeAwait{ response, error->
+applicationClient.user.sendResetToken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -983,7 +983,7 @@ Login or Register with token
 
 
 ```kotlin
-user.loginWithToken(body: body).safeAwait{ response, error->
+applicationClient.user.loginWithToken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1097,7 +1097,7 @@ Registration using a form
 
 
 ```kotlin
-user.registerWithForm(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.registerWithForm(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1168,7 +1168,7 @@ Verify email
 
 
 ```kotlin
-user.verifyEmail(body: body).safeAwait{ response, error->
+applicationClient.user.verifyEmail(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1229,7 +1229,7 @@ Verify mobile
 
 
 ```kotlin
-user.verifyMobile(body: body).safeAwait{ response, error->
+applicationClient.user.verifyMobile(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1290,7 +1290,7 @@ Check password
 
 
 ```kotlin
-user.hasPassword().safeAwait{ response, error->
+applicationClient.user.hasPassword().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1345,7 +1345,7 @@ Update user password
 
 
 ```kotlin
-user.updatePassword(body: body).safeAwait{ response, error->
+applicationClient.user.updatePassword(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1406,7 +1406,7 @@ verify otp and delete user
 
 
 ```kotlin
-user.deleteUser(body: body).safeAwait{ response, error->
+applicationClient.user.deleteUser(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1467,7 +1467,7 @@ Logs out currently logged in user
 
 
 ```kotlin
-user.logout().safeAwait{ response, error->
+applicationClient.user.logout().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1522,7 +1522,7 @@ Send OTP on mobile
 
 
 ```kotlin
-user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.sendOTPOnMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1590,7 +1590,7 @@ Verify OTP on mobile
 
 
 ```kotlin
-user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.verifyMobileOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1706,7 +1706,7 @@ Send OTP on email
 
 
 ```kotlin
-user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.sendOTPOnEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1768,7 +1768,7 @@ Verify OTP on email
 
 
 ```kotlin
-user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.verifyEmailOTP(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1884,7 +1884,7 @@ Get logged in user
 
 
 ```kotlin
-user.getLoggedInUser().safeAwait{ response, error->
+applicationClient.user.getLoggedInUser().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1994,7 +1994,7 @@ Get list of sessions
 
 
 ```kotlin
-user.getListOfActiveSessions().safeAwait{ response, error->
+applicationClient.user.getListOfActiveSessions().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2054,7 +2054,7 @@ Get platform configurations
 
 
 ```kotlin
-user.getPlatformConfig(name: name).safeAwait{ response, error->
+applicationClient.user.getPlatformConfig(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2195,7 +2195,7 @@ Edit Profile Details
 
 
 ```kotlin
-user.updateProfile(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.updateProfile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2310,7 +2310,7 @@ Add mobile number to profile
 
 
 ```kotlin
-user.addMobileNumber(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.addMobileNumber(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2426,7 +2426,7 @@ Delete mobile number from profile
 
 
 ```kotlin
-user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait{ response, error->
+applicationClient.user.deleteMobileNumber(platform: platform, active: active, primary: primary, verified: verified, countryCode: countryCode, phone: phone).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2546,7 +2546,7 @@ Set mobile as primary
 
 
 ```kotlin
-user.setMobileNumberAsPrimary(body: body).safeAwait{ response, error->
+applicationClient.user.setMobileNumberAsPrimary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2660,7 +2660,7 @@ Send verification link to mobile
 
 
 ```kotlin
-user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.sendVerificationLinkToMobile(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2776,7 +2776,7 @@ Add email to profile
 
 
 ```kotlin
-user.addEmail(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.addEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2892,7 +2892,7 @@ Delete email from profile
 
 
 ```kotlin
-user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response, error->
+applicationClient.user.deleteEmail(platform: platform, active: active, primary: primary, verified: verified, email: email).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3011,7 +3011,7 @@ Set email as primary
 
 
 ```kotlin
-user.setEmailAsPrimary(body: body).safeAwait{ response, error->
+applicationClient.user.setEmailAsPrimary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3125,7 +3125,7 @@ Send verification link to email
 
 
 ```kotlin
-user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response, error->
+applicationClient.user.sendVerificationLinkToEmail(platform: platform, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3842,7 +3842,7 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<String>? |  yes  |  |
+ | items | ArrayList<[SessionListResponseInfo](#SessionListResponseInfo)>? |  yes  |  |
 
 ---
 
@@ -4012,6 +4012,21 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [SessionListResponseInfo](#SessionListResponseInfo)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | sessionId | String? |  yes  |  |
+ | userAgent | String? |  yes  |  |
+ | ip | String? |  yes  |  |
+ | domain | String? |  yes  |  |
+ | expireIn | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [AuthSuccessUserDebug](#AuthSuccessUserDebug)
 
  | Properties | Type | Nullable | Description |
@@ -4031,6 +4046,51 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | verified | Boolean? |  yes  |  |
  | primary | Boolean? |  yes  |  |
  | active | Boolean? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserGroupResponseSchema](#UserGroupResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | fileUrl | String? |  yes  |  |
+ | id | String? |  yes  |  |
+ | status | String? |  yes  |  |
+ | uid | Int? |  yes  |  |
+ | applicationId | String? |  yes  |  |
+ | createdAt | String? |  yes  |  |
+ | modifiedAt | String? |  yes  |  |
+ | v | Int? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserGroupListResponseSchema](#UserGroupListResponseSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | items | ArrayList<[UserGroupResponseSchema](#UserGroupResponseSchema)>? |  yes  |  |
+ | page | [PaginationSchema](#PaginationSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CreateUserGroupSchema](#CreateUserGroupSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String |  no  |  |
+ | description | String |  no  |  |
+ | fileUrl | String |  no  |  |
 
 ---
 
@@ -4345,6 +4405,19 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
 
  
  
+ #### [UpdateUserGroupSchema](#UpdateUserGroupSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | name | String? |  yes  |  |
+ | description | String? |  yes  |  |
+ | fileUrl | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [UpdateUserRequestSchema](#UpdateUserRequestSchema)
 
  | Properties | Type | Nullable | Description |
@@ -4354,6 +4427,37 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | gender | String? |  yes  |  |
  | externalId | String? |  yes  |  |
  | meta | HashMap<String,Any>? |  yes  |  |
+ | phoneNumbers | ArrayList<[UserPhoneNumbers](#UserPhoneNumbers)>? |  yes  |  |
+ | emails | ArrayList<[UserEmails](#UserEmails)>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserEmails](#UserEmails)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | primary | Boolean? |  yes  |  |
+ | verified | Boolean? |  yes  |  |
+ | email | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UserPhoneNumbers](#UserPhoneNumbers)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean? |  yes  |  |
+ | primary | Boolean? |  yes  |  |
+ | verified | Boolean? |  yes  |  |
+ | phone | String? |  yes  |  |
+ | countryCode | String? |  yes  |  |
 
 ---
 
@@ -4377,8 +4481,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | profilePicUrl | String? |  yes  |  |
  | username | String? |  yes  |  |
  | accountType | String? |  yes  |  |
- | debug | [Debug](#Debug)? |  yes  |  |
- | hasOldPasswordHash | Boolean? |  yes  |  |
  | id | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
@@ -4411,18 +4513,6 @@ Request body must contain an email ID. Refer `EditEmailRequestSchema` for more d
  | verified | Boolean? |  yes  |  |
  | email | String? |  yes  |  |
  | active | Boolean? |  yes  |  |
-
----
-
-
- 
- 
- #### [Debug](#Debug)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | source | String? |  yes  |  |
- | platform | String? |  yes  |  |
 
 ---
 

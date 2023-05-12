@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.payment.*
+import com.sdk.platform.apis.payment.*
 
 
 
@@ -37,7 +39,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformPayment",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(PaymentApiList::class.java) as? PaymentApiList
     }
@@ -173,6 +176,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -292,6 +296,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SetCODOptionResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentCodeOption()
+    : Deferred<Response<GetPaymentCodeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

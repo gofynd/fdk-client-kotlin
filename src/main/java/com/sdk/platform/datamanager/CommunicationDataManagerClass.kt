@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.communication.*
+import com.sdk.platform.apis.communication.*
 
 
 
@@ -37,7 +39,8 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformCommunication",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(CommunicationApiList::class.java) as? CommunicationApiList
     }

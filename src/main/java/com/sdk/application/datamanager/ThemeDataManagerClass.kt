@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.theme.*
+import com.sdk.application.apis.theme.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,13 +21,13 @@ class ThemeDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     init{
             
-                    _relativeUrls["getAllPages"] = "/service/application/theme/v1.0/{theme_id}/page"?.substring(1)
+                    _relativeUrls["getAllPages"] = "/service/application/theme/v1.0/{theme_id}/page".substring(1)
             
-                    _relativeUrls["getPage"] = "/service/application/theme/v1.0/{theme_id}/{page_value}"?.substring(1)
+                    _relativeUrls["getPage"] = "/service/application/theme/v1.0/{theme_id}/{page_value}".substring(1)
             
-                    _relativeUrls["getAppliedTheme"] = "/service/application/theme/v1.0/applied-theme"?.substring(1)
+                    _relativeUrls["getAppliedTheme"] = "/service/application/theme/v1.0/applied-theme".substring(1)
             
-                    _relativeUrls["getThemeForPreview"] = "/service/application/theme/v1.0/{theme_id}/preview"?.substring(1)
+                    _relativeUrls["getThemeForPreview"] = "/service/application/theme/v1.0/{theme_id}/preview".substring(1)
             
     }
 

@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.rewards.*
+import com.sdk.application.apis.rewards.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,19 +21,19 @@ class RewardsDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     init{
             
-                    _relativeUrls["getOfferByName"] = "/service/application/rewards/v1.0/offers/{name}/"?.substring(1)
+                    _relativeUrls["getOfferByName"] = "/service/application/rewards/v1.0/offers/{name}/".substring(1)
             
-                    _relativeUrls["catalogueOrder"] = "/service/application/rewards/v1.0/catalogue/offer/order/"?.substring(1)
+                    _relativeUrls["catalogueOrder"] = "/service/application/rewards/v1.0/catalogue/offer/order/".substring(1)
             
-                    _relativeUrls["getUserPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/"?.substring(1)
+                    _relativeUrls["getUserPointsHistory"] = "/service/application/rewards/v1.0/user/points/history/".substring(1)
             
-                    _relativeUrls["getUserPoints"] = "/service/application/rewards/v1.0/user/points/"?.substring(1)
+                    _relativeUrls["getUserPoints"] = "/service/application/rewards/v1.0/user/points/".substring(1)
             
-                    _relativeUrls["getUserReferralDetails"] = "/service/application/rewards/v1.0/user/referral/"?.substring(1)
+                    _relativeUrls["getUserReferralDetails"] = "/service/application/rewards/v1.0/user/referral/".substring(1)
             
-                    _relativeUrls["getOrderDiscount"] = "/service/application/rewards/v1.0/user/offer/order-discount/"?.substring(1)
+                    _relativeUrls["getOrderDiscount"] = "/service/application/rewards/v1.0/user/offer/order-discount/".substring(1)
             
-                    _relativeUrls["redeemReferralCode"] = "/service/application/rewards/v1.0/user/referral/redeem/"?.substring(1)
+                    _relativeUrls["redeemReferralCode"] = "/service/application/rewards/v1.0/user/referral/redeem/".substring(1)
             
     }
 
