@@ -141,4 +141,8 @@ interface PaymentApiList {
     fun paymentStatusBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentStatusBulkHandlerRequest)
     : Deferred<Response<PaymentStatusBulkHandlerResponse>>
     
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/revoke/{aggregator}/")
+    fun revokeOauthToken(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String)
+    : Deferred<Response<RevokeOAuthToken>>
+    
 }

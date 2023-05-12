@@ -1751,6 +1751,7 @@ Success
  | links | HashMap<String,Any>? |  yes  |  |
  | enabled | Boolean? |  yes  |  |
  | displayText | String? |  yes  |  |
+ | config | HashMap<String,Any>? |  yes  |  |
 
 ---
 

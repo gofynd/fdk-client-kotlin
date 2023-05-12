@@ -373,9 +373,14 @@ data class DetailedPlanComponents(
     var enabled: Boolean?=null,
     
     @SerializedName("display_text")
-    var displayText: String?=null
+    var displayText: String?=null,
+    
+    @SerializedName("config")
+    var config: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     

@@ -180,30 +180,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getBulkInvoice(batchId: String, docType: String)
-    : Deferred<Response<BulkInvoicingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getBulkInvoice(
-        companyId = config.companyId, batchId = batchId, docType = docType )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getBulkInvoiceLabel(batchId: String)
-    : Deferred<Response<BulkInvoiceLabelResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getBulkInvoiceLabel(
-        companyId = config.companyId, batchId = batchId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getBulkShipmentExcelFile(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, customerId: String?=null, isPrioritySort: Boolean?=null)
     : Deferred<Response<FileResponse>>? {
         
@@ -216,60 +192,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getBulkList(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, customerId: String?=null, isPrioritySort: Boolean?=null)
-    : Deferred<Response<BulkListingResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getBulkList(
-        companyId = config.companyId, lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannel = salesChannel, requestByExt = requestByExt, pageNo = pageNo, pageSize = pageSize, customerId = customerId, isPrioritySort = isPrioritySort )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getBulkActionFailedReport(batchId: String, reportType: String?=null)
-    : Deferred<Response<FileResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getBulkActionFailedReport(
-        companyId = config.companyId, batchId = batchId, reportType = reportType )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getShipmentReasons(shipmentId: String, bagId: String, state: String)
     : Deferred<Response<PlatformShipmentReasonsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentReasons(
         companyId = config.companyId, shipmentId = shipmentId, bagId = bagId, state = state )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun bulkActionProcessXlsxFile(body: BulkActionPayload)
-    : Deferred<Response<BulkActionResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.bulkActionProcessXlsxFile(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun bulkActionDetails(batchId: String)
-    : Deferred<Response<BulkActionDetailsResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.bulkActionDetails(
-        companyId = config.companyId, batchId = batchId )
         } else {
             null
         } 
@@ -687,12 +615,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
-    
-    
-    
-    
-    
     
     
     
