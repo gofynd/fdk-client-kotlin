@@ -25,13 +25,13 @@ interface ServiceabilityApiList {
     fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<CompanyStoreView_Response>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
     fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
     : Deferred<Response<GetSingleZoneDataViewResponse>>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
+    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/zone/")
     fun insertZoneControllerView(@Path("company_id") companyId: String,@Body body: ZoneRequest)
