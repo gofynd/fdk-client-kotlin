@@ -49,4 +49,8 @@ interface ServiceabilityApiList {
     fun getAllStores(@Path("company_id") companyId: String)
     : Deferred<Response<GetStoresViewResponse>>
     
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/reassign")
+    fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: ReAssignStoreRequest)
+    : Deferred<Response<ReAssignStoreResponse>>
+    
 }

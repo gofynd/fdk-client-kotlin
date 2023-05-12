@@ -142,6 +142,18 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
         } 
     }
     
+    
+    suspend fun getOptimalLocations(body: ReAssignStoreRequest)
+    : Deferred<Response<ReAssignStoreResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getOptimalLocations(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -171,6 +183,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     
