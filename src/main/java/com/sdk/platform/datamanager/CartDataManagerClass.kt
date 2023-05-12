@@ -61,9 +61,6 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
-    
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -208,10 +205,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPromotions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null)
+    suspend fun getPromotions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, status: String?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null)
     : Deferred<Response<PromotionsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId )
+                cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, status = status, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId )
         } else {
             null
         }
@@ -273,7 +270,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getPromotions
     **/
     fun getPromotionsPaginator(
-    pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
+    pageSize: Int?=null, q: String?=null, status: String?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
     
     ) : Paginator<PromotionsResponse>{
         val paginator = Paginator<PromotionsResponse>()
@@ -286,7 +283,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
+                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, status = status, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -341,6 +338,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SuccessMessage>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updatePromotionPartially(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPromosCouponConfig()
+    : Deferred<Response<ActivePromosResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPromosCouponConfig(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -471,16 +478,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun getAbandonedCartDetails(id: String?=null, i: Boolean?=null, b: Boolean?=null)
-    : Deferred<Response<CartDetailResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getAbandonedCartDetails(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun addItems(cartId: String, b: Boolean?=null,body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -495,36 +492,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<UpdateCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCouponOptionValues()
-    : Deferred<Response<HashMap<String,Any>>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCouponOptionValues(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getCouponCodeExists(code: String?=null)
-    : Deferred<Response<HashMap<String,Any>>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getCouponCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPromotionCodeExists(code: String?=null)
-    : Deferred<Response<HashMap<String,Any>>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotionCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
         } else {
             null
         }

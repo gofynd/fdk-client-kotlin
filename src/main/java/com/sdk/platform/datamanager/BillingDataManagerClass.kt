@@ -93,30 +93,6 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun createOneTimeCharge(extensionId: String,body: CreateOneTimeCharge)
-    : Deferred<Response<CreateOneTimeChargeResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            billingApiList?.createOneTimeCharge(
-        companyId = config.companyId, extensionId = extensionId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getChargeDetails(extensionId: String, chargeId: String)
-    : Deferred<Response<OneTimeChargeEntity>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            billingApiList?.getChargeDetails(
-        companyId = config.companyId, extensionId = extensionId, chargeId = chargeId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun getInvoices()
     : Deferred<Response<Invoices>>? {
         
@@ -215,8 +191,6 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
-    
-    
     
     
     

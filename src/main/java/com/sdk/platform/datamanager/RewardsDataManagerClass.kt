@@ -102,10 +102,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getGiveawayAudienceStatus(id: String, audienceId: String)
+    suspend fun getGiveawayAudienceStatus(audienceId: String)
     : Deferred<Response<GiveawayAudience>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                rewardsApiList?.getGiveawayAudienceStatus(id = id, audienceId = audienceId, companyId = config.companyId , applicationId = applicationId  )
+                rewardsApiList?.getGiveawayAudienceStatus(audienceId = audienceId, companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -122,10 +122,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getOfferByName(name: String)
+    suspend fun getOfferByName(name: String, cookie: String)
     : Deferred<Response<Offer>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                rewardsApiList?.getOfferByName(name = name, companyId = config.companyId , applicationId = applicationId  )
+                rewardsApiList?.getOfferByName(name = name, companyId = config.companyId , applicationId = applicationId , cookie = cookie )
         } else {
             null
         }
@@ -152,10 +152,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getUserDetails(userId: String)
+    suspend fun user(userId: String)
     : Deferred<Response<UserRes>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                rewardsApiList?.getUserDetails(userId = userId, companyId = config.companyId , applicationId = applicationId  )
+                rewardsApiList?.user(userId = userId, companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

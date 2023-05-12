@@ -30,7 +30,7 @@ interface CartApiList {
     : Deferred<Response<SuccessMessage>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
-    fun getPromotions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("is_active") isActive: Boolean?, @Query("promo_group") promoGroup: String?, @Query("promotion_type") promotionType: String?, @Query("fp_panel") fpPanel: String?, @Query("promotion_id") promotionId: String?)
+    fun getPromotions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("status") status: String?, @Query("promo_group") promoGroup: String?, @Query("promotion_type") promotionType: String?, @Query("fp_panel") fpPanel: String?, @Query("promotion_id") promotionId: String?)
     : Deferred<Response<PromotionsResponse>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion")
@@ -49,6 +49,10 @@ interface CartApiList {
     fun updatePromotionPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PromotionPartialUpdate)
     : Deferred<Response<SuccessMessage>>
     
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promo-coupons")
+    fun getPromosCouponConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ActivePromosResponse>>
+    
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
     fun fetchAndvalidateCartItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsRequest)
     : Deferred<Response<OpenapiCartDetailsResponse>>
@@ -65,10 +69,6 @@ interface CartApiList {
     fun getAbandonedCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("anonymous_cart") anonymousCart: Boolean?, @Query("last_id") lastId: String?, @Query("sort_on") sortOn: String?)
     : Deferred<Response<AbandonedCartResponse>>
     
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/abandoned/cart/detail")
-    fun getAbandonedCartDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?)
-    : Deferred<Response<CartDetailResponse>>
-    
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/abandoned/carts/{cart_id}")
     fun addItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_id") cartId: String, @Query("b") b: Boolean?,@Body body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>
@@ -76,17 +76,5 @@ interface CartApiList {
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/abandoned/carts/{cart_id}")
     fun updateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_id") cartId: String, @Query("b") b: Boolean?,@Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
-    
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_options")
-    fun getCouponOptionValues(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<HashMap<String,Any>>>
-    
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_code_exists")
-    fun getCouponCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?)
-    : Deferred<Response<HashMap<String,Any>>>
-    
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion_code_exists")
-    fun getPromotionCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?)
-    : Deferred<Response<HashMap<String,Any>>>
     
 }

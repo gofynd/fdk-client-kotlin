@@ -288,6 +288,18 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun generatePOSReceiptByOrderId(orderId: String, documentType: String?=null)
+    : Deferred<Response<GeneratePosOrderReceiptResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.generatePOSReceiptByOrderId(
+        companyId = config.companyId, orderId = orderId, documentType = documentType )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun invalidateShipmentCache(body: InvalidateShipmentCachePayload)
     : Deferred<Response<InvalidateShipmentCacheResponse>>? {
         
@@ -590,6 +602,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

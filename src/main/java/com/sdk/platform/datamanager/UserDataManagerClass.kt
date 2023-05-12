@@ -60,7 +60,6 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -146,16 +145,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteSession(id: String, sessionId: String, reason: String)
-    : Deferred<Response<SessionDeleteResponseSchema>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.deleteSession(companyId = config.companyId , applicationId = applicationId , id = id, sessionId = sessionId, reason = reason )
-        } else {
-            null
-        }
-    }
-    
-    
     suspend fun getActiveSessions(id: String)
     : Deferred<Response<SessionListResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -166,10 +155,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteActiveSessions(id: String, reason: String)
+    suspend fun deleteActiveSessions(id: String)
     : Deferred<Response<SessionDeleteResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.deleteActiveSessions(companyId = config.companyId , applicationId = applicationId , id = id, reason = reason )
+                userApiList?.deleteActiveSessions(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }

@@ -41,16 +41,12 @@ interface UserApiList {
     fun createUserSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateUserSessionRequestSchema)
     : Deferred<Response<CreateUserSessionResponseSchema>>
     
-    @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/session")
-    fun deleteSession(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("session_id") sessionId: String, @Query("reason") reason: String)
-    : Deferred<Response<SessionDeleteResponseSchema>>
-    
-    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sessions")
+    @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sesions")
     fun getActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String)
     : Deferred<Response<SessionListResponseSchema>>
     
-    @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sessions")
-    fun deleteActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String, @Query("reason") reason: String)
+    @DELETE ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/sesions")
+    fun deleteActiveSessions(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("id") id: String)
     : Deferred<Response<SessionDeleteResponseSchema>>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/platform/config")

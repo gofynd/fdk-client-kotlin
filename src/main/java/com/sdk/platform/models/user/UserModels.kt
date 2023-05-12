@@ -1677,7 +1677,7 @@ data class SessionListResponseSchema(
     
     
     @SerializedName("items")
-    var items: ArrayList<SessionListResponseInfo>?=null
+    var items: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -2056,48 +2056,6 @@ data class AuthSuccessUser(
     
     @SerializedName("emails")
     var emails: AuthSuccessUserEmails?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SessionListResponseInfo
-*/
-@Parcelize
-data class SessionListResponseInfo(
-    
-    
-    
-    @SerializedName("session_id")
-    var sessionId: String?=null,
-    
-    @SerializedName("user_agent")
-    var userAgent: String?=null,
-    
-    @SerializedName("ip")
-    var ip: String?=null,
-    
-    @SerializedName("domain")
-    var domain: String?=null,
-    
-    @SerializedName("expire_in")
-    var expireIn: String?=null
     
 ): Parcelable {
     
@@ -3137,96 +3095,7 @@ data class UpdateUserRequestSchema(
     var externalId: String?=null,
     
     @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("phone_numbers")
-    var phoneNumbers: ArrayList<UserPhoneNumbers>?=null,
-    
-    @SerializedName("emails")
-    var emails: ArrayList<UserEmails>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserEmails
-*/
-@Parcelize
-data class UserEmails(
-    
-    
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("email")
-    var email: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: UserPhoneNumbers
-*/
-@Parcelize
-data class UserPhoneNumbers(
-    
-    
-    
-    @SerializedName("active")
-    var active: Boolean?=null,
-    
-    @SerializedName("primary")
-    var primary: Boolean?=null,
-    
-    @SerializedName("verified")
-    var verified: Boolean?=null,
-    
-    @SerializedName("phone")
-    var phone: String?=null,
-    
-    @SerializedName("country_code")
-    var countryCode: String?=null
+    var meta: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
     
