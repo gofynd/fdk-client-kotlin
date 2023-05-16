@@ -180,12 +180,36 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getBulkShipmentExcelFile(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, customerId: String?=null, isPrioritySort: Boolean?=null)
+    suspend fun getBulkShipmentExcelFile(salesChannels: String?=null, dpIds: String?=null, fromDate: String?=null, toDate: String?=null, stores: String?=null, tags: String?=null, bagStatus: String?=null, paymentMethods: String?=null, fileType: String?=null, timeToDispatch: Int?=null, pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<FileResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getBulkShipmentExcelFile(
-        companyId = config.companyId, lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannel = salesChannel, requestByExt = requestByExt, pageNo = pageNo, pageSize = pageSize, customerId = customerId, isPrioritySort = isPrioritySort )
+        companyId = config.companyId, salesChannels = salesChannels, dpIds = dpIds, fromDate = fromDate, toDate = toDate, stores = stores, tags = tags, bagStatus = bagStatus, paymentMethods = paymentMethods, fileType = fileType, timeToDispatch = timeToDispatch, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getBulkActionTemplate()
+    : Deferred<Response<BulkActionTemplateResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getBulkActionTemplate(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun downloadBulkActionTemplate(templateSlug: String?=null)
+    : Deferred<Response<FileResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.downloadBulkActionTemplate(
+        companyId = config.companyId, templateSlug = templateSlug )
         } else {
             null
         } 
@@ -615,6 +639,8 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
     
     
     

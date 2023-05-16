@@ -66,7 +66,15 @@ interface OrderApiList {
     : Deferred<Response<JioCodeUpsertResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/generate/file")
-    fun getBulkShipmentExcelFile(@Path("company_id") companyId: String, @Query("lane") lane: String?, @Query("search_type") searchType: String?, @Query("search_id") searchId: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("ordering_company_id") orderingCompanyId: String?, @Query("stores") stores: String?, @Query("sales_channel") salesChannel: String?, @Query("request_by_ext") requestByExt: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("customer_id") customerId: String?, @Query("is_priority_sort") isPrioritySort: Boolean?)
+    fun getBulkShipmentExcelFile(@Path("company_id") companyId: String, @Query("sales_channels") salesChannels: String?, @Query("dp_ids") dpIds: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("stores") stores: String?, @Query("tags") tags: String?, @Query("bag_status") bagStatus: String?, @Query("payment_methods") paymentMethods: String?, @Query("file_type") fileType: String?, @Query("time_to_dispatch") timeToDispatch: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<FileResponse>>
+    
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/bulk-action/get-seller-templates")
+    fun getBulkActionTemplate(@Path("company_id") companyId: String)
+    : Deferred<Response<BulkActionTemplateResponse>>
+    
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/bulk-action/download-seller-templates")
+    fun downloadBulkActionTemplate(@Path("company_id") companyId: String, @Query("template_slug") templateSlug: String?)
     : Deferred<Response<FileResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/shipments/{shipment_id}/bags/{bag_id}/state/{state}/reasons")
