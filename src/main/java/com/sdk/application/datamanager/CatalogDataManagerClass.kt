@@ -469,20 +469,15 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null, q: String?=null): Deferred<Response<GetCollectionListingResponse>>? {
+    fun getCollections(pageNo: Int?=null, pageSize: Int?=null, tag: ArrayList<String>?=null): Deferred<Response<GetCollectionListingResponse>>? {
         var fullUrl : String? = _relativeUrls["getCollections"] 
         
-        return catalogApiList?.getCollections(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    tag = tag,    q = q)}
+        return catalogApiList?.getCollections(fullUrl    ,  pageNo = pageNo,    pageSize = pageSize,    tag = tag)}
 
     
     
     
         
-            
-            
-        
-            
-                
             
             
         
@@ -500,7 +495,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
     *
     * Summary: Paginator for getCollections
     **/
-    fun getCollectionsPaginator(pageSize: Int?=null, tag: ArrayList<String>?=null, q: String?=null) : Paginator<GetCollectionListingResponse>{
+    fun getCollectionsPaginator(pageSize: Int?=null, tag: ArrayList<String>?=null) : Paginator<GetCollectionListingResponse>{
 
     val paginator = Paginator<GetCollectionListingResponse>()
 
@@ -513,7 +508,7 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
                 val pageType = "number"
                 var fullUrl : String? = _relativeUrls["getCollections"] 
                 
-                catalogApiList?.getCollections(fullUrl , pageNo = pageNo, pageSize = pageSize, tag = tag, q = q)?.safeAwait{ response, error ->
+                catalogApiList?.getCollections(fullUrl , pageNo = pageNo, pageSize = pageSize, tag = tag)?.safeAwait{ response, error ->
                     response?.let {
                         val page = response.peekContent()?.page
                         paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
