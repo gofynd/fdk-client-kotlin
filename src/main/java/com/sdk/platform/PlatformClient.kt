@@ -54,6 +54,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
     
+    val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
+    
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
     }
@@ -103,6 +105,8 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val webhook by lazy { this@PlatformClient.webhook.ApplicationClient(applicationId,config)}
     
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
+    
+    val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
     
     }
 
