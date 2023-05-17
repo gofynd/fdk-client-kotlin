@@ -65,9 +65,4 @@ interface OrderApiList {
     fun getShipmentReasons(@Url url1: String?    )
     : Deferred<Response<ShipmentReasons>>
     
-    
-    @PUT 
-    fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
-    : Deferred<Response<ShipmentApplicationStatusResponse>>
-    
 }

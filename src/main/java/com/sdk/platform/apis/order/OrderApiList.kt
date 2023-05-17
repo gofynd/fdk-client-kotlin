@@ -37,12 +37,8 @@ interface OrderApiList {
     fun getMetricCount(@Path("company_id") companyId: String, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
     : Deferred<Response<MetricCountResponse>>
     
-    @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/order-details")
-    fun getAppOrderShipmentDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String)
-    : Deferred<Response<ShipmentDetailsResponse>>
-    
     @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/track")
-    fun trackPlatformShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)
+    fun trackShipmentPlatform(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)
     : Deferred<Response<PlatformShipmentTrack>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/filter-listing")
@@ -141,12 +137,12 @@ interface OrderApiList {
     fun getRoleBasedActions(@Path("company_id") companyId: String)
     : Deferred<Response<GetActionsResponse>>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
-    : Deferred<Response<ShipmentHistoryResponse>>
-    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
     fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: Int?, @Query("bag_id") bagId: Int?)
+    : Deferred<Response<ShipmentHistoryResponse>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
     : Deferred<Response<ShipmentHistoryResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")
@@ -165,13 +161,13 @@ interface OrderApiList {
     fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI)
     : Deferred<Response<CreateOrderResponse>>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
-    : Deferred<Response<CreateChannelConfigResponse>>
-    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
     fun getChannelConfig(@Path("company_id") companyId: String)
     : Deferred<Response<CreateChannelConfigData>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
+    fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
+    : Deferred<Response<CreateChannelConfigResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/uploadConsent")
     fun uploadConsent(@Path("company_id") companyId: String,@Body body: UploadConsent)
