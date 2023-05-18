@@ -119,6 +119,7 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
     suspend fun getfilters(view: String, groupEntity: String?=null)
     : Deferred<Response<FiltersResponse>>? {
         
@@ -571,10 +572,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun trackShipmentPlatform(shipmentId: String)
+    suspend fun getAppOrderShipmentDetails(orderId: String)
+    : Deferred<Response<ShipmentDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                orderApiList?.getAppOrderShipmentDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun trackPlatformShipment(shipmentId: String)
     : Deferred<Response<PlatformShipmentTrack>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.trackShipmentPlatform(companyId = config.companyId , applicationId = applicationId , shipmentId = shipmentId )
+                orderApiList?.trackPlatformShipment(companyId = config.companyId , applicationId = applicationId , shipmentId = shipmentId )
         } else {
             null
         }

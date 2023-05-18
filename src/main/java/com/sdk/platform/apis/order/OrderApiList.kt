@@ -37,8 +37,12 @@ interface OrderApiList {
     fun getMetricCount(@Path("company_id") companyId: String, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
     : Deferred<Response<MetricCountResponse>>
     
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/order-details")
+    fun getAppOrderShipmentDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String)
+    : Deferred<Response<ShipmentDetailsResponse>>
+    
     @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/track")
-    fun trackShipmentPlatform(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)
+    fun trackPlatformShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)
     : Deferred<Response<PlatformShipmentTrack>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/filter-listing")
