@@ -5289,12 +5289,12 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | appId | String |  no  | Application Id to which Payment config Mapped |
  | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
- | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
  | success | Boolean |  no  | Response is successful or not |
- | created | Boolean |  no  | Response is created or not |
+ | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
+ | appId | String |  no  | Application Id to which Payment config Mapped |
  | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
+ | created | Boolean |  no  | Response is created or not |
 
 ---
 
@@ -5305,9 +5305,9 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Error human understandable description. |
  | success | Boolean |  no  | Response is successful or not |
  | code | String |  no  | Error descrption code. |
+ | description | String |  no  | Error human understandable description. |
 
 ---
 
@@ -5318,11 +5318,11 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | key | String |  no  | Api key of the payment aggregator |
+ | isActive | Boolean? |  yes  | Enable/ Disable Flag |
  | secret | String |  no  | Secret Key of the payment aggregator |
+ | key | String |  no  | Api key of the payment aggregator |
  | configType | String |  no  | Config Type of the aggregator |
  | merchantSalt | String |  no  | Merchant key of the payment aggregator |
- | isActive | Boolean? |  yes  | Enable/ Disable Flag |
 
 ---
 
@@ -5334,8 +5334,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | isActive | Boolean? |  yes  | Enable/ Disable Flag |
- | appId | String |  no  | Application Id to which Payment config Mapped |
  | aggregatorName | [PaymentGatewayConfig](#PaymentGatewayConfig)? |  yes  |  |
+ | appId | String |  no  | Application Id to which Payment config Mapped |
 
 ---
 
@@ -5378,12 +5378,24 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  
  
+ #### [IntentAppErrorList](#IntentAppErrorList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | code | String? |  yes  | code |
+ | packageName | String? |  yes  | package_name |
+
+---
+
+
+ 
+ 
  #### [PaymentModeLogo](#PaymentModeLogo)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | small | String |  no  | smalll |
  | large | String |  no  | large |
+ | small | String |  no  | smalll |
 
 ---
 
@@ -5394,22 +5406,10 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayName | String? |  yes  | display_name |
- | packageName | String? |  yes  | package_name |
  | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
+ | displayName | String? |  yes  | display_name |
  | code | String? |  yes  | code |
-
----
-
-
- 
- 
- #### [IntentAppErrorList](#IntentAppErrorList)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
  | packageName | String? |  yes  | package_name |
- | code | String? |  yes  | code |
 
 ---
 
@@ -5420,39 +5420,39 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | fyndVpa | String? |  yes  | fynd_vpa |
- | retryCount | Int? |  yes  | retry_count |
- | merchantCode | String? |  yes  | merchant code |
- | cardIssuer | String? |  yes  | card_issuer |
- | cardNumber | String? |  yes  | card_number |
- | cardIsin | String? |  yes  | card_isin |
- | expired | Boolean? |  yes  | expired |
- | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
- | timeout | Int? |  yes  | timeout |
- | expMonth | Int? |  yes  | exp_month |
- | nickname | String? |  yes  | nickname |
- | cardName | String? |  yes  | card_name |
- | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
- | name | String? |  yes  | name |
- | displayName | String? |  yes  | display name |
- | cardReference | String? |  yes  | card_reference |
- | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
- | cardToken | String? |  yes  | card_token |
- | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
- | cardBrandImage | String? |  yes  | card_brand_image |
- | cardBrand | String? |  yes  | card_brand |
- | cardId | String? |  yes  | card_id |
- | codLimit | Double? |  yes  | cod limit |
- | cardType | String? |  yes  | card_type |
- | displayPriority | Int? |  yes  | Dispaly Priority |
- | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
- | intentFlow | Boolean? |  yes  | intent_flow |
- | remainingLimit | Double? |  yes  | Remaining limit |
- | cardFingerprint | String? |  yes  | card_fingerprint |
- | aggregatorName | String |  no  | aggregator_name |
- | expYear | Int? |  yes  | exp_year |
  | codLimitPerOrder | Double? |  yes  | Cod limit per order |
+ | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
+ | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
+ | retryCount | Int? |  yes  | retry_count |
+ | expMonth | Int? |  yes  | exp_month |
+ | cardBrandImage | String? |  yes  | card_brand_image |
+ | cardName | String? |  yes  | card_name |
+ | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
+ | cardNumber | String? |  yes  | card_number |
+ | name | String? |  yes  | name |
+ | timeout | Int? |  yes  | timeout |
+ | cardBrand | String? |  yes  | card_brand |
+ | remainingLimit | Double? |  yes  | Remaining limit |
+ | expYear | Int? |  yes  | exp_year |
+ | cardType | String? |  yes  | card_type |
+ | cardFingerprint | String? |  yes  | card_fingerprint |
+ | nickname | String? |  yes  | nickname |
+ | cardToken | String? |  yes  | card_token |
+ | expired | Boolean? |  yes  | expired |
+ | cardIssuer | String? |  yes  | card_issuer |
+ | cardIsin | String? |  yes  | card_isin |
+ | displayName | String? |  yes  | display name |
+ | fyndVpa | String? |  yes  | fynd_vpa |
+ | aggregatorName | String |  no  | aggregator_name |
  | code | String? |  yes  | code |
+ | displayPriority | Int? |  yes  | Dispaly Priority |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
+ | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
+ | cardReference | String? |  yes  | card_reference |
+ | codLimit | Double? |  yes  | cod limit |
+ | intentFlow | Boolean? |  yes  | intent_flow |
+ | merchantCode | String? |  yes  | merchant code |
+ | cardId | String? |  yes  | card_id |
 
 ---
 
@@ -5463,15 +5463,15 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String |  no  | Payment mode name |
  | displayName | String |  no  | Payment mode display name |
+ | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
+ | name | String |  no  | Payment mode name |
+ | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
+ | saveCard | Boolean? |  yes  | Card save or not |
+ | aggregatorName | String? |  yes  | Dispaly Priority |
  | displayPriority | Int |  no  | Dispaly Priority |
  | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
  | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
- | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
- | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
- | saveCard | Boolean? |  yes  | Card save or not |
- | aggregatorName | String? |  yes  | Dispaly Priority |
 
 ---
 
@@ -5501,25 +5501,6 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  
  
- #### [PayoutMoreAttributes](#PayoutMoreAttributes)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | country | String? |  yes  | Country |
- | city | String? |  yes  | City |
- | bankName | String? |  yes  | Name of Bank |
- | accountType | String? |  yes  | Account Type Saving/Current |
- | accountHolder | String? |  yes  | Account Holder Name |
- | ifscCode | String? |  yes  | IFSC Code |
- | accountNo | String? |  yes  | Account Number |
- | branchName | String? |  yes  | Branch Name |
- | state | String? |  yes  | State |
-
----
-
-
- 
- 
  #### [PayoutAggregator](#PayoutAggregator)
 
  | Properties | Type | Nullable | Description |
@@ -5537,10 +5518,29 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | mobile | String? |  yes  | Customer Mobile No |
  | id | Int? |  yes  | Customer ID |
- | name | String? |  yes  | Customer Name |
+ | mobile | String? |  yes  | Customer Mobile No |
  | uniqueExternalId | String? |  yes  | unique_external_id |
+ | name | String? |  yes  | Customer Name |
+
+---
+
+
+ 
+ 
+ #### [PayoutMoreAttributes](#PayoutMoreAttributes)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | bankName | String? |  yes  | Name of Bank |
+ | country | String? |  yes  | Country |
+ | city | String? |  yes  | City |
+ | state | String? |  yes  | State |
+ | accountHolder | String? |  yes  | Account Holder Name |
+ | ifscCode | String? |  yes  | IFSC Code |
+ | accountNo | String? |  yes  | Account Number |
+ | accountType | String? |  yes  | Account Type Saving/Current |
+ | branchName | String? |  yes  | Branch Name |
 
 ---
 
@@ -5551,13 +5551,13 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | payoutsAggregators | ArrayList<[PayoutAggregator](#PayoutAggregator)>? |  yes  |  |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | customers | [PayoutCustomer](#PayoutCustomer) |  no  | customers details object |
+ | isDefault | Boolean |  no  | default or not  |
+ | transferType | String |  no  | transafer type |
  | moreAttributes | [PayoutMoreAttributes](#PayoutMoreAttributes) |  no  | bank details object |
  | uniqueTransferNo | String |  no  | display priority of the payment mode |
- | payoutsAggregators | ArrayList<[PayoutAggregator](#PayoutAggregator)>? |  yes  |  |
- | customers | [PayoutCustomer](#PayoutCustomer) |  no  | customers details object |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | transferType | String |  no  | transafer type |
- | isDefault | Boolean |  no  | default or not  |
 
 ---
 
@@ -5568,8 +5568,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[Payout](#Payout)> |  no  | contains list of PayoutSchema |
  | success | Boolean |  no  | Response is successful or not |
+ | items | ArrayList<[Payout](#Payout)> |  no  | contains list of PayoutSchema |
 
 ---
 
@@ -5580,16 +5580,16 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | bankName | String? |  yes  |  |
  | country | String? |  yes  |  |
  | city | String? |  yes  |  |
- | bankName | String? |  yes  |  |
- | accountType | String |  no  |  |
+ | state | String? |  yes  |  |
  | accountHolder | String? |  yes  |  |
- | ifscCode | String |  no  |  |
  | accountNo | String? |  yes  |  |
+ | ifscCode | String |  no  |  |
+ | accountType | String |  no  |  |
  | pincode | Int? |  yes  |  |
  | branchName | String? |  yes  |  |
- | state | String? |  yes  |  |
 
 ---
 
@@ -5600,12 +5600,12 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
- | users | HashMap<String,Any> |  no  | payout users object |
- | uniqueExternalId | String |  no  | Unique Id of Payout |
- | isActive | Boolean |  no  | Enable/Disable Flag Payout |
- | transferType | String |  no  | transafer type |
  | aggregator | String |  no  | Aggregator Name |
+ | isActive | Boolean |  no  | Enable/Disable Flag Payout |
+ | users | HashMap<String,Any> |  no  | payout users object |
+ | transferType | String |  no  | transafer type |
+ | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
+ | uniqueExternalId | String |  no  | Unique Id of Payout |
 
 ---
 
@@ -5616,16 +5616,16 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
- | uniqueTransferNo | String |  no  | unique transfer no |
+ | payouts | HashMap<String,Any> |  no  | payout  object |
+ | aggregator | String |  no  | Aggregator Name |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
  | users | HashMap<String,Any> |  no  | users details object |
  | success | Boolean |  no  | Response is successful or not |
- | created | Boolean |  no  | created flag |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | paymentStatus | String |  no  | status of payment |
- | payouts | HashMap<String,Any> |  no  | payout  object |
  | transferType | String |  no  | transfer type |
- | aggregator | String |  no  | Aggregator Name |
+ | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
+ | created | Boolean |  no  | created flag |
+ | uniqueTransferNo | String |  no  | unique transfer no |
+ | paymentStatus | String |  no  | status of payment |
 
 ---
 
@@ -5636,9 +5636,9 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | success | Boolean |  no  | Response is successful or not |
  | isDefault | Boolean |  no  | Enable/Disable Default Payout |
+ | success | Boolean |  no  | Response is successful or not |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
 
 ---
 
@@ -5649,8 +5649,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/Disable Flag Payout |
  | isDefault | Boolean |  no  | Enable/Disable Default Payout |
+ | isActive | Boolean |  no  | Enable/Disable Flag Payout |
  | uniqueExternalId | String |  no  | Unique Id of Payout |
 
 ---
@@ -5732,10 +5732,10 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | Response message |
+ | success | Boolean |  no  | Success or failure flag. |
  | data | HashMap<String,Any>? |  yes  | Refund account data. |
  | isVerifiedFlag | Boolean? |  yes  |  |
- | success | Boolean |  no  | Success or failure flag. |
- | message | String |  no  | Response message |
 
 ---
 
@@ -5746,9 +5746,9 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Not Found |
  | success | Boolean |  no  | Response is successful or not |
  | code | String |  no  | Bad Request Data |
+ | description | String |  no  | Not Found |
 
 ---
 
@@ -5761,8 +5761,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
  | ---------- | ---- | -------- | ----------- |
  | bankName | String |  no  |  |
  | accountHolder | String |  no  |  |
- | ifscCode | String |  no  |  |
  | accountNo | String |  no  |  |
+ | ifscCode | String |  no  |  |
  | branchName | String |  no  |  |
 
 ---
@@ -5786,8 +5786,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankName | String |  no  | Bank Name Of Account |
  | success | Boolean? |  yes  | Response is successful or not |
+ | bankName | String |  no  | Bank Name Of Account |
  | branchName | String |  no  | Branch Name Of Account |
 
 ---
@@ -5799,25 +5799,25 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | ifscCode | String |  no  | Ifsc Code Of Account |
- | title | String |  no  | Title Of Account |
- | createdOn | String |  no  | Creation Date of Beneficiary |
- | beneficiaryId | String |  no  | Benenficiary Id |
- | modifiedOn | String |  no  | MOdification Date of Beneficiary |
- | displayName | String |  no  | Display Name Of Account |
- | subtitle | String |  no  | SHort Title Of Account |
- | id | Int |  no  |   |
- | accountNo | String |  no  | Account Number |
- | transferMode | String |  no  | Transfer Mode Of Account |
- | accountHolder | String |  no  | Account Holder Name |
- | email | String |  no  | EMail of User |
- | comment | String? |  yes  | Remarks |
- | branchName | String? |  yes  | Branch Name Of Account |
  | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
+ | transferMode | String |  no  | Transfer Mode Of Account |
+ | title | String |  no  | Title Of Account |
+ | comment | String? |  yes  | Remarks |
+ | modifiedOn | String |  no  | MOdification Date of Beneficiary |
+ | createdOn | String |  no  | Creation Date of Beneficiary |
+ | branchName | String? |  yes  | Branch Name Of Account |
+ | displayName | String |  no  | Display Name Of Account |
  | bankName | String |  no  | Bank Name Of Account |
  | address | String |  no  | Address of User |
- | mobile | String? |  yes  | MObile no of User |
+ | accountNo | String |  no  | Account Number |
+ | ifscCode | String |  no  | Ifsc Code Of Account |
+ | subtitle | String |  no  | SHort Title Of Account |
  | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | id | Int |  no  |   |
+ | accountHolder | String |  no  | Account Holder Name |
+ | mobile | String? |  yes  | MObile no of User |
+ | email | String |  no  | EMail of User |
+ | beneficiaryId | String |  no  | Benenficiary Id |
 
 ---
 
@@ -5840,11 +5840,11 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | currentStatus | String? |  yes  |  |
- | orderId | String? |  yes  |  |
  | extraMeta | HashMap<String,Any>? |  yes  |  |
  | paymentGateway | String? |  yes  |  |
+ | orderId | String? |  yes  |  |
  | paymentId | String? |  yes  |  |
+ | currentStatus | String? |  yes  |  |
 
 ---
 
@@ -5855,10 +5855,10 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  | Payment mode name |
- | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
- | mode | String |  no  |  |
  | amount | Double |  no  | Payment amount |
+ | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
+ | name | String? |  yes  | Payment mode name |
+ | mode | String |  no  |  |
 
 ---
 
@@ -5881,9 +5881,9 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | orderId | String |  no  | Unique order id |
- | success | Boolean |  no  | Payment confirmation updated or not. |
  | message | String |  no  | Message |
+ | success | Boolean |  no  | Payment confirmation updated or not. |
+ | orderId | String |  no  | Unique order id |
 
 ---
 
@@ -5894,15 +5894,15 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | anonymousCod | Boolean? |  yes  |  |
+ | source | String |  no  |  |
  | enabled | Boolean |  no  |  |
  | modeOfPayment | String |  no  |  |
- | callbackUrl | HashMap<String,Any>? |  yes  |  |
- | codAmountLimit | Int? |  yes  |  |
- | source | String |  no  |  |
  | paymentSelectionLock | HashMap<String,Any>? |  yes  |  |
- | anonymousCod | Boolean? |  yes  |  |
  | methods | HashMap<String,Any> |  no  |  |
+ | codAmountLimit | Int? |  yes  |  |
  | codCharges | Int? |  yes  |  |
+ | callbackUrl | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -5926,10 +5926,10 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | codAmountLimit | Int? |  yes  |  |
- | paymentSelectionLock | HashMap<String,Any>? |  yes  |  |
  | anonymousCod | Boolean? |  yes  |  |
+ | paymentSelectionLock | HashMap<String,Any>? |  yes  |  |
  | methods | HashMap<String,Any> |  no  |  |
+ | codAmountLimit | Int? |  yes  |  |
  | codCharges | Int? |  yes  |  |
 
 ---
@@ -5941,11 +5941,11 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | usages | Int |  no  | Used COD limit from the user Limit |
- | limit | Int |  no  | Total Limit of user |
  | userId | String |  no  | Payment mode name |
- | remainingLimit | Int |  no  | Remaining Limit for COD of User |
  | isActive | Boolean |  no  | COD option is active or not |
+ | limit | Int |  no  | Total Limit of user |
+ | remainingLimit | Int |  no  | Remaining Limit for COD of User |
+ | usages | Int |  no  | Used COD limit from the user Limit |
 
 ---
 
@@ -5956,8 +5956,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | userCodData | [CODdata](#CODdata) |  no  | User COD Data |
  | success | Boolean |  no  | Response is successful or not |
+ | userCodData | [CODdata](#CODdata) |  no  | User COD Data |
 
 ---
 
@@ -5968,9 +5968,9 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | mobileno | String |  no  | Mobile No. of User |
  | isActive | Boolean |  no  | either true or false |
  | merchantUserId | String |  no  | Merchant User id |
+ | mobileno | String |  no  | Mobile No. of User |
 
 ---
 
@@ -5981,8 +5981,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
  | message | String |  no  | Message |
+ | success | Boolean |  no  | Response is successful or not |
 
 ---
 
@@ -6030,8 +6030,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | statistics | [StatisticsData](#StatisticsData) |  no  | Message |
  | success | Boolean |  no  | Response is successful or not |
+ | statistics | [StatisticsData](#StatisticsData) |  no  | Message |
 
 ---
 
@@ -6042,12 +6042,12 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | edcModel | String |  no  | Model of the edc machine |
+ | deviceTag | String? |  yes  | Device tag of edc device to identify it |
+ | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
  | edcDeviceSerialNo | String |  no  | Serial number or imei of EDC device |
  | storeId | Int |  no  | Store at which devices is to used |
- | deviceTag | String? |  yes  | Device tag of edc device to identify it |
- | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
- | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | edcModel | String |  no  | Model of the edc machine |
 
 ---
 
@@ -6058,17 +6058,17 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | applicationId | String |  no  | Application ID |
- | edcModel | String? |  yes  | Name of the model |
- | edcDeviceSerialNo | String |  no  | Serial number of EDC device |
- | storeId | Int |  no  | Store at which devices is to used |
  | deviceTag | String |  no  | Device tag of edc device to identify it |
- | aggregatorName | String? |  yes  | Name of the corresponding aggregator |
- | aggregatorId | Int |  no  | Aggregator which will accept payment |
- | isActive | Boolean |  no  | State whether device is active or inactive |
- | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
- | terminalUniqueIdentifier | String |  no  | Genearated unique value for edc device |
  | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
+ | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
+ | isActive | Boolean |  no  | State whether device is active or inactive |
+ | aggregatorName | String? |  yes  | Name of the corresponding aggregator |
+ | edcDeviceSerialNo | String |  no  | Serial number of EDC device |
+ | applicationId | String |  no  | Application ID |
+ | storeId | Int |  no  | Store at which devices is to used |
+ | terminalUniqueIdentifier | String |  no  | Genearated unique value for edc device |
+ | edcModel | String? |  yes  | Name of the model |
 
 ---
 
@@ -6103,13 +6103,13 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | edcModel | String? |  yes  | Model of the edc machine |
- | edcDeviceSerialNo | String? |  yes  | Serial number or imei of EDC device |
- | storeId | Int? |  yes  | Store at which devices is to used |
  | deviceTag | String? |  yes  | Device tag of edc device to identify it |
+ | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
  | aggregatorId | Int? |  yes  | Aggregator which will accept payment |
  | isActive | Boolean? |  yes  | State whether device is active or inactive |
- | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
+ | edcDeviceSerialNo | String? |  yes  | Serial number or imei of EDC device |
+ | storeId | Int? |  yes  | Store at which devices is to used |
+ | edcModel | String? |  yes  | Model of the edc machine |
 
 ---
 
@@ -6131,11 +6131,11 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | hasNext | Boolean |  no  | Whether there exist next page or not |
- | itemTotal | Int |  no  | Total number of items |
- | type | String |  no  | Type of pagination used |
  | size | Int |  no  | Total number of pages |
+ | itemTotal | Int |  no  | Total number of items |
+ | hasNext | Boolean |  no  | Whether there exist next page or not |
  | current | Int |  no  | Current page number |
+ | type | String |  no  | Type of pagination used |
 
 ---
 
@@ -6146,9 +6146,9 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[EdcDevice](#EdcDevice)> |  no  | List of all edc mapped to the application options with their Details. |
- | page | [Page](#Page) |  no  | Pagination Response |
  | success | Boolean |  no  | Response is successful or not |
+ | page | [Page](#Page) |  no  | Pagination Response |
+ | items | ArrayList<[EdcDevice](#EdcDevice)> |  no  | List of all edc mapped to the application options with their Details. |
 
 ---
 
@@ -6160,18 +6160,18 @@ Success. Returns the status of revokation. Check the example shown below or refe
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | orderId | String |  no  | Payment gateway order id |
- | customerId | String |  no  | Payment gateway customer id. |
- | razorpayPaymentId | String? |  yes  | Payment gateway payment id |
- | deviceId | String? |  yes  | EDC machine Unique Identifier |
- | merchantOrderId | String |  no  | Unique fynd order id |
- | amount | Int |  no  | Payable amount. |
- | email | String |  no  | Customer valid email |
- | currency | String |  no  | Currency code. |
- | method | String |  no  | Payment method |
- | vpa | String? |  yes  | Customer vpa address |
- | timeout | Int? |  yes  | Payment polling timeout if not recieved response |
- | contact | String |  no  | Customer valid mobile number |
  | aggregator | String |  no  | Payment gateway name |
+ | amount | Int |  no  | Payable amount. |
+ | razorpayPaymentId | String? |  yes  | Payment gateway payment id |
+ | timeout | Int? |  yes  | Payment polling timeout if not recieved response |
+ | currency | String |  no  | Currency code. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
+ | contact | String |  no  | Customer valid mobile number |
+ | method | String |  no  | Payment method |
+ | email | String |  no  | Customer valid email |
+ | customerId | String |  no  | Payment gateway customer id. |
+ | vpa | String? |  yes  | Customer vpa address |
+ | merchantOrderId | String |  no  | Unique fynd order id |
 
 ---
 
@@ -6182,27 +6182,27 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | String? |  yes  | Status of payment. |
- | pollingUrl | String |  no  | Polling url. |
- | amount | Int? |  yes  | Payable amount. |
- | currency | String? |  yes  | Currency code. |
- | timeout | Int? |  yes  | timeout. |
- | bqrImage | String? |  yes  | Bharath qr image url. |
  | orderId | String? |  yes  | Payment gateway order id |
- | aggregatorOrderId | String? |  yes  | Payment order id |
- | merchantOrderId | String |  no  | order id |
+ | amount | Int? |  yes  | Payable amount. |
  | upiPollUrl | String? |  yes  | UPI poll url. |
- | paymentId | String? |  yes  | Payment id. |
- | aggregator | String |  no  | Payment gateway name |
- | success | Boolean |  no  | Response is successful or not. |
- | email | String? |  yes  | Customer valid email |
- | method | String |  no  | Payment method |
+ | timeout | Int? |  yes  | timeout. |
+ | currency | String? |  yes  | Currency code. |
  | deviceId | String? |  yes  | EDC machine Unique Identifier |
- | vpa | String? |  yes  | Customer vpa address |
+ | pollingUrl | String |  no  | Polling url. |
+ | method | String |  no  | Payment method |
+ | contact | String? |  yes  | Customer valid mobile number |
+ | status | String? |  yes  | Status of payment. |
  | customerId | String? |  yes  | Payment gateway customer id. |
  | razorpayPaymentId | String? |  yes  | Payment  id. |
+ | bqrImage | String? |  yes  | Bharath qr image url. |
+ | merchantOrderId | String |  no  | order id |
+ | aggregator | String |  no  | Payment gateway name |
+ | paymentId | String? |  yes  | Payment id. |
+ | success | Boolean |  no  | Response is successful or not. |
+ | aggregatorOrderId | String? |  yes  | Payment order id |
  | virtualId | String? |  yes  | Payment virtual address. |
- | contact | String? |  yes  | Customer valid mobile number |
+ | email | String? |  yes  | Customer valid email |
+ | vpa | String? |  yes  | Customer vpa address |
 
 ---
 
@@ -6214,20 +6214,20 @@ Success. Returns the status of revokation. Check the example shown below or refe
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | merchantTransactionId | String |  no  | Unique fynd transaction id |
- | status | String |  no  | Status of payment. |
- | orderId | String? |  yes  | Payment gateway order id |
- | customerId | String |  no  | Payment gateway customer id. |
- | deviceId | String? |  yes  | EDC machine Unique Identifier |
- | razorpayPaymentId | String? |  yes  | Payment  id. |
- | merchantOrderId | String |  no  | Unique fynd order id |
- | amount | Int |  no  | Payable amount. |
- | email | String? |  yes  | Customer valid email |
- | currency | String? |  yes  | Currency code. |
- | method | String |  no  | Payment method |
- | vpa | String? |  yes  | Customer vpa address |
- | paymentId | String? |  yes  | Payment id. |
- | contact | String? |  yes  | Customer valid mobile number |
  | aggregator | String |  no  | Payment gateway name |
+ | orderId | String? |  yes  | Payment gateway order id |
+ | amount | Int |  no  | Payable amount. |
+ | razorpayPaymentId | String? |  yes  | Payment  id. |
+ | paymentId | String? |  yes  | Payment id. |
+ | currency | String? |  yes  | Currency code. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
+ | contact | String? |  yes  | Customer valid mobile number |
+ | method | String |  no  | Payment method |
+ | email | String? |  yes  | Customer valid email |
+ | status | String |  no  | Status of payment. |
+ | customerId | String |  no  | Payment gateway customer id. |
+ | vpa | String? |  yes  | Customer vpa address |
+ | merchantOrderId | String |  no  | Unique fynd order id |
 
 ---
 
@@ -6238,11 +6238,11 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | String |  no  | Payment status |
+ | aggregatorName | String |  no  | Payment gateway name |
  | redirectUrl | String? |  yes  | Redirect url |
  | success | Boolean? |  yes  | Response is successful or not |
+ | status | String |  no  | Payment status |
  | retry | Boolean |  no  | Response is successful or not. |
- | aggregatorName | String |  no  | Payment gateway name |
 
 ---
 
@@ -6253,9 +6253,9 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
  | orderId | String |  no  | Unique order id |
  | requestType | String |  no  | Either resend or cancel |
- | deviceId | String? |  yes  | EDC machine Unique Identifier |
 
 ---
 
@@ -6266,8 +6266,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | Boolean |  no  | Link action status |
  | message | String |  no  | Message |
+ | status | Boolean |  no  | Link action status |
 
 ---
 
@@ -6301,24 +6301,24 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | currentStatus | String |  no  |  |
- | applicationId | String |  no  |  |
- | createdOn | String |  no  |  |
- | allStatus | ArrayList<String> |  no  |  |
- | modifiedOn | String |  no  |  |
- | userObject | HashMap<String,Any> |  no  |  |
- | paymentModeIdentifier | String |  no  |  |
- | collectedBy | String |  no  |  |
- | refundedBy | String |  no  |  |
- | id | String |  no  |  |
- | currency | String |  no  |  |
- | amountInPaisa | String |  no  |  |
- | paymentGateway | String |  no  |  |
  | paymentMode | String |  no  |  |
- | refundObject | HashMap<String,Any>? |  yes  |  |
- | paymentId | String? |  yes  |  |
- | companyId | String |  no  |  |
+ | modifiedOn | String |  no  |  |
  | aggregatorPaymentObject | HashMap<String,Any>? |  yes  |  |
+ | paymentGateway | String |  no  |  |
+ | userObject | HashMap<String,Any> |  no  |  |
+ | paymentId | String? |  yes  |  |
+ | collectedBy | String |  no  |  |
+ | amountInPaisa | String |  no  |  |
+ | refundedBy | String |  no  |  |
+ | currency | String |  no  |  |
+ | id | String |  no  |  |
+ | paymentModeIdentifier | String |  no  |  |
+ | currentStatus | String |  no  |  |
+ | refundObject | HashMap<String,Any>? |  yes  |  |
+ | companyId | String |  no  |  |
+ | applicationId | String |  no  |  |
+ | allStatus | ArrayList<String> |  no  |  |
+ | createdOn | String |  no  |  |
 
 ---
 
@@ -6329,8 +6329,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | merchantOrderId | String |  no  |  |
  | paymentObjectList | ArrayList<[PaymentObjectListSerializer](#PaymentObjectListSerializer)>? |  yes  |  |
+ | merchantOrderId | String |  no  |  |
 
 ---
 
@@ -6341,11 +6341,11 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | status | Int |  no  |  |
- | success | String |  no  |  |
- | count | Int? |  yes  |  |
  | data | ArrayList<[PaymentStatusObject](#PaymentStatusObject)>? |  yes  |  |
  | error | String? |  yes  |  |
+ | count | Int? |  yes  |  |
+ | success | String |  no  |  |
+ | status | Int |  no  |  |
 
 ---
 
@@ -6356,8 +6356,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | url | String |  no  | The url to call for authenticating |
  | success | Boolean |  no  | Response is successful or not |
+ | url | String |  no  | The url to call for authenticating |
 
 ---
 
@@ -6368,8 +6368,8 @@ Success. Returns the status of revokation. Check the example shown below or refe
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | success | Boolean |  no  | Response is successful or not |
  | message | String |  no  | The confirmation message of the token revoke. |
+ | success | Boolean |  no  | Response is successful or not |
 
 ---
 

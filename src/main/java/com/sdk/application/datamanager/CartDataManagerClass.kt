@@ -182,7 +182,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequestSchema): Deferred<Response<CartDetailResponse>>? {
+    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
         
         return cartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
@@ -244,7 +244,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidateSchema>>? {
+    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
         return cartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
@@ -258,7 +258,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun checkoutCart(buyNow: Boolean?=null, body: CartCheckoutDetailRequest): Deferred<Response<CartCheckoutResponseSchema>>? {
+    fun checkoutCart(buyNow: Boolean?=null, body: CartCheckoutDetailRequest): Deferred<Response<CartCheckoutResponse>>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"] 
         
         return cartApiList?.checkoutCart(fullUrl    ,  buyNow = buyNow, body = body)}
@@ -313,7 +313,7 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun checkoutCartV2(buyNow: Boolean?=null, body: CartCheckoutDetailV2Request): Deferred<Response<CartCheckoutResponseSchema>>? {
+    fun checkoutCartV2(buyNow: Boolean?=null, body: CartCheckoutDetailV2Request): Deferred<Response<CartCheckoutResponse>>? {
         var fullUrl : String? = _relativeUrls["checkoutCartV2"] 
         
         return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow, body = body)}

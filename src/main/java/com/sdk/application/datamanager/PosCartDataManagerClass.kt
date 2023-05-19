@@ -173,7 +173,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequestSchema): Deferred<Response<CartDetailResponse>>? {
+    fun applyRewardPoints(id: String?=null, i: Boolean?=null, b: Boolean?=null, buyNow: Boolean?=null, body: RewardPointRequest): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["applyRewardPoints"] 
         
         return posCartApiList?.applyRewardPoints(fullUrl    ,  id = id,    i = i,    b = b,    buyNow = buyNow, body = body)}
@@ -235,7 +235,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidateSchema>>? {
+    fun validateCouponForPayment(id: String?=null, buyNow: Boolean?=null, addressId: String?=null, paymentMode: String?=null, paymentIdentifier: String?=null, aggregatorName: String?=null, merchantCode: String?=null): Deferred<Response<PaymentCouponValidate>>? {
         var fullUrl : String? = _relativeUrls["validateCouponForPayment"] 
         
         return posCartApiList?.validateCouponForPayment(fullUrl    ,  id = id,    buyNow = buyNow,    addressId = addressId,    paymentMode = paymentMode,    paymentIdentifier = paymentIdentifier,    aggregatorName = aggregatorName,    merchantCode = merchantCode)}
@@ -256,7 +256,7 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun checkoutCart(id: String?=null, body: CartPosCheckoutDetailRequest): Deferred<Response<CartCheckoutResponseSchema>>? {
+    fun checkoutCart(id: String?=null, body: CartPosCheckoutDetailRequest): Deferred<Response<CartCheckoutResponse>>? {
         var fullUrl : String? = _relativeUrls["checkoutCart"] 
         
         return posCartApiList?.checkoutCart(fullUrl    ,  id = id, body = body)}
