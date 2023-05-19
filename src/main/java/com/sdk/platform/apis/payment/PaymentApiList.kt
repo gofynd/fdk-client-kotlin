@@ -141,4 +141,8 @@ interface PaymentApiList {
     fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<GetPaymentCodeResponse>>
     
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/customer/validation")
+    fun verifyCustomerForPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ValidateCustomerRequest)
+    : Deferred<Response<ValidateCustomerResponse>>
+    
 }

@@ -92,7 +92,7 @@ interface CatalogApiList {
     
     
     @GET 
-    fun getCollections(@Url url1: String?    ,    @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("tag") tag: ArrayList<String>?)
+    fun getCollections(@Url url1: String?    ,     @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?, @Query("tag") tag: ArrayList<String>?)
     : Deferred<Response<GetCollectionListingResponse>>
     
     

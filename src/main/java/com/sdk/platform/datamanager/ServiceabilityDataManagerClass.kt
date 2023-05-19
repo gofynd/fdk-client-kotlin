@@ -59,12 +59,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getListView(pageNumber: Int?=null, pageSize: Int?=null, name: String?=null, isActive: Boolean?=null, channelIds: String?=null)
+    suspend fun getListView(pageNumber: Int?=null, pageSize: Int?=null, name: String?=null, isActive: Boolean?=null, channelIds: String?=null, q: String?=null)
     : Deferred<Response<ListViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getListView(
-        companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize, name = name, isActive = isActive, channelIds = channelIds )
+        companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize, name = name, isActive = isActive, channelIds = channelIds, q = q )
         } else {
             null
         } 
@@ -83,18 +83,6 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getZoneDataView(zoneId: String)
-    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getZoneDataView(
-        companyId = config.companyId, zoneId = zoneId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updateZoneControllerView(zoneId: String,body: ZoneUpdateRequest)
     : Deferred<Response<ZoneSuccessResponse>>? {
         
@@ -107,16 +95,29 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun insertZoneControllerView(body: ZoneRequest)
+    suspend fun getZoneDataView(zoneId: String)
+    : Deferred<Response<GetSingleZoneDataViewResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getZoneDataView(
+        companyId = config.companyId, zoneId = zoneId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createZone(body: ZoneRequest)
     : Deferred<Response<ZoneResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.insertZoneControllerView(
+            serviceabilityApiList?.createZone(
         companyId = config.companyId, body = body)
         } else {
             null
         } 
     }
+    
     
     
     
@@ -143,6 +144,10 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
         } 
     }
     
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -164,16 +169,66 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun upsertZoneControllerView(body: GetZoneFromPincodeViewRequest)
-    : Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+    suspend fun getZonesFromApplicationIdView(pageNo: Int?=null, pageSize: Int?=null, zoneId: ArrayList<String>?=null, q: String?=null)
+    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.upsertZoneControllerView(companyId = config.companyId , applicationId = applicationId , body = body)
+                serviceabilityApiList?.getZonesFromApplicationIdView(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, zoneId = zoneId, q = q )
         } else {
             null
         }
     }
     
     
+    suspend fun getZoneFromPincodeView(body: GetZoneFromPincodeViewRequest)
+    : Deferred<Response<GetZoneFromPincodeViewResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.getZoneFromPincodeView(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    suspend fun updatePincodeMopView(body: PincodeMopData)
+    : Deferred<Response<PincodeMOPresponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeMopView(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePincodeBulkView(body: PincodeMopBulkData)
+    : Deferred<Response<PincodeBulkViewResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeBulkView(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePincodeCoDListing(body: PincodeCodStatusListingRequest)
+    : Deferred<Response<PincodeCodStatusListingResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeCoDListing(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updatePincodeAuditHistory(body: PincodeMopUpdateAuditHistoryRequest)
+    : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                serviceabilityApiList?.updatePincodeAuditHistory(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
     
 }
 }
