@@ -75,4 +75,9 @@ interface OrderApiList {
     fun getProducts(@Url url1: String?     ,       @Query("status") status: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("search_value") searchValue: String?)
     : Deferred<Response<ProductListResponse>>
     
+    
+    @PUT 
+    fun updateShipmentStatus1(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest1)
+    : Deferred<Response<ShipmentApplicationStatusResponse>>
+    
 }

@@ -39,7 +39,8 @@ class InventoryDataManagerClass(val config: PlatformConfig, val unauthorizedActi
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformInventory",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(InventoryApiList::class.java) as? InventoryApiList
     }

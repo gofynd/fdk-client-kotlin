@@ -79,7 +79,5 @@ Get started with the Kotlin Development SDK for Fynd Platform
 
 ### Documentation
 
-- [Public Front](documentation/public/README.md)
-- [Application Front](documentation/application/README.md)
-- [Platform Front](documentation/platform/README.md)
-
+* [Application Front](documentation/application/README.md)
+* [Platform Front](documentation/platform/README.md)
