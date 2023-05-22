@@ -1,4 +1,4 @@
-package com.sdk.platform.models.serviceability
+package com.sdk.platform.models.logistics
 
 import com.sdk.platform.*
 

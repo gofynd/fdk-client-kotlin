@@ -7,19 +7,19 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
-import com.sdk.platform.models.serviceability.*
-import com.sdk.platform.apis.serviceability.*
+import com.sdk.platform.models.logistics.*
+import com.sdk.platform.apis.logistics.*
 
 
 
 
-class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
+class LogisticsDataManagerClass(val config: PlatformConfig, val unauthorizedAction: ((url: String, responseCode: Int) -> Unit)? = null) : BaseRepository() {        
        
-    private val serviceabilityApiList by lazy {
-        generateserviceabilityApiList()
+    private val logisticsApiList by lazy {
+        generatelogisticsApiList()
     }
     
-    private fun generateserviceabilityApiList(): ServiceabilityApiList? {
+    private fun generatelogisticsApiList(): LogisticsApiList? {
         val interceptorMap = HashMap<String, List<Interceptor>>()
         val headerInterceptor = AccessTokenInterceptor(platformConfig = config)
         val requestSignerInterceptor = RequestSignerInterceptor()
@@ -38,11 +38,10 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
         val retrofitHttpClient = HttpClient.initialize(
             baseUrl = config.domain,
             interceptorList = interceptorMap,
-            namespace = "PlatformServiceability",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            namespace = "PlatformLogistics",
+            persistentCookieStore = config.persistentCookieStore
         )
-        return retrofitHttpClient?.initializeRestClient(ServiceabilityApiList::class.java) as? ServiceabilityApiList
+        return retrofitHttpClient?.initializeRestClient(LogisticsApiList::class.java) as? LogisticsApiList
     }
     
     
@@ -51,7 +50,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<EntityRegionView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getEntityRegionView(
+            logisticsApiList?.getEntityRegionView(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -63,7 +62,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<ListViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getListView(
+            logisticsApiList?.getListView(
         companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize, name = name, isActive = isActive, channelIds = channelIds, q = q )
         } else {
             null
@@ -75,7 +74,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<CompanyStoreView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getCompanyStoreView(
+            logisticsApiList?.getCompanyStoreView(
         companyId = config.companyId )
         } else {
             null
@@ -87,7 +86,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<ZoneSuccessResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.updateZoneControllerView(
+            logisticsApiList?.updateZoneControllerView(
         zoneId = zoneId, companyId = config.companyId, body = body)
         } else {
             null
@@ -99,7 +98,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<GetSingleZoneDataViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getZoneDataView(
+            logisticsApiList?.getZoneDataView(
         companyId = config.companyId, zoneId = zoneId )
         } else {
             null
@@ -111,7 +110,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<ZoneResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.createZone(
+            logisticsApiList?.createZone(
         companyId = config.companyId, body = body)
         } else {
             null
@@ -125,7 +124,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<GetStoresViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getStore(
+            logisticsApiList?.getStore(
         companyId = config.companyId, storeUid = storeUid )
         } else {
             null
@@ -137,7 +136,7 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     : Deferred<Response<GetStoresViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            serviceabilityApiList?.getAllStores(
+            logisticsApiList?.getAllStores(
         companyId = config.companyId )
         } else {
             null
@@ -156,7 +155,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun getApplicationServiceability()
     : Deferred<Response<ApplicationServiceabilityConfigResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getApplicationServiceability(companyId = config.companyId , applicationId = applicationId  )
+                logisticsApiList?.getApplicationServiceability(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -172,7 +171,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun getZoneFromPincodeView(body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZoneFromPincodeView(companyId = config.companyId , applicationId = applicationId , body = body)
+                logisticsApiList?.getZoneFromPincodeView(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -182,7 +181,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun getZonesFromApplicationIdView(pageNo: Int?=null, pageSize: Int?=null, zoneId: ArrayList<String>?=null, q: String?=null)
     : Deferred<Response<GetZoneFromApplicationIdViewResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.getZonesFromApplicationIdView(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, zoneId = zoneId, q = q )
+                logisticsApiList?.getZonesFromApplicationIdView(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, zoneId = zoneId, q = q )
         } else {
             null
         }
@@ -194,7 +193,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun updatePincodeMopView(body: PincodeMopData)
     : Deferred<Response<PincodeMOPresponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeMopView(companyId = config.companyId , applicationId = applicationId , body = body)
+                logisticsApiList?.updatePincodeMopView(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -204,7 +203,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun updatePincodeBulkView(body: PincodeMopBulkData)
     : Deferred<Response<PincodeBulkViewResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeBulkView(companyId = config.companyId , applicationId = applicationId , body = body)
+                logisticsApiList?.updatePincodeBulkView(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -214,7 +213,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun updatePincodeCoDListing(body: PincodeCodStatusListingRequest)
     : Deferred<Response<PincodeCodStatusListingResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeCoDListing(companyId = config.companyId , applicationId = applicationId , body = body)
+                logisticsApiList?.updatePincodeCoDListing(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -224,7 +223,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun updatePincodeAuditHistory(body: PincodeMopUpdateAuditHistoryRequest)
     : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                serviceabilityApiList?.updatePincodeAuditHistory(companyId = config.companyId , applicationId = applicationId , body = body)
+                logisticsApiList?.updatePincodeAuditHistory(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

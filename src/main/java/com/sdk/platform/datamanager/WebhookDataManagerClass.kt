@@ -39,8 +39,7 @@ class WebhookDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformWebhook",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(WebhookApiList::class.java) as? WebhookApiList
     }

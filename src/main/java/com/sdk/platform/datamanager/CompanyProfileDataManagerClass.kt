@@ -39,8 +39,7 @@ class CompanyProfileDataManagerClass(val config: PlatformConfig, val unauthorize
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformCompanyProfile",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(CompanyProfileApiList::class.java) as? CompanyProfileApiList
     }

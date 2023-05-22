@@ -4,7 +4,7 @@
 
 ##### [Back to Platform docs](./README.md)
 
-## Serviceability Methods
+## Logistics Methods
 Logistics Configuration API's allows you to configure zone, application logistics and many more useful features. 
 * [getApplicationServiceability](#getapplicationserviceability)
 * [getEntityRegionView](#getentityregionview)
@@ -34,7 +34,7 @@ Zone configuration of application.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.getApplicationServiceability().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").logistics.getApplicationServiceability().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -101,7 +101,7 @@ Get country and state list
 
 
 ```kotlin
-platformClient.serviceability.getEntityRegionView(body: body).safeAwait{ response, error->
+platformClient.logistics.getEntityRegionView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -160,7 +160,7 @@ Zone List of application.
 
 
 ```kotlin
-platformClient.serviceability.getListView(pageNumber: pageNumber, pageSize: pageSize, name: name, isActive: isActive, channelIds: channelIds, q: q).safeAwait{ response, error->
+platformClient.logistics.getListView(pageNumber: pageNumber, pageSize: pageSize, name: name, isActive: isActive, channelIds: channelIds, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -225,7 +225,7 @@ Company Store View of application.
 
 
 ```kotlin
-platformClient.serviceability.getCompanyStoreView().safeAwait{ response, error->
+platformClient.logistics.getCompanyStoreView().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -280,7 +280,7 @@ Updation of zone collections in database.
 
 
 ```kotlin
-platformClient.serviceability.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
+platformClient.logistics.updateZoneControllerView(zoneId: zoneId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -340,7 +340,7 @@ Zone Data View of application.
 
 
 ```kotlin
-platformClient.serviceability.getZoneDataView(zoneId: zoneId).safeAwait{ response, error->
+platformClient.logistics.getZoneDataView(zoneId: zoneId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -400,7 +400,7 @@ Insertion of zone in database.
 
 
 ```kotlin
-platformClient.serviceability.createZone(body: body).safeAwait{ response, error->
+platformClient.logistics.createZone(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -459,7 +459,7 @@ GET zone from the Pincode.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.getZoneFromPincodeView(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").logistics.getZoneFromPincodeView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -518,7 +518,7 @@ GET zones from the application_id.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.getZonesFromApplicationIdView(pageNo: pageNo, pageSize: pageSize, zoneId: zoneId, q: q).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").logistics.getZonesFromApplicationIdView(pageNo: pageNo, pageSize: pageSize, zoneId: zoneId, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -581,7 +581,7 @@ GET stores data
 
 
 ```kotlin
-platformClient.serviceability.getStore(storeUid: storeUid).safeAwait{ response, error->
+platformClient.logistics.getStore(storeUid: storeUid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -850,7 +850,7 @@ GET stores data
 
 
 ```kotlin
-platformClient.serviceability.getAllStores().safeAwait{ response, error->
+platformClient.logistics.getAllStores().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -905,7 +905,7 @@ PincodeView update of MOP.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.updatePincodeMopView(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").logistics.updatePincodeMopView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -964,7 +964,7 @@ Bulk Update of pincode in the application.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.updatePincodeBulkView(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").logistics.updatePincodeBulkView(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1026,7 +1026,7 @@ Pincode count view of application.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.updatePincodeCoDListing(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").logistics.updatePincodeCoDListing(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1085,7 +1085,7 @@ Auditlog configuration of application.
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").serviceability.updatePincodeAuditHistory(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").logistics.updatePincodeAuditHistory(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

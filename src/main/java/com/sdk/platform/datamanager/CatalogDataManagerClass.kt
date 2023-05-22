@@ -39,8 +39,7 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformCatalog",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
     }

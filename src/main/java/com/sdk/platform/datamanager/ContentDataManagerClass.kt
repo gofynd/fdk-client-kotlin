@@ -39,8 +39,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformContent",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }

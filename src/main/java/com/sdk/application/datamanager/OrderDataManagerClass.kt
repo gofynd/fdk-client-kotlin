@@ -47,8 +47,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getProducts"] = "/service/application/order/v1.0/products".substring(1)
             
-                    _relativeUrls["updateShipmentStatus1"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -204,15 +202,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
         
         return orderApiList?.getProducts(fullUrl     ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    searchValue = searchValue)}
-
-    
-    
-    fun updateShipmentStatus1(shipmentId: String, body: UpdateShipmentStatusRequest1): Deferred<Response<ShipmentApplicationStatusResponse>>? {
-        var fullUrl : String? = _relativeUrls["updateShipmentStatus1"] 
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.updateShipmentStatus1(fullUrl   ,body = body)}
 
     
     

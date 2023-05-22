@@ -44,8 +44,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val rewards by lazy { RewardsDataManagerClass(config, unauthorizedAction)}
     
-    val analytics by lazy { AnalyticsDataManagerClass(config, unauthorizedAction)}
-    
     val discount by lazy { DiscountDataManagerClass(config, unauthorizedAction)}
     
     val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
@@ -54,7 +52,7 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val auditTrail by lazy { AuditTrailDataManagerClass(config, unauthorizedAction)}
     
-    val serviceability by lazy { ServiceabilityDataManagerClass(config, unauthorizedAction)}
+    val logistics by lazy { LogisticsDataManagerClass(config, unauthorizedAction)}
     
     fun application(applicationId:String): ApplicationClient {
         return ApplicationClient(applicationId = applicationId,config = config)
@@ -96,8 +94,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val rewards by lazy { this@PlatformClient.rewards.ApplicationClient(applicationId,config)}
     
-    val analytics by lazy { this@PlatformClient.analytics.ApplicationClient(applicationId,config)}
-    
     val discount by lazy { this@PlatformClient.discount.ApplicationClient(applicationId,config)}
     
     val partner by lazy { this@PlatformClient.partner.ApplicationClient(applicationId,config)}
@@ -106,7 +102,7 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val auditTrail by lazy { this@PlatformClient.auditTrail.ApplicationClient(applicationId,config)}
     
-    val serviceability by lazy { this@PlatformClient.serviceability.ApplicationClient(applicationId,config)}
+    val logistics by lazy { this@PlatformClient.logistics.ApplicationClient(applicationId,config)}
     
     }
 

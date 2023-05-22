@@ -1,13 +1,13 @@
-package com.sdk.platform.apis.serviceability
+package com.sdk.platform.apis.logistics
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import okhttp3.ResponseBody
 import retrofit2.http.*
 import com.sdk.platform.*
-import com.sdk.platform.models.serviceability.*
+import com.sdk.platform.models.logistics.*
 
-interface ServiceabilityApiList {
+interface LogisticsApiList {
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/serviceability")
     fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
