@@ -60,7 +60,7 @@ Get campaigns
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getCampaigns(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getCampaigns(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -194,7 +194,7 @@ Create campaign
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.createCampaign(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.createCampaign(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -288,7 +288,7 @@ Get campaign by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getCampaignById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getCampaignById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -383,7 +383,7 @@ Update campaign by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.updateCampaignById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.updateCampaignById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -478,7 +478,7 @@ Get stats of campaign by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getStatsOfCampaignById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getStatsOfCampaignById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -565,7 +565,7 @@ Get audiences
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getAudiences(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getAudiences(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -669,7 +669,7 @@ Create audience
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.createAudience(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.createAudience(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -759,7 +759,7 @@ Get bigquery headers
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getBigqueryHeaders(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getBigqueryHeaders(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -853,7 +853,7 @@ Get audience by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getAudienceById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getAudienceById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -944,7 +944,7 @@ Update audience by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.updateAudienceById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.updateAudienceById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1035,7 +1035,7 @@ Get n sample records from csv
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsv(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getNSampleRecordsFromCsv(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1110,7 +1110,7 @@ Get email providers
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getEmailProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getEmailProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1210,7 +1210,7 @@ Create email provider
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.createEmailProvider(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.createEmailProvider(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1296,7 +1296,7 @@ Get email provider by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getEmailProviderById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getEmailProviderById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1383,7 +1383,7 @@ Update email provider by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.updateEmailProviderById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.updateEmailProviderById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1470,7 +1470,7 @@ Get email templates
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getEmailTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getEmailTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1582,7 +1582,7 @@ Create email template
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.createEmailTemplate(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.createEmailTemplate(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1694,7 +1694,7 @@ Get system email templates
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getSystemEmailTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSystemEmailTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1806,7 +1806,7 @@ Get email template by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getEmailTemplateById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getEmailTemplateById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1905,7 +1905,7 @@ Update email template by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.updateEmailTemplateById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.updateEmailTemplateById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2018,7 +2018,7 @@ Delete email template by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.deleteEmailTemplateById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.deleteEmailTemplateById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2089,7 +2089,7 @@ Send email or sms synchronously
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.sendCommunicationSynchronously(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.sendCommunicationSynchronously(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2158,7 +2158,7 @@ Send email or sms asynchronously
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.sendCommunicationAsynchronously(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.sendCommunicationAsynchronously(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2227,7 +2227,7 @@ Get event subscriptions
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getEventSubscriptions(pageNo: pageNo, pageSize: pageSize, populate: populate).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getEventSubscriptions(pageNo: pageNo, pageSize: pageSize, populate: populate).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2867,7 +2867,7 @@ Get jobs
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getJobs(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getJobs(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2957,7 +2957,7 @@ Trigger campaign job
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.triggerCampaignJob(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.triggerCampaignJob(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3026,7 +3026,7 @@ Get job logs
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getJobLogs(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getJobLogs(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3129,7 +3129,7 @@ Get communication logs
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getCommunicationLogs(pageId: pageId, pageSize: pageSize, sort: sort, query: query).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getCommunicationLogs(pageId: pageId, pageSize: pageSize, sort: sort, query: query).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3234,7 +3234,7 @@ Get system notifications
 
 
 ```kotlin
-client.communication.getSystemNotifications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.communication.getSystemNotifications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3336,7 +3336,7 @@ Send OTP using email and sms
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.sendOtp(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.sendOtp(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3419,7 +3419,7 @@ Verify OTP sent via email and sms
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.verfiyOtp(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.verfiyOtp(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3491,7 +3491,7 @@ Get sms providers
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getSmsProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSmsProviders(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3587,7 +3587,7 @@ Create sms provider
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.createSmsProvider(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.createSmsProvider(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3669,7 +3669,7 @@ Get sms provider by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getSmsProviderById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSmsProviderById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3752,7 +3752,7 @@ Update sms provider by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.updateSmsProviderById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.updateSmsProviderById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3835,7 +3835,7 @@ Get sms templates
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getSmsTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSmsTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3936,7 +3936,7 @@ Create sms template
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.createSmsTemplate(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.createSmsTemplate(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4023,7 +4023,7 @@ Get sms template by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getSmsTemplateById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSmsTemplateById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4111,7 +4111,7 @@ Update sms template by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.updateSmsTemplateById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.updateSmsTemplateById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4199,7 +4199,7 @@ Delete sms template by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.deleteSmsTemplateById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.deleteSmsTemplateById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4270,7 +4270,7 @@ Get system sms templates
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").communication.getSystemSystemTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").communication.getSystemSystemTemplates(pageNo: pageNo, pageSize: pageSize, sort: sort).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

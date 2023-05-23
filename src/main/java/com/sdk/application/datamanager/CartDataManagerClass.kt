@@ -75,6 +75,8 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["getLadderOffers"] = "/service/application/cart/v1.0/available-ladder-prices".substring(1)
             
+                    _relativeUrls["checkoutCartV2"] = "/service/application/cart/v2.0/checkout".substring(1)
+            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -308,6 +310,13 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["getLadderOffers"] 
         
         return cartApiList?.getLadderOffers(fullUrl    ,  slug = slug,    storeId = storeId,    promotionId = promotionId,    pageSize = pageSize)}
+
+    
+    
+    fun checkoutCartV2(buyNow: Boolean?=null, body: CartCheckoutDetailV2Request): Deferred<Response<CartCheckoutResponse>>? {
+        var fullUrl : String? = _relativeUrls["checkoutCartV2"] 
+        
+        return cartApiList?.checkoutCartV2(fullUrl    ,  buyNow = buyNow, body = body)}
 
     
     

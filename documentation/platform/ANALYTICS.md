@@ -31,7 +31,7 @@ Get statistics groups
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getStatiscticsGroups().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getStatiscticsGroups().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -94,7 +94,7 @@ Get statistics group components
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getStatiscticsGroupComponents(groupName: groupName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getStatiscticsGroupComponents(groupName: groupName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -165,7 +165,7 @@ Get component statistics csv
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getComponentStatsCSV(componentName: componentName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getComponentStatsCSV(componentName: componentName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -225,7 +225,7 @@ Get component statistics pdf
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getComponentStatsPDF(componentName: componentName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getComponentStatsPDF(componentName: componentName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -285,7 +285,7 @@ Get component statistics
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getComponentStats(componentName: componentName).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getComponentStats(componentName: componentName).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -392,7 +392,7 @@ Get abandon carts list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getAbandonCartList(fromDate: fromDate, toDate: toDate, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getAbandonCartList(fromDate: fromDate, toDate: toDate, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -475,7 +475,7 @@ Get abandon carts csv
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getAbandonCartsCSV(fromDate: fromDate, toDate: toDate).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getAbandonCartsCSV(fromDate: fromDate, toDate: toDate).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -536,7 +536,7 @@ Get abandon carts details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").analytics.getAbandonCartDetail(cartId: cartId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").analytics.getAbandonCartDetail(cartId: cartId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -596,7 +596,7 @@ Create data export job in required format
 
 
 ```kotlin
-client.analytics.createExportJob(exportType: exportType, body: body).safeAwait{ response, error->
+platformClient.analytics.createExportJob(exportType: exportType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -659,7 +659,7 @@ Get data export job status
 
 
 ```kotlin
-client.analytics.getExportJobStatus(exportType: exportType, jobId: jobId).safeAwait{ response, error->
+platformClient.analytics.getExportJobStatus(exportType: exportType, jobId: jobId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -724,7 +724,7 @@ Get logs list
 
 
 ```kotlin
-client.analytics.getLogsList(logType: logType, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
+platformClient.analytics.getLogsList(logType: logType, pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -804,7 +804,7 @@ Search logs
 
 
 ```kotlin
-client.analytics.searchLogs(pageNo: pageNo, pageSize: pageSize, logType: logType, body: body).safeAwait{ response, error->
+platformClient.analytics.searchLogs(pageNo: pageNo, pageSize: pageSize, logType: logType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

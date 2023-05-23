@@ -73,12 +73,6 @@ import android.net.Uri
         @SerializedName("product")
         product("product"), 
         
-        @SerializedName("product-reviews")
-        productReviews("product-reviews"), 
-        
-        @SerializedName("add-product-review")
-        addProductReview("add-product-review"), 
-        
         @SerializedName("product-request")
         productRequest("product-request"), 
         

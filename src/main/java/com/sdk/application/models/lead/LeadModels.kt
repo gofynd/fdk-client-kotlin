@@ -4,8 +4,8 @@ import com.sdk.application.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -663,12 +663,6 @@ data class UserSchema(
     @SerializedName("account_type")
     var accountType: String?=null,
     
-    @SerializedName("debug")
-    var debug: Debug?=null,
-    
-    @SerializedName("has_old_password_hash")
-    var hasOldPasswordHash: Boolean?=null,
-    
     @SerializedName("_id")
     var id: String?=null,
     
@@ -679,10 +673,6 @@ data class UserSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
     
     
     

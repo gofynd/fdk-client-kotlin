@@ -4,8 +4,8 @@ import com.sdk.application.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -126,7 +126,7 @@ data class PathMappingSchema(
     var createdAt: String?=null,
     
     @SerializedName("__source")
-    var source: TagSourceSchema?=null
+    var source: PathSourceSchema?=null
     
 ): Parcelable {
     
@@ -139,6 +139,33 @@ data class PathMappingSchema(
     
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PathSourceSchema
+*/
+@Parcelize
+data class PathSourceSchema(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null
+    
+): Parcelable {
     
     
     
@@ -193,6 +220,9 @@ data class SeoSchema(
     @SerializedName("sitemap_enabled")
     var sitemapEnabled: Boolean?=null,
     
+    @SerializedName("cannonical_enabled")
+    var cannonicalEnabled: Boolean?=null,
+    
     @SerializedName("custom_meta_tags")
     var customMetaTags: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
@@ -206,6 +236,8 @@ data class SeoSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
