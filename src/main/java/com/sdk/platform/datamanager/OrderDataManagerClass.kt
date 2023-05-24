@@ -421,18 +421,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun platformManualAssignDPToShipment(body: ManualAssignDPToShipment)
-    : Deferred<Response<ManualAssignDPToShipmentResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.platformManualAssignDPToShipment(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun updatePackagingDimensions(body: UpdatePackagingDimensionsPayload)
     : Deferred<Response<UpdatePackagingDimensionsResponse>>? {
         
@@ -640,7 +628,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
     
     
     

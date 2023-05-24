@@ -153,4 +153,24 @@ interface PaymentApiList {
     fun verifyCustomerForPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ValidateCustomerRequest)
     : Deferred<Response<ValidateCustomerResponse>>
     
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link/")
+    fun getPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String?)
+    : Deferred<Response<GetPaymentLinkResponse>>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/create-payment-link/")
+    fun createPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreatePaymentLinkRequest)
+    : Deferred<Response<CreatePaymentLinkResponse>>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/polling-payment-link/")
+    fun pollingPaymentLink(@Query("payment_link_id") paymentLinkId: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<PollingPaymentLinkResponse>>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/resend-payment-link/")
+    fun resendPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<ResendPaymentLinkResponse>>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/cancel-payment-link/")
+    fun cancelPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<CancelPaymentLinkResponse>>
+    
 }

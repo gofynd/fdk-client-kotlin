@@ -145,10 +145,6 @@ interface OrderApiList {
     fun sendSmsNinja(@Path("company_id") companyId: String,@Body body: SendSmsPayload)
     : Deferred<Response<OrderStatusResult>>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/oms/manual-place-shipment")
-    fun platformManualAssignDPToShipment(@Path("company_id") companyId: String,@Body body: ManualAssignDPToShipment)
-    : Deferred<Response<ManualAssignDPToShipmentResponse>>
-    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/update-packaging-dimension")
     fun updatePackagingDimensions(@Path("company_id") companyId: String,@Body body: UpdatePackagingDimensionsPayload)
     : Deferred<Response<UpdatePackagingDimensionsResponse>>
