@@ -14,7 +14,7 @@ interface UserApiList {
     : Deferred<Response<CustomerListResponseSchema>>
     
     @GET ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers/search")
-    fun searchUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: HashMap<String,Any>?)
+    fun searchUsers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("q") q: String?)
     : Deferred<Response<UserSearchResponseSchema>>
     
     @POST ("/service/platform/user/v1.0/company/{company_id}/application/{application_id}/customers")

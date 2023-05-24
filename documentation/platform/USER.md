@@ -169,7 +169,7 @@ platformClient.application("<APPLICATION_ID>").user.searchUsers(q: q).safeAwait{
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| q | HashMap<String,Any>? | no | The search query. Mobile number, email ID or user ID of a customer. |  
+| q | String? | no | The search query. Mobile number, email ID or user ID of a customer. |  
 
 
 

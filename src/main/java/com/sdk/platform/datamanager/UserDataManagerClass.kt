@@ -77,7 +77,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun searchUsers(q: HashMap<String,Any>?=null)
+    suspend fun searchUsers(q: String?=null)
     : Deferred<Response<UserSearchResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q )
