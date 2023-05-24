@@ -17,10 +17,6 @@ interface PaymentApiList {
     fun saveBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentGatewayConfigRequest)
     : Deferred<Response<PaymentGatewayToBeReviewed>>
     
-    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")
-    fun updateBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentGatewayConfigRequest)
-    : Deferred<Response<PaymentGatewayToBeReviewed>>
-    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options")
     fun getPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("refresh") refresh: Boolean, @Query("request_type") requestType: String)
     : Deferred<Response<PaymentOptionsResponse>>
