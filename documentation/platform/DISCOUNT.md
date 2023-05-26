@@ -10,6 +10,7 @@ Discount
 * [createDiscount](#creatediscount)
 * [getDiscount](#getdiscount)
 * [updateDiscount](#updatediscount)
+* [upsertDiscountItems](#upsertdiscountitems)
 * [validateDiscountFile](#validatediscountfile)
 * [downloadDiscountFile](#downloaddiscountfile)
 * [getValidationJob](#getvalidationjob)
@@ -29,7 +30,7 @@ Fetch discount list.
 
 
 ```kotlin
-client.discount.getDiscounts(view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response, error->
+platformClient.discount.getDiscounts(view: view, q: q, pageNo: pageNo, pageSize: pageSize, archived: archived, month: month, year: year, type: type, appIds: appIds).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -97,7 +98,7 @@ Create Discount.
 
 
 ```kotlin
-client.discount.createDiscount(body: body).safeAwait{ response, error->
+platformClient.discount.createDiscount(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -156,7 +157,7 @@ Fetch discount.
 
 
 ```kotlin
-client.discount.getDiscount(id: id).safeAwait{ response, error->
+platformClient.discount.getDiscount(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -216,7 +217,7 @@ Create Discount.
 
 
 ```kotlin
-client.discount.updateDiscount(id: id, body: body).safeAwait{ response, error->
+platformClient.discount.updateDiscount(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -269,6 +270,66 @@ Success
 ---
 
 
+### upsertDiscountItems
+Create custom discount from bulk.
+
+
+
+
+```kotlin
+platformClient.discount.upsertDiscountItems(id: id, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| id | String | yes | Job ID of the discount. |  
+| body | [BulkDiscount](#BulkDiscount) | yes | Request body |
+
+
+Create custom discounts through API.
+
+*Returned Response:*
+
+
+
+
+[HashMap<String,Any>](#HashMap<String,Any>)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### validateDiscountFile
 Validate File.
 
@@ -276,7 +337,7 @@ Validate File.
 
 
 ```kotlin
-client.discount.validateDiscountFile(discount: discount, body: body).safeAwait{ response, error->
+platformClient.discount.validateDiscountFile(discount: discount, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -336,7 +397,7 @@ Validate File.
 
 
 ```kotlin
-client.discount.downloadDiscountFile(type: type, body: body).safeAwait{ response, error->
+platformClient.discount.downloadDiscountFile(type: type, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -396,7 +457,7 @@ Validate File Job.
 
 
 ```kotlin
-client.discount.getValidationJob(id: id).safeAwait{ response, error->
+platformClient.discount.getValidationJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -456,7 +517,7 @@ Cancel Validation Job.
 
 
 ```kotlin
-client.discount.cancelValidationJob(id: id).safeAwait{ response, error->
+platformClient.discount.cancelValidationJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -516,7 +577,7 @@ Download File Job.
 
 
 ```kotlin
-client.discount.getDownloadJob(id: id).safeAwait{ response, error->
+platformClient.discount.getDownloadJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -576,7 +637,7 @@ Cancel Download Job.
 
 
 ```kotlin
-client.discount.cancelDownloadJob(id: id).safeAwait{ response, error->
+platformClient.discount.cancelDownloadJob(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -703,6 +764,33 @@ Success
  | ---------- | ---- | -------- | ----------- |
  | items | ArrayList<[DiscountJob](#DiscountJob)> |  no  |  |
  | page | [Page](#Page) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [DiscountItems](#DiscountItems)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | itemCode | String? |  yes  |  |
+ | brandUid | Int? |  yes  |  |
+ | sellerIdentifier | String? |  yes  |  |
+ | discountType | String |  no  |  |
+ | value | Double |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [BulkDiscount](#BulkDiscount)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | companyId | Int |  no  |  |
+ | items | ArrayList<[DiscountItems](#DiscountItems)> |  no  |  |
 
 ---
 

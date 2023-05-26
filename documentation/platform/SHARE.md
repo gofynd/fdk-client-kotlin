@@ -10,6 +10,7 @@ Short link and QR Code
 * [getShortLinks](#getshortlinks)
 * [getShortLinkByHash](#getshortlinkbyhash)
 * [updateShortLinkById](#updateshortlinkbyid)
+* [getShortLinkClickStats](#getshortlinkclickstats)
 
 
 
@@ -23,7 +24,7 @@ Create short link
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -120,7 +121,7 @@ Get short links
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -233,7 +234,7 @@ Get short link by hash
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -331,7 +332,7 @@ Update short link by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -422,8 +423,91 @@ Success
 ---
 
 
+### getShortLinkClickStats
+Get click statistics for a short link
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").share.getShortLinkClickStats(surlId: surlId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| surlId | String | yes | Short link ID for which click statistics are to be retrieved. |  
+
+
+
+Retrieve click statistics for a given short link ID.
+
+*Returned Response:*
+
+
+
+
+[ClickStatsResponse](#ClickStatsResponse)
+
+Successful retrieval of click statistics.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 
 ### Schemas
+
+ 
+ 
+ #### [ClickStatsResponse](#ClickStatsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | clickStats | ArrayList<[ClickStatsItem](#ClickStatsItem)> |  no  | An array of click statistics for the short link. |
+
+---
+
+
+ 
+ 
+ #### [ClickStatsItem](#ClickStatsItem)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | display | String? |  yes  | The display name of the click statistic. |
+ | total | Int? |  yes  | The total number of clicks for the statistic. |
+
+---
+
 
  
  

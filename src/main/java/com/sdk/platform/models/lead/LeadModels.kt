@@ -4,8 +4,8 @@ import com.sdk.platform.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -1382,9 +1382,14 @@ data class SupportGeneralConfig(
     var showSupportDris: Boolean?=null,
     
     @SerializedName("integration")
-    var integration: @RawValue HashMap<String,Any>?=null
+    var integration: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

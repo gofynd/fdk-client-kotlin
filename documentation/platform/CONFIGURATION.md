@@ -11,6 +11,7 @@ Application configuration apis
 * [getPreviousVersions](#getpreviousversions)
 * [getAppFeatures](#getappfeatures)
 * [updateAppFeatures](#updateappfeatures)
+* [modifyAppFeatures](#modifyappfeatures)
 * [getAppBasicDetails](#getappbasicdetails)
 * [updateAppBasicDetails](#updateappbasicdetails)
 * [getAppContactInfo](#getappcontactinfo)
@@ -65,7 +66,7 @@ Get latest build config
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType: platformType).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getBuildConfig(platformType: platformType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -143,7 +144,7 @@ Update build config for next build
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformType: platformType, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateBuildConfig(platformType: platformType, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -221,7 +222,7 @@ Get previous build versions
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getPreviousVersions(platformType: platformType).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getPreviousVersions(platformType: platformType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -296,7 +297,7 @@ Get features of application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppFeatures().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -447,7 +448,7 @@ Update features of application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppFeatures(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -583,6 +584,152 @@ Success
 ---
 
 
+### modifyAppFeatures
+Update features of application
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").configuration.modifyAppFeatures(body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- |
+| body | [AppFeatureRequest](#AppFeatureRequest) | yes | Request body |
+
+
+Update features of application
+
+*Returned Response:*
+
+
+
+
+[AppFeature](#AppFeature)
+
+Success
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+{
+  "product_detail": {
+    "similar": [
+      "basic",
+      "visual",
+      "brand",
+      "category",
+      "seller",
+      "price",
+      "specs"
+    ],
+    "seller_selection": true,
+    "update_product_meta": true,
+    "request_product": true
+  },
+  "landing_page": {
+    "launch_page": {
+      "page_type": "home",
+      "params": null,
+      "query": null
+    },
+    "continue_as_guest": true,
+    "login_btn_text": "Click here to sign-in",
+    "show_domain_textbox": true,
+    "show_register_btn": true
+  },
+  "registration_page": {
+    "ask_store_address": false
+  },
+  "home_page": {
+    "order_processing": true
+  },
+  "common": {
+    "international_shipping": {
+      "enabled": true
+    },
+    "communication_optin_dialog": {
+      "visibility": true
+    },
+    "deployment_store_selection": {
+      "enabled": true,
+      "type": "hard"
+    },
+    "listing_price": {
+      "value": "min",
+      "sort": "min"
+    },
+    "currency": {
+      "value": [
+        "INR"
+      ],
+      "type": "explicit",
+      "default_currency": "INR"
+    },
+    "revenue_engine": {
+      "enabled": false
+    },
+    "feedback": {
+      "enabled": true
+    },
+    "compare_products": {
+      "enabled": true
+    }
+  },
+  "cart": {
+    "gst_input": true,
+    "staff_selection": true,
+    "placing_for_customer": true,
+    "google_map": true,
+    "revenue_engine_coupon": false
+  },
+  "qr": {
+    "application": true,
+    "products": true,
+    "collections": true
+  },
+  "pcr": {
+    "staff_selection": true
+  },
+  "order": {
+    "buy_again": true
+  },
+  "_id": "5e57643c986e4119c973df7d",
+  "app": "000000000000000000000004",
+  "created_at": "2020-02-27T06:39:56.088Z",
+  "modified_at": "2021-03-09T15:40:29.188Z",
+  "__v": 1
+}
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getAppBasicDetails
 Get basic application details
 
@@ -590,7 +737,7 @@ Get basic application details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppBasicDetails().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -685,7 +832,7 @@ Add or update application's basic details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppBasicDetails(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -782,7 +929,7 @@ Get application information
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppContactInfo().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -952,7 +1099,7 @@ Get application information
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppContactInfo(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1119,7 +1266,7 @@ Get social tokens
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppApiTokens().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1252,7 +1399,7 @@ Add social tokens
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppApiTokens(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1389,7 +1536,7 @@ Application inventory enabled companies
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppCompanies(uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppCompanies(uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1476,7 +1623,7 @@ Application inventory enabled stores
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppStores(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1575,7 +1722,7 @@ Get application configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getInventoryConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1780,6 +1927,17 @@ Success
   },
   "business": "retail",
   "comms_enabled": true,
+  "communication": {
+    "email": {
+      "enabled": false
+    },
+    "sms": {
+      "enabled": false
+    },
+    "voice": {
+      "enabled": false
+    }
+  },
   "platforms": [
     "uniket_wholesale"
   ],
@@ -1815,7 +1973,7 @@ Update application configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateInventoryConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2024,6 +2182,17 @@ Success
   },
   "business": "retail",
   "comms_enabled": true,
+  "communication": {
+    "email": {
+      "enabled": false
+    },
+    "sms": {
+      "enabled": false
+    },
+    "voice": {
+      "enabled": false
+    }
+  },
   "platforms": [
     "uniket_wholesale"
   ],
@@ -2059,7 +2228,7 @@ Partially update application configuration
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.partiallyUpdateInventoryConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2268,6 +2437,17 @@ Success
   },
   "business": "retail",
   "comms_enabled": true,
+  "communication": {
+    "email": {
+      "enabled": false
+    },
+    "sms": {
+      "enabled": false
+    },
+    "voice": {
+      "enabled": false
+    }
+  },
   "platforms": [
     "uniket_wholesale"
   ],
@@ -2303,7 +2483,7 @@ Get application enabled currency list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppCurrencyConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2374,7 +2554,7 @@ Add initial application supported currency
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateAppCurrencyConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2449,7 +2629,7 @@ Get currencies enabled in the application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getAppSupportedCurrency().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getAppSupportedCurrency().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2522,7 +2702,7 @@ Get ordering store by filter
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getOrderingStoresByFilter(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2667,7 +2847,7 @@ Add/Update ordering store config
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.updateOrderingStoreConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2749,7 +2929,7 @@ Get deployment stores
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getStaffOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getStaffOrderingStores(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2811,7 +2991,7 @@ Get attached domain list
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getDomains().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2893,7 +3073,7 @@ Add new domain to application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.addDomain(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2960,7 +3140,7 @@ Remove attached domain
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.removeDomainById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3022,7 +3202,7 @@ Change domain type
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.changeDomainType(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.changeDomainType(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3105,7 +3285,7 @@ Get domain connected status.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getDomainStatus(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3180,7 +3360,7 @@ Create application
 
 
 ```kotlin
-client.configuration.createApplication(body: body).safeAwait{ response, error->
+platformClient.configuration.createApplication(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3239,7 +3419,7 @@ Get list of application under company
 
 
 ```kotlin
-client.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
+platformClient.configuration.getApplications(pageNo: pageNo, pageSize: pageSize, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3301,7 +3481,7 @@ Get application data from id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").configuration.getApplicationById().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").configuration.getApplicationById().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3356,7 +3536,7 @@ Get all currencies
 
 
 ```kotlin
-client.configuration.getCurrencies().safeAwait{ response, error->
+platformClient.configuration.getCurrencies().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3424,7 +3604,7 @@ Check domain availibility before linking to application
 
 
 ```kotlin
-client.configuration.getDomainAvailibility(body: body).safeAwait{ response, error->
+platformClient.configuration.getDomainAvailibility(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3527,7 +3707,7 @@ Get integration data
 
 
 ```kotlin
-client.configuration.getIntegrationById(id: id).safeAwait{ response, error->
+platformClient.configuration.getIntegrationById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3674,7 +3854,7 @@ Get all available integration opt-ins
 
 
 ```kotlin
-client.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.configuration.getAvailableOptIns(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3842,7 +4022,7 @@ Get company/store level integration opt-ins
 
 
 ```kotlin
-client.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.configuration.getSelectedOptIns(level: level, uid: uid, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4012,7 +4192,7 @@ Get integration level config
 
 
 ```kotlin
-client.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response, error->
+platformClient.configuration.getIntegrationLevelConfig(id: id, level: level, opted: opted, checkPermission: checkPermission).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4096,7 +4276,7 @@ Update a store level opt-in for integration
 
 
 ```kotlin
-client.configuration.updateLevelIntegration(id: id, level: level, body: body).safeAwait{ response, error->
+platformClient.configuration.updateLevelIntegration(id: id, level: level, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4174,7 +4354,7 @@ Get level data for integration
 
 
 ```kotlin
-client.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).safeAwait{ response, error->
+platformClient.configuration.getIntegrationByLevelId(id: id, level: level, uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4253,7 +4433,7 @@ Update a store level opt-in for integration
 
 
 ```kotlin
-client.configuration.updateLevelUidIntegration(id: id, level: level, uid: uid, body: body).safeAwait{ response, error->
+platformClient.configuration.updateLevelUidIntegration(id: id, level: level, uid: uid, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4332,7 +4512,7 @@ Check store has active integration
 
 
 ```kotlin
-client.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response, error->
+platformClient.configuration.getLevelActiveIntegrations(id: id, level: level, uid: uid).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4411,7 +4591,7 @@ Get brands by company
 
 
 ```kotlin
-client.configuration.getBrandsByCompany(q: q).safeAwait{ response, error->
+platformClient.configuration.getBrandsByCompany(q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4488,7 +4668,7 @@ Get company by brand uids
 
 
 ```kotlin
-client.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
+platformClient.configuration.getCompanyByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4571,7 +4751,7 @@ Get stores by brand uids
 
 
 ```kotlin
-client.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
+platformClient.configuration.getStoreByBrands(pageNo: pageNo, pageSize: pageSize, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4693,7 +4873,7 @@ Get other seller applications
 
 
 ```kotlin
-client.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.configuration.getOtherSellerApplications(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4797,7 +4977,7 @@ Get other seller applications
 
 
 ```kotlin
-client.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response, error->
+platformClient.configuration.getOtherSellerApplicationById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4904,7 +5084,7 @@ Opt out company or store from other seller application
 
 
 ```kotlin
-client.configuration.optOutFromApplication(id: id, body: body).safeAwait{ response, error->
+platformClient.configuration.optOutFromApplication(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4978,6 +5158,7 @@ Success
  | logistics | [AppLogisticsConfig](#AppLogisticsConfig)? |  yes  |  |
  | business | String? |  yes  |  |
  | commsEnabled | Boolean? |  yes  |  |
+ | communication | [CommunicationConfig](#CommunicationConfig)? |  yes  |  |
  | platforms | ArrayList<String>? |  yes  |  |
  | id | String? |  yes  |  |
  | loyaltyPoints | [LoyaltyPointsConfig](#LoyaltyPointsConfig)? |  yes  |  |
@@ -5142,7 +5323,6 @@ Success
  | minCartValue | Double? |  yes  |  |
  | bulkCoupons | Boolean? |  yes  |  |
  | revenueEngineCoupon | Boolean? |  yes  |  |
- | emptyCart | Boolean? |  yes  | Enable/disable to allow adding cart items added before login to user's cart once user is logged in |
 
 ---
 
@@ -5304,6 +5484,7 @@ Success
  | payment | [AppPaymentConfig](#AppPaymentConfig)? |  yes  |  |
  | loyaltyPoints | [LoyaltyPointsConfig](#LoyaltyPointsConfig)? |  yes  |  |
  | commsEnabled | Boolean? |  yes  |  |
+ | communication | [CommunicationConfig](#CommunicationConfig)? |  yes  |  |
 
 ---
 
@@ -5407,6 +5588,30 @@ Success
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | brands | [CompanyBrandInfo](#CompanyBrandInfo)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CommunicationConfig](#CommunicationConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | email | [CommsConfig](#CommsConfig)? |  yes  |  |
+ | sms | [CommsConfig](#CommsConfig)? |  yes  |  |
+ | voice | [CommsConfig](#CommsConfig)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [CommsConfig](#CommsConfig)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | enabled | Boolean? |  yes  | Check current communication channel is enabled |
 
 ---
 

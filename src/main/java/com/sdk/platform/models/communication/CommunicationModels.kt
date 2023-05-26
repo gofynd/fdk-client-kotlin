@@ -4,8 +4,8 @@ import com.sdk.platform.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -451,6 +451,55 @@ data class Campaigns(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BadRequestSchema
+*/
+@Parcelize
+data class BadRequestSchema(
+    
+    
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NotFound
+*/
+@Parcelize
+data class NotFound(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
     
     
     

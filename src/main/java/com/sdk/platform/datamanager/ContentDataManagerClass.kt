@@ -112,6 +112,8 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -499,6 +501,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<CreateFaqResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getFaqByIdOrSlug(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun generateSEOTitle(type: String,body: GenerateSEOContent)
+    : Deferred<Response<GeneratedSEOContent>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.generateSEOTitle(companyId = config.companyId , applicationId = applicationId , type = type, body = body)
         } else {
             null
         }
@@ -1056,6 +1068,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<TagsSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.editInjectableTag(companyId = config.companyId , applicationId = applicationId , tagId = tagId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getBlogBySlug(slug: String)
+    : Deferred<Response<BlogSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.getBlogBySlug(companyId = config.companyId , applicationId = applicationId , slug = slug )
         } else {
             null
         }

@@ -12,7 +12,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getCart(@Url url1: String?    ,        @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Query("empty_cart") emptyCart: Boolean?)
+    fun getCart(@Url url1: String?    ,       @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("assign_card_id") assignCardId: Int?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?)
     : Deferred<Response<CartDetailResponse>>
     
     
@@ -29,11 +29,6 @@ interface CartApiList {
     @PUT 
     fun updateCart(@Url url1: String?    ,      @Query("id") id: String?, @Query("i") i: Boolean?, @Query("b") b: Boolean?, @Query("area_code") areaCode: String?, @Query("buy_now") buyNow: Boolean?, @Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
-    
-    
-    @PUT 
-    fun deleteCart(@Url url1: String?    ,  @Query("id") id: Int?)
-    : Deferred<Response<DeleteCartDetailResponse>>
     
     
     @GET 
@@ -107,7 +102,7 @@ interface CartApiList {
     
     
     @GET 
-    fun getShipments(@Url url1: String?    ,       @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?, @Query("order_type") orderType: String?)
+    fun getShipments(@Url url1: String?    ,      @Query("p") p: Boolean?, @Query("id") id: String?, @Query("buy_now") buyNow: Boolean?, @Query("address_id") addressId: String?, @Query("area_code") areaCode: String?)
     : Deferred<Response<CartShipmentsResponse>>
     
     

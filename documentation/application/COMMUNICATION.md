@@ -22,7 +22,7 @@ Get communication consent
 
 
 ```kotlin
-communication.getCommunicationConsent().safeAwait{ response, error->
+applicationClient.communication.getCommunicationConsent().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -104,7 +104,7 @@ Upsert communication consent
 
 
 ```kotlin
-communication.upsertCommunicationConsent(body: body).safeAwait{ response, error->
+applicationClient.communication.upsertCommunicationConsent(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -188,7 +188,7 @@ Upsert push token of a user
 
 
 ```kotlin
-communication.upsertAppPushtoken(body: body).safeAwait{ response, error->
+applicationClient.communication.upsertAppPushtoken(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -391,6 +391,29 @@ Success. Check the example shown below or refer `PushtokenRes` for more details.
  | appId | String? |  yes  |  |
  | userId | String? |  yes  |  |
  | channels | [CommunicationConsentChannels](#CommunicationConsentChannels)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [BadRequestSchema](#BadRequestSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String? |  yes  | Response status. |
+ | message | String? |  yes  | Failure message. |
+
+---
+
+
+ 
+ 
+ #### [NotFound](#NotFound)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String? |  yes  | Failure message. |
 
 ---
 

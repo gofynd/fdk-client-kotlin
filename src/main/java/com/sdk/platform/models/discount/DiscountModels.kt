@@ -4,8 +4,8 @@ import com.sdk.platform.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -239,6 +239,75 @@ data class ListOrCalender(
     
     @SerializedName("page")
     var page: Page?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DiscountItems
+*/
+@Parcelize
+data class DiscountItems(
+    
+    
+    
+    @SerializedName("item_code")
+    var itemCode: String?=null,
+    
+    @SerializedName("brand_uid")
+    var brandUid: Int?=null,
+    
+    @SerializedName("seller_identifier")
+    var sellerIdentifier: String?=null,
+    
+    @SerializedName("discount_type")
+    var discountType: String?=null,
+    
+    @SerializedName("value")
+    var value: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BulkDiscount
+*/
+@Parcelize
+data class BulkDiscount(
+    
+    
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("items")
+    var items: ArrayList<DiscountItems>?=null
     
 ): Parcelable {
     

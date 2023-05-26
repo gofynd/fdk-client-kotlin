@@ -25,6 +25,14 @@ interface BillingApiList {
     fun cancelSubscriptionCharge(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("subscription_id") subscriptionId: String)
     : Deferred<Response<EntitySubscription>>
     
+    @POST ("/service/platform/billing/v1.0/company/{company_id}/extension/{extension_id}/one_time_charge")
+    fun createOneTimeCharge(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String,@Body body: CreateOneTimeCharge)
+    : Deferred<Response<CreateOneTimeChargeResponse>>
+    
+    @GET ("/service/platform/billing/v1.0/company/{company_id}/extension/{extension_id}/charge/{charge_id}")
+    fun getChargeDetails(@Path("company_id") companyId: String, @Path("extension_id") extensionId: String, @Path("charge_id") chargeId: String)
+    : Deferred<Response<OneTimeChargeEntity>>
+    
     @GET ("/service/platform/billing/v1.0/company/{company_id}/invoice/list")
     fun getInvoices(@Path("company_id") companyId: String)
     : Deferred<Response<Invoices>>

@@ -29,8 +29,6 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
             
                     _relativeUrls["updateCart"] = "/service/application/cart/v1.0/detail".substring(1)
             
-                    _relativeUrls["deleteCart"] = "/service/application/cart/v1.0/cart_archive".substring(1)
-            
                     _relativeUrls["getItemCount"] = "/service/application/cart/v1.0/basic".substring(1)
             
                     _relativeUrls["getCoupons"] = "/service/application/cart/v1.0/coupon".substring(1)
@@ -110,10 +108,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
     
-    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null, emptyCart: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
+    fun getCart(id: String?=null, i: Boolean?=null, b: Boolean?=null, assignCardId: Int?=null, areaCode: String?=null, buyNow: Boolean?=null): Deferred<Response<CartDetailResponse>>? {
         var fullUrl : String? = _relativeUrls["getCart"] 
         
-        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow,    emptyCart = emptyCart)}
+        return cartApiList?.getCart(fullUrl    ,  id = id,    i = i,    b = b,    assignCardId = assignCardId,    areaCode = areaCode,    buyNow = buyNow)}
 
     
     
@@ -135,13 +133,6 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
         var fullUrl : String? = _relativeUrls["updateCart"] 
         
         return cartApiList?.updateCart(fullUrl    ,  id = id,    i = i,    b = b,    areaCode = areaCode,    buyNow = buyNow, body = body)}
-
-    
-    
-    fun deleteCart(id: Int?=null): Deferred<Response<DeleteCartDetailResponse>>? {
-        var fullUrl : String? = _relativeUrls["deleteCart"] 
-        
-        return cartApiList?.deleteCart(fullUrl    ,  id = id)}
 
     
     
@@ -249,10 +240,10 @@ class CartDataManagerClass(val config: ApplicationConfig, val unauthorizedAction
 
     
     
-    fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null, orderType: String?=null): Deferred<Response<CartShipmentsResponse>>? {
+    fun getShipments(p: Boolean?=null, id: String?=null, buyNow: Boolean?=null, addressId: String?=null, areaCode: String?=null): Deferred<Response<CartShipmentsResponse>>? {
         var fullUrl : String? = _relativeUrls["getShipments"] 
         
-        return cartApiList?.getShipments(fullUrl    ,  p = p,    id = id,    buyNow = buyNow,    addressId = addressId,    areaCode = areaCode,    orderType = orderType)}
+        return cartApiList?.getShipments(fullUrl    ,  p = p,    id = id,    buyNow = buyNow,    addressId = addressId,    areaCode = areaCode)}
 
     
     

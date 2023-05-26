@@ -9,13 +9,13 @@ import com.sdk.platform.models.catalog.*
 
 interface CatalogApiList {
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/{id}/")
-    fun getSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Deferred<Response<GetSearchWordsDetailResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/{id}/")
     fun deleteSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<DeleteResponse>>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/{id}/")
+    fun getSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<GetSearchWordsDetailResponse>>
     
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/keyword/{id}/")
     fun updateSearchKeywords(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CreateSearchKeyword)
@@ -29,13 +29,13 @@ interface CatalogApiList {
     fun createCustomKeyword(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CreateSearchKeyword)
     : Deferred<Response<GetSearchWordsData>>
     
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/{id}/")
-    fun getAutocompleteKeywordDetail(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Deferred<Response<GetAutocompleteWordsResponse>>
-    
     @DELETE ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/{id}/")
     fun deleteAutocompleteKeyword(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<DeleteResponse>>
+    
+    @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/{id}/")
+    fun getAutocompleteKeywordDetail(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<GetAutocompleteWordsResponse>>
     
     @PUT ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/search/autocomplete/{id}/")
     fun updateAutocompleteKeyword(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CreateAutocompleteKeyword)
@@ -182,7 +182,7 @@ interface CatalogApiList {
     : Deferred<Response<GetCollectionItemsResponse>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/collections/{id}/items/")
-    fun addCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CollectionItemRequest)
+    fun addCollectionItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CollectionItemUpdate)
     : Deferred<Response<UpdatedResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/analytics/insights/")
@@ -206,7 +206,7 @@ interface CatalogApiList {
     : Deferred<Response<OptinCompanyDetail>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/company-brand-details/")
-    fun getCompanyBrandDetail(@Path("company_id") companyId: String, @Query("is_active") isActive: Boolean?, @Query("q") q: Boolean?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("marketplace") marketplace: String?)
+    fun getCompanyBrandDetail(@Path("company_id") companyId: String, @Query("is_active") isActive: Boolean?, @Query("q") q: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("marketplace") marketplace: String?)
     : Deferred<Response<OptinCompanyBrandDetailsView>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/marketplaces/company-metrics/")
@@ -226,7 +226,7 @@ interface CatalogApiList {
     : Deferred<Response<ProdcutTemplateCategoriesResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/departments/")
-    fun listDepartmentsData(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("search") search: String?, @Query("is_active") isActive: Boolean?)
+    fun listDepartmentsData(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("item_type") itemType: String?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("search") search: String?, @Query("is_active") isActive: Boolean?)
     : Deferred<Response<DepartmentsResponse>>
     
     @POST ("/service/platform/catalog/v1.0/company/{company_id}/departments/")
@@ -269,8 +269,16 @@ interface CatalogApiList {
     fun listProductTemplateExportDetails(@Path("company_id") companyId: String)
     : Deferred<Response<ProductDownloadsResponse>>
     
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/downloads/")
+    fun getProductExportJobs(@Path("company_id") companyId: String, @Query("status") status: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("q") q: String?)
+    : Deferred<Response<ProductDownloadsResponse>>
+    
+    @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/downloads/")
+    fun createProductExportJob(@Path("company_id") companyId: String,@Body body: ProductTemplateDownloadsExport)
+    : Deferred<Response<ProductDownloadsResponse>>
+    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/downloads/configuration/")
-    fun listTemplateBrandTypeValues(@Path("company_id") companyId: String, @Query("filter") filter: String)
+    fun listTemplateBrandTypeValues(@Path("company_id") companyId: String, @Query("filter") filter: String, @Query("template_tag") templateTag: String?, @Query("item_type") itemType: String?)
     : Deferred<Response<ProductConfigurationDownloads>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/category/")
@@ -291,7 +299,7 @@ interface CatalogApiList {
     
     @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/")
     fun getProducts(@Path("company_id") companyId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("item_code") itemCode: ArrayList<String>?, @Query("q") q: String?, @Query("tags") tags: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<ProductListingResponse>>
+    : Deferred<Response<ProductListingResponseV2>>
     
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/products/")
     fun createProduct(@Path("company_id") companyId: String,@Body body: ProductCreateUpdateSchemaV2)
@@ -305,13 +313,13 @@ interface CatalogApiList {
     fun getProductAttributes(@Path("company_id") companyId: String, @Query("category") category: String, @Query("filter") filter: Boolean?)
     : Deferred<Response<ProductAttributesResponse>>
     
-    @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
-    fun getProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?, @Query("item_code") itemCode: String?)
-    : Deferred<Response<SingleProductResponse>>
-    
     @DELETE ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
     fun deleteProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String)
     : Deferred<Response<SuccessResponse>>
+    
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
+    fun getProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String, @Query("brand_uid") brandUid: Int?, @Query("item_code") itemCode: String?)
+    : Deferred<Response<SingleProductResponse>>
     
     @PUT ("/service/platform/catalog/v2.0/company/{company_id}/products/{item_id}/")
     fun editProduct(@Path("company_id") companyId: String, @Path("item_id") itemId: String,@Body body: ProductCreateUpdateSchemaV2)
@@ -413,6 +421,14 @@ interface CatalogApiList {
     fun createInventoryExportJob(@Path("company_id") companyId: String,@Body body: InventoryExportRequest)
     : Deferred<Response<InventoryExportResponse>>
     
+    @GET ("/service/platform/catalog/v2.0/company/{company_id}/inventory/download/")
+    fun listInventoryExport(@Path("company_id") companyId: String, @Query("status") status: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("q") q: String?)
+    : Deferred<Response<InventoryExportJobListResponse>>
+    
+    @POST ("/service/platform/catalog/v2.0/company/{company_id}/inventory/download/")
+    fun createInventoryExport(@Path("company_id") companyId: String,@Body body: InventoryCreateRequest)
+    : Deferred<Response<InventoryExportResponse>>
+    
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/inventory/download/configuration/")
     fun exportInventoryConfig(@Path("company_id") companyId: String, @Query("filter_type") filterType: String?)
     : Deferred<Response<InventoryConfig>>
@@ -428,14 +444,6 @@ interface CatalogApiList {
     @POST ("/service/platform/catalog/v2.0/company/{company_id}/inventory/")
     fun updateInventories(@Path("company_id") companyId: String,@Body body: InventoryRequestSchemaV2)
     : Deferred<Response<InventoryUpdateResponse>>
-    
-    @GET ("/service/platform/catalog/v1.0/company/{company_id}/hsn/")
-    fun getAllHsnCodes(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
-    : Deferred<Response<HsnCodesListingResponse>>
-    
-    @POST ("/service/platform/catalog/v1.0/company/{company_id}/hsn/")
-    fun createHsnCode(@Path("company_id") companyId: String,@Body body: HsnUpsert)
-    : Deferred<Response<HsnCode>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/hsn/{id}/")
     fun getHsnCode(@Path("company_id") companyId: String, @Path("id") id: String)
@@ -478,7 +486,7 @@ interface CatalogApiList {
     : Deferred<Response<ProductDetail>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/raw-products/")
-    fun getAppProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("tags") tags: ArrayList<String>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
+    fun getAppProducts(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("brand_ids") brandIds: ArrayList<Int>?, @Query("category_ids") categoryIds: ArrayList<Int>?, @Query("department_ids") departmentIds: ArrayList<Int>?, @Query("tags") tags: ArrayList<String>?, @Query("item_ids") itemIds: ArrayList<Int>?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("q") q: String?)
     : Deferred<Response<ProductListingResponse>>
     
     @GET ("/service/platform/catalog/v1.0/company/{company_id}/application/{application_id}/inventory/")
