@@ -64,6 +64,9 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -341,6 +344,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SuccessMessage>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updatePromotionPartially(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartMetaConfig(cartMetaId: String,body: CartMetaConfigUpdate)
+    : Deferred<Response<CartMetaConfigUpdate>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartMetaConfig(companyId = config.companyId , applicationId = applicationId , cartMetaId = cartMetaId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun fetchCartMetaConfig()
+    : Deferred<Response<CartMetaConfigAdd>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.fetchCartMetaConfig(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createCartMetaConfig(body: CartMetaConfigAdd)
+    : Deferred<Response<CartMetaConfigAdd>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.createCartMetaConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

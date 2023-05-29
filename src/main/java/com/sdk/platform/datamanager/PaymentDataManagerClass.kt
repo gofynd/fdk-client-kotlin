@@ -174,6 +174,8 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -283,6 +285,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SetCODOptionResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun oauthGetUrl(aggregator: String, successRedirectUrl: String?=null, failureRedirectUrl: String?=null)
+    : Deferred<Response<GetOauthUrlResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.oauthGetUrl(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator, successRedirectUrl = successRedirectUrl, failureRedirectUrl = failureRedirectUrl )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun revokeOauthToken(aggregator: String)
+    : Deferred<Response<RevokeOAuthToken>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.revokeOauthToken(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator )
         } else {
             null
         }
