@@ -1,13 +1,13 @@
-package com.sdk.platform.apis.logistics
+package com.sdk.platform.apis.serviceability
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import okhttp3.ResponseBody
 import retrofit2.http.*
 import com.sdk.platform.*
-import com.sdk.platform.models.logistics.*
+import com.sdk.platform.models.serviceability.*
 
-interface LogisticsApiList {
+interface ServiceabilityApiList {
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/serviceability")
     fun getApplicationServiceability(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
@@ -52,6 +52,18 @@ interface LogisticsApiList {
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics/stores")
     fun getAllStores(@Path("company_id") companyId: String)
     : Deferred<Response<GetStoresViewResponse>>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/reassign")
+    fun getOptimalLocations(@Path("company_id") companyId: String,@Body body: ReAssignStoreRequest)
+    : Deferred<Response<ReAssignStoreResponse>>
+    
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}")
+    fun addAppDp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplicationCompanyDpViewRequest)
+    : Deferred<Response<ApplicationCompanyDpViewResponse>>
+    
+    @DELETE ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier-partner/{courier_partner_id}")
+    fun deleteAppDp(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("courier_partner_id") courierPartnerId: String)
+    : Deferred<Response<ApplicationCompanyDpViewResponse>>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/pincode-mop-update")
     fun updatePincodeMopView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopData)

@@ -57,7 +57,6 @@ class RewardsDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -97,16 +96,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<Giveaway>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 rewardsApiList?.updateGiveAway(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getGiveawayAudienceStatus(id: String, audienceId: String)
-    : Deferred<Response<GiveawayAudience>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                rewardsApiList?.getGiveawayAudienceStatus(id = id, audienceId = audienceId, companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

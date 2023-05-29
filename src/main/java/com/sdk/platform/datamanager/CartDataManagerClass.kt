@@ -98,6 +98,7 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -242,10 +243,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPromotions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, status: String?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null)
+    suspend fun getPromotions(pageNo: Int?=null, pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null)
     : Deferred<Response<PromotionsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, status = status, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId )
+                cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId )
         } else {
             null
         }
@@ -307,7 +308,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getPromotions
     **/
     fun getPromotionsPaginator(
-    pageSize: Int?=null, q: String?=null, status: String?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
+    pageSize: Int?=null, q: String?=null, isActive: Boolean?=null, promoGroup: String?=null, promotionType: String?=null, fpPanel: String?=null, promotionId: String?=null
     
     ) : Paginator<PromotionsResponse>{
         val paginator = Paginator<PromotionsResponse>()
@@ -320,7 +321,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, status = status, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
+                    cartApiList?.getPromotions(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, q = q, isActive = isActive, promoGroup = promoGroup, promotionType = promotionType, fpPanel = fpPanel, promotionId = promotionId)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -451,10 +452,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getAbandonedCart(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null)
+    suspend fun getAbandonedCart(userId: String?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null)
     : Deferred<Response<AbandonedCartResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn )
+                cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , userId = userId, pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn )
         } else {
             null
         }
@@ -462,6 +463,11 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+        
+            
+                
+            
+            
         
             
                 
@@ -511,7 +517,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     * Summary: Paginator for getAbandonedCart
     **/
     fun getAbandonedCartPaginator(
-    pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null
+    userId: String?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null
     
     ) : Paginator<AbandonedCartResponse>{
         val paginator = Paginator<AbandonedCartResponse>()
@@ -524,7 +530,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn)?.safeAwait{ response, error ->
+                    cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , userId = userId, pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
@@ -545,30 +551,30 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     return paginator
     }
     
-    suspend fun getAbandonedCartDetails(id: String?=null, i: Boolean?=null, b: Boolean?=null)
+    suspend fun getAbandonedCartDetails(userId: String?=null, id: String?=null, i: Boolean?=null, b: Boolean?=null)
     : Deferred<Response<CartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getAbandonedCartDetails(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b )
+                cartApiList?.getAbandonedCartDetails(companyId = config.companyId , applicationId = applicationId , userId = userId, id = id, i = i, b = b )
         } else {
             null
         }
     }
     
     
-    suspend fun addItems(cartId: String, b: Boolean?=null,body: AddCartRequest)
+    suspend fun addItems(cartId: String, b: Boolean?=null, userId: String?=null,body: AddCartRequest)
     : Deferred<Response<AddCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.addItems(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
+                cartApiList?.addItems(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, userId = userId, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun updateCart(cartId: String, b: Boolean?=null,body: UpdateCartRequest)
+    suspend fun updateCart(cartId: String, b: Boolean?=null, userId: String?=null,body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
+                cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, userId = userId, body = body)
         } else {
             null
         }
@@ -599,6 +605,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<HashMap<String,Any>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getPromotionCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun overrideCart(body: OverrideCheckoutReq)
+    : Deferred<Response<OverrideCheckoutResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.overrideCart(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
