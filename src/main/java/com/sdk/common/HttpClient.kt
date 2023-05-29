@@ -39,7 +39,8 @@ object HttpClient {
         headers: Map<String, String>? = null,
         interceptorList: Map<String, List<Interceptor>>? = null,
         namespace: String = "client",
-        persistentCookieStore: CookieStore? = null
+        persistentCookieStore: CookieStore? = null,
+        certPublicKey: String? = null
     ): RetrofitHttpClient? {
         if (persistentCookieStore != null) {
             cookieManager = CookieManager(persistentCookieStore, CookiePolicy.ACCEPT_ALL)
@@ -54,7 +55,7 @@ object HttpClient {
         if (null == clientMap[namespace]) {
             val retrofitHttpClient = RetrofitHttpClient(
                 baseUrl,
-                headers, interceptorList, cookieJar, cookieManager, persistentCookieStore
+                headers, interceptorList, cookieJar, cookieManager, persistentCookieStore, certPublicKey
             )
             clientMap[namespace] = retrofitHttpClient
         }
@@ -68,4 +69,9 @@ object HttpClient {
             HttpLoggingInterceptor.Level.NONE
         }
     }
+
+    fun reset() {
+        clientMap.clear()
+    }
+
 }

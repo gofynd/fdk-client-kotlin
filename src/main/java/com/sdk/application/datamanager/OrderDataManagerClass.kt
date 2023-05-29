@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.order.*
+import com.sdk.application.apis.order.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,29 +21,25 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     init{
             
-                    _relativeUrls["getShipmentById"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}"?.substring(1)
+                    _relativeUrls["getShipmentById"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}".substring(1)
             
-                    _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details"?.substring(1)
+                    _relativeUrls["getCustomerDetailsByShipmentId"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/customer-details".substring(1)
             
-                    _relativeUrls["sendOtpToShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send"?.substring(1)
+                    _relativeUrls["sendOtpToShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/send".substring(1)
             
-                    _relativeUrls["getShipmentReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/reasons"?.substring(1)
+                    _relativeUrls["getShipmentReasons"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/reasons".substring(1)
             
-                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify"?.substring(1)
+                    _relativeUrls["verifyOtpShipmentCustomer"] = "/service/application/orders/v1.0/orders/{order_id}/shipments/{shipment_id}/otp/verify".substring(1)
             
-                    _relativeUrls["getOrders"] = "/service/application/orders/v1.0/orders"?.substring(1)
+                    _relativeUrls["getOrders"] = "/service/application/orders/v1.0/orders".substring(1)
             
-                    _relativeUrls["getOrderById"] = "/service/application/orders/v1.0/orders/{order_id}"?.substring(1)
+                    _relativeUrls["getOrderById"] = "/service/application/orders/v1.0/orders/{order_id}".substring(1)
             
-                    _relativeUrls["getPosOrderById"] = "/service/application/orders/v1.0/pos-order/{order_id}"?.substring(1)
+                    _relativeUrls["getPosOrderById"] = "/service/application/orders/v1.0/pos-order/{order_id}".substring(1)
             
-                    _relativeUrls["trackShipment"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/track"?.substring(1)
+                    _relativeUrls["trackShipment"] = "/service/application/orders/v1.0/orders/shipments/{shipment_id}/track".substring(1)
             
-                    _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status"?.substring(1)
-            
-                    _relativeUrls["getInvoiceByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/invoice"?.substring(1)
-            
-                    _relativeUrls["getCreditNoteByShipmentId"] = "/service/application/document/v1.0/orders/shipments/{shipment_id}/credit-note"?.substring(1)
+                    _relativeUrls["updateShipmentStatus"] = "/service/application/order-manage/v1.0/orders/shipments/{shipment_id}/status".substring(1)
             
     }
 
@@ -72,7 +70,8 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationOrder",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(OrderApiList::class.java) as? OrderApiList
     }
@@ -168,24 +167,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
-
-    
-    
-    fun getInvoiceByShipmentId(shipmentId: String, parameters: invoiceParameter?=null): Deferred<Response<getInvoiceByShipmentId200Response>>? {
-        var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getInvoiceByShipmentId(fullUrl     ,  parameters = parameters)}
-
-    
-    
-    fun getCreditNoteByShipmentId(shipmentId: String, parameters: creditNoteParameter?=null): Deferred<Response<getInvoiceByShipmentId200Response>>? {
-        var fullUrl : String? = _relativeUrls["getCreditNoteByShipmentId"] 
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.getCreditNoteByShipmentId(fullUrl     ,  parameters = parameters)}
 
     
     

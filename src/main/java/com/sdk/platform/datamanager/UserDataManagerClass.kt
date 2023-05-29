@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.user.*
+import com.sdk.platform.apis.user.*
 
 
 
@@ -41,6 +43,7 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
         )
         return retrofitHttpClient?.initializeRestClient(UserApiList::class.java) as? UserApiList
     }
+    
     
     
     
@@ -102,6 +105,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ArchiveUserSuccess>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.archiveUser(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun unDeleteUser(body: UnDeleteUserRequestSchema)
+    : Deferred<Response<UnDeleteUserSuccess>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.unDeleteUser(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

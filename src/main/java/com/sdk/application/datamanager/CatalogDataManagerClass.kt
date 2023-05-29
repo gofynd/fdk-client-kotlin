@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.catalog.*
+import com.sdk.application.apis.catalog.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,67 +21,65 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     init{
             
-                    _relativeUrls["getProductDetailBySlug"] = "/service/application/catalog/v1.0/products/{slug}/"?.substring(1)
+                    _relativeUrls["getProductDetailBySlug"] = "/service/application/catalog/v1.0/products/{slug}/".substring(1)
             
-                    _relativeUrls["getProductSizesBySlug"] = "/service/application/catalog/v1.0/products/{slug}/sizes/"?.substring(1)
+                    _relativeUrls["getProductSizesBySlug"] = "/service/application/catalog/v1.0/products/{slug}/sizes/".substring(1)
             
-                    _relativeUrls["getProductComparisonBySlugs"] = "/service/application/catalog/v1.0/products/compare/"?.substring(1)
+                    _relativeUrls["getProductComparisonBySlugs"] = "/service/application/catalog/v1.0/products/compare/".substring(1)
             
-                    _relativeUrls["getSimilarComparisonProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compare/"?.substring(1)
+                    _relativeUrls["getSimilarComparisonProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compare/".substring(1)
             
-                    _relativeUrls["getComparedFrequentlyProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently/"?.substring(1)
+                    _relativeUrls["getComparedFrequentlyProductBySlug"] = "/service/application/catalog/v1.0/products/{slug}/similar/compared-frequently/".substring(1)
             
-                    _relativeUrls["getProductSimilarByIdentifier"] = "/service/application/catalog/v1.0/products/{slug}/similar/{similar_type}/"?.substring(1)
+                    _relativeUrls["getProductVariantsBySlug"] = "/service/application/catalog/v1.0/products/{slug}/variants/".substring(1)
             
-                    _relativeUrls["getProductVariantsBySlug"] = "/service/application/catalog/v1.0/products/{slug}/variants/"?.substring(1)
+                    _relativeUrls["getProductStockByIds"] = "/service/application/catalog/v1.0/products/stock-status/".substring(1)
             
-                    _relativeUrls["getProductStockByIds"] = "/service/application/catalog/v1.0/products/stock-status/"?.substring(1)
+                    _relativeUrls["getProductStockForTimeByIds"] = "/service/application/catalog/v1.0/products/stock-status/poll/".substring(1)
             
-                    _relativeUrls["getProductStockForTimeByIds"] = "/service/application/catalog/v1.0/products/stock-status/poll/"?.substring(1)
+                    _relativeUrls["getProducts"] = "/service/application/catalog/v1.0/products/".substring(1)
             
-                    _relativeUrls["getProducts"] = "/service/application/catalog/v1.0/products/"?.substring(1)
+                    _relativeUrls["getBrands"] = "/service/application/catalog/v1.0/brands/".substring(1)
             
-                    _relativeUrls["getBrands"] = "/service/application/catalog/v1.0/brands/"?.substring(1)
+                    _relativeUrls["getBrandDetailBySlug"] = "/service/application/catalog/v1.0/brands/{slug}/".substring(1)
             
-                    _relativeUrls["getBrandDetailBySlug"] = "/service/application/catalog/v1.0/brands/{slug}/"?.substring(1)
+                    _relativeUrls["getCategories"] = "/service/application/catalog/v1.0/categories/".substring(1)
             
-                    _relativeUrls["getCategories"] = "/service/application/catalog/v1.0/categories/"?.substring(1)
+                    _relativeUrls["getCategoryDetailBySlug"] = "/service/application/catalog/v1.0/categories/{slug}/".substring(1)
             
-                    _relativeUrls["getCategoryDetailBySlug"] = "/service/application/catalog/v1.0/categories/{slug}/"?.substring(1)
+                    _relativeUrls["getHomeProducts"] = "/service/application/catalog/v1.0/home/listing/".substring(1)
             
-                    _relativeUrls["getHomeProducts"] = "/service/application/catalog/v1.0/home/listing/"?.substring(1)
+                    _relativeUrls["getDepartments"] = "/service/application/catalog/v1.0/departments/".substring(1)
             
-                    _relativeUrls["getDepartments"] = "/service/application/catalog/v1.0/departments/"?.substring(1)
+                    _relativeUrls["getSearchResults"] = "/service/application/catalog/v1.0/auto-complete/".substring(1)
             
-                    _relativeUrls["getSearchResults"] = "/service/application/catalog/v1.0/auto-complete/"?.substring(1)
+                    _relativeUrls["getCollections"] = "/service/application/catalog/v1.0/collections/".substring(1)
             
-                    _relativeUrls["getCollections"] = "/service/application/catalog/v1.0/collections/"?.substring(1)
+                    _relativeUrls["getCollectionItemsBySlug"] = "/service/application/catalog/v1.0/collections/{slug}/items/".substring(1)
             
-                    _relativeUrls["getCollectionItemsBySlug"] = "/service/application/catalog/v1.0/collections/{slug}/items/"?.substring(1)
+                    _relativeUrls["getCollectionDetailBySlug"] = "/service/application/catalog/v1.0/collections/{slug}/".substring(1)
             
-                    _relativeUrls["getCollectionDetailBySlug"] = "/service/application/catalog/v1.0/collections/{slug}/"?.substring(1)
+                    _relativeUrls["getFollowedListing"] = "/service/application/catalog/v1.0/follow/{collection_type}/".substring(1)
             
-                    _relativeUrls["getFollowedListing"] = "/service/application/catalog/v1.0/follow/{collection_type}/"?.substring(1)
+                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
             
-                    _relativeUrls["unfollowById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/"?.substring(1)
+                    _relativeUrls["followById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/".substring(1)
             
-                    _relativeUrls["followById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/"?.substring(1)
+                    _relativeUrls["getFollowerCountById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/".substring(1)
             
-                    _relativeUrls["getFollowerCountById"] = "/service/application/catalog/v1.0/follow/{collection_type}/{collection_id}/count/"?.substring(1)
+                    _relativeUrls["getFollowIds"] = "/service/application/catalog/v1.0/follow/ids/".substring(1)
             
-                    _relativeUrls["getFollowIds"] = "/service/application/catalog/v1.0/follow/ids/"?.substring(1)
+                    _relativeUrls["getStores"] = "/service/application/catalog/v1.0/locations/".substring(1)
             
-                    _relativeUrls["getStores"] = "/service/application/catalog/v1.0/locations/"?.substring(1)
+                    _relativeUrls["getInStockLocations"] = "/service/application/catalog/v1.0/in-stock/locations/".substring(1)
             
-                    _relativeUrls["getInStockLocations"] = "/service/application/catalog/v1.0/in-stock/locations/"?.substring(1)
+                    _relativeUrls["getLocationDetailsById"] = "/service/application/catalog/v1.0/locations/{location_id}/".substring(1)
             
-                    _relativeUrls["getLocationDetailsById"] = "/service/application/catalog/v1.0/locations/{location_id}/"?.substring(1)
+                    _relativeUrls["getProductBundlesBySlug"] = "/service/application/catalog/v1.0/product-grouping/".substring(1)
             
-                    _relativeUrls["getProductBundlesBySlug"] = "/service/application/catalog/v1.0/product-grouping/"?.substring(1)
+                    _relativeUrls["getProductPriceBySlug"] = "/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/".substring(1)
             
-                    _relativeUrls["getProductPriceBySlug"] = "/service/application/catalog/v2.0/products/{slug}/sizes/{size}/price/"?.substring(1)
-            
-                    _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/"?.substring(1)
+                    _relativeUrls["getProductSellersBySlug"] = "/service/application/catalog/v2.0/products/{slug}/sizes/{size}/sellers/".substring(1)
             
     }
 
@@ -110,7 +110,8 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationCatalog",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(CatalogApiList::class.java) as? CatalogApiList
     }
@@ -155,17 +156,6 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         return catalogApiList?.getComparedFrequentlyProductBySlug(fullUrl   )}
-
-    
-    
-    fun getProductSimilarByIdentifier(slug: String, similarType: String): Deferred<Response<SimilarProductByTypeResponse>>? {
-        var fullUrl : String? = _relativeUrls["getProductSimilarByIdentifier"] 
-        
-        fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
-        
-        fullUrl = fullUrl?.replace("{" + "similar_type" +"}",similarType.toString())
-        
-        return catalogApiList?.getProductSimilarByIdentifier(fullUrl    )}
 
     
     
@@ -896,14 +886,14 @@ class CatalogDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     
     
-    fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null): Deferred<Response<ProductSizePriceResponseV2>>? {
+    fun getProductPriceBySlug(slug: String, size: String, storeId: Int?=null, pincode: String?=null, moq: Int?=null): Deferred<Response<ProductSizePriceResponseV2>>? {
         var fullUrl : String? = _relativeUrls["getProductPriceBySlug"] 
         
         fullUrl = fullUrl?.replace("{" + "slug" +"}",slug.toString())
         
         fullUrl = fullUrl?.replace("{" + "size" +"}",size.toString())
         
-        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    pincode = pincode)}
+        return catalogApiList?.getProductPriceBySlug(fullUrl      ,  storeId = storeId,    pincode = pincode,    moq = moq)}
 
     
     

@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.filestorage.*
+import com.sdk.application.apis.filestorage.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,11 +21,11 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
 
     init{
             
-                    _relativeUrls["startUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/start/"?.substring(1)
+                    _relativeUrls["startUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/start/".substring(1)
             
-                    _relativeUrls["completeUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/"?.substring(1)
+                    _relativeUrls["completeUpload"] = "/service/application/assets/v1.0/namespaces/{namespace}/upload/complete/".substring(1)
             
-                    _relativeUrls["signUrls"] = "/service/application/assets/v1.0/sign-urls/"?.substring(1)
+                    _relativeUrls["signUrls"] = "/service/application/assets/v1.0/sign-urls/".substring(1)
             
     }
 
@@ -54,7 +56,8 @@ class FileStorageDataManagerClass(val config: ApplicationConfig, val unauthorize
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "ApplicationFileStorage",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey
         )
         return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }
