@@ -98,7 +98,7 @@ Get the list of all the extensions
 
 
 ```kotlin
-platformClient.partner.getExtensionsForCompany(pageSize: pageSize, tag: tag, currentPage: currentPage, pageNo: pageNo, filterBy: filterBy).safeAwait{ response, error->
+platformClient.partner.getExtensionsForCompany(pageSize: pageSize, tag: tag, currentPage: currentPage, pageNo: pageNo, filterBy: filterBy, query: query).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -118,7 +118,8 @@ platformClient.partner.getExtensionsForCompany(pageSize: pageSize, tag: tag, cur
 | tag | String? | no | tag |   
 | currentPage | String? | no | tag |   
 | pageNo | Double? | no | Current page number |   
-| filterBy | String? | no | Filter by |  
+| filterBy | String? | no | Filter by |   
+| query | String? | no | query |  
 
 
 

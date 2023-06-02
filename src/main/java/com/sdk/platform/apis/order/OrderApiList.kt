@@ -26,7 +26,7 @@ interface OrderApiList {
     : Deferred<Response<ShipmentDetailsResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/lane-config/")
-    fun getLaneConfig(@Path("company_id") companyId: String, @Query("super_lane") superLane: String?, @Query("group_entity") groupEntity: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channel") salesChannel: String?, @Query("payment_mode") paymentMode: String?, @Query("bag_status") bagStatus: String?)
+    fun getLaneConfig(@Path("company_id") companyId: String, @Query("super_lane") superLane: String?, @Query("group_entity") groupEntity: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("payment_mode") paymentMode: String?, @Query("bag_status") bagStatus: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("tags") tags: String?, @Query("time_to_dispatch") timeToDispatch: String?, @Query("payment_methods") paymentMethods: String?)
     : Deferred<Response<LaneConfigResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/shipments/")
@@ -114,7 +114,7 @@ interface OrderApiList {
     : Deferred<Response<BaseResponse>>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/click2call")
-    fun click2Call(@Query("caller") caller: String, @Query("receiver") receiver: String, @Query("bag_id") bagId: String, @Query("caller_id") callerId: String?, @Query("method") method: String?, @Path("company_id") companyId: String)
+    fun click2Call(@Query("caller") caller: String, @Query("receiver") receiver: String, @Query("bag_id") bagId: String, @Query("calling_to") callingTo: String?, @Query("caller_id") callerId: String?, @Path("company_id") companyId: String)
     : Deferred<Response<Click2CallResponse>>
     
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/status-internal")
@@ -138,16 +138,20 @@ interface OrderApiList {
     : Deferred<Response<ShipmentHistoryResponse>>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: String?, @Query("bag_id") bagId: Int?)
+    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: Int?, @Query("bag_id") bagId: Int?)
     : Deferred<Response<ShipmentHistoryResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")
     fun sendSmsNinja(@Path("company_id") companyId: String,@Body body: SendSmsPayload)
     : Deferred<Response<OrderStatusResult>>
     
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/oms/manual-place-shipment")
+    fun platformManualAssignDPToShipment(@Path("company_id") companyId: String,@Body body: ManualAssignDPToShipment)
+    : Deferred<Response<ManualAssignDPToShipmentResponse>>
+    
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/update-packaging-dimension")
-    fun updatePackagingDimensions(@Path("company_id") companyId: String,@Body body: UpdatePackagingDimensionsPayload)
-    : Deferred<Response<UpdatePackagingDimensionsResponse>>
+    fun updatePackagingDimensions(@Path("company_id") companyId: String,@Body body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/create-order")
     fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI)
@@ -174,31 +178,7 @@ interface OrderApiList {
     : Deferred<Response<OrderStatusResult>>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/bag/state/transition")
-    fun getStateTransitionMap(@Path("company_id") companyId: String)
-    : Deferred<Response<BagStateTransitionMap>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/customer-credit-balance")
-    fun fetchCreditBalanceDetail(@Path("company_id") companyId: String,@Body body: FetchCreditBalanceRequestPayload)
-    : Deferred<Response<FetchCreditBalanceResponsePayload>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/refund-mode-config")
-    fun fetchRefundModeConfig(@Path("company_id") companyId: String,@Body body: RefundModeConfigRequestPayload)
-    : Deferred<Response<RefundModeConfigResponsePayload>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/attach")
-    fun attachOrderUser(@Path("company_id") companyId: String,@Body body: AttachOrderUser)
-    : Deferred<Response<AttachOrderUserResponse>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/send/otp/mobile")
-    fun sendUserMobileOTP(@Path("company_id") companyId: String,@Body body: SendUserMobileOTP)
-    : Deferred<Response<SendUserMobileOtpResponse>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/verify/otp")
-    fun verifyMobileOTP(@Path("company_id") companyId: String,@Body body: VerifyMobileOTP)
-    : Deferred<Response<PointBlankOtpData>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/einvoice/retry/irn")
-    fun eInvoiceRetry(@Path("company_id") companyId: String,@Body body: EInvoiceRetry)
-    : Deferred<Response<EInvoiceRetryResponse>>
+    fun sendSmsNinjaPlatform(@Path("company_id") companyId: String)
+    : Deferred<Response<OrderStatusResult>>
     
 }

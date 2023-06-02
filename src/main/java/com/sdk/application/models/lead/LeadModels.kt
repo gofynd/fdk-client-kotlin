@@ -1382,9 +1382,14 @@ data class SupportGeneralConfig(
     var showSupportDris: Boolean?=null,
     
     @SerializedName("integration")
-    var integration: @RawValue HashMap<String,Any>?=null
+    var integration: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

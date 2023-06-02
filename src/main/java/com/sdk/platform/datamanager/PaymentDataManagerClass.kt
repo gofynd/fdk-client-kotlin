@@ -351,10 +351,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateEdcDevice(terminalUniqueIdentifier: String,body: EdcAddRequest)
+    suspend fun updateEdcDevice(body: EdcAddRequest)
     : Deferred<Response<EdcDeviceAddResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.updateEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
+                paymentApiList?.updateEdcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -494,7 +494,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     suspend fun pollingPaymentLink(paymentLinkId: String?=null)
     : Deferred<Response<PollingPaymentLinkResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.pollingPaymentLink(paymentLinkId = paymentLinkId, companyId = config.companyId , applicationId = applicationId  )
+                paymentApiList?.pollingPaymentLink(companyId = config.companyId , applicationId = applicationId , paymentLinkId = paymentLinkId )
         } else {
             null
         }

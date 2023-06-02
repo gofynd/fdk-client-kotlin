@@ -106,7 +106,7 @@ interface PaymentApiList {
     : Deferred<Response<EdcDeviceStatsResponse>>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/edc-device")
-    fun updateEdcDevice(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("terminal_unique_identifier") terminalUniqueIdentifier: String,@Body body: EdcAddRequest)
+    fun updateEdcDevice(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EdcAddRequest)
     : Deferred<Response<EdcDeviceAddResponse>>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/edc-device/{terminal_unique_identifier}")
@@ -162,7 +162,7 @@ interface PaymentApiList {
     : Deferred<Response<CreatePaymentLinkResponse>>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/polling-payment-link/")
-    fun pollingPaymentLink(@Query("payment_link_id") paymentLinkId: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun pollingPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("payment_link_id") paymentLinkId: String?)
     : Deferred<Response<PollingPaymentLinkResponse>>
     
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/resend-payment-link/")

@@ -14,7 +14,7 @@ interface PartnerApiList {
     : Deferred<Response<SubscriptionRes>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/extensions")
-    fun getExtensionsForCompany(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("tag") tag: String?, @Query("current_page") currentPage: String?, @Query("page_no") pageNo: Double?, @Query("filter_by") filterBy: String?)
+    fun getExtensionsForCompany(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("tag") tag: String?, @Query("current_page") currentPage: String?, @Query("page_no") pageNo: Double?, @Query("filter_by") filterBy: String?, @Query("query") query: String?)
     : Deferred<Response<ExtensionList>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/public-extension/{extension_id}")

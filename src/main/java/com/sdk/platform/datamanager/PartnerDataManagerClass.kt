@@ -58,12 +58,12 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getExtensionsForCompany(pageSize: Double?=null, tag: String?=null, currentPage: String?=null, pageNo: Double?=null, filterBy: String?=null)
+    suspend fun getExtensionsForCompany(pageSize: Double?=null, tag: String?=null, currentPage: String?=null, pageNo: Double?=null, filterBy: String?=null, query: String?=null)
     : Deferred<Response<ExtensionList>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getExtensionsForCompany(
-        companyId = config.companyId, pageSize = pageSize, tag = tag, currentPage = currentPage, pageNo = pageNo, filterBy = filterBy )
+        companyId = config.companyId, pageSize = pageSize, tag = tag, currentPage = currentPage, pageNo = pageNo, filterBy = filterBy, query = query )
         } else {
             null
         } 
