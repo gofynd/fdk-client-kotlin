@@ -141,9 +141,48 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         } 
     }
     
+    
+    suspend fun getInvoiceList(body: GetInvoiceListRequest)
+    : Deferred<Response<GetInvoiceListResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.getInvoiceList(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun invoiceListing(body: InvoiceListingRequest)
+    : Deferred<Response<InvoiceListingResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.invoiceListing(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun invoicePDF(body: InvoicePdfRequest)
+    : Deferred<Response<InvoicePdfResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.invoicePDF(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    
     
     
     

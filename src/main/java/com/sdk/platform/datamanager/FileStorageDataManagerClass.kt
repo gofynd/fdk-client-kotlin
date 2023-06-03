@@ -161,10 +161,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun browse(namespace: String, pageNo: Int?=null)
+    suspend fun appbrowse(namespace: String, pageNo: Int?=null)
     : Deferred<Response<BrowseResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                fileStorageApiList?.browse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo )
+                fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo )
         } else {
             null
         }
@@ -193,9 +193,9 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
         
     /**
     *
-    * Summary: Paginator for browse
+    * Summary: Paginator for appbrowse
     **/
-    fun browsePaginator(
+    fun appbrowsePaginator(
     namespace: String
     
     ) : Paginator<BrowseResponse>{
@@ -209,7 +209,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
                     val pageId = paginator.nextId
                     val pageNo = paginator.pageNo
                     val pageType = "number"
-                    fileStorageApiList?.browse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo)?.safeAwait{ response, error ->
+                    fileStorageApiList?.appbrowse(namespace = namespace, companyId = config.companyId , applicationId = applicationId , pageNo = pageNo)?.safeAwait{ response, error ->
                         response?.let {
                             val page = response.peekContent()?.page
                             paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)

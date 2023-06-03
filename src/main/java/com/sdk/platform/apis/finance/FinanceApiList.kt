@@ -41,4 +41,16 @@ interface FinanceApiList {
     fun paymentProcess(@Path("company_id") companyId: String,@Body body: PaymentProcessRequest)
     : Deferred<Response<PaymentProcessResponse>>
     
+    @POST ("/service/platform/finance/v1.0/company/{company_id}/get-invoice-type")
+    fun getInvoiceList(@Path("company_id") companyId: String,@Body body: GetInvoiceListRequest)
+    : Deferred<Response<GetInvoiceListResponse>>
+    
+    @POST ("/service/platform/finance/v1.0/company/{company_id}/invoice/listing")
+    fun invoiceListing(@Path("company_id") companyId: String,@Body body: InvoiceListingRequest)
+    : Deferred<Response<InvoiceListingResponse>>
+    
+    @POST ("/service/platform/finance/v1.0/company/{company_id}/invoice/pdf-view")
+    fun invoicePDF(@Path("company_id") companyId: String,@Body body: InvoicePdfRequest)
+    : Deferred<Response<InvoicePdfResponse>>
+    
 }

@@ -2458,7 +2458,7 @@ data class Subscription(
     var productSuiteId: String?=null,
     
     @SerializedName("plan_data")
-    var planData: Plan?=null,
+    var planData: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("current_status")
     var currentStatus: String?=null,
