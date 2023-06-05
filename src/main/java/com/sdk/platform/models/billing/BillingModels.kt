@@ -2227,15 +2227,10 @@ data class SubscriptionCustomer(
     @SerializedName("modified_at")
     var modifiedAt: String?=null,
     
-    @SerializedName("credit_balance")
-    var creditBalance: Double?=null,
-    
     @SerializedName("data")
     var data: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -2458,7 +2453,7 @@ data class Subscription(
     var productSuiteId: String?=null,
     
     @SerializedName("plan_data")
-    var planData: @RawValue HashMap<String,Any>?=null,
+    var planData: Plan?=null,
     
     @SerializedName("current_status")
     var currentStatus: String?=null,
@@ -2473,9 +2468,14 @@ data class Subscription(
     var modifiedAt: String?=null,
     
     @SerializedName("latest_invoice")
-    var latestInvoice: String?=null
+    var latestInvoice: String?=null,
+    
+    @SerializedName("channel_type")
+    var channelType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2524,16 +2524,31 @@ data class SubscriptionStatus(
     
     
     
-    @SerializedName("mandate_amount")
-    var mandateAmount: Double?=null,
-    
     @SerializedName("is_enabled")
     var isEnabled: Boolean?=null,
     
     @SerializedName("subscription")
-    var subscription: Subscription?=null
+    var subscription: Subscription?=null,
+    
+    @SerializedName("latest_invoice")
+    var latestInvoice: InvoicesData?=null,
+    
+    @SerializedName("next_plan")
+    var nextPlan: Plan?=null,
+    
+    @SerializedName("current_subscriptions")
+    var currentSubscriptions: ArrayList<Subscription>?=null,
+    
+    @SerializedName("mandate_amount")
+    var mandateAmount: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
     
     
     

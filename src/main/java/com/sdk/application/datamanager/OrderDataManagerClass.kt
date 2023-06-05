@@ -98,7 +98,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getPosOrderById(orderId: String): Deferred<Response<OrderList>>? {
+    fun getPosOrderById(orderId: String): Deferred<Response<OrderById>>? {
         var fullUrl : String? = _relativeUrls["getPosOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
