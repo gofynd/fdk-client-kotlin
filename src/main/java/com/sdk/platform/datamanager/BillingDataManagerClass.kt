@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.billing.*
+import com.sdk.platform.apis.billing.*
 
 
 
@@ -85,6 +87,30 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         return if (config.oauthClient.isAccessTokenValid()) {
             billingApiList?.cancelSubscriptionCharge(
         companyId = config.companyId, extensionId = extensionId, subscriptionId = subscriptionId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun createOneTimeCharge(extensionId: String,body: CreateOneTimeCharge)
+    : Deferred<Response<CreateOneTimeChargeResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.createOneTimeCharge(
+        companyId = config.companyId, extensionId = extensionId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChargeDetails(extensionId: String, chargeId: String)
+    : Deferred<Response<OneTimeChargeEntity>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            billingApiList?.getChargeDetails(
+        companyId = config.companyId, extensionId = extensionId, chargeId = chargeId )
         } else {
             null
         } 
@@ -189,6 +215,8 @@ class BillingDataManagerClass(val config: PlatformConfig, val unauthorizedAction
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
     
     
     

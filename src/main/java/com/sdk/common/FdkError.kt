@@ -1,9 +1,9 @@
 package com.sdk.common
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import com.google.gson.annotations.Expose
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.RawValue
 import com.google.gson.annotations.SerializedName
 
 

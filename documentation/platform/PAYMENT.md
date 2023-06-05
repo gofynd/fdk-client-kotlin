@@ -39,7 +39,7 @@ Get All Brand Payment Gateway Config Secret
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.getBrandPaymentGatewayConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -211,7 +211,7 @@ Save Config Secret For Brand Payment Gateway
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.saveBrandPaymentGatewayConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.saveBrandPaymentGatewayConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -275,7 +275,7 @@ Save Config Secret For Brand Payment Gateway
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.updateBrandPaymentGatewayConfig(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.updateBrandPaymentGatewayConfig(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -339,7 +339,7 @@ Get All Valid Payment Options
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getPaymentModeRoutes(refresh: refresh, requestType: requestType).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.getPaymentModeRoutes(refresh: refresh, requestType: requestType).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1553,7 +1553,7 @@ Get All Payouts
 
 
 ```kotlin
-client.payment.getAllPayouts(uniqueExternalId: uniqueExternalId).safeAwait{ response, error->
+platformClient.payment.getAllPayouts(uniqueExternalId: uniqueExternalId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1676,7 +1676,7 @@ Save Payout
 
 
 ```kotlin
-client.payment.savePayout(body: body).safeAwait{ response, error->
+platformClient.payment.savePayout(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1763,7 +1763,7 @@ Update Payout
 
 
 ```kotlin
-client.payment.updatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response, error->
+platformClient.payment.updatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1827,7 +1827,7 @@ Partial Update Payout
 
 
 ```kotlin
-client.payment.activateAndDectivatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response, error->
+platformClient.payment.activateAndDectivatePayout(uniqueTransferNo: uniqueTransferNo, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1891,7 +1891,7 @@ Delete Payout
 
 
 ```kotlin
-client.payment.deletePayout(uniqueTransferNo: uniqueTransferNo).safeAwait{ response, error->
+platformClient.payment.deletePayout(uniqueTransferNo: uniqueTransferNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1953,7 +1953,7 @@ List Subscription Payment Method
 
 
 ```kotlin
-client.payment.getSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId).safeAwait{ response, error->
+platformClient.payment.getSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2141,7 +2141,7 @@ Delete Subscription Payment Method
 
 
 ```kotlin
-client.payment.deleteSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId, paymentMethodId: paymentMethodId).safeAwait{ response, error->
+platformClient.payment.deleteSubscriptionPaymentMethod(uniqueExternalId: uniqueExternalId, paymentMethodId: paymentMethodId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2204,7 +2204,7 @@ List Subscription Config
 
 
 ```kotlin
-client.payment.getSubscriptionConfig().safeAwait{ response, error->
+platformClient.payment.getSubscriptionConfig().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2265,7 +2265,7 @@ Save Subscription Setup Intent
 
 
 ```kotlin
-client.payment.saveSubscriptionSetupIntent(body: body).safeAwait{ response, error->
+platformClient.payment.saveSubscriptionSetupIntent(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2333,7 +2333,7 @@ Get bank details
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getBankAccountDetailsOpenAPI(orderId: orderId, requestHash: requestHash).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.getBankAccountDetailsOpenAPI(orderId: orderId, requestHash: requestHash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2407,7 +2407,7 @@ Save bank details for cancelled/returned order
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.addRefundBankAccountUsingOTP(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.addRefundBankAccountUsingOTP(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2471,7 +2471,7 @@ Ifsc Code Verification
 
 
 ```kotlin
-client.payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response, error->
+platformClient.payment.verifyIfscCode(ifscCode: ifscCode).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2551,7 +2551,7 @@ List Order Beneficiary
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getUserOrderBeneficiaries(orderId: orderId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.getUserOrderBeneficiaries(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2635,7 +2635,7 @@ List User Beneficiary
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getUserBeneficiaries(orderId: orderId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.getUserBeneficiaries(orderId: orderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2720,7 +2720,7 @@ Confirm payment after successful payment from payment gateway
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.confirmPayment(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.confirmPayment(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2783,7 +2783,7 @@ List Payment Options Method Codes
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").payment.getPaymentCodeOption().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").payment.getPaymentCodeOption().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2905,11 +2905,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | created | Boolean |  no  | Response is created or not |
- | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
  | success | Boolean |  no  | Response is successful or not |
- | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
+ | created | Boolean |  no  | Response is created or not |
  | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
+ | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
+ | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
  | appId | String |  no  | Application Id to which Payment config Mapped |
 
 ---
@@ -2921,9 +2921,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  | Response is successful or not |
  | description | String |  no  | Error human understandable description. |
  | code | String |  no  | Error descrption code. |
- | success | Boolean |  no  | Response is successful or not |
 
 ---
 
@@ -2935,10 +2935,10 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | configType | String |  no  | Config Type of the aggregator |
- | secret | String |  no  | Secret Key of the payment aggregator |
  | isActive | Boolean? |  yes  | Enable/ Disable Flag |
- | key | String |  no  | Api key of the payment aggregator |
  | merchantSalt | String |  no  | Merchant key of the payment aggregator |
+ | key | String |  no  | Api key of the payment aggregator |
+ | secret | String |  no  | Secret Key of the payment aggregator |
 
 ---
 
@@ -2962,8 +2962,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | ArrayList<String> |  no  | List of added payment gateway |
  | success | Boolean |  no  | Response is successful or not |
+ | aggregator | ArrayList<String> |  no  | List of added payment gateway |
 
 ---
 
@@ -2986,8 +2986,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | [ErrorCodeAndDescription](#ErrorCodeAndDescription) |  no  |  |
  | success | Boolean |  no  | Response is successful or not |
+ | error | [ErrorCodeAndDescription](#ErrorCodeAndDescription) |  no  |  |
 
 ---
 
@@ -2998,8 +2998,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | packageName | String? |  yes  | package_name |
  | code | String? |  yes  | code |
+ | packageName | String? |  yes  | package_name |
 
 ---
 
@@ -3022,10 +3022,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | displayName | String? |  yes  | display_name |
- | packageName | String? |  yes  | package_name |
+ | outage | HashMap<String,Any>? |  yes  | payment option outage status |
  | code | String? |  yes  | code |
  | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
+ | packageName | String? |  yes  | package_name |
+ | displayName | String? |  yes  | display_name |
 
 ---
 
@@ -3036,36 +3037,37 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | nickname | String? |  yes  | nickname |
- | expired | Boolean? |  yes  | expired |
- | merchantCode | String? |  yes  | merchant code |
- | retryCount | Int? |  yes  | retry_count |
- | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
- | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
- | expMonth | Int? |  yes  | exp_month |
- | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
- | cardName | String? |  yes  | card_name |
- | cardReference | String? |  yes  | card_reference |
- | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
- | cardIssuer | String? |  yes  | card_issuer |
- | cardToken | String? |  yes  | card_token |
- | aggregatorName | String |  no  | aggregator_name |
  | cardIsin | String? |  yes  | card_isin |
+ | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
+ | intentFlow | Boolean? |  yes  | intent_flow |
+ | timeout | Int? |  yes  | timeout |
+ | merchantCode | String? |  yes  | merchant code |
+ | displayName | String? |  yes  | display name |
+ | expYear | Int? |  yes  | exp_year |
  | cardBrandImage | String? |  yes  | card_brand_image |
  | displayPriority | Int? |  yes  | Dispaly Priority |
- | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
- | intentFlow | Boolean? |  yes  | intent_flow |
  | cardId | String? |  yes  | card_id |
- | expYear | Int? |  yes  | exp_year |
+ | outage | HashMap<String,Any>? |  yes  | payment option outage status |
  | cardNumber | String? |  yes  | card_number |
+ | cardIssuer | String? |  yes  | card_issuer |
  | fyndVpa | String? |  yes  | fynd_vpa |
- | code | String? |  yes  | code |
- | timeout | Int? |  yes  | timeout |
- | cardFingerprint | String? |  yes  | card_fingerprint |
- | displayName | String? |  yes  | display name |
- | name | String? |  yes  | name |
+ | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
  | cardType | String? |  yes  | card_type |
+ | retryCount | Int? |  yes  | retry_count |
+ | cardName | String? |  yes  | card_name |
+ | expMonth | Int? |  yes  | exp_month |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
+ | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
+ | nickname | String? |  yes  | nickname |
+ | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
+ | cardFingerprint | String? |  yes  | card_fingerprint |
  | cardBrand | String? |  yes  | card_brand |
+ | cardReference | String? |  yes  | card_reference |
+ | cardToken | String? |  yes  | card_token |
+ | code | String? |  yes  | code |
+ | expired | Boolean? |  yes  | expired |
+ | name | String? |  yes  | name |
+ | aggregatorName | String |  no  | aggregator_name |
 
 ---
 
@@ -3076,15 +3078,17 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
- | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
- | displayName | String |  no  | Payment mode display name |
- | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
- | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
- | saveCard | Boolean? |  yes  | Card save or not |
- | aggregatorName | String? |  yes  | Dispaly Priority |
- | name | String |  no  | Payment mode name |
  | displayPriority | Int |  no  | Dispaly Priority |
+ | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
+ | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
+ | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
+ | name | String |  no  | Payment mode name |
+ | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
+ | aggregatorName | String? |  yes  | Dispaly Priority |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logos dict with small and large logo url |
+ | displayName | String |  no  | Payment mode display name |
+ | saveCard | Boolean? |  yes  | Card save or not |
+ | logo | String? |  yes  | Logo |
 
 ---
 
@@ -3118,13 +3122,13 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
  | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
- | transferType | String |  no  | transafer type |
+ | isDefault | Boolean |  no  | default or not  |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | moreAttributes | HashMap<String,Any> |  no  | bank details object |
  | uniqueTransferNo | HashMap<String,Any> |  no  | display priority of the payment mode |
  | customers | HashMap<String,Any> |  no  | customers details object |
- | isDefault | Boolean |  no  | default or not  |
- | moreAttributes | HashMap<String,Any> |  no  | bank details object |
+ | transferType | String |  no  | transafer type |
 
 ---
 
@@ -3135,16 +3139,16 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankName | String? |  yes  |  |
- | state | String? |  yes  |  |
- | branchName | String? |  yes  |  |
- | city | String? |  yes  |  |
- | accountHolder | String? |  yes  |  |
- | accountType | String |  no  |  |
  | ifscCode | String |  no  |  |
+ | pincode | Int? |  yes  |  |
+ | state | String? |  yes  |  |
+ | accountHolder | String? |  yes  |  |
  | accountNo | String? |  yes  |  |
  | country | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
+ | accountType | String |  no  |  |
+ | branchName | String? |  yes  |  |
+ | bankName | String? |  yes  |  |
+ | city | String? |  yes  |  |
 
 ---
 
@@ -3156,11 +3160,11 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | aggregator | String |  no  | Aggregator Name |
- | isActive | Boolean |  no  | Enable/Disable Flag Payout |
+ | users | HashMap<String,Any> |  no  | payout users object |
  | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
+ | isActive | Boolean |  no  | Enable/Disable Flag Payout |
  | transferType | String |  no  | transafer type |
  | uniqueExternalId | String |  no  | Unique Id of Payout |
- | users | HashMap<String,Any> |  no  | payout users object |
 
 ---
 
@@ -3171,16 +3175,16 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | created | Boolean |  no  | created flag |
- | payouts | HashMap<String,Any> |  no  | payout  object |
+ | success | Boolean |  no  | Response is successful or not |
  | paymentStatus | String |  no  | status of payment |
  | aggregator | String |  no  | Aggregator Name |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | success | Boolean |  no  | Response is successful or not |
- | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
- | transferType | String |  no  | transfer type |
- | uniqueTransferNo | String |  no  | unique transfer no |
  | users | HashMap<String,Any> |  no  | users details object |
+ | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
+ | created | Boolean |  no  | created flag |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | uniqueTransferNo | String |  no  | unique transfer no |
+ | payouts | HashMap<String,Any> |  no  | payout  object |
+ | transferType | String |  no  | transfer type |
 
 ---
 
@@ -3191,9 +3195,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isDefault | Boolean |  no  | Enable/Disable Default Payout |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
  | success | Boolean |  no  | Response is successful or not |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | isDefault | Boolean |  no  | Enable/Disable Default Payout |
 
 ---
 
@@ -3205,8 +3209,8 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | uniqueExternalId | String |  no  | Unique Id of Payout |
- | isDefault | Boolean |  no  | Enable/Disable Default Payout |
  | isActive | Boolean |  no  | Enable/Disable Flag Payout |
+ | isDefault | Boolean |  no  | Enable/Disable Default Payout |
 
 ---
 
@@ -3228,8 +3232,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | ArrayList<HashMap<String,Any>> |  no  | Subscription Payment Method Object |
  | success | Boolean |  no  | Response is successful or not |
+ | data | ArrayList<HashMap<String,Any>> |  no  | Subscription Payment Method Object |
 
 ---
 
@@ -3251,9 +3255,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | config | HashMap<String,Any> |  no  | Aggregator Config |
- | aggregator | String |  no  | Aggregator Name |
  | success | Boolean |  no  | Response is successful or not |
+ | aggregator | String |  no  | Aggregator Name |
+ | config | HashMap<String,Any> |  no  | Aggregator Config |
 
 ---
 
@@ -3275,8 +3279,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | HashMap<String,Any> |  no  | Subscription Payment Method Object |
  | success | Boolean |  no  | Response is successful or not |
+ | data | HashMap<String,Any> |  no  | Subscription Payment Method Object |
 
 ---
 
@@ -3287,10 +3291,10 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | HashMap<String,Any>? |  yes  | Refund account data. |
- | isVerifiedFlag | Boolean? |  yes  |  |
  | success | Boolean |  no  | Success or failure flag. |
  | message | String |  no  | Response message |
+ | data | HashMap<String,Any>? |  yes  | Refund account data. |
+ | isVerifiedFlag | Boolean? |  yes  |  |
 
 ---
 
@@ -3301,9 +3305,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | success | Boolean |  no  | Response is successful or not |
  | description | String |  no  | Not Found |
  | code | String |  no  | Bad Request Data |
- | success | Boolean |  no  | Response is successful or not |
 
 ---
 
@@ -3314,11 +3318,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankName | String |  no  |  |
- | branchName | String |  no  |  |
- | accountHolder | String |  no  |  |
  | ifscCode | String |  no  |  |
+ | accountHolder | String |  no  |  |
  | accountNo | String |  no  |  |
+ | branchName | String |  no  |  |
+ | bankName | String |  no  |  |
 
 ---
 
@@ -3341,9 +3345,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankName | String |  no  | Bank Name Of Account |
- | branchName | String |  no  | Branch Name Of Account |
  | success | Boolean? |  yes  | Response is successful or not |
+ | branchName | String |  no  | Branch Name Of Account |
+ | bankName | String |  no  | Bank Name Of Account |
 
 ---
 
@@ -3354,25 +3358,25 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | bankName | String |  no  | Bank Name Of Account |
- | accountHolder | String |  no  | Account Holder Name |
- | address | String |  no  | Address of User |
- | ifscCode | String |  no  | Ifsc Code Of Account |
- | subtitle | String |  no  | SHort Title Of Account |
- | mobile | String? |  yes  | MObile no of User |
- | modifiedOn | String |  no  | MOdification Date of Beneficiary |
- | beneficiaryId | String |  no  | Benenficiary Id |
- | email | String |  no  | EMail of User |
+ | title | String |  no  | Title Of Account |
  | accountNo | String |  no  | Account Number |
  | createdOn | String |  no  | Creation Date of Beneficiary |
- | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
- | title | String |  no  | Title Of Account |
- | id | Int |  no  |   |
- | branchName | String? |  yes  | Branch Name Of Account |
- | transferMode | String |  no  | Transfer Mode Of Account |
+ | mobile | String? |  yes  | MObile no of User |
  | displayName | String |  no  | Display Name Of Account |
- | comment | String? |  yes  | Remarks |
+ | ifscCode | String |  no  | Ifsc Code Of Account |
  | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
+ | accountHolder | String |  no  | Account Holder Name |
+ | subtitle | String |  no  | SHort Title Of Account |
+ | comment | String? |  yes  | Remarks |
+ | email | String |  no  | EMail of User |
+ | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | branchName | String? |  yes  | Branch Name Of Account |
+ | bankName | String |  no  | Bank Name Of Account |
+ | address | String |  no  | Address of User |
+ | beneficiaryId | String |  no  | Benenficiary Id |
+ | modifiedOn | String |  no  | MOdification Date of Beneficiary |
+ | transferMode | String |  no  | Transfer Mode Of Account |
+ | id | Int |  no  |   |
 
 ---
 
@@ -3383,8 +3387,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
  | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)>? |  yes  | All Beneficiaries Of An Order |
+ | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
 
 ---
 
@@ -3395,11 +3399,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | orderId | String? |  yes  |  |
  | currentStatus | String? |  yes  |  |
  | extraMeta | HashMap<String,Any>? |  yes  |  |
  | paymentGateway | String? |  yes  |  |
  | paymentId | String? |  yes  |  |
- | orderId | String? |  yes  |  |
 
 ---
 
@@ -3410,10 +3414,10 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String? |  yes  | Payment mode name |
- | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
  | mode | String |  no  |  |
  | amount | Double |  no  | Payment amount |
+ | name | String? |  yes  | Payment mode name |
+ | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
 
 ---
 
@@ -3424,8 +3428,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | orderId | String |  no  | Unique order id |
  | paymentMethods | ArrayList<[MultiTenderPaymentMethod](#MultiTenderPaymentMethod)> |  no  |  |
+ | orderId | String |  no  | Unique order id |
 
 ---
 
@@ -3436,9 +3440,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | orderId | String |  no  | Unique order id |
  | success | Boolean |  no  | Payment confirmation updated or not. |
  | message | String |  no  | Message |
+ | orderId | String |  no  | Unique order id |
 
 ---
 
@@ -3487,8 +3491,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | data | [GetPaymentCode](#GetPaymentCode) |  no  | Data about Payment Code. |
  | success | Boolean |  no  | Response is successful or not. |
+ | data | [GetPaymentCode](#GetPaymentCode) |  no  | Data about Payment Code. |
 
 ---
 

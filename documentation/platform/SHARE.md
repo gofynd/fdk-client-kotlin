@@ -23,7 +23,7 @@ Create short link
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.createShortLink(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -120,7 +120,7 @@ Get short links
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.getShortLinks(pageNo: pageNo, pageSize: pageSize, createdBy: createdBy, active: active, q: q).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -233,7 +233,7 @@ Get short link by hash
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.getShortLinkByHash(hash: hash).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -331,7 +331,7 @@ Update short link by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").share.updateShortLinkById(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
