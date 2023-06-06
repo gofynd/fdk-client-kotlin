@@ -39,7 +39,8 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformCart",
-            persistentCookieStore = config.persistentCookieStore
+            persistentCookieStore = config.persistentCookieStore,
+            certPublicKey = config.certPublicKey,
         )
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
