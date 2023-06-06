@@ -39,8 +39,7 @@ class FileStorageDataManagerClass(val config: PlatformConfig, val unauthorizedAc
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformFileStorage",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(FileStorageApiList::class.java) as? FileStorageApiList
     }

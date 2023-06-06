@@ -14,7 +14,7 @@ interface OrderApiList {
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/shipment-details")
-    fun getShipmentById(@Path("company_id") companyId: String, @Query("channel_shipment_id") channelShipmentId: String?, @Query("shipment_id") shipmentId: String?, @Query("ordering_company_id") orderingCompanyId: String?, @Query("request_by_ext") requestByExt: String?)
+    fun getShipmentById(@Path("company_id") companyId: String, @Query("channel_shipment_id") channelShipmentId: String?, @Query("shipment_id") shipmentId: String?)
     : Deferred<Response<ShipmentInfoResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/shipments-invoice")

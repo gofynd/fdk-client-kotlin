@@ -39,8 +39,7 @@ class AuditTrailDataManagerClass(val config: PlatformConfig, val unauthorizedAct
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformAuditTrail",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(AuditTrailApiList::class.java) as? AuditTrailApiList
     }

@@ -39,8 +39,7 @@ class CommonDataManagerClass(val config: PlatformConfig, val unauthorizedAction:
             baseUrl = config.domain,
             interceptorList = interceptorMap,
             namespace = "PlatformCommon",
-            persistentCookieStore = config.persistentCookieStore,
-            certPublicKey = config.certPublicKey,
+            persistentCookieStore = config.persistentCookieStore
         )
         return retrofitHttpClient?.initializeRestClient(CommonApiList::class.java) as? CommonApiList
     }
