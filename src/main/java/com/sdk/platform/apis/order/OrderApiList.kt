@@ -82,7 +82,7 @@ interface OrderApiList {
     : Deferred<Response<BaseResponse>>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/click2call")
-    fun click2Call(@Query("caller") caller: String, @Query("receiver") receiver: String, @Query("bag_id") bagId: String, @Query("calling_to") callingTo: String?, @Query("caller_id") callerId: String?, @Path("company_id") companyId: String)
+    fun click2Call(@Query("caller") caller: String, @Query("receiver") receiver: String, @Query("bag_id") bagId: String, @Query("caller_id") callerId: String?, @Query("method") method: String?, @Path("company_id") companyId: String)
     : Deferred<Response<Click2CallResponse>>
     
     @PUT ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/status-internal")
@@ -101,21 +101,17 @@ interface OrderApiList {
     fun getRoleBasedActions(@Path("company_id") companyId: String)
     : Deferred<Response<GetActionsResponse>>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: String?, @Query("bag_id") bagId: Int?)
     : Deferred<Response<ShipmentHistoryResponse>>
     
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
-    fun getShipmentHistory(@Path("company_id") companyId: String, @Query("shipment_id") shipmentId: Int?, @Query("bag_id") bagId: Int?)
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/shipment/history")
+    fun postShipmentHistory(@Path("company_id") companyId: String,@Body body: PostShipmentHistory)
     : Deferred<Response<ShipmentHistoryResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/ninja/send-sms")
     fun sendSmsNinja(@Path("company_id") companyId: String,@Body body: SendSmsPayload)
     : Deferred<Response<OrderStatusResult>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/oms/manual-place-shipment")
-    fun platformManualAssignDPToShipment(@Path("company_id") companyId: String,@Body body: ManualAssignDPToShipment)
-    : Deferred<Response<ManualAssignDPToShipmentResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/update-packaging-dimension")
     fun updatePackagingDimensions(@Path("company_id") companyId: String,@Body body: CreateOrderPayload)
@@ -125,13 +121,13 @@ interface OrderApiList {
     fun createOrder(@Path("company_id") companyId: String,@Body body: CreateOrderAPI)
     : Deferred<Response<CreateOrderResponse>>
     
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
-    fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
-    : Deferred<Response<CreateChannelConfigResponse>>
-    
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
     fun getChannelConfig(@Path("company_id") companyId: String)
     : Deferred<Response<CreateChannelConfigData>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/order-config")
+    fun createChannelConfig(@Path("company_id") companyId: String,@Body body: CreateChannelConfigData)
+    : Deferred<Response<CreateChannelConfigResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/uploadConsent")
     fun uploadConsent(@Path("company_id") companyId: String,@Body body: UploadConsent)
@@ -146,7 +142,7 @@ interface OrderApiList {
     : Deferred<Response<OrderStatusResult>>
     
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/bag/state/transition")
-    fun sendSmsNinjaPlatform(@Path("company_id") companyId: String)
-    : Deferred<Response<OrderStatusResult>>
+    fun getStateTransitionMap(@Path("company_id") companyId: String)
+    : Deferred<Response<BagStateTransitionMap>>
     
 }
