@@ -67,6 +67,8 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -350,6 +352,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getPromosCouponConfig()
+    : Deferred<Response<ActivePromosResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getPromosCouponConfig(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun updateCartMetaConfig(cartMetaId: String,body: CartMetaConfigUpdate)
     : Deferred<Response<CartMetaConfigUpdate>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -558,6 +570,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<HashMap<String,Any>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.getPromotionCodeExists(companyId = config.companyId , applicationId = applicationId , code = code )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun overrideCart(body: OverrideCheckoutReq)
+    : Deferred<Response<OverrideCheckoutResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.overrideCart(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
