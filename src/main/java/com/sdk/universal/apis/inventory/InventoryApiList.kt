@@ -12,16 +12,6 @@ interface InventoryApiList {
     
     
     @GET 
-    fun getJobCodesMetrics(@Url url1: String?    ,   @Query("daily_job") dailyJob: Boolean?, @Query("job_code") jobCode: String?)
-    : Deferred<Response<ResponseEnvelopeObject>>
-    
-    
-    @POST 
-    fun saveJobCodesMetrics(@Url url1: String?   ,@Body body: EmailJobMetrics)
-    : Deferred<Response<ResponseEnvelopeEmailJobMetrics>>
-    
-    
-    @GET 
     fun getConfigByApiKey(@Url url1: String?    ,  @Query("apikey") apikey: String)
     : Deferred<Response<ResponseEnvelopeSlingshotConfigurationDetail>>
     
@@ -39,5 +29,15 @@ interface InventoryApiList {
     @GET 
     fun getJobConfigByIntegrationType(@Url url1: String?    ,   @Query("integration_type") integrationType: String, @Query("disable") disable: Boolean?)
     : Deferred<Response<ResponseEnvelopeListJobConfigDTO>>
+    
+    
+    @GET 
+    fun getJobCodesMetrics(@Url url1: String?    ,   @Query("daily_job") dailyJob: Boolean?, @Query("job_code") jobCode: String?)
+    : Deferred<Response<ResponseEnvelopeObject>>
+    
+    
+    @POST 
+    fun saveJobCodesMetrics(@Url url1: String?   ,@Body body: EmailJobMetrics)
+    : Deferred<Response<ResponseEnvelopeEmailJobMetrics>>
     
 }

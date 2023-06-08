@@ -9,6 +9,14 @@ import com.sdk.platform.models.inventory.*
 
 interface InventoryApiList {
     
+    @GET ("/service/platform/inventory/v1.0/company/{company_id}/slingshot")
+    fun getConfigByCompany(@Path("company_id") companyId: String)
+    : Deferred<Response<ResponseEnvelopeListSlingshotConfigurationDetail>>
+    
+    @POST ("/service/platform/inventory/v1.0/company/{company_id}/kafka/suppressStore")
+    fun suppressStores(@Path("company_id") companyId: String,@Body body: SuppressStorePayload)
+    : Deferred<Response<ResponseEnvelopeKafkaResponse>>
+    
     @GET ("/service/platform/inventory/v1.0/company/{company_id}/jobs")
     fun getJobsByCompany(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<ResponseEnvelopeListJobConfigRawDTO>>
@@ -20,14 +28,6 @@ interface InventoryApiList {
     @POST ("/service/platform/inventory/v1.0/company/{company_id}/jobs")
     fun createJob(@Path("company_id") companyId: String,@Body body: JobConfigDTO)
     : Deferred<Response<ResponseEnvelopeString>>
-    
-    @POST ("/service/platform/inventory/v1.0/company/{company_id}/kafka/suppressStore")
-    fun suppressStores(@Path("company_id") companyId: String,@Body body: SuppressStorePayload)
-    : Deferred<Response<ResponseEnvelopeKafkaResponse>>
-    
-    @GET ("/service/platform/inventory/v1.0/company/{company_id}/slingshot")
-    fun getConfigByCompany(@Path("company_id") companyId: String)
-    : Deferred<Response<ResponseEnvelopeListSlingshotConfigurationDetail>>
     
     @GET ("/service/platform/inventory/v1.0/company/{company_id}/jobs/steps/{job_id}")
     fun getJobSteps(@Path("company_id") companyId: String, @Path("job_id") jobId: String)

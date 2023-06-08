@@ -93,4 +93,8 @@ interface PaymentApiList {
     fun setUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetCODForUserRequest)
     : Deferred<Response<SetCODOptionResponse>>
     
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/payment-status-bulk/")
+    fun paymentStatusBulk(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentStatusBulkHandlerRequest)
+    : Deferred<Response<PaymentStatusBulkHandlerResponse>>
+    
 }

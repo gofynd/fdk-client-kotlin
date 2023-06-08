@@ -2134,50 +2134,6 @@ data class EventSubscriptions(
 
              
 /*
-    Model: TriggerJobResponse
-*/
-@Parcelize
-data class TriggerJobResponse(
-    
-    
-    
-    @SerializedName("status")
-    var status: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: TriggerJobRequest
-*/
-@Parcelize
-data class TriggerJobRequest(
-    
-    
-    
-    @SerializedName("job_id")
-    var jobId: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: Job
 */
 @Parcelize
@@ -2335,6 +2291,50 @@ data class JobLogs(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TriggerJobResponse
+*/
+@Parcelize
+data class TriggerJobResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TriggerJobRequest
+*/
+@Parcelize
+data class TriggerJobRequest(
+    
+    
+    
+    @SerializedName("job_id")
+    var jobId: String?=null
+    
+): Parcelable {
     
     
     
@@ -2617,6 +2617,33 @@ data class SendOtpEmailCommsTemplate(
 
              
 /*
+    Model: SendOtpEmailCommsProvider
+*/
+@Parcelize
+data class SendOtpEmailCommsProvider(
+    
+    
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SendOtpCommsReqData
 */
 @Parcelize
@@ -2705,9 +2732,14 @@ data class SendOtpCommsReqEmail(
     var expiry: Int?=null,
     
     @SerializedName("template")
-    var template: SendOtpEmailCommsTemplate?=null
+    var template: SendOtpEmailCommsTemplate?=null,
+    
+    @SerializedName("provider")
+    var provider: SendOtpEmailCommsProvider?=null
     
 ): Parcelable {
+    
+    
     
     
     

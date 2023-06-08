@@ -77,16 +77,4 @@ interface CartApiList {
     fun updateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_id") cartId: String, @Query("b") b: Boolean?,@Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_options")
-    fun getCouponOptionValues(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<HashMap<String,Any>>>
-    
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/coupon_code_exists")
-    fun getCouponCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?)
-    : Deferred<Response<HashMap<String,Any>>>
-    
-    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion_code_exists")
-    fun getPromotionCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?)
-    : Deferred<Response<HashMap<String,Any>>>
-    
 }
