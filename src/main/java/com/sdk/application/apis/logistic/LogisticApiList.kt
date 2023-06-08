@@ -21,8 +21,18 @@ interface LogisticApiList {
     : Deferred<Response<TATViewResponse>>
     
     
+    @GET 
+    fun getAllCountries(@Url url1: String?   )
+    : Deferred<Response<CountryListResponse>>
+    
+    
     @POST 
     fun getPincodeZones(@Url url1: String?   ,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+    
+    @POST 
+    fun getOptimalLocations(@Url url1: String?   ,@Body body: ReAssignStoreRequest)
+    : Deferred<Response<ReAssignStoreResponse>>
     
 }

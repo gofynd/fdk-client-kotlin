@@ -23,7 +23,7 @@ Get paginated audit logs
 
 
 ```kotlin
-client.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
+platformClient.audittrail.getAuditLogs(qs: qs).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -81,7 +81,7 @@ Success
             "first_name": "Paul",
             "last_name": "Lobo",
             "full_name": "Paul Lobo",
-            "email": "paullobo@gofynd.com"
+            "email": "paullobo@xyz.com"
           }
         },
         "_id": "634eef735e84e7e1b09aa07c",
@@ -116,7 +116,7 @@ Create logs for auditing later on
 
 
 ```kotlin
-client.audittrail.createAuditLog(body: body).safeAwait{ response, error->
+platformClient.audittrail.createAuditLog(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -186,7 +186,7 @@ Get audit log
 
 
 ```kotlin
-client.audittrail.getAuditLog(id: id).safeAwait{ response, error->
+platformClient.audittrail.getAuditLog(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -242,7 +242,7 @@ Success
         "first_name": "Paul",
         "last_name": "Lobo",
         "full_name": "Paul Lobo",
-        "email": "paullobo@gofynd.com"
+        "email": "paullobo@xyz.com"
       }
     },
     "device_info": {
@@ -324,7 +324,7 @@ Get entity types
 
 
 ```kotlin
-client.audittrail.getEntityTypes().safeAwait{ response, error->
+platformClient.audittrail.getEntityTypes().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

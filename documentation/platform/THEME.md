@@ -43,7 +43,7 @@ Get all pages of a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getAllPages(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getAllPages(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -164,21 +164,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "__v": 9
       },
       {
-        "path": "product/:slug/reviews",
-        "type": "system",
-        "seo": {
-          "title": "",
-          "description": "",
-          "_id": "60ab5ca6d572fed64294eb24"
-        },
-        "_id": "60ab5ca6d572fed64294eb25",
-        "sections_meta": [],
-        "value": "product-reviews",
-        "text": "Product Reviews",
-        "theme": "5fb3ee4194a5181feeeba8e5",
-        "__v": 9
-      },
-      {
         "path": "blog",
         "type": "system",
         "seo": {
@@ -251,21 +236,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "text": "Wishlist",
         "theme": "5fb3ee4194a5181feeeba8e5",
         "sections_meta": [],
-        "__v": 9
-      },
-      {
-        "path": "product/:slug/add-review",
-        "type": "system",
-        "seo": {
-          "title": "",
-          "description": "",
-          "_id": "60ab5ca6d572fed64294eb26"
-        },
-        "_id": "60ab5ca6d572fed64294eb27",
-        "sections_meta": [],
-        "value": "add-product-review",
-        "text": "Add Product Review",
-        "theme": "5fb3ee4194a5181feeeba8e5",
         "__v": 9
       },
       {
@@ -399,7 +369,7 @@ Create a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.createPage(themeId: themeId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.createPage(themeId: themeId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -827,7 +797,7 @@ Update multiple pages of a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.updateMultiplePages(themeId: themeId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.updateMultiplePages(themeId: themeId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -948,21 +918,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "__v": 9
       },
       {
-        "path": "product/:slug/reviews",
-        "type": "system",
-        "seo": {
-          "title": "",
-          "description": "",
-          "_id": "60ab5ca6d572fed64294eb24"
-        },
-        "_id": "60ab5ca6d572fed64294eb25",
-        "sections_meta": [],
-        "value": "product-reviews",
-        "text": "Product Reviews",
-        "theme": "5fb3ee4194a5181feeeba8e5",
-        "__v": 9
-      },
-      {
         "path": "blog",
         "type": "system",
         "seo": {
@@ -1035,21 +990,6 @@ Success. Returns an array all the pages of the theme. Refer `AllAvailablePageSch
         "text": "Wishlist",
         "theme": "5fb3ee4194a5181feeeba8e5",
         "sections_meta": [],
-        "__v": 9
-      },
-      {
-        "path": "product/:slug/add-review",
-        "type": "system",
-        "seo": {
-          "title": "",
-          "description": "",
-          "_id": "60ab5ca6d572fed64294eb26"
-        },
-        "_id": "60ab5ca6d572fed64294eb27",
-        "sections_meta": [],
-        "value": "add-product-review",
-        "text": "Add Product Review",
-        "theme": "5fb3ee4194a5181feeeba8e5",
         "__v": 9
       },
       {
@@ -1183,7 +1123,7 @@ Get page of a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getPage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1612,7 +1552,7 @@ Updates a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.updatePage(themeId: themeId, pageValue: pageValue, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.updatePage(themeId: themeId, pageValue: pageValue, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2041,7 +1981,7 @@ Deletes a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.deletePage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.deletePage(themeId: themeId, pageValue: pageValue).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2470,7 +2410,7 @@ Get a list of themes from the theme library
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeLibrary(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeLibrary(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4438,7 +4378,7 @@ Add a theme to the theme library
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.addToThemeLibrary(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.addToThemeLibrary(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4908,11 +4848,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -5122,11 +5057,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -6637,7 +6567,7 @@ Apply a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.applyTheme(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.applyTheme(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7107,11 +7037,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -7321,11 +7246,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -8836,7 +8756,7 @@ Checks if theme is upgradable
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.isUpgradable(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.isUpgradable(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -8908,7 +8828,7 @@ Upgrade a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.upgradeTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.upgradeTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -9379,11 +9299,6 @@ Success. Upgrades the theme and shares the details of the new version in the res
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -9593,11 +9508,6 @@ Success. Upgrades the theme and shares the details of the new version in the res
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -11108,7 +11018,7 @@ Get all public themes
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getPublicThemes(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getPublicThemes(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -13076,7 +12986,7 @@ Create a new theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.createTheme(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.createTheme(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -13546,11 +13456,6 @@ Theme
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -13760,11 +13665,6 @@ Theme
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -15275,7 +15175,7 @@ Get the applied theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getAppliedTheme().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getAppliedTheme().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -15741,11 +15641,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -15955,11 +15850,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -17470,7 +17360,7 @@ Get all the supported fonts in a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getFonts().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getFonts().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -17555,7 +17445,7 @@ Gets theme by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeById(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeById(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -18026,11 +17916,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -18240,11 +18125,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -19755,7 +19635,7 @@ Update a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.updateTheme(themeId: themeId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.updateTheme(themeId: themeId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -20226,11 +20106,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -20440,11 +20315,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -21955,7 +21825,7 @@ Delete a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.deleteTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.deleteTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -22426,11 +22296,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -22640,11 +22505,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -24155,7 +24015,7 @@ Get a theme preview
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeForPreview(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeForPreview(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -24626,11 +24486,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -24840,11 +24695,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -26355,7 +26205,7 @@ Publish a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.publishTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.publishTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -26826,11 +26676,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -27040,11 +26885,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -28555,7 +28395,7 @@ Unpublish a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.unpublishTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.unpublishTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -29026,11 +28866,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -29240,11 +29075,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -30755,7 +30585,7 @@ Archive a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.archiveTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.archiveTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -31226,11 +31056,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -31440,11 +31265,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -32955,7 +32775,7 @@ Unarchive a theme
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.unarchiveTheme(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.unarchiveTheme(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -33426,11 +33246,6 @@ Success. Refer `ThemesSchema` for more details.
       "page_schema": [
         {
           "props": [],
-          "_id": "5fe182f763d26d042fd205c4",
-          "page": "add-product-review"
-        },
-        {
-          "props": [],
           "_id": "5fe182f763d26dadc8d205c6",
           "page": "blog"
         },
@@ -33640,11 +33455,6 @@ Success. Refer `ThemesSchema` for more details.
           "props": [],
           "_id": "5fe182f763d26da5f0d205d3",
           "page": "product-listing"
-        },
-        {
-          "props": [],
-          "_id": "5fe182f763d26d3d18d205d4",
-          "page": "product-reviews"
         },
         {
           "props": [],
@@ -35155,7 +34965,7 @@ Fetch last modified timestamp
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").theme.getThemeLastModified(themeId: themeId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.getThemeLastModified(themeId: themeId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

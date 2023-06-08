@@ -4,8 +4,8 @@ import com.sdk.platform.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -48,6 +48,9 @@ data class ApplicationInventory(
     @SerializedName("comms_enabled")
     var commsEnabled: Boolean?=null,
     
+    @SerializedName("communication")
+    var communication: CommunicationConfig?=null,
+    
     @SerializedName("platforms")
     var platforms: ArrayList<String>?=null,
     
@@ -70,6 +73,8 @@ data class ApplicationInventory(
     var modifiedBy: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -927,9 +932,14 @@ data class AppInventoryPartialUpdate(
     var loyaltyPoints: LoyaltyPointsConfig?=null,
     
     @SerializedName("comms_enabled")
-    var commsEnabled: Boolean?=null
+    var commsEnabled: Boolean?=null,
+    
+    @SerializedName("communication")
+    var communication: CommunicationConfig?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -1187,6 +1197,60 @@ data class BrandsByCompanyResponse(
     
     @SerializedName("brands")
     var brands: CompanyBrandInfo?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CommunicationConfig
+*/
+@Parcelize
+data class CommunicationConfig(
+    
+    
+    
+    @SerializedName("email")
+    var email: CommsConfig?=null,
+    
+    @SerializedName("sms")
+    var sms: CommsConfig?=null,
+    
+    @SerializedName("voice")
+    var voice: CommsConfig?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CommsConfig
+*/
+@Parcelize
+data class CommsConfig(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
     
 ): Parcelable {
     

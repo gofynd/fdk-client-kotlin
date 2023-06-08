@@ -72,6 +72,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
     suspend fun createApplication(body: CreateApplicationRequest)
     : Deferred<Response<CreateAppResponse>>? {
         
@@ -337,6 +338,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<AppFeature>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun modifyAppFeatures(body: AppFeatureRequest)
+    : Deferred<Response<AppFeature>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                configurationApiList?.modifyAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

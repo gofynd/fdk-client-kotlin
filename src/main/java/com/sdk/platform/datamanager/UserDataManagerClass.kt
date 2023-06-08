@@ -56,12 +56,17 @@ class UserDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
     
     
-    suspend fun getCustomers(q: String?=null, pageSize: Int?=null, pageNo: Int?=null)
+    suspend fun getCustomers(q: HashMap<String,Any>?=null, pageSize: Int?=null, pageNo: Int?=null)
     : Deferred<Response<CustomerListResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.getCustomers(companyId = config.companyId , applicationId = applicationId , q = q, pageSize = pageSize, pageNo = pageNo )
@@ -71,7 +76,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun searchUsers(q: HashMap<String,Any>?=null)
+    suspend fun searchUsers(q: String?=null)
     : Deferred<Response<UserSearchResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.searchUsers(companyId = config.companyId , applicationId = applicationId , q = q )
@@ -141,6 +146,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun deleteSession(id: String, sessionId: String, reason: String)
+    : Deferred<Response<SessionDeleteResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.deleteSession(companyId = config.companyId , applicationId = applicationId , id = id, sessionId = sessionId, reason = reason )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getActiveSessions(id: String)
     : Deferred<Response<SessionListResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -151,10 +166,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun deleteActiveSessions(id: String)
+    suspend fun deleteActiveSessions(id: String, reason: String)
     : Deferred<Response<SessionDeleteResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                userApiList?.deleteActiveSessions(companyId = config.companyId , applicationId = applicationId , id = id )
+                userApiList?.deleteActiveSessions(companyId = config.companyId , applicationId = applicationId , id = id, reason = reason )
         } else {
             null
         }
@@ -175,6 +190,46 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PlatformSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 userApiList?.updatePlatformConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createUserGroup(body: CreateUserGroupSchema)
+    : Deferred<Response<UserGroupResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.createUserGroup(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserGroups(pageNo: String?=null, pageSize: String?=null, name: String?=null, status: String?=null, groupUid: Int?=null)
+    : Deferred<Response<UserGroupListResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUserGroups(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, name = name, status = status, groupUid = groupUid )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateUserGroup(groupId: String,body: UpdateUserGroupSchema)
+    : Deferred<Response<UserGroupResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.updateUserGroup(companyId = config.companyId , applicationId = applicationId , groupId = groupId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getUserGroupById(groupId: String)
+    : Deferred<Response<UserGroupResponseSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                userApiList?.getUserGroupById(companyId = config.companyId , applicationId = applicationId , groupId = groupId )
         } else {
             null
         }

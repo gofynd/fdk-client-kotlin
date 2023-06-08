@@ -70,14 +70,4 @@ interface OrderApiList {
     fun updateShipmentStatus(@Url url1: String?    ,@Body body: UpdateShipmentStatusRequest)
     : Deferred<Response<ShipmentApplicationStatusResponse>>
     
-    
-    @GET 
-    fun getInvoiceByShipmentId1(@Url url1: String?     ,  @Query("parameters") parameters: invoiceParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment1>>
-    
-    
-    @GET 
-    fun getCreditNoteByShipmentId(@Url url1: String?     ,  @Query("parameters") parameters: creditNoteParameter?)
-    : Deferred<Response<ResponseGetInvoiceShipment1>>
-    
 }

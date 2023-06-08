@@ -4,8 +4,8 @@ import com.sdk.application.*
 
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import android.util.Base64
 import com.google.gson.annotations.SerializedName
 
@@ -220,6 +220,9 @@ data class SeoSchema(
     @SerializedName("sitemap_enabled")
     var sitemapEnabled: Boolean?=null,
     
+    @SerializedName("cannonical_enabled")
+    var cannonicalEnabled: Boolean?=null,
+    
     @SerializedName("custom_meta_tags")
     var customMetaTags: @RawValue ArrayList<HashMap<String,Any>>?=null,
     
@@ -233,6 +236,8 @@ data class SeoSchema(
     var updatedAt: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -301,9 +306,14 @@ data class Detail(
     var title: String?=null,
     
     @SerializedName("description")
-    var description: String?=null
+    var description: String?=null,
+    
+    @SerializedName("image_url")
+    var imageUrl: String?=null
     
 ): Parcelable {
+    
+    
     
     
     

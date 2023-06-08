@@ -15,7 +15,7 @@ Earn and redeem reward points
 * [getOfferByName](#getofferbyname)
 * [updateOfferByName](#updateofferbyname)
 * [updateUserStatus](#updateuserstatus)
-* [user](#user)
+* [getUserDetails](#getuserdetails)
 * [getUserPointsHistory](#getuserpointshistory)
 * [getRewardsConfiguration](#getrewardsconfiguration)
 * [setRewardsConfiguration](#setrewardsconfiguration)
@@ -32,7 +32,7 @@ List of giveaways of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.showGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.showGiveaways(pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -93,7 +93,7 @@ List of giveaways of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.saveGiveAway(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.saveGiveAway(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -152,7 +152,7 @@ Get giveaway by ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getGiveawayById(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getGiveawayById(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -212,7 +212,7 @@ Updates the giveaway by it's ID.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateGiveAway(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateGiveAway(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -272,7 +272,7 @@ Get the Giveaway audience status
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getGiveawayAudienceStatus(audienceId: audienceId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getGiveawayAudienceStatus(id: id, audienceId: audienceId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -288,6 +288,7 @@ client.application("<APPLICATION_ID>").rewards.getGiveawayAudienceStatus(audienc
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
+| id | String | yes | Giveaway ID |   
 | audienceId | String | yes | audience id |  
 
 
@@ -332,7 +333,7 @@ List of offers of the current application.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.showOffers().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.showOffers().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -387,7 +388,7 @@ Get offer by name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getOfferByName(name: name, cookie: cookie).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getOfferByName(name: name).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -403,8 +404,7 @@ client.application("<APPLICATION_ID>").rewards.getOfferByName(name: name, cookie
 
 | Argument  |  Type  | Required | Description |
 | --------- | -----  | -------- | ----------- | 
-| name | String | yes | The name given to the offer. |   
-| cookie | String | yes | User's session cookie. This cookie is set in browser cookie when logged-in to fynd's authentication system i.e. `Grimlock` or by using grimlock-backend SDK for backend implementation. |  
+| name | String | yes | The name given to the offer. |  
 
 
 
@@ -448,7 +448,7 @@ Update offer by name
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateOfferByName(name: name, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -508,7 +508,7 @@ Update user status
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.updateUserStatus(userId: userId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -561,14 +561,14 @@ Success
 ---
 
 
-### user
+### getUserDetails
 Get user reward details
 
 
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.user(userId: userId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getUserDetails(userId: userId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -628,7 +628,7 @@ Get all transactions of reward points
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getUserPointsHistory(userId: userId, pageId: pageId, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -690,7 +690,7 @@ Get all valid android paths
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.getRewardsConfiguration().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.getRewardsConfiguration().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -745,7 +745,7 @@ Updates the collection with given android paths.
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").rewards.setRewardsConfiguration(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").rewards.setRewardsConfiguration(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
