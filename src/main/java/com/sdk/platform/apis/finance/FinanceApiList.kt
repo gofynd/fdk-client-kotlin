@@ -42,7 +42,7 @@ interface FinanceApiList {
     : Deferred<Response<PaymentProcessResponse>>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/get-invoice-type")
-    fun getInvoiceList(@Path("company_id") companyId: String,@Body body: GetInvoiceListRequest)
+    fun getInvoiceType(@Path("company_id") companyId: String,@Body body: GetInvoiceListRequest)
     : Deferred<Response<GetInvoiceListResponse>>
     
     @POST ("/service/platform/finance/v1.0/company/{company_id}/invoice/listing")

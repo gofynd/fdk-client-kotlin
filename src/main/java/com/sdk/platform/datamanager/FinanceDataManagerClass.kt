@@ -142,11 +142,11 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getInvoiceList(body: GetInvoiceListRequest)
+    suspend fun getInvoiceType(body: GetInvoiceListRequest)
     : Deferred<Response<GetInvoiceListResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
-            financeApiList?.getInvoiceList(
+            financeApiList?.getInvoiceType(
         companyId = config.companyId, body = body)
         } else {
             null
