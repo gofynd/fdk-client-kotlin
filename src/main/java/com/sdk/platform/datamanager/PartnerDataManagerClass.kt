@@ -58,12 +58,12 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getExtensionsForCompany(pageSize: Double?=null, tag: String?=null, currentPage: String?=null, pageNo: Double?=null, filterBy: String?=null, query: String?=null)
+    suspend fun getExtensionsForCompany(pageSize: Double?=null, tag: String?=null, currentPage: String?=null, pageNo: Double?=null, filterBy: String?=null, query: String?=null, q: String?=null, isApplicationLevel: String?=null, isSaleschannel: String?=null, extentionType: String?=null)
     : Deferred<Response<ExtensionList>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getExtensionsForCompany(
-        companyId = config.companyId, pageSize = pageSize, tag = tag, currentPage = currentPage, pageNo = pageNo, filterBy = filterBy, query = query )
+        companyId = config.companyId, pageSize = pageSize, tag = tag, currentPage = currentPage, pageNo = pageNo, filterBy = filterBy, query = query, q = q, isApplicationLevel = isApplicationLevel, isSaleschannel = isSaleschannel, extentionType = extentionType )
         } else {
             null
         } 
@@ -106,12 +106,12 @@ class PartnerDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun getPrivateExtensions(pageSize: Double?=null, pageNo: Double?=null, query: String?=null)
+    suspend fun getPrivateExtensions(pageSize: Double?=null, pageNo: Double?=null, query: String?=null, q: String?=null, installed: String?=null)
     : Deferred<Response<ExtensionResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             partnerApiList?.getPrivateExtensions(
-        companyId = config.companyId, pageSize = pageSize, pageNo = pageNo, query = query )
+        companyId = config.companyId, pageSize = pageSize, pageNo = pageNo, query = query, q = q, installed = installed )
         } else {
             null
         } 

@@ -25,13 +25,13 @@ interface ServiceabilityApiList {
     fun getCompanyStoreView(@Path("company_id") companyId: String)
     : Deferred<Response<CompanyStoreView_Response>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
     fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
     : Deferred<Response<GetSingleZoneDataViewResponse>>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
+    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/zone")
     fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
@@ -81,40 +81,40 @@ interface ServiceabilityApiList {
     fun updatePincodeAuditHistory(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PincodeMopUpdateAuditHistoryRequest)
     : Deferred<Response<PincodeMopUpdateAuditHistoryResponseData>>
     
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/dp-account")
-    fun upsertDpAccountView(@Path("company_id") companyId: String,@Body body: CompanyDpAccountRequest)
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/account")
+    fun upsertDpAccount(@Path("company_id") companyId: String,@Body body: CompanyDpAccountRequest)
     : Deferred<Response<CompanyDpAccountResponse>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/dp-rules/{rule_uid}")
-    fun updateDpRuleView(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
+    fun getDpRules(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String)
+    : Deferred<Response<DpRuleSuccessResponse>>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
+    fun updateDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
     : Deferred<Response<DpRuleUpdateSuccessResponse>>
     
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/dp-rules/{rule_uid}")
-    fun getDpRulesView(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String)
-    : Deferred<Response<DpRuleSuccessResponse>>
-    
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/dp-rules")
-    fun getDpRuleInsertView(@Path("company_id") companyId: String)
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
+    fun getDpRuleInsert(@Path("company_id") companyId: String)
     : Deferred<Response<DpMultipleRuleSuccessResponse>>
     
-    @POST ("/service/platform/logistics/v1.0/company/{company_id}/dp-rules")
-    fun upsertDpRulesView(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
+    @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
+    fun upsertDpRules(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
     : Deferred<Response<DpRuleSuccessResponse>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/logistics")
-    fun upsertDpCompanyRulesView(@Path("company_id") companyId: String,@Body body: DPCompanyRuleRequest)
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
+    fun getDpCompanyRules(@Path("company_id") companyId: String)
     : Deferred<Response<DPCompanyRuleResponse>>
     
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/logistics")
-    fun getDpCompanyRulesView(@Path("company_id") companyId: String)
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
+    fun upsertDpCompanyRules(@Path("company_id") companyId: String,@Body body: DPCompanyRuleRequest)
     : Deferred<Response<DPCompanyRuleResponse>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/logistics")
-    fun upsertDpApplicationRulesView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DPApplicationRuleRequest)
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
+    fun getDpApplicationRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<DPApplicationRuleResponse>>
     
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/logistics")
-    fun getDpApplicationRulesView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
+    fun upsertDpApplicationRules(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DPApplicationRuleRequest)
     : Deferred<Response<DPApplicationRuleResponse>>
     
 }

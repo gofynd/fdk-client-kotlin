@@ -14,7 +14,7 @@ interface PartnerApiList {
     : Deferred<Response<SubscriptionRes>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/extensions")
-    fun getExtensionsForCompany(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("tag") tag: String?, @Query("current_page") currentPage: String?, @Query("page_no") pageNo: Double?, @Query("filter_by") filterBy: String?, @Query("query") query: String?)
+    fun getExtensionsForCompany(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("tag") tag: String?, @Query("current_page") currentPage: String?, @Query("page_no") pageNo: Double?, @Query("filter_by") filterBy: String?, @Query("query") query: String?, @Query("q") q: String?, @Query("is_application_level") isApplicationLevel: String?, @Query("is_saleschannel") isSaleschannel: String?, @Query("extention_type") extentionType: String?)
     : Deferred<Response<ExtensionList>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/public-extension/{extension_id}")
@@ -30,7 +30,7 @@ interface PartnerApiList {
     : Deferred<Response<UninstallExtension>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/private-extensions")
-    fun getPrivateExtensions(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("page_no") pageNo: Double?, @Query("query") query: String?)
+    fun getPrivateExtensions(@Path("company_id") companyId: String, @Query("page_size") pageSize: Double?, @Query("page_no") pageNo: Double?, @Query("query") query: String?, @Query("q") q: String?, @Query("installed") installed: String?)
     : Deferred<Response<ExtensionResponse>>
     
     @GET ("/service/platform/partners/v1.0/company/{company_id}/extension/suggestions")
