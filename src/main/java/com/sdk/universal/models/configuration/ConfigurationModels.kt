@@ -19,7 +19,7 @@ data class ApplicationResponse(
     
     
     @SerializedName("application")
-    var application: Application?=null
+    var application: ApplicationData?=null
     
 ): Parcelable {
     
@@ -289,10 +289,10 @@ data class SecureUrl(
 
              
 /*
-    Model: Application
+    Model: ApplicationData
 */
 @Parcelize
-data class Application(
+data class ApplicationData(
     
     
     
@@ -369,9 +369,14 @@ data class Application(
     var mobileLogo: SecureUrl?=null,
     
     @SerializedName("domain")
-    var domain: Domain?=null
+    var domain: Domain?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -586,10 +591,10 @@ data class LocationDefaultCurrency(
 
              
 /*
-    Model: LocationCountry
+    Model: LocationDetails
 */
 @Parcelize
-data class LocationCountry(
+data class LocationDetails(
     
     
     
@@ -630,9 +635,29 @@ data class LocationCountry(
     var defaultCurrency: LocationDefaultCurrency?=null,
     
     @SerializedName("default_language")
-    var defaultLanguage: LocationDefaultLanguage?=null
+    var defaultLanguage: LocationDefaultLanguage?=null,
+    
+    @SerializedName("state_code")
+    var stateCode: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null,
+    
+    @SerializedName("latitude")
+    var latitude: String?=null,
+    
+    @SerializedName("longitude")
+    var longitude: String?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -676,7 +701,7 @@ data class Locations(
     
     
     @SerializedName("items")
-    var items: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var items: ArrayList<LocationDetails>?=null
     
 ): Parcelable {
     
