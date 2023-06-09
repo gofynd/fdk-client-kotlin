@@ -1749,6 +1749,7 @@ Success
  | links | HashMap<String,Any>? |  yes  |  |
  | enabled | Boolean? |  yes  |  |
  | displayText | String? |  yes  |  |
+ | config | HashMap<String,Any>? |  yes  |  |
 
 ---
 
@@ -2448,7 +2449,7 @@ Success
  | subscriberId | String? |  yes  |  |
  | planId | String? |  yes  |  |
  | productSuiteId | String? |  yes  |  |
- | planData | [Plan](#Plan)? |  yes  |  |
+ | planData | HashMap<String,Any>? |  yes  |  |
  | currentStatus | String? |  yes  |  |
  | collectionMethod | String? |  yes  |  |
  | createdAt | String? |  yes  |  |

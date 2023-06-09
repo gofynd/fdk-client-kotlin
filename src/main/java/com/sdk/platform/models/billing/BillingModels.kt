@@ -373,9 +373,14 @@ data class DetailedPlanComponents(
     var enabled: Boolean?=null,
     
     @SerializedName("display_text")
-    var displayText: String?=null
+    var displayText: String?=null,
+    
+    @SerializedName("config")
+    var config: @RawValue HashMap<String,Any>?=null
     
 ): Parcelable {
+    
+    
     
     
     
@@ -2448,7 +2453,7 @@ data class Subscription(
     var productSuiteId: String?=null,
     
     @SerializedName("plan_data")
-    var planData: Plan?=null,
+    var planData: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("current_status")
     var currentStatus: String?=null,
