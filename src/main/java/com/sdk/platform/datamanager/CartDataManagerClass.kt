@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.cart.*
+import com.sdk.platform.apis.cart.*
 
 
 
@@ -41,6 +43,9 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
         )
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
+    
+    
+    
     
     
     
@@ -501,6 +506,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<UpdateCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartDynamicInjection(extensionId: String,body: CartDynamicInjectionUpdate)
+    : Deferred<Response<SuccessMessage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeCartMetaConfig(extensionId: String)
+    : Deferred<Response<SuccessMessage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removeCartMetaConfig(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createCartDynamicInjection(body: CartDynamicInjectionAdd)
+    : Deferred<Response<SuccessMessage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.createCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

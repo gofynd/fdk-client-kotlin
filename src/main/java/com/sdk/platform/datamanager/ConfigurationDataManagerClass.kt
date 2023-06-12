@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.configuration.*
+import com.sdk.platform.apis.configuration.*
 
 
 
@@ -41,6 +43,7 @@ class ConfigurationDataManagerClass(val config: PlatformConfig, val unauthorized
         )
         return retrofitHttpClient?.initializeRestClient(ConfigurationApiList::class.java) as? ConfigurationApiList
     }
+    
     
     
     
@@ -335,6 +338,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<AppFeature>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 configurationApiList?.updateAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun modifyAppFeatures(body: AppFeatureRequest)
+    : Deferred<Response<AppFeature>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                configurationApiList?.modifyAppFeatures(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
