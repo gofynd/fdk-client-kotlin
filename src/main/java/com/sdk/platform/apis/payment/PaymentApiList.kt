@@ -17,10 +17,6 @@ interface PaymentApiList {
     fun saveBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentGatewayConfigRequest)
     : Deferred<Response<PaymentGatewayToBeReviewed>>
     
-    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")
-    fun updateBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentGatewayConfigRequest)
-    : Deferred<Response<PaymentGatewayToBeReviewed>>
-    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options")
     fun getPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("refresh") refresh: Boolean, @Query("request_type") requestType: String)
     : Deferred<Response<PaymentOptionsResponse>>
@@ -92,5 +88,13 @@ interface PaymentApiList {
     @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
     fun setUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetCODForUserRequest)
     : Deferred<Response<SetCODOptionResponse>>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/onboard/{aggregator}/")
+    fun oauthGetUrl(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String, @Query("success_redirect_url") successRedirectUrl: String?, @Query("failure_redirect_url") failureRedirectUrl: String?)
+    : Deferred<Response<GetOauthUrlResponse>>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/revoke/{aggregator}/")
+    fun revokeOauthToken(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String)
+    : Deferred<Response<RevokeOAuthToken>>
     
 }

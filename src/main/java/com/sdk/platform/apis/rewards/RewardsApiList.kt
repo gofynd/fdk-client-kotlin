@@ -25,10 +25,6 @@ interface RewardsApiList {
     fun updateGiveAway(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: Giveaway)
     : Deferred<Response<Giveaway>>
     
-    @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/giveaways/:id/audience/{audience_id}/status")
-    fun getGiveawayAudienceStatus(@Path("id") id: String, @Path("audience_id") audienceId: String, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<GiveawayAudience>>
-    
     @GET ("/service/platform/rewards/v1.0/company/{company_id}/application/{application_id}/offers/")
     fun showOffers(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<ArrayList<Offer>>>

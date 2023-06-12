@@ -49,6 +49,22 @@ interface CartApiList {
     fun updatePromotionPartially(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: PromotionPartialUpdate)
     : Deferred<Response<SuccessMessage>>
     
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promo-coupons")
+    fun getPromosCouponConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ActivePromosResponse>>
+    
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
+    fun updateCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_meta_id") cartMetaId: String,@Body body: CartMetaConfigUpdate)
+    : Deferred<Response<CartMetaConfigUpdate>>
+    
+    @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration")
+    fun fetchCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<CartMetaConfigAdd>>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration")
+    fun createCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CartMetaConfigAdd)
+    : Deferred<Response<CartMetaConfigAdd>>
+    
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart/validate")
     fun fetchAndvalidateCartItems(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OpenapiCartDetailsRequest)
     : Deferred<Response<OpenapiCartDetailsResponse>>
@@ -88,5 +104,9 @@ interface CartApiList {
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promotion_code_exists")
     fun getPromotionCodeExists(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("code") code: String?)
     : Deferred<Response<HashMap<String,Any>>>
+    
+    @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/checkout/over-ride")
+    fun overrideCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: OverrideCheckoutReq)
+    : Deferred<Response<OverrideCheckoutResponse>>
     
 }
