@@ -61,6 +61,11 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -492,6 +497,56 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<UpdateCartDetailResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAddresses(cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null, userId: String?=null)
+    : Deferred<Response<PlatformGetAddressesResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAddresses(companyId = config.companyId , applicationId = applicationId , cartId = cartId, buyNow = buyNow, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault, userId = userId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addAddress(body: PlatformAddress)
+    : Deferred<Response<SaveAddressResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addAddress(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAddressById(id: String, cartId: String?=null, buyNow: Boolean?=null, mobileNo: String?=null, checkoutMode: String?=null, tags: String?=null, isDefault: Boolean?=null, userId: String?=null)
+    : Deferred<Response<PlatformAddress>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAddressById(companyId = config.companyId , applicationId = applicationId , id = id, cartId = cartId, buyNow = buyNow, mobileNo = mobileNo, checkoutMode = checkoutMode, tags = tags, isDefault = isDefault, userId = userId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAddress(id: String,body: PlatformAddress)
+    : Deferred<Response<UpdateAddressResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateAddress(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeAddress(id: String, userId: String?=null)
+    : Deferred<Response<DeleteAddressResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removeAddress(companyId = config.companyId , applicationId = applicationId , id = id, userId = userId )
         } else {
             null
         }
