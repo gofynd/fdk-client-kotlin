@@ -9625,6 +9625,115 @@ data class GetActionsResponse(
 
              
 /*
+    Model: HistoryDict
+*/
+@Parcelize
+data class HistoryDict(
+    
+    
+    
+    @SerializedName("l2_detail")
+    var l2Detail: String?=null,
+    
+    @SerializedName("user")
+    var user: String?=null,
+    
+    @SerializedName("l3_detail")
+    var l3Detail: String?=null,
+    
+    @SerializedName("ticket_id")
+    var ticketId: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("createdat")
+    var createdat: String?=null,
+    
+    @SerializedName("bag_id")
+    var bagId: Int?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("meta")
+    var meta: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("l1_detail")
+    var l1Detail: String?=null,
+    
+    @SerializedName("assigned_agent")
+    var assignedAgent: String?=null,
+    
+    @SerializedName("ticket_url")
+    var ticketUrl: String?=null,
+    
+    @SerializedName("display_message")
+    var displayMessage: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ShipmentHistoryResponse
+*/
+@Parcelize
+data class ShipmentHistoryResponse(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("activity_history")
+    var activityHistory: ArrayList<HistoryDict>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: PostHistoryData
 */
 @Parcelize
@@ -9744,115 +9853,6 @@ data class PostShipmentHistory(
     var activityHistory: ArrayList<PostHistoryDict>?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: HistoryDict
-*/
-@Parcelize
-data class HistoryDict(
-    
-    
-    
-    @SerializedName("l2_detail")
-    var l2Detail: String?=null,
-    
-    @SerializedName("user")
-    var user: String?=null,
-    
-    @SerializedName("l3_detail")
-    var l3Detail: String?=null,
-    
-    @SerializedName("ticket_id")
-    var ticketId: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("createdat")
-    var createdat: String?=null,
-    
-    @SerializedName("bag_id")
-    var bagId: Int?=null,
-    
-    @SerializedName("message")
-    var message: String?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null,
-    
-    @SerializedName("l1_detail")
-    var l1Detail: String?=null,
-    
-    @SerializedName("assigned_agent")
-    var assignedAgent: String?=null,
-    
-    @SerializedName("ticket_url")
-    var ticketUrl: String?=null,
-    
-    @SerializedName("display_message")
-    var displayMessage: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: ShipmentHistoryResponse
-*/
-@Parcelize
-data class ShipmentHistoryResponse(
-    
-    
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("activity_history")
-    var activityHistory: ArrayList<HistoryDict>?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -11093,6 +11093,28 @@ data class CreateChannelConfigData(
 
              
 /*
+    Model: CreateChannelConifgErrorResponse
+*/
+@Parcelize
+data class CreateChannelConifgErrorResponse(
+    
+    
+    
+    @SerializedName("error")
+    var error: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: CreateChannelConfigResponse
 */
 @Parcelize
@@ -11114,28 +11136,6 @@ data class CreateChannelConfigResponse(
     
     
     
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: CreateChannelConifgErrorResponse
-*/
-@Parcelize
-data class CreateChannelConifgErrorResponse(
-    
-    
-    
-    @SerializedName("error")
-    var error: String?=null
-    
-): Parcelable {
     
     
     

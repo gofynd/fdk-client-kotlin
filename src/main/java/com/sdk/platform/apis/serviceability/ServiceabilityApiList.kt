@@ -37,13 +37,13 @@ interface ServiceabilityApiList {
     fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
     : Deferred<Response<ZoneResponse>>
     
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
-    fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
-    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
-    
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
     fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
+    fun getZonesFromApplicationIdView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("zone_id") zoneId: ArrayList<String>?, @Query("q") q: String?)
+    : Deferred<Response<GetZoneFromApplicationIdViewResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/stores/{store_uid}")
     fun getStore(@Path("company_id") companyId: String, @Path("store_uid") storeUid: String)
@@ -93,13 +93,13 @@ interface ServiceabilityApiList {
     fun updateDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
     : Deferred<Response<DpRuleUpdateSuccessResponse>>
     
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
-    fun getDpRuleInsert(@Path("company_id") companyId: String)
-    : Deferred<Response<DpMultipleRuleSuccessResponse>>
-    
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
     fun upsertDpRules(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
     : Deferred<Response<DpRuleSuccessResponse>>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
+    fun getDpRuleInsert(@Path("company_id") companyId: String)
+    : Deferred<Response<DpMultipleRuleSuccessResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
     fun getDpCompanyRules(@Path("company_id") companyId: String)
