@@ -99,6 +99,9 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
     
     
     
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -416,6 +419,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<CartMetaConfigAdd>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createCartMetaConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCartDynamicInjection(id: String,body: CartDynamicInjectionUpdate)
+    : Deferred<Response<CartDynamicInjectionResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun removeCartMetaConfig(id: String)
+    : Deferred<Response<SuccessMessage>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.removeCartMetaConfig(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createCartDynamicInjection(body: CartDynamicInjectionAdd)
+    : Deferred<Response<CartDynamicInjectionResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.createCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
