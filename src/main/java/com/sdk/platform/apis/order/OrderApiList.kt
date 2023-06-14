@@ -17,9 +17,13 @@ interface OrderApiList {
     fun getShipmentById(@Path("company_id") companyId: String, @Query("channel_shipment_id") channelShipmentId: String?, @Query("shipment_id") shipmentId: String?, @Query("ordering_company_id") orderingCompanyId: String?, @Query("request_by_ext") requestByExt: String?)
     : Deferred<Response<ShipmentInfoResponse>>
     
+    @GET ("/service/platform/orders/v1.0/company/{company_id}/shipments-invoice")
+    fun getAssetByShipmentIds(@Path("company_id") companyId: String, @Query("shipment_ids") shipmentIds: String, @Query("invoice") invoice: Boolean?, @Query("expires_in") expiresIn: String?)
+    : Deferred<Response<ResponseGetAssetShipment>>
+    
     @GET ("/service/platform/orders/v1.0/company/{company_id}/order-details")
     fun getOrderById(@Path("company_id") companyId: String, @Query("order_id") orderId: String)
-    : Deferred<Response<ShipmentDetailsResponse>>
+    : Deferred<Response<OrderDetailsResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/lane-config/")
     fun getLaneConfig(@Path("company_id") companyId: String, @Query("super_lane") superLane: String?, @Query("group_entity") groupEntity: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("payment_mode") paymentMode: String?, @Query("bag_status") bagStatus: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("tags") tags: String?, @Query("time_to_dispatch") timeToDispatch: String?, @Query("payment_methods") paymentMethods: String?)
@@ -39,7 +43,7 @@ interface OrderApiList {
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/order-details")
     fun getAppOrderShipmentDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String)
-    : Deferred<Response<ShipmentDetailsResponse>>
+    : Deferred<Response<OrderDetailsResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/track")
     fun trackPlatformShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)

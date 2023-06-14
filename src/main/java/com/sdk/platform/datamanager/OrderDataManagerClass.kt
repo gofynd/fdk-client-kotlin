@@ -69,8 +69,20 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
+    suspend fun getAssetByShipmentIds(shipmentIds: String, invoice: Boolean?=null, expiresIn: String?=null)
+    : Deferred<Response<ResponseGetAssetShipment>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getAssetByShipmentIds(
+        companyId = config.companyId, shipmentIds = shipmentIds, invoice = invoice, expiresIn = expiresIn )
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getOrderById(orderId: String)
-    : Deferred<Response<ShipmentDetailsResponse>>? {
+    : Deferred<Response<OrderDetailsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrderById(
@@ -548,6 +560,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
+    
     suspend fun getApplicationShipments(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannel: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, customerId: String?=null, isPrioritySort: Boolean?=null)
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -561,7 +574,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun getAppOrderShipmentDetails(orderId: String)
-    : Deferred<Response<ShipmentDetailsResponse>>? {
+    : Deferred<Response<OrderDetailsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 orderApiList?.getAppOrderShipmentDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
         } else {
