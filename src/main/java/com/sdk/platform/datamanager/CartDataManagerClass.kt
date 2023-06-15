@@ -512,20 +512,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun updateCartDynamicInjection(extensionId: String,body: CartDynamicInjectionUpdate)
-    : Deferred<Response<SuccessMessage>>? {
+    suspend fun updateCartDynamicInjection(id: String,body: CartDynamicInjectionUpdate)
+    : Deferred<Response<CartDynamicInjectionResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.updateCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId, body = body)
+                cartApiList?.updateCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
             null
         }
     }
     
     
-    suspend fun removeCartMetaConfig(extensionId: String)
+    suspend fun removeCartDynamicInjection(id: String)
     : Deferred<Response<SuccessMessage>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.removeCartMetaConfig(companyId = config.companyId , applicationId = applicationId , extensionId = extensionId )
+                cartApiList?.removeCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -533,7 +533,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createCartDynamicInjection(body: CartDynamicInjectionAdd)
-    : Deferred<Response<SuccessMessage>>? {
+    : Deferred<Response<CartDynamicInjectionResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.createCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {

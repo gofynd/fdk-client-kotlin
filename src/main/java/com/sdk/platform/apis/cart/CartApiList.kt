@@ -81,16 +81,16 @@ interface CartApiList {
     fun updateCart(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("cart_id") cartId: String, @Query("b") b: Boolean?,@Body body: UpdateCartRequest)
     : Deferred<Response<UpdateCartDetailResponse>>
     
-    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount/{extension_id}")
-    fun updateCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String,@Body body: CartDynamicInjectionUpdate)
-    : Deferred<Response<SuccessMessage>>
+    @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount/{id}")
+    fun updateCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: CartDynamicInjectionUpdate)
+    : Deferred<Response<CartDynamicInjectionResponse>>
     
-    @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount/{extension_id}")
-    fun removeCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("extension_id") extensionId: String)
+    @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount/{id}")
+    fun removeCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<SuccessMessage>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount")
     fun createCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CartDynamicInjectionAdd)
-    : Deferred<Response<SuccessMessage>>
+    : Deferred<Response<CartDynamicInjectionResponse>>
     
 }
