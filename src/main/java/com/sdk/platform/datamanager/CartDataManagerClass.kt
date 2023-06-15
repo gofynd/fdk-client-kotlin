@@ -352,10 +352,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getPromosCouponConfig()
+    suspend fun getPromosCouponConfig(entityType: String?=null, isHidden: Boolean?=null)
     : Deferred<Response<ActivePromosResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.getPromosCouponConfig(companyId = config.companyId , applicationId = applicationId  )
+                cartApiList?.getPromosCouponConfig(companyId = config.companyId , applicationId = applicationId , entityType = entityType, isHidden = isHidden )
         } else {
             null
         }

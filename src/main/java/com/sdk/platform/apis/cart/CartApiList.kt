@@ -50,7 +50,7 @@ interface CartApiList {
     : Deferred<Response<SuccessMessage>>
     
     @GET ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/promo-coupons")
-    fun getPromosCouponConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    fun getPromosCouponConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("entity_type") entityType: String?, @Query("is_hidden") isHidden: Boolean?)
     : Deferred<Response<ActivePromosResponse>>
     
     @PUT ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/cart_configuration/{cart_meta_id}")
