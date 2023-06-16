@@ -385,24 +385,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentHistory(shipmentId: String?=null, bagId: Int?=null)
-    : Deferred<Response<ShipmentHistoryResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentHistory(
-        companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun postShipmentHistory(body: PostShipmentHistory)
     : Deferred<Response<ShipmentHistoryResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.postShipmentHistory(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getShipmentHistory(shipmentId: String?=null, bagId: Int?=null)
+    : Deferred<Response<ShipmentHistoryResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getShipmentHistory(
+        companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
         } else {
             null
         } 
@@ -421,8 +421,8 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun updatePackagingDimensions(body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>? {
+    suspend fun updatePackagingDimensions(body: UpdatePackagingDimensionsPayload)
+    : Deferred<Response<UpdatePackagingDimensionsResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.updatePackagingDimensions(
@@ -445,24 +445,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getChannelConfig()
-    : Deferred<Response<CreateChannelConfigData>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getChannelConfig(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun createChannelConfig(body: CreateChannelConfigData)
     : Deferred<Response<CreateChannelConfigResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.createChannelConfig(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannelConfig()
+    : Deferred<Response<CreateChannelConfigData>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getChannelConfig(
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -516,6 +516,66 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         } 
     }
     
+    
+    suspend fun fetchCreditBalanceDetail(body: FetchCreditBalanceRequestPayload)
+    : Deferred<Response<FetchCreditBalanceResponsePayload>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.fetchCreditBalanceDetail(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun fetchRefundModeConfig(body: RefundModeConfigRequestPayload)
+    : Deferred<Response<RefundModeConfigResponsePayload>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.fetchRefundModeConfig(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun attachOrderUser(body: AttachOrderUser)
+    : Deferred<Response<AttachOrderUserResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.attachOrderUser(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun sendUserMobileOTP(body: SendUserMobileOTP)
+    : Deferred<Response<SendUserMobileOtpResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.sendUserMobileOTP(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun verifyMobileOTP(body: VerifyMobileOTP)
+    : Deferred<Response<VerifyOtpResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.verifyMobileOTP(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -556,6 +616,11 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
+    
+    
     
     
     
