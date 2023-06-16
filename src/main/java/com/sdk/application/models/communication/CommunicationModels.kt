@@ -443,3 +443,457 @@ data class Page(
 
 
 
+             
+/*
+    Model: GenericSuccess
+*/
+@Parcelize
+data class GenericSuccess(
+    
+    
+    
+    @SerializedName("success")
+    var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InvalidRangeErrorReqPositive
+*/
+@Parcelize
+data class InvalidRangeErrorReqPositive(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("code")
+    var code: Int?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InvalidInputRequiredByteOrHexError
+*/
+@Parcelize
+data class InvalidInputRequiredByteOrHexError(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NameValidatorError
+*/
+@Parcelize
+data class NameValidatorError(
+    
+    
+    
+    @SerializedName("message")
+    var message: NameValidatorErrorMessage?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: NameValidatorErrorMessage
+*/
+@Parcelize
+data class NameValidatorErrorMessage(
+    
+    
+    
+    @SerializedName("name")
+    var name: ValidatorErrorBody?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApikeyValidatorError
+*/
+@Parcelize
+data class ApikeyValidatorError(
+    
+    
+    
+    @SerializedName("message")
+    var message: ApikeyValidatorErrorMessage?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApikeyValidatorErrorMessage
+*/
+@Parcelize
+data class ApikeyValidatorErrorMessage(
+    
+    
+    
+    @SerializedName("api_key")
+    var apiKey: ValidatorErrorBody?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FeedidValidatorError
+*/
+@Parcelize
+data class FeedidValidatorError(
+    
+    
+    
+    @SerializedName("message")
+    var message: FeedidValidatorErrorMessage?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FeedidValidatorErrorMessage
+*/
+@Parcelize
+data class FeedidValidatorErrorMessage(
+    
+    
+    
+    @SerializedName("feedid")
+    var feedid: ValidatorErrorBody?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UsernameValidatorError
+*/
+@Parcelize
+data class UsernameValidatorError(
+    
+    
+    
+    @SerializedName("message")
+    var message: UsernameValidatorErrorMessage?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UsernameValidatorErrorMessage
+*/
+@Parcelize
+data class UsernameValidatorErrorMessage(
+    
+    
+    
+    @SerializedName("username")
+    var username: ValidatorErrorBody?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PasswordValidatorError
+*/
+@Parcelize
+data class PasswordValidatorError(
+    
+    
+    
+    @SerializedName("message")
+    var message: PasswordValidatorErrorMessage?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PasswordValidatorErrorMessage
+*/
+@Parcelize
+data class PasswordValidatorErrorMessage(
+    
+    
+    
+    @SerializedName("password")
+    var password: ValidatorErrorBody?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ValidatorErrorBody
+*/
+@Parcelize
+data class ValidatorErrorBody(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("properties")
+    var properties: ValidatorErrorMessageProperties?=null,
+    
+    @SerializedName("kind")
+    var kind: String?=null,
+    
+    @SerializedName("path")
+    var path: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ValidatorErrorMessageProperties
+*/
+@Parcelize
+data class ValidatorErrorMessageProperties(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("path")
+    var path: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CastToStringFail
+*/
+@Parcelize
+data class CastToStringFail(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: InvalidID
+*/
+@Parcelize
+data class InvalidID(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+

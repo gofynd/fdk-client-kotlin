@@ -18,80 +18,16 @@ data class PincodeErrorSchemaResponse(
     
     
     
+    @SerializedName("message")
+    var message: String?=null,
+    
     @SerializedName("type")
     var type: String?=null,
     
     @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
+    var value: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PincodeLatLongData
-*/
-@Parcelize
-data class PincodeLatLongData(
-    
-    
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("coordinates")
-    var coordinates: ArrayList<String>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: PincodeParentsResponse
-*/
-@Parcelize
-data class PincodeParentsResponse(
-    
-    
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("sub_type")
-    var subType: String?=null
-    
-): Parcelable {
-    
-    
     
     
     
@@ -114,11 +50,11 @@ data class PincodeMetaResponse(
     
     
     
-    @SerializedName("internal_zone_id")
-    var internalZoneId: Int?=null,
-    
     @SerializedName("zone")
-    var zone: String?=null
+    var zone: String?=null,
+    
+    @SerializedName("internal_zone_id")
+    var internalZoneId: Int?=null
     
 ): Parcelable {
     
@@ -141,11 +77,75 @@ data class CountryMetaResponse(
     
     
     
-    @SerializedName("country_code")
-    var countryCode: String?=null,
-    
     @SerializedName("isd_code")
-    var isdCode: String?=null
+    var isdCode: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeParentsResponse
+*/
+@Parcelize
+data class PincodeParentsResponse(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("sub_type")
+    var subType: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PincodeLatLongData
+*/
+@Parcelize
+data class PincodeLatLongData(
+    
+    
+    
+    @SerializedName("coordinates")
+    var coordinates: ArrayList<String>?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
     
 ): Parcelable {
     
@@ -168,32 +168,32 @@ data class PincodeDataResponse(
     
     
     
-    @SerializedName("lat_long")
-    var latLong: PincodeLatLongData?=null,
-    
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("error")
-    var error: PincodeErrorSchemaResponse?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("sub_type")
     var subType: String?=null,
     
-    @SerializedName("parents")
-    var parents: ArrayList<PincodeParentsResponse>?=null,
+    @SerializedName("display_name")
+    var displayName: String?=null,
     
     @SerializedName("meta")
     var meta: PincodeMetaResponse?=null,
     
     @SerializedName("meta_code")
-    var metaCode: CountryMetaResponse?=null
+    var metaCode: CountryMetaResponse?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("error")
+    var error: PincodeErrorSchemaResponse?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("parents")
+    var parents: ArrayList<PincodeParentsResponse>?=null,
+    
+    @SerializedName("lat_long")
+    var latLong: PincodeLatLongData?=null
     
 ): Parcelable {
     
@@ -233,11 +233,11 @@ data class PincodeApiResponse(
     @SerializedName("error")
     var error: PincodeErrorSchemaResponse?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("data")
-    var data: ArrayList<PincodeDataResponse>?=null
+    var data: ArrayList<PincodeDataResponse>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
     
@@ -289,14 +289,14 @@ data class TATArticlesRequest(
     
     
     
-    @SerializedName("manufacturing_time")
-    var manufacturingTime: Int?=null,
+    @SerializedName("category")
+    var category: TATCategoryRequest?=null,
     
     @SerializedName("manufacturing_time_unit")
     var manufacturingTimeUnit: String?=null,
     
-    @SerializedName("category")
-    var category: TATCategoryRequest?=null
+    @SerializedName("manufacturing_time")
+    var manufacturingTime: Int?=null
     
 ): Parcelable {
     
@@ -353,23 +353,23 @@ data class TATViewRequest(
     
     
     
+    @SerializedName("identifier")
+    var identifier: String?=null,
+    
     @SerializedName("journey")
     var journey: String?=null,
-    
-    @SerializedName("action")
-    var action: String?=null,
-    
-    @SerializedName("location_details")
-    var locationDetails: ArrayList<TATLocationDetailsRequest>?=null,
     
     @SerializedName("to_pincode")
     var toPincode: String?=null,
     
-    @SerializedName("source")
-    var source: String?=null,
+    @SerializedName("location_details")
+    var locationDetails: ArrayList<TATLocationDetailsRequest>?=null,
     
-    @SerializedName("identifier")
-    var identifier: String?=null
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("source")
+    var source: String?=null
     
 ): Parcelable {
     
@@ -400,45 +400,18 @@ data class TATErrorSchemaResponse(
     
     
     
+    @SerializedName("message")
+    var message: String?=null,
+    
     @SerializedName("type")
     var type: String?=null,
     
     @SerializedName("value")
-    var value: String?=null,
-    
-    @SerializedName("message")
-    var message: String?=null
+    var value: String?=null
     
 ): Parcelable {
     
     
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: TATFormattedResponse
-*/
-@Parcelize
-data class TATFormattedResponse(
-    
-    
-    
-    @SerializedName("min")
-    var min: String?=null,
-    
-    @SerializedName("max")
-    var max: String?=null
-    
-): Parcelable {
     
     
     
@@ -479,6 +452,33 @@ data class TATTimestampResponse(
 
              
 /*
+    Model: TATFormattedResponse
+*/
+@Parcelize
+data class TATFormattedResponse(
+    
+    
+    
+    @SerializedName("min")
+    var min: String?=null,
+    
+    @SerializedName("max")
+    var max: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: TATPromiseResponse
 */
 @Parcelize
@@ -486,11 +486,11 @@ data class TATPromiseResponse(
     
     
     
-    @SerializedName("formatted")
-    var formatted: TATFormattedResponse?=null,
-    
     @SerializedName("timestamp")
-    var timestamp: TATTimestampResponse?=null
+    var timestamp: TATTimestampResponse?=null,
+    
+    @SerializedName("formatted")
+    var formatted: TATFormattedResponse?=null
     
 ): Parcelable {
     
@@ -513,26 +513,26 @@ data class TATArticlesResponse(
     
     
     
-    @SerializedName("manufacturing_time")
-    var manufacturingTime: Int?=null,
-    
-    @SerializedName("manufacturing_time_unit")
-    var manufacturingTimeUnit: String?=null,
-    
-    @SerializedName("_manufacturing_time_seconds")
-    var manufacturingTimeSeconds: Int?=null,
-    
     @SerializedName("error")
     var error: TATErrorSchemaResponse?=null,
-    
-    @SerializedName("category")
-    var category: TATCategoryRequest?=null,
     
     @SerializedName("is_cod_available")
     var isCodAvailable: Boolean?=null,
     
+    @SerializedName("category")
+    var category: TATCategoryRequest?=null,
+    
+    @SerializedName("_manufacturing_time_seconds")
+    var manufacturingTimeSeconds: Int?=null,
+    
+    @SerializedName("manufacturing_time")
+    var manufacturingTime: Int?=null,
+    
     @SerializedName("promise")
-    var promise: TATPromiseResponse?=null
+    var promise: TATPromiseResponse?=null,
+    
+    @SerializedName("manufacturing_time_unit")
+    var manufacturingTimeUnit: String?=null
     
 ): Parcelable {
     
@@ -597,44 +597,44 @@ data class TATViewResponse(
     
     
     
-    @SerializedName("stormbreaker_uuid")
-    var stormbreakerUuid: String?=null,
+    @SerializedName("identifier")
+    var identifier: String?=null,
     
-    @SerializedName("request_uuid")
-    var requestUuid: String?=null,
-    
-    @SerializedName("to_city")
-    var toCity: String?=null,
+    @SerializedName("payment_mode")
+    var paymentMode: String?=null,
     
     @SerializedName("journey")
     var journey: String?=null,
     
-    @SerializedName("action")
-    var action: String?=null,
-    
-    @SerializedName("location_details")
-    var locationDetails: ArrayList<TATLocationDetailsResponse>?=null,
-    
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
-    @SerializedName("to_pincode")
-    var toPincode: String?=null,
+    @SerializedName("request_uuid")
+    var requestUuid: String?=null,
     
     @SerializedName("error")
     var error: TATErrorSchemaResponse?=null,
     
-    @SerializedName("source")
-    var source: String?=null,
+    @SerializedName("to_city")
+    var toCity: String?=null,
     
-    @SerializedName("identifier")
-    var identifier: String?=null,
+    @SerializedName("success")
+    var success: Boolean?=null,
     
     @SerializedName("is_cod_available")
     var isCodAvailable: Boolean?=null,
     
-    @SerializedName("payment_mode")
-    var paymentMode: String?=null
+    @SerializedName("to_pincode")
+    var toPincode: String?=null,
+    
+    @SerializedName("stormbreaker_uuid")
+    var stormbreakerUuid: String?=null,
+    
+    @SerializedName("location_details")
+    var locationDetails: ArrayList<TATLocationDetailsResponse>?=null,
+    
+    @SerializedName("action")
+    var action: String?=null,
+    
+    @SerializedName("source")
+    var source: String?=null
     
 ): Parcelable {
     
@@ -768,29 +768,29 @@ data class CountryEntityResponse(
     
     
     
-    @SerializedName("display_name")
-    var displayName: String?=null,
-    
-    @SerializedName("uid")
-    var uid: String?=null,
-    
-    @SerializedName("type")
-    var type: String?=null,
-    
-    @SerializedName("logistics")
-    var logistics: LogisticsResponse?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
     @SerializedName("sub_type")
     var subType: String?=null,
+    
+    @SerializedName("display_name")
+    var displayName: String?=null,
     
     @SerializedName("parent_id")
     var parentId: String?=null,
     
     @SerializedName("meta")
     var meta: CountryMetaResponse?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("uid")
+    var uid: String?=null,
+    
+    @SerializedName("logistics")
+    var logistics: LogisticsResponse?=null,
     
     @SerializedName("is_active")
     var isActive: Boolean?=null
@@ -852,11 +852,11 @@ data class GetZoneFromPincodeViewRequest(
     
     
     
-    @SerializedName("country")
-    var country: String?=null,
-    
     @SerializedName("pincode")
-    var pincode: String?=null
+    var pincode: String?=null,
+    
+    @SerializedName("country")
+    var country: String?=null
     
 ): Parcelable {
     
@@ -906,8 +906,8 @@ data class ReAssignStoreRequest(
     
     
     
-    @SerializedName("articles")
-    var articles: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    @SerializedName("identifier")
+    var identifier: String?=null,
     
     @SerializedName("ignored_locations")
     var ignoredLocations: ArrayList<String>?=null,
@@ -918,8 +918,8 @@ data class ReAssignStoreRequest(
     @SerializedName("configuration")
     var configuration: @RawValue HashMap<String,Any>?=null,
     
-    @SerializedName("identifier")
-    var identifier: String?=null
+    @SerializedName("articles")
+    var articles: @RawValue ArrayList<HashMap<String,Any>>?=null
     
 ): Parcelable {
     
@@ -951,14 +951,14 @@ data class ReAssignStoreResponse(
     @SerializedName("to_pincode")
     var toPincode: String?=null,
     
-    @SerializedName("success")
-    var success: Boolean?=null,
-    
     @SerializedName("error")
     var error: @RawValue HashMap<String,Any>?=null,
     
     @SerializedName("articles")
-    var articles: @RawValue ArrayList<HashMap<String,Any>>?=null
+    var articles: @RawValue ArrayList<HashMap<String,Any>>?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null
     
 ): Parcelable {
     

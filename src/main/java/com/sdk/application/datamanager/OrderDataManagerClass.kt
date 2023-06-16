@@ -43,10 +43,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
             
                     _relativeUrls["getShipmentReasons"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/reasons".substring(1)
             
-                    _relativeUrls["updateShipmentStatus"] = "/service/application/order/v1.0/orders/shipments/{shipment_id}/status".substring(1)
-            
-                    _relativeUrls["getProducts"] = "/service/application/order/v1.0/products".substring(1)
-            
     }
 
     public fun update(updatedUrlMap : HashMap<String,String>){
@@ -98,7 +94,7 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getPosOrderById(orderId: String): Deferred<Response<OrderById>>? {
+    fun getPosOrderById(orderId: String): Deferred<Response<OrderList>>? {
         var fullUrl : String? = _relativeUrls["getPosOrderById"] 
         
         fullUrl = fullUrl?.replace("{" + "order_id" +"}",orderId.toString())
@@ -116,12 +112,12 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
 
     
     
-    fun getInvoiceByShipmentId(shipmentId: String, documentType: String?=null): Deferred<Response<ResponseGetInvoiceShipment>>? {
+    fun getInvoiceByShipmentId(shipmentId: String): Deferred<Response<ResponseGetInvoiceShipment>>? {
         var fullUrl : String? = _relativeUrls["getInvoiceByShipmentId"] 
         
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
-        return orderApiList?.getInvoiceByShipmentId(fullUrl     ,  documentType = documentType)}
+        return orderApiList?.getInvoiceByShipmentId(fullUrl   )}
 
     
     
@@ -184,24 +180,6 @@ class OrderDataManagerClass(val config: ApplicationConfig, val unauthorizedActio
         fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
         
         return orderApiList?.getShipmentReasons(fullUrl   )}
-
-    
-    
-    fun updateShipmentStatus(shipmentId: String, body: UpdateShipmentStatusRequest): Deferred<Response<ShipmentApplicationStatusResponse>>? {
-        var fullUrl : String? = _relativeUrls["updateShipmentStatus"] 
-        
-        fullUrl = fullUrl?.replace("{" + "shipment_id" +"}",shipmentId.toString())
-        
-        return orderApiList?.updateShipmentStatus(fullUrl   ,body = body)}
-
-    
-    
-    fun getProducts(companyId: Int, status: Int?=null, pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, searchValue: String?=null): Deferred<Response<ProductListResponse>>? {
-        var fullUrl : String? = _relativeUrls["getProducts"] 
-        
-        fullUrl = fullUrl?.replace("{" + "company_id" +"}",companyId.toString())
-        
-        return orderApiList?.getProducts(fullUrl     ,  status = status,    pageNo = pageNo,    pageSize = pageSize,    fromDate = fromDate,    toDate = toDate,    searchValue = searchValue)}
 
     
     

@@ -254,6 +254,33 @@ data class ListOrCalender(
 
              
 /*
+    Model: DiscountMeta
+*/
+@Parcelize
+data class DiscountMeta(
+    
+    
+    
+    @SerializedName("timer")
+    var timer: Boolean?=null,
+    
+    @SerializedName("number_of_minutes")
+    var numberOfMinutes: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: DiscountItems
 */
 @Parcelize
@@ -274,9 +301,14 @@ data class DiscountItems(
     var discountType: String?=null,
     
     @SerializedName("value")
-    var value: Double?=null
+    var value: Double?=null,
+    
+    @SerializedName("discount_meta")
+    var discountMeta: DiscountMeta?=null
     
 ): Parcelable {
+    
+    
     
     
     

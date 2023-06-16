@@ -70,7 +70,7 @@ interface CartApiList {
     : Deferred<Response<CartDynamicInjectionResponse>>
     
     @DELETE ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount/{id}")
-    fun removeCartMetaConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    fun removeCartDynamicInjection(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<SuccessMessage>>
     
     @POST ("/service/platform/cart/v1.0/company/{company_id}/application/{application_id}/additional-charge-discount")

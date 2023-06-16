@@ -74,6 +74,11 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
+    
+    
+    
+    
     suspend fun getSystemNotifications(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<SystemNotifications>>? {
         
@@ -106,9 +111,41 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
+    suspend fun getAppProviders()
+    : Deferred<Response<AppProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getAppProviders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateAppProviders(body: AppProviderReq)
+    : Deferred<Response<AppProvider>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.updateAppProviders(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getGlobalProviders()
+    : Deferred<Response<GlobalProviders>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getGlobalProviders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
     
     
     suspend fun getCampaigns(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
@@ -241,6 +278,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getDefaultEmailProviders()
+    : Deferred<Response<ArrayList<DefaultEmailProviders>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getDefaultEmailProviders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getEmailProviderById(id: String)
     : Deferred<Response<EmailProvider>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -255,6 +302,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<EmailProvider>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateEmailProviderById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteEmailProviderById(id: String)
+    : Deferred<Response<GenericSuccess>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.deleteEmailProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }
@@ -432,6 +489,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getDefaultSmsProviders()
+    : Deferred<Response<ArrayList<DefaultSmsProviders>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getDefaultSmsProviders(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getSmsProviderById(id: String)
     : Deferred<Response<SmsProvider>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -446,6 +513,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<SmsProvider>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateSmsProviderById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun deleteSmsProviderById(id: String)
+    : Deferred<Response<GenericSuccess>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.deleteSmsProviderById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }

@@ -435,10 +435,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun removeCartMetaConfig(id: String)
+    suspend fun removeCartDynamicInjection(id: String)
     : Deferred<Response<SuccessMessage>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                cartApiList?.removeCartMetaConfig(companyId = config.companyId , applicationId = applicationId , id = id )
+                cartApiList?.removeCartDynamicInjection(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
             null
         }

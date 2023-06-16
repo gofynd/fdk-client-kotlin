@@ -9,6 +9,18 @@ import com.sdk.platform.models.communication.*
 
 interface CommunicationApiList {
     
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/app-provider/get-provider")
+    fun getAppProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<AppProvider>>
+    
+    @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/app-provider/update-provider")
+    fun updateAppProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AppProviderReq)
+    : Deferred<Response<AppProvider>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/app-provider/global-providers")
+    fun getGlobalProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<GlobalProviders>>
+    
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/campaigns/campaigns")
     fun getCampaigns(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
     : Deferred<Response<Campaigns>>
@@ -61,6 +73,10 @@ interface CommunicationApiList {
     fun createEmailProvider(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EmailProviderReq)
     : Deferred<Response<EmailProvider>>
     
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/default-providers")
+    fun getDefaultEmailProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ArrayList<DefaultEmailProviders>>>
+    
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers/{id}")
     fun getEmailProviderById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<EmailProvider>>
@@ -68,6 +84,10 @@ interface CommunicationApiList {
     @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers/{id}")
     fun updateEmailProviderById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EmailProviderReq)
     : Deferred<Response<EmailProvider>>
+    
+    @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/providers/{id}")
+    fun deleteEmailProviderById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<GenericSuccess>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates")
     fun getEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
@@ -141,6 +161,10 @@ interface CommunicationApiList {
     fun createSmsProvider(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SmsProviderReq)
     : Deferred<Response<SmsProvider>>
     
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/default-providers")
+    fun getDefaultSmsProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ArrayList<DefaultSmsProviders>>>
+    
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/providers/{id}")
     fun getSmsProviderById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
     : Deferred<Response<SmsProvider>>
@@ -148,6 +172,10 @@ interface CommunicationApiList {
     @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/providers/{id}")
     fun updateSmsProviderById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SmsProviderReq)
     : Deferred<Response<SmsProvider>>
+    
+    @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/providers/{id}")
+    fun deleteSmsProviderById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
+    : Deferred<Response<GenericSuccess>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates")
     fun getSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
