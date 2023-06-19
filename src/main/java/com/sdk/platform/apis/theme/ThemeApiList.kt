@@ -137,4 +137,8 @@ interface ThemeApiList {
     fun applyThemeV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplyThemeRequestV2)
     : Deferred<Response<ApplyThemeResponseV2>>
     
+    @PATCH ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/name")
+    fun updateThemeNameV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: UpdateThemeNameRequestBodyV2)
+    : Deferred<Response<AllThemesApplicationResponseV2>>
+    
 }

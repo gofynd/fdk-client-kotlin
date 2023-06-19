@@ -2496,6 +2496,28 @@ data class AllThemesApplicationResponseV2(
 
              
 /*
+    Model: UpdateThemeNameRequestBodyV2
+*/
+@Parcelize
+data class UpdateThemeNameRequestBodyV2(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UpdateThemeRequestBodyV2
 */
 @Parcelize

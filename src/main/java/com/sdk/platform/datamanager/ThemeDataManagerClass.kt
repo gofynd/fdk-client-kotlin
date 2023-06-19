@@ -110,6 +110,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -402,6 +403,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ApplyThemeResponseV2>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.applyThemeV2(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateThemeNameV2(themeId: String,body: UpdateThemeNameRequestBodyV2)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.updateThemeNameV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
         } else {
             null
         }
