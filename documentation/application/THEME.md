@@ -9942,6 +9942,102 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
 
  
  
+ #### [ThemeSlugResponse](#ThemeSlugResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | theme | [MarketplaceTheme](#MarketplaceTheme)? |  yes  |  |
+ | organization | [Organization](#Organization)? |  yes  |  |
+ | user | ArrayList<[ThemeCreator](#ThemeCreator)>? |  yes  | An array of user objects |
+
+---
+
+
+ 
+ 
+ #### [Organization](#Organization)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | meta | [OrganizationMeta](#OrganizationMeta)? |  yes  |  |
+ | id | String? |  yes  | The unique identifier of the organization |
+
+---
+
+
+ 
+ 
+ #### [OrganizationMeta](#OrganizationMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ecommPlatformUsed | ArrayList<String>? |  yes  | List of e-commerce platforms used by the organization |
+ | goals | ArrayList<String>? |  yes  | List of goals for the organization |
+
+---
+
+
+ 
+ 
+ #### [ThemeCreator](#ThemeCreator)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  | Unique identifier for the user |
+ | gender | String? |  yes  | Gender of the user (null if not specified) |
+ | accountType | String? |  yes  | Type of user account |
+ | active | Boolean |  no  | Whether the user is active or not |
+ | firstName | String? |  yes  | First name of the user |
+ | lastName | String? |  yes  | Last name of the user |
+ | phoneNumbers | ArrayList<[PhoneNumber](#PhoneNumber)>? |  yes  | List of phone numbers associated with the user |
+ | emails | ArrayList<[Email](#Email)> |  no  | List of email addresses associated with the user |
+
+---
+
+
+ 
+ 
+ #### [PhoneNumber](#PhoneNumber)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  | Whether the phone number is active or not |
+ | primary | Boolean |  no  | Whether the phone number is the primary contact number for the user |
+ | verified | Boolean |  no  | Whether the phone number has been verified or not |
+ | phone | String |  no  | Phone number |
+ | countryCode | Int? |  yes  | Country code for the phone number |
+
+---
+
+
+ 
+ 
+ #### [Email](#Email)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  | Whether the email address is active or not |
+ | primary | Boolean |  no  | Whether the email address is the primary contact email for the user |
+ | verified | Boolean |  no  | Whether the email address has been verified or not |
+ | email | String |  no  | Email address |
+
+---
+
+
+ 
+ 
+ #### [ThemeAndUserDetailsResponse](#ThemeAndUserDetailsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | themes | ArrayList<[MarketplaceTheme](#MarketplaceTheme)>? |  yes  | List of themes |
+ | user | ArrayList<[ThemeCreator](#ThemeCreator)>? |  yes  | List of users |
+
+---
+
+
+ 
+ 
  #### [AllAvailablePageSchema](#AllAvailablePageSchema)
 
  | Properties | Type | Nullable | Description |

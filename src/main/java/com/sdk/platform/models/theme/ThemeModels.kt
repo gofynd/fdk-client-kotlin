@@ -1091,6 +1091,255 @@ data class Release(
 
              
 /*
+    Model: ThemeSlugResponse
+*/
+@Parcelize
+data class ThemeSlugResponse(
+    
+    
+    
+    @SerializedName("theme")
+    var theme: MarketplaceTheme?=null,
+    
+    @SerializedName("organization")
+    var organization: Organization?=null,
+    
+    @SerializedName("user")
+    var user: ArrayList<ThemeCreator>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Organization
+*/
+@Parcelize
+data class Organization(
+    
+    
+    
+    @SerializedName("meta")
+    var meta: OrganizationMeta?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OrganizationMeta
+*/
+@Parcelize
+data class OrganizationMeta(
+    
+    
+    
+    @SerializedName("ecomm_platform_used")
+    var ecommPlatformUsed: ArrayList<String>?=null,
+    
+    @SerializedName("goals")
+    var goals: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeCreator
+*/
+@Parcelize
+data class ThemeCreator(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("gender")
+    var gender: String?=null,
+    
+    @SerializedName("account_type")
+    var accountType: String?=null,
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("first_name")
+    var firstName: String?=null,
+    
+    @SerializedName("last_name")
+    var lastName: String?=null,
+    
+    @SerializedName("phone_numbers")
+    var phoneNumbers: ArrayList<PhoneNumber>?=null,
+    
+    @SerializedName("emails")
+    var emails: ArrayList<Email>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PhoneNumber
+*/
+@Parcelize
+data class PhoneNumber(
+    
+    
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("phone")
+    var phone: String?=null,
+    
+    @SerializedName("country_code")
+    var countryCode: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Email
+*/
+@Parcelize
+data class Email(
+    
+    
+    
+    @SerializedName("active")
+    var active: Boolean?=null,
+    
+    @SerializedName("primary")
+    var primary: Boolean?=null,
+    
+    @SerializedName("verified")
+    var verified: Boolean?=null,
+    
+    @SerializedName("email")
+    var email: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeAndUserDetailsResponse
+*/
+@Parcelize
+data class ThemeAndUserDetailsResponse(
+    
+    
+    
+    @SerializedName("themes")
+    var themes: ArrayList<MarketplaceTheme>?=null,
+    
+    @SerializedName("user")
+    var user: ArrayList<ThemeCreator>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AllAvailablePageSchema
 */
 @Parcelize

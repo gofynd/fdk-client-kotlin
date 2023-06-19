@@ -111,6 +111,9 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -399,10 +402,20 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun applyThemeV2(body: ApplyThemeRequestV2)
+    suspend fun deleteThemeV2(themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.deleteThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addThemeToApplicationV2(body: ApplyThemeRequestV2)
     : Deferred<Response<ApplyThemeResponseV2>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                themeApiList?.applyThemeV2(companyId = config.companyId , applicationId = applicationId , body = body)
+                themeApiList?.addThemeToApplicationV2(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -413,6 +426,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<AllThemesApplicationResponseV2>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.updateThemeNameV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun applyThemeV2(themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.applyThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun duplicateThemeV2(themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.duplicateThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
             null
         }

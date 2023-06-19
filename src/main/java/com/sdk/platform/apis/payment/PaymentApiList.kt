@@ -17,6 +17,10 @@ interface PaymentApiList {
     fun saveBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentGatewayConfigRequest)
     : Deferred<Response<PaymentGatewayToBeReviewed>>
     
+    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/aggregator/request")
+    fun updateBrandPaymentGatewayConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentGatewayConfigRequest)
+    : Deferred<Response<PaymentGatewayToBeReviewed>>
+    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/options")
     fun getPaymentModeRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("refresh") refresh: Boolean, @Query("request_type") requestType: String)
     : Deferred<Response<PaymentOptionsResponse>>
@@ -57,12 +61,8 @@ interface PaymentApiList {
     fun saveSubscriptionSetupIntent(@Path("company_id") companyId: String,@Body body: SaveSubscriptionSetupIntentRequest)
     : Deferred<Response<SaveSubscriptionSetupIntentResponse>>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account")
-    fun getBankAccountDetailsOpenAPI(@Query("order_id") orderId: String, @Query("request_hash") requestHash: String?, @Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<RefundAccountResponse>>
-    
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/refund/account")
-    fun addRefundBankAccountUsingOTP(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddBeneficiaryDetailsOTPRequest)
+    fun addBeneficiaryDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: AddBeneficiaryDetailsRequest)
     : Deferred<Response<RefundAccountResponse>>
     
     @GET ("/service/platform/payment/v1.0/company/{company_id}/ifsc-code/verify")
@@ -80,33 +80,5 @@ interface PaymentApiList {
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/confirm")
     fun confirmPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentConfirmationRequest)
     : Deferred<Response<PaymentConfirmationResponse>>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
-    fun getUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("merchant_user_id") merchantUserId: String, @Query("mobile_no") mobileNo: String)
-    : Deferred<Response<GetUserCODLimitResponse>>
-    
-    @PUT ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
-    fun setUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SetCODForUserRequest)
-    : Deferred<Response<SetCODOptionResponse>>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/onboard/{aggregator}/")
-    fun oauthGetUrl(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String, @Query("success_redirect_url") successRedirectUrl: String?, @Query("failure_redirect_url") failureRedirectUrl: String?)
-    : Deferred<Response<GetOauthUrlResponse>>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/revoke/{aggregator}/")
-    fun revokeOauthToken(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String)
-    : Deferred<Response<RevokeOAuthToken>>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/repayment-details")
-    fun repaymentDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RepaymentDetailsSerialiserPayAll)
-    : Deferred<Response<RepaymentResponse>>
-    
-    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/merchant-onboarding")
-    fun merchantOnBoarding(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: MerchantOnBoardingRequest)
-    : Deferred<Response<MerchantOnBoardingResponse>>
-    
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/codes")
-    fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<GetPaymentCodeResponse>>
     
 }

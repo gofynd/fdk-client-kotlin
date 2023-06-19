@@ -49,6 +49,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
     suspend fun getAllPayouts(uniqueExternalId: String?=null)
     : Deferred<Response<PayoutsResponse>>? {
         
@@ -158,7 +159,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun verifyIfscCode(ifscCode: String?=null)
     : Deferred<Response<IfscCodeResponse>>? {
         
@@ -169,13 +169,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
             null
         } 
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -205,6 +198,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun updateBrandPaymentGatewayConfig(body: PaymentGatewayConfigRequest)
+    : Deferred<Response<PaymentGatewayToBeReviewed>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getPaymentModeRoutes(refresh: Boolean, requestType: String)
     : Deferred<Response<PaymentOptionsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -224,20 +227,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    suspend fun getBankAccountDetailsOpenAPI(orderId: String, requestHash: String?=null)
+    suspend fun addBeneficiaryDetails(body: AddBeneficiaryDetailsRequest)
     : Deferred<Response<RefundAccountResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getBankAccountDetailsOpenAPI(orderId = orderId, requestHash = requestHash, companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun addRefundBankAccountUsingOTP(body: AddBeneficiaryDetailsOTPRequest)
-    : Deferred<Response<RefundAccountResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.addRefundBankAccountUsingOTP(companyId = config.companyId , applicationId = applicationId , body = body)
+                paymentApiList?.addBeneficiaryDetails(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -269,76 +262,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentConfirmationResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.confirmPayment(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getUserCODlimitRoutes(merchantUserId: String, mobileNo: String)
-    : Deferred<Response<GetUserCODLimitResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , merchantUserId = merchantUserId, mobileNo = mobileNo )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun setUserCODlimitRoutes(body: SetCODForUserRequest)
-    : Deferred<Response<SetCODOptionResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.setUserCODlimitRoutes(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun oauthGetUrl(aggregator: String, successRedirectUrl: String?=null, failureRedirectUrl: String?=null)
-    : Deferred<Response<GetOauthUrlResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.oauthGetUrl(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator, successRedirectUrl = successRedirectUrl, failureRedirectUrl = failureRedirectUrl )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun revokeOauthToken(aggregator: String)
-    : Deferred<Response<RevokeOAuthToken>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.revokeOauthToken(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun repaymentDetails(body: RepaymentDetailsSerialiserPayAll)
-    : Deferred<Response<RepaymentResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.repaymentDetails(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun merchantOnBoarding(body: MerchantOnBoardingRequest)
-    : Deferred<Response<MerchantOnBoardingResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.merchantOnBoarding(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPaymentCodeOption()
-    : Deferred<Response<GetPaymentCodeResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }

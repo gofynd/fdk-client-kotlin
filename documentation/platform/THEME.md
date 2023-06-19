@@ -37,8 +37,11 @@ Responsible for themes
 * [getApplicationThemesCountV2](#getapplicationthemescountv2)
 * [getApplicationThemeByIdV2](#getapplicationthemebyidv2)
 * [updateThemeV2](#updatethemev2)
-* [applyThemeV2](#applythemev2)
+* [deleteThemeV2](#deletethemev2)
+* [addThemeToApplicationV2](#addthemetoapplicationv2)
 * [updateThemeNameV2](#updatethemenamev2)
+* [applyThemeV2](#applythemev2)
+* [duplicateThemeV2](#duplicatethemev2)
 
 
 
@@ -35412,14 +35415,74 @@ Theme updated successfully
 ---
 
 
-### applyThemeV2
+### deleteThemeV2
+Delete a theme
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").theme.deleteThemeV2(themeId: themeId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| themeId | String | yes | The ID of the theme to be deleted. |  
+
+
+
+This endpoint is used to delete a theme from the specified company and application.
+
+*Returned Response:*
+
+
+
+
+[AllThemesApplicationResponseV2](#AllThemesApplicationResponseV2)
+
+Theme successfully deleted.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### addThemeToApplicationV2
 Apply a theme to an application
 
 
 
 
 ```kotlin
-platformClient.application("<APPLICATION_ID>").theme.applyThemeV2(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").theme.addThemeToApplicationV2(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -35508,6 +35571,126 @@ Update the name of a theme for a specific company and application.
 [AllThemesApplicationResponseV2](#AllThemesApplicationResponseV2)
 
 Theme name updated successfully.
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### applyThemeV2
+Apply theme to a specific application
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").theme.applyThemeV2(themeId: themeId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| themeId | String | yes | The ID of the apply |  
+
+
+
+Apply theme to a specific application by providing company_id, application_id, and theme_id.
+
+*Returned Response:*
+
+
+
+
+[AllThemesApplicationResponseV2](#AllThemesApplicationResponseV2)
+
+Theme applied successfully
+
+
+
+
+<details>
+<summary><i>&nbsp; Example:</i></summary>
+
+```json
+
+```
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
+### duplicateThemeV2
+Duplicate a Theme
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").theme.duplicateThemeV2(themeId: themeId).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| themeId | String | yes | The ID of the theme to be duplicated |  
+
+
+
+This endpoint duplicates a Theme in the specified application.
+
+*Returned Response:*
+
+
+
+
+[AllThemesApplicationResponseV2](#AllThemesApplicationResponseV2)
+
+Resource duplicated successfully
 
 
 
@@ -35944,6 +36127,102 @@ Theme name updated successfully.
  | ---------- | ---- | -------- | ----------- |
  | version | String? |  yes  | Release version |
  | notes | String? |  yes  | Release notes |
+
+---
+
+
+ 
+ 
+ #### [ThemeSlugResponse](#ThemeSlugResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | theme | [MarketplaceTheme](#MarketplaceTheme)? |  yes  |  |
+ | organization | [Organization](#Organization)? |  yes  |  |
+ | user | ArrayList<[ThemeCreator](#ThemeCreator)>? |  yes  | An array of user objects |
+
+---
+
+
+ 
+ 
+ #### [Organization](#Organization)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | meta | [OrganizationMeta](#OrganizationMeta)? |  yes  |  |
+ | id | String? |  yes  | The unique identifier of the organization |
+
+---
+
+
+ 
+ 
+ #### [OrganizationMeta](#OrganizationMeta)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | ecommPlatformUsed | ArrayList<String>? |  yes  | List of e-commerce platforms used by the organization |
+ | goals | ArrayList<String>? |  yes  | List of goals for the organization |
+
+---
+
+
+ 
+ 
+ #### [ThemeCreator](#ThemeCreator)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  | Unique identifier for the user |
+ | gender | String? |  yes  | Gender of the user (null if not specified) |
+ | accountType | String? |  yes  | Type of user account |
+ | active | Boolean |  no  | Whether the user is active or not |
+ | firstName | String? |  yes  | First name of the user |
+ | lastName | String? |  yes  | Last name of the user |
+ | phoneNumbers | ArrayList<[PhoneNumber](#PhoneNumber)>? |  yes  | List of phone numbers associated with the user |
+ | emails | ArrayList<[Email](#Email)> |  no  | List of email addresses associated with the user |
+
+---
+
+
+ 
+ 
+ #### [PhoneNumber](#PhoneNumber)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  | Whether the phone number is active or not |
+ | primary | Boolean |  no  | Whether the phone number is the primary contact number for the user |
+ | verified | Boolean |  no  | Whether the phone number has been verified or not |
+ | phone | String |  no  | Phone number |
+ | countryCode | Int? |  yes  | Country code for the phone number |
+
+---
+
+
+ 
+ 
+ #### [Email](#Email)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | active | Boolean |  no  | Whether the email address is active or not |
+ | primary | Boolean |  no  | Whether the email address is the primary contact email for the user |
+ | verified | Boolean |  no  | Whether the email address has been verified or not |
+ | email | String |  no  | Email address |
+
+---
+
+
+ 
+ 
+ #### [ThemeAndUserDetailsResponse](#ThemeAndUserDetailsResponse)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | themes | ArrayList<[MarketplaceTheme](#MarketplaceTheme)>? |  yes  | List of themes |
+ | user | ArrayList<[ThemeCreator](#ThemeCreator)>? |  yes  | List of users |
 
 ---
 
