@@ -10,4 +10,6 @@ class PublicClient(val config:PublicConfig, val unauthorizedAction: ((url: Strin
     
     val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
     
+    val partner by lazy { PartnerDataManagerClass(config, unauthorizedAction)}
+    
 }

@@ -254,33 +254,6 @@ data class ListOrCalender(
 
              
 /*
-    Model: DiscountMeta
-*/
-@Parcelize
-data class DiscountMeta(
-    
-    
-    
-    @SerializedName("timer")
-    var timer: Boolean?=null,
-    
-    @SerializedName("number_of_minutes")
-    var numberOfMinutes: Double?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: DiscountItems
 */
 @Parcelize
@@ -301,14 +274,9 @@ data class DiscountItems(
     var discountType: String?=null,
     
     @SerializedName("value")
-    var value: Double?=null,
-    
-    @SerializedName("discount_meta")
-    var discountMeta: DiscountMeta?=null
+    var value: Double?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -384,78 +352,6 @@ data class FileJobResponse(
     var fileType: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: FileJobRequest
-*/
-@Parcelize
-data class FileJobRequest(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("is_active")
-    var isActive: Boolean?=null,
-    
-    @SerializedName("app_ids")
-    var appIds: ArrayList<String>?=null,
-    
-    @SerializedName("job_type")
-    var jobType: String?=null,
-    
-    @SerializedName("discount_type")
-    var discountType: String?=null,
-    
-    @SerializedName("discount_level")
-    var discountLevel: String?=null,
-    
-    @SerializedName("file_path")
-    var filePath: String?=null,
-    
-    @SerializedName("brand_ids")
-    var brandIds: ArrayList<Int>?=null,
-    
-    @SerializedName("store_ids")
-    var storeIds: ArrayList<Int>?=null,
-    
-    @SerializedName("validity")
-    var validity: ValidityObject?=null,
-    
-    @SerializedName("meta")
-    var meta: @RawValue HashMap<String,Any>?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

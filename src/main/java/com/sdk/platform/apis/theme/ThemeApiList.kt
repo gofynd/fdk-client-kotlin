@@ -105,4 +105,36 @@ interface ThemeApiList {
     fun getThemeLastModified(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
     : Deferred<Response<Void>>
     
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/themes")
+    fun getCompanyLevelThemes(@Path("company_id") companyId: String)
+    : Deferred<Response<ArrayList<ThemeSchema>>>
+    
+    @POST ("/service/platform/theme/v2.0/company/{company_id}")
+    fun addMarketplaceThemeToCompany(@Path("company_id") companyId: String,@Body body: ThemeReq)
+    : Deferred<Response<ThemeSchema>>
+    
+    @DELETE ("/service/platform/theme/v2.0/company/{company_id}/{theme_id}")
+    fun deleteCompanyTheme(@Path("company_id") companyId: String, @Path("theme_id") themeId: String)
+    : Deferred<Response<ThemeSchema>>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/themes")
+    fun getApplicationThemesV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ArrayList<AllThemesApplicationResponseV2>>>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/application_themes_count")
+    fun getApplicationThemesCountV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<HashMap<String,Any>>>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}")
+    fun getApplicationThemeByIdV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>
+    
+    @PUT ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}")
+    fun updateThemeV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: UpdateThemeRequestBodyV2)
+    : Deferred<Response<AllThemesApplicationResponseV2>>
+    
+    @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
+    fun applyThemeV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplyThemeRequestV2)
+    : Deferred<Response<ApplyThemeResponseV2>>
+    
 }

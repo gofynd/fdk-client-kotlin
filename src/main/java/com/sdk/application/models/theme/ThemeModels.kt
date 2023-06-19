@@ -11,6 +11,203 @@ import com.google.gson.annotations.SerializedName
 
              
 /*
+    Model: ThemeReq
+*/
+@Parcelize
+data class ThemeReq(
+    
+    
+    
+    @SerializedName("marketplace_theme_id")
+    var marketplaceThemeId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeSchema
+*/
+@Parcelize
+data class ThemeSchema(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("marketplace_theme_id")
+    var marketplaceThemeId: MarketplaceThemeId?=null,
+    
+    @SerializedName("company_id")
+    var companyId: Int?=null,
+    
+    @SerializedName("meta")
+    var meta: ThemeMeta?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MarketplaceThemeId
+*/
+@Parcelize
+data class MarketplaceThemeId(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeMeta
+*/
+@Parcelize
+data class ThemeMeta(
+    
+    
+    
+    @SerializedName("payment")
+    var payment: ThemePayment?=null,
+    
+    @SerializedName("industry")
+    var industry: ArrayList<String>?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("images")
+    var images: ThemeImages?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemePayment
+*/
+@Parcelize
+data class ThemePayment(
+    
+    
+    
+    @SerializedName("is_paid")
+    var isPaid: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeImages
+*/
+@Parcelize
+data class ThemeImages(
+    
+    
+    
+    @SerializedName("desktop")
+    var desktop: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: AvailablePageSchema
 */
 @Parcelize
@@ -289,6 +486,598 @@ data class AvailablePagePredicate(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MarketplaceThemeResponse
+*/
+@Parcelize
+data class MarketplaceThemeResponse(
+    
+    
+    
+    @SerializedName("status")
+    var status: Int?=null,
+    
+    @SerializedName("body")
+    var body: MarketplaceThemeResponseBody?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MarketplaceThemeResponseBody
+*/
+@Parcelize
+data class MarketplaceThemeResponseBody(
+    
+    
+    
+    @SerializedName("items")
+    var items: ArrayList<MarketplaceTheme>?=null,
+    
+    @SerializedName("page")
+    var page: PaginationSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MarketplaceTheme
+*/
+@Parcelize
+data class MarketplaceTheme(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("payment")
+    var payment: PaymentInfo?=null,
+    
+    @SerializedName("contact")
+    var contact: ContactInfo?=null,
+    
+    @SerializedName("industry")
+    var industry: ArrayList<String>?=null,
+    
+    @SerializedName("is_update")
+    var isUpdate: Boolean?=null,
+    
+    @SerializedName("is_default")
+    var isDefault: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("tagline")
+    var tagline: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("catalog_size")
+    var catalogSize: CatalogSize?=null,
+    
+    @SerializedName("images")
+    var images: Images?=null,
+    
+    @SerializedName("carousel")
+    var carousel: ArrayList<CarouselItem>?=null,
+    
+    @SerializedName("src")
+    var src: String?=null,
+    
+    @SerializedName("explore")
+    var explore: ExploreInfo?=null,
+    
+    @SerializedName("features")
+    var features: ArrayList<Feature>?=null,
+    
+    @SerializedName("highlights")
+    var highlights: ArrayList<Highlight>?=null,
+    
+    @SerializedName("variations")
+    var variations: ArrayList<Variation>?=null,
+    
+    @SerializedName("documentation")
+    var documentation: Documentation?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("step")
+    var step: Int?=null,
+    
+    @SerializedName("comments")
+    var comments: Comments?=null,
+    
+    @SerializedName("release")
+    var release: Release?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("organization_id")
+    var organizationId: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("template_theme_id")
+    var templateThemeId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaymentInfo
+*/
+@Parcelize
+data class PaymentInfo(
+    
+    
+    
+    @SerializedName("is_paid")
+    var isPaid: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ContactInfo
+*/
+@Parcelize
+data class ContactInfo(
+    
+    
+    
+    @SerializedName("developer_contact")
+    var developerContact: ArrayList<String>?=null,
+    
+    @SerializedName("seller_contact")
+    var sellerContact: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CatalogSize
+*/
+@Parcelize
+data class CatalogSize(
+    
+    
+    
+    @SerializedName("min")
+    var min: Int?=null,
+    
+    @SerializedName("max")
+    var max: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Images
+*/
+@Parcelize
+data class Images(
+    
+    
+    
+    @SerializedName("desktop")
+    var desktop: ArrayList<String>?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null,
+    
+    @SerializedName("android")
+    var android: ArrayList<String>?=null,
+    
+    @SerializedName("ios")
+    var ios: ArrayList<String>?=null,
+    
+    @SerializedName("thumbnail")
+    var thumbnail: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CarouselItem
+*/
+@Parcelize
+data class CarouselItem(
+    
+    
+    
+    @SerializedName("desktop")
+    var desktop: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ExploreInfo
+*/
+@Parcelize
+data class ExploreInfo(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Feature
+*/
+@Parcelize
+data class Feature(
+    
+    
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("list")
+    var list: ArrayList<FeatureItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FeatureItem
+*/
+@Parcelize
+data class FeatureItem(
+    
+    
+    
+    @SerializedName("label")
+    var label: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Highlight
+*/
+@Parcelize
+data class Highlight(
+    
+    
+    
+    @SerializedName("title")
+    var title: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("image")
+    var image: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Variation
+*/
+@Parcelize
+data class Variation(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("color")
+    var color: String?=null,
+    
+    @SerializedName("demo_url")
+    var demoUrl: String?=null,
+    
+    @SerializedName("images")
+    var images: Images?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Documentation
+*/
+@Parcelize
+data class Documentation(
+    
+    
+    
+    @SerializedName("notes")
+    var notes: String?=null,
+    
+    @SerializedName("url")
+    var url: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Comments
+*/
+@Parcelize
+data class Comments(
+    
+    
+    
+    @SerializedName("developer_remark")
+    var developerRemark: String?=null,
+    
+    @SerializedName("reviewer_feedback")
+    var reviewerFeedback: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Release
+*/
+@Parcelize
+data class Release(
+    
+    
+    
+    @SerializedName("version")
+    var version: String?=null,
+    
+    @SerializedName("notes")
+    var notes: String?=null
+    
+): Parcelable {
     
     
     
@@ -806,43 +1595,6 @@ data class Information(
     
     @SerializedName("description")
     var description: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: Images
-*/
-@Parcelize
-data class Images(
-    
-    
-    
-    @SerializedName("desktop")
-    var desktop: ArrayList<String>?=null,
-    
-    @SerializedName("android")
-    var android: ArrayList<String>?=null,
-    
-    @SerializedName("ios")
-    var ios: ArrayList<String>?=null,
-    
-    @SerializedName("thumbnail")
-    var thumbnail: ArrayList<String>?=null
     
 ): Parcelable {
     
@@ -1515,6 +2267,1971 @@ data class BlocksProps(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplyThemeRequestV2
+*/
+@Parcelize
+data class ApplyThemeRequestV2(
+    
+    
+    
+    @SerializedName("marketplace_theme_id")
+    var marketplaceThemeId: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ApplyThemeResponseV2
+*/
+@Parcelize
+data class ApplyThemeResponseV2(
+    
+    
+    
+    @SerializedName("font")
+    var font: FontV2?=null,
+    
+    @SerializedName("config")
+    var config: ConfigV2?=null,
+    
+    @SerializedName("applied")
+    var applied: Boolean?=null,
+    
+    @SerializedName("is_private")
+    var isPrivate: Boolean?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("marketplace_theme_id")
+    var marketplaceThemeId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: MetaV2?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("template_theme_id")
+    var templateThemeId: String?=null,
+    
+    @SerializedName("version")
+    var version: String?=null,
+    
+    @SerializedName("styles")
+    var styles: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AllThemesApplicationResponseV2
+*/
+@Parcelize
+data class AllThemesApplicationResponseV2(
+    
+    
+    
+    @SerializedName("font")
+    var font: FontV2?=null,
+    
+    @SerializedName("config")
+    var config: ConfigV2?=null,
+    
+    @SerializedName("applied")
+    var applied: Boolean?=null,
+    
+    @SerializedName("is_private")
+    var isPrivate: Boolean?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("application_id")
+    var applicationId: String?=null,
+    
+    @SerializedName("marketplace_theme_id")
+    var marketplaceThemeId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: MetaV2?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("template_theme_id")
+    var templateThemeId: String?=null,
+    
+    @SerializedName("version")
+    var version: String?=null,
+    
+    @SerializedName("styles")
+    var styles: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("assets")
+    var assets: AssetsV2?=null,
+    
+    @SerializedName("available_sections")
+    var availableSections: ArrayList<SectionItem>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateThemeRequestBodyV2
+*/
+@Parcelize
+data class UpdateThemeRequestBodyV2(
+    
+    
+    
+    @SerializedName("config")
+    var config: ConfigV2?=null,
+    
+    @SerializedName("font")
+    var font: FontV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FontV2
+*/
+@Parcelize
+data class FontV2(
+    
+    
+    
+    @SerializedName("variants")
+    var variants: FontVariantsV2?=null,
+    
+    @SerializedName("family")
+    var family: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FontVariantsV2
+*/
+@Parcelize
+data class FontVariantsV2(
+    
+    
+    
+    @SerializedName("light")
+    var light: FontVariantV2?=null,
+    
+    @SerializedName("regular")
+    var regular: FontVariantV2?=null,
+    
+    @SerializedName("medium")
+    var medium: FontVariantV2?=null,
+    
+    @SerializedName("semi_bold")
+    var semiBold: FontVariantV2?=null,
+    
+    @SerializedName("bold")
+    var bold: FontVariantV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FontVariantV2
+*/
+@Parcelize
+data class FontVariantV2(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("file")
+    var file: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ConfigV2
+*/
+@Parcelize
+data class ConfigV2(
+    
+    
+    
+    @SerializedName("current")
+    var current: String?=null,
+    
+    @SerializedName("list")
+    var list: ArrayList<ConfigurationV2>?=null,
+    
+    @SerializedName("global_schema")
+    var globalSchema: GlobalSchemaV2?=null,
+    
+    @SerializedName("preset")
+    var preset: PresetV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ConfigurationV2
+*/
+@Parcelize
+data class ConfigurationV2(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("global_config")
+    var globalConfig: GlobalConfigV2?=null,
+    
+    @SerializedName("custom")
+    var custom: CustomConfigV2?=null,
+    
+    @SerializedName("page")
+    var page: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GlobalConfigV2
+*/
+@Parcelize
+data class GlobalConfigV2(
+    
+    
+    
+    @SerializedName("statics")
+    var statics: StaticConfigV2?=null,
+    
+    @SerializedName("auth")
+    var auth: AuthConfigV2?=null,
+    
+    @SerializedName("palette")
+    var palette: PaletteConfigV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StaticConfigV2
+*/
+@Parcelize
+data class StaticConfigV2(
+    
+    
+    
+    @SerializedName("props")
+    var props: StaticPropsV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AuthConfigV2
+*/
+@Parcelize
+data class AuthConfigV2(
+    
+    
+    
+    @SerializedName("show_header_auth")
+    var showHeaderAuth: Boolean?=null,
+    
+    @SerializedName("show_footer_auth")
+    var showFooterAuth: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaletteConfigV2
+*/
+@Parcelize
+data class PaletteConfigV2(
+    
+    
+    
+    @SerializedName("general_setting")
+    var generalSetting: GeneralSettingV2?=null,
+    
+    @SerializedName("advance_setting")
+    var advanceSetting: AdvanceSettingV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CustomConfigV2
+*/
+@Parcelize
+data class CustomConfigV2(
+    
+    
+    
+    @SerializedName("props")
+    var props: CustomPropsV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: MetaV2
+*/
+@Parcelize
+data class MetaV2(
+    
+    
+    
+    @SerializedName("payment")
+    var payment: PaymentV2?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("industry")
+    var industry: ArrayList<String>?=null,
+    
+    @SerializedName("release")
+    var release: ReleaseV2?=null,
+    
+    @SerializedName("images")
+    var images: ImagesV2?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PaymentV2
+*/
+@Parcelize
+data class PaymentV2(
+    
+    
+    
+    @SerializedName("is_paid")
+    var isPaid: Boolean?=null,
+    
+    @SerializedName("amount")
+    var amount: Double?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ReleaseV2
+*/
+@Parcelize
+data class ReleaseV2(
+    
+    
+    
+    @SerializedName("notes")
+    var notes: String?=null,
+    
+    @SerializedName("version")
+    var version: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ImagesV2
+*/
+@Parcelize
+data class ImagesV2(
+    
+    
+    
+    @SerializedName("desktop")
+    var desktop: String?=null,
+    
+    @SerializedName("mobile")
+    var mobile: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: StaticPropsV2
+*/
+@Parcelize
+data class StaticPropsV2(
+    
+    
+    
+    @SerializedName("colors")
+    var colors: ColorsV2?=null,
+    
+    @SerializedName("auth")
+    var auth: AuthConfigV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ColorsV2
+*/
+@Parcelize
+data class ColorsV2(
+    
+    
+    
+    @SerializedName("primary_color")
+    var primaryColor: String?=null,
+    
+    @SerializedName("secondary_color")
+    var secondaryColor: String?=null,
+    
+    @SerializedName("accent_color")
+    var accentColor: String?=null,
+    
+    @SerializedName("link_color")
+    var linkColor: String?=null,
+    
+    @SerializedName("button_secondary_color")
+    var buttonSecondaryColor: String?=null,
+    
+    @SerializedName("bg_color")
+    var bgColor: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GeneralSettingV2
+*/
+@Parcelize
+data class GeneralSettingV2(
+    
+    
+    
+    @SerializedName("theme")
+    var theme: ThemeSettingV2?=null,
+    
+    @SerializedName("text")
+    var text: TextSettingV2?=null,
+    
+    @SerializedName("button")
+    var button: ButtonSettingV2?=null,
+    
+    @SerializedName("sale_discount")
+    var saleDiscount: SaleDiscountSettingV2?=null,
+    
+    @SerializedName("header")
+    var header: HeaderSettingV2?=null,
+    
+    @SerializedName("footer")
+    var footer: FooterSettingV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AdvanceSettingV2
+*/
+@Parcelize
+data class AdvanceSettingV2(
+    
+    
+    
+    @SerializedName("overlay_popup")
+    var overlayPopup: OverlayPopupSettingV2?=null,
+    
+    @SerializedName("divider_stroke_highlight")
+    var dividerStrokeHighlight: DividerStrokeHighlightSettingV2?=null,
+    
+    @SerializedName("user_alerts")
+    var userAlerts: UserAlertsSettingV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeSettingV2
+*/
+@Parcelize
+data class ThemeSettingV2(
+    
+    
+    
+    @SerializedName("page_background")
+    var pageBackground: String?=null,
+    
+    @SerializedName("theme_accent")
+    var themeAccent: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TextSettingV2
+*/
+@Parcelize
+data class TextSettingV2(
+    
+    
+    
+    @SerializedName("text_heading")
+    var textHeading: String?=null,
+    
+    @SerializedName("text_body")
+    var textBody: String?=null,
+    
+    @SerializedName("text_label")
+    var textLabel: String?=null,
+    
+    @SerializedName("text_secondary")
+    var textSecondary: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ButtonSettingV2
+*/
+@Parcelize
+data class ButtonSettingV2(
+    
+    
+    
+    @SerializedName("button_primary")
+    var buttonPrimary: String?=null,
+    
+    @SerializedName("button_secondary")
+    var buttonSecondary: String?=null,
+    
+    @SerializedName("button_link")
+    var buttonLink: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SaleDiscountSettingV2
+*/
+@Parcelize
+data class SaleDiscountSettingV2(
+    
+    
+    
+    @SerializedName("sale_badge_background")
+    var saleBadgeBackground: String?=null,
+    
+    @SerializedName("sale_badge_text")
+    var saleBadgeText: String?=null,
+    
+    @SerializedName("sale_discount_text")
+    var saleDiscountText: String?=null,
+    
+    @SerializedName("sale_timer")
+    var saleTimer: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: HeaderSettingV2
+*/
+@Parcelize
+data class HeaderSettingV2(
+    
+    
+    
+    @SerializedName("header_background")
+    var headerBackground: String?=null,
+    
+    @SerializedName("header_nav")
+    var headerNav: String?=null,
+    
+    @SerializedName("header_icon")
+    var headerIcon: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: FooterSettingV2
+*/
+@Parcelize
+data class FooterSettingV2(
+    
+    
+    
+    @SerializedName("footer_background")
+    var footerBackground: String?=null,
+    
+    @SerializedName("footer_bottom_background")
+    var footerBottomBackground: String?=null,
+    
+    @SerializedName("footer_heading_text")
+    var footerHeadingText: String?=null,
+    
+    @SerializedName("footer_body_text")
+    var footerBodyText: String?=null,
+    
+    @SerializedName("footer_icon")
+    var footerIcon: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: OverlayPopupSettingV2
+*/
+@Parcelize
+data class OverlayPopupSettingV2(
+    
+    
+    
+    @SerializedName("dialog_backgroung")
+    var dialogBackgroung: String?=null,
+    
+    @SerializedName("overlay")
+    var overlay: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: DividerStrokeHighlightSettingV2
+*/
+@Parcelize
+data class DividerStrokeHighlightSettingV2(
+    
+    
+    
+    @SerializedName("divider_strokes")
+    var dividerStrokes: String?=null,
+    
+    @SerializedName("highlight")
+    var highlight: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserAlertsSettingV2
+*/
+@Parcelize
+data class UserAlertsSettingV2(
+    
+    
+    
+    @SerializedName("success_background")
+    var successBackground: String?=null,
+    
+    @SerializedName("success_text")
+    var successText: String?=null,
+    
+    @SerializedName("error_background")
+    var errorBackground: String?=null,
+    
+    @SerializedName("error_text")
+    var errorText: String?=null,
+    
+    @SerializedName("info_background")
+    var infoBackground: String?=null,
+    
+    @SerializedName("info_text")
+    var infoText: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CustomPropsV2
+*/
+@Parcelize
+data class CustomPropsV2(
+    
+    
+    
+    @SerializedName("header_bg_color")
+    var headerBgColor: String?=null,
+    
+    @SerializedName("header_text_color")
+    var headerTextColor: String?=null,
+    
+    @SerializedName("header_border_color")
+    var headerBorderColor: String?=null,
+    
+    @SerializedName("header_icon_color")
+    var headerIconColor: String?=null,
+    
+    @SerializedName("header_cart_notification_bg_color")
+    var headerCartNotificationBgColor: String?=null,
+    
+    @SerializedName("header_cart_notification_text_color")
+    var headerCartNotificationTextColor: String?=null,
+    
+    @SerializedName("header_nav_hover_color")
+    var headerNavHoverColor: String?=null,
+    
+    @SerializedName("button_primary_color")
+    var buttonPrimaryColor: String?=null,
+    
+    @SerializedName("button_primary_label_color")
+    var buttonPrimaryLabelColor: String?=null,
+    
+    @SerializedName("button_add_to_cart_color")
+    var buttonAddToCartColor: String?=null,
+    
+    @SerializedName("button_add_to_cart_label_color")
+    var buttonAddToCartLabelColor: String?=null,
+    
+    @SerializedName("button_secondary_color")
+    var buttonSecondaryColor: String?=null,
+    
+    @SerializedName("button_secondary_label_color")
+    var buttonSecondaryLabelColor: String?=null,
+    
+    @SerializedName("button_tertiary_color")
+    var buttonTertiaryColor: String?=null,
+    
+    @SerializedName("button_tertiary_label_color")
+    var buttonTertiaryLabelColor: String?=null,
+    
+    @SerializedName("button_tertiary_hover_color")
+    var buttonTertiaryHoverColor: String?=null,
+    
+    @SerializedName("button_tertiary_hover_text_color")
+    var buttonTertiaryHoverTextColor: String?=null,
+    
+    @SerializedName("text_heading_link_color")
+    var textHeadingLinkColor: String?=null,
+    
+    @SerializedName("text_body_color")
+    var textBodyColor: String?=null,
+    
+    @SerializedName("text_price_color")
+    var textPriceColor: String?=null,
+    
+    @SerializedName("text_sale_price_color")
+    var textSalePriceColor: String?=null,
+    
+    @SerializedName("text_strikethrough_price_color")
+    var textStrikethroughPriceColor: String?=null,
+    
+    @SerializedName("text_discount_color")
+    var textDiscountColor: String?=null,
+    
+    @SerializedName("footer_bg_color")
+    var footerBgColor: String?=null,
+    
+    @SerializedName("footer_text_color")
+    var footerTextColor: String?=null,
+    
+    @SerializedName("footer_border_color")
+    var footerBorderColor: String?=null,
+    
+    @SerializedName("footer_nav_hover_color")
+    var footerNavHoverColor: String?=null,
+    
+    @SerializedName("disable_cart")
+    var disableCart: Boolean?=null,
+    
+    @SerializedName("is_menu_below_logo")
+    var isMenuBelowLogo: Boolean?=null,
+    
+    @SerializedName("menu_position")
+    var menuPosition: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GlobalSchemaV2
+*/
+@Parcelize
+data class GlobalSchemaV2(
+    
+    
+    
+    @SerializedName("props")
+    var props: ArrayList<PropV2>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PropV2
+*/
+@Parcelize
+data class PropV2(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("id")
+    var id: String?=null,
+    
+    @SerializedName("label")
+    var label: String?=null,
+    
+    @SerializedName("info")
+    var info: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: AssetsV2
+*/
+@Parcelize
+data class AssetsV2(
+    
+    
+    
+    @SerializedName("umd_js")
+    var umdJs: UMDJs?=null,
+    
+    @SerializedName("common_js")
+    var commonJs: CommonJS?=null,
+    
+    @SerializedName("css")
+    var css: CSS?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UMDJs
+*/
+@Parcelize
+data class UMDJs(
+    
+    
+    
+    @SerializedName("links")
+    var links: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CommonJS
+*/
+@Parcelize
+data class CommonJS(
+    
+    
+    
+    @SerializedName("link")
+    var link: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CSS
+*/
+@Parcelize
+data class CSS(
+    
+    
+    
+    @SerializedName("links")
+    var links: ArrayList<String>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SectionItem
+*/
+@Parcelize
+data class SectionItem(
+    
+    
+    
+    @SerializedName("props")
+    var props: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("blocks")
+    var blocks: @RawValue ArrayList<Any>?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("label")
+    var label: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PresetV2
+*/
+@Parcelize
+data class PresetV2(
+    
+    
+    
+    @SerializedName("pages")
+    var pages: ArrayList<PageV2>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PageV2
+*/
+@Parcelize
+data class PageV2(
+    
+    
+    
+    @SerializedName("sections")
+    var sections: ArrayList<SectionV2>?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SectionV2
+*/
+@Parcelize
+data class SectionV2(
+    
+    
+    
+    @SerializedName("blocks")
+    var blocks: ArrayList<BlockV2>?=null,
+    
+    @SerializedName("predicate")
+    var predicate: PredicateV2?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("props")
+    var props: SectionPropsV2?=null,
+    
+    @SerializedName("preset")
+    var preset: SectionPresetV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BlockV2
+*/
+@Parcelize
+data class BlockV2(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("props")
+    var props: BlockPropsV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: PredicateV2
+*/
+@Parcelize
+data class PredicateV2(
+    
+    
+    
+    @SerializedName("screen")
+    var screen: ScreenV2?=null,
+    
+    @SerializedName("user")
+    var user: UserV2?=null,
+    
+    @SerializedName("route")
+    var route: RouteV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ScreenV2
+*/
+@Parcelize
+data class ScreenV2(
+    
+    
+    
+    @SerializedName("mobile")
+    var mobile: Boolean?=null,
+    
+    @SerializedName("desktop")
+    var desktop: Boolean?=null,
+    
+    @SerializedName("tablet")
+    var tablet: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UserV2
+*/
+@Parcelize
+data class UserV2(
+    
+    
+    
+    @SerializedName("authenticated")
+    var authenticated: Boolean?=null,
+    
+    @SerializedName("anonymous")
+    var anonymous: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RouteV2
+*/
+@Parcelize
+data class RouteV2(
+    
+    
+    
+    @SerializedName("selected")
+    var selected: String?=null,
+    
+    @SerializedName("exact_url")
+    var exactUrl: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SectionPropsV2
+*/
+@Parcelize
+data class SectionPropsV2(
+    
+    
+    
+    @SerializedName("title")
+    var title: TextPropV2?=null,
+    
+    @SerializedName("item_margin")
+    var itemMargin: TextPropV2?=null,
+    
+    @SerializedName("autoplay")
+    var autoplay: CheckboxPropV2?=null,
+    
+    @SerializedName("slide_interval")
+    var slideInterval: RangePropV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SectionPresetV2
+*/
+@Parcelize
+data class SectionPresetV2(
+    
+    
+    
+    @SerializedName("blocks")
+    var blocks: ArrayList<BlockV2>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: BlockPropsV2
+*/
+@Parcelize
+data class BlockPropsV2(
+    
+    
+    
+    @SerializedName("image")
+    var image: ImagePickerPropV2?=null,
+    
+    @SerializedName("slide_link")
+    var slideLink: UrlPropV2?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: TextPropV2
+*/
+@Parcelize
+data class TextPropV2(
+    
+    
+    
+    @SerializedName("value")
+    var value: String?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: CheckboxPropV2
+*/
+@Parcelize
+data class CheckboxPropV2(
+    
+    
+    
+    @SerializedName("value")
+    var value: Boolean?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RangePropV2
+*/
+@Parcelize
+data class RangePropV2(
+    
+    
+    
+    @SerializedName("value")
+    var value: Int?=null,
+    
+    @SerializedName("type")
+    var type: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ImagePickerPropV2
+*/
+@Parcelize
+data class ImagePickerPropV2(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UrlPropV2
+*/
+@Parcelize
+data class UrlPropV2(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("value")
+    var value: String?=null
+    
+): Parcelable {
     
     
     

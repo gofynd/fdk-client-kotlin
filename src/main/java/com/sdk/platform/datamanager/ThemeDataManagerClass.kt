@@ -69,6 +69,47 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
+    suspend fun getCompanyLevelThemes()
+    : Deferred<Response<ArrayList<ThemeSchema>>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            themeApiList?.getCompanyLevelThemes(
+        companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun addMarketplaceThemeToCompany(body: ThemeReq)
+    : Deferred<Response<ThemeSchema>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            themeApiList?.addMarketplaceThemeToCompany(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun deleteCompanyTheme(themeId: String)
+    : Deferred<Response<ThemeSchema>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            themeApiList?.deleteCompanyTheme(
+        companyId = config.companyId, themeId = themeId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -308,6 +349,59 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<Void>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.getThemeLastModified(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+    
+    
+    suspend fun getApplicationThemesV2()
+    : Deferred<Response<ArrayList<AllThemesApplicationResponseV2>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getApplicationThemesV2(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getApplicationThemesCountV2()
+    : Deferred<Response<HashMap<String,Any>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getApplicationThemesCountV2(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getApplicationThemeByIdV2(themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getApplicationThemeByIdV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateThemeV2(themeId: String,body: UpdateThemeRequestBodyV2)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.updateThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun applyThemeV2(body: ApplyThemeRequestV2)
+    : Deferred<Response<ApplyThemeResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.applyThemeV2(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

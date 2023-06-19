@@ -106,7 +106,7 @@ class DiscountDataManagerClass(val config: PlatformConfig, val unauthorizedActio
     }
     
     
-    suspend fun validateDiscountFile(discount: String?=null,body: FileJobRequest)
+    suspend fun validateDiscountFile(discount: String?=null,body: DiscountJob)
     : Deferred<Response<FileJobResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
