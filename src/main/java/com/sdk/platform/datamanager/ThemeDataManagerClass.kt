@@ -114,6 +114,11 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -372,6 +377,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getFontsV2()
+    : Deferred<Response<FontsSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getFontsV2(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun getApplicationThemesCountV2()
     : Deferred<Response<HashMap<String,Any>>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -422,6 +437,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun getAppliedThemeV2()
+    : Deferred<Response<ApplyThemeResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getAppliedThemeV2(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun updateThemeNameV2(themeId: String,body: UpdateThemeNameRequestBodyV2)
     : Deferred<Response<AllThemesApplicationResponseV2>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -446,6 +471,36 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<AllThemesApplicationResponseV2>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.duplicateThemeV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getThemePreviewByIdV2(themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getThemePreviewByIdV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getThemeLastModifiedV2(themeId: String)
+    : Deferred<Response<Void>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getThemeLastModifiedV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun checkThemeUpgradableV2(themeId: String)
+    : Deferred<Response<ThemeUpgradableResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.checkThemeUpgradableV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
             null
         }

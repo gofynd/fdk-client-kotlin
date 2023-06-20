@@ -2745,6 +2745,38 @@ data class AllThemesApplicationResponseV2(
 
              
 /*
+    Model: ThemeUpgradableResponseV2
+*/
+@Parcelize
+data class ThemeUpgradableResponseV2(
+    
+    
+    
+    @SerializedName("upgrade")
+    var upgrade: Boolean?=null,
+    
+    @SerializedName("versions")
+    var versions: ThemeVersionsV2?=null,
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: UpdateThemeNameRequestBodyV2
 */
 @Parcelize
@@ -4501,6 +4533,33 @@ data class UrlPropV2(
     
     @SerializedName("value")
     var value: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeVersionsV2
+*/
+@Parcelize
+data class ThemeVersionsV2(
+    
+    
+    
+    @SerializedName("parent_theme")
+    var parentTheme: String?=null,
+    
+    @SerializedName("applied_theme")
+    var appliedTheme: String?=null
     
 ): Parcelable {
     

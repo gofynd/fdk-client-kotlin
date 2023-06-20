@@ -121,6 +121,10 @@ interface ThemeApiList {
     fun getApplicationThemesV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<ArrayList<AllThemesApplicationResponseV2>>>
     
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/fonts")
+    fun getFontsV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<FontsSchema>>
+    
     @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/application_themes_count")
     fun getApplicationThemesCountV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<HashMap<String,Any>>>
@@ -141,6 +145,10 @@ interface ThemeApiList {
     fun addThemeToApplicationV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ApplyThemeRequestV2)
     : Deferred<Response<ApplyThemeResponseV2>>
     
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}")
+    fun getAppliedThemeV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ApplyThemeResponseV2>>
+    
     @PATCH ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/name")
     fun updateThemeNameV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String,@Body body: UpdateThemeNameRequestBodyV2)
     : Deferred<Response<AllThemesApplicationResponseV2>>
@@ -152,5 +160,17 @@ interface ThemeApiList {
     @POST ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/duplicate")
     fun duplicateThemeV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
     : Deferred<Response<AllThemesApplicationResponseV2>>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/preview")
+    fun getThemePreviewByIdV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>
+    
+    @HEAD ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/polling")
+    fun getThemeLastModifiedV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Deferred<Response<Void>>
+    
+    @GET ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/upgradable")
+    fun checkThemeUpgradableV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Deferred<Response<ThemeUpgradableResponseV2>>
     
 }

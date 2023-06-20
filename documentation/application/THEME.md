@@ -10583,6 +10583,19 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
 
  
  
+ #### [ThemeUpgradableResponseV2](#ThemeUpgradableResponseV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | upgrade | Boolean? |  yes  | Indicates if the theme is upgradable or not |
+ | versions | [ThemeVersionsV2](#ThemeVersionsV2)? |  yes  |  |
+ | message | String? |  yes  | A message describing the theme upgrade status |
+
+---
+
+
+ 
+ 
  #### [UpdateThemeNameRequestBodyV2](#UpdateThemeNameRequestBodyV2)
 
  | Properties | Type | Nullable | Description |
@@ -11281,6 +11294,18 @@ Success. Returns a JSON object of the theme. Check the example shown below or re
  | ---------- | ---- | -------- | ----------- |
  | type | String? |  yes  | The type of the property. |
  | value | String? |  yes  | The value of the URL property. |
+
+---
+
+
+ 
+ 
+ #### [ThemeVersionsV2](#ThemeVersionsV2)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | parentTheme | String? |  yes  | The version of the parent theme |
+ | appliedTheme | String? |  yes  | The version of the applied theme |
 
 ---
 
