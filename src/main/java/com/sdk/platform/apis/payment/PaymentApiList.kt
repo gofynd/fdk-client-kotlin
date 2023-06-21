@@ -81,14 +81,6 @@ interface PaymentApiList {
     fun confirmPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: PaymentConfirmationRequest)
     : Deferred<Response<PaymentConfirmationResponse>>
     
-    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/configuration")
-    fun getPlatformPaymentConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<PlatfromPaymentConfig>>
-    
-    @PATCH ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/configuration")
-    fun updatePlatformPaymentConfig(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: UpdatePlatformPaymentConfig)
-    : Deferred<Response<PlatfromPaymentConfig>>
-    
     @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/user-cod")
     fun getUserCODlimitRoutes(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("merchant_user_id") merchantUserId: String, @Query("mobile_no") mobileNo: String)
     : Deferred<Response<GetUserCODLimitResponse>>
@@ -149,6 +141,14 @@ interface PaymentApiList {
     fun revokeOauthToken(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("aggregator") aggregator: String)
     : Deferred<Response<RevokeOAuthToken>>
     
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/repayment-details")
+    fun repaymentDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: RepaymentDetailsSerialiserPayAll)
+    : Deferred<Response<RepaymentResponse>>
+    
+    @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/merchant-onboarding")
+    fun merchantOnBoarding(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: MerchantOnBoardingRequest)
+    : Deferred<Response<MerchantOnBoardingResponse>>
+    
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/customer/validation")
     fun verifyCustomerForPayment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: ValidateCustomerRequest)
     : Deferred<Response<ValidateCustomerResponse>>
@@ -172,5 +172,9 @@ interface PaymentApiList {
     @POST ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/cancel-payment-link/")
     fun cancelPaymentLink(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: CancelOrResendPaymentLinkRequest)
     : Deferred<Response<CancelPaymentLinkResponse>>
+    
+    @GET ("/service/platform/payment/v1.0/company/{company_id}/application/{application_id}/payment/codes")
+    fun getPaymentCodeOption(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<GetPaymentCodeResponse>>
     
 }

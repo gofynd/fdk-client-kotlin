@@ -196,6 +196,7 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -285,26 +286,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentConfirmationResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.confirmPayment(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun getPlatformPaymentConfig()
-    : Deferred<Response<PlatfromPaymentConfig>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.getPlatformPaymentConfig(companyId = config.companyId , applicationId = applicationId  )
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updatePlatformPaymentConfig(body: UpdatePlatformPaymentConfig)
-    : Deferred<Response<PlatfromPaymentConfig>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.updatePlatformPaymentConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -461,6 +442,26 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun repaymentDetails(body: RepaymentDetailsSerialiserPayAll)
+    : Deferred<Response<RepaymentResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.repaymentDetails(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun merchantOnBoarding(body: MerchantOnBoardingRequest)
+    : Deferred<Response<MerchantOnBoardingResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.merchantOnBoarding(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun verifyCustomerForPayment(body: ValidateCustomerRequest)
     : Deferred<Response<ValidateCustomerResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -515,6 +516,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<CancelPaymentLinkResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.cancelPaymentLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentCodeOption()
+    : Deferred<Response<GetPaymentCodeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
