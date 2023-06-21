@@ -32,7 +32,7 @@ interface CartApiList {
     
     
     @PUT 
-    fun deleteCart(@Url url1: String?    ,  @Query("id") id: Int?)
+    fun deleteCart(@Url url1: String?    ,  @Query("id") id: String?)
     : Deferred<Response<DeleteCartDetailResponse>>
     
     
@@ -144,5 +144,10 @@ interface CartApiList {
     @GET 
     fun getLadderOffers(@Url url1: String?    ,     @Query("slug") slug: String, @Query("store_id") storeId: String?, @Query("promotion_id") promotionId: String?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<LadderPriceOffers>>
+    
+    
+    @POST 
+    fun checkoutCartV2(@Url url1: String?    ,  @Query("buy_now") buyNow: Boolean?, @Body body: CartCheckoutDetailV2Request)
+    : Deferred<Response<CartCheckoutResponse>>
     
 }
