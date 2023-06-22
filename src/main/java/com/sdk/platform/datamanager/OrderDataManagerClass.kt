@@ -349,12 +349,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun processManifest(body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>? {
+    suspend fun processManifest(body: ProcessManifest)
+    : Deferred<Response<ProcessManifestItemResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.processManifest(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManifestfilters(view: String)
+    : Deferred<Response<ManifestFiltersResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifestfilters(
+        companyId = config.companyId, view = view )
         } else {
             null
         } 
@@ -385,24 +397,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipmentHistory(shipmentId: String?=null, bagId: Int?=null)
-    : Deferred<Response<ShipmentHistoryResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getShipmentHistory(
-        companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun postShipmentHistory(body: PostShipmentHistory)
     : Deferred<Response<ShipmentHistoryResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.postShipmentHistory(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getShipmentHistory(shipmentId: String?=null, bagId: Int?=null)
+    : Deferred<Response<ShipmentHistoryResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getShipmentHistory(
+        companyId = config.companyId, shipmentId = shipmentId, bagId = bagId )
         } else {
             null
         } 
@@ -445,24 +457,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getChannelConfig()
-    : Deferred<Response<CreateChannelConfigData>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getChannelConfig(
-        companyId = config.companyId )
-        } else {
-            null
-        } 
-    }
-    
-    
     suspend fun createChannelConfig(body: CreateChannelConfigData)
     : Deferred<Response<CreateChannelConfigResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.createChannelConfig(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getChannelConfig()
+    : Deferred<Response<CreateChannelConfigData>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getChannelConfig(
+        companyId = config.companyId )
         } else {
             null
         } 
@@ -511,6 +523,42 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getStateTransitionMap(
         companyId = config.companyId )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManifestShipments(dpIds: Int, stores: String, toDate: String, fromDate: String, dpName: String?=null, salesChannels: String?=null, searchType: String?=null, searchValue: String?=null, pageNo: String?=null, pageSize: String?=null)
+    : Deferred<Response<ManifestShipmentListing>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifestShipments(
+        companyId = config.companyId, dpIds = dpIds, stores = stores, toDate = toDate, fromDate = fromDate, dpName = dpName, salesChannels = salesChannels, searchType = searchType, searchValue = searchValue, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManifests(status: String?=null, toDate: String?=null, fromDate: String?=null, searchValue: String?=null, dpIds: String?=null, pageNo: String?=null, pageSize: String?=null)
+    : Deferred<Response<ManifestList>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifests(
+        companyId = config.companyId, status = status, toDate = toDate, fromDate = fromDate, searchValue = searchValue, dpIds = dpIds, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManifestDetails(manifestId: String, status: String?=null, toDate: String?=null, fromDate: String?=null, searchType: String?=null, searchValue: String?=null, dpIds: String?=null, pageNo: String?=null, pageSize: String?=null)
+    : Deferred<Response<ManifestDetails>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifestDetails(
+        companyId = config.companyId, manifestId = manifestId, status = status, toDate = toDate, fromDate = fromDate, searchType = searchType, searchValue = searchValue, dpIds = dpIds, pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         } 
@@ -616,6 +664,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
+    
     
     
     
