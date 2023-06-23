@@ -48,7 +48,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
     suspend fun getAllPayouts(uniqueExternalId: String?=null)
     : Deferred<Response<PayoutsResponse>>? {
         
@@ -177,6 +176,26 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -196,16 +215,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<PaymentGatewayToBeReviewed>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.saveBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun updateBrandPaymentGatewayConfig(body: PaymentGatewayConfigRequest)
-    : Deferred<Response<PaymentGatewayToBeReviewed>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.updateBrandPaymentGatewayConfig(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }
@@ -302,6 +311,136 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
+    suspend fun edcAggregatorsAndModelList()
+    : Deferred<Response<EdcAggregatorAndModelListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcAggregatorsAndModelList(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDeviceStats()
+    : Deferred<Response<EdcDeviceStatsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDeviceStats(companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateEdcDevice(body: EdcAddRequest)
+    : Deferred<Response<EdcDeviceAddResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.updateEdcDevice(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getEdcDevice(terminalUniqueIdentifier: String)
+    : Deferred<Response<EdcDeviceDetailsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addEdcDevice(terminalUniqueIdentifier: String,body: EdcUpdateRequest)
+    : Deferred<Response<EdcDeviceUpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.addEdcDevice(companyId = config.companyId , applicationId = applicationId , terminalUniqueIdentifier = terminalUniqueIdentifier, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun edcDeviceList(pageNo: Int?=null, pageSize: Int?=null, isActive: Boolean?=null, storeId: Int?=null, deviceTag: String?=null)
+    : Deferred<Response<EdcDeviceListResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.edcDeviceList(pageNo = pageNo, pageSize = pageSize, isActive = isActive, storeId = storeId, deviceTag = deviceTag, companyId = config.companyId , applicationId = applicationId  )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPosPaymentModeRoutes(amount: Int, cartId: String, pincode: String, checkoutMode: String, refresh: Boolean?=null, cardReference: String?=null, orderType: String, userDetails: String?=null)
+    : Deferred<Response<PaymentOptionsResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPosPaymentModeRoutes(companyId = config.companyId , applicationId = applicationId , amount = amount, cartId = cartId, pincode = pincode, checkoutMode = checkoutMode, refresh = refresh, cardReference = cardReference, orderType = orderType, userDetails = userDetails )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun initialisePayment(body: PaymentInitializationRequest)
+    : Deferred<Response<PaymentInitializationResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.initialisePayment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun checkAndUpdatePaymentStatus(body: PaymentStatusUpdateRequest)
+    : Deferred<Response<PaymentStatusUpdateResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.checkAndUpdatePaymentStatus(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun resendOrCancelPayment(body: ResendOrCancelPaymentRequest)
+    : Deferred<Response<ResendOrCancelPaymentResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.resendOrCancelPayment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun paymentStatusBulk(body: PaymentStatusBulkHandlerRequest)
+    : Deferred<Response<PaymentStatusBulkHandlerResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.paymentStatusBulk(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun oauthGetUrl(aggregator: String, successRedirectUrl: String?=null, failureRedirectUrl: String?=null)
+    : Deferred<Response<GetOauthUrlResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.oauthGetUrl(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator, successRedirectUrl = successRedirectUrl, failureRedirectUrl = failureRedirectUrl )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun revokeOauthToken(aggregator: String)
+    : Deferred<Response<RevokeOAuthToken>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.revokeOauthToken(companyId = config.companyId , applicationId = applicationId , aggregator = aggregator )
+        } else {
+            null
+        }
+    }
+    
+    
     suspend fun repaymentDetails(body: RepaymentDetailsSerialiserPayAll)
     : Deferred<Response<RepaymentResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -316,6 +455,76 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<MerchantOnBoardingResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.merchantOnBoarding(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun verifyCustomerForPayment(body: ValidateCustomerRequest)
+    : Deferred<Response<ValidateCustomerResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.verifyCustomerForPayment(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentLink(paymentLinkId: String?=null)
+    : Deferred<Response<GetPaymentLinkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentLink(companyId = config.companyId , applicationId = applicationId , paymentLinkId = paymentLinkId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun createPaymentLink(body: CreatePaymentLinkRequest)
+    : Deferred<Response<CreatePaymentLinkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.createPaymentLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun pollingPaymentLink(paymentLinkId: String?=null)
+    : Deferred<Response<PollingPaymentLinkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.pollingPaymentLink(companyId = config.companyId , applicationId = applicationId , paymentLinkId = paymentLinkId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun resendPaymentLink(body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<ResendPaymentLinkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.resendPaymentLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun cancelPaymentLink(body: CancelOrResendPaymentLinkRequest)
+    : Deferred<Response<CancelPaymentLinkResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.cancelPaymentLink(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getPaymentCodeOption()
+    : Deferred<Response<GetPaymentCodeResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                paymentApiList?.getPaymentCodeOption(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
