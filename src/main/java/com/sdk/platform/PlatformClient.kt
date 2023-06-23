@@ -36,8 +36,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     
     val share by lazy { ShareDataManagerClass(config, unauthorizedAction)}
     
-    val inventory by lazy { InventoryDataManagerClass(config, unauthorizedAction)}
-    
     val configuration by lazy { ConfigurationDataManagerClass(config, unauthorizedAction)}
     
     val cart by lazy { CartDataManagerClass(config, unauthorizedAction)}
@@ -85,8 +83,6 @@ class PlatformClient(val config:PlatformConfig, val unauthorizedAction: ((url: S
     val fileStorage by lazy { this@PlatformClient.fileStorage.ApplicationClient(applicationId,config)}
     
     val share by lazy { this@PlatformClient.share.ApplicationClient(applicationId,config)}
-    
-    val inventory by lazy { this@PlatformClient.inventory.ApplicationClient(applicationId,config)}
     
     val configuration by lazy { this@PlatformClient.configuration.ApplicationClient(applicationId,config)}
     

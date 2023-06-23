@@ -210,4 +210,14 @@ interface PaymentApiList {
     fun customerOnboard(@Url url1: String?   ,@Body body: CustomerOnboardingRequest)
     : Deferred<Response<CustomerOnboardingResponse>>
     
+    
+    @GET 
+    fun outstandingOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<OutstandingOrderDetailsResponse>>
+    
+    
+    @GET 
+    fun paidOrderDetails(@Url url1: String?    ,  @Query("aggregator") aggregator: String?)
+    : Deferred<Response<PaidOrderDetailsResponse>>
+    
 }
