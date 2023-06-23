@@ -36231,8 +36231,31 @@ Successful response
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[MarketplaceTheme](#MarketplaceTheme)>? |  yes  |  |
+ | themes | ArrayList<[MarketplaceTheme](#MarketplaceTheme)>? |  yes  |  |
  | page | [PaginationSchema](#PaginationSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [ArrayOfMarketplaceTheme](#ArrayOfMarketplaceTheme)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | body | ArrayList<[MarketplaceTheme](#MarketplaceTheme)>? |  yes  | An array containing the latest version of theme |
+
+---
+
+
+ 
+ 
+ #### [ThemeCreateRequest](#ThemeCreateRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | src | String? |  yes  | The source URL of the theme file |
+ | release | [Release](#Release)? |  yes  |  |
 
 ---
 
@@ -36253,7 +36276,7 @@ Successful response
  | tagline | String? |  yes  | Theme tagline |
  | description | String? |  yes  | Theme description |
  | catalogSize | [CatalogSize](#CatalogSize)? |  yes  |  |
- | images | [Images](#Images)? |  yes  |  |
+ | images | [MarketplaceThemeImages](#MarketplaceThemeImages)? |  yes  |  |
  | carousel | ArrayList<[CarouselItem](#CarouselItem)>? |  yes  |  |
  | src | String? |  yes  | Theme source URL |
  | explore | [ExploreInfo](#ExploreInfo)? |  yes  |  |
@@ -36313,15 +36336,12 @@ Successful response
 
  
  
- #### [Images](#Images)
+ #### [MarketplaceThemeImages](#MarketplaceThemeImages)
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | desktop | ArrayList<String>? |  yes  | Desktop theme image URL |
+ | desktop | String? |  yes  | Desktop theme image URL |
  | mobile | String? |  yes  | Mobile theme image URL |
- | android | ArrayList<String>? |  yes  |  |
- | ios | ArrayList<String>? |  yes  |  |
- | thumbnail | ArrayList<String>? |  yes  |  |
 
 ---
 
@@ -36396,7 +36416,7 @@ Successful response
  | name | String? |  yes  | Variation name |
  | color | String? |  yes  | Variation color |
  | demoUrl | String? |  yes  | Variation demo URL |
- | images | [Images](#Images)? |  yes  |  |
+ | images | [MarketplaceThemeImages](#MarketplaceThemeImages)? |  yes  |  |
 
 ---
 
@@ -36529,6 +36549,59 @@ Successful response
  | ---------- | ---- | -------- | ----------- |
  | themes | ArrayList<[MarketplaceTheme](#MarketplaceTheme)>? |  yes  | List of themes |
  | user | ArrayList<[ThemeCreator](#ThemeCreator)>? |  yes  | List of users |
+
+---
+
+
+ 
+ 
+ #### [ThemeRejectionReasons](#ThemeRejectionReasons)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | id | String |  no  | The ID of the theme rejection reasons object |
+ | message | String? |  yes  | A general message about the rejection reasons |
+ | themeId | String |  no  | The ID of the rejected theme |
+ | organizationId | String |  no  | The ID of the organization |
+ | adminId | String |  no  | The ID of the admin who rejected the theme |
+ | userId | String |  no  | The ID of the user who submitted the theme |
+ | status | String |  no  | The status of the theme (e.g., rejected) |
+ | rejectionReasons | HashMap<String,HashMap<String,Any>> |  no  |  |
+ | createdAt | String? |  yes  | The date and time when the theme rejection reasons object was created |
+ | updatedAt | String? |  yes  | The date and time when the theme rejection reasons object was last updated |
+
+---
+
+
+ 
+ 
+ #### [RejectionReason](#RejectionReason)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | message | String |  no  | The reason for rejecting the theme |
+
+---
+
+
+ 
+ 
+ #### [ThemeReviewRequest](#ThemeReviewRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | dynamicProperties | HashMap<String,HashMap<String,Any>>? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [UpdateReviewStatusRequest](#UpdateReviewStatusRequest)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | status | String |  no  | The new status of the theme review |
 
 ---
 
@@ -36726,6 +36799,20 @@ Successful response
  | features | ArrayList<String>? |  yes  |  |
  | name | String? |  yes  |  |
  | description | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [Images](#Images)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | desktop | ArrayList<String>? |  yes  |  |
+ | android | ArrayList<String>? |  yes  |  |
+ | ios | ArrayList<String>? |  yes  |  |
+ | thumbnail | ArrayList<String>? |  yes  |  |
 
 ---
 

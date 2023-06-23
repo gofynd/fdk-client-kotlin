@@ -533,11 +533,60 @@ data class MarketplaceThemeResponseBody(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<MarketplaceTheme>?=null,
+    @SerializedName("themes")
+    var themes: ArrayList<MarketplaceTheme>?=null,
     
     @SerializedName("page")
     var page: PaginationSchema?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ArrayOfMarketplaceTheme
+*/
+@Parcelize
+data class ArrayOfMarketplaceTheme(
+    
+    
+    
+    @SerializedName("body")
+    var body: ArrayList<MarketplaceTheme>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeCreateRequest
+*/
+@Parcelize
+data class ThemeCreateRequest(
+    
+    
+    
+    @SerializedName("src")
+    var src: String?=null,
+    
+    @SerializedName("release")
+    var release: Release?=null
     
 ): Parcelable {
     
@@ -591,7 +640,7 @@ data class MarketplaceTheme(
     var catalogSize: CatalogSize?=null,
     
     @SerializedName("images")
-    var images: Images?=null,
+    var images: MarketplaceThemeImages?=null,
     
     @SerializedName("carousel")
     var carousel: ArrayList<CarouselItem>?=null,
@@ -791,35 +840,20 @@ data class CatalogSize(
 
              
 /*
-    Model: Images
+    Model: MarketplaceThemeImages
 */
 @Parcelize
-data class Images(
+data class MarketplaceThemeImages(
     
     
     
     @SerializedName("desktop")
-    var desktop: ArrayList<String>?=null,
+    var desktop: String?=null,
     
     @SerializedName("mobile")
-    var mobile: String?=null,
-    
-    @SerializedName("android")
-    var android: ArrayList<String>?=null,
-    
-    @SerializedName("ios")
-    var ios: ArrayList<String>?=null,
-    
-    @SerializedName("thumbnail")
-    var thumbnail: ArrayList<String>?=null
+    var mobile: String?=null
     
 ): Parcelable {
-    
-    
-    
-    
-    
-    
     
     
     
@@ -990,7 +1024,7 @@ data class Variation(
     var demoUrl: String?=null,
     
     @SerializedName("images")
-    var images: Images?=null
+    var images: MarketplaceThemeImages?=null
     
 ): Parcelable {
     
@@ -1329,6 +1363,139 @@ data class ThemeAndUserDetailsResponse(
 ): Parcelable {
     
     
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeRejectionReasons
+*/
+@Parcelize
+data class ThemeRejectionReasons(
+    
+    
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("theme_id")
+    var themeId: String?=null,
+    
+    @SerializedName("organization_id")
+    var organizationId: String?=null,
+    
+    @SerializedName("admin_id")
+    var adminId: String?=null,
+    
+    @SerializedName("user_id")
+    var userId: String?=null,
+    
+    @SerializedName("status")
+    var status: String?=null,
+    
+    @SerializedName("rejection_reasons")
+    var rejectionReasons: @RawValue HashMap<String,HashMap<String,Any>>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: RejectionReason
+*/
+@Parcelize
+data class RejectionReason(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: ThemeReviewRequest
+*/
+@Parcelize
+data class ThemeReviewRequest(
+    
+    
+    
+    @SerializedName("dynamic_properties")
+    var dynamicProperties: @RawValue HashMap<String,HashMap<String,Any>>?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: UpdateReviewStatusRequest
+*/
+@Parcelize
+data class UpdateReviewStatusRequest(
+    
+    
+    
+    @SerializedName("status")
+    var status: String?=null
+    
+): Parcelable {
     
     
     
@@ -1844,6 +2011,43 @@ data class Information(
     
     @SerializedName("description")
     var description: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Images
+*/
+@Parcelize
+data class Images(
+    
+    
+    
+    @SerializedName("desktop")
+    var desktop: ArrayList<String>?=null,
+    
+    @SerializedName("android")
+    var android: ArrayList<String>?=null,
+    
+    @SerializedName("ios")
+    var ios: ArrayList<String>?=null,
+    
+    @SerializedName("thumbnail")
+    var thumbnail: ArrayList<String>?=null
     
 ): Parcelable {
     
