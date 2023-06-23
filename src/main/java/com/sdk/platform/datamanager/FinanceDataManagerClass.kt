@@ -142,6 +142,30 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
+    suspend fun creditlineDataplatform(body: CreditlineDataPlatformRequest)
+    : Deferred<Response<CreditlineDataPlatformResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.creditlineDataplatform(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun isCreditlinePlatform(body: IsCreditlinePlatformRequest)
+    : Deferred<Response<IsCreditlinePlatformResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            financeApiList?.isCreditlinePlatform(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
     suspend fun getInvoiceType(body: GetInvoiceListRequest)
     : Deferred<Response<GetInvoiceListResponse>>? {
         
@@ -180,6 +204,8 @@ class FinanceDataManagerClass(val config: PlatformConfig, val unauthorizedAction
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
+    
+    
     
     
     
