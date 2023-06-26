@@ -900,12 +900,12 @@ class CatalogDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     }
     
     
-    suspend fun deleteRealtimeInventory(itemId: String, sellerIdentifier: String,body: InventoryRequestSchemaV2)
+    suspend fun deleteRealtimeInventory(itemId: String, sellerIdentifier: String)
     : Deferred<Response<InventoryUpdateResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             catalogApiList?.deleteRealtimeInventory(
-        companyId = config.companyId, itemId = itemId, sellerIdentifier = sellerIdentifier, body = body)
+        companyId = config.companyId, itemId = itemId, sellerIdentifier = sellerIdentifier )
         } else {
             null
         } 
