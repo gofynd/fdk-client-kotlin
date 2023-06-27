@@ -22,7 +22,7 @@ interface ServiceabilityApiList {
     : Deferred<Response<ListViewResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/all-stores")
-    fun getCompanyStoreView(@Path("company_id") companyId: String)
+    fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<CompanyStoreView_Response>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
@@ -44,6 +44,10 @@ interface ServiceabilityApiList {
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/zones")
     fun getZoneFromPincodeView(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: GetZoneFromPincodeViewRequest)
     : Deferred<Response<GetZoneFromPincodeViewResponse>>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/zones-list")
+    fun getZoneListView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("name") name: String?, @Query("is_active") isActive: Boolean?, @Query("channel_ids") channelIds: String?, @Query("q") q: String?, @Query("zone_id") zoneId: ArrayList<String>?)
+    : Deferred<Response<ListViewResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/stores/{store_uid}")
     fun getStore(@Path("company_id") companyId: String, @Path("store_uid") storeUid: String)

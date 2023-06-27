@@ -70,12 +70,12 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
-    suspend fun getCompanyStoreView()
+    suspend fun getCompanyStoreView(pageNumber: Int?=null, pageSize: Int?=null)
     : Deferred<Response<CompanyStoreView_Response>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             serviceabilityApiList?.getCompanyStoreView(
-        companyId = config.companyId )
+        companyId = config.companyId, pageNumber = pageNumber, pageSize = pageSize )
         } else {
             null
         } 
@@ -118,6 +118,18 @@ class ServiceabilityDataManagerClass(val config: PlatformConfig, val unauthorize
     }
     
     
+    
+    
+    suspend fun getZoneListView(pageNumber: Int?=null, pageNo: Int?=null, pageSize: Int?=null, name: String?=null, isActive: Boolean?=null, channelIds: String?=null, q: String?=null, zoneId: ArrayList<String>?=null)
+    : Deferred<Response<ListViewResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            serviceabilityApiList?.getZoneListView(
+        companyId = config.companyId, pageNumber = pageNumber, pageNo = pageNo, pageSize = pageSize, name = name, isActive = isActive, channelIds = channelIds, q = q, zoneId = zoneId )
+        } else {
+            null
+        } 
+    }
     
     
     suspend fun getStore(storeUid: String)
@@ -186,6 +198,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
     
     
     

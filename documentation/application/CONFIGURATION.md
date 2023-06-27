@@ -2833,8 +2833,8 @@ Success. Check the example shown below or refer `AppStaffResponse` for more deta
  | banner | [SecureUrl](#SecureUrl) |  no  |  |
  | domain | [Domain](#Domain)? |  yes  |  |
  | domains | ArrayList<[Domain](#Domain)>? |  yes  |  |
- | id | String? |  yes  | The unique identifier for the sales channel details |
- | slug | String? |  yes  |  |
+ | id | String? |  yes  | The unique identifier (24-digit Mongo Object ID) for the sales channel details |
+ | slug | String? |  yes  | The unique identifier for the sales channel details |
 
 ---
 
