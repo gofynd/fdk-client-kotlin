@@ -197,7 +197,6 @@ class PaymentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
     
     
     
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -517,16 +516,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<CancelPaymentLinkResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 paymentApiList?.cancelPaymentLink(companyId = config.companyId , applicationId = applicationId , body = body)
-        } else {
-            null
-        }
-    }
-    
-    
-    suspend fun extensionPaymentUpdate(body: ExtensionPaymentUpdateRequestSerializer)
-    : Deferred<Response<ExtensionPaymentUpdateResponseSerializer>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                paymentApiList?.extensionPaymentUpdate(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
             null
         }

@@ -25,13 +25,13 @@ interface ServiceabilityApiList {
     fun getCompanyStoreView(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<CompanyStoreView_Response>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
-    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
-    : Deferred<Response<ZoneSuccessResponse>>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
     fun getZoneDataView(@Path("company_id") companyId: String, @Path("zone_id") zoneId: String)
     : Deferred<Response<GetSingleZoneDataViewResponse>>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/zone/{zone_id}")
+    fun updateZoneControllerView(@Path("zone_id") zoneId: String, @Path("company_id") companyId: String,@Body body: ZoneUpdateRequest)
+    : Deferred<Response<ZoneSuccessResponse>>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/zone")
     fun createZone(@Path("company_id") companyId: String,@Body body: ZoneRequest)
@@ -101,13 +101,13 @@ interface ServiceabilityApiList {
     fun getDpAccountList(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?, @Query("stage") stage: String?, @Query("payment_mode") paymentMode: String?, @Query("transport_type") transportType: String?)
     : Deferred<Response<CompanyDpAccountListResponse>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
-    fun updateDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
-    : Deferred<Response<DpRuleUpdateSuccessResponse>>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
     fun getDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String)
     : Deferred<Response<DpRuleSuccessResponse>>
+    
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules/{rule_uid}")
+    fun updateDpRule(@Path("company_id") companyId: String, @Path("rule_uid") ruleUid: String,@Body body: DpRulesUpdateRequest)
+    : Deferred<Response<DpRuleUpdateSuccessResponse>>
     
     @POST ("/service/platform/logistics/v1.0/company/{company_id}/courier/rules")
     fun createDpRule(@Path("company_id") companyId: String,@Body body: DpRuleRequest)
@@ -117,28 +117,28 @@ interface ServiceabilityApiList {
     fun getDpRuleList(@Path("company_id") companyId: String, @Query("page_number") pageNumber: Int?, @Query("page_size") pageSize: Int?)
     : Deferred<Response<DpMultipleRuleSuccessResponse>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
-    fun upsertDpCompanyRulePriority(@Path("company_id") companyId: String,@Body body: DPCompanyRuleRequest)
-    : Deferred<Response<DPCompanyRuleResponse>>
-    
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
     fun getDpCompanyRulePriority(@Path("company_id") companyId: String)
     : Deferred<Response<DPCompanyRuleResponse>>
     
-    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
-    fun upsertDpApplicationRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DPApplicationRuleRequest)
-    : Deferred<Response<DPApplicationRuleResponse>>
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/courier/priority")
+    fun upsertDpCompanyRulePriority(@Path("company_id") companyId: String,@Body body: DPCompanyRuleRequest)
+    : Deferred<Response<DPCompanyRuleResponse>>
     
     @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
     fun getDpApplicationRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<DPApplicationRuleResponse>>
     
-    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
-    fun getApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
-    : Deferred<Response<ApplicationSelfShipConfigResponse>>
+    @PUT ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/courier/priority")
+    fun upsertDpApplicationRulePriority(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: DPApplicationRuleRequest)
+    : Deferred<Response<DPApplicationRuleResponse>>
     
     @PATCH ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
     fun patchApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SelfShipResponse)
+    : Deferred<Response<ApplicationSelfShipConfigResponse>>
+    
+    @GET ("/service/platform/logistics/v1.0/company/{company_id}/application/{application_id}/selfship")
+    fun getApplicationServiceabilitySelfShipment(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<ApplicationSelfShipConfigResponse>>
     
 }

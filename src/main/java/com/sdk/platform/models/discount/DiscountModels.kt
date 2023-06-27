@@ -374,6 +374,9 @@ data class FileJobResponse(
     @SerializedName("company_id")
     var companyId: Int?=null,
     
+    @SerializedName("_id")
+    var id: String?=null,
+    
     @SerializedName("body")
     var body: @RawValue HashMap<String,Any>?=null,
     
@@ -384,6 +387,8 @@ data class FileJobResponse(
     var fileType: String?=null
     
 ): Parcelable {
+    
+    
     
     
     
