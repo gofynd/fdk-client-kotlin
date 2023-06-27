@@ -350,12 +350,24 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun processManifest(body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>? {
+    suspend fun processManifest(body: ProcessManifest)
+    : Deferred<Response<ProcessManifestItemResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.processManifest(
         companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManifestfilters(view: String)
+    : Deferred<Response<ManifestFiltersResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifestfilters(
+        companyId = config.companyId, view = view )
         } else {
             null
         } 
@@ -517,6 +529,102 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         } 
     }
     
+    
+    suspend fun getManifestShipments(dpIds: Int, stores: String, toDate: String, fromDate: String, dpName: String?=null, salesChannels: String?=null, searchType: String?=null, searchValue: String?=null, pageNo: String?=null, pageSize: String?=null)
+    : Deferred<Response<ManifestShipmentListing>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifestShipments(
+        companyId = config.companyId, dpIds = dpIds, stores = stores, toDate = toDate, fromDate = fromDate, dpName = dpName, salesChannels = salesChannels, searchType = searchType, searchValue = searchValue, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManifests(status: String?=null, toDate: String?=null, fromDate: String?=null, searchValue: String?=null, dpIds: String?=null, pageNo: String?=null, pageSize: String?=null)
+    : Deferred<Response<ManifestList>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifests(
+        companyId = config.companyId, status = status, toDate = toDate, fromDate = fromDate, searchValue = searchValue, dpIds = dpIds, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun getManifestDetails(manifestId: String, status: String?=null, toDate: String?=null, fromDate: String?=null, searchType: String?=null, searchValue: String?=null, dpIds: String?=null, pageNo: String?=null, pageSize: String?=null)
+    : Deferred<Response<ManifestDetails>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.getManifestDetails(
+        companyId = config.companyId, manifestId = manifestId, status = status, toDate = toDate, fromDate = fromDate, searchType = searchType, searchValue = searchValue, dpIds = dpIds, pageNo = pageNo, pageSize = pageSize )
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun fetchCreditBalanceDetail(body: FetchCreditBalanceRequestPayload)
+    : Deferred<Response<FetchCreditBalanceResponsePayload>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.fetchCreditBalanceDetail(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun fetchRefundModeConfig(body: RefundModeConfigRequestPayload)
+    : Deferred<Response<RefundModeConfigResponsePayload>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.fetchRefundModeConfig(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun attachOrderUser(body: AttachOrderUser)
+    : Deferred<Response<AttachOrderUserResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.attachOrderUser(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun sendUserMobileOTP(body: SendUserMobileOTP)
+    : Deferred<Response<SendUserMobileOtpResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.sendUserMobileOTP(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
+    
+    suspend fun verifyMobileOTP(body: VerifyMobileOTP)
+    : Deferred<Response<VerifyOtpResponse>>? {
+        
+        return if (config.oauthClient.isAccessTokenValid()) {
+            orderApiList?.verifyMobileOTP(
+        companyId = config.companyId, body = body)
+        } else {
+            null
+        } 
+    }
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -575,6 +683,15 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

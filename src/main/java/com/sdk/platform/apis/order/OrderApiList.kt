@@ -126,8 +126,12 @@ interface OrderApiList {
     : Deferred<Response<UpdateShipmentStatusResponseBody>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/process-manifest")
-    fun processManifest(@Path("company_id") companyId: String,@Body body: CreateOrderPayload)
-    : Deferred<Response<CreateOrderResponse>>
+    fun processManifest(@Path("company_id") companyId: String,@Body body: ProcessManifest)
+    : Deferred<Response<ProcessManifestItemResponse>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/filter/listing")
+    fun getManifestfilters(@Path("company_id") companyId: String, @Query("view") view: String)
+    : Deferred<Response<ManifestFiltersResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/dispatch")
     fun dispatchManifest(@Path("company_id") companyId: String,@Body body: DispatchManifest)
@@ -180,5 +184,37 @@ interface OrderApiList {
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/bag/state/transition")
     fun getStateTransitionMap(@Path("company_id") companyId: String)
     : Deferred<Response<BagStateTransitionMap>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/shipments-listing")
+    fun getManifestShipments(@Path("company_id") companyId: String, @Query("dp_ids") dpIds: Int, @Query("stores") stores: String, @Query("to_date") toDate: String, @Query("from_date") fromDate: String, @Query("dp_name") dpName: String?, @Query("sales_channels") salesChannels: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?)
+    : Deferred<Response<ManifestShipmentListing>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/listing")
+    fun getManifests(@Path("company_id") companyId: String, @Query("status") status: String?, @Query("to_date") toDate: String?, @Query("from_date") fromDate: String?, @Query("search_value") searchValue: String?, @Query("dp_ids") dpIds: String?, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?)
+    : Deferred<Response<ManifestList>>
+    
+    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/details")
+    fun getManifestDetails(@Path("company_id") companyId: String, @Query("manifest_id") manifestId: String, @Query("status") status: String?, @Query("to_date") toDate: String?, @Query("from_date") fromDate: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("dp_ids") dpIds: String?, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?)
+    : Deferred<Response<ManifestDetails>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/customer-credit-balance")
+    fun fetchCreditBalanceDetail(@Path("company_id") companyId: String,@Body body: FetchCreditBalanceRequestPayload)
+    : Deferred<Response<FetchCreditBalanceResponsePayload>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/refund-mode-config")
+    fun fetchRefundModeConfig(@Path("company_id") companyId: String,@Body body: RefundModeConfigRequestPayload)
+    : Deferred<Response<RefundModeConfigResponsePayload>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/attach")
+    fun attachOrderUser(@Path("company_id") companyId: String,@Body body: AttachOrderUser)
+    : Deferred<Response<AttachOrderUserResponse>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/send/otp/mobile")
+    fun sendUserMobileOTP(@Path("company_id") companyId: String,@Body body: SendUserMobileOTP)
+    : Deferred<Response<SendUserMobileOtpResponse>>
+    
+    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/verify/otp")
+    fun verifyMobileOTP(@Path("company_id") companyId: String,@Body body: VerifyMobileOTP)
+    : Deferred<Response<VerifyOtpResponse>>
     
 }
