@@ -173,4 +173,8 @@ interface ThemeApiList {
     fun checkThemeUpgradableV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
     : Deferred<Response<ThemeUpgradableResponseV2>>
     
+    @PUT ("/service/platform/theme/v2.0/company/{company_id}/application/{application_id}/{theme_id}/upgrade")
+    fun upgradeApplicationV2(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>
+    
 }

@@ -46,12 +46,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun getShipments(lane: String?=null, bagStatus: String?=null, statusOverrideLane: Boolean?=null, timeToDispatch: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, fetchActiveShipment: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null, orderingChannel: String?=null, companyAffiliateTag: String?=null)
+    suspend fun getShipments(lane: String?=null, bagStatus: String?=null, statusOverrideLane: Boolean?=null, timeToDispatch: String?=null, searchType: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, fetchActiveShipment: Boolean?=null, excludeLockedShipments: Boolean?=null, paymentMethods: String?=null, channelShipmentId: String?=null, channelOrderId: String?=null, customMeta: String?=null, orderingChannel: String?=null, companyAffiliateTag: String?=null, platformUserId: String?=null)
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipments(
-        companyId = config.companyId, lane = lane, bagStatus = bagStatus, statusOverrideLane = statusOverrideLane, timeToDispatch = timeToDispatch, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, fetchActiveShipment = fetchActiveShipment, excludeLockedShipments = excludeLockedShipments, paymentMethods = paymentMethods, channelShipmentId = channelShipmentId, channelOrderId = channelOrderId, customMeta = customMeta, orderingChannel = orderingChannel, companyAffiliateTag = companyAffiliateTag )
+        companyId = config.companyId, lane = lane, bagStatus = bagStatus, statusOverrideLane = statusOverrideLane, timeToDispatch = timeToDispatch, searchType = searchType, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, fetchActiveShipment = fetchActiveShipment, excludeLockedShipments = excludeLockedShipments, paymentMethods = paymentMethods, channelShipmentId = channelShipmentId, channelOrderId = channelOrderId, customMeta = customMeta, orderingChannel = orderingChannel, companyAffiliateTag = companyAffiliateTag, platformUserId = platformUserId )
         } else {
             null
         } 
@@ -64,18 +64,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getShipmentById(
         companyId = config.companyId, channelShipmentId = channelShipmentId, shipmentId = shipmentId )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getAssetByShipmentIds(shipmentIds: String, invoice: Boolean?=null, expiresIn: String?=null)
-    : Deferred<Response<ResponseGetAssetShipment>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getAssetByShipmentIds(
-        companyId = config.companyId, shipmentIds = shipmentIds, invoice = invoice, expiresIn = expiresIn )
         } else {
             null
         } 
@@ -106,30 +94,16 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    
-    suspend fun getOrders(lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: String?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null, myOrders: Boolean?=null)
+    suspend fun getOrders(lane: String?=null, searchType: String?=null, bagStatus: String?=null, timeToDispatch: String?=null, paymentMethods: String?=null, tags: String?=null, searchValue: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, stores: String?=null, salesChannels: String?=null, pageNo: Int?=null, pageSize: Int?=null, isPrioritySort: Boolean?=null, customMeta: String?=null)
     : Deferred<Response<OrderListingResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getOrders(
-        companyId = config.companyId, lane = lane, searchType = searchType, bagStatus = bagStatus, timeToDispatch = timeToDispatch, paymentMethods = paymentMethods, tags = tags, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, customMeta = customMeta, myOrders = myOrders )
+        companyId = config.companyId, lane = lane, searchType = searchType, bagStatus = bagStatus, timeToDispatch = timeToDispatch, paymentMethods = paymentMethods, tags = tags, searchValue = searchValue, fromDate = fromDate, toDate = toDate, dpIds = dpIds, stores = stores, salesChannels = salesChannels, pageNo = pageNo, pageSize = pageSize, isPrioritySort = isPrioritySort, customMeta = customMeta )
         } else {
             null
         } 
     }
-    
-    
-    suspend fun getMetricCount(fromDate: String?=null, toDate: String?=null)
-    : Deferred<Response<MetricCountResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getMetricCount(
-        companyId = config.companyId, fromDate = fromDate, toDate = toDate )
-        } else {
-            null
-        } 
-    }
-    
     
     
     
@@ -139,42 +113,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.getfilters(
         companyId = config.companyId, view = view, groupEntity = groupEntity )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun createShipmentReport(fromDate: String?=null, toDate: String?=null)
-    : Deferred<Response<Success>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.createShipmentReport(
-        companyId = config.companyId, fromDate = fromDate, toDate = toDate )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getReportsShipmentListing(pageNo: Int?=null, pageSize: Int?=null)
-    : Deferred<Response<OmsReports>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getReportsShipmentListing(
-        companyId = config.companyId, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun upsertJioCode(body: JioCodeUpsertPayload)
-    : Deferred<Response<JioCodeUpsertResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.upsertJioCode(
-        companyId = config.companyId, body = body)
         } else {
             null
         } 
@@ -338,24 +276,12 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     }
     
     
-    suspend fun processManifest(body: ProcessManifest)
-    : Deferred<Response<ProcessManifestItemResponse>>? {
+    suspend fun processManifest(body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>? {
         
         return if (config.oauthClient.isAccessTokenValid()) {
             orderApiList?.processManifest(
         companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getManifestfilters(view: String)
-    : Deferred<Response<ManifestFiltersResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getManifestfilters(
-        companyId = config.companyId, view = view )
         } else {
             null
         } 
@@ -517,102 +443,6 @@ class OrderDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
         } 
     }
     
-    
-    suspend fun getManifestShipments(dpIds: Int, stores: String, toDate: String, fromDate: String, dpName: String?=null, salesChannels: String?=null, searchType: String?=null, searchValue: String?=null, pageNo: String?=null, pageSize: String?=null)
-    : Deferred<Response<ManifestShipmentListing>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getManifestShipments(
-        companyId = config.companyId, dpIds = dpIds, stores = stores, toDate = toDate, fromDate = fromDate, dpName = dpName, salesChannels = salesChannels, searchType = searchType, searchValue = searchValue, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getManifests(status: String?=null, toDate: String?=null, fromDate: String?=null, searchValue: String?=null, dpIds: String?=null, pageNo: String?=null, pageSize: String?=null)
-    : Deferred<Response<ManifestList>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getManifests(
-        companyId = config.companyId, status = status, toDate = toDate, fromDate = fromDate, searchValue = searchValue, dpIds = dpIds, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun getManifestDetails(manifestId: String, status: String?=null, toDate: String?=null, fromDate: String?=null, searchType: String?=null, searchValue: String?=null, dpIds: String?=null, pageNo: String?=null, pageSize: String?=null)
-    : Deferred<Response<ManifestDetails>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.getManifestDetails(
-        companyId = config.companyId, manifestId = manifestId, status = status, toDate = toDate, fromDate = fromDate, searchType = searchType, searchValue = searchValue, dpIds = dpIds, pageNo = pageNo, pageSize = pageSize )
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun fetchCreditBalanceDetail(body: FetchCreditBalanceRequestPayload)
-    : Deferred<Response<FetchCreditBalanceResponsePayload>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.fetchCreditBalanceDetail(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun fetchRefundModeConfig(body: RefundModeConfigRequestPayload)
-    : Deferred<Response<RefundModeConfigResponsePayload>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.fetchRefundModeConfig(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun attachOrderUser(body: AttachOrderUser)
-    : Deferred<Response<AttachOrderUserResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.attachOrderUser(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun sendUserMobileOTP(body: SendUserMobileOTP)
-    : Deferred<Response<SendUserMobileOtpResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.sendUserMobileOTP(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
-    
-    suspend fun verifyMobileOTP(body: VerifyMobileOTP)
-    : Deferred<Response<VerifyOtpResponse>>? {
-        
-        return if (config.oauthClient.isAccessTokenValid()) {
-            orderApiList?.verifyMobileOTP(
-        companyId = config.companyId, body = body)
-        } else {
-            null
-        } 
-    }
-    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -621,28 +451,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
-    suspend fun getApplicationShipments(lane: String?=null, searchType: String?=null, searchId: String?=null, fromDate: String?=null, toDate: String?=null, dpIds: String?=null, orderingCompanyId: String?=null, stores: String?=null, salesChannels: String?=null, requestByExt: String?=null, pageNo: Int?=null, pageSize: Int?=null, customerId: String?=null, isPrioritySort: Boolean?=null)
-    : Deferred<Response<ShipmentInternalPlatformViewResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.getApplicationShipments(companyId = config.companyId , applicationId = applicationId , lane = lane, searchType = searchType, searchId = searchId, fromDate = fromDate, toDate = toDate, dpIds = dpIds, orderingCompanyId = orderingCompanyId, stores = stores, salesChannels = salesChannels, requestByExt = requestByExt, pageNo = pageNo, pageSize = pageSize, customerId = customerId, isPrioritySort = isPrioritySort )
-        } else {
-            null
-        }
-    }
-    
-    
-    
-    
-    suspend fun getAppOrderShipmentDetails(orderId: String)
-    : Deferred<Response<OrderDetailsResponse>>? {
-        return if (config.oauthClient.isAccessTokenValid()) {
-                orderApiList?.getAppOrderShipmentDetails(companyId = config.companyId , applicationId = applicationId , orderId = orderId )
-        } else {
-            null
-        }
-    }
     
     
     suspend fun trackShipmentPlatform(shipmentId: String)
@@ -660,9 +468,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     
-    
-    
-    
     suspend fun getPlatformShipmentReasons(action: String)
     : Deferred<Response<ShipmentReasonsResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
@@ -671,15 +476,6 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
             null
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

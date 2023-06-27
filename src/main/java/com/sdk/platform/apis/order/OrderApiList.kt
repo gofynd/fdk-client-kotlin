@@ -10,16 +10,12 @@ import com.sdk.platform.models.order.*
 interface OrderApiList {
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/shipments-listing")
-    fun getShipments(@Path("company_id") companyId: String, @Query("lane") lane: String?, @Query("bag_status") bagStatus: String?, @Query("status_override_lane") statusOverrideLane: Boolean?, @Query("time_to_dispatch") timeToDispatch: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("fetch_active_shipment") fetchActiveShipment: Boolean?, @Query("exclude_locked_shipments") excludeLockedShipments: Boolean?, @Query("payment_methods") paymentMethods: String?, @Query("channel_shipment_id") channelShipmentId: String?, @Query("channel_order_id") channelOrderId: String?, @Query("custom_meta") customMeta: String?, @Query("ordering_channel") orderingChannel: String?, @Query("company_affiliate_tag") companyAffiliateTag: String?)
+    fun getShipments(@Path("company_id") companyId: String, @Query("lane") lane: String?, @Query("bag_status") bagStatus: String?, @Query("status_override_lane") statusOverrideLane: Boolean?, @Query("time_to_dispatch") timeToDispatch: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("fetch_active_shipment") fetchActiveShipment: Boolean?, @Query("exclude_locked_shipments") excludeLockedShipments: Boolean?, @Query("payment_methods") paymentMethods: String?, @Query("channel_shipment_id") channelShipmentId: String?, @Query("channel_order_id") channelOrderId: String?, @Query("custom_meta") customMeta: String?, @Query("ordering_channel") orderingChannel: String?, @Query("company_affiliate_tag") companyAffiliateTag: String?, @Query("platform_user_id") platformUserId: String?)
     : Deferred<Response<ShipmentInternalPlatformViewResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/shipment-details")
     fun getShipmentById(@Path("company_id") companyId: String, @Query("channel_shipment_id") channelShipmentId: String?, @Query("shipment_id") shipmentId: String?)
     : Deferred<Response<ShipmentInfoResponse>>
-    
-    @GET ("/service/platform/orders/v1.0/company/{company_id}/shipments-invoice")
-    fun getAssetByShipmentIds(@Path("company_id") companyId: String, @Query("shipment_ids") shipmentIds: String, @Query("invoice") invoice: Boolean?, @Query("expires_in") expiresIn: String?)
-    : Deferred<Response<ResponseGetAssetShipment>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/order-details")
     fun getOrderById(@Path("company_id") companyId: String, @Query("order_id") orderId: String)
@@ -29,21 +25,9 @@ interface OrderApiList {
     fun getLaneConfig(@Path("company_id") companyId: String, @Query("super_lane") superLane: String?, @Query("group_entity") groupEntity: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("payment_mode") paymentMode: String?, @Query("bag_status") bagStatus: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("tags") tags: String?, @Query("time_to_dispatch") timeToDispatch: String?, @Query("payment_methods") paymentMethods: String?)
     : Deferred<Response<LaneConfigResponse>>
     
-    @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/shipments/")
-    fun getApplicationShipments(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("lane") lane: String?, @Query("search_type") searchType: String?, @Query("search_id") searchId: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("ordering_company_id") orderingCompanyId: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("request_by_ext") requestByExt: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("customer_id") customerId: String?, @Query("is_priority_sort") isPrioritySort: Boolean?)
-    : Deferred<Response<ShipmentInternalPlatformViewResponse>>
-    
     @GET ("/service/platform/orders/v1.0/company/{company_id}/orders-listing")
-    fun getOrders(@Path("company_id") companyId: String, @Query("lane") lane: String?, @Query("search_type") searchType: String?, @Query("bag_status") bagStatus: String?, @Query("time_to_dispatch") timeToDispatch: String?, @Query("payment_methods") paymentMethods: String?, @Query("tags") tags: String?, @Query("search_value") searchValue: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_priority_sort") isPrioritySort: Boolean?, @Query("custom_meta") customMeta: String?, @Query("my_orders") myOrders: Boolean?)
+    fun getOrders(@Path("company_id") companyId: String, @Query("lane") lane: String?, @Query("search_type") searchType: String?, @Query("bag_status") bagStatus: String?, @Query("time_to_dispatch") timeToDispatch: String?, @Query("payment_methods") paymentMethods: String?, @Query("tags") tags: String?, @Query("search_value") searchValue: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("dp_ids") dpIds: String?, @Query("stores") stores: String?, @Query("sales_channels") salesChannels: String?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("is_priority_sort") isPrioritySort: Boolean?, @Query("custom_meta") customMeta: String?)
     : Deferred<Response<OrderListingResponse>>
-    
-    @GET ("/service/platform/orders/v1.0/company/{company_id}/shipment/metrics-count/")
-    fun getMetricCount(@Path("company_id") companyId: String, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
-    : Deferred<Response<MetricCountResponse>>
-    
-    @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/order-details")
-    fun getAppOrderShipmentDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("order_id") orderId: String)
-    : Deferred<Response<OrderDetailsResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/application/{application_id}/orders/shipments/{shipment_id}/track")
     fun trackShipmentPlatform(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("shipment_id") shipmentId: String)
@@ -52,18 +36,6 @@ interface OrderApiList {
     @GET ("/service/platform/orders/v1.0/company/{company_id}/filter-listing")
     fun getfilters(@Path("company_id") companyId: String, @Query("view") view: String, @Query("group_entity") groupEntity: String?)
     : Deferred<Response<FiltersResponse>>
-    
-    @POST ("/service/platform/orders/v1.0/company/{company_id}/reports/shipment")
-    fun createShipmentReport(@Path("company_id") companyId: String, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?)
-    : Deferred<Response<Success>>
-    
-    @GET ("/service/platform/orders/v1.0/company/{company_id}/reports/shipment-listing")
-    fun getReportsShipmentListing(@Path("company_id") companyId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
-    : Deferred<Response<OmsReports>>
-    
-    @POST ("/service/platform/orders/v1.0/company/{company_id}/upsert/jiocode/article")
-    fun upsertJioCode(@Path("company_id") companyId: String,@Body body: JioCodeUpsertPayload)
-    : Deferred<Response<JioCodeUpsertResponse>>
     
     @GET ("/service/platform/orders/v1.0/company/{company_id}/generate/file")
     fun getBulkShipmentExcelFile(@Path("company_id") companyId: String, @Query("sales_channels") salesChannels: String?, @Query("dp_ids") dpIds: String?, @Query("from_date") fromDate: String?, @Query("to_date") toDate: String?, @Query("stores") stores: String?, @Query("tags") tags: String?, @Query("bag_status") bagStatus: String?, @Query("payment_methods") paymentMethods: String?, @Query("file_type") fileType: String?, @Query("time_to_dispatch") timeToDispatch: Int?, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
@@ -122,12 +94,8 @@ interface OrderApiList {
     : Deferred<Response<UpdateShipmentStatusResponseBody>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/process-manifest")
-    fun processManifest(@Path("company_id") companyId: String,@Body body: ProcessManifest)
-    : Deferred<Response<ProcessManifestItemResponse>>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/filter/listing")
-    fun getManifestfilters(@Path("company_id") companyId: String, @Query("view") view: String)
-    : Deferred<Response<ManifestFiltersResponse>>
+    fun processManifest(@Path("company_id") companyId: String,@Body body: CreateOrderPayload)
+    : Deferred<Response<CreateOrderResponse>>
     
     @POST ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/dispatch")
     fun dispatchManifest(@Path("company_id") companyId: String,@Body body: DispatchManifest)
@@ -180,37 +148,5 @@ interface OrderApiList {
     @GET ("/service/platform/order-manage/v1.0/company/{company_id}/bag/state/transition")
     fun getStateTransitionMap(@Path("company_id") companyId: String)
     : Deferred<Response<BagStateTransitionMap>>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/shipments-listing")
-    fun getManifestShipments(@Path("company_id") companyId: String, @Query("dp_ids") dpIds: Int, @Query("stores") stores: String, @Query("to_date") toDate: String, @Query("from_date") fromDate: String, @Query("dp_name") dpName: String?, @Query("sales_channels") salesChannels: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?)
-    : Deferred<Response<ManifestShipmentListing>>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/listing")
-    fun getManifests(@Path("company_id") companyId: String, @Query("status") status: String?, @Query("to_date") toDate: String?, @Query("from_date") fromDate: String?, @Query("search_value") searchValue: String?, @Query("dp_ids") dpIds: String?, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?)
-    : Deferred<Response<ManifestList>>
-    
-    @GET ("/service/platform/order-manage/v1.0/company/{company_id}/manifest/details")
-    fun getManifestDetails(@Path("company_id") companyId: String, @Query("manifest_id") manifestId: String, @Query("status") status: String?, @Query("to_date") toDate: String?, @Query("from_date") fromDate: String?, @Query("search_type") searchType: String?, @Query("search_value") searchValue: String?, @Query("dp_ids") dpIds: String?, @Query("page_no") pageNo: String?, @Query("page_size") pageSize: String?)
-    : Deferred<Response<ManifestDetails>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/customer-credit-balance")
-    fun fetchCreditBalanceDetail(@Path("company_id") companyId: String,@Body body: FetchCreditBalanceRequestPayload)
-    : Deferred<Response<FetchCreditBalanceResponsePayload>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/refund-mode-config")
-    fun fetchRefundModeConfig(@Path("company_id") companyId: String,@Body body: RefundModeConfigRequestPayload)
-    : Deferred<Response<RefundModeConfigResponsePayload>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/attach")
-    fun attachOrderUser(@Path("company_id") companyId: String,@Body body: AttachOrderUser)
-    : Deferred<Response<AttachOrderUserResponse>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/send/otp/mobile")
-    fun sendUserMobileOTP(@Path("company_id") companyId: String,@Body body: SendUserMobileOTP)
-    : Deferred<Response<SendUserMobileOtpResponse>>
-    
-    @POST ("/service/platform/order-manage/v1.0/company/{company_id}/user/verify/otp")
-    fun verifyMobileOTP(@Path("company_id") companyId: String,@Body body: VerifyMobileOTP)
-    : Deferred<Response<VerifyOtpResponse>>
     
 }

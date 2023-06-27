@@ -119,6 +119,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
 
 inner class ApplicationClient(val applicationId:String,val config: PlatformConfig){
 
@@ -501,6 +502,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<ThemeUpgradableResponseV2>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.checkThemeUpgradableV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun upgradeApplicationV2(themeId: String)
+    : Deferred<Response<AllThemesApplicationResponseV2>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.upgradeApplicationV2(companyId = config.companyId , applicationId = applicationId , themeId = themeId )
         } else {
             null
         }
