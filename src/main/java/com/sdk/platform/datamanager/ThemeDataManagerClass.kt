@@ -70,6 +70,7 @@ class ThemeDataManagerClass(val config: PlatformConfig, val unauthorizedAction: 
     
     
     
+    
     suspend fun getCompanyLevelThemes()
     : Deferred<Response<ArrayList<ThemeSchema>>>? {
         
@@ -179,6 +180,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<AvailablePageSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 themeApiList?.deletePage(companyId = config.companyId , applicationId = applicationId , themeId = themeId, pageValue = pageValue )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getDefaultPageDetails(pageValue: String)
+    : Deferred<Response<AvailablePageSchema>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                themeApiList?.getDefaultPageDetails(companyId = config.companyId , applicationId = applicationId , pageValue = pageValue )
         } else {
             null
         }

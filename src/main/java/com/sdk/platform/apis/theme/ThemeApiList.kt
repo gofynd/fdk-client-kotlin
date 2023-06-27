@@ -33,6 +33,10 @@ interface ThemeApiList {
     fun deletePage(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("theme_id") themeId: String, @Path("page_value") pageValue: String)
     : Deferred<Response<AvailablePageSchema>>
     
+    @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/page/{page_value}/default")
+    fun getDefaultPageDetails(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("page_value") pageValue: String)
+    : Deferred<Response<AvailablePageSchema>>
+    
     @GET ("/service/platform/theme/v1.0/company/{company_id}/application/{application_id}/library")
     fun getThemeLibrary(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_size") pageSize: Int?, @Query("page_no") pageNo: Int?)
     : Deferred<Response<ThemesListingResponseSchema>>
