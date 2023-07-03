@@ -2,6 +2,8 @@ package com.sdk.application.datamanager
 
 import com.sdk.common.*
 import com.sdk.application.*
+import com.sdk.application.models.poscart.*
+import com.sdk.application.apis.poscart.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import okhttp3.Interceptor
@@ -19,59 +21,59 @@ class PosCartDataManagerClass(val config: ApplicationConfig, val unauthorizedAct
 
     init{
             
-                    _relativeUrls["getCart"] = "/service/application/pos/cart/v1.0/detail"?.substring(1)
+                    _relativeUrls["getCart"] = "/service/application/pos/cart/v1.0/detail".substring(1)
             
-                    _relativeUrls["getCartLastModified"] = "/service/application/pos/cart/v1.0/detail"?.substring(1)
+                    _relativeUrls["getCartLastModified"] = "/service/application/pos/cart/v1.0/detail".substring(1)
             
-                    _relativeUrls["addItems"] = "/service/application/pos/cart/v1.0/detail"?.substring(1)
+                    _relativeUrls["addItems"] = "/service/application/pos/cart/v1.0/detail".substring(1)
             
-                    _relativeUrls["updateCart"] = "/service/application/pos/cart/v1.0/detail"?.substring(1)
+                    _relativeUrls["updateCart"] = "/service/application/pos/cart/v1.0/detail".substring(1)
             
-                    _relativeUrls["getItemCount"] = "/service/application/pos/cart/v1.0/basic"?.substring(1)
+                    _relativeUrls["getItemCount"] = "/service/application/pos/cart/v1.0/basic".substring(1)
             
-                    _relativeUrls["getCoupons"] = "/service/application/pos/cart/v1.0/coupon"?.substring(1)
+                    _relativeUrls["getCoupons"] = "/service/application/pos/cart/v1.0/coupon".substring(1)
             
-                    _relativeUrls["applyCoupon"] = "/service/application/pos/cart/v1.0/coupon"?.substring(1)
+                    _relativeUrls["applyCoupon"] = "/service/application/pos/cart/v1.0/coupon".substring(1)
             
-                    _relativeUrls["removeCoupon"] = "/service/application/pos/cart/v1.0/coupon"?.substring(1)
+                    _relativeUrls["removeCoupon"] = "/service/application/pos/cart/v1.0/coupon".substring(1)
             
-                    _relativeUrls["getBulkDiscountOffers"] = "/service/application/pos/cart/v1.0/bulk-price"?.substring(1)
+                    _relativeUrls["getBulkDiscountOffers"] = "/service/application/pos/cart/v1.0/bulk-price".substring(1)
             
-                    _relativeUrls["applyRewardPoints"] = "/service/application/pos/cart/v1.0/redeem/points/"?.substring(1)
+                    _relativeUrls["applyRewardPoints"] = "/service/application/pos/cart/v1.0/redeem/points/".substring(1)
             
-                    _relativeUrls["getAddresses"] = "/service/application/pos/cart/v1.0/address"?.substring(1)
+                    _relativeUrls["getAddresses"] = "/service/application/pos/cart/v1.0/address".substring(1)
             
-                    _relativeUrls["addAddress"] = "/service/application/pos/cart/v1.0/address"?.substring(1)
+                    _relativeUrls["addAddress"] = "/service/application/pos/cart/v1.0/address".substring(1)
             
-                    _relativeUrls["getAddressById"] = "/service/application/pos/cart/v1.0/address/{id}"?.substring(1)
+                    _relativeUrls["getAddressById"] = "/service/application/pos/cart/v1.0/address/{id}".substring(1)
             
-                    _relativeUrls["updateAddress"] = "/service/application/pos/cart/v1.0/address/{id}"?.substring(1)
+                    _relativeUrls["updateAddress"] = "/service/application/pos/cart/v1.0/address/{id}".substring(1)
             
-                    _relativeUrls["removeAddress"] = "/service/application/pos/cart/v1.0/address/{id}"?.substring(1)
+                    _relativeUrls["removeAddress"] = "/service/application/pos/cart/v1.0/address/{id}".substring(1)
             
-                    _relativeUrls["selectAddress"] = "/service/application/pos/cart/v1.0/select-address"?.substring(1)
+                    _relativeUrls["selectAddress"] = "/service/application/pos/cart/v1.0/select-address".substring(1)
             
-                    _relativeUrls["selectPaymentMode"] = "/service/application/pos/cart/v1.0/payment"?.substring(1)
+                    _relativeUrls["selectPaymentMode"] = "/service/application/pos/cart/v1.0/payment".substring(1)
             
-                    _relativeUrls["validateCouponForPayment"] = "/service/application/pos/cart/v1.0/payment/validate/"?.substring(1)
+                    _relativeUrls["validateCouponForPayment"] = "/service/application/pos/cart/v1.0/payment/validate/".substring(1)
             
-                    _relativeUrls["getShipments"] = "/service/application/pos/cart/v1.0/shipment"?.substring(1)
+                    _relativeUrls["getShipments"] = "/service/application/pos/cart/v1.0/shipment".substring(1)
             
-                    _relativeUrls["updateShipments"] = "/service/application/pos/cart/v1.0/shipment"?.substring(1)
+                    _relativeUrls["updateShipments"] = "/service/application/pos/cart/v1.0/shipment".substring(1)
             
-                    _relativeUrls["checkoutCart"] = "/service/application/pos/cart/v1.0/checkout"?.substring(1)
+                    _relativeUrls["checkoutCart"] = "/service/application/pos/cart/v1.0/checkout".substring(1)
             
-                    _relativeUrls["updateCartMeta"] = "/service/application/pos/cart/v1.0/meta"?.substring(1)
+                    _relativeUrls["updateCartMeta"] = "/service/application/pos/cart/v1.0/meta".substring(1)
             
-                    _relativeUrls["getAvailableDeliveryModes"] = "/service/application/pos/cart/v1.0/available-delivery-mode"?.substring(1)
+                    _relativeUrls["getAvailableDeliveryModes"] = "/service/application/pos/cart/v1.0/available-delivery-mode".substring(1)
             
-                    _relativeUrls["getStoreAddressByUid"] = "/service/application/pos/cart/v1.0/store-address"?.substring(1)
+                    _relativeUrls["getStoreAddressByUid"] = "/service/application/pos/cart/v1.0/store-address".substring(1)
             
-                    _relativeUrls["getCartShareLink"] = "/service/application/pos/cart/v1.0/share-cart"?.substring(1)
+                    _relativeUrls["getCartShareLink"] = "/service/application/pos/cart/v1.0/share-cart".substring(1)
             
-                    _relativeUrls["getCartSharedItems"] = "/service/application/pos/cart/v1.0/share-cart/{token}"?.substring(1)
+                    _relativeUrls["getCartSharedItems"] = "/service/application/pos/cart/v1.0/share-cart/{token}".substring(1)
             
-                    _relativeUrls["updateCartWithSharedItems"] = "/service/application/pos/cart/v1.0/share-cart/{token}/{action}"?.substring(1)
+                    _relativeUrls["updateCartWithSharedItems"] = "/service/application/pos/cart/v1.0/share-cart/{token}/{action}".substring(1)
             
     }
 

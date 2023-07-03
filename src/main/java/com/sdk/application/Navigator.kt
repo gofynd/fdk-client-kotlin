@@ -168,24 +168,6 @@ enum class Navigator(
         )
     ),
    
-    PRODUCT_REVIEWS(
-        pageType = PageType.productReviews,
-        navName = "Product Reviews",
-        link = "/product/:slug/reviews",
-        params = arrayListOf(
-            NavParam(key = "slug", required = true)
-        )
-    ),
-   
-    ADD_PRODUCT_REVIEW(
-        pageType = PageType.addProductReview,
-        navName = "Add Product review",
-        link = "/product/:slug/add-review",
-        params = arrayListOf(
-            NavParam(key = "slug", required = true)
-        )
-    ),
-   
     PRODUCT_REQUEST(
         pageType = PageType.productRequest,
         navName = "Product Request",
@@ -202,6 +184,15 @@ enum class Navigator(
         pageType = PageType.profile,
         navName = "Profile",
         link = "/profile"
+    ),
+   
+    PROFILE_ORDER_SHIPMENT(
+        pageType = PageType.profileOrderShipment,
+        navName = "profile orders shipment",
+        link = "/profile/orders/shipment/:shipmentid",
+        params = arrayListOf(
+            NavParam(key = "shipmentid", required = true)
+        )
     ),
    
     PROFILE_BASIC(

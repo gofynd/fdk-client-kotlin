@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.cart.*
+import com.sdk.platform.apis.cart.*
 
 
 
@@ -41,6 +43,10 @@ class CartDataManagerClass(val config: PlatformConfig, val unauthorizedAction: (
         )
         return retrofitHttpClient?.initializeRestClient(CartApiList::class.java) as? CartApiList
     }
+    
+    
+    
+    
     
     
     
@@ -362,6 +368,130 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<OpenApiCheckoutResponse>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 cartApiList?.checkoutCart(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getAbandonedCart(pageNo: Int?=null, pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null)
+    : Deferred<Response<AbandonedCartResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn )
+        } else {
+            null
+        }
+    }
+    
+    
+    
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+            
+                
+            
+            
+        
+    /**
+    *
+    * Summary: Paginator for getAbandonedCart
+    **/
+    fun getAbandonedCartPaginator(
+    pageSize: Int?=null, fromDate: String?=null, toDate: String?=null, anonymousCart: Boolean?=null, lastId: String?=null, sortOn: String?=null
+    
+    ) : Paginator<AbandonedCartResponse>{
+        val paginator = Paginator<AbandonedCartResponse>()
+        paginator.setCallBack(object : PaginatorCallback<AbandonedCartResponse> {
+            
+            override suspend fun onNext(
+                onResponse: (Event<AbandonedCartResponse>?,FdkError?) -> Unit){
+
+                if (config.oauthClient.isAccessTokenValid()) {
+                    val pageId = paginator.nextId
+                    val pageNo = paginator.pageNo
+                    val pageType = "number"
+                    cartApiList?.getAbandonedCart(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, fromDate = fromDate, toDate = toDate, anonymousCart = anonymousCart, lastId = lastId, sortOn = sortOn)?.safeAwait{ response, error ->
+                        response?.let {
+                            val page = response.peekContent()?.page
+                            paginator.setPaginator(hasNext=page?.hasNext?:false,pageNo=if (page?.hasNext == true) ((pageNo ?: 0) + 1) else pageNo)
+                            onResponse.invoke(response,null)
+                        }
+                        
+                        error?.let {
+                            onResponse.invoke(null,error)
+                        }
+                    }
+
+                } else {
+                    null
+                }
+            }
+        
+    })
+    return paginator
+    }
+    
+    suspend fun getAbandonedCartDetails(id: String?=null, i: Boolean?=null, b: Boolean?=null)
+    : Deferred<Response<CartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.getAbandonedCartDetails(companyId = config.companyId , applicationId = applicationId , id = id, i = i, b = b )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun addItems(cartId: String, b: Boolean?=null,body: AddCartRequest)
+    : Deferred<Response<AddCartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.addItems(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun updateCart(cartId: String, b: Boolean?=null,body: UpdateCartRequest)
+    : Deferred<Response<UpdateCartDetailResponse>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                cartApiList?.updateCart(companyId = config.companyId , applicationId = applicationId , cartId = cartId, b = b, body = body)
         } else {
             null
         }

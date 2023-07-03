@@ -34,6 +34,4 @@ class ApplicationClient(val config:ApplicationConfig, val unauthorizedAction: ((
     
     val posCart by lazy { PosCartDataManagerClass(config, unauthorizedAction)}
     
-    val logistic by lazy { LogisticDataManagerClass(config, unauthorizedAction)}
-    
 }

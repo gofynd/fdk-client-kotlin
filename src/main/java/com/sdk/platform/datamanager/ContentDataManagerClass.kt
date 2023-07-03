@@ -7,6 +7,8 @@ import retrofit2.Response
 import okhttp3.ResponseBody
 import com.sdk.common.*
 import com.sdk.platform.*
+import com.sdk.platform.models.content.*
+import com.sdk.platform.apis.content.*
 
 
 
@@ -41,6 +43,7 @@ class ContentDataManagerClass(val config: PlatformConfig, val unauthorizedAction
         )
         return retrofitHttpClient?.initializeRestClient(ContentApiList::class.java) as? ContentApiList
     }
+    
     
     
     
@@ -497,6 +500,16 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     : Deferred<Response<CreateFaqResponseSchema>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 contentApiList?.getFaqByIdOrSlug(companyId = config.companyId , applicationId = applicationId , idOrSlug = idOrSlug )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun generateSEOTitle(type: String,body: GenerateSEOContent)
+    : Deferred<Response<GeneratedSEOContent>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                contentApiList?.generateSEOTitle(companyId = config.companyId , applicationId = applicationId , type = type, body = body)
         } else {
             null
         }

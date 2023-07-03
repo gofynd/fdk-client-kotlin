@@ -38,7 +38,7 @@ Get live announcements
 
 
 ```kotlin
-content.getAnnouncements().safeAwait{ response, error->
+applicationClient.content.getAnnouncements().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -128,7 +128,7 @@ Get a blog
 
 
 ```kotlin
-content.getBlog(slug: slug, rootId: rootId).safeAwait{ response, error->
+applicationClient.content.getBlog(slug: slug, rootId: rootId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -234,7 +234,7 @@ Get a list of blogs
 
 
 ```kotlin
-content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -344,7 +344,7 @@ Get the data loaders associated with an application
 
 
 ```kotlin
-content.getDataLoaders().safeAwait{ response, error->
+applicationClient.content.getDataLoaders().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -420,7 +420,7 @@ Get a list of FAQs
 
 
 ```kotlin
-content.getFaqs().safeAwait{ response, error->
+applicationClient.content.getFaqs().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -493,7 +493,7 @@ Get a list of FAQ categories
 
 
 ```kotlin
-content.getFaqCategories().safeAwait{ response, error->
+applicationClient.content.getFaqCategories().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -561,7 +561,7 @@ Get an FAQ
 
 
 ```kotlin
-content.getFaqBySlug(slug: slug).safeAwait{ response, error->
+applicationClient.content.getFaqBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -627,7 +627,7 @@ Get the FAQ category
 
 
 ```kotlin
-content.getFaqCategoryBySlug(slug: slug).safeAwait{ response, error->
+applicationClient.content.getFaqCategoryBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -704,7 +704,7 @@ Get FAQs using the slug of FAQ category
 
 
 ```kotlin
-content.getFaqsByCategorySlug(slug: slug).safeAwait{ response, error->
+applicationClient.content.getFaqsByCategorySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -774,7 +774,7 @@ Get the landing page
 
 
 ```kotlin
-content.getLandingPage().safeAwait{ response, error->
+applicationClient.content.getLandingPage().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -860,7 +860,7 @@ Get legal information
 
 
 ```kotlin
-content.getLegalInformation().safeAwait{ response, error->
+applicationClient.content.getLegalInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -955,7 +955,7 @@ Get the navigation
 
 
 ```kotlin
-content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getNavigations(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1211,7 +1211,7 @@ Get the SEO of an application
 
 
 ```kotlin
-content.getSEOConfiguration().safeAwait{ response, error->
+applicationClient.content.getSEOConfiguration().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1256,6 +1256,7 @@ Success. Returns a JSON object SEO details such as robots.txt, meta-tags, and si
       },
       "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
       "sitemap_enabled": false,
+      "cannonical_enabled": false,
       "_id": "6009819ee463ad40de397eb2",
       "app": "000000000000000000000001",
       "created_at": "2021-01-21T13:29:02.543Z",
@@ -1299,7 +1300,7 @@ Get the slideshows
 
 
 ```kotlin
-content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getSlideshows(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1419,7 +1420,7 @@ Get a slideshow
 
 
 ```kotlin
-content.getSlideshow(slug: slug).safeAwait{ response, error->
+applicationClient.content.getSlideshow(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1526,7 +1527,7 @@ Get the support information
 
 
 ```kotlin
-content.getSupportInformation().safeAwait{ response, error->
+applicationClient.content.getSupportInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1612,7 +1613,7 @@ Get the tags associated with an application
 
 
 ```kotlin
-content.getTags().safeAwait{ response, error->
+applicationClient.content.getTags().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1683,7 +1684,7 @@ Get a page
 
 
 ```kotlin
-content.getPage(slug: slug, rootId: rootId).safeAwait{ response, error->
+applicationClient.content.getPage(slug: slug, rootId: rootId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1792,7 +1793,7 @@ Get all pages
 
 
 ```kotlin
-content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+applicationClient.content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1945,7 +1946,19 @@ Success. Returns a list of pages along with their details. Check the example sho
  | redirectTo | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
- | source | [TagSourceSchema](#TagSourceSchema)? |  yes  |  |
+ | source | [PathSourceSchema](#PathSourceSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PathSourceSchema](#PathSourceSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | id | String? |  yes  |  |
 
 ---
 
@@ -1971,6 +1984,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | id | String? |  yes  |  |
  | robotsTxt | String? |  yes  |  |
  | sitemapEnabled | Boolean? |  yes  |  |
+ | cannonicalEnabled | Boolean? |  yes  |  |
  | customMetaTags | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | details | [Detail](#Detail)? |  yes  |  |
  | createdAt | String? |  yes  |  |
@@ -2388,26 +2402,6 @@ Success. Returns a list of pages along with their details. Check the example sho
  | active | Boolean? |  yes  |  |
  | display | String? |  yes  |  |
  | sortOrder | Int? |  yes  |  |
- | subNavigation | ArrayList<[SubNavigationReference](#SubNavigationReference)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [SubNavigationReference](#SubNavigationReference)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | acl | ArrayList<String>? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | localeLanguage | [LocaleLanguage](#LocaleLanguage)? |  yes  |  |
- | image | String? |  yes  |  |
- | type | String? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
- | active | Boolean? |  yes  |  |
- | display | String? |  yes  |  |
- | sortOrder | Int? |  yes  |  |
  | subNavigation | ArrayList<[NavigationReference](#NavigationReference)>? |  yes  |  |
 
 ---
@@ -2543,6 +2537,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | url | String? |  yes  |  |
  | position | String? |  yes  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
+ | pages | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | content | String? |  yes  |  |
 
 ---
@@ -3328,6 +3323,7 @@ Success. Returns a list of pages along with their details. Check the example sho
  | position | String? |  yes  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
  | content | String? |  yes  |  |
+ | pages | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | source | [TagSourceSchema](#TagSourceSchema)? |  yes  |  |
 
 ---
@@ -3379,11 +3375,10 @@ Success. Returns a list of pages along with their details. Check the example sho
  | page | page | Symbolic link for Page: /page/:slug |
  | policy | policy | Symbolic link for Privacy Policy: /privacy-policy |
  | product | product | Symbolic link for Product: /product/:slug |
- | productReviews | product-reviews | Symbolic link for Product Reviews: /product/:slug/reviews |
- | addProductReview | add-product-review | Symbolic link for Add Product review: /product/:slug/add-review |
  | productRequest | product-request | Symbolic link for Product Request: /product-request/ |
  | products | products | Symbolic link for Products: /products/ |
  | profile | profile | Symbolic link for Profile: /profile |
+ | profileOrderShipment | profile-order-shipment | Symbolic link for profile orders shipment: /profile/orders/shipment/:shipmentid |
  | profileBasic | profile-basic | Symbolic link for Basic Profile: /profile/details |
  | profileCompany | profile-company | Symbolic link for Profile Company: /profile/company |
  | profileEmails | profile-emails | Symbolic link for Profile Emails: /profile/email |

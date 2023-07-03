@@ -21,7 +21,7 @@ Get All Webhook Events
 
 
 ```kotlin
-webhook.fetchAllWebhookEvents().safeAwait{ response, error->
+publicClient.webhook.fetchAllWebhookEvents().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -76,7 +76,7 @@ Send webhook event name, type, version, category in request body to get complete
 
 
 ```kotlin
-webhook.queryWebhookEventDetails(body: body).safeAwait{ response, error->
+publicClient.webhook.queryWebhookEventDetails(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->

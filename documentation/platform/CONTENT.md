@@ -33,6 +33,7 @@ Content System
 * [updateFaq](#updatefaq)
 * [deleteFaq](#deletefaq)
 * [getFaqByIdOrSlug](#getfaqbyidorslug)
+* [generateSEOTitle](#generateseotitle)
 * [getLandingPages](#getlandingpages)
 * [createLandingPage](#createlandingpage)
 * [updateLandingPage](#updatelandingpage)
@@ -87,7 +88,7 @@ Get a list of announcements
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getAnnouncementsList(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getAnnouncementsList(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -209,7 +210,7 @@ Create an announcement
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createAnnouncement(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createAnnouncement(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -322,7 +323,7 @@ Get announcement by ID
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getAnnouncementById(announcementId: announcementId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getAnnouncementById(announcementId: announcementId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -431,7 +432,7 @@ Update an announcement
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateAnnouncement(announcementId: announcementId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateAnnouncement(announcementId: announcementId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -545,7 +546,7 @@ Update the schedule and the publish status of an announcement
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateAnnouncementSchedule(announcementId: announcementId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateAnnouncementSchedule(announcementId: announcementId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -659,7 +660,7 @@ Delete announcement by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteAnnouncement(announcementId: announcementId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteAnnouncement(announcementId: announcementId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -773,7 +774,7 @@ Create a blog
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createBlog(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createBlog(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -877,7 +878,7 @@ Get blogs
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getBlogs(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -987,7 +988,7 @@ Update a blog
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateBlog(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateBlog(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1092,7 +1093,7 @@ Delete blogs
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteBlog(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteBlog(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1197,7 +1198,7 @@ Get components of a blog
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getComponentById(slug: slug).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getComponentById(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1302,7 +1303,7 @@ Adds a data loader
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.addDataLoader(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.addDataLoader(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1369,7 +1370,7 @@ Get all the data loaders in an application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getDataLoaders().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getDataLoaders().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1393,7 +1394,7 @@ Use this to get all data loaders of an application
 
 [DataLoadersSchema](#DataLoadersSchema)
 
-Success. Refer `DataLoaderResponseSchema` for more details.
+Success. Refer `DataLoadersSchema` for more details.
 
 
 
@@ -1457,7 +1458,7 @@ Delete data loader in application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1525,7 +1526,7 @@ Edit a data loader by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.editDataLoader(dataLoaderId: dataLoaderId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.editDataLoader(dataLoaderId: dataLoaderId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1593,7 +1594,7 @@ Select a data loader by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.selectDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.selectDataLoader(dataLoaderId: dataLoaderId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1661,7 +1662,7 @@ Reset a data loader by serive name and operation Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.resetDataLoader(service: service, operationId: operationId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.resetDataLoader(service: service, operationId: operationId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1724,7 +1725,7 @@ Get a list of FAQ categories
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getFaqCategories().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getFaqCategories().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1792,7 +1793,7 @@ Get an FAQ category by slug or id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getFaqCategoryBySlugOrId(idOrSlug: idOrSlug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1869,7 +1870,7 @@ Create an FAQ category
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createFaqCategory(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createFaqCategory(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -1937,7 +1938,7 @@ Update an FAQ category
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateFaqCategory(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateFaqCategory(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2006,7 +2007,7 @@ Delete an FAQ category
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteFaqCategory(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteFaqCategory(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2076,7 +2077,7 @@ Get question and answers within an FAQ category
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getFaqsByCategoryIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2146,7 +2147,7 @@ Create an FAQ
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.addFaq(categoryId: categoryId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.addFaq(categoryId: categoryId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2214,7 +2215,7 @@ Update an FAQ
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateFaq(categoryId: categoryId, faqId: faqId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateFaq(categoryId: categoryId, faqId: faqId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2283,7 +2284,7 @@ Delete an FAQ
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteFaq(categoryId: categoryId, faqId: faqId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteFaq(categoryId: categoryId, faqId: faqId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2352,7 +2353,7 @@ Get an FAQ
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getFaqByIdOrSlug(idOrSlug: idOrSlug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2413,6 +2414,77 @@ Success. Refer `CreateFaqResponseSchema` for more details.
 ---
 
 
+### generateSEOTitle
+Get SEO meta tag title for content
+
+
+
+
+```kotlin
+platformClient.application("<APPLICATION_ID>").content.generateSEOTitle(type: type, body: body).safeAwait{ response, error->
+    response?.let{
+      // Use response
+    } ->
+    error?.let{
+      
+    } 
+}
+```
+
+
+
+
+
+| Argument  |  Type  | Required | Description |
+| --------- | -----  | -------- | ----------- | 
+| type | GenerationEntityType | yes | String representing the type of SEO content to be generated. Possible values are: title, description |  
+| body | [GenerateSEOContent](#GenerateSEOContent) | yes | Request body |
+
+
+Use this API to get GPT3 generated SEO meta tag title for content
+
+*Returned Response:*
+
+
+
+
+[GeneratedSEOContent](#GeneratedSEOContent)
+
+Returns the generated SEO title
+
+
+
+
+<details>
+<summary><i>&nbsp; Examples:</i></summary>
+
+
+<details>
+<summary><i>&nbsp; default</i></summary>
+
+```json
+{
+  "value": {
+    "title": "SEO Title example",
+    "description": "SEO Description example"
+  }
+}
+```
+</details>
+
+</details>
+
+
+
+
+
+
+
+
+
+---
+
+
 ### getLandingPages
 Get landing pages
 
@@ -2420,7 +2492,7 @@ Get landing pages
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getLandingPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getLandingPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2521,7 +2593,7 @@ Create a landing page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createLandingPage(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createLandingPage(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2611,7 +2683,7 @@ Update a landing page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateLandingPage(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateLandingPage(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2702,7 +2774,7 @@ Delete a landing page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteLandingPage(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteLandingPage(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2793,7 +2865,7 @@ Get legal information
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getLegalInformation().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getLegalInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2888,7 +2960,7 @@ Save legal information
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateLegalInformation(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateLegalInformation(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -2956,7 +3028,7 @@ Get navigations
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getNavigations(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getNavigations(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3213,7 +3285,7 @@ Create a navigation
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createNavigation(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createNavigation(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -3463,7 +3535,7 @@ Get default navigations
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getDefaultNavigations().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getDefaultNavigations().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4188,7 +4260,7 @@ Get a navigation by slug
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getNavigationBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getNavigationBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4440,7 +4512,7 @@ Update a navigation
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateNavigation(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateNavigation(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4691,7 +4763,7 @@ Delete a navigation
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteNavigation(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteNavigation(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -4939,7 +5011,7 @@ Get page meta
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getPageMeta().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5056,7 +5128,7 @@ Get page spec
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageSpec().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getPageSpec().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5145,7 +5217,7 @@ Create a page preview
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createPagePreview(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createPagePreview(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5266,7 +5338,7 @@ Change the publish status of a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updatePagePreview(slug: slug, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updatePagePreview(slug: slug, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5388,7 +5460,7 @@ Delete a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deletePage(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deletePage(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5510,7 +5582,7 @@ Save path based redirection rules
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.addPathRedirectionRules(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.addPathRedirectionRules(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5584,7 +5656,7 @@ Get path based redirection rules
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPathRedirectionRules(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getPathRedirectionRules(pageSize: pageSize, pageNo: pageNo).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5660,7 +5732,7 @@ Get path based redirection rule
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPathRedirectionRule(pathId: pathId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getPathRedirectionRule(pathId: pathId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5735,7 +5807,7 @@ Update path based redirection rules
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updatePathRedirectionRules(pathId: pathId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updatePathRedirectionRules(pathId: pathId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5810,7 +5882,7 @@ Delete path based redirection rules
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deletePathRedirectionRules(pathId: pathId).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deletePathRedirectionRules(pathId: pathId).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5872,7 +5944,7 @@ Get SEO configuration of an application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getSEOConfiguration().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getSEOConfiguration().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -5917,6 +5989,7 @@ Success. Refer `SeoComponent` for more details.
       },
       "robots_txt": "User-agent: * \nAllow: / \nsancisciasn xwsaixjowqnxwsiwjs",
       "sitemap_enabled": false,
+      "cannonical_enabled": false,
       "_id": "6009819ee463ad40de397eb2",
       "app": "000000000000000000000001",
       "created_at": "2021-01-21T13:29:02.543Z",
@@ -5960,7 +6033,7 @@ Update SEO of application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateSEOConfiguration(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateSEOConfiguration(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6050,7 +6123,7 @@ Get slideshows
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getSlideshows(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getSlideshows(devicePlatform: devicePlatform, pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6171,7 +6244,7 @@ Create a slideshow
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createSlideshow(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createSlideshow(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6277,7 +6350,7 @@ Get slideshow by slug
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getSlideshowBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getSlideshowBySlug(slug: slug, devicePlatform: devicePlatform).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6385,7 +6458,7 @@ Update a slideshow
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateSlideshow(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateSlideshow(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6492,7 +6565,7 @@ Delete a slideshow
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteSlideshow(id: id).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteSlideshow(id: id).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6599,7 +6672,7 @@ Get support information
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getSupportInformation().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getSupportInformation().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6685,7 +6758,7 @@ Update the support data of an application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateSupportInformation(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateSupportInformation(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6775,7 +6848,7 @@ Update a tag
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updateInjectableTag(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updateInjectableTag(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6856,7 +6929,7 @@ Delete tags in application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.deleteAllInjectableTags().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.deleteAllInjectableTags().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -6933,7 +7006,7 @@ Get all the tags in an application
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getInjectableTags().safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getInjectableTags().safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7010,7 +7083,7 @@ Add a tag
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.addInjectableTag(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.addInjectableTag(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7083,7 +7156,7 @@ Remove a tag
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.removeInjectableTag(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.removeInjectableTag(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7144,7 +7217,7 @@ Edit a tag by id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.editInjectableTag(tagId: tagId, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.editInjectableTag(tagId: tagId, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7218,7 +7291,7 @@ Create a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.createPage(body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7339,7 +7412,7 @@ Get a list of pages
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getPages(pageNo: pageNo, pageSize: pageSize).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7453,7 +7526,7 @@ Update a page
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.updatePage(id: id, body: body).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7575,7 +7648,7 @@ Get pages by component Id
 
 
 ```kotlin
-client.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response, error->
+platformClient.application("<APPLICATION_ID>").content.getPageBySlug(slug: slug).safeAwait{ response, error->
     response?.let{
       // Use response
     } ->
@@ -7695,6 +7768,32 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 
  
  
+ #### [GenerateSEOContent](#GenerateSEOContent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | text | String? |  yes  |  |
+ | existingText | String? |  yes  |  |
+ | keywords | ArrayList<String>? |  yes  |  |
+ | type | String? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [GeneratedSEOContent](#GeneratedSEOContent)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | title | String? |  yes  |  |
+ | description | String? |  yes  |  |
+
+---
+
+
+ 
+ 
  #### [ApplicationLegal](#ApplicationLegal)
 
  | Properties | Type | Nullable | Description |
@@ -7736,7 +7835,19 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | redirectTo | String? |  yes  |  |
  | updatedAt | String? |  yes  |  |
  | createdAt | String? |  yes  |  |
- | source | [TagSourceSchema](#TagSourceSchema)? |  yes  |  |
+ | source | [PathSourceSchema](#PathSourceSchema)? |  yes  |  |
+
+---
+
+
+ 
+ 
+ #### [PathSourceSchema](#PathSourceSchema)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | type | String? |  yes  |  |
+ | id | String? |  yes  |  |
 
 ---
 
@@ -7762,6 +7873,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | id | String? |  yes  |  |
  | robotsTxt | String? |  yes  |  |
  | sitemapEnabled | Boolean? |  yes  |  |
+ | cannonicalEnabled | Boolean? |  yes  |  |
  | customMetaTags | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | details | [Detail](#Detail)? |  yes  |  |
  | createdAt | String? |  yes  |  |
@@ -8179,26 +8291,6 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | active | Boolean? |  yes  |  |
  | display | String? |  yes  |  |
  | sortOrder | Int? |  yes  |  |
- | subNavigation | ArrayList<[SubNavigationReference](#SubNavigationReference)>? |  yes  |  |
-
----
-
-
- 
- 
- #### [SubNavigationReference](#SubNavigationReference)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | acl | ArrayList<String>? |  yes  |  |
- | tags | ArrayList<String>? |  yes  |  |
- | localeLanguage | [LocaleLanguage](#LocaleLanguage)? |  yes  |  |
- | image | String? |  yes  |  |
- | type | String? |  yes  |  |
- | action | [Action](#Action)? |  yes  |  |
- | active | Boolean? |  yes  |  |
- | display | String? |  yes  |  |
- | sortOrder | Int? |  yes  |  |
  | subNavigation | ArrayList<[NavigationReference](#NavigationReference)>? |  yes  |  |
 
 ---
@@ -8334,6 +8426,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | url | String? |  yes  |  |
  | position | String? |  yes  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
+ | pages | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | content | String? |  yes  |  |
 
 ---
@@ -9119,6 +9212,7 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | position | String? |  yes  |  |
  | attributes | HashMap<String,Any>? |  yes  |  |
  | content | String? |  yes  |  |
+ | pages | ArrayList<HashMap<String,Any>>? |  yes  |  |
  | source | [TagSourceSchema](#TagSourceSchema)? |  yes  |  |
 
 ---
@@ -9141,6 +9235,18 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
 ### Enums
 
 
+
+
+
+ #### [GenerationEntityType](#GenerationEntityType)
+ Type : string
+
+ | Name | Value | Description |
+ | ---- | ----- | ----------- |
+ | title | title | Denotes title will be generated |
+ | description | description | Denotes description will be generated |
+
+---
 
 
 
@@ -9170,11 +9276,10 @@ Success. Returns a JSON object of components. Refer `PageSchema` for more detail
  | page | page | Symbolic link for Page: /page/:slug |
  | policy | policy | Symbolic link for Privacy Policy: /privacy-policy |
  | product | product | Symbolic link for Product: /product/:slug |
- | productReviews | product-reviews | Symbolic link for Product Reviews: /product/:slug/reviews |
- | addProductReview | add-product-review | Symbolic link for Add Product review: /product/:slug/add-review |
  | productRequest | product-request | Symbolic link for Product Request: /product-request/ |
  | products | products | Symbolic link for Products: /products/ |
  | profile | profile | Symbolic link for Profile: /profile |
+ | profileOrderShipment | profile-order-shipment | Symbolic link for profile orders shipment: /profile/orders/shipment/:shipmentid |
  | profileBasic | profile-basic | Symbolic link for Basic Profile: /profile/details |
  | profileCompany | profile-company | Symbolic link for Profile Company: /profile/company |
  | profileEmails | profile-emails | Symbolic link for Profile Emails: /profile/email |
