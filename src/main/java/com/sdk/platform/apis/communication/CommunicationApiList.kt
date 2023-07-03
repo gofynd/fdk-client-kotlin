@@ -95,10 +95,10 @@ interface CommunicationApiList {
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates")
     fun createEmailTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EmailTemplateReq)
-    : Deferred<Response<EmailTemplateRes>>
+    : Deferred<Response<EmailTemplate>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/system-templates")
-    fun getSystemEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
+    fun getSystemEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
     : Deferred<Response<SystemEmailTemplates>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates/{id}")
@@ -107,11 +107,15 @@ interface CommunicationApiList {
     
     @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates/{id}")
     fun updateEmailTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: EmailTemplateReq)
-    : Deferred<Response<EmailTemplateRes>>
+    : Deferred<Response<EmailTemplate>>
     
     @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/templates/{id}")
     fun deleteEmailTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Deferred<Response<EmailTemplateDeleteSuccessRes>>
+    : Deferred<Response<GenericDelete>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/email/subscribedTemplates")
+    fun getSubscribedEmailTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<EmailTemplates>>
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/engine/send-instant")
     fun sendCommunicationSynchronously(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: EngineRequest)
@@ -183,7 +187,11 @@ interface CommunicationApiList {
     
     @POST ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates")
     fun createSmsTemplate(@Path("company_id") companyId: String, @Path("application_id") applicationId: String,@Body body: SmsTemplateReq)
-    : Deferred<Response<SmsTemplateRes>>
+    : Deferred<Response<SmsTemplate>>
+    
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/system-templates")
+    fun getSystemSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String)
+    : Deferred<Response<ArrayList<SystemSmsTemplates>>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
     fun getSmsTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
@@ -191,15 +199,15 @@ interface CommunicationApiList {
     
     @PUT ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
     fun updateSmsTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String,@Body body: SmsTemplateReq)
-    : Deferred<Response<SmsTemplateRes>>
+    : Deferred<Response<SmsTemplate>>
     
     @DELETE ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/templates/{id}")
     fun deleteSmsTemplateById(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Path("id") id: String)
-    : Deferred<Response<SmsTemplateDeleteSuccessRes>>
+    : Deferred<Response<GenericDelete>>
     
-    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/system-templates")
-    fun getSystemSystemTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)
-    : Deferred<Response<SystemSmsTemplates>>
+    @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/sms/subscribedTemplates")
+    fun getSubscribedSmsTemplates(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?)
+    : Deferred<Response<SmsTemplates>>
     
     @GET ("/service/platform/communication/v1.0/company/{company_id}/application/{application_id}/voice/providers")
     fun getVoiceProviders(@Path("company_id") companyId: String, @Path("application_id") applicationId: String, @Query("page_no") pageNo: Int?, @Query("page_size") pageSize: Int?, @Query("sort") sort: HashMap<String,Any>?)

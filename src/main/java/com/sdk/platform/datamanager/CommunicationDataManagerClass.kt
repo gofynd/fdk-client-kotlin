@@ -79,6 +79,7 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
     
     
     
+    
     suspend fun getSystemNotifications(pageNo: Int?=null, pageSize: Int?=null)
     : Deferred<Response<SystemNotifications>>? {
         
@@ -89,6 +90,7 @@ class CommunicationDataManagerClass(val config: PlatformConfig, val unauthorized
             null
         } 
     }
+    
     
     
     
@@ -329,7 +331,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createEmailTemplate(body: EmailTemplateReq)
-    : Deferred<Response<EmailTemplateRes>>? {
+    : Deferred<Response<EmailTemplate>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createEmailTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
         } else {
@@ -338,10 +340,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSystemEmailTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
+    suspend fun getSystemEmailTemplates()
     : Deferred<Response<SystemEmailTemplates>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getSystemEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
+                communicationApiList?.getSystemEmailTemplates(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -359,7 +361,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateEmailTemplateById(id: String,body: EmailTemplateReq)
-    : Deferred<Response<EmailTemplateRes>>? {
+    : Deferred<Response<EmailTemplate>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -369,9 +371,19 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteEmailTemplateById(id: String)
-    : Deferred<Response<EmailTemplateDeleteSuccessRes>>? {
+    : Deferred<Response<GenericDelete>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteEmailTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSubscribedEmailTemplates(pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<EmailTemplates>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSubscribedEmailTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }
@@ -540,9 +552,19 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun createSmsTemplate(body: SmsTemplateReq)
-    : Deferred<Response<SmsTemplateRes>>? {
+    : Deferred<Response<SmsTemplate>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.createSmsTemplate(companyId = config.companyId , applicationId = applicationId , body = body)
+        } else {
+            null
+        }
+    }
+    
+    
+    suspend fun getSystemSmsTemplates()
+    : Deferred<Response<ArrayList<SystemSmsTemplates>>>? {
+        return if (config.oauthClient.isAccessTokenValid()) {
+                communicationApiList?.getSystemSmsTemplates(companyId = config.companyId , applicationId = applicationId  )
         } else {
             null
         }
@@ -560,7 +582,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun updateSmsTemplateById(id: String,body: SmsTemplateReq)
-    : Deferred<Response<SmsTemplateRes>>? {
+    : Deferred<Response<SmsTemplate>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.updateSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id, body = body)
         } else {
@@ -570,7 +592,7 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     
     
     suspend fun deleteSmsTemplateById(id: String)
-    : Deferred<Response<SmsTemplateDeleteSuccessRes>>? {
+    : Deferred<Response<GenericDelete>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
                 communicationApiList?.deleteSmsTemplateById(companyId = config.companyId , applicationId = applicationId , id = id )
         } else {
@@ -579,10 +601,10 @@ inner class ApplicationClient(val applicationId:String,val config: PlatformConfi
     }
     
     
-    suspend fun getSystemSystemTemplates(pageNo: Int?=null, pageSize: Int?=null, sort: HashMap<String,Any>?=null)
-    : Deferred<Response<SystemSmsTemplates>>? {
+    suspend fun getSubscribedSmsTemplates(pageNo: Int?=null, pageSize: Int?=null)
+    : Deferred<Response<SmsTemplates>>? {
         return if (config.oauthClient.isAccessTokenValid()) {
-                communicationApiList?.getSystemSystemTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize, sort = sort )
+                communicationApiList?.getSubscribedSmsTemplates(companyId = config.companyId , applicationId = applicationId , pageNo = pageNo, pageSize = pageSize )
         } else {
             null
         }

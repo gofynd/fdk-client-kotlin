@@ -1210,20 +1210,145 @@ data class DefaultEmailProvidersObjFrom(
 
              
 /*
-    Model: EmailTemplateDeleteSuccessRes
+    Model: EmailTemplateAdmin
 */
 @Parcelize
-data class EmailTemplateDeleteSuccessRes(
+data class EmailTemplateAdmin(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("editor_type")
+    var editorType: String?=null,
+    
+    @SerializedName("editor_meta")
+    var editorMeta: String?=null,
+    
+    @SerializedName("static_to")
+    var staticTo: ArrayList<String>?=null,
+    
+    @SerializedName("static_cc")
+    var staticCc: ArrayList<String>?=null,
+    
+    @SerializedName("static_bcc")
+    var staticBcc: ArrayList<String>?=null,
+    
+    @SerializedName("reply_to")
+    var replyTo: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("subject")
+    var subject: TemplateAndType?=null,
+    
+    @SerializedName("html")
+    var html: TemplateAndType?=null,
+    
+    @SerializedName("url_shorten")
+    var urlShorten: EnabledObj?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("headers")
+    var headers: ArrayList<EmailTemplateHeaders>?=null,
+    
+    @SerializedName("attachments")
+    var attachments: ArrayList<String>?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null,
+    
+    @SerializedName("from_name")
+    var fromName: String?=null,
+    
+    @SerializedName("text")
+    var text: TemplateAndType?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1237,18 +1362,18 @@ data class EmailTemplateDeleteSuccessRes(
 
              
 /*
-    Model: EmailTemplateDeleteFailureRes
+    Model: EmailTemplatesAdmin
 */
 @Parcelize
-data class EmailTemplateDeleteFailureRes(
+data class EmailTemplatesAdmin(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("items")
+    var items: ArrayList<EmailTemplateAdmin>?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -1336,8 +1461,8 @@ data class EmailTemplateReq(
     @SerializedName("description")
     var description: String?=null,
     
-    @SerializedName("keys")
-    var keys: EmailTemplateKeys?=null,
+    @SerializedName("from_name")
+    var fromName: String?=null,
     
     @SerializedName("static_to")
     var staticTo: ArrayList<String>?=null,
@@ -1351,8 +1476,17 @@ data class EmailTemplateReq(
     @SerializedName("reply_to")
     var replyTo: String?=null,
     
-    @SerializedName("headers")
-    var headers: ArrayList<EmailTemplateHeaders>?=null,
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
     
     @SerializedName("subject")
     var subject: TemplateAndType?=null,
@@ -1360,16 +1494,37 @@ data class EmailTemplateReq(
     @SerializedName("html")
     var html: TemplateAndType?=null,
     
-    @SerializedName("text")
-    var text: TemplateAndType?=null,
+    @SerializedName("editor_type")
+    var editorType: String?=null,
+    
+    @SerializedName("editor_meta")
+    var editorMeta: String?=null,
     
     @SerializedName("attachments")
-    var attachments: @RawValue ArrayList<Any>?=null,
+    var attachments: ArrayList<String>?=null,
     
-    @SerializedName("priority")
-    var priority: String?=null
+    @SerializedName("headers")
+    var headers: ArrayList<EmailTemplateHeaders>?=null,
+    
+    @SerializedName("keys")
+    var keys: EmailTemplateKeys?=null,
+    
+    @SerializedName("text")
+    var text: TemplateAndType?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1432,12 +1587,15 @@ data class TemplateAndType(
 
              
 /*
-    Model: EmailTemplateRes
+    Model: EmailTemplate
 */
 @Parcelize
-data class EmailTemplateRes(
+data class EmailTemplate(
     
     
+    
+    @SerializedName("application")
+    var application: String?=null,
     
     @SerializedName("is_system")
     var isSystem: Boolean?=null,
@@ -1445,8 +1603,17 @@ data class EmailTemplateRes(
     @SerializedName("is_internal")
     var isInternal: Boolean?=null,
     
+    @SerializedName("name")
+    var name: String?=null,
+    
     @SerializedName("description")
     var description: String?=null,
+    
+    @SerializedName("editor_type")
+    var editorType: String?=null,
+    
+    @SerializedName("editor_meta")
+    var editorMeta: String?=null,
     
     @SerializedName("static_to")
     var staticTo: ArrayList<String>?=null,
@@ -1457,41 +1624,41 @@ data class EmailTemplateRes(
     @SerializedName("static_bcc")
     var staticBcc: ArrayList<String>?=null,
     
+    @SerializedName("reply_to")
+    var replyTo: String?=null,
+    
     @SerializedName("tags")
-    var tags: @RawValue ArrayList<Any>?=null,
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("subject")
+    var subject: TemplateAndType?=null,
+    
+    @SerializedName("html")
+    var html: TemplateAndType?=null,
+    
+    @SerializedName("url_shorten")
+    var urlShorten: EnabledObj?=null,
     
     @SerializedName("priority")
     var priority: String?=null,
     
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
     @SerializedName("published")
     var published: Boolean?=null,
     
+    @SerializedName("category")
+    var category: String?=null,
+    
     @SerializedName("_id")
     var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("keys")
-    var keys: EmailTemplateKeys?=null,
-    
-    @SerializedName("reply_to")
-    var replyTo: String?=null,
     
     @SerializedName("headers")
     var headers: ArrayList<EmailTemplateHeaders>?=null,
     
-    @SerializedName("subject")
-    var subject: TemplateAndType?=null,
-    
-    @SerializedName("html")
-    var html: TemplateAndType?=null,
-    
-    @SerializedName("text")
-    var text: TemplateAndType?=null,
-    
     @SerializedName("attachments")
-    var attachments: @RawValue ArrayList<Any>?=null,
+    var attachments: ArrayList<String>?=null,
     
     @SerializedName("created_at")
     var createdAt: String?=null,
@@ -1503,133 +1670,29 @@ data class EmailTemplateRes(
     var slug: String?=null,
     
     @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: EmailTemplate
-*/
-@Parcelize
-data class EmailTemplate(
-    
-    
-    
-    @SerializedName("is_system")
-    var isSystem: Boolean?=null,
-    
-    @SerializedName("is_internal")
-    var isInternal: Boolean?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("static_to")
-    var staticTo: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("static_cc")
-    var staticCc: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("static_bcc")
-    var staticBcc: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("tags")
-    var tags: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("priority")
-    var priority: String?=null,
-    
-    @SerializedName("published")
-    var published: Boolean?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
+    var v: Int?=null,
     
     @SerializedName("from_name")
     var fromName: String?=null,
     
-    @SerializedName("subject")
-    var subject: TemplateAndType?=null,
-    
-    @SerializedName("html")
-    var html: TemplateAndType?=null,
-    
     @SerializedName("text")
-    var text: TemplateAndType?=null,
-    
-    @SerializedName("headers")
-    var headers: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("attachments")
-    var attachments: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
+    var text: TemplateAndType?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1694,38 +1757,23 @@ data class SystemEmailTemplate(
     @SerializedName("is_internal")
     var isInternal: Boolean?=null,
     
+    @SerializedName("name")
+    var name: String?=null,
+    
     @SerializedName("description")
     var description: String?=null,
     
     @SerializedName("static_to")
-    var staticTo: @RawValue ArrayList<Any>?=null,
+    var staticTo: ArrayList<String>?=null,
     
     @SerializedName("static_cc")
-    var staticCc: @RawValue ArrayList<Any>?=null,
+    var staticCc: ArrayList<String>?=null,
     
     @SerializedName("static_bcc")
-    var staticBcc: @RawValue ArrayList<Any>?=null,
+    var staticBcc: ArrayList<String>?=null,
     
     @SerializedName("tags")
-    var tags: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("priority")
-    var priority: String?=null,
-    
-    @SerializedName("published")
-    var published: Boolean?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("from_name")
-    var fromName: String?=null,
+    var tags: ArrayList<String>?=null,
     
     @SerializedName("subject")
     var subject: TemplateAndType?=null,
@@ -1733,14 +1781,29 @@ data class SystemEmailTemplate(
     @SerializedName("html")
     var html: TemplateAndType?=null,
     
-    @SerializedName("text")
-    var text: TemplateAndType?=null,
+    @SerializedName("url_shorten")
+    var urlShorten: EnabledObj?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
     
     @SerializedName("headers")
-    var headers: @RawValue ArrayList<Any>?=null,
+    var headers: ArrayList<EmailTemplateHeaders>?=null,
     
     @SerializedName("attachments")
-    var attachments: @RawValue ArrayList<Any>?=null,
+    var attachments: ArrayList<String>?=null,
     
     @SerializedName("created_at")
     var createdAt: String?=null,
@@ -1748,10 +1811,20 @@ data class SystemEmailTemplate(
     @SerializedName("updated_at")
     var updatedAt: String?=null,
     
+    @SerializedName("slug")
+    var slug: String?=null,
+    
     @SerializedName("__v")
-    var v: Int?=null
+    var v: Int?=null,
+    
+    @SerializedName("text")
+    var text: TemplateAndType?=null
     
 ): Parcelable {
+    
+    
+    
+    
     
     
     
@@ -1838,14 +1911,9 @@ data class SystemEmailTemplates(
     
     
     @SerializedName("items")
-    var items: ArrayList<SystemEmailTemplate>?=null,
-    
-    @SerializedName("page")
-    var page: Page?=null
+    var items: ArrayList<SystemEmailTemplate>?=null
     
 ): Parcelable {
-    
-    
     
     
     
@@ -3965,18 +4033,18 @@ data class DefaultSmsProviders(
 
              
 /*
-    Model: SmsTemplateDeleteSuccessRes
+    Model: SmsTemplatesAdmin
 */
 @Parcelize
-data class SmsTemplateDeleteSuccessRes(
+data class SmsTemplatesAdmin(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("items")
+    var items: ArrayList<SmsTemplateAdmin>?=null,
     
-    @SerializedName("message")
-    var message: String?=null
+    @SerializedName("page")
+    var page: Page?=null
     
 ): Parcelable {
     
@@ -3992,20 +4060,100 @@ data class SmsTemplateDeleteSuccessRes(
 
              
 /*
-    Model: SmsTemplateDeleteFailureRes
+    Model: SmsTemplateAdmin
 */
 @Parcelize
-data class SmsTemplateDeleteFailureRes(
+data class SmsTemplateAdmin(
     
     
     
-    @SerializedName("success")
-    var success: Boolean?=null,
+    @SerializedName("url_shorten")
+    var urlShorten: EnabledObj?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
+    
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: metaObj?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
     
     @SerializedName("message")
-    var message: String?=null
+    var message: SmsTemplateMessage?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("template_id")
+    var templateId: String?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -4046,314 +4194,6 @@ data class SmsTemplateMessage(
 
              
 /*
-    Model: SmsTemplateReq
-*/
-@Parcelize
-data class SmsTemplateReq(
-    
-    
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("message")
-    var message: SmsTemplateMessage?=null,
-    
-    @SerializedName("template_variables")
-    var templateVariables: @RawValue Any?=null,
-    
-    @SerializedName("attachments")
-    var attachments: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("priority")
-    var priority: String?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SmsTemplateRes
-*/
-@Parcelize
-data class SmsTemplateRes(
-    
-    
-    
-    @SerializedName("is_system")
-    var isSystem: Boolean?=null,
-    
-    @SerializedName("is_internal")
-    var isInternal: Boolean?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("tags")
-    var tags: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("priority")
-    var priority: String?=null,
-    
-    @SerializedName("published")
-    var published: Boolean?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("message")
-    var message: SmsTemplateMessage?=null,
-    
-    @SerializedName("template_variables")
-    var templateVariables: @RawValue Any?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SmsTemplate
-*/
-@Parcelize
-data class SmsTemplate(
-    
-    
-    
-    @SerializedName("is_system")
-    var isSystem: Boolean?=null,
-    
-    @SerializedName("is_internal")
-    var isInternal: Boolean?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("priority")
-    var priority: String?=null,
-    
-    @SerializedName("tags")
-    var tags: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("published")
-    var published: Boolean?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("message")
-    var message: SmsTemplateMessage?=null,
-    
-    @SerializedName("template_variables")
-    var templateVariables: @RawValue Any?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
-    Model: SystemSmsTemplate
-*/
-@Parcelize
-data class SystemSmsTemplate(
-    
-    
-    
-    @SerializedName("is_system")
-    var isSystem: Boolean?=null,
-    
-    @SerializedName("is_internal")
-    var isInternal: Boolean?=null,
-    
-    @SerializedName("description")
-    var description: String?=null,
-    
-    @SerializedName("tags")
-    var tags: @RawValue ArrayList<Any>?=null,
-    
-    @SerializedName("priority")
-    var priority: String?=null,
-    
-    @SerializedName("published")
-    var published: Boolean?=null,
-    
-    @SerializedName("_id")
-    var id: String?=null,
-    
-    @SerializedName("slug")
-    var slug: String?=null,
-    
-    @SerializedName("name")
-    var name: String?=null,
-    
-    @SerializedName("message")
-    var message: SmsTemplateMessage?=null,
-    
-    @SerializedName("template_variables")
-    var templateVariables: @RawValue Any?=null,
-    
-    @SerializedName("created_at")
-    var createdAt: String?=null,
-    
-    @SerializedName("updated_at")
-    var updatedAt: String?=null,
-    
-    @SerializedName("__v")
-    var v: Int?=null
-    
-): Parcelable {
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
-
-
-
-             
-/*
     Model: SmsTemplates
 */
 @Parcelize
@@ -4381,6 +4221,118 @@ data class SmsTemplates(
 
              
 /*
+    Model: SmsTemplate
+*/
+@Parcelize
+data class SmsTemplate(
+    
+    
+    
+    @SerializedName("url_shorten")
+    var urlShorten: EnabledObj?=null,
+    
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("application")
+    var application: String?=null,
+    
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
+    
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("meta")
+    var meta: metaObj?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("message")
+    var message: SmsTemplateMessage?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("template_id")
+    var templateId: String?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: SystemSmsTemplates
 */
 @Parcelize
@@ -4388,13 +4340,177 @@ data class SystemSmsTemplates(
     
     
     
-    @SerializedName("items")
-    var items: ArrayList<SystemSmsTemplate>?=null,
+    @SerializedName("url_shorten")
+    var urlShorten: EnabledObj?=null,
     
-    @SerializedName("page")
-    var page: Page?=null
+    @SerializedName("_id")
+    var id: String?=null,
+    
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
+    
+    @SerializedName("is_internal")
+    var isInternal: Boolean?=null,
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("message")
+    var message: SmsTemplateMessage?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("tags")
+    var tags: ArrayList<String>?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("template_id")
+    var templateId: String?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("category")
+    var category: String?=null,
+    
+    @SerializedName("created_at")
+    var createdAt: String?=null,
+    
+    @SerializedName("updated_at")
+    var updatedAt: String?=null,
+    
+    @SerializedName("slug")
+    var slug: String?=null,
+    
+    @SerializedName("__v")
+    var v: Int?=null
     
 ): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: metaObj
+*/
+@Parcelize
+data class metaObj(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("is_system")
+    var isSystem: Boolean?=null,
+    
+    @SerializedName("template")
+    var template: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: SmsTemplateReq
+*/
+@Parcelize
+data class SmsTemplateReq(
+    
+    
+    
+    @SerializedName("name")
+    var name: String?=null,
+    
+    @SerializedName("description")
+    var description: String?=null,
+    
+    @SerializedName("priority")
+    var priority: String?=null,
+    
+    @SerializedName("template_id")
+    var templateId: String?=null,
+    
+    @SerializedName("meta")
+    var meta: metaObj?=null,
+    
+    @SerializedName("template_variables")
+    var templateVariables: @RawValue HashMap<String,Any>?=null,
+    
+    @SerializedName("published")
+    var published: Boolean?=null,
+    
+    @SerializedName("message")
+    var message: SmsTemplateMessage?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -5306,6 +5422,48 @@ data class Page(
 
              
 /*
+    Model: GenericPage
+*/
+@Parcelize
+data class GenericPage(
+    
+    
+    
+    @SerializedName("type")
+    var type: String?=null,
+    
+    @SerializedName("size")
+    var size: Int?=null,
+    
+    @SerializedName("current")
+    var current: Int?=null,
+    
+    @SerializedName("has_next")
+    var hasNext: Boolean?=null,
+    
+    @SerializedName("item_total")
+    var itemTotal: Int?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
     Model: GenericSuccess
 */
 @Parcelize
@@ -5315,6 +5473,129 @@ data class GenericSuccess(
     
     @SerializedName("success")
     var success: Boolean?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GenericError
+*/
+@Parcelize
+data class GenericError(
+    
+    
+    
+    @SerializedName("message")
+    var message: Message?=null,
+    
+    @SerializedName("sentry")
+    var sentry: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: GenericDelete
+*/
+@Parcelize
+data class GenericDelete(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("acknowledged")
+    var acknowledged: Boolean?=null,
+    
+    @SerializedName("affected")
+    var affected: Int?=null,
+    
+    @SerializedName("operation")
+    var operation: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: Message
+*/
+@Parcelize
+data class Message(
+    
+    
+    
+    @SerializedName("message")
+    var message: String?=null,
+    
+    @SerializedName("success")
+    var success: Boolean?=null,
+    
+    @SerializedName("info")
+    var info: String?=null,
+    
+    @SerializedName("operation")
+    var operation: String?=null
+    
+): Parcelable {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+             
+/*
+    Model: EnabledObj
+*/
+@Parcelize
+data class EnabledObj(
+    
+    
+    
+    @SerializedName("enabled")
+    var enabled: Boolean?=null
     
 ): Parcelable {
     
