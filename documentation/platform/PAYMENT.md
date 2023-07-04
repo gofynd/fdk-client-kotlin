@@ -5688,12 +5688,12 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | created | Boolean |  no  | Response is created or not |
- | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
- | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
  | success | Boolean |  no  | Response is successful or not |
+ | aggregators | ArrayList<HashMap<String,Any>>? |  yes  | List of all speceific Payment options with their Details. |
+ | created | Boolean |  no  | Response is created or not |
  | appId | String |  no  | Application Id to which Payment config Mapped |
  | excludedFields | ArrayList<String> |  no  | List of all excluded  options with their Details. |
+ | displayFields | ArrayList<String> |  no  | List of all included  options with their Details. |
 
 ---
 
@@ -5704,8 +5704,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Error human understandable description. |
  | success | Boolean |  no  | Response is successful or not |
+ | description | String |  no  | Error human understandable description. |
  | code | String |  no  | Error descrption code. |
 
 ---
@@ -5717,11 +5717,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean? |  yes  | Enable/ Disable Flag |
  | configType | String |  no  | Config Type of the aggregator |
+ | isActive | Boolean? |  yes  | Enable/ Disable Flag |
+ | merchantSalt | String |  no  | Merchant key of the payment aggregator |
  | key | String |  no  | Api key of the payment aggregator |
  | secret | String |  no  | Secret Key of the payment aggregator |
- | merchantSalt | String |  no  | Merchant key of the payment aggregator |
 
 ---
 
@@ -5732,8 +5732,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean? |  yes  | Enable/ Disable Flag |
  | appId | String |  no  | Application Id to which Payment config Mapped |
+ | isActive | Boolean? |  yes  | Enable/ Disable Flag |
  | aggregatorName | [PaymentGatewayConfig](#PaymentGatewayConfig)? |  yes  |  |
 
 ---
@@ -5745,8 +5745,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | ArrayList<String> |  no  | List of added payment gateway |
  | success | Boolean |  no  | Response is successful or not |
+ | aggregator | ArrayList<String> |  no  | List of added payment gateway |
 
 ---
 
@@ -5769,8 +5769,20 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | [ErrorCodeAndDescription](#ErrorCodeAndDescription) |  no  |  |
  | success | Boolean |  no  | Response is successful or not |
+ | error | [ErrorCodeAndDescription](#ErrorCodeAndDescription) |  no  |  |
+
+---
+
+
+ 
+ 
+ #### [IntentAppErrorList](#IntentAppErrorList)
+
+ | Properties | Type | Nullable | Description |
+ | ---------- | ---- | -------- | ----------- |
+ | packageName | String? |  yes  | package_name |
+ | code | String? |  yes  | code |
 
 ---
 
@@ -5793,21 +5805,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
  | packageName | String? |  yes  | package_name |
  | displayName | String? |  yes  | display_name |
- | code | String? |  yes  | code |
- | logos | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | logos |
-
----
-
-
- 
- 
- #### [IntentAppErrorList](#IntentAppErrorList)
-
- | Properties | Type | Nullable | Description |
- | ---------- | ---- | -------- | ----------- |
- | packageName | String? |  yes  | package_name |
  | code | String? |  yes  | code |
 
 ---
@@ -5819,39 +5819,39 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | cardToken | String? |  yes  | card_token |
- | name | String? |  yes  | name |
- | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
- | cardType | String? |  yes  | card_type |
- | cardIssuer | String? |  yes  | card_issuer |
- | retryCount | Int? |  yes  | retry_count |
- | cardBrandImage | String? |  yes  | card_brand_image |
- | cardId | String? |  yes  | card_id |
- | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
- | nickname | String? |  yes  | nickname |
- | expYear | Int? |  yes  | exp_year |
- | timeout | Int? |  yes  | timeout |
  | cardNumber | String? |  yes  | card_number |
- | intentFlow | Boolean? |  yes  | intent_flow |
- | aggregatorName | String |  no  | aggregator_name |
- | merchantCode | String? |  yes  | merchant code |
- | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
- | code | String? |  yes  | code |
- | expired | Boolean? |  yes  | expired |
- | expMonth | Int? |  yes  | exp_month |
  | intentAppErrorDictList | ArrayList<[IntentAppErrorList](#IntentAppErrorList)>? |  yes  | intent_app_error_dict_list |
- | fyndVpa | String? |  yes  | fynd_vpa |
- | displayPriority | Int? |  yes  | Dispaly Priority |
- | cardFingerprint | String? |  yes  | card_fingerprint |
- | cardIsin | String? |  yes  | card_isin |
- | codLimitPerOrder | Double? |  yes  | Cod limit per order |
- | codLimit | Double? |  yes  | cod limit |
- | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
- | cardBrand | String? |  yes  | card_brand |
- | cardReference | String? |  yes  | card_reference |
  | remainingLimit | Double? |  yes  | Remaining limit |
+ | expired | Boolean? |  yes  | expired |
+ | aggregatorName | String |  no  | aggregator_name |
+ | expMonth | Int? |  yes  | exp_month |
+ | cardIsin | String? |  yes  | card_isin |
+ | fyndVpa | String? |  yes  | fynd_vpa |
+ | codLimit | Double? |  yes  | cod limit |
+ | cardBrand | String? |  yes  | card_brand |
+ | cardType | String? |  yes  | card_type |
  | cardName | String? |  yes  | card_name |
+ | name | String? |  yes  | name |
+ | cardFingerprint | String? |  yes  | card_fingerprint |
+ | codLimitPerOrder | Double? |  yes  | Cod limit per order |
+ | intentFlow | Boolean? |  yes  | intent_flow |
+ | timeout | Int? |  yes  | timeout |
+ | compliantWithTokenisationGuidelines | Boolean? |  yes  | If card is tokenised or not |
+ | intentAppErrorList | ArrayList<String>? |  yes  | intent_app_error_list |
+ | intentApp | ArrayList<[IntentApp](#IntentApp)>? |  yes  | intent_app |
+ | cardBrandImage | String? |  yes  | card_brand_image |
+ | cardToken | String? |  yes  | card_token |
+ | expYear | Int? |  yes  | exp_year |
+ | logoUrl | [PaymentModeLogo](#PaymentModeLogo)? |  yes  | Logo |
+ | code | String? |  yes  | code |
+ | nickname | String? |  yes  | nickname |
+ | merchantCode | String? |  yes  | merchant code |
  | displayName | String? |  yes  | display name |
+ | cardId | String? |  yes  | card_id |
+ | retryCount | Int? |  yes  | retry_count |
+ | cardReference | String? |  yes  | card_reference |
+ | displayPriority | Int? |  yes  | Dispaly Priority |
+ | cardIssuer | String? |  yes  | card_issuer |
 
 ---
 
@@ -5862,15 +5862,15 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | name | String |  no  | Payment mode name |
- | saveCard | Boolean? |  yes  | Card save or not |
- | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
  | list | ArrayList<[PaymentModeList](#PaymentModeList)>? |  yes  | Payment mode |
- | displayPriority | Int |  no  | Dispaly Priority |
- | aggregatorName | String? |  yes  | Dispaly Priority |
- | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
- | displayName | String |  no  | Payment mode display name |
+ | saveCard | Boolean? |  yes  | Card save or not |
  | anonymousEnable | Boolean? |  yes  | Annonymous card flag |
+ | displayName | String |  no  | Payment mode display name |
+ | addCardEnabled | Boolean? |  yes  | Annonymous card flag |
+ | name | String |  no  | Payment mode name |
+ | displayPriority | Int |  no  | Dispaly Priority |
+ | isPayByCardPl | Boolean? |  yes  | This flag will be true in case of Payment link payment through card |
+ | aggregatorName | String? |  yes  | Dispaly Priority |
 
 ---
 
@@ -5904,13 +5904,13 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
  | uniqueTransferNo | HashMap<String,Any> |  no  | display priority of the payment mode |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | moreAttributes | HashMap<String,Any> |  no  | bank details object |
+ | isDefault | Boolean |  no  | default or not  |
  | customers | HashMap<String,Any> |  no  | customers details object |
  | transferType | String |  no  | transafer type |
- | payoutsAggregators | ArrayList<HashMap<String,Any>> |  no  | payout aggregator object |
- | isDefault | Boolean |  no  | default or not  |
- | moreAttributes | HashMap<String,Any> |  no  | bank details object |
 
 ---
 
@@ -5921,16 +5921,16 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | accountHolder | String? |  yes  |  |
- | country | String? |  yes  |  |
- | pincode | Int? |  yes  |  |
- | state | String? |  yes  |  |
- | city | String? |  yes  |  |
- | accountType | String |  no  |  |
- | ifscCode | String |  no  |  |
- | branchName | String? |  yes  |  |
  | accountNo | String? |  yes  |  |
+ | state | String? |  yes  |  |
+ | country | String? |  yes  |  |
  | bankName | String? |  yes  |  |
+ | accountHolder | String? |  yes  |  |
+ | ifscCode | String |  no  |  |
+ | accountType | String |  no  |  |
+ | pincode | Int? |  yes  |  |
+ | city | String? |  yes  |  |
+ | branchName | String? |  yes  |  |
 
 ---
 
@@ -5941,12 +5941,12 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/Disable Flag Payout |
+ | users | HashMap<String,Any> |  no  | payout users object |
  | bankDetails | [PayoutBankDetails](#PayoutBankDetails) |  no  | payout bank details object |
+ | isActive | Boolean |  no  | Enable/Disable Flag Payout |
+ | transferType | String |  no  | transafer type |
  | aggregator | String |  no  | Aggregator Name |
  | uniqueExternalId | String |  no  | Unique Id of Payout |
- | transferType | String |  no  | transafer type |
- | users | HashMap<String,Any> |  no  | payout users object |
 
 ---
 
@@ -5957,16 +5957,16 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
- | created | Boolean |  no  | created flag |
- | uniqueTransferNo | String |  no  | unique transfer no |
- | paymentStatus | String |  no  | status of payment |
- | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
- | aggregator | String |  no  | Aggregator Name |
- | transferType | String |  no  | transfer type |
- | payouts | HashMap<String,Any> |  no  | payout  object |
- | users | HashMap<String,Any> |  no  | users details object |
  | success | Boolean |  no  | Response is successful or not |
+ | users | HashMap<String,Any> |  no  | users details object |
+ | bankDetails | HashMap<String,Any> |  no  | payout bank_details object |
+ | uniqueTransferNo | String |  no  | unique transfer no |
+ | created | Boolean |  no  | created flag |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
+ | payouts | HashMap<String,Any> |  no  | payout  object |
+ | transferType | String |  no  | transfer type |
+ | aggregator | String |  no  | Aggregator Name |
+ | paymentStatus | String |  no  | status of payment |
 
 ---
 
@@ -5977,8 +5977,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
  | success | Boolean |  no  | Response is successful or not |
+ | isActive | Boolean |  no  | Enable/DIsable Flag Payout |
  | isDefault | Boolean |  no  | Enable/Disable Default Payout |
 
 ---
@@ -6037,9 +6037,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | String |  no  | Aggregator Name |
  | success | Boolean |  no  | Response is successful or not |
  | config | HashMap<String,Any> |  no  | Aggregator Config |
+ | aggregator | String |  no  | Aggregator Name |
 
 ---
 
@@ -6087,8 +6087,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | description | String |  no  | Not Found |
  | success | Boolean |  no  | Response is successful or not |
+ | description | String |  no  | Not Found |
  | code | String |  no  | Bad Request Data |
 
 ---
@@ -6100,11 +6100,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | accountNo | String |  no  |  |
+ | bankName | String |  no  |  |
  | accountHolder | String |  no  |  |
  | ifscCode | String |  no  |  |
  | branchName | String |  no  |  |
- | accountNo | String |  no  |  |
- | bankName | String |  no  |  |
 
 ---
 
@@ -6115,8 +6115,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | details | [BankDetailsForOTP](#BankDetailsForOTP) |  no  |  |
  | orderId | String |  no  |  |
+ | details | [BankDetailsForOTP](#BankDetailsForOTP) |  no  |  |
 
 ---
 
@@ -6140,24 +6140,24 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
- | id | Int |  no  |   |
- | address | String |  no  | Address of User |
- | ifscCode | String |  no  | Ifsc Code Of Account |
- | subtitle | String |  no  | SHort Title Of Account |
+ | accountNo | String |  no  | Account Number |
+ | mobile | String? |  yes  | MObile no of User |
+ | createdOn | String |  no  | Creation Date of Beneficiary |
  | beneficiaryId | String |  no  | Benenficiary Id |
  | transferMode | String |  no  | Transfer Mode Of Account |
- | branchName | String? |  yes  | Branch Name Of Account |
- | accountNo | String |  no  | Account Number |
  | bankName | String |  no  | Bank Name Of Account |
- | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
  | accountHolder | String |  no  | Account Holder Name |
- | title | String |  no  | Title Of Account |
- | email | String |  no  | EMail of User |
- | mobile | String? |  yes  | MObile no of User |
+ | id | Int |  no  |   |
+ | branchName | String? |  yes  | Branch Name Of Account |
  | comment | String? |  yes  | Remarks |
- | createdOn | String |  no  | Creation Date of Beneficiary |
+ | subtitle | String |  no  | SHort Title Of Account |
+ | email | String |  no  | EMail of User |
+ | title | String |  no  | Title Of Account |
+ | isActive | Boolean |  no  | Boolean Flag whether Beneficiary set or not |
+ | delightsUserName | String? |  yes  | User Id Who filled the Beneficiary  |
  | modifiedOn | String |  no  | MOdification Date of Beneficiary |
+ | address | String |  no  | Address of User |
+ | ifscCode | String |  no  | Ifsc Code Of Account |
  | displayName | String |  no  | Display Name Of Account |
 
 ---
@@ -6169,8 +6169,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)>? |  yes  | All Beneficiaries Of An Order |
  | showBeneficiaryDetails | Boolean? |  yes  | Show beneficiary details or not. |
+ | beneficiaries | ArrayList<[OrderBeneficiaryDetails](#OrderBeneficiaryDetails)>? |  yes  | All Beneficiaries Of An Order |
 
 ---
 
@@ -6196,10 +6196,10 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double |  no  | Payment amount |
- | mode | String |  no  |  |
  | name | String? |  yes  | Payment mode name |
  | meta | [MultiTenderPaymentMeta](#MultiTenderPaymentMeta)? |  yes  |  |
+ | mode | String |  no  |  |
+ | amount | Double |  no  | Payment amount |
 
 ---
 
@@ -6235,11 +6235,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | COD option is active or not |
- | limit | Int |  no  | Total Limit of user |
- | remainingLimit | Int |  no  | Remaining Limit for COD of User |
  | userId | String |  no  | Payment mode name |
  | usages | Int |  no  | Used COD limit from the user Limit |
+ | limit | Int |  no  | Total Limit of user |
+ | isActive | Boolean |  no  | COD option is active or not |
+ | remainingLimit | Int |  no  | Remaining Limit for COD of User |
 
 ---
 
@@ -6263,8 +6263,8 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | isActive | Boolean |  no  | either true or false |
- | merchantUserId | String |  no  | Merchant User id |
  | mobileno | String |  no  | Mobile No. of User |
+ | merchantUserId | String |  no  | Merchant User id |
 
 ---
 
@@ -6287,9 +6287,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | aggregator | String |  no  | Name of aggregator |
- | aggregatorId | Int |  no  | ID of aggregator |
  | models | ArrayList<String> |  no  | List of string of edc models |
+ | aggregatorId | Int |  no  | ID of aggregator |
+ | aggregator | String |  no  | Name of aggregator |
 
 ---
 
@@ -6312,8 +6312,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | inactiveDeviceCount | Int |  no  | No of inactive devices |
  | activeDeviceCount | Int |  no  | No of active devices |
+ | inactiveDeviceCount | Int |  no  | No of inactive devices |
 
 ---
 
@@ -6336,12 +6336,12 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | edcModel | String |  no  | Model of the edc machine |
- | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
  | deviceTag | String? |  yes  | Device tag of edc device to identify it |
- | edcDeviceSerialNo | String |  no  | Serial number or imei of EDC device |
- | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | edcModel | String |  no  | Model of the edc machine |
  | storeId | Int |  no  | Store at which devices is to used |
+ | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
+ | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | edcDeviceSerialNo | String |  no  | Serial number or imei of EDC device |
 
 ---
 
@@ -6352,17 +6352,17 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean |  no  | State whether device is active or inactive |
- | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
  | terminalUniqueIdentifier | String |  no  | Genearated unique value for edc device |
- | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
- | edcModel | String? |  yes  | Name of the model |
  | deviceTag | String |  no  | Device tag of edc device to identify it |
  | applicationId | String |  no  | Application ID |
- | edcDeviceSerialNo | String |  no  | Serial number of EDC device |
- | aggregatorId | Int |  no  | Aggregator which will accept payment |
  | aggregatorName | String? |  yes  | Name of the corresponding aggregator |
+ | isActive | Boolean |  no  | State whether device is active or inactive |
+ | edcModel | String? |  yes  | Name of the model |
  | storeId | Int |  no  | Store at which devices is to used |
+ | terminalSerialNo | String |  no  | Device serial number of terminal(android tablet) |
+ | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
+ | aggregatorId | Int |  no  | Aggregator which will accept payment |
+ | edcDeviceSerialNo | String |  no  | Serial number of EDC device |
 
 ---
 
@@ -6397,13 +6397,13 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | isActive | Boolean? |  yes  | State whether device is active or inactive |
- | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
- | edcModel | String? |  yes  | Model of the edc machine |
  | deviceTag | String? |  yes  | Device tag of edc device to identify it |
- | edcDeviceSerialNo | String? |  yes  | Serial number or imei of EDC device |
- | aggregatorId | Int? |  yes  | Aggregator which will accept payment |
+ | isActive | Boolean? |  yes  | State whether device is active or inactive |
+ | edcModel | String? |  yes  | Model of the edc machine |
  | storeId | Int? |  yes  | Store at which devices is to used |
+ | merchantStorePosCode | String? |  yes  | This is provided by pinelabs |
+ | aggregatorId | Int? |  yes  | Aggregator which will accept payment |
+ | edcDeviceSerialNo | String? |  yes  | Serial number or imei of EDC device |
 
 ---
 
@@ -6425,11 +6425,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | itemTotal | Int |  no  | Total number of items |
  | type | String |  no  | Type of pagination used |
  | hasNext | Boolean |  no  | Whether there exist next page or not |
- | current | Int |  no  | Current page number |
- | itemTotal | Int |  no  | Total number of items |
  | size | Int |  no  | Total number of pages |
+ | current | Int |  no  | Current page number |
 
 ---
 
@@ -6440,9 +6440,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | items | ArrayList<[EdcDevice](#EdcDevice)> |  no  | List of all edc mapped to the application options with their Details. |
  | success | Boolean |  no  | Response is successful or not |
  | page | [Page](#Page) |  no  | Pagination Response |
+ | items | ArrayList<[EdcDevice](#EdcDevice)> |  no  | List of all edc mapped to the application options with their Details. |
 
 ---
 
@@ -6453,19 +6453,19 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Int |  no  | Payable amount. |
- | contact | String |  no  | Customer valid mobile number |
- | method | String |  no  | Payment method |
- | razorpayPaymentId | String? |  yes  | Payment gateway payment id |
- | aggregator | String |  no  | Payment gateway name |
- | merchantOrderId | String |  no  | Unique fynd order id |
- | deviceId | String? |  yes  | EDC machine Unique Identifier |
- | vpa | String? |  yes  | Customer vpa address |
+ | email | String |  no  | Customer valid email |
  | timeout | Int? |  yes  | Payment polling timeout if not recieved response |
  | currency | String |  no  | Currency code. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
+ | method | String |  no  | Payment method |
+ | vpa | String? |  yes  | Customer vpa address |
+ | aggregator | String |  no  | Payment gateway name |
+ | razorpayPaymentId | String? |  yes  | Payment gateway payment id |
+ | merchantOrderId | String |  no  | Unique fynd order id |
+ | contact | String |  no  | Customer valid mobile number |
  | customerId | String |  no  | Payment gateway customer id. |
- | email | String |  no  | Customer valid email |
  | orderId | String |  no  | Payment gateway order id |
+ | amount | Int |  no  | Payable amount. |
 
 ---
 
@@ -6476,23 +6476,23 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Int? |  yes  | Payable amount. |
- | method | String |  no  | Payment method |
- | upiPollUrl | String? |  yes  | UPI poll url. |
- | razorpayPaymentId | String? |  yes  | Payment  id. |
- | aggregator | String |  no  | Payment gateway name |
- | merchantOrderId | String |  no  | order id |
- | deviceId | String? |  yes  | EDC machine Unique Identifier |
- | vpa | String? |  yes  | Customer vpa address |
- | currency | String? |  yes  | Currency code. |
+ | success | Boolean |  no  | Response is successful or not. |
  | virtualId | String? |  yes  | Payment virtual address. |
- | aggregatorOrderId | String? |  yes  | Payment order id |
+ | status | String? |  yes  | Status of payment. |
+ | bqrImage | String? |  yes  | Bharath qr image url. |
  | timeout | Int? |  yes  | timeout. |
+ | currency | String? |  yes  | Currency code. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
+ | method | String |  no  | Payment method |
+ | vpa | String? |  yes  | Customer vpa address |
+ | razorpayPaymentId | String? |  yes  | Payment  id. |
+ | upiPollUrl | String? |  yes  | UPI poll url. |
+ | merchantOrderId | String |  no  | order id |
+ | aggregator | String |  no  | Payment gateway name |
  | customerId | String? |  yes  | Payment gateway customer id. |
  | pollingUrl | String |  no  | Polling url. |
- | success | Boolean |  no  | Response is successful or not. |
- | bqrImage | String? |  yes  | Bharath qr image url. |
- | status | String? |  yes  | Status of payment. |
+ | aggregatorOrderId | String? |  yes  | Payment order id |
+ | amount | Int? |  yes  | Payable amount. |
 
 ---
 
@@ -6503,19 +6503,19 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Int |  no  | Payable amount. |
- | contact | String |  no  | Customer valid mobile number |
+ | status | String |  no  | Status of payment. |
+ | merchantTransactionId | String |  no  | Unique fynd transaction id |
+ | email | String |  no  | Customer valid email |
+ | currency | String |  no  | Currency code. |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
  | method | String |  no  | Payment method |
+ | vpa | String? |  yes  | Customer vpa address |
  | aggregator | String |  no  | Payment gateway name |
  | merchantOrderId | String |  no  | Unique fynd order id |
- | deviceId | String? |  yes  | EDC machine Unique Identifier |
- | vpa | String? |  yes  | Customer vpa address |
- | currency | String |  no  | Currency code. |
- | merchantTransactionId | String |  no  | Unique fynd transaction id |
+ | contact | String |  no  | Customer valid mobile number |
  | customerId | String |  no  | Payment gateway customer id. |
- | status | String |  no  | Status of payment. |
- | email | String |  no  | Customer valid email |
  | orderId | String |  no  | Payment gateway order id |
+ | amount | Int |  no  | Payable amount. |
 
 ---
 
@@ -6526,11 +6526,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | success | Boolean? |  yes  | Response is successful or not |
+ | status | String |  no  | Payment status |
+ | redirectUrl | String? |  yes  | Redirect url |
  | retry | Boolean |  no  | Response is successful or not. |
  | aggregatorName | String |  no  | Payment gateway name |
- | success | Boolean? |  yes  | Response is successful or not |
- | redirectUrl | String? |  yes  | Redirect url |
- | status | String |  no  | Payment status |
 
 ---
 
@@ -6542,8 +6542,8 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | requestType | String |  no  | Either resend or cancel |
- | deviceId | String? |  yes  | EDC machine Unique Identifier |
  | orderId | String |  no  | Unique order id |
+ | deviceId | String? |  yes  | EDC machine Unique Identifier |
 
 ---
 
@@ -6589,24 +6589,24 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paymentMode | String |  no  |  |
- | allStatus | ArrayList<String> |  no  |  |
- | collectedBy | String |  no  |  |
- | paymentModeIdentifier | String |  no  |  |
- | currentStatus | String |  no  |  |
+ | modifiedOn | String |  no  |  |
  | aggregatorPaymentObject | HashMap<String,Any>? |  yes  |  |
+ | applicationId | String |  no  |  |
+ | allStatus | ArrayList<String> |  no  |  |
+ | refundedBy | String |  no  |  |
  | refundObject | HashMap<String,Any>? |  yes  |  |
  | currency | String |  no  |  |
- | applicationId | String |  no  |  |
- | createdOn | String |  no  |  |
- | modifiedOn | String |  no  |  |
- | id | String |  no  |  |
- | paymentId | String? |  yes  |  |
- | companyId | String |  no  |  |
- | userObject | HashMap<String,Any> |  no  |  |
- | refundedBy | String |  no  |  |
- | paymentGateway | String |  no  |  |
  | amountInPaisa | String |  no  |  |
+ | currentStatus | String |  no  |  |
+ | collectedBy | String |  no  |  |
+ | userObject | HashMap<String,Any> |  no  |  |
+ | id | String |  no  |  |
+ | paymentModeIdentifier | String |  no  |  |
+ | companyId | String |  no  |  |
+ | paymentGateway | String |  no  |  |
+ | paymentMode | String |  no  |  |
+ | createdOn | String |  no  |  |
+ | paymentId | String? |  yes  |  |
 
 ---
 
@@ -6617,8 +6617,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | merchantOrderId | String |  no  |  |
  | paymentObjectList | ArrayList<[PaymentObjectListSerializer](#PaymentObjectListSerializer)>? |  yes  |  |
+ | merchantOrderId | String |  no  |  |
 
 ---
 
@@ -6629,11 +6629,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | String? |  yes  |  |
- | data | ArrayList<[PaymentStatusObject](#PaymentStatusObject)>? |  yes  |  |
- | count | Int? |  yes  |  |
  | success | String |  no  |  |
  | status | Int |  no  |  |
+ | error | String? |  yes  |  |
+ | count | Int? |  yes  |  |
+ | data | ArrayList<[PaymentStatusObject](#PaymentStatusObject)>? |  yes  |  |
 
 ---
 
@@ -6644,8 +6644,8 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | url | String |  no  | The url to call for authenticating |
  | success | Boolean |  no  | Response is successful or not |
+ | url | String |  no  | The url to call for authenticating |
 
 ---
 
@@ -6668,16 +6668,16 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double |  no  | Amount to paid back |
- | paymentMode | String |  no  | Payment Mode |
+ | outstandingDetailsId | Int |  no  | Outstanding details ID |
+ | fwdShipmentId | String |  no  | Purchase Shipment Id |
+ | currentStatus | String |  no  | Status |
  | paymentModeIdentifier | String |  no  | Payment Mode Id |
+ | aggregatorTransactionId | String |  no  | Unique Id for the transaction |
  | aggregator | String |  no  | Name of Payment Gateway |
  | merchantOrderId | String |  no  | Merchant's Order Id |
- | outstandingDetailsId | Int |  no  | Outstanding details ID |
- | currentStatus | String |  no  | Status |
+ | paymentMode | String |  no  | Payment Mode |
  | aggregatorOrderId | String |  no  | Id of payment gateway |
- | aggregatorTransactionId | String |  no  | Unique Id for the transaction |
- | fwdShipmentId | String |  no  | Purchase Shipment Id |
+ | amount | Double |  no  | Amount to paid back |
 
 ---
 
@@ -6689,10 +6689,10 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | shipmentDetails | ArrayList<[RepaymentRequestDetails](#RepaymentRequestDetails)>? |  yes  |  |
- | aggregatorOrderId | String |  no  | Id of payment gateway |
  | extensionOrderId | String |  no  | Order id created in extension |
  | aggregatorTransactionId | String |  no  | Unique Id for the transaction |
  | totalAmount | Double |  no  | total amount |
+ | aggregatorOrderId | String |  no  | Id of payment gateway |
 
 ---
 
@@ -6715,11 +6715,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | userId | String |  no  | Deadlock/Grimlock user id |
+ | status | String |  no  | Status |
+ | appId | String |  no  | Application id |
  | aggregator | String |  no  | Payment aggregator name |
  | creditLineId | String |  no  | Merchant ID at Ajiodhan's end |
- | userId | String |  no  | Deadlock/Grimlock user id |
- | appId | String |  no  | Application id |
- | status | String |  no  | Status |
 
 ---
 
@@ -6742,14 +6742,14 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | deliveryAddress | HashMap<String,Any>? |  yes  | Extra meta fields. |
  | transactionAmountInPaise | Int |  no  | Payable amount in paise |
- | payload | String? |  yes  | Hashed payload string. |
  | phoneNumber | String |  no  | User mobile number without country code. |
+ | payload | String? |  yes  | Hashed payload string. |
  | billingAddress | HashMap<String,Any>? |  yes  | Extra meta fields. |
  | aggregator | String |  no  | Payment gateway name in camel case i.e Simpl, Rupifi |
- | merchantParams | HashMap<String,Any>? |  yes  | Extra meta fields. |
  | orderItems | ArrayList<HashMap<String,Any>>? |  yes  | Extra meta fields. |
+ | merchantParams | HashMap<String,Any>? |  yes  | Extra meta fields. |
+ | deliveryAddress | HashMap<String,Any>? |  yes  | Extra meta fields. |
 
 ---
 
@@ -6773,15 +6773,15 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double? |  yes  | Total value of order |
- | merchantName | String? |  yes  | Merchant name |
- | pollingTimeout | Int? |  yes  | Polling request timeout |
- | externalOrderId | String? |  yes  | Merchant order id |
- | statusCode | Int |  no  | HTTP status code |
- | paymentLinkCurrentStatus | String? |  yes  | Status of payment link |
  | success | Boolean |  no  | Successful or failure |
  | message | String |  no  | Message |
+ | externalOrderId | String? |  yes  | Merchant order id |
  | paymentLinkUrl | String? |  yes  | Url of payment link |
+ | paymentLinkCurrentStatus | String? |  yes  | Status of payment link |
+ | merchantName | String? |  yes  | Merchant name |
+ | statusCode | Int |  no  | HTTP status code |
+ | pollingTimeout | Int? |  yes  | Polling request timeout |
+ | amount | Double? |  yes  | Total value of order |
 
 ---
 
@@ -6792,14 +6792,14 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double? |  yes  | Amount paid |
- | merchantName | String? |  yes  | Name of merchant that created payment link |
  | invalidId | Boolean? |  yes  | Payment link id is valid or not |
- | expired | Boolean? |  yes  | Payment link expired or not |
- | merchantOrderId | String? |  yes  | Order id |
- | msg | String? |  yes  | Message |
- | paymentTransactionId | String? |  yes  | Payment transaction id |
  | cancelled | Boolean? |  yes  | Payment link is cancelled or not |
+ | msg | String? |  yes  | Message |
+ | merchantName | String? |  yes  | Name of merchant that created payment link |
+ | merchantOrderId | String? |  yes  | Order id |
+ | expired | Boolean? |  yes  | Payment link expired or not |
+ | paymentTransactionId | String? |  yes  | Payment transaction id |
+ | amount | Double? |  yes  | Amount paid |
 
 ---
 
@@ -6810,10 +6810,10 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | error | [ErrorDescription](#ErrorDescription)? |  yes  |  |
  | success | Boolean |  no  | Successful or failure |
- | statusCode | Int |  no  | HTTP status code |
  | message | String |  no  | Message |
+ | statusCode | Int |  no  | HTTP status code |
+ | error | [ErrorDescription](#ErrorDescription)? |  yes  |  |
 
 ---
 
@@ -6824,11 +6824,11 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | String |  no  |  |
  | cartId | String |  no  |  |
  | checkoutMode | String |  no  |  |
  | pincode | String |  no  |  |
  | assignCardId | String? |  yes  |  |
+ | amount | String |  no  |  |
 
 ---
 
@@ -6839,12 +6839,12 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | externalOrderId | String |  no  | Merchant order id |
+ | email | String |  no  | Email to which the payment link is to be sent |
+ | description | String? |  yes  | Merchant order id |
+ | meta | [CreatePaymentLinkMeta](#CreatePaymentLinkMeta) |  no  | Meta |
  | amount | Double |  no  | Total value of order |
  | mobileNumber | String |  no  | Mobile number to which the payment link is to be sent |
- | meta | [CreatePaymentLinkMeta](#CreatePaymentLinkMeta) |  no  | Meta |
- | externalOrderId | String |  no  | Merchant order id |
- | description | String? |  yes  | Merchant order id |
- | email | String |  no  | Email to which the payment link is to be sent |
 
 ---
 
@@ -6855,12 +6855,12 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | paymentLinkId | String? |  yes  | Unique id of payment link |
- | pollingTimeout | Int? |  yes  | Polling request timeout |
- | statusCode | Int |  no  | HTTP status code |
  | success | Boolean |  no  | Successful or failure |
  | message | String |  no  | Message |
+ | paymentLinkId | String? |  yes  | Unique id of payment link |
  | paymentLinkUrl | String? |  yes  | Url of payment link |
+ | statusCode | Int |  no  | HTTP status code |
+ | pollingTimeout | Int? |  yes  | Polling request timeout |
 
 ---
 
@@ -6871,16 +6871,16 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | amount | Double? |  yes  | Amount |
- | paymentLinkId | String? |  yes  | Payment link id |
  | success | Boolean? |  yes  | Successful or failure |
- | orderId | String? |  yes  | Fynd order id |
- | httpStatus | Int? |  yes  | HTTP status code |
- | statusCode | Int? |  yes  | HTTP status code |
- | aggregatorName | String? |  yes  | Aggregator name |
- | redirectUrl | String? |  yes  | Url to redirect to |
  | message | String? |  yes  | Message |
  | status | String? |  yes  | Status of payment link |
+ | redirectUrl | String? |  yes  | Url to redirect to |
+ | paymentLinkId | String? |  yes  | Payment link id |
+ | httpStatus | Int? |  yes  | HTTP status code |
+ | statusCode | Int? |  yes  | HTTP status code |
+ | orderId | String? |  yes  | Fynd order id |
+ | aggregatorName | String? |  yes  | Aggregator name |
+ | amount | Double? |  yes  | Amount |
 
 ---
 
@@ -6903,8 +6903,8 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean |  no  | Successful or failure |
- | statusCode | Int |  no  | HTTP status code |
  | message | String |  no  | Message |
+ | statusCode | Int |  no  | HTTP status code |
  | pollingTimeout | Int? |  yes  | Polling request timeout |
 
 ---
@@ -6917,8 +6917,8 @@ List Order Beneficiary
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
  | success | Boolean |  no  | Successful or failure |
- | statusCode | Int |  no  | HTTP status code |
  | message | String |  no  | Message |
+ | statusCode | Int |  no  | HTTP status code |
 
 ---
 
@@ -6929,9 +6929,9 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
- | code | String |  no  | Payment Method Code |
  | name | String |  no  | Name of payment method |
  | merchantCode | String |  no  | Merchant Payment Code |
+ | code | String |  no  | Payment Method Code |
 
 ---
 
@@ -6942,10 +6942,10 @@ List Order Beneficiary
 
  | Properties | Type | Nullable | Description |
  | ---------- | ---- | -------- | ----------- |
+ | networks | String |  no  | payment networks |
  | codes | [Code](#Code) |  no  | List of dict that contains payment method data |
  | types | String |  no  | Type of payment mode |
  | name | String |  no  | name of payment name |
- | networks | String |  no  | payment networks |
 
 ---
 
